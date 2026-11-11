@@ -4,4 +4,3 @@ import { access, cp } from 'node:fs/promises';
 const web = await access('assets-web/audio').then(() => true, () => false);
 await cp('assets', 'dist/assets', { recursive: true, filter: (src) => !(web && /^assets\/audio\/.+\.wav$/.test(src)) });
 if (web) await cp('assets-web', 'dist/assets-web', { recursive: true });
-await cp('assets25d', 'dist/assets25d', { recursive: true, filter: (src) => !src.startsWith('assets25d/ph/models') && !/^assets25d\/ph\/hdri\/(alps_field|snowy_hillside)_/.test(src) });

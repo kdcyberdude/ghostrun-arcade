@@ -3,5 +3,3 @@
 @media(max-width:450px){#bindings{grid-template-columns:1fr}.binding-row{padding:8px 0;min-height:41px}.shortcut-note{line-height:2.6}}
 
 @media(pointer:coarse) and (orientation:landscape){#playbar{left:auto;right:18px;transform:none;padding:4px;gap:0}#playbar button{font-size:0;width:44px;height:44px;padding:0}#playbar button::before{font-size:19px}#pause::before{content:'Ⅱ'}#pause[aria-pressed=true]::before{content:'▶'}#mute::before{content:'♪'}#mute[aria-pressed=true]::before{content:'♪';text-decoration:line-through;color:#91a18a}#settings-open::before{content:'⋯'}#playbar .toolbar-divider{display:none}.playing .top-actions .icon-button{width:44px;height:44px}}
-
-.presentation-options{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 20px}.presentation-options label{display:flex;flex-direction:column;gap:7px;font-size:10px;color:var(--muted)}.presentation-options select{max-width:190px;min-width:150px}.presentation-options [hidden]{display:none}

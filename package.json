@@ -12,20 +12,15 @@
     "audio": "node tools/harness/compress-audio.mjs --verify"
   },
   "dependencies": {
-    "@fontsource/press-start-2p": "5.1.0",
     "three": "0.170.0"
   },
   "devDependencies": {
-    "@gltf-transform/core": "4.1.1",
-    "@gltf-transform/extensions": "4.1.1",
-    "@gltf-transform/functions": "4.1.1",
-    "@types/node": "22.10.2",
     "@types/three": "0.170.0",
-    "meshoptimizer": "0.22.0",
-    "playwright": "1.49.1",
-    "pngjs": "7.0.0",
-    "tsx": "4.19.2",
+    "@types/node": "22.10.2",
     "typescript": "5.7.2",
-    "vite": "5.4.11"
+    "vite": "5.4.11",
+    "tsx": "4.19.2",
+    "playwright": "1.49.1",
+    "pngjs": "7.0.0"
   }
 }
