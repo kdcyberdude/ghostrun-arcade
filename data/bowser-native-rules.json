@@ -1,0 +1,30 @@
+{
+  "schema": "bowser-native-rules-v1",
+  "evidence": "Native trace RAM (enemy slots: object id 45 = Bowser, id 21 = flame) of the recorded route in 1-4..8-4, plus branching probes with full RAM from the route prefix (tools/fidelity-lab/entry-probe.mjs; 5-4 free runs with Mario still / left / crossing, 5-4 start jitter k=0..11). Black-box measurements; no ROM access. Facts: (1) Bowser is two 16 px objects, the second has slot flag bit 7 set and sits 16 px beside the primary one (x+16 when he faces left, x-16 when right; y+8); the primary is the head half. (2) The primary appears at page start + 0x70, steps by $365 px (+2 / -1 / +1; RAM 0x365 = speed, 0x366 = 0x70) on every 4th frame; first hop starts 30 frames after he appears (hop physics fit to 12 hops: 1.2 px mean error); he faces Mario after a landing, and facing right means a chase at +2 with no more hops or fire (345 frames on the 5-4 cross run, every recorded fight). (3) Random natively: the first right limit (34 or 18; same level gave both under a start jitter), later limits (49 / -33 / -17), hop pauses (15, 47, 63, 63, 46) and fire intervals (255, 207, 207, 80, 287) - the values here are the recorded ones. (4) No native Bowser fire exists in any recorded fight (he always faces right before 255 frames); the 1.25 / 1.375 px/frame flames before him are a separate generator (x about Mario+175, period 207 or 223, y 112 / 128 / 144) that the remake does not model. (5) Hammers (6-4..8-4) are not in the enemy RAM ranges and stay unmeasured.",
+  "spawn": {
+    "1-4": {"compiled": 2192, "native": 2160},
+    "2-4": {"compiled": 2192, "native": 2160},
+    "3-4": {"compiled": 2192, "native": 2160},
+    "4-4": {"compiled": 2656, "native": 2672},
+    "5-4": {"compiled": 2176, "native": 2160},
+    "6-4": {"compiled": 2160, "native": 2160},
+    "7-4": {"compiled": 3184, "native": 3184},
+    "8-4": {"compiled": 624, "native": 624}
+  },
+  "spawnNote": "native = anchor (primary half) on the first native row the object exists = page start + 0x70, in the area's own coordinates (8-4 area-5 starts at native page 16); compiled = the screenshot-grid value in data/levels.json (its compile guards pin it). The runtime replaces compiled by native only while the spec still holds the compiled value.",
+  "motion": {
+    "tickFrames": 4,
+    "spawnSpeed": 2,
+    "leftSpeed": -1,
+    "rightSpeed": 1,
+    "chaseSpeed": 2,
+    "firstRightLimit": {"short": 18, "long": 34, "shortLevels": ["4-4", "6-4", "7-4", "8-4"]},
+    "laterRightLimit": 49,
+    "firstLeftLimit": -33,
+    "laterLeftLimit": -17,
+    "chaseLimit": 69
+  },
+  "hopNote": "vy is the speed before the frame update (the common enemy code adds gravity first): -541/256 = fitted -526/256 minus one gravity step of 15/256.",
+  "hop": {"firstFrames": 30, "vy": -2.11328125, "gravity": 0.05859375, "firstPause": {"default": 47, "5-4": 15}, "laterPauses": [47, 63, 63, 46]},
+  "flame": {"firstFrames": 255, "period": 207, "offsetX": -13, "speedWorldsFiveUp": 1.375, "speedEarlier": 1.25}
+}

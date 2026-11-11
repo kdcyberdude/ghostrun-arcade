@@ -1,0 +1,7 @@
+{
+  "scope": "Provisional small-player Down stop; measured in the 1-1 main area and bonus room. Other areas remain uncalibrated.",
+  "areas": [
+    {"level": "1-1", "area": "main"},
+    {"level": "1-1", "area": "bonus-coins"}
+  ]
+}

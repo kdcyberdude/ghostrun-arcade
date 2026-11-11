@@ -1,0 +1,82 @@
+{
+  "schema": "three-three-contact-platform-prospective-v1",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3400,
+  "captureFromTick": 3384,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [
+      "cal-first-lower-brake1"
+    ],
+    "reserved": [
+      "reserved-first-lower-brake2"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "cal-first-lower-brake1",
+      "segments": [
+        {
+          "stage": "brake",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "ride",
+          "buttons": [],
+          "ticks": 60
+        },
+        {
+          "stage": "jump-off",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "return",
+          "buttons": [],
+          "ticks": 20
+        }
+      ]
+    },
+    {
+      "name": "reserved-first-lower-brake2",
+      "segments": [
+        {
+          "stage": "brake",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        {
+          "stage": "ride",
+          "buttons": [],
+          "ticks": 45
+        },
+        {
+          "stage": "jump-off",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "return",
+          "buttons": [],
+          "ticks": 20
+        }
+      ]
+    }
+  ],
+  "priorPlanSha256": "40e9deaf0b6cd9a191db6028862d100fe03f84708c43d08244c11f1863f93325",
+  "reason": "Actual winning source at3400 shows feet128 on48px art129 platform; first lower moving platform is reachable via ordinary controls."
+}

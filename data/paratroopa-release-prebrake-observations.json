@@ -1,0 +1,4623 @@
+{
+  "schema": "paratroopa-contact-controls-v1",
+  "generatedUtc": "2026-11-05T23:14:12.303Z",
+  "source": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/trace.jsonl",
+  "method": "1 independent fresh standard resets with exact recorded controller prefix739 and ordinary manual branches. Actual applied inputs/native durations and unmodified PNGs retained. Images alone measure actors; no ROM/executable/hidden-state reads. No production edits.",
+  "checks": [
+    {
+      "name": "short-left-prebrake",
+      "prefix": 739,
+      "pngExact": true
+    }
+  ],
+  "cases": [
+    {
+      "name": "short-left-prebrake",
+      "commands": [
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 1
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "sequence": 0,
+      "sentUtc": "2026-11-05T23:14:06.157Z",
+      "experiment": "hello",
+      "stage": "hello",
+      "request": {
+        "op": "hello"
+      },
+      "response": {
+        "ok": true,
+        "protocol": "pixel-player-v1",
+        "buttons": [
+          "up",
+          "down",
+          "left",
+          "right",
+          "a",
+          "b",
+          "x",
+          "y",
+          "start",
+          "select"
+        ],
+        "operations": [
+          "hello",
+          "reset",
+          "observe",
+          "suggest",
+          "step",
+          "auto"
+        ],
+        "ticks_per_emulated_second": 8,
+        "image_format": "PNG RGB 256x240"
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 1,
+      "sentUtc": "2026-11-05T23:14:06.388Z",
+      "experiment": "short-left-prebrake",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000001.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0001-short-left-prebrake-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 2,
+      "sentUtc": "2026-11-05T23:14:06.507Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 17
+      },
+      "response": {
+        "ok": true,
+        "tick": 17,
+        "frames_advanced": 127,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000002.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0002-short-left-prebrake-t17.png"
+        }
+      },
+      "nativeFrame": 127
+    },
+    {
+      "sequence": 3,
+      "sentUtc": "2026-11-05T23:14:06.530Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 20,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000003.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0003-short-left-prebrake-t20.png"
+        }
+      },
+      "nativeFrame": 150
+    },
+    {
+      "sequence": 4,
+      "sentUtc": "2026-11-05T23:14:06.538Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 21,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000004.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0004-short-left-prebrake-t21.png"
+        }
+      },
+      "nativeFrame": 157
+    },
+    {
+      "sequence": 5,
+      "sentUtc": "2026-11-05T23:14:06.561Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 24,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000005.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0005-short-left-prebrake-t24.png"
+        }
+      },
+      "nativeFrame": 180
+    },
+    {
+      "sequence": 6,
+      "sentUtc": "2026-11-05T23:14:06.618Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 32,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000006.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0006-short-left-prebrake-t32.png"
+        }
+      },
+      "nativeFrame": 240
+    },
+    {
+      "sequence": 7,
+      "sentUtc": "2026-11-05T23:14:06.626Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 33,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000007.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0007-short-left-prebrake-t33.png"
+        }
+      },
+      "nativeFrame": 247
+    },
+    {
+      "sequence": 8,
+      "sentUtc": "2026-11-05T23:14:06.654Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 37,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000008.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0008-short-left-prebrake-t37.png"
+        }
+      },
+      "nativeFrame": 277
+    },
+    {
+      "sequence": 9,
+      "sentUtc": "2026-11-05T23:14:06.677Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 40,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000009.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0009-short-left-prebrake-t40.png"
+        }
+      },
+      "nativeFrame": 300
+    },
+    {
+      "sequence": 10,
+      "sentUtc": "2026-11-05T23:14:06.716Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 45,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000010.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0010-short-left-prebrake-t45.png"
+        }
+      },
+      "nativeFrame": 338
+    },
+    {
+      "sequence": 11,
+      "sentUtc": "2026-11-05T23:14:06.768Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 7
+      },
+      "response": {
+        "ok": true,
+        "tick": 52,
+        "frames_advanced": 52,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000011.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0011-short-left-prebrake-t52.png"
+        }
+      },
+      "nativeFrame": 390
+    },
+    {
+      "sequence": 12,
+      "sentUtc": "2026-11-05T23:14:06.825Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 60,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000012.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0012-short-left-prebrake-t60.png"
+        }
+      },
+      "nativeFrame": 450
+    },
+    {
+      "sequence": 13,
+      "sentUtc": "2026-11-05T23:14:06.854Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 64,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000013.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0013-short-left-prebrake-t64.png"
+        }
+      },
+      "nativeFrame": 480
+    },
+    {
+      "sequence": 14,
+      "sentUtc": "2026-11-05T23:14:06.943Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 12
+      },
+      "response": {
+        "ok": true,
+        "tick": 76,
+        "frames_advanced": 90,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000014.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0014-short-left-prebrake-t76.png"
+        }
+      },
+      "nativeFrame": 570
+    },
+    {
+      "sequence": 15,
+      "sentUtc": "2026-11-05T23:14:06.973Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 80,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000015.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0015-short-left-prebrake-t80.png"
+        }
+      },
+      "nativeFrame": 600
+    },
+    {
+      "sequence": 16,
+      "sentUtc": "2026-11-05T23:14:07.003Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 84,
+        "frames_advanced": 31,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000016.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0016-short-left-prebrake-t84.png"
+        }
+      },
+      "nativeFrame": 631
+    },
+    {
+      "sequence": 17,
+      "sentUtc": "2026-11-05T23:14:07.034Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 88,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000017.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0017-short-left-prebrake-t88.png"
+        }
+      },
+      "nativeFrame": 661
+    },
+    {
+      "sequence": 18,
+      "sentUtc": "2026-11-05T23:14:07.101Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 9
+      },
+      "response": {
+        "ok": true,
+        "tick": 97,
+        "frames_advanced": 67,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000018.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0018-short-left-prebrake-t97.png"
+        }
+      },
+      "nativeFrame": 728
+    },
+    {
+      "sequence": 19,
+      "sentUtc": "2026-11-05T23:14:07.125Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 100,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000019.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0019-short-left-prebrake-t100.png"
+        }
+      },
+      "nativeFrame": 751
+    },
+    {
+      "sequence": 20,
+      "sentUtc": "2026-11-05T23:14:07.186Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 108,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000020.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0020-short-left-prebrake-t108.png"
+        }
+      },
+      "nativeFrame": 811
+    },
+    {
+      "sequence": 21,
+      "sentUtc": "2026-11-05T23:14:07.195Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 109,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000021.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0021-short-left-prebrake-t109.png"
+        }
+      },
+      "nativeFrame": 818
+    },
+    {
+      "sequence": 22,
+      "sentUtc": "2026-11-05T23:14:07.249Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 7
+      },
+      "response": {
+        "ok": true,
+        "tick": 116,
+        "frames_advanced": 53,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000022.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0022-short-left-prebrake-t116.png"
+        }
+      },
+      "nativeFrame": 871
+    },
+    {
+      "sequence": 23,
+      "sentUtc": "2026-11-05T23:14:07.265Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 2
+      },
+      "response": {
+        "ok": true,
+        "tick": 118,
+        "frames_advanced": 15,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000023.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0023-short-left-prebrake-t118.png"
+        }
+      },
+      "nativeFrame": 886
+    },
+    {
+      "sequence": 24,
+      "sentUtc": "2026-11-05T23:14:07.281Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 2
+      },
+      "response": {
+        "ok": true,
+        "tick": 120,
+        "frames_advanced": 15,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000024.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0024-short-left-prebrake-t120.png"
+        }
+      },
+      "nativeFrame": 901
+    },
+    {
+      "sequence": 25,
+      "sentUtc": "2026-11-05T23:14:07.289Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 121,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000025.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0025-short-left-prebrake-t121.png"
+        }
+      },
+      "nativeFrame": 908
+    },
+    {
+      "sequence": 26,
+      "sentUtc": "2026-11-05T23:14:07.345Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 7
+      },
+      "response": {
+        "ok": true,
+        "tick": 128,
+        "frames_advanced": 53,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000026.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0026-short-left-prebrake-t128.png"
+        }
+      },
+      "nativeFrame": 961
+    },
+    {
+      "sequence": 27,
+      "sentUtc": "2026-11-05T23:14:07.398Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 133,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000027.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0027-short-left-prebrake-t133.png"
+        }
+      },
+      "nativeFrame": 999
+    },
+    {
+      "sequence": 28,
+      "sentUtc": "2026-11-05T23:14:07.406Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 134,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000028.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0028-short-left-prebrake-t134.png"
+        }
+      },
+      "nativeFrame": 1006
+    },
+    {
+      "sequence": 29,
+      "sentUtc": "2026-11-05T23:14:07.415Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 135,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000029.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0029-short-left-prebrake-t135.png"
+        }
+      },
+      "nativeFrame": 1014
+    },
+    {
+      "sequence": 30,
+      "sentUtc": "2026-11-05T23:14:07.459Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 6
+      },
+      "response": {
+        "ok": true,
+        "tick": 141,
+        "frames_advanced": 45,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000030.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0030-short-left-prebrake-t141.png"
+        }
+      },
+      "nativeFrame": 1059
+    },
+    {
+      "sequence": 31,
+      "sentUtc": "2026-11-05T23:14:07.481Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 144,
+        "frames_advanced": 22,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000031.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0031-short-left-prebrake-t144.png"
+        }
+      },
+      "nativeFrame": 1081
+    },
+    {
+      "sequence": 32,
+      "sentUtc": "2026-11-05T23:14:07.519Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 149,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000032.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0032-short-left-prebrake-t149.png"
+        }
+      },
+      "nativeFrame": 1119
+    },
+    {
+      "sequence": 33,
+      "sentUtc": "2026-11-05T23:14:07.549Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 153,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000033.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0033-short-left-prebrake-t153.png"
+        }
+      },
+      "nativeFrame": 1149
+    },
+    {
+      "sequence": 34,
+      "sentUtc": "2026-11-05T23:14:07.558Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 154,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000034.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0034-short-left-prebrake-t154.png"
+        }
+      },
+      "nativeFrame": 1156
+    },
+    {
+      "sequence": 35,
+      "sentUtc": "2026-11-05T23:14:07.567Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 155,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000035.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0035-short-left-prebrake-t155.png"
+        }
+      },
+      "nativeFrame": 1164
+    },
+    {
+      "sequence": 36,
+      "sentUtc": "2026-11-05T23:14:07.576Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 156,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000036.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0036-short-left-prebrake-t156.png"
+        }
+      },
+      "nativeFrame": 1171
+    },
+    {
+      "sequence": 37,
+      "sentUtc": "2026-11-05T23:14:07.606Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 42,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 160,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          42,
+          42,
+          42,
+          42
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000037.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0037-short-left-prebrake-t160.png"
+        }
+      },
+      "nativeFrame": 1201
+    },
+    {
+      "sequence": 38,
+      "sentUtc": "2026-11-05T23:14:07.637Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 16,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 164,
+        "frames_advanced": 31,
+        "terminal": false,
+        "applied_masks": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000038.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0038-short-left-prebrake-t164.png"
+        }
+      },
+      "nativeFrame": 1232
+    },
+    {
+      "sequence": 39,
+      "sentUtc": "2026-11-05T23:14:07.645Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 165,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000039.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0039-short-left-prebrake-t165.png"
+        }
+      },
+      "nativeFrame": 1239
+    },
+    {
+      "sequence": 40,
+      "sentUtc": "2026-11-05T23:14:07.668Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 168,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000040.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0040-short-left-prebrake-t168.png"
+        }
+      },
+      "nativeFrame": 1262
+    },
+    {
+      "sequence": 41,
+      "sentUtc": "2026-11-05T23:14:08.849Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 177
+      },
+      "response": {
+        "ok": true,
+        "tick": 345,
+        "frames_advanced": 1329,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000041.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0041-short-left-prebrake-t345.png"
+        }
+      },
+      "nativeFrame": 2591
+    },
+    {
+      "sequence": 42,
+      "sentUtc": "2026-11-05T23:14:08.880Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 349,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000042.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0042-short-left-prebrake-t349.png"
+        }
+      },
+      "nativeFrame": 2621
+    },
+    {
+      "sequence": 43,
+      "sentUtc": "2026-11-05T23:14:08.890Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 350,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000043.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0043-short-left-prebrake-t350.png"
+        }
+      },
+      "nativeFrame": 2629
+    },
+    {
+      "sequence": 44,
+      "sentUtc": "2026-11-05T23:14:08.898Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 351,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000044.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0044-short-left-prebrake-t351.png"
+        }
+      },
+      "nativeFrame": 2636
+    },
+    {
+      "sequence": 45,
+      "sentUtc": "2026-11-05T23:14:08.915Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 2
+      },
+      "response": {
+        "ok": true,
+        "tick": 353,
+        "frames_advanced": 15,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000045.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0045-short-left-prebrake-t353.png"
+        }
+      },
+      "nativeFrame": 2651
+    },
+    {
+      "sequence": 46,
+      "sentUtc": "2026-11-05T23:14:08.946Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 357,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000046.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0046-short-left-prebrake-t357.png"
+        }
+      },
+      "nativeFrame": 2681
+    },
+    {
+      "sequence": 47,
+      "sentUtc": "2026-11-05T23:14:08.970Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 360,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000047.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0047-short-left-prebrake-t360.png"
+        }
+      },
+      "nativeFrame": 2704
+    },
+    {
+      "sequence": 48,
+      "sentUtc": "2026-11-05T23:14:08.979Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 361,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000048.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0048-short-left-prebrake-t361.png"
+        }
+      },
+      "nativeFrame": 2711
+    },
+    {
+      "sequence": 49,
+      "sentUtc": "2026-11-05T23:14:09.002Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 364,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000049.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0049-short-left-prebrake-t364.png"
+        }
+      },
+      "nativeFrame": 2734
+    },
+    {
+      "sequence": 50,
+      "sentUtc": "2026-11-05T23:14:09.071Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 9
+      },
+      "response": {
+        "ok": true,
+        "tick": 373,
+        "frames_advanced": 68,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000050.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0050-short-left-prebrake-t373.png"
+        }
+      },
+      "nativeFrame": 2802
+    },
+    {
+      "sequence": 51,
+      "sentUtc": "2026-11-05T23:14:09.079Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 374,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000051.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0051-short-left-prebrake-t374.png"
+        }
+      },
+      "nativeFrame": 2809
+    },
+    {
+      "sequence": 52,
+      "sentUtc": "2026-11-05T23:14:09.088Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 375,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000052.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0052-short-left-prebrake-t375.png"
+        }
+      },
+      "nativeFrame": 2817
+    },
+    {
+      "sequence": 53,
+      "sentUtc": "2026-11-05T23:14:09.126Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 380,
+        "frames_advanced": 37,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000053.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0053-short-left-prebrake-t380.png"
+        }
+      },
+      "nativeFrame": 2854
+    },
+    {
+      "sequence": 54,
+      "sentUtc": "2026-11-05T23:14:09.157Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 16,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 384,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000054.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0054-short-left-prebrake-t384.png"
+        }
+      },
+      "nativeFrame": 2884
+    },
+    {
+      "sequence": 55,
+      "sentUtc": "2026-11-05T23:14:09.167Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 385,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000055.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0055-short-left-prebrake-t385.png"
+        }
+      },
+      "nativeFrame": 2892
+    },
+    {
+      "sequence": 56,
+      "sentUtc": "2026-11-05T23:14:09.251Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 11
+      },
+      "response": {
+        "ok": true,
+        "tick": 396,
+        "frames_advanced": 82,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000056.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0056-short-left-prebrake-t396.png"
+        }
+      },
+      "nativeFrame": 2974
+    },
+    {
+      "sequence": 57,
+      "sentUtc": "2026-11-05T23:14:09.313Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 36,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 404,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000057.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0057-short-left-prebrake-t404.png"
+        }
+      },
+      "nativeFrame": 3034
+    },
+    {
+      "sequence": 58,
+      "sentUtc": "2026-11-05T23:14:09.439Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 17
+      },
+      "response": {
+        "ok": true,
+        "tick": 421,
+        "frames_advanced": 128,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000058.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0058-short-left-prebrake-t421.png"
+        }
+      },
+      "nativeFrame": 3162
+    },
+    {
+      "sequence": 59,
+      "sentUtc": "2026-11-05T23:14:09.479Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 426,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000059.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0059-short-left-prebrake-t426.png"
+        }
+      },
+      "nativeFrame": 3200
+    },
+    {
+      "sequence": 60,
+      "sentUtc": "2026-11-05T23:14:09.487Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 427,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000060.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0060-short-left-prebrake-t427.png"
+        }
+      },
+      "nativeFrame": 3207
+    },
+    {
+      "sequence": 61,
+      "sentUtc": "2026-11-05T23:14:09.497Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 428,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000061.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0061-short-left-prebrake-t428.png"
+        }
+      },
+      "nativeFrame": 3215
+    },
+    {
+      "sequence": 62,
+      "sentUtc": "2026-11-05T23:14:09.594Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 13
+      },
+      "response": {
+        "ok": true,
+        "tick": 441,
+        "frames_advanced": 97,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000062.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0062-short-left-prebrake-t441.png"
+        }
+      },
+      "nativeFrame": 3312
+    },
+    {
+      "sequence": 63,
+      "sentUtc": "2026-11-05T23:14:09.635Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 446,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000063.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0063-short-left-prebrake-t446.png"
+        }
+      },
+      "nativeFrame": 3350
+    },
+    {
+      "sequence": 64,
+      "sentUtc": "2026-11-05T23:14:09.643Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 447,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000064.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0064-short-left-prebrake-t447.png"
+        }
+      },
+      "nativeFrame": 3357
+    },
+    {
+      "sequence": 65,
+      "sentUtc": "2026-11-05T23:14:09.653Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 448,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000065.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0065-short-left-prebrake-t448.png"
+        }
+      },
+      "nativeFrame": 3365
+    },
+    {
+      "sequence": 66,
+      "sentUtc": "2026-11-05T23:14:09.662Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 449,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000066.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0066-short-left-prebrake-t449.png"
+        }
+      },
+      "nativeFrame": 3372
+    },
+    {
+      "sequence": 67,
+      "sentUtc": "2026-11-05T23:14:09.694Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 36,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 453,
+        "frames_advanced": 31,
+        "terminal": false,
+        "applied_masks": [
+          36,
+          36,
+          36,
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000067.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0067-short-left-prebrake-t453.png"
+        }
+      },
+      "nativeFrame": 3403
+    },
+    {
+      "sequence": 68,
+      "sentUtc": "2026-11-05T23:14:09.724Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 457,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000068.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0068-short-left-prebrake-t457.png"
+        }
+      },
+      "nativeFrame": 3433
+    },
+    {
+      "sequence": 69,
+      "sentUtc": "2026-11-05T23:14:09.732Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 458,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000069.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0069-short-left-prebrake-t458.png"
+        }
+      },
+      "nativeFrame": 3440
+    },
+    {
+      "sequence": 70,
+      "sentUtc": "2026-11-05T23:14:09.755Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 461,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000070.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0070-short-left-prebrake-t461.png"
+        }
+      },
+      "nativeFrame": 3463
+    },
+    {
+      "sequence": 71,
+      "sentUtc": "2026-11-05T23:14:09.784Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 465,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000071.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0071-short-left-prebrake-t465.png"
+        }
+      },
+      "nativeFrame": 3493
+    },
+    {
+      "sequence": 72,
+      "sentUtc": "2026-11-05T23:14:09.792Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 466,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000072.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0072-short-left-prebrake-t466.png"
+        }
+      },
+      "nativeFrame": 3500
+    },
+    {
+      "sequence": 73,
+      "sentUtc": "2026-11-05T23:14:09.801Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 467,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000073.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0073-short-left-prebrake-t467.png"
+        }
+      },
+      "nativeFrame": 3508
+    },
+    {
+      "sequence": 74,
+      "sentUtc": "2026-11-05T23:14:09.808Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 468,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000074.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0074-short-left-prebrake-t468.png"
+        }
+      },
+      "nativeFrame": 3515
+    },
+    {
+      "sequence": 75,
+      "sentUtc": "2026-11-05T23:14:09.876Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 9
+      },
+      "response": {
+        "ok": true,
+        "tick": 477,
+        "frames_advanced": 68,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000075.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0075-short-left-prebrake-t477.png"
+        }
+      },
+      "nativeFrame": 3583
+    },
+    {
+      "sequence": 76,
+      "sentUtc": "2026-11-05T23:14:09.907Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 481,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000076.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0076-short-left-prebrake-t481.png"
+        }
+      },
+      "nativeFrame": 3613
+    },
+    {
+      "sequence": 77,
+      "sentUtc": "2026-11-05T23:14:09.940Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 485,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000077.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0077-short-left-prebrake-t485.png"
+        }
+      },
+      "nativeFrame": 3643
+    },
+    {
+      "sequence": 78,
+      "sentUtc": "2026-11-05T23:14:09.973Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 489,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000078.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0078-short-left-prebrake-t489.png"
+        }
+      },
+      "nativeFrame": 3673
+    },
+    {
+      "sequence": 79,
+      "sentUtc": "2026-11-05T23:14:10.041Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 9
+      },
+      "response": {
+        "ok": true,
+        "tick": 498,
+        "frames_advanced": 68,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000079.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0079-short-left-prebrake-t498.png"
+        }
+      },
+      "nativeFrame": 3741
+    },
+    {
+      "sequence": 80,
+      "sentUtc": "2026-11-05T23:14:10.063Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 501,
+        "frames_advanced": 22,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000080.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0080-short-left-prebrake-t501.png"
+        }
+      },
+      "nativeFrame": 3763
+    },
+    {
+      "sequence": 81,
+      "sentUtc": "2026-11-05T23:14:10.245Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 28
+      },
+      "response": {
+        "ok": true,
+        "tick": 529,
+        "frames_advanced": 210,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000081.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0081-short-left-prebrake-t529.png"
+        }
+      },
+      "nativeFrame": 3973
+    },
+    {
+      "sequence": 82,
+      "sentUtc": "2026-11-05T23:14:10.254Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 530,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000082.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0082-short-left-prebrake-t530.png"
+        }
+      },
+      "nativeFrame": 3981
+    },
+    {
+      "sequence": 83,
+      "sentUtc": "2026-11-05T23:14:10.277Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 533,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000083.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0083-short-left-prebrake-t533.png"
+        }
+      },
+      "nativeFrame": 4004
+    },
+    {
+      "sequence": 84,
+      "sentUtc": "2026-11-05T23:14:10.293Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 2
+      },
+      "response": {
+        "ok": true,
+        "tick": 535,
+        "frames_advanced": 15,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000084.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0084-short-left-prebrake-t535.png"
+        }
+      },
+      "nativeFrame": 4019
+    },
+    {
+      "sequence": 85,
+      "sentUtc": "2026-11-05T23:14:10.315Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 538,
+        "frames_advanced": 22,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000085.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0085-short-left-prebrake-t538.png"
+        }
+      },
+      "nativeFrame": 4041
+    },
+    {
+      "sequence": 86,
+      "sentUtc": "2026-11-05T23:14:10.338Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 541,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000086.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0086-short-left-prebrake-t541.png"
+        }
+      },
+      "nativeFrame": 4064
+    },
+    {
+      "sequence": 87,
+      "sentUtc": "2026-11-05T23:14:10.396Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 549,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000087.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0087-short-left-prebrake-t549.png"
+        }
+      },
+      "nativeFrame": 4124
+    },
+    {
+      "sequence": 88,
+      "sentUtc": "2026-11-05T23:14:10.425Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 553,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000088.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0088-short-left-prebrake-t553.png"
+        }
+      },
+      "nativeFrame": 4154
+    },
+    {
+      "sequence": 89,
+      "sentUtc": "2026-11-05T23:14:11.211Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 115
+      },
+      "response": {
+        "ok": true,
+        "tick": 668,
+        "frames_advanced": 864,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000089.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0089-short-left-prebrake-t668.png"
+        }
+      },
+      "nativeFrame": 5018
+    },
+    {
+      "sequence": 90,
+      "sentUtc": "2026-11-05T23:14:11.241Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 672,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000090.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0090-short-left-prebrake-t672.png"
+        }
+      },
+      "nativeFrame": 5048
+    },
+    {
+      "sequence": 91,
+      "sentUtc": "2026-11-05T23:14:11.270Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 676,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000091.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0091-short-left-prebrake-t676.png"
+        }
+      },
+      "nativeFrame": 5078
+    },
+    {
+      "sequence": 92,
+      "sentUtc": "2026-11-05T23:14:11.300Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 680,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000092.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0092-short-left-prebrake-t680.png"
+        }
+      },
+      "nativeFrame": 5108
+    },
+    {
+      "sequence": 93,
+      "sentUtc": "2026-11-05T23:14:11.416Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 2,
+        "ticks": 16
+      },
+      "response": {
+        "ok": true,
+        "tick": 696,
+        "frames_advanced": 120,
+        "terminal": false,
+        "applied_masks": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000093.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0093-short-left-prebrake-t696.png"
+        }
+      },
+      "nativeFrame": 5228
+    },
+    {
+      "sequence": 94,
+      "sentUtc": "2026-11-05T23:14:11.425Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 697,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000094.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0094-short-left-prebrake-t697.png"
+        }
+      },
+      "nativeFrame": 5236
+    },
+    {
+      "sequence": 95,
+      "sentUtc": "2026-11-05T23:14:11.456Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 701,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000095.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0095-short-left-prebrake-t701.png"
+        }
+      },
+      "nativeFrame": 5266
+    },
+    {
+      "sequence": 96,
+      "sentUtc": "2026-11-05T23:14:11.479Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 704,
+        "frames_advanced": 22,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000096.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0096-short-left-prebrake-t704.png"
+        }
+      },
+      "nativeFrame": 5288
+    },
+    {
+      "sequence": 97,
+      "sentUtc": "2026-11-05T23:14:11.510Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 16,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 708,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          16,
+          16,
+          16,
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000097.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0097-short-left-prebrake-t708.png"
+        }
+      },
+      "nativeFrame": 5318
+    },
+    {
+      "sequence": 98,
+      "sentUtc": "2026-11-05T23:14:11.519Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 709,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000098.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0098-short-left-prebrake-t709.png"
+        }
+      },
+      "nativeFrame": 5326
+    },
+    {
+      "sequence": 99,
+      "sentUtc": "2026-11-05T23:14:11.528Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 710,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000099.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0099-short-left-prebrake-t710.png"
+        }
+      },
+      "nativeFrame": 5333
+    },
+    {
+      "sequence": 100,
+      "sentUtc": "2026-11-05T23:14:11.537Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 711,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000100.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0100-short-left-prebrake-t711.png"
+        }
+      },
+      "nativeFrame": 5341
+    },
+    {
+      "sequence": 101,
+      "sentUtc": "2026-11-05T23:14:11.546Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 712,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000101.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0101-short-left-prebrake-t712.png"
+        }
+      },
+      "nativeFrame": 5348
+    },
+    {
+      "sequence": 102,
+      "sentUtc": "2026-11-05T23:14:11.606Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 8,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 720,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000102.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0102-short-left-prebrake-t720.png"
+        }
+      },
+      "nativeFrame": 5408
+    },
+    {
+      "sequence": 103,
+      "sentUtc": "2026-11-05T23:14:11.637Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 724,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000103.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0103-short-left-prebrake-t724.png"
+        }
+      },
+      "nativeFrame": 5438
+    },
+    {
+      "sequence": 104,
+      "sentUtc": "2026-11-05T23:14:11.667Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 728,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000104.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0104-short-left-prebrake-t728.png"
+        }
+      },
+      "nativeFrame": 5468
+    },
+    {
+      "sequence": 105,
+      "sentUtc": "2026-11-05T23:14:11.726Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 736,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000105.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0105-short-left-prebrake-t736.png"
+        }
+      },
+      "nativeFrame": 5528
+    },
+    {
+      "sequence": 106,
+      "sentUtc": "2026-11-05T23:14:11.743Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 2
+      },
+      "response": {
+        "ok": true,
+        "tick": 738,
+        "frames_advanced": 16,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000106.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0106-short-left-prebrake-t738.png"
+        }
+      },
+      "nativeFrame": 5544
+    },
+    {
+      "sequence": 107,
+      "sentUtc": "2026-11-05T23:14:11.752Z",
+      "experiment": "short-left-prebrake",
+      "stage": "known-prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 739,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000107.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0107-short-left-prebrake-t739.png"
+        }
+      },
+      "nativeFrame": 5551
+    },
+    {
+      "sequence": 108,
+      "sentUtc": "2026-11-05T23:14:11.753Z",
+      "experiment": "short-left-prebrake",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 739,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000108.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0108-short-left-prebrake-t739.png"
+        }
+      },
+      "nativeFrame": 5551,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0108-short-left-prebrake-t739.png",
+      "player": {
+        "originX": 112,
+        "originY": 108,
+        "visibleLeft": 112,
+        "visibleTop": 124,
+        "visibleRight": 127,
+        "visibleBottom": 139,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "sequence": 109,
+      "sentUtc": "2026-11-05T23:14:11.842Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 740,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000109.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0109-short-left-prebrake-t740.png"
+        }
+      },
+      "nativeFrame": 5559,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0109-short-left-prebrake-t740.png",
+      "player": {
+        "originX": 112,
+        "originY": 113,
+        "visibleLeft": 114,
+        "visibleTop": 129,
+        "visibleRight": 126,
+        "visibleBottom": 144,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": []
+    },
+    {
+      "sequence": 110,
+      "sentUtc": "2026-11-05T23:14:11.874Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 741,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          52
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000110.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0110-short-left-prebrake-t741.png"
+        }
+      },
+      "nativeFrame": 5566,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0110-short-left-prebrake-t741.png",
+      "player": {
+        "originX": 112,
+        "originY": 89,
+        "visibleLeft": 112,
+        "visibleTop": 105,
+        "visibleRight": 127,
+        "visibleBottom": 120,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "sequence": 111,
+      "sentUtc": "2026-11-05T23:14:11.914Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 742,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000111.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0111-short-left-prebrake-t742.png"
+        }
+      },
+      "nativeFrame": 5574,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0111-short-left-prebrake-t742.png",
+      "player": {
+        "originX": 112,
+        "originY": 66,
+        "visibleLeft": 112,
+        "visibleTop": 82,
+        "visibleRight": 127,
+        "visibleBottom": 97,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "sequence": 112,
+      "sentUtc": "2026-11-05T23:14:11.938Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 743,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000112.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0112-short-left-prebrake-t743.png"
+        }
+      },
+      "nativeFrame": 5581,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0112-short-left-prebrake-t743.png",
+      "player": {
+        "originX": 112,
+        "originY": 74,
+        "visibleLeft": 112,
+        "visibleTop": 90,
+        "visibleRight": 127,
+        "visibleBottom": 105,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "sequence": 113,
+      "sentUtc": "2026-11-05T23:14:11.963Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 744,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000113.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0113-short-left-prebrake-t744.png"
+        }
+      },
+      "nativeFrame": 5589,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0113-short-left-prebrake-t744.png",
+      "player": {
+        "originX": 108,
+        "originY": 105,
+        "visibleLeft": 108,
+        "visibleTop": 121,
+        "visibleRight": 123,
+        "visibleBottom": 136,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "sequence": 114,
+      "sentUtc": "2026-11-05T23:14:11.986Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 745,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000114.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0114-short-left-prebrake-t745.png"
+        }
+      },
+      "nativeFrame": 5596,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0114-short-left-prebrake-t745.png",
+      "player": {
+        "originX": 103,
+        "originY": 113,
+        "visibleLeft": 105,
+        "visibleTop": 129,
+        "visibleRight": 115,
+        "visibleBottom": 144,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "sequence": 115,
+      "sentUtc": "2026-11-05T23:14:12.010Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 746,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000115.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0115-short-left-prebrake-t746.png"
+        }
+      },
+      "nativeFrame": 5604,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0115-short-left-prebrake-t746.png",
+      "player": {
+        "originX": 94,
+        "originY": 113,
+        "visibleLeft": 95,
+        "visibleTop": 130,
+        "visibleRight": 107,
+        "visibleBottom": 144,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "sequence": 116,
+      "sentUtc": "2026-11-05T23:14:12.032Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 747,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000116.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0116-short-left-prebrake-t747.png"
+        }
+      },
+      "nativeFrame": 5611,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0116-short-left-prebrake-t747.png",
+      "player": {
+        "originX": 82,
+        "originY": 113,
+        "visibleLeft": 84,
+        "visibleTop": 129,
+        "visibleRight": 94,
+        "visibleBottom": 144,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "sequence": 117,
+      "sentUtc": "2026-11-05T23:14:12.056Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 748,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000117.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0117-short-left-prebrake-t748.png"
+        }
+      },
+      "nativeFrame": 5619,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0117-short-left-prebrake-t748.png",
+      "player": {
+        "originX": 66,
+        "originY": 113,
+        "visibleLeft": 67,
+        "visibleTop": 130,
+        "visibleRight": 79,
+        "visibleBottom": 144,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "sequence": 118,
+      "sentUtc": "2026-11-05T23:14:12.079Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 749,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000118.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0118-short-left-prebrake-t749.png"
+        }
+      },
+      "nativeFrame": 5626,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0118-short-left-prebrake-t749.png",
+      "player": {
+        "originX": 49,
+        "originY": 119,
+        "visibleLeft": 50,
+        "visibleTop": 135,
+        "visibleRight": 64,
+        "visibleBottom": 150,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "sequence": 119,
+      "sentUtc": "2026-11-05T23:14:12.103Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 750,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000119.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0119-short-left-prebrake-t750.png"
+        }
+      },
+      "nativeFrame": 5634,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0119-short-left-prebrake-t750.png",
+      "player": {
+        "originX": 29,
+        "originY": 149,
+        "visibleLeft": 30,
+        "visibleTop": 165,
+        "visibleRight": 44,
+        "visibleBottom": 180,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "sequence": 120,
+      "sentUtc": "2026-11-05T23:14:12.126Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 751,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000120.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0120-short-left-prebrake-t751.png"
+        }
+      },
+      "nativeFrame": 5641,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0120-short-left-prebrake-t751.png",
+      "player": {
+        "originX": 12,
+        "originY": 177,
+        "visibleLeft": 13,
+        "visibleTop": 193,
+        "visibleRight": 27,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "sequence": 121,
+      "sentUtc": "2026-11-05T23:14:12.151Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 752,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000121.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0121-short-left-prebrake-t752.png"
+        }
+      },
+      "nativeFrame": 5649,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0121-short-left-prebrake-t752.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 2,
+        "visibleTop": 193,
+        "visibleRight": 12,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "sequence": 122,
+      "sentUtc": "2026-11-05T23:14:12.173Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 753,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000122.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0122-short-left-prebrake-t753.png"
+        }
+      },
+      "nativeFrame": 5656,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0122-short-left-prebrake-t753.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 1,
+        "visibleTop": 194,
+        "visibleRight": 13,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "sequence": 123,
+      "sentUtc": "2026-11-05T23:14:12.196Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 754,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000123.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0123-short-left-prebrake-t754.png"
+        }
+      },
+      "nativeFrame": 5664,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0123-short-left-prebrake-t754.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 2,
+        "visibleTop": 193,
+        "visibleRight": 12,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "sequence": 124,
+      "sentUtc": "2026-11-05T23:14:12.220Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 755,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000124.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0124-short-left-prebrake-t755.png"
+        }
+      },
+      "nativeFrame": 5671,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0124-short-left-prebrake-t755.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 1,
+        "visibleTop": 194,
+        "visibleRight": 13,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "sequence": 125,
+      "sentUtc": "2026-11-05T23:14:12.243Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 756,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000125.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0125-short-left-prebrake-t756.png"
+        }
+      },
+      "nativeFrame": 5679,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0125-short-left-prebrake-t756.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 1,
+        "visibleTop": 193,
+        "visibleRight": 15,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "sequence": 126,
+      "sentUtc": "2026-11-05T23:14:12.266Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 757,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000126.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0126-short-left-prebrake-t757.png"
+        }
+      },
+      "nativeFrame": 5686,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0126-short-left-prebrake-t757.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 2,
+        "visibleTop": 193,
+        "visibleRight": 12,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "sequence": 127,
+      "sentUtc": "2026-11-05T23:14:12.289Z",
+      "experiment": "short-left-prebrake",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 758,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-kkl7h1dg/frame-000127.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0127-short-left-prebrake-t758.png"
+        }
+      },
+      "nativeFrame": 5694,
+      "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0127-short-left-prebrake-t758.png",
+      "player": {
+        "originX": 0,
+        "originY": 177,
+        "visibleLeft": 1,
+        "visibleTop": 194,
+        "visibleRight": 13,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    }
+  ]
+}

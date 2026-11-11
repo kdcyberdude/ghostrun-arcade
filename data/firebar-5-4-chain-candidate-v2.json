@@ -1,0 +1,84 @@
+{
+  "schema": "chain5-4-missing-hazard-candidate-v2",
+  "frozenUtc": "2026-11-06T03:26:39.792001+00:00",
+  "scope": "Candidate before fresh reserved13 flame extraction. Existing chain-heldout geometry and fresh upper/player registration already inspected; no runtime edits.",
+  "level": "5-4",
+  "area": "main",
+  "geometry": {
+    "x": 696,
+    "y": 216,
+    "length": 6,
+    "actualInnerCenter": [
+      696,
+      217
+    ],
+    "pivotConvention": "LogicalY216 is inferred same measured+1Y rendering convention. Base196688/208 has182proved/74hidden pixels; not a recovered256RGB cell."
+  },
+  "motor": {
+    "direction": 1,
+    "initialUnits": 763,
+    "modulus": 1024,
+    "incrementUnitsPerNativeFrame": 5,
+    "unitsPerBin": 32,
+    "activation": "Central8pxquad enters viewport at newly committed native camera>=437; first activation increments. Explicit per-object phase metadata; native initialization mechanism remains unknown.",
+    "qualification": "Initial763 at latest-native camera nearest crossing fits originaltwo branches plus new preactivation wait0/20; displayed-row epoch gives equivalent initial768 one frame later. Neither changes the four existing objects."
+  },
+  "initialPhaseCalibration": [
+    {
+      "history": "original standard prefix then manual brake after5968/5969",
+      "activationLatestNative": 44818,
+      "descriptiveCounterOffsetNative0": 934,
+      "initialUnits": 763
+    },
+    {
+      "history": "fresh prefix5962, stop before activation, wait0",
+      "activationLatestNative": 44933,
+      "descriptiveCounterOffsetNative0": 359,
+      "initialUnits": 763
+    },
+    {
+      "history": "fresh prefix5962, stop before activation, wait20decisions150native",
+      "activationLatestNative": 45083,
+      "descriptiveCounterOffsetNative0": 633,
+      "initialUnits": 763
+    }
+  ],
+  "reservedPrediction": {
+    "history": "fresh prefix5962, stop before activation, wait13",
+    "independentCameraBracket": {
+      "beforeNative": 45028,
+      "beforeLatestCamera": 432,
+      "afterNative": 45035,
+      "afterLatestCamera": 443
+    },
+    "activationLatestNative": 45031,
+    "predictedCounterOffsetAtNative0": 893,
+    "interpretation": "These are frozen diagnostic coordinates for local-motor validation, not values to use as a game time script."
+  },
+  "preactivationProof": "All latest camera hypotheses at prepared stops and throughout waits0/20/13 are<=412<437, under independently camera-zero built chains and independent non-target mosaics.",
+  "metricErratum": {
+    "priorCandidate": "data/firebar-5-4-chain-candidate.json",
+    "bestSinglePoseShapeResidualPixels": 3,
+    "actualRawFixedMotorCenterErrorPixels": 8,
+    "reason": "Earlier3px metric selected the best pose for each mixed snapshot. True frozen-native prediction is8px on5timestamps per originalbranch; never a2px raw pass. Every complete sprite center is0px from either motorF orF+1; adjacent-epoch diagnostic is separate from raw comparison."
+  },
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "limits": [
+    "Raw coherent snapshots fail2px because referenceframebuffers mix nativeF/F+1 portions; report raw8px rather than adjusting clock or removing samples.",
+    "No collision-radius, fullscene99% equivalence or campaign traversal claim.",
+    "Counteroffsets at native0 are descriptive fittedintercepts for diagnosis, never runtime epochs or forced results."
+  ],
+  "hashes": {
+    "data/firebar-5-4-chain-candidate.json": "f60f8700817db8065a55bdbb683e982c59461ea5b61a782c3f34d326e592d409",
+    "data/firebar-5-4-fresh-measure-plan.json": "ed0c121205f5a9f2723712f36d648949b435877d03b40296bfcb3b61c75d4a28",
+    "evidence/firebar-5-4-fresh-calibration.json": "14fd0ba6d9a5a122353ba226d8c6d3c7838b941b90f95ee18b08f5723ac67e0b",
+    "tools/firebar-5-4-fresh-measure.py": "e1ef0a434a69cbb0789325a3b8a1c716bd4df50d439c676b93ee4d8541f43ecc",
+    "tools/lower-row-chain-castle.py": "22ac2d622853f12455affba5bb4c4b622e597ea01b799cee486c3e4221e9702e",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "src/firebar-motion.ts": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82"
+  }
+}

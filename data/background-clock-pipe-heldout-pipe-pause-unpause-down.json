@@ -1,0 +1,5823 @@
+{
+  "generatedUtc": "2026-11-06T01:32:12.856Z",
+  "plan": "tools/background-clock-candidate-plan.json",
+  "source": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/trace.jsonl",
+  "method": "Fresh standard reset per predeclared ordinary-control branch, actual response durations and original PNGs retained. No executable/ROM/source inspection.",
+  "records": [
+    {
+      "sequence": 0,
+      "sentUtc": "2026-11-06T01:32:11.530Z",
+      "experiment": "hello",
+      "stage": "hello",
+      "request": {
+        "op": "hello"
+      },
+      "response": {
+        "ok": true,
+        "protocol": "pixel-player-v1",
+        "buttons": [
+          "up",
+          "down",
+          "left",
+          "right",
+          "a",
+          "b",
+          "x",
+          "y",
+          "start",
+          "select"
+        ],
+        "operations": [
+          "hello",
+          "reset",
+          "observe",
+          "suggest",
+          "step",
+          "auto"
+        ],
+        "ticks_per_emulated_second": 8,
+        "image_format": "PNG RGB 256x240"
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 1,
+      "sentUtc": "2026-11-06T01:32:11.752Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000001.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0001-pipe-pause-unpause-down-t0.png"
+        }
+      },
+      "nativeFrame": 0,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0001-pipe-pause-unpause-down-t0.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-27-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          },
+          {
+            "background": "background-tiles-22-27-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 2,
+      "sentUtc": "2026-11-06T01:32:11.874Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 17
+      },
+      "response": {
+        "ok": true,
+        "tick": 17,
+        "frames_advanced": 127,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000002.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0002-pipe-pause-unpause-down-t17.png"
+        }
+      },
+      "nativeFrame": 127,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0002-pipe-pause-unpause-down-t17.png"
+    },
+    {
+      "sequence": 3,
+      "sentUtc": "2026-11-06T01:32:11.897Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 20,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000003.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0003-pipe-pause-unpause-down-t20.png"
+        }
+      },
+      "nativeFrame": 150,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0003-pipe-pause-unpause-down-t20.png"
+    },
+    {
+      "sequence": 4,
+      "sentUtc": "2026-11-06T01:32:11.905Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 21,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000004.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0004-pipe-pause-unpause-down-t21.png"
+        }
+      },
+      "nativeFrame": 157,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0004-pipe-pause-unpause-down-t21.png"
+    },
+    {
+      "sequence": 5,
+      "sentUtc": "2026-11-06T01:32:11.927Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 24,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000005.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0005-pipe-pause-unpause-down-t24.png"
+        }
+      },
+      "nativeFrame": 180,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0005-pipe-pause-unpause-down-t24.png"
+    },
+    {
+      "sequence": 6,
+      "sentUtc": "2026-11-06T01:32:11.985Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 32,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000006.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0006-pipe-pause-unpause-down-t32.png"
+        }
+      },
+      "nativeFrame": 240,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0006-pipe-pause-unpause-down-t32.png"
+    },
+    {
+      "sequence": 7,
+      "sentUtc": "2026-11-06T01:32:11.993Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 33,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000007.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0007-pipe-pause-unpause-down-t33.png"
+        }
+      },
+      "nativeFrame": 247,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0007-pipe-pause-unpause-down-t33.png"
+    },
+    {
+      "sequence": 8,
+      "sentUtc": "2026-11-06T01:32:12.021Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "response": {
+        "ok": true,
+        "tick": 37,
+        "frames_advanced": 30,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000008.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0008-pipe-pause-unpause-down-t37.png"
+        }
+      },
+      "nativeFrame": 277,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0008-pipe-pause-unpause-down-t37.png"
+    },
+    {
+      "sequence": 9,
+      "sentUtc": "2026-11-06T01:32:12.044Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 40,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000009.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0009-pipe-pause-unpause-down-t40.png"
+        }
+      },
+      "nativeFrame": 300,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0009-pipe-pause-unpause-down-t40.png"
+    },
+    {
+      "sequence": 10,
+      "sentUtc": "2026-11-06T01:32:12.081Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 5
+      },
+      "response": {
+        "ok": true,
+        "tick": 45,
+        "frames_advanced": 38,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000010.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0010-pipe-pause-unpause-down-t45.png"
+        }
+      },
+      "nativeFrame": 338,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0010-pipe-pause-unpause-down-t45.png"
+    },
+    {
+      "sequence": 11,
+      "sentUtc": "2026-11-06T01:32:12.132Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 7
+      },
+      "response": {
+        "ok": true,
+        "tick": 52,
+        "frames_advanced": 52,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56,
+          56,
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000011.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0011-pipe-pause-unpause-down-t52.png"
+        }
+      },
+      "nativeFrame": 390,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0011-pipe-pause-unpause-down-t52.png"
+    },
+    {
+      "sequence": 12,
+      "sentUtc": "2026-11-06T01:32:12.142Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 53,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000012.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0012-pipe-pause-unpause-down-t53.png"
+        }
+      },
+      "nativeFrame": 398,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0012-pipe-pause-unpause-down-t53.png"
+    },
+    {
+      "sequence": 13,
+      "sentUtc": "2026-11-06T01:32:12.143Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "prefix-observe",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 53,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000013.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0013-pipe-pause-unpause-down-t53.png"
+        }
+      },
+      "nativeFrame": 398,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0013-pipe-pause-unpause-down-t53.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-17-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          },
+          {
+            "background": "background-tiles-22-17-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 14,
+      "sentUtc": "2026-11-06T01:32:12.155Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment0-start",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "start"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 54,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          256
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000014.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0014-pipe-pause-unpause-down-t54.png"
+        }
+      },
+      "nativeFrame": 405,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0014-pipe-pause-unpause-down-t54.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 15,
+      "sentUtc": "2026-11-06T01:32:12.168Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 55,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000015.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0015-pipe-pause-unpause-down-t55.png"
+        }
+      },
+      "nativeFrame": 413,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0015-pipe-pause-unpause-down-t55.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 16,
+      "sentUtc": "2026-11-06T01:32:12.179Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 56,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000016.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0016-pipe-pause-unpause-down-t56.png"
+        }
+      },
+      "nativeFrame": 420,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0016-pipe-pause-unpause-down-t56.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 17,
+      "sentUtc": "2026-11-06T01:32:12.190Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 57,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000017.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0017-pipe-pause-unpause-down-t57.png"
+        }
+      },
+      "nativeFrame": 428,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0017-pipe-pause-unpause-down-t57.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 18,
+      "sentUtc": "2026-11-06T01:32:12.200Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 58,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000018.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0018-pipe-pause-unpause-down-t58.png"
+        }
+      },
+      "nativeFrame": 435,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0018-pipe-pause-unpause-down-t58.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 19,
+      "sentUtc": "2026-11-06T01:32:12.211Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 59,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000019.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0019-pipe-pause-unpause-down-t59.png"
+        }
+      },
+      "nativeFrame": 443,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0019-pipe-pause-unpause-down-t59.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 20,
+      "sentUtc": "2026-11-06T01:32:12.221Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 60,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000020.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0020-pipe-pause-unpause-down-t60.png"
+        }
+      },
+      "nativeFrame": 450,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0020-pipe-pause-unpause-down-t60.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 21,
+      "sentUtc": "2026-11-06T01:32:12.231Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 61,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000021.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0021-pipe-pause-unpause-down-t61.png"
+        }
+      },
+      "nativeFrame": 458,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0021-pipe-pause-unpause-down-t61.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 22,
+      "sentUtc": "2026-11-06T01:32:12.241Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 62,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000022.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0022-pipe-pause-unpause-down-t62.png"
+        }
+      },
+      "nativeFrame": 465,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0022-pipe-pause-unpause-down-t62.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 23,
+      "sentUtc": "2026-11-06T01:32:12.252Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 63,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000023.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0023-pipe-pause-unpause-down-t63.png"
+        }
+      },
+      "nativeFrame": 473,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0023-pipe-pause-unpause-down-t63.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 24,
+      "sentUtc": "2026-11-06T01:32:12.262Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 64,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000024.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0024-pipe-pause-unpause-down-t64.png"
+        }
+      },
+      "nativeFrame": 480,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0024-pipe-pause-unpause-down-t64.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 25,
+      "sentUtc": "2026-11-06T01:32:12.273Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment1-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 65,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000025.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0025-pipe-pause-unpause-down-t65.png"
+        }
+      },
+      "nativeFrame": 488,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0025-pipe-pause-unpause-down-t65.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 26,
+      "sentUtc": "2026-11-06T01:32:12.283Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment2-start+down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "start",
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 66,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          258
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000026.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0026-pipe-pause-unpause-down-t66.png"
+        }
+      },
+      "nativeFrame": 495,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0026-pipe-pause-unpause-down-t66.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-07-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          },
+          {
+            "background": "background-tiles-22-07-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 27,
+      "sentUtc": "2026-11-06T01:32:12.295Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 67,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000027.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0027-pipe-pause-unpause-down-t67.png"
+        }
+      },
+      "nativeFrame": 503,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0027-pipe-pause-unpause-down-t67.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-17-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          },
+          {
+            "background": "background-tiles-22-17-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 28,
+      "sentUtc": "2026-11-06T01:32:12.305Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 68,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000028.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0028-pipe-pause-unpause-down-t68.png"
+        }
+      },
+      "nativeFrame": 510,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0028-pipe-pause-unpause-down-t68.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-27-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          },
+          {
+            "background": "background-tiles-22-27-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 29,
+      "sentUtc": "2026-11-06T01:32:12.316Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 69,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000029.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0029-pipe-pause-unpause-down-t69.png"
+        }
+      },
+      "nativeFrame": 518,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0029-pipe-pause-unpause-down-t69.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-27-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          },
+          {
+            "background": "background-tiles-22-27-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 30,
+      "sentUtc": "2026-11-06T01:32:12.326Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 70,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000030.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0030-pipe-pause-unpause-down-t70.png"
+        }
+      },
+      "nativeFrame": 525,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0030-pipe-pause-unpause-down-t70.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-27-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          },
+          {
+            "background": "background-tiles-22-27-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 31,
+      "sentUtc": "2026-11-06T01:32:12.337Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 71,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000031.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0031-pipe-pause-unpause-down-t71.png"
+        }
+      },
+      "nativeFrame": 533,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0031-pipe-pause-unpause-down-t71.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-22-17-12-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          },
+          {
+            "background": "background-tiles-22-17-17-0f.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0f-36-17.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 32,
+      "sentUtc": "2026-11-06T01:32:12.346Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 72,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000032.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0032-pipe-pause-unpause-down-t72.png"
+        }
+      },
+      "nativeFrame": 540,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0032-pipe-pause-unpause-down-t72.png",
+      "art": {
+        "hudMatches": [],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 33,
+      "sentUtc": "2026-11-06T01:32:12.352Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 73,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000033.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0033-pipe-pause-unpause-down-t73.png"
+        }
+      },
+      "nativeFrame": 548,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0033-pipe-pause-unpause-down-t73.png",
+      "art": {
+        "hudMatches": [],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 34,
+      "sentUtc": "2026-11-06T01:32:12.357Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 74,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000034.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0034-pipe-pause-unpause-down-t74.png"
+        }
+      },
+      "nativeFrame": 555,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0034-pipe-pause-unpause-down-t74.png",
+      "art": {
+        "hudMatches": [],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 35,
+      "sentUtc": "2026-11-06T01:32:12.363Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 75,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000035.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0035-pipe-pause-unpause-down-t75.png"
+        }
+      },
+      "nativeFrame": 563,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0035-pipe-pause-unpause-down-t75.png",
+      "art": {
+        "hudMatches": [],
+        "questionMatches": [],
+        "coinMatches": []
+      }
+    },
+    {
+      "sequence": 36,
+      "sentUtc": "2026-11-06T01:32:12.372Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 76,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000036.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0036-pipe-pause-unpause-down-t76.png"
+        }
+      },
+      "nativeFrame": 570,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0036-pipe-pause-unpause-down-t76.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 37,
+      "sentUtc": "2026-11-06T01:32:12.385Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 77,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000037.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0037-pipe-pause-unpause-down-t77.png"
+        }
+      },
+      "nativeFrame": 578,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0037-pipe-pause-unpause-down-t77.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 38,
+      "sentUtc": "2026-11-06T01:32:12.395Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 78,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000038.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0038-pipe-pause-unpause-down-t78.png"
+        }
+      },
+      "nativeFrame": 585,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0038-pipe-pause-unpause-down-t78.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 39,
+      "sentUtc": "2026-11-06T01:32:12.407Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 79,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000039.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0039-pipe-pause-unpause-down-t79.png"
+        }
+      },
+      "nativeFrame": 593,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0039-pipe-pause-unpause-down-t79.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 40,
+      "sentUtc": "2026-11-06T01:32:12.417Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 80,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000040.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0040-pipe-pause-unpause-down-t80.png"
+        }
+      },
+      "nativeFrame": 600,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0040-pipe-pause-unpause-down-t80.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 41,
+      "sentUtc": "2026-11-06T01:32:12.429Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 81,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000041.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0041-pipe-pause-unpause-down-t81.png"
+        }
+      },
+      "nativeFrame": 608,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0041-pipe-pause-unpause-down-t81.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 42,
+      "sentUtc": "2026-11-06T01:32:12.439Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 82,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000042.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0042-pipe-pause-unpause-down-t82.png"
+        }
+      },
+      "nativeFrame": 616,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0042-pipe-pause-unpause-down-t82.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 43,
+      "sentUtc": "2026-11-06T01:32:12.450Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 83,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000043.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0043-pipe-pause-unpause-down-t83.png"
+        }
+      },
+      "nativeFrame": 623,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0043-pipe-pause-unpause-down-t83.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 44,
+      "sentUtc": "2026-11-06T01:32:12.460Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 84,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000044.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0044-pipe-pause-unpause-down-t84.png"
+        }
+      },
+      "nativeFrame": 631,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0044-pipe-pause-unpause-down-t84.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 45,
+      "sentUtc": "2026-11-06T01:32:12.470Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 85,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000045.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0045-pipe-pause-unpause-down-t85.png"
+        }
+      },
+      "nativeFrame": 638,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0045-pipe-pause-unpause-down-t85.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 46,
+      "sentUtc": "2026-11-06T01:32:12.482Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 86,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000046.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0046-pipe-pause-unpause-down-t86.png"
+        }
+      },
+      "nativeFrame": 646,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0046-pipe-pause-unpause-down-t86.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 47,
+      "sentUtc": "2026-11-06T01:32:12.491Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 87,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000047.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0047-pipe-pause-unpause-down-t87.png"
+        }
+      },
+      "nativeFrame": 653,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0047-pipe-pause-unpause-down-t87.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 48,
+      "sentUtc": "2026-11-06T01:32:12.502Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 88,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000048.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0048-pipe-pause-unpause-down-t88.png"
+        }
+      },
+      "nativeFrame": 661,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0048-pipe-pause-unpause-down-t88.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 49,
+      "sentUtc": "2026-11-06T01:32:12.512Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment3-down",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 89,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          2
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000049.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0049-pipe-pause-unpause-down-t89.png"
+        }
+      },
+      "nativeFrame": 668,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0049-pipe-pause-unpause-down-t89.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 50,
+      "sentUtc": "2026-11-06T01:32:12.523Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 90,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000050.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0050-pipe-pause-unpause-down-t90.png"
+        }
+      },
+      "nativeFrame": 676,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0050-pipe-pause-unpause-down-t90.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 51,
+      "sentUtc": "2026-11-06T01:32:12.537Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 91,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000051.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0051-pipe-pause-unpause-down-t91.png"
+        }
+      },
+      "nativeFrame": 683,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0051-pipe-pause-unpause-down-t91.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 52,
+      "sentUtc": "2026-11-06T01:32:12.548Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 92,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000052.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0052-pipe-pause-unpause-down-t92.png"
+        }
+      },
+      "nativeFrame": 691,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0052-pipe-pause-unpause-down-t92.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 53,
+      "sentUtc": "2026-11-06T01:32:12.558Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 93,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000053.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0053-pipe-pause-unpause-down-t93.png"
+        }
+      },
+      "nativeFrame": 698,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0053-pipe-pause-unpause-down-t93.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 54,
+      "sentUtc": "2026-11-06T01:32:12.569Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 94,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000054.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0054-pipe-pause-unpause-down-t94.png"
+        }
+      },
+      "nativeFrame": 706,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0054-pipe-pause-unpause-down-t94.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 55,
+      "sentUtc": "2026-11-06T01:32:12.579Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 95,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000055.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0055-pipe-pause-unpause-down-t95.png"
+        }
+      },
+      "nativeFrame": 713,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0055-pipe-pause-unpause-down-t95.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 56,
+      "sentUtc": "2026-11-06T01:32:12.590Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 96,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000056.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0056-pipe-pause-unpause-down-t96.png"
+        }
+      },
+      "nativeFrame": 721,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0056-pipe-pause-unpause-down-t96.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 57,
+      "sentUtc": "2026-11-06T01:32:12.600Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 97,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000057.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0057-pipe-pause-unpause-down-t97.png"
+        }
+      },
+      "nativeFrame": 728,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0057-pipe-pause-unpause-down-t97.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 58,
+      "sentUtc": "2026-11-06T01:32:12.611Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 98,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000058.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0058-pipe-pause-unpause-down-t98.png"
+        }
+      },
+      "nativeFrame": 736,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0058-pipe-pause-unpause-down-t98.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 59,
+      "sentUtc": "2026-11-06T01:32:12.622Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 99,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000059.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0059-pipe-pause-unpause-down-t99.png"
+        }
+      },
+      "nativeFrame": 743,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0059-pipe-pause-unpause-down-t99.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 60,
+      "sentUtc": "2026-11-06T01:32:12.633Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 100,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000060.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0060-pipe-pause-unpause-down-t100.png"
+        }
+      },
+      "nativeFrame": 751,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0060-pipe-pause-unpause-down-t100.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 61,
+      "sentUtc": "2026-11-06T01:32:12.643Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 101,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000061.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0061-pipe-pause-unpause-down-t101.png"
+        }
+      },
+      "nativeFrame": 758,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0061-pipe-pause-unpause-down-t101.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 62,
+      "sentUtc": "2026-11-06T01:32:12.655Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 102,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000062.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0062-pipe-pause-unpause-down-t102.png"
+        }
+      },
+      "nativeFrame": 766,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0062-pipe-pause-unpause-down-t102.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 63,
+      "sentUtc": "2026-11-06T01:32:12.665Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 103,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000063.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0063-pipe-pause-unpause-down-t103.png"
+        }
+      },
+      "nativeFrame": 773,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0063-pipe-pause-unpause-down-t103.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 64,
+      "sentUtc": "2026-11-06T01:32:12.676Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 104,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000064.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0064-pipe-pause-unpause-down-t104.png"
+        }
+      },
+      "nativeFrame": 781,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0064-pipe-pause-unpause-down-t104.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 65,
+      "sentUtc": "2026-11-06T01:32:12.686Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 105,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000065.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0065-pipe-pause-unpause-down-t105.png"
+        }
+      },
+      "nativeFrame": 788,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0065-pipe-pause-unpause-down-t105.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 66,
+      "sentUtc": "2026-11-06T01:32:12.697Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 106,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000066.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0066-pipe-pause-unpause-down-t106.png"
+        }
+      },
+      "nativeFrame": 796,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0066-pipe-pause-unpause-down-t106.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 67,
+      "sentUtc": "2026-11-06T01:32:12.707Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 107,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000067.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0067-pipe-pause-unpause-down-t107.png"
+        }
+      },
+      "nativeFrame": 803,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0067-pipe-pause-unpause-down-t107.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 68,
+      "sentUtc": "2026-11-06T01:32:12.718Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 108,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000068.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0068-pipe-pause-unpause-down-t108.png"
+        }
+      },
+      "nativeFrame": 811,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0068-pipe-pause-unpause-down-t108.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 69,
+      "sentUtc": "2026-11-06T01:32:12.728Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 109,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000069.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0069-pipe-pause-unpause-down-t109.png"
+        }
+      },
+      "nativeFrame": 818,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0069-pipe-pause-unpause-down-t109.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 70,
+      "sentUtc": "2026-11-06T01:32:12.739Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 110,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000070.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0070-pipe-pause-unpause-down-t110.png"
+        }
+      },
+      "nativeFrame": 826,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0070-pipe-pause-unpause-down-t110.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 71,
+      "sentUtc": "2026-11-06T01:32:12.749Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 111,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000071.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0071-pipe-pause-unpause-down-t111.png"
+        }
+      },
+      "nativeFrame": 833,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0071-pipe-pause-unpause-down-t111.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 72,
+      "sentUtc": "2026-11-06T01:32:12.760Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 112,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000072.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0072-pipe-pause-unpause-down-t112.png"
+        }
+      },
+      "nativeFrame": 841,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0072-pipe-pause-unpause-down-t112.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 73,
+      "sentUtc": "2026-11-06T01:32:12.770Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 113,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000073.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0073-pipe-pause-unpause-down-t113.png"
+        }
+      },
+      "nativeFrame": 848,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0073-pipe-pause-unpause-down-t113.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 74,
+      "sentUtc": "2026-11-06T01:32:12.781Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 114,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000074.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0074-pipe-pause-unpause-down-t114.png"
+        }
+      },
+      "nativeFrame": 856,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0074-pipe-pause-unpause-down-t114.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 75,
+      "sentUtc": "2026-11-06T01:32:12.791Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 115,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000075.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0075-pipe-pause-unpause-down-t115.png"
+        }
+      },
+      "nativeFrame": 863,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0075-pipe-pause-unpause-down-t115.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 76,
+      "sentUtc": "2026-11-06T01:32:12.802Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 116,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000076.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0076-pipe-pause-unpause-down-t116.png"
+        }
+      },
+      "nativeFrame": 871,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0076-pipe-pause-unpause-down-t116.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 77,
+      "sentUtc": "2026-11-06T01:32:12.812Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 117,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000077.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0077-pipe-pause-unpause-down-t117.png"
+        }
+      },
+      "nativeFrame": 878,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0077-pipe-pause-unpause-down-t117.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 78,
+      "sentUtc": "2026-11-06T01:32:12.823Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 118,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000078.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0078-pipe-pause-unpause-down-t118.png"
+        }
+      },
+      "nativeFrame": 886,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0078-pipe-pause-unpause-down-t118.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 79,
+      "sentUtc": "2026-11-06T01:32:12.833Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 119,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000079.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0079-pipe-pause-unpause-down-t119.png"
+        }
+      },
+      "nativeFrame": 893,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0079-pipe-pause-unpause-down-t119.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-07-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 7
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 5,
+            "colorCycleIndex": 7,
+            "palette3": [
+              15,
+              7,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 80,
+      "sentUtc": "2026-11-06T01:32:12.843Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 120,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000080.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0080-pipe-pause-unpause-down-t120.png"
+        }
+      },
+      "nativeFrame": 901,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0080-pipe-pause-unpause-down-t120.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-17-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 23
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 4,
+            "colorCycleIndex": 23,
+            "palette3": [
+              15,
+              23,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 81,
+      "sentUtc": "2026-11-06T01:32:12.853Z",
+      "experiment": "pipe-pause-unpause-down",
+      "stage": "segment4-neutral",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 121,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-3zskf_vn/frame-000081.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0081-pipe-pause-unpause-down-t121.png"
+        }
+      },
+      "nativeFrame": 908,
+      "image": "evidence/local/background-clock-pipe-2026-11-06T01-32-10.789Z/0081-pipe-pause-unpause-down-t121.png",
+      "art": {
+        "hudMatches": [
+          {
+            "background": "background-tiles-0f-27-17-1c.png",
+            "underlay": {
+              "file": "sprite-tiles-0f-0c-3c-1c.png",
+              "tile": 255,
+              "x": 88,
+              "y": 25,
+              "priority": "behind nonzero background pixels"
+            },
+            "pixels": 64,
+            "colorCycleIndex": 39
+          }
+        ],
+        "questionMatches": [],
+        "coinMatches": [
+          {
+            "x": 64,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 80,
+            "y": 80,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          },
+          {
+            "x": 96,
+            "y": 112,
+            "id": 194,
+            "atlas": 3,
+            "colorCycleIndex": 39,
+            "palette3": [
+              15,
+              39,
+              23,
+              28
+            ],
+            "pixels": 256
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "corrections": [
+    {
+      "level": "8-3",
+      "area": "main",
+      "match": { "x": 288, "y": 176 },
+      "phase": 79,
+      "interval": 64,
+      "evidence": "Local fit to opening reference shots with inferred entry alignment; the varied held-out arrival shares a firing cycle. See evidence/eight-three-opening-bullet-findings.md."
+    }
+  ]
+}

@@ -1,0 +1,5608 @@
+{
+  "schema": "image-only-optional-route-search-v1",
+  "level": "3-1",
+  "status": "vine-entry-destination-map-and-ordinary-return-observed",
+  "sourceTrace": "evidence/local/three-one-vine-controlled/trace.jsonl",
+  "method": "Public documented controller requests and reference PNGs only. Prefix operations reset and replay recorded masks, with actual native 7/8-frame durations checked by subarea-driver.py. No ROM contents, emulator memory, executable internals, sibling implementation, or remembered maps were used.",
+  "coordinateNote": "Upper strip ordinals are observed directly. Main columns111..120 and129..131 are inferred from their lower platforms' canonical columns and static screenshot alignment. Upper/lower scrolling can differ by one pixel at a checkpoint; coordinates are not hidden-state measurements.",
+  "observations": [
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 1,
+      "inferredMainColumn": 111,
+      "row": 5,
+      "inferredWorldX": 1776,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-first-brick",
+      "activation": {
+        "sequence": 2403,
+        "tick": 2888,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/02403-tick-02888.png"
+      },
+      "laterObservation": {
+        "sequence": 2404,
+        "tick": 2891,
+        "framesAdvanced": 22,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/02404-tick-02891.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          112,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 2,
+      "inferredMainColumn": 112,
+      "row": 5,
+      "inferredWorldX": 1792,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-second-brick",
+      "activation": {
+        "sequence": 3387,
+        "tick": 2888,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/03387-tick-02888.png"
+      },
+      "laterObservation": {
+        "sequence": 3388,
+        "tick": 2891,
+        "framesAdvanced": 22,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/03388-tick-02891.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          105,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 3,
+      "inferredMainColumn": 113,
+      "row": 5,
+      "inferredWorldX": 1808,
+      "worldY": 80,
+      "outcome": "one-coin",
+      "vineObserved": false,
+      "route": "upper-first-question-and-fourth-brick",
+      "activation": {
+        "sequence": 2894,
+        "tick": 2888,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/02894-tick-02888.png"
+      },
+      "laterObservation": {
+        "sequence": 2895,
+        "tick": 2891,
+        "framesAdvanced": 22,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/02895-tick-02891.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          108,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 4,
+      "inferredMainColumn": 114,
+      "row": 5,
+      "inferredWorldX": 1824,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-eighth-brick",
+      "activation": {
+        "sequence": 4361,
+        "tick": 2888,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04361-tick-02888.png"
+      },
+      "laterObservation": {
+        "sequence": 4362,
+        "tick": 2892,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/04362-tick-02892.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          102,
+          73
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 5,
+      "inferredMainColumn": 115,
+      "row": 5,
+      "inferredWorldX": 1840,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-fifth-brick",
+      "activation": {
+        "sequence": 5378,
+        "tick": 2889,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/05378-tick-02889.png"
+      },
+      "laterObservation": {
+        "sequence": 5379,
+        "tick": 2893,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/05379-tick-02893.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          95,
+          73
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 6,
+      "inferredMainColumn": 116,
+      "row": 5,
+      "inferredWorldX": 1856,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-eighth-brick",
+      "activation": {
+        "sequence": 4363,
+        "tick": 2894,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04363-tick-02894.png"
+      },
+      "laterObservation": {
+        "sequence": 4364,
+        "tick": 2897,
+        "framesAdvanced": 22,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/04364-tick-02897.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          110,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 7,
+      "inferredMainColumn": 117,
+      "row": 5,
+      "inferredWorldX": 1872,
+      "worldY": 80,
+      "outcome": "mushroom",
+      "vineObserved": false,
+      "route": "upper-mushroom-and-tenth-brick",
+      "activation": {
+        "sequence": 4854,
+        "tick": 2898,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04854-tick-02898.png"
+      },
+      "laterObservation": {
+        "sequence": 4859,
+        "tick": 2916,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/04859-tick-02916.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          102,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 8,
+      "inferredMainColumn": 118,
+      "row": 5,
+      "inferredWorldX": 1888,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-eighth-brick",
+      "activation": {
+        "sequence": 4365,
+        "tick": 2899,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04365-tick-02899.png"
+      },
+      "laterObservation": {
+        "sequence": 4366,
+        "tick": 2902,
+        "framesAdvanced": 23,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/04366-tick-02902.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          109,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 9,
+      "inferredMainColumn": 119,
+      "row": 5,
+      "inferredWorldX": 1904,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-ninth-brick",
+      "activation": {
+        "sequence": 8313,
+        "tick": 2898,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/08313-tick-02898.png"
+      },
+      "laterObservation": {
+        "sequence": 8314,
+        "tick": 2902,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/08314-tick-02902.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          90,
+          74
+        ]
+      ]
+    },
+    {
+      "structure": "first-hammer-bro-platform",
+      "upperStripOrdinal": 10,
+      "inferredMainColumn": 120,
+      "row": 5,
+      "inferredWorldX": 1920,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "upper-mushroom-and-tenth-brick",
+      "activation": {
+        "sequence": 4856,
+        "tick": 2902,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04856-tick-02902.png"
+      },
+      "laterObservation": {
+        "sequence": 4857,
+        "tick": 2906,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/04857-tick-02906.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          107,
+          75
+        ]
+      ]
+    },
+    {
+      "structure": "later-three-brick-platform",
+      "upperStripOrdinal": 1,
+      "inferredMainColumn": 129,
+      "row": 5,
+      "inferredWorldX": 2064,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "later-first-brick",
+      "activation": {
+        "sequence": 6846,
+        "tick": 2902,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/06846-tick-02902.png"
+      },
+      "laterObservation": {
+        "sequence": 6847,
+        "tick": 2905,
+        "framesAdvanced": 23,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/06847-tick-02905.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          103,
+          76
+        ]
+      ]
+    },
+    {
+      "structure": "later-three-brick-platform",
+      "upperStripOrdinal": 2,
+      "inferredMainColumn": 130,
+      "row": 5,
+      "inferredWorldX": 2080,
+      "worldY": 80,
+      "outcome": "brick-bump",
+      "vineObserved": false,
+      "route": "later-middle-brick",
+      "activation": {
+        "sequence": 5869,
+        "tick": 2902,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/05869-tick-02902.png"
+      },
+      "laterObservation": {
+        "sequence": 5870,
+        "tick": 2906,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/05870-tick-02906.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          95,
+          76
+        ]
+      ]
+    },
+    {
+      "structure": "later-three-brick-platform",
+      "upperStripOrdinal": 3,
+      "inferredMainColumn": 131,
+      "row": 5,
+      "inferredWorldX": 2096,
+      "worldY": 80,
+      "outcome": "vine-activation",
+      "vineObserved": true,
+      "route": "later-vine-activation",
+      "activation": {
+        "sequence": 7825,
+        "tick": 2903,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/07825-tick-02903.png"
+      },
+      "laterObservation": {
+        "sequence": 7826,
+        "tick": 2907,
+        "framesAdvanced": 31,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/07826-tick-02907.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          94,
+          76
+        ]
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "upper-first-brick",
+      "winningInputPrefixDecisions": 2882,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        2401,
+        2404
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 2402,
+          "tick": 2886,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/02402-tick-02886.png"
+        },
+        {
+          "sequence": 2403,
+          "tick": 2888,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/02403-tick-02888.png"
+        },
+        {
+          "sequence": 2404,
+          "tick": 2891,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/02404-tick-02891.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-second-brick",
+      "winningInputPrefixDecisions": 2883,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        3385,
+        3388
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 3386,
+          "tick": 2886,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/03386-tick-02886.png"
+        },
+        {
+          "sequence": 3387,
+          "tick": 2888,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/03387-tick-02888.png"
+        },
+        {
+          "sequence": 3388,
+          "tick": 2891,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/03388-tick-02891.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-first-question-and-fourth-brick",
+      "winningInputPrefixDecisions": 2884,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        2892,
+        2897
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 2893,
+          "tick": 2886,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/02893-tick-02886.png"
+        },
+        {
+          "sequence": 2894,
+          "tick": 2888,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/02894-tick-02888.png"
+        },
+        {
+          "sequence": 2895,
+          "tick": 2891,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/02895-tick-02891.png"
+        },
+        {
+          "sequence": 2896,
+          "tick": 2893,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/02896-tick-02893.png"
+        },
+        {
+          "sequence": 2897,
+          "tick": 2896,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/02897-tick-02896.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-eighth-brick",
+      "winningInputPrefixDecisions": 2886,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        4360,
+        4366
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 4361,
+          "tick": 2888,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04361-tick-02888.png"
+        },
+        {
+          "sequence": 4362,
+          "tick": 2892,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/04362-tick-02892.png"
+        },
+        {
+          "sequence": 4363,
+          "tick": 2894,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04363-tick-02894.png"
+        },
+        {
+          "sequence": 4364,
+          "tick": 2897,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/04364-tick-02897.png"
+        },
+        {
+          "sequence": 4365,
+          "tick": 2899,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04365-tick-02899.png"
+        },
+        {
+          "sequence": 4366,
+          "tick": 2902,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/04366-tick-02902.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-mushroom-and-tenth-brick",
+      "winningInputPrefixDecisions": 2886,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        4849,
+        4859
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 4850,
+          "tick": 2888,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04850-tick-02888.png"
+        },
+        {
+          "sequence": 4851,
+          "tick": 2892,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/04851-tick-02892.png"
+        },
+        {
+          "sequence": 4852,
+          "tick": 2894,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04852-tick-02894.png"
+        },
+        {
+          "sequence": 4853,
+          "tick": 2896,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04853-tick-02896.png"
+        },
+        {
+          "sequence": 4854,
+          "tick": 2898,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04854-tick-02898.png"
+        },
+        {
+          "sequence": 4855,
+          "tick": 2900,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04855-tick-02900.png"
+        },
+        {
+          "sequence": 4856,
+          "tick": 2902,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/04856-tick-02902.png"
+        },
+        {
+          "sequence": 4857,
+          "tick": 2906,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/04857-tick-02906.png"
+        },
+        {
+          "sequence": 4858,
+          "tick": 2912,
+          "framesAdvanced": 45,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 6
+          },
+          "image": "evidence/local/three-one-vine-controlled/04858-tick-02912.png"
+        },
+        {
+          "sequence": 4859,
+          "tick": 2916,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/04859-tick-02916.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-fifth-brick",
+      "winningInputPrefixDecisions": 2886,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        5376,
+        5379
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 5377,
+          "tick": 2887,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "image": "evidence/local/three-one-vine-controlled/05377-tick-02887.png"
+        },
+        {
+          "sequence": 5378,
+          "tick": 2889,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/05378-tick-02889.png"
+        },
+        {
+          "sequence": 5379,
+          "tick": 2893,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/05379-tick-02893.png"
+        }
+      ]
+    },
+    {
+      "id": "upper-ninth-brick",
+      "winningInputPrefixDecisions": 2891,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        8311,
+        8314
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 8312,
+          "tick": 2896,
+          "framesAdvanced": 38,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 5
+          },
+          "image": "evidence/local/three-one-vine-controlled/08312-tick-02896.png"
+        },
+        {
+          "sequence": 8313,
+          "tick": 2898,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08313-tick-02898.png"
+        },
+        {
+          "sequence": 8314,
+          "tick": 2902,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08314-tick-02902.png"
+        }
+      ]
+    },
+    {
+      "id": "later-first-brick",
+      "winningInputPrefixDecisions": 2898,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        6844,
+        6847
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 6845,
+          "tick": 2900,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/06845-tick-02900.png"
+        },
+        {
+          "sequence": 6846,
+          "tick": 2902,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/06846-tick-02902.png"
+        },
+        {
+          "sequence": 6847,
+          "tick": 2905,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/06847-tick-02905.png"
+        }
+      ]
+    },
+    {
+      "id": "later-middle-brick",
+      "winningInputPrefixDecisions": 2900,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        5868,
+        5870
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 5869,
+          "tick": 2902,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/05869-tick-02902.png"
+        },
+        {
+          "sequence": 5870,
+          "tick": 2906,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/05870-tick-02906.png"
+        }
+      ]
+    },
+    {
+      "id": "later-vine-activation",
+      "winningInputPrefixDecisions": 2901,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        7824,
+        7826
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 7825,
+          "tick": 2903,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/07825-tick-02903.png"
+        },
+        {
+          "sequence": 7826,
+          "tick": 2907,
+          "framesAdvanced": 31,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/07826-tick-02907.png"
+        }
+      ]
+    },
+    {
+      "id": "vine-entry-map-and-ordinary-return",
+      "winningInputPrefixDecisions": 2898,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        8801,
+        8861
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 8802,
+          "tick": 2902,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08802-tick-02902.png"
+        },
+        {
+          "sequence": 8803,
+          "tick": 2903,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "image": "evidence/local/three-one-vine-controlled/08803-tick-02903.png"
+        },
+        {
+          "sequence": 8804,
+          "tick": 2905,
+          "framesAdvanced": 16,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08804-tick-02905.png"
+        },
+        {
+          "sequence": 8805,
+          "tick": 2907,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08805-tick-02907.png"
+        },
+        {
+          "sequence": 8806,
+          "tick": 2909,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08806-tick-02909.png"
+        },
+        {
+          "sequence": 8807,
+          "tick": 2912,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08807-tick-02912.png"
+        },
+        {
+          "sequence": 8808,
+          "tick": 2915,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08808-tick-02915.png"
+        },
+        {
+          "sequence": 8809,
+          "tick": 2918,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08809-tick-02918.png"
+        },
+        {
+          "sequence": 8810,
+          "tick": 2920,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08810-tick-02920.png"
+        },
+        {
+          "sequence": 8811,
+          "tick": 2923,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08811-tick-02923.png"
+        },
+        {
+          "sequence": 8812,
+          "tick": 2924,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 1
+          },
+          "image": "evidence/local/three-one-vine-controlled/08812-tick-02924.png"
+        },
+        {
+          "sequence": 8813,
+          "tick": 2927,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08813-tick-02927.png"
+        },
+        {
+          "sequence": 8814,
+          "tick": 2935,
+          "framesAdvanced": 60,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "image": "evidence/local/three-one-vine-controlled/08814-tick-02935.png"
+        },
+        {
+          "sequence": 8815,
+          "tick": 2938,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08815-tick-02938.png"
+        },
+        {
+          "sequence": 8816,
+          "tick": 2941,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08816-tick-02941.png"
+        },
+        {
+          "sequence": 8817,
+          "tick": 2943,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08817-tick-02943.png"
+        },
+        {
+          "sequence": 8818,
+          "tick": 2945,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08818-tick-02945.png"
+        },
+        {
+          "sequence": 8819,
+          "tick": 2946,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "image": "evidence/local/three-one-vine-controlled/08819-tick-02946.png"
+        },
+        {
+          "sequence": 8820,
+          "tick": 2948,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08820-tick-02948.png"
+        },
+        {
+          "sequence": 8821,
+          "tick": 2951,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08821-tick-02951.png"
+        },
+        {
+          "sequence": 8822,
+          "tick": 2967,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08822-tick-02967.png"
+        },
+        {
+          "sequence": 8823,
+          "tick": 2983,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08823-tick-02983.png"
+        },
+        {
+          "sequence": 8824,
+          "tick": 2987,
+          "framesAdvanced": 31,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08824-tick-02987.png"
+        },
+        {
+          "sequence": 8825,
+          "tick": 3003,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08825-tick-03003.png"
+        },
+        {
+          "sequence": 8826,
+          "tick": 3015,
+          "framesAdvanced": 90,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "image": "evidence/local/three-one-vine-controlled/08826-tick-03015.png"
+        },
+        {
+          "sequence": 8827,
+          "tick": 3019,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08827-tick-03019.png"
+        },
+        {
+          "sequence": 8828,
+          "tick": 3023,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08828-tick-03023.png"
+        },
+        {
+          "sequence": 8829,
+          "tick": 3027,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08829-tick-03027.png"
+        },
+        {
+          "sequence": 8830,
+          "tick": 3031,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08830-tick-03031.png"
+        },
+        {
+          "sequence": 8831,
+          "tick": 3035,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08831-tick-03035.png"
+        },
+        {
+          "sequence": 8832,
+          "tick": 3039,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08832-tick-03039.png"
+        },
+        {
+          "sequence": 8833,
+          "tick": 3043,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08833-tick-03043.png"
+        },
+        {
+          "sequence": 8834,
+          "tick": 3047,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08834-tick-03047.png"
+        },
+        {
+          "sequence": 8835,
+          "tick": 3051,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08835-tick-03051.png"
+        },
+        {
+          "sequence": 8836,
+          "tick": 3055,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08836-tick-03055.png"
+        },
+        {
+          "sequence": 8837,
+          "tick": 3059,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08837-tick-03059.png"
+        },
+        {
+          "sequence": 8838,
+          "tick": 3063,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08838-tick-03063.png"
+        },
+        {
+          "sequence": 8839,
+          "tick": 3067,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08839-tick-03067.png"
+        },
+        {
+          "sequence": 8840,
+          "tick": 3071,
+          "framesAdvanced": 31,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08840-tick-03071.png"
+        },
+        {
+          "sequence": 8841,
+          "tick": 3075,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08841-tick-03075.png"
+        },
+        {
+          "sequence": 8842,
+          "tick": 3079,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08842-tick-03079.png"
+        },
+        {
+          "sequence": 8843,
+          "tick": 3083,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08843-tick-03083.png"
+        },
+        {
+          "sequence": 8844,
+          "tick": 3087,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08844-tick-03087.png"
+        },
+        {
+          "sequence": 8845,
+          "tick": 3091,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08845-tick-03091.png"
+        },
+        {
+          "sequence": 8846,
+          "tick": 3095,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08846-tick-03095.png"
+        },
+        {
+          "sequence": 8847,
+          "tick": 3099,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08847-tick-03099.png"
+        },
+        {
+          "sequence": 8848,
+          "tick": 3103,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08848-tick-03103.png"
+        },
+        {
+          "sequence": 8849,
+          "tick": 3107,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08849-tick-03107.png"
+        },
+        {
+          "sequence": 8850,
+          "tick": 3111,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08850-tick-03111.png"
+        },
+        {
+          "sequence": 8851,
+          "tick": 3115,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08851-tick-03115.png"
+        },
+        {
+          "sequence": 8852,
+          "tick": 3119,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08852-tick-03119.png"
+        },
+        {
+          "sequence": 8853,
+          "tick": 3123,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08853-tick-03123.png"
+        },
+        {
+          "sequence": 8854,
+          "tick": 3127,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08854-tick-03127.png"
+        },
+        {
+          "sequence": 8855,
+          "tick": 3131,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08855-tick-03131.png"
+        },
+        {
+          "sequence": 8856,
+          "tick": 3135,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08856-tick-03135.png"
+        },
+        {
+          "sequence": 8857,
+          "tick": 3139,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08857-tick-03139.png"
+        },
+        {
+          "sequence": 8858,
+          "tick": 3141,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/08858-tick-03141.png"
+        },
+        {
+          "sequence": 8859,
+          "tick": 3145,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/08859-tick-03145.png"
+        },
+        {
+          "sequence": 8860,
+          "tick": 3153,
+          "framesAdvanced": 61,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "image": "evidence/local/three-one-vine-controlled/08860-tick-03153.png"
+        },
+        {
+          "sequence": 8861,
+          "tick": 3161,
+          "framesAdvanced": 60,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "image": "evidence/local/three-one-vine-controlled/08861-tick-03161.png"
+        }
+      ]
+    },
+    {
+      "id": "bridge-end-stair-and-dense-jump",
+      "winningInputPrefixDecisions": 2857,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        9810,
+        9816
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 9811,
+          "tick": 2860,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/09811-tick-02860.png"
+        },
+        {
+          "sequence": 9812,
+          "tick": 2863,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/09812-tick-02863.png"
+        },
+        {
+          "sequence": 9813,
+          "tick": 2866,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/09813-tick-02866.png"
+        },
+        {
+          "sequence": 9814,
+          "tick": 2868,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/09814-tick-02868.png"
+        },
+        {
+          "sequence": 9815,
+          "tick": 2869,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "image": "evidence/local/three-one-vine-controlled/09815-tick-02869.png"
+        },
+        {
+          "sequence": 9816,
+          "tick": 2872,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/09816-tick-02872.png"
+        }
+      ]
+    },
+    {
+      "id": "bridge-end-early-boost-fall",
+      "winningInputPrefixDecisions": 2856,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        10288,
+        10293
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 10289,
+          "tick": 2860,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/10289-tick-02860.png"
+        },
+        {
+          "sequence": 10290,
+          "tick": 2862,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/10290-tick-02862.png"
+        },
+        {
+          "sequence": 10291,
+          "tick": 2865,
+          "framesAdvanced": 23,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/10291-tick-02865.png"
+        },
+        {
+          "sequence": 10292,
+          "tick": 2889,
+          "framesAdvanced": 180,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "image": "evidence/local/three-one-vine-controlled/10292-tick-02889.png"
+        },
+        {
+          "sequence": 10293,
+          "tick": 2905,
+          "framesAdvanced": 121,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/10293-tick-02905.png"
+        }
+      ]
+    }
+  ],
+  "additionalObservedChanges": [
+    {
+      "kind": "upper-hammer-bro-stomp",
+      "scoreIncrease": 1000,
+      "evidence": {
+        "sequence": 4851,
+        "tick": 2892,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/04851-tick-02892.png"
+      }
+    },
+    {
+      "kind": "mushroom-collected-and-big-mario",
+      "scoreIncrease": 1000,
+      "evidence": [
+        {
+          "sequence": 4858,
+          "tick": 2912,
+          "framesAdvanced": 45,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 6
+          },
+          "image": "evidence/local/three-one-vine-controlled/04858-tick-02912.png"
+        },
+        {
+          "sequence": 4859,
+          "tick": 2916,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/04859-tick-02916.png"
+        }
+      ]
+    },
+    {
+      "kind": "lower-brick-broken",
+      "inferredMainColumn": 120,
+      "row": 9,
+      "evidence": {
+        "sequence": 4875,
+        "tick": 2968,
+        "framesAdvanced": 15,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "image": "evidence/local/three-one-vine-controlled/04875-tick-02968.png"
+      }
+    },
+    {
+      "kind": "lower-brick-broken",
+      "inferredMainColumn": 121,
+      "row": 9,
+      "evidence": {
+        "sequence": 4879,
+        "tick": 2983,
+        "framesAdvanced": 45,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 6
+        },
+        "image": "evidence/local/three-one-vine-controlled/04879-tick-02983.png"
+      }
+    }
+  ],
+  "unresolved": [
+    "The bridge-end high strip near worldx1440 was approached but no head-hit was established; gap falls and enemy deaths are not negative content tests.",
+    "Other 3-1 bricks and pipes are not exhaustively tested. The previously mapped coin-room pipe atx608 is outside this work unit.",
+    "Unknown destination cells are retained in destination. Platform riding and high coin collection were not observed."
+  ],
+  "connection": {
+    "id": "3-1-vine-sky",
+    "acceptedObservationStages": [
+      "activation",
+      "climb",
+      "destination-map-with-explicit-unknowns",
+      "ordinary-exit",
+      "main-return"
+    ],
+    "entrance": {
+      "level": "3-1",
+      "segment": "main",
+      "type": "vine",
+      "blockColumn": 131,
+      "blockRow": 5,
+      "inferredBlockX": 2096,
+      "blockY": 80,
+      "inferredVineX": 2104,
+      "activationEvidence": [
+        {
+          "sequence": 7825,
+          "tick": 2903,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "image": "evidence/local/three-one-vine-controlled/07825-tick-02903.png"
+        },
+        {
+          "sequence": 7826,
+          "tick": 2907,
+          "framesAdvanced": 31,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "image": "evidence/local/three-one-vine-controlled/07826-tick-02907.png"
+        }
+      ],
+      "climbEvidence": {
+        "sequence": 8821,
+        "tick": 2951,
+        "framesAdvanced": 22,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "up",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "image": "evidence/local/three-one-vine-controlled/08821-tick-02951.png"
+      },
+      "coordinateProvenance": {
+        "sourceSequence": 7825,
+        "upperFullBlockScreenX": [
+          62,
+          78,
+          94
+        ],
+        "upperArtworkY": [
+          80,
+          80,
+          76
+        ],
+        "usedBlockIsRaised": true,
+        "lowerStripFirstScreenX": 64,
+        "lowerStripY": 128,
+        "canonicalLowerStripAnchor": [
+          [
+            129,
+            8,
+            81
+          ],
+          [
+            130,
+            8,
+            81
+          ],
+          [
+            131,
+            8,
+            81
+          ]
+        ],
+        "inferredUpperRowCamera": 2002,
+        "inferredLowerRowCamera": 2000,
+        "note": "The used16px block fixes the complete upper strip's16px phase; overlapping plain-brick matches every8px are repeated artwork, not additional complete blocks. World2064/2080/2096 is inferred from the lower strip and surrounding ground alignment. The source PNG's upper/lower raster rows differ2px, so one exact camera2001 is not directly measured."
+      }
+    },
+    "destination": {
+      "id": "3-1-vine-sky",
+      "entryType": "vine-emergence",
+      "observedVineColumn": 4,
+      "observedVineX": 64,
+      "initialPlayerOriginX": null,
+      "initialPlayerFeetY": null,
+      "standingPlayerOriginX": 75,
+      "standingFeetY": 208,
+      "initialPoseNote": "First offscreen player pose is unmeasured. Exact supplied sprite pixels establish the later automatic standing pose, not an invented spawn.",
+      "entryEvidence": [
+        {
+          "sequence": 8822,
+          "tick": 2967,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08822-tick-02967.png"
+        },
+        {
+          "sequence": 8825,
+          "tick": 3003,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08825-tick-03003.png"
+        },
+        {
+          "sequence": 8826,
+          "tick": 3015,
+          "framesAdvanced": 90,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "image": "evidence/local/three-one-vine-controlled/08826-tick-03015.png"
+        }
+      ]
+    },
+    "exit": {
+      "type": "ordinary-walk-off-cloud-floor-and-fall",
+      "inferredFloorEndX": 1328,
+      "lastRoomEvidence": {
+        "sequence": 8859,
+        "tick": 3145,
+        "framesAdvanced": 30,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "image": "evidence/local/three-one-vine-controlled/08859-tick-03145.png"
+      },
+      "firstMainEvidence": {
+        "sequence": 8860,
+        "tick": 3153,
+        "framesAdvanced": 61,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "image": "evidence/local/three-one-vine-controlled/08860-tick-03153.png"
+      },
+      "standingMainEvidence": {
+        "sequence": 8861,
+        "tick": 3161,
+        "framesAdvanced": 60,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "image": "evidence/local/three-one-vine-controlled/08861-tick-03161.png"
+      },
+      "returnLevel": "3-1",
+      "returnSegment": "main",
+      "inferredCameraX": 2560,
+      "inferredPlayerOriginX": 2600,
+      "initialFeetY": null,
+      "firstVisibleFeetY": 32,
+      "standingFeetY": 208,
+      "coordinateEvidence": "Main columns166..170 atx2656..2736 match the returned platform atscreen96..176, anchoringcamera2560. Exact supplied Mario pixels give screenorigin40. The offscreen return spawn feetY is not measured."
+    },
+    "poseMeasurements": [
+      {
+        "evidence": {
+          "sequence": 8821,
+          "tick": 2951,
+          "framesAdvanced": 22,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "image": "evidence/local/three-one-vine-controlled/08821-tick-02951.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 21,
+          "originX": 60,
+          "originY": 31,
+          "feetY": 62,
+          "spriteBottomExclusive": 63,
+          "matchedPixels": 146
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 8825,
+          "tick": 3003,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "image": "evidence/local/three-one-vine-controlled/08825-tick-03003.png"
+        },
+        "player": {
+          "direction": "left",
+          "cell": 20,
+          "originX": 71,
+          "originY": 153,
+          "feetY": 184,
+          "spriteBottomExclusive": 185,
+          "matchedPixels": 139
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 8826,
+          "tick": 3015,
+          "framesAdvanced": 90,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "image": "evidence/local/three-one-vine-controlled/08826-tick-03015.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 75,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 143
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 8860,
+          "tick": 3153,
+          "framesAdvanced": 61,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "image": "evidence/local/three-one-vine-controlled/08860-tick-03153.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 12,
+          "originX": 40,
+          "originY": 1,
+          "feetY": 32,
+          "spriteBottomExclusive": 33,
+          "matchedPixels": 120
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 8861,
+          "tick": 3161,
+          "framesAdvanced": 60,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "image": "evidence/local/three-one-vine-controlled/08861-tick-03161.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 40,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 143
+        }
+      }
+    ]
+  },
+  "bridgeEndSearch": {
+    "status": "approached-no-confirmed-head-hit",
+    "candidate": "Three high bricks near inferred mainx1440,y80, immediately after the bridge.",
+    "observations": [
+      {
+        "route": "bridge-end-stair-and-dense-jump",
+        "evidence": [
+          {
+            "sequence": 9813,
+            "tick": 2866,
+            "framesAdvanced": 23,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 3
+            },
+            "image": "evidence/local/three-one-vine-controlled/09813-tick-02866.png"
+          },
+          {
+            "sequence": 9814,
+            "tick": 2868,
+            "framesAdvanced": 15,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "image": "evidence/local/three-one-vine-controlled/09814-tick-02868.png"
+          },
+          {
+            "sequence": 9815,
+            "tick": 2869,
+            "framesAdvanced": 7,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 1
+            },
+            "image": "evidence/local/three-one-vine-controlled/09815-tick-02869.png"
+          },
+          {
+            "sequence": 9816,
+            "tick": 2872,
+            "framesAdvanced": 23,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 3
+            },
+            "image": "evidence/local/three-one-vine-controlled/09816-tick-02872.png"
+          }
+        ],
+        "outcome": "Ordinary controls reach the lower stair step atfeet176. A held jump reaches the strip underside, but15/7-native-frame checkpoints show no raised brick or item activation; contents remain unknown."
+      },
+      {
+        "route": "bridge-end-early-boost-fall",
+        "evidence": [
+          {
+            "sequence": 10289,
+            "tick": 2860,
+            "framesAdvanced": 30,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 4
+            },
+            "image": "evidence/local/three-one-vine-controlled/10289-tick-02860.png"
+          },
+          {
+            "sequence": 10293,
+            "tick": 2905,
+            "framesAdvanced": 121,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 16
+            },
+            "image": "evidence/local/three-one-vine-controlled/10293-tick-02905.png"
+          }
+        ],
+        "outcome": "An earlier held-A attempt failed to reproduce the useful stomp boost, fell in the bridge gap, and genuinely lost a life. The later intro shows2 lives; this is not a negative block-contents test."
+      }
+    ]
+  },
+  "continuation": {
+    "liveDriverSessionId": null,
+    "checkpointIsHistorical": true,
+    "capture": "evidence/local/three-one-vine-controlled",
+    "lastObservation": {
+      "sequence": 10293,
+      "tick": 2905,
+      "framesAdvanced": 121,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 16
+      },
+      "image": "evidence/local/three-one-vine-controlled/10293-tick-02905.png"
+    },
+    "observedState": "World3-1 intro after the final separate bridge-gap experiment lost a life. The screen explicitly shows2 lives, score097450 and coins28. This reset-based experiment is separate from the successful vine visit and return.",
+    "reproduce": "Replay route bridge-end-early-boost-fall for the live checkpoint. Replay vine-entry-map-and-ordinary-return for the completed optional-route checkpoint.",
+    "successfulVineReturnCheckpoint": {
+      "sequence": 8861,
+      "tick": 3161,
+      "framesAdvanced": 60,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "evidence/local/three-one-vine-controlled/08861-tick-03161.png"
+    },
+    "successfulVineReturnState": "Small Mario at main3-1 origin2600,feet208,camera2560,TIME305,score098550,coins28 after ordinary return. The sky traversal collected no high coins.",
+    "processNote": "The completed public reference process was closed normally after actor extraction required no additional gameplay. Both exact checkpoint reproduction routes remain recorded."
+  },
+  "destination": {
+    "schema": "image-only-sky-room-v1",
+    "id": "3-1-vine-sky",
+    "level": "3-1",
+    "width": 95,
+    "background": "#000000",
+    "atlas": "metatiles-palette-015.png",
+    "tiles": [
+      [
+        0,
+        13,
+        136
+      ],
+      [
+        1,
+        13,
+        136
+      ],
+      [
+        2,
+        13,
+        136
+      ],
+      [
+        3,
+        13,
+        136
+      ],
+      [
+        5,
+        13,
+        136
+      ],
+      [
+        6,
+        13,
+        136
+      ],
+      [
+        7,
+        13,
+        136
+      ],
+      [
+        8,
+        13,
+        136
+      ],
+      [
+        9,
+        13,
+        136
+      ],
+      [
+        10,
+        13,
+        136
+      ],
+      [
+        11,
+        13,
+        136
+      ],
+      [
+        12,
+        13,
+        136
+      ],
+      [
+        13,
+        13,
+        136
+      ],
+      [
+        14,
+        13,
+        136
+      ],
+      [
+        15,
+        6,
+        194
+      ],
+      [
+        15,
+        13,
+        136
+      ],
+      [
+        16,
+        6,
+        194
+      ],
+      [
+        16,
+        13,
+        136
+      ],
+      [
+        17,
+        6,
+        194
+      ],
+      [
+        17,
+        13,
+        136
+      ],
+      [
+        18,
+        6,
+        194
+      ],
+      [
+        18,
+        13,
+        136
+      ],
+      [
+        19,
+        6,
+        194
+      ],
+      [
+        19,
+        13,
+        136
+      ],
+      [
+        20,
+        6,
+        194
+      ],
+      [
+        20,
+        13,
+        136
+      ],
+      [
+        21,
+        6,
+        194
+      ],
+      [
+        21,
+        13,
+        136
+      ],
+      [
+        22,
+        6,
+        194
+      ],
+      [
+        22,
+        13,
+        136
+      ],
+      [
+        23,
+        6,
+        194
+      ],
+      [
+        23,
+        13,
+        136
+      ],
+      [
+        24,
+        6,
+        194
+      ],
+      [
+        24,
+        13,
+        136
+      ],
+      [
+        25,
+        6,
+        194
+      ],
+      [
+        25,
+        13,
+        136
+      ],
+      [
+        26,
+        6,
+        194
+      ],
+      [
+        26,
+        13,
+        136
+      ],
+      [
+        27,
+        6,
+        194
+      ],
+      [
+        27,
+        13,
+        136
+      ],
+      [
+        28,
+        6,
+        194
+      ],
+      [
+        28,
+        13,
+        136
+      ],
+      [
+        29,
+        6,
+        194
+      ],
+      [
+        29,
+        13,
+        136
+      ],
+      [
+        30,
+        6,
+        194
+      ],
+      [
+        30,
+        13,
+        136
+      ],
+      [
+        31,
+        13,
+        136
+      ],
+      [
+        32,
+        8,
+        136
+      ],
+      [
+        32,
+        13,
+        136
+      ],
+      [
+        33,
+        13,
+        136
+      ],
+      [
+        34,
+        6,
+        194
+      ],
+      [
+        34,
+        13,
+        136
+      ],
+      [
+        35,
+        6,
+        194
+      ],
+      [
+        35,
+        13,
+        136
+      ],
+      [
+        36,
+        6,
+        194
+      ],
+      [
+        36,
+        13,
+        136
+      ],
+      [
+        37,
+        6,
+        194
+      ],
+      [
+        37,
+        13,
+        136
+      ],
+      [
+        38,
+        6,
+        194
+      ],
+      [
+        38,
+        13,
+        136
+      ],
+      [
+        39,
+        6,
+        194
+      ],
+      [
+        39,
+        13,
+        136
+      ],
+      [
+        40,
+        6,
+        194
+      ],
+      [
+        40,
+        13,
+        136
+      ],
+      [
+        41,
+        6,
+        194
+      ],
+      [
+        41,
+        13,
+        136
+      ],
+      [
+        42,
+        6,
+        194
+      ],
+      [
+        42,
+        13,
+        136
+      ],
+      [
+        43,
+        6,
+        194
+      ],
+      [
+        43,
+        13,
+        136
+      ],
+      [
+        44,
+        6,
+        194
+      ],
+      [
+        44,
+        13,
+        136
+      ],
+      [
+        45,
+        6,
+        194
+      ],
+      [
+        45,
+        13,
+        136
+      ],
+      [
+        46,
+        6,
+        194
+      ],
+      [
+        46,
+        13,
+        136
+      ],
+      [
+        47,
+        6,
+        194
+      ],
+      [
+        47,
+        13,
+        136
+      ],
+      [
+        48,
+        6,
+        194
+      ],
+      [
+        48,
+        13,
+        136
+      ],
+      [
+        49,
+        6,
+        194
+      ],
+      [
+        49,
+        13,
+        136
+      ],
+      [
+        50,
+        13,
+        136
+      ],
+      [
+        51,
+        7,
+        136
+      ],
+      [
+        51,
+        8,
+        136
+      ],
+      [
+        51,
+        13,
+        136
+      ],
+      [
+        52,
+        13,
+        136
+      ],
+      [
+        53,
+        5,
+        194
+      ],
+      [
+        53,
+        13,
+        136
+      ],
+      [
+        54,
+        5,
+        194
+      ],
+      [
+        54,
+        13,
+        136
+      ],
+      [
+        55,
+        5,
+        194
+      ],
+      [
+        55,
+        13,
+        136
+      ],
+      [
+        56,
+        5,
+        194
+      ],
+      [
+        56,
+        13,
+        136
+      ],
+      [
+        57,
+        5,
+        194
+      ],
+      [
+        57,
+        13,
+        136
+      ],
+      [
+        58,
+        5,
+        194
+      ],
+      [
+        58,
+        13,
+        136
+      ],
+      [
+        59,
+        5,
+        194
+      ],
+      [
+        59,
+        13,
+        136
+      ],
+      [
+        60,
+        13,
+        136
+      ],
+      [
+        61,
+        7,
+        136
+      ],
+      [
+        61,
+        8,
+        136
+      ],
+      [
+        61,
+        13,
+        136
+      ],
+      [
+        62,
+        13,
+        136
+      ],
+      [
+        63,
+        13,
+        136
+      ],
+      [
+        64,
+        13,
+        136
+      ],
+      [
+        65,
+        13,
+        136
+      ],
+      [
+        66,
+        13,
+        136
+      ],
+      [
+        67,
+        13,
+        136
+      ],
+      [
+        68,
+        13,
+        136
+      ],
+      [
+        69,
+        13,
+        136
+      ],
+      [
+        70,
+        13,
+        136
+      ],
+      [
+        71,
+        5,
+        194
+      ],
+      [
+        71,
+        13,
+        136
+      ],
+      [
+        72,
+        5,
+        194
+      ],
+      [
+        72,
+        13,
+        136
+      ],
+      [
+        73,
+        5,
+        194
+      ],
+      [
+        73,
+        13,
+        136
+      ],
+      [
+        74,
+        5,
+        194
+      ],
+      [
+        74,
+        13,
+        136
+      ],
+      [
+        75,
+        5,
+        194
+      ],
+      [
+        75,
+        13,
+        136
+      ],
+      [
+        76,
+        5,
+        194
+      ],
+      [
+        76,
+        13,
+        136
+      ],
+      [
+        77,
+        5,
+        194
+      ],
+      [
+        77,
+        13,
+        136
+      ],
+      [
+        78,
+        5,
+        194
+      ],
+      [
+        78,
+        13,
+        136
+      ],
+      [
+        79,
+        5,
+        194
+      ],
+      [
+        79,
+        6,
+        136
+      ],
+      [
+        79,
+        13,
+        136
+      ],
+      [
+        80,
+        5,
+        194
+      ],
+      [
+        80,
+        13,
+        136
+      ],
+      [
+        81,
+        13,
+        136
+      ],
+      [
+        82,
+        13,
+        136
+      ],
+      [
+        85,
+        11,
+        194
+      ],
+      [
+        86,
+        11,
+        194
+      ],
+      [
+        87,
+        11,
+        194
+      ]
+    ],
+    "unknownCells": [
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        18,
+        10
+      ],
+      [
+        67,
+        6
+      ],
+      [
+        68,
+        6
+      ],
+      [
+        71,
+        6
+      ],
+      [
+        73,
+        6
+      ],
+      [
+        75,
+        6
+      ],
+      [
+        77,
+        6
+      ],
+      [
+        94,
+        3
+      ],
+      [
+        94,
+        4
+      ],
+      [
+        94,
+        5
+      ],
+      [
+        94,
+        6
+      ],
+      [
+        94,
+        7
+      ],
+      [
+        94,
+        8
+      ],
+      [
+        94,
+        9
+      ],
+      [
+        94,
+        10
+      ],
+      [
+        94,
+        11
+      ],
+      [
+        94,
+        12
+      ],
+      [
+        94,
+        13
+      ],
+      [
+        94,
+        14
+      ]
+    ],
+    "cameraRegistration": [
+      {
+        "sequence": 8826,
+        "tick": 3015,
+        "nativeFrames": 90,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFloorPhase": 0
+      },
+      {
+        "sequence": 8827,
+        "tick": 3019,
+        "nativeFrames": 30,
+        "delta": 10,
+        "cameraX": 10,
+        "binaryError": 0.000813,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          10
+        ],
+        "exactFloorPhase": 6
+      },
+      {
+        "sequence": 8828,
+        "tick": 3023,
+        "nativeFrames": 30,
+        "delta": 30,
+        "cameraX": 40,
+        "binaryError": 0.001708,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          30
+        ],
+        "exactFloorPhase": 8
+      },
+      {
+        "sequence": 8829,
+        "tick": 3027,
+        "nativeFrames": 30,
+        "delta": 30,
+        "cameraX": 70,
+        "binaryError": 0.021713,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          30
+        ],
+        "exactFloorPhase": 10
+      },
+      {
+        "sequence": 8830,
+        "tick": 3031,
+        "nativeFrames": 30,
+        "delta": 40,
+        "cameraX": 110,
+        "binaryError": 0.008391,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          40
+        ],
+        "exactFloorPhase": 2
+      },
+      {
+        "sequence": 8831,
+        "tick": 3035,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 155,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 5
+      },
+      {
+        "sequence": 8832,
+        "tick": 3039,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 200,
+        "binaryError": 0.00261,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 8
+      },
+      {
+        "sequence": 8833,
+        "tick": 3043,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 245,
+        "binaryError": 0.006703,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 11
+      },
+      {
+        "sequence": 8834,
+        "tick": 3047,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 290,
+        "binaryError": 0.006771,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 14
+      },
+      {
+        "sequence": 8835,
+        "tick": 3051,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 335,
+        "binaryError": 0.003856,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 1
+      },
+      {
+        "sequence": 8836,
+        "tick": 3055,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 380,
+        "binaryError": 0.003825,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 4
+      },
+      {
+        "sequence": 8837,
+        "tick": 3059,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 425,
+        "binaryError": 0.000634,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 7
+      },
+      {
+        "sequence": 8838,
+        "tick": 3063,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 470,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 10
+      },
+      {
+        "sequence": 8839,
+        "tick": 3067,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 515,
+        "binaryError": 0.001844,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 13
+      },
+      {
+        "sequence": 8840,
+        "tick": 3071,
+        "nativeFrames": 31,
+        "delta": 47,
+        "cameraX": 562,
+        "binaryError": 0.031882,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          31,
+          47
+        ],
+        "exactFloorPhase": 14
+      },
+      {
+        "sequence": 8841,
+        "tick": 3075,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 607,
+        "binaryError": 0.006686,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 1
+      },
+      {
+        "sequence": 8842,
+        "tick": 3079,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 652,
+        "binaryError": 0.004547,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 4
+      },
+      {
+        "sequence": 8843,
+        "tick": 3083,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 697,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 7
+      },
+      {
+        "sequence": 8844,
+        "tick": 3087,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 742,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 10
+      },
+      {
+        "sequence": 8845,
+        "tick": 3091,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 787,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 13
+      },
+      {
+        "sequence": 8846,
+        "tick": 3095,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 832,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 0
+      },
+      {
+        "sequence": 8847,
+        "tick": 3099,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 877,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 3
+      },
+      {
+        "sequence": 8848,
+        "tick": 3103,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 922,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 6
+      },
+      {
+        "sequence": 8849,
+        "tick": 3107,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 967,
+        "binaryError": 0.003653,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 9
+      },
+      {
+        "sequence": 8850,
+        "tick": 3111,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1012,
+        "binaryError": 0.004977,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 12
+      },
+      {
+        "sequence": 8851,
+        "tick": 3115,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1057,
+        "binaryError": 0.002094,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 15
+      },
+      {
+        "sequence": 8852,
+        "tick": 3119,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1102,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 2
+      },
+      {
+        "sequence": 8853,
+        "tick": 3123,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1147,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 5
+      },
+      {
+        "sequence": 8854,
+        "tick": 3127,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1192,
+        "binaryError": 0.002522,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 8
+      },
+      {
+        "sequence": 8855,
+        "tick": 3131,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1237,
+        "binaryError": 0.066499,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactFloorPhase": 11
+      },
+      {
+        "sequence": 8856,
+        "tick": 3135,
+        "nativeFrames": 30,
+        "delta": 12,
+        "cameraX": 1249,
+        "binaryError": 0.183058,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          12
+        ],
+        "exactFloorPhase": 15
+      },
+      {
+        "sequence": 8857,
+        "tick": 3139,
+        "nativeFrames": 30,
+        "delta": 0,
+        "cameraX": 1249,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFloorPhase": 15
+      },
+      {
+        "sequence": 8858,
+        "tick": 3141,
+        "nativeFrames": 15,
+        "delta": 0,
+        "cameraX": 1249,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFloorPhase": 15
+      },
+      {
+        "sequence": 8859,
+        "tick": 3145,
+        "nativeFrames": 30,
+        "delta": 0,
+        "cameraX": 1249,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFloorPhase": 15
+      }
+    ],
+    "coinPixelEvidence": [
+      {
+        "column": 15,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8826,
+            "cameraX": 0,
+            "screenBounds": [
+              243,
+              98,
+              251,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8827,
+            "cameraX": 10,
+            "screenBounds": [
+              233,
+              98,
+              241,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 16,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8828,
+            "cameraX": 40,
+            "screenBounds": [
+              219,
+              98,
+              227,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8829,
+            "cameraX": 70,
+            "screenBounds": [
+              189,
+              98,
+              197,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 17,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8828,
+            "cameraX": 40,
+            "screenBounds": [
+              235,
+              98,
+              243,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8829,
+            "cameraX": 70,
+            "screenBounds": [
+              205,
+              98,
+              213,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 18,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8829,
+            "cameraX": 70,
+            "screenBounds": [
+              221,
+              98,
+              229,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8830,
+            "cameraX": 110,
+            "screenBounds": [
+              180,
+              98,
+              189,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 19,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8829,
+            "cameraX": 70,
+            "screenBounds": [
+              237,
+              98,
+              245,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8830,
+            "cameraX": 110,
+            "screenBounds": [
+              196,
+              98,
+              205,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 20,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8830,
+            "cameraX": 110,
+            "screenBounds": [
+              212,
+              98,
+              221,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              167,
+              98,
+              176,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 21,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8830,
+            "cameraX": 110,
+            "screenBounds": [
+              228,
+              98,
+              237,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              183,
+              98,
+              192,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 22,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8830,
+            "cameraX": 110,
+            "screenBounds": [
+              244,
+              98,
+              253,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              199,
+              98,
+              208,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 23,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              215,
+              98,
+              224,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8832,
+            "cameraX": 200,
+            "screenBounds": [
+              170,
+              98,
+              179,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 24,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              231,
+              98,
+              240,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8832,
+            "cameraX": 200,
+            "screenBounds": [
+              186,
+              98,
+              195,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 25,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8831,
+            "cameraX": 155,
+            "screenBounds": [
+              247,
+              98,
+              256,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8832,
+            "cameraX": 200,
+            "screenBounds": [
+              202,
+              98,
+              211,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 26,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8832,
+            "cameraX": 200,
+            "screenBounds": [
+              218,
+              98,
+              227,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8833,
+            "cameraX": 245,
+            "screenBounds": [
+              173,
+              98,
+              182,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 27,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8832,
+            "cameraX": 200,
+            "screenBounds": [
+              234,
+              98,
+              243,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8833,
+            "cameraX": 245,
+            "screenBounds": [
+              189,
+              98,
+              198,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 28,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8833,
+            "cameraX": 245,
+            "screenBounds": [
+              205,
+              98,
+              214,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8834,
+            "cameraX": 290,
+            "screenBounds": [
+              160,
+              98,
+              169,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 29,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8833,
+            "cameraX": 245,
+            "screenBounds": [
+              221,
+              98,
+              230,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8834,
+            "cameraX": 290,
+            "screenBounds": [
+              176,
+              98,
+              185,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 30,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8833,
+            "cameraX": 245,
+            "screenBounds": [
+              237,
+              98,
+              246,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8834,
+            "cameraX": 290,
+            "screenBounds": [
+              192,
+              98,
+              201,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 34,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8835,
+            "cameraX": 335,
+            "screenBounds": [
+              211,
+              98,
+              220,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              166,
+              98,
+              175,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 35,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8835,
+            "cameraX": 335,
+            "screenBounds": [
+              227,
+              98,
+              236,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              182,
+              98,
+              191,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 36,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8835,
+            "cameraX": 335,
+            "screenBounds": [
+              243,
+              98,
+              252,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              198,
+              98,
+              207,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 37,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              214,
+              98,
+              223,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8837,
+            "cameraX": 425,
+            "screenBounds": [
+              169,
+              98,
+              178,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 38,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              230,
+              98,
+              239,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8837,
+            "cameraX": 425,
+            "screenBounds": [
+              185,
+              98,
+              194,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 39,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8836,
+            "cameraX": 380,
+            "screenBounds": [
+              246,
+              98,
+              255,
+              112
+            ],
+            "pixels": 88
+          },
+          {
+            "sequence": 8837,
+            "cameraX": 425,
+            "screenBounds": [
+              201,
+              98,
+              210,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 40,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8837,
+            "cameraX": 425,
+            "screenBounds": [
+              217,
+              98,
+              226,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8838,
+            "cameraX": 470,
+            "screenBounds": [
+              172,
+              98,
+              181,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 41,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8837,
+            "cameraX": 425,
+            "screenBounds": [
+              233,
+              98,
+              242,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8838,
+            "cameraX": 470,
+            "screenBounds": [
+              188,
+              98,
+              197,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 42,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8838,
+            "cameraX": 470,
+            "screenBounds": [
+              204,
+              98,
+              213,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              159,
+              98,
+              168,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 43,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8838,
+            "cameraX": 470,
+            "screenBounds": [
+              220,
+              98,
+              229,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              175,
+              98,
+              184,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 44,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8838,
+            "cameraX": 470,
+            "screenBounds": [
+              236,
+              98,
+              245,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              191,
+              98,
+              200,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 45,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              207,
+              98,
+              216,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8840,
+            "cameraX": 562,
+            "screenBounds": [
+              161,
+              98,
+              169,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 46,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              223,
+              98,
+              232,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8840,
+            "cameraX": 562,
+            "screenBounds": [
+              177,
+              98,
+              185,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 47,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8839,
+            "cameraX": 515,
+            "screenBounds": [
+              239,
+              98,
+              248,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8840,
+            "cameraX": 562,
+            "screenBounds": [
+              193,
+              98,
+              201,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 48,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8840,
+            "cameraX": 562,
+            "screenBounds": [
+              209,
+              98,
+              217,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8841,
+            "cameraX": 607,
+            "screenBounds": [
+              164,
+              98,
+              172,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 49,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 8840,
+            "cameraX": 562,
+            "screenBounds": [
+              225,
+              98,
+              233,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8841,
+            "cameraX": 607,
+            "screenBounds": [
+              180,
+              98,
+              188,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 53,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8841,
+            "cameraX": 607,
+            "screenBounds": [
+              243,
+              82,
+              251,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8842,
+            "cameraX": 652,
+            "screenBounds": [
+              198,
+              82,
+              206,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 54,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8842,
+            "cameraX": 652,
+            "screenBounds": [
+              214,
+              82,
+              222,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8843,
+            "cameraX": 697,
+            "screenBounds": [
+              169,
+              82,
+              177,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 55,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8842,
+            "cameraX": 652,
+            "screenBounds": [
+              230,
+              82,
+              238,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8843,
+            "cameraX": 697,
+            "screenBounds": [
+              185,
+              82,
+              193,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 56,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8842,
+            "cameraX": 652,
+            "screenBounds": [
+              246,
+              82,
+              254,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8843,
+            "cameraX": 697,
+            "screenBounds": [
+              201,
+              82,
+              209,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 57,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8843,
+            "cameraX": 697,
+            "screenBounds": [
+              217,
+              82,
+              225,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8844,
+            "cameraX": 742,
+            "screenBounds": [
+              172,
+              82,
+              180,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 58,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8843,
+            "cameraX": 697,
+            "screenBounds": [
+              233,
+              82,
+              241,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8844,
+            "cameraX": 742,
+            "screenBounds": [
+              188,
+              82,
+              196,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 59,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8844,
+            "cameraX": 742,
+            "screenBounds": [
+              204,
+              82,
+              212,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8845,
+            "cameraX": 787,
+            "screenBounds": [
+              159,
+              82,
+              167,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 71,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8848,
+            "cameraX": 922,
+            "screenBounds": [
+              216,
+              82,
+              224,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8849,
+            "cameraX": 967,
+            "screenBounds": [
+              171,
+              82,
+              179,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 72,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8848,
+            "cameraX": 922,
+            "screenBounds": [
+              232,
+              82,
+              240,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8849,
+            "cameraX": 967,
+            "screenBounds": [
+              187,
+              82,
+              195,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 73,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8848,
+            "cameraX": 922,
+            "screenBounds": [
+              248,
+              82,
+              256,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8849,
+            "cameraX": 967,
+            "screenBounds": [
+              203,
+              82,
+              211,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 74,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8849,
+            "cameraX": 967,
+            "screenBounds": [
+              219,
+              82,
+              227,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8850,
+            "cameraX": 1012,
+            "screenBounds": [
+              174,
+              82,
+              182,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 75,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8849,
+            "cameraX": 967,
+            "screenBounds": [
+              235,
+              82,
+              243,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8850,
+            "cameraX": 1012,
+            "screenBounds": [
+              190,
+              82,
+              198,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 76,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8850,
+            "cameraX": 1012,
+            "screenBounds": [
+              206,
+              82,
+              214,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8851,
+            "cameraX": 1057,
+            "screenBounds": [
+              161,
+              82,
+              169,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 77,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8850,
+            "cameraX": 1012,
+            "screenBounds": [
+              222,
+              82,
+              230,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8851,
+            "cameraX": 1057,
+            "screenBounds": [
+              177,
+              82,
+              185,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 78,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8850,
+            "cameraX": 1012,
+            "screenBounds": [
+              238,
+              82,
+              246,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8851,
+            "cameraX": 1057,
+            "screenBounds": [
+              193,
+              82,
+              201,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 10
+      },
+      {
+        "column": 79,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8851,
+            "cameraX": 1057,
+            "screenBounds": [
+              209,
+              82,
+              217,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8852,
+            "cameraX": 1102,
+            "screenBounds": [
+              164,
+              82,
+              172,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 9
+      },
+      {
+        "column": 80,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 8851,
+            "cameraX": 1057,
+            "screenBounds": [
+              225,
+              82,
+              233,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8852,
+            "cameraX": 1102,
+            "screenBounds": [
+              180,
+              82,
+              188,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 9
+      },
+      {
+        "column": 85,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 8853,
+            "cameraX": 1147,
+            "screenBounds": [
+              216,
+              178,
+              224,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8854,
+            "cameraX": 1192,
+            "screenBounds": [
+              171,
+              178,
+              179,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 86,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 8853,
+            "cameraX": 1147,
+            "screenBounds": [
+              232,
+              178,
+              240,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8854,
+            "cameraX": 1192,
+            "screenBounds": [
+              187,
+              178,
+              195,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 87,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 8853,
+            "cameraX": 1147,
+            "screenBounds": [
+              248,
+              178,
+              256,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 8854,
+            "cameraX": 1192,
+            "screenBounds": [
+              203,
+              178,
+              211,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      }
+    ],
+    "sourceTrace": "evidence/local/three-one-vine-controlled/trace.jsonl",
+    "sourceSequenceRange": [
+      8826,
+      8859
+    ],
+    "method": "Binary nonblack static-pixel registration excludes HUD, Mario, vine and moving six-orb platform rows. Exact cloud-floor tile136 fixes every horizontal phase; steady rightward walking is constrained to measured1.5px/native-frame\u00b12px per checkpoint. Supplied atlas RGB establishes static metatiles. Additional coin palette phases are measured as observed orange8/9-by-14 connected pixel components at rows5/6/11, snapped to their nearest16px grid cell with screenshot witnesses. No hidden cells are synthesized.",
+    "uncertainties": [
+      "World camera coordinates are inferred from screenshot alignment and a measured walking-speed bound; repetitive rows can admit multiple equal binary alignments, recorded per checkpoint.",
+      "Coin artwork can differ by one horizontal pixel between scroll/animation phases. Coin grid positions use the nearest cell; component bounds and observation counts are retained.",
+      "Non-atlas floating cloud artwork remains explicit unknown cells rather than invented collision geometry.",
+      "Vine and moving six-orb platform are dynamic and are not encoded as static tiles.",
+      "Only the ordinary cloud-floor walking route was observed. Riding the platform and collecting the high coins remain unmeasured.",
+      "Width is the observed viewport extent, not an inferred unseen room boundary."
+    ],
+    "platforms": [
+      {
+        "id": "3-1-sky-six-orb-platform",
+        "kind": "cloud48",
+        "x": 256,
+        "y": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "coordinateConvention": "x is inferred world artwork origin; y is directly measured artwork top, not an inferred collision surface.",
+        "firstObservedSequence": 8827,
+        "firstObservedTick": 3019,
+        "firstCompleteObservedSequence": 8829,
+        "contactObserved": false,
+        "motionRule": null,
+        "observationNote": "Exact opaque supplied48-by-8 cloud48 pixels establish the six-orb platform and samples below. Worldx uses independent static screenshot camera registration. The ordinary floor-walking route never lands on or rides it; contact/activation rules and collision top are unmeasured."
+      }
+    ],
+    "platformObservations": [
+      {
+        "sequence": 8827,
+        "tick": 3019,
+        "nativeFramesSinceTick3015": 30,
+        "cameraX": 10,
+        "screenX": 246,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 62,
+        "clippedAtRightEdge": true,
+        "visibleWidth": 10,
+        "extentNote": "Earlier clipped pixels aligned to the complete48px sprite at sequence8829; the clipped crop alone does not establish total width."
+      },
+      {
+        "sequence": 8828,
+        "tick": 3023,
+        "nativeFramesSinceTick3015": 60,
+        "cameraX": 40,
+        "screenX": 216,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 260,
+        "clippedAtRightEdge": true,
+        "visibleWidth": 40,
+        "extentNote": "Earlier clipped pixels aligned to the complete48px sprite at sequence8829; the clipped crop alone does not establish total width."
+      },
+      {
+        "sequence": 8829,
+        "tick": 3027,
+        "nativeFramesSinceTick3015": 90,
+        "cameraX": 70,
+        "screenX": 186,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 8830,
+        "tick": 3031,
+        "nativeFramesSinceTick3015": 120,
+        "cameraX": 110,
+        "screenX": 146,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 8831,
+        "tick": 3035,
+        "nativeFramesSinceTick3015": 150,
+        "cameraX": 155,
+        "screenX": 101,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 8832,
+        "tick": 3039,
+        "nativeFramesSinceTick3015": 180,
+        "cameraX": 200,
+        "screenX": 56,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 8833,
+        "tick": 3043,
+        "nativeFramesSinceTick3015": 210,
+        "cameraX": 245,
+        "screenX": 11,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      }
+    ],
+    "platformObservationEvidence": [
+      {
+        "id": "3-1-sky-six-orb-platform",
+        "firstObservedClippedArtwork": {
+          "sequence": 8827,
+          "tick": 3019,
+          "nativeFramesSinceTick3015": 30,
+          "cameraX": 10,
+          "screenX": 246,
+          "worldX": 256,
+          "artworkY": 161,
+          "width": 48,
+          "height": 8,
+          "sprite": "sprite-large_platforms-2.png",
+          "kind": "cloud48",
+          "matchedOpaquePixels": 62,
+          "clippedAtRightEdge": true,
+          "visibleWidth": 10,
+          "extentNote": "Earlier clipped pixels aligned to the complete48px sprite at sequence8829; the clipped crop alone does not establish total width."
+        },
+        "firstCompleteObservation": {
+          "sequence": 8829,
+          "tick": 3027,
+          "nativeFramesSinceTick3015": 90,
+          "cameraX": 70,
+          "screenX": 186,
+          "worldX": 256,
+          "artworkY": 161,
+          "width": 48,
+          "height": 8,
+          "sprite": "sprite-large_platforms-2.png",
+          "kind": "cloud48",
+          "matchedOpaquePixels": 312
+        },
+        "observedWorldXRange": [
+          256,
+          256
+        ],
+        "observedArtworkYRange": [
+          161,
+          161
+        ],
+        "completeObservationCount": 5,
+        "earlierClippedObservationCount": 2,
+        "contactObserved": false,
+        "motionRule": null,
+        "inferenceNote": "No activation, launch-on-contact, speed, range, or return-period rule is inferred from these appearance samples. Stable coordinates only establish the sampled interval. Earlier clipped crops match the same observed anchor, while the later complete bitmap establishes48px width."
+      }
+    ],
+    "actorObservationMethod": "Exact opaque RGBA pixels from supplied special platform PNGs, removing contained32px matches inside a48px platform. No emulator memory, ROM contents, sibling data, or remembered behavior. Source is the completed public-controller destination capture."
+  }
+}

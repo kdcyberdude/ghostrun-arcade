@@ -1,0 +1,169 @@
+{
+  "createdUtc": "2026-11-06T09:03:51.867Z",
+  "originalFamilySha256": "f20b9582d7d799b48e78e3e42cfe78df4a45801d55c2effa7184a033dde45209",
+  "previousState": {
+    "file": "data/coin-clock-after-round-2.json",
+    "sha256": "fab630c8932270e26394aa13a63b0ce63b72e3c8449e0876aa28d0071a518b43"
+  },
+  "observations": [
+    {
+      "id": "coin-clock-r1-1",
+      "firstSample": 24114,
+      "hitSample": 24339,
+      "used": true
+    },
+    {
+      "id": "coin-clock-r1-2",
+      "firstSample": 24151,
+      "hitSample": 24377,
+      "used": false
+    },
+    {
+      "id": "coin-clock-r2-1",
+      "firstSample": 24241,
+      "hitSample": 24459,
+      "used": false
+    },
+    {
+      "id": "coin-clock-r2-2",
+      "firstSample": 24189,
+      "hitSample": 24407,
+      "used": false
+    },
+    {
+      "id": "coin-clock-r3-1",
+      "firstSample": 24166,
+      "hitSample": 24399,
+      "used": true
+    },
+    {
+      "id": "coin-clock-r3-2",
+      "firstSample": 24249,
+      "hitSample": 24467,
+      "used": true
+    }
+  ],
+  "models": [
+    {
+      "id": "21/10/12/3/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/4/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/5/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/13/2/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/3/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/4/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/14/1/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/14/2/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/14/3/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/15/0/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/15/1/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/15/2/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/16/0/2",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/16/1/2",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/17/0/1",
+      "period": 21,
+      "count": 10,
+      "phase": 17,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    }
+  ],
+  "rule": "Only original immutable IDs eliminated; parameters never changed."
+}

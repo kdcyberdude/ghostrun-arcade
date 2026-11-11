@@ -1,0 +1,13 @@
+{
+  "level": "1-1",
+  "from": "main",
+  "to": "bonus-coins",
+  "smallPlayerFrames": 5,
+  "evidence": "evidence/one-one-room-fall-v2-fresh-audit.json and evidence/one-one-room-fall-v2-prior-case-audit.json; transition time, source velocity and audio events remain inferred.",
+  "smallPlayerEntry": {
+    "transitionFrames": 78,
+    "spawnFeetY": 64,
+    "initialVy": 0.4375,
+    "gravity": 0.1484375
+  }
+}

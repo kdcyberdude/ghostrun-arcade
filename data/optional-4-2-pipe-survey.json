@@ -1,0 +1,79 @@
+{
+  "schema": "optional-pipe-candidate-survey-v1",
+  "level": "4-2",
+  "area": "area-3",
+  "sourceTrace": "evidence/local/optional-4-2-pipes/trace.jsonl",
+  "resetThenRecordedPrefixTicks": [
+    4274,
+    4290,
+    4298
+  ],
+  "candidates": [
+    {
+      "x": 1168,
+      "top": 160,
+      "sequence": 1375,
+      "pipeScreenX": 100,
+      "downNativeFrames": 150,
+      "tick": 4329,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-2-pipes/01375-tick-04329.png",
+      "playerScreenOrigin": [
+        107,
+        160
+      ],
+      "relativePlayerX": 7,
+      "roomConnectionAccepted": false,
+      "status": "Exact complete standing player and supplied pipe artwork observed; centeredDOWN showed same underground scene. Other activation conditions remain untested."
+    },
+    {
+      "x": 1264,
+      "top": 96,
+      "sequence": 1394,
+      "pipeScreenX": 82,
+      "downNativeFrames": 150,
+      "tick": 4442,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-2-pipes/01394-tick-04442.png",
+      "playerScreenOrigin": [
+        88,
+        96
+      ],
+      "relativePlayerX": 6,
+      "roomConnectionAccepted": false,
+      "status": "Exact complete standing player and supplied pipe artwork observed; centeredDOWN showed same underground scene. Other activation conditions remain untested."
+    },
+    {
+      "x": 2112,
+      "top": 176,
+      "sequence": 2790,
+      "pipeScreenX": 48,
+      "downNativeFrames": 150,
+      "tick": 4458,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-2-pipes/02790-tick-04458.png",
+      "playerScreenOrigin": [
+        56,
+        176
+      ],
+      "relativePlayerX": 8,
+      "roomConnectionAccepted": false,
+      "status": "Exact complete standing player and supplied pipe artwork observed; centeredDOWN showed same underground scene. Other activation conditions remain untested."
+    },
+    {
+      "x": 1440,
+      "top": 160,
+      "sequence": 3487,
+      "pipeScreenX": 87,
+      "downNativeFrames": 150,
+      "tick": 4355,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-2-pipes/03487-tick-04355.png",
+      "playerScreenOrigin": [
+        96,
+        160
+      ],
+      "relativePlayerX": 9,
+      "roomConnectionAccepted": false,
+      "status": "Exact complete standing player and supplied pipe artwork observed; centeredDOWN showed same underground scene. Other activation conditions remain untested."
+    }
+  ],
+  "coordinateStatus": "Pipe1168 is anchored by observed main metatiles. Tall pipe is96px to its right in the same source images, giving1264/top96; old freeTile1262 is a separately inferred camera registration.",
+  "failures": "An earlier4278-prefix approach and a later tall-pipe-to-next-pipe jump caused actual enemy/plant deaths. Neither is counted as a negative pipe entry trial."
+}

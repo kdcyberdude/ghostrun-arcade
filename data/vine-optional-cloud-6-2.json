@@ -1,0 +1,6779 @@
+{
+  "schema": "public-controller-cloud-contact-measurement-v1",
+  "level": "6-2",
+  "sourceTrace": "evidence/local/vine-optional-cloud-6-2/trace.jsonl",
+  "prefixDecisions": 6575,
+  "observations": [
+    {
+      "sequence": 1116,
+      "tick": 6690,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 24
+      },
+      "nativeFrames": 180,
+      "nativeFramesSince6690": 0,
+      "cameraX": 0,
+      "cameraDelta": 0,
+      "cameraMethod": "Independently replayed accepted camera0 scene",
+      "cameraBinaryError": 0,
+      "cameraScores": {
+        "0": 0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 0,
+      "exactFloorTop12Matches": [
+        0,
+        16,
+        32,
+        48,
+        96,
+        112,
+        128,
+        144,
+        160,
+        176,
+        192,
+        208,
+        224,
+        240
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 243,
+          "top": 98,
+          "right": 251,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [],
+      "player": {
+        "originX": 75,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 77,
+        "visibleRight": 88,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 75,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 75,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01116-tick-06690.png"
+    },
+    {
+      "sequence": 1117,
+      "tick": 6702,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 12
+      },
+      "nativeFrames": 90,
+      "nativeFramesSince6690": 90,
+      "cameraX": 71,
+      "cameraDelta": 71,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.010932475884244373,
+      "cameraScores": {
+        "71": 0.010932475884244373
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        71
+      ],
+      "exactFloorPhase": 9,
+      "exactFloorTop12Matches": [
+        9,
+        25,
+        41,
+        57,
+        73,
+        89,
+        121,
+        137,
+        153,
+        169,
+        185,
+        201,
+        217,
+        233
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 172,
+          "top": 98,
+          "right": 180,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 188,
+          "top": 98,
+          "right": 196,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 204,
+          "top": 98,
+          "right": 212,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 220,
+          "top": 98,
+          "right": 228,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 236,
+          "top": 98,
+          "right": 244,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 185,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 108,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 108,
+        "visibleRight": 122,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 108,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 179,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01117-tick-06702.png"
+    },
+    {
+      "sequence": 1118,
+      "tick": 6706,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "nativeFramesSince6690": 120,
+      "cameraX": 96,
+      "cameraDelta": 25,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "25": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        25
+      ],
+      "exactFloorPhase": 0,
+      "exactFloorTop12Matches": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        128,
+        144,
+        160,
+        176,
+        192,
+        208,
+        224,
+        240
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 147,
+          "top": 98,
+          "right": 155,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 163,
+          "top": 98,
+          "right": 171,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 179,
+          "top": 98,
+          "right": 187,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 195,
+          "top": 98,
+          "right": 203,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 211,
+          "top": 98,
+          "right": 219,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 227,
+          "top": 98,
+          "right": 235,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 243,
+          "top": 98,
+          "right": 251,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 160,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 124,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 207,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01118-tick-06706.png"
+    },
+    {
+      "sequence": 1122,
+      "tick": 6707,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 128,
+      "cameraX": 100,
+      "cameraDelta": 4,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "4": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        4
+      ],
+      "exactFloorPhase": 12,
+      "exactFloorTop12Matches": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124,
+        140,
+        156,
+        172,
+        188,
+        204,
+        220,
+        236
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 143,
+          "top": 98,
+          "right": 151,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 159,
+          "top": 98,
+          "right": 167,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 175,
+          "top": 98,
+          "right": 183,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 191,
+          "top": 98,
+          "right": 199,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 207,
+          "top": 98,
+          "right": 215,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 223,
+          "top": 98,
+          "right": 231,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 239,
+          "top": 98,
+          "right": 247,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 156,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 151,
+        "feetY": 182,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 167,
+        "visibleBottom": 182,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 151,
+            "feetY": 182,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 211,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01122-tick-06707.png"
+    },
+    {
+      "sequence": 1123,
+      "tick": 6708,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 136,
+      "cameraX": 106,
+      "cameraDelta": 6,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "6": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        6
+      ],
+      "exactFloorPhase": 6,
+      "exactFloorTop12Matches": [
+        6,
+        22,
+        38,
+        54,
+        70,
+        86,
+        102,
+        118,
+        134,
+        150,
+        166,
+        182,
+        198,
+        214,
+        230
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 137,
+          "top": 98,
+          "right": 145,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 153,
+          "top": 98,
+          "right": 161,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 169,
+          "top": 98,
+          "right": 177,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 185,
+          "top": 98,
+          "right": 193,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 201,
+          "top": 98,
+          "right": 209,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 217,
+          "top": 98,
+          "right": 225,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 233,
+          "top": 98,
+          "right": 241,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 150,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 130,
+        "feetY": 161,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 146,
+        "visibleBottom": 161,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 130,
+            "feetY": 161,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 217,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01123-tick-06708.png"
+    },
+    {
+      "sequence": 1124,
+      "tick": 6709,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 143,
+      "cameraX": 113,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "7": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 15,
+      "exactFloorTop12Matches": [
+        15,
+        31,
+        47,
+        63,
+        79,
+        95,
+        111,
+        127,
+        143,
+        159,
+        175,
+        191,
+        207,
+        223,
+        239
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 130,
+          "top": 98,
+          "right": 138,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 146,
+          "top": 98,
+          "right": 154,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 162,
+          "top": 98,
+          "right": 170,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 178,
+          "top": 98,
+          "right": 186,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 194,
+          "top": 98,
+          "right": 202,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 210,
+          "top": 98,
+          "right": 218,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 226,
+          "top": 98,
+          "right": 234,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 242,
+          "top": 98,
+          "right": 250,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 143,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 117,
+        "feetY": 148,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 133,
+        "visibleBottom": 148,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 117,
+            "feetY": 148,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 224,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01124-tick-06709.png"
+    },
+    {
+      "sequence": 1125,
+      "tick": 6710,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 151,
+      "cameraX": 123,
+      "cameraDelta": 10,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "10": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        10
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 120,
+          "top": 98,
+          "right": 128,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 232,
+          "top": 98,
+          "right": 240,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 248,
+          "top": 98,
+          "right": 256,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 133,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 111,
+        "feetY": 142,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 127,
+        "visibleBottom": 142,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 111,
+            "feetY": 142,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 235,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01125-tick-06710.png"
+    },
+    {
+      "sequence": 1126,
+      "tick": 6711,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 158,
+      "cameraX": 134,
+      "cameraDelta": 11,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "11": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        11
+      ],
+      "exactFloorPhase": 10,
+      "exactFloorTop12Matches": [
+        10,
+        26,
+        42,
+        58,
+        74,
+        90,
+        106,
+        122,
+        138,
+        154,
+        170,
+        186,
+        202,
+        218,
+        234
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 109,
+          "top": 98,
+          "right": 117,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 125,
+          "top": 98,
+          "right": 133,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 141,
+          "top": 98,
+          "right": 149,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 157,
+          "top": 98,
+          "right": 165,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 173,
+          "top": 98,
+          "right": 181,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 189,
+          "top": 98,
+          "right": 197,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 205,
+          "top": 98,
+          "right": 213,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 221,
+          "top": 98,
+          "right": 229,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 237,
+          "top": 98,
+          "right": 245,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 122,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 256
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 115,
+        "feetY": 146,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 131,
+        "visibleBottom": 146,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 115,
+            "feetY": 146,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 246,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01126-tick-06711.png"
+    },
+    {
+      "sequence": 1127,
+      "tick": 6712,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 166,
+      "cameraX": 148,
+      "cameraDelta": 14,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "14": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        14
+      ],
+      "exactFloorPhase": 12,
+      "exactFloorTop12Matches": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124,
+        140,
+        156,
+        172,
+        188,
+        204,
+        220,
+        236
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 95,
+          "top": 98,
+          "right": 103,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 111,
+          "top": 98,
+          "right": 119,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 127,
+          "top": 98,
+          "right": 135,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 143,
+          "top": 98,
+          "right": 151,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 159,
+          "top": 98,
+          "right": 167,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 175,
+          "top": 98,
+          "right": 183,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 191,
+          "top": 98,
+          "right": 199,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 207,
+          "top": 98,
+          "right": 215,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 223,
+          "top": 98,
+          "right": 231,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 239,
+          "top": 98,
+          "right": 247,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 111,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 259
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 113,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 261,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01127-tick-06712.png"
+    },
+    {
+      "sequence": 1128,
+      "tick": 6713,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 173,
+      "cameraX": 164,
+      "cameraDelta": 16,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "16": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        16
+      ],
+      "exactFloorPhase": 12,
+      "exactFloorTop12Matches": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124,
+        140,
+        156,
+        172,
+        188,
+        204,
+        220,
+        236
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 79,
+          "top": 98,
+          "right": 87,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 95,
+          "top": 98,
+          "right": 103,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 111,
+          "top": 98,
+          "right": 119,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 127,
+          "top": 98,
+          "right": 135,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 143,
+          "top": 98,
+          "right": 151,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 159,
+          "top": 98,
+          "right": 167,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 175,
+          "top": 98,
+          "right": 183,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 191,
+          "top": 98,
+          "right": 199,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 207,
+          "top": 98,
+          "right": 215,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 223,
+          "top": 98,
+          "right": 231,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 239,
+          "top": 98,
+          "right": 247,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 102,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 266
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 277,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01128-tick-06713.png"
+    },
+    {
+      "sequence": 1129,
+      "tick": 6714,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 181,
+      "cameraX": 181,
+      "cameraDelta": 17,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "17": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        17
+      ],
+      "exactFloorPhase": 11,
+      "exactFloorTop12Matches": [
+        11,
+        27,
+        43,
+        59,
+        75,
+        91,
+        107,
+        123,
+        139,
+        155,
+        171,
+        187,
+        203,
+        219,
+        235
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 62,
+          "top": 98,
+          "right": 70,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 78,
+          "top": 98,
+          "right": 86,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 94,
+          "top": 98,
+          "right": 102,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 110,
+          "top": 98,
+          "right": 118,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 126,
+          "top": 98,
+          "right": 134,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 142,
+          "top": 98,
+          "right": 150,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 158,
+          "top": 98,
+          "right": 166,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 174,
+          "top": 98,
+          "right": 182,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 190,
+          "top": 98,
+          "right": 198,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 206,
+          "top": 98,
+          "right": 214,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 222,
+          "top": 98,
+          "right": 230,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 238,
+          "top": 98,
+          "right": 246,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 93,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 274
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 113,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 294,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01129-tick-06714.png"
+    },
+    {
+      "sequence": 1130,
+      "tick": 6715,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 188,
+      "cameraX": 194,
+      "cameraDelta": 13,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "13": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        13
+      ],
+      "exactFloorPhase": 14,
+      "exactFloorTop12Matches": [
+        14,
+        30,
+        46,
+        62,
+        78,
+        94,
+        110,
+        126,
+        142,
+        158,
+        174,
+        190,
+        206,
+        222,
+        238
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 49,
+          "top": 98,
+          "right": 57,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 65,
+          "top": 98,
+          "right": 73,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 81,
+          "top": 98,
+          "right": 89,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 97,
+          "top": 98,
+          "right": 105,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 113,
+          "top": 98,
+          "right": 121,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 129,
+          "top": 98,
+          "right": 137,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 145,
+          "top": 98,
+          "right": 153,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 161,
+          "top": 98,
+          "right": 169,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 177,
+          "top": 98,
+          "right": 185,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 193,
+          "top": 98,
+          "right": 201,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 209,
+          "top": 98,
+          "right": 217,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 225,
+          "top": 98,
+          "right": 233,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 241,
+          "top": 98,
+          "right": 249,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 87,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 281
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 127,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 307,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01130-tick-06715.png"
+    },
+    {
+      "sequence": 1131,
+      "tick": 6716,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 196,
+      "cameraX": 206,
+      "cameraDelta": 12,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "12": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        12
+      ],
+      "exactFloorPhase": 2,
+      "exactFloorTop12Matches": [
+        2,
+        18,
+        34,
+        50,
+        66,
+        82,
+        98,
+        114,
+        130,
+        146,
+        162,
+        178,
+        194,
+        210,
+        226
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 37,
+          "top": 98,
+          "right": 45,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 53,
+          "top": 98,
+          "right": 61,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 69,
+          "top": 98,
+          "right": 77,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 85,
+          "top": 98,
+          "right": 93,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 101,
+          "top": 98,
+          "right": 109,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 117,
+          "top": 98,
+          "right": 125,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 133,
+          "top": 98,
+          "right": 141,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 149,
+          "top": 98,
+          "right": 157,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 165,
+          "top": 98,
+          "right": 173,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 181,
+          "top": 98,
+          "right": 189,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 197,
+          "top": 98,
+          "right": 205,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 213,
+          "top": 98,
+          "right": 221,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 229,
+          "top": 98,
+          "right": 237,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 245,
+          "top": 98,
+          "right": 253,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 83,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 289
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 112,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 318,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01131-tick-06716.png"
+    },
+    {
+      "sequence": 1132,
+      "tick": 6717,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 203,
+      "cameraX": 212,
+      "cameraDelta": 6,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "6": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        6
+      ],
+      "exactFloorPhase": 12,
+      "exactFloorTop12Matches": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124,
+        140,
+        156,
+        172,
+        188,
+        204,
+        220,
+        236
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 31,
+          "top": 98,
+          "right": 39,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 47,
+          "top": 98,
+          "right": 55,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 63,
+          "top": 98,
+          "right": 71,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 79,
+          "top": 98,
+          "right": 87,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 95,
+          "top": 98,
+          "right": 103,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 111,
+          "top": 98,
+          "right": 119,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 127,
+          "top": 98,
+          "right": 135,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 143,
+          "top": 98,
+          "right": 151,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 159,
+          "top": 98,
+          "right": 167,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 175,
+          "top": 98,
+          "right": 183,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 191,
+          "top": 98,
+          "right": 199,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 207,
+          "top": 98,
+          "right": 215,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 223,
+          "top": 98,
+          "right": 231,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 239,
+          "top": 98,
+          "right": 247,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 296
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 325,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01132-tick-06717.png"
+    },
+    {
+      "sequence": 1133,
+      "tick": 6718,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 211,
+      "cameraX": 220,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "8": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 4,
+      "exactFloorTop12Matches": [
+        4,
+        20,
+        36,
+        52,
+        68,
+        84,
+        100,
+        116,
+        132,
+        148,
+        164,
+        180,
+        196,
+        212,
+        228
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 23,
+          "top": 98,
+          "right": 31,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 39,
+          "top": 98,
+          "right": 47,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 55,
+          "top": 98,
+          "right": 63,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 71,
+          "top": 98,
+          "right": 79,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 87,
+          "top": 98,
+          "right": 95,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 103,
+          "top": 98,
+          "right": 111,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 119,
+          "top": 98,
+          "right": 127,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 135,
+          "top": 98,
+          "right": 143,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 151,
+          "top": 98,
+          "right": 159,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 167,
+          "top": 98,
+          "right": 175,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 183,
+          "top": 98,
+          "right": 191,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 199,
+          "top": 98,
+          "right": 207,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 215,
+          "top": 98,
+          "right": 223,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 231,
+          "top": 98,
+          "right": 239,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 247,
+          "top": 98,
+          "right": 255,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 304
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 127,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 333,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01133-tick-06718.png"
+    },
+    {
+      "sequence": 1134,
+      "tick": 6719,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 218,
+      "cameraX": 227,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "7": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 13,
+      "exactFloorTop12Matches": [
+        13,
+        29,
+        45,
+        61,
+        77,
+        93,
+        109,
+        125,
+        141,
+        157,
+        173,
+        189,
+        205,
+        221,
+        237
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 16,
+          "top": 98,
+          "right": 24,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 32,
+          "top": 98,
+          "right": 40,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 48,
+          "top": 98,
+          "right": 56,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 64,
+          "top": 98,
+          "right": 72,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 80,
+          "top": 98,
+          "right": 88,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 96,
+          "top": 98,
+          "right": 104,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 112,
+          "top": 98,
+          "right": 120,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 128,
+          "top": 98,
+          "right": 136,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 144,
+          "top": 98,
+          "right": 152,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 160,
+          "top": 98,
+          "right": 168,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 176,
+          "top": 98,
+          "right": 184,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 192,
+          "top": 98,
+          "right": 200,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 208,
+          "top": 98,
+          "right": 216,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 224,
+          "top": 98,
+          "right": 232,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 240,
+          "top": 98,
+          "right": 248,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 311
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 340,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01134-tick-06719.png"
+    },
+    {
+      "sequence": 1135,
+      "tick": 6720,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 226,
+      "cameraX": 235,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "8": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 104,
+          "top": 98,
+          "right": 112,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 120,
+          "top": 98,
+          "right": 128,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 232,
+          "top": 98,
+          "right": 240,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 248,
+          "top": 98,
+          "right": 256,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 319
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 348,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01135-tick-06720.png"
+    },
+    {
+      "sequence": 1136,
+      "tick": 6721,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 233,
+      "cameraX": 242,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "7": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 14,
+      "exactFloorTop12Matches": [
+        14,
+        30,
+        46,
+        62,
+        78,
+        94,
+        110,
+        126,
+        142,
+        158,
+        174,
+        190,
+        206,
+        222,
+        238
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 1,
+          "top": 98,
+          "right": 9,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 17,
+          "top": 98,
+          "right": 25,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 33,
+          "top": 98,
+          "right": 41,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 49,
+          "top": 98,
+          "right": 57,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 65,
+          "top": 98,
+          "right": 73,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 81,
+          "top": 98,
+          "right": 89,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 97,
+          "top": 98,
+          "right": 105,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 113,
+          "top": 98,
+          "right": 121,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 129,
+          "top": 98,
+          "right": 137,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 145,
+          "top": 98,
+          "right": 153,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 161,
+          "top": 98,
+          "right": 169,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 177,
+          "top": 98,
+          "right": 185,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 193,
+          "top": 98,
+          "right": 201,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 209,
+          "top": 98,
+          "right": 217,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 225,
+          "top": 98,
+          "right": 233,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 241,
+          "top": 98,
+          "right": 249,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 326
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 355,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01136-tick-06721.png"
+    },
+    {
+      "sequence": 1137,
+      "tick": 6722,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 241,
+      "cameraX": 250,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "8": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 6,
+      "exactFloorTop12Matches": [
+        6,
+        22,
+        38,
+        54,
+        70,
+        86,
+        102,
+        118,
+        134,
+        150,
+        166,
+        182,
+        198,
+        214,
+        230
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 9,
+          "top": 98,
+          "right": 17,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 25,
+          "top": 98,
+          "right": 33,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 41,
+          "top": 98,
+          "right": 49,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 57,
+          "top": 98,
+          "right": 65,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 73,
+          "top": 98,
+          "right": 81,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 89,
+          "top": 98,
+          "right": 97,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 105,
+          "top": 98,
+          "right": 113,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 121,
+          "top": 98,
+          "right": 129,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 137,
+          "top": 98,
+          "right": 145,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 153,
+          "top": 98,
+          "right": 161,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 169,
+          "top": 98,
+          "right": 177,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 185,
+          "top": 98,
+          "right": 193,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 201,
+          "top": 98,
+          "right": 209,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 217,
+          "top": 98,
+          "right": 225,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 233,
+          "top": 98,
+          "right": 241,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 334
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 363,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01137-tick-06722.png"
+    },
+    {
+      "sequence": 1138,
+      "tick": 6723,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 248,
+      "cameraX": 257,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "7": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 15,
+      "exactFloorTop12Matches": [
+        15,
+        31,
+        47,
+        63,
+        79,
+        95,
+        111,
+        127,
+        143,
+        159,
+        175,
+        191,
+        207,
+        223,
+        239
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 2,
+          "top": 98,
+          "right": 10,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 18,
+          "top": 98,
+          "right": 26,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 34,
+          "top": 98,
+          "right": 42,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 50,
+          "top": 98,
+          "right": 58,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 66,
+          "top": 98,
+          "right": 74,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 82,
+          "top": 98,
+          "right": 90,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 98,
+          "top": 98,
+          "right": 106,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 114,
+          "top": 98,
+          "right": 122,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 130,
+          "top": 98,
+          "right": 138,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 146,
+          "top": 98,
+          "right": 154,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 162,
+          "top": 98,
+          "right": 170,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 178,
+          "top": 98,
+          "right": 186,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 194,
+          "top": 98,
+          "right": 202,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 210,
+          "top": 98,
+          "right": 218,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 226,
+          "top": 98,
+          "right": 234,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 341
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 370,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01138-tick-06723.png"
+    },
+    {
+      "sequence": 1139,
+      "tick": 6724,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 256,
+      "cameraX": 265,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "8": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 7,
+      "exactFloorTop12Matches": [
+        7,
+        23,
+        39,
+        55,
+        71,
+        87,
+        103,
+        119,
+        135,
+        151,
+        167,
+        183,
+        199,
+        215,
+        231
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 10,
+          "top": 98,
+          "right": 18,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 26,
+          "top": 98,
+          "right": 34,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 42,
+          "top": 98,
+          "right": 50,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 58,
+          "top": 98,
+          "right": 66,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 74,
+          "top": 98,
+          "right": 82,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 90,
+          "top": 98,
+          "right": 98,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 106,
+          "top": 98,
+          "right": 114,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 122,
+          "top": 98,
+          "right": 130,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 138,
+          "top": 98,
+          "right": 146,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 154,
+          "top": 98,
+          "right": 162,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 170,
+          "top": 98,
+          "right": 178,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 186,
+          "top": 98,
+          "right": 194,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 202,
+          "top": 98,
+          "right": 210,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 218,
+          "top": 98,
+          "right": 226,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 84,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 349
+        }
+      ],
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 126,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 378,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01139-tick-06724.png"
+    },
+    {
+      "sequence": 1140,
+      "tick": 6725,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 263,
+      "cameraX": 267,
+      "cameraDelta": 2,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "2": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        2
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 104,
+          "top": 98,
+          "right": 112,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 120,
+          "top": 98,
+          "right": 128,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 89,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 356
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 106,
+        "feetY": 137,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 122,
+        "visibleBottom": 137,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 106,
+            "feetY": 137,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01140-tick-06725.png"
+    },
+    {
+      "sequence": 1141,
+      "tick": 6726,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 271,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.02571001494768311,
+      "cameraScores": {
+        "0": 0.02571001494768311
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 97,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 364
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 84,
+        "feetY": 115,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 100,
+        "visibleBottom": 115,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 84,
+            "feetY": 115,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01141-tick-06726.png"
+    },
+    {
+      "sequence": 1142,
+      "tick": 6727,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 278,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 104,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 371
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 87,
+        "visibleBottom": 102,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01142-tick-06727.png"
+    },
+    {
+      "sequence": 1143,
+      "tick": 6728,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 286,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 112,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 379
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 70,
+        "feetY": 101,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 86,
+        "visibleBottom": 101,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 70,
+            "feetY": 101,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01143-tick-06728.png"
+    },
+    {
+      "sequence": 1144,
+      "tick": 6729,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 293,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 119,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 386
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 92,
+        "feetY": 123,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 108,
+        "visibleBottom": 123,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 92,
+            "feetY": 123,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01144-tick-06729.png"
+    },
+    {
+      "sequence": 1145,
+      "tick": 6730,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 301,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 127,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 394
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 125,
+        "feetY": 156,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 141,
+        "visibleBottom": 156,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 125,
+            "feetY": 156,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01145-tick-06730.png"
+    },
+    {
+      "sequence": 1146,
+      "tick": 6731,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 308,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 134,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 401
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 155,
+        "feetY": 186,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 171,
+        "visibleBottom": 186,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 155,
+            "feetY": 186,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01146-tick-06731.png"
+    },
+    {
+      "sequence": 1147,
+      "tick": 6732,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 316,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 142,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 409
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01147-tick-06732.png"
+    },
+    {
+      "sequence": 1148,
+      "tick": 6733,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 323,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 149,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 416
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01148-tick-06733.png"
+    },
+    {
+      "sequence": 1149,
+      "tick": 6734,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 331,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 157,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 424
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01149-tick-06734.png"
+    },
+    {
+      "sequence": 1150,
+      "tick": 6735,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 338,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 164,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 431
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01150-tick-06735.png"
+    },
+    {
+      "sequence": 1151,
+      "tick": 6736,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 346,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 172,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 439
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01151-tick-06736.png"
+    },
+    {
+      "sequence": 1152,
+      "tick": 6737,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 353,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 179,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 446
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01152-tick-06737.png"
+    },
+    {
+      "sequence": 1153,
+      "tick": 6738,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 361,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 187,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 454
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01153-tick-06738.png"
+    },
+    {
+      "sequence": 1154,
+      "tick": 6739,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6690": 368,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 194,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 461
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01154-tick-06739.png"
+    },
+    {
+      "sequence": 1155,
+      "tick": 6740,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6690": 376,
+      "cameraX": 267,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed unchanged final coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraScores": {
+        "0": 0.0
+      },
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 5,
+      "exactFloorTop12Matches": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "row6CoinComponents": [
+        {
+          "left": 8,
+          "top": 98,
+          "right": 16,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 24,
+          "top": 98,
+          "right": 32,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 40,
+          "top": 98,
+          "right": 48,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 56,
+          "top": 98,
+          "right": 64,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 72,
+          "top": 98,
+          "right": 80,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 88,
+          "top": 98,
+          "right": 96,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 136,
+          "top": 98,
+          "right": 144,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 152,
+          "top": 98,
+          "right": 160,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 168,
+          "top": 98,
+          "right": 176,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 184,
+          "top": 98,
+          "right": 192,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 200,
+          "top": 98,
+          "right": 208,
+          "bottom": 112,
+          "pixels": 86
+        },
+        {
+          "left": 216,
+          "top": 98,
+          "right": 224,
+          "bottom": 112,
+          "pixels": 86
+        }
+      ],
+      "platforms": [
+        {
+          "screenX": 202,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "matchedOpaquePixels": 208,
+          "worldX": 469
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 379,
+      "sourceImage": "evidence/local/vine-optional-cloud-6-2/01155-tick-06740.png"
+    }
+  ],
+  "identityTolerancePixels": 0,
+  "cameraQualification": "Image-inferred camera from exact16x12 floor phase and static image registration; scored alternatives retained. Per-step search bound4px/native+4 is an explicit conservative search bound, not a measured movement rule. No emulator state used.",
+  "motionEvidence": {
+    "firstStandingContactSequence": 1127,
+    "firstStandingContactTick": 6712,
+    "observedStandingFeetY": 160,
+    "observedArtworkY": 161,
+    "lastStationarySequence": 1126,
+    "activationNativeFramesSince6690Window": [
+      159,
+      166
+    ],
+    "extrapolatedActivationEpochCandidateNativeFramesSince6690": 163,
+    "direction": "right",
+    "speedPixelsPerNativeFrame": 1,
+    "sampleCount": 29,
+    "maximumConstantSpeedResidualPixels": 0,
+    "samples": [
+      {
+        "sequence": 1127,
+        "nativeFramesSinceFirstContactSample": 0,
+        "worldX": 259,
+        "predictedWorldX": 259
+      },
+      {
+        "sequence": 1128,
+        "nativeFramesSinceFirstContactSample": 7,
+        "worldX": 266,
+        "predictedWorldX": 266
+      },
+      {
+        "sequence": 1129,
+        "nativeFramesSinceFirstContactSample": 15,
+        "worldX": 274,
+        "predictedWorldX": 274
+      },
+      {
+        "sequence": 1130,
+        "nativeFramesSinceFirstContactSample": 22,
+        "worldX": 281,
+        "predictedWorldX": 281
+      },
+      {
+        "sequence": 1131,
+        "nativeFramesSinceFirstContactSample": 30,
+        "worldX": 289,
+        "predictedWorldX": 289
+      },
+      {
+        "sequence": 1132,
+        "nativeFramesSinceFirstContactSample": 37,
+        "worldX": 296,
+        "predictedWorldX": 296
+      },
+      {
+        "sequence": 1133,
+        "nativeFramesSinceFirstContactSample": 45,
+        "worldX": 304,
+        "predictedWorldX": 304
+      },
+      {
+        "sequence": 1134,
+        "nativeFramesSinceFirstContactSample": 52,
+        "worldX": 311,
+        "predictedWorldX": 311
+      },
+      {
+        "sequence": 1135,
+        "nativeFramesSinceFirstContactSample": 60,
+        "worldX": 319,
+        "predictedWorldX": 319
+      },
+      {
+        "sequence": 1136,
+        "nativeFramesSinceFirstContactSample": 67,
+        "worldX": 326,
+        "predictedWorldX": 326
+      },
+      {
+        "sequence": 1137,
+        "nativeFramesSinceFirstContactSample": 75,
+        "worldX": 334,
+        "predictedWorldX": 334
+      },
+      {
+        "sequence": 1138,
+        "nativeFramesSinceFirstContactSample": 82,
+        "worldX": 341,
+        "predictedWorldX": 341
+      },
+      {
+        "sequence": 1139,
+        "nativeFramesSinceFirstContactSample": 90,
+        "worldX": 349,
+        "predictedWorldX": 349
+      },
+      {
+        "sequence": 1140,
+        "nativeFramesSinceFirstContactSample": 97,
+        "worldX": 356,
+        "predictedWorldX": 356
+      },
+      {
+        "sequence": 1141,
+        "nativeFramesSinceFirstContactSample": 105,
+        "worldX": 364,
+        "predictedWorldX": 364
+      },
+      {
+        "sequence": 1142,
+        "nativeFramesSinceFirstContactSample": 112,
+        "worldX": 371,
+        "predictedWorldX": 371
+      },
+      {
+        "sequence": 1143,
+        "nativeFramesSinceFirstContactSample": 120,
+        "worldX": 379,
+        "predictedWorldX": 379
+      },
+      {
+        "sequence": 1144,
+        "nativeFramesSinceFirstContactSample": 127,
+        "worldX": 386,
+        "predictedWorldX": 386
+      },
+      {
+        "sequence": 1145,
+        "nativeFramesSinceFirstContactSample": 135,
+        "worldX": 394,
+        "predictedWorldX": 394
+      },
+      {
+        "sequence": 1146,
+        "nativeFramesSinceFirstContactSample": 142,
+        "worldX": 401,
+        "predictedWorldX": 401
+      },
+      {
+        "sequence": 1147,
+        "nativeFramesSinceFirstContactSample": 150,
+        "worldX": 409,
+        "predictedWorldX": 409
+      },
+      {
+        "sequence": 1148,
+        "nativeFramesSinceFirstContactSample": 157,
+        "worldX": 416,
+        "predictedWorldX": 416
+      },
+      {
+        "sequence": 1149,
+        "nativeFramesSinceFirstContactSample": 165,
+        "worldX": 424,
+        "predictedWorldX": 424
+      },
+      {
+        "sequence": 1150,
+        "nativeFramesSinceFirstContactSample": 172,
+        "worldX": 431,
+        "predictedWorldX": 431
+      },
+      {
+        "sequence": 1151,
+        "nativeFramesSinceFirstContactSample": 180,
+        "worldX": 439,
+        "predictedWorldX": 439
+      },
+      {
+        "sequence": 1152,
+        "nativeFramesSinceFirstContactSample": 187,
+        "worldX": 446,
+        "predictedWorldX": 446
+      },
+      {
+        "sequence": 1153,
+        "nativeFramesSinceFirstContactSample": 195,
+        "worldX": 454,
+        "predictedWorldX": 454
+      },
+      {
+        "sequence": 1154,
+        "nativeFramesSinceFirstContactSample": 202,
+        "worldX": 461,
+        "predictedWorldX": 461
+      },
+      {
+        "sequence": 1155,
+        "nativeFramesSinceFirstContactSample": 210,
+        "worldX": 469,
+        "predictedWorldX": 469
+      }
+    ],
+    "qualification": "Exact208-opaque-pixel cloud32 artwork, independently registered static floor/coins. Activation frame extrapolated within a decision window."
+  },
+  "runtimeCandidate": {
+    "status": "Evidence-based implementation candidate; full hidden collision box and unseen path end remain inferred.",
+    "kind": "contact-cloud",
+    "initialX": 256,
+    "collisionTop": 160,
+    "artworkY": 161,
+    "width": 32,
+    "height": 8,
+    "direction": 1,
+    "speed": 1,
+    "activation": "First supported top contact",
+    "carrySupportedPlayer": true,
+    "continuesWhenPlayerAirborne": true,
+    "continuesAfterPlayerLandsOnFloor": true,
+    "period": null,
+    "pathEnd": null,
+    "undersideCollision": null
+  },
+  "referenceReplayAgreement": {
+    "originalSequence": 5615,
+    "replayedSequence": 1116,
+    "tick": 6690,
+    "tolerancePixels": 0,
+    "mismatchingPixels": 0,
+    "all21EntryRequestsAndNativeDurationsMatch": true,
+    "scope": "Reference-to-reference fresh standard prefix and accepted vine controls."
+  },
+  "ordinaryControllerRecipe": {
+    "resetThenRecordedPrefixTicks": 6575,
+    "entrySource": "data/six-two-vine.json routes/vine-entry-map-and-ordinary-return",
+    "requests": [
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1096,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1097,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1098,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3,
+        "sourceSequence": 1099,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 5,
+        "sourceSequence": 1100,
+        "nativeFrames": 37
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2,
+        "sourceSequence": 1101,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1102,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 2,
+        "sourceSequence": 1103,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4,
+        "sourceSequence": 1104,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3,
+        "sourceSequence": 1105,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2,
+        "sourceSequence": 1106,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1107,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1108,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2,
+        "sourceSequence": 1109,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 5,
+        "sourceSequence": 1110,
+        "nativeFrames": 38
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 2,
+        "sourceSequence": 1111,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "up",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 1112,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "up",
+          "a"
+        ],
+        "ticks": 2,
+        "sourceSequence": 1113,
+        "nativeFrames": 16
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 16,
+        "sourceSequence": 1114,
+        "nativeFrames": 120
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 24,
+        "sourceSequence": 1115,
+        "nativeFrames": 180
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 24,
+        "sourceSequence": 1116,
+        "nativeFrames": 180
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 12,
+        "sourceSequence": 1117,
+        "nativeFrames": 90
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4,
+        "sourceSequence": 1118,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1122,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1123,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1124,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1125,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1126,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1127,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1128,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1129,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1130,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1131,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1132,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1133,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1134,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1135,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1136,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1137,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1138,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1139,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1140,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1141,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 1142,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1143,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1144,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1145,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1146,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1147,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1148,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1149,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1150,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1151,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1152,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1153,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1154,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 1155,
+        "nativeFrames": 8
+      }
+    ]
+  },
+  "rejectedRequests": [
+    {
+      "sequence": 1119,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "A"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Unknown button"
+      },
+      "advancedNativeFrames": 0
+    },
+    {
+      "sequence": 1120,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "A"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Unknown button"
+      },
+      "advancedNativeFrames": 0
+    },
+    {
+      "sequence": 1121,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "A"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Unknown button"
+      },
+      "advancedNativeFrames": 0
+    }
+  ],
+  "uncertainties": [
+    "Exact activation frame is extrapolated inside the actual7/8-native-frame interval.",
+    "The finite observed rightward segment establishes no endstop, reversal, despawn or repeat rule.",
+    "Supported feet160/artwork161 are measured; full hidden collision geometry is inferred.",
+    "The final coin at world483 is uncollected and supplies a second absolute camera anchor after the first coin row boundary leaves the viewport.",
+    "This6-2 experiment used an edge jump and does not independently measure underside collision.",
+    "Departure tested by jumping off and landing on floor; ordinary walking off was not separately tested.",
+    "Controller errors for uppercase A were rejected without advancing game time and are preserved in the trace.",
+    "Reference mechanic evidence only; no browser-game validation."
+  ]
+}

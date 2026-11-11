@@ -1,0 +1,7 @@
+{
+  "periodActiveNativeFrames": 21,
+  "additionalQuantaAfterNextBoundary": 10,
+  "phaseAtFreshReset": 12,
+  "blocks": [{"level":"3-2","area":"main","col":77,"row":9,"kind":"multiCoin","evidence":"Observed repeated +200/+1, nonrefreshing eligibility window, terminal hit still awards a coin. evidence/three-two-coin-packet.json; data/coin-clock-candidate.json"}],
+  "qualification": "Bounded inferred clock representative selected before four successful fresh predictions. Ten is clock quanta, never a coin cap. Image-event offsets are not runtime delays. Exact phase/epoch, large-player transfer, other starts/areas, pause and reload persistence remain unmeasured. Area reload follows the existing block-reset convention."
+}

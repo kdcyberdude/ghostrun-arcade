@@ -1,0 +1,1305 @@
+{
+  "schema": "green-paratroopa-trajectory-candidate-v1",
+  "generatedUtc": "2026-11-05T22:38:48.468Z",
+  "declaredTolerance": {
+    "trainingMaxPixels": 1,
+    "heldoutMaxPixels": 2
+  },
+  "method": "Gravity/bounce grid fitted to uninterrupted right-moving dense2-1actor track3. Fresh left-moving actor after standard prefix and independent left/neutral controls supplies validation. Each trajectory conditions on its first two visible positions; native initial spawn height, phase and queue are not thereby established. Terminal fall cap fitted separately to actual gap track1; grid interval is not an exact engine constant.",
+  "best": {
+    "gravity": 0.109375,
+    "impulse": 3.09375,
+    "floor": 208,
+    "order": "before",
+    "first": 0,
+    "second": 0.125,
+    "maxError": 1,
+    "squaredError": 4
+  },
+  "alternatives": [
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0,
+      "second": 0.125,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.125,
+      "second": 0.25,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.375,
+      "second": 0.375,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 2.984375,
+      "floor": 208,
+      "order": "after",
+      "first": 0,
+      "second": 0.125,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 2.984375,
+      "floor": 208,
+      "order": "after",
+      "first": 0.125,
+      "second": 0.25,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 2.984375,
+      "floor": 208,
+      "order": "after",
+      "first": 0.375,
+      "second": 0.375,
+      "maxError": 1,
+      "squaredError": 4
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.25,
+      "second": 0.25,
+      "maxError": 1,
+      "squaredError": 5
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.25,
+      "second": 0.375,
+      "maxError": 1,
+      "squaredError": 5
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.5,
+      "second": 0.5,
+      "maxError": 1,
+      "squaredError": 5
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.625,
+      "second": 0.5,
+      "maxError": 1,
+      "squaredError": 5
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.625,
+      "second": 0.625,
+      "maxError": 1,
+      "squaredError": 5
+    },
+    {
+      "gravity": 0.109375,
+      "impulse": 3.09375,
+      "floor": 208,
+      "order": "before",
+      "first": 0.75,
+      "second": 0.625,
+      "maxError": 1,
+      "squaredError": 5
+    }
+  ],
+  "training": {
+    "maxError": 1,
+    "squaredError": 4,
+    "initialY": 173,
+    "initialVy": -1.3515625,
+    "rows": [
+      {
+        "frame": 10058,
+        "reference": 173,
+        "candidate": 173,
+        "error": 0
+      },
+      {
+        "frame": 10066,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10073,
+        "reference": 165,
+        "candidate": 165,
+        "error": 0
+      },
+      {
+        "frame": 10081,
+        "reference": 172,
+        "candidate": 172,
+        "error": 0
+      },
+      {
+        "frame": 10088,
+        "reference": 183,
+        "candidate": 183,
+        "error": 0
+      },
+      {
+        "frame": 10096,
+        "reference": 202,
+        "candidate": 202,
+        "error": 0
+      },
+      {
+        "frame": 10103,
+        "reference": 194,
+        "candidate": 194,
+        "error": 0
+      },
+      {
+        "frame": 10111,
+        "reference": 177,
+        "candidate": 177,
+        "error": 0
+      },
+      {
+        "frame": 10118,
+        "reference": 169,
+        "candidate": 169,
+        "error": 0
+      },
+      {
+        "frame": 10126,
+        "reference": 165,
+        "candidate": 165,
+        "error": 0
+      },
+      {
+        "frame": 10133,
+        "reference": 168,
+        "candidate": 168,
+        "error": 0
+      },
+      {
+        "frame": 10141,
+        "reference": 178,
+        "candidate": 178,
+        "error": 0
+      },
+      {
+        "frame": 10149,
+        "reference": 194,
+        "candidate": 195,
+        "error": 1
+      },
+      {
+        "frame": 10156,
+        "reference": 202,
+        "candidate": 202,
+        "error": 0
+      },
+      {
+        "frame": 10164,
+        "reference": 183,
+        "candidate": 183,
+        "error": 0
+      },
+      {
+        "frame": 10171,
+        "reference": 172,
+        "candidate": 172,
+        "error": 0
+      },
+      {
+        "frame": 10179,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10186,
+        "reference": 167,
+        "candidate": 166,
+        "error": -1
+      },
+      {
+        "frame": 10194,
+        "reference": 174,
+        "candidate": 173,
+        "error": -1
+      },
+      {
+        "frame": 10201,
+        "reference": 186,
+        "candidate": 185,
+        "error": -1
+      },
+      {
+        "frame": 10209,
+        "reference": 206,
+        "candidate": 206,
+        "error": 0
+      },
+      {
+        "frame": 10216,
+        "reference": 191,
+        "candidate": 191,
+        "error": 0
+      }
+    ]
+  },
+  "validation": {
+    "maxError": 1,
+    "squaredError": 8,
+    "initialY": 172,
+    "initialVy": -1.2321428571428572,
+    "rows": [
+      {
+        "frame": 10051,
+        "reference": 172,
+        "candidate": 172,
+        "error": 0
+      },
+      {
+        "frame": 10058,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10066,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10073,
+        "reference": 172,
+        "candidate": 172,
+        "error": 0
+      },
+      {
+        "frame": 10081,
+        "reference": 185,
+        "candidate": 185,
+        "error": 0
+      },
+      {
+        "frame": 10088,
+        "reference": 203,
+        "candidate": 203,
+        "error": 0
+      },
+      {
+        "frame": 10096,
+        "reference": 191,
+        "candidate": 191,
+        "error": 0
+      },
+      {
+        "frame": 10103,
+        "reference": 177,
+        "candidate": 177,
+        "error": 0
+      },
+      {
+        "frame": 10111,
+        "reference": 168,
+        "candidate": 168,
+        "error": 0
+      },
+      {
+        "frame": 10118,
+        "reference": 165,
+        "candidate": 165,
+        "error": 0
+      },
+      {
+        "frame": 10126,
+        "reference": 169,
+        "candidate": 169,
+        "error": 0
+      },
+      {
+        "frame": 10133,
+        "reference": 177,
+        "candidate": 178,
+        "error": 1
+      },
+      {
+        "frame": 10141,
+        "reference": 194,
+        "candidate": 195,
+        "error": 1
+      },
+      {
+        "frame": 10149,
+        "reference": 199,
+        "candidate": 199,
+        "error": 0
+      },
+      {
+        "frame": 10156,
+        "reference": 183,
+        "candidate": 183,
+        "error": 0
+      },
+      {
+        "frame": 10164,
+        "reference": 171,
+        "candidate": 171,
+        "error": 0
+      },
+      {
+        "frame": 10171,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10179,
+        "reference": 167,
+        "candidate": 167,
+        "error": 0
+      },
+      {
+        "frame": 10186,
+        "reference": 173,
+        "candidate": 173,
+        "error": 0
+      },
+      {
+        "frame": 10194,
+        "reference": 187,
+        "candidate": 188,
+        "error": 1
+      },
+      {
+        "frame": 10201,
+        "reference": 205,
+        "candidate": 206,
+        "error": 1
+      },
+      {
+        "frame": 10209,
+        "reference": 190,
+        "candidate": 189,
+        "error": -1
+      },
+      {
+        "frame": 10216,
+        "reference": 176,
+        "candidate": 176,
+        "error": 0
+      },
+      {
+        "frame": 10224,
+        "reference": 168,
+        "candidate": 167,
+        "error": -1
+      },
+      {
+        "frame": 10231,
+        "reference": 166,
+        "candidate": 165,
+        "error": -1
+      },
+      {
+        "frame": 10239,
+        "reference": 170,
+        "candidate": 170,
+        "error": 0
+      },
+      {
+        "frame": 10246,
+        "reference": 180,
+        "candidate": 180,
+        "error": 0
+      },
+      {
+        "frame": 10254,
+        "reference": 198,
+        "candidate": 197,
+        "error": -1
+      },
+      {
+        "frame": 10261,
+        "reference": 199,
+        "candidate": 199,
+        "error": 0
+      }
+    ]
+  },
+  "baselinePrevious": {
+    "gravity": 0.25,
+    "impulse": 3,
+    "floor": 208,
+    "maxError": 34,
+    "squaredError": 7582,
+    "initialY": 173,
+    "initialVy": -1.984375,
+    "rows": [
+      {
+        "frame": 10058,
+        "reference": 173,
+        "candidate": 173,
+        "error": 0
+      },
+      {
+        "frame": 10066,
+        "reference": 166,
+        "candidate": 166,
+        "error": 0
+      },
+      {
+        "frame": 10073,
+        "reference": 165,
+        "candidate": 173,
+        "error": 8
+      },
+      {
+        "frame": 10081,
+        "reference": 172,
+        "candidate": 196,
+        "error": 24
+      },
+      {
+        "frame": 10088,
+        "reference": 183,
+        "candidate": 198,
+        "error": 15
+      },
+      {
+        "frame": 10096,
+        "reference": 202,
+        "candidate": 191,
+        "error": -11
+      },
+      {
+        "frame": 10103,
+        "reference": 194,
+        "candidate": 198,
+        "error": 4
+      },
+      {
+        "frame": 10111,
+        "reference": 177,
+        "candidate": 198,
+        "error": 21
+      },
+      {
+        "frame": 10118,
+        "reference": 169,
+        "candidate": 191,
+        "error": 22
+      },
+      {
+        "frame": 10126,
+        "reference": 165,
+        "candidate": 198,
+        "error": 33
+      },
+      {
+        "frame": 10133,
+        "reference": 168,
+        "candidate": 200,
+        "error": 32
+      },
+      {
+        "frame": 10141,
+        "reference": 178,
+        "candidate": 191,
+        "error": 13
+      },
+      {
+        "frame": 10149,
+        "reference": 194,
+        "candidate": 198,
+        "error": 4
+      },
+      {
+        "frame": 10156,
+        "reference": 202,
+        "candidate": 200,
+        "error": -2
+      },
+      {
+        "frame": 10164,
+        "reference": 183,
+        "candidate": 191,
+        "error": 8
+      },
+      {
+        "frame": 10171,
+        "reference": 172,
+        "candidate": 196,
+        "error": 24
+      },
+      {
+        "frame": 10179,
+        "reference": 166,
+        "candidate": 200,
+        "error": 34
+      },
+      {
+        "frame": 10186,
+        "reference": 167,
+        "candidate": 191,
+        "error": 24
+      },
+      {
+        "frame": 10194,
+        "reference": 174,
+        "candidate": 196,
+        "error": 22
+      },
+      {
+        "frame": 10201,
+        "reference": 186,
+        "candidate": 202,
+        "error": 16
+      },
+      {
+        "frame": 10209,
+        "reference": 206,
+        "candidate": 191,
+        "error": -15
+      },
+      {
+        "frame": 10216,
+        "reference": 191,
+        "candidate": 195,
+        "error": 4
+      }
+    ]
+  },
+  "gapFall": {
+    "source": "Dense track1 crosses observed ground end at world X2432 and falls through empty columns152/153.",
+    "best": {
+      "cap": 3.09375,
+      "first": 0.25,
+      "second": 0,
+      "initialY": 170.25,
+      "initialVy": -1.0234375,
+      "maxError": 0,
+      "squaredError": 0,
+      "rows": [
+        {
+          "frame": 9938,
+          "reference": 170,
+          "candidate": 170,
+          "error": 0
+        },
+        {
+          "frame": 9946,
+          "reference": 166,
+          "candidate": 166,
+          "error": 0
+        },
+        {
+          "frame": 9953,
+          "reference": 168,
+          "candidate": 168,
+          "error": 0
+        },
+        {
+          "frame": 9961,
+          "reference": 176,
+          "candidate": 176,
+          "error": 0
+        },
+        {
+          "frame": 9968,
+          "reference": 190,
+          "candidate": 190,
+          "error": 0
+        },
+        {
+          "frame": 9976,
+          "reference": 212,
+          "candidate": 212,
+          "error": 0
+        },
+        {
+          "frame": 9983,
+          "reference": 234,
+          "candidate": 234,
+          "error": 0
+        }
+      ]
+    },
+    "zeroErrorCapGridInterval": [
+      3.09375,
+      3.28125
+    ],
+    "capGridStep": 0.015625,
+    "alternatives": [
+      {
+        "cap": 3.09375,
+        "first": 0.25,
+        "second": 0,
+        "initialY": 170.25,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.09375,
+        "first": 0.3125,
+        "second": 0.0625,
+        "initialY": 170.3125,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.109375,
+        "first": 0.25,
+        "second": 0,
+        "initialY": 170.25,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.109375,
+        "first": 0.3125,
+        "second": 0.0625,
+        "initialY": 170.3125,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.109375,
+        "first": 0.4375,
+        "second": 0.125,
+        "initialY": 170.4375,
+        "initialVy": -1.03125,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.109375,
+        "first": 0.5,
+        "second": 0.1875,
+        "initialY": 170.5,
+        "initialVy": -1.03125,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.109375,
+        "first": 0.6875,
+        "second": 0.3125,
+        "initialY": 170.6875,
+        "initialVy": -1.0390625,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.125,
+        "first": 0.25,
+        "second": 0,
+        "initialY": 170.25,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.125,
+        "first": 0.3125,
+        "second": 0.0625,
+        "initialY": 170.3125,
+        "initialVy": -1.0234375,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.125,
+        "first": 0.375,
+        "second": 0.0625,
+        "initialY": 170.375,
+        "initialVy": -1.03125,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.125,
+        "first": 0.4375,
+        "second": 0.125,
+        "initialY": 170.4375,
+        "initialVy": -1.03125,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      },
+      {
+        "cap": 3.125,
+        "first": 0.5,
+        "second": 0.1875,
+        "initialY": 170.5,
+        "initialVy": -1.03125,
+        "maxError": 0,
+        "squaredError": 0,
+        "rows": [
+          {
+            "frame": 9938,
+            "reference": 170,
+            "candidate": 170,
+            "error": 0
+          },
+          {
+            "frame": 9946,
+            "reference": 166,
+            "candidate": 166,
+            "error": 0
+          },
+          {
+            "frame": 9953,
+            "reference": 168,
+            "candidate": 168,
+            "error": 0
+          },
+          {
+            "frame": 9961,
+            "reference": 176,
+            "candidate": 176,
+            "error": 0
+          },
+          {
+            "frame": 9968,
+            "reference": 190,
+            "candidate": 190,
+            "error": 0
+          },
+          {
+            "frame": 9976,
+            "reference": 212,
+            "candidate": 212,
+            "error": 0
+          },
+          {
+            "frame": 9983,
+            "reference": 234,
+            "candidate": 234,
+            "error": 0
+          }
+        ]
+      }
+    ]
+  }
+}

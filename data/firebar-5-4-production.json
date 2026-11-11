@@ -1,0 +1,19 @@
+{
+  "schema": "accepted-five-four-firebar-v1",
+  "proposal": "data/firebar-5-4-integration-proposal.json",
+  "proposalSha256": "6ab6454a136300bfea0a2e08df80dfe54125340c6a9ef3715304880e9a20cfb9",
+  "validation": {
+    "file": "evidence/firebar-5-4-shared-verification.json",
+    "sha256ExcludingOnlyTopLevelDate": "795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6",
+    "originalProposalReportSha256": "0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f",
+    "exclusionReason": "Verifier regenerates a wall-clock date. Two independent invocations have JSON-exact identical content except that top-level date; every other field remains hashed.",
+    "beforeReport": "evidence/local/firebar-5-4-integration-2026-11-06T03-39-14.656Z/before-shared-verification.json",
+    "beforeReportSha256": "a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696",
+    "dateOnlyRerunAttestation": {
+      "file": "evidence/firebar-5-4-report-rerun-attestation.json",
+      "sha256": "d7ab440cb5842391606175244fe073f235128aed2df2fa5b428bb90dd5a9b62a"
+    }
+  },
+  "qualification": "Accept the measured local physical motor and explicitly inferred semantic base, while retaining all raw7..8px failures against the unchanged2px threshold.",
+  "noRecovered256PixelBaseClaim": true
+}

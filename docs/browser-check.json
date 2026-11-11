@@ -1,0 +1,18 @@
+{
+  "view": "2d",
+  "url": "http://127.0.0.1:53943/ghostrun-arcade/",
+  "checks": [
+    "real asset progress before Play becomes available",
+    "failed download and retry recovery",
+    "no hidden gameplay rendering on home",
+    "loaded assets and desktop home",
+    "remap, conflict detection and persistence",
+    "fullscreen launch",
+    "menu pauses and resumes",
+    "pause and sound",
+    "mobile fit and original aspect ratio",
+    "coarse-pointer touch controls, movement and44px targets"
+  ],
+  "errors": [],
+  "fullscreen": true
+}

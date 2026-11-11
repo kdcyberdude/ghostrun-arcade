@@ -1,0 +1,17 @@
+{
+  "level": "4-2",
+  "area": "area-3",
+  "old": [
+    1272,
+    96
+  ],
+  "corrected": [
+    1270,
+    120
+  ],
+  "pipeLeft": 1262,
+  "pipeTop": 96,
+  "spriteLeftOffsetFromPipe": 8,
+  "evidence": "evidence/four-two-tall-piranha-registration.json",
+  "qualification": "Hidden foot=pipe top+24 and proximity gate transfer the observed1-2 class to4-2 by inference. Exact native phase and collision timing remain unqualified."
+}

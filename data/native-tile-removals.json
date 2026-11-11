@@ -1,0 +1,10 @@
+{
+ "schema": "native-tile-removals-v1",
+ "note": "Tiles of the screenshot-extracted geometry that native Mario provably passes through. Each entry needs native trace rows (route rows, trace x/y = remake x and feet-32) in which the player overlaps the tile's box without any wall contact (speed byte unchanged).",
+ "removals": [
+  {
+   "level": "8-4", "area": "main", "tile": [72, 10],
+   "evidence": "Native rows 75822-75832 (jump off the lava-room platform): x 1139 -> 1154 at y 141 -> 118 (feet 173 -> 150), vx 6160-6384 on every row. The player's box right edge (x+13) crosses 1152 at feet 173 and stays inside column 72 (x 1152-1167) while the feet are 161-173, inside row 10 (y 160-175); a solid tile there stops the remake at x 1139.1 for ten rows. The tiles (72,11..14) and the pillar top at feet 160 (native landing at x 1188, row 75855) are unchanged."
+  }
+ ]
+}

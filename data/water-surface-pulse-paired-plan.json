@@ -1,0 +1,100 @@
+{
+  "declaredUTC": "2026-11-07T07:34:49.306Z",
+  "purpose": "Paired frozen baseline test of a previously observed settled 2-2 surface-pulse prefix; no production parameter fitting.",
+  "source": "Fresh standard reset, auto 1652 decisions in requests of at most 240, then 24 one-decision neutral requests to reach observed settled state.",
+  "commonPrefix": "Ten pairs of A for one decision then neutral for one decision. Starting action-relative frame zero is after the settled prefix.",
+  "cases": [
+    {
+      "id": "stroke-a",
+      "branch": [
+        [
+          "a"
+        ],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "stroke-b",
+      "branch": [
+        [
+          "a"
+        ],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "neutral-a",
+      "branch": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "id": "neutral-b",
+      "branch": [
+        [],
+        [],
+        [],
+        [],
+        []
+      ]
+    }
+  ],
+  "frozenPredictions": [
+    {
+      "frame": 158,
+      "stroke": 55,
+      "neutral": 72,
+      "strokeMinusNeutral": -17
+    },
+    {
+      "frame": 165,
+      "stroke": 47,
+      "neutral": 84,
+      "strokeMinusNeutral": -37
+    },
+    {
+      "frame": 173,
+      "stroke": 44,
+      "neutral": 101,
+      "strokeMinusNeutral": -57
+    },
+    {
+      "frame": 180,
+      "stroke": 47,
+      "neutral": 118,
+      "strokeMinusNeutral": -71
+    },
+    {
+      "frame": 188,
+      "stroke": 55,
+      "neutral": 139,
+      "strokeMinusNeutral": -84
+    }
+  ],
+  "predictionsSHA256": "582f049c0328ce70a876bccf5cf5c88efa94b4269326d09a4b2ff9d9db775bb7",
+  "frozenSources": {
+    "src/simulation.ts": "19137a6135c0421193a498dd0621fd3f50a47389ccdce557f1625c6e2aeacec4",
+    "src/water-physics.ts": "d883ffe79154de6dfd0d5a83cc907afa350846c8dfae7e90517756c9b7f53696",
+    "data/water-physics-rules.json": "0d025cd8ba87e309f7f52ab79ffcc5e306c0e88f5dba9a4439c8167d4c41d7ec",
+    "data/water-physics.json": "a3523c4f4a0246a6937d941f7eeb118ad47faff3c1ecaa0e48884a1aec9104b1",
+    "tools/water-image-position.mjs": "27b35140018025f6d01c10e385d153d9e0d25fe636784933bdc94cc8d3b33e03"
+  },
+  "criteria": {
+    "positionTolerancePixels": 2,
+    "pairedDifferenceTolerancePixels": 4,
+    "matchedPrefix": "Require frame-150 full image hashes and actual action-relative durations to match across all runs. Independently verify repeated images and frame durations per case.",
+    "image": "Exact supplied opaque template only. Partial and unmatched are retained and unscored. Explicitly inspect target screenshots and distinguish visible position from physical state.",
+    "comparison": "Compare each exact reference endpoint to predeclared frozen production prediction; for aligned paired exact endpoints, compare stroke-minus-neutral against frozen difference. Paired threshold 4 follows by triangle inequality from two 2px individual limits; it does not relax individual position acceptance.",
+    "limitations": "Prior stroke observations are explored, not held out. This fresh intervention is a diagnostic; do not tune during or after capture. Preserve unscored poses and unchanged preexisting reports."
+  }
+}

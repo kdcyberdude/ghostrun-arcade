@@ -1,0 +1,67 @@
+{
+  "schema": "frozen-water-geometric-candidate-v1",
+  "frozenUTC": "2026-11-05T22:54:58.037Z",
+  "status": "Frozen before reserved-case evaluation; no tuning permitted after unblinding",
+  "candidateSource": "tools/water-geometric-candidate.ts",
+  "candidateSourceSHA256": "ad3c40591c3cabddfb4b367f86f3ff500dd85e9b7efa7dccee2072ca331bde0a",
+  "originalSimulationSHA256": "b61a51550a718e78f6fcb6263cee826dc0cfec1bb9c33179dd786b094b4df3c0",
+  "parameters": {
+    "stroke": -1.51953125,
+    "freshStrokeYFraction": 0.3125,
+    "strokeSurfaceThreshold": 52,
+    "surfaceStroke": 0.4375,
+    "forceEntryThreshold": 51.5,
+    "forceExitThreshold": 53,
+    "surfaceGravity": 0.09375,
+    "heldGravity": 0.046875,
+    "gravity": 0.0390625,
+    "maxFall": 4.125
+  },
+  "stateRules": [
+    "active starts false, enters on rising below51.5 or fresh stroke there, exits while descending at53",
+    "contacted remains true until grounding or area load; later gravity outside the band is neutral regardless of A",
+    "fresh stroke chooses near-surface impulse from pre-resetY, then resets Y fraction",
+    "entry falling without A retains original entryGravity; floor collision clears both candidate flags"
+  ],
+  "training": "Exactly the24 explored cases from legacy water-physics.json and water-fresh-measurements.json. Strict2px acceptance still fails when max3px.",
+  "reservedIDs": [
+    "reserved-surface-restroke-release",
+    "reserved-surface-phase25-restroke-long"
+  ],
+  "tolerancePixels": 2,
+  "snapshotRoot": "evidence/local/water-geometric-candidate-frozen-2026-11-05",
+  "modules": {
+    "baseline": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-baseline.ts",
+    "full": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-full.ts",
+    "no_fraction_reset": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-no_fraction_reset.ts",
+    "no_surface_forces": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-no_surface_forces.ts",
+    "no_surface_deflection": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-no_surface_deflection.ts",
+    "retain_original_ceiling": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-retain_original_ceiling.ts",
+    "head8_only": "evidence/local/water-geometric-candidate-frozen-2026-11-05/snapshot/src/water-variant-head8_only.ts"
+  },
+  "hashes": {
+    "snapshot/src/simulation.ts": "b61a51550a718e78f6fcb6263cee826dc0cfec1bb9c33179dd786b094b4df3c0",
+    "snapshot/src/types.ts": "f4b82990844dc4b3b0ff0b2a635d1690727f676e320af70d6027b7f16e10aaf8",
+    "snapshot/src/platform-motion.ts": "72fe2a11683f8193cdd3e4f87e9d42ced64cbfe16cecbcbce7b7e5e4846d2bb4",
+    "snapshot/data/water-entry-rules.json": "75bb92eb2660a072337317a0eaf0869d883049824ef4a2dbffcebaada3d5d571",
+    "snapshot/data/water-entry-5-2-rules.json": "29859bd7affe49eab361b4c01e63b3058b6f39127d7986504e424ed17356730c",
+    "snapshot/data/transition-measurements.json": "ddf82c10fd188e0960871b2c977c6f80036af0e27803c8c6ce9df060d5c2ede9",
+    "snapshot/data/powerup-rules.json": "0ee57159f995cab79644210816c53b5339b08a1f9a3b325bdb57e6ed79a6d9da",
+    "snapshot/data/enemy-rules.json": "8b0004e83c8399c00fe0629ce7849e1d49415a70fa905f7dbba4dcd0f0b23eca",
+    "snapshot/data/death-rules.json": "275d73b005e596d2495fe366756f9ccfd19042d737b8b47d9178b67d52a28eb4",
+    "snapshot/data/shell-rules.json": "7816e514bec96132a5922c226795129aab6ff614ba4d6c78e5ff89c3825b3340",
+    "snapshot/data/stomp-rules.json": "286084f182901ffe898b7c7bf28c2cf39c67a9f4e43b3db119bf82228655ec38",
+    "snapshot/data/flag-completion-rules.json": "3597a43b9ed63ff643df4f2a23f6e43c9505d3fd876dec80cd630f4869330b5c",
+    "snapshot/data/castle-completion-rules.json": "230208fa9e43b3d2a2018939fc7c6297d145ea4338c5d4b195e6009c7b949665",
+    "snapshot/tools/water-geometric-candidate.ts": "ad3c40591c3cabddfb4b367f86f3ff500dd85e9b7efa7dccee2072ca331bde0a",
+    "snapshot/src/water-variant-baseline.ts": "b61a51550a718e78f6fcb6263cee826dc0cfec1bb9c33179dd786b094b4df3c0",
+    "snapshot/src/water-variant-full.ts": "8d93420a4dfe58d80b0c75a05b9dc4c4f9d678db3f11ae3cf9a6456d5e3a154c",
+    "snapshot/src/water-variant-no_fraction_reset.ts": "bf42a606929e696879a445b8eb640dc58b5c83243a725bb8e2330985ba4a1704",
+    "snapshot/src/water-variant-no_surface_forces.ts": "558039298e46feebaad7a344a57139363a6873eceeee94e474f2e6d955dab4a1",
+    "snapshot/src/water-variant-no_surface_deflection.ts": "5a2d4ef4c36f8d09bc49ea0654b0ced42c3784c42287ea004f61af1756243320",
+    "snapshot/src/water-variant-retain_original_ceiling.ts": "40d2a85720621127d1713284555b5ee7cca129fb39c69d3b1c1a94d4eb5a2dde",
+    "snapshot/src/water-variant-head8_only.ts": "d801feae74578f8e8a03d03b6b04ed6b03ffc7af7f5fcb91e1f3fa87d4b88b13"
+  },
+  "measurementSHA256": "fcf64e25b477c1fe0b49db0cd3619681f3bc39b7613ac7abf63699c684865264",
+  "legacyMeasurementSHA256": "a3523c4f4a0246a6937d941f7eeb118ad47faff3c1ecaa0e48884a1aec9104b1"
+}

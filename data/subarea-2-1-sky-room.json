@@ -1,0 +1,940 @@
+{
+  "schema": "image-only-sky-room-v1",
+  "id": "sky-coins",
+  "level": "2-1",
+  "width": 74,
+  "background": "#6888fc",
+  "atlas": "metatiles-palette-000.png",
+  "tiles": [
+    [
+      0,
+      13,
+      136
+    ],
+    [
+      1,
+      13,
+      136
+    ],
+    [
+      2,
+      13,
+      136
+    ],
+    [
+      3,
+      13,
+      136
+    ],
+    [
+      5,
+      13,
+      136
+    ],
+    [
+      6,
+      13,
+      136
+    ],
+    [
+      7,
+      13,
+      136
+    ],
+    [
+      8,
+      13,
+      136
+    ],
+    [
+      9,
+      13,
+      136
+    ],
+    [
+      10,
+      13,
+      136
+    ],
+    [
+      11,
+      13,
+      136
+    ],
+    [
+      12,
+      13,
+      136
+    ],
+    [
+      13,
+      13,
+      136
+    ],
+    [
+      14,
+      13,
+      136
+    ],
+    [
+      15,
+      6,
+      194
+    ],
+    [
+      15,
+      13,
+      136
+    ],
+    [
+      16,
+      6,
+      194
+    ],
+    [
+      16,
+      13,
+      136
+    ],
+    [
+      17,
+      6,
+      194
+    ],
+    [
+      17,
+      13,
+      136
+    ],
+    [
+      18,
+      6,
+      194
+    ],
+    [
+      18,
+      13,
+      136
+    ],
+    [
+      19,
+      6,
+      194
+    ],
+    [
+      19,
+      13,
+      136
+    ],
+    [
+      20,
+      6,
+      194
+    ],
+    [
+      20,
+      13,
+      136
+    ],
+    [
+      21,
+      6,
+      194
+    ],
+    [
+      21,
+      13,
+      136
+    ],
+    [
+      22,
+      6,
+      194
+    ],
+    [
+      22,
+      13,
+      136
+    ],
+    [
+      23,
+      6,
+      194
+    ],
+    [
+      23,
+      13,
+      136
+    ],
+    [
+      24,
+      6,
+      194
+    ],
+    [
+      24,
+      13,
+      136
+    ],
+    [
+      25,
+      6,
+      194
+    ],
+    [
+      25,
+      13,
+      136
+    ],
+    [
+      26,
+      6,
+      194
+    ],
+    [
+      26,
+      13,
+      136
+    ],
+    [
+      27,
+      6,
+      194
+    ],
+    [
+      27,
+      13,
+      136
+    ],
+    [
+      28,
+      6,
+      194
+    ],
+    [
+      28,
+      13,
+      136
+    ],
+    [
+      29,
+      6,
+      194
+    ],
+    [
+      29,
+      13,
+      136
+    ],
+    [
+      30,
+      6,
+      194
+    ],
+    [
+      30,
+      13,
+      136
+    ],
+    [
+      31,
+      13,
+      136
+    ],
+    [
+      32,
+      4,
+      194
+    ],
+    [
+      32,
+      13,
+      136
+    ],
+    [
+      33,
+      4,
+      194
+    ],
+    [
+      33,
+      13,
+      136
+    ],
+    [
+      34,
+      4,
+      194
+    ],
+    [
+      34,
+      13,
+      136
+    ],
+    [
+      35,
+      13,
+      136
+    ],
+    [
+      36,
+      5,
+      194
+    ],
+    [
+      36,
+      13,
+      136
+    ],
+    [
+      37,
+      5,
+      194
+    ],
+    [
+      37,
+      13,
+      136
+    ],
+    [
+      38,
+      5,
+      194
+    ],
+    [
+      38,
+      13,
+      136
+    ],
+    [
+      39,
+      5,
+      194
+    ],
+    [
+      39,
+      13,
+      136
+    ],
+    [
+      40,
+      5,
+      194
+    ],
+    [
+      40,
+      13,
+      136
+    ],
+    [
+      41,
+      5,
+      194
+    ],
+    [
+      41,
+      13,
+      136
+    ],
+    [
+      42,
+      5,
+      194
+    ],
+    [
+      42,
+      13,
+      136
+    ],
+    [
+      43,
+      5,
+      194
+    ],
+    [
+      43,
+      13,
+      136
+    ],
+    [
+      44,
+      5,
+      194
+    ],
+    [
+      44,
+      13,
+      136
+    ],
+    [
+      45,
+      5,
+      194
+    ],
+    [
+      45,
+      13,
+      136
+    ],
+    [
+      46,
+      5,
+      194
+    ],
+    [
+      46,
+      13,
+      136
+    ],
+    [
+      47,
+      5,
+      194
+    ],
+    [
+      47,
+      13,
+      136
+    ],
+    [
+      48,
+      5,
+      194
+    ],
+    [
+      48,
+      13,
+      136
+    ],
+    [
+      49,
+      5,
+      194
+    ],
+    [
+      49,
+      13,
+      136
+    ],
+    [
+      50,
+      5,
+      194
+    ],
+    [
+      50,
+      13,
+      136
+    ],
+    [
+      51,
+      5,
+      194
+    ],
+    [
+      51,
+      13,
+      136
+    ],
+    [
+      52,
+      13,
+      136
+    ],
+    [
+      53,
+      4,
+      194
+    ],
+    [
+      53,
+      13,
+      136
+    ],
+    [
+      54,
+      4,
+      194
+    ],
+    [
+      54,
+      13,
+      136
+    ],
+    [
+      55,
+      4,
+      194
+    ],
+    [
+      55,
+      13,
+      136
+    ],
+    [
+      56,
+      13,
+      136
+    ],
+    [
+      57,
+      13,
+      136
+    ],
+    [
+      58,
+      13,
+      136
+    ],
+    [
+      59,
+      13,
+      136
+    ],
+    [
+      60,
+      13,
+      136
+    ],
+    [
+      61,
+      13,
+      136
+    ],
+    [
+      69,
+      12,
+      194
+    ],
+    [
+      70,
+      12,
+      194
+    ],
+    [
+      71,
+      12,
+      194
+    ]
+  ],
+  "unknownCells": [
+    [
+      4,
+      10
+    ],
+    [
+      4,
+      11
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      4,
+      14
+    ],
+    [
+      16,
+      10
+    ],
+    [
+      17,
+      10
+    ],
+    [
+      18,
+      10
+    ]
+  ],
+  "cameraRegistration": [
+    {
+      "sequence": 568,
+      "tick": 1436,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 569,
+      "tick": 1440,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 570,
+      "tick": 1444,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 571,
+      "tick": 1448,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 572,
+      "tick": 1452,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 573,
+      "tick": 1456,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 574,
+      "tick": 1460,
+      "delta": 0,
+      "cameraX": 0,
+      "binaryError": 0
+    },
+    {
+      "sequence": 575,
+      "tick": 1464,
+      "delta": 12,
+      "cameraX": 12,
+      "binaryError": 0
+    },
+    {
+      "sequence": 576,
+      "tick": 1468,
+      "delta": 30,
+      "cameraX": 42,
+      "binaryError": 0
+    },
+    {
+      "sequence": 577,
+      "tick": 1472,
+      "delta": 30,
+      "cameraX": 72,
+      "binaryError": 0.025105
+    },
+    {
+      "sequence": 578,
+      "tick": 1496,
+      "delta": 23,
+      "cameraX": 95,
+      "binaryError": 0
+    },
+    {
+      "sequence": 579,
+      "tick": 1500,
+      "delta": 14,
+      "cameraX": 109,
+      "binaryError": 0
+    },
+    {
+      "sequence": 580,
+      "tick": 1504,
+      "delta": 42,
+      "cameraX": 151,
+      "binaryError": 0
+    },
+    {
+      "sequence": 581,
+      "tick": 1508,
+      "delta": 45,
+      "cameraX": 196,
+      "binaryError": 0
+    },
+    {
+      "sequence": 582,
+      "tick": 1512,
+      "delta": 45,
+      "cameraX": 241,
+      "binaryError": 0
+    },
+    {
+      "sequence": 583,
+      "tick": 1516,
+      "delta": 45,
+      "cameraX": 286,
+      "binaryError": 0
+    },
+    {
+      "sequence": 584,
+      "tick": 1520,
+      "delta": 45,
+      "cameraX": 331,
+      "binaryError": 0
+    },
+    {
+      "sequence": 585,
+      "tick": 1524,
+      "delta": 45,
+      "cameraX": 376,
+      "binaryError": 0
+    },
+    {
+      "sequence": 586,
+      "tick": 1528,
+      "delta": 45,
+      "cameraX": 421,
+      "binaryError": 0
+    },
+    {
+      "sequence": 587,
+      "tick": 1532,
+      "delta": 45,
+      "cameraX": 466,
+      "binaryError": 0
+    },
+    {
+      "sequence": 588,
+      "tick": 1536,
+      "delta": 45,
+      "cameraX": 511,
+      "binaryError": 0
+    },
+    {
+      "sequence": 589,
+      "tick": 1540,
+      "delta": 45,
+      "cameraX": 556,
+      "binaryError": 0
+    },
+    {
+      "sequence": 590,
+      "tick": 1544,
+      "delta": 45,
+      "cameraX": 601,
+      "binaryError": 0
+    },
+    {
+      "sequence": 591,
+      "tick": 1548,
+      "delta": 45,
+      "cameraX": 646,
+      "binaryError": 0
+    },
+    {
+      "sequence": 592,
+      "tick": 1552,
+      "delta": 45,
+      "cameraX": 691,
+      "binaryError": 0
+    },
+    {
+      "sequence": 593,
+      "tick": 1556,
+      "delta": 47,
+      "cameraX": 738,
+      "binaryError": 0
+    },
+    {
+      "sequence": 594,
+      "tick": 1560,
+      "delta": 45,
+      "cameraX": 783,
+      "binaryError": 0
+    },
+    {
+      "sequence": 595,
+      "tick": 1564,
+      "delta": 45,
+      "cameraX": 828,
+      "binaryError": 0
+    },
+    {
+      "sequence": 596,
+      "tick": 1568,
+      "delta": 45,
+      "cameraX": 873,
+      "binaryError": 0
+    },
+    {
+      "sequence": 597,
+      "tick": 1572,
+      "delta": 45,
+      "cameraX": 918,
+      "binaryError": 0
+    },
+    {
+      "sequence": 598,
+      "tick": 1576,
+      "delta": 9,
+      "cameraX": 927,
+      "binaryError": 0
+    },
+    {
+      "sequence": 599,
+      "tick": 1580,
+      "delta": 0,
+      "cameraX": 927,
+      "binaryError": 0
+    },
+    {
+      "sequence": 600,
+      "tick": 1584,
+      "delta": 0,
+      "cameraX": 927,
+      "binaryError": 0
+    },
+    {
+      "sequence": 601,
+      "tick": 1588,
+      "delta": 0,
+      "cameraX": 927,
+      "binaryError": 0
+    }
+  ],
+  "sourceTrace": "evidence/local/subarea-2-1-vine/trace.jsonl",
+  "sourceSequenceRange": [
+    568,
+    601
+  ],
+  "uncertainties": [
+    "Camera offsets use binary static pixel registration; repetitive coin/cloud rows are disambiguated by the measured walking-speed bound.",
+    "Vine and moving six-orb platform are not static tiles. Their occlusions remain explicit.",
+    "Only ordinary walking route observed; platform ride/coin collecting remain unmeasured.",
+    "Room width74 is observed viewport extent; last camera927, logical boundary may1184 vs1183.",
+    "Coin palette animation rawRGB registration caused a false split; binary static masks give zero mismatch at33/34checkpoints; original failedderivedmapretained.",
+    "Floorvinecellcol4 remains unknown rather than inventing a cloud tile; screenshot actually has blue+vine in this cell.",
+    "Exact falling-room trigger and automatic entry/return unlock timing remain inferred."
+  ],
+  "role": "optional-sky-coin-room",
+  "spawn": [
+    56,
+    240
+  ],
+  "spawnStatus": "x56observedonclimbingentry;initialfeet240inferredfrombottomemergence",
+  "coinsObserved": 41,
+  "cameraEndObserved": 927,
+  "cloudFloor": {
+    "row": 13,
+    "columns": [
+      0,
+      61
+    ],
+    "vineGapColumn": 4,
+    "status": "61exactcloudtilesplusonevine-occludedcell;nogapfilled"
+  },
+  "vineConnection": {
+    "from": "main",
+    "block": {
+      "col": 83,
+      "row": 5,
+      "kind": "vine"
+    },
+    "vine": {
+      "x": 1328,
+      "baseY": 80,
+      "topY": -32,
+      "topStatus": "capgrowsabovevisibleviewport;negativeendpointunmeasured",
+      "growthPixelsPerFrame": 0.5,
+      "growthStatus": "60pxmeasuredriseover121nativeframes",
+      "climbUpPixelsPerFrame": 0.875,
+      "climbStatus": "exactopaqueplayerposesover7and8nativeframes",
+      "automaticClimbTriggerFeetY": 64,
+      "triggerStatus": "inferred64;neutralheldat69butautoclimbedafter62",
+      "transitionFeetY": 0,
+      "transitionStatus": "lastmainfeet8tick1432;8frameslaterclearedviewport1433,consistentwithoffscreen<=0;firstskygeometry1437"
+    },
+    "to": "sky-coins",
+    "target": {
+      "x": 56,
+      "feetY": 240,
+      "cameraX": 0
+    },
+    "status": "brickactivation,vinegrowth,climbandskyentryallobserved",
+    "sourceTrace": "evidence/local/subarea-2-1-vine/trace.jsonl",
+    "sourceTicks": [
+      1333,
+      1428
+    ],
+    "climbExperimentTrace": "evidence/local/subarea-vine-climb/trace.jsonl"
+  },
+  "entryVine": {
+    "x": 64,
+    "baseY": 256,
+    "topY": 144,
+    "initialHeight": 0,
+    "automaticClimbUntilFeetY": 184,
+    "status": "Automatic growth, emergence, climb tofeet184, side passage and landing x75/feet208 observed with neutral controls; base256/top144 and exact internal stage thresholds inferred",
+    "sourceTicks": [
+      1428,
+      1460
+    ],
+    "waitUntilGrowthComplete": true,
+    "exitRightX": 75,
+    "exitGroundFeetY": 208,
+    "climbUpPixelsPerFrame": 0.875,
+    "neutralExperiment": {
+      "trace": "evidence/local/subarea-vine-climb/trace.jsonl",
+      "poseSamples": [
+        {
+          "tick": 1467,
+          "x": 56,
+          "feetY": 238,
+          "cell": 21
+        },
+        {
+          "tick": 1472,
+          "x": 56,
+          "feetY": 206,
+          "cell": 20
+        },
+        {
+          "tick": 1476,
+          "x": 71,
+          "feetY": 184,
+          "cell": 20,
+          "direction": "left"
+        },
+        {
+          "tick": 1484,
+          "x": 75,
+          "feetY": 208,
+          "cell": 23,
+          "direction": "right"
+        }
+      ]
+    }
+  },
+  "fallExit": {
+    "belowY": 256,
+    "to": "main",
+    "spawn": [
+      2600,
+      0
+    ],
+    "camera": 2560,
+    "status": "ordinaryfallfromendx992observed;mainfirstvisibleat1593playerx2600andfallingfromtop;exactYtrigger/spawninferred",
+    "sourceTicks": [
+      1588,
+      1593
+    ],
+    "sourceSequences": [
+      889,
+      894
+    ],
+    "sourceTrace": "evidence/local/subarea-2-1-vine/trace.jsonl"
+  },
+  "platformsObserved": [
+    {
+      "kind": "cloud48",
+      "x": 192,
+      "y": 160,
+      "width": 48,
+      "status": "six8x8orbsvisuallyobserved;motion/triggernotyetmeasured",
+      "sourceTicks": [
+        1472,
+        1504
+      ]
+    }
+  ],
+  "entryRecipeSource": "data/subarea-2-1-entrance-inputs.json"
+}

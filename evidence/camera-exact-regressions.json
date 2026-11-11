@@ -1,0 +1,254 @@
+{
+  "schema": "image-camera-controller-regressions-v1",
+  "method": "Ordinary fresh-reset reference controllers, actual native frame counts, exact supplied player matches and registered background. No production state writes.",
+  "tolerancePixels": 2,
+  "cases": [
+    {
+      "id": "running-opening",
+      "source": "data/physics-measurements.json",
+      "sourceSha256": "b792120a58ddb1b67c554e3137cbc24e485fcf5060cb1fb36405590a5fa88c97",
+      "actions": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "tick": 1,
+          "nativeFrame": 7,
+          "x": 40,
+          "feetY": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-001.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "tick": 2,
+          "nativeFrame": 15,
+          "x": 44,
+          "feetY": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-002.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "tick": 3,
+          "nativeFrame": 22,
+          "x": 51,
+          "feetY": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-003.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "tick": 4,
+          "nativeFrame": 30,
+          "x": 62,
+          "feetY": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-004.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "tick": 5,
+          "nativeFrame": 37,
+          "x": 74,
+          "feetY": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-005.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "tick": 6,
+          "nativeFrame": 45,
+          "x": 92,
+          "feetY": 208,
+          "camera": 7,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-006.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "tick": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "feetY": 208,
+          "camera": 17,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-007.png"
+        }
+      ]
+    },
+    {
+      "id": "independent-slow-run-jump",
+      "source": "evidence/horizontal-control-measurements.json",
+      "sourceSha256": "3f69277b648014a250fec68489c45394ee7ac33cc276f53fcbb9498d82823a9d",
+      "actions": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "tick": 1,
+          "nativeFrame": 7,
+          "x": 40,
+          "feetY": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-001.png"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "tick": 2,
+          "nativeFrame": 15,
+          "x": 44,
+          "feetY": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-002.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 7,
+          "tick": 3,
+          "nativeFrame": 22,
+          "x": 50,
+          "feetY": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-003.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8,
+          "tick": 4,
+          "nativeFrame": 30,
+          "x": 57,
+          "feetY": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-004.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 7,
+          "tick": 5,
+          "nativeFrame": 37,
+          "x": 62,
+          "feetY": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-005.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8,
+          "tick": 6,
+          "nativeFrame": 45,
+          "x": 69,
+          "feetY": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-006.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 7,
+          "tick": 7,
+          "nativeFrame": 52,
+          "x": 74,
+          "feetY": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-007.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8,
+          "tick": 8,
+          "nativeFrame": 60,
+          "x": 81,
+          "feetY": 166,
+          "camera": 1,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-008.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 7,
+          "tick": 9,
+          "nativeFrame": 67,
+          "x": 87,
+          "feetY": 195,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-009.png"
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8,
+          "tick": 10,
+          "nativeFrame": 75,
+          "x": 93,
+          "feetY": 208,
+          "camera": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-010.png"
+        },
+        {
+          "buttons": [],
+          "frames": 7,
+          "tick": 11,
+          "nativeFrame": 82,
+          "x": 96,
+          "feetY": 208,
+          "camera": 16,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-011.png"
+        },
+        {
+          "buttons": [],
+          "frames": 8,
+          "tick": 12,
+          "nativeFrame": 90,
+          "x": 98,
+          "feetY": 208,
+          "camera": 18,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-012.png"
+        }
+      ]
+    }
+  ]
+}

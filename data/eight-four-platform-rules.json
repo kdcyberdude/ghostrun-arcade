@@ -1,0 +1,8 @@
+{
+  "cameraThreshold": 650,
+  "period": 240,
+  "phaseOffset": 105.53846153847,
+  "coefficients": [917.135228356462, -26.834108007461136, -5.768743724158919, 0.8917229921452617, 0.6319512568982028],
+  "qualification": "Inferred offscreen hold, camera anchor and fitted motion; exact native activation, reset, contact timing and a documented early raster mismatch remain unresolved.",
+  "evidence": "evidence/eight-four-platform-preactivation-findings.md"
+}

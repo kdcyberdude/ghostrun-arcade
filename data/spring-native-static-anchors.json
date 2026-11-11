@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-06T08:11:30.924Z",
+  "sourceMapSha256": "550501771685b914181291f6b3c7ca8442560758b943ac824ac5e145f3e498c8",
+  "scope": "Static brick/empty-sky boundary registration independent of spring and player pixels",
+  "anchors": [
+    {
+      "x": 1936,
+      "y": 144,
+      "side": 1,
+      "metatile": 81
+    },
+    {
+      "x": 2064,
+      "y": 128,
+      "side": -1,
+      "metatile": 81
+    },
+    {
+      "x": 2096,
+      "y": 128,
+      "side": 1,
+      "metatile": 81
+    },
+    {
+      "x": 2064,
+      "y": 80,
+      "side": -1,
+      "metatile": 81
+    },
+    {
+      "x": 2096,
+      "y": 80,
+      "side": 1,
+      "metatile": 81
+    }
+  ],
+  "cameraRange": [
+    1700,
+    2200
+  ],
+  "qualification": "World grid coordinates remain supplied/reconstructed geometry coordinates, rather than hidden native state. Exact source RGB boundary matches independently determine camera in this declared 3-1 region; no motor values are fitted to camera."
+}

@@ -1,0 +1,6452 @@
+{
+  "schema": "image-only-optional-route-search-v1",
+  "level": "5-2",
+  "status": "additional-actual-head-hits-no-vine-observed",
+  "sourceTrace": "evidence/local/five-two-vine-frontier/trace.jsonl",
+  "method": "Documented public controller operations and actual PNGs, with supplied artwork comparisons. No ROM contents, emulator memory, executable internals, sibling project, or remembered map. The accepted water route is replayed only to reach its main return checkpoint; its map is not duplicated.",
+  "priorProbeData": "data/vine-optional-rooms.json",
+  "observations": [
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 5,
+      "ordinal": 3,
+      "inferredColumn": 120,
+      "inferredWorldX": 1920,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1015,
+        "tick": 5669,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01015-tick-05669.png"
+      },
+      "laterObservation": {
+        "sequence": 1016,
+        "tick": 5673,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01016-tick-05673.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          68,
+          74
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 5,
+      "ordinal": 1,
+      "inferredColumn": 118,
+      "inferredWorldX": 1888,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1019,
+        "tick": 5682,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01019-tick-05682.png"
+      },
+      "laterObservation": {
+        "sequence": 1020,
+        "tick": 5686,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01020-tick-05686.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          36,
+          74
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 5,
+      "ordinal": 6,
+      "inferredColumn": 123,
+      "inferredWorldX": 1968,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1029,
+        "tick": 5711,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01029-tick-05711.png"
+      },
+      "laterObservation": {
+        "sequence": 1030,
+        "tick": 5715,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01030-tick-05715.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          84,
+          75
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 5,
+      "ordinal": 7,
+      "inferredColumn": 124,
+      "inferredWorldX": 1984,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1033,
+        "tick": 5722,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01033-tick-05722.png"
+      },
+      "laterObservation": {
+        "sequence": 1034,
+        "tick": 5726,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 31,
+        "image": "evidence/local/five-two-vine-frontier/01034-tick-05726.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          76,
+          74
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 5,
+      "ordinal": 8,
+      "inferredColumn": 125,
+      "inferredWorldX": 2000,
+      "worldY": 80,
+      "outcome": "star-emission",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1037,
+        "tick": 5732,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01037-tick-05732.png"
+      },
+      "laterObservation": {
+        "sequence": 1039,
+        "tick": 5740,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01039-tick-05740.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 196,
+        "screenOrigin": [
+          71,
+          74
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 6,
+      "inferredColumn": 123,
+      "inferredWorldX": 1968,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1047,
+        "tick": 5768,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01047-tick-05768.png"
+      },
+      "laterObservation": {
+        "sequence": 1048,
+        "tick": 5772,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01048-tick-05772.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          28,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 7,
+      "inferredColumn": 124,
+      "inferredWorldX": 1984,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1051,
+        "tick": 5778,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01051-tick-05778.png"
+      },
+      "laterObservation": {
+        "sequence": 1052,
+        "tick": 5782,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01052-tick-05782.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          44,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 8,
+      "inferredColumn": 125,
+      "inferredWorldX": 2000,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1055,
+        "tick": 5788,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01055-tick-05788.png"
+      },
+      "laterObservation": {
+        "sequence": 1056,
+        "tick": 5792,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01056-tick-05792.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          60,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 5,
+      "inferredColumn": 122,
+      "inferredWorldX": 1952,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1059,
+        "tick": 5801,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01059-tick-05801.png"
+      },
+      "laterObservation": {
+        "sequence": 1060,
+        "tick": 5805,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01060-tick-05805.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          12,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 4,
+      "inferredColumn": 121,
+      "inferredWorldX": 1936,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 1063,
+        "tick": 5811,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01063-tick-05811.png"
+      },
+      "laterObservation": {
+        "sequence": 1064,
+        "tick": 5815,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01064-tick-05815.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          4,
+          138
+        ],
+        "width": 8,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0,
+          8
+        ],
+        "matchedPixels": 128
+      },
+      "observationNote": "The clipped8x16 half establishes a raised brick, with repeated-artwork column ambiguity retained."
+    },
+    {
+      "structure": "second-eight-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 1,
+      "inferredColumn": 118,
+      "inferredWorldX": 1888,
+      "worldY": 144,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "vineObserved": false,
+      "activation": {
+        "sequence": 2072,
+        "tick": 5655,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/02072-tick-05655.png"
+      },
+      "laterObservation": {
+        "sequence": 2073,
+        "tick": 5659,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/02073-tick-05659.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          81,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "observationNote": "The complete raised16x16 supplied artwork matches exactly."
+    },
+    {
+      "structure": "first-six-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 1,
+      "inferredColumn": 29,
+      "inferredWorldX": 464,
+      "worldY": 144,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-with-existing-coin-on-top-collected",
+      "activation": {
+        "sequence": 2977,
+        "tick": 5431,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/02977-tick-05431.png"
+      },
+      "laterObservation": {
+        "sequence": 2978,
+        "tick": 5435,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/02978-tick-05435.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          93,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "repeatActivation": {
+        "sequence": 2979,
+        "tick": 5437,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/02979-tick-05437.png"
+      },
+      "repeatRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          91,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "repeatLaterObservation": {
+        "sequence": 2980,
+        "tick": 5441,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 31,
+        "image": "evidence/local/five-two-vine-frontier/02980-tick-05441.png"
+      },
+      "coinEvidence": {
+        "before": {
+          "sequence": 2974,
+          "tick": 5425,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/02974-tick-05425.png"
+        },
+        "counterBefore": 60,
+        "counterAfter": 61,
+        "note": "The first of three coins already visible on top of the lower platform disappears when the block bumps, with200score. The repeated hit emits no new coin and leaves normal brick81. This is not evidence of a coin-containing brick."
+      }
+    },
+    {
+      "structure": "first-six-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 6,
+      "inferredColumn": 34,
+      "inferredWorldX": 544,
+      "worldY": 144,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "activation": {
+        "sequence": 4795,
+        "tick": 5433,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/04795-tick-05433.png"
+      },
+      "laterObservation": {
+        "sequence": 4796,
+        "tick": 5437,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/04796-tick-05437.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          87,
+          138
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      }
+    },
+    {
+      "structure": "first-six-brick-two-tier-strip",
+      "row": 9,
+      "ordinal": 5,
+      "inferredColumn": 33,
+      "inferredWorldX": 528,
+      "worldY": 144,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "activation": {
+        "sequence": 4797,
+        "tick": 5439,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/five-two-vine-frontier/04797-tick-05439.png"
+      },
+      "laterObservation": {
+        "sequence": 4800,
+        "tick": 5447,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/04800-tick-05447.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          71,
+          137
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      }
+    },
+    {
+      "structure": "three-brick-y128-support",
+      "row": 8,
+      "ordinal": 1,
+      "inferredColumn": 89,
+      "inferredWorldX": 1424,
+      "worldY": 128,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "activation": {
+        "sequence": 5725,
+        "tick": 5483,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/05725-tick-05483.png"
+      },
+      "laterObservation": {
+        "sequence": 5726,
+        "tick": 5487,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05726-tick-05487.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          115,
+          122
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "coordinateNote": "The support right edge aligns with canonical main ground ending1472 (last floor column91). Its observed48px width infers support1424..1471. Older freeTile1421 is a drifted search anchor.",
+      "coinNote": "Approach collects pre-existing ground-row coins (HUD62\u219263\u219264); these are not attributed to block contents."
+    },
+    {
+      "structure": "three-brick-y128-support",
+      "row": 8,
+      "ordinal": 2,
+      "inferredColumn": 90,
+      "inferredWorldX": 1440,
+      "worldY": 128,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "activation": {
+        "sequence": 5729,
+        "tick": 5495,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/05729-tick-05495.png"
+      },
+      "laterObservation": {
+        "sequence": 5730,
+        "tick": 5499,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05730-tick-05499.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          109,
+          122
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "coordinateNote": "The support right edge aligns with canonical main ground ending1472 (last floor column91). Its observed48px width infers support1424..1471. Older freeTile1421 is a drifted search anchor.",
+      "coinNote": "Approach collects pre-existing ground-row coins (HUD62\u219263\u219264); these are not attributed to block contents."
+    },
+    {
+      "structure": "late-isolated-single-lower-brick",
+      "row": 9,
+      "ordinal": 1,
+      "inferredColumn": 168,
+      "inferredWorldX": 2688,
+      "worldY": 144,
+      "outcome": "mushroom-emission",
+      "vineObserved": false,
+      "beforeEvidence": {
+        "sequence": 7630,
+        "tick": 5548,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+      },
+      "beforeArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          110,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "activation": {
+        "sequence": 7631,
+        "tick": 5550,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/07631-tick-05550.png"
+      },
+      "laterObservation": {
+        "sequence": 7635,
+        "tick": 5565,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/07635-tick-05565.png"
+      },
+      "exactRaisedArtwork": {
+        "sprite": "sprite-hit_block_used-0.png",
+        "screenOrigin": [
+          110,
+          138
+        ],
+        "width": 16,
+        "height": 8,
+        "matchedPixels": 126,
+        "note": "Exact upper8pixel126-opaque-pixel fragment. The nearby paratroopa overlaps the lower half; no full raised match is claimed."
+      },
+      "settledUsedArtwork": {
+        "evidence": {
+          "sequence": 7633,
+          "tick": 5555,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/07633-tick-05555.png"
+        },
+        "sprite": "sprite-hit_block_used-0.png",
+        "screenOrigin": [
+          110,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedOpaquePixels": 252
+      },
+      "itemArtwork": {
+        "evidence": {
+          "sequence": 7634,
+          "tick": 5561,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/07634-tick-05561.png"
+        },
+        "sprite": "sprite-powerups-0.png",
+        "screenOrigin": [
+          110,
+          128
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedOpaquePixels": 176,
+        "paletteRemapping": null
+      },
+      "coordinateAnchors": {
+        "evidence": {
+          "sequence": 7630,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+        },
+        "whitePipeWorldX": 2768,
+        "whitePipeScreenX": 190,
+        "pipeTopY": 176,
+        "mainGroundEndWorldX": 2720,
+        "groundEndScreenX": 142,
+        "inferredCameraX": 2578,
+        "pipeLeftArtwork": {
+          "metatile": 16,
+          "screenOrigin": [
+            190,
+            176
+          ],
+          "width": 16,
+          "height": 16,
+          "exactAtlasColumnAlternatives": [
+            0
+          ],
+          "matchedPixels": 256
+        },
+        "pipeRightArtwork": {
+          "metatile": 17,
+          "screenOrigin": [
+            206,
+            176
+          ],
+          "width": 16,
+          "height": 16,
+          "exactAtlasColumnAlternatives": [
+            0
+          ],
+          "matchedPixels": 256
+        },
+        "note": "The two independent static anchors give camera2578; exact initial brick atscreen110 gives world2688. Older freeTile2686 was a drifted search anchor."
+      }
+    },
+    {
+      "structure": "final-four-brick-upper-coin-strip",
+      "row": 5,
+      "ordinal": 4,
+      "inferredColumn": 175,
+      "inferredWorldX": 2800,
+      "worldY": 80,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-bump-no-release-in-observed-wait",
+      "activation": {
+        "sequence": 9530,
+        "tick": 5561,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/09530-tick-05561.png"
+      },
+      "laterObservation": {
+        "sequence": 9531,
+        "tick": 5565,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/09531-tick-05565.png"
+      },
+      "exactRaisedArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          112,
+          74
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "coordinateAnchors": {
+        "pipeWorldX": 2768,
+        "pipeScreenX": 80,
+        "inferredCameraX": 2688,
+        "exactPipeRowFragments": [
+          {
+            "metatile": 16,
+            "upperFragmentScreenOrigin": [
+              80,
+              176
+            ],
+            "upperFragmentDimensions": [
+              16,
+              7
+            ],
+            "lowerFragmentScreenOrigin": [
+              81,
+              183
+            ],
+            "lowerFragmentDimensions": [
+              16,
+              9
+            ],
+            "matchedPixels": 256,
+            "note": "Exact supplied rows, with a directly observed1px horizontal raster shift between fragments. No single full16x16 patch is claimed."
+          },
+          {
+            "metatile": 17,
+            "upperFragmentScreenOrigin": [
+              96,
+              176
+            ],
+            "upperFragmentDimensions": [
+              16,
+              7
+            ],
+            "lowerFragmentScreenOrigin": [
+              97,
+              183
+            ],
+            "lowerFragmentDimensions": [
+              16,
+              9
+            ],
+            "matchedPixels": 256,
+            "note": "Exact supplied rows, with a directly observed1px horizontal raster shift between fragments. No single full16x16 patch is claimed."
+          }
+        ]
+      },
+      "coordinateNote": "Four full upper bricks are directly observed over pipe2768/top176. The rightmost is inferred world2800. A running jump lands on the pipe and immediately chains another jump while braking left; the previous stationary/slow jumps did not establish a hit."
+    },
+    {
+      "structure": "final-four-brick-upper-coin-strip",
+      "row": 5,
+      "ordinal": 3,
+      "inferredColumn": 174,
+      "inferredWorldX": 2784,
+      "worldY": 80,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-broken-by-big-mario-no-release",
+      "beforeEvidence": {
+        "sequence": 12366,
+        "tick": 5601,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/12366-tick-05601.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          116,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "activation": {
+        "sequence": 12368,
+        "tick": 5606,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/12368-tick-05606.png"
+      },
+      "laterObservation": {
+        "sequence": 12368,
+        "tick": 5606,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/12368-tick-05606.png"
+      },
+      "clearedCellEvidence": {
+        "screenOrigin": [
+          116,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "all256PixelsAreBackground": true,
+        "background": "#6888fc"
+      },
+      "scoreForBrickBreak": 50,
+      "observedTopCoinCounterChange": null,
+      "observationNote": "An upward big-Mario jump is followed by the visible brick fragment burst, removal of the complete previously matched brick, and50score. Any coin increment here comes from the pre-existing coin visibly on top; it is not assigned to a hidden brick item. No vine appears."
+    },
+    {
+      "structure": "final-four-brick-upper-coin-strip",
+      "row": 5,
+      "ordinal": 2,
+      "inferredColumn": 173,
+      "inferredWorldX": 2768,
+      "worldY": 80,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-broken-by-big-mario-no-release",
+      "beforeEvidence": {
+        "sequence": 12371,
+        "tick": 5612,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/12371-tick-05612.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          98,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "activation": {
+        "sequence": 12372,
+        "tick": 5615,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/12372-tick-05615.png"
+      },
+      "laterObservation": {
+        "sequence": 12372,
+        "tick": 5615,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/12372-tick-05615.png"
+      },
+      "clearedCellEvidence": {
+        "screenOrigin": [
+          95,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "all256PixelsAreBackground": true,
+        "background": "#6888fc"
+      },
+      "scoreForBrickBreak": 50,
+      "observedTopCoinCounterChange": [
+        64,
+        65
+      ],
+      "observationNote": "An upward big-Mario jump is followed by the visible brick fragment burst, removal of the complete previously matched brick, and50score. Any coin increment here comes from the pre-existing coin visibly on top; it is not assigned to a hidden brick item. No vine appears."
+    },
+    {
+      "structure": "final-four-brick-upper-coin-strip",
+      "row": 5,
+      "ordinal": 1,
+      "inferredColumn": 172,
+      "inferredWorldX": 2752,
+      "worldY": 80,
+      "vineObserved": false,
+      "outcome": "ordinary-brick-broken-by-big-mario-no-release",
+      "beforeEvidence": {
+        "sequence": 12373,
+        "tick": 5616,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/12373-tick-05616.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 81,
+        "screenOrigin": [
+          79,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "activation": {
+        "sequence": 12374,
+        "tick": 5619,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/12374-tick-05619.png"
+      },
+      "laterObservation": {
+        "sequence": 12375,
+        "tick": 5623,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/12375-tick-05623.png"
+      },
+      "clearedCellEvidence": {
+        "screenOrigin": [
+          79,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "all256PixelsAreBackground": true,
+        "background": "#6888fc"
+      },
+      "scoreForBrickBreak": 50,
+      "observedTopCoinCounterChange": [
+        65,
+        66
+      ],
+      "observationNote": "An upward big-Mario jump is followed by the visible brick fragment burst, removal of the complete previously matched brick, and50score. Any coin increment here comes from the pre-existing coin visibly on top; it is not assigned to a hidden brick item. No vine appears."
+    }
+  ],
+  "starArtworkEvidence": [
+    {
+      "evidence": {
+        "sequence": 1040,
+        "tick": 5743,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01040-tick-05743.png"
+      },
+      "sprite": "sprite-powerups-2.png",
+      "screenOrigin": [
+        90,
+        86
+      ],
+      "exactOpaquePixels": 122,
+      "paletteRemapping": null
+    },
+    {
+      "evidence": {
+        "sequence": 1041,
+        "tick": 5744,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01041-tick-05744.png"
+      },
+      "sprite": "sprite-powerups-2.png",
+      "screenOrigin": [
+        93,
+        108
+      ],
+      "exactOpaquePixels": 122,
+      "paletteRemapping": null
+    }
+  ],
+  "coordinateEvidence": {
+    "returnSequence": 1004,
+    "whitePipeWorldX": 1840,
+    "pipeScreenX": 48,
+    "pipeTopY": 176,
+    "inferredReturnCameraX": 1792,
+    "secondStripScreenX": 96,
+    "inferredSecondStripWorldX": 1888,
+    "stripWidthPixels": 128,
+    "upperY": 80,
+    "lowerY": 144,
+    "note": "Actual two-tier strip is inferred grid1888..2015 from the independently observed water-return pipe. Original freeTile1886 is a drifted search anchor. Later columns follow the same finite128px strip and static screenshot alignment; small raster phase differences remain possible."
+  },
+  "replayedWaterRoute": {
+    "source": "data/vine-optional-rooms.json",
+    "room": "5-2/optional-water",
+    "winningInputPrefixDecisions": 5434,
+    "sourceSequenceRange": [
+      906,
+      1004
+    ],
+    "requestCount": 98,
+    "allMasksAndNativeDurationsMatch": true,
+    "inputsAfterPrefix": [
+      {
+        "sequence": 907,
+        "tick": 5440,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/00907-tick-05440.png"
+      },
+      {
+        "sequence": 908,
+        "tick": 5446,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/00908-tick-05446.png"
+      },
+      {
+        "sequence": 909,
+        "tick": 5450,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00909-tick-05450.png"
+      },
+      {
+        "sequence": 910,
+        "tick": 5452,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/00910-tick-05452.png"
+      },
+      {
+        "sequence": 911,
+        "tick": 5458,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/00911-tick-05458.png"
+      },
+      {
+        "sequence": 912,
+        "tick": 5462,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00912-tick-05462.png"
+      },
+      {
+        "sequence": 913,
+        "tick": 5464,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/00913-tick-05464.png"
+      },
+      {
+        "sequence": 914,
+        "tick": 5467,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/00914-tick-05467.png"
+      },
+      {
+        "sequence": 915,
+        "tick": 5468,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00915-tick-05468.png"
+      },
+      {
+        "sequence": 916,
+        "tick": 5470,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/00916-tick-05470.png"
+      },
+      {
+        "sequence": 917,
+        "tick": 5486,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 16
+        },
+        "nativeFrames": 121,
+        "image": "evidence/local/five-two-vine-frontier/00917-tick-05486.png"
+      },
+      {
+        "sequence": 918,
+        "tick": 5498,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/five-two-vine-frontier/00918-tick-05498.png"
+      },
+      {
+        "sequence": 919,
+        "tick": 5499,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00919-tick-05499.png"
+      },
+      {
+        "sequence": 920,
+        "tick": 5500,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00920-tick-05500.png"
+      },
+      {
+        "sequence": 921,
+        "tick": 5501,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00921-tick-05501.png"
+      },
+      {
+        "sequence": 922,
+        "tick": 5502,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00922-tick-05502.png"
+      },
+      {
+        "sequence": 923,
+        "tick": 5503,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00923-tick-05503.png"
+      },
+      {
+        "sequence": 924,
+        "tick": 5504,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00924-tick-05504.png"
+      },
+      {
+        "sequence": 925,
+        "tick": 5505,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00925-tick-05505.png"
+      },
+      {
+        "sequence": 926,
+        "tick": 5506,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00926-tick-05506.png"
+      },
+      {
+        "sequence": 927,
+        "tick": 5507,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00927-tick-05507.png"
+      },
+      {
+        "sequence": 928,
+        "tick": 5508,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00928-tick-05508.png"
+      },
+      {
+        "sequence": 929,
+        "tick": 5509,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00929-tick-05509.png"
+      },
+      {
+        "sequence": 930,
+        "tick": 5510,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00930-tick-05510.png"
+      },
+      {
+        "sequence": 931,
+        "tick": 5511,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00931-tick-05511.png"
+      },
+      {
+        "sequence": 932,
+        "tick": 5512,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00932-tick-05512.png"
+      },
+      {
+        "sequence": 933,
+        "tick": 5513,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00933-tick-05513.png"
+      },
+      {
+        "sequence": 934,
+        "tick": 5514,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00934-tick-05514.png"
+      },
+      {
+        "sequence": 935,
+        "tick": 5515,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00935-tick-05515.png"
+      },
+      {
+        "sequence": 936,
+        "tick": 5516,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00936-tick-05516.png"
+      },
+      {
+        "sequence": 937,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00937-tick-05517.png"
+      },
+      {
+        "sequence": 938,
+        "tick": 5518,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00938-tick-05518.png"
+      },
+      {
+        "sequence": 939,
+        "tick": 5524,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/00939-tick-05524.png"
+      },
+      {
+        "sequence": 940,
+        "tick": 5525,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00940-tick-05525.png"
+      },
+      {
+        "sequence": 941,
+        "tick": 5526,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00941-tick-05526.png"
+      },
+      {
+        "sequence": 942,
+        "tick": 5527,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00942-tick-05527.png"
+      },
+      {
+        "sequence": 943,
+        "tick": 5528,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00943-tick-05528.png"
+      },
+      {
+        "sequence": 944,
+        "tick": 5529,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00944-tick-05529.png"
+      },
+      {
+        "sequence": 945,
+        "tick": 5530,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00945-tick-05530.png"
+      },
+      {
+        "sequence": 946,
+        "tick": 5531,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00946-tick-05531.png"
+      },
+      {
+        "sequence": 947,
+        "tick": 5532,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00947-tick-05532.png"
+      },
+      {
+        "sequence": 948,
+        "tick": 5533,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00948-tick-05533.png"
+      },
+      {
+        "sequence": 949,
+        "tick": 5534,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00949-tick-05534.png"
+      },
+      {
+        "sequence": 950,
+        "tick": 5540,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/00950-tick-05540.png"
+      },
+      {
+        "sequence": 951,
+        "tick": 5541,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00951-tick-05541.png"
+      },
+      {
+        "sequence": 952,
+        "tick": 5542,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00952-tick-05542.png"
+      },
+      {
+        "sequence": 953,
+        "tick": 5543,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00953-tick-05543.png"
+      },
+      {
+        "sequence": 954,
+        "tick": 5544,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00954-tick-05544.png"
+      },
+      {
+        "sequence": 955,
+        "tick": 5548,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00955-tick-05548.png"
+      },
+      {
+        "sequence": 956,
+        "tick": 5549,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00956-tick-05549.png"
+      },
+      {
+        "sequence": 957,
+        "tick": 5550,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00957-tick-05550.png"
+      },
+      {
+        "sequence": 958,
+        "tick": 5551,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00958-tick-05551.png"
+      },
+      {
+        "sequence": 959,
+        "tick": 5552,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00959-tick-05552.png"
+      },
+      {
+        "sequence": 960,
+        "tick": 5553,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00960-tick-05553.png"
+      },
+      {
+        "sequence": 961,
+        "tick": 5554,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00961-tick-05554.png"
+      },
+      {
+        "sequence": 962,
+        "tick": 5555,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00962-tick-05555.png"
+      },
+      {
+        "sequence": 963,
+        "tick": 5556,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00963-tick-05556.png"
+      },
+      {
+        "sequence": 964,
+        "tick": 5557,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00964-tick-05557.png"
+      },
+      {
+        "sequence": 965,
+        "tick": 5558,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00965-tick-05558.png"
+      },
+      {
+        "sequence": 966,
+        "tick": 5559,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00966-tick-05559.png"
+      },
+      {
+        "sequence": 967,
+        "tick": 5560,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00967-tick-05560.png"
+      },
+      {
+        "sequence": 968,
+        "tick": 5561,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00968-tick-05561.png"
+      },
+      {
+        "sequence": 969,
+        "tick": 5562,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00969-tick-05562.png"
+      },
+      {
+        "sequence": 970,
+        "tick": 5563,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00970-tick-05563.png"
+      },
+      {
+        "sequence": 971,
+        "tick": 5564,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00971-tick-05564.png"
+      },
+      {
+        "sequence": 972,
+        "tick": 5565,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00972-tick-05565.png"
+      },
+      {
+        "sequence": 973,
+        "tick": 5566,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00973-tick-05566.png"
+      },
+      {
+        "sequence": 974,
+        "tick": 5570,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00974-tick-05570.png"
+      },
+      {
+        "sequence": 975,
+        "tick": 5574,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00975-tick-05574.png"
+      },
+      {
+        "sequence": 976,
+        "tick": 5578,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/00976-tick-05578.png"
+      },
+      {
+        "sequence": 977,
+        "tick": 5579,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00977-tick-05579.png"
+      },
+      {
+        "sequence": 978,
+        "tick": 5580,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00978-tick-05580.png"
+      },
+      {
+        "sequence": 979,
+        "tick": 5581,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00979-tick-05581.png"
+      },
+      {
+        "sequence": 980,
+        "tick": 5582,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00980-tick-05582.png"
+      },
+      {
+        "sequence": 981,
+        "tick": 5583,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00981-tick-05583.png"
+      },
+      {
+        "sequence": 982,
+        "tick": 5584,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00982-tick-05584.png"
+      },
+      {
+        "sequence": 983,
+        "tick": 5585,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00983-tick-05585.png"
+      },
+      {
+        "sequence": 984,
+        "tick": 5586,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00984-tick-05586.png"
+      },
+      {
+        "sequence": 985,
+        "tick": 5587,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00985-tick-05587.png"
+      },
+      {
+        "sequence": 986,
+        "tick": 5588,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00986-tick-05588.png"
+      },
+      {
+        "sequence": 987,
+        "tick": 5589,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00987-tick-05589.png"
+      },
+      {
+        "sequence": 988,
+        "tick": 5590,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00988-tick-05590.png"
+      },
+      {
+        "sequence": 989,
+        "tick": 5591,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00989-tick-05591.png"
+      },
+      {
+        "sequence": 990,
+        "tick": 5592,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00990-tick-05592.png"
+      },
+      {
+        "sequence": 991,
+        "tick": 5593,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00991-tick-05593.png"
+      },
+      {
+        "sequence": 992,
+        "tick": 5594,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00992-tick-05594.png"
+      },
+      {
+        "sequence": 993,
+        "tick": 5595,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00993-tick-05595.png"
+      },
+      {
+        "sequence": 994,
+        "tick": 5596,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00994-tick-05596.png"
+      },
+      {
+        "sequence": 995,
+        "tick": 5597,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00995-tick-05597.png"
+      },
+      {
+        "sequence": 996,
+        "tick": 5598,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00996-tick-05598.png"
+      },
+      {
+        "sequence": 997,
+        "tick": 5599,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00997-tick-05599.png"
+      },
+      {
+        "sequence": 998,
+        "tick": 5600,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/00998-tick-05600.png"
+      },
+      {
+        "sequence": 999,
+        "tick": 5601,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/00999-tick-05601.png"
+      },
+      {
+        "sequence": 1000,
+        "tick": 5602,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01000-tick-05602.png"
+      },
+      {
+        "sequence": 1001,
+        "tick": 5608,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/01001-tick-05608.png"
+      },
+      {
+        "sequence": 1002,
+        "tick": 5612,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01002-tick-05612.png"
+      },
+      {
+        "sequence": 1003,
+        "tick": 5628,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 16
+        },
+        "nativeFrames": 120,
+        "image": "evidence/local/five-two-vine-frontier/01003-tick-05628.png"
+      },
+      {
+        "sequence": 1004,
+        "tick": 5640,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/five-two-vine-frontier/01004-tick-05640.png"
+      }
+    ]
+  },
+  "route": {
+    "id": "second-strip-upper-and-lower-content-probes",
+    "sourceSequenceRange": [
+      1004,
+      1064
+    ],
+    "inputsAfterWaterReturn": [
+      {
+        "sequence": 1005,
+        "tick": 5645,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/01005-tick-05645.png"
+      },
+      {
+        "sequence": 1006,
+        "tick": 5647,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01006-tick-05647.png"
+      },
+      {
+        "sequence": 1007,
+        "tick": 5650,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01007-tick-05650.png"
+      },
+      {
+        "sequence": 1008,
+        "tick": 5654,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01008-tick-05654.png"
+      },
+      {
+        "sequence": 1009,
+        "tick": 5657,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01009-tick-05657.png"
+      },
+      {
+        "sequence": 1010,
+        "tick": 5658,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01010-tick-05658.png"
+      },
+      {
+        "sequence": 1011,
+        "tick": 5660,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01011-tick-05660.png"
+      },
+      {
+        "sequence": 1012,
+        "tick": 5663,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01012-tick-05663.png"
+      },
+      {
+        "sequence": 1013,
+        "tick": 5666,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01013-tick-05666.png"
+      },
+      {
+        "sequence": 1014,
+        "tick": 5667,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01014-tick-05667.png"
+      },
+      {
+        "sequence": 1015,
+        "tick": 5669,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01015-tick-05669.png"
+      },
+      {
+        "sequence": 1016,
+        "tick": 5673,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01016-tick-05673.png"
+      },
+      {
+        "sequence": 1017,
+        "tick": 5678,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/01017-tick-05678.png"
+      },
+      {
+        "sequence": 1018,
+        "tick": 5680,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01018-tick-05680.png"
+      },
+      {
+        "sequence": 1019,
+        "tick": 5682,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01019-tick-05682.png"
+      },
+      {
+        "sequence": 1020,
+        "tick": 5686,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01020-tick-05686.png"
+      },
+      {
+        "sequence": 1021,
+        "tick": 5692,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/01021-tick-05692.png"
+      },
+      {
+        "sequence": 1022,
+        "tick": 5694,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01022-tick-05694.png"
+      },
+      {
+        "sequence": 1023,
+        "tick": 5698,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01023-tick-05698.png"
+      },
+      {
+        "sequence": 1024,
+        "tick": 5699,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01024-tick-05699.png"
+      },
+      {
+        "sequence": 1025,
+        "tick": 5701,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01025-tick-05701.png"
+      },
+      {
+        "sequence": 1026,
+        "tick": 5705,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01026-tick-05705.png"
+      },
+      {
+        "sequence": 1027,
+        "tick": 5708,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01027-tick-05708.png"
+      },
+      {
+        "sequence": 1028,
+        "tick": 5709,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01028-tick-05709.png"
+      },
+      {
+        "sequence": 1029,
+        "tick": 5711,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01029-tick-05711.png"
+      },
+      {
+        "sequence": 1030,
+        "tick": 5715,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01030-tick-05715.png"
+      },
+      {
+        "sequence": 1031,
+        "tick": 5719,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01031-tick-05719.png"
+      },
+      {
+        "sequence": 1032,
+        "tick": 5720,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01032-tick-05720.png"
+      },
+      {
+        "sequence": 1033,
+        "tick": 5722,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01033-tick-05722.png"
+      },
+      {
+        "sequence": 1034,
+        "tick": 5726,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 31,
+        "image": "evidence/local/five-two-vine-frontier/01034-tick-05726.png"
+      },
+      {
+        "sequence": 1035,
+        "tick": 5729,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01035-tick-05729.png"
+      },
+      {
+        "sequence": 1036,
+        "tick": 5730,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01036-tick-05730.png"
+      },
+      {
+        "sequence": 1037,
+        "tick": 5732,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01037-tick-05732.png"
+      },
+      {
+        "sequence": 1038,
+        "tick": 5736,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01038-tick-05736.png"
+      },
+      {
+        "sequence": 1039,
+        "tick": 5740,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01039-tick-05740.png"
+      },
+      {
+        "sequence": 1040,
+        "tick": 5743,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/01040-tick-05743.png"
+      },
+      {
+        "sequence": 1041,
+        "tick": 5744,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/01041-tick-05744.png"
+      },
+      {
+        "sequence": 1042,
+        "tick": 5754,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 10
+        },
+        "nativeFrames": 75,
+        "image": "evidence/local/five-two-vine-frontier/01042-tick-05754.png"
+      },
+      {
+        "sequence": 1043,
+        "tick": 5758,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01043-tick-05758.png"
+      },
+      {
+        "sequence": 1044,
+        "tick": 5759,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01044-tick-05759.png"
+      },
+      {
+        "sequence": 1045,
+        "tick": 5762,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01045-tick-05762.png"
+      },
+      {
+        "sequence": 1046,
+        "tick": 5766,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01046-tick-05766.png"
+      },
+      {
+        "sequence": 1047,
+        "tick": 5768,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01047-tick-05768.png"
+      },
+      {
+        "sequence": 1048,
+        "tick": 5772,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01048-tick-05772.png"
+      },
+      {
+        "sequence": 1049,
+        "tick": 5775,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01049-tick-05775.png"
+      },
+      {
+        "sequence": 1050,
+        "tick": 5776,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01050-tick-05776.png"
+      },
+      {
+        "sequence": 1051,
+        "tick": 5778,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01051-tick-05778.png"
+      },
+      {
+        "sequence": 1052,
+        "tick": 5782,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01052-tick-05782.png"
+      },
+      {
+        "sequence": 1053,
+        "tick": 5785,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01053-tick-05785.png"
+      },
+      {
+        "sequence": 1054,
+        "tick": 5786,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01054-tick-05786.png"
+      },
+      {
+        "sequence": 1055,
+        "tick": 5788,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01055-tick-05788.png"
+      },
+      {
+        "sequence": 1056,
+        "tick": 5792,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01056-tick-05792.png"
+      },
+      {
+        "sequence": 1057,
+        "tick": 5797,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/01057-tick-05797.png"
+      },
+      {
+        "sequence": 1058,
+        "tick": 5799,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01058-tick-05799.png"
+      },
+      {
+        "sequence": 1059,
+        "tick": 5801,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01059-tick-05801.png"
+      },
+      {
+        "sequence": 1060,
+        "tick": 5805,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01060-tick-05805.png"
+      },
+      {
+        "sequence": 1061,
+        "tick": 5808,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/01061-tick-05808.png"
+      },
+      {
+        "sequence": 1062,
+        "tick": 5809,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/01062-tick-05809.png"
+      },
+      {
+        "sequence": 1063,
+        "tick": 5811,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/01063-tick-05811.png"
+      },
+      {
+        "sequence": 1064,
+        "tick": 5815,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/01064-tick-05815.png"
+      }
+    ]
+  },
+  "additionalRoutes": [
+    {
+      "id": "second-strip-lower-first",
+      "winningInputPrefixDecisions": 5434,
+      "sourceSequenceRange": [
+        1970,
+        2073
+      ],
+      "replayedWaterRequestRange": [
+        1971,
+        2068
+      ],
+      "allReplayedMasksAndNativeDurationsMatch": true,
+      "inputsAfterPrefix": [
+        {
+          "sequence": 1971,
+          "tick": 5440,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/01971-tick-05440.png"
+        },
+        {
+          "sequence": 1972,
+          "tick": 5446,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/01972-tick-05446.png"
+        },
+        {
+          "sequence": 1973,
+          "tick": 5450,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/01973-tick-05450.png"
+        },
+        {
+          "sequence": 1974,
+          "tick": 5452,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/01974-tick-05452.png"
+        },
+        {
+          "sequence": 1975,
+          "tick": 5458,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/01975-tick-05458.png"
+        },
+        {
+          "sequence": 1976,
+          "tick": 5462,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/01976-tick-05462.png"
+        },
+        {
+          "sequence": 1977,
+          "tick": 5464,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/01977-tick-05464.png"
+        },
+        {
+          "sequence": 1978,
+          "tick": 5467,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/01978-tick-05467.png"
+        },
+        {
+          "sequence": 1979,
+          "tick": 5468,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01979-tick-05468.png"
+        },
+        {
+          "sequence": 1980,
+          "tick": 5470,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/01980-tick-05470.png"
+        },
+        {
+          "sequence": 1981,
+          "tick": 5486,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 16
+          },
+          "nativeFrames": 121,
+          "image": "evidence/local/five-two-vine-frontier/01981-tick-05486.png"
+        },
+        {
+          "sequence": 1982,
+          "tick": 5498,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/five-two-vine-frontier/01982-tick-05498.png"
+        },
+        {
+          "sequence": 1983,
+          "tick": 5499,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01983-tick-05499.png"
+        },
+        {
+          "sequence": 1984,
+          "tick": 5500,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01984-tick-05500.png"
+        },
+        {
+          "sequence": 1985,
+          "tick": 5501,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01985-tick-05501.png"
+        },
+        {
+          "sequence": 1986,
+          "tick": 5502,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01986-tick-05502.png"
+        },
+        {
+          "sequence": 1987,
+          "tick": 5503,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01987-tick-05503.png"
+        },
+        {
+          "sequence": 1988,
+          "tick": 5504,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01988-tick-05504.png"
+        },
+        {
+          "sequence": 1989,
+          "tick": 5505,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01989-tick-05505.png"
+        },
+        {
+          "sequence": 1990,
+          "tick": 5506,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01990-tick-05506.png"
+        },
+        {
+          "sequence": 1991,
+          "tick": 5507,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01991-tick-05507.png"
+        },
+        {
+          "sequence": 1992,
+          "tick": 5508,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01992-tick-05508.png"
+        },
+        {
+          "sequence": 1993,
+          "tick": 5509,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01993-tick-05509.png"
+        },
+        {
+          "sequence": 1994,
+          "tick": 5510,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01994-tick-05510.png"
+        },
+        {
+          "sequence": 1995,
+          "tick": 5511,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01995-tick-05511.png"
+        },
+        {
+          "sequence": 1996,
+          "tick": 5512,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01996-tick-05512.png"
+        },
+        {
+          "sequence": 1997,
+          "tick": 5513,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01997-tick-05513.png"
+        },
+        {
+          "sequence": 1998,
+          "tick": 5514,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/01998-tick-05514.png"
+        },
+        {
+          "sequence": 1999,
+          "tick": 5515,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/01999-tick-05515.png"
+        },
+        {
+          "sequence": 2000,
+          "tick": 5516,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02000-tick-05516.png"
+        },
+        {
+          "sequence": 2001,
+          "tick": 5517,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02001-tick-05517.png"
+        },
+        {
+          "sequence": 2002,
+          "tick": 5518,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02002-tick-05518.png"
+        },
+        {
+          "sequence": 2003,
+          "tick": 5524,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/02003-tick-05524.png"
+        },
+        {
+          "sequence": 2004,
+          "tick": 5525,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02004-tick-05525.png"
+        },
+        {
+          "sequence": 2005,
+          "tick": 5526,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02005-tick-05526.png"
+        },
+        {
+          "sequence": 2006,
+          "tick": 5527,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02006-tick-05527.png"
+        },
+        {
+          "sequence": 2007,
+          "tick": 5528,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02007-tick-05528.png"
+        },
+        {
+          "sequence": 2008,
+          "tick": 5529,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02008-tick-05529.png"
+        },
+        {
+          "sequence": 2009,
+          "tick": 5530,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02009-tick-05530.png"
+        },
+        {
+          "sequence": 2010,
+          "tick": 5531,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02010-tick-05531.png"
+        },
+        {
+          "sequence": 2011,
+          "tick": 5532,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02011-tick-05532.png"
+        },
+        {
+          "sequence": 2012,
+          "tick": 5533,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02012-tick-05533.png"
+        },
+        {
+          "sequence": 2013,
+          "tick": 5534,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02013-tick-05534.png"
+        },
+        {
+          "sequence": 2014,
+          "tick": 5540,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/02014-tick-05540.png"
+        },
+        {
+          "sequence": 2015,
+          "tick": 5541,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02015-tick-05541.png"
+        },
+        {
+          "sequence": 2016,
+          "tick": 5542,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02016-tick-05542.png"
+        },
+        {
+          "sequence": 2017,
+          "tick": 5543,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02017-tick-05543.png"
+        },
+        {
+          "sequence": 2018,
+          "tick": 5544,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02018-tick-05544.png"
+        },
+        {
+          "sequence": 2019,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02019-tick-05548.png"
+        },
+        {
+          "sequence": 2020,
+          "tick": 5549,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02020-tick-05549.png"
+        },
+        {
+          "sequence": 2021,
+          "tick": 5550,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02021-tick-05550.png"
+        },
+        {
+          "sequence": 2022,
+          "tick": 5551,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02022-tick-05551.png"
+        },
+        {
+          "sequence": 2023,
+          "tick": 5552,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02023-tick-05552.png"
+        },
+        {
+          "sequence": 2024,
+          "tick": 5553,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02024-tick-05553.png"
+        },
+        {
+          "sequence": 2025,
+          "tick": 5554,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02025-tick-05554.png"
+        },
+        {
+          "sequence": 2026,
+          "tick": 5555,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02026-tick-05555.png"
+        },
+        {
+          "sequence": 2027,
+          "tick": 5556,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02027-tick-05556.png"
+        },
+        {
+          "sequence": 2028,
+          "tick": 5557,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02028-tick-05557.png"
+        },
+        {
+          "sequence": 2029,
+          "tick": 5558,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02029-tick-05558.png"
+        },
+        {
+          "sequence": 2030,
+          "tick": 5559,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02030-tick-05559.png"
+        },
+        {
+          "sequence": 2031,
+          "tick": 5560,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02031-tick-05560.png"
+        },
+        {
+          "sequence": 2032,
+          "tick": 5561,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02032-tick-05561.png"
+        },
+        {
+          "sequence": 2033,
+          "tick": 5562,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02033-tick-05562.png"
+        },
+        {
+          "sequence": 2034,
+          "tick": 5563,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02034-tick-05563.png"
+        },
+        {
+          "sequence": 2035,
+          "tick": 5564,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02035-tick-05564.png"
+        },
+        {
+          "sequence": 2036,
+          "tick": 5565,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02036-tick-05565.png"
+        },
+        {
+          "sequence": 2037,
+          "tick": 5566,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02037-tick-05566.png"
+        },
+        {
+          "sequence": 2038,
+          "tick": 5570,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02038-tick-05570.png"
+        },
+        {
+          "sequence": 2039,
+          "tick": 5574,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02039-tick-05574.png"
+        },
+        {
+          "sequence": 2040,
+          "tick": 5578,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02040-tick-05578.png"
+        },
+        {
+          "sequence": 2041,
+          "tick": 5579,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02041-tick-05579.png"
+        },
+        {
+          "sequence": 2042,
+          "tick": 5580,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02042-tick-05580.png"
+        },
+        {
+          "sequence": 2043,
+          "tick": 5581,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02043-tick-05581.png"
+        },
+        {
+          "sequence": 2044,
+          "tick": 5582,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02044-tick-05582.png"
+        },
+        {
+          "sequence": 2045,
+          "tick": 5583,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02045-tick-05583.png"
+        },
+        {
+          "sequence": 2046,
+          "tick": 5584,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02046-tick-05584.png"
+        },
+        {
+          "sequence": 2047,
+          "tick": 5585,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02047-tick-05585.png"
+        },
+        {
+          "sequence": 2048,
+          "tick": 5586,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02048-tick-05586.png"
+        },
+        {
+          "sequence": 2049,
+          "tick": 5587,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02049-tick-05587.png"
+        },
+        {
+          "sequence": 2050,
+          "tick": 5588,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02050-tick-05588.png"
+        },
+        {
+          "sequence": 2051,
+          "tick": 5589,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02051-tick-05589.png"
+        },
+        {
+          "sequence": 2052,
+          "tick": 5590,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02052-tick-05590.png"
+        },
+        {
+          "sequence": 2053,
+          "tick": 5591,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02053-tick-05591.png"
+        },
+        {
+          "sequence": 2054,
+          "tick": 5592,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02054-tick-05592.png"
+        },
+        {
+          "sequence": 2055,
+          "tick": 5593,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02055-tick-05593.png"
+        },
+        {
+          "sequence": 2056,
+          "tick": 5594,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02056-tick-05594.png"
+        },
+        {
+          "sequence": 2057,
+          "tick": 5595,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02057-tick-05595.png"
+        },
+        {
+          "sequence": 2058,
+          "tick": 5596,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02058-tick-05596.png"
+        },
+        {
+          "sequence": 2059,
+          "tick": 5597,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02059-tick-05597.png"
+        },
+        {
+          "sequence": 2060,
+          "tick": 5598,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02060-tick-05598.png"
+        },
+        {
+          "sequence": 2061,
+          "tick": 5599,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02061-tick-05599.png"
+        },
+        {
+          "sequence": 2062,
+          "tick": 5600,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02062-tick-05600.png"
+        },
+        {
+          "sequence": 2063,
+          "tick": 5601,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02063-tick-05601.png"
+        },
+        {
+          "sequence": 2064,
+          "tick": 5602,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/02064-tick-05602.png"
+        },
+        {
+          "sequence": 2065,
+          "tick": 5608,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/02065-tick-05608.png"
+        },
+        {
+          "sequence": 2066,
+          "tick": 5612,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02066-tick-05612.png"
+        },
+        {
+          "sequence": 2067,
+          "tick": 5628,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 16
+          },
+          "nativeFrames": 120,
+          "image": "evidence/local/five-two-vine-frontier/02067-tick-05628.png"
+        },
+        {
+          "sequence": 2068,
+          "tick": 5640,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/five-two-vine-frontier/02068-tick-05640.png"
+        },
+        {
+          "sequence": 2069,
+          "tick": 5644,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/five-two-vine-frontier/02069-tick-05644.png"
+        },
+        {
+          "sequence": 2070,
+          "tick": 5645,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02070-tick-05645.png"
+        },
+        {
+          "sequence": 2071,
+          "tick": 5653,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-frontier/02071-tick-05653.png"
+        },
+        {
+          "sequence": 2072,
+          "tick": 5655,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/02072-tick-05655.png"
+        },
+        {
+          "sequence": 2073,
+          "tick": 5659,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02073-tick-05659.png"
+        }
+      ]
+    },
+    {
+      "id": "first-strip-lower-first",
+      "winningInputPrefixDecisions": 5417,
+      "sourceSequenceRange": [
+        2972,
+        2980
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 2973,
+          "tick": 5419,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/02973-tick-05419.png"
+        },
+        {
+          "sequence": 2974,
+          "tick": 5425,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/02974-tick-05425.png"
+        },
+        {
+          "sequence": 2975,
+          "tick": 5428,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/02975-tick-05428.png"
+        },
+        {
+          "sequence": 2976,
+          "tick": 5429,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/02976-tick-05429.png"
+        },
+        {
+          "sequence": 2977,
+          "tick": 5431,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/02977-tick-05431.png"
+        },
+        {
+          "sequence": 2978,
+          "tick": 5435,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/02978-tick-05435.png"
+        },
+        {
+          "sequence": 2979,
+          "tick": 5437,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/02979-tick-05437.png"
+        },
+        {
+          "sequence": 2980,
+          "tick": 5441,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/five-two-vine-frontier/02980-tick-05441.png"
+        }
+      ]
+    },
+    {
+      "id": "first-strip-lower-six-and-five",
+      "winningInputPrefixDecisions": 5417,
+      "sourceSequenceRange": [
+        4789,
+        4800
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 4790,
+          "tick": 5422,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/five-two-vine-frontier/04790-tick-05422.png"
+        },
+        {
+          "sequence": 4791,
+          "tick": 5425,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/04791-tick-05425.png"
+        },
+        {
+          "sequence": 4792,
+          "tick": 5426,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/04792-tick-05426.png"
+        },
+        {
+          "sequence": 4793,
+          "tick": 5430,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/04793-tick-05430.png"
+        },
+        {
+          "sequence": 4794,
+          "tick": 5431,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/04794-tick-05431.png"
+        },
+        {
+          "sequence": 4795,
+          "tick": 5433,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/04795-tick-05433.png"
+        },
+        {
+          "sequence": 4796,
+          "tick": 5437,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/04796-tick-05437.png"
+        },
+        {
+          "sequence": 4797,
+          "tick": 5439,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 16,
+          "image": "evidence/local/five-two-vine-frontier/04797-tick-05439.png"
+        },
+        {
+          "sequence": 4798,
+          "tick": 5442,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/04798-tick-05442.png"
+        },
+        {
+          "sequence": 4799,
+          "tick": 5443,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/04799-tick-05443.png"
+        },
+        {
+          "sequence": 4800,
+          "tick": 5447,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/04800-tick-05447.png"
+        }
+      ]
+    },
+    {
+      "id": "three-brick-support-left-middle",
+      "winningInputPrefixDecisions": 5468,
+      "sourceSequenceRange": [
+        5720,
+        5730
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 5721,
+          "tick": 5470,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/05721-tick-05470.png"
+        },
+        {
+          "sequence": 5722,
+          "tick": 5476,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/05722-tick-05476.png"
+        },
+        {
+          "sequence": 5723,
+          "tick": 5479,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/05723-tick-05479.png"
+        },
+        {
+          "sequence": 5724,
+          "tick": 5480,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/05724-tick-05480.png"
+        },
+        {
+          "sequence": 5725,
+          "tick": 5483,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/05725-tick-05483.png"
+        },
+        {
+          "sequence": 5726,
+          "tick": 5487,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/05726-tick-05487.png"
+        },
+        {
+          "sequence": 5727,
+          "tick": 5491,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/05727-tick-05491.png"
+        },
+        {
+          "sequence": 5728,
+          "tick": 5492,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/05728-tick-05492.png"
+        },
+        {
+          "sequence": 5729,
+          "tick": 5495,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/05729-tick-05495.png"
+        },
+        {
+          "sequence": 5730,
+          "tick": 5499,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/05730-tick-05499.png"
+        }
+      ]
+    },
+    {
+      "id": "late-isolated-lower-mushroom",
+      "winningInputPrefixDecisions": 5540,
+      "sourceSequenceRange": [
+        7628,
+        7635
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 7629,
+          "tick": 5544,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07629-tick-05544.png"
+        },
+        {
+          "sequence": 7630,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+        },
+        {
+          "sequence": 7631,
+          "tick": 5550,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/07631-tick-05550.png"
+        },
+        {
+          "sequence": 7632,
+          "tick": 5552,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/07632-tick-05552.png"
+        },
+        {
+          "sequence": 7633,
+          "tick": 5555,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/07633-tick-05555.png"
+        },
+        {
+          "sequence": 7634,
+          "tick": 5561,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-frontier/07634-tick-05561.png"
+        },
+        {
+          "sequence": 7635,
+          "tick": 5565,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07635-tick-05565.png"
+        }
+      ]
+    },
+    {
+      "id": "final-upper-fourth-running-chain",
+      "winningInputPrefixDecisions": 5540,
+      "sourceSequenceRange": [
+        9523,
+        9531
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 9524,
+          "tick": 5544,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/09524-tick-05544.png"
+        },
+        {
+          "sequence": 9525,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/09525-tick-05548.png"
+        },
+        {
+          "sequence": 9526,
+          "tick": 5551,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/09526-tick-05551.png"
+        },
+        {
+          "sequence": 9527,
+          "tick": 5556,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/five-two-vine-frontier/09527-tick-05556.png"
+        },
+        {
+          "sequence": 9528,
+          "tick": 5557,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/09528-tick-05557.png"
+        },
+        {
+          "sequence": 9529,
+          "tick": 5558,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/09529-tick-05558.png"
+        },
+        {
+          "sequence": 9530,
+          "tick": 5561,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/09530-tick-05561.png"
+        },
+        {
+          "sequence": 9531,
+          "tick": 5565,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/09531-tick-05565.png"
+        }
+      ]
+    },
+    {
+      "id": "isolated-mushroom-collected-and-final-upper-three-probed",
+      "winningInputPrefixDecisions": 5540,
+      "sourceSequenceRange": [
+        12350,
+        12377
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 12351,
+          "tick": 5544,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/12351-tick-05544.png"
+        },
+        {
+          "sequence": 12352,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/12352-tick-05548.png"
+        },
+        {
+          "sequence": 12353,
+          "tick": 5550,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/12353-tick-05550.png"
+        },
+        {
+          "sequence": 12354,
+          "tick": 5553,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/12354-tick-05553.png"
+        },
+        {
+          "sequence": 12355,
+          "tick": 5554,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/12355-tick-05554.png"
+        },
+        {
+          "sequence": 12356,
+          "tick": 5555,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-frontier/12356-tick-05555.png"
+        },
+        {
+          "sequence": 12357,
+          "tick": 5556,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/12357-tick-05556.png"
+        },
+        {
+          "sequence": 12358,
+          "tick": 5560,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/12358-tick-05560.png"
+        },
+        {
+          "sequence": 12359,
+          "tick": 5564,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/five-two-vine-frontier/12359-tick-05564.png"
+        },
+        {
+          "sequence": 12360,
+          "tick": 5572,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-frontier/12360-tick-05572.png"
+        },
+        {
+          "sequence": 12361,
+          "tick": 5580,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-frontier/12361-tick-05580.png"
+        },
+        {
+          "sequence": 12362,
+          "tick": 5588,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-frontier/12362-tick-05588.png"
+        },
+        {
+          "sequence": 12363,
+          "tick": 5591,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/12363-tick-05591.png"
+        },
+        {
+          "sequence": 12364,
+          "tick": 5596,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/five-two-vine-frontier/12364-tick-05596.png"
+        },
+        {
+          "sequence": 12365,
+          "tick": 5599,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/12365-tick-05599.png"
+        },
+        {
+          "sequence": 12366,
+          "tick": 5601,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/12366-tick-05601.png"
+        },
+        {
+          "sequence": 12367,
+          "tick": 5603,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 16,
+          "image": "evidence/local/five-two-vine-frontier/12367-tick-05603.png"
+        },
+        {
+          "sequence": 12368,
+          "tick": 5606,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/five-two-vine-frontier/12368-tick-05606.png"
+        },
+        {
+          "sequence": 12369,
+          "tick": 5609,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/12369-tick-05609.png"
+        },
+        {
+          "sequence": 12370,
+          "tick": 5610,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/12370-tick-05610.png"
+        },
+        {
+          "sequence": 12371,
+          "tick": 5612,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/12371-tick-05612.png"
+        },
+        {
+          "sequence": 12372,
+          "tick": 5615,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/12372-tick-05615.png"
+        },
+        {
+          "sequence": 12373,
+          "tick": 5616,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-frontier/12373-tick-05616.png"
+        },
+        {
+          "sequence": 12374,
+          "tick": 5619,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-frontier/12374-tick-05619.png"
+        },
+        {
+          "sequence": 12375,
+          "tick": 5623,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/12375-tick-05623.png"
+        },
+        {
+          "sequence": 12376,
+          "tick": 5625,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/12376-tick-05625.png"
+        },
+        {
+          "sequence": 12377,
+          "tick": 5649,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/five-two-vine-frontier/12377-tick-05649.png"
+        }
+      ]
+    }
+  ],
+  "frontier": [
+    "Combined with prior upper2/4/5, all eight upper positions of the second strip have actual content probes. This does not establish every5-2 vine candidate.",
+    "Combined with prior lower2/3, all eight lower positions of the second strip also have actual content probes.",
+    "Combined with prior first-strip lower2/3/4 and all six upper probes, both rows of the first six-brick structure also have actual content probes.",
+    "Combined with the prior rightmost support probe, all three y128 support positions have actual content probes.",
+    "All four final upper positions now have actual probes: ordinal4 bumps as small Mario and ordinals1/2/3 break as big Mario.",
+    "The upper coin strip left of the y128 support, the late five-brick upper strip, and late y144 gap support remain unresolved."
+  ],
+  "excluded": [
+    "Sequences1007/1011/1025 incidentally repeat previously verified upper2/4/5 and are not new frontier outcomes.",
+    "Sequences1045/3885 have no exact raised witness and are not counted as contents tests.",
+    "Sequences2983/3889 show actual killed-player cell22 after paratroopa contact; no block-content outcome is inferred.",
+    "The mushroom pickup approach11414/11415 also shows actual killed-player cell22 and is excluded.",
+    "Standing ground jump5733 does not reach the upper coin strip. Late edge jump5752 does not execute after leaving the support. Neither tests its contents."
+  ],
+  "upperCoinStripPositioning": {
+    "status": "support-mounted-no-confirmed-upper-head-hit",
+    "sourceSequenceRange": [
+      5730,
+      5755
+    ],
+    "inputsAfterSupportProbes": [
+      {
+        "sequence": 5731,
+        "tick": 5504,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/05731-tick-05504.png"
+      },
+      {
+        "sequence": 5732,
+        "tick": 5506,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05732-tick-05506.png"
+      },
+      {
+        "sequence": 5733,
+        "tick": 5510,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05733-tick-05510.png"
+      },
+      {
+        "sequence": 5734,
+        "tick": 5516,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/05734-tick-05516.png"
+      },
+      {
+        "sequence": 5735,
+        "tick": 5520,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05735-tick-05520.png"
+      },
+      {
+        "sequence": 5736,
+        "tick": 5525,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/05736-tick-05525.png"
+      },
+      {
+        "sequence": 5737,
+        "tick": 5527,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05737-tick-05527.png"
+      },
+      {
+        "sequence": 5738,
+        "tick": 5539,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/five-two-vine-frontier/05738-tick-05539.png"
+      },
+      {
+        "sequence": 5739,
+        "tick": 5543,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05739-tick-05543.png"
+      },
+      {
+        "sequence": 5740,
+        "tick": 5544,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/05740-tick-05544.png"
+      },
+      {
+        "sequence": 5741,
+        "tick": 5547,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/05741-tick-05547.png"
+      },
+      {
+        "sequence": 5742,
+        "tick": 5548,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/05742-tick-05548.png"
+      },
+      {
+        "sequence": 5743,
+        "tick": 5549,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-frontier/05743-tick-05549.png"
+      },
+      {
+        "sequence": 5744,
+        "tick": 5551,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05744-tick-05551.png"
+      },
+      {
+        "sequence": 5745,
+        "tick": 5553,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05745-tick-05553.png"
+      },
+      {
+        "sequence": 5746,
+        "tick": 5558,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-frontier/05746-tick-05558.png"
+      },
+      {
+        "sequence": 5747,
+        "tick": 5560,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05747-tick-05560.png"
+      },
+      {
+        "sequence": 5748,
+        "tick": 5564,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 31,
+        "image": "evidence/local/five-two-vine-frontier/05748-tick-05564.png"
+      },
+      {
+        "sequence": 5749,
+        "tick": 5565,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/05749-tick-05565.png"
+      },
+      {
+        "sequence": 5750,
+        "tick": 5567,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05750-tick-05567.png"
+      },
+      {
+        "sequence": 5751,
+        "tick": 5572,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/05751-tick-05572.png"
+      },
+      {
+        "sequence": 5752,
+        "tick": 5574,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/05752-tick-05574.png"
+      },
+      {
+        "sequence": 5753,
+        "tick": 5580,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-frontier/05753-tick-05580.png"
+      },
+      {
+        "sequence": 5754,
+        "tick": 5584,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05754-tick-05584.png"
+      },
+      {
+        "sequence": 5755,
+        "tick": 5588,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/05755-tick-05588.png"
+      }
+    ],
+    "standingSupportEvidence": {
+      "sequence": 5745,
+      "tick": 5553,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "image": "evidence/local/five-two-vine-frontier/05745-tick-05553.png"
+    },
+    "observedStandingPlayer": {
+      "direction": "left",
+      "cell": 23,
+      "originX": 75,
+      "originY": 97,
+      "feetY": 128,
+      "exactOpaquePixels": 143
+    },
+    "note": "The running jump actually mounts the y128 support. The following approach scrolls upper left brick partly offscreen; a jump issued after leaving the support falls. The higher strip contents remain unresolved."
+  },
+  "finalUpperStripPositioning": {
+    "status": "historical-unsuccessful-approach-before-later-confirmed-hits",
+    "winningInputPrefixDecisions": 5540,
+    "sourceSequenceRange": [
+      8576,
+      8588
+    ],
+    "inputsAfterPrefix": [
+      {
+        "sequence": 8577,
+        "tick": 5544,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/08577-tick-05544.png"
+      },
+      {
+        "sequence": 8578,
+        "tick": 5548,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/08578-tick-05548.png"
+      },
+      {
+        "sequence": 8579,
+        "tick": 5551,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/08579-tick-05551.png"
+      },
+      {
+        "sequence": 8580,
+        "tick": 5556,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-frontier/08580-tick-05556.png"
+      },
+      {
+        "sequence": 8581,
+        "tick": 5559,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/08581-tick-05559.png"
+      },
+      {
+        "sequence": 8582,
+        "tick": 5561,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-frontier/08582-tick-05561.png"
+      },
+      {
+        "sequence": 8583,
+        "tick": 5566,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-frontier/08583-tick-05566.png"
+      },
+      {
+        "sequence": 8584,
+        "tick": 5570,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/08584-tick-05570.png"
+      },
+      {
+        "sequence": 8585,
+        "tick": 5573,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-frontier/08585-tick-05573.png"
+      },
+      {
+        "sequence": 8586,
+        "tick": 5576,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/08586-tick-05576.png"
+      },
+      {
+        "sequence": 8587,
+        "tick": 5577,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-frontier/08587-tick-05577.png"
+      },
+      {
+        "sequence": 8588,
+        "tick": 5580,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-frontier/08588-tick-05580.png"
+      }
+    ],
+    "standingPipeEvidence": {
+      "sequence": 8582,
+      "tick": 5561,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "image": "evidence/local/five-two-vine-frontier/08582-tick-05561.png"
+    },
+    "pipeWorldX": 2768,
+    "pipeTopY": 176,
+    "observedStandingPlayer": {
+      "direction": "left",
+      "cell": 23,
+      "originX": 110,
+      "originY": 145,
+      "feetY": 176,
+      "exactOpaquePixels": 143
+    },
+    "upperStripInferredWorldX": 2752,
+    "upperStripY": 80,
+    "upperStripWidth": 64,
+    "note": "These earlier standing and low-speed jumps have no exact raised-block or item witness. Sampled feetY110/114 does not establish a hit. Later running/big-Mario routes above resolve all four positions; these historical attempts are not counted."
+  },
+  "mushroomCollectionAndGrowth": {
+    "pickupEvidence": {
+      "sequence": 12358,
+      "tick": 5560,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-frontier/12358-tick-05560.png"
+    },
+    "scoreBefore": 219950,
+    "scoreAfter": 220950,
+    "coins": 64,
+    "poseMeasurements": [
+      {
+        "evidence": {
+          "sequence": 12359,
+          "tick": 5564,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/five-two-vine-frontier/12359-tick-05564.png"
+        },
+        "direction": "left",
+        "cell": 25,
+        "originX": 104,
+        "originY": 112,
+        "feetY": 143,
+        "exactOpaquePixels": 372,
+        "observedTallState": true
+      },
+      {
+        "evidence": {
+          "sequence": 12360,
+          "tick": 5572,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-frontier/12360-tick-05572.png"
+        },
+        "direction": "left",
+        "cell": 25,
+        "originX": 95,
+        "originY": 177,
+        "feetY": 208,
+        "exactOpaquePixels": 372,
+        "observedTallState": true
+      },
+      {
+        "evidence": {
+          "sequence": 12366,
+          "tick": 5601,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/12366-tick-05601.png"
+        },
+        "direction": "left",
+        "cell": 25,
+        "originX": 109,
+        "originY": 145,
+        "feetY": 176,
+        "exactOpaquePixels": 372,
+        "observedTallState": true
+      }
+    ],
+    "note": "Ordinary rightward departure from the brick, a short right jump, and leftward air braking intercept the emitted mushroom. The full source recipe includes growth waits, plant retraction waits, the actual final-pipe landing and subsequent three brick breaks."
+  },
+  "continuation": {
+    "liveDriverSessionId": null,
+    "checkpointIsHistorical": true,
+    "lastVerifiedCompletedProbe": {
+      "sequence": 12375,
+      "tick": 5623,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-frontier/12375-tick-05623.png"
+    },
+    "lastObservation": {
+      "sequence": 12377,
+      "tick": 5649,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 24
+      },
+      "nativeFrames": 180,
+      "image": "evidence/local/five-two-vine-frontier/12377-tick-05649.png"
+    },
+    "lastFailedPositioning": {
+      "sequence": 11415,
+      "tick": 5565,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-frontier/11415-tick-05565.png"
+    },
+    "stateNote": "After completing final upper1, the retreat falls into the gap. Mario is offscreen in the last scene; no living pose, respawn, or life-count change is claimed. The last exact living pose before this retreat is tall jumping Mario atseq12374. A useful new experiment needs a fresh prefix/route; all accepted head-hit recipes remain recorded.",
+    "processNote": "The reference process closed normally atseq12377/tick5649 after all21 confirmed outcomes, pickup/growth and final-strip source evidence were preserved. Remaining earlier upper/late candidates require a new source route, explicitly listed in frontier."
+  }
+}

@@ -1,0 +1,635 @@
+{
+  "schema": "screenshot-only-vine-climb-measurements-v1",
+  "source": "evidence/local/subarea-vine-climb/trace.jsonl",
+  "method": "Exact opaque pixels of supplied small Mario climbing poses; ignore pixels above y48 HUD boundary. All frame counts recorded from public responses.",
+  "rows": [
+    {
+      "sequence": 215,
+      "tick": 1404,
+      "nativeFrame": 10547,
+      "framesAdvanced": 30,
+      "buttons": [
+        "up",
+        "right"
+      ],
+      "player": {
+        "originX": 83,
+        "originY": 39,
+        "feetY": 70,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00215-tick-01404.png"
+    },
+    {
+      "sequence": 216,
+      "tick": 1408,
+      "nativeFrame": 10577,
+      "framesAdvanced": 30,
+      "buttons": [],
+      "player": {
+        "originX": 79,
+        "originY": 38,
+        "feetY": 69,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00216-tick-01408.png"
+    },
+    {
+      "sequence": 217,
+      "tick": 1409,
+      "nativeFrame": 10584,
+      "framesAdvanced": 7,
+      "buttons": [
+        "left"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00217-tick-01409.png"
+    },
+    {
+      "sequence": 218,
+      "tick": 1410,
+      "nativeFrame": 10592,
+      "framesAdvanced": 8,
+      "buttons": [
+        "right"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00218-tick-01410.png"
+    },
+    {
+      "sequence": 219,
+      "tick": 1411,
+      "nativeFrame": 10599,
+      "framesAdvanced": 7,
+      "buttons": [
+        "up"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00219-tick-01411.png"
+    },
+    {
+      "sequence": 220,
+      "tick": 1412,
+      "nativeFrame": 10607,
+      "framesAdvanced": 8,
+      "buttons": [
+        "up"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00220-tick-01412.png"
+    },
+    {
+      "sequence": 221,
+      "tick": 1413,
+      "nativeFrame": 10614,
+      "framesAdvanced": 7,
+      "buttons": [
+        "down"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00221-tick-01413.png"
+    },
+    {
+      "sequence": 222,
+      "tick": 1414,
+      "nativeFrame": 10622,
+      "framesAdvanced": 8,
+      "buttons": [
+        "up"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00222-tick-01414.png"
+    },
+    {
+      "sequence": 223,
+      "tick": 1417,
+      "nativeFrame": 10644,
+      "framesAdvanced": 22,
+      "buttons": [
+        "up",
+        "right"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 41,
+        "feetY": 72,
+        "cell": 21,
+        "direction": "right",
+        "matchedPixels": 146
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00223-tick-01417.png"
+    },
+    {
+      "sequence": 224,
+      "tick": 1419,
+      "nativeFrame": 10659,
+      "framesAdvanced": 15,
+      "buttons": [],
+      "player": {
+        "originX": 79,
+        "originY": 39,
+        "feetY": 70,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00224-tick-01419.png"
+    },
+    {
+      "sequence": 225,
+      "tick": 1420,
+      "nativeFrame": 10667,
+      "framesAdvanced": 8,
+      "buttons": [
+        "down"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 49,
+        "feetY": 80,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00225-tick-01420.png"
+    },
+    {
+      "sequence": 226,
+      "tick": 1421,
+      "nativeFrame": 10674,
+      "framesAdvanced": 7,
+      "buttons": [
+        "down"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 49,
+        "feetY": 80,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00226-tick-01421.png"
+    },
+    {
+      "sequence": 227,
+      "tick": 1422,
+      "nativeFrame": 10682,
+      "framesAdvanced": 8,
+      "buttons": [
+        "up"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 44,
+        "feetY": 75,
+        "cell": 21,
+        "direction": "right",
+        "matchedPixels": 146
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00227-tick-01422.png"
+    },
+    {
+      "sequence": 228,
+      "tick": 1423,
+      "nativeFrame": 10689,
+      "framesAdvanced": 7,
+      "buttons": [
+        "up"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 38,
+        "feetY": 69,
+        "cell": 20,
+        "direction": "right",
+        "matchedPixels": 139
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00228-tick-01423.png"
+    },
+    {
+      "sequence": 229,
+      "tick": 1424,
+      "nativeFrame": 10697,
+      "framesAdvanced": 8,
+      "buttons": [
+        "up"
+      ],
+      "player": {
+        "originX": 79,
+        "originY": 31,
+        "feetY": 62,
+        "cell": 21,
+        "direction": "right",
+        "matchedPixels": 141
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00229-tick-01424.png"
+    },
+    {
+      "sequence": 230,
+      "tick": 1426,
+      "nativeFrame": 10712,
+      "framesAdvanced": 15,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00230-tick-01426.png"
+    },
+    {
+      "sequence": 231,
+      "tick": 1427,
+      "nativeFrame": 10719,
+      "framesAdvanced": 7,
+      "buttons": [
+        "down"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00231-tick-01427.png"
+    },
+    {
+      "sequence": 232,
+      "tick": 1429,
+      "nativeFrame": 10734,
+      "framesAdvanced": 15,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00232-tick-01429.png"
+    },
+    {
+      "sequence": 233,
+      "tick": 1430,
+      "nativeFrame": 10742,
+      "framesAdvanced": 8,
+      "buttons": [
+        "up"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00233-tick-01430.png"
+    },
+    {
+      "sequence": 234,
+      "tick": 1432,
+      "nativeFrame": 10757,
+      "framesAdvanced": 15,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00234-tick-01432.png"
+    },
+    {
+      "sequence": 235,
+      "tick": 1433,
+      "nativeFrame": 10765,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00235-tick-01433.png"
+    },
+    {
+      "sequence": 236,
+      "tick": 1434,
+      "nativeFrame": 10772,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00236-tick-01434.png"
+    },
+    {
+      "sequence": 237,
+      "tick": 1435,
+      "nativeFrame": 10780,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00237-tick-01435.png"
+    },
+    {
+      "sequence": 238,
+      "tick": 1436,
+      "nativeFrame": 10787,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00238-tick-01436.png"
+    },
+    {
+      "sequence": 239,
+      "tick": 1437,
+      "nativeFrame": 10795,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00239-tick-01437.png"
+    },
+    {
+      "sequence": 240,
+      "tick": 1438,
+      "nativeFrame": 10802,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00240-tick-01438.png"
+    },
+    {
+      "sequence": 241,
+      "tick": 1439,
+      "nativeFrame": 10810,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00241-tick-01439.png"
+    },
+    {
+      "sequence": 242,
+      "tick": 1440,
+      "nativeFrame": 10817,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00242-tick-01440.png"
+    },
+    {
+      "sequence": 243,
+      "tick": 1441,
+      "nativeFrame": 10825,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00243-tick-01441.png"
+    },
+    {
+      "sequence": 244,
+      "tick": 1442,
+      "nativeFrame": 10832,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00244-tick-01442.png"
+    },
+    {
+      "sequence": 245,
+      "tick": 1443,
+      "nativeFrame": 10840,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00245-tick-01443.png"
+    },
+    {
+      "sequence": 246,
+      "tick": 1444,
+      "nativeFrame": 10847,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00246-tick-01444.png"
+    },
+    {
+      "sequence": 247,
+      "tick": 1445,
+      "nativeFrame": 10855,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00247-tick-01445.png"
+    },
+    {
+      "sequence": 248,
+      "tick": 1446,
+      "nativeFrame": 10862,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00248-tick-01446.png"
+    },
+    {
+      "sequence": 249,
+      "tick": 1447,
+      "nativeFrame": 10870,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00249-tick-01447.png"
+    },
+    {
+      "sequence": 250,
+      "tick": 1448,
+      "nativeFrame": 10877,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00250-tick-01448.png"
+    },
+    {
+      "sequence": 251,
+      "tick": 1449,
+      "nativeFrame": 10885,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00251-tick-01449.png"
+    },
+    {
+      "sequence": 252,
+      "tick": 1450,
+      "nativeFrame": 10892,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00252-tick-01450.png"
+    },
+    {
+      "sequence": 253,
+      "tick": 1451,
+      "nativeFrame": 10900,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00253-tick-01451.png"
+    },
+    {
+      "sequence": 254,
+      "tick": 1452,
+      "nativeFrame": 10907,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00254-tick-01452.png"
+    },
+    {
+      "sequence": 255,
+      "tick": 1453,
+      "nativeFrame": 10915,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00255-tick-01453.png"
+    },
+    {
+      "sequence": 256,
+      "tick": 1454,
+      "nativeFrame": 10922,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00256-tick-01454.png"
+    },
+    {
+      "sequence": 257,
+      "tick": 1455,
+      "nativeFrame": 10930,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00257-tick-01455.png"
+    },
+    {
+      "sequence": 258,
+      "tick": 1456,
+      "nativeFrame": 10937,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00258-tick-01456.png"
+    },
+    {
+      "sequence": 259,
+      "tick": 1457,
+      "nativeFrame": 10945,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00259-tick-01457.png"
+    },
+    {
+      "sequence": 260,
+      "tick": 1458,
+      "nativeFrame": 10952,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00260-tick-01458.png"
+    },
+    {
+      "sequence": 261,
+      "tick": 1459,
+      "nativeFrame": 10960,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00261-tick-01459.png"
+    },
+    {
+      "sequence": 262,
+      "tick": 1460,
+      "nativeFrame": 10967,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00262-tick-01460.png"
+    },
+    {
+      "sequence": 263,
+      "tick": 1461,
+      "nativeFrame": 10975,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00263-tick-01461.png"
+    },
+    {
+      "sequence": 264,
+      "tick": 1462,
+      "nativeFrame": 10982,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00264-tick-01462.png"
+    },
+    {
+      "sequence": 265,
+      "tick": 1463,
+      "nativeFrame": 10990,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00265-tick-01463.png"
+    },
+    {
+      "sequence": 266,
+      "tick": 1464,
+      "nativeFrame": 10997,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00266-tick-01464.png"
+    },
+    {
+      "sequence": 267,
+      "tick": 1465,
+      "nativeFrame": 11005,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00267-tick-01465.png"
+    },
+    {
+      "sequence": 268,
+      "tick": 1466,
+      "nativeFrame": 11012,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00268-tick-01466.png"
+    },
+    {
+      "sequence": 269,
+      "tick": 1467,
+      "nativeFrame": 11020,
+      "framesAdvanced": 8,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00269-tick-01467.png"
+    },
+    {
+      "sequence": 270,
+      "tick": 1468,
+      "nativeFrame": 11027,
+      "framesAdvanced": 7,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00270-tick-01468.png"
+    },
+    {
+      "sequence": 271,
+      "tick": 1472,
+      "nativeFrame": 11057,
+      "framesAdvanced": 30,
+      "buttons": [
+        "up"
+      ],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00271-tick-01472.png"
+    },
+    {
+      "sequence": 272,
+      "tick": 1476,
+      "nativeFrame": 11088,
+      "framesAdvanced": 31,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00272-tick-01476.png"
+    },
+    {
+      "sequence": 273,
+      "tick": 1484,
+      "nativeFrame": 11148,
+      "framesAdvanced": 60,
+      "buttons": [],
+      "player": null,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-vine-climb/00273-tick-01484.png"
+    }
+  ]
+}

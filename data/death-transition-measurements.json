@@ -1,0 +1,678 @@
+{
+  "schema": "screenshot-death-transition-measurements-v1",
+  "sourceCapture": "evidence/death-transition-capture.json",
+  "fullObservations": "evidence/death-transition-observations.json",
+  "units": "Native frames from actual protocol advancement; feetY=32px player sprite origin+31.",
+  "tolerances": {
+    "arcPositionPixels": 2,
+    "eventTiming": "Adjacent7/8nativeframe observation intervals, unchanged; no exact subframe event assertions."
+  },
+  "method": "Two independent fresh controller/image-only reference sequences, same old side-run/walk prefixes (all72PNGs+durations identical), then neutral. Only real returned PNGs and actual native durations. Full supplied-player opaque matching; killed sprite additionally matched at known frozen screenX with>=8opaque visiblepixels when clipped. Logical feet=32px sprite origin+31, distinct from killed opaque bottom29. Screen classification is measured pixel color/font support and requires contact-sheet review.",
+  "limits": [
+    "Protocol observations are7/8nativeframes apart; event brackets do not prove exact native constants.",
+    "Neutral post-respawn input does not establish the exact native frame control becomes enabled.",
+    "Clipped death matching requires>=8opaque pixels; final1..7visiblepixels may persist beyond last matched sample.",
+    "Fitted start frames/velocities/gravity are inferred and non-unique; no ROM or internal reference state was read.",
+    "Observed old-scene clearing is a rendering event and need not equal the simulation respawn/intro phase boundary.",
+    "Two cases admit differing interstitial end timings; do not replace all stages with one raised delay."
+  ],
+  "experiments": [
+    {
+      "name": "side-run",
+      "firstKilledPose": {
+        "afterExclusive": 127,
+        "atOrBefore": 135,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0018-side-run-t17.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0019-side-run-t18.png"
+      },
+      "firstUpwardMotion": {
+        "afterExclusive": 142,
+        "atOrBefore": 150,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0020-side-run-t19.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0021-side-run-t20.png"
+      },
+      "lastFrozen": {
+        "tick": 19,
+        "nativeFrame": 142,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0020-side-run-t19.png",
+        "feetY": 208
+      },
+      "observedMinimum": {
+        "tick": 23,
+        "nativeFrame": 172,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0024-side-run-t23.png",
+        "feetY": 155
+      },
+      "lastVisibleKilledSprite": {
+        "tick": 28,
+        "nativeFrame": 210,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0029-side-run-t28.png",
+        "feetY": 245
+      },
+      "killedSpriteDisappears": {
+        "afterExclusive": 210,
+        "atOrBefore": 217,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0029-side-run-t28.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0030-side-run-t29.png"
+      },
+      "firstDeathSceneClear": {
+        "afterExclusive": 338,
+        "atOrBefore": 345,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0046-side-run-t45.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0047-side-run-t46.png"
+      },
+      "firstAllBlack": {
+        "afterExclusive": 480,
+        "atOrBefore": 488,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0065-side-run-t64.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0066-side-run-t65.png"
+      },
+      "firstLifeInterstitial": {
+        "afterExclusive": 345,
+        "atOrBefore": 353,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0047-side-run-t46.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0048-side-run-t47.png"
+      },
+      "lastLifeInterstitial": {
+        "tick": 64,
+        "nativeFrame": 480,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0065-side-run-t64.png",
+        "feetY": 120
+      },
+      "interstitialDisappears": {
+        "afterExclusive": 480,
+        "atOrBefore": 488,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0065-side-run-t64.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0066-side-run-t65.png"
+      },
+      "firstFreshPlayer": {
+        "afterExclusive": 495,
+        "atOrBefore": 503,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0067-side-run-t66.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0068-side-run-t67.png"
+      },
+      "poseObservationToInterstitialFrames": 218,
+      "poseObservationToFreshPlayerFrames": 368,
+      "arcSamples": [
+        {
+          "tick": 20,
+          "frame": 150,
+          "feetY": 204,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 21,
+          "frame": 157,
+          "feetY": 180,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 22,
+          "frame": 165,
+          "feetY": 162,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 23,
+          "frame": 172,
+          "feetY": 155,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 24,
+          "frame": 180,
+          "feetY": 156,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 25,
+          "frame": 187,
+          "feetY": 165,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 26,
+          "frame": 195,
+          "feetY": 185,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 27,
+          "frame": 202,
+          "feetY": 211,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 28,
+          "frame": 210,
+          "feetY": 245,
+          "opaquePixels": 102,
+          "clipped": true
+        }
+      ]
+    },
+    {
+      "name": "side-walk",
+      "firstKilledPose": {
+        "afterExclusive": 187,
+        "atOrBefore": 195,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0137-side-walk-t25.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0138-side-walk-t26.png"
+      },
+      "firstUpwardMotion": {
+        "afterExclusive": 202,
+        "atOrBefore": 210,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0139-side-walk-t27.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0140-side-walk-t28.png"
+      },
+      "lastFrozen": {
+        "tick": 27,
+        "nativeFrame": 202,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0139-side-walk-t27.png",
+        "feetY": 208
+      },
+      "observedMinimum": {
+        "tick": 31,
+        "nativeFrame": 232,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0143-side-walk-t31.png",
+        "feetY": 154
+      },
+      "lastVisibleKilledSprite": {
+        "tick": 36,
+        "nativeFrame": 270,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0148-side-walk-t36.png",
+        "feetY": 253
+      },
+      "killedSpriteDisappears": {
+        "afterExclusive": 270,
+        "atOrBefore": 277,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0148-side-walk-t36.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0149-side-walk-t37.png"
+      },
+      "firstDeathSceneClear": {
+        "afterExclusive": 398,
+        "atOrBefore": 405,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0165-side-walk-t53.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0166-side-walk-t54.png"
+      },
+      "firstAllBlack": {
+        "afterExclusive": 398,
+        "atOrBefore": 405,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0165-side-walk-t53.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0166-side-walk-t54.png"
+      },
+      "firstLifeInterstitial": {
+        "afterExclusive": 405,
+        "atOrBefore": 413,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0166-side-walk-t54.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0167-side-walk-t55.png"
+      },
+      "lastLifeInterstitial": {
+        "tick": 73,
+        "nativeFrame": 548,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0185-side-walk-t73.png"
+      },
+      "interstitialDisappears": {
+        "afterExclusive": 548,
+        "atOrBefore": 555,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0185-side-walk-t73.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0186-side-walk-t74.png"
+      },
+      "firstSkyClear": {
+        "afterExclusive": 555,
+        "atOrBefore": 563,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0186-side-walk-t74.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0187-side-walk-t75.png"
+      },
+      "firstFreshPlayer": {
+        "afterExclusive": 563,
+        "atOrBefore": 570,
+        "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0187-side-walk-t75.png",
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/policy-transfer-death-2026-11-05T21-25-20.960Z/0188-side-walk-t76.png"
+      },
+      "poseObservationToInterstitialFrames": 218,
+      "poseObservationToFreshPlayerFrames": 375,
+      "arcSamples": [
+        {
+          "tick": 28,
+          "frame": 210,
+          "feetY": 196,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 29,
+          "frame": 217,
+          "feetY": 175,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 30,
+          "frame": 225,
+          "feetY": 159,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 31,
+          "frame": 232,
+          "feetY": 154,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 32,
+          "frame": 240,
+          "feetY": 158,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 33,
+          "frame": 247,
+          "feetY": 169,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 34,
+          "frame": 255,
+          "feetY": 192,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 35,
+          "frame": 262,
+          "feetY": 220,
+          "opaquePixels": 148,
+          "clipped": false
+        },
+        {
+          "tick": 36,
+          "frame": 270,
+          "feetY": 253,
+          "opaquePixels": 12,
+          "clipped": true
+        }
+      ]
+    }
+  ],
+  "compatibleDurations": [
+    {
+      "name": "side-run",
+      "sourceDeathFrameInclusive": [
+        128,
+        135
+      ],
+      "motionStartCandidate": 150,
+      "freezeBeforeFirstMovementFramesCompatible": [
+        14,
+        21
+      ],
+      "deathToOldSceneClearFramesCompatible": [
+        204,
+        217
+      ],
+      "deathToLifeTextFramesCompatible": [
+        211,
+        225
+      ],
+      "lifeTextVisibleDurationFramesCompatible": [
+        128,
+        142
+      ],
+      "lifeTextFirstVisibleToFreshPlayerFramesCompatible": [
+        143,
+        157
+      ],
+      "deathToFreshPlayerFramesCompatible": [
+        361,
+        375
+      ]
+    },
+    {
+      "name": "side-walk",
+      "sourceDeathFrameInclusive": [
+        188,
+        195
+      ],
+      "motionStartCandidate": 208,
+      "freezeBeforeFirstMovementFramesCompatible": [
+        12,
+        19
+      ],
+      "deathToOldSceneClearFramesCompatible": [
+        204,
+        217
+      ],
+      "deathToLifeTextFramesCompatible": [
+        211,
+        225
+      ],
+      "lifeTextVisibleDurationFramesCompatible": [
+        136,
+        149
+      ],
+      "lifeTextFirstVisibleToFreshPlayerFramesCompatible": [
+        151,
+        164
+      ],
+      "deathToFreshPlayerFramesCompatible": [
+        369,
+        382
+      ]
+    }
+  ],
+  "runtimeCandidates": {
+    "classification": "Inferred arc candidate, not an exact original rule or production change.",
+    "arcUpdateOrder": "On each movement frame add current velocity to feetY, then add gravity and cap the following velocity.",
+    "arc": {
+      "velocity": -4,
+      "gravity": 0.15625,
+      "cap": 4.25,
+      "cases": [
+        {
+          "name": "side-run",
+          "firstMovementFrameCandidate": 150,
+          "squared": 0,
+          "maxError": 0,
+          "samples": [
+            {
+              "frame": 142,
+              "observed": 208,
+              "predicted": 208,
+              "error": 0
+            },
+            {
+              "frame": 150,
+              "observed": 204,
+              "predicted": 204,
+              "error": 0
+            },
+            {
+              "frame": 157,
+              "observed": 180,
+              "predicted": 180.375,
+              "error": 0
+            },
+            {
+              "frame": 165,
+              "observed": 162,
+              "predicted": 162.75,
+              "error": 0
+            },
+            {
+              "frame": 172,
+              "observed": 155,
+              "predicted": 155.53125,
+              "error": 0
+            },
+            {
+              "frame": 180,
+              "observed": 156,
+              "predicted": 156.65625,
+              "error": 0
+            },
+            {
+              "frame": 187,
+              "observed": 165,
+              "predicted": 165.84375,
+              "error": 0
+            },
+            {
+              "frame": 195,
+              "observed": 185,
+              "predicted": 185.71875,
+              "error": 0
+            },
+            {
+              "frame": 202,
+              "observed": 211,
+              "predicted": 211.3125,
+              "error": 0
+            },
+            {
+              "frame": 210,
+              "observed": 245,
+              "predicted": 245.3125,
+              "error": 0
+            }
+          ]
+        },
+        {
+          "name": "side-walk",
+          "firstMovementFrameCandidate": 208,
+          "squared": 1,
+          "maxError": 1,
+          "samples": [
+            {
+              "frame": 202,
+              "observed": 208,
+              "predicted": 208,
+              "error": 0
+            },
+            {
+              "frame": 210,
+              "observed": 196,
+              "predicted": 196.46875,
+              "error": 0
+            },
+            {
+              "frame": 217,
+              "observed": 175,
+              "predicted": 175.03125,
+              "error": 0
+            },
+            {
+              "frame": 225,
+              "observed": 159,
+              "predicted": 159.90625,
+              "error": 0
+            },
+            {
+              "frame": 232,
+              "observed": 154,
+              "predicted": 154.875,
+              "error": 0
+            },
+            {
+              "frame": 240,
+              "observed": 158,
+              "predicted": 158.5,
+              "error": 0
+            },
+            {
+              "frame": 247,
+              "observed": 169,
+              "predicted": 169.875,
+              "error": 0
+            },
+            {
+              "frame": 255,
+              "observed": 192,
+              "predicted": 192.25,
+              "error": 0
+            },
+            {
+              "frame": 262,
+              "observed": 220,
+              "predicted": 219.8125,
+              "error": -1
+            },
+            {
+              "frame": 270,
+              "observed": 253,
+              "predicted": 253.8125,
+              "error": 0
+            }
+          ]
+        }
+      ],
+      "maxError": 1
+    },
+    "freezeFrames": {
+      "rangeCompatibleWithBothCases": [
+        14,
+        19
+      ],
+      "example": 15,
+      "evidence": "Using the simple fitted motion starts and actual collision event brackets; exact death native frame is unobserved."
+    },
+    "oldSceneClearAfterDeathFrames": {
+      "rangeCompatibleWithBothCases": [
+        204,
+        217
+      ],
+      "example": 208,
+      "evidence": "Measured old-scene-clearing interval minus measured first-killed-pose event bracket; this is not proven to equal intro simulation start."
+    },
+    "interstitialVisibleFrames": {
+      "rangeCompatibleWithBothCases": [
+        136,
+        142
+      ],
+      "example": 140,
+      "evidence": "First visible WORLD/lives text to its disappearance, accounting for both interval bounds."
+    },
+    "controlRelease": "Unmeasured under neutral post-respawn input; first fresh visible Mario is measured."
+  },
+  "baselineProductionArc": {
+    "definition": "Supplied current baseline: deathFreeze30; initialvy-4; afterfreeze incrementvy by.25 before adding toY; no explicit cap.",
+    "cases": [
+      {
+        "name": "side-run",
+        "deathFrameCandidate": 135,
+        "score": 7366,
+        "maxError": 46,
+        "samples": [
+          {
+            "frame": 150,
+            "observed": 204,
+            "predicted": 208,
+            "error": 4
+          },
+          {
+            "frame": 157,
+            "observed": 180,
+            "predicted": 208,
+            "error": 28
+          },
+          {
+            "frame": 165,
+            "observed": 162,
+            "predicted": 208,
+            "error": 46
+          },
+          {
+            "frame": 172,
+            "observed": 155,
+            "predicted": 187,
+            "error": 32
+          },
+          {
+            "frame": 180,
+            "observed": 156,
+            "predicted": 178,
+            "error": 22
+          },
+          {
+            "frame": 187,
+            "observed": 165,
+            "predicted": 183.25,
+            "error": 18
+          },
+          {
+            "frame": 195,
+            "observed": 185,
+            "predicted": 204.25,
+            "error": 19
+          },
+          {
+            "frame": 202,
+            "observed": 211,
+            "predicted": 235.75,
+            "error": 24
+          },
+          {
+            "frame": 210,
+            "observed": 245,
+            "predicted": 286.75,
+            "error": 41
+          }
+        ]
+      },
+      {
+        "name": "side-walk",
+        "deathFrameCandidate": 195,
+        "score": 6777,
+        "maxError": 49,
+        "samples": [
+          {
+            "frame": 210,
+            "observed": 196,
+            "predicted": 208,
+            "error": 12
+          },
+          {
+            "frame": 217,
+            "observed": 175,
+            "predicted": 208,
+            "error": 33
+          },
+          {
+            "frame": 225,
+            "observed": 159,
+            "predicted": 208,
+            "error": 49
+          },
+          {
+            "frame": 232,
+            "observed": 154,
+            "predicted": 187,
+            "error": 33
+          },
+          {
+            "frame": 240,
+            "observed": 158,
+            "predicted": 178,
+            "error": 20
+          },
+          {
+            "frame": 247,
+            "observed": 169,
+            "predicted": 183.25,
+            "error": 14
+          },
+          {
+            "frame": 255,
+            "observed": 192,
+            "predicted": 204.25,
+            "error": 12
+          },
+          {
+            "frame": 262,
+            "observed": 220,
+            "predicted": 235.75,
+            "error": 15
+          },
+          {
+            "frame": 270,
+            "observed": 253,
+            "predicted": 286.75,
+            "error": 33
+          }
+        ]
+      }
+    ]
+  }
+}

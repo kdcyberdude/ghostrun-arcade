@@ -1,0 +1,118 @@
+{
+  "schema": "native-image-popup-lifecycle-candidate-v1",
+  "lockedUTC": "2026-11-06T01:47:47.075Z",
+  "lockedBeforeLifecycleHeldoutCapture": true,
+  "sourceTrainingAnalysis": "evidence/popup-lifecycle-training-analysis.json",
+  "sourceTrainingAnalysisSha256": "5e0bfc3331f78fc205dc8e61a94ae6da83763cc698fdefefe97be366485415c6",
+  "scope": "Reference calibration only. Semantic assembly and observed motion are established; exact lifecycle and causal actor removal remain unresolved. Do not add unmeasured popup simulation state from these interval fits.",
+  "runtimeIntegrationReady": false,
+  "assembly": "data/popup-assemblies.json",
+  "motion": {
+    "coordinateSpace": "screen",
+    "horizontalPixelsPerActiveFrame": 0,
+    "verticalPixelsPerActiveFrame": -1,
+    "status": "Measured exact on253cleartrainingimages across25popupwindows; nineadditionaldeclaredapproachesmissedthetargetaward andremainretained."
+  },
+  "pauseVisibleUpdateRule": {
+    "updatesBeforeFreezeAfterStart": 2,
+    "updatesDuringHeldPause": 0,
+    "updatesDuringResumeStart": "actualNativeFramesAdvanced−2",
+    "status": "Fittedandimage-validated specificallyforStart pausevisibility; notprovenasageneralcontrollerinputdelay.",
+    "shortRepress": "SecondStart15..30nativeframes afterfirstwasignored inall7shortpausecases.60..75nativewaits resumednormally; exactrearmdelaynotmeasured."
+  },
+  "lifetimeHypotheses": {
+    "goombaPopupAndFlattenedActorActiveFrames": [
+      37,
+      44
+    ],
+    "koopaPopupActiveFrames": [
+      46,
+      59
+    ],
+    "oneUpPopupActiveFrames": [
+      39,
+      49
+    ],
+    "compatibleKoopaAndOneUpSharedActiveFrames": [
+      46,
+      49
+    ],
+    "oneUniversalLifetimeRejected": true,
+    "uniqueExactLifetimeEstablished": false,
+    "goombaCleanup": "Popupandflatsprite share sampled disappearance inallscoredGoombacases. Causalattachmentisinferred; constantGoombalifetime alsofitsintervals."
+  },
+  "birthObservations": {
+    "goombaTrap": {
+      "preImageActiveFrame": 841,
+      "birthActiveFrameInterval": [
+        842,
+        843
+      ],
+      "pausedImage": {
+        "screenX": 123,
+        "screenY": 175,
+        "playerFeetY": 200,
+        "flatGoombaOriginY": 202
+      },
+      "firstRenderedOriginYInterval": [
+        175,
+        176
+      ],
+      "status": "Newlabelandflataftertwoactiveframes. Birthcannotbeclaimedexact842frompausealone."
+    },
+    "oneUpTrap": {
+      "lastPartialItemActiveFrame": 580,
+      "birthActiveFrameInterval": [
+        581,
+        585
+      ],
+      "status": "MushroomstillpartlyvisiblebehindMarioat580; fulltemplatemismatchisocclusion, notpickup."
+    },
+    "groundOneUp": {
+      "lastPartialItemNativeFrame": 623,
+      "birthNativeFrameInterval": [
+        624,
+        631
+      ],
+      "status": "Firstclearlabel631 afterapartlycovereditem623. Popupinitialheightvarieswithpickupheight; apureabsoluteY128cutoffdoesnotfitexactsamples."
+    },
+    "spawnRuleEstablished": false
+  },
+  "heldoutPredictions": {
+    "goombaBirthTraps": {
+      "screenX": 123,
+      "pausedY": 175,
+      "yPlusActiveFrame": 1018,
+      "flatGoombaOriginY": 202,
+      "playerFeetY": 200
+    },
+    "oneUpBirthTraps": {
+      "screenX": 114,
+      "yPlusActiveFrame": 752,
+      "partialItemStillVisibleAfterFirstPause": true
+    },
+    "oneUpPrefix78Freeze": {
+      "screenX": 114,
+      "yPlusActiveFrame": 752
+    },
+    "goombaPrefix114Freeze": {
+      "screenX": 123,
+      "yPlusActiveFrame": 1018
+    },
+    "otherMotionWindows": "Useonlyfirstclearimageasanexplicitinitialcondition; predictalllateroriginpositionsfromsameclockrule. Thisdoesnotestablishspawnorigin.",
+    "lifetime": "Retainbirth/absenceintervalsandtestintersectionwithlockedfamilyranges. Reportnonuniquenessevenifcompatible; donotclaimanexactlifetimepass."
+  },
+  "tolerances": {
+    "originPixels": 1,
+    "velocityPixelsPerNativeFrame": 0.125,
+    "eventNativeFrames": 2,
+    "glyph": "ExactsuppliedopaqueRGBandentirewhite-maskshape. Coveredlabelsremainunobserved."
+  },
+  "limitations": [
+    "No native memory, executable, ROM bytes, or sibling implementation inspected.",
+    "Nativeframeofbirth, firstdraw/updateorder andinclusive/exclusiveexpiryaccountingremainuncertain.",
+    "A ground100firstoriginY sharedbetweenGoombaandKoopaisaplannedgeometrichypothesis, notanestablisheduniversalspawnrule.",
+    "Pause visibility ismeasuredusingactualeffects; normalizedactiveframeaccountingdoesnotreplaceanygameoragentstate.",
+    "Allnativecapturessource-only; thisdoesnotverifyrecreationgameplayorendingruns."
+  ]
+}

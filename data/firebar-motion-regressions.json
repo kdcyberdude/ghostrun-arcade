@@ -1,0 +1,687 @@
+{
+  "schema": "image-derived-firebar-motion-regressions-v1",
+  "date": "2026-11-06T01:47:35.933360+00:00",
+  "scope": "Observed source poses and actualnative counts for isolatedcandidate. Testsuccess doesnotprovebrowserintegration orcampaignplay. CWfixturesarecalibrationonly; reservedroutegenuinelydiedbeforetarget.",
+  "cases": [
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 488,
+        "y": 168,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 768,
+        "qualification": "Firstlockedcandidate101heldoutangle/597centersall0px/0epocherror."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 6,
+      "referenceNativeFrame": 7264,
+      "orientation": 23,
+      "centers": [
+        {
+          "n": 5,
+          "x": 481,
+          "y": 130
+        },
+        {
+          "n": 4,
+          "x": 482,
+          "y": 138
+        },
+        {
+          "n": 3,
+          "x": 484,
+          "y": 146
+        },
+        {
+          "n": 2,
+          "x": 485,
+          "y": 154
+        },
+        {
+          "n": 1,
+          "x": 487,
+          "y": 162
+        },
+        {
+          "n": 0,
+          "x": 488,
+          "y": 169
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T00-29-14Z/00634-reserved-prewait13-approach-tick-00967.png",
+      "imageSHA256": "98e143c92e254b55e7cd31d27b6536e5429714c94f6c2b7021f562691e6b6aed"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 488,
+        "y": 168,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 768,
+        "qualification": "Firstlockedcandidate101heldoutangle/597centersall0px/0epocherror."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 381,
+      "referenceNativeFrame": 7639,
+      "orientation": 28,
+      "centers": [
+        {
+          "n": 0,
+          "x": 488,
+          "y": 169
+        },
+        {
+          "n": 1,
+          "x": 493,
+          "y": 164
+        },
+        {
+          "n": 2,
+          "x": 499,
+          "y": 158
+        },
+        {
+          "n": 3,
+          "x": 504,
+          "y": 153
+        },
+        {
+          "n": 4,
+          "x": 510,
+          "y": 147
+        },
+        {
+          "n": 5,
+          "x": 516,
+          "y": 141
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T00-29-14Z/00684-reserved-prewait13-idle-tick-01017.png",
+      "imageSHA256": "d9daaf1748c5d8c80194cb1ceed3df2abd079e13bc5de9bd8b0e6d74bce7cc7a"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 488,
+        "y": 168,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 768,
+        "qualification": "Firstlockedcandidate101heldoutangle/597centersall0px/0epocherror."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 757,
+      "referenceNativeFrame": 8015,
+      "orientation": 1,
+      "centers": [
+        {
+          "n": 0,
+          "x": 488,
+          "y": 169
+        },
+        {
+          "n": 1,
+          "x": 495,
+          "y": 170
+        },
+        {
+          "n": 2,
+          "x": 503,
+          "y": 172
+        },
+        {
+          "n": 3,
+          "x": 511,
+          "y": 173
+        },
+        {
+          "n": 4,
+          "x": 519,
+          "y": 175
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T00-29-14Z/00734-reserved-prewait13-idle-tick-01067.png",
+      "imageSHA256": "5bdf909e3e9bc6c47fc8f5816cd5aef5014166548db3bed83892ba02b2b27415"
+    },
+    {
+      "object": {
+        "level": "2-4",
+        "area": "main",
+        "x": 792,
+        "y": 152,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 864,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 11,
+      "referenceNativeFrame": 19494,
+      "orientation": 25,
+      "centers": [
+        {
+          "n": 0,
+          "x": 792,
+          "y": 153
+        },
+        {
+          "n": 1,
+          "x": 793,
+          "y": 146
+        },
+        {
+          "n": 2,
+          "x": 795,
+          "y": 138
+        },
+        {
+          "n": 3,
+          "x": 796,
+          "y": 130
+        },
+        {
+          "n": 4,
+          "x": 798,
+          "y": 122
+        },
+        {
+          "n": 5,
+          "x": 799,
+          "y": 114
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/01511-reserved-2-4-ccw-13-approach-tick-02595.png",
+      "imageSHA256": "a69034ba9e905d826c78688467d4e89a73578f81e908ee3694dabbce28deae15"
+    },
+    {
+      "object": {
+        "level": "2-4",
+        "area": "main",
+        "x": 792,
+        "y": 152,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 864,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 416,
+      "referenceNativeFrame": 19899,
+      "orientation": 26,
+      "centers": [
+        {
+          "n": 0,
+          "x": 792,
+          "y": 153
+        },
+        {
+          "n": 1,
+          "x": 795,
+          "y": 146
+        },
+        {
+          "n": 2,
+          "x": 798,
+          "y": 139
+        },
+        {
+          "n": 3,
+          "x": 801,
+          "y": 131
+        },
+        {
+          "n": 4,
+          "x": 804,
+          "y": 124
+        },
+        {
+          "n": 5,
+          "x": 807,
+          "y": 116
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/01565-reserved-2-4-ccw-13-idle-tick-02649.png",
+      "imageSHA256": "f5c2b44299ae7eb6a91f7da1fab1e58b93a408f1fe3137878ccafb79f8cf45fc"
+    },
+    {
+      "object": {
+        "level": "2-4",
+        "area": "main",
+        "x": 792,
+        "y": 152,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 864,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 822,
+      "referenceNativeFrame": 20305,
+      "orientation": 26,
+      "centers": [
+        {
+          "n": 0,
+          "x": 792,
+          "y": 153
+        },
+        {
+          "n": 1,
+          "x": 795,
+          "y": 146
+        },
+        {
+          "n": 2,
+          "x": 798,
+          "y": 139
+        },
+        {
+          "n": 3,
+          "x": 801,
+          "y": 131
+        },
+        {
+          "n": 4,
+          "x": 804,
+          "y": 124
+        },
+        {
+          "n": 5,
+          "x": 807,
+          "y": 116
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/01619-reserved-2-4-ccw-13-idle-tick-02703.png",
+      "imageSHA256": "996f1a980f7dc0c61e6ab15c0115fea929a530a9f44025eac16a06f08169ef73"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 968,
+        "y": 104,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 128,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 53,
+      "referenceNativeFrame": 7512,
+      "orientation": 27,
+      "centers": [
+        {
+          "n": 0,
+          "x": 968,
+          "y": 105
+        },
+        {
+          "n": 1,
+          "x": 972,
+          "y": 99
+        },
+        {
+          "n": 2,
+          "x": 977,
+          "y": 92
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/00661-reserved-1-4-cw-13-approach-tick-01000.png",
+      "imageSHA256": "63b6e00f3f30ad629d757715d659fe71f6568ce24696ad738c7ffe95b8be6e10"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 968,
+        "y": 104,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 128,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 391,
+      "referenceNativeFrame": 7850,
+      "orientation": 6,
+      "centers": [
+        {
+          "n": 0,
+          "x": 968,
+          "y": 105
+        },
+        {
+          "n": 1,
+          "x": 971,
+          "y": 112
+        },
+        {
+          "n": 2,
+          "x": 974,
+          "y": 119
+        },
+        {
+          "n": 3,
+          "x": 977,
+          "y": 127
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/00706-reserved-1-4-cw-13-idle-tick-01045.png",
+      "imageSHA256": "d12905fdedb5da1e3e9ac719e0ec11541b2ad24d6aa9a7bf39883a313265434e"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 968,
+        "y": 104,
+        "length": 6,
+        "direction": -1,
+        "initialUnits": 128,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "reserved",
+      "activeNativeFrames": 781,
+      "referenceNativeFrame": 8240,
+      "orientation": 9,
+      "centers": [
+        {
+          "n": 5,
+          "x": 961,
+          "y": 144
+        },
+        {
+          "n": 4,
+          "x": 962,
+          "y": 136
+        },
+        {
+          "n": 3,
+          "x": 964,
+          "y": 128
+        },
+        {
+          "n": 2,
+          "x": 965,
+          "y": 120
+        },
+        {
+          "n": 1,
+          "x": 967,
+          "y": 112
+        },
+        {
+          "n": 0,
+          "x": 968,
+          "y": 105
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/00758-reserved-1-4-cw-13-idle-tick-01097.png",
+      "imageSHA256": "aa11650061f53976caca36e00a524c7601329670d5ab3bde235d3c0092f49ac6"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 1416,
+        "y": 72,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "calibration-only;reservedunreached",
+      "activeNativeFrames": 14,
+      "referenceNativeFrame": 7722,
+      "orientation": 26,
+      "centers": [
+        {
+          "n": 0,
+          "x": 1416,
+          "y": 73
+        },
+        {
+          "n": 1,
+          "x": 1419,
+          "y": 66
+        },
+        {
+          "n": 2,
+          "x": 1422,
+          "y": 59
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/00401-cal-1-4-lastcw-20-approach-tick-01028.png",
+      "imageSHA256": "0a7757402506e8f0263aad946d46e73ba65ba9343d42f9e10c3d00e53bdb0ff6"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 1416,
+        "y": 72,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "calibration-only;reservedunreached",
+      "activeNativeFrames": 405,
+      "referenceNativeFrame": 8113,
+      "orientation": 23,
+      "centers": [
+        {
+          "n": 3,
+          "x": 1412,
+          "y": 50
+        },
+        {
+          "n": 2,
+          "x": 1413,
+          "y": 58
+        },
+        {
+          "n": 1,
+          "x": 1415,
+          "y": 66
+        },
+        {
+          "n": 0,
+          "x": 1416,
+          "y": 73
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/00453-cal-1-4-lastcw-20-idle-tick-01080.png",
+      "imageSHA256": "63aae3921ec939ffb810e59e52f25d66932ac0d542a45fc2ce44be0da249c18a"
+    },
+    {
+      "object": {
+        "level": "1-4",
+        "area": "main",
+        "x": 1416,
+        "y": 72,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+      },
+      "qualification": "calibration-only;reservedunreached",
+      "activeNativeFrames": 780,
+      "referenceNativeFrame": 8488,
+      "orientation": 17,
+      "centers": [
+        {
+          "n": 5,
+          "x": 1377,
+          "y": 66
+        },
+        {
+          "n": 4,
+          "x": 1385,
+          "y": 67
+        },
+        {
+          "n": 3,
+          "x": 1393,
+          "y": 69
+        },
+        {
+          "n": 2,
+          "x": 1401,
+          "y": 70
+        },
+        {
+          "n": 1,
+          "x": 1409,
+          "y": 72
+        },
+        {
+          "n": 0,
+          "x": 1416,
+          "y": 73
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/00503-cal-1-4-lastcw-20-idle-tick-01130.png",
+      "imageSHA256": "6c038cd0b9caa95e861d87cbd360a884c897b8f78b247f17e2e00f4dbac2a022"
+    },
+    {
+      "object": {
+        "level": "8-4",
+        "area": "area-4",
+        "x": 328,
+        "y": 120,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Fresh standard-start known prefix, then independent neutral prewait0/20. All calibration centers and fixed camera-entry phases match exactly."
+      },
+      "qualification": "reserved, direct256RGBpixelcameraanchor",
+      "activeNativeFrames": 114,
+      "referenceNativeFrame": 78705,
+      "orientation": 9,
+      "centers": [
+        {
+          "n": 5,
+          "x": 321,
+          "y": 160
+        },
+        {
+          "n": 4,
+          "x": 322,
+          "y": 152
+        },
+        {
+          "n": 3,
+          "x": 324,
+          "y": 144
+        },
+        {
+          "n": 2,
+          "x": 325,
+          "y": 136
+        },
+        {
+          "n": 1,
+          "x": 327,
+          "y": 128
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z/05934-reserved-8-4-water-cw-13-approach-tick-10477.png",
+      "imageSHA256": "53af5288eab0c6e56cbc51ad26259393c5512cde11595e589feb91b1befab1a8"
+    },
+    {
+      "object": {
+        "level": "8-4",
+        "area": "area-4",
+        "x": 328,
+        "y": 120,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Fresh standard-start known prefix, then independent neutral prewait0/20. All calibration centers and fixed camera-entry phases match exactly."
+      },
+      "qualification": "reserved, direct256RGBpixelcameraanchor",
+      "activeNativeFrames": 407,
+      "referenceNativeFrame": 78998,
+      "orientation": 23,
+      "centers": [
+        {
+          "n": 5,
+          "x": 321,
+          "y": 82
+        },
+        {
+          "n": 4,
+          "x": 322,
+          "y": 90
+        },
+        {
+          "n": 3,
+          "x": 324,
+          "y": 98
+        },
+        {
+          "n": 2,
+          "x": 325,
+          "y": 106
+        },
+        {
+          "n": 1,
+          "x": 327,
+          "y": 114
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z/05973-reserved-8-4-water-cw-13-idle-tick-10516.png",
+      "imageSHA256": "0da4e5005e429e03896f46b02010754ea39e89ced186ee60f54ca322cfb81d91"
+    },
+    {
+      "object": {
+        "level": "8-4",
+        "area": "area-4",
+        "x": 328,
+        "y": 120,
+        "length": 6,
+        "direction": 1,
+        "initialUnits": 768,
+        "qualification": "Fresh standard-start known prefix, then independent neutral prewait0/20. All calibration centers and fixed camera-entry phases match exactly."
+      },
+      "qualification": "reserved, direct256RGBpixelcameraanchor",
+      "activeNativeFrames": 805,
+      "referenceNativeFrame": 79396,
+      "orientation": 21,
+      "centers": [
+        {
+          "n": 5,
+          "x": 306,
+          "y": 88
+        },
+        {
+          "n": 4,
+          "x": 310,
+          "y": 95
+        },
+        {
+          "n": 3,
+          "x": 315,
+          "y": 102
+        },
+        {
+          "n": 2,
+          "x": 319,
+          "y": 108
+        },
+        {
+          "n": 1,
+          "x": 324,
+          "y": 115
+        }
+      ],
+      "sourceImage": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z/06026-reserved-8-4-water-cw-13-idle-tick-10569.png",
+      "imageSHA256": "f3c9fca575bb6db3566c47e968b31836f3312d732155f45d6cd9d458b84d12c6"
+    }
+  ]
+}

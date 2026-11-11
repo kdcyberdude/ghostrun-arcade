@@ -1,0 +1,3192 @@
+{
+  "schema": "image-only-warp-observations-v1",
+  "level": "1-2",
+  "area": "area-2 extension",
+  "registrationFrame": "Screenshot frame, anchored on the exit pipe at 2672 / camera 2473. Native rows put that pipe at 2656 (and the first warp plant at 2856), so every world x, camera x and map column of rows 0-12 here is 16 px (one tile) right of native; the floor rows 13-14 are not moved. data/native-geometry-corrections.json '1-2 area-2 end block drift' applies the shift to the compiled map, data/warp-1-2-runtime.json already holds native-frame values, tests/roof-warp.test.ts maps these cells with nativeCell().",
+  "sourceTrace": "evidence/local/warp-1-2-explore/trace.jsonl",
+  "anchor": {
+    "metatileId": 28,
+    "screenX": 199,
+    "worldX": 2672,
+    "source": "data/observed-levels.json level1-2/area-2 observed main exit pipe",
+    "cameraX": 2473
+  },
+  "registration": [
+    {
+      "sequence": 90,
+      "tick": 528,
+      "delta": 0,
+      "cameraX": 2473,
+      "rgbMismatchFraction": 0,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00090-tick-00528.png"
+    },
+    {
+      "sequence": 91,
+      "tick": 532,
+      "delta": 24,
+      "cameraX": 2497,
+      "rgbMismatchFraction": 0.022064,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00091-tick-00532.png"
+    },
+    {
+      "sequence": 92,
+      "tick": 536,
+      "delta": 67,
+      "cameraX": 2564,
+      "rgbMismatchFraction": 0.0,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00092-tick-00536.png"
+    },
+    {
+      "sequence": 93,
+      "tick": 540,
+      "delta": 75,
+      "cameraX": 2639,
+      "rgbMismatchFraction": 0.0,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00093-tick-00540.png"
+    },
+    {
+      "sequence": 94,
+      "tick": 544,
+      "delta": 75,
+      "cameraX": 2714,
+      "rgbMismatchFraction": 0.0,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00094-tick-00544.png"
+    },
+    {
+      "sequence": 95,
+      "tick": 548,
+      "delta": 75,
+      "cameraX": 2789,
+      "rgbMismatchFraction": 0.007276,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00095-tick-00548.png"
+    },
+    {
+      "sequence": 96,
+      "tick": 552,
+      "delta": 45,
+      "cameraX": 2834,
+      "rgbMismatchFraction": 0.024198,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00096-tick-00552.png"
+    },
+    {
+      "sequence": 97,
+      "tick": 556,
+      "delta": 0,
+      "cameraX": 2834,
+      "rgbMismatchFraction": 0.003666,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00097-tick-00556.png"
+    },
+    {
+      "sequence": 98,
+      "tick": 560,
+      "delta": 0,
+      "cameraX": 2834,
+      "rgbMismatchFraction": 0.0067,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00098-tick-00560.png"
+    }
+  ],
+  "atlas": "metatiles-palette-003.png",
+  "tiles": [
+    [
+      161,
+      10,
+      71
+    ],
+    [
+      161,
+      11,
+      71
+    ],
+    [
+      161,
+      12,
+      71
+    ],
+    [
+      161,
+      13,
+      84
+    ],
+    [
+      161,
+      14,
+      84
+    ],
+    [
+      162,
+      2,
+      71
+    ],
+    [
+      162,
+      10,
+      71
+    ],
+    [
+      162,
+      11,
+      71
+    ],
+    [
+      162,
+      12,
+      71
+    ],
+    [
+      162,
+      13,
+      84
+    ],
+    [
+      162,
+      14,
+      84
+    ],
+    [
+      163,
+      2,
+      71
+    ],
+    [
+      163,
+      10,
+      71
+    ],
+    [
+      163,
+      11,
+      71
+    ],
+    [
+      163,
+      12,
+      71
+    ],
+    [
+      163,
+      13,
+      84
+    ],
+    [
+      163,
+      14,
+      84
+    ],
+    [
+      164,
+      2,
+      71
+    ],
+    [
+      164,
+      10,
+      71
+    ],
+    [
+      164,
+      11,
+      71
+    ],
+    [
+      164,
+      12,
+      71
+    ],
+    [
+      164,
+      13,
+      84
+    ],
+    [
+      164,
+      14,
+      84
+    ],
+    [
+      165,
+      2,
+      71
+    ],
+    [
+      165,
+      10,
+      71
+    ],
+    [
+      165,
+      11,
+      71
+    ],
+    [
+      165,
+      12,
+      71
+    ],
+    [
+      165,
+      13,
+      84
+    ],
+    [
+      165,
+      14,
+      84
+    ],
+    [
+      166,
+      2,
+      71
+    ],
+    [
+      166,
+      10,
+      71
+    ],
+    [
+      166,
+      11,
+      71
+    ],
+    [
+      166,
+      12,
+      71
+    ],
+    [
+      166,
+      13,
+      84
+    ],
+    [
+      166,
+      14,
+      84
+    ],
+    [
+      167,
+      2,
+      71
+    ],
+    [
+      167,
+      8,
+      28
+    ],
+    [
+      167,
+      9,
+      31
+    ],
+    [
+      167,
+      10,
+      71
+    ],
+    [
+      167,
+      11,
+      71
+    ],
+    [
+      167,
+      12,
+      71
+    ],
+    [
+      167,
+      13,
+      84
+    ],
+    [
+      167,
+      14,
+      84
+    ],
+    [
+      168,
+      2,
+      71
+    ],
+    [
+      168,
+      8,
+      29
+    ],
+    [
+      168,
+      9,
+      32
+    ],
+    [
+      168,
+      10,
+      71
+    ],
+    [
+      168,
+      11,
+      71
+    ],
+    [
+      168,
+      12,
+      71
+    ],
+    [
+      168,
+      13,
+      84
+    ],
+    [
+      168,
+      14,
+      84
+    ],
+    [
+      169,
+      2,
+      20
+    ],
+    [
+      169,
+      3,
+      20
+    ],
+    [
+      169,
+      4,
+      20
+    ],
+    [
+      169,
+      5,
+      20
+    ],
+    [
+      169,
+      6,
+      20
+    ],
+    [
+      169,
+      7,
+      20
+    ],
+    [
+      169,
+      8,
+      30
+    ],
+    [
+      169,
+      9,
+      33
+    ],
+    [
+      169,
+      10,
+      71
+    ],
+    [
+      169,
+      11,
+      71
+    ],
+    [
+      169,
+      12,
+      71
+    ],
+    [
+      169,
+      13,
+      84
+    ],
+    [
+      169,
+      14,
+      84
+    ],
+    [
+      170,
+      2,
+      21
+    ],
+    [
+      170,
+      3,
+      21
+    ],
+    [
+      170,
+      4,
+      21
+    ],
+    [
+      170,
+      5,
+      21
+    ],
+    [
+      170,
+      6,
+      21
+    ],
+    [
+      170,
+      7,
+      21
+    ],
+    [
+      170,
+      8,
+      21
+    ],
+    [
+      170,
+      9,
+      21
+    ],
+    [
+      170,
+      10,
+      71
+    ],
+    [
+      170,
+      11,
+      71
+    ],
+    [
+      170,
+      12,
+      71
+    ],
+    [
+      170,
+      13,
+      84
+    ],
+    [
+      170,
+      14,
+      84
+    ],
+    [
+      171,
+      2,
+      71
+    ],
+    [
+      171,
+      3,
+      71
+    ],
+    [
+      171,
+      4,
+      71
+    ],
+    [
+      171,
+      5,
+      71
+    ],
+    [
+      171,
+      6,
+      71
+    ],
+    [
+      171,
+      7,
+      71
+    ],
+    [
+      171,
+      8,
+      71
+    ],
+    [
+      171,
+      9,
+      71
+    ],
+    [
+      171,
+      10,
+      71
+    ],
+    [
+      171,
+      11,
+      71
+    ],
+    [
+      171,
+      12,
+      71
+    ],
+    [
+      171,
+      13,
+      84
+    ],
+    [
+      171,
+      14,
+      84
+    ],
+    [
+      172,
+      2,
+      71
+    ],
+    [
+      172,
+      3,
+      71
+    ],
+    [
+      172,
+      4,
+      71
+    ],
+    [
+      172,
+      5,
+      71
+    ],
+    [
+      172,
+      6,
+      71
+    ],
+    [
+      172,
+      7,
+      71
+    ],
+    [
+      172,
+      8,
+      71
+    ],
+    [
+      172,
+      9,
+      71
+    ],
+    [
+      172,
+      10,
+      71
+    ],
+    [
+      172,
+      11,
+      71
+    ],
+    [
+      172,
+      12,
+      71
+    ],
+    [
+      172,
+      13,
+      84
+    ],
+    [
+      172,
+      14,
+      84
+    ],
+    [
+      173,
+      2,
+      71
+    ],
+    [
+      173,
+      3,
+      71
+    ],
+    [
+      173,
+      4,
+      71
+    ],
+    [
+      173,
+      5,
+      71
+    ],
+    [
+      173,
+      6,
+      71
+    ],
+    [
+      173,
+      7,
+      71
+    ],
+    [
+      173,
+      8,
+      71
+    ],
+    [
+      173,
+      9,
+      71
+    ],
+    [
+      173,
+      10,
+      71
+    ],
+    [
+      173,
+      11,
+      71
+    ],
+    [
+      173,
+      12,
+      71
+    ],
+    [
+      173,
+      13,
+      84
+    ],
+    [
+      173,
+      14,
+      84
+    ],
+    [
+      174,
+      2,
+      71
+    ],
+    [
+      174,
+      3,
+      71
+    ],
+    [
+      174,
+      4,
+      71
+    ],
+    [
+      174,
+      5,
+      71
+    ],
+    [
+      174,
+      6,
+      71
+    ],
+    [
+      174,
+      7,
+      71
+    ],
+    [
+      174,
+      8,
+      71
+    ],
+    [
+      174,
+      9,
+      71
+    ],
+    [
+      174,
+      10,
+      71
+    ],
+    [
+      174,
+      11,
+      71
+    ],
+    [
+      174,
+      12,
+      71
+    ],
+    [
+      174,
+      13,
+      84
+    ],
+    [
+      174,
+      14,
+      84
+    ],
+    [
+      175,
+      2,
+      71
+    ],
+    [
+      175,
+      3,
+      71
+    ],
+    [
+      175,
+      4,
+      71
+    ],
+    [
+      175,
+      5,
+      71
+    ],
+    [
+      175,
+      6,
+      71
+    ],
+    [
+      175,
+      7,
+      71
+    ],
+    [
+      175,
+      8,
+      71
+    ],
+    [
+      175,
+      9,
+      71
+    ],
+    [
+      175,
+      10,
+      71
+    ],
+    [
+      175,
+      11,
+      71
+    ],
+    [
+      175,
+      12,
+      71
+    ],
+    [
+      175,
+      13,
+      84
+    ],
+    [
+      175,
+      14,
+      84
+    ],
+    [
+      176,
+      2,
+      71
+    ],
+    [
+      176,
+      3,
+      71
+    ],
+    [
+      176,
+      4,
+      71
+    ],
+    [
+      176,
+      5,
+      71
+    ],
+    [
+      176,
+      6,
+      71
+    ],
+    [
+      176,
+      7,
+      71
+    ],
+    [
+      176,
+      8,
+      71
+    ],
+    [
+      176,
+      9,
+      71
+    ],
+    [
+      176,
+      10,
+      71
+    ],
+    [
+      176,
+      11,
+      71
+    ],
+    [
+      176,
+      12,
+      71
+    ],
+    [
+      176,
+      13,
+      84
+    ],
+    [
+      176,
+      14,
+      84
+    ],
+    [
+      177,
+      2,
+      71
+    ],
+    [
+      177,
+      3,
+      71
+    ],
+    [
+      177,
+      4,
+      71
+    ],
+    [
+      177,
+      5,
+      71
+    ],
+    [
+      177,
+      6,
+      71
+    ],
+    [
+      177,
+      7,
+      71
+    ],
+    [
+      177,
+      8,
+      71
+    ],
+    [
+      177,
+      9,
+      71
+    ],
+    [
+      177,
+      10,
+      71
+    ],
+    [
+      177,
+      11,
+      71
+    ],
+    [
+      177,
+      12,
+      71
+    ],
+    [
+      177,
+      13,
+      84
+    ],
+    [
+      177,
+      14,
+      84
+    ],
+    [
+      178,
+      2,
+      71
+    ],
+    [
+      178,
+      13,
+      84
+    ],
+    [
+      178,
+      14,
+      84
+    ],
+    [
+      179,
+      2,
+      71
+    ],
+    [
+      179,
+      10,
+      16
+    ],
+    [
+      179,
+      11,
+      20
+    ],
+    [
+      179,
+      12,
+      20
+    ],
+    [
+      179,
+      13,
+      84
+    ],
+    [
+      179,
+      14,
+      84
+    ],
+    [
+      180,
+      2,
+      71
+    ],
+    [
+      180,
+      10,
+      17
+    ],
+    [
+      180,
+      11,
+      21
+    ],
+    [
+      180,
+      12,
+      21
+    ],
+    [
+      180,
+      13,
+      84
+    ],
+    [
+      180,
+      14,
+      84
+    ],
+    [
+      181,
+      2,
+      71
+    ],
+    [
+      181,
+      13,
+      84
+    ],
+    [
+      181,
+      14,
+      84
+    ],
+    [
+      182,
+      2,
+      71
+    ],
+    [
+      182,
+      13,
+      84
+    ],
+    [
+      182,
+      14,
+      84
+    ],
+    [
+      183,
+      2,
+      71
+    ],
+    [
+      183,
+      10,
+      16
+    ],
+    [
+      183,
+      11,
+      20
+    ],
+    [
+      183,
+      12,
+      20
+    ],
+    [
+      183,
+      13,
+      84
+    ],
+    [
+      183,
+      14,
+      84
+    ],
+    [
+      184,
+      2,
+      71
+    ],
+    [
+      184,
+      10,
+      17
+    ],
+    [
+      184,
+      11,
+      21
+    ],
+    [
+      184,
+      12,
+      21
+    ],
+    [
+      184,
+      13,
+      84
+    ],
+    [
+      184,
+      14,
+      84
+    ],
+    [
+      185,
+      2,
+      71
+    ],
+    [
+      185,
+      13,
+      84
+    ],
+    [
+      185,
+      14,
+      84
+    ],
+    [
+      186,
+      2,
+      71
+    ],
+    [
+      186,
+      13,
+      84
+    ],
+    [
+      186,
+      14,
+      84
+    ],
+    [
+      187,
+      2,
+      71
+    ],
+    [
+      187,
+      10,
+      16
+    ],
+    [
+      187,
+      11,
+      20
+    ],
+    [
+      187,
+      12,
+      20
+    ],
+    [
+      187,
+      13,
+      84
+    ],
+    [
+      187,
+      14,
+      84
+    ],
+    [
+      188,
+      10,
+      17
+    ],
+    [
+      188,
+      11,
+      21
+    ],
+    [
+      188,
+      12,
+      21
+    ],
+    [
+      188,
+      13,
+      84
+    ],
+    [
+      188,
+      14,
+      84
+    ],
+    [
+      189,
+      13,
+      84
+    ],
+    [
+      189,
+      14,
+      84
+    ],
+    [
+      190,
+      13,
+      84
+    ],
+    [
+      190,
+      14,
+      84
+    ],
+    [
+      191,
+      2,
+      71
+    ],
+    [
+      191,
+      3,
+      71
+    ],
+    [
+      191,
+      4,
+      71
+    ],
+    [
+      191,
+      5,
+      71
+    ],
+    [
+      191,
+      6,
+      71
+    ],
+    [
+      191,
+      7,
+      71
+    ],
+    [
+      191,
+      8,
+      71
+    ],
+    [
+      191,
+      9,
+      71
+    ],
+    [
+      191,
+      10,
+      71
+    ],
+    [
+      191,
+      11,
+      71
+    ],
+    [
+      191,
+      12,
+      71
+    ],
+    [
+      191,
+      13,
+      84
+    ],
+    [
+      191,
+      14,
+      84
+    ],
+    [
+      192,
+      2,
+      71
+    ],
+    [
+      192,
+      3,
+      71
+    ],
+    [
+      192,
+      4,
+      71
+    ],
+    [
+      192,
+      5,
+      71
+    ],
+    [
+      192,
+      6,
+      71
+    ],
+    [
+      192,
+      7,
+      71
+    ],
+    [
+      192,
+      8,
+      71
+    ],
+    [
+      192,
+      9,
+      71
+    ],
+    [
+      192,
+      10,
+      71
+    ],
+    [
+      192,
+      11,
+      71
+    ],
+    [
+      192,
+      12,
+      71
+    ],
+    [
+      192,
+      13,
+      84
+    ],
+    [
+      192,
+      14,
+      84
+    ]
+  ],
+  "unknownCells": [
+    [
+      155,
+      8
+    ],
+    [
+      156,
+      8
+    ],
+    [
+      179,
+      8
+    ],
+    [
+      183,
+      8
+    ],
+    [
+      187,
+      8
+    ]
+  ],
+  "coordinateExtentPixels": [
+    2480,
+    3088
+  ],
+  "status": "Actual roof route and geometry observed; 3 ordinary-control destination tests preserved.",
+  "unresolved": [
+    "Camera registration inferred from static image overlap and known pipe anchor.",
+    "Warp text and number labels are supplied font patterns rather than16x16geometry; unknown cells containing text remain explicit.",
+    "Rightmost geometry outside the final observed viewport remains unresolved."
+  ],
+  "routeRecipe": {
+    "resetThenRecordedPrefixTicks": 490,
+    "prefixSource": "data/observed-winning-inputs.json",
+    "ordinaryRequests": [
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "tick": 492,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00080-tick-00492.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 496,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00081-tick-00496.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "tick": 499,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00082-tick-00499.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "tick": 504,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00083-tick-00504.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "tick": 506,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00084-tick-00506.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "tick": 508,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00085-tick-00508.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "tick": 514,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00086-tick-00514.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "tick": 517,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00087-tick-00517.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "tick": 522,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00088-tick-00522.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "tick": 524,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00089-tick-00524.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 528,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00090-tick-00528.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 532,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00091-tick-00532.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 536,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00092-tick-00536.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 540,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00093-tick-00540.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 544,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00094-tick-00544.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 548,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00095-tick-00548.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 552,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00096-tick-00552.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 556,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00097-tick-00556.png"
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "tick": 560,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00098-tick-00560.png"
+      }
+    ],
+    "status": "Freshstandardreferencegame,ordinarycontrolsontoascendingliftthenroofthenwarpzone;noemulatorstateorskip"
+  },
+  "warpView": {
+    "cameraX": 2834,
+    "ceilingY": 32,
+    "floorY": 208,
+    "pipeTopY": 160,
+    "pipes": [
+      {
+        "x": 2864,
+        "y": 160,
+        "width": 32,
+        "label": "4",
+        "destination": "4-1",
+        "status": "WORLD4-1intro614andactualplay660observedunderordinarydowninput"
+      },
+      {
+        "x": 2928,
+        "y": 160,
+        "width": 32,
+        "label": "3",
+        "destination": "3-1",
+        "status": "WORLD3-1intro620andactualplay644observedunderordinarydowninput"
+      },
+      {
+        "x": 2992,
+        "y": 160,
+        "width": 32,
+        "label": "2",
+        "destination": "2-1",
+        "status": "introandgameplayobservedat604and628"
+      }
+    ],
+    "sign": {
+      "text": "WELCOME TO WARP ZONE!",
+      "screenX": 30,
+      "y": 96,
+      "worldX": 2864,
+      "glyphPatternIndices": [
+        32,
+        14,
+        21,
+        12,
+        24,
+        22,
+        14,
+        36,
+        29,
+        24,
+        36,
+        32,
+        10,
+        27,
+        25,
+        36,
+        35,
+        24,
+        23,
+        14,
+        43
+      ],
+      "whiteMaskMismatchPixels": 0,
+      "comparedPixels": 1344,
+      "sourceSequence": 419
+    },
+    "numbers": {
+      "screenXs": [
+        38,
+        102,
+        166
+      ],
+      "y": 136,
+      "exactMatches": [
+        {
+          "screenX": 38,
+          "worldX": 2872,
+          "digit": 4,
+          "whiteMaskMismatchPixels": 0
+        },
+        {
+          "screenX": 102,
+          "worldX": 2936,
+          "digit": 3,
+          "whiteMaskMismatchPixels": 0
+        },
+        {
+          "screenX": 166,
+          "worldX": 3000,
+          "digit": 2,
+          "whiteMaskMismatchPixels": 0
+        }
+      ]
+    },
+    "wallLeftBoundaryX": 2848,
+    "wallRightBoundaryX": 3056,
+    "status": "Geometryimageobserved;worldcoordinatesdependonmainexitpipeanchor"
+  },
+  "destinationTests": [
+    {
+      "pipeLabel": "2",
+      "pipeX": 2992,
+      "sourceSequences": [
+        98,
+        104
+      ],
+      "requests": [
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "frames": 30,
+          "tick": 564,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00099-tick-00564.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 566,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00100-tick-00566.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 16
+          },
+          "frames": 121,
+          "tick": 582,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00101-tick-00582.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 584,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00102-tick-00584.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "frames": 150,
+          "tick": 604,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00103-tick-00604.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "frames": 180,
+          "tick": 628,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00104-tick-00628.png"
+        }
+      ],
+      "result": "WORLD2-1intro604,playablelevel628",
+      "status": "actualordinarypipeentryobserved"
+    },
+    {
+      "pipeLabel": "3",
+      "pipeX": 2928,
+      "sourceSequences": [
+        202,
+        211
+      ],
+      "requests": [
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "frames": 30,
+          "tick": 564,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00203-tick-00564.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 566,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00204-tick-00566.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 16
+          },
+          "frames": 121,
+          "tick": 582,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00205-tick-00582.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "frames": 45,
+          "tick": 588,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00206-tick-00588.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 590,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00207-tick-00590.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "frames": 60,
+          "tick": 598,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00208-tick-00598.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 600,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00209-tick-00600.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "frames": 150,
+          "tick": 620,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00210-tick-00620.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "frames": 180,
+          "tick": 644,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00211-tick-00644.png"
+        }
+      ],
+      "result": "WORLD3-1intro620,playablelevel644",
+      "status": "actualordinarypipeentryobserved"
+    },
+    {
+      "pipeLabel": "4",
+      "pipeX": 2864,
+      "sourceSequences": [
+        309,
+        321
+      ],
+      "requests": [
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "frames": 30,
+          "tick": 564,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00310-tick-00564.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 566,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00311-tick-00566.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 16
+          },
+          "frames": 121,
+          "tick": 582,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00312-tick-00582.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "frames": 45,
+          "tick": 588,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00313-tick-00588.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 590,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00314-tick-00590.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "frames": 60,
+          "tick": 598,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00315-tick-00598.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "frames": 45,
+          "tick": 604,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00316-tick-00604.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 606,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00317-tick-00606.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "frames": 60,
+          "tick": 614,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00318-tick-00614.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "frames": 15,
+          "tick": 616,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00319-tick-00616.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "frames": 150,
+          "tick": 636,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00320-tick-00636.png"
+        },
+        {
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "frames": 181,
+          "tick": 660,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00321-tick-00660.png"
+        }
+      ],
+      "result": "WORLD4-1intro614,playablelevel660",
+      "status": "actualordinarypipeentryobserved"
+    }
+  ],
+  "activationCheckpoints": [
+    {
+      "sequence": 416,
+      "tick": 548,
+      "framesAdvanced": 30,
+      "cameraX": 2789,
+      "pipeScreenXs": [
+        75,
+        139,
+        203
+      ],
+      "signWhitePixels": 0,
+      "warpSignVisible": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00416-tick-00548.png"
+    },
+    {
+      "sequence": 417,
+      "tick": 549,
+      "framesAdvanced": 8,
+      "cameraX": 2809,
+      "pipeScreenXs": [
+        55,
+        119,
+        183
+      ],
+      "signWhitePixels": 0,
+      "warpSignVisible": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00417-tick-00549.png"
+    },
+    {
+      "sequence": 418,
+      "tick": 550,
+      "framesAdvanced": 7,
+      "cameraX": 2826,
+      "pipeScreenXs": [
+        38,
+        102,
+        166
+      ],
+      "signWhitePixels": 0,
+      "warpSignVisible": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00418-tick-00550.png"
+    },
+    {
+      "sequence": 419,
+      "tick": 551,
+      "framesAdvanced": 8,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00419-tick-00551.png"
+    },
+    {
+      "sequence": 420,
+      "tick": 552,
+      "framesAdvanced": 7,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00420-tick-00552.png"
+    },
+    {
+      "sequence": 421,
+      "tick": 553,
+      "framesAdvanced": 8,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00421-tick-00553.png"
+    },
+    {
+      "sequence": 422,
+      "tick": 554,
+      "framesAdvanced": 7,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00422-tick-00554.png"
+    },
+    {
+      "sequence": 423,
+      "tick": 555,
+      "framesAdvanced": 8,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00423-tick-00555.png"
+    },
+    {
+      "sequence": 424,
+      "tick": 556,
+      "framesAdvanced": 7,
+      "cameraX": 2834,
+      "pipeScreenXs": [
+        30,
+        94,
+        158
+      ],
+      "signWhitePixels": 521,
+      "warpSignVisible": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00424-tick-00556.png"
+    }
+  ],
+  "activationRuleCandidate": {
+    "trigger": "camera reaches observed warp scroll-stop2834",
+    "bounds": "camera2826/no sign at550; camera2834/sign at551,8nativeframeslater",
+    "status": "geometry/camera trigger inferred; exact internal frame not visible between decisions",
+    "effectsObserved": [
+      "WELCOME TO WARP ZONE! and4/3/2 number labels appear",
+      "Piranha Plants no longer visible in warp pipes",
+      "camera remains2834 while player continues right and falls into warp room"
+    ]
+  },
+  "freshRouteConsistency": [
+    {
+      "sequence": 98,
+      "tick": 560,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00098-tick-00560.png",
+      "sha256": "4d1e7cb7eb4accd6fc92d2ec10651dc90fc8cb6be35c9b3d98ab527cf8c1ee39"
+    },
+    {
+      "sequence": 202,
+      "tick": 560,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00202-tick-00560.png",
+      "sha256": "4d1e7cb7eb4accd6fc92d2ec10651dc90fc8cb6be35c9b3d98ab527cf8c1ee39"
+    },
+    {
+      "sequence": 309,
+      "tick": 560,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/warp-1-2-explore/00309-tick-00560.png",
+      "sha256": "4d1e7cb7eb4accd6fc92d2ec10651dc90fc8cb6be35c9b3d98ab527cf8c1ee39"
+    }
+  ],
+  "freshRouteConsistencyAllImagesEqual": true,
+  "observedBlankCells": [
+    [
+      155,
+      2
+    ],
+    [
+      155,
+      3
+    ],
+    [
+      155,
+      4
+    ],
+    [
+      155,
+      5
+    ],
+    [
+      155,
+      6
+    ],
+    [
+      155,
+      7
+    ],
+    [
+      155,
+      9
+    ],
+    [
+      155,
+      10
+    ],
+    [
+      155,
+      11
+    ],
+    [
+      155,
+      12
+    ],
+    [
+      155,
+      13
+    ],
+    [
+      155,
+      14
+    ],
+    [
+      156,
+      2
+    ],
+    [
+      156,
+      3
+    ],
+    [
+      156,
+      4
+    ],
+    [
+      156,
+      5
+    ],
+    [
+      156,
+      6
+    ],
+    [
+      156,
+      7
+    ],
+    [
+      156,
+      9
+    ],
+    [
+      156,
+      10
+    ],
+    [
+      156,
+      11
+    ],
+    [
+      156,
+      12
+    ],
+    [
+      156,
+      13
+    ],
+    [
+      156,
+      14
+    ],
+    [
+      157,
+      2
+    ],
+    [
+      157,
+      3
+    ],
+    [
+      157,
+      4
+    ],
+    [
+      157,
+      5
+    ],
+    [
+      157,
+      6
+    ],
+    [
+      157,
+      7
+    ],
+    [
+      157,
+      8
+    ],
+    [
+      157,
+      9
+    ],
+    [
+      157,
+      10
+    ],
+    [
+      157,
+      11
+    ],
+    [
+      157,
+      12
+    ],
+    [
+      157,
+      13
+    ],
+    [
+      157,
+      14
+    ],
+    [
+      158,
+      2
+    ],
+    [
+      158,
+      3
+    ],
+    [
+      158,
+      4
+    ],
+    [
+      158,
+      5
+    ],
+    [
+      158,
+      6
+    ],
+    [
+      158,
+      7
+    ],
+    [
+      158,
+      8
+    ],
+    [
+      158,
+      9
+    ],
+    [
+      158,
+      10
+    ],
+    [
+      158,
+      11
+    ],
+    [
+      158,
+      12
+    ],
+    [
+      158,
+      13
+    ],
+    [
+      158,
+      14
+    ],
+    [
+      159,
+      2
+    ],
+    [
+      159,
+      3
+    ],
+    [
+      159,
+      4
+    ],
+    [
+      159,
+      5
+    ],
+    [
+      159,
+      6
+    ],
+    [
+      159,
+      7
+    ],
+    [
+      159,
+      8
+    ],
+    [
+      159,
+      9
+    ],
+    [
+      159,
+      10
+    ],
+    [
+      159,
+      11
+    ],
+    [
+      159,
+      12
+    ],
+    [
+      159,
+      13
+    ],
+    [
+      159,
+      14
+    ],
+    [
+      160,
+      2
+    ],
+    [
+      160,
+      3
+    ],
+    [
+      160,
+      4
+    ],
+    [
+      160,
+      5
+    ],
+    [
+      160,
+      6
+    ],
+    [
+      160,
+      7
+    ],
+    [
+      160,
+      8
+    ],
+    [
+      160,
+      9
+    ],
+    [
+      160,
+      10
+    ],
+    [
+      160,
+      11
+    ],
+    [
+      160,
+      12
+    ],
+    [
+      160,
+      13
+    ],
+    [
+      160,
+      14
+    ],
+    [
+      161,
+      2
+    ],
+    [
+      161,
+      3
+    ],
+    [
+      161,
+      4
+    ],
+    [
+      161,
+      5
+    ],
+    [
+      161,
+      6
+    ],
+    [
+      161,
+      7
+    ],
+    [
+      161,
+      8
+    ],
+    [
+      161,
+      9
+    ],
+    [
+      162,
+      3
+    ],
+    [
+      162,
+      4
+    ],
+    [
+      162,
+      5
+    ],
+    [
+      162,
+      6
+    ],
+    [
+      162,
+      7
+    ],
+    [
+      162,
+      8
+    ],
+    [
+      162,
+      9
+    ],
+    [
+      163,
+      3
+    ],
+    [
+      163,
+      4
+    ],
+    [
+      163,
+      5
+    ],
+    [
+      163,
+      6
+    ],
+    [
+      163,
+      7
+    ],
+    [
+      163,
+      8
+    ],
+    [
+      163,
+      9
+    ],
+    [
+      164,
+      3
+    ],
+    [
+      164,
+      4
+    ],
+    [
+      164,
+      5
+    ],
+    [
+      164,
+      6
+    ],
+    [
+      164,
+      7
+    ],
+    [
+      164,
+      8
+    ],
+    [
+      164,
+      9
+    ],
+    [
+      165,
+      3
+    ],
+    [
+      165,
+      4
+    ],
+    [
+      165,
+      5
+    ],
+    [
+      165,
+      6
+    ],
+    [
+      165,
+      7
+    ],
+    [
+      165,
+      8
+    ],
+    [
+      165,
+      9
+    ],
+    [
+      166,
+      3
+    ],
+    [
+      166,
+      4
+    ],
+    [
+      166,
+      5
+    ],
+    [
+      166,
+      6
+    ],
+    [
+      166,
+      7
+    ],
+    [
+      166,
+      8
+    ],
+    [
+      166,
+      9
+    ],
+    [
+      167,
+      3
+    ],
+    [
+      167,
+      4
+    ],
+    [
+      167,
+      5
+    ],
+    [
+      167,
+      6
+    ],
+    [
+      167,
+      7
+    ],
+    [
+      168,
+      3
+    ],
+    [
+      168,
+      4
+    ],
+    [
+      168,
+      5
+    ],
+    [
+      168,
+      6
+    ],
+    [
+      168,
+      7
+    ],
+    [
+      178,
+      3
+    ],
+    [
+      178,
+      4
+    ],
+    [
+      178,
+      5
+    ],
+    [
+      178,
+      6
+    ],
+    [
+      178,
+      7
+    ],
+    [
+      178,
+      8
+    ],
+    [
+      178,
+      9
+    ],
+    [
+      178,
+      10
+    ],
+    [
+      178,
+      11
+    ],
+    [
+      178,
+      12
+    ],
+    [
+      179,
+      3
+    ],
+    [
+      179,
+      4
+    ],
+    [
+      179,
+      5
+    ],
+    [
+      179,
+      6
+    ],
+    [
+      179,
+      7
+    ],
+    [
+      179,
+      9
+    ],
+    [
+      180,
+      3
+    ],
+    [
+      180,
+      4
+    ],
+    [
+      180,
+      5
+    ],
+    [
+      180,
+      6
+    ],
+    [
+      180,
+      7
+    ],
+    [
+      180,
+      8
+    ],
+    [
+      180,
+      9
+    ],
+    [
+      181,
+      3
+    ],
+    [
+      181,
+      4
+    ],
+    [
+      181,
+      5
+    ],
+    [
+      181,
+      6
+    ],
+    [
+      181,
+      7
+    ],
+    [
+      181,
+      8
+    ],
+    [
+      181,
+      9
+    ],
+    [
+      181,
+      10
+    ],
+    [
+      181,
+      11
+    ],
+    [
+      181,
+      12
+    ],
+    [
+      182,
+      3
+    ],
+    [
+      182,
+      4
+    ],
+    [
+      182,
+      5
+    ],
+    [
+      182,
+      6
+    ],
+    [
+      182,
+      7
+    ],
+    [
+      182,
+      8
+    ],
+    [
+      182,
+      9
+    ],
+    [
+      182,
+      10
+    ],
+    [
+      182,
+      11
+    ],
+    [
+      182,
+      12
+    ],
+    [
+      183,
+      3
+    ],
+    [
+      183,
+      4
+    ],
+    [
+      183,
+      5
+    ],
+    [
+      183,
+      6
+    ],
+    [
+      183,
+      7
+    ],
+    [
+      183,
+      9
+    ],
+    [
+      184,
+      3
+    ],
+    [
+      184,
+      4
+    ],
+    [
+      184,
+      5
+    ],
+    [
+      184,
+      6
+    ],
+    [
+      184,
+      7
+    ],
+    [
+      184,
+      8
+    ],
+    [
+      184,
+      9
+    ],
+    [
+      185,
+      3
+    ],
+    [
+      185,
+      4
+    ],
+    [
+      185,
+      5
+    ],
+    [
+      185,
+      6
+    ],
+    [
+      185,
+      7
+    ],
+    [
+      185,
+      8
+    ],
+    [
+      185,
+      9
+    ],
+    [
+      185,
+      10
+    ],
+    [
+      185,
+      11
+    ],
+    [
+      185,
+      12
+    ],
+    [
+      186,
+      3
+    ],
+    [
+      186,
+      4
+    ],
+    [
+      186,
+      5
+    ],
+    [
+      186,
+      6
+    ],
+    [
+      186,
+      7
+    ],
+    [
+      186,
+      8
+    ],
+    [
+      186,
+      9
+    ],
+    [
+      186,
+      10
+    ],
+    [
+      186,
+      11
+    ],
+    [
+      186,
+      12
+    ],
+    [
+      187,
+      3
+    ],
+    [
+      187,
+      4
+    ],
+    [
+      187,
+      5
+    ],
+    [
+      187,
+      6
+    ],
+    [
+      187,
+      7
+    ],
+    [
+      187,
+      9
+    ],
+    [
+      188,
+      2
+    ],
+    [
+      188,
+      3
+    ],
+    [
+      188,
+      4
+    ],
+    [
+      188,
+      5
+    ],
+    [
+      188,
+      6
+    ],
+    [
+      188,
+      7
+    ],
+    [
+      188,
+      8
+    ],
+    [
+      188,
+      9
+    ],
+    [
+      189,
+      2
+    ],
+    [
+      189,
+      3
+    ],
+    [
+      189,
+      4
+    ],
+    [
+      189,
+      5
+    ],
+    [
+      189,
+      6
+    ],
+    [
+      189,
+      7
+    ],
+    [
+      189,
+      8
+    ],
+    [
+      189,
+      9
+    ],
+    [
+      189,
+      10
+    ],
+    [
+      189,
+      11
+    ],
+    [
+      189,
+      12
+    ],
+    [
+      190,
+      2
+    ],
+    [
+      190,
+      3
+    ],
+    [
+      190,
+      4
+    ],
+    [
+      190,
+      5
+    ],
+    [
+      190,
+      6
+    ],
+    [
+      190,
+      7
+    ],
+    [
+      190,
+      8
+    ],
+    [
+      190,
+      9
+    ],
+    [
+      190,
+      10
+    ],
+    [
+      190,
+      11
+    ],
+    [
+      190,
+      12
+    ]
+  ]
+}

@@ -1,0 +1,194 @@
+{
+ "schema": "native-platform-specs-v1",
+ "evidence": "tools/harness/derive-wrap-platforms.mjs (method), docs/NATIVE_ROLES.md (roles)",
+ "note": "Platform specs the level compiler uses instead of the screenshot-inferred ones: replace = the whole platform list of an area (one entry per native wrap object, identity = native x and first y), remove = specs with no native object.",
+ "replace": {
+  "1-2/area-2": [
+   {
+    "x": 2236,
+    "y": 112,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 2236,
+    "y": 208,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 2476,
+    "y": 16,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 2476,
+    "y": 144,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ],
+  "2-4/main": [
+   {
+    "x": 2176,
+    "y": 97,
+    "width": 32,
+    "axis": "x",
+    "range": 24,
+    "speed": 0.567
+   },
+   {
+    "x": 1372,
+    "y": 160,
+    "width": 24,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1420,
+    "y": 160,
+    "width": 24,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ],
+  "4-2/area-3": [
+   {
+    "x": 940,
+    "y": 80,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1836,
+    "y": 80,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1836,
+    "y": 192,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1980,
+    "y": 32,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1980,
+    "y": 144,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 2492,
+    "y": 80,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 2492,
+    "y": 192,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ],
+  "5-4/main": [
+   {
+    "x": 2181,
+    "y": 97,
+    "width": 32,
+    "axis": "x",
+    "range": 24,
+    "speed": 0.567
+   },
+   {
+    "x": 1372,
+    "y": 160,
+    "width": 24,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 1420,
+    "y": 160,
+    "width": 24,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ],
+  "5-2/optional-water": [
+   {
+    "x": 364,
+    "y": 96,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 460,
+    "y": 192,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ],
+  "6-2/optional-water": [
+   {
+    "x": 364,
+    "y": 96,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   },
+   {
+    "x": 460,
+    "y": 192,
+    "width": 48,
+    "axis": "y",
+    "range": 0,
+    "speed": 0.9375
+   }
+  ]
+ },
+ "remove": {
+  "4-3/main": [
+   [1291,83],
+   [1740,142],
+   [2182,94]
+  ]
+ }
+}

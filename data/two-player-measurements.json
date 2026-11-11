@@ -1,0 +1,2010 @@
+{
+  "schema": "public-two-player-accessibility-v1",
+  "updatedUtc": "2026-11-05T23:20:35.290Z",
+  "sourceDirectory": "evidence/local/two-player-2026-11-05T23-15-42.425Z",
+  "replayDirectory": "evidence/local/two-player-2026-11-05T23-17-12.955Z",
+  "method": "One unchanged persistent reference process, standard reset and ordinary documented controls only; a second fresh process replays every request. HUD/player readings use exact supplied-art white masks and opaque sprite matches. No ROM/executable inspection or reference modification.",
+  "twoPlayerAccessEstablished": false,
+  "finding": "Reset starts directly in Mario1-1. After life-intro images showing2 then1, the same ordinary Goomba approach reaches terminal while the1-1 gameplay scene remains visible. No GAME OVER/title image is reached. Subsequent ordinary advancement is rejected. Tested fresh Select/Start controls retain Mario1-1 and do not expose a mode menu.",
+  "inferences": [
+    "Terminal after the third repeated Goomba approach is consistent with final-life loss; the protocol does not provide a terminal reason.",
+    "No tested documented controls reach a title menu; no undocumented reset/player-count/controller-port parameters were used."
+  ],
+  "initial": {
+    "sequence": 1,
+    "experiment": "initial-reset",
+    "tick": 0,
+    "nativeFrame": 0,
+    "framesAdvanced": 0,
+    "terminal": false,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00001-initial-reset-t0.png",
+    "player": {
+      "originX": 40,
+      "originY": 177,
+      "visibleLeft": 42,
+      "visibleTop": 193,
+      "visibleRight": 53,
+      "visibleBottom": 208,
+      "cell": 23,
+      "direction": "right",
+      "annotation": "small player standing",
+      "confidence": 1,
+      "matchedPixels": 143
+    },
+    "hud": {
+      "name": "MARIO",
+      "score": 0,
+      "coins": 0,
+      "world": 1,
+      "level": 1,
+      "time": 400,
+      "lives": null
+    }
+  },
+  "lifeIntroSamples": [
+    {
+      "sequence": 7,
+      "experiment": "ordinary-deaths",
+      "tick": 48,
+      "nativeFrame": 360,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00007-ordinary-deaths-t48.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 8,
+      "experiment": "ordinary-deaths",
+      "tick": 56,
+      "nativeFrame": 420,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00008-ordinary-deaths-t56.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "experiment": "ordinary-deaths",
+      "tick": 64,
+      "nativeFrame": 480,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00009-ordinary-deaths-t64.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 16,
+      "experiment": "ordinary-deaths",
+      "tick": 120,
+      "nativeFrame": 901,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00016-ordinary-deaths-t120.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 1
+      }
+    },
+    {
+      "sequence": 17,
+      "experiment": "ordinary-deaths",
+      "tick": 128,
+      "nativeFrame": 961,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00017-ordinary-deaths-t128.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 1
+      }
+    }
+  ],
+  "terminal": {
+    "sequence": 24,
+    "experiment": "ordinary-deaths",
+    "tick": 180,
+    "nativeFrame": 1348,
+    "framesAdvanced": 26,
+    "terminal": true,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00024-ordinary-deaths-t180.png",
+    "player": null,
+    "hud": {
+      "name": "MARIO",
+      "score": 0,
+      "coins": 0,
+      "world": 1,
+      "level": 1,
+      "time": 395,
+      "lives": null
+    }
+  },
+  "postTerminalObserve": {
+    "sequence": 25,
+    "experiment": "post-gameover-observe",
+    "tick": 180,
+    "nativeFrame": 1348,
+    "framesAdvanced": 0,
+    "terminal": true,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00025-post-gameover-observe-t180.png",
+    "player": null,
+    "hud": {
+      "name": "MARIO",
+      "score": 0,
+      "coins": 0,
+      "world": 1,
+      "level": 1,
+      "time": 395,
+      "lives": null
+    }
+  },
+  "postTerminalRejectedRequests": [
+    {
+      "sequence": 26,
+      "experiment": "wait-for-title",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 240
+      },
+      "response": {
+        "ok": false,
+        "error": "Game ended; reset to start again"
+      }
+    },
+    {
+      "sequence": 27,
+      "experiment": "gameover-start",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "start"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Game ended; reset to start again"
+      }
+    },
+    {
+      "sequence": 28,
+      "experiment": "release-start",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Game ended; reset to start again"
+      }
+    },
+    {
+      "sequence": 29,
+      "experiment": "title-select",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "select"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": false,
+        "error": "Game ended; reset to start again"
+      }
+    }
+  ],
+  "freshSelectStartAttempts": [
+    {
+      "sequence": 30,
+      "experiment": "fresh-select-reset",
+      "tick": 0,
+      "nativeFrame": 0,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00030-fresh-select-reset-t0.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 31,
+      "experiment": "fresh-select-once",
+      "tick": 1,
+      "nativeFrame": 7,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00031-fresh-select-once-t1.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 399,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 32,
+      "experiment": "fresh-select-release",
+      "tick": 2,
+      "nativeFrame": 15,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00032-fresh-select-release-t2.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 399,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 33,
+      "experiment": "fresh-select-hold",
+      "tick": 18,
+      "nativeFrame": 135,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00033-fresh-select-hold-t18.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 34,
+      "experiment": "fresh-select-hold-release",
+      "tick": 19,
+      "nativeFrame": 142,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00034-fresh-select-hold-release-t19.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 35,
+      "experiment": "fresh-start",
+      "tick": 20,
+      "nativeFrame": 150,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00035-fresh-start-t20.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 36,
+      "experiment": "fresh-start-wait",
+      "tick": 36,
+      "nativeFrame": 270,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00036-fresh-start-wait-t36.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 37,
+      "experiment": "paused-select",
+      "tick": 37,
+      "nativeFrame": 277,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00037-paused-select-t37.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 38,
+      "experiment": "paused-select-release",
+      "tick": 38,
+      "nativeFrame": 285,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00038-paused-select-release-t38.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 39,
+      "experiment": "fresh-second-start",
+      "tick": 39,
+      "nativeFrame": 292,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00039-fresh-second-start-t39.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 40,
+      "experiment": "fresh-second-start-release",
+      "tick": 40,
+      "nativeFrame": 300,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00040-fresh-second-start-release-t40.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 41,
+      "experiment": "fresh-after-select-start",
+      "tick": 40,
+      "nativeFrame": 300,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00041-fresh-after-select-start-t40.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 42,
+      "experiment": "fresh-chord-reset",
+      "tick": 0,
+      "nativeFrame": 0,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00042-fresh-chord-reset-t0.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 43,
+      "experiment": "fresh-start-select-hold",
+      "tick": 16,
+      "nativeFrame": 120,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00043-fresh-start-select-hold-t16.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 44,
+      "experiment": "fresh-chord-release",
+      "tick": 32,
+      "nativeFrame": 240,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00044-fresh-chord-release-t32.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 45,
+      "experiment": "fresh-after-chord",
+      "tick": 32,
+      "nativeFrame": 240,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00045-fresh-after-chord-t32.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    }
+  ],
+  "controls": {
+    "selectOnce": {
+      "sequence": 31,
+      "mask": 512,
+      "actualFrames": 7
+    },
+    "selectHeld": {
+      "sequence": 33,
+      "mask": 512,
+      "actualFrames": 120
+    },
+    "startPause": {
+      "sequence": 35,
+      "mask": 256,
+      "actualFrames": 8
+    },
+    "neutralWhilePaused": {
+      "sequence": 36,
+      "actualFrames": 120,
+      "identicalImageToStart": true
+    },
+    "selectWhilePaused": {
+      "sequence": 37,
+      "mask": 512,
+      "actualFrames": 7
+    },
+    "secondStart": {
+      "sequence": 39,
+      "mask": 256,
+      "actualFrames": 7
+    },
+    "startSelectHeld": {
+      "sequence": 43,
+      "mask": 768,
+      "actualFrames": 120
+    }
+  },
+  "repeatability": {
+    "requestsCompared": 46,
+    "imagesCompared": 41,
+    "mismatches": []
+  },
+  "observations": [
+    {
+      "sequence": 1,
+      "experiment": "initial-reset",
+      "tick": 0,
+      "nativeFrame": 0,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00001-initial-reset-t0.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 2,
+      "experiment": "ordinary-deaths",
+      "tick": 8,
+      "nativeFrame": 60,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00002-ordinary-deaths-t8.png",
+      "player": {
+        "originX": 100,
+        "originY": 177,
+        "visibleLeft": 102,
+        "visibleTop": 194,
+        "visibleRight": 114,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 397,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 3,
+      "experiment": "ordinary-deaths",
+      "tick": 16,
+      "nativeFrame": 120,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00003-ordinary-deaths-t16.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 114,
+        "visibleTop": 194,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 4,
+      "experiment": "ordinary-deaths",
+      "tick": 24,
+      "nativeFrame": 180,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00004-ordinary-deaths-t24.png",
+      "player": {
+        "originX": 112,
+        "originY": 125,
+        "visibleLeft": 113,
+        "visibleTop": 141,
+        "visibleRight": 126,
+        "visibleBottom": 154,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 5,
+      "experiment": "ordinary-deaths",
+      "tick": 32,
+      "nativeFrame": 240,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00005-ordinary-deaths-t32.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 6,
+      "experiment": "ordinary-deaths",
+      "tick": 40,
+      "nativeFrame": 300,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00006-ordinary-deaths-t40.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 7,
+      "experiment": "ordinary-deaths",
+      "tick": 48,
+      "nativeFrame": 360,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00007-ordinary-deaths-t48.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 8,
+      "experiment": "ordinary-deaths",
+      "tick": 56,
+      "nativeFrame": 420,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00008-ordinary-deaths-t56.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 9,
+      "experiment": "ordinary-deaths",
+      "tick": 64,
+      "nativeFrame": 480,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00009-ordinary-deaths-t64.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 2
+      }
+    },
+    {
+      "sequence": 10,
+      "experiment": "ordinary-deaths",
+      "tick": 72,
+      "nativeFrame": 540,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00010-ordinary-deaths-t72.png",
+      "player": {
+        "originX": 76,
+        "originY": 177,
+        "visibleLeft": 76,
+        "visibleTop": 193,
+        "visibleRight": 90,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 399,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 11,
+      "experiment": "ordinary-deaths",
+      "tick": 80,
+      "nativeFrame": 600,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00011-ordinary-deaths-t80.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 112,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 397,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 12,
+      "experiment": "ordinary-deaths",
+      "tick": 88,
+      "nativeFrame": 661,
+      "framesAdvanced": 61,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00012-ordinary-deaths-t88.png",
+      "player": {
+        "originX": 112,
+        "originY": 141,
+        "visibleLeft": 113,
+        "visibleTop": 157,
+        "visibleRight": 126,
+        "visibleBottom": 170,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 13,
+      "experiment": "ordinary-deaths",
+      "tick": 96,
+      "nativeFrame": 721,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00013-ordinary-deaths-t96.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 14,
+      "experiment": "ordinary-deaths",
+      "tick": 104,
+      "nativeFrame": 781,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00014-ordinary-deaths-t104.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 15,
+      "experiment": "ordinary-deaths",
+      "tick": 112,
+      "nativeFrame": 841,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00015-ordinary-deaths-t112.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 16,
+      "experiment": "ordinary-deaths",
+      "tick": 120,
+      "nativeFrame": 901,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00016-ordinary-deaths-t120.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 1
+      }
+    },
+    {
+      "sequence": 17,
+      "experiment": "ordinary-deaths",
+      "tick": 128,
+      "nativeFrame": 961,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00017-ordinary-deaths-t128.png",
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": null,
+        "lives": 1
+      }
+    },
+    {
+      "sequence": 18,
+      "experiment": "ordinary-deaths",
+      "tick": 136,
+      "nativeFrame": 1021,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00018-ordinary-deaths-t136.png",
+      "player": {
+        "originX": 44,
+        "originY": 177,
+        "visibleLeft": 47,
+        "visibleTop": 193,
+        "visibleRight": 57,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 19,
+      "experiment": "ordinary-deaths",
+      "tick": 144,
+      "nativeFrame": 1081,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00019-ordinary-deaths-t144.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 115,
+        "visibleTop": 193,
+        "visibleRight": 125,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 397,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 20,
+      "experiment": "ordinary-deaths",
+      "tick": 152,
+      "nativeFrame": 1141,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00020-ordinary-deaths-t152.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 113,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 206,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 21,
+      "experiment": "ordinary-deaths",
+      "tick": 160,
+      "nativeFrame": 1201,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00021-ordinary-deaths-t160.png",
+      "player": {
+        "originX": 112,
+        "originY": 154,
+        "visibleLeft": 113,
+        "visibleTop": 170,
+        "visibleRight": 126,
+        "visibleBottom": 183,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 22,
+      "experiment": "ordinary-deaths",
+      "tick": 168,
+      "nativeFrame": 1262,
+      "framesAdvanced": 61,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00022-ordinary-deaths-t168.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 23,
+      "experiment": "ordinary-deaths",
+      "tick": 176,
+      "nativeFrame": 1322,
+      "framesAdvanced": 60,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00023-ordinary-deaths-t176.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 24,
+      "experiment": "ordinary-deaths",
+      "tick": 180,
+      "nativeFrame": 1348,
+      "framesAdvanced": 26,
+      "terminal": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00024-ordinary-deaths-t180.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 25,
+      "experiment": "post-gameover-observe",
+      "tick": 180,
+      "nativeFrame": 1348,
+      "framesAdvanced": 0,
+      "terminal": true,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00025-post-gameover-observe-t180.png",
+      "player": null,
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 395,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 30,
+      "experiment": "fresh-select-reset",
+      "tick": 0,
+      "nativeFrame": 0,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00030-fresh-select-reset-t0.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 31,
+      "experiment": "fresh-select-once",
+      "tick": 1,
+      "nativeFrame": 7,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00031-fresh-select-once-t1.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 399,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 32,
+      "experiment": "fresh-select-release",
+      "tick": 2,
+      "nativeFrame": 15,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00032-fresh-select-release-t2.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 399,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 33,
+      "experiment": "fresh-select-hold",
+      "tick": 18,
+      "nativeFrame": 135,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00033-fresh-select-hold-t18.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 34,
+      "experiment": "fresh-select-hold-release",
+      "tick": 19,
+      "nativeFrame": 142,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00034-fresh-select-hold-release-t19.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 35,
+      "experiment": "fresh-start",
+      "tick": 20,
+      "nativeFrame": 150,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00035-fresh-start-t20.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 36,
+      "experiment": "fresh-start-wait",
+      "tick": 36,
+      "nativeFrame": 270,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00036-fresh-start-wait-t36.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 37,
+      "experiment": "paused-select",
+      "tick": 37,
+      "nativeFrame": 277,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00037-paused-select-t37.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 38,
+      "experiment": "paused-select-release",
+      "tick": 38,
+      "nativeFrame": 285,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00038-paused-select-release-t38.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 394,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 39,
+      "experiment": "fresh-second-start",
+      "tick": 39,
+      "nativeFrame": 292,
+      "framesAdvanced": 7,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00039-fresh-second-start-t39.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 40,
+      "experiment": "fresh-second-start-release",
+      "tick": 40,
+      "nativeFrame": 300,
+      "framesAdvanced": 8,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00040-fresh-second-start-release-t40.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 41,
+      "experiment": "fresh-after-select-start",
+      "tick": 40,
+      "nativeFrame": 300,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00041-fresh-after-select-start-t40.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 393,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 42,
+      "experiment": "fresh-chord-reset",
+      "tick": 0,
+      "nativeFrame": 0,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00042-fresh-chord-reset-t0.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 43,
+      "experiment": "fresh-start-select-hold",
+      "tick": 16,
+      "nativeFrame": 120,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00043-fresh-start-select-hold-t16.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 44,
+      "experiment": "fresh-chord-release",
+      "tick": 32,
+      "nativeFrame": 240,
+      "framesAdvanced": 120,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00044-fresh-chord-release-t32.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    },
+    {
+      "sequence": 45,
+      "experiment": "fresh-after-chord",
+      "tick": 32,
+      "nativeFrame": 240,
+      "framesAdvanced": 0,
+      "terminal": false,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-player-2026-11-05T23-15-42.425Z/00045-fresh-after-chord-t32.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 42,
+        "visibleTop": 193,
+        "visibleRight": 53,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "hud": {
+        "name": "MARIO",
+        "score": 0,
+        "coins": 0,
+        "world": 1,
+        "level": 1,
+        "time": 400,
+        "lives": null
+      }
+    }
+  ],
+  "unresolved": [
+    "Native two-player turn alternation and per-player checkpoint/camera persistence cannot be measured through these accessible states.",
+    "Native score, coin, life, level and power-up sharing/persistence between Mario and Luigi remain unmeasured.",
+    "No two-player mode or Luigi image was observed; the requested Mario checkpoint→death→Luigi death→Mario return experiment could not be reached.",
+    "The terminal player image does not match a complete supplied sprite cell; its pose remains null rather than assuming death cell22.",
+    "This is a protocol-access limitation, not evidence that the original game lacks two-player mode. Existing recreation two-player rules remain inferred.",
+    "No production source or runtime state was changed."
+  ]
+}

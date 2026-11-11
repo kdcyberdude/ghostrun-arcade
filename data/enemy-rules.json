@@ -1,0 +1,57 @@
+{
+  "source": "data/piranha-measurements.json",
+  "piranha": {
+    "status": "Piecewise inference, exactly fitted to visible sprite origins. Hidden endpoint and internal hold conventions are inferred.",
+    "footConvention": "Raw24px spriteOriginY=floor(logicalFootY-23). Exclusive descriptor bottom=originY+24; do not confuse it with logicalFootY.",
+    "extendedFootOffsetFromPipeTop": 0,
+    "hiddenFootOffsetFromPipeTop": 24,
+    "speedPixelsPerNativeFrame": 0.5,
+    "periodNativeFrames": 220,
+    "phaseConvention": "phase0 is the beginning of retraction. Advance one phase per native simulation frame; wrap220→0.",
+    "stages": [
+      {
+        "name": "retract",
+        "fromPhaseInclusive": 0,
+        "toPhaseExclusive": 48,
+        "footOffsetAtStart": 0,
+        "velocity": 0.5
+      },
+      {
+        "name": "hiddenWait",
+        "fromPhaseInclusive": 48,
+        "toPhaseExclusive": 111,
+        "footOffsetAtStart": 24,
+        "velocity": 0
+      },
+      {
+        "name": "rise",
+        "fromPhaseInclusive": 111,
+        "toPhaseExclusive": 159,
+        "footOffsetAtStart": 24,
+        "velocity": -0.5
+      },
+      {
+        "name": "extendedWait",
+        "fromPhaseInclusive": 159,
+        "toPhaseExclusive": 220,
+        "footOffsetAtStart": 0,
+        "velocity": 0
+      }
+    ],
+    "proximity": {
+      "status": "Observed32px inhibits and33px allows, using rendered integer origins; native subpixels inaccessible.",
+      "metric": "abs(playerCellOriginX-plantCellOriginX), equivalent center separation for16px actors",
+      "maximumInhibitedIntegerSeparation": 32,
+      "firstAllowedIntegerSeparation": 33,
+      "gate": "Only inhibit transition from hiddenWait to rise; already visible plants complete their movement.",
+      "verticalDependency": "Ground feet208 and on-pipe feet160 both inhibit. Other vertical offsets unmeasured."
+    },
+    "startup": {
+      "status": "Unresolved activation/initial phase. First visible standard-route image at tick442 is already fully extended.",
+      "inferredInitialHiddenWaitFrames": 63,
+      "caution": "A hidden initial state is an editable hypothesis, not measured. Initial activation distance and first-cycle phase require a separate approach experiment.",
+      "productionChoice": "Initially distant plants start in extendedWait to match the standard-route first visible pose. A plant initialized near the player starts hidden. Both initialization choices remain inferred."
+    },
+    "initialPhase": 159
+  }
+}

@@ -1,0 +1,348 @@
+{
+  "schema": "bowser-production-physics-regressions-v1",
+  "frozenUtc": "2026-11-06T00:53:29.478Z",
+  "tolerances": {
+    "opaqueFeetPixels": 2,
+    "flameHorizontalPixels": 0.75
+  },
+  "method": "Measured full assembled opaque feet and flames. Actual compiled bridge and ordinary production update loop. One initial anchor, physical supportY160/velocity0; chosen event onsets frozen before source patch within measured brackets. No Y offsets or per-frame state replacement. Existing age129/149 selects production events and does not measure native cooldown.",
+  "sourceProof": "evidence/bowser-production-candidate.json",
+  "arcs": [
+    {
+      "id": "1-4-branch1-arc1",
+      "level": "1-4",
+      "branch": 1,
+      "rawMeasurements": "data/bowser-target-heldout-measurements.json",
+      "initial": {
+        "nativeFrame": 7842,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00164-held1056-wait-t1044.png",
+        "bossFrontX": 2175,
+        "measuredRenderedFeetY": 160,
+        "seedPhysicalY": 160,
+        "seedVy": 0,
+        "playerX": 2093,
+        "playerY": 160,
+        "camera": 1977,
+        "age": 129,
+        "qualification": "Single measured bridge anchor. Existing age129 selects the existing next jump event for this fixture; it is not a reference jump-clock measurement. No per-frame state replacement or Y offset."
+      },
+      "takeoffBracket": [
+        7843,
+        7850
+      ],
+      "takeoffNativeFrame": 7845,
+      "samples": [
+        {
+          "nativeFrame": 7850,
+          "feetY": 150,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00165-held1056-wait-t1045.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7857,
+          "feetY": 139,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00166-held1056-wait-t1046.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7872,
+          "feetY": 126,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00168-held1056-wait-t1048.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7887,
+          "feetY": 125,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00170-held1056-wait-t1050.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7895,
+          "feetY": 131,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00171-held1056-wait-t1051.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7902,
+          "feetY": 139,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00172-held1056-wait-t1052.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7910,
+          "feetY": 151,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00173-held1056-wait-t1053.png",
+          "frontCell": 35,
+          "rearCell": 36
+        }
+      ]
+    },
+    {
+      "id": "1-4-branch1-arc2",
+      "level": "1-4",
+      "branch": 1,
+      "rawMeasurements": "data/bowser-target-heldout-measurements.json",
+      "initial": {
+        "nativeFrame": 7947,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00178-held1056-jump-t1058.png",
+        "bossFrontX": 2156,
+        "measuredRenderedFeetY": 160,
+        "seedPhysicalY": 160,
+        "seedVy": 0,
+        "playerX": 2093,
+        "playerY": 103,
+        "camera": 1977,
+        "age": 129,
+        "qualification": "Single measured bridge anchor. Existing age129 selects the existing next jump event for this fixture; it is not a reference jump-clock measurement. No per-frame state replacement or Y offset."
+      },
+      "takeoffBracket": [
+        7948,
+        7955
+      ],
+      "takeoffNativeFrame": 7949,
+      "samples": [
+        {
+          "nativeFrame": 7955,
+          "feetY": 145,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00179-held1056-jump-t1059.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7962,
+          "feetY": 136,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00180-held1056-jump-t1060.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7970,
+          "feetY": 128,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00181-held1056-jump-t1061.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7977,
+          "feetY": 125,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00182-held1056-jump-t1062.png",
+          "frontCell": 35,
+          "rearCell": 38
+        }
+      ]
+    },
+    {
+      "id": "1-4-branch2-arc3",
+      "level": "1-4",
+      "branch": 2,
+      "rawMeasurements": "data/bowser-target-heldout-measurements.json",
+      "initial": {
+        "nativeFrame": 7842,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00361-held1052-wait-t1044.png",
+        "bossFrontX": 2175,
+        "measuredRenderedFeetY": 160,
+        "seedPhysicalY": 160,
+        "seedVy": 0,
+        "playerX": 2093,
+        "playerY": 160,
+        "camera": 1977,
+        "age": 129,
+        "qualification": "Single measured bridge anchor. Existing age129 selects the existing next jump event for this fixture; it is not a reference jump-clock measurement. No per-frame state replacement or Y offset."
+      },
+      "takeoffBracket": [
+        7843,
+        7850
+      ],
+      "takeoffNativeFrame": 7845,
+      "samples": [
+        {
+          "nativeFrame": 7850,
+          "feetY": 150,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00362-held1052-wait-t1045.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7857,
+          "feetY": 139,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00363-held1052-wait-t1046.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7872,
+          "feetY": 126,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00365-held1052-wait-t1048.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7887,
+          "feetY": 125,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00367-held1052-wait-t1050.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 7895,
+          "feetY": 131,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00368-held1052-wait-t1051.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7902,
+          "feetY": 139,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00369-held1052-jump-t1052.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 7910,
+          "feetY": 151,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-29-07.514Z/00370-held1052-jump-t1053.png",
+          "frontCell": 35,
+          "rearCell": 36
+        }
+      ]
+    },
+    {
+      "id": "2-4-branch1-arc4",
+      "level": "2-4",
+      "branch": 1,
+      "rawMeasurements": "data/bowser-jump-heldout-two-four-boss-measurements.json",
+      "initial": {
+        "nativeFrame": 19997,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00458-held2-4-boss-wait-t2662.png",
+        "bossFrontX": 2171,
+        "measuredRenderedFeetY": 161,
+        "seedPhysicalY": 160,
+        "seedVy": 0,
+        "playerX": 2067,
+        "playerY": 160,
+        "camera": 1960,
+        "age": 129,
+        "qualification": "Single measured bridge anchor. Existing age129 selects the existing next jump event for this fixture; it is not a reference jump-clock measurement. No per-frame state replacement or Y offset."
+      },
+      "takeoffBracket": [
+        19998,
+        20005
+      ],
+      "takeoffNativeFrame": 20003,
+      "samples": [
+        {
+          "nativeFrame": 20005,
+          "feetY": 156,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00459-held2-4-boss-wait-t2663.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 20012,
+          "feetY": 144,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00460-held2-4-boss-wait-t2664.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 20020,
+          "feetY": 133,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00461-held2-4-boss-wait-t2665.png",
+          "frontCell": 35,
+          "rearCell": 38
+        },
+        {
+          "nativeFrame": 20035,
+          "feetY": 125,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00463-held2-4-boss-wait-t2667.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 20042,
+          "feetY": 125,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00464-held2-4-boss-wait-t2668.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 20050,
+          "feetY": 129,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00465-held2-4-boss-wait-t2669.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 20057,
+          "feetY": 135,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00466-held2-4-boss-wait-t2670.png",
+          "frontCell": 35,
+          "rearCell": 36
+        },
+        {
+          "nativeFrame": 20065,
+          "feetY": 146,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00467-held2-4-boss-wait-t2671.png",
+          "frontCell": 37,
+          "rearCell": 36
+        }
+      ]
+    }
+  ],
+  "flame": {
+    "level": "1-4",
+    "initial": {
+      "nativeFrame": 7842,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00164-bridge-wait-t1044.png",
+      "bossFrontX": 2175,
+      "seedPhysicalY": 160,
+      "seedVy": 0,
+      "playerX": 2093,
+      "playerY": 160,
+      "camera": 1977,
+      "age": 149
+    },
+    "samples": [
+      {
+        "nativeFrame": 7955,
+        "x": 2137,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00892-dodge-first-jump-t1059.png"
+      },
+      {
+        "nativeFrame": 7962,
+        "x": 2128,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00893-dodge-first-jump-t1060.png"
+      },
+      {
+        "nativeFrame": 7970,
+        "x": 2118,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00894-dodge-first-jump-t1061.png"
+      },
+      {
+        "nativeFrame": 7977,
+        "x": 2109,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00895-dodge-first-jump-t1062.png"
+      },
+      {
+        "nativeFrame": 7985,
+        "x": 2099,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00896-dodge-first-jump-t1063.png"
+      },
+      {
+        "nativeFrame": 7993,
+        "x": 2089,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00897-dodge-first-jump-t1064.png"
+      }
+    ]
+  },
+  "unresolved": [
+    "Flame vertical steering and lane selection fail held-out2-4 observations.",
+    "Body box, HP, attack cooldown and jump-clock timing remain unmeasured/inferred."
+  ]
+}

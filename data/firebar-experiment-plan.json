@@ -1,0 +1,86 @@
+{
+  "schema": "firebar-experiment-plan-v1",
+  "declaredUtc": "2026-11-06T00:28:34.078Z",
+  "scope": "Read-only reference controller/images; no runtime/compiler/renderer changes",
+  "prefix": {
+    "winningDecisions": 924,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "safeApproach": [
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [
+        "right",
+        "a",
+        "b"
+      ],
+      "ticks": 8
+    },
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 2
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-prewait0",
+      "extraNeutralTicks": 0,
+      "calibration": true
+    },
+    {
+      "name": "cal-prewait20",
+      "extraNeutralTicks": 20,
+      "calibration": true
+    },
+    {
+      "name": "reserved-prewait13",
+      "extraNeutralTicks": 13,
+      "calibration": false,
+      "reserved": true
+    }
+  ],
+  "idleSamples": 90,
+  "hypotheses": [
+    "Global/area clock; additional preactivation delay changes later angle by elapsed native time",
+    "Object activation clock; identical spatial approach gives same angles despite earlier waiting",
+    "Discrete angle states vs continuous sine",
+    "Actual flame quad center relative to pivot block; animation phase independent of angular phase"
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "firstDamageNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Do not extract geometry or open reserved-prewait13 PNGs before freezing the selected motion candidate. Preserve all failures without threshold changes.",
+  "limits": [
+    "The safe preparation/approach was piloted through genuine screenshots and leaves Mario on the platform before the first firebar.",
+    "Additional collision controls will be declared separately after safe motion measurement."
+  ]
+}

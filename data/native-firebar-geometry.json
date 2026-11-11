@@ -1,0 +1,18 @@
+{
+ "method":"Two exact saved-pad 6-4 PPU replays, mood3 900frames and mood1 2200frames, zero x/y/engine mismatches. Native object x/y are the pivot quad's top-left; map centers add4 to each axis. Angle clocks beyond the first four bars remain unqualified.",
+ "areas":[{
+  "level":"6-4","area":"main",
+  "corrections":[
+   {"fromX":1208,"x":1224,"y":152},
+   {"fromX":1272,"x":1288,"y":72},
+   {"fromX":1336,"x":1352,"y":152},
+   {"fromX":1400,"x":1416,"y":72},
+   {"fromX":1464,"x":1480,"y":152}
+  ],
+  "additions":[{"x":1080,"y":104,"length":6,"speed":-0.030679615757712823}],
+  "nativeBirths":[
+   {"mood":3,"rows":[[407,2,29,1076,100],[465,0,29,1220,148],[491,3,27,1284,68],[516,1,29,1348,148],[542,4,27,1412,68],[600,2,29,1476,148]]},
+   {"mood":1,"rows":[[1799,2,29,1076,100],[1857,0,29,1220,148],[1882,3,27,1284,68],[1908,1,29,1348,148],[1934,4,27,1412,68],[1995,2,29,1476,148]]}
+  ]
+ }]
+}

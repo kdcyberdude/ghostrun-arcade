@@ -1,0 +1,1915 @@
+{
+  "scope": "Exact opaque sprite pixels and independently matched fixed canopy ends in retained dense reference; ambiguous or absent camera anchors are left unregistered. Canopy world coordinates come from editable map and are an inference, not a reference position API.",
+  "trace": "evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/trace.jsonl",
+  "traceSha256": "37c03de19f40025e1bd82a032c1fe355b0a201ab7a52ea5ff17987aadaadc885",
+  "rows": [
+    {
+      "tick": 5863,
+      "nativeFrame": 44044,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02102-t5863.png",
+      "sha256": "b161829d4d4c20eeac0077a7e7e21909a10d66e93ee359da7d099942add6a994",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 150,
+          "y": 129,
+          "worldX": 1326
+        }
+      ]
+    },
+    {
+      "tick": 5864,
+      "nativeFrame": 44051,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02103-t5864.png",
+      "sha256": "91fcfac0c5395dceae93cb91831d3fcc03a0cf3e1b03ae57ba86186e13eb4597",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 152,
+          "y": 129,
+          "worldX": 1328
+        }
+      ]
+    },
+    {
+      "tick": 5865,
+      "nativeFrame": 44059,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02104-t5865.png",
+      "sha256": "9536b667f2b6355d0065096a8c661a2270e4db847065419ca131078410d2324e",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 155,
+          "y": 129,
+          "worldX": 1331
+        }
+      ]
+    },
+    {
+      "tick": 5866,
+      "nativeFrame": 44066,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02105-t5866.png",
+      "sha256": "ac2848f6b3944ec177141096fe45572fdfa36b55b6670a63388b995075733cbd",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 159,
+          "y": 129,
+          "worldX": 1335
+        }
+      ]
+    },
+    {
+      "tick": 5867,
+      "nativeFrame": 44074,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02106-t5867.png",
+      "sha256": "09ef0e7fb64a214f3daf75fb2d78abd66be9adffc87d23484ba4e2eeef22efc8",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 164,
+          "y": 129,
+          "worldX": 1340
+        }
+      ]
+    },
+    {
+      "tick": 5868,
+      "nativeFrame": 44081,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02107-t5868.png",
+      "sha256": "0e4598ef5bfdf33d37ee90042d7eeaf3aa35dfc91fccd2aef1929501e002dc45",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 169,
+          "y": 129,
+          "worldX": 1345
+        }
+      ]
+    },
+    {
+      "tick": 5869,
+      "nativeFrame": 44089,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02108-t5869.png",
+      "sha256": "03e868fa78018c95afa6b7aaf875f70e767d8bd82ad083cd847c7f7bc6d72e07",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 176,
+          "y": 129,
+          "worldX": 1352
+        }
+      ]
+    },
+    {
+      "tick": 5870,
+      "nativeFrame": 44096,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02109-t5870.png",
+      "sha256": "b45ac1bb683500fc11be4e4bb9a6282e25ba3b648e48262ff7b2dfd26aa8b4a6",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 182,
+          "y": 129,
+          "worldX": 1358
+        }
+      ]
+    },
+    {
+      "tick": 5871,
+      "nativeFrame": 44104,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02110-t5871.png",
+      "sha256": "0656cca456e02a01e9d5f6b2f5c1025d856f9992ace3fd6d99d32102d7b6881c",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": []
+    },
+    {
+      "tick": 5872,
+      "nativeFrame": 44111,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02111-t5872.png",
+      "sha256": "6b750af4f7b9051aaefebc4b678d0c23c63d54a21f95fc0b7b62082e5d59b986",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 192,
+          "y": 129,
+          "worldX": 1368
+        }
+      ]
+    },
+    {
+      "tick": 5873,
+      "nativeFrame": 44119,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02112-t5873.png",
+      "sha256": "2c9da0d6779f9cfa3b6dad885f001f11d2f2e4fc6e13aac5f677140e1e59c96a",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": []
+    },
+    {
+      "tick": 5874,
+      "nativeFrame": 44126,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02113-t5874.png",
+      "sha256": "91f68f07cef88e9d5a61ee88a43c34978edd04f5a65610ce8365036881ee08fd",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 198,
+          "y": 129,
+          "worldX": 1374
+        }
+      ]
+    },
+    {
+      "tick": 5875,
+      "nativeFrame": 44134,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02114-t5875.png",
+      "sha256": "4c83aa10c7b1da9180db1dc47a5ff0ccd555721ee3616f4f77ca1eda0d51cf6c",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 199,
+          "y": 129,
+          "worldX": 1375
+        }
+      ]
+    },
+    {
+      "tick": 5876,
+      "nativeFrame": 44141,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02115-t5876.png",
+      "sha256": "36ac87df5c3071b6aed9c9cc57484ad48394ddcfa75c712c714ce6786c55ed79",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 200,
+          "y": 129,
+          "worldX": 1376
+        }
+      ]
+    },
+    {
+      "tick": 5877,
+      "nativeFrame": 44149,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02116-t5877.png",
+      "sha256": "5888e51898b179f7bf24b1ef89529b902330b23e5408e9ac556d651bcd1286a8",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 200,
+          "y": 129,
+          "worldX": 1376
+        }
+      ]
+    },
+    {
+      "tick": 5878,
+      "nativeFrame": 44156,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02117-t5878.png",
+      "sha256": "5d4b1fbe401df9f6cd2ebaa0cc5f6860668755feddb91722ca517fb8631a22a9",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 200,
+          "y": 129,
+          "worldX": 1376
+        }
+      ]
+    },
+    {
+      "tick": 5879,
+      "nativeFrame": 44164,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02118-t5879.png",
+      "sha256": "2851c2e98d75ff3878973daf95ef995605134c35476843577dba5592815b3e43",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 198,
+          "y": 129,
+          "worldX": 1374
+        }
+      ]
+    },
+    {
+      "tick": 5880,
+      "nativeFrame": 44171,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02119-t5880.png",
+      "sha256": "4571de2f810ba82631b0301958b8d0f959c971f536325471b62b907167966402",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 196,
+          "y": 129,
+          "worldX": 1372
+        }
+      ]
+    },
+    {
+      "tick": 5881,
+      "nativeFrame": 44179,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02120-t5881.png",
+      "sha256": "19537237b9d75a368732f7cf822a7b5c407c2dfb49866d9a925e73cb1131953c",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 193,
+          "y": 129,
+          "worldX": 1369
+        }
+      ]
+    },
+    {
+      "tick": 5882,
+      "nativeFrame": 44186,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02121-t5882.png",
+      "sha256": "4cecae92bd0af3156b04ae1114cff7124a222a25181c5ded4d5b8df0c560c668",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 189,
+          "y": 129,
+          "worldX": 1365
+        }
+      ]
+    },
+    {
+      "tick": 5883,
+      "nativeFrame": 44194,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02122-t5883.png",
+      "sha256": "864e2fb7325f73f744c66db688d475ee587aa20c4904f4d9a779f9347fde602d",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 184,
+          "y": 129,
+          "worldX": 1360
+        }
+      ]
+    },
+    {
+      "tick": 5884,
+      "nativeFrame": 44201,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02123-t5884.png",
+      "sha256": "76ddd6f982b69e73b32b2eb3f539857436cef19a840f519f891923fb39629433",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 178,
+          "y": 129,
+          "worldX": 1354
+        }
+      ]
+    },
+    {
+      "tick": 5885,
+      "nativeFrame": 44209,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02124-t5885.png",
+      "sha256": "69d4ade83637b479151c191aa1d65ab81a9f2017ea6a894c9d131b7a2be86163",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 171,
+          "y": 129,
+          "worldX": 1347
+        }
+      ]
+    },
+    {
+      "tick": 5886,
+      "nativeFrame": 44216,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02125-t5886.png",
+      "sha256": "4de359e50b0c032ffbab3b23c67760c5078526fd8f5e60ce1fa8cbe597b359bf",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 166,
+          "y": 129,
+          "worldX": 1342
+        }
+      ]
+    },
+    {
+      "tick": 5887,
+      "nativeFrame": 44224,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02126-t5887.png",
+      "sha256": "859b481ef372581537448a4510cc026a89b4d93ba0eaa9ffdf0bca1789eebcdb",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 160,
+          "y": 129,
+          "worldX": 1336
+        }
+      ]
+    },
+    {
+      "tick": 5888,
+      "nativeFrame": 44231,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02127-t5888.png",
+      "sha256": "09e9484383a100055f4bd0b3408cd27f30004ce84ee53bb11de3e45db80696b0",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 156,
+          "y": 129,
+          "worldX": 1332
+        }
+      ]
+    },
+    {
+      "tick": 5889,
+      "nativeFrame": 44239,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02128-t5889.png",
+      "sha256": "f042248d2093d87f2c67ab146b5fe941e276c5ac33fce58e9fae59c1ab7be8e2",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 152,
+          "y": 129,
+          "worldX": 1328
+        }
+      ]
+    },
+    {
+      "tick": 5890,
+      "nativeFrame": 44247,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02129-t5890.png",
+      "sha256": "508d48df74a86410c1462f20c18b06f9bc44a5c419c212b8fc4b44e4048e9358",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 150,
+          "y": 129,
+          "worldX": 1326
+        }
+      ]
+    },
+    {
+      "tick": 5891,
+      "nativeFrame": 44254,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02130-t5891.png",
+      "sha256": "a2fa561c65de8198008a56a995919b19928c6d96c7d4e20fb7638ec8ca2588f4",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5892,
+      "nativeFrame": 44262,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02131-t5892.png",
+      "sha256": "a2fa561c65de8198008a56a995919b19928c6d96c7d4e20fb7638ec8ca2588f4",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5893,
+      "nativeFrame": 44269,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02132-t5893.png",
+      "sha256": "9702fe92a5ed2670cc684d8c9af67f9e6f15263ad6ee37181fa09ecd2cd01eef",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5894,
+      "nativeFrame": 44277,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02133-t5894.png",
+      "sha256": "c98dc209dbaab180cbb08398110098fa43af3db3dd974d710962a4671ae8790e",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5895,
+      "nativeFrame": 44284,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02134-t5895.png",
+      "sha256": "e2f69a2c3c9a788c844ba64c48833325f387ea0d42c11b4ac668ebb92b98c178",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 150,
+          "y": 129,
+          "worldX": 1326
+        }
+      ]
+    },
+    {
+      "tick": 5896,
+      "nativeFrame": 44292,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02135-t5896.png",
+      "sha256": "1d0c55c1fbf5400df1a407eabdd32f568f12c314884888941d50095cae214b4a",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 152,
+          "y": 129,
+          "worldX": 1328
+        }
+      ]
+    },
+    {
+      "tick": 5897,
+      "nativeFrame": 44299,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02136-t5897.png",
+      "sha256": "3e50eb9024ae89f609a5a49be2d3a5d34ab210175b1a19fe4acc426162cd65aa",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 155,
+          "y": 129,
+          "worldX": 1331
+        }
+      ]
+    },
+    {
+      "tick": 5898,
+      "nativeFrame": 44307,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02137-t5898.png",
+      "sha256": "bd72bfe84e629e7c8b90abbac251aa1d044b824a928e5b1ab3ea93b0b984e68a",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 159,
+          "y": 129,
+          "worldX": 1335
+        }
+      ]
+    },
+    {
+      "tick": 5899,
+      "nativeFrame": 44314,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02138-t5899.png",
+      "sha256": "99c7a099800da78c099c1c9a641f45287f673c92ed78a3912626864b87f5ebd6",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 164,
+          "y": 129,
+          "worldX": 1340
+        }
+      ]
+    },
+    {
+      "tick": 5900,
+      "nativeFrame": 44322,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02139-t5900.png",
+      "sha256": "73e56c3e95fc3a7cc4f0640ee3198e19e1d862cc4cd834fec92dcbf05a3cfd9a",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 170,
+          "y": 129,
+          "worldX": 1346
+        }
+      ]
+    },
+    {
+      "tick": 5901,
+      "nativeFrame": 44329,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02140-t5901.png",
+      "sha256": "fdaf7d3ae2d591b73ec58bb77c4b7fe8ffac03f3598f88258f17506844cdad17",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 176,
+          "y": 129,
+          "worldX": 1352
+        }
+      ]
+    },
+    {
+      "tick": 5902,
+      "nativeFrame": 44337,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02141-t5902.png",
+      "sha256": "d56dc0cb6f280757af879b9af9455801676d78c505b35b7f4a352bea31f3abd0",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 183,
+          "y": 129,
+          "worldX": 1359
+        }
+      ]
+    },
+    {
+      "tick": 5903,
+      "nativeFrame": 44344,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02142-t5903.png",
+      "sha256": "1d5ed73cd4a33be3d8d08ee5196ad2131214b03eb24b91342e21ee0e8f64dd03",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 188,
+          "y": 129,
+          "worldX": 1364
+        }
+      ]
+    },
+    {
+      "tick": 5904,
+      "nativeFrame": 44352,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02143-t5904.png",
+      "sha256": "74c9fb857eeec21610dddceaf9dd6a4959c491aa7728a07882c3cef83cebc931",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 192,
+          "y": 129,
+          "worldX": 1368
+        }
+      ]
+    },
+    {
+      "tick": 5905,
+      "nativeFrame": 44359,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02144-t5905.png",
+      "sha256": "011513558d87930d3114ee41b9a87e166b5227c8c5b8926863371845a33a9fda",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 195,
+          "y": 129,
+          "worldX": 1371
+        }
+      ]
+    },
+    {
+      "tick": 5906,
+      "nativeFrame": 44367,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02145-t5906.png",
+      "sha256": "4b35a322a4ba7b94d1d86d7b7b9c7326285376c8d7ad454256a6586f1e6b77af",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 198,
+          "y": 129,
+          "worldX": 1374
+        }
+      ]
+    },
+    {
+      "tick": 5907,
+      "nativeFrame": 44374,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02146-t5907.png",
+      "sha256": "f794f29fd706454ee04739dfb44f98fbff6991fec06f444197b3672d6acffa38",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 199,
+          "y": 129,
+          "worldX": 1375
+        }
+      ]
+    },
+    {
+      "tick": 5908,
+      "nativeFrame": 44382,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02147-t5908.png",
+      "sha256": "36dc604f517c4e44b446a48f6780fa023126b84b1da11c8d2237449f401c5fbd",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 200,
+          "y": 129,
+          "worldX": 1376
+        }
+      ]
+    },
+    {
+      "tick": 5909,
+      "nativeFrame": 44389,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02148-t5909.png",
+      "sha256": "b0c1267dff425b0c147063180630dce0c14b2c51f49637278994cca1ea654761",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 200,
+          "y": 129,
+          "worldX": 1376
+        }
+      ]
+    },
+    {
+      "tick": 5910,
+      "nativeFrame": 44397,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02149-t5910.png",
+      "sha256": "7fe7fcee9a43147405cd6d8171e15fd9592eb45ed0c7ba3b1f1bc093de09effc",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 199,
+          "y": 129,
+          "worldX": 1375
+        }
+      ]
+    },
+    {
+      "tick": 5911,
+      "nativeFrame": 44404,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02150-t5911.png",
+      "sha256": "19b61376a86d2238f4dafe8e693b7b98a84a0e3e38ba144d76b397090c565247",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 198,
+          "y": 129,
+          "worldX": 1374
+        }
+      ]
+    },
+    {
+      "tick": 5912,
+      "nativeFrame": 44412,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02151-t5912.png",
+      "sha256": "c70f2527fa9ea074cf9991c093770f370f6454bc9f534fc686b225412751f438",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 196,
+          "y": 129,
+          "worldX": 1372
+        }
+      ]
+    },
+    {
+      "tick": 5913,
+      "nativeFrame": 44419,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02152-t5913.png",
+      "sha256": "e1ffb4d694ef841ebb91ef92213c30c881856326a686da3c8eecafd859c27cc6",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 193,
+          "y": 129,
+          "worldX": 1369
+        }
+      ]
+    },
+    {
+      "tick": 5914,
+      "nativeFrame": 44427,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02153-t5914.png",
+      "sha256": "2732e3a562c95a321cc7fa3b41c895a8bc8bf2c73285fb1d50b25982a893773f",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 188,
+          "y": 129,
+          "worldX": 1364
+        }
+      ]
+    },
+    {
+      "tick": 5915,
+      "nativeFrame": 44434,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02154-t5915.png",
+      "sha256": "de3f7f46ac721da40eea9aeffca2238de34289e242f535556270f7cdd868d784",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 184,
+          "y": 129,
+          "worldX": 1360
+        }
+      ]
+    },
+    {
+      "tick": 5916,
+      "nativeFrame": 44442,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02155-t5916.png",
+      "sha256": "3b8f46929dd14aec63d409289698bd4b1cac28ed7c35e1ab58dbd2e2b9c5a0a8",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 177,
+          "y": 129,
+          "worldX": 1353
+        }
+      ]
+    },
+    {
+      "tick": 5917,
+      "nativeFrame": 44449,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02156-t5917.png",
+      "sha256": "0ae83515ffcb0fcf1fc99d46726066ac38b7764933cf30c07268e49d9da02730",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 171,
+          "y": 129,
+          "worldX": 1347
+        }
+      ]
+    },
+    {
+      "tick": 5918,
+      "nativeFrame": 44457,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02157-t5918.png",
+      "sha256": "f0dbdda387e4afe194227c05d7c7f1fedfdac30db2014b42f63bf615d312974b",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 165,
+          "y": 129,
+          "worldX": 1341
+        }
+      ]
+    },
+    {
+      "tick": 5919,
+      "nativeFrame": 44464,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02158-t5919.png",
+      "sha256": "e5dcd8830b5065864541b5c5ed9f465701105ef7a0ecd14840cff4f2cc5caa72",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 160,
+          "y": 129,
+          "worldX": 1336
+        }
+      ]
+    },
+    {
+      "tick": 5920,
+      "nativeFrame": 44472,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02159-t5920.png",
+      "sha256": "e3db627d98e9e0b6507acc3b8e4878fa87f69c0ba3d0a227bdcd5d534e980fcc",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 156,
+          "y": 129,
+          "worldX": 1332
+        }
+      ]
+    },
+    {
+      "tick": 5921,
+      "nativeFrame": 44479,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02160-t5921.png",
+      "sha256": "be076a5f01fc7777f96ea047695cccf32181e02d7c95f0b7ea60ed2e1ec48979",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 152,
+          "y": 129,
+          "worldX": 1328
+        }
+      ]
+    },
+    {
+      "tick": 5922,
+      "nativeFrame": 44487,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02161-t5922.png",
+      "sha256": "921a84a23bb5b5fd4b17335a175fced04febde7a3fe9644bd9fe3b51b0ce1807",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 150,
+          "y": 129,
+          "worldX": 1326
+        }
+      ]
+    },
+    {
+      "tick": 5923,
+      "nativeFrame": 44494,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02162-t5923.png",
+      "sha256": "6358572eb272fc881c776005ae1c072884aac39b6f8b44276b99864a730073a3",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5924,
+      "nativeFrame": 44502,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02163-t5924.png",
+      "sha256": "6358572eb272fc881c776005ae1c072884aac39b6f8b44276b99864a730073a3",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5925,
+      "nativeFrame": 44509,
+      "framesAdvanced": 7,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02164-t5925.png",
+      "sha256": "03bd2e4d4af554a989cb8f38daffd94a15255bef862fdf61b6cf9ca9c5e17fe7",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    },
+    {
+      "tick": 5926,
+      "nativeFrame": 44517,
+      "framesAdvanced": 8,
+      "masks": [
+        0
+      ],
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/five-three-lift-interactive-2026-11-06T18-35-09.717Z/02165-t5926.png",
+      "sha256": "b38fc1c7cd0bdbd7edafff572139eb467996b6a275571c7d42feea712ff4e3d4",
+      "anchorMatches": [
+        {
+          "id": 22,
+          "worldX": 1216,
+          "screenX": 40,
+          "camera": 1176,
+          "y": 96
+        }
+      ],
+      "cameras": [
+        1176
+      ],
+      "uniqueCamera": 1176,
+      "matches": [
+        {
+          "x": 148,
+          "y": 129,
+          "worldX": 1324
+        }
+      ]
+    }
+  ]
+}

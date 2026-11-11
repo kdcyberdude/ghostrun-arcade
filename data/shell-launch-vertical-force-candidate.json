@@ -1,0 +1,26 @@
+{
+  "lockedUTC": "2026-11-06T06:59:19.502Z",
+  "scope": "Grounded Goomba defeated by right-moving green Koopa shell: event-relative launch component only. No score labels or other defeats/victims/directions/airborne contacts.",
+  "tolerances": {
+    "bodyOriginPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "pose": "Exact supplied180opaque RGB at observed16x16body origin; occluded bodies unobserved"
+  },
+  "rule": {
+    "initialVerticalVelocity": -3,
+    "gravity": 0.2421875,
+    "maximumFallVelocity": 3,
+    "initialPosition": "Preserve live worldX/Y and fraction; no event offset.",
+    "horizontalVelocity": 1,
+    "order": "No displacement on contact; first movement following active update. Position before gravity then falling cap.",
+    "visibleBodyTopFromFeet": -15,
+    "render": "Flip only the two visible8pxrows around the unchanged16pxbody origin.",
+    "renderPhase": "Default immediate flip; observed source may retain live contact-frame pose,0..1native uncertainty within2native timing tolerance."
+  },
+  "qualification": "Inferred bounded no-offset physical-force representative, not exact native gravity. Quarter-gravity V1/V2 failures retained. This candidate is selected from52calibration samples with a fixed−3initial velocity and unchanged position; no earlier V2 captured data inspected or used.",
+  "bindings": {
+    "evidence/shell-launch-vertical-force-calibration.json": "c6d4a867423b0228d95bcf4a164e875860a772712d74bc9b3a4d384c256d5dc0",
+    "evidence/shell-launch-vertical-v2-rejection.json": "a9d99324c997d1c519a9718b3b66c0fdbf7e46609f0a121b53f6d59653d13262"
+  },
+  "status": "Frozen before new independent reserved captures; require unchanged1px validation."
+}

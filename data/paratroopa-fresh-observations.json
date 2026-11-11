@@ -1,0 +1,1264 @@
+{
+  "schema": "green-paratroopa-fresh-branch-v1",
+  "generatedUtc": "2026-11-05T22:30:26.049Z",
+  "source": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/trace.jsonl",
+  "method": "Fresh standard reset and auto prefix1338, then eight left+B and twenty neutral ordinary decisions. Exact native frames and supplied opaque actor matches. Prefix camera2471 independently matches dense source at1338; subsequent registration is image-only. No ROM/executable reads.",
+  "rows": [
+    {
+      "tick": 1338,
+      "nativeFrame": 10051,
+      "camera": 2471,
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0007-tick-1338.png",
+      "player": {
+        "originX": 121,
+        "originY": 102,
+        "visibleLeft": 121,
+        "visibleTop": 118,
+        "visibleRight": 136,
+        "visibleBottom": 133,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 237,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2708
+        }
+      ]
+    },
+    {
+      "tick": 1339,
+      "nativeFrame": 10058,
+      "camera": 2487,
+      "registration": {
+        "delta": 16,
+        "score": 0.07194645844952594,
+        "comparedPixels": 3586
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0008-tick-1339.png",
+      "player": {
+        "originX": 121,
+        "originY": 124,
+        "visibleLeft": 121,
+        "visibleTop": 140,
+        "visibleRight": 136,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 225,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2712
+        },
+        {
+          "kind": "paratroopa",
+          "x": 239,
+          "originY": 150,
+          "physicalFeetY": 173,
+          "opaqueTop": 150,
+          "opaqueBottom": 173,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2726
+        }
+      ]
+    },
+    {
+      "tick": 1340,
+      "nativeFrame": 10066,
+      "camera": 2503,
+      "registration": {
+        "delta": 16,
+        "score": 0.11135551278526258,
+        "comparedPixels": 3637
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0009-tick-1340.png",
+      "player": {
+        "originX": 121,
+        "originY": 156,
+        "visibleLeft": 121,
+        "visibleTop": 172,
+        "visibleRight": 136,
+        "visibleBottom": 187,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 224,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2727
+        },
+        {
+          "kind": "paratroopa",
+          "x": 209,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2712
+        }
+      ]
+    },
+    {
+      "tick": 1341,
+      "nativeFrame": 10073,
+      "camera": 2513,
+      "registration": {
+        "delta": 10,
+        "score": 0.12479564032697547,
+        "comparedPixels": 3670
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0010-tick-1341.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 217,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2730
+        },
+        {
+          "kind": "paratroopa",
+          "x": 195,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 149,
+          "opaqueBottom": 172,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2708
+        }
+      ]
+    },
+    {
+      "tick": 1342,
+      "nativeFrame": 10081,
+      "camera": 2521,
+      "registration": {
+        "delta": 8,
+        "score": 0.13955342902711323,
+        "comparedPixels": 3762
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0011-tick-1342.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 213,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2734
+        },
+        {
+          "kind": "paratroopa",
+          "x": 183,
+          "originY": 162,
+          "physicalFeetY": 185,
+          "opaqueTop": 163,
+          "opaqueBottom": 185,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2704
+        }
+      ]
+    },
+    {
+      "tick": 1343,
+      "nativeFrame": 10088,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.16717713118938235,
+        "comparedPixels": 3918
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0012-tick-1343.png",
+      "player": {
+        "originX": 119,
+        "originY": 177,
+        "visibleLeft": 120,
+        "visibleTop": 193,
+        "visibleRight": 134,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 217,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 160,
+          "opaqueBottom": 183,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2738
+        },
+        {
+          "kind": "paratroopa",
+          "x": 180,
+          "originY": 180,
+          "physicalFeetY": 203,
+          "opaqueTop": 180,
+          "opaqueBottom": 203,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2701
+        }
+      ]
+    },
+    {
+      "tick": 1344,
+      "nativeFrame": 10096,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.12832214765100672,
+        "comparedPixels": 3725
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0013-tick-1344.png",
+      "player": {
+        "originX": 113,
+        "originY": 177,
+        "visibleLeft": 115,
+        "visibleTop": 193,
+        "visibleRight": 125,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 176,
+          "originY": 168,
+          "physicalFeetY": 191,
+          "opaqueTop": 169,
+          "opaqueBottom": 191,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2697
+        }
+      ]
+    },
+    {
+      "tick": 1345,
+      "nativeFrame": 10103,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.07313109425785481,
+        "comparedPixels": 3692
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0014-tick-1345.png",
+      "player": {
+        "originX": 105,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 224,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 171,
+          "opaqueBottom": 194,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2745
+        },
+        {
+          "kind": "paratroopa",
+          "x": 172,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2693
+        }
+      ]
+    },
+    {
+      "tick": 1346,
+      "nativeFrame": 10111,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.10143468411779512,
+        "comparedPixels": 3973
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0015-tick-1346.png",
+      "player": {
+        "originX": 93,
+        "originY": 177,
+        "visibleLeft": 94,
+        "visibleTop": 194,
+        "visibleRight": 106,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 228,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 155,
+          "opaqueBottom": 177,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2749
+        },
+        {
+          "kind": "paratroopa",
+          "x": 168,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2689
+        }
+      ]
+    },
+    {
+      "tick": 1347,
+      "nativeFrame": 10118,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.13870733478576616,
+        "comparedPixels": 4131
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0016-tick-1347.png",
+      "player": {
+        "originX": 81,
+        "originY": 177,
+        "visibleLeft": 82,
+        "visibleTop": 194,
+        "visibleRight": 94,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 232,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 146,
+          "opaqueBottom": 169,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2753
+        },
+        {
+          "kind": "paratroopa",
+          "x": 165,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2686
+        }
+      ]
+    },
+    {
+      "tick": 1348,
+      "nativeFrame": 10126,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.12613720186869928,
+        "comparedPixels": 4067
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0017-tick-1348.png",
+      "player": {
+        "originX": 70,
+        "originY": 177,
+        "visibleLeft": 72,
+        "visibleTop": 193,
+        "visibleRight": 82,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 236,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 143,
+          "opaqueBottom": 165,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2757
+        },
+        {
+          "kind": "paratroopa",
+          "x": 161,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 147,
+          "opaqueBottom": 169,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2682
+        }
+      ]
+    },
+    {
+      "tick": 1349,
+      "nativeFrame": 10133,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.14911643669813604,
+        "comparedPixels": 4131
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0018-tick-1349.png",
+      "player": {
+        "originX": 63,
+        "originY": 177,
+        "visibleLeft": 64,
+        "visibleTop": 193,
+        "visibleRight": 78,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 239,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 145,
+          "opaqueBottom": 168,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2760
+        },
+        {
+          "kind": "paratroopa",
+          "x": 157,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2678
+        }
+      ]
+    },
+    {
+      "tick": 1350,
+      "nativeFrame": 10141,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.17162527661667076,
+        "comparedPixels": 4067
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0019-tick-1350.png",
+      "player": {
+        "originX": 58,
+        "originY": 177,
+        "visibleLeft": 60,
+        "visibleTop": 193,
+        "visibleRight": 70,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 153,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 172,
+          "opaqueBottom": 194,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2674
+        }
+      ]
+    },
+    {
+      "tick": 1351,
+      "nativeFrame": 10149,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.11482889733840304,
+        "comparedPixels": 3945
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0020-tick-1351.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 149,
+          "originY": 176,
+          "physicalFeetY": 199,
+          "opaqueTop": 176,
+          "opaqueBottom": 199,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2670
+        }
+      ]
+    },
+    {
+      "tick": 1352,
+      "nativeFrame": 10156,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.06816976127320955,
+        "comparedPixels": 3770
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0021-tick-1352.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 146,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 161,
+          "opaqueBottom": 183,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2667
+        }
+      ]
+    },
+    {
+      "tick": 1353,
+      "nativeFrame": 10164,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.1104516129032258,
+        "comparedPixels": 3875
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0022-tick-1353.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 142,
+          "originY": 148,
+          "physicalFeetY": 171,
+          "opaqueTop": 148,
+          "opaqueBottom": 171,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2663
+        }
+      ]
+    },
+    {
+      "tick": 1354,
+      "nativeFrame": 10171,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.04997397188964081,
+        "comparedPixels": 3842
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0023-tick-1354.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 138,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2659
+        }
+      ]
+    },
+    {
+      "tick": 1355,
+      "nativeFrame": 10179,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.08077123501823867,
+        "comparedPixels": 3838
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0024-tick-1355.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 134,
+          "originY": 144,
+          "physicalFeetY": 167,
+          "opaqueTop": 145,
+          "opaqueBottom": 167,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2655
+        }
+      ]
+    },
+    {
+      "tick": 1356,
+      "nativeFrame": 10186,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.09715762273901808,
+        "comparedPixels": 3870
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0025-tick-1356.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 131,
+          "originY": 150,
+          "physicalFeetY": 173,
+          "opaqueTop": 150,
+          "opaqueBottom": 173,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2652
+        }
+      ]
+    },
+    {
+      "tick": 1357,
+      "nativeFrame": 10194,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.12584679520583636,
+        "comparedPixels": 3838
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0026-tick-1357.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 127,
+          "originY": 164,
+          "physicalFeetY": 187,
+          "opaqueTop": 165,
+          "opaqueBottom": 187,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2648
+        }
+      ]
+    },
+    {
+      "tick": 1358,
+      "nativeFrame": 10201,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.0818230277185501,
+        "comparedPixels": 3752
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0027-tick-1358.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 123,
+          "originY": 182,
+          "physicalFeetY": 205,
+          "opaqueTop": 182,
+          "opaqueBottom": 205,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2644
+        }
+      ]
+    },
+    {
+      "tick": 1359,
+      "nativeFrame": 10209,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.07274731330945164,
+        "comparedPixels": 3629
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0028-tick-1359.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 119,
+          "originY": 167,
+          "physicalFeetY": 190,
+          "opaqueTop": 168,
+          "opaqueBottom": 190,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2640
+        }
+      ]
+    },
+    {
+      "tick": 1360,
+      "nativeFrame": 10216,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.13173156586578294,
+        "comparedPixels": 3621
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0029-tick-1360.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 116,
+          "originY": 153,
+          "physicalFeetY": 176,
+          "opaqueTop": 153,
+          "opaqueBottom": 176,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2637
+        }
+      ]
+    },
+    {
+      "tick": 1361,
+      "nativeFrame": 10224,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.09379235565193819,
+        "comparedPixels": 3689
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0030-tick-1361.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 112,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2633
+        }
+      ]
+    },
+    {
+      "tick": 1362,
+      "nativeFrame": 10231,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.09204693611473272,
+        "comparedPixels": 3835
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0031-tick-1362.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 108,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2629
+        }
+      ]
+    },
+    {
+      "tick": 1363,
+      "nativeFrame": 10239,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.0866162274980433,
+        "comparedPixels": 3833
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0032-tick-1363.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 104,
+          "originY": 147,
+          "physicalFeetY": 170,
+          "opaqueTop": 148,
+          "opaqueBottom": 170,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2625
+        }
+      ]
+    },
+    {
+      "tick": 1364,
+      "nativeFrame": 10246,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.06332385629361592,
+        "comparedPixels": 3869
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0033-tick-1364.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 101,
+          "originY": 157,
+          "physicalFeetY": 180,
+          "opaqueTop": 157,
+          "opaqueBottom": 180,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2622
+        }
+      ]
+    },
+    {
+      "tick": 1365,
+      "nativeFrame": 10254,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.05784262636789995,
+        "comparedPixels": 3838
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0034-tick-1365.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 97,
+          "originY": 175,
+          "physicalFeetY": 198,
+          "opaqueTop": 176,
+          "opaqueBottom": 198,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2618
+        }
+      ]
+    },
+    {
+      "tick": 1366,
+      "nativeFrame": 10261,
+      "camera": 2521,
+      "registration": {
+        "delta": 0,
+        "score": 0.07783641160949868,
+        "comparedPixels": 3790
+      },
+      "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0035-tick-1366.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 58,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 93,
+          "originY": 176,
+          "physicalFeetY": 199,
+          "opaqueTop": 176,
+          "opaqueBottom": 199,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2614
+        }
+      ]
+    }
+  ]
+}

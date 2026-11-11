@@ -1,0 +1,2232 @@
+{
+  "generatedUtc": "2026-11-05T23:14:47.344Z",
+  "method": "Exact normal-player and supplied red NPC bitmap matches on genuine fresh controls. Full24px or explicitly labelled top16px partial match. No reference-state or production edits.",
+  "source": [
+    "data/paratroopa-release-observations.json",
+    "data/paratroopa-release-prebrake-observations.json"
+  ],
+  "prefixChecks": [
+    {
+      "name": "short-left",
+      "prefix": 740,
+      "pngExact": true
+    },
+    {
+      "name": "short-switch",
+      "prefix": 740,
+      "pngExact": true
+    },
+    {
+      "name": "short-right-repeat",
+      "prefix": 740,
+      "pngExact": true
+    },
+    {
+      "name": "short-left-prebrake",
+      "prefix": 739,
+      "pngExact": true
+    }
+  ],
+  "cases": [
+    {
+      "name": "short-left",
+      "rows": [
+        {
+          "tick": 740,
+          "nativeFrame": 5559,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0108-short-left-t740.png",
+          "player": {
+            "originX": 112,
+            "originY": 113,
+            "visibleLeft": 115,
+            "visibleTop": 129,
+            "visibleRight": 125,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 158,
+              "originY": 75,
+              "physicalFeetY": 98,
+              "opaqueTop": 75,
+              "opaqueBottom": 98,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 741,
+          "nativeFrame": 5566,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            52
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0109-short-left-t741.png",
+          "player": {
+            "originX": 112,
+            "originY": 89,
+            "visibleLeft": 112,
+            "visibleTop": 105,
+            "visibleRight": 127,
+            "visibleBottom": 120,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 142,
+              "originY": 80,
+              "physicalFeetY": 103,
+              "opaqueTop": 80,
+              "opaqueBottom": 103,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 742,
+          "nativeFrame": 5574,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0110-short-left-t742.png",
+          "player": {
+            "originX": 112,
+            "originY": 66,
+            "visibleLeft": 112,
+            "visibleTop": 82,
+            "visibleRight": 127,
+            "visibleBottom": 97,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": []
+        },
+        {
+          "tick": 743,
+          "nativeFrame": 5581,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0111-short-left-t743.png",
+          "player": {
+            "originX": 112,
+            "originY": 54,
+            "visibleLeft": 112,
+            "visibleTop": 70,
+            "visibleRight": 127,
+            "visibleBottom": 85,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 118,
+              "originY": 90,
+              "physicalFeetY": 113,
+              "opaqueTop": 90,
+              "opaqueBottom": 113,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 208
+            }
+          ]
+        },
+        {
+          "tick": 744,
+          "nativeFrame": 5589,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0112-short-left-t744.png",
+          "player": {
+            "originX": 112,
+            "originY": 57,
+            "visibleLeft": 112,
+            "visibleTop": 73,
+            "visibleRight": 127,
+            "visibleBottom": 88,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 112,
+              "originY": 102,
+              "physicalFeetY": 125,
+              "opaqueTop": 103,
+              "opaqueBottom": 125,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 745,
+          "nativeFrame": 5596,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0113-short-left-t745.png",
+          "player": {
+            "originX": 112,
+            "originY": 83,
+            "visibleLeft": 112,
+            "visibleTop": 99,
+            "visibleRight": 127,
+            "visibleBottom": 114,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 110,
+              "originY": 124,
+              "physicalFeetY": 147,
+              "opaqueTop": 124,
+              "opaqueBottom": 147,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 208
+            }
+          ]
+        },
+        {
+          "tick": 746,
+          "nativeFrame": 5604,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0114-short-left-t746.png",
+          "player": {
+            "originX": 112,
+            "originY": 115,
+            "visibleLeft": 112,
+            "visibleTop": 131,
+            "visibleRight": 127,
+            "visibleBottom": 146,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 111,
+              "originY": 149,
+              "physicalFeetY": 172,
+              "opaqueTop": 150,
+              "opaqueBottom": 172,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 747,
+          "nativeFrame": 5611,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0115-short-left-t747.png",
+          "player": {
+            "originX": 112,
+            "originY": 143,
+            "visibleLeft": 112,
+            "visibleTop": 159,
+            "visibleRight": 127,
+            "visibleBottom": 174,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": []
+        },
+        {
+          "tick": 748,
+          "nativeFrame": 5619,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0116-short-left-t748.png",
+          "player": {
+            "originX": 106,
+            "originY": 175,
+            "visibleLeft": 106,
+            "visibleTop": 191,
+            "visibleRight": 121,
+            "visibleBottom": 206,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 119,
+              "originY": 198,
+              "physicalFeetY": 221,
+              "opaqueTop": 199,
+              "opaqueBottom": 221,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 749,
+          "nativeFrame": 5626,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0117-short-left-t749.png",
+          "player": {
+            "originX": 96,
+            "originY": 203,
+            "visibleLeft": 96,
+            "visibleTop": 219,
+            "visibleRight": 111,
+            "visibleBottom": 234,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 122,
+              "originY": 221,
+              "physicalFeetY": 244,
+              "opaqueTop": 221,
+              "opaqueBottom": 236,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 16,
+              "matchedOpaque": 127
+            }
+          ]
+        },
+        {
+          "tick": 750,
+          "nativeFrame": 5634,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0118-short-left-t750.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 751,
+          "nativeFrame": 5641,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0119-short-left-t751.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 752,
+          "nativeFrame": 5649,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0120-short-left-t752.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 753,
+          "nativeFrame": 5656,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0121-short-left-t753.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 754,
+          "nativeFrame": 5664,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0122-short-left-t754.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 755,
+          "nativeFrame": 5671,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0123-short-left-t755.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 756,
+          "nativeFrame": 5679,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0124-short-left-t756.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 757,
+          "nativeFrame": 5686,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0125-short-left-t757.png",
+          "player": null,
+          "actors": []
+        },
+        {
+          "tick": 758,
+          "nativeFrame": 5694,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0126-short-left-t758.png",
+          "player": null,
+          "actors": []
+        }
+      ]
+    },
+    {
+      "name": "short-switch",
+      "rows": [
+        {
+          "tick": 740,
+          "nativeFrame": 5559,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0234-short-switch-t740.png",
+          "player": {
+            "originX": 112,
+            "originY": 113,
+            "visibleLeft": 115,
+            "visibleTop": 129,
+            "visibleRight": 125,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 158,
+              "originY": 75,
+              "physicalFeetY": 98,
+              "opaqueTop": 75,
+              "opaqueBottom": 98,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 741,
+          "nativeFrame": 5566,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            52
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0235-short-switch-t741.png",
+          "player": {
+            "originX": 112,
+            "originY": 89,
+            "visibleLeft": 112,
+            "visibleTop": 105,
+            "visibleRight": 127,
+            "visibleBottom": 120,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 142,
+              "originY": 80,
+              "physicalFeetY": 103,
+              "opaqueTop": 80,
+              "opaqueBottom": 103,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 742,
+          "nativeFrame": 5574,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0236-short-switch-t742.png",
+          "player": {
+            "originX": 112,
+            "originY": 66,
+            "visibleLeft": 112,
+            "visibleTop": 82,
+            "visibleRight": 127,
+            "visibleBottom": 97,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": []
+        },
+        {
+          "tick": 743,
+          "nativeFrame": 5581,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0237-short-switch-t743.png",
+          "player": {
+            "originX": 112,
+            "originY": 50,
+            "visibleLeft": 112,
+            "visibleTop": 66,
+            "visibleRight": 127,
+            "visibleBottom": 81,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 109,
+              "originY": 90,
+              "physicalFeetY": 113,
+              "opaqueTop": 90,
+              "opaqueBottom": 113,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 208
+            }
+          ]
+        },
+        {
+          "tick": 744,
+          "nativeFrame": 5589,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0238-short-switch-t744.png",
+          "player": {
+            "originX": 112,
+            "originY": 61,
+            "visibleLeft": 112,
+            "visibleTop": 77,
+            "visibleRight": 127,
+            "visibleBottom": 92,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 93,
+              "originY": 106,
+              "physicalFeetY": 129,
+              "opaqueTop": 107,
+              "opaqueBottom": 129,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 745,
+          "nativeFrame": 5596,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0239-short-switch-t745.png",
+          "player": {
+            "originX": 112,
+            "originY": 65,
+            "visibleLeft": 114,
+            "visibleTop": 82,
+            "visibleRight": 126,
+            "visibleBottom": 96,
+            "cell": 12,
+            "direction": "right",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 79,
+              "originY": 128,
+              "physicalFeetY": 151,
+              "opaqueTop": 128,
+              "opaqueBottom": 151,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 208
+            }
+          ]
+        },
+        {
+          "tick": 746,
+          "nativeFrame": 5604,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0240-short-switch-t746.png",
+          "player": {
+            "originX": 112,
+            "originY": 65,
+            "visibleLeft": 113,
+            "visibleTop": 81,
+            "visibleRight": 126,
+            "visibleBottom": 94,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 747,
+          "nativeFrame": 5611,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0241-short-switch-t747.png",
+          "player": {
+            "originX": 112,
+            "originY": 65,
+            "visibleLeft": 113,
+            "visibleTop": 81,
+            "visibleRight": 126,
+            "visibleBottom": 94,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 748,
+          "nativeFrame": 5619,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0242-short-switch-t748.png",
+          "player": {
+            "originX": 112,
+            "originY": 53,
+            "visibleLeft": 113,
+            "visibleTop": 69,
+            "visibleRight": 126,
+            "visibleBottom": 82,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 749,
+          "nativeFrame": 5626,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0243-short-switch-t749.png",
+          "player": {
+            "originX": 112,
+            "originY": 32,
+            "visibleLeft": 113,
+            "visibleTop": 48,
+            "visibleRight": 126,
+            "visibleBottom": 61,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 750,
+          "nativeFrame": 5634,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0244-short-switch-t750.png",
+          "player": null,
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 751,
+          "nativeFrame": 5641,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0245-short-switch-t751.png",
+          "player": null,
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 752,
+          "nativeFrame": 5649,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0246-short-switch-t752.png",
+          "player": null,
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 753,
+          "nativeFrame": 5656,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0247-short-switch-t753.png",
+          "player": null,
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 754,
+          "nativeFrame": 5664,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0248-short-switch-t754.png",
+          "player": {
+            "originX": 112,
+            "originY": 49,
+            "visibleLeft": 113,
+            "visibleTop": 65,
+            "visibleRight": 126,
+            "visibleBottom": 78,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 755,
+          "nativeFrame": 5671,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0249-short-switch-t755.png",
+          "player": {
+            "originX": 112,
+            "originY": 77,
+            "visibleLeft": 113,
+            "visibleTop": 93,
+            "visibleRight": 126,
+            "visibleBottom": 106,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 756,
+          "nativeFrame": 5679,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0250-short-switch-t756.png",
+          "player": {
+            "originX": 112,
+            "originY": 111,
+            "visibleLeft": 113,
+            "visibleTop": 127,
+            "visibleRight": 126,
+            "visibleBottom": 140,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 757,
+          "nativeFrame": 5686,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0251-short-switch-t757.png",
+          "player": {
+            "originX": 112,
+            "originY": 140,
+            "visibleLeft": 113,
+            "visibleTop": 156,
+            "visibleRight": 126,
+            "visibleBottom": 169,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        },
+        {
+          "tick": 758,
+          "nativeFrame": 5694,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0252-short-switch-t758.png",
+          "player": {
+            "originX": 112,
+            "originY": 174,
+            "visibleLeft": 113,
+            "visibleTop": 190,
+            "visibleRight": 126,
+            "visibleBottom": 203,
+            "cell": 22,
+            "direction": "right",
+            "annotation": "killed",
+            "confidence": 1,
+            "matchedPixels": 148
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 69,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 145,
+              "opaqueBottom": 167,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "short-right-repeat",
+      "rows": [
+        {
+          "tick": 740,
+          "nativeFrame": 5559,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0360-short-right-repeat-t740.png",
+          "player": {
+            "originX": 112,
+            "originY": 113,
+            "visibleLeft": 115,
+            "visibleTop": 129,
+            "visibleRight": 125,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 158,
+              "originY": 75,
+              "physicalFeetY": 98,
+              "opaqueTop": 75,
+              "opaqueBottom": 98,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 741,
+          "nativeFrame": 5566,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            56
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0361-short-right-repeat-t741.png",
+          "player": {
+            "originX": 112,
+            "originY": 89,
+            "visibleLeft": 112,
+            "visibleTop": 105,
+            "visibleRight": 127,
+            "visibleBottom": 120,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 141,
+              "originY": 80,
+              "physicalFeetY": 103,
+              "opaqueTop": 80,
+              "opaqueBottom": 103,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 742,
+          "nativeFrame": 5574,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0362-short-right-repeat-t742.png",
+          "player": {
+            "originX": 112,
+            "originY": 64,
+            "visibleLeft": 112,
+            "visibleTop": 80,
+            "visibleRight": 127,
+            "visibleBottom": 95,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 121,
+              "originY": 86,
+              "physicalFeetY": 109,
+              "opaqueTop": 87,
+              "opaqueBottom": 109,
+              "cell": 2,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 213
+            }
+          ],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 743,
+          "nativeFrame": 5581,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0363-short-right-repeat-t743.png",
+          "player": {
+            "originX": 112,
+            "originY": 58,
+            "visibleLeft": 112,
+            "visibleTop": 74,
+            "visibleRight": 127,
+            "visibleBottom": 89,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "koopa",
+              "x": 107,
+              "originY": 91,
+              "physicalFeetY": 114,
+              "opaqueTop": 91,
+              "opaqueBottom": 114,
+              "cell": 3,
+              "flipX": false,
+              "cropHeight": 24,
+              "matchedOpaque": 208
+            }
+          ],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 744,
+          "nativeFrame": 5589,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0364-short-right-repeat-t744.png",
+          "player": {
+            "originX": 109,
+            "originY": 83,
+            "visibleLeft": 109,
+            "visibleTop": 99,
+            "visibleRight": 124,
+            "visibleBottom": 114,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 745,
+          "nativeFrame": 5596,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0365-short-right-repeat-t745.png",
+          "player": {
+            "originX": 111,
+            "originY": 103,
+            "visibleLeft": 111,
+            "visibleTop": 119,
+            "visibleRight": 126,
+            "visibleBottom": 134,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 746,
+          "nativeFrame": 5604,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0366-short-right-repeat-t746.png",
+          "player": {
+            "originX": 114,
+            "originY": 91,
+            "visibleLeft": 114,
+            "visibleTop": 107,
+            "visibleRight": 129,
+            "visibleBottom": 122,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 747,
+          "nativeFrame": 5611,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0367-short-right-repeat-t747.png",
+          "player": {
+            "originX": 114,
+            "originY": 110,
+            "visibleLeft": 114,
+            "visibleTop": 126,
+            "visibleRight": 129,
+            "visibleBottom": 141,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 748,
+          "nativeFrame": 5619,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0368-short-right-repeat-t748.png",
+          "player": {
+            "originX": 114,
+            "originY": 143,
+            "visibleLeft": 114,
+            "visibleTop": 159,
+            "visibleRight": 129,
+            "visibleBottom": 174,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 749,
+          "nativeFrame": 5626,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0369-short-right-repeat-t749.png",
+          "player": {
+            "originX": 114,
+            "originY": 171,
+            "visibleLeft": 114,
+            "visibleTop": 187,
+            "visibleRight": 129,
+            "visibleBottom": 202,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 750,
+          "nativeFrame": 5634,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0370-short-right-repeat-t750.png",
+          "player": {
+            "originX": 114,
+            "originY": 203,
+            "visibleLeft": 114,
+            "visibleTop": 219,
+            "visibleRight": 129,
+            "visibleBottom": 234,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 751,
+          "nativeFrame": 5641,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0371-short-right-repeat-t751.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 752,
+          "nativeFrame": 5649,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0372-short-right-repeat-t752.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 753,
+          "nativeFrame": 5656,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0373-short-right-repeat-t753.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 754,
+          "nativeFrame": 5664,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0374-short-right-repeat-t754.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 755,
+          "nativeFrame": 5671,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0375-short-right-repeat-t755.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 756,
+          "nativeFrame": 5679,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0376-short-right-repeat-t756.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 757,
+          "nativeFrame": 5686,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0377-short-right-repeat-t757.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        },
+        {
+          "tick": 758,
+          "nativeFrame": 5694,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-11-55.830Z/0378-short-right-repeat-t758.png",
+          "player": null,
+          "actors": [],
+          "repeatMatchesOriginal": true
+        }
+      ]
+    },
+    {
+      "name": "short-left-prebrake",
+      "rows": [
+        {
+          "tick": 739,
+          "nativeFrame": 5551,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0108-short-left-prebrake-t739.png",
+          "player": {
+            "originX": 112,
+            "originY": 108,
+            "visibleLeft": 112,
+            "visibleTop": 124,
+            "visibleRight": 127,
+            "visibleBottom": 139,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 178,
+              "originY": 70,
+              "physicalFeetY": 93,
+              "opaqueTop": 71,
+              "opaqueBottom": 93,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 740,
+          "nativeFrame": 5559,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0109-short-left-prebrake-t740.png",
+          "player": {
+            "originX": 112,
+            "originY": 113,
+            "visibleLeft": 114,
+            "visibleTop": 129,
+            "visibleRight": 126,
+            "visibleBottom": 144,
+            "cell": 15,
+            "direction": "left",
+            "annotation": "skidding",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 160,
+              "originY": 75,
+              "physicalFeetY": 98,
+              "opaqueTop": 75,
+              "opaqueBottom": 98,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 741,
+          "nativeFrame": 5566,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            52
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0110-short-left-prebrake-t741.png",
+          "player": {
+            "originX": 112,
+            "originY": 89,
+            "visibleLeft": 112,
+            "visibleTop": 105,
+            "visibleRight": 127,
+            "visibleBottom": 120,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 148,
+              "originY": 80,
+              "physicalFeetY": 103,
+              "opaqueTop": 80,
+              "opaqueBottom": 103,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 742,
+          "nativeFrame": 5574,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0111-short-left-prebrake-t742.png",
+          "player": {
+            "originX": 112,
+            "originY": 66,
+            "visibleLeft": 112,
+            "visibleTop": 82,
+            "visibleRight": 127,
+            "visibleBottom": 97,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 141,
+              "originY": 86,
+              "physicalFeetY": 109,
+              "opaqueTop": 87,
+              "opaqueBottom": 109,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 743,
+          "nativeFrame": 5581,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0112-short-left-prebrake-t743.png",
+          "player": {
+            "originX": 112,
+            "originY": 74,
+            "visibleLeft": 112,
+            "visibleTop": 90,
+            "visibleRight": 127,
+            "visibleBottom": 105,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 93,
+              "physicalFeetY": 116,
+              "opaqueTop": 93,
+              "opaqueBottom": 116,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 744,
+          "nativeFrame": 5589,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0113-short-left-prebrake-t744.png",
+          "player": {
+            "originX": 108,
+            "originY": 105,
+            "visibleLeft": 108,
+            "visibleTop": 121,
+            "visibleRight": 123,
+            "visibleBottom": 136,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 100,
+              "physicalFeetY": 123,
+              "opaqueTop": 101,
+              "opaqueBottom": 123,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 745,
+          "nativeFrame": 5596,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0114-short-left-prebrake-t745.png",
+          "player": {
+            "originX": 103,
+            "originY": 113,
+            "visibleLeft": 105,
+            "visibleTop": 129,
+            "visibleRight": 115,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 108,
+              "physicalFeetY": 131,
+              "opaqueTop": 108,
+              "opaqueBottom": 131,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 746,
+          "nativeFrame": 5604,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0115-short-left-prebrake-t746.png",
+          "player": {
+            "originX": 94,
+            "originY": 113,
+            "visibleLeft": 95,
+            "visibleTop": 130,
+            "visibleRight": 107,
+            "visibleBottom": 144,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 116,
+              "physicalFeetY": 139,
+              "opaqueTop": 117,
+              "opaqueBottom": 139,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 747,
+          "nativeFrame": 5611,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0116-short-left-prebrake-t747.png",
+          "player": {
+            "originX": 82,
+            "originY": 113,
+            "visibleLeft": 84,
+            "visibleTop": 129,
+            "visibleRight": 94,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 122,
+              "physicalFeetY": 145,
+              "opaqueTop": 122,
+              "opaqueBottom": 145,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 748,
+          "nativeFrame": 5619,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0117-short-left-prebrake-t748.png",
+          "player": {
+            "originX": 66,
+            "originY": 113,
+            "visibleLeft": 67,
+            "visibleTop": 130,
+            "visibleRight": 79,
+            "visibleBottom": 144,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 129,
+              "physicalFeetY": 152,
+              "opaqueTop": 130,
+              "opaqueBottom": 152,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 749,
+          "nativeFrame": 5626,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0118-short-left-prebrake-t749.png",
+          "player": {
+            "originX": 49,
+            "originY": 119,
+            "visibleLeft": 50,
+            "visibleTop": 135,
+            "visibleRight": 64,
+            "visibleBottom": 150,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 134,
+              "physicalFeetY": 157,
+              "opaqueTop": 134,
+              "opaqueBottom": 157,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 750,
+          "nativeFrame": 5634,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0119-short-left-prebrake-t750.png",
+          "player": {
+            "originX": 29,
+            "originY": 149,
+            "visibleLeft": 30,
+            "visibleTop": 165,
+            "visibleRight": 44,
+            "visibleBottom": 180,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 140,
+              "physicalFeetY": 163,
+              "opaqueTop": 141,
+              "opaqueBottom": 163,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 751,
+          "nativeFrame": 5641,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0120-short-left-prebrake-t751.png",
+          "player": {
+            "originX": 12,
+            "originY": 177,
+            "visibleLeft": 13,
+            "visibleTop": 193,
+            "visibleRight": 27,
+            "visibleBottom": 208,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 144,
+              "physicalFeetY": 167,
+              "opaqueTop": 144,
+              "opaqueBottom": 167,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 752,
+          "nativeFrame": 5649,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0121-short-left-prebrake-t752.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 2,
+            "visibleTop": 193,
+            "visibleRight": 12,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 147,
+              "physicalFeetY": 170,
+              "opaqueTop": 148,
+              "opaqueBottom": 170,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 753,
+          "nativeFrame": 5656,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0122-short-left-prebrake-t753.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 1,
+            "visibleTop": 194,
+            "visibleRight": 13,
+            "visibleBottom": 208,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 150,
+              "physicalFeetY": 173,
+              "opaqueTop": 150,
+              "opaqueBottom": 173,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 754,
+          "nativeFrame": 5664,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0123-short-left-prebrake-t754.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 2,
+            "visibleTop": 193,
+            "visibleRight": 12,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 153,
+              "physicalFeetY": 176,
+              "opaqueTop": 154,
+              "opaqueBottom": 176,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 755,
+          "nativeFrame": 5671,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0124-short-left-prebrake-t755.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 1,
+            "visibleTop": 194,
+            "visibleRight": 13,
+            "visibleBottom": 208,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 154,
+              "physicalFeetY": 177,
+              "opaqueTop": 154,
+              "opaqueBottom": 177,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        },
+        {
+          "tick": 756,
+          "nativeFrame": 5679,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0125-short-left-prebrake-t756.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 1,
+            "visibleTop": 193,
+            "visibleRight": 15,
+            "visibleBottom": 208,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 155,
+              "physicalFeetY": 178,
+              "opaqueTop": 156,
+              "opaqueBottom": 178,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 757,
+          "nativeFrame": 5686,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0126-short-left-prebrake-t757.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 2,
+            "visibleTop": 193,
+            "visibleRight": 12,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 156,
+              "physicalFeetY": 179,
+              "opaqueTop": 157,
+              "opaqueBottom": 179,
+              "cell": 4,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 261
+            }
+          ]
+        },
+        {
+          "tick": 758,
+          "nativeFrame": 5694,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            36
+          ],
+          "image": "evidence/local/paratroopa-release-2026-11-05T23-14-05.353Z/0127-short-left-prebrake-t758.png",
+          "player": {
+            "originX": 0,
+            "originY": 177,
+            "visibleLeft": 1,
+            "visibleTop": 194,
+            "visibleRight": 13,
+            "visibleBottom": 208,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "actors": [
+            {
+              "kind": "paratroopa",
+              "x": 140,
+              "originY": 155,
+              "physicalFeetY": 178,
+              "opaqueTop": 155,
+              "opaqueBottom": 178,
+              "cell": 5,
+              "flipX": true,
+              "cropHeight": 24,
+              "matchedOpaque": 229
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

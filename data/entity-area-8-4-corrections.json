@@ -1,0 +1,3831 @@
+{
+  "schema": "guarded-entity-area-8-4-correction-proposal-v1",
+  "level": "8-4",
+  "status": "released-for-parent-review; production not modified",
+  "method": "Actual retained public reference PNGs and exact supplied opaque bitmap matches. Five room windows come from observed pipe transition images; source mappings use first-sighting ticks, never old area numbers or screenshot sequence indices from a different trace.",
+  "sourceGuards": {
+    "data/entity-campaign.json": "a722d03a820ee4362a00b75288a4010d033c1814a78328a39c9caa817993097c",
+    "data/castle-observations.json": "3e68f2e23219804b367a831ef0004ad39c83579b16c5ff373cdb44071f70e737"
+  },
+  "expectedSourceAreas": [
+    {
+      "id": "main",
+      "inferredSpawns": [
+        {
+          "kind": "piranha",
+          "x": 632,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2513 tick 10048; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "goomba",
+          "x": 704,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+        },
+        {
+          "kind": "goomba",
+          "x": 720,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+        },
+        {
+          "kind": "goomba",
+          "x": 752,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1112,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2530 tick 10116; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        }
+      ],
+      "inferredPlatforms": [
+        {
+          "x": 902,
+          "y": 209,
+          "width": 32,
+          "axis": "x",
+          "range": 24,
+          "speed": 0.4
+        }
+      ],
+      "inferredFirebars": []
+    },
+    {
+      "id": "area-2",
+      "inferredSpawns": [
+        {
+          "kind": "beetle",
+          "x": 240,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 168,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "beetle",
+          "x": 224,
+          "y": 208,
+          "direction": 1,
+          "evidence": "screenshot sequence 2537 tick 10144; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 328,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2540 tick 10156; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 464,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 488,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 672,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 720,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 872,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2553 tick 10208; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 864,
+          "y": 192,
+          "direction": 1,
+          "evidence": "screenshot sequence 2558 tick 10228; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1000,
+          "y": 112,
+          "direction": -1,
+          "evidence": "screenshot sequence 2558 tick 10228; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 928,
+          "y": 96,
+          "direction": 1,
+          "evidence": "screenshot sequence 2559 tick 10232; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1256,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2561 tick 10240; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 1264,
+          "y": 192,
+          "direction": -1,
+          "evidence": "screenshot sequence 2564 tick 10252; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1720,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2568 tick 10268; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1864,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2570 tick 10276; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 1856,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2572 tick 10284; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 1992,
+          "y": 112,
+          "direction": -1,
+          "evidence": "screenshot sequence 2572 tick 10284; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 1920,
+          "y": 112,
+          "direction": -1,
+          "evidence": "screenshot sequence 2573 tick 10288; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 2248,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2575 tick 10296; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 2984,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2586 tick 10340; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 3128,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2589 tick 10352; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 3256,
+          "y": 112,
+          "direction": -1,
+          "evidence": "screenshot sequence 2592 tick 10364; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 3216,
+          "y": 128,
+          "direction": 1,
+          "evidence": "screenshot sequence 2594 tick 10372; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 3376,
+          "y": 80,
+          "direction": 1,
+          "evidence": "screenshot sequence 2597 tick 10384; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+        },
+        {
+          "kind": "cheep",
+          "x": 3536,
+          "y": 224,
+          "direction": -1,
+          "evidence": "screenshot sequence 2598 tick 10388; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+        },
+        {
+          "kind": "piranha",
+          "x": 3512,
+          "y": 128,
+          "direction": -1,
+          "evidence": "screenshot sequence 2598 tick 10388; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        }
+      ],
+      "inferredPlatforms": [],
+      "inferredFirebars": []
+    },
+    {
+      "id": "area-3",
+      "inferredSpawns": [
+        {
+          "kind": "blooper",
+          "x": 416,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2613 tick 10448; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred"
+        },
+        {
+          "kind": "blooper",
+          "x": 832,
+          "y": 96,
+          "direction": -1,
+          "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred"
+        },
+        {
+          "kind": "blooper",
+          "x": 848,
+          "y": 176,
+          "direction": 1,
+          "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 11; camera registration inferred"
+        }
+      ],
+      "inferredPlatforms": [],
+      "inferredFirebars": [
+        {
+          "x": 328,
+          "y": 120,
+          "length": 6,
+          "speed": 0.03244
+        },
+        {
+          "x": 504,
+          "y": 168,
+          "length": 6,
+          "speed": -0.03106
+        },
+        {
+          "x": 648,
+          "y": 104,
+          "length": 6,
+          "speed": 0.03106
+        },
+        {
+          "x": 840,
+          "y": 136,
+          "length": 6,
+          "speed": 0.03276
+        },
+        {
+          "x": 920,
+          "y": 136,
+          "length": 6,
+          "speed": 0.03276
+        },
+        {
+          "x": 952,
+          "y": 136,
+          "length": 6,
+          "speed": 0.032
+        },
+        {
+          "x": 968,
+          "y": 120,
+          "length": 6,
+          "speed": -0.0321
+        }
+      ]
+    },
+    {
+      "id": "area-4",
+      "inferredSpawns": [
+        {
+          "kind": "piranha",
+          "x": 168,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2634 tick 10532; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+        },
+        {
+          "kind": "hammerBro",
+          "x": 288,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2638 tick 10548; exact enemy-table-0f-1c-36-17.png cell 31; camera registration inferred"
+        },
+        {
+          "kind": "podoboo",
+          "x": 368,
+          "y": 240,
+          "direction": -1,
+          "evidence": "screenshot sequence 2640 tick 10556; exact enemy-table-0f-16-30-27.png cell 34; camera registration inferred"
+        },
+        {
+          "kind": "bowser",
+          "x": 624,
+          "y": 224,
+          "direction": -1,
+          "evidence": "screenshot sequence 2645 tick 10576; exact enemy-table-0f-1a-30-27.png cell 35; camera registration inferred"
+        }
+      ],
+      "inferredPlatforms": [],
+      "inferredFirebars": []
+    }
+  ],
+  "sourceToTarget": [
+    {
+      "sourceArea": "main",
+      "sourceIndex": 0,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 632,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2513 tick 10048; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "main",
+      "role": "ordinary-actor-candidate",
+      "tick": 10048
+    },
+    {
+      "sourceArea": "main",
+      "sourceIndex": 1,
+      "expectedSourceSpec": {
+        "kind": "goomba",
+        "x": 704,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+      },
+      "targetArea": "main",
+      "role": "ordinary-actor-candidate",
+      "tick": 10052
+    },
+    {
+      "sourceArea": "main",
+      "sourceIndex": 2,
+      "expectedSourceSpec": {
+        "kind": "goomba",
+        "x": 720,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+      },
+      "targetArea": "main",
+      "role": "ordinary-actor-candidate",
+      "tick": 10052
+    },
+    {
+      "sourceArea": "main",
+      "sourceIndex": 3,
+      "expectedSourceSpec": {
+        "kind": "goomba",
+        "x": 752,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2514 tick 10052; exact enemy-table-0f-00-30-10.png cell 14; camera registration inferred"
+      },
+      "targetArea": "main",
+      "role": "ordinary-actor-candidate",
+      "tick": 10052
+    },
+    {
+      "sourceArea": "main",
+      "sourceIndex": 4,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1112,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2530 tick 10116; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "main",
+      "role": "ordinary-actor-candidate",
+      "tick": 10116
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 0,
+      "expectedSourceSpec": {
+        "kind": "beetle",
+        "x": 240,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10136
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 1,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 168,
+        "y": 160,
+        "direction": -1,
+        "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10136
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 2,
+      "expectedSourceSpec": {
+        "kind": "beetle",
+        "x": 224,
+        "y": 208,
+        "direction": 1,
+        "evidence": "screenshot sequence 2537 tick 10144; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10144
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 3,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 328,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2540 tick 10156; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10156
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 4,
+      "expectedSourceSpec": {
+        "kind": "paratroopa",
+        "x": 464,
+        "y": 160,
+        "direction": -1,
+        "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10164
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 5,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 488,
+        "y": 160,
+        "direction": -1,
+        "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10164
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 6,
+      "expectedSourceSpec": {
+        "kind": "paratroopa",
+        "x": 672,
+        "y": 160,
+        "direction": -1,
+        "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10176
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 7,
+      "expectedSourceSpec": {
+        "kind": "paratroopa",
+        "x": 720,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred"
+      },
+      "targetArea": "area-2",
+      "role": "ordinary-actor-candidate",
+      "tick": 10176
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 8,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 872,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2553 tick 10208; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10208
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 9,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 864,
+        "y": 192,
+        "direction": 1,
+        "evidence": "screenshot sequence 2558 tick 10228; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10228
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 10,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1000,
+        "y": 112,
+        "direction": -1,
+        "evidence": "screenshot sequence 2558 tick 10228; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10228
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 11,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 928,
+        "y": 96,
+        "direction": 1,
+        "evidence": "screenshot sequence 2559 tick 10232; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10232
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 12,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1256,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2561 tick 10240; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10240
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 13,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 1264,
+        "y": 192,
+        "direction": -1,
+        "evidence": "screenshot sequence 2564 tick 10252; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10252
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 14,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1720,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2568 tick 10268; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10268
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 15,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1864,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2570 tick 10276; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10276
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 16,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 1856,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2572 tick 10284; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10284
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 17,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 1992,
+        "y": 112,
+        "direction": -1,
+        "evidence": "screenshot sequence 2572 tick 10284; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10284
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 18,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 1920,
+        "y": 112,
+        "direction": -1,
+        "evidence": "screenshot sequence 2573 tick 10288; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10288
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 19,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 2248,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2575 tick 10296; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10296
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 20,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 2984,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2586 tick 10340; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10340
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 21,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 3128,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2589 tick 10352; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10352
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 22,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 3256,
+        "y": 112,
+        "direction": -1,
+        "evidence": "screenshot sequence 2592 tick 10364; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10364
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 23,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 3216,
+        "y": 128,
+        "direction": 1,
+        "evidence": "screenshot sequence 2594 tick 10372; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10372
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 24,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 3376,
+        "y": 80,
+        "direction": 1,
+        "evidence": "screenshot sequence 2597 tick 10384; exact enemy-table-0f-16-30-27.png cell 13; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10384
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 25,
+      "expectedSourceSpec": {
+        "kind": "cheep",
+        "x": 3536,
+        "y": 224,
+        "direction": -1,
+        "evidence": "screenshot sequence 2598 tick 10388; exact enemy-table-0f-16-30-27.png cell 12; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "generated-population-sighting",
+      "tick": 10388
+    },
+    {
+      "sourceArea": "area-2",
+      "sourceIndex": 26,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 3512,
+        "y": 128,
+        "direction": -1,
+        "evidence": "screenshot sequence 2598 tick 10388; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-3",
+      "role": "normalized-loop-pipe-landmark",
+      "tick": 10388
+    },
+    {
+      "sourceArea": "area-3",
+      "sourceIndex": 0,
+      "expectedSourceSpec": {
+        "kind": "blooper",
+        "x": 416,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2613 tick 10448; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred"
+      },
+      "targetArea": "area-4",
+      "role": "ordinary-actor-candidate",
+      "tick": 10448
+    },
+    {
+      "sourceArea": "area-3",
+      "sourceIndex": 1,
+      "expectedSourceSpec": {
+        "kind": "blooper",
+        "x": 832,
+        "y": 96,
+        "direction": -1,
+        "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred"
+      },
+      "targetArea": "area-4",
+      "role": "ordinary-actor-candidate",
+      "tick": 10484
+    },
+    {
+      "sourceArea": "area-3",
+      "sourceIndex": 2,
+      "expectedSourceSpec": {
+        "kind": "blooper",
+        "x": 848,
+        "y": 176,
+        "direction": 1,
+        "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 11; camera registration inferred"
+      },
+      "targetArea": "area-4",
+      "role": "ordinary-actor-candidate",
+      "tick": 10484
+    },
+    {
+      "sourceArea": "area-4",
+      "sourceIndex": 0,
+      "expectedSourceSpec": {
+        "kind": "piranha",
+        "x": 168,
+        "y": 176,
+        "direction": -1,
+        "evidence": "screenshot sequence 2634 tick 10532; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred"
+      },
+      "targetArea": "area-5",
+      "role": "ordinary-actor-candidate",
+      "tick": 10532
+    },
+    {
+      "sourceArea": "area-4",
+      "sourceIndex": 1,
+      "expectedSourceSpec": {
+        "kind": "hammerBro",
+        "x": 288,
+        "y": 208,
+        "direction": -1,
+        "evidence": "screenshot sequence 2638 tick 10548; exact enemy-table-0f-1c-36-17.png cell 31; camera registration inferred"
+      },
+      "targetArea": "area-5",
+      "role": "ordinary-actor-candidate",
+      "tick": 10548
+    },
+    {
+      "sourceArea": "area-4",
+      "sourceIndex": 2,
+      "expectedSourceSpec": {
+        "kind": "podoboo",
+        "x": 368,
+        "y": 240,
+        "direction": -1,
+        "evidence": "screenshot sequence 2640 tick 10556; exact enemy-table-0f-16-30-27.png cell 34; camera registration inferred"
+      },
+      "targetArea": "area-5",
+      "role": "ordinary-actor-candidate",
+      "tick": 10556
+    },
+    {
+      "sourceArea": "area-4",
+      "sourceIndex": 3,
+      "expectedSourceSpec": {
+        "kind": "bowser",
+        "x": 624,
+        "y": 224,
+        "direction": -1,
+        "evidence": "screenshot sequence 2645 tick 10576; exact enemy-table-0f-1a-30-27.png cell 35; camera registration inferred"
+      },
+      "targetArea": "area-5",
+      "role": "consumed-by-existing-final-castle-boss",
+      "tick": 10576
+    }
+  ],
+  "actualAreas": [
+    {
+      "id": "main",
+      "sourceTrace": "evidence/local/reference-8-4-dense/trace.jsonl",
+      "tickWindow": [
+        9994,
+        10126
+      ],
+      "atlas": "metatiles-palette-006.png",
+      "compiledRole": "castle"
+    },
+    {
+      "id": "area-2",
+      "sourceTrace": "evidence/local/reference-8-4-dense/trace.jsonl",
+      "tickWindow": [
+        10130,
+        10196
+      ],
+      "atlas": "metatiles-palette-006.png",
+      "compiledRole": "castle"
+    },
+    {
+      "id": "area-3",
+      "sourceTrace": "evidence/local/reference-8-4-dense/trace.jsonl",
+      "tickWindow": [
+        10200,
+        10405
+      ],
+      "atlas": "metatiles-palette-006.png",
+      "compiledRole": "castle"
+    },
+    {
+      "id": "area-4",
+      "sourceTrace": "evidence/local/reference-8-4-dense/trace.jsonl",
+      "tickWindow": [
+        10410,
+        10522
+      ],
+      "atlas": "metatiles-palette-012.png",
+      "compiledRole": "water"
+    },
+    {
+      "id": "area-5",
+      "sourceTrace": "evidence/local/reference-8-4-dense/trace.jsonl",
+      "tickWindow": [
+        10526,
+        10626
+      ],
+      "atlas": "metatiles-palette-006.png",
+      "compiledRole": "castle"
+    }
+  ],
+  "proposals": [
+    {
+      "area": "main",
+      "enemies": [
+        {
+          "kind": "piranha",
+          "x": 312,
+          "y": 200,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Image-proven plant/pipe anchor; hidden foot is observed pipe top+24 common-rule candidate, initial cycle phase unmeasured."
+        },
+        {
+          "kind": "piranha",
+          "x": 648,
+          "y": 200,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Image-proven plant/pipe anchor; hidden foot is observed pipe top+24 common-rule candidate, initial cycle phase unmeasured."
+        },
+        {
+          "kind": "piranha",
+          "x": 1128,
+          "y": 152,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Image-proven plant/pipe anchor; hidden foot is observed pipe top+24 common-rule candidate, initial cycle phase unmeasured."
+        },
+        {
+          "kind": "goomba",
+          "x": 720,
+          "y": 208,
+          "direction": -1,
+          "palette": "0f-00-30-10",
+          "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention."
+        },
+        {
+          "kind": "goomba",
+          "x": 736,
+          "y": 208,
+          "direction": -1,
+          "palette": "0f-00-30-10",
+          "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention."
+        },
+        {
+          "kind": "goomba",
+          "x": 768,
+          "y": 208,
+          "direction": -1,
+          "palette": "0f-00-30-10",
+          "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention."
+        }
+      ],
+      "platforms": [
+        {
+          "x": 918,
+          "y": 209,
+          "width": 32,
+          "axis": "x",
+          "range": 24,
+          "speed": 0.4
+        }
+      ],
+      "generators": [],
+      "firebars": [],
+      "cannons": [],
+      "classification": "Species and pipe anchors directly observed; Goomba initial grids and platform center/range/speed/phase inferred.",
+      "evidence": {
+        "plants": [
+          {
+            "sequence": 2513,
+            "tick": 10048,
+            "image": "evidence/local/reference-campaign/02513-tick-10048.png",
+            "imageSha256": "ffa1659dadfd4a92cc99e63f248095bc66a5b11bd3a6fa80205dfe59ed35a20e",
+            "paletteSheet": "enemy-table-0f-1c-36-17.png",
+            "cell": 32,
+            "screenX": 180,
+            "rawOriginY": 153,
+            "opaquePixelsExact": 150,
+            "denseCameraCandidate": 468,
+            "staticCameraBest": 468,
+            "staticCameraAliases": [
+              468
+            ],
+            "exactStaticCells": 34
+          },
+          {
+            "sequence": 2514,
+            "tick": 10052,
+            "image": "evidence/local/reference-campaign/02514-tick-10052.png",
+            "imageSha256": "c8cd9528e668a2edfefa907d55e113d3aae1c06d1ed753e6614ddf337704f1a4",
+            "paletteSheet": "enemy-table-0f-1c-36-17.png",
+            "cell": 32,
+            "screenX": 133,
+            "rawOriginY": 153,
+            "opaquePixelsExact": 150,
+            "denseCameraCandidate": 515,
+            "staticCameraBest": 515,
+            "staticCameraAliases": [
+              515
+            ],
+            "exactStaticCells": 28
+          },
+          {
+            "sequence": 2530,
+            "tick": 10116,
+            "image": "evidence/local/reference-campaign/02530-tick-10116.png",
+            "imageSha256": "a4043d5bf0226cc01f50e2be9f8810c6ea0bbb8c4ae6b375c9a61a36cfec99f3",
+            "paletteSheet": "enemy-table-0f-1c-36-17.png",
+            "cell": 32,
+            "screenX": 159,
+            "rawOriginY": 105,
+            "opaquePixelsExact": 150,
+            "denseCameraCandidate": 969,
+            "staticCameraBest": 969,
+            "staticCameraAliases": [
+              969
+            ],
+            "exactStaticCells": 74
+          }
+        ],
+        "firstPlant": "evidence/entity-area-8-4-missing-plant.json",
+        "goombas": [
+          {
+            "sequence": 2514,
+            "tick": 10052,
+            "image": "evidence/local/reference-campaign/02514-tick-10052.png",
+            "imageSha256": "c8cd9528e668a2edfefa907d55e113d3aae1c06d1ed753e6614ddf337704f1a4",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 191,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 515,
+            "staticCameraBest": 515,
+            "staticCameraAliases": [
+              515
+            ],
+            "exactStaticCells": 28
+          },
+          {
+            "sequence": 2514,
+            "tick": 10052,
+            "image": "evidence/local/reference-campaign/02514-tick-10052.png",
+            "imageSha256": "c8cd9528e668a2edfefa907d55e113d3aae1c06d1ed753e6614ddf337704f1a4",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 214,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 515,
+            "staticCameraBest": 515,
+            "staticCameraAliases": [
+              515
+            ],
+            "exactStaticCells": 28
+          },
+          {
+            "sequence": 2514,
+            "tick": 10052,
+            "image": "evidence/local/reference-campaign/02514-tick-10052.png",
+            "imageSha256": "c8cd9528e668a2edfefa907d55e113d3aae1c06d1ed753e6614ddf337704f1a4",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 238,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 515,
+            "staticCameraBest": 515,
+            "staticCameraAliases": [
+              515
+            ],
+            "exactStaticCells": 28
+          },
+          {
+            "sequence": 2515,
+            "tick": 10056,
+            "image": "evidence/local/reference-campaign/02515-tick-10056.png",
+            "imageSha256": "46914c69e8b800ba5e3a118fee471ae18882bc0993ea03f3ae2be389899537c5",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 158,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 533,
+            "staticCameraBest": 533,
+            "staticCameraAliases": [
+              533
+            ],
+            "exactStaticCells": 30
+          },
+          {
+            "sequence": 2515,
+            "tick": 10056,
+            "image": "evidence/local/reference-campaign/02515-tick-10056.png",
+            "imageSha256": "46914c69e8b800ba5e3a118fee471ae18882bc0993ea03f3ae2be389899537c5",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 181,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 533,
+            "staticCameraBest": 533,
+            "staticCameraAliases": [
+              533
+            ],
+            "exactStaticCells": 30
+          },
+          {
+            "sequence": 2515,
+            "tick": 10056,
+            "image": "evidence/local/reference-campaign/02515-tick-10056.png",
+            "imageSha256": "46914c69e8b800ba5e3a118fee471ae18882bc0993ea03f3ae2be389899537c5",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 205,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 533,
+            "staticCameraBest": 533,
+            "staticCameraAliases": [
+              533
+            ],
+            "exactStaticCells": 30
+          },
+          {
+            "sequence": 2516,
+            "tick": 10060,
+            "image": "evidence/local/reference-campaign/02516-tick-10060.png",
+            "imageSha256": "9edda5897244ab5a8839f692f10ec6ddc5720f9ba9f258953ba25289405e274d",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 121,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 554,
+            "staticCameraBest": 554,
+            "staticCameraAliases": [
+              554
+            ],
+            "exactStaticCells": 29
+          },
+          {
+            "sequence": 2516,
+            "tick": 10060,
+            "image": "evidence/local/reference-campaign/02516-tick-10060.png",
+            "imageSha256": "9edda5897244ab5a8839f692f10ec6ddc5720f9ba9f258953ba25289405e274d",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 145,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 554,
+            "staticCameraBest": 554,
+            "staticCameraAliases": [
+              554
+            ],
+            "exactStaticCells": 29
+          },
+          {
+            "sequence": 2516,
+            "tick": 10060,
+            "image": "evidence/local/reference-campaign/02516-tick-10060.png",
+            "imageSha256": "9edda5897244ab5a8839f692f10ec6ddc5720f9ba9f258953ba25289405e274d",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 169,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 554,
+            "staticCameraBest": 554,
+            "staticCameraAliases": [
+              554
+            ],
+            "exactStaticCells": 29
+          },
+          {
+            "sequence": 2517,
+            "tick": 10064,
+            "image": "evidence/local/reference-campaign/02517-tick-10064.png",
+            "imageSha256": "2560dc95dc85f127e89ee6cc01b3f8e380f1a9449d2e9162d7040c7c652c1182",
+            "paletteSheet": "enemy-table-0f-00-30-10.png",
+            "cell": 14,
+            "screenX": 116,
+            "rawOriginY": 185,
+            "opaquePixelsExact": 84,
+            "denseCameraCandidate": 592,
+            "staticCameraBest": 592,
+            "staticCameraAliases": [
+              592
+            ],
+            "exactStaticCells": 38
+          }
+        ],
+        "platform": [
+          {
+            "sequence": 2520,
+            "tick": 10076,
+            "image": "evidence/local/reference-campaign/02520-tick-10076.png",
+            "imageSha256": "4673397e1170042a65d834e0341b00e263172284884a7ec826028340dfa82665",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 162,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 755,
+            "staticCameraBest": 755,
+            "staticCameraAliases": [
+              755
+            ],
+            "exactStaticCells": 38
+          },
+          {
+            "sequence": 2521,
+            "tick": 10080,
+            "image": "evidence/local/reference-campaign/02521-tick-10080.png",
+            "imageSha256": "bb461f9051f2cc5e3d3cfce2cb9f29e1935cf7b2cbcbe8adb92fe9b9f9f32412",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 142,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 755,
+            "staticCameraBest": 755,
+            "staticCameraAliases": [
+              755
+            ],
+            "exactStaticCells": 37
+          },
+          {
+            "sequence": 2522,
+            "tick": 10084,
+            "image": "evidence/local/reference-campaign/02522-tick-10084.png",
+            "imageSha256": "12eecb52423b1fb2921cea32c11e8cd00ffdb1358c06106b8f0b8e0cabf84417",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 136,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 755,
+            "staticCameraBest": 755,
+            "staticCameraAliases": [
+              755
+            ],
+            "exactStaticCells": 38
+          },
+          {
+            "sequence": 2523,
+            "tick": 10088,
+            "image": "evidence/local/reference-campaign/02523-tick-10088.png",
+            "imageSha256": "d19149cc01233ffb566b1ebd6225e10dc339c4955d58a75b510c18bed069fbdd",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 123,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 774,
+            "staticCameraBest": 774,
+            "staticCameraAliases": [
+              774
+            ],
+            "exactStaticCells": 38
+          },
+          {
+            "sequence": 2524,
+            "tick": 10092,
+            "image": "evidence/local/reference-campaign/02524-tick-10092.png",
+            "imageSha256": "700a7275cf0ec623bb76baf7639f252f1ef28ccd4aeeeeb81fd95848155e03cf",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 87,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 830,
+            "staticCameraBest": 830,
+            "staticCameraAliases": [
+              830
+            ],
+            "exactStaticCells": 47
+          },
+          {
+            "sequence": 2525,
+            "tick": 10096,
+            "image": "evidence/local/reference-campaign/02525-tick-10096.png",
+            "imageSha256": "f36f8b4d887ad962626e0fa77e29ce499e2c1ed736f2a76d01877cb0be97d268",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 59,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 878,
+            "staticCameraBest": 878,
+            "staticCameraAliases": [
+              878
+            ],
+            "exactStaticCells": 49
+          },
+          {
+            "sequence": 2526,
+            "tick": 10100,
+            "image": "evidence/local/reference-campaign/02526-tick-10100.png",
+            "imageSha256": "8dacc2818cae6338d8f364c67bb80937582b6b97539243e58f451487c1c53f7f",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 33,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 911,
+            "staticCameraBest": 911,
+            "staticCameraAliases": [
+              911
+            ],
+            "exactStaticCells": 60
+          },
+          {
+            "sequence": 2527,
+            "tick": 10104,
+            "image": "evidence/local/reference-campaign/02527-tick-10104.png",
+            "imageSha256": "f79f99024aa8d6d71a961b02cf2888fc4d6dd5c22ada702bc3556b8a9b4f0724",
+            "paletteSheet": "sprite-large_platforms-1.png",
+            "cell": -1,
+            "screenX": 25,
+            "rawOriginY": 209,
+            "opaquePixelsExact": 200,
+            "denseCameraCandidate": 912,
+            "staticCameraBest": 912,
+            "staticCameraAliases": [
+              912
+            ],
+            "exactStaticCells": 63
+          }
+        ]
+      },
+      "platformUncertainty": "One32px platform is directly seen at y209 and x891..944 using unique static registrations. Replacement center918 only rebinds the old partial-trajectory midpoint902 by16px; axis/range24/speed.4/phase remain old unmeasured candidates. Collision top208 inferred from common artwork offset."
+    },
+    {
+      "area": "area-2",
+      "enemies": [
+        {
+          "kind": "beetle",
+          "x": 240,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred",
+          "palette": "0f-00-30-10"
+        },
+        {
+          "kind": "piranha",
+          "x": 168,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "beetle",
+          "x": 224,
+          "y": 208,
+          "direction": 1,
+          "evidence": "screenshot sequence 2537 tick 10144; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred",
+          "palette": "0f-00-30-10"
+        },
+        {
+          "kind": "piranha",
+          "x": 328,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2540 tick 10156; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 464,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "piranha",
+          "x": 488,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 33; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 672,
+          "y": 160,
+          "direction": -1,
+          "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "paratroopa",
+          "x": 720,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        }
+      ],
+      "platforms": [],
+      "generators": [],
+      "firebars": [],
+      "cannons": [],
+      "classification": "Retain exactly8 original pre10200 candidates:2 beetles,3 plants,3 winged Koopas. Their images/coordinates align with the accepted room, but original spawn grids/trajectory parameters remain inferred.",
+      "evidence": [
+        {
+          "sequence": 2535,
+          "tick": 10136,
+          "image": "evidence/local/reference-campaign/02535-tick-10136.png",
+          "imageSha256": "51553e648193f9e1b93e038f9c6ebc26e92812304c285c9394c7c339457c5743",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 1,
+          "screenX": 235,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 188,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2536,
+          "tick": 10140,
+          "image": "evidence/local/reference-campaign/02536-tick-10140.png",
+          "imageSha256": "79b85ea12b186848ffb6a03ceef85ba3c48955269e4c161ea501cfc2df99980d",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 1,
+          "screenX": 220,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 188,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2537,
+          "tick": 10144,
+          "image": "evidence/local/reference-campaign/02537-tick-10144.png",
+          "imageSha256": "48efe53c5db837f401364d00e63eff2611992442d980689607411257c0db21f3",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 1,
+          "screenX": 205,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 188,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2537,
+          "tick": 10144,
+          "image": "evidence/local/reference-campaign/02537-tick-10144.png",
+          "imageSha256": "48efe53c5db837f401364d00e63eff2611992442d980689607411257c0db21f3",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 1,
+          "screenX": 237,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 188,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2538,
+          "tick": 10148,
+          "image": "evidence/local/reference-campaign/02538-tick-10148.png",
+          "imageSha256": "5ed6df37a9a682b28394503d4c2d9d2053c4255bd740e2306850e4d3c375ff9f",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 190,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 3,
+          "staticCameraBest": 3,
+          "staticCameraAliases": [
+            3
+          ],
+          "exactStaticCells": 38
+        },
+        {
+          "sequence": 2538,
+          "tick": 10148,
+          "image": "evidence/local/reference-campaign/02538-tick-10148.png",
+          "imageSha256": "5ed6df37a9a682b28394503d4c2d9d2053c4255bd740e2306850e4d3c375ff9f",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 219,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 3,
+          "staticCameraBest": 3,
+          "staticCameraAliases": [
+            3
+          ],
+          "exactStaticCells": 38
+        },
+        {
+          "sequence": 2539,
+          "tick": 10152,
+          "image": "evidence/local/reference-campaign/02539-tick-10152.png",
+          "imageSha256": "fea96848d73ce6605eaa860a73f050bc4120511197f28714ff354c7e8445524d",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 156,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 41,
+          "staticCameraBest": 41,
+          "staticCameraAliases": [
+            41
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2539,
+          "tick": 10152,
+          "image": "evidence/local/reference-campaign/02539-tick-10152.png",
+          "imageSha256": "fea96848d73ce6605eaa860a73f050bc4120511197f28714ff354c7e8445524d",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 178,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 41,
+          "staticCameraBest": 41,
+          "staticCameraAliases": [
+            41
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2540,
+          "tick": 10156,
+          "image": "evidence/local/reference-campaign/02540-tick-10156.png",
+          "imageSha256": "dfbea23d4442dd3314ad1b016ce2f7b288bfb95ac194a0b600dfd0fde859031f",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 88,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 113,
+          "staticCameraBest": 113,
+          "staticCameraAliases": [
+            113
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2540,
+          "tick": 10156,
+          "image": "evidence/local/reference-campaign/02540-tick-10156.png",
+          "imageSha256": "dfbea23d4442dd3314ad1b016ce2f7b288bfb95ac194a0b600dfd0fde859031f",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 121,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 113,
+          "staticCameraBest": 113,
+          "staticCameraAliases": [
+            113
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2541,
+          "tick": 10160,
+          "image": "evidence/local/reference-campaign/02541-tick-10160.png",
+          "imageSha256": "bf86e59dd5c972f4f194b6e54106cdbe0825ec0e3b1185c6d482c6ce88d06092",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 33,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 183,
+          "staticCameraBest": 183,
+          "staticCameraAliases": [
+            183
+          ],
+          "exactStaticCells": 31
+        },
+        {
+          "sequence": 2541,
+          "tick": 10160,
+          "image": "evidence/local/reference-campaign/02541-tick-10160.png",
+          "imageSha256": "bf86e59dd5c972f4f194b6e54106cdbe0825ec0e3b1185c6d482c6ce88d06092",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 0,
+          "screenX": 66,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 187,
+          "denseCameraCandidate": 183,
+          "staticCameraBest": 183,
+          "staticCameraAliases": [
+            183
+          ],
+          "exactStaticCells": 31
+        },
+        {
+          "sequence": 2542,
+          "tick": 10164,
+          "image": "evidence/local/reference-campaign/02542-tick-10164.png",
+          "imageSha256": "3a008087f659e0f46c6057976415f2087b347168b2edf8f426092ffa87578e01",
+          "paletteSheet": "enemy-table-0f-00-30-10.png",
+          "cell": 1,
+          "screenX": 13,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 188,
+          "denseCameraCandidate": 251,
+          "staticCameraBest": 251,
+          "staticCameraAliases": [
+            251
+          ],
+          "exactStaticCells": 35
+        },
+        {
+          "sequence": 2542,
+          "tick": 10164,
+          "image": "evidence/local/reference-campaign/02542-tick-10164.png",
+          "imageSha256": "3a008087f659e0f46c6057976415f2087b347168b2edf8f426092ffa87578e01",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 200,
+          "rawOriginY": 143,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 251,
+          "staticCameraBest": 251,
+          "staticCameraAliases": [
+            251
+          ],
+          "exactStaticCells": 35
+        },
+        {
+          "sequence": 2543,
+          "tick": 10168,
+          "image": "evidence/local/reference-campaign/02543-tick-10168.png",
+          "imageSha256": "73b4ddfa75e926027676ae53cc3deb7ba54cf2f76dce0b8904442121a82ba8ff",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 110,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 326,
+          "staticCameraBest": 326,
+          "staticCameraAliases": [
+            326
+          ],
+          "exactStaticCells": 36
+        },
+        {
+          "sequence": 2544,
+          "tick": 10172,
+          "image": "evidence/local/reference-campaign/02544-tick-10172.png",
+          "imageSha256": "17fd23fa3f5ac1df797524b33bd0ca74eb97baab6f0ff8730c6a18f5eebc3245",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 20,
+          "rawOriginY": 143,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 401,
+          "staticCameraBest": 401,
+          "staticCameraAliases": [
+            401
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2545,
+          "tick": 10176,
+          "image": "evidence/local/reference-campaign/02545-tick-10176.png",
+          "imageSha256": "d931bbca74368c057a252f17e8c7c26a1573636d647cf0071ba388b57552034b",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 194,
+          "rawOriginY": 144,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 476,
+          "staticCameraBest": 476,
+          "staticCameraAliases": [
+            476
+          ],
+          "exactStaticCells": 43
+        },
+        {
+          "sequence": 2545,
+          "tick": 10176,
+          "image": "evidence/local/reference-campaign/02545-tick-10176.png",
+          "imageSha256": "d931bbca74368c057a252f17e8c7c26a1573636d647cf0071ba388b57552034b",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 234,
+          "rawOriginY": 158,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 476,
+          "staticCameraBest": 476,
+          "staticCameraAliases": [
+            476
+          ],
+          "exactStaticCells": 43
+        },
+        {
+          "sequence": 2546,
+          "tick": 10180,
+          "image": "evidence/local/reference-campaign/02546-tick-10180.png",
+          "imageSha256": "041b5d3831a4f234e31019248b216ac095d0162255ce67c680228d4ff5aac25a",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 162,
+          "rawOriginY": 169,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 493,
+          "staticCameraBest": 493,
+          "staticCameraAliases": [
+            493
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2546,
+          "tick": 10180,
+          "image": "evidence/local/reference-campaign/02546-tick-10180.png",
+          "imageSha256": "041b5d3831a4f234e31019248b216ac095d0162255ce67c680228d4ff5aac25a",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 202,
+          "rawOriginY": 152,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 493,
+          "staticCameraBest": 493,
+          "staticCameraAliases": [
+            493
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2547,
+          "tick": 10184,
+          "image": "evidence/local/reference-campaign/02547-tick-10184.png",
+          "imageSha256": "1a18b61f464624841f65ab6578a91c9b24b00753faeebbd749422054682c0576",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 146,
+          "rawOriginY": 146,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 494,
+          "staticCameraBest": 494,
+          "staticCameraAliases": [
+            494
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2547,
+          "tick": 10184,
+          "image": "evidence/local/reference-campaign/02547-tick-10184.png",
+          "imageSha256": "1a18b61f464624841f65ab6578a91c9b24b00753faeebbd749422054682c0576",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 186,
+          "rawOriginY": 151,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 494,
+          "staticCameraBest": 494,
+          "staticCameraAliases": [
+            494
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2548,
+          "tick": 10188,
+          "image": "evidence/local/reference-campaign/02548-tick-10188.png",
+          "imageSha256": "b7df39e12c077baf577f0921358d5ad30c4fd968083f4c802951472632de0041",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 105,
+          "rawOriginY": 160,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 520,
+          "staticCameraBest": 520,
+          "staticCameraAliases": [
+            520
+          ],
+          "exactStaticCells": 37
+        },
+        {
+          "sequence": 2548,
+          "tick": 10188,
+          "image": "evidence/local/reference-campaign/02548-tick-10188.png",
+          "imageSha256": "b7df39e12c077baf577f0921358d5ad30c4fd968083f4c802951472632de0041",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 145,
+          "rawOriginY": 158,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 520,
+          "staticCameraBest": 520,
+          "staticCameraAliases": [
+            520
+          ],
+          "exactStaticCells": 37
+        },
+        {
+          "sequence": 2549,
+          "tick": 10192,
+          "image": "evidence/local/reference-campaign/02549-tick-10192.png",
+          "imageSha256": "ff43bccaf8698129dddfb4aa464f81cf174905499372be8f7fdd5cf85d240319",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 60,
+          "rawOriginY": 151,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 550,
+          "staticCameraBest": 550,
+          "staticCameraAliases": [
+            550
+          ],
+          "exactStaticCells": 36
+        },
+        {
+          "sequence": 2549,
+          "tick": 10192,
+          "image": "evidence/local/reference-campaign/02549-tick-10192.png",
+          "imageSha256": "ff43bccaf8698129dddfb4aa464f81cf174905499372be8f7fdd5cf85d240319",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 4,
+          "screenX": 100,
+          "rawOriginY": 147,
+          "opaquePixelsExact": 168,
+          "denseCameraCandidate": 550,
+          "staticCameraBest": 550,
+          "staticCameraAliases": [
+            550
+          ],
+          "exactStaticCells": 36
+        },
+        {
+          "sequence": 2550,
+          "tick": 10196,
+          "image": "evidence/local/reference-campaign/02550-tick-10196.png",
+          "imageSha256": "efbac83b82c8969d923b047d24cb13e9cbcf9eb7348da9422f2710a0801f0be5",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 30,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 565,
+          "staticCameraBest": 565,
+          "staticCameraAliases": [
+            565
+          ],
+          "exactStaticCells": 38
+        },
+        {
+          "sequence": 2550,
+          "tick": 10196,
+          "image": "evidence/local/reference-campaign/02550-tick-10196.png",
+          "imageSha256": "efbac83b82c8969d923b047d24cb13e9cbcf9eb7348da9422f2710a0801f0be5",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 5,
+          "screenX": 70,
+          "rawOriginY": 167,
+          "opaquePixelsExact": 148,
+          "denseCameraCandidate": 565,
+          "staticCameraBest": 565,
+          "staticCameraAliases": [
+            565
+          ],
+          "exactStaticCells": 38
+        },
+        {
+          "sequence": 2535,
+          "tick": 10136,
+          "image": "evidence/local/reference-campaign/02535-tick-10136.png",
+          "imageSha256": "51553e648193f9e1b93e038f9c6ebc26e92812304c285c9394c7c339457c5743",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 168,
+          "rawOriginY": 139,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2536,
+          "tick": 10140,
+          "image": "evidence/local/reference-campaign/02536-tick-10140.png",
+          "imageSha256": "79b85ea12b186848ffb6a03ceef85ba3c48955269e4c161ea501cfc2df99980d",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 168,
+          "rawOriginY": 137,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2537,
+          "tick": 10144,
+          "image": "evidence/local/reference-campaign/02537-tick-10144.png",
+          "imageSha256": "48efe53c5db837f401364d00e63eff2611992442d980689607411257c0db21f3",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 168,
+          "rawOriginY": 137,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2540,
+          "tick": 10156,
+          "image": "evidence/local/reference-campaign/02540-tick-10156.png",
+          "imageSha256": "dfbea23d4442dd3314ad1b016ce2f7b288bfb95ac194a0b600dfd0fde859031f",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 215,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 113,
+          "staticCameraBest": 113,
+          "staticCameraAliases": [
+            113
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2541,
+          "tick": 10160,
+          "image": "evidence/local/reference-campaign/02541-tick-10160.png",
+          "imageSha256": "bf86e59dd5c972f4f194b6e54106cdbe0825ec0e3b1185c6d482c6ce88d06092",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 145,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 183,
+          "staticCameraBest": 183,
+          "staticCameraAliases": [
+            183
+          ],
+          "exactStaticCells": 31
+        },
+        {
+          "sequence": 2542,
+          "tick": 10164,
+          "image": "evidence/local/reference-campaign/02542-tick-10164.png",
+          "imageSha256": "3a008087f659e0f46c6057976415f2087b347168b2edf8f426092ffa87578e01",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 237,
+          "rawOriginY": 137,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 251,
+          "staticCameraBest": 251,
+          "staticCameraAliases": [
+            251
+          ],
+          "exactStaticCells": 35
+        },
+        {
+          "sequence": 2543,
+          "tick": 10168,
+          "image": "evidence/local/reference-campaign/02543-tick-10168.png",
+          "imageSha256": "73b4ddfa75e926027676ae53cc3deb7ba54cf2f76dce0b8904442121a82ba8ff",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 162,
+          "rawOriginY": 137,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 326,
+          "staticCameraBest": 326,
+          "staticCameraAliases": [
+            326
+          ],
+          "exactStaticCells": 36
+        },
+        {
+          "sequence": 2544,
+          "tick": 10172,
+          "image": "evidence/local/reference-campaign/02544-tick-10172.png",
+          "imageSha256": "17fd23fa3f5ac1df797524b33bd0ca74eb97baab6f0ff8730c6a18f5eebc3245",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 87,
+          "rawOriginY": 138,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 401,
+          "staticCameraBest": 401,
+          "staticCameraAliases": [
+            401
+          ],
+          "exactStaticCells": 40
+        }
+      ]
+    },
+    {
+      "area": "area-3",
+      "enemies": [
+        {
+          "kind": "piranha",
+          "x": 56,
+          "y": 200,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Entry plant is directly observed on the second and third repeated entry pipes at route-relative1048/1960; normalization to56 uses accepted but unresolved loop-layout candidate. Other three pipe landmarks are directly observed on first pass. Hidden foot top+24 and initial phase are inferred."
+        },
+        {
+          "kind": "piranha",
+          "x": 200,
+          "y": 152,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Direct first-pass plant body above exact pipe landmark; hidden foot top+24 and initial phase inferred."
+        },
+        {
+          "kind": "piranha",
+          "x": 328,
+          "y": 136,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Direct first-pass plant body above exact pipe landmark; hidden foot top+24 and initial phase inferred."
+        },
+        {
+          "kind": "piranha",
+          "x": 584,
+          "y": 152,
+          "direction": -1,
+          "palette": "0f-1c-36-17",
+          "evidence": "Direct first-pass plant body above exact pipe landmark; hidden foot top+24 and initial phase inferred."
+        }
+      ],
+      "platforms": [],
+      "firebars": [],
+      "cannons": [],
+      "generators": [
+        {
+          "kind": "flyingFish",
+          "from": 0,
+          "to": 992,
+          "interval": 80
+        }
+      ],
+      "classification": "Three first-pass plants are directly bound to normalized map pipes. Entry plant is an explicit loop-normalization candidate. Flying-fish population directly observed in repeated airborne poses; from0/to992/interval80 are a proposed common-rule candidate, not measured generator bounds or cadence.",
+      "pipeBindings": [
+        {
+          "spriteX": 200,
+          "pipeLeft": 192,
+          "pipeTop": 128,
+          "firstSequence": 2553
+        },
+        {
+          "spriteX": 328,
+          "pipeLeft": 320,
+          "pipeTop": 112,
+          "firstSequence": 2558
+        },
+        {
+          "spriteX": 584,
+          "pipeLeft": 576,
+          "pipeTop": 128,
+          "firstSequence": 2561
+        },
+        {
+          "spriteX": 56,
+          "pipeLeft": 48,
+          "pipeTop": 176,
+          "sourceRepeatedSpriteX": [
+            1048,
+            1960
+          ],
+          "sourceRepeatOffsets": [
+            992,
+            1904
+          ],
+          "firstSequence": 2568
+        }
+      ],
+      "loopUncertainty": [
+        "Observed repeated pipe groups establish a loop; first and second inferred repetition offsets differ by80px, indicating unresolved camera aliasing in featureless brick corridors.",
+        "Do not claim the candidate loop boundary or full geometric equivalence verified until controlled reference tests resolve it."
+      ],
+      "evidence": [
+        {
+          "sequence": 2558,
+          "tick": 10228,
+          "image": "evidence/local/reference-campaign/02558-tick-10228.png",
+          "imageSha256": "4bf7ddf92c553bc112292f78b113df04733f98b9c7caccbaff670c5f03ed95eb",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 38,
+          "rawOriginY": 168,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 156,
+          "staticCameraBest": 156,
+          "staticCameraAliases": [
+            156
+          ],
+          "exactStaticCells": 82
+        },
+        {
+          "sequence": 2559,
+          "tick": 10232,
+          "image": "evidence/local/reference-campaign/02559-tick-10232.png",
+          "imageSha256": "eb445af9dd96610afe7779bcf064b2f626a43ac67eba43646eb4d708e74c329d",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 27,
+          "rawOriginY": 71,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 231,
+          "staticCameraBest": 231,
+          "staticCameraAliases": [
+            231
+          ],
+          "exactStaticCells": 72
+        },
+        {
+          "sequence": 2559,
+          "tick": 10232,
+          "image": "evidence/local/reference-campaign/02559-tick-10232.png",
+          "imageSha256": "eb445af9dd96610afe7779bcf064b2f626a43ac67eba43646eb4d708e74c329d",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 39,
+          "rawOriginY": 176,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 231,
+          "staticCameraBest": 231,
+          "staticCameraAliases": [
+            231
+          ],
+          "exactStaticCells": 72
+        },
+        {
+          "sequence": 2560,
+          "tick": 10236,
+          "image": "evidence/local/reference-campaign/02560-tick-10236.png",
+          "imageSha256": "e08e7ff0cf16cf109d97b0c6053502c155752984dfc1a4994d1c27c1f599efb1",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 27,
+          "rawOriginY": 75,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 306,
+          "staticCameraBest": 306,
+          "staticCameraAliases": [
+            306
+          ],
+          "exactStaticCells": 68
+        },
+        {
+          "sequence": 2564,
+          "tick": 10252,
+          "image": "evidence/local/reference-campaign/02564-tick-10252.png",
+          "imageSha256": "90d9ed18779d32638892dbdbb88e7b2a6098186125334ad13103e1166ada59ca",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 13,
+          "screenX": 1,
+          "rawOriginY": 168,
+          "opaquePixelsExact": 177,
+          "denseCameraCandidate": 587,
+          "staticCameraBest": 587,
+          "staticCameraAliases": [
+            587
+          ],
+          "exactStaticCells": 75
+        },
+        {
+          "sequence": 2572,
+          "tick": 10284,
+          "image": "evidence/local/reference-campaign/02572-tick-10284.png",
+          "imageSha256": "32773a971b98aafa33c74f9ee4c3ace9cfba6eb3ff918320b86e5c2ef17ef8bf",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 13,
+          "screenX": 41,
+          "rawOriginY": 189,
+          "opaquePixelsExact": 177,
+          "denseCameraCandidate": 1137,
+          "staticCameraBest": 1137,
+          "staticCameraAliases": [
+            1137
+          ],
+          "exactStaticCells": 80
+        },
+        {
+          "sequence": 2573,
+          "tick": 10288,
+          "image": "evidence/local/reference-campaign/02573-tick-10288.png",
+          "imageSha256": "9e3234d408281a26131ead65418a1e6050acde67b18993874d72b0f22a8445c0",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 29,
+          "rawOriginY": 84,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 1212,
+          "staticCameraBest": 1212,
+          "staticCameraAliases": [
+            1212
+          ],
+          "exactStaticCells": 78
+        },
+        {
+          "sequence": 2594,
+          "tick": 10372,
+          "image": "evidence/local/reference-campaign/02594-tick-10372.png",
+          "imageSha256": "128a478aaad63ae8098eb43f4c60baf1f76680555163ca40ca4b981a84f7571e",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 13,
+          "screenX": 99,
+          "rawOriginY": 104,
+          "opaquePixelsExact": 177,
+          "denseCameraCandidate": 2098,
+          "staticCameraBest": 2098,
+          "staticCameraAliases": [
+            2098
+          ],
+          "exactStaticCells": 81
+        },
+        {
+          "sequence": 2595,
+          "tick": 10376,
+          "image": "evidence/local/reference-campaign/02595-tick-10376.png",
+          "imageSha256": "bf86fb9b855deff00eff8da9b70c738aa1a0c703b762456b2af636b8e4d64659",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 13,
+          "screenX": 158,
+          "rawOriginY": 34,
+          "opaquePixelsExact": 177,
+          "denseCameraCandidate": 2098,
+          "staticCameraBest": 2098,
+          "staticCameraAliases": [
+            2098
+          ],
+          "exactStaticCells": 83
+        },
+        {
+          "sequence": 2597,
+          "tick": 10384,
+          "image": "evidence/local/reference-campaign/02597-tick-10384.png",
+          "imageSha256": "4f9ff22291a2c894335a9a1c0b64c812c3a42fca75fe18252737f8e64662723b",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 13,
+          "screenX": 165,
+          "rawOriginY": 51,
+          "opaquePixelsExact": 177,
+          "denseCameraCandidate": 2201,
+          "staticCameraBest": 2201,
+          "staticCameraAliases": [
+            2201
+          ],
+          "exactStaticCells": 69
+        },
+        {
+          "sequence": 2598,
+          "tick": 10388,
+          "image": "evidence/local/reference-campaign/02598-tick-10388.png",
+          "imageSha256": "7380bb69b0f6478ed3c1ec926f85946fe1c14d817048dfecf23c4ccb65ea64bf",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 147,
+          "rawOriginY": 134,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 2277,
+          "staticCameraBest": 2277,
+          "staticCameraAliases": [
+            2277
+          ],
+          "exactStaticCells": 63
+        },
+        {
+          "sequence": 2598,
+          "tick": 10388,
+          "image": "evidence/local/reference-campaign/02598-tick-10388.png",
+          "imageSha256": "7380bb69b0f6478ed3c1ec926f85946fe1c14d817048dfecf23c4ccb65ea64bf",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 12,
+          "screenX": 224,
+          "rawOriginY": 198,
+          "opaquePixelsExact": 180,
+          "denseCameraCandidate": 2277,
+          "staticCameraBest": 2277,
+          "staticCameraAliases": [
+            2277
+          ],
+          "exactStaticCells": 63
+        },
+        {
+          "sequence": 2553,
+          "tick": 10208,
+          "image": "evidence/local/reference-campaign/02553-tick-10208.png",
+          "imageSha256": "dde1b7a6d8214c650b1aa0aa598cc298bafaaeb02710ed5bc9467a4a07663073",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 200,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 70
+        },
+        {
+          "sequence": 2554,
+          "tick": 10212,
+          "image": "evidence/local/reference-campaign/02554-tick-10212.png",
+          "imageSha256": "eee39f16cd30204fd8ad2f506772e68f79b8c9bbb83caa911ff622899716ce7b",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 200,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 70
+        },
+        {
+          "sequence": 2555,
+          "tick": 10216,
+          "image": "evidence/local/reference-campaign/02555-tick-10216.png",
+          "imageSha256": "c05521cf981a2220315a96751d9dabf01a8b515315065247c76bbfe17a41d509",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 200,
+          "rawOriginY": 110,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 70
+        },
+        {
+          "sequence": 2558,
+          "tick": 10228,
+          "image": "evidence/local/reference-campaign/02558-tick-10228.png",
+          "imageSha256": "4bf7ddf92c553bc112292f78b113df04733f98b9c7caccbaff670c5f03ed95eb",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 172,
+          "rawOriginY": 89,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 156,
+          "staticCameraBest": 156,
+          "staticCameraAliases": [
+            156
+          ],
+          "exactStaticCells": 82
+        },
+        {
+          "sequence": 2559,
+          "tick": 10232,
+          "image": "evidence/local/reference-campaign/02559-tick-10232.png",
+          "imageSha256": "eb445af9dd96610afe7779bcf064b2f626a43ac67eba43646eb4d708e74c329d",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 97,
+          "rawOriginY": 94,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 231,
+          "staticCameraBest": 231,
+          "staticCameraAliases": [
+            231
+          ],
+          "exactStaticCells": 72
+        },
+        {
+          "sequence": 2561,
+          "tick": 10240,
+          "image": "evidence/local/reference-campaign/02561-tick-10240.png",
+          "imageSha256": "369af75114a4b0de56f70342f24543ec94fb03c62eaae7a8c40ef5ee7db68abb",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 203,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 381,
+          "staticCameraBest": 381,
+          "staticCameraAliases": [
+            381
+          ],
+          "exactStaticCells": 67
+        },
+        {
+          "sequence": 2562,
+          "tick": 10244,
+          "image": "evidence/local/reference-campaign/02562-tick-10244.png",
+          "imageSha256": "56b86cad066888a0717f3d5c623d94ee71508d48b852d3e02dc3bf36b22922e3",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 128,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 456,
+          "staticCameraBest": 456,
+          "staticCameraAliases": [
+            456
+          ],
+          "exactStaticCells": 70
+        },
+        {
+          "sequence": 2563,
+          "tick": 10248,
+          "image": "evidence/local/reference-campaign/02563-tick-10248.png",
+          "imageSha256": "4010281a556d154b85b96ef939eb2a431945657ba5058a80a68a302a7c83800f",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 53,
+          "rawOriginY": 111,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 531,
+          "staticCameraBest": 531,
+          "staticCameraAliases": [
+            531
+          ],
+          "exactStaticCells": 78
+        },
+        {
+          "sequence": 2568,
+          "tick": 10268,
+          "image": "evidence/local/reference-campaign/02568-tick-10268.png",
+          "imageSha256": "47842d9cc0c9be6126b6e7077a1d8e789d6ac262149541f7dce2526536149c13",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 211,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 837,
+          "staticCameraBest": 837,
+          "staticCameraAliases": [
+            837
+          ],
+          "exactStaticCells": 60
+        },
+        {
+          "sequence": 2569,
+          "tick": 10272,
+          "image": "evidence/local/reference-campaign/02569-tick-10272.png",
+          "imageSha256": "24032a2964d59a8038ff984a3a66112455097c8524d6e6c7960407ba5edc70b7",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 136,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 912,
+          "staticCameraBest": 912,
+          "staticCameraAliases": [
+            912
+          ],
+          "exactStaticCells": 66
+        },
+        {
+          "sequence": 2570,
+          "tick": 10276,
+          "image": "evidence/local/reference-campaign/02570-tick-10276.png",
+          "imageSha256": "34cbfb1b05a070def7fd8a5a203159431fd74a633d0bdf5a94f81b92f70cd235",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 61,
+          "rawOriginY": 159,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 987,
+          "staticCameraBest": 987,
+          "staticCameraAliases": [
+            987
+          ],
+          "exactStaticCells": 64
+        },
+        {
+          "sequence": 2570,
+          "tick": 10276,
+          "image": "evidence/local/reference-campaign/02570-tick-10276.png",
+          "imageSha256": "34cbfb1b05a070def7fd8a5a203159431fd74a633d0bdf5a94f81b92f70cd235",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 205,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 987,
+          "staticCameraBest": 987,
+          "staticCameraAliases": [
+            987
+          ],
+          "exactStaticCells": 64
+        },
+        {
+          "sequence": 2571,
+          "tick": 10280,
+          "image": "evidence/local/reference-campaign/02571-tick-10280.png",
+          "imageSha256": "c0d578a014ccf431e10ee509154349fb89f9f701ec5a83eadb7faf786fe3163a",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 130,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1062,
+          "staticCameraBest": 1062,
+          "staticCameraAliases": [
+            1062
+          ],
+          "exactStaticCells": 76
+        },
+        {
+          "sequence": 2572,
+          "tick": 10284,
+          "image": "evidence/local/reference-campaign/02572-tick-10284.png",
+          "imageSha256": "32773a971b98aafa33c74f9ee4c3ace9cfba6eb3ff918320b86e5c2ef17ef8bf",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 55,
+          "rawOriginY": 111,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1137,
+          "staticCameraBest": 1137,
+          "staticCameraAliases": [
+            1137
+          ],
+          "exactStaticCells": 80
+        },
+        {
+          "sequence": 2572,
+          "tick": 10284,
+          "image": "evidence/local/reference-campaign/02572-tick-10284.png",
+          "imageSha256": "32773a971b98aafa33c74f9ee4c3ace9cfba6eb3ff918320b86e5c2ef17ef8bf",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 183,
+          "rawOriginY": 89,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1137,
+          "staticCameraBest": 1137,
+          "staticCameraAliases": [
+            1137
+          ],
+          "exactStaticCells": 80
+        },
+        {
+          "sequence": 2573,
+          "tick": 10288,
+          "image": "evidence/local/reference-campaign/02573-tick-10288.png",
+          "imageSha256": "9e3234d408281a26131ead65418a1e6050acde67b18993874d72b0f22a8445c0",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 108,
+          "rawOriginY": 89,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 1212,
+          "staticCameraBest": 1212,
+          "staticCameraAliases": [
+            1212
+          ],
+          "exactStaticCells": 78
+        },
+        {
+          "sequence": 2575,
+          "tick": 10296,
+          "image": "evidence/local/reference-campaign/02575-tick-10296.png",
+          "imageSha256": "d092ee37e1f3045941aa114a793e47913ecb94589920aba72413b1011dfc2fdc",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 214,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 1362,
+          "staticCameraBest": 1362,
+          "staticCameraAliases": [
+            1362
+          ],
+          "exactStaticCells": 67
+        },
+        {
+          "sequence": 2576,
+          "tick": 10300,
+          "image": "evidence/local/reference-campaign/02576-tick-10300.png",
+          "imageSha256": "1098f85e21397e99a70a609f707b6818eec2651f73c25d2d6738592cd379ce45",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 139,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 1437,
+          "staticCameraBest": 1437,
+          "staticCameraAliases": [
+            1437
+          ],
+          "exactStaticCells": 67
+        },
+        {
+          "sequence": 2577,
+          "tick": 10304,
+          "image": "evidence/local/reference-campaign/02577-tick-10304.png",
+          "imageSha256": "450158e076159be497bc70c16a5c01ffd8b05e693342825a50798ba6c6e7c6f4",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 64,
+          "rawOriginY": 109,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1512,
+          "staticCameraBest": 1512,
+          "staticCameraAliases": [
+            1512
+          ],
+          "exactStaticCells": 78
+        },
+        {
+          "sequence": 2586,
+          "tick": 10340,
+          "image": "evidence/local/reference-campaign/02586-tick-10340.png",
+          "imageSha256": "0d67be6b8baaa430e18c66dc25aeeb472e9b4bdbee5632ca308a0fc12a8efeaf",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 194,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1766,
+          "staticCameraBest": 1766,
+          "staticCameraAliases": [
+            1766
+          ],
+          "exactStaticCells": 61
+        },
+        {
+          "sequence": 2587,
+          "tick": 10344,
+          "image": "evidence/local/reference-campaign/02587-tick-10344.png",
+          "imageSha256": "fae656f710df90977345a8046c7d561604feff5a20b101b8bcab8012e3932a1f",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 132,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 1828,
+          "staticCameraBest": 1828,
+          "staticCameraAliases": [
+            1828
+          ],
+          "exactStaticCells": 60
+        },
+        {
+          "sequence": 2589,
+          "tick": 10352,
+          "image": "evidence/local/reference-campaign/02589-tick-10352.png",
+          "imageSha256": "cbbd9e050e80531e8a571cc131ae428b116397b346efa09bfb2b99856698ee7b",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 222,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 1882,
+          "staticCameraBest": 1882,
+          "staticCameraAliases": [
+            1882
+          ],
+          "exactStaticCells": 65
+        },
+        {
+          "sequence": 2592,
+          "tick": 10364,
+          "image": "evidence/local/reference-campaign/02592-tick-10364.png",
+          "imageSha256": "1125fe48697fdc7c5476795c65809f256ef619c1bce4e9fa5638c0d4db87c24c",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 235,
+          "rawOriginY": 89,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 1997,
+          "staticCameraBest": 1997,
+          "staticCameraAliases": [
+            1997
+          ],
+          "exactStaticCells": 81
+        },
+        {
+          "sequence": 2593,
+          "tick": 10368,
+          "image": "evidence/local/reference-campaign/02593-tick-10368.png",
+          "imageSha256": "b401a01b73f11425abd7d403c1a4c0f11e4325afe9d79029ad2b0da41a5cf7e2",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 166,
+          "rawOriginY": 95,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 2066,
+          "staticCameraBest": 2066,
+          "staticCameraAliases": [
+            2066
+          ],
+          "exactStaticCells": 82
+        },
+        {
+          "sequence": 2595,
+          "tick": 10376,
+          "image": "evidence/local/reference-campaign/02595-tick-10376.png",
+          "imageSha256": "bf86fb9b855deff00eff8da9b70c738aa1a0c703b762456b2af636b8e4d64659",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 6,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 2098,
+          "staticCameraBest": 2098,
+          "staticCameraAliases": [
+            2098
+          ],
+          "exactStaticCells": 83
+        },
+        {
+          "sequence": 2598,
+          "tick": 10388,
+          "image": "evidence/local/reference-campaign/02598-tick-10388.png",
+          "imageSha256": "7380bb69b0f6478ed3c1ec926f85946fe1c14d817048dfecf23c4ccb65ea64bf",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 211,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 2277,
+          "staticCameraBest": 2277,
+          "staticCameraAliases": [
+            2277
+          ],
+          "exactStaticCells": 63
+        },
+        {
+          "sequence": 2599,
+          "tick": 10392,
+          "image": "evidence/local/reference-campaign/02599-tick-10392.png",
+          "imageSha256": "5fe79e73a5d2497dbe131bfd32a8895ce309c2dca54dbfe80e83d2ac689ccbc8",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 147,
+          "rawOriginY": 105,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 2341,
+          "staticCameraBest": 2341,
+          "staticCameraAliases": [
+            2341
+          ],
+          "exactStaticCells": 67
+        },
+        {
+          "sequence": 2600,
+          "tick": 10396,
+          "image": "evidence/local/reference-campaign/02600-tick-10396.png",
+          "imageSha256": "7ef6c8e2675453770f86beb80d8a42e386ef0a56875d3ccab865d93772caed41",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 133,
+          "rawOriginY": 110,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 2355,
+          "staticCameraBest": 2355,
+          "staticCameraAliases": [
+            2355
+          ],
+          "exactStaticCells": 70
+        }
+      ]
+    },
+    {
+      "area": "area-4",
+      "enemies": [
+        {
+          "kind": "blooper",
+          "x": 416,
+          "y": 176,
+          "direction": -1,
+          "evidence": "screenshot sequence 2613 tick 10448; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred",
+          "palette": "0f-0f-30-10"
+        },
+        {
+          "kind": "blooper",
+          "x": 832,
+          "y": 96,
+          "direction": -1,
+          "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 10; camera registration inferred",
+          "palette": "0f-0f-30-10"
+        },
+        {
+          "kind": "blooper",
+          "x": 848,
+          "y": 176,
+          "direction": 1,
+          "evidence": "screenshot sequence 2622 tick 10484; exact enemy-table-0f-0f-30-10.png cell 11; camera registration inferred",
+          "palette": "0f-0f-30-10"
+        }
+      ],
+      "platforms": [],
+      "generators": [],
+      "cannons": [],
+      "firebarSource": {
+        "sourceArea": "area-3",
+        "expectedSourceSpecs": [
+          {
+            "x": 328,
+            "y": 120,
+            "length": 6,
+            "speed": 0.03244
+          },
+          {
+            "x": 504,
+            "y": 168,
+            "length": 6,
+            "speed": -0.03106
+          },
+          {
+            "x": 648,
+            "y": 104,
+            "length": 6,
+            "speed": 0.03106
+          },
+          {
+            "x": 840,
+            "y": 136,
+            "length": 6,
+            "speed": 0.03276
+          },
+          {
+            "x": 920,
+            "y": 136,
+            "length": 6,
+            "speed": 0.03276
+          },
+          {
+            "x": 952,
+            "y": 136,
+            "length": 6,
+            "speed": 0.032
+          },
+          {
+            "x": 968,
+            "y": 120,
+            "length": 6,
+            "speed": -0.0321
+          }
+        ],
+        "owner": "/root/platform_measurement",
+        "provenSubset": [
+          {
+            "x": 328,
+            "y": 120,
+            "evidence": "evidence/firebar-water-heldout-validation.json",
+            "candidate": "data/firebar-water-candidate.json",
+            "measurement": "733 exact flame centers over98 calibration +50 heldout angles, zero-pixel error; camera0..75 independently anchored by256RGBpixels of entry floor edge. Direction+1/init768."
+          }
+        ],
+        "coordinateAndMotorStatus": "first pivot independently proven; remaining6 pivots under independent static geometry audit; do not translate blindly"
+      },
+      "classification": "Area remap proven. Original3 Blooper spawn specs preserved as qualified candidates; exact lateworld coordinates are not proven by repetitive brick registration. No HammerBro,Podoboo,Piranha orBowser belongs in this observed water room.",
+      "coordinateUncertainty": "First Blooper rawworld416 at10448 is supported by unique camera207/154 exact complete cells; accepted densecamera223 is16px ahead. Later static-map registrations become nonmonotonic and can alias8/16px. Do not ceil16 a new world coordinate based on those aliases. Species/track count observed; full native spawn states unmeasured.",
+      "evidence": [
+        {
+          "sequence": 2613,
+          "tick": 10448,
+          "image": "evidence/local/reference-campaign/02613-tick-10448.png",
+          "imageSha256": "629c054f469a40cfcc859aa0cbc6ee37b2135e8e16966bd2bed4dde3be75fd63",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 209,
+          "rawOriginY": 158,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 223,
+          "staticCameraBest": 207,
+          "staticCameraAliases": [
+            207
+          ],
+          "exactStaticCells": 154
+        },
+        {
+          "sequence": 2614,
+          "tick": 10452,
+          "image": "evidence/local/reference-campaign/02614-tick-10452.png",
+          "imageSha256": "dd543bca066ec7680a4f2c4b0ae86ad748efc7c6938e9e2c92f9cdbc6ce4dec2",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 154,
+          "rawOriginY": 158,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 268,
+          "staticCameraBest": 252,
+          "staticCameraAliases": [
+            252
+          ],
+          "exactStaticCells": 154
+        },
+        {
+          "sequence": 2615,
+          "tick": 10456,
+          "image": "evidence/local/reference-campaign/02615-tick-10456.png",
+          "imageSha256": "28a7adc5d6d03284cad328c9d079c25c73544e8bfddf08374a0fc6dc9ada8f37",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 87,
+          "rawOriginY": 140,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 337,
+          "staticCameraBest": 337,
+          "staticCameraAliases": [
+            337,
+            353,
+            369,
+            385,
+            401
+          ],
+          "exactStaticCells": 165
+        },
+        {
+          "sequence": 2616,
+          "tick": 10460,
+          "image": "evidence/local/reference-campaign/02616-tick-10460.png",
+          "imageSha256": "eca2fa55fea461ee9eb3502ec549c9d39333b8530d4aabfc362de52efae0f419",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 47,
+          "rawOriginY": 147,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 382,
+          "staticCameraBest": 342,
+          "staticCameraAliases": [
+            342,
+            350,
+            358,
+            366,
+            374,
+            382,
+            390,
+            398,
+            406,
+            414
+          ],
+          "exactStaticCells": 165
+        },
+        {
+          "sequence": 2617,
+          "tick": 10464,
+          "image": "evidence/local/reference-campaign/02617-tick-10464.png",
+          "imageSha256": "36820c75b1fa36a099b722be60e24c078c537ad5f75d53f0c6dac05364b190d4",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 29,
+          "rawOriginY": 122,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 419,
+          "staticCameraBest": 419,
+          "staticCameraAliases": [
+            419
+          ],
+          "exactStaticCells": 161
+        },
+        {
+          "sequence": 2622,
+          "tick": 10484,
+          "image": "evidence/local/reference-campaign/02622-tick-10484.png",
+          "imageSha256": "27a901f6a6bc6e2807a39fb8402e441378c38a187e8d2d5dd3bb17567c2b4e2a",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 203,
+          "rawOriginY": 81,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 645,
+          "staticCameraBest": 645,
+          "staticCameraAliases": [
+            645
+          ],
+          "exactStaticCells": 158
+        },
+        {
+          "sequence": 2622,
+          "tick": 10484,
+          "image": "evidence/local/reference-campaign/02622-tick-10484.png",
+          "imageSha256": "27a901f6a6bc6e2807a39fb8402e441378c38a187e8d2d5dd3bb17567c2b4e2a",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 233,
+          "rawOriginY": 156,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 645,
+          "staticCameraBest": 645,
+          "staticCameraAliases": [
+            645
+          ],
+          "exactStaticCells": 158
+        },
+        {
+          "sequence": 2623,
+          "tick": 10488,
+          "image": "evidence/local/reference-campaign/02623-tick-10488.png",
+          "imageSha256": "f8042e8666105dc2b57e47a35eda485b89981d5fd6f92830f7d298c2fda9add1",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 150,
+          "rawOriginY": 87,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 690,
+          "staticCameraBest": 690,
+          "staticCameraAliases": [
+            690
+          ],
+          "exactStaticCells": 166
+        },
+        {
+          "sequence": 2623,
+          "tick": 10488,
+          "image": "evidence/local/reference-campaign/02623-tick-10488.png",
+          "imageSha256": "f8042e8666105dc2b57e47a35eda485b89981d5fd6f92830f7d298c2fda9add1",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 218,
+          "rawOriginY": 129,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 690,
+          "staticCameraBest": 690,
+          "staticCameraAliases": [
+            690
+          ],
+          "exactStaticCells": 166
+        },
+        {
+          "sequence": 2624,
+          "tick": 10492,
+          "image": "evidence/local/reference-campaign/02624-tick-10492.png",
+          "imageSha256": "0f642ef19848fed149928e9d947dda5e7fa2bdfda947f9df4707f2b516539956",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 173,
+          "rawOriginY": 144,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 751,
+          "staticCameraBest": 703,
+          "staticCameraAliases": [
+            703
+          ],
+          "exactStaticCells": 166
+        },
+        {
+          "sequence": 2625,
+          "tick": 10496,
+          "image": "evidence/local/reference-campaign/02625-tick-10496.png",
+          "imageSha256": "8284b2ccc40f44df4eee806da3d0fe3df130946d88ca4cb8ae9084afdcfbab03",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 36,
+          "rawOriginY": 84,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 796,
+          "staticCameraBest": 692,
+          "staticCameraAliases": [
+            692
+          ],
+          "exactStaticCells": 165
+        },
+        {
+          "sequence": 2625,
+          "tick": 10496,
+          "image": "evidence/local/reference-campaign/02625-tick-10496.png",
+          "imageSha256": "8284b2ccc40f44df4eee806da3d0fe3df130946d88ca4cb8ae9084afdcfbab03",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 160,
+          "rawOriginY": 113,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 796,
+          "staticCameraBest": 692,
+          "staticCameraAliases": [
+            692
+          ],
+          "exactStaticCells": 165
+        },
+        {
+          "sequence": 2626,
+          "tick": 10500,
+          "image": "evidence/local/reference-campaign/02626-tick-10500.png",
+          "imageSha256": "de8b5f27aa405b6cf1c15731a4b56f84dea7ff140a7655b8dec37703d782e8d9",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 21,
+          "rawOriginY": 53,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 841,
+          "staticCameraBest": 825,
+          "staticCameraAliases": [
+            825
+          ],
+          "exactStaticCells": 162
+        },
+        {
+          "sequence": 2626,
+          "tick": 10500,
+          "image": "evidence/local/reference-campaign/02626-tick-10500.png",
+          "imageSha256": "de8b5f27aa405b6cf1c15731a4b56f84dea7ff140a7655b8dec37703d782e8d9",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 115,
+          "rawOriginY": 125,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 841,
+          "staticCameraBest": 825,
+          "staticCameraAliases": [
+            825
+          ],
+          "exactStaticCells": 162
+        },
+        {
+          "sequence": 2627,
+          "tick": 10504,
+          "image": "evidence/local/reference-campaign/02627-tick-10504.png",
+          "imageSha256": "5d4421ca3cc06661707102856eac96604ec69a90f2e7c6033bbb5314c45a0ffd",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 102,
+          "rawOriginY": 97,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 886,
+          "staticCameraBest": 886,
+          "staticCameraAliases": [
+            886
+          ],
+          "exactStaticCells": 154
+        },
+        {
+          "sequence": 2628,
+          "tick": 10508,
+          "image": "evidence/local/reference-campaign/02628-tick-10508.png",
+          "imageSha256": "c889d4a4230516788ae174e733b840c802a93a1f794b8740910d9454e2e03362",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 57,
+          "rawOriginY": 108,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 931,
+          "staticCameraBest": 931,
+          "staticCameraAliases": [
+            931
+          ],
+          "exactStaticCells": 149
+        },
+        {
+          "sequence": 2629,
+          "tick": 10512,
+          "image": "evidence/local/reference-campaign/02629-tick-10512.png",
+          "imageSha256": "d70893da7b3174c1fc18aab20c0f56dc89919dc516d17b8ed8f8231b6c5aa33b",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 11,
+          "screenX": 71,
+          "rawOriginY": 86,
+          "opaquePixelsExact": 218,
+          "denseCameraCandidate": 945,
+          "staticCameraBest": 945,
+          "staticCameraAliases": [
+            945
+          ],
+          "exactStaticCells": 166
+        },
+        {
+          "sequence": 2630,
+          "tick": 10516,
+          "image": "evidence/local/reference-campaign/02630-tick-10516.png",
+          "imageSha256": "04333765d27b0b65a8945c34cc2651ebfd3c21e471d86c6e9ed1c838bcb7330f",
+          "paletteSheet": "enemy-table-0f-0f-30-10.png",
+          "cell": 10,
+          "screenX": 75,
+          "rawOriginY": 91,
+          "opaquePixelsExact": 172,
+          "denseCameraCandidate": 945,
+          "staticCameraBest": 945,
+          "staticCameraAliases": [
+            945
+          ],
+          "exactStaticCells": 166
+        }
+      ]
+    },
+    {
+      "area": "area-5",
+      "enemies": [
+        {
+          "kind": "piranha",
+          "x": 168,
+          "y": 200,
+          "direction": -1,
+          "evidence": "screenshot sequence 2634 tick 10532; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "hammerBro",
+          "x": 288,
+          "y": 208,
+          "direction": -1,
+          "evidence": "screenshot sequence 2638 tick 10548; exact enemy-table-0f-1c-36-17.png cell 31; camera registration inferred",
+          "palette": "0f-1c-36-17"
+        },
+        {
+          "kind": "podoboo",
+          "x": 368,
+          "y": 240,
+          "direction": -1,
+          "evidence": "screenshot sequence 2640 tick 10556; exact enemy-table-0f-16-30-27.png cell 34; camera registration inferred",
+          "palette": "0f-16-30-27"
+        }
+      ],
+      "platforms": [],
+      "generators": [],
+      "firebars": [],
+      "cannons": [],
+      "boss": {
+        "sourceArea": "area-4",
+        "expectedSourceSpec": {
+          "kind": "bowser",
+          "x": 624,
+          "y": 224,
+          "direction": -1,
+          "evidence": "screenshot sequence 2645 tick 10576; exact enemy-table-0f-1a-30-27.png cell 35; camera registration inferred"
+        },
+        "action": "consume as evidence only; do not add second Bowser; existing castle-observations area-5 boss override remains authoritative",
+        "expectedFinalCandidate": {
+          "kind": "bowser",
+          "x": 624,
+          "y": 160
+        },
+        "source": "data/castle-observations.json levels[id=8-4].bowser.inferredInitial"
+      },
+      "classification": "Piranha168 on pipe160/top176, HammerBro observedmoving280..265/ground208, Podoboo368 observedairborne114 with candidatehidden240. Keep their original inferred horizontal spawn grids; moving sightings are not forced initial states. Bowser224 was a death-fall maximum, not live foot.",
+      "evidence": [
+        {
+          "sequence": 2638,
+          "tick": 10548,
+          "image": "evidence/local/reference-campaign/02638-tick-10548.png",
+          "imageSha256": "2e2b47a89a495df6fdef6e2c76bfdcd290e04c664fa2f7dad5ea8d5c0a02a529",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 31,
+          "screenX": 237,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 227,
+          "denseCameraCandidate": 43,
+          "staticCameraBest": 43,
+          "staticCameraAliases": [
+            43
+          ],
+          "exactStaticCells": 38
+        },
+        {
+          "sequence": 2639,
+          "tick": 10552,
+          "image": "evidence/local/reference-campaign/02639-tick-10552.png",
+          "imageSha256": "a5e93141df7d12e73bc867e7d7d58d81e4a5fdc290c4f31cccf19c3dc32756c3",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 30,
+          "screenX": 155,
+          "rawOriginY": 185,
+          "opaquePixelsExact": 212,
+          "denseCameraCandidate": 118,
+          "staticCameraBest": 118,
+          "staticCameraAliases": [
+            118
+          ],
+          "exactStaticCells": 32
+        },
+        {
+          "sequence": 2640,
+          "tick": 10556,
+          "image": "evidence/local/reference-campaign/02640-tick-10556.png",
+          "imageSha256": "d99ba06506457bb97de6f908e350ec95e688368f4c8f831e8bfd86882dbadb19",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 30,
+          "screenX": 91,
+          "rawOriginY": 110,
+          "opaquePixelsExact": 212,
+          "denseCameraCandidate": 174,
+          "staticCameraBest": 174,
+          "staticCameraAliases": [
+            174
+          ],
+          "exactStaticCells": 31
+        },
+        {
+          "sequence": 2640,
+          "tick": 10556,
+          "image": "evidence/local/reference-campaign/02640-tick-10556.png",
+          "imageSha256": "d99ba06506457bb97de6f908e350ec95e688368f4c8f831e8bfd86882dbadb19",
+          "paletteSheet": "enemy-table-0f-16-30-27.png",
+          "cell": 34,
+          "screenX": 194,
+          "rawOriginY": 90,
+          "opaquePixelsExact": 182,
+          "denseCameraCandidate": 174,
+          "staticCameraBest": 174,
+          "staticCameraAliases": [
+            174
+          ],
+          "exactStaticCells": 31
+        },
+        {
+          "sequence": 2641,
+          "tick": 10560,
+          "image": "evidence/local/reference-campaign/02641-tick-10560.png",
+          "imageSha256": "07fd37df1c88ef7abfcc3e079405f79d1403cc51d08ad7367fc5525865a36f20",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 30,
+          "screenX": 22,
+          "rawOriginY": 163,
+          "opaquePixelsExact": 212,
+          "denseCameraCandidate": 249,
+          "staticCameraBest": 249,
+          "staticCameraAliases": [
+            249
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2642,
+          "tick": 10564,
+          "image": "evidence/local/reference-campaign/02642-tick-10564.png",
+          "imageSha256": "5d702d6d2bd64e37dbcee3c2fcf7b1190df66fdb63ad86b655d3f452181dc015",
+          "paletteSheet": "sprite-bowser_flame-0.png",
+          "cell": -1,
+          "screenX": 232,
+          "rawOriginY": 145,
+          "opaquePixelsExact": 130,
+          "denseCameraCandidate": 324,
+          "staticCameraBest": 324,
+          "staticCameraAliases": [
+            324
+          ],
+          "exactStaticCells": 52
+        },
+        {
+          "sequence": 2643,
+          "tick": 10568,
+          "image": "evidence/local/reference-campaign/02643-tick-10568.png",
+          "imageSha256": "5861d49f669b2461dba9d51a01bbf270638708973c792e0c739b0fd8220d1fc9",
+          "paletteSheet": "sprite-bowser_flame-1.png",
+          "cell": -1,
+          "screenX": 128,
+          "rawOriginY": 145,
+          "opaquePixelsExact": 130,
+          "denseCameraCandidate": 387,
+          "staticCameraBest": 387,
+          "staticCameraAliases": [
+            387
+          ],
+          "exactStaticCells": 54
+        },
+        {
+          "sequence": 2644,
+          "tick": 10572,
+          "image": "evidence/local/reference-campaign/02644-tick-10572.png",
+          "imageSha256": "c3be682ab7358446f6f3288b6697541c870983bacb496d6cee26fb499e3740b7",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 38,
+          "screenX": 190,
+          "rawOriginY": 102,
+          "opaquePixelsExact": 310,
+          "denseCameraCandidate": 462,
+          "staticCameraBest": 462,
+          "staticCameraAliases": [
+            462
+          ],
+          "exactStaticCells": 44
+        },
+        {
+          "sequence": 2644,
+          "tick": 10572,
+          "image": "evidence/local/reference-campaign/02644-tick-10572.png",
+          "imageSha256": "c3be682ab7358446f6f3288b6697541c870983bacb496d6cee26fb499e3740b7",
+          "paletteSheet": "sprite-bowser_flame-0.png",
+          "cell": -1,
+          "screenX": 12,
+          "rawOriginY": 145,
+          "opaquePixelsExact": 130,
+          "denseCameraCandidate": 462,
+          "staticCameraBest": 462,
+          "staticCameraAliases": [
+            462
+          ],
+          "exactStaticCells": 44
+        },
+        {
+          "sequence": 2645,
+          "tick": 10576,
+          "image": "evidence/local/reference-campaign/02645-tick-10576.png",
+          "imageSha256": "d7ff5e50c9fcf20ffdbea1027b99a3b14f7afb339bbfc966a83ec9eddba83366",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 137,
+          "rawOriginY": 112,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2645,
+          "tick": 10576,
+          "image": "evidence/local/reference-campaign/02645-tick-10576.png",
+          "imageSha256": "d7ff5e50c9fcf20ffdbea1027b99a3b14f7afb339bbfc966a83ec9eddba83366",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 36,
+          "screenX": 153,
+          "rawOriginY": 120,
+          "opaquePixelsExact": 312,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2646,
+          "tick": 10580,
+          "image": "evidence/local/reference-campaign/02646-tick-10580.png",
+          "imageSha256": "5ffb33a2d3e774f9f626293ebb1e4229c87685f87db43c4f7ef23cc9a9c1acd8",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 144,
+          "rawOriginY": 130,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2646,
+          "tick": 10580,
+          "image": "evidence/local/reference-campaign/02646-tick-10580.png",
+          "imageSha256": "5ffb33a2d3e774f9f626293ebb1e4229c87685f87db43c4f7ef23cc9a9c1acd8",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 38,
+          "screenX": 128,
+          "rawOriginY": 138,
+          "opaquePixelsExact": 310,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2647,
+          "tick": 10584,
+          "image": "evidence/local/reference-campaign/02647-tick-10584.png",
+          "imageSha256": "c1d425756f53b6a5f089e3315a1d6bd0cd371192d496a0125900b2f9796801b2",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 148,
+          "rawOriginY": 130,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2647,
+          "tick": 10584,
+          "image": "evidence/local/reference-campaign/02647-tick-10584.png",
+          "imageSha256": "c1d425756f53b6a5f089e3315a1d6bd0cd371192d496a0125900b2f9796801b2",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 36,
+          "screenX": 132,
+          "rawOriginY": 138,
+          "opaquePixelsExact": 312,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2648,
+          "tick": 10588,
+          "image": "evidence/local/reference-campaign/02648-tick-10588.png",
+          "imageSha256": "4a7de8618b4287314e727b59a6587ac95673e966c9baadcc9522117f3a181873",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 148,
+          "rawOriginY": 130,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2648,
+          "tick": 10588,
+          "image": "evidence/local/reference-campaign/02648-tick-10588.png",
+          "imageSha256": "4a7de8618b4287314e727b59a6587ac95673e966c9baadcc9522117f3a181873",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 36,
+          "screenX": 132,
+          "rawOriginY": 138,
+          "opaquePixelsExact": 312,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 45
+        },
+        {
+          "sequence": 2649,
+          "tick": 10592,
+          "image": "evidence/local/reference-campaign/02649-tick-10592.png",
+          "imageSha256": "52d8aff8c30d43cb4404fe3684b816dcea0097947f357723332245f84826eed6",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 148,
+          "rawOriginY": 130,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2649,
+          "tick": 10592,
+          "image": "evidence/local/reference-campaign/02649-tick-10592.png",
+          "imageSha256": "52d8aff8c30d43cb4404fe3684b816dcea0097947f357723332245f84826eed6",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 38,
+          "screenX": 132,
+          "rawOriginY": 138,
+          "opaquePixelsExact": 310,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 41
+        },
+        {
+          "sequence": 2650,
+          "tick": 10596,
+          "image": "evidence/local/reference-campaign/02650-tick-10596.png",
+          "imageSha256": "4cc263d74e7f8a76b001d86e9071979d34ca699efe6c87decedadc036e46a8de",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 148,
+          "rawOriginY": 146,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2650,
+          "tick": 10596,
+          "image": "evidence/local/reference-campaign/02650-tick-10596.png",
+          "imageSha256": "4cc263d74e7f8a76b001d86e9071979d34ca699efe6c87decedadc036e46a8de",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 38,
+          "screenX": 132,
+          "rawOriginY": 154,
+          "opaquePixelsExact": 310,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 39
+        },
+        {
+          "sequence": 2651,
+          "tick": 10600,
+          "image": "evidence/local/reference-campaign/02651-tick-10600.png",
+          "imageSha256": "f7396fe752ff7d33a901a444471771661ed108a9a6fc3e42ad54778e9fe8255a",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 35,
+          "screenX": 148,
+          "rawOriginY": 207,
+          "opaquePixelsExact": 208,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 35
+        },
+        {
+          "sequence": 2651,
+          "tick": 10600,
+          "image": "evidence/local/reference-campaign/02651-tick-10600.png",
+          "imageSha256": "f7396fe752ff7d33a901a444471771661ed108a9a6fc3e42ad54778e9fe8255a",
+          "paletteSheet": "enemy-table-0f-1a-30-27.png",
+          "cell": 38,
+          "screenX": 132,
+          "rawOriginY": 215,
+          "opaquePixelsExact": 310,
+          "denseCameraCandidate": 492,
+          "staticCameraBest": 492,
+          "staticCameraAliases": [
+            492
+          ],
+          "exactStaticCells": 35
+        },
+        {
+          "sequence": 2634,
+          "tick": 10532,
+          "image": "evidence/local/reference-campaign/02634-tick-10532.png",
+          "imageSha256": "9303585fa84792a9db3ebdf210c1476a342e8bc1e460c4fc03806e2c52b58895",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 32,
+          "screenX": 168,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 150,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2635,
+          "tick": 10536,
+          "image": "evidence/local/reference-campaign/02635-tick-10536.png",
+          "imageSha256": "30f0b2e9dc0f5a699f91848d365526e0c35ddc7b39bddd9f25e3e2c922754f39",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 168,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        },
+        {
+          "sequence": 2636,
+          "tick": 10540,
+          "image": "evidence/local/reference-campaign/02636-tick-10540.png",
+          "imageSha256": "096f12ba38ea78f353ea752e6554d9cb28da867ac23d381e2dfee368a984cc46",
+          "paletteSheet": "enemy-table-0f-1c-36-17.png",
+          "cell": 33,
+          "screenX": 168,
+          "rawOriginY": 153,
+          "opaquePixelsExact": 118,
+          "denseCameraCandidate": 0,
+          "staticCameraBest": 0,
+          "staticCameraAliases": [
+            0
+          ],
+          "exactStaticCells": 40
+        }
+      ]
+    }
+  ],
+  "rejectedSpecials": [
+    {
+      "sourceArea": "area-3",
+      "expected": {
+        "kind": "billBlaster",
+        "x": 1024,
+        "y": 112,
+        "evidence": "Exact observed metatile107 upper cannon assembly; repeated shot timing not established."
+      },
+      "reason": "Metatile107 is the underwater side-pipe assembly, not cannon-top100. Real rightward pipe transition is observed10522→10526. Current compiler correctly ignores this survey special; do not add a bullet generator while remapping."
+    }
+  ],
+  "coverage": {
+    "validatedExactFragmentObservations": 319,
+    "perArea": {
+      "main": {
+        "goomba": 10,
+        "platform": 18,
+        "piranha": 3
+      },
+      "area-2": {
+        "beetle": 13,
+        "paratroopa": 15,
+        "piranha": 8
+      },
+      "area-3": {
+        "cheep": 12,
+        "piranha": 28
+      },
+      "area-4": {
+        "fireOrb": 168,
+        "blooper": 18
+      },
+      "area-5": {
+        "hammerBro": 4,
+        "podoboo": 1,
+        "flame": 3,
+        "bowserRear": 8,
+        "bowserFront": 7,
+        "piranha": 3
+      }
+    },
+    "additionalClippedPlantWitnesses": 2,
+    "observedButUnmeasured": [
+      "Flying-fish generator cadence/speed/launch selection",
+      "Piranha initial phases",
+      "Main moving-platform full phase/range/motor",
+      "Water latecamera coordinates, Blooper initial native states",
+      "WingedKoopa trajectories/initial phases",
+      "HammerBro movement/hammer cadence and Podoboo cycle",
+      "Bowser projectile phases remain existing castle candidate"
+    ],
+    "notProven": "Complete hidden object inventory cannot be established by passive route screenshots; observed moving track counts are candidates, and no unseen actors are invented."
+  },
+  "regressionRequirements": [
+    "No final-room NPC on water entry",
+    "No Blooper/firebar on fish-room entry",
+    "Exactly one Bowser only in final room with livefeet160",
+    "Retain all8 first-pipe-room actors",
+    "Physical fish-room loop/pipe transition must retain appropriate load profile",
+    "No staticCheep sighting population replacing a generator",
+    "Normal5-room progression uses ordinary controller input"
+  ],
+  "evidence": "evidence/entity-area-8-4-audit.json",
+  "report": "evidence/entity-area-8-4-corrections.md"
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "observed-hidden-block-runtime-v1",
+  "blocks": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "tile": [64, 8, 96],
+      "content": "1up",
+      "evidence": "data/reference-hidden-1-1.json: two independent ordinary activations, exact supplied1up artwork, collection/lives and uncollected control.",
+      "qualification": "Descriptor96 maps the observed invisible1up to the established mechanic. data/reference-hidden-1-1-availability.json proves consumption on activation persists across ordinary same-level death, whether collected or missed. Per-player independence and availability after level reentry remain inferred."
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "tile": [84, 9, 95],
+      "content": "coin",
+      "evidence": "data/five-two-vine-hidden-coin.json: complete pre-hit blank, raised/settled196 and direct66-to67 counter change with exact static camera anchors.",
+      "qualification": "Descriptor95 maps the observed invisible coin to the established mechanic. The adjacent vine destination is mapped separately."
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "tile": [38, 9, 95],
+      "content": "coin",
+      "evidence": "Native 8-4 room-two ticks 10176–10179: blank cell, coin reveal and award, then a used block 32px left of the suspended exit pipe; see evidence/eight-four-hidden-coin-findings.md.",
+      "qualification": "Descriptor95 maps the observed invisible coin to the established mechanic. The native hit is sampled at 7/8-frame intervals."
+    }
+  ]
+}

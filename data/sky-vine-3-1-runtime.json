@@ -1,0 +1,74 @@
+{
+  "source": "data/three-one-optional.json",
+  "mainArea": "main",
+  "room": "3-1-vine-sky",
+  "mainVine": {
+    "id": "3-1-sky-vine",
+    "x": 2096,
+    "baseY": 80,
+    "topY": -32,
+    "autoClimbFeetY": 64,
+    "transitionFeetY": 0
+  },
+  "entrySpawn": [
+    56,
+    240
+  ],
+  "entryVine": {
+    "id": "3-1-sky-entry",
+    "x": 64,
+    "baseY": 256,
+    "topY": 144,
+    "initialHeight": 0
+  },
+  "entry": {
+    "untilFeetY": 184,
+    "waitUntilGrowthComplete": true,
+    "exitRightX": 75,
+    "exitGroundFeetY": 208
+  },
+  "return": {
+    "belowY": 256,
+    "to": "main",
+    "spawn": [
+      2600,
+      0
+    ],
+    "camera": 2560
+  },
+  "status": "Block131,row5 activation, vine climb, distinct sky geometry, later neutral standing75/208 and ordinary fall-return2600/32 then2600/208 are observed. Unseen entrance/return spawns and growth/climb thresholds use the existing2-1 common-vine candidate and remain inferred. No missing geometry is synthesized.",
+  "mainTiles": [
+    [
+      129,
+      5,
+      81
+    ],
+    [
+      130,
+      5,
+      81
+    ],
+    [
+      131,
+      5,
+      81
+    ]
+  ],
+  "supersededFragments": {
+    "fromX": 2060,
+    "toX": 2112,
+    "y": 80,
+    "evidence": "Actual07825-tick02903.png shows upper three-brick strip anchored by used vine block2096,y80. Earlier canonical free fragments at2061+8n were raster-offset inferences, not distinct8px-spaced bricks."
+  },
+  "platform": {
+    "x": 256,
+    "y": 161,
+    "width": 48,
+    "axis": "x",
+    "range": 0,
+    "speed": 1
+  },
+  "platformStatus": "data/optional-cloud-3-1.json independently observes32complete312pxcloudposes: contact atfeet160/art161, right1px/native, neutralcarry and movementafterjump/walkoff. data/optional-cloud-3-1-end.json observes continuedrideuntilright-screenclipping thenordinaryfallreturn. Exact activationnativeframe/underside/pathdespawnremaininferred.",
+  "cameraEnd": 1248,
+  "cameraEndEvidence": "data/optional-cloud-3-1-end.json: static finalfloor col82/world1312 atscreen64 and independentlytracked1px/nativecloud atworld1459/screen211 givecamera1248. Roomwidth retains uncertain trailing observations; the observed scrollcap is separate."
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "player-walk-frozen-v2-candidate-v1",
+  "frozenUtc": "2026-11-05T23:56:13.298Z",
+  "parameters": {
+    "resetJump": true,
+    "timerAir": "always",
+    "advanceJump": false,
+    "ground": "both",
+    "resetStand": false,
+    "lag": 1,
+    "low": 0.875,
+    "high": 1.75,
+    "counterGround": "before"
+  },
+  "baseline": {
+    "resetJump": true,
+    "timerAir": "always",
+    "advanceJump": false,
+    "ground": "both",
+    "resetStand": false,
+    "lag": 1,
+    "low": 0.875,
+    "high": 1.75
+  },
+  "basis": {
+    "schema": "player-walk-production-basis-v1",
+    "generatedUtc": "2026-11-05T23:42:44.165Z",
+    "directory": "evidence/local/player-walk-basis-2026-11-05T23-42-44.154Z",
+    "simulationSha256": "4ea9eee8d9f7260bff95dd6fc516c530d10a5da9ee56e9c405de461063112d4b",
+    "hashes": {
+      "src/simulation.ts": "4ea9eee8d9f7260bff95dd6fc516c530d10a5da9ee56e9c405de461063112d4b",
+      "src/types.ts": "f4b82990844dc4b3b0ff0b2a635d1690727f676e320af70d6027b7f16e10aaf8",
+      "src/platform-motion.ts": "72fe2a11683f8193cdd3e4f87e9d42ced64cbfe16cecbcbce7b7e5e4846d2bb4",
+      "data/water-entry-rules.json": "75bb92eb2660a072337317a0eaf0869d883049824ef4a2dbffcebaada3d5d571",
+      "data/water-entry-5-2-rules.json": "29859bd7affe49eab361b4c01e63b3058b6f39127d7986504e424ed17356730c",
+      "src/water-physics.ts": "d883ffe79154de6dfd0d5a83cc907afa350846c8dfae7e90517756c9b7f53696",
+      "data/water-physics-rules.json": "0d025cd8ba87e309f7f52ab79ffcc5e306c0e88f5dba9a4439c8167d4c41d7ec",
+      "data/transition-measurements.json": "ddf82c10fd188e0960871b2c977c6f80036af0e27803c8c6ce9df060d5c2ede9",
+      "data/powerup-rules.json": "0ee57159f995cab79644210816c53b5339b08a1f9a3b325bdb57e6ed79a6d9da",
+      "data/enemy-rules.json": "8b0004e83c8399c00fe0629ce7849e1d49415a70fa905f7dbba4dcd0f0b23eca",
+      "data/death-rules.json": "275d73b005e596d2495fe366756f9ccfd19042d737b8b47d9178b67d52a28eb4",
+      "data/shell-rules.json": "7816e514bec96132a5922c226795129aab6ff614ba4d6c78e5ff89c3825b3340",
+      "data/stomp-rules.json": "286084f182901ffe898b7c7bf28c2cf39c67a9f4e43b3db119bf82228655ec38",
+      "data/flag-completion-rules.json": "3597a43b9ed63ff643df4f2a23f6e43c9505d3fd876dec80cd630f4869330b5c",
+      "data/castle-completion-rules.json": "230208fa9e43b3d2a2018939fc7c6297d145ea4338c5d4b195e6009c7b949665",
+      "src/levels.ts": "81b9c59fcfe05b503766e8f91351d8572feb9e1398738d718032c359ce55a79d",
+      "data/levels.json": "b1a460419cab5927eee990ac29e9100d594ea5b2e16c075bcba62ce3f6a63a3e"
+    },
+    "purpose": "Read-only timing/pose-state candidates using our own production engine; native velocity/grounded state is not exposed by the reference."
+  },
+  "validationPlanFile": "tools/player-walk-heldout-v2-plan.json",
+  "validationPlanSha256": "4c0da7b3a75b279c1e44cd9294889f85d436b81a0e13d55c8dcce1b53636dfb7",
+  "validationPlanDeclaredUtc": "2026-11-05T23:54:52.446Z",
+  "trainingInputs": {
+    "data/player-pose-observations.json": "1efe6cef80113e3069ef13e6e583d1f5905dd9691c4dad90b43970183e20ba9c",
+    "data/player-walk-training-observations.json": "5809e9259c9018cafef487a074e74ac5dcee70b9b2e52cb26a7edd91822e505f",
+    "data/player-walk-heldout-observations.json": "b89ccfc10eddc6a13d8a635f885521ac84eca58554eaa12ffdf48a5e3d30e7d7"
+  },
+  "selection": "One parent-requested physical-ordering hypothesis: gate only the walking-counter increment by pre-step groundedness; retain immediate landing visual selection/jumpPose clear. All819 previous eligible samples are now known calibration data. New v2 controls were declared before evaluation and remain uncaptured.",
+  "qualification": "Exact-cell and category differences plus known first-route guard regressions must be reported. No production write authorized.",
+  "trainingScore": {
+    "baseline": 124,
+    "candidate": 92,
+    "total": 819
+  },
+  "heldoutStatus": "New v2 observations have not been captured or used."
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "image-observed-incoming-castle-flame-v1",
+  "updatedUtc": "2026-11-06T01:57:02.715Z",
+  "scope": "Read-only2-4 source reference mechanics; no production integration and no full campaign win.",
+  "evidence": {
+    "freshStandardPrefixBranches": 17,
+    "individualExperimentalDecisions": 2189,
+    "allPrefixPNGsAndActualNativeFramesVerified": true,
+    "measurementSummary": "evidence/bowser-generator-measurement-summary.json",
+    "v1Failure": "evidence/bowser-generator-heldout-evaluation.json",
+    "v2Heldout": "evidence/bowser-generator-v2-heldout-evaluation.json",
+    "additionalProspective": "evidence/bowser-generator-v2-alive-frontier-evaluation.json"
+  },
+  "observedFacts": {
+    "safeStationaryNoFlameCameras": [
+      924,
+      1009,
+      1155
+    ],
+    "stationaryIncomingCameras": [
+      1277,
+      1424,
+      1577,
+      1603,
+      1653,
+      1749,
+      1776,
+      1802
+    ],
+    "observedIncomingImageY": [
+      113,
+      129,
+      145
+    ],
+    "longFixedCameraCadence": {
+      "camera": 1577,
+      "shots": 20,
+      "intervals": {
+        "intervals96": 7,
+        "intervals223": 12,
+        "lanes": {
+          "113": 4,
+          "129": 2,
+          "145": 14
+        }
+      },
+      "qualification": "Observed sample distribution only; not a universal RNG table."
+    },
+    "firstEventV2": {
+      "negativeBranches": 2,
+      "positiveBranches": [
+        {
+          "measurements": "data/bowser-generator-v2-manual-heldout-measurements.json",
+          "branch": 3,
+          "maxPositionErrorPixels": 2
+        },
+        {
+          "measurements": "data/bowser-generator-v2-delay-heldout-measurements.json",
+          "branch": 1,
+          "maxPositionErrorPixels": 1
+        },
+        {
+          "measurements": "data/bowser-generator-v2-alive-frontier-measurements.json",
+          "branch": 1,
+          "maxPositionErrorPixels": 0
+        }
+      ],
+      "tolerancePixels": 2
+    },
+    "nativeInputAccounting": "Actual response frames_advanced and applied_masks are recorded, never ticks*8."
+  },
+  "inferredFirstEventCandidate": {
+    "level": "2-4",
+    "cameraTrigger": 1265,
+    "initialDelayNativeFrames": 0,
+    "effectivePostBirthSourceOffsetX": 287,
+    "horizontalPixelsPerNativeFrame": -1.25,
+    "originMeaning": "32px beyond the rightmost256px logical viewport pixel. Effective position after birth processing; integration update order must preserve that meaning.",
+    "qualification": "Frozen V2 passes three fresh positive controls (max2,1,0px) and two no-cross branches unchanged. The two close no-cross branches later fall; they do not establish an exact alive boundary. Camera1265 is an inferred point in a screenshot-bounded frontier, not a direct API fact.",
+    "freeze": "data/bowser-generator-candidate-v2-freeze.json"
+  },
+  "unresolved": {
+    "targetYSelector": null,
+    "repeatTimerSelector": null,
+    "liveBowserSwitchRule": null,
+    "otherCastleTriggerPositions": null,
+    "cameraVersusLatchedPlayerFrontier": "Forward camera and player frontier are correlated. Exact trigger causality remains nonunique.",
+    "repeatCadenceCounterexample": "The prospective live platform wait atcamera1277 has later cohorts separated by roughly289native frames under a fixed camera-relative source interpretation;96/223 is not a universal rule. Source scheduling and active-object limits remain unresolved.",
+    "implementation": "Do not copy the recorded diagnostic birth sequence into runtime. A complete autonomous generator needs measured repeat/lane/switch rules, or explicit qualified inference beyond this first-event evidence."
+  },
+  "runtimeWrites": false
+}

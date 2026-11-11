@@ -1,0 +1,1420 @@
+{
+  "schema": "genuine-reference-camera-anchor-chain-v1",
+  "declaredUtc": "2026-11-06T01:18:49.854374+00:00",
+  "scope": "1-4genuine-source chain from lava-anchoredtick944/camera409 through996only. Registration beyond996wasambiguous and is excluded. Candidate hazard metadata only, no terrain/source modification.",
+  "anchor": {
+    "tick": 944,
+    "camera": 409,
+    "basis": "Exact red lava intervals atsource row224, same independent anchor used in locked first488bar motion proof.",
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00945-tick-00944.png",
+    "imageSHA256": "f8c5bca0cc4c851d31150c19223ef4fef0626c584d4022877345c1f39823bee4"
+  },
+  "registrationMethod": "Consecutiveactualsource RGBinlowerband96..208, excluding exactflamequads andsmallplayerorange neighborhood. Searchdelta0..26/native7or8frames. Keepbest3fits/margins, no staticlevel geometry orbarphase assumed. Upper48..80 occasionally differs1pxfromlowerband, hence measured lowerband chosenbeforeheldout.",
+  "toolSHA256": "7e49919ec974fdb0f4be9ef696c36769d3aa92c838dc726b3aa35ded1cb5d69f",
+  "rows": [
+    {
+      "tick": 945,
+      "nativeFrame": 7099,
+      "camera": 429,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 284,
+          "pixels": 25744,
+          "rate": 0.011031696706028589
+        },
+        {
+          "delta": 12,
+          "wrong": 1735,
+          "pixels": 26623,
+          "rate": 0.0651692145888893
+        },
+        {
+          "delta": 4,
+          "wrong": 3207,
+          "pixels": 27354,
+          "rate": 0.11724062294362798
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00946-tick-00945.png",
+      "imageSHA256": "d397c26692f4d20a3da2f85ac01d8e5172e25f1bff1f8c5579324e3d566c9dbe"
+    },
+    {
+      "tick": 946,
+      "nativeFrame": 7106,
+      "camera": 447,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 145,
+          "pixels": 26094,
+          "rate": 0.005556832988426458
+        },
+        {
+          "delta": 10,
+          "wrong": 1778,
+          "pixels": 26987,
+          "rate": 0.06588357357246082
+        },
+        {
+          "delta": 26,
+          "wrong": 1709,
+          "pixels": 25017,
+          "rate": 0.06831354678818403
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00947-tick-00946.png",
+      "imageSHA256": "0e825bf27fbc2b3c23c03c0e2b1beba0eab65147fca6cd980aea02213c1a01c2"
+    },
+    {
+      "tick": 947,
+      "nativeFrame": 7114,
+      "camera": 467,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 294,
+          "pixels": 25891,
+          "rate": 0.01135529720752385
+        },
+        {
+          "delta": 12,
+          "wrong": 1802,
+          "pixels": 26785,
+          "rate": 0.06727646070561881
+        },
+        {
+          "delta": 4,
+          "wrong": 3281,
+          "pixels": 27508,
+          "rate": 0.1192743929038825
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00948-tick-00947.png",
+      "imageSHA256": "a52a05bd0bb17bde4d9821f24f97eda8156c8daa8d4352e53bf76335940f2337"
+    },
+    {
+      "tick": 948,
+      "nativeFrame": 7121,
+      "camera": 467,
+      "fits": [
+        {
+          "delta": 0,
+          "wrong": 294,
+          "pixels": 27759,
+          "rate": 0.01059115962390576
+        },
+        {
+          "delta": 8,
+          "wrong": 1621,
+          "pixels": 26736,
+          "rate": 0.06062986235786954
+        },
+        {
+          "delta": 16,
+          "wrong": 2724,
+          "pixels": 25939,
+          "rate": 0.10501561355487875
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00949-tick-00948.png",
+      "imageSHA256": "73fd003dabf05b7f37d3097f4b9a108e64ef3bd6135694bf2a48254752157619"
+    },
+    {
+      "tick": 949,
+      "nativeFrame": 7129,
+      "camera": 467,
+      "fits": [
+        {
+          "delta": 0,
+          "wrong": 0,
+          "pixels": 27685,
+          "rate": 0.0
+        },
+        {
+          "delta": 8,
+          "wrong": 1436,
+          "pixels": 26517,
+          "rate": 0.0541539389825395
+        },
+        {
+          "delta": 16,
+          "wrong": 2484,
+          "pixels": 25569,
+          "rate": 0.09714889123548047
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00950-tick-00949.png",
+      "imageSHA256": "69671a2a35749357a7d4f5f6d7a47516d2a7df57e7c470b5a6a2b9244d352c07"
+    },
+    {
+      "tick": 950,
+      "nativeFrame": 7136,
+      "camera": 474,
+      "fits": [
+        {
+          "delta": 7,
+          "wrong": 0,
+          "pixels": 26941,
+          "rate": 0.0
+        },
+        {
+          "delta": 15,
+          "wrong": 1318,
+          "pixels": 25749,
+          "rate": 0.051186453842867685
+        },
+        {
+          "delta": 23,
+          "wrong": 2285,
+          "pixels": 24919,
+          "rate": 0.09169709859946226
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00951-tick-00950.png",
+      "imageSHA256": "66389589293568cc63c237a6117da43de7207f27c3abfd52129eb251941c0129"
+    },
+    {
+      "tick": 951,
+      "nativeFrame": 7144,
+      "camera": 485,
+      "fits": [
+        {
+          "delta": 11,
+          "wrong": 94,
+          "pixels": 26623,
+          "rate": 0.003530781654959997
+        },
+        {
+          "delta": 3,
+          "wrong": 1307,
+          "pixels": 27660,
+          "rate": 0.04725234996384671
+        },
+        {
+          "delta": 19,
+          "wrong": 1266,
+          "pixels": 25757,
+          "rate": 0.04915168692006057
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00952-tick-00951.png",
+      "imageSHA256": "c7c5a8cfa6a45d0738a4ffae039a5c75d929a68bf1713f9aea03d8876089d0d3"
+    },
+    {
+      "tick": 952,
+      "nativeFrame": 7151,
+      "camera": 498,
+      "fits": [
+        {
+          "delta": 13,
+          "wrong": 0,
+          "pixels": 26712,
+          "rate": 0.0
+        },
+        {
+          "delta": 21,
+          "wrong": 974,
+          "pixels": 25804,
+          "rate": 0.03774608587815843
+        },
+        {
+          "delta": 5,
+          "wrong": 1162,
+          "pixels": 27754,
+          "rate": 0.04186783887007278
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00953-tick-00952.png",
+      "imageSHA256": "616611b7c18b0809bf4005da0537b2801bb1610c86ef40bc70db4aa6378a3502"
+    },
+    {
+      "tick": 953,
+      "nativeFrame": 7159,
+      "camera": 515,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 26248,
+          "rate": 0.0
+        },
+        {
+          "delta": 25,
+          "wrong": 680,
+          "pixels": 25352,
+          "rate": 0.02682234143262859
+        },
+        {
+          "delta": 9,
+          "wrong": 848,
+          "pixels": 27223,
+          "rate": 0.031150130404437423
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00954-tick-00953.png",
+      "imageSHA256": "f3878d690d316f489a07028a17578304e478ccc7dff69c79f30c420a8a45bf9d"
+    },
+    {
+      "tick": 954,
+      "nativeFrame": 7166,
+      "camera": 533,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 26132,
+          "rate": 0.0
+        },
+        {
+          "delta": 10,
+          "wrong": 680,
+          "pixels": 27103,
+          "rate": 0.025089473490019554
+        },
+        {
+          "delta": 26,
+          "wrong": 680,
+          "pixels": 25236,
+          "rate": 0.026945633222380725
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00955-tick-00954.png",
+      "imageSHA256": "5139fb379e70df6c17ae508077f3d194695f7e05bd8c8a55f49eb7e0d68d8678"
+    },
+    {
+      "tick": 955,
+      "nativeFrame": 7174,
+      "camera": 553,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25831,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 754,
+          "pixels": 26726,
+          "rate": 0.028212227793160218
+        },
+        {
+          "delta": 4,
+          "wrong": 1511,
+          "pixels": 27768,
+          "rate": 0.05441515413425526
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00956-tick-00955.png",
+      "imageSHA256": "dd83f0763126ca1c2e89ef4dc9e200610ef4d5e990c559687be5a97bdad2fdf8"
+    },
+    {
+      "tick": 956,
+      "nativeFrame": 7181,
+      "camera": 570,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 26085,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 437,
+          "pixels": 26982,
+          "rate": 0.016195982506856423
+        },
+        {
+          "delta": 25,
+          "wrong": 446,
+          "pixels": 25100,
+          "rate": 0.017768924302788845
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00957-tick-00956.png",
+      "imageSHA256": "72f6337de3b86ddb0522a17e1cc9e61b783eab32e409befb6ac095045bec8715"
+    },
+    {
+      "tick": 957,
+      "nativeFrame": 7189,
+      "camera": 590,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25776,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 438,
+          "pixels": 26599,
+          "rate": 0.016466784465581412
+        },
+        {
+          "delta": 4,
+          "wrong": 787,
+          "pixels": 27632,
+          "rate": 0.028481470758540822
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00958-tick-00957.png",
+      "imageSHA256": "8403a0b6f3911c92566a715658e9254dfb44568150d4ebf9a521c3525009138b"
+    },
+    {
+      "tick": 958,
+      "nativeFrame": 7196,
+      "camera": 608,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25971,
+          "rate": 0.0
+        },
+        {
+          "delta": 26,
+          "wrong": 152,
+          "pixels": 25013,
+          "rate": 0.0060768400431775475
+        },
+        {
+          "delta": 10,
+          "wrong": 275,
+          "pixels": 26843,
+          "rate": 0.010244756547330775
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00959-tick-00958.png",
+      "imageSHA256": "3afb9a175b7c911ad6052d41b96ec91befe92355e318ec8d7565cd3ba34c0fd9"
+    },
+    {
+      "tick": 959,
+      "nativeFrame": 7204,
+      "camera": 628,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25467,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 137,
+          "pixels": 26355,
+          "rate": 0.005198254600645039
+        },
+        {
+          "delta": 4,
+          "wrong": 258,
+          "pixels": 27373,
+          "rate": 0.009425346144010522
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00960-tick-00959.png",
+      "imageSHA256": "103f39b73d026e8f1dec415c10f1a84464cfdb81d6472f46f4fc3aa4ccd319c7"
+    },
+    {
+      "tick": 960,
+      "nativeFrame": 7211,
+      "camera": 645,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25674,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 157,
+          "pixels": 26606,
+          "rate": 0.005900924603472901
+        },
+        {
+          "delta": 25,
+          "wrong": 171,
+          "pixels": 24771,
+          "rate": 0.006903233619958823
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00961-tick-00960.png",
+      "imageSHA256": "d6ab5d93d88d16e198028f78c761e416d14765d38a2c05727a25d96e0cababd7"
+    },
+    {
+      "tick": 961,
+      "nativeFrame": 7219,
+      "camera": 665,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25314,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 171,
+          "pixels": 26229,
+          "rate": 0.0065195013153379845
+        },
+        {
+          "delta": 4,
+          "wrong": 275,
+          "pixels": 27255,
+          "rate": 0.01008989176297927
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00962-tick-00961.png",
+      "imageSHA256": "4b7efdc1e1a80216b79acd16795fe47328d18e10889a55213ce5500bbcc2626c"
+    },
+    {
+      "tick": 962,
+      "nativeFrame": 7226,
+      "camera": 683,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25496,
+          "rate": 0.0
+        },
+        {
+          "delta": 26,
+          "wrong": 153,
+          "pixels": 24468,
+          "rate": 0.0062530652280529675
+        },
+        {
+          "delta": 10,
+          "wrong": 169,
+          "pixels": 26510,
+          "rate": 0.006374952847981894
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00963-tick-00962.png",
+      "imageSHA256": "1459bd082f8a20cfc8c22271def193f8a83e42075a5a5805fd50cfc504be75d1"
+    },
+    {
+      "tick": 963,
+      "nativeFrame": 7234,
+      "camera": 703,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25305,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 165,
+          "pixels": 26279,
+          "rate": 0.006278777731268313
+        },
+        {
+          "delta": 4,
+          "wrong": 263,
+          "pixels": 27226,
+          "rate": 0.0096598839344744
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00964-tick-00963.png",
+      "imageSHA256": "5658ad22c3be65cb607e3b1d2b5d8040e2894c7b45e6dd613949a68d8cbb100f"
+    },
+    {
+      "tick": 964,
+      "nativeFrame": 7241,
+      "camera": 720,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25680,
+          "rate": 0.0
+        },
+        {
+          "delta": 25,
+          "wrong": 167,
+          "pixels": 24617,
+          "rate": 0.0067839298046065725
+        },
+        {
+          "delta": 9,
+          "wrong": 254,
+          "pixels": 26660,
+          "rate": 0.009527381845461366
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00965-tick-00964.png",
+      "imageSHA256": "d10c7b90f8e799cdc137fb9987322aa4972e00c817f57ad2be8c98ed15c24c5e"
+    },
+    {
+      "tick": 965,
+      "nativeFrame": 7249,
+      "camera": 740,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 14,
+          "pixels": 25206,
+          "rate": 0.0005554233119098627
+        },
+        {
+          "delta": 12,
+          "wrong": 352,
+          "pixels": 26077,
+          "rate": 0.013498485255205736
+        },
+        {
+          "delta": 4,
+          "wrong": 572,
+          "pixels": 27011,
+          "rate": 0.021176557698715338
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00966-tick-00965.png",
+      "imageSHA256": "fcd0b78f5dbee8f3a3e61650d11578a2905e49a6b332bf943152bbf041348b62"
+    },
+    {
+      "tick": 966,
+      "nativeFrame": 7256,
+      "camera": 758,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 4,
+          "pixels": 25243,
+          "rate": 0.00015845977102563086
+        },
+        {
+          "delta": 10,
+          "wrong": 356,
+          "pixels": 26164,
+          "rate": 0.013606482189267697
+        },
+        {
+          "delta": 26,
+          "wrong": 329,
+          "pixels": 24171,
+          "rate": 0.013611352447147408
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00967-tick-00966.png",
+      "imageSHA256": "09aa4b4d19a870f2b6391f1ef206179d6cb55bc1604a404f8ec69f3f3a5962e9"
+    },
+    {
+      "tick": 967,
+      "nativeFrame": 7264,
+      "camera": 778,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24782,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 336,
+          "pixels": 25648,
+          "rate": 0.013100436681222707
+        },
+        {
+          "delta": 4,
+          "wrong": 565,
+          "pixels": 26468,
+          "rate": 0.021346531660873507
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00968-tick-00967.png",
+      "imageSHA256": "3a17df7081d5228b9e18334108b435fbf68b16578e69b063c98d7907af704c0b"
+    },
+    {
+      "tick": 968,
+      "nativeFrame": 7271,
+      "camera": 795,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25759,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 229,
+          "pixels": 26318,
+          "rate": 0.008701269093396155
+        },
+        {
+          "delta": 25,
+          "wrong": 247,
+          "pixels": 24933,
+          "rate": 0.009906549552801508
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00969-tick-00968.png",
+      "imageSHA256": "42070cb284974882ac93ec65d548283a696981fc71a7c2492989feca1a65489e"
+    },
+    {
+      "tick": 969,
+      "nativeFrame": 7279,
+      "camera": 815,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25687,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 145,
+          "pixels": 26508,
+          "rate": 0.00547004677833107
+        },
+        {
+          "delta": 4,
+          "wrong": 270,
+          "pixels": 27513,
+          "rate": 0.009813542688910697
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00970-tick-00969.png",
+      "imageSHA256": "058310e2601b6b92e774552444a0a2089ae8a9649963228b0876917a70cb118e"
+    },
+    {
+      "tick": 970,
+      "nativeFrame": 7286,
+      "camera": 833,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25971,
+          "rate": 0.0
+        },
+        {
+          "delta": 26,
+          "wrong": 152,
+          "pixels": 25013,
+          "rate": 0.0060768400431775475
+        },
+        {
+          "delta": 10,
+          "wrong": 214,
+          "pixels": 26798,
+          "rate": 0.007985670572430778
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00971-tick-00970.png",
+      "imageSHA256": "42fb0e04efa6771ed82373f3c25fd21a144f431fb2824304f89ae13830181034"
+    },
+    {
+      "tick": 971,
+      "nativeFrame": 7294,
+      "camera": 853,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25594,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 290,
+          "pixels": 26382,
+          "rate": 0.010992343264346904
+        },
+        {
+          "delta": 4,
+          "wrong": 575,
+          "pixels": 27420,
+          "rate": 0.020970094821298323
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00972-tick-00971.png",
+      "imageSHA256": "7fc89eab2854ee2ba7ed82c40a3cf6702aef043ffdef5a4404a9362b26b50f64"
+    },
+    {
+      "tick": 972,
+      "nativeFrame": 7301,
+      "camera": 870,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25949,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 294,
+          "pixels": 26752,
+          "rate": 0.010989832535885168
+        },
+        {
+          "delta": 25,
+          "wrong": 319,
+          "pixels": 24896,
+          "rate": 0.012813303341902314
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00973-tick-00972.png",
+      "imageSHA256": "a55c4f710ea6aea7ad7dfb6b191619a1201b45ca00158803a4273abcb1f88754"
+    },
+    {
+      "tick": 973,
+      "nativeFrame": 7309,
+      "camera": 890,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25641,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 299,
+          "pixels": 26365,
+          "rate": 0.011340792717618054
+        },
+        {
+          "delta": 4,
+          "wrong": 566,
+          "pixels": 27386,
+          "rate": 0.02066749434017381
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00974-tick-00973.png",
+      "imageSHA256": "fa95732ecaddb92d98efc2c947730cc6f7ff91fbfad9410324f9eac1f6b6f8d2"
+    },
+    {
+      "tick": 974,
+      "nativeFrame": 7316,
+      "camera": 908,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25797,
+          "rate": 0.0
+        },
+        {
+          "delta": 10,
+          "wrong": 323,
+          "pixels": 26568,
+          "rate": 0.01215748268593797
+        },
+        {
+          "delta": 26,
+          "wrong": 314,
+          "pixels": 24781,
+          "rate": 0.012670997941971672
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00975-tick-00974.png",
+      "imageSHA256": "f7fcc62cf84c6a0e98cce9a9d772c8a54170fef02054f731d1ee4780d5b62283"
+    },
+    {
+      "tick": 975,
+      "nativeFrame": 7324,
+      "camera": 928,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25350,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 383,
+          "pixels": 26126,
+          "rate": 0.014659725943504554
+        },
+        {
+          "delta": 4,
+          "wrong": 710,
+          "pixels": 27109,
+          "rate": 0.026190564019329374
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00976-tick-00975.png",
+      "imageSHA256": "6cb4de55214cebdd07ebe2a16ff3cf29205aea36f47a4f7ec4240bee2e0ebff8"
+    },
+    {
+      "tick": 976,
+      "nativeFrame": 7331,
+      "camera": 945,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25557,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 404,
+          "pixels": 26390,
+          "rate": 0.01530882910193255
+        },
+        {
+          "delta": 25,
+          "wrong": 427,
+          "pixels": 24565,
+          "rate": 0.017382454711988602
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00977-tick-00976.png",
+      "imageSHA256": "2bf4231b1f7fc993f049a4278c8bbf282c756e0579fe221cf6bdb9bd2222543c"
+    },
+    {
+      "tick": 977,
+      "nativeFrame": 7339,
+      "camera": 965,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25122,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 416,
+          "pixels": 26003,
+          "rate": 0.01599815405914702
+        },
+        {
+          "delta": 4,
+          "wrong": 791,
+          "pixels": 27044,
+          "rate": 0.029248631859192426
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00978-tick-00977.png",
+      "imageSHA256": "ef8fa18485e4af8bf02629e6ed43d18b0639c4eeaf07a5676839a0f57227d978"
+    },
+    {
+      "tick": 978,
+      "nativeFrame": 7346,
+      "camera": 983,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25514,
+          "rate": 0.0
+        },
+        {
+          "delta": 26,
+          "wrong": 337,
+          "pixels": 24449,
+          "rate": 0.013783794838234692
+        },
+        {
+          "delta": 10,
+          "wrong": 375,
+          "pixels": 26394,
+          "rate": 0.014207774494203228
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00979-tick-00978.png",
+      "imageSHA256": "552f6b7d0dd519c19977b8fb2f87ba543ab9f6ff67e6ba5bf5c8dd619d2703e8"
+    },
+    {
+      "tick": 979,
+      "nativeFrame": 7354,
+      "camera": 1003,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 62,
+          "pixels": 25027,
+          "rate": 0.0024773244895512844
+        },
+        {
+          "delta": 12,
+          "wrong": 461,
+          "pixels": 25804,
+          "rate": 0.01786544721748566
+        },
+        {
+          "delta": 4,
+          "wrong": 858,
+          "pixels": 26574,
+          "rate": 0.03228719801309551
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00980-tick-00979.png",
+      "imageSHA256": "5e3359335f4b1eae12c31153bbdfee88bc1a920f1fd616d3570c2e5b7d0ed5d5"
+    },
+    {
+      "tick": 980,
+      "nativeFrame": 7361,
+      "camera": 1020,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 25158,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 442,
+          "pixels": 26128,
+          "rate": 0.016916717697489283
+        },
+        {
+          "delta": 25,
+          "wrong": 421,
+          "pixels": 23938,
+          "rate": 0.017587100008354915
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00981-tick-00980.png",
+      "imageSHA256": "edca1b60d59438bd270b42e2930926c7d2a10f30c93012f554bf6cc101cb3814"
+    },
+    {
+      "tick": 981,
+      "nativeFrame": 7369,
+      "camera": 1040,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24796,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 417,
+          "pixels": 25753,
+          "rate": 0.01619228827709393
+        },
+        {
+          "delta": 4,
+          "wrong": 762,
+          "pixels": 26488,
+          "rate": 0.028767743884022954
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00982-tick-00981.png",
+      "imageSHA256": "d061f2181694d6674353554645fb099bd38a0d88038fe5a84044fc7eeb8c8ef3"
+    },
+    {
+      "tick": 982,
+      "nativeFrame": 7377,
+      "camera": 1060,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24669,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 446,
+          "pixels": 25601,
+          "rate": 0.017421194484590445
+        },
+        {
+          "delta": 4,
+          "wrong": 780,
+          "pixels": 26349,
+          "rate": 0.029602641466469317
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00983-tick-00982.png",
+      "imageSHA256": "5a4c9f7299581b575d855d824722e7f19721d867c69becd78945c77fd58b78bf"
+    },
+    {
+      "tick": 983,
+      "nativeFrame": 7384,
+      "camera": 1078,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25248,
+          "rate": 0.0
+        },
+        {
+          "delta": 10,
+          "wrong": 308,
+          "pixels": 25891,
+          "rate": 0.011896025645977366
+        },
+        {
+          "delta": 26,
+          "wrong": 364,
+          "pixels": 24457,
+          "rate": 0.01488326450504968
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00984-tick-00983.png",
+      "imageSHA256": "c55cc23ab45812bafe1b64b3be0cb43c1fc454a16e5bbe1f0f863d3bd326760d"
+    },
+    {
+      "tick": 984,
+      "nativeFrame": 7392,
+      "camera": 1098,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 139,
+          "pixels": 25146,
+          "rate": 0.005527718126143323
+        },
+        {
+          "delta": 12,
+          "wrong": 257,
+          "pixels": 25906,
+          "rate": 0.009920481741681465
+        },
+        {
+          "delta": 4,
+          "wrong": 499,
+          "pixels": 26629,
+          "rate": 0.018738968793420706
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00985-tick-00984.png",
+      "imageSHA256": "f95e300297876fa2ffdc3e08dc3c92e522e06c71aa3909b1c4331250c0f10c04"
+    },
+    {
+      "tick": 985,
+      "nativeFrame": 7399,
+      "camera": 1115,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 139,
+          "pixels": 25366,
+          "rate": 0.005479776078214933
+        },
+        {
+          "delta": 25,
+          "wrong": 302,
+          "pixels": 24564,
+          "rate": 0.01229441459045758
+        },
+        {
+          "delta": 9,
+          "wrong": 341,
+          "pixels": 26017,
+          "rate": 0.013106814774954838
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00986-tick-00985.png",
+      "imageSHA256": "720c7c9482a33bcad9c159944411540812b627e594306558449881bfb6a2da25"
+    },
+    {
+      "tick": 986,
+      "nativeFrame": 7407,
+      "camera": 1135,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24957,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 239,
+          "pixels": 25521,
+          "rate": 0.00936483680106579
+        },
+        {
+          "delta": 4,
+          "wrong": 418,
+          "pixels": 26174,
+          "rate": 0.015970046611140827
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00987-tick-00986.png",
+      "imageSHA256": "3e91e7113203a15fb8c1b2287115afd15d65b031e43dfd5ce6336357a7d970af"
+    },
+    {
+      "tick": 987,
+      "nativeFrame": 7414,
+      "camera": 1153,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 139,
+          "pixels": 25191,
+          "rate": 0.005517843674328133
+        },
+        {
+          "delta": 26,
+          "wrong": 350,
+          "pixels": 24336,
+          "rate": 0.01438198553583169
+        },
+        {
+          "delta": 10,
+          "wrong": 466,
+          "pixels": 25865,
+          "rate": 0.018016624782524648
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00988-tick-00987.png",
+      "imageSHA256": "30068d656a59ac07956ca9de67a566cae51b569665717820aecc562a05ce0f25"
+    },
+    {
+      "tick": 988,
+      "nativeFrame": 7422,
+      "camera": 1173,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 139,
+          "pixels": 24660,
+          "rate": 0.005636658556366586
+        },
+        {
+          "delta": 12,
+          "wrong": 451,
+          "pixels": 25433,
+          "rate": 0.017732866747925922
+        },
+        {
+          "delta": 4,
+          "wrong": 692,
+          "pixels": 26326,
+          "rate": 0.026285801109169643
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00989-tick-00988.png",
+      "imageSHA256": "54b02be27f86450e424ce0d6834ac5f785c7331c1877a902b18cb57ea4d0495a"
+    },
+    {
+      "tick": 989,
+      "nativeFrame": 7429,
+      "camera": 1190,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 0,
+          "pixels": 24902,
+          "rate": 0.0
+        },
+        {
+          "delta": 9,
+          "wrong": 309,
+          "pixels": 25660,
+          "rate": 0.012042088854247856
+        },
+        {
+          "delta": 25,
+          "wrong": 326,
+          "pixels": 23859,
+          "rate": 0.013663607024602875
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00990-tick-00989.png",
+      "imageSHA256": "edbb104b18f950a1e18af9bc18e69149d8b8239da202b51b4baec42c89ddec38"
+    },
+    {
+      "tick": 990,
+      "nativeFrame": 7437,
+      "camera": 1210,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24386,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 253,
+          "pixels": 25149,
+          "rate": 0.010060042148793193
+        },
+        {
+          "delta": 4,
+          "wrong": 481,
+          "pixels": 25876,
+          "rate": 0.018588653578605657
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00991-tick-00990.png",
+      "imageSHA256": "e8443f9665ebf75571801a354c4c5e31a634acbc13abc415959f4bb78952d926"
+    },
+    {
+      "tick": 991,
+      "nativeFrame": 7444,
+      "camera": 1228,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 171,
+          "pixels": 25390,
+          "rate": 0.006734935013784955
+        },
+        {
+          "delta": 26,
+          "wrong": 233,
+          "pixels": 24163,
+          "rate": 0.00964284236228945
+        },
+        {
+          "delta": 10,
+          "wrong": 325,
+          "pixels": 25921,
+          "rate": 0.012538096524053856
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00992-tick-00991.png",
+      "imageSHA256": "f5362b92a67f1bbf83eaa1d2f299935af80e6cb5601a70ac28f8efdd04b10d13"
+    },
+    {
+      "tick": 992,
+      "nativeFrame": 7452,
+      "camera": 1248,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 246,
+          "pixels": 25283,
+          "rate": 0.009729858007356722
+        },
+        {
+          "delta": 12,
+          "wrong": 472,
+          "pixels": 26154,
+          "rate": 0.018046952664984323
+        },
+        {
+          "delta": 4,
+          "wrong": 645,
+          "pixels": 26674,
+          "rate": 0.024180850266176803
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00993-tick-00992.png",
+      "imageSHA256": "04f8f438c8a539ccc1dc65a6453485456911dbfaee7986caaa64e315b07c1a08"
+    },
+    {
+      "tick": 993,
+      "nativeFrame": 7459,
+      "camera": 1265,
+      "fits": [
+        {
+          "delta": 17,
+          "wrong": 75,
+          "pixels": 25287,
+          "rate": 0.0029659508838533635
+        },
+        {
+          "delta": 9,
+          "wrong": 363,
+          "pixels": 26166,
+          "rate": 0.0138729649163036
+        },
+        {
+          "delta": 25,
+          "wrong": 363,
+          "pixels": 24071,
+          "rate": 0.015080387187902455
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00994-tick-00993.png",
+      "imageSHA256": "7aa25c46fc0bed6c3bc455d0501623a5ccac8c16d798f010ad218ad627936d9e"
+    },
+    {
+      "tick": 994,
+      "nativeFrame": 7467,
+      "camera": 1285,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 24912,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 368,
+          "pixels": 25946,
+          "rate": 0.014183303784783781
+        },
+        {
+          "delta": 4,
+          "wrong": 653,
+          "pixels": 26695,
+          "rate": 0.024461509646001123
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00995-tick-00994.png",
+      "imageSHA256": "35defb71a1a93fc2c968e372b8a188c8343c33d983d24db4e465ae3603e2d30b"
+    },
+    {
+      "tick": 995,
+      "nativeFrame": 7474,
+      "camera": 1303,
+      "fits": [
+        {
+          "delta": 18,
+          "wrong": 0,
+          "pixels": 25567,
+          "rate": 0.0
+        },
+        {
+          "delta": 10,
+          "wrong": 469,
+          "pixels": 26538,
+          "rate": 0.017672771120657172
+        },
+        {
+          "delta": 26,
+          "wrong": 456,
+          "pixels": 24495,
+          "rate": 0.01861604409063074
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00996-tick-00995.png",
+      "imageSHA256": "b850a00fb8659d701f3ddbafa0b13aeb89170577bcd24735b97895658c55ea42"
+    },
+    {
+      "tick": 996,
+      "nativeFrame": 7482,
+      "camera": 1323,
+      "fits": [
+        {
+          "delta": 20,
+          "wrong": 0,
+          "pixels": 25287,
+          "rate": 0.0
+        },
+        {
+          "delta": 12,
+          "wrong": 464,
+          "pixels": 26180,
+          "rate": 0.017723453017570664
+        },
+        {
+          "delta": 4,
+          "wrong": 822,
+          "pixels": 26912,
+          "rate": 0.030543995243757432
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00997-tick-00996.png",
+      "imageSHA256": "5c1598ebe3d1c7fa547d683004ed5af2bb9655e246adc9a9d7370a7499ea3eb5"
+    }
+  ]
+}

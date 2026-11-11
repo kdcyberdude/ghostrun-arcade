@@ -1,0 +1,92 @@
+{
+  "schema": "actual-map-pipe-base-fixtures-v2",
+  "declaredBeforeExecution": true,
+  "level": "6-2",
+  "area": "main",
+  "camera": 2399,
+  "proofSource": "data/lower-next-six-two-continuation-v3-support.json",
+  "proofSha256": "e3b25e5cfce3e610f07cf82875f208fd065a8106c5b4917b4a483c0846abc475",
+  "scope": "Declared production-map placements with enemies/generators/exit disabled before execution. All pipe tiles and seven source fragments remain. Public controllers alone thereafter. No native timing equivalence or campaign traversal is established.",
+  "limitation": "Observed black RGB does not establish invisible-block absence. Ground153is below an unchanged pipe, so a top-drop would test the pipe; this packet instead tests contact from the pit below the pipe bottom. The horizontal fixture uses declared rising momentum from below to isolate the new base side; it is not a reachable-route or native timing claim.",
+  "pipeTiles": [
+    [
+      153,
+      10,
+      16
+    ],
+    [
+      153,
+      11,
+      20
+    ],
+    [
+      153,
+      12,
+      20
+    ],
+    [
+      154,
+      10,
+      17
+    ],
+    [
+      154,
+      11,
+      21
+    ],
+    [
+      154,
+      12,
+      21
+    ]
+  ],
+  "fall": {
+    "spawn": [
+      2432,
+      208
+    ],
+    "velocity": [
+      0,
+      0
+    ],
+    "buttons": [],
+    "frames": 12,
+    "endFeetYGreaterThan": 224
+  },
+  "wall": {
+    "spawn": [
+      2432,
+      228
+    ],
+    "velocity": [
+      2.5,
+      -2
+    ],
+    "buttons": [
+      "right",
+      "b"
+    ],
+    "frames": 4,
+    "contactAfterFrames": 2,
+    "contactX": 2435,
+    "omittedContactX": 2437,
+    "bodyTopAtLeast": 208,
+    "pipeBottom": 208,
+    "omitOnly": [
+      153,
+      13,
+      84
+    ]
+  },
+  "query": {
+    "point": [
+      2456,
+      216
+    ],
+    "presentTile": 84,
+    "omittedTile": 0,
+    "label": "Read-only actual-map tile/class diagnostic, not a controller or native collision observation."
+  },
+  "nativeFramesPerRequest": 1,
+  "staticDifferentRGBPixels": 0
+}

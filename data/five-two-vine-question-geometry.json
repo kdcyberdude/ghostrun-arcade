@@ -1,0 +1,208 @@
+{
+  "schema": "accepted-observed-brick-geometry-v1",
+  "level": "5-2",
+  "area": "area-2",
+  "sourceData": "data/five-two-vine-remaining.json",
+  "sourceTrace": "evidence/local/five-two-vine-remaining/trace.jsonl",
+  "tileSize": 16,
+  "tiles": [
+    [
+      78,
+      9,
+      192
+    ],
+    [
+      79,
+      9,
+      192
+    ],
+    [
+      80,
+      9,
+      192
+    ],
+    [
+      81,
+      9,
+      192
+    ],
+    [
+      82,
+      9,
+      192
+    ]
+  ],
+  "alreadyCanonicalCells": [],
+  "geometryStatus": "Five complete256-pixel supplied-art question cells form the actual80-pixel foothold. Actual contents are separately proved in data/five-two-vine-question-contents.json.",
+  "anchors": [
+    {
+      "sourceSequence": 15883,
+      "knownUpperWorldX": 1360,
+      "upperArtwork": {
+        "metatile": 81,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          136,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "inferredCameraX": 1224,
+      "questionFirstScreenX": 24
+    },
+    {
+      "sourceSequence": 14015,
+      "knownUpperWorldX": 1360,
+      "upperArtwork": {
+        "metatile": 81,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          235,
+          80
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "inferredCameraX": 1125,
+      "questionFirstScreenX": 123
+    }
+  ],
+  "supersededFreeTiles": [
+    {
+      "x": 1245,
+      "y": 144,
+      "metatileId": 192,
+      "atlas": "metatiles-palette-000.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1261,
+      "y": 144,
+      "metatileId": 192,
+      "atlas": "metatiles-palette-000.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1261,
+      "y": 144,
+      "metatileId": 192,
+      "atlas": "metatiles-palette-002.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1277,
+      "y": 144,
+      "metatileId": 192,
+      "atlas": "metatiles-palette-000.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    }
+  ],
+  "sourceWitnesses": [
+    {
+      "sourceSequence": 15883,
+      "sourceTick": 5514,
+      "sourceImage": "evidence/local/five-two-vine-remaining/15883-tick-05514.png",
+      "worldTile": [
+        78,
+        9,
+        192
+      ],
+      "screenOrigin": [
+        24,
+        144
+      ],
+      "metatileId": 192,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 15883,
+      "sourceTick": 5514,
+      "sourceImage": "evidence/local/five-two-vine-remaining/15883-tick-05514.png",
+      "worldTile": [
+        79,
+        9,
+        192
+      ],
+      "screenOrigin": [
+        40,
+        144
+      ],
+      "metatileId": 192,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 15883,
+      "sourceTick": 5514,
+      "sourceImage": "evidence/local/five-two-vine-remaining/15883-tick-05514.png",
+      "worldTile": [
+        80,
+        9,
+        192
+      ],
+      "screenOrigin": [
+        56,
+        144
+      ],
+      "metatileId": 192,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 14015,
+      "sourceTick": 5475,
+      "sourceImage": "evidence/local/five-two-vine-remaining/14015-tick-05475.png",
+      "worldTile": [
+        81,
+        9,
+        192
+      ],
+      "screenOrigin": [
+        171,
+        144
+      ],
+      "metatileId": 192,
+      "atlas": "metatiles-palette-002.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 14015,
+      "sourceTick": 5475,
+      "sourceImage": "evidence/local/five-two-vine-remaining/14015-tick-05475.png",
+      "worldTile": [
+        82,
+        9,
+        192
+      ],
+      "screenOrigin": [
+        187,
+        144
+      ],
+      "metatileId": 192,
+      "atlas": "metatiles-palette-002.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    }
+  ],
+  "tolerancePixels": 0,
+  "passed": true,
+  "qualification": "Ids192 and193 are visually identical in these supplied cells;192 follows existing canonical question fragments. Source palettes025 and002 show different observed question animation colors. The full finite row and shared upper81 anchors establish geometry; actual living feet144 poses establish the foothold. Separate later ground probes now prove all five contents are coins.",
+  "removalQualification": "Remove only the exact listed192 x/y/atlas objects when adding these five cells. No ordinary-brick, decoration, or other question records are covered."
+}

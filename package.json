@@ -1,0 +1,26 @@
+{
+  "name": "ghostrun-arcade",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build && node tools/copy-assets.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "tsx --test tests/*.test.ts",
+    "test:browser": "node tools/browser-test.mjs",
+    "audio": "node tools/harness/compress-audio.mjs --verify"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "0.170.0",
+    "@types/node": "22.10.2",
+    "typescript": "5.7.2",
+    "vite": "5.4.11",
+    "tsx": "4.19.2",
+    "playwright": "1.49.1",
+    "pngjs": "7.0.0"
+  }
+}

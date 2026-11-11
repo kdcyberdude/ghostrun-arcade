@@ -1,0 +1,33 @@
+{
+  "schema": "hammerbro-drop-calibration-lock-v1",
+  "lockedUtc": "2026-11-06T04:13:17.752Z",
+  "planSha256": "3c3a97e176054d9e845e19800c235f9a2988c2e007e93fe8881451fc34b94777",
+  "calibrationHashes": {
+    "tools/hammerbro-drop-plan.json": "3c3a97e176054d9e845e19800c235f9a2988c2e007e93fe8881451fc34b94777",
+    "evidence/hammerbro-drop-calibration-measurements.json": "82926924b08db00ea37377a3daa5c8de7e1aee993911a374a94cfef1430e6c53",
+    "evidence/hammerbro-drop-calibration-player.json": "276a519af307ea6be21ab5b1ccf6f6d8c8207c031c1820debf5ce7068c2408d8",
+    "evidence/hammerbro-drop-row-support.json": "5f2ab51603b5b984e36f3ac3323333ff1606286a92e0c4d8d757ae232600bcd2"
+  },
+  "acceptedInitiationCandidate": null,
+  "acceptedCollisionCandidate": null,
+  "observedConstraints": [
+    "A descending Bro remains over a complete solidQrow and crosses feet143→166 in7nativeframes.",
+    "Both full raw poses use rawY+23feet; no pose-origin shift can account for23px crossing.",
+    "The same Bro later jumps fromfloor208 and landsONthe sameQrow144. Unconditional support-row bypass is rejected.",
+    "The brake/wait and held-A cases share first-drop and later-upjump sampledfeet at the same originalnativeframes; these controls begin after the firstdrop was already selected. No player-height-trigger conclusion follows.",
+    "Later globalterrain camera aliases are rejected; direct screen-space relative-row proof is independent of those estimates."
+  ],
+  "reservedEvaluation": [
+    "Check rawpose/feet/supportcrossing against directRGB and retain missing/occludedposes.",
+    "Check whether already-running firstflight retains same Yatnativeframes across variedincomingcontrols.",
+    "Measure whether laterupjump still landsonQrow, recordingdeath/freezing ratherthan fitting acrossit.",
+    "No productioncandidate selection orretuning onreservedcontrols."
+  ],
+  "unresolved": [
+    "Native jump/drop initiation condition and timer/randomstate.",
+    "Which exact supportrows are ignored and when bypass is cleared.",
+    "InitialBrofeet beforefirstcompleteonscreenpose.",
+    "Continuousnativeonset within7/8frameprotocolsamples."
+  ],
+  "productionChanges": false
+}

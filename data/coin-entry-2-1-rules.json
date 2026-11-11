@@ -1,0 +1,11 @@
+{
+  "level": "2-1",
+  "from": "main",
+  "to": "bonus-coins",
+  "transitionFrames": 79,
+  "source": "data/optional-two-one-entry-measurements.json",
+  "evidence": "Source first complete room pose at native83 is feet65, followed by74/90/118/148/182/208 at native90/98/106/113/121/128. With unchanged common spawn24/64.5,vy0.5,gravity0.15625,cap4.125 and ordinary delayed DOWN, a79-frame transition fits all complete poses within the declared2px;80 produces up to5px raster error.",
+  "classification": "2-1-specific image-fitted transition candidate, not an exact recovered internal activation/load rule. The first complete source image bounds presentation at83; partial scanline geometry already appears at75 and remains unmatched by the atomic room renderer.",
+  "initialTimerPhaseCandidate": 20,
+  "timerQualification": "The phase at source start time365 is inferred for comparison fixtures only and is not a production timer override. Phase20 matches22/23 readable source TIME checkpoints with79; native166 remains362 versus source361."
+}

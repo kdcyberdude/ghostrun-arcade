@@ -1,0 +1,613 @@
+{
+  "date": "2026-11-05T20:42:28.175Z",
+  "tolerancePixels": 2,
+  "toleranceNativeFrames": 2,
+  "cases": [
+    {
+      "name": "standing-air-right-b",
+      "classification": "Observed fresh-reset controller and exact supplied-sprite screenshot matching; physics interpretation remains inferred.",
+      "actions": [
+        {
+          "mask": 56,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-001.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 43,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-002.png"
+        },
+        {
+          "mask": 56,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 47,
+          "y": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-003.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 55,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-004.png"
+        },
+        {
+          "mask": 56,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 63,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-005.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 75,
+          "y": 166,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-006.png"
+        },
+        {
+          "mask": 56,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 85,
+          "y": 195,
+          "camera": 3,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 98,
+          "y": 208,
+          "camera": 11,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-008.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 112,
+          "y": 208,
+          "camera": 19,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-009.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 131,
+          "y": 208,
+          "camera": 30,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-010.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 148,
+          "y": 208,
+          "camera": 40,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-b-011.png"
+        }
+      ]
+    },
+    {
+      "name": "standing-air-right-no-b",
+      "classification": "Observed fresh-reset controller and exact supplied-sprite screenshot matching; physics interpretation remains inferred.",
+      "actions": [
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-001.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 43,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-002.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 47,
+          "y": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-003.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 55,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-004.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 63,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-005.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 75,
+          "y": 166,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-006.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 85,
+          "y": 195,
+          "camera": 3,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-007.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 97,
+          "y": 208,
+          "camera": 11,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-008.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 108,
+          "y": 208,
+          "camera": 18,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-009.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 120,
+          "y": 208,
+          "camera": 26,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-010.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 130,
+          "y": 208,
+          "camera": 33,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/standing-air-right-no-b-011.png"
+        }
+      ]
+    },
+    {
+      "name": "slow-air-reverse",
+      "classification": "Observed fresh-reset controller and exact supplied-sprite screenshot matching; physics interpretation remains inferred.",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-002.png"
+        },
+        {
+          "mask": 56,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-003.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 59,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-004.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 64,
+          "y": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-005.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 67,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-006.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 68,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-007.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 67,
+          "y": 166,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-008.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 61,
+          "y": 195,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-009.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-010.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 39,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/slow-air-reverse-011.png"
+        }
+      ]
+    },
+    {
+      "name": "walk-air-reverse",
+      "classification": "Observed fresh-reset controller and exact supplied-sprite screenshot matching; physics interpretation remains inferred.",
+      "actions": [
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-001.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 43,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-002.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 47,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-003.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 55,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-004.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 63,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-005.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 75,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-006.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 85,
+          "y": 189,
+          "camera": 3,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-007.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 96,
+          "y": 165,
+          "camera": 11,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-008.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 104,
+          "y": 150,
+          "camera": 18,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-009.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 111,
+          "y": 140,
+          "camera": 25,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-010.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 115,
+          "y": 137,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-011.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 117,
+          "y": 149,
+          "camera": 31,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-012.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 118,
+          "y": 176,
+          "camera": 32,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-013.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 114,
+          "y": 208,
+          "camera": 32,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-014.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 107,
+          "y": 208,
+          "camera": 32,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/walk-air-reverse-015.png"
+        }
+      ]
+    },
+    {
+      "name": "fast-air-long-reverse",
+      "classification": "Observed fresh-reset controller and exact supplied-sprite screenshot matching; physics interpretation remains inferred.",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-008.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 146,
+          "y": 155,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-009.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 162,
+          "y": 135,
+          "camera": 50,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-010.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 173,
+          "y": 127,
+          "camera": 61,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-011.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 182,
+          "y": 128,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-012.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 188,
+          "y": 153,
+          "camera": 76,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-013.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 191,
+          "y": 185,
+          "camera": 79,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-014.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 191,
+          "y": 208,
+          "camera": 80,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-015.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 188,
+          "y": 208,
+          "camera": 80,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-2026-11-05T20-42-24.821Z/fast-air-long-reverse-016.png"
+        }
+      ]
+    }
+  ]
+}

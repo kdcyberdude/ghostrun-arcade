@@ -1,0 +1,26 @@
+{
+  "lockedUTC": "2026-11-06T06:54:15.506Z",
+  "scope": "GroundedGoomba defeated by right-moving greenKoopa shell only; source event-relative launch component. No awards/otherdefeats/victims/directions/airborne contacts.",
+  "tolerances": {
+    "bodyOriginPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "pose": "Exact supplied180opaque RGB at the observed16x16body origin; occluded pixels unobserved"
+  },
+  "rule": {
+    "initialVerticalVelocity": -3.125,
+    "gravity": 0.25,
+    "maximumFallVelocity": 3.25,
+    "initialPosition": "Preserve actual worldX/Y and fractional remainder; no additional offset or teleport.",
+    "horizontalVelocity": 1,
+    "order": "Contact frame has no X/Y displacement. First movement on following active update; position before gravity, then cap downward velocity.",
+    "visibleBodyTopFromFeet": -15,
+    "render": "Reverse the two visible8px rows and flipY each tile, preserving raw16x16body origin.",
+    "renderPhase": "Default immediate flip; source0..1native contact-render delay is retained as explicit presentation uncertainty, within2native timing tolerance."
+  },
+  "qualification": "Inferred shared bounded representative, not exact native forces. Selected from original zero-origin calibration family and checked on expanded52samples/10tracks after V1 rejection; do not call old reserved captures V2 heldout.",
+  "bindings": {
+    "evidence/shell-launch-vertical-v2-calibration.json": "bdbad724ec76b525ddee16607ca2790e0123339f29bbee6da8e813bb90708faf",
+    "evidence/shell-launch-vertical-v1-validation.json": "c2d0cdfc4e2d6df0849592aa09433459528ba1cc8e6fb03b1d0b13646360337b"
+  },
+  "status": "Frozen before new left8/left7+wait1 reserved controls; no runtime proposal until independent evaluation."
+}

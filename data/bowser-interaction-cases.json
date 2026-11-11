@@ -1,0 +1,1547 @@
+{
+  "schema": "measured-bowser-interaction-cases-v1",
+  "updatedUtc": "2026-11-06T00:21:53.853Z",
+  "source": "evidence/local/bowser-2026-11-06T00-11-00.847Z/trace.jsonl",
+  "replayDirectory": "evidence/local/bowser-2026-11-06T00-18-43.932Z",
+  "productionSourceSnapshot": {
+    "path": "src/simulation.ts",
+    "sha256": "0a2b616a04ca3491680eadd808ede4a8703e312a2a18d0bfac0e4eeedfcc62eb",
+    "readOnly": true
+  },
+  "tolerances": {
+    "suppliedArt": "All opaque RGB pixels must match exactly; no color tolerance.",
+    "positionPixels": 2,
+    "eventNativeFrames": 8,
+    "qualification": "Evaluation tolerances declared before any production tuning for this assignment; no runtime changes were made."
+  },
+  "repeatability": {
+    "requestsCompared": 922,
+    "imagesCompared": 921,
+    "mismatches": []
+  },
+  "flameTravel": {
+    "samples": [
+      {
+        "sequence": 892,
+        "tick": 1059,
+        "nativeFrame": 7955,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00892-dodge-first-jump-t1059.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 106,
+          "visibleLeft": 116,
+          "visibleTop": 122,
+          "visibleRight": 131,
+          "visibleBottom": 137,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 137
+        },
+        "bowser": [],
+        "flames": [
+          {
+            "screenX": 160,
+            "y": 133,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2137
+          }
+        ],
+        "deltaNativeFrames": 0,
+        "candidate": {
+          "x": 2137,
+          "y": 133
+        },
+        "priorProduction": {
+          "x": 2137,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 160,
+          "y": 133,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2137
+        }
+      },
+      {
+        "sequence": 893,
+        "tick": 1060,
+        "nativeFrame": 7962,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00893-dodge-first-jump-t1060.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 86,
+          "visibleLeft": 116,
+          "visibleTop": 102,
+          "visibleRight": 131,
+          "visibleBottom": 117,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 117
+        },
+        "bowser": [
+          {
+            "screenX": 176,
+            "frontY": 105,
+            "feetY": 136,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 192,
+            "opaquePixels": 518,
+            "worldX": 2153
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 151,
+            "y": 140,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2128
+          }
+        ],
+        "deltaNativeFrames": 7,
+        "candidate": {
+          "x": 2128.25,
+          "y": 140
+        },
+        "priorProduction": {
+          "x": 2126.5,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 151,
+          "y": 140,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2128
+        }
+      },
+      {
+        "sequence": 894,
+        "tick": 1061,
+        "nativeFrame": 7970,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00894-dodge-first-jump-t1061.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 71,
+          "visibleLeft": 116,
+          "visibleTop": 87,
+          "visibleRight": 131,
+          "visibleBottom": 102,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 102
+        },
+        "bowser": [
+          {
+            "screenX": 174,
+            "frontY": 97,
+            "feetY": 128,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 190,
+            "opaquePixels": 518,
+            "worldX": 2151
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 141,
+            "y": 145,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2118
+          }
+        ],
+        "deltaNativeFrames": 15,
+        "candidate": {
+          "x": 2118.25,
+          "y": 145
+        },
+        "priorProduction": {
+          "x": 2114.5,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 141,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2118
+        }
+      },
+      {
+        "sequence": 895,
+        "tick": 1062,
+        "nativeFrame": 7977,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00895-dodge-first-jump-t1062.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 64,
+          "visibleLeft": 116,
+          "visibleTop": 80,
+          "visibleRight": 131,
+          "visibleBottom": 95,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 95
+        },
+        "bowser": [
+          {
+            "screenX": 172,
+            "frontY": 94,
+            "feetY": 125,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 188,
+            "opaquePixels": 518,
+            "worldX": 2149
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 132,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2109
+          }
+        ],
+        "deltaNativeFrames": 22,
+        "candidate": {
+          "x": 2109.5,
+          "y": 145
+        },
+        "priorProduction": {
+          "x": 2104,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 132,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2109
+        }
+      },
+      {
+        "sequence": 896,
+        "tick": 1063,
+        "nativeFrame": 7985,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00896-dodge-first-jump-t1063.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 65,
+          "visibleLeft": 116,
+          "visibleTop": 81,
+          "visibleRight": 131,
+          "visibleBottom": 96,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 96
+        },
+        "bowser": [
+          {
+            "screenX": 170,
+            "frontY": 94,
+            "feetY": 125,
+            "frontCell": 35,
+            "rearCell": 36,
+            "facing": "left",
+            "rearX": 186,
+            "opaquePixels": 520,
+            "worldX": 2147
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 122,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2099
+          }
+        ],
+        "deltaNativeFrames": 30,
+        "candidate": {
+          "x": 2099.5,
+          "y": 145
+        },
+        "priorProduction": {
+          "x": 2092,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 122,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2099
+        }
+      },
+      {
+        "sequence": 897,
+        "tick": 1064,
+        "nativeFrame": 7993,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00897-dodge-first-jump-t1064.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 91,
+          "visibleLeft": 116,
+          "visibleTop": 107,
+          "visibleRight": 131,
+          "visibleBottom": 122,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 122
+        },
+        "bowser": [
+          {
+            "screenX": 168,
+            "frontY": 97,
+            "feetY": 128,
+            "frontCell": 35,
+            "rearCell": 36,
+            "facing": "left",
+            "rearX": 184,
+            "opaquePixels": 520,
+            "worldX": 2145
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 112,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2089
+          }
+        ],
+        "deltaNativeFrames": 38,
+        "candidate": {
+          "x": 2089.5,
+          "y": 145
+        },
+        "priorProduction": {
+          "x": 2080,
+          "y": 140
+        },
+        "measured": {
+          "screenX": 112,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2089
+        }
+      }
+    ],
+    "candidateInferred": {
+      "horizontalSpeed": 1.25,
+      "verticalSpeedUntilObserved145": 1,
+      "maxHorizontalResidual": 0.5,
+      "maxVerticalResidual": 0
+    },
+    "priorProduction": {
+      "horizontalSpeed": 1.5,
+      "verticalSpeed": 0,
+      "groundedSpawnY": 140,
+      "maxHorizontalResidual": 9,
+      "maxVerticalResidual": 7
+    },
+    "qualification": "The same path occurs whether Mario stays grounded or jumps just before release. Target-height selection and random/event timing across other states are unresolved."
+  },
+  "jump": {
+    "observedGroundFeet": [
+      160,
+      161
+    ],
+    "observedApexRows": [
+      {
+        "sequence": 154,
+        "tick": 1034,
+        "nativeFrame": 7767,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00154-bridge-wait-t1034.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 129,
+          "visibleLeft": 118,
+          "visibleTop": 145,
+          "visibleRight": 129,
+          "visibleBottom": 160,
+          "cell": 23,
+          "direction": "left",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143,
+          "worldX": 2093,
+          "feetY": 160
+        },
+        "bowser": [
+          {
+            "screenX": 217,
+            "frontY": 93,
+            "feetY": 124,
+            "frontCell": 35,
+            "rearCell": 36,
+            "facing": "left",
+            "rearX": 233,
+            "opaquePixels": 520,
+            "worldX": 2194
+          }
+        ],
+        "flames": []
+      },
+      {
+        "sequence": 170,
+        "tick": 1050,
+        "nativeFrame": 7887,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00170-bridge-wait-t1050.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 129,
+          "visibleLeft": 118,
+          "visibleTop": 145,
+          "visibleRight": 129,
+          "visibleBottom": 160,
+          "cell": 23,
+          "direction": "left",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143,
+          "worldX": 2093,
+          "feetY": 160
+        },
+        "bowser": [
+          {
+            "screenX": 187,
+            "frontY": 94,
+            "feetY": 125,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 203,
+            "opaquePixels": 518,
+            "worldX": 2164
+          }
+        ],
+        "flames": []
+      }
+    ],
+    "minimumObservedRise": 35,
+    "priorProduction": {
+      "impulse": -3,
+      "gravity": 0.25,
+      "gravityBeforePosition": true,
+      "maximumRise": 16.5
+    },
+    "fit": {
+      "originNativeFrame": 7875,
+      "quadraticCoefficients": [
+        0.02958733048871645,
+        -0.276200925817901,
+        124.5719757528936
+      ],
+      "effectiveGravity": 0.0591746609774329,
+      "apexNativeFrame": 7879.667554004631,
+      "apexFeetY": 123.92738438420152,
+      "maxResidual": 0.5181402334539484,
+      "samples": [
+        {
+          "sequence": 165,
+          "tick": 1045,
+          "nativeFrame": 7850,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00165-bridge-wait-t1045.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 196,
+              "frontY": 119,
+              "feetY": 150,
+              "frontCell": 35,
+              "rearCell": 36,
+              "facing": "left",
+              "rearX": 212,
+              "opaquePixels": 520,
+              "worldX": 2173
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 149.9690804537889
+        },
+        {
+          "sequence": 166,
+          "tick": 1046,
+          "nativeFrame": 7857,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00166-bridge-wait-t1046.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 194,
+              "frontY": 108,
+              "feetY": 139,
+              "frontCell": 35,
+              "rearCell": 38,
+              "facing": "left",
+              "rearX": 210,
+              "opaquePixels": 518,
+              "worldX": 2171
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 139.12988749595993
+        },
+        {
+          "sequence": 168,
+          "tick": 1048,
+          "nativeFrame": 7872,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00168-bridge-wait-t1048.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 190,
+              "frontY": 95,
+              "feetY": 126,
+              "frontCell": 35,
+              "rearCell": 38,
+              "facing": "left",
+              "rearX": 206,
+              "opaquePixels": 518,
+              "worldX": 2167
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 125.66686450474575
+        },
+        {
+          "sequence": 170,
+          "tick": 1050,
+          "nativeFrame": 7887,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00170-bridge-wait-t1050.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 187,
+              "frontY": 94,
+              "feetY": 125,
+              "frontCell": 35,
+              "rearCell": 38,
+              "facing": "left",
+              "rearX": 203,
+              "opaquePixels": 518,
+              "worldX": 2164
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 125.51814023345395
+        },
+        {
+          "sequence": 171,
+          "tick": 1051,
+          "nativeFrame": 7895,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00171-bridge-wait-t1051.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 185,
+              "frontY": 100,
+              "feetY": 131,
+              "frontCell": 35,
+              "rearCell": 36,
+              "facing": "left",
+              "rearX": 201,
+              "opaquePixels": 520,
+              "worldX": 2162
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 130.88288943202215
+        },
+        {
+          "sequence": 172,
+          "tick": 1052,
+          "nativeFrame": 7902,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00172-bridge-wait-t1052.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 183,
+              "frontY": 108,
+              "feetY": 139,
+              "frontCell": 35,
+              "rearCell": 36,
+              "facing": "left",
+              "rearX": 199,
+              "opaquePixels": 520,
+              "worldX": 2160
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 138.68371468208457
+        },
+        {
+          "sequence": 173,
+          "tick": 1053,
+          "nativeFrame": 7910,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00173-bridge-wait-t1053.png",
+          "camera": 1977,
+          "player": {
+            "originX": 116,
+            "originY": 129,
+            "visibleLeft": 118,
+            "visibleTop": 145,
+            "visibleRight": 129,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143,
+            "worldX": 2093,
+            "feetY": 160
+          },
+          "bowser": [
+            {
+              "screenX": 181,
+              "frontY": 120,
+              "feetY": 151,
+              "frontCell": 35,
+              "rearCell": 36,
+              "facing": "left",
+              "rearX": 197,
+              "opaquePixels": 520,
+              "worldX": 2158
+            }
+          ],
+          "flames": [],
+          "predictedFeetY": 151.1494231979447
+        }
+      ],
+      "qualification": "Empirical quadratic fit to image positions; subpixel fraction, native integration order, takeoff impulse and exact jump timing remain inferred."
+    }
+  },
+  "rightFacingContact": {
+    "clearReference": {
+      "sequence": 599,
+      "tick": 1070,
+      "nativeFrame": 8038,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00599-axe-wall-wait-t1070.png",
+      "camera": 2023,
+      "player": {
+        "originX": 219,
+        "originY": 129,
+        "visibleLeft": 221,
+        "visibleTop": 145,
+        "visibleRight": 232,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2242,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 196,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 180,
+          "opaquePixels": 520,
+          "worldX": 2219
+        }
+      ],
+      "flames": []
+    },
+    "lastAlive": {
+      "sequence": 601,
+      "tick": 1072,
+      "nativeFrame": 8053,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00601-axe-wall-wait-t1072.png",
+      "camera": 2023,
+      "player": {
+        "originX": 219,
+        "originY": 129,
+        "visibleLeft": 221,
+        "visibleTop": 145,
+        "visibleRight": 232,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2242,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 204,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "right",
+          "rearX": 188,
+          "opaquePixels": 518,
+          "worldX": 2227
+        }
+      ],
+      "flames": []
+    },
+    "firstDead": {
+      "sequence": 602,
+      "tick": 1073,
+      "nativeFrame": 8060,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00602-axe-wall-wait-t1073.png",
+      "camera": 2023,
+      "player": {
+        "originX": 219,
+        "originY": 129,
+        "visibleLeft": 220,
+        "visibleTop": 145,
+        "visibleRight": 233,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2242,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 206,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "right",
+          "rearX": 190,
+          "opaquePixels": 518,
+          "worldX": 2229
+        }
+      ],
+      "flames": []
+    },
+    "actualDeathEventNativeFrameInterval": [
+      8054,
+      8060
+    ],
+    "priorProductionBoxesAtClearPose": {
+      "player": [
+        2245,
+        150,
+        10,
+        9
+      ],
+      "bowser": [
+        2221,
+        129,
+        28,
+        32
+      ]
+    },
+    "priorProductionOverlapAtClearPose": true,
+    "qualification": "At the measured clear pose the existing generic frontX+2,width28 box overlaps Mario even though reference Mario remains alive. A direction-aware Bowser assembly/contact model is needed; these sampled observations do not establish exact native hitboxes."
+  },
+  "flameContact": {
+    "stationaryLastAlive": {
+      "sequence": 182,
+      "tick": 1062,
+      "nativeFrame": 7977,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00182-bridge-wait-t1062.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 172,
+          "frontY": 94,
+          "feetY": 125,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 188,
+          "opaquePixels": 518,
+          "worldX": 2149
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 132,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2109
+        }
+      ]
+    },
+    "stationaryFirstDeath": {
+      "sequence": 183,
+      "tick": 1063,
+      "nativeFrame": 7985,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00183-bridge-wait-t1063.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 117,
+        "visibleTop": 145,
+        "visibleRight": 130,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 170,
+          "frontY": 94,
+          "feetY": 125,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 186,
+          "opaquePixels": 520,
+          "worldX": 2147
+        }
+      ],
+      "flames": []
+    },
+    "jumpAvoidsSameFlame": [
+      {
+        "sequence": 892,
+        "tick": 1059,
+        "nativeFrame": 7955,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00892-dodge-first-jump-t1059.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 106,
+          "visibleLeft": 116,
+          "visibleTop": 122,
+          "visibleRight": 131,
+          "visibleBottom": 137,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 137
+        },
+        "bowser": [],
+        "flames": [
+          {
+            "screenX": 160,
+            "y": 133,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2137
+          }
+        ]
+      },
+      {
+        "sequence": 893,
+        "tick": 1060,
+        "nativeFrame": 7962,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00893-dodge-first-jump-t1060.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 86,
+          "visibleLeft": 116,
+          "visibleTop": 102,
+          "visibleRight": 131,
+          "visibleBottom": 117,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 117
+        },
+        "bowser": [
+          {
+            "screenX": 176,
+            "frontY": 105,
+            "feetY": 136,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 192,
+            "opaquePixels": 518,
+            "worldX": 2153
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 151,
+            "y": 140,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2128
+          }
+        ]
+      },
+      {
+        "sequence": 894,
+        "tick": 1061,
+        "nativeFrame": 7970,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00894-dodge-first-jump-t1061.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 71,
+          "visibleLeft": 116,
+          "visibleTop": 87,
+          "visibleRight": 131,
+          "visibleBottom": 102,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 102
+        },
+        "bowser": [
+          {
+            "screenX": 174,
+            "frontY": 97,
+            "feetY": 128,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 190,
+            "opaquePixels": 518,
+            "worldX": 2151
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 141,
+            "y": 145,
+            "phase": 1,
+            "opaquePixels": 130,
+            "worldX": 2118
+          }
+        ]
+      },
+      {
+        "sequence": 895,
+        "tick": 1062,
+        "nativeFrame": 7977,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00895-dodge-first-jump-t1062.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 64,
+          "visibleLeft": 116,
+          "visibleTop": 80,
+          "visibleRight": 131,
+          "visibleBottom": 95,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 95
+        },
+        "bowser": [
+          {
+            "screenX": 172,
+            "frontY": 94,
+            "feetY": 125,
+            "frontCell": 35,
+            "rearCell": 38,
+            "facing": "left",
+            "rearX": 188,
+            "opaquePixels": 518,
+            "worldX": 2149
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 132,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2109
+          }
+        ]
+      },
+      {
+        "sequence": 896,
+        "tick": 1063,
+        "nativeFrame": 7985,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00896-dodge-first-jump-t1063.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 65,
+          "visibleLeft": 116,
+          "visibleTop": 81,
+          "visibleRight": 131,
+          "visibleBottom": 96,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 96
+        },
+        "bowser": [
+          {
+            "screenX": 170,
+            "frontY": 94,
+            "feetY": 125,
+            "frontCell": 35,
+            "rearCell": 36,
+            "facing": "left",
+            "rearX": 186,
+            "opaquePixels": 520,
+            "worldX": 2147
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 122,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2099
+          }
+        ]
+      },
+      {
+        "sequence": 897,
+        "tick": 1064,
+        "nativeFrame": 7993,
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00897-dodge-first-jump-t1064.png",
+        "camera": 1977,
+        "player": {
+          "originX": 116,
+          "originY": 91,
+          "visibleLeft": 116,
+          "visibleTop": 107,
+          "visibleRight": 131,
+          "visibleBottom": 122,
+          "cell": 16,
+          "direction": "left",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171,
+          "worldX": 2093,
+          "feetY": 122
+        },
+        "bowser": [
+          {
+            "screenX": 168,
+            "frontY": 97,
+            "feetY": 128,
+            "frontCell": 35,
+            "rearCell": 36,
+            "facing": "left",
+            "rearX": 184,
+            "opaquePixels": 520,
+            "worldX": 2145
+          }
+        ],
+        "flames": [
+          {
+            "screenX": 112,
+            "y": 145,
+            "phase": 0,
+            "opaquePixels": 130,
+            "worldX": 2089
+          }
+        ]
+      }
+    ],
+    "secondFlame": {
+      "sequence": 906,
+      "tick": 1073,
+      "nativeFrame": 8060,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00906-dodge-after-first-t1073.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 28,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2005
+        },
+        {
+          "screenX": 138,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2115
+        }
+      ]
+    },
+    "secondDeath": {
+      "sequence": 908,
+      "tick": 1075,
+      "nativeFrame": 8075,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00908-dodge-after-first-t1075.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 117,
+        "visibleTop": 145,
+        "visibleRight": 130,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 13,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1990
+        }
+      ]
+    }
+  },
+  "mouthAttack": {
+    "firstOpen": {
+      "sequence": 888,
+      "tick": 1055,
+      "nativeFrame": 7925,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00888-dodge-wait-first-t1055.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 179,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 195,
+          "opaquePixels": 531,
+          "worldX": 2156
+        }
+      ],
+      "flames": []
+    },
+    "firstLastOpen": {
+      "sequence": 891,
+      "tick": 1058,
+      "nativeFrame": 7947,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00891-dodge-wait-first-t1058.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 179,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 195,
+          "opaquePixels": 531,
+          "worldX": 2156
+        }
+      ],
+      "flames": []
+    },
+    "firstFlame": {
+      "sequence": 892,
+      "tick": 1059,
+      "nativeFrame": 7955,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00892-dodge-first-jump-t1059.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 106,
+        "visibleLeft": 116,
+        "visibleTop": 122,
+        "visibleRight": 131,
+        "visibleBottom": 137,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 2093,
+        "feetY": 137
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 160,
+          "y": 133,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2137
+        }
+      ]
+    },
+    "secondOpen": {
+      "sequence": 901,
+      "tick": 1068,
+      "nativeFrame": 8023,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00901-dodge-after-first-t1068.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 169,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 185,
+          "opaquePixels": 531,
+          "worldX": 2146
+        }
+      ],
+      "flames": []
+    },
+    "secondLastMatchedOpen": {
+      "sequence": 903,
+      "tick": 1070,
+      "nativeFrame": 8038,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00903-dodge-after-first-t1070.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 169,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 185,
+          "opaquePixels": 531,
+          "worldX": 2146
+        }
+      ],
+      "flames": []
+    },
+    "secondClosed": {
+      "sequence": 905,
+      "tick": 1072,
+      "nativeFrame": 8053,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00905-dodge-after-first-t1072.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 171,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 187,
+          "opaquePixels": 518,
+          "worldX": 2148
+        }
+      ],
+      "flames": []
+    },
+    "secondFlame": {
+      "sequence": 906,
+      "tick": 1073,
+      "nativeFrame": 8060,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-11-00.847Z/00906-dodge-after-first-t1073.png",
+      "camera": 1977,
+      "player": {
+        "originX": 116,
+        "originY": 129,
+        "visibleLeft": 118,
+        "visibleTop": 145,
+        "visibleRight": 129,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2093,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 28,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2005
+        },
+        {
+          "screenX": 138,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2115
+        }
+      ]
+    },
+    "firstFullyMatchedFlameToSecondFullyMatchedFlame": 105,
+    "qualification": "Two distinct flames are visible together105 native frames after the first fully matched sighting. Open/closed mouth and first sighting intervals are retained; exact release instants, variable cooldown and RNG remain unresolved. The present fixed150-frame interval is not measured parity."
+  },
+  "unresolved": [
+    "Fireball hit count, fireball death transformation, score and reward for Bowser are unmeasured.",
+    "Only ordinary1-4 live-boss branches are controlled here; late-world hammer cadence, flame steering choices and boss variants remain unresolved.",
+    "No complete campaign win or all-castle timing parity is claimed.",
+    "Root owns all production integration; this assignment changed measurement tools/data/evidence only."
+  ]
+}

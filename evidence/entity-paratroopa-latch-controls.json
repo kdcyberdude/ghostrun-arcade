@@ -1,0 +1,4397 @@
+{
+  "plan": {
+    "createdUtc": "2026-11-06T00:25:15.134Z",
+    "question": "Does release irreversibly end low-gravity ascent without enemy contact? Compare fresh standing/walking/medium/running short-jump and repress pairs. Medium-speed jump is expected to retain a small upward velocity when repressed; other modes may pass apex first and be nondiscriminating.",
+    "tolerances": {
+      "positionPixels": 2,
+      "eventNativeFrames": 2,
+      "doNotLoosen": true
+    },
+    "definitions": [
+      {
+        "name": "flat-standing-short",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-standing-repress",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-walking-short",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-walking-repress",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-medium-short",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-medium-repress",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-running-short",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ]
+      },
+      {
+        "name": "flat-running-repress",
+        "group": "latch",
+        "prefix": 0,
+        "setup": [
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ],
+        "commands": [
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          }
+        ]
+      }
+    ]
+  },
+  "directory": "evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z",
+  "checks": [],
+  "records": [
+    {
+      "sequence": 0,
+      "timestamp": "2026-11-06T00:25:15.888Z",
+      "experiment": "hello",
+      "stage": "hello",
+      "request": {
+        "op": "hello"
+      },
+      "response": {
+        "ok": true,
+        "protocol": "pixel-player-v1",
+        "buttons": [
+          "up",
+          "down",
+          "left",
+          "right",
+          "a",
+          "b",
+          "x",
+          "y",
+          "start",
+          "select"
+        ],
+        "operations": [
+          "hello",
+          "reset",
+          "observe",
+          "suggest",
+          "step",
+          "auto"
+        ],
+        "ticks_per_emulated_second": 8,
+        "image_format": "PNG RGB 256x240"
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 1,
+      "timestamp": "2026-11-06T00:25:16.127Z",
+      "experiment": "flat-standing-short",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000001.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0001-flat-standing-short-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-11-06T00:25:16.134Z",
+      "experiment": "flat-standing-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000002.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0002-flat-standing-short-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-11-06T00:25:16.143Z",
+      "experiment": "flat-standing-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000003.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0003-flat-standing-short-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-11-06T00:25:16.151Z",
+      "experiment": "flat-standing-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000004.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0004-flat-standing-short-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-11-06T00:25:16.160Z",
+      "experiment": "flat-standing-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000005.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0005-flat-standing-short-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 6,
+      "timestamp": "2026-11-06T00:25:16.161Z",
+      "experiment": "flat-standing-short",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000006.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0006-flat-standing-short-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 7,
+      "timestamp": "2026-11-06T00:25:16.169Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000007.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0007-flat-standing-short-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 8,
+      "timestamp": "2026-11-06T00:25:16.178Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000008.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0008-flat-standing-short-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 9,
+      "timestamp": "2026-11-06T00:25:16.186Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000009.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0009-flat-standing-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 10,
+      "timestamp": "2026-11-06T00:25:16.194Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000010.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0010-flat-standing-short-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 11,
+      "timestamp": "2026-11-06T00:25:16.202Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000011.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0011-flat-standing-short-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 12,
+      "timestamp": "2026-11-06T00:25:16.211Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000012.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0012-flat-standing-short-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 13,
+      "timestamp": "2026-11-06T00:25:16.219Z",
+      "experiment": "flat-standing-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000013.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0013-flat-standing-short-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 14,
+      "timestamp": "2026-11-06T00:25:16.452Z",
+      "experiment": "flat-standing-repress",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000014.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0014-flat-standing-repress-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 15,
+      "timestamp": "2026-11-06T00:25:16.460Z",
+      "experiment": "flat-standing-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000015.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0015-flat-standing-repress-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 16,
+      "timestamp": "2026-11-06T00:25:16.471Z",
+      "experiment": "flat-standing-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000016.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0016-flat-standing-repress-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 17,
+      "timestamp": "2026-11-06T00:25:16.479Z",
+      "experiment": "flat-standing-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000017.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0017-flat-standing-repress-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 18,
+      "timestamp": "2026-11-06T00:25:16.488Z",
+      "experiment": "flat-standing-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000018.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0018-flat-standing-repress-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 19,
+      "timestamp": "2026-11-06T00:25:16.489Z",
+      "experiment": "flat-standing-repress",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000019.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0019-flat-standing-repress-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 20,
+      "timestamp": "2026-11-06T00:25:16.497Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000020.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0020-flat-standing-repress-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 21,
+      "timestamp": "2026-11-06T00:25:16.506Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000021.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0021-flat-standing-repress-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 22,
+      "timestamp": "2026-11-06T00:25:16.514Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000022.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0022-flat-standing-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 23,
+      "timestamp": "2026-11-06T00:25:16.522Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          16
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000023.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0023-flat-standing-repress-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 24,
+      "timestamp": "2026-11-06T00:25:16.530Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000024.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0024-flat-standing-repress-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 25,
+      "timestamp": "2026-11-06T00:25:16.539Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000025.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0025-flat-standing-repress-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 26,
+      "timestamp": "2026-11-06T00:25:16.547Z",
+      "experiment": "flat-standing-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000026.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0026-flat-standing-repress-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 27,
+      "timestamp": "2026-11-06T00:25:16.776Z",
+      "experiment": "flat-walking-short",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000027.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0027-flat-walking-short-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 28,
+      "timestamp": "2026-11-06T00:25:16.784Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000028.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0028-flat-walking-short-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 29,
+      "timestamp": "2026-11-06T00:25:16.793Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000029.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0029-flat-walking-short-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 30,
+      "timestamp": "2026-11-06T00:25:16.800Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000030.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0030-flat-walking-short-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 31,
+      "timestamp": "2026-11-06T00:25:16.809Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000031.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0031-flat-walking-short-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 32,
+      "timestamp": "2026-11-06T00:25:16.817Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000032.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0032-flat-walking-short-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 33,
+      "timestamp": "2026-11-06T00:25:16.825Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000033.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0033-flat-walking-short-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 34,
+      "timestamp": "2026-11-06T00:25:16.833Z",
+      "experiment": "flat-walking-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000034.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0034-flat-walking-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 35,
+      "timestamp": "2026-11-06T00:25:16.834Z",
+      "experiment": "flat-walking-short",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000035.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0035-flat-walking-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 36,
+      "timestamp": "2026-11-06T00:25:16.843Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000036.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0036-flat-walking-short-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 37,
+      "timestamp": "2026-11-06T00:25:16.850Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000037.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0037-flat-walking-short-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 38,
+      "timestamp": "2026-11-06T00:25:16.859Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000038.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0038-flat-walking-short-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 39,
+      "timestamp": "2026-11-06T00:25:16.867Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000039.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0039-flat-walking-short-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 40,
+      "timestamp": "2026-11-06T00:25:16.875Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000040.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0040-flat-walking-short-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 41,
+      "timestamp": "2026-11-06T00:25:16.883Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000041.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0041-flat-walking-short-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 42,
+      "timestamp": "2026-11-06T00:25:16.892Z",
+      "experiment": "flat-walking-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000042.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0042-flat-walking-short-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 43,
+      "timestamp": "2026-11-06T00:25:17.123Z",
+      "experiment": "flat-walking-repress",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000043.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0043-flat-walking-repress-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 44,
+      "timestamp": "2026-11-06T00:25:17.131Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000044.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0044-flat-walking-repress-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 45,
+      "timestamp": "2026-11-06T00:25:17.140Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000045.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0045-flat-walking-repress-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 46,
+      "timestamp": "2026-11-06T00:25:17.148Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000046.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0046-flat-walking-repress-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 47,
+      "timestamp": "2026-11-06T00:25:17.157Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000047.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0047-flat-walking-repress-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 48,
+      "timestamp": "2026-11-06T00:25:17.164Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000048.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0048-flat-walking-repress-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 49,
+      "timestamp": "2026-11-06T00:25:17.173Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000049.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0049-flat-walking-repress-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 50,
+      "timestamp": "2026-11-06T00:25:17.181Z",
+      "experiment": "flat-walking-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000050.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0050-flat-walking-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 51,
+      "timestamp": "2026-11-06T00:25:17.182Z",
+      "experiment": "flat-walking-repress",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000051.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0051-flat-walking-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 52,
+      "timestamp": "2026-11-06T00:25:17.191Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000052.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0052-flat-walking-repress-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 53,
+      "timestamp": "2026-11-06T00:25:17.199Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000053.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0053-flat-walking-repress-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 54,
+      "timestamp": "2026-11-06T00:25:17.207Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000054.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0054-flat-walking-repress-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 55,
+      "timestamp": "2026-11-06T00:25:17.215Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000055.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0055-flat-walking-repress-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 56,
+      "timestamp": "2026-11-06T00:25:17.224Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000056.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0056-flat-walking-repress-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 57,
+      "timestamp": "2026-11-06T00:25:17.232Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000057.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0057-flat-walking-repress-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 58,
+      "timestamp": "2026-11-06T00:25:17.240Z",
+      "experiment": "flat-walking-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000058.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0058-flat-walking-repress-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 59,
+      "timestamp": "2026-11-06T00:25:17.473Z",
+      "experiment": "flat-medium-short",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000059.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0059-flat-medium-short-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 60,
+      "timestamp": "2026-11-06T00:25:17.481Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000060.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0060-flat-medium-short-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 61,
+      "timestamp": "2026-11-06T00:25:17.490Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000061.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0061-flat-medium-short-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 62,
+      "timestamp": "2026-11-06T00:25:17.498Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000062.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0062-flat-medium-short-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 63,
+      "timestamp": "2026-11-06T00:25:17.506Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000063.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0063-flat-medium-short-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 64,
+      "timestamp": "2026-11-06T00:25:17.514Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000064.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0064-flat-medium-short-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 65,
+      "timestamp": "2026-11-06T00:25:17.523Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000065.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0065-flat-medium-short-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 66,
+      "timestamp": "2026-11-06T00:25:17.531Z",
+      "experiment": "flat-medium-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000066.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0066-flat-medium-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 67,
+      "timestamp": "2026-11-06T00:25:17.532Z",
+      "experiment": "flat-medium-short",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000067.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0067-flat-medium-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 68,
+      "timestamp": "2026-11-06T00:25:17.541Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000068.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0068-flat-medium-short-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 69,
+      "timestamp": "2026-11-06T00:25:17.549Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000069.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0069-flat-medium-short-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 70,
+      "timestamp": "2026-11-06T00:25:17.558Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000070.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0070-flat-medium-short-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 71,
+      "timestamp": "2026-11-06T00:25:17.565Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000071.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0071-flat-medium-short-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 72,
+      "timestamp": "2026-11-06T00:25:17.574Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000072.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0072-flat-medium-short-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 73,
+      "timestamp": "2026-11-06T00:25:17.582Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000073.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0073-flat-medium-short-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 74,
+      "timestamp": "2026-11-06T00:25:17.591Z",
+      "experiment": "flat-medium-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000074.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0074-flat-medium-short-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 75,
+      "timestamp": "2026-11-06T00:25:17.820Z",
+      "experiment": "flat-medium-repress",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000075.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0075-flat-medium-repress-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 76,
+      "timestamp": "2026-11-06T00:25:17.829Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000076.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0076-flat-medium-repress-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 77,
+      "timestamp": "2026-11-06T00:25:17.838Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000077.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0077-flat-medium-repress-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 78,
+      "timestamp": "2026-11-06T00:25:17.846Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000078.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0078-flat-medium-repress-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 79,
+      "timestamp": "2026-11-06T00:25:17.854Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000079.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0079-flat-medium-repress-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 80,
+      "timestamp": "2026-11-06T00:25:17.862Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000080.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0080-flat-medium-repress-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 81,
+      "timestamp": "2026-11-06T00:25:17.871Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000081.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0081-flat-medium-repress-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 82,
+      "timestamp": "2026-11-06T00:25:17.879Z",
+      "experiment": "flat-medium-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000082.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0082-flat-medium-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 83,
+      "timestamp": "2026-11-06T00:25:17.880Z",
+      "experiment": "flat-medium-repress",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000083.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0083-flat-medium-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 84,
+      "timestamp": "2026-11-06T00:25:17.889Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000084.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0084-flat-medium-repress-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 85,
+      "timestamp": "2026-11-06T00:25:17.896Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000085.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0085-flat-medium-repress-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 86,
+      "timestamp": "2026-11-06T00:25:17.905Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000086.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0086-flat-medium-repress-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 87,
+      "timestamp": "2026-11-06T00:25:17.913Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000087.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0087-flat-medium-repress-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 88,
+      "timestamp": "2026-11-06T00:25:17.922Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000088.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0088-flat-medium-repress-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 89,
+      "timestamp": "2026-11-06T00:25:17.929Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000089.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0089-flat-medium-repress-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 90,
+      "timestamp": "2026-11-06T00:25:17.939Z",
+      "experiment": "flat-medium-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000090.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0090-flat-medium-repress-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 91,
+      "timestamp": "2026-11-06T00:25:18.167Z",
+      "experiment": "flat-running-short",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000091.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0091-flat-running-short-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 92,
+      "timestamp": "2026-11-06T00:25:18.175Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000092.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0092-flat-running-short-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 93,
+      "timestamp": "2026-11-06T00:25:18.183Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000093.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0093-flat-running-short-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 94,
+      "timestamp": "2026-11-06T00:25:18.191Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000094.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0094-flat-running-short-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 95,
+      "timestamp": "2026-11-06T00:25:18.200Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000095.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0095-flat-running-short-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 96,
+      "timestamp": "2026-11-06T00:25:18.208Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000096.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0096-flat-running-short-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 97,
+      "timestamp": "2026-11-06T00:25:18.216Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000097.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0097-flat-running-short-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 98,
+      "timestamp": "2026-11-06T00:25:18.224Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000098.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0098-flat-running-short-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 99,
+      "timestamp": "2026-11-06T00:25:18.233Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000099.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0099-flat-running-short-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 100,
+      "timestamp": "2026-11-06T00:25:18.241Z",
+      "experiment": "flat-running-short",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000100.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0100-flat-running-short-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 101,
+      "timestamp": "2026-11-06T00:25:18.242Z",
+      "experiment": "flat-running-short",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000101.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0101-flat-running-short-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 102,
+      "timestamp": "2026-11-06T00:25:18.251Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000102.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0102-flat-running-short-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 103,
+      "timestamp": "2026-11-06T00:25:18.259Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000103.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0103-flat-running-short-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 104,
+      "timestamp": "2026-11-06T00:25:18.268Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000104.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0104-flat-running-short-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 105,
+      "timestamp": "2026-11-06T00:25:18.276Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000105.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0105-flat-running-short-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 106,
+      "timestamp": "2026-11-06T00:25:18.285Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000106.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0106-flat-running-short-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 107,
+      "timestamp": "2026-11-06T00:25:18.293Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 15,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000107.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0107-flat-running-short-t15.png"
+        }
+      },
+      "nativeFrame": 112
+    },
+    {
+      "sequence": 108,
+      "timestamp": "2026-11-06T00:25:18.302Z",
+      "experiment": "flat-running-short",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 16,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000108.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0108-flat-running-short-t16.png"
+        }
+      },
+      "nativeFrame": 120
+    },
+    {
+      "sequence": 109,
+      "timestamp": "2026-11-06T00:25:18.531Z",
+      "experiment": "flat-running-repress",
+      "stage": "reset",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000109.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0109-flat-running-repress-t0.png"
+        }
+      },
+      "nativeFrame": 0
+    },
+    {
+      "sequence": 110,
+      "timestamp": "2026-11-06T00:25:18.539Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000110.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0110-flat-running-repress-t1.png"
+        }
+      },
+      "nativeFrame": 7
+    },
+    {
+      "sequence": 111,
+      "timestamp": "2026-11-06T00:25:18.548Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000111.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0111-flat-running-repress-t2.png"
+        }
+      },
+      "nativeFrame": 15
+    },
+    {
+      "sequence": 112,
+      "timestamp": "2026-11-06T00:25:18.555Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000112.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0112-flat-running-repress-t3.png"
+        }
+      },
+      "nativeFrame": 22
+    },
+    {
+      "sequence": 113,
+      "timestamp": "2026-11-06T00:25:18.564Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000113.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0113-flat-running-repress-t4.png"
+        }
+      },
+      "nativeFrame": 30
+    },
+    {
+      "sequence": 114,
+      "timestamp": "2026-11-06T00:25:18.572Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000114.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0114-flat-running-repress-t5.png"
+        }
+      },
+      "nativeFrame": 37
+    },
+    {
+      "sequence": 115,
+      "timestamp": "2026-11-06T00:25:18.580Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000115.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0115-flat-running-repress-t6.png"
+        }
+      },
+      "nativeFrame": 45
+    },
+    {
+      "sequence": 116,
+      "timestamp": "2026-11-06T00:25:18.588Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000116.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0116-flat-running-repress-t7.png"
+        }
+      },
+      "nativeFrame": 52
+    },
+    {
+      "sequence": 117,
+      "timestamp": "2026-11-06T00:25:18.597Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000117.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0117-flat-running-repress-t8.png"
+        }
+      },
+      "nativeFrame": 60
+    },
+    {
+      "sequence": 118,
+      "timestamp": "2026-11-06T00:25:18.605Z",
+      "experiment": "flat-running-repress",
+      "stage": "declared-flat-setup",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000118.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0118-flat-running-repress-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 119,
+      "timestamp": "2026-11-06T00:25:18.606Z",
+      "experiment": "flat-running-repress",
+      "stage": "start",
+      "request": {
+        "op": "observe"
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000119.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0119-flat-running-repress-t9.png"
+        }
+      },
+      "nativeFrame": 67
+    },
+    {
+      "sequence": 120,
+      "timestamp": "2026-11-06T00:25:18.615Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000120.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0120-flat-running-repress-t10.png"
+        }
+      },
+      "nativeFrame": 75
+    },
+    {
+      "sequence": 121,
+      "timestamp": "2026-11-06T00:25:18.623Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000121.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0121-flat-running-repress-t11.png"
+        }
+      },
+      "nativeFrame": 82
+    },
+    {
+      "sequence": 122,
+      "timestamp": "2026-11-06T00:25:18.631Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000122.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0122-flat-running-repress-t12.png"
+        }
+      },
+      "nativeFrame": 90
+    },
+    {
+      "sequence": 123,
+      "timestamp": "2026-11-06T00:25:18.639Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000123.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0123-flat-running-repress-t13.png"
+        }
+      },
+      "nativeFrame": 97
+    },
+    {
+      "sequence": 124,
+      "timestamp": "2026-11-06T00:25:18.648Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000124.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0124-flat-running-repress-t14.png"
+        }
+      },
+      "nativeFrame": 105
+    },
+    {
+      "sequence": 125,
+      "timestamp": "2026-11-06T00:25:18.656Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 15,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000125.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0125-flat-running-repress-t15.png"
+        }
+      },
+      "nativeFrame": 112
+    },
+    {
+      "sequence": 126,
+      "timestamp": "2026-11-06T00:25:18.665Z",
+      "experiment": "flat-running-repress",
+      "stage": "probe",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 16,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-6ub9_c7z/frame-000126.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-2026-11-06T00-25-15.134Z/0126-flat-running-repress-t16.png"
+        }
+      },
+      "nativeFrame": 120
+    }
+  ]
+}

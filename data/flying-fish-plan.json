@@ -1,0 +1,43 @@
+{
+  "schema": "flying-fish-source-plan-v1",
+  "declaredUtc": "2026-11-06T02:23:16.451Z",
+  "level": "2-3",
+  "calibration": {
+    "startupPrefix": 2252,
+    "path": "tools/flying-fish-calibration-inputs.jsonl",
+    "sha256": "3f84efc978650c8be46eae90a29aba847170d124980945273f851bf2cefa495d",
+    "prefixes": [
+      2252,
+      2256,
+      2248
+    ]
+  },
+  "untouchedReserved": {
+    "startupPrefix": 2252,
+    "path": "tools/flying-fish-reserved-inputs.jsonl",
+    "sha256": "d3c070f056879ae15418a7ef265829aba859b465d1eddeef1d7fc9b2adf2ba8e",
+    "prefixes": [
+      2252,
+      2256,
+      2248
+    ],
+    "rule": "Do not collect before freezing a supported candidate; retain uncovered/death cases."
+  },
+  "goals": [
+    "Measure first complete flying fish full supplied-art positions, horizontal motor and vertical arc.",
+    "Bracket first visible birth/activation and compare run, stop/jump, and delayed ordinary approaches.",
+    "Separate drawing anchors from inferred physical feet and initialization."
+  ],
+  "tolerances": {
+    "opaqueRGB": "exact",
+    "actorPixels": 2,
+    "eventNativeFrames": 8,
+    "cameraPixels": 2
+  },
+  "limits": [
+    "No universal spawn/RNG/cadence claim from one fish.",
+    "Only actual frames_advanced and applied_masks; original masks replayed to a byte-identical prefix PNG.",
+    "Reference auto recovery after altered controls is unqualified; record deaths without a win claim.",
+    "No runtime/compiler writes, ROM contents or reference executable inspection."
+  ]
+}

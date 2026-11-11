@@ -1,0 +1,27 @@
+{
+  "profiles": [
+    {
+      "level": "5-2",
+      "from": "optional-water",
+      "to": "area-2",
+      "ordinaryEnemyFrontier": 2048,
+      "returnCloudOffsetX": 2,
+      "classification": "Inferred return-loader candidate, not a recovered native parser boundary.",
+      "evidence": ["evidence/return-frontier-audit.json", "evidence/five-two-water-browser-receipt.md"],
+      "observed": "A fresh source replay reached the water return and showed neither Hammer Brother on the two clear brick strips through 32 neutral decisions and a further 16 rightward decisions. The normal-route actor origins1904 and2000 are inferred.",
+      "inference": "2048 is the next page boundary after both inferred origins. This physical return keeps pipe plants and later normal-route actors; source presence of the later actors has not been established.",
+      "unresolved": "The native loading boundary, delayed spawns and future actor population are not measured. This is a falsifiable per-return candidate, not a universal loader rule. The two-pixel return cloud offset is independently supported by registered source images; its native camera or rendering cause and unseen later scenery remain unknown."
+    },
+    {
+      "level": "2-1",
+      "from": "bonus-coins",
+      "to": "main",
+      "ordinaryEnemyFrontier": 2048,
+      "classification": "Inferred return-loader candidate, not a recovered native parser boundary.",
+      "evidence": ["evidence/ground-actor-2-1-return.json", "evidence/return-frontier-audit.json"],
+      "observed": "Goombas with normal-route inferred origins1840/1920 are absent in22actual return images, including long neutral waits, while pipe Piranhas1960/2024 animate. Fresh ordinary forward play after the same return shows the later Koopa associated with normal-route origin2176.",
+      "inference": "2048 is the next page boundary inside the conditional interval1920<frontier<=2176. This load profile applies only on this observed physical return. It preserves normal-route NPC data, pipe plants and generators. Other routes have counterexamples to a universal camera-relative cutoff and receive no such rule.",
+      "unresolved": "Normal-route origins and activation epochs are inferred. The exact native loader boundary and semantics remain unresolved; this profile is a falsifiable simulation candidate."
+    }
+  ]
+}

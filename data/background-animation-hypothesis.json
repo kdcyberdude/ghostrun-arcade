@@ -1,0 +1,119 @@
+{
+  "generatedUtc": "2026-11-06T00:23:20.229Z",
+  "stage": "First hypothesis selected before new held-out capture",
+  "plan": "tools/background-animation-plan.json",
+  "cycle": [
+    39,
+    39,
+    39,
+    23,
+    7,
+    23
+  ],
+  "best": {
+    "periodNativeFrames": 8,
+    "offsetNativeFrames": 16,
+    "failures": 3
+  },
+  "trainingSamples": 218,
+  "exactPredictions": 215,
+  "alternatives": [
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 16,
+      "failures": 3
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 15,
+      "failures": 15
+    },
+    {
+      "periodNativeFrames": 7,
+      "offsetNativeFrames": 6,
+      "failures": 23
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 14,
+      "failures": 26
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 17,
+      "failures": 32
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 13,
+      "failures": 38
+    },
+    {
+      "periodNativeFrames": 7,
+      "offsetNativeFrames": 7,
+      "failures": 39
+    },
+    {
+      "periodNativeFrames": 7,
+      "offsetNativeFrames": 5,
+      "failures": 40
+    },
+    {
+      "periodNativeFrames": 7,
+      "offsetNativeFrames": 8,
+      "failures": 51
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 18,
+      "failures": 58
+    },
+    {
+      "periodNativeFrames": 7,
+      "offsetNativeFrames": 4,
+      "failures": 61
+    },
+    {
+      "periodNativeFrames": 8,
+      "offsetNativeFrames": 12,
+      "failures": 62
+    }
+  ],
+  "failures": [
+    {
+      "experiment": "run-jump",
+      "nativeFrame": 112,
+      "observed": 23,
+      "predicted": 7,
+      "questionColors": [
+        23
+      ],
+      "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/run-jump-015.png"
+    },
+    {
+      "experiment": "camera",
+      "nativeFrame": 112,
+      "observed": 23,
+      "predicted": 7,
+      "questionColors": [
+        23
+      ],
+      "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/camera-015.png"
+    },
+    {
+      "experiment": "stable-walk",
+      "nativeFrame": 112,
+      "observed": 23,
+      "predicted": 7,
+      "questionColors": [
+        23
+      ],
+      "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-walk-015.png"
+    }
+  ],
+  "notes": [
+    "The supplied palette descriptor independently gives8-frame update opportunities and the same color sequence.",
+    "This global-native-frame hypothesis is intentionally tested before fitting pause/transition behavior. No unseen buffer state is assigned.",
+    "Full HUD match requires raw sprite255 at88,25 behind background nonzero pixels, using supplied palette0f-0f-36-17. All218oldtrainingHUDpatches match64/64RGBpixels; background tile alone fails5pixels."
+  ]
+}

@@ -1,0 +1,1138 @@
+{
+  "schema": "first-firebar-motion-candidate-v1",
+  "fittedUtc": "2026-11-06T00:51:09.908590+00:00",
+  "scope": "First1-4 six-orb counterclockwise firebar only. No runtime integration or all-castle equivalence claim.",
+  "sourcePaths": [
+    "evidence/local/firebar-fresh-2026-11-06T00-29-14Z/extracted-calibration.json",
+    "evidence/local/firebar-fresh-2026-11-06T00-35-34Z/extracted-calibration.json",
+    "evidence/local/firebar-fresh-2026-11-06T00-38-36Z/extracted-calibration.json",
+    "evidence/local/firebar-fresh-2026-11-06T00-43-27Z/extracted-calibration.json"
+  ],
+  "sourceSHA256": {
+    "evidence/local/firebar-fresh-2026-11-06T00-29-14Z/extracted-calibration.json": "fcb36af77002ccdc99678ae3d27a1a38b5c9b5259bdd5fe341ec856f141a164f",
+    "evidence/local/firebar-fresh-2026-11-06T00-35-34Z/extracted-calibration.json": "4d6e424029c5d79d0f932fe8c2e456567391e44b45f9c471a534c110c7d026d0",
+    "evidence/local/firebar-fresh-2026-11-06T00-38-36Z/extracted-calibration.json": "23d319b65ba396f99473dc74db56708594b9d12e4746026f1dedfff7da7a453c",
+    "evidence/local/firebar-fresh-2026-11-06T00-43-27Z/extracted-calibration.json": "df53797f7078bf2efb2675d89652bffb911168e36954401e0546f7cc4f8a0e4f"
+  },
+  "coordinateConvention": "Each offset is a directly measured8x8 quad center relative to apparent pivot (blockCenterX,blockCenterY+1).",
+  "motion": {
+    "orientationBins": 32,
+    "accumulatorUnitsPerBin": 32,
+    "accumulatorModulus": 1024,
+    "initialUnits": 768,
+    "direction": -1,
+    "incrementUnitsPerGameplayFrame": 5,
+    "averageNativeFramesPerTurn": 204.8,
+    "activeWhenCentralQuadLeftLessThan": 256,
+    "centralQuadOriginXOffset": -4,
+    "activationFirstFrameAdvancesCounter": true,
+    "supportedLength": 6
+  },
+  "lookup": [
+    [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        16,
+        0
+      ],
+      [
+        24,
+        0
+      ],
+      [
+        32,
+        0
+      ],
+      [
+        40,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        1
+      ],
+      [
+        15,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        31,
+        6
+      ],
+      [
+        39,
+        7
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        3
+      ],
+      [
+        14,
+        6
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        29,
+        12
+      ],
+      [
+        37,
+        15
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        4
+      ],
+      [
+        13,
+        9
+      ],
+      [
+        19,
+        13
+      ],
+      [
+        26,
+        18
+      ],
+      [
+        33,
+        22
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        16,
+        16
+      ],
+      [
+        22,
+        22
+      ],
+      [
+        28,
+        28
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        9,
+        13
+      ],
+      [
+        13,
+        19
+      ],
+      [
+        18,
+        26
+      ],
+      [
+        22,
+        33
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        6,
+        14
+      ],
+      [
+        9,
+        22
+      ],
+      [
+        12,
+        29
+      ],
+      [
+        15,
+        37
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        7
+      ],
+      [
+        3,
+        15
+      ],
+      [
+        4,
+        23
+      ],
+      [
+        6,
+        31
+      ],
+      [
+        7,
+        39
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        16
+      ],
+      [
+        0,
+        24
+      ],
+      [
+        0,
+        32
+      ],
+      [
+        0,
+        40
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        7
+      ],
+      [
+        -3,
+        15
+      ],
+      [
+        -4,
+        23
+      ],
+      [
+        -6,
+        31
+      ],
+      [
+        -7,
+        39
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -3,
+        7
+      ],
+      [
+        -6,
+        14
+      ],
+      [
+        -9,
+        22
+      ],
+      [
+        -12,
+        29
+      ],
+      [
+        -15,
+        37
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -4,
+        6
+      ],
+      [
+        -9,
+        13
+      ],
+      [
+        -13,
+        19
+      ],
+      [
+        -18,
+        26
+      ],
+      [
+        -22,
+        33
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -5,
+        5
+      ],
+      [
+        -11,
+        11
+      ],
+      [
+        -16,
+        16
+      ],
+      [
+        -22,
+        22
+      ],
+      [
+        -28,
+        28
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -6,
+        4
+      ],
+      [
+        -13,
+        9
+      ],
+      [
+        -19,
+        13
+      ],
+      [
+        -26,
+        18
+      ],
+      [
+        -33,
+        22
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -7,
+        3
+      ],
+      [
+        -14,
+        6
+      ],
+      [
+        -22,
+        9
+      ],
+      [
+        -29,
+        12
+      ],
+      [
+        -37,
+        15
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -7,
+        1
+      ],
+      [
+        -15,
+        3
+      ],
+      [
+        -23,
+        4
+      ],
+      [
+        -31,
+        6
+      ],
+      [
+        -39,
+        7
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -8,
+        0
+      ],
+      [
+        -16,
+        0
+      ],
+      [
+        -24,
+        0
+      ],
+      [
+        -32,
+        0
+      ],
+      [
+        -40,
+        0
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -7,
+        -1
+      ],
+      [
+        -15,
+        -3
+      ],
+      [
+        -23,
+        -4
+      ],
+      [
+        -31,
+        -6
+      ],
+      [
+        -39,
+        -7
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -7,
+        -3
+      ],
+      [
+        -14,
+        -6
+      ],
+      [
+        -22,
+        -9
+      ],
+      [
+        -29,
+        -12
+      ],
+      [
+        -37,
+        -15
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -6,
+        -4
+      ],
+      [
+        -13,
+        -9
+      ],
+      [
+        -19,
+        -13
+      ],
+      [
+        -26,
+        -18
+      ],
+      [
+        -33,
+        -22
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -5,
+        -5
+      ],
+      [
+        -11,
+        -11
+      ],
+      [
+        -16,
+        -16
+      ],
+      [
+        -22,
+        -22
+      ],
+      [
+        -28,
+        -28
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -4,
+        -6
+      ],
+      [
+        -9,
+        -13
+      ],
+      [
+        -13,
+        -19
+      ],
+      [
+        -18,
+        -26
+      ],
+      [
+        -22,
+        -33
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -3,
+        -7
+      ],
+      [
+        -6,
+        -14
+      ],
+      [
+        -9,
+        -22
+      ],
+      [
+        -12,
+        -29
+      ],
+      [
+        -15,
+        -37
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        -7
+      ],
+      [
+        -3,
+        -15
+      ],
+      [
+        -4,
+        -23
+      ],
+      [
+        -6,
+        -31
+      ],
+      [
+        -7,
+        -39
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -8
+      ],
+      [
+        0,
+        -16
+      ],
+      [
+        0,
+        -24
+      ],
+      [
+        0,
+        -32
+      ],
+      [
+        0,
+        -40
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        -7
+      ],
+      [
+        3,
+        -15
+      ],
+      [
+        4,
+        -23
+      ],
+      [
+        6,
+        -31
+      ],
+      [
+        7,
+        -39
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        -7
+      ],
+      [
+        6,
+        -14
+      ],
+      [
+        9,
+        -22
+      ],
+      [
+        12,
+        -29
+      ],
+      [
+        15,
+        -37
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        -6
+      ],
+      [
+        9,
+        -13
+      ],
+      [
+        13,
+        -19
+      ],
+      [
+        18,
+        -26
+      ],
+      [
+        22,
+        -33
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        -5
+      ],
+      [
+        11,
+        -11
+      ],
+      [
+        16,
+        -16
+      ],
+      [
+        22,
+        -22
+      ],
+      [
+        28,
+        -28
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        6,
+        -4
+      ],
+      [
+        13,
+        -9
+      ],
+      [
+        19,
+        -13
+      ],
+      [
+        26,
+        -18
+      ],
+      [
+        33,
+        -22
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        -3
+      ],
+      [
+        14,
+        -6
+      ],
+      [
+        22,
+        -9
+      ],
+      [
+        29,
+        -12
+      ],
+      [
+        37,
+        -15
+      ]
+    ],
+    [
+      [
+        0,
+        0
+      ],
+      [
+        7,
+        -1
+      ],
+      [
+        15,
+        -3
+      ],
+      [
+        23,
+        -4
+      ],
+      [
+        31,
+        -6
+      ],
+      [
+        39,
+        -7
+      ]
+    ]
+  ],
+  "calibration": [
+    {
+      "case": "cal-prewait0",
+      "samples": 101,
+      "phaseInterceptInterval": [
+        1142.75,
+        1142.78125
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7161,
+      "activationImageBracket": {
+        "beforeNative": 7159,
+        "beforeCamera": 226,
+        "afterNative": 7166,
+        "afterCamera": 240
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 598,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 598
+    },
+    {
+      "case": "cal-prewait20",
+      "samples": 101,
+      "phaseInterceptInterval": [
+        1166.1875,
+        1166.21875
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7311,
+      "activationImageBracket": {
+        "beforeNative": 7309,
+        "beforeCamera": 224,
+        "afterNative": 7316,
+        "afterCamera": 239
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 592,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 592
+    },
+    {
+      "case": "cal-hold-low-0",
+      "samples": 72,
+      "phaseInterceptInterval": [
+        1172.59375,
+        1172.625
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7352,
+      "activationImageBracket": {
+        "beforeNative": 7346,
+        "beforeCamera": 225,
+        "afterNative": 7354,
+        "afterCamera": 230
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 428,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 428
+    },
+    {
+      "case": "cal-hold-low-20",
+      "samples": 71,
+      "phaseInterceptInterval": [
+        1197.4375,
+        1197.46875
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7511,
+      "activationImageBracket": {
+        "beforeNative": 7504,
+        "beforeCamera": 223,
+        "afterNative": 7512,
+        "afterCamera": 230
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 422,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 422
+    },
+    {
+      "case": "cal-hold-high-0",
+      "samples": 71,
+      "phaseInterceptInterval": [
+        1175.5625,
+        1175.59375
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7371,
+      "activationImageBracket": {
+        "beforeNative": 7369,
+        "beforeCamera": 227,
+        "afterNative": 7377,
+        "afterCamera": 235
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 425,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 425
+    },
+    {
+      "case": "cal-hold-high-20",
+      "samples": 71,
+      "phaseInterceptInterval": [
+        1199.15625,
+        1199.1875
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7522,
+      "activationImageBracket": {
+        "beforeNative": 7519,
+        "beforeCamera": 226,
+        "afterNative": 7527,
+        "afterCamera": 234
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 424,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 424
+    },
+    {
+      "case": "cal-fullview",
+      "samples": 81,
+      "phaseInterceptInterval": [
+        1142.75,
+        1142.78125
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7161,
+      "activationImageBracket": {
+        "beforeNative": 7159,
+        "beforeCamera": 226,
+        "afterNative": 7166,
+        "afterCamera": 240
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 486,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 486
+    },
+    {
+      "case": "cal-hold-upper-0",
+      "samples": 83,
+      "phaseInterceptInterval": [
+        1160.71875,
+        1160.75
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7276,
+      "activationImageBracket": {
+        "beforeNative": 7271,
+        "beforeCamera": 221,
+        "afterNative": 7279,
+        "afterCamera": 233
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 496,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 496
+    },
+    {
+      "case": "cal-hold-upper-20",
+      "samples": 83,
+      "phaseInterceptInterval": [
+        1184.3125,
+        1184.34375
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7427,
+      "activationImageBracket": {
+        "beforeNative": 7422,
+        "beforeCamera": 221,
+        "afterNative": 7429,
+        "afterCamera": 232
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 495,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 495
+    },
+    {
+      "case": "cal-hold-visible-0",
+      "samples": 83,
+      "phaseInterceptInterval": [
+        1158.375,
+        1158.40625
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7261,
+      "activationImageBracket": {
+        "beforeNative": 7256,
+        "beforeCamera": 226,
+        "afterNative": 7264,
+        "afterCamera": 231
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 468,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 468
+    },
+    {
+      "case": "cal-hold-visible-20",
+      "samples": 83,
+      "phaseInterceptInterval": [
+        1181.8125,
+        1181.84375
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7411,
+      "activationImageBracket": {
+        "beforeNative": 7407,
+        "beforeCamera": 227,
+        "afterNative": 7414,
+        "afterCamera": 231
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 477,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 477
+    },
+    {
+      "case": "cal-creep-activation",
+      "samples": 123,
+      "phaseInterceptInterval": [
+        1196.34375,
+        1196.375
+      ],
+      "intervalWidthBins": 0.03125,
+      "estimatedActivationNative": 7504,
+      "activationImageBracket": {
+        "beforeNative": 7497,
+        "beforeCamera": 228,
+        "afterNative": 7504,
+        "afterCamera": 229
+      },
+      "activationEstimator": "Nearest native frame from linear integer camera interpolation at centralQuadLeft<256 (camera229); no orb angle used to choose this estimate.",
+      "phaseEpochNativeError": 0.0,
+      "wrongPhaseSamples": 0,
+      "flameSamples": 649,
+      "maxCenterErrorPixels": 0,
+      "centerSamplesWithin2Pixels": 649
+    }
+  ],
+  "limitations": [
+    "Source angles admit an exact5/32-bin/native rate; first activation frame is inferred from the visible central-tile boundary and discrete camera samples.",
+    "Nearest camera interpolation is a diagnostic estimate, not a production tick offset. A production controller must test the real per-native camera and keep a per-object accumulator.",
+    "Initial orientation24 and viewport activation boundary are calibrated only for this first counterclockwise bar. Other bars, long bars and other directions need qualification.",
+    "Sprite-pose animation uses a separate clock whose entry epoch is not yet recovered across worlds.",
+    "Collision radius is not selected here."
+  ]
+}

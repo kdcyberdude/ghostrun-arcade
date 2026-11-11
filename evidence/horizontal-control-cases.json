@@ -1,0 +1,2196 @@
+{
+  "date": "2026-11-05T20:31:11.667Z",
+  "tolerancePixels": 2,
+  "cases": [
+    {
+      "name": "run-down-stop",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-007.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-008.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-009.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 155,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-010.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 165,
+          "y": 208,
+          "camera": 53,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-011.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 173,
+          "y": 208,
+          "camera": 61,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-012.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 179,
+          "y": 208,
+          "camera": 67,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-013.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 183,
+          "y": 208,
+          "camera": 71,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-014.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 184,
+          "y": 208,
+          "camera": 72,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-015.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 185,
+          "y": 208,
+          "camera": 73,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-stop-016.png"
+        }
+      ]
+    },
+    {
+      "name": "run-down-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-007.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-008.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-009.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 155,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-010.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 165,
+          "y": 189,
+          "camera": 53,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 177,
+          "y": 165,
+          "camera": 65,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 187,
+          "y": 150,
+          "camera": 75,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 198,
+          "y": 140,
+          "camera": 86,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 208,
+          "y": 137,
+          "camera": 96,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 220,
+          "y": 149,
+          "camera": 108,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 230,
+          "y": 176,
+          "camera": 118,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-017.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 241,
+          "y": 208,
+          "camera": 129,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-018.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 250,
+          "y": 208,
+          "camera": 138,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-down-jump-019.png"
+        }
+      ]
+    },
+    {
+      "name": "run-neutral-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-007.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-008.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-009.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 155,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-010.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 164,
+          "y": 189,
+          "camera": 52,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 175,
+          "y": 165,
+          "camera": 63,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 184,
+          "y": 150,
+          "camera": 72,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 194,
+          "y": 140,
+          "camera": 82,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 204,
+          "y": 137,
+          "camera": 92,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 214,
+          "y": 149,
+          "camera": 102,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 223,
+          "y": 176,
+          "camera": 111,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-017.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 234,
+          "y": 208,
+          "camera": 122,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-018.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 242,
+          "y": 208,
+          "camera": 130,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-neutral-jump-019.png"
+        }
+      ]
+    },
+    {
+      "name": "slow-run-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-002.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 50,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-003.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 57,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-004.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 62,
+          "y": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-005.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 69,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-006.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 74,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-007.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 81,
+          "y": 166,
+          "camera": 1,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-008.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 87,
+          "y": 195,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 93,
+          "y": 208,
+          "camera": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-010.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 96,
+          "y": 208,
+          "camera": 16,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-011.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 98,
+          "y": 208,
+          "camera": 18,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/slow-run-jump-012.png"
+        }
+      ]
+    },
+    {
+      "name": "medium-run-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-003.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 60,
+          "y": 185,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-004.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 69,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-005.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 78,
+          "y": 148,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-006.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 87,
+          "y": 140,
+          "camera": 5,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-007.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 96,
+          "y": 137,
+          "camera": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-008.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 104,
+          "y": 149,
+          "camera": 20,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 114,
+          "y": 180,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-010.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 122,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-011.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 131,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 136,
+          "y": 208,
+          "camera": 48,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/medium-run-jump-013.png"
+        }
+      ]
+    },
+    {
+      "name": "fast-run-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-004.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 184,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-005.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 87,
+          "y": 155,
+          "camera": 4,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-006.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 99,
+          "y": 137,
+          "camera": 11,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-007.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 112,
+          "y": 127,
+          "camera": 19,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-008.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 124,
+          "y": 127,
+          "camera": 26,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 138,
+          "y": 153,
+          "camera": 34,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-010.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 149,
+          "y": 181,
+          "camera": 41,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 163,
+          "y": 208,
+          "camera": 51,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 173,
+          "y": 208,
+          "camera": 61,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 183,
+          "y": 208,
+          "camera": 71,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/fast-run-jump-014.png"
+        }
+      ]
+    },
+    {
+      "name": "down-short-release-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-007.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-008.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 156,
+          "y": 180,
+          "camera": 44,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-010.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 168,
+          "y": 155,
+          "camera": 56,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 182,
+          "y": 135,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 195,
+          "y": 127,
+          "camera": 83,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 209,
+          "y": 128,
+          "camera": 97,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 221,
+          "y": 153,
+          "camera": 109,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 235,
+          "y": 185,
+          "camera": 123,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 247,
+          "y": 208,
+          "camera": 135,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-017.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 259,
+          "y": 208,
+          "camera": 147,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-018.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 266,
+          "y": 208,
+          "camera": 154,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-short-release-jump-019.png"
+        }
+      ]
+    },
+    {
+      "name": "down-long-release-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-007.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-008.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-009.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 155,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-010.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 165,
+          "y": 208,
+          "camera": 53,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 174,
+          "y": 185,
+          "camera": 62,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 182,
+          "y": 165,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 192,
+          "y": 148,
+          "camera": 80,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 200,
+          "y": 140,
+          "camera": 88,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 210,
+          "y": 137,
+          "camera": 98,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 218,
+          "y": 149,
+          "camera": 106,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-017.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 228,
+          "y": 180,
+          "camera": 116,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-018.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 236,
+          "y": 208,
+          "camera": 124,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-019.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 150,
+          "x": 244,
+          "y": 208,
+          "camera": 132,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-020.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 157,
+          "x": 249,
+          "y": 208,
+          "camera": 137,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-long-release-jump-021.png"
+        }
+      ]
+    },
+    {
+      "name": "down-neutral-release-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-007.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 128,
+          "y": 208,
+          "camera": 28,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-008.png"
+        },
+        {
+          "mask": 42,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 142,
+          "y": 208,
+          "camera": 35,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-009.png"
+        },
+        {
+          "mask": 42,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 155,
+          "y": 208,
+          "camera": 43,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-010.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 165,
+          "y": 208,
+          "camera": 53,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-011.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 174,
+          "y": 185,
+          "camera": 62,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 182,
+          "y": 165,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 192,
+          "y": 148,
+          "camera": 80,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 200,
+          "y": 140,
+          "camera": 88,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 210,
+          "y": 137,
+          "camera": 98,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 218,
+          "y": 149,
+          "camera": 106,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-017.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 228,
+          "y": 180,
+          "camera": 116,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-018.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 236,
+          "y": 208,
+          "camera": 124,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-019.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 150,
+          "x": 244,
+          "y": 208,
+          "camera": 132,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-020.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 157,
+          "x": 249,
+          "y": 208,
+          "camera": 137,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/down-neutral-release-jump-021.png"
+        }
+      ]
+    },
+    {
+      "name": "run-release-b-jump",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-007.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-008.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 147,
+          "y": 155,
+          "camera": 40,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-009.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 167,
+          "y": 135,
+          "camera": 55,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-010.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 184,
+          "y": 127,
+          "camera": 72,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-011.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 204,
+          "y": 128,
+          "camera": 92,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-012.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 222,
+          "y": 153,
+          "camera": 110,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-013.png"
+        },
+        {
+          "mask": 24,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 242,
+          "y": 185,
+          "camera": 130,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-014.png"
+        },
+        {
+          "mask": 24,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 258,
+          "y": 208,
+          "camera": 146,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-015.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 270,
+          "y": 208,
+          "camera": 158,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-016.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 281,
+          "y": 208,
+          "camera": 169,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-017.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 293,
+          "y": 208,
+          "camera": 181,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-release-b-jump-018.png"
+        }
+      ]
+    },
+    {
+      "name": "run-air-reverse",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-008.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 146,
+          "y": 155,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-009.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 162,
+          "y": 135,
+          "camera": 50,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-010.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 173,
+          "y": 127,
+          "camera": 61,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-011.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 182,
+          "y": 128,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 188,
+          "y": 153,
+          "camera": 76,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 195,
+          "y": 185,
+          "camera": 83,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-014.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 202,
+          "y": 208,
+          "camera": 90,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-015.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 207,
+          "y": 208,
+          "camera": 95,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-016.png"
+        }
+      ]
+    },
+    {
+      "name": "run-air-neutral",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-008.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 147,
+          "y": 159,
+          "camera": 40,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-009.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 167,
+          "y": 167,
+          "camera": 55,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-010.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 184,
+          "y": 195,
+          "camera": 72,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-011.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 204,
+          "y": 208,
+          "camera": 92,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 218,
+          "y": 208,
+          "camera": 106,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 232,
+          "y": 208,
+          "camera": 120,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-014.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 242,
+          "y": 208,
+          "camera": 130,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-neutral-015.png"
+        }
+      ]
+    },
+    {
+      "name": "run-air-short-reverse",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-008.png"
+        },
+        {
+          "mask": 52,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 146,
+          "y": 155,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-009.png"
+        },
+        {
+          "mask": 52,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 162,
+          "y": 135,
+          "camera": 50,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-010.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 174,
+          "y": 131,
+          "camera": 62,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-011.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 187,
+          "y": 156,
+          "camera": 75,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 199,
+          "y": 184,
+          "camera": 87,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 212,
+          "y": 208,
+          "camera": 100,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-014.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 222,
+          "y": 208,
+          "camera": 110,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-short-reverse-015.png"
+        }
+      ]
+    },
+    {
+      "name": "run-air-reverse-no-b",
+      "classification": "observed reference images/controllers; world coordinates via background registration",
+      "actions": [
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 109,
+          "y": 208,
+          "camera": 17,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-007.png"
+        },
+        {
+          "mask": 56,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 129,
+          "y": 180,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-008.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 146,
+          "y": 155,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-009.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 162,
+          "y": 135,
+          "camera": 50,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-010.png"
+        },
+        {
+          "mask": 20,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 173,
+          "y": 127,
+          "camera": 61,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-011.png"
+        },
+        {
+          "mask": 20,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 182,
+          "y": 128,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 188,
+          "y": 153,
+          "camera": 76,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 195,
+          "y": 185,
+          "camera": 83,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-014.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 202,
+          "y": 208,
+          "camera": 90,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-015.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 207,
+          "y": 208,
+          "camera": 95,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/horizontal-2026-11-05T20-31-02.901Z/run-air-reverse-no-b-016.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+node_modules/
+dist/
+evidence/local/
+playwright-report/
+test-results/
+*.log
+*.tsbuildinfo
+*.timestamp-*.mjs
+.DS_Store
+__pycache__/
+*.nes
+*.nsf
+model/
+roms/
+.env
+.env.*

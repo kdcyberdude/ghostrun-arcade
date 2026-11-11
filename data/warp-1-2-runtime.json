@@ -1,0 +1,23 @@
+{
+  "schema": "observed-roof-warp-runtime-v1",
+  "level": "1-2",
+  "area": "area-2",
+  "minimumObservedWidth": 3074,
+  "cameraEnd": 2818,
+  "activateAtCamera": 2818,
+  "removePiranhasAtX": [2856, 2920, 2984],
+  "overlays": [
+    {"text": "WELCOME TO WARP ZONE!", "x": 2848, "y": 96},
+    {"text": "4", "x": 2856, "y": 136},
+    {"text": "3", "x": 2920, "y": 136},
+    {"text": "2", "x": 2984, "y": 136}
+  ],
+  "pipes": [
+    {"leftX": 2848, "topY": 160, "targetLevel": "4-1"},
+    {"leftX": 2912, "topY": 160, "targetLevel": "3-1"},
+    {"leftX": 2976, "topY": 160, "targetLevel": "2-1"}
+  ],
+  "evidence": "data/warp-1-2-observations.json: ordinary roof route, exact tile/font matches, and all three destination intro/play images. Camera2810/no sign at550; camera2818/sign and removed Piranhas at551, eight native frames later.",
+  "registration": "Map and camera values re-registered 16 px left (see data/warp-1-2-observations.json reregistration): the native exit pipe is at 2656 and the first warp plant at 2856, the screenshot registration anchored on 2672. Screen x values are unchanged.",
+  "inferred": "Activation at the observed camera stop is a geometric candidate within the measured interval. Width3074 is the furthest observed viewport edge, not a claim about geometry behind the blocking right wall. Piranha initial phases are unmeasured; common existing Piranha rules are reused. Cross-level transition uses the shared40-frame candidate."
+}

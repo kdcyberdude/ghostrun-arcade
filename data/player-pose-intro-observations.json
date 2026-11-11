@@ -1,0 +1,220 @@
+{
+  "schema": "image-only-interstitial-art-v1",
+  "generatedUtc": "2026-11-05T21:39:58.059Z",
+  "freshTrace": "evidence/local/player-pose-intro-2026-11-05T21-39-55-262Z/trace.jsonl",
+  "method": "Genuine recorded normal/warp intro PNGs plus new independently controlled death/respawn. Exact opaque supplied player match and white bitmap digit/cross matching. No executable or ROM inspection.",
+  "deathIntroSamples": 18,
+  "measurements": [
+    {
+      "context": "normal-1-1-to-1-2",
+      "world": "1-2",
+      "image": "evidence/local/reference-campaign-dense/00266-tick-00265.png",
+      "tick": 265,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 17650,
+      "coins": 0,
+      "lives": 3,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "normal-1-1-to-1-2",
+      "world": "1-2",
+      "image": "evidence/local/reference-campaign-dense/00275-tick-00274.png",
+      "tick": 274,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 17650,
+      "coins": 0,
+      "lives": 3,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "normal-1-1-to-1-2",
+      "world": "1-2",
+      "image": "evidence/local/reference-campaign-dense/00283-tick-00282.png",
+      "tick": 282,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 17650,
+      "coins": 0,
+      "lives": 3,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "4-2-warp-7",
+      "world": "7-1",
+      "image": "evidence/local/warp-destinations-2026-11-05T21-21-26.234Z/00764-seven-enter-t4629.png",
+      "tick": 4629,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 168000,
+      "coins": 40,
+      "lives": 3,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "4-2-warp-8",
+      "world": "8-1",
+      "image": "evidence/local/warp-destinations-2026-11-05T21-21-26.234Z/01589-eight-enter-aligned-t4664.png",
+      "tick": 4664,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 168000,
+      "coins": 40,
+      "lives": 3,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "fresh-death-respawn",
+      "world": "1-1",
+      "image": "evidence/local/player-pose-intro-2026-11-05T21-39-55-262Z/0048-tick-47.png",
+      "nativeFrames": 353,
+      "tick": 47,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 0,
+      "coins": 0,
+      "lives": 2,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "fresh-death-respawn",
+      "world": "1-1",
+      "image": "evidence/local/player-pose-intro-2026-11-05T21-39-55-262Z/0057-tick-56.png",
+      "nativeFrames": 420,
+      "tick": 56,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 0,
+      "coins": 0,
+      "lives": 2,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    },
+    {
+      "context": "fresh-death-respawn",
+      "world": "1-1",
+      "image": "evidence/local/player-pose-intro-2026-11-05T21-39-55-262Z/0065-tick-64.png",
+      "nativeFrames": 480,
+      "tick": 64,
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "score": 0,
+      "coins": 0,
+      "lives": 2,
+      "crossOriginCandidates": [
+        120
+      ],
+      "timeDigitNonblackPixels": 0
+    }
+  ]
+}

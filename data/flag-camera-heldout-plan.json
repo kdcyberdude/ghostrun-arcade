@@ -1,0 +1,32 @@
+{
+  "schema": "locked-flag-camera-heldout-plan-v1",
+  "lockedUtc": "2026-11-05T23:34:21.414Z",
+  "runtimeSource": "Immutable5183 src/simulation.ts f5294e5ee17d06868647e01935db276705b8a6053753a36f0d578b2d5c4f1fdc",
+  "candidateFile": "tools/flag-camera-candidate.mjs",
+  "candidateSHA256": "5e2cd00c5c99ff9abda57ef4ab5ba6b3dfa21cb21ea02d025b7358ff00c43195",
+  "normalCameraFile": "tools/camera-lag-candidate.mjs",
+  "normalCameraSHA256": "2f1210d4d0759b2d7fe6acbad901430641c84d7d4a6d7380b63d58e38d0099fa",
+  "calibration": [
+    "cal-standard",
+    "cal-six TIME326",
+    "cal-zero TIME320",
+    "cal-one TIME321"
+  ],
+  "heldout": {
+    "directory": "evidence/local/flag-camera-fresh-2026-11-05T23-27-11Z",
+    "case": "reserved-three",
+    "frozenTime": 323,
+    "status": "Captured already; image geometry/player positions not opened or extracted before this lock. Only request metadata and timer digit were checked during capture."
+  },
+  "hypothesis": "During automatic rightward walk, camera target artwork screenX is the pole-grip artwork screenX+25. Preserve camera at grab and advance only after walking world artwork origin passes poleX+10. No fixed final camera cap is inferred.",
+  "tolerances": {
+    "positionPixels": 2,
+    "cameraPixels": 2,
+    "rawStaticRGB": 0.99
+  },
+  "limitations": [
+    "This corrects the fixed141 camera target hypothesis only. No actor timing, physical walk, entry collision, timer or final camera endcap is modified.",
+    "The controlled approach has an existing2..3 native-frame slide/contact discrepancy and early pose-origin transition; a camera-only candidate may remain outside tolerance because of these independent errors."
+  ],
+  "acceptance": "Evaluate unchanged candidate on reserved-three; report full failure counts and raw99% outcome. Do not tune after heldout."
+}

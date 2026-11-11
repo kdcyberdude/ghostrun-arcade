@@ -1,0 +1,2850 @@
+{
+  "schema": "image-only-optional-pipe-survey-v1",
+  "level": "4-2",
+  "mainArea": "area-3",
+  "atlas": "metatiles-palette-003.png",
+  "status": "Four assigned candidates reached alive, centered and tested; no additional optional room entered.",
+  "method": "Fresh ordinary recorded-input prefixes plus actual controller requests. Exact supplied player/pipe artwork matching on PNGs only. World camera inferred from unique candidate pipe and neighboring observed geometry, not native telemetry.",
+  "candidates": [
+    {
+      "candidate": {
+        "worldX": 1728,
+        "topY": 144,
+        "width": 32
+      },
+      "status": "surveyed-centered-down-no-transition-observed",
+      "acceptedOptionalConnection": false,
+      "room": null,
+      "return": null,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        3503,
+        3519
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 4312,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 3504,
+            "endTick": 4315,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 3505,
+            "endTick": 4317,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 3506,
+            "endTick": 4325,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 8
+            },
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 3507,
+            "endTick": 4345,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 3508,
+            "endTick": 4348,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "b"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 3509,
+            "endTick": 4352,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "b",
+                "a"
+              ],
+              "ticks": 4
+            },
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 3510,
+            "endTick": 4355,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 3511,
+            "endTick": 4365,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 10
+            },
+            "nativeFrames": 75
+          },
+          {
+            "sequence": 3512,
+            "endTick": 4366,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 3513,
+            "endTick": 4386,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 3514,
+            "endTick": 4387,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 3515,
+            "endTick": 4407,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 3516,
+            "endTick": 4408,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 3517,
+            "endTick": 4428,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 3518,
+            "endTick": 4429,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 3519,
+            "endTick": 4449,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 3519,
+        "endTick": 4449,
+        "downDecisions": 20,
+        "actualNativeFrames": 150,
+        "playerOriginScreenX": 32,
+        "playerFeetY": 144,
+        "pipeScreenLeft": 24,
+        "relativePlayerOriginX": 8,
+        "pipeAtlasConfidence": 0.984375,
+        "playerAtlasConfidence": 1,
+        "inferredCameraX": 1704,
+        "inferredPlayerWorldX": 1736,
+        "outcome": "Same main-area artwork and exact standing player after centered DOWN; no room transition observed."
+      },
+      "observations": [
+        {
+          "sequence": 3503,
+          "tick": 4312,
+          "sentUtc": "2026-11-05T21:37:00.597266+00:00",
+          "request": {
+            "op": "step",
+            "mask": 52,
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/four-two-pipe-survey/03503-tick-04312.png",
+          "player": {
+            "originX": 114,
+            "originY": 101,
+            "visibleLeft": 114,
+            "visibleTop": 117,
+            "visibleRight": 129,
+            "visibleBottom": 132,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 157,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": -43
+            }
+          ]
+        },
+        {
+          "sequence": 3504,
+          "tick": 4315,
+          "sentUtc": "2026-11-05T21:37:00.605648+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/four-two-pipe-survey/03504-tick-04315.png",
+          "player": {
+            "originX": 114,
+            "originY": 47,
+            "visibleLeft": 114,
+            "visibleTop": 63,
+            "visibleRight": 129,
+            "visibleBottom": 78,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 102,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 12
+            }
+          ]
+        },
+        {
+          "sequence": 3505,
+          "tick": 4317,
+          "sentUtc": "2026-11-05T21:37:00.629548+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-survey/03505-tick-04317.png",
+          "player": {
+            "originX": 114,
+            "originY": 78,
+            "visibleLeft": 114,
+            "visibleTop": 94,
+            "visibleRight": 129,
+            "visibleBottom": 109,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 69,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 45
+            }
+          ]
+        },
+        {
+          "sequence": 3506,
+          "tick": 4325,
+          "sentUtc": "2026-11-05T21:37:00.645697+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/four-two-pipe-survey/03506-tick-04325.png",
+          "player": {
+            "originX": 114,
+            "originY": 129,
+            "visibleLeft": 116,
+            "visibleTop": 145,
+            "visibleRight": 127,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 90
+            }
+          ]
+        },
+        {
+          "sequence": 3507,
+          "tick": 4345,
+          "sentUtc": "2026-11-05T21:37:00.706402+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-survey/03507-tick-04345.png",
+          "player": {
+            "originX": 114,
+            "originY": 129,
+            "visibleLeft": 116,
+            "visibleTop": 145,
+            "visibleRight": 127,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 90
+            }
+          ]
+        },
+        {
+          "sequence": 3508,
+          "tick": 4348,
+          "sentUtc": "2026-11-05T21:37:00.857475+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/four-two-pipe-survey/03508-tick-04348.png",
+          "player": {
+            "originX": 101,
+            "originY": 129,
+            "visibleLeft": 102,
+            "visibleTop": 146,
+            "visibleRight": 114,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 77
+            }
+          ]
+        },
+        {
+          "sequence": 3509,
+          "tick": 4352,
+          "sentUtc": "2026-11-05T21:37:00.881725+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/four-two-pipe-survey/03509-tick-04352.png",
+          "player": {
+            "originX": 55,
+            "originY": 60,
+            "visibleLeft": 55,
+            "visibleTop": 76,
+            "visibleRight": 70,
+            "visibleBottom": 91,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 31
+            }
+          ]
+        },
+        {
+          "sequence": 3510,
+          "tick": 4355,
+          "sentUtc": "2026-11-05T21:37:00.912934+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/four-two-pipe-survey/03510-tick-04355.png",
+          "player": {
+            "originX": 31,
+            "originY": 101,
+            "visibleLeft": 31,
+            "visibleTop": 117,
+            "visibleRight": 46,
+            "visibleBottom": 132,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": 7
+            }
+          ]
+        },
+        {
+          "sequence": 3511,
+          "tick": 4365,
+          "sentUtc": "2026-11-05T21:37:00.935976+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10
+          },
+          "nativeFrames": 75,
+          "image": "evidence/local/four-two-pipe-survey/03511-tick-04365.png",
+          "player": {
+            "originX": 28,
+            "originY": 113,
+            "visibleLeft": 30,
+            "visibleTop": 129,
+            "visibleRight": 41,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 4
+            }
+          ]
+        },
+        {
+          "sequence": 3512,
+          "tick": 4366,
+          "sentUtc": "2026-11-05T21:37:45.575337+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/four-two-pipe-survey/03512-tick-04366.png",
+          "player": {
+            "originX": 29,
+            "originY": 113,
+            "visibleLeft": 29,
+            "visibleTop": 129,
+            "visibleRight": 43,
+            "visibleBottom": 144,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.994140625,
+              "relativePlayerX": 5
+            }
+          ]
+        },
+        {
+          "sequence": 3513,
+          "tick": 4386,
+          "sentUtc": "2026-11-05T21:37:45.585281+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-survey/03513-tick-04386.png",
+          "player": {
+            "originX": 29,
+            "originY": 113,
+            "visibleLeft": 31,
+            "visibleTop": 129,
+            "visibleRight": 42,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 5
+            }
+          ]
+        },
+        {
+          "sequence": 3514,
+          "tick": 4387,
+          "sentUtc": "2026-11-05T21:38:12.704708+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/four-two-pipe-survey/03514-tick-04387.png",
+          "player": {
+            "originX": 30,
+            "originY": 113,
+            "visibleLeft": 30,
+            "visibleTop": 129,
+            "visibleRight": 44,
+            "visibleBottom": 144,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.994140625,
+              "relativePlayerX": 6
+            }
+          ]
+        },
+        {
+          "sequence": 3515,
+          "tick": 4407,
+          "sentUtc": "2026-11-05T21:38:12.715489+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-survey/03515-tick-04407.png",
+          "player": {
+            "originX": 30,
+            "originY": 113,
+            "visibleLeft": 32,
+            "visibleTop": 129,
+            "visibleRight": 43,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 6
+            }
+          ]
+        },
+        {
+          "sequence": 3516,
+          "tick": 4408,
+          "sentUtc": "2026-11-05T21:38:40.119340+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/four-two-pipe-survey/03516-tick-04408.png",
+          "player": {
+            "originX": 31,
+            "originY": 113,
+            "visibleLeft": 31,
+            "visibleTop": 129,
+            "visibleRight": 45,
+            "visibleBottom": 144,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.994140625,
+              "relativePlayerX": 7
+            }
+          ]
+        },
+        {
+          "sequence": 3517,
+          "tick": 4428,
+          "sentUtc": "2026-11-05T21:38:40.128568+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 151,
+          "image": "evidence/local/four-two-pipe-survey/03517-tick-04428.png",
+          "player": {
+            "originX": 31,
+            "originY": 113,
+            "visibleLeft": 33,
+            "visibleTop": 129,
+            "visibleRight": 44,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 7
+            }
+          ]
+        },
+        {
+          "sequence": 3518,
+          "tick": 4429,
+          "sentUtc": "2026-11-05T21:38:40.282038+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/four-two-pipe-survey/03518-tick-04429.png",
+          "player": {
+            "originX": 32,
+            "originY": 113,
+            "visibleLeft": 32,
+            "visibleTop": 129,
+            "visibleRight": 46,
+            "visibleBottom": 144,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.994140625,
+              "relativePlayerX": 8
+            }
+          ]
+        },
+        {
+          "sequence": 3519,
+          "tick": 4449,
+          "sentUtc": "2026-11-05T21:38:40.290547+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-survey/03519-tick-04449.png",
+          "player": {
+            "originX": 32,
+            "originY": 113,
+            "visibleLeft": 34,
+            "visibleTop": 129,
+            "visibleRight": 45,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 24,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "worldX": 2112,
+        "topY": 176,
+        "width": 32
+      },
+      "status": "surveyed-centered-down-no-transition-observed",
+      "acceptedOptionalConnection": false,
+      "room": null,
+      "return": null,
+      "sourceTrace": "evidence/local/four-two-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        701,
+        709
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 4332,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 702,
+            "endTick": 4333,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a",
+                "b"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 703,
+            "endTick": 4336,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a",
+                "b"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 704,
+            "endTick": 4344,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 8
+            },
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 705,
+            "endTick": 4349,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 5
+            },
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 706,
+            "endTick": 4351,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 707,
+            "endTick": 4363,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 12
+            },
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 708,
+            "endTick": 4366,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 709,
+            "endTick": 4386,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 709,
+        "endTick": 4386,
+        "downDecisions": 20,
+        "actualNativeFrames": 150,
+        "playerOriginScreenX": 93,
+        "playerFeetY": 176,
+        "pipeScreenLeft": 85,
+        "relativePlayerOriginX": 8,
+        "pipeAtlasConfidence": 0.984375,
+        "playerAtlasConfidence": 1,
+        "inferredCameraX": 2027,
+        "inferredPlayerWorldX": 2120,
+        "outcome": "Same main-area artwork and exact standing player after centered DOWN; no room transition observed."
+      },
+      "observations": [
+        {
+          "sequence": 701,
+          "tick": 4332,
+          "sentUtc": "2026-11-05T21:36:16.672252+00:00",
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/four-two-pipe-late/00701-tick-04332.png",
+          "player": {
+            "originX": 114,
+            "originY": 95,
+            "visibleLeft": 114,
+            "visibleTop": 111,
+            "visibleRight": 129,
+            "visibleBottom": 126,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 178,
+              "y": 176,
+              "confidence": 1,
+              "relativePlayerX": -64
+            }
+          ]
+        },
+        {
+          "sequence": 702,
+          "tick": 4333,
+          "sentUtc": "2026-11-05T21:36:44.528292+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/four-two-pipe-late/00702-tick-04333.png",
+          "player": {
+            "originX": 114,
+            "originY": 100,
+            "visibleLeft": 114,
+            "visibleTop": 116,
+            "visibleRight": 129,
+            "visibleBottom": 131,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 158,
+              "y": 176,
+              "confidence": 1,
+              "relativePlayerX": -44
+            }
+          ]
+        },
+        {
+          "sequence": 703,
+          "tick": 4336,
+          "sentUtc": "2026-11-05T21:36:44.540507+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/four-two-pipe-late/00703-tick-04336.png",
+          "player": {
+            "originX": 110,
+            "originY": 177,
+            "visibleLeft": 111,
+            "visibleTop": 193,
+            "visibleRight": 125,
+            "visibleBottom": 208,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 126,
+              "y": 176,
+              "confidence": 1,
+              "relativePlayerX": -16
+            }
+          ]
+        },
+        {
+          "sequence": 704,
+          "tick": 4344,
+          "sentUtc": "2026-11-05T21:37:03.495878+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/four-two-pipe-late/00704-tick-04344.png",
+          "player": {
+            "originX": 99,
+            "originY": 177,
+            "visibleLeft": 101,
+            "visibleTop": 193,
+            "visibleRight": 112,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 126,
+              "y": 176,
+              "confidence": 1,
+              "relativePlayerX": -27
+            }
+          ]
+        },
+        {
+          "sequence": 705,
+          "tick": 4349,
+          "sentUtc": "2026-11-05T21:37:03.559841+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/four-two-pipe-late/00705-tick-04349.png",
+          "player": null,
+          "pipes": [
+            {
+              "x": 98,
+              "y": 176,
+              "confidence": 1,
+              "relativePlayerX": null
+            }
+          ]
+        },
+        {
+          "sequence": 706,
+          "tick": 4351,
+          "sentUtc": "2026-11-05T21:37:03.599477+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-late/00706-tick-04351.png",
+          "player": {
+            "originX": 110,
+            "originY": 145,
+            "visibleLeft": 111,
+            "visibleTop": 162,
+            "visibleRight": 123,
+            "visibleBottom": 176,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 85,
+              "y": 176,
+              "confidence": 0.99609375,
+              "relativePlayerX": 25
+            }
+          ]
+        },
+        {
+          "sequence": 707,
+          "tick": 4363,
+          "sentUtc": "2026-11-05T21:37:03.615913+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/four-two-pipe-late/00707-tick-04363.png",
+          "player": {
+            "originX": 109,
+            "originY": 145,
+            "visibleLeft": 111,
+            "visibleTop": 161,
+            "visibleRight": 122,
+            "visibleBottom": 176,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 85,
+              "y": 176,
+              "confidence": 0.9921875,
+              "relativePlayerX": 24
+            }
+          ]
+        },
+        {
+          "sequence": 708,
+          "tick": 4366,
+          "sentUtc": "2026-11-05T21:37:28.976265+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/four-two-pipe-late/00708-tick-04366.png",
+          "player": {
+            "originX": 100,
+            "originY": 145,
+            "visibleLeft": 101,
+            "visibleTop": 162,
+            "visibleRight": 113,
+            "visibleBottom": 176,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 85,
+              "y": 176,
+              "confidence": 0.9921875,
+              "relativePlayerX": 15
+            }
+          ]
+        },
+        {
+          "sequence": 709,
+          "tick": 4386,
+          "sentUtc": "2026-11-05T21:37:29.001233+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-late/00709-tick-04386.png",
+          "player": {
+            "originX": 93,
+            "originY": 145,
+            "visibleLeft": 95,
+            "visibleTop": 161,
+            "visibleRight": 106,
+            "visibleBottom": 176,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 85,
+              "y": 176,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "worldX": 2224,
+        "topY": 160,
+        "width": 32
+      },
+      "status": "surveyed-centered-down-no-transition-observed",
+      "acceptedOptionalConnection": false,
+      "room": null,
+      "return": null,
+      "sourceTrace": "evidence/local/four-two-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        2124,
+        2133
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 4344,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 2125,
+            "endTick": 4346,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 2126,
+            "endTick": 4348,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 2127,
+            "endTick": 4360,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 12
+            },
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 2128,
+            "endTick": 4363,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 2129,
+            "endTick": 4383,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 2130,
+            "endTick": 4385,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 2131,
+            "endTick": 4405,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 2132,
+            "endTick": 4406,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 2133,
+            "endTick": 4426,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 151
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 2133,
+        "endTick": 4426,
+        "downDecisions": 20,
+        "actualNativeFrames": 151,
+        "playerOriginScreenX": 94,
+        "playerFeetY": 160,
+        "pipeScreenLeft": 86,
+        "relativePlayerOriginX": 8,
+        "pipeAtlasConfidence": 0.984375,
+        "playerAtlasConfidence": 1,
+        "inferredCameraX": 2138,
+        "inferredPlayerWorldX": 2232,
+        "outcome": "Same main-area artwork and exact standing player after centered DOWN; no room transition observed."
+      },
+      "observations": [
+        {
+          "sequence": 2124,
+          "tick": 4344,
+          "sentUtc": "2026-11-05T21:40:49.656786+00:00",
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/four-two-pipe-late/02124-tick-04344.png",
+          "player": {
+            "originX": 114,
+            "originY": 103,
+            "visibleLeft": 114,
+            "visibleTop": 119,
+            "visibleRight": 129,
+            "visibleBottom": 134,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 117,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": -3
+            }
+          ]
+        },
+        {
+          "sequence": 2125,
+          "tick": 4346,
+          "sentUtc": "2026-11-05T21:40:49.666218+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-late/02125-tick-04346.png",
+          "player": {
+            "originX": 114,
+            "originY": 69,
+            "visibleLeft": 114,
+            "visibleTop": 85,
+            "visibleRight": 129,
+            "visibleBottom": 100,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 13
+            }
+          ]
+        },
+        {
+          "sequence": 2126,
+          "tick": 4348,
+          "sentUtc": "2026-11-05T21:40:49.682841+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-late/02126-tick-04348.png",
+          "player": {
+            "originX": 114,
+            "originY": 67,
+            "visibleLeft": 114,
+            "visibleTop": 83,
+            "visibleRight": 129,
+            "visibleBottom": 98,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 88,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 26
+            }
+          ]
+        },
+        {
+          "sequence": 2127,
+          "tick": 4360,
+          "sentUtc": "2026-11-05T21:40:49.699440+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/four-two-pipe-late/02127-tick-04360.png",
+          "player": {
+            "originX": 114,
+            "originY": 129,
+            "visibleLeft": 116,
+            "visibleTop": 145,
+            "visibleRight": 127,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.994140625,
+              "relativePlayerX": 27
+            }
+          ]
+        },
+        {
+          "sequence": 2128,
+          "tick": 4363,
+          "sentUtc": "2026-11-05T21:41:31.635400+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/four-two-pipe-late/02128-tick-04363.png",
+          "player": {
+            "originX": 105,
+            "originY": 129,
+            "visibleLeft": 106,
+            "visibleTop": 146,
+            "visibleRight": 118,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 18
+            }
+          ]
+        },
+        {
+          "sequence": 2129,
+          "tick": 4383,
+          "sentUtc": "2026-11-05T21:41:31.660019+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 151,
+          "image": "evidence/local/four-two-pipe-late/02129-tick-04383.png",
+          "player": {
+            "originX": 99,
+            "originY": 129,
+            "visibleLeft": 101,
+            "visibleTop": 145,
+            "visibleRight": 112,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.984375,
+              "relativePlayerX": 12
+            }
+          ]
+        },
+        {
+          "sequence": 2130,
+          "tick": 4385,
+          "sentUtc": "2026-11-05T21:41:55.058901+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-late/02130-tick-04385.png",
+          "player": {
+            "originX": 95,
+            "originY": 129,
+            "visibleLeft": 97,
+            "visibleTop": 145,
+            "visibleRight": 107,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 8
+            }
+          ]
+        },
+        {
+          "sequence": 2131,
+          "tick": 4405,
+          "sentUtc": "2026-11-05T21:41:55.075935+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-late/02131-tick-04405.png",
+          "player": {
+            "originX": 94,
+            "originY": 129,
+            "visibleLeft": 96,
+            "visibleTop": 145,
+            "visibleRight": 107,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.984375,
+              "relativePlayerX": 7
+            }
+          ]
+        },
+        {
+          "sequence": 2132,
+          "tick": 4406,
+          "sentUtc": "2026-11-05T21:42:10.406487+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/four-two-pipe-late/02132-tick-04406.png",
+          "player": {
+            "originX": 94,
+            "originY": 129,
+            "visibleLeft": 94,
+            "visibleTop": 145,
+            "visibleRight": 108,
+            "visibleBottom": 160,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 160,
+              "confidence": 0.994140625,
+              "relativePlayerX": 7
+            }
+          ]
+        },
+        {
+          "sequence": 2133,
+          "tick": 4426,
+          "sentUtc": "2026-11-05T21:42:10.416620+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 151,
+          "image": "evidence/local/four-two-pipe-late/02133-tick-04426.png",
+          "player": {
+            "originX": 94,
+            "originY": 129,
+            "visibleLeft": 96,
+            "visibleTop": 145,
+            "visibleRight": 107,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 86,
+              "y": 160,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "worldX": 2288,
+        "topY": 144,
+        "width": 32
+      },
+      "status": "surveyed-centered-down-no-transition-observed",
+      "acceptedOptionalConnection": false,
+      "room": null,
+      "return": null,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        4226,
+        4233
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 4348,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 4227,
+            "endTick": 4350,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 4228,
+            "endTick": 4358,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 8
+            },
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 4229,
+            "endTick": 4363,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right",
+                "a"
+              ],
+              "ticks": 5
+            },
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 4230,
+            "endTick": 4365,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 4231,
+            "endTick": 4377,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 12
+            },
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 4232,
+            "endTick": 4379,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 4233,
+            "endTick": 4399,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "down"
+              ],
+              "ticks": 20
+            },
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 4233,
+        "endTick": 4399,
+        "downDecisions": 20,
+        "actualNativeFrames": 150,
+        "playerOriginScreenX": 118,
+        "playerFeetY": 144,
+        "pipeScreenLeft": 110,
+        "relativePlayerOriginX": 8,
+        "pipeAtlasConfidence": 0.984375,
+        "playerAtlasConfidence": 1,
+        "inferredCameraX": 2178,
+        "inferredPlayerWorldX": 2296,
+        "outcome": "Same main-area artwork and exact standing player after centered DOWN; no room transition observed."
+      },
+      "observations": [
+        {
+          "sequence": 4226,
+          "tick": 4348,
+          "sentUtc": "2026-11-05T21:39:25.884725+00:00",
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/four-two-pipe-survey/04226-tick-04348.png",
+          "player": {
+            "originX": 114,
+            "originY": 70,
+            "visibleLeft": 114,
+            "visibleTop": 86,
+            "visibleRight": 129,
+            "visibleBottom": 101,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 142,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": -28
+            }
+          ]
+        },
+        {
+          "sequence": 4227,
+          "tick": 4350,
+          "sentUtc": "2026-11-05T21:40:12.693598+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-survey/04227-tick-04350.png",
+          "player": null,
+          "pipes": [
+            {
+              "x": 129,
+              "y": 144,
+              "confidence": 0.99609375,
+              "relativePlayerX": null
+            }
+          ]
+        },
+        {
+          "sequence": 4228,
+          "tick": 4358,
+          "sentUtc": "2026-11-05T21:40:41.683292+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/four-two-pipe-survey/04228-tick-04358.png",
+          "player": {
+            "originX": 114,
+            "originY": 177,
+            "visibleLeft": 116,
+            "visibleTop": 193,
+            "visibleRight": 127,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 129,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": -15
+            }
+          ]
+        },
+        {
+          "sequence": 4229,
+          "tick": 4363,
+          "sentUtc": "2026-11-05T21:40:41.743865+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/four-two-pipe-survey/04229-tick-04363.png",
+          "player": null,
+          "pipes": [
+            {
+              "x": 125,
+              "y": 144,
+              "confidence": 1,
+              "relativePlayerX": null
+            }
+          ]
+        },
+        {
+          "sequence": 4230,
+          "tick": 4365,
+          "sentUtc": "2026-11-05T21:40:41.782619+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-survey/04230-tick-04365.png",
+          "player": null,
+          "pipes": [
+            {
+              "x": 110,
+              "y": 144,
+              "confidence": 0.9921875,
+              "relativePlayerX": null
+            }
+          ]
+        },
+        {
+          "sequence": 4231,
+          "tick": 4377,
+          "sentUtc": "2026-11-05T21:40:41.799481+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 91,
+          "image": "evidence/local/four-two-pipe-survey/04231-tick-04377.png",
+          "player": {
+            "originX": 123,
+            "originY": 113,
+            "visibleLeft": 125,
+            "visibleTop": 129,
+            "visibleRight": 136,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 110,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 13
+            }
+          ]
+        },
+        {
+          "sequence": 4232,
+          "tick": 4379,
+          "sentUtc": "2026-11-05T21:41:03.267481+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/four-two-pipe-survey/04232-tick-04379.png",
+          "player": {
+            "originX": 118,
+            "originY": 113,
+            "visibleLeft": 120,
+            "visibleTop": 129,
+            "visibleRight": 130,
+            "visibleBottom": 144,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 0.9919354838709677,
+            "matchedPixels": 123
+          },
+          "pipes": [
+            {
+              "x": 110,
+              "y": 144,
+              "confidence": 0.9921875,
+              "relativePlayerX": 8
+            }
+          ]
+        },
+        {
+          "sequence": 4233,
+          "tick": 4399,
+          "sentUtc": "2026-11-05T21:41:03.285088+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/four-two-pipe-survey/04233-tick-04399.png",
+          "player": {
+            "originX": 118,
+            "originY": 113,
+            "visibleLeft": 120,
+            "visibleTop": 129,
+            "visibleRight": 131,
+            "visibleBottom": 144,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 110,
+              "y": 144,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "failedAttempts": [
+    {
+      "candidateWorldX": 1728,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        696,
+        702
+      ],
+      "resetThenRecordedPrefixTicks": 4312,
+      "note": "Attempt drifted past the pipe, then a return jump fell into the gap. Final player is offscreen; death itself is not sampled.",
+      "requests": [
+        {
+          "sequence": 697,
+          "endTick": 4315,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 698,
+          "endTick": 4317,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 699,
+          "endTick": 4325,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 700,
+          "endTick": 4330,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37
+        },
+        {
+          "sequence": 701,
+          "endTick": 4333,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 702,
+          "endTick": 4343,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10
+          },
+          "nativeFrames": 75
+        }
+      ],
+      "finalObservation": {
+        "sequence": 702,
+        "tick": 4343,
+        "sentUtc": "2026-11-05T21:32:21.254896+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 10
+        },
+        "nativeFrames": 75,
+        "image": "evidence/local/four-two-pipe-survey/00702-tick-04343.png",
+        "player": null,
+        "pipes": [
+          {
+            "x": 24,
+            "y": 144,
+            "confidence": 1,
+            "relativePlayerX": null
+          }
+        ]
+      }
+    },
+    {
+      "candidateWorldX": 1728,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        1398,
+        1400
+      ],
+      "resetThenRecordedPrefixTicks": 4312,
+      "note": "Exact killed pose overlaps the pipe/plant after airborne braking; plant collision cause inferred from images.",
+      "requests": [
+        {
+          "sequence": 1399,
+          "endTick": 4318,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "nativeFrames": 45
+        },
+        {
+          "sequence": 1400,
+          "endTick": 4328,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10
+          },
+          "nativeFrames": 75
+        }
+      ],
+      "finalObservation": {
+        "sequence": 1400,
+        "tick": 4328,
+        "sentUtc": "2026-11-05T21:33:22.999906+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 10
+        },
+        "nativeFrames": 75,
+        "image": "evidence/local/four-two-pipe-survey/01400-tick-04328.png",
+        "player": {
+          "originX": 113,
+          "originY": 129,
+          "visibleLeft": 114,
+          "visibleTop": 145,
+          "visibleRight": 127,
+          "visibleBottom": 158,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": []
+      }
+    },
+    {
+      "candidateWorldX": 1728,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        2096,
+        2104
+      ],
+      "resetThenRecordedPrefixTicks": 4312,
+      "note": "Exact killed pose follows return jump with8-decision wait; plant collision cause inferred.",
+      "requests": [
+        {
+          "sequence": 2097,
+          "endTick": 4315,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 2098,
+          "endTick": 4317,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 2099,
+          "endTick": 4325,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 2100,
+          "endTick": 4333,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 2101,
+          "endTick": 4336,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 2102,
+          "endTick": 4340,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30
+        },
+        {
+          "sequence": 2103,
+          "endTick": 4343,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22
+        },
+        {
+          "sequence": 2104,
+          "endTick": 4353,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10
+          },
+          "nativeFrames": 75
+        }
+      ],
+      "finalObservation": {
+        "sequence": 2104,
+        "tick": 4353,
+        "sentUtc": "2026-11-05T21:34:45.803020+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 10
+        },
+        "nativeFrames": 75,
+        "image": "evidence/local/four-two-pipe-survey/02104-tick-04353.png",
+        "player": {
+          "originX": 30,
+          "originY": 149,
+          "visibleLeft": 31,
+          "visibleTop": 165,
+          "visibleRight": 44,
+          "visibleBottom": 178,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": [
+          {
+            "x": 24,
+            "y": 144,
+            "confidence": 1,
+            "relativePlayerX": 6
+          }
+        ]
+      }
+    },
+    {
+      "candidateWorldX": 1728,
+      "sourceTrace": "evidence/local/four-two-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        2800,
+        2807
+      ],
+      "resetThenRecordedPrefixTicks": 4312,
+      "note": "Exact killed pose follows return jump without added wait; plant collision cause inferred.",
+      "requests": [
+        {
+          "sequence": 2801,
+          "endTick": 4315,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 2802,
+          "endTick": 4317,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 2803,
+          "endTick": 4325,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 2804,
+          "endTick": 4328,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22
+        },
+        {
+          "sequence": 2805,
+          "endTick": 4332,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30
+        },
+        {
+          "sequence": 2806,
+          "endTick": 4335,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 2807,
+          "endTick": 4345,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10
+          },
+          "nativeFrames": 75
+        }
+      ],
+      "finalObservation": {
+        "sequence": 2807,
+        "tick": 4345,
+        "sentUtc": "2026-11-05T21:35:55.451162+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 10
+        },
+        "nativeFrames": 75,
+        "image": "evidence/local/four-two-pipe-survey/02807-tick-04345.png",
+        "player": {
+          "originX": 30,
+          "originY": 129,
+          "visibleLeft": 31,
+          "visibleTop": 145,
+          "visibleRight": 44,
+          "visibleBottom": 158,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": []
+      }
+    },
+    {
+      "candidateWorldX": 2112,
+      "sourceTrace": "evidence/local/four-two-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        701,
+        710
+      ],
+      "resetThenRecordedPrefixTicks": 4332,
+      "note": "After successful centered short-pipe trial, walking toward the next pipe produces an exact killed pose near a Koopa; collision cause inferred.",
+      "requests": [
+        {
+          "sequence": 702,
+          "endTick": 4333,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8
+        },
+        {
+          "sequence": 703,
+          "endTick": 4336,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 704,
+          "endTick": 4344,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 705,
+          "endTick": 4349,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37
+        },
+        {
+          "sequence": 706,
+          "endTick": 4351,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 707,
+          "endTick": 4363,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90
+        },
+        {
+          "sequence": 708,
+          "endTick": 4366,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 709,
+          "endTick": 4386,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150
+        },
+        {
+          "sequence": 710,
+          "endTick": 4395,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 9
+          },
+          "nativeFrames": 68
+        }
+      ],
+      "finalObservation": {
+        "sequence": 710,
+        "tick": 4395,
+        "sentUtc": "2026-11-05T21:38:01.205968+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 9
+        },
+        "nativeFrames": 68,
+        "image": "evidence/local/four-two-pipe-late/00710-tick-04395.png",
+        "player": {
+          "originX": 105,
+          "originY": 155,
+          "visibleLeft": 106,
+          "visibleTop": 171,
+          "visibleRight": 119,
+          "visibleBottom": 184,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": [
+          {
+            "x": 50,
+            "y": 176,
+            "confidence": 1,
+            "relativePlayerX": 55
+          }
+        ]
+      }
+    },
+    {
+      "candidateWorldX": 2224,
+      "sourceTrace": "evidence/local/four-two-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        1416,
+        1418
+      ],
+      "resetThenRecordedPrefixTicks": 4344,
+      "note": "Long left brake retreats from the pipe and produces an exact killed pose near a Koopa; collision cause inferred.",
+      "requests": [
+        {
+          "sequence": 1417,
+          "endTick": 4349,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37
+        },
+        {
+          "sequence": 1418,
+          "endTick": 4361,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90
+        }
+      ],
+      "finalObservation": {
+        "sequence": 1418,
+        "tick": 4361,
+        "sentUtc": "2026-11-05T21:39:01.588399+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/four-two-pipe-late/01418-tick-04361.png",
+        "player": {
+          "originX": 54,
+          "originY": 177,
+          "visibleLeft": 55,
+          "visibleTop": 193,
+          "visibleRight": 68,
+          "visibleBottom": 206,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": [
+          {
+            "x": 115,
+            "y": 160,
+            "confidence": 1,
+            "relativePlayerX": -61
+          }
+        ]
+      }
+    }
+  ],
+  "uncertainties": [
+    "These observations establish no entry for the recorded centered DOWN windows; alternate activation conditions remain unresolved.",
+    "No room map or return connection is claimed when no optional room is entered.",
+    "Main candidate world positions use previously observed geometry; image measurements establish pipe screen positions and relative player offsets.",
+    "Failed/dead poses are not used as evidence of non-enterability.",
+    "All reference processes were closed after the final tests."
+  ]
+}

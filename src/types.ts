@@ -1,0 +1,35 @@
+import type {BowserMotor} from './bowser-motion.js';
+export type Button = 'up'|'down'|'left'|'right'|'a'|'b'|'start'|'select';
+export const BUTTONS: Button[] = ['up','down','left','right','a','b','start','select'];
+export type Tile = [number, number, number];
+export type EnemyKind = 'goomba'|'koopa'|'redKoopa'|'paratroopa'|'beetle'|'spiny'|'piranha'|'blooper'|'cheep'|'bullet'|'hammerBro'|'lakitu'|'podoboo'|'bowser';
+export interface EnemySpec {kind: EnemyKind; x: number; y: number; direction?: number; spawnCamera?:number;spawnUnwinged?:boolean; phase?:number; range?: number; evidence?: string; palette?:string; motion?:'flying'|'falling';paratroopaMotion?:'bounce'|'vertical'|'horizontal';bowserHammers?:boolean;spawnVy?:number;spawnYFraction?:number;spawnFrame?:number;swim?:{bob?:{dir:number;first:number}};stroke?:{first:number;firstDir:number};launch?:{delay:number;v0:number};fleeX?:number;nativeSlot?:'once'|'wait'}
+export interface PlatformSpec {x:number; y:number; width:number; axis:'x'|'y'|'fall'|'balance'; range:number; speed:number}
+export interface FirebarSpec {x:number;y:number;length:number;speed:number;visualOffsetY?:number;motor?:{direction:-1|1;initialUnits:number;evidence:string}}
+export interface PipeSpec {x:number; y:number; direction:'down'|'right'|'up'; to:string; targetLevel?:string; spawn:[number,number];camera?:number;transitionFrames?:number;entryHorizontalTolerance?:number;smallPlayerRoomPreviewFrames?:number;smallPlayerRoomEntry?:{transitionFrames:number;spawnFeetY:number;initialVy:number;gravity:number};requiresWarpActivation?:boolean;ordinaryEnemyFrontier?:number;returnCloudOffsetX?:number;riseFrames?:number;entryTriggerX?:number}
+export interface WarpZoneSpec {cameraEnd:number;activateAtCamera:number;removePiranhasAtX:number[];overlays:{text:string;x:number;y:number}[];evidence:string;inferred:string}
+export interface CollisionRect {x:number;y:number;width:number;height:number;id:number;evidence?:string}
+export interface TilePiece {x:number;y:number;id:number;palette:number;interactive?:boolean}
+export interface SpringSpec {x:number;y:number;palette?:string}
+export interface GeneratorSpec {kind:'flyingFish'|'bullet';from:number;to:number;interval:number;maxFish?:number;schedule?:[number,number][];period?:number;heights?:number[];fromCamera?:number;toCamera?:number}
+export interface CannonSpec {x:number;y:number;interval?:number;phase?:number;evidence?:string;native?:boolean;fire?:number[];loop?:number[]}
+// Coordinates identify editable observed stream sections. Gate bands and the
+// representative seams are inferences, not exposed native engine parameters.
+export interface MazeSpec {loopAt:number;loopTo:number;evidence:string;unresolved?:string[];gates?:{from:number;to:number;minFeetY:number;maxFeetY:number}[]}
+export interface VineSpec {id:string;x:number;baseY:number;topY:number;initialHeight?:number;to?:string;spawn?:[number,number];camera?:number;autoClimbFeetY?:number;transitionFeetY?:number;evidence:string}
+export interface Vine extends VineSpec {height:number;growing:boolean}
+export interface VineBlockSpec {col:number;row:number;kind:'vine';vineId:string}
+export interface PowerupBlockSpec {col:number;row:number;kind:'powerup'|'star'|'1up';evidence:string}
+export interface MultiCoinBlockSpec {col:number;row:number;kind:'multiCoin';evidence:string}
+export interface FallExitSpec {belowY:number;to:string;spawn:[number,number];camera?:number;evidence:string}
+export interface VineEntrySpec {vineId:string;untilFeetY:number;waitUntilGrowthComplete?:boolean;exitRightX?:number;exitGroundFeetY?:number;evidence:string}
+export interface CheckpointSpec {activationX:number;spawn:[number,number];camera:number;activationStatus:'inferred';activationBracket:[number,number];evidence:string}
+export interface Area {id:string; width:number; smallPlayerDownStop?:boolean; cameraEnd?:number; palette:number; theme:'ground'|'underground'|'water'|'castle'|'night'|'snow'; background?:string; camera?:number; warpZone?:WarpZoneSpec; tiles:Tile[]; freeTiles?:TilePiece[]; hiddenFreeTiles?:TilePiece[]; solidRects?:CollisionRect[]; decorations?:(TilePiece&{aboveFreeTiles?:boolean})[]; patternOverrides?:[number,number,number,string][]; overlays?:{text:string;x:number;y:number}[]; enemies:EnemySpec[]; platforms?:PlatformSpec[]; pipes?:PipeSpec[]; firebars?:FirebarSpec[]; springs?:SpringSpec[]; generators?:GeneratorSpec[]; cannons?:CannonSpec[]; autoWalk?:boolean; maze?:MazeSpec; mazes?:MazeSpec[]; blockContents?:(VineBlockSpec|PowerupBlockSpec|MultiCoinBlockSpec)[];vines?:VineSpec[];fallExit?:FallExitSpec;entryVine?:VineEntrySpec; exit?:{x:number;y?:number;kind:'flag'|'axe'|'pipe';next?:string;retainerX?:number;stopX?:number;doorX?:number}; spawn:[number,number]; spawnVelocity?:[number,number]; waterEntryFall?:boolean; entryFall?:{initialStandFrames?:number;visibleDelay:number;enemyDelay:number;gravityBeforeControl?:boolean;controlFeetY:number;gravity:number;maxFall:number;inputDelay:number;timerDelay:number;native?:{gravityStartAge:number;resetAt:number;resetTo:number;skipAge:number;inputAge:number;timerAge:number};evidence:string}; checkpoint?:CheckpointSpec; evidence:string; unresolved?:string[]}
+export interface Level {id:string; time:number; main:string; respawnArea?:string; areas:Area[]; evidence:string}
+export interface Player {x:number;y:number;vx:number;vy:number;grounded:boolean;facing:number;size:0|1|2;invincible:number;star:number;duck:boolean;anim:number;dead:boolean;climbing:boolean}
+export interface Enemy extends EnemySpec {enemySlot?:number;slotFreed?:boolean;nativeDir?:number;slotHeld?:boolean;slotBorn?:number;autoPhase?:boolean;slotLost?:boolean;vx:number;vy:number;active:boolean;dead:number;podobooFalling?:boolean;squashed?:boolean;greenShellLaunchFrame?:number;unwingedBounce?:boolean;unwingedAir?:number;kickOverlap?:boolean;shell:boolean;movingShell:boolean;age:number;originX:number;originY:number;hp:number;shellAge?:number;shellChain?:number;hammerRandom?:number;hammerJumpWait?:number;hammerDropRow?:number;nativeBro?:NativeHammerBro;nativeTrigger?:number;nativeLive?:boolean;hammerAir?:boolean;nativeFlight?:boolean;bowser?:BowserMotor;nativeShot?:boolean;bloop?:{start:number;count:number};lak?:{mode:'left'|'chase'|'flee';s:number};egg?:boolean;bumpTouch?:Record<string,boolean>}
+export interface Item {kind:'mushroom'|'flower'|'star'|'1up'|'coin'|'fireball'|'hammer'|'flame'|'debris';x:number;y:number;vx:number;vy:number;age:number;life:number;emerging?:number;hold?:number;owner?:Enemy;gravity?:number}
+/** One recorded native Hammer Bro of the winning route (data/native-hammer-bros.json): spawn, jump and throw times in frames since it appeared. */
+export interface NativeHammerBro {level:string;area:string;x:number;y:number;appear?:number;jumps:number[][];trigger?:number;throws?:number[]}
+export interface ScorePopup {value:number|'1up';x:number;y:number;age:number;life:number;victim?:Enemy}
+export type Phase = 'title'|'intro'|'play'|'dying'|'gameover'|'flag'|'castle'|'ending'|'pipe';

@@ -1,0 +1,5243 @@
+{
+  "schema": "image-only-optional-route-search-v1",
+  "level": "5-2",
+  "status": "vine-activation-entry-fresh-destination-map-and-main-return-observed",
+  "sourceTrace": "evidence/local/five-two-vine-remaining/trace.jsonl",
+  "method": "Documented public controller operations and actual PNGs compared with supplied artwork. No ROM contents, memory, executable internals, sibling implementation, or remembered map. Winning prefixes replay exact recorded masks and7/8-native-frame durations.",
+  "hiddenFootholdData": "data/five-two-vine-hidden-coin.json",
+  "connection": {
+    "id": "5-2-vine-sky",
+    "acceptedObservationStages": [
+      "hidden-coin-foothold",
+      "vine-activation-and-growth",
+      "attachment-and-climb",
+      "fresh-destination-map-with-explicit-unknowns",
+      "ordinary-exit-and-main-return"
+    ],
+    "entrance": {
+      "level": "5-2",
+      "segment": "main",
+      "type": "vine",
+      "blockColumn": 85,
+      "blockRow": 5,
+      "inferredBlockX": 1360,
+      "blockY": 80,
+      "inferredVineCenterX": 1368,
+      "before": {
+        "sequence": 20678,
+        "tick": 5675,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/20678-tick-05675.png"
+      },
+      "activation": {
+        "sequence": 20680,
+        "tick": 5677,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/20680-tick-05677.png"
+      },
+      "exactBeforeBrick": {
+        "source": {
+          "sequence": 20678,
+          "tick": 5675,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/20678-tick-05675.png"
+        },
+        "metatileId": 81,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          18,
+          80
+        ],
+        "checkedPixels": 256,
+        "mismatches": 0
+      },
+      "exactRaisedUsed": {
+        "source": {
+          "sequence": 20680,
+          "tick": 5677,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/20680-tick-05677.png"
+        },
+        "metatileId": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          18,
+          74
+        ],
+        "checkedPixels": 256,
+        "mismatches": 0
+      },
+      "exactSettledUsed": {
+        "source": {
+          "sequence": 20681,
+          "tick": 5679,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-remaining/20681-tick-05679.png"
+        },
+        "metatileId": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          18,
+          80
+        ],
+        "checkedPixels": 256,
+        "mismatches": 0
+      },
+      "growthObservations": [
+        {
+          "source": {
+            "sequence": 20678,
+            "tick": 5675,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 7,
+            "image": "evidence/local/five-two-vine-remaining/20678-tick-05675.png"
+          },
+          "greenPixelCount": 0,
+          "bounds": null,
+          "boundsConvention": "left, top, right exclusive, bottom exclusive; green RGB pixels only"
+        },
+        {
+          "source": {
+            "sequence": 20681,
+            "tick": 5679,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15,
+            "image": "evidence/local/five-two-vine-remaining/20681-tick-05679.png"
+          },
+          "greenPixelCount": 31,
+          "bounds": [
+            18,
+            71,
+            26,
+            80
+          ],
+          "boundsConvention": "left, top, right exclusive, bottom exclusive; green RGB pixels only"
+        },
+        {
+          "source": {
+            "sequence": 20682,
+            "tick": 5684,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 5
+            },
+            "nativeFrames": 38,
+            "image": "evidence/local/five-two-vine-remaining/20682-tick-05684.png"
+          },
+          "greenPixelCount": 109,
+          "bounds": [
+            18,
+            53,
+            32,
+            80
+          ],
+          "boundsConvention": "left, top, right exclusive, bottom exclusive; green RGB pixels only"
+        },
+        {
+          "source": {
+            "sequence": 22709,
+            "tick": 5702,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 6
+            },
+            "nativeFrames": 45,
+            "image": "evidence/local/five-two-vine-remaining/22709-tick-05702.png"
+          },
+          "greenPixelCount": 305,
+          "bounds": [
+            18,
+            1,
+            32,
+            80
+          ],
+          "boundsConvention": "left, top, right exclusive, bottom exclusive; green RGB pixels only"
+        }
+      ],
+      "climbEvidence": [
+        {
+          "sequence": 22711,
+          "tick": 5707,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-remaining/22711-tick-05707.png"
+        },
+        {
+          "sequence": 22712,
+          "tick": 5715,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22712-tick-05715.png"
+        }
+      ],
+      "coordinateProvenance": {
+        "inferredCameraX": 1342,
+        "knownUpperSecondWorldX": 1376,
+        "knownUpperThirdWorldX": 1392,
+        "upperAnchors": [
+          {
+            "source": {
+              "sequence": 20678,
+              "tick": 5675,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "nativeFrames": 7,
+              "image": "evidence/local/five-two-vine-remaining/20678-tick-05675.png"
+            },
+            "metatileId": 81,
+            "atlas": "metatiles-palette-025.png",
+            "screenOrigin": [
+              34,
+              80
+            ],
+            "checkedPixels": 256,
+            "mismatches": 0
+          },
+          {
+            "source": {
+              "sequence": 20678,
+              "tick": 5675,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "nativeFrames": 7,
+              "image": "evidence/local/five-two-vine-remaining/20678-tick-05675.png"
+            },
+            "metatileId": 81,
+            "atlas": "metatiles-palette-025.png",
+            "screenOrigin": [
+              50,
+              80
+            ],
+            "checkedPixels": 256,
+            "mismatches": 0
+          }
+        ],
+        "independentGeometryData": "data/five-two-vine-remaining-geometry.json",
+        "registrationNote": "Settled ground anchor in source6491 fixes the three upper world cells85..87. The activation strip is fully matched before the first becomes used. Vine center1368 is the inferred logical center of the observed first cell, not a direct memory coordinate."
+      },
+      "support": {
+        "column": 84,
+        "row": 9,
+        "worldX": 1344,
+        "topY": 144,
+        "data": "data/five-two-vine-hidden-coin.json",
+        "actualStandingEvidence": {
+          "sequence": 22709,
+          "tick": 5702,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-remaining/22709-tick-05702.png"
+        },
+        "actualStandingPlayer": {
+          "direction": "left",
+          "cell": 23,
+          "originX": 0,
+          "originY": 113,
+          "feetY": 144,
+          "spriteBottomExclusive": 145,
+          "matchedPixels": 143
+        }
+      }
+    },
+    "destination": {
+      "id": "5-2-vine-sky",
+      "entryType": "vine-emergence",
+      "observedVineColumn": 4,
+      "observedVineArtworkX": 64,
+      "initialPlayerOriginX": null,
+      "initialPlayerOriginY": null,
+      "firstVisiblePlayer": {
+        "source": {
+          "sequence": 22716,
+          "tick": 5751,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/five-two-vine-remaining/22716-tick-05751.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 20,
+          "originX": 56,
+          "originY": 213,
+          "feetY": 244,
+          "spriteBottomExclusive": 245,
+          "matchedPixels": 91
+        }
+      },
+      "laterClimbingPlayer": {
+        "source": {
+          "sequence": 22717,
+          "tick": 5759,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22717-tick-05759.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 20,
+          "originX": 56,
+          "originY": 159,
+          "feetY": 190,
+          "spriteBottomExclusive": 191,
+          "matchedPixels": 139
+        }
+      },
+      "standingPlayerOriginX": 75,
+      "standingFeetY": 208,
+      "standingEvidence": {
+        "sequence": 22718,
+        "tick": 5767,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 61,
+        "image": "evidence/local/five-two-vine-remaining/22718-tick-05767.png"
+      },
+      "entryEvidence": [
+        {
+          "sequence": 22713,
+          "tick": 5723,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22713-tick-05723.png"
+        },
+        {
+          "sequence": 22714,
+          "tick": 5731,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22714-tick-05731.png"
+        },
+        {
+          "sequence": 22715,
+          "tick": 5739,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22715-tick-05739.png"
+        },
+        {
+          "sequence": 22716,
+          "tick": 5751,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/five-two-vine-remaining/22716-tick-05751.png"
+        },
+        {
+          "sequence": 22717,
+          "tick": 5759,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22717-tick-05759.png"
+        },
+        {
+          "sequence": 22718,
+          "tick": 5767,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 61,
+          "image": "evidence/local/five-two-vine-remaining/22718-tick-05767.png"
+        }
+      ],
+      "visibleVineArtwork": {
+        "source": {
+          "sequence": 22718,
+          "tick": 5767,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 61,
+          "image": "evidence/local/five-two-vine-remaining/22718-tick-05767.png"
+        },
+        "greenPixelCount": 400,
+        "bounds": [
+          64,
+          145,
+          78,
+          240
+        ],
+        "boundsConvention": "left, top, right exclusive, bottom exclusive; green RGB pixels only"
+      },
+      "entryGap": {
+        "column": 4,
+        "row": 13,
+        "source": {
+          "sequence": 22713,
+          "tick": 5723,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22713-tick-05723.png"
+        },
+        "screenOrigin": [
+          64,
+          208
+        ],
+        "checkedBluePixels": 256
+      },
+      "entryQualification": "Initial Mario coordinates are offscreen and unmeasured. The first clipped visible pose is56,213/feet244, then56,159/feet190, followed by actual automatic standing75,177/feet208. A56,240 adapter spawn and vine base256/top144 would be explicit implementation inferences, not observed initial coordinates."
+    },
+    "exit": {
+      "type": "ordinary-walk-off-cloud-floor-and-continue-right-while-offscreen",
+      "inferredFloorEndX": 992,
+      "lastFloorColumn": 61,
+      "fallEvidence": [
+        {
+          "sequence": 22736,
+          "tick": 5851,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-remaining/22736-tick-05851.png"
+        },
+        {
+          "sequence": 22737,
+          "tick": 5852,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/22737-tick-05852.png"
+        },
+        {
+          "sequence": 22738,
+          "tick": 5853,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-remaining/22738-tick-05853.png"
+        },
+        {
+          "sequence": 22739,
+          "tick": 5854,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/22739-tick-05854.png"
+        },
+        {
+          "sequence": 22740,
+          "tick": 5855,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-remaining/22740-tick-05855.png"
+        }
+      ],
+      "cameraClamp": {
+        "inferredCameraX": 926,
+        "sourceEvidence": [
+          {
+            "sequence": 22741,
+            "tick": 5856,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 1
+            },
+            "nativeFrames": 7,
+            "image": "evidence/local/five-two-vine-remaining/22741-tick-05856.png"
+          },
+          {
+            "sequence": 22742,
+            "tick": 5858,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15,
+            "image": "evidence/local/five-two-vine-remaining/22742-tick-05858.png"
+          }
+        ],
+        "lastFloorCell": {
+          "column": 61,
+          "row": 13,
+          "screenOrigin": [
+            50,
+            208
+          ],
+          "checkedPixels": 256,
+          "atlas": "metatiles-palette-000.png",
+          "metatileId": 136
+        },
+        "screenFloorEndExclusive": 66,
+        "sameStaticPixelsAfterFurtherRightInput": true,
+        "qualification": "Camera926 is the screenshot registration coordinate. The final viewport ends at inferred world1182, so rounded width74 includes a partial final cell. No unseen logical room boundary is asserted."
+      },
+      "offscreenWaitEvidence": [
+        {
+          "sequence": 22743,
+          "tick": 5862,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-remaining/22743-tick-05862.png"
+        },
+        {
+          "sequence": 22744,
+          "tick": 5870,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22744-tick-05870.png"
+        }
+      ],
+      "returnControlEvidence": {
+        "sequence": 22745,
+        "tick": 5878,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22745-tick-05878.png"
+      },
+      "returnLevel": "5-2",
+      "returnSegment": "main",
+      "inferredCameraX": 2048,
+      "inferredPlayerOriginX": 2088,
+      "initialPlayerOriginY": null,
+      "firstVisibleFeetY": 68,
+      "standingFeetY": 208,
+      "firstMainEvidence": {
+        "sequence": 22745,
+        "tick": 5878,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22745-tick-05878.png"
+      },
+      "standingMainEvidence": {
+        "sequence": 22746,
+        "tick": 5883,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+      },
+      "returnAnchors": [
+        {
+          "canonicalCell": [
+            129,
+            12,
+            97
+          ],
+          "worldX": 2064,
+          "worldY": 192,
+          "artwork": {
+            "source": {
+              "sequence": 22746,
+              "tick": 5883,
+              "request": {
+                "op": "step",
+                "buttons": [],
+                "ticks": 5
+              },
+              "nativeFrames": 38,
+              "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+            },
+            "metatileId": 97,
+            "atlas": "metatiles-palette-025.png",
+            "screenOrigin": [
+              16,
+              192
+            ],
+            "checkedPixels": 256,
+            "mismatches": 0
+          }
+        },
+        {
+          "observedStoneTopWorldX": 2064,
+          "topY": 160,
+          "artwork": [
+            {
+              "source": {
+                "sequence": 22746,
+                "tick": 5883,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 5
+                },
+                "nativeFrames": 38,
+                "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+              },
+              "metatileId": 97,
+              "atlas": "metatiles-palette-025.png",
+              "screenOrigin": [
+                16,
+                160
+              ],
+              "checkedPixels": 256,
+              "mismatches": 0
+            },
+            {
+              "source": {
+                "sequence": 22746,
+                "tick": 5883,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 5
+                },
+                "nativeFrames": 38,
+                "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+              },
+              "metatileId": 97,
+              "atlas": "metatiles-palette-025.png",
+              "screenOrigin": [
+                16,
+                176
+              ],
+              "checkedPixels": 256,
+              "mismatches": 0
+            }
+          ],
+          "oldFragmentQualification": "Raw canonical free97 fragment2062,160 is raster drift; exact canonical129,12 and the independent clouds establish the actual2064 column."
+        },
+        {
+          "canonicalCells": [
+            [
+              141,
+              3,
+              131
+            ],
+            [
+              142,
+              3,
+              132
+            ],
+            [
+              143,
+              3,
+              133
+            ]
+          ],
+          "worldX": 2256,
+          "worldY": 48,
+          "artwork": [
+            {
+              "source": {
+                "sequence": 22746,
+                "tick": 5883,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 5
+                },
+                "nativeFrames": 38,
+                "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+              },
+              "metatileId": 131,
+              "atlas": "metatiles-palette-025.png",
+              "screenOrigin": [
+                208,
+                48
+              ],
+              "checkedPixels": 256,
+              "mismatches": 0
+            },
+            {
+              "source": {
+                "sequence": 22746,
+                "tick": 5883,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 5
+                },
+                "nativeFrames": 38,
+                "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+              },
+              "metatileId": 132,
+              "atlas": "metatiles-palette-025.png",
+              "screenOrigin": [
+                224,
+                48
+              ],
+              "checkedPixels": 256,
+              "mismatches": 0
+            },
+            {
+              "source": {
+                "sequence": 22746,
+                "tick": 5883,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 5
+                },
+                "nativeFrames": 38,
+                "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+              },
+              "metatileId": 133,
+              "atlas": "metatiles-palette-025.png",
+              "screenOrigin": [
+                240,
+                48
+              ],
+              "checkedPixels": 256,
+              "mismatches": 0
+            }
+          ]
+        }
+      ],
+      "returnQualification": "Exact independent stone and three cloud cells fix camera2048. Exact Mario origin40 gives inferred world2088. First observed feet68 and later feet208 are measured; a spawn2088,0 is an implementation inference. After falling offscreen,90 native neutral frames remain in the sky; the following60-native-frame right input reaches main. The underlying transition trigger and its exact offscreen timing are unmeasured."
+    },
+    "poseMeasurements": [
+      {
+        "source": {
+          "sequence": 22709,
+          "tick": 5702,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 6
+          },
+          "nativeFrames": 45,
+          "image": "evidence/local/five-two-vine-remaining/22709-tick-05702.png"
+        },
+        "pose": {
+          "direction": "left",
+          "cell": 23,
+          "originX": 0,
+          "originY": 113,
+          "feetY": 144,
+          "spriteBottomExclusive": 145,
+          "matchedPixels": 143
+        }
+      },
+      {
+        "source": {
+          "sequence": 22711,
+          "tick": 5707,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/five-two-vine-remaining/22711-tick-05707.png"
+        },
+        "pose": {
+          "direction": "left",
+          "cell": 21,
+          "originX": 25,
+          "originY": 41,
+          "feetY": 72,
+          "spriteBottomExclusive": 73,
+          "matchedPixels": 146
+        }
+      },
+      {
+        "source": {
+          "sequence": 22712,
+          "tick": 5715,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22712-tick-05715.png"
+        },
+        "pose": {
+          "direction": "left",
+          "cell": 21,
+          "originX": 25,
+          "originY": -12,
+          "feetY": 19,
+          "spriteBottomExclusive": 20,
+          "matchedPixels": 146
+        }
+      },
+      {
+        "source": {
+          "sequence": 22716,
+          "tick": 5751,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/five-two-vine-remaining/22716-tick-05751.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 20,
+          "originX": 56,
+          "originY": 213,
+          "feetY": 244,
+          "spriteBottomExclusive": 245,
+          "matchedPixels": 91
+        }
+      },
+      {
+        "source": {
+          "sequence": 22717,
+          "tick": 5759,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22717-tick-05759.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 20,
+          "originX": 56,
+          "originY": 159,
+          "feetY": 190,
+          "spriteBottomExclusive": 191,
+          "matchedPixels": 139
+        }
+      },
+      {
+        "source": {
+          "sequence": 22718,
+          "tick": 5767,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 61,
+          "image": "evidence/local/five-two-vine-remaining/22718-tick-05767.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 75,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 143
+        }
+      },
+      {
+        "source": {
+          "sequence": 22736,
+          "tick": 5851,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-remaining/22736-tick-05851.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 13,
+          "originX": 112,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 145
+        }
+      },
+      {
+        "source": {
+          "sequence": 22737,
+          "tick": 5852,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/22737-tick-05852.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 13,
+          "originX": 112,
+          "originY": 180,
+          "feetY": 211,
+          "spriteBottomExclusive": 212,
+          "matchedPixels": 145
+        }
+      },
+      {
+        "source": {
+          "sequence": 22738,
+          "tick": 5853,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/five-two-vine-remaining/22738-tick-05853.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 13,
+          "originX": 112,
+          "originY": 193,
+          "feetY": 224,
+          "spriteBottomExclusive": 225,
+          "matchedPixels": 145
+        }
+      },
+      {
+        "source": {
+          "sequence": 22739,
+          "tick": 5854,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/five-two-vine-remaining/22739-tick-05854.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 13,
+          "originX": 112,
+          "originY": 213,
+          "feetY": 244,
+          "spriteBottomExclusive": 245,
+          "matchedPixels": 106
+        }
+      },
+      {
+        "source": {
+          "sequence": 22745,
+          "tick": 5878,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/five-two-vine-remaining/22745-tick-05878.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 12,
+          "originX": 40,
+          "originY": 37,
+          "feetY": 68,
+          "spriteBottomExclusive": 69,
+          "matchedPixels": 120
+        }
+      },
+      {
+        "source": {
+          "sequence": 22746,
+          "tick": 5883,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+        },
+        "pose": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 40,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 143
+        }
+      }
+    ]
+  },
+  "entryRecipe": {
+    "winningPrefixTicks": 5459,
+    "prefixSource": "data/observed-winning-inputs.json",
+    "prefixEvidence": {
+      "sequence": 22617,
+      "tick": 5459,
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-remaining/22617-tick-05459.png"
+    },
+    "requests": [
+      {
+        "sequence": 22618,
+        "tick": 5462,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22618-tick-05462.png"
+      },
+      {
+        "sequence": 22619,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22619-tick-05463.png"
+      },
+      {
+        "sequence": 22620,
+        "tick": 5466,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22620-tick-05466.png"
+      },
+      {
+        "sequence": 22621,
+        "tick": 5468,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22621-tick-05468.png"
+      },
+      {
+        "sequence": 22622,
+        "tick": 5471,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22622-tick-05471.png"
+      },
+      {
+        "sequence": 22623,
+        "tick": 5473,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22623-tick-05473.png"
+      },
+      {
+        "sequence": 22624,
+        "tick": 5475,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22624-tick-05475.png"
+      },
+      {
+        "sequence": 22625,
+        "tick": 5478,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22625-tick-05478.png"
+      },
+      {
+        "sequence": 22626,
+        "tick": 5480,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/five-two-vine-remaining/22626-tick-05480.png"
+      },
+      {
+        "sequence": 22627,
+        "tick": 5482,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22627-tick-05482.png"
+      },
+      {
+        "sequence": 22628,
+        "tick": 5485,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22628-tick-05485.png"
+      },
+      {
+        "sequence": 22629,
+        "tick": 5486,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22629-tick-05486.png"
+      },
+      {
+        "sequence": 22630,
+        "tick": 5489,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22630-tick-05489.png"
+      },
+      {
+        "sequence": 22631,
+        "tick": 5494,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22631-tick-05494.png"
+      },
+      {
+        "sequence": 22632,
+        "tick": 5495,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22632-tick-05495.png"
+      },
+      {
+        "sequence": 22633,
+        "tick": 5497,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22633-tick-05497.png"
+      },
+      {
+        "sequence": 22634,
+        "tick": 5500,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22634-tick-05500.png"
+      },
+      {
+        "sequence": 22635,
+        "tick": 5504,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22635-tick-05504.png"
+      },
+      {
+        "sequence": 22636,
+        "tick": 5507,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22636-tick-05507.png"
+      },
+      {
+        "sequence": 22637,
+        "tick": 5508,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22637-tick-05508.png"
+      },
+      {
+        "sequence": 22638,
+        "tick": 5510,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22638-tick-05510.png"
+      },
+      {
+        "sequence": 22639,
+        "tick": 5513,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22639-tick-05513.png"
+      },
+      {
+        "sequence": 22640,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22640-tick-05517.png"
+      },
+      {
+        "sequence": 22641,
+        "tick": 5520,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22641-tick-05520.png"
+      },
+      {
+        "sequence": 22642,
+        "tick": 5521,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22642-tick-05521.png"
+      },
+      {
+        "sequence": 22643,
+        "tick": 5523,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22643-tick-05523.png"
+      },
+      {
+        "sequence": 22644,
+        "tick": 5525,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22644-tick-05525.png"
+      },
+      {
+        "sequence": 22645,
+        "tick": 5528,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22645-tick-05528.png"
+      },
+      {
+        "sequence": 22646,
+        "tick": 5529,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22646-tick-05529.png"
+      },
+      {
+        "sequence": 22647,
+        "tick": 5531,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22647-tick-05531.png"
+      },
+      {
+        "sequence": 22648,
+        "tick": 5534,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22648-tick-05534.png"
+      },
+      {
+        "sequence": 22649,
+        "tick": 5535,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22649-tick-05535.png"
+      },
+      {
+        "sequence": 22650,
+        "tick": 5537,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22650-tick-05537.png"
+      },
+      {
+        "sequence": 22651,
+        "tick": 5539,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22651-tick-05539.png"
+      },
+      {
+        "sequence": 22652,
+        "tick": 5541,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22652-tick-05541.png"
+      },
+      {
+        "sequence": 22653,
+        "tick": 5542,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22653-tick-05542.png"
+      },
+      {
+        "sequence": 22654,
+        "tick": 5543,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22654-tick-05543.png"
+      },
+      {
+        "sequence": 22655,
+        "tick": 5545,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22655-tick-05545.png"
+      },
+      {
+        "sequence": 22656,
+        "tick": 5547,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22656-tick-05547.png"
+      },
+      {
+        "sequence": 22657,
+        "tick": 5549,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22657-tick-05549.png"
+      },
+      {
+        "sequence": 22658,
+        "tick": 5551,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22658-tick-05551.png"
+      },
+      {
+        "sequence": 22659,
+        "tick": 5554,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22659-tick-05554.png"
+      },
+      {
+        "sequence": 22660,
+        "tick": 5555,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22660-tick-05555.png"
+      },
+      {
+        "sequence": 22661,
+        "tick": 5557,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22661-tick-05557.png"
+      },
+      {
+        "sequence": 22662,
+        "tick": 5561,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22662-tick-05561.png"
+      },
+      {
+        "sequence": 22663,
+        "tick": 5567,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-remaining/22663-tick-05567.png"
+      },
+      {
+        "sequence": 22664,
+        "tick": 5569,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22664-tick-05569.png"
+      },
+      {
+        "sequence": 22665,
+        "tick": 5570,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22665-tick-05570.png"
+      },
+      {
+        "sequence": 22666,
+        "tick": 5572,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22666-tick-05572.png"
+      },
+      {
+        "sequence": 22667,
+        "tick": 5575,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22667-tick-05575.png"
+      },
+      {
+        "sequence": 22668,
+        "tick": 5579,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22668-tick-05579.png"
+      },
+      {
+        "sequence": 22669,
+        "tick": 5581,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22669-tick-05581.png"
+      },
+      {
+        "sequence": 22670,
+        "tick": 5583,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22670-tick-05583.png"
+      },
+      {
+        "sequence": 22671,
+        "tick": 5585,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22671-tick-05585.png"
+      },
+      {
+        "sequence": 22672,
+        "tick": 5588,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22672-tick-05588.png"
+      },
+      {
+        "sequence": 22673,
+        "tick": 5589,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22673-tick-05589.png"
+      },
+      {
+        "sequence": 22674,
+        "tick": 5591,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22674-tick-05591.png"
+      },
+      {
+        "sequence": 22675,
+        "tick": 5594,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22675-tick-05594.png"
+      },
+      {
+        "sequence": 22676,
+        "tick": 5595,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22676-tick-05595.png"
+      },
+      {
+        "sequence": 22677,
+        "tick": 5599,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22677-tick-05599.png"
+      },
+      {
+        "sequence": 22678,
+        "tick": 5604,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22678-tick-05604.png"
+      },
+      {
+        "sequence": 22679,
+        "tick": 5605,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22679-tick-05605.png"
+      },
+      {
+        "sequence": 22680,
+        "tick": 5607,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22680-tick-05607.png"
+      },
+      {
+        "sequence": 22681,
+        "tick": 5619,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/five-two-vine-remaining/22681-tick-05619.png"
+      },
+      {
+        "sequence": 22682,
+        "tick": 5624,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22682-tick-05624.png"
+      },
+      {
+        "sequence": 22683,
+        "tick": 5625,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22683-tick-05625.png"
+      },
+      {
+        "sequence": 22684,
+        "tick": 5626,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22684-tick-05626.png"
+      },
+      {
+        "sequence": 22685,
+        "tick": 5627,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22685-tick-05627.png"
+      },
+      {
+        "sequence": 22686,
+        "tick": 5628,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22686-tick-05628.png"
+      },
+      {
+        "sequence": 22687,
+        "tick": 5630,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22687-tick-05630.png"
+      },
+      {
+        "sequence": 22688,
+        "tick": 5633,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22688-tick-05633.png"
+      },
+      {
+        "sequence": 22689,
+        "tick": 5636,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22689-tick-05636.png"
+      },
+      {
+        "sequence": 22690,
+        "tick": 5639,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22690-tick-05639.png"
+      },
+      {
+        "sequence": 22691,
+        "tick": 5644,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22691-tick-05644.png"
+      },
+      {
+        "sequence": 22692,
+        "tick": 5647,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22692-tick-05647.png"
+      },
+      {
+        "sequence": 22693,
+        "tick": 5655,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22693-tick-05655.png"
+      },
+      {
+        "sequence": 22694,
+        "tick": 5657,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22694-tick-05657.png"
+      },
+      {
+        "sequence": 22695,
+        "tick": 5663,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-remaining/22695-tick-05663.png"
+      },
+      {
+        "sequence": 22696,
+        "tick": 5666,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22696-tick-05666.png"
+      },
+      {
+        "sequence": 22697,
+        "tick": 5667,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22697-tick-05667.png"
+      },
+      {
+        "sequence": 22698,
+        "tick": 5670,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22698-tick-05670.png"
+      },
+      {
+        "sequence": 22699,
+        "tick": 5673,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/22699-tick-05673.png"
+      },
+      {
+        "sequence": 22700,
+        "tick": 5674,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22700-tick-05674.png"
+      },
+      {
+        "sequence": 22701,
+        "tick": 5675,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22701-tick-05675.png"
+      },
+      {
+        "sequence": 22702,
+        "tick": 5676,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22702-tick-05676.png"
+      },
+      {
+        "sequence": 22703,
+        "tick": 5677,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22703-tick-05677.png"
+      },
+      {
+        "sequence": 22704,
+        "tick": 5679,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22704-tick-05679.png"
+      },
+      {
+        "sequence": 22705,
+        "tick": 5684,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22705-tick-05684.png"
+      },
+      {
+        "sequence": 22706,
+        "tick": 5687,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22706-tick-05687.png"
+      },
+      {
+        "sequence": 22707,
+        "tick": 5692,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22707-tick-05692.png"
+      },
+      {
+        "sequence": 22708,
+        "tick": 5696,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22708-tick-05696.png"
+      },
+      {
+        "sequence": 22709,
+        "tick": 5702,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 6
+        },
+        "nativeFrames": 45,
+        "image": "evidence/local/five-two-vine-remaining/22709-tick-05702.png"
+      },
+      {
+        "sequence": 22710,
+        "tick": 5704,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22710-tick-05704.png"
+      },
+      {
+        "sequence": 22711,
+        "tick": 5707,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "up",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/22711-tick-05707.png"
+      },
+      {
+        "sequence": 22712,
+        "tick": 5715,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22712-tick-05715.png"
+      },
+      {
+        "sequence": 22713,
+        "tick": 5723,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22713-tick-05723.png"
+      },
+      {
+        "sequence": 22714,
+        "tick": 5731,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22714-tick-05731.png"
+      },
+      {
+        "sequence": 22715,
+        "tick": 5739,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22715-tick-05739.png"
+      },
+      {
+        "sequence": 22716,
+        "tick": 5751,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/five-two-vine-remaining/22716-tick-05751.png"
+      },
+      {
+        "sequence": 22717,
+        "tick": 5759,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22717-tick-05759.png"
+      },
+      {
+        "sequence": 22718,
+        "tick": 5767,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "up"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 61,
+        "image": "evidence/local/five-two-vine-remaining/22718-tick-05767.png"
+      }
+    ]
+  },
+  "traversalAndReturnRecipe": {
+    "requests": [
+      {
+        "sequence": 22719,
+        "tick": 5772,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22719-tick-05772.png"
+      },
+      {
+        "sequence": 22720,
+        "tick": 5777,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22720-tick-05777.png"
+      },
+      {
+        "sequence": 22721,
+        "tick": 5782,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22721-tick-05782.png"
+      },
+      {
+        "sequence": 22722,
+        "tick": 5787,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22722-tick-05787.png"
+      },
+      {
+        "sequence": 22723,
+        "tick": 5792,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22723-tick-05792.png"
+      },
+      {
+        "sequence": 22724,
+        "tick": 5797,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22724-tick-05797.png"
+      },
+      {
+        "sequence": 22725,
+        "tick": 5802,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22725-tick-05802.png"
+      },
+      {
+        "sequence": 22726,
+        "tick": 5807,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22726-tick-05807.png"
+      },
+      {
+        "sequence": 22727,
+        "tick": 5812,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22727-tick-05812.png"
+      },
+      {
+        "sequence": 22728,
+        "tick": 5817,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22728-tick-05817.png"
+      },
+      {
+        "sequence": 22729,
+        "tick": 5822,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22729-tick-05822.png"
+      },
+      {
+        "sequence": 22730,
+        "tick": 5827,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22730-tick-05827.png"
+      },
+      {
+        "sequence": 22731,
+        "tick": 5832,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22731-tick-05832.png"
+      },
+      {
+        "sequence": 22732,
+        "tick": 5837,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22732-tick-05837.png"
+      },
+      {
+        "sequence": 22733,
+        "tick": 5842,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22733-tick-05842.png"
+      },
+      {
+        "sequence": 22734,
+        "tick": 5847,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "image": "evidence/local/five-two-vine-remaining/22734-tick-05847.png"
+      },
+      {
+        "sequence": 22735,
+        "tick": 5849,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/five-two-vine-remaining/22735-tick-05849.png"
+      },
+      {
+        "sequence": 22736,
+        "tick": 5851,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22736-tick-05851.png"
+      },
+      {
+        "sequence": 22737,
+        "tick": 5852,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22737-tick-05852.png"
+      },
+      {
+        "sequence": 22738,
+        "tick": 5853,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22738-tick-05853.png"
+      },
+      {
+        "sequence": 22739,
+        "tick": 5854,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22739-tick-05854.png"
+      },
+      {
+        "sequence": 22740,
+        "tick": 5855,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/22740-tick-05855.png"
+      },
+      {
+        "sequence": 22741,
+        "tick": 5856,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/22741-tick-05856.png"
+      },
+      {
+        "sequence": 22742,
+        "tick": 5858,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/22742-tick-05858.png"
+      },
+      {
+        "sequence": 22743,
+        "tick": 5862,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/22743-tick-05862.png"
+      },
+      {
+        "sequence": 22744,
+        "tick": 5870,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22744-tick-05870.png"
+      },
+      {
+        "sequence": 22745,
+        "tick": 5878,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/five-two-vine-remaining/22745-tick-05878.png"
+      },
+      {
+        "sequence": 22746,
+        "tick": 5883,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+      }
+    ]
+  },
+  "destination": {
+    "schema": "image-only-sky-room-v1",
+    "id": "5-2-vine-sky",
+    "level": "5-2",
+    "width": 74,
+    "background": "#6888fc",
+    "atlas": "metatiles-palette-000.png",
+    "tiles": [
+      [
+        0,
+        13,
+        136
+      ],
+      [
+        1,
+        13,
+        136
+      ],
+      [
+        2,
+        13,
+        136
+      ],
+      [
+        3,
+        13,
+        136
+      ],
+      [
+        5,
+        13,
+        136
+      ],
+      [
+        6,
+        13,
+        136
+      ],
+      [
+        7,
+        13,
+        136
+      ],
+      [
+        8,
+        13,
+        136
+      ],
+      [
+        9,
+        13,
+        136
+      ],
+      [
+        10,
+        13,
+        136
+      ],
+      [
+        11,
+        13,
+        136
+      ],
+      [
+        12,
+        13,
+        136
+      ],
+      [
+        13,
+        13,
+        136
+      ],
+      [
+        14,
+        13,
+        136
+      ],
+      [
+        15,
+        6,
+        194
+      ],
+      [
+        15,
+        13,
+        136
+      ],
+      [
+        16,
+        6,
+        194
+      ],
+      [
+        16,
+        13,
+        136
+      ],
+      [
+        17,
+        6,
+        194
+      ],
+      [
+        17,
+        13,
+        136
+      ],
+      [
+        18,
+        6,
+        194
+      ],
+      [
+        18,
+        13,
+        136
+      ],
+      [
+        19,
+        6,
+        194
+      ],
+      [
+        19,
+        13,
+        136
+      ],
+      [
+        20,
+        6,
+        194
+      ],
+      [
+        20,
+        13,
+        136
+      ],
+      [
+        21,
+        6,
+        194
+      ],
+      [
+        21,
+        13,
+        136
+      ],
+      [
+        22,
+        6,
+        194
+      ],
+      [
+        22,
+        13,
+        136
+      ],
+      [
+        23,
+        6,
+        194
+      ],
+      [
+        23,
+        13,
+        136
+      ],
+      [
+        24,
+        6,
+        194
+      ],
+      [
+        24,
+        13,
+        136
+      ],
+      [
+        25,
+        6,
+        194
+      ],
+      [
+        25,
+        13,
+        136
+      ],
+      [
+        26,
+        6,
+        194
+      ],
+      [
+        26,
+        13,
+        136
+      ],
+      [
+        27,
+        6,
+        194
+      ],
+      [
+        27,
+        13,
+        136
+      ],
+      [
+        28,
+        6,
+        194
+      ],
+      [
+        28,
+        13,
+        136
+      ],
+      [
+        29,
+        6,
+        194
+      ],
+      [
+        29,
+        13,
+        136
+      ],
+      [
+        30,
+        6,
+        194
+      ],
+      [
+        30,
+        13,
+        136
+      ],
+      [
+        31,
+        13,
+        136
+      ],
+      [
+        32,
+        4,
+        194
+      ],
+      [
+        32,
+        13,
+        136
+      ],
+      [
+        33,
+        4,
+        194
+      ],
+      [
+        33,
+        13,
+        136
+      ],
+      [
+        34,
+        4,
+        194
+      ],
+      [
+        34,
+        13,
+        136
+      ],
+      [
+        35,
+        13,
+        136
+      ],
+      [
+        36,
+        5,
+        194
+      ],
+      [
+        36,
+        13,
+        136
+      ],
+      [
+        37,
+        5,
+        194
+      ],
+      [
+        37,
+        13,
+        136
+      ],
+      [
+        38,
+        5,
+        194
+      ],
+      [
+        38,
+        13,
+        136
+      ],
+      [
+        39,
+        5,
+        194
+      ],
+      [
+        39,
+        13,
+        136
+      ],
+      [
+        40,
+        5,
+        194
+      ],
+      [
+        40,
+        13,
+        136
+      ],
+      [
+        41,
+        5,
+        194
+      ],
+      [
+        41,
+        13,
+        136
+      ],
+      [
+        42,
+        5,
+        194
+      ],
+      [
+        42,
+        13,
+        136
+      ],
+      [
+        43,
+        5,
+        194
+      ],
+      [
+        43,
+        13,
+        136
+      ],
+      [
+        44,
+        5,
+        194
+      ],
+      [
+        44,
+        13,
+        136
+      ],
+      [
+        45,
+        5,
+        194
+      ],
+      [
+        45,
+        13,
+        136
+      ],
+      [
+        46,
+        5,
+        194
+      ],
+      [
+        46,
+        13,
+        136
+      ],
+      [
+        47,
+        5,
+        194
+      ],
+      [
+        47,
+        13,
+        136
+      ],
+      [
+        48,
+        5,
+        194
+      ],
+      [
+        48,
+        13,
+        136
+      ],
+      [
+        49,
+        5,
+        194
+      ],
+      [
+        49,
+        13,
+        136
+      ],
+      [
+        50,
+        5,
+        194
+      ],
+      [
+        50,
+        13,
+        136
+      ],
+      [
+        51,
+        5,
+        194
+      ],
+      [
+        51,
+        13,
+        136
+      ],
+      [
+        52,
+        13,
+        136
+      ],
+      [
+        53,
+        4,
+        194
+      ],
+      [
+        53,
+        13,
+        136
+      ],
+      [
+        54,
+        4,
+        194
+      ],
+      [
+        54,
+        13,
+        136
+      ],
+      [
+        55,
+        4,
+        194
+      ],
+      [
+        55,
+        13,
+        136
+      ],
+      [
+        56,
+        13,
+        136
+      ],
+      [
+        57,
+        13,
+        136
+      ],
+      [
+        58,
+        13,
+        136
+      ],
+      [
+        59,
+        13,
+        136
+      ],
+      [
+        60,
+        13,
+        136
+      ],
+      [
+        61,
+        13,
+        136
+      ],
+      [
+        69,
+        12,
+        194
+      ],
+      [
+        70,
+        12,
+        194
+      ],
+      [
+        71,
+        12,
+        194
+      ]
+    ],
+    "unknownCells": [
+      [
+        16,
+        10
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        18,
+        10
+      ],
+      [
+        73,
+        3
+      ],
+      [
+        73,
+        4
+      ],
+      [
+        73,
+        5
+      ],
+      [
+        73,
+        6
+      ],
+      [
+        73,
+        7
+      ],
+      [
+        73,
+        8
+      ],
+      [
+        73,
+        9
+      ],
+      [
+        73,
+        10
+      ],
+      [
+        73,
+        11
+      ],
+      [
+        73,
+        12
+      ],
+      [
+        73,
+        13
+      ],
+      [
+        73,
+        14
+      ]
+    ],
+    "cameraRegistration": [
+      {
+        "sequence": 22713,
+        "tick": 5723,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 15
+      },
+      {
+        "sequence": 22714,
+        "tick": 5731,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0.018128,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 15
+      },
+      {
+        "sequence": 22715,
+        "tick": 5739,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0.013848,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 15
+      },
+      {
+        "sequence": 22716,
+        "tick": 5751,
+        "nativeFrames": 90,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0.013529,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 15
+      },
+      {
+        "sequence": 22717,
+        "tick": 5759,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 15
+      },
+      {
+        "sequence": 22718,
+        "tick": 5767,
+        "nativeFrames": 61,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 0,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22719,
+        "tick": 5772,
+        "nativeFrames": 37,
+        "delta": 17,
+        "cameraX": 17,
+        "binaryError": 0.008822,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          17
+        ],
+        "exactFullFloorPhase": 15,
+        "exactFullFloorMatchCount": 13
+      },
+      {
+        "sequence": 22720,
+        "tick": 5777,
+        "nativeFrames": 38,
+        "delta": 38,
+        "cameraX": 55,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          38
+        ],
+        "exactFullFloorPhase": 9,
+        "exactFullFloorMatchCount": 13
+      },
+      {
+        "sequence": 22721,
+        "tick": 5782,
+        "nativeFrames": 37,
+        "delta": 43,
+        "cameraX": 98,
+        "binaryError": 0.036437,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          43
+        ],
+        "exactFullFloorPhase": 14,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22722,
+        "tick": 5787,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 155,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 5,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22723,
+        "tick": 5792,
+        "nativeFrames": 37,
+        "delta": 56,
+        "cameraX": 211,
+        "binaryError": 0.071908,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          55,
+          56
+        ],
+        "exactFullFloorPhase": 13,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22724,
+        "tick": 5797,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 268,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          41,
+          57,
+          73,
+          89,
+          105
+        ],
+        "exactFullFloorPhase": 4,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22725,
+        "tick": 5802,
+        "nativeFrames": 37,
+        "delta": 55,
+        "cameraX": 323,
+        "binaryError": 0.075122,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          55,
+          56
+        ],
+        "exactFullFloorPhase": 13,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22726,
+        "tick": 5807,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 380,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 4,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22727,
+        "tick": 5812,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 437,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 11,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22728,
+        "tick": 5817,
+        "nativeFrames": 37,
+        "delta": 56,
+        "cameraX": 493,
+        "binaryError": 0.072307,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          55,
+          56
+        ],
+        "exactFullFloorPhase": 3,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22729,
+        "tick": 5822,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 550,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 10,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22730,
+        "tick": 5827,
+        "nativeFrames": 37,
+        "delta": 55,
+        "cameraX": 605,
+        "binaryError": 0.080073,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          24,
+          39,
+          40,
+          55,
+          56,
+          72,
+          88,
+          104
+        ],
+        "exactFullFloorPhase": 3,
+        "exactFullFloorMatchCount": 13
+      },
+      {
+        "sequence": 22731,
+        "tick": 5832,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 662,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 10,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22732,
+        "tick": 5837,
+        "nativeFrames": 37,
+        "delta": 56,
+        "cameraX": 718,
+        "binaryError": 0.069669,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          55,
+          56
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 14
+      },
+      {
+        "sequence": 22733,
+        "tick": 5842,
+        "nativeFrames": 38,
+        "delta": 57,
+        "cameraX": 775,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          57
+        ],
+        "exactFullFloorPhase": 9,
+        "exactFullFloorMatchCount": 12
+      },
+      {
+        "sequence": 22734,
+        "tick": 5847,
+        "nativeFrames": 37,
+        "delta": 55,
+        "cameraX": 830,
+        "binaryError": 0.032915,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          55
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 9
+      },
+      {
+        "sequence": 22735,
+        "tick": 5849,
+        "nativeFrames": 16,
+        "delta": 24,
+        "cameraX": 854,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          24
+        ],
+        "exactFullFloorPhase": 10,
+        "exactFullFloorMatchCount": 7
+      },
+      {
+        "sequence": 22736,
+        "tick": 5851,
+        "nativeFrames": 15,
+        "delta": 23,
+        "cameraX": 877,
+        "binaryError": 0.016929,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          23
+        ],
+        "exactFullFloorPhase": 3,
+        "exactFullFloorMatchCount": 6
+      },
+      {
+        "sequence": 22737,
+        "tick": 5852,
+        "nativeFrames": 7,
+        "delta": 10,
+        "cameraX": 887,
+        "binaryError": 0.020408,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          10
+        ],
+        "exactFullFloorPhase": 9,
+        "exactFullFloorMatchCount": 6
+      },
+      {
+        "sequence": 22738,
+        "tick": 5853,
+        "nativeFrames": 8,
+        "delta": 12,
+        "cameraX": 899,
+        "binaryError": 0.113019,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          12
+        ],
+        "exactFullFloorPhase": 13,
+        "exactFullFloorMatchCount": 5
+      },
+      {
+        "sequence": 22739,
+        "tick": 5854,
+        "nativeFrames": 7,
+        "delta": 11,
+        "cameraX": 910,
+        "binaryError": 0.116393,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          11
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 5
+      },
+      {
+        "sequence": 22740,
+        "tick": 5855,
+        "nativeFrames": 8,
+        "delta": 12,
+        "cameraX": 922,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          12
+        ],
+        "exactFullFloorPhase": 6,
+        "exactFullFloorMatchCount": 4
+      },
+      {
+        "sequence": 22741,
+        "tick": 5856,
+        "nativeFrames": 7,
+        "delta": 4,
+        "cameraX": 926,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          4
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 4
+      },
+      {
+        "sequence": 22742,
+        "tick": 5858,
+        "nativeFrames": 15,
+        "delta": 0,
+        "cameraX": 926,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 4
+      },
+      {
+        "sequence": 22743,
+        "tick": 5862,
+        "nativeFrames": 30,
+        "delta": 0,
+        "cameraX": 926,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 4
+      },
+      {
+        "sequence": 22744,
+        "tick": 5870,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 926,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactFullFloorPhase": 2,
+        "exactFullFloorMatchCount": 4
+      }
+    ],
+    "coinPixelEvidence": [
+      {
+        "column": 15,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22713,
+            "cameraX": 0,
+            "screenBounds": [
+              243,
+              98,
+              251,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22714,
+            "cameraX": 0,
+            "screenBounds": [
+              243,
+              98,
+              251,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 11
+      },
+      {
+        "column": 16,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22719,
+            "cameraX": 17,
+            "screenBounds": [
+              241,
+              98,
+              249,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22720,
+            "cameraX": 55,
+            "screenBounds": [
+              203,
+              98,
+              211,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 17,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22720,
+            "cameraX": 55,
+            "screenBounds": [
+              219,
+              98,
+              227,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22721,
+            "cameraX": 98,
+            "screenBounds": [
+              175,
+              98,
+              183,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 18,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22720,
+            "cameraX": 55,
+            "screenBounds": [
+              235,
+              98,
+              243,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22721,
+            "cameraX": 98,
+            "screenBounds": [
+              191,
+              98,
+              199,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 19,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22721,
+            "cameraX": 98,
+            "screenBounds": [
+              207,
+              98,
+              215,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              150,
+              98,
+              158,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 20,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22721,
+            "cameraX": 98,
+            "screenBounds": [
+              223,
+              98,
+              231,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              166,
+              98,
+              174,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 21,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22721,
+            "cameraX": 98,
+            "screenBounds": [
+              239,
+              98,
+              247,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              182,
+              98,
+              190,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 22,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              198,
+              98,
+              206,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              143,
+              98,
+              151,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 23,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              214,
+              98,
+              222,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              159,
+              98,
+              167,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 24,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              230,
+              98,
+              238,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              175,
+              98,
+              183,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 25,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22722,
+            "cameraX": 155,
+            "screenBounds": [
+              246,
+              98,
+              254,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              191,
+              98,
+              199,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 26,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              207,
+              98,
+              215,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              150,
+              98,
+              158,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 27,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              223,
+              98,
+              231,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              166,
+              98,
+              174,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 28,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22723,
+            "cameraX": 211,
+            "screenBounds": [
+              239,
+              98,
+              247,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              182,
+              98,
+              190,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 29,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              198,
+              98,
+              206,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22725,
+            "cameraX": 323,
+            "screenBounds": [
+              142,
+              98,
+              150,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 30,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              214,
+              98,
+              222,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22725,
+            "cameraX": 323,
+            "screenBounds": [
+              158,
+              98,
+              166,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 32,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22724,
+            "cameraX": 268,
+            "screenBounds": [
+              246,
+              66,
+              254,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22725,
+            "cameraX": 323,
+            "screenBounds": [
+              190,
+              66,
+              198,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 33,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22725,
+            "cameraX": 323,
+            "screenBounds": [
+              206,
+              66,
+              214,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              149,
+              66,
+              157,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 34,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22725,
+            "cameraX": 323,
+            "screenBounds": [
+              222,
+              66,
+              230,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              165,
+              66,
+              173,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 36,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              197,
+              82,
+              205,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              140,
+              82,
+              148,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 37,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              213,
+              82,
+              221,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              156,
+              82,
+              164,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 38,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              229,
+              82,
+              237,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              172,
+              82,
+              180,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 39,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22726,
+            "cameraX": 380,
+            "screenBounds": [
+              245,
+              82,
+              253,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              188,
+              82,
+              196,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 40,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              204,
+              82,
+              212,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              149,
+              82,
+              157,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 41,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              220,
+              82,
+              228,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              165,
+              82,
+              173,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 42,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22727,
+            "cameraX": 437,
+            "screenBounds": [
+              236,
+              82,
+              244,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              181,
+              82,
+              189,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 43,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              197,
+              82,
+              205,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              140,
+              82,
+              148,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 44,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              213,
+              82,
+              221,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              156,
+              82,
+              164,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 45,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              229,
+              82,
+              237,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              172,
+              82,
+              180,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 46,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22728,
+            "cameraX": 493,
+            "screenBounds": [
+              245,
+              82,
+              253,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              188,
+              82,
+              196,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 47,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              204,
+              82,
+              212,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              148,
+              82,
+              156,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 48,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              220,
+              82,
+              228,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              164,
+              82,
+              172,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 49,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22729,
+            "cameraX": 550,
+            "screenBounds": [
+              236,
+              82,
+              244,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              180,
+              82,
+              188,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 50,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              196,
+              82,
+              204,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22731,
+            "cameraX": 662,
+            "screenBounds": [
+              139,
+              82,
+              147,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 51,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              212,
+              82,
+              220,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22731,
+            "cameraX": 662,
+            "screenBounds": [
+              155,
+              82,
+              163,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 4
+      },
+      {
+        "column": 53,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22730,
+            "cameraX": 605,
+            "screenBounds": [
+              244,
+              66,
+              252,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22731,
+            "cameraX": 662,
+            "screenBounds": [
+              187,
+              66,
+              195,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 54,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22731,
+            "cameraX": 662,
+            "screenBounds": [
+              203,
+              66,
+              211,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22732,
+            "cameraX": 718,
+            "screenBounds": [
+              148,
+              66,
+              156,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 55,
+        "row": 4,
+        "observations": [
+          {
+            "sequence": 22731,
+            "cameraX": 662,
+            "screenBounds": [
+              219,
+              66,
+              227,
+              80
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22732,
+            "cameraX": 718,
+            "screenBounds": [
+              164,
+              66,
+              172,
+              80
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 69,
+        "row": 12,
+        "observations": [
+          {
+            "sequence": 22736,
+            "cameraX": 877,
+            "screenBounds": [
+              230,
+              194,
+              238,
+              208
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22737,
+            "cameraX": 887,
+            "screenBounds": [
+              220,
+              194,
+              228,
+              208
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 9
+      },
+      {
+        "column": 70,
+        "row": 12,
+        "observations": [
+          {
+            "sequence": 22736,
+            "cameraX": 877,
+            "screenBounds": [
+              246,
+              194,
+              254,
+              208
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22737,
+            "cameraX": 887,
+            "screenBounds": [
+              236,
+              194,
+              244,
+              208
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 9
+      },
+      {
+        "column": 71,
+        "row": 12,
+        "observations": [
+          {
+            "sequence": 22738,
+            "cameraX": 899,
+            "screenBounds": [
+              240,
+              194,
+              248,
+              208
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 22739,
+            "cameraX": 910,
+            "screenBounds": [
+              229,
+              194,
+              237,
+              208
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      }
+    ],
+    "sourceTrace": "evidence/local/five-two-vine-remaining/trace.jsonl",
+    "sourceSequenceRange": [
+      22713,
+      22744
+    ],
+    "method": "Binary static-pixel registration relative to the measured blue background excludes HUD, Mario, vine and moving six-orb platform rows. Exact full256pixel supplied blue-background cloud-floor tile136 fixes every horizontal phase; steady rightward walking is constrained to measured1.5px/native-frame\u00b12px per checkpoint. Supplied atlas RGB establishes static metatiles. Additional coin palette phases are measured as observed orange8/9-by-14 connected pixel components through measured visible coin rows4/5/6/12, snapped to their nearest16px grid cell with screenshot witnesses. Initial source22713 directly shows the entry-vine gap as empty blue before vine growth. No hidden cells are synthesized.",
+    "uncertainties": [
+      "World camera coordinates are inferred from screenshot alignment and a measured walking-speed bound; repetitive rows can admit multiple equal binary alignments, recorded per checkpoint.",
+      "Coin artwork can differ by one horizontal pixel between scroll/animation phases. Coin grid positions use the nearest cell; component bounds and observation counts are retained.",
+      "Non-atlas floating cloud artwork remains explicit unknown cells rather than invented collision geometry.",
+      "Vine and moving six-orb platform are dynamic and are not encoded as static tiles.",
+      "Only the ordinary cloud-floor walking route was observed. Riding the platform and collecting the high coins remain unmeasured.",
+      "Width is the observed viewport extent, not an inferred unseen room boundary."
+    ],
+    "platforms": [
+      {
+        "id": "5-2-sky-six-orb-platform",
+        "kind": "cloud48",
+        "x": 255,
+        "y": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "coordinateConvention": "x is inferred world artwork origin; y is directly measured artwork top, not an inferred collision surface.",
+        "firstObservedSequence": 22719,
+        "firstObservedTick": 5772,
+        "firstCompleteObservedSequence": 22720,
+        "contactObserved": false,
+        "motionRule": null,
+        "observationNote": "Exact opaque supplied48-by-8 cloud48 pixels establish the six-orb platform and samples below. Worldx uses independent static screenshot camera registration, with samples254..255 reflecting a one-pixel raster/registration variation. No logical grid origin or motion rule is asserted. The ordinary floor-walking route never lands on or rides it; contact/activation rules and collision top are unmeasured."
+      }
+    ],
+    "platformObservations": [
+      {
+        "sequence": 22719,
+        "tick": 5772,
+        "nativeFramesSinceFirstDestinationCapture": 368,
+        "cameraX": 17,
+        "screenX": 238,
+        "worldX": 255,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 114,
+        "clippedAtRightEdge": true,
+        "visibleWidth": 18,
+        "extentNote": "Earlier clipped pixels aligned to the complete48px sprite at sequence22720; the clipped crop alone does not establish total width."
+      },
+      {
+        "sequence": 22720,
+        "tick": 5777,
+        "nativeFramesSinceFirstDestinationCapture": 406,
+        "cameraX": 55,
+        "screenX": 200,
+        "worldX": 255,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 22721,
+        "tick": 5782,
+        "nativeFramesSinceFirstDestinationCapture": 443,
+        "cameraX": 98,
+        "screenX": 156,
+        "worldX": 254,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 22722,
+        "tick": 5787,
+        "nativeFramesSinceFirstDestinationCapture": 481,
+        "cameraX": 155,
+        "screenX": 99,
+        "worldX": 254,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      },
+      {
+        "sequence": 22723,
+        "tick": 5792,
+        "nativeFramesSinceFirstDestinationCapture": 518,
+        "cameraX": 211,
+        "screenX": 44,
+        "worldX": 255,
+        "artworkY": 161,
+        "width": 48,
+        "height": 8,
+        "sprite": "sprite-large_platforms-2.png",
+        "kind": "cloud48",
+        "matchedOpaquePixels": 312
+      }
+    ],
+    "platformObservationEvidence": [
+      {
+        "id": "5-2-sky-six-orb-platform",
+        "firstObservedClippedArtwork": {
+          "sequence": 22719,
+          "tick": 5772,
+          "nativeFramesSinceFirstDestinationCapture": 368,
+          "cameraX": 17,
+          "screenX": 238,
+          "worldX": 255,
+          "artworkY": 161,
+          "width": 48,
+          "height": 8,
+          "sprite": "sprite-large_platforms-2.png",
+          "kind": "cloud48",
+          "matchedOpaquePixels": 114,
+          "clippedAtRightEdge": true,
+          "visibleWidth": 18,
+          "extentNote": "Earlier clipped pixels aligned to the complete48px sprite at sequence22720; the clipped crop alone does not establish total width."
+        },
+        "firstCompleteObservation": {
+          "sequence": 22720,
+          "tick": 5777,
+          "nativeFramesSinceFirstDestinationCapture": 406,
+          "cameraX": 55,
+          "screenX": 200,
+          "worldX": 255,
+          "artworkY": 161,
+          "width": 48,
+          "height": 8,
+          "sprite": "sprite-large_platforms-2.png",
+          "kind": "cloud48",
+          "matchedOpaquePixels": 312
+        },
+        "observedWorldXRange": [
+          254,
+          255
+        ],
+        "observedArtworkYRange": [
+          161,
+          161
+        ],
+        "completeObservationCount": 4,
+        "earlierClippedObservationCount": 1,
+        "contactObserved": false,
+        "motionRule": null,
+        "inferenceNote": "No activation, launch-on-contact, speed, range, or return-period rule is inferred from these appearance samples. Stable coordinates only establish the sampled interval. Earlier clipped crops match the same observed anchor, while the later complete bitmap establishes48px width."
+      }
+    ],
+    "actorObservationMethod": "Exact opaque RGBA pixels from supplied special platform PNGs, rejecting smaller templates contained in a larger artwork match. The actual largest matched platform here is48px. No emulator memory, ROM contents, sibling data, or remembered behavior. Source is the completed public-controller destination capture.",
+    "observedCameraClampX": 926,
+    "observedFloorEndX": 992
+  },
+  "unresolved": [
+    "Earlier upper ordinal2 remains without an actual head hit; ordinal1 is the observed vine and ordinal3 was separately bumped ordinarily.",
+    "Late upper five-brick strip and late gap-support ordinals1/2 remain without actual head hits.",
+    "The sky platform was never touched; contact, collision top and motion rule remain unmeasured."
+  ],
+  "continuation": {
+    "liveDriverSessionId": 18707,
+    "lastObservation": {
+      "sequence": 22746,
+      "tick": 5883,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 5
+      },
+      "nativeFrames": 38,
+      "image": "evidence/local/five-two-vine-remaining/22746-tick-05883.png"
+    },
+    "actualLivingPlayer": {
+      "direction": "right",
+      "cell": 23,
+      "originX": 40,
+      "originY": 177,
+      "feetY": 208,
+      "spriteBottomExclusive": 209,
+      "matchedPixels": 143
+    },
+    "inferredCameraX": 2048,
+    "inferredPlayerOriginX": 2088,
+    "stateNote": "Safe main5-2 standing ground after actual sky return. Accepted route evidence is complete; no further reference gameplay is needed for this connection. The live driver subsequently resets for separate late-block content probes; this accepted-route checkpoint is historical.",
+    "checkpointIsHistorical": true
+  }
+}

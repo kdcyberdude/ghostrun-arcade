@@ -1,0 +1,2074 @@
+{
+  "level": "1-2",
+  "area": "area-2",
+  "status": "measured opening Goomba and Koopa corrections; not a replacement full enemy map",
+  "application": "Match the current inferred actor by kind and matchX, then apply x/y/direction/spawnCamera/palette/evidence. Keep unrelated actors. matchX is a data-merge key, not a runtime field. Append additions once to this area.",
+  "overrides": [
+    {
+      "kind": "koopa",
+      "matchX": 704,
+      "x": 704,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 454,
+      "palette": "enemy-table-0f-1c-36-17.png",
+      "evidence": "Dense1-2 screenshot track: 368..378; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick."
+    },
+    {
+      "kind": "koopa",
+      "matchX": 720,
+      "x": 728,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 449,
+      "palette": "enemy-table-0f-1c-36-17.png",
+      "evidence": "Dense1-2 screenshot track: 369..379; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick."
+    },
+    {
+      "kind": "koopa",
+      "matchX": 928,
+      "x": 944,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 645,
+      "palette": "enemy-table-0f-1c-36-17.png",
+      "evidence": "Dense1-2 screenshot track: 381..398; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 240,
+      "x": 256,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 0,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense clipped-head matches x253@native2509,249@2516,245@2524,238@2539. Initial x256 with first movement2504 (area appearance/scene activation) fits within1px. Camera0 activation follows ordinary entry scene update rules."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 448,
+      "x": 464,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 164,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense exact screenshot head matches 355..368; initial coordinate/camera trigger inferred jointly, retained free-motion fit error0px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 992,
+      "x": 992,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 692,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense exact screenshot head matches 383..405; initial coordinate/camera trigger inferred jointly, retained free-motion fit error0px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 1008,
+      "x": 1024,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 722,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense exact screenshot head matches 386..407; initial coordinate/camera trigger inferred jointly, retained free-motion fit error1px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 1152,
+      "x": 1168,
+      "y": 80,
+      "direction": -1,
+      "spawnCamera": 867,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense laterledge screenshots 415..419; horizontal fit error0px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 1216,
+      "x": 1224,
+      "y": 144,
+      "direction": -1,
+      "spawnCamera": 946,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense laterledge screenshots 418..422; horizontal fit error1px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty."
+    },
+    {
+      "kind": "goomba",
+      "matchX": 1248,
+      "x": 1248,
+      "y": 144,
+      "direction": -1,
+      "spawnCamera": 946,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Dense laterledge screenshots 419..429; horizontal fit error0px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty."
+    }
+  ],
+  "additions": [
+    {
+      "kind": "goomba",
+      "x": 272,
+      "y": 208,
+      "direction": -1,
+      "spawnCamera": 0,
+      "palette": "enemy-table-0f-0c-3c-1c.png",
+      "evidence": "Distinct second Goomba seen simultaneously16px to the right; clipped head x250@native2546 thenfull239@2569. Common first movement2504 with initial x272 fits within1px. Add actor; do not replace an existing later Goomba."
+    }
+  ],
+  "openingGoombas": [
+    {
+      "initialX": 256,
+      "firstMovementNativeFrame": 2504,
+      "lastStationaryNativeFrame": 2503,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "kind": "goomba",
+          "tick": 334,
+          "nativeFrame": 2509,
+          "camera": 0,
+          "screenX": 253,
+          "worldX": 253,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "clippedHeadOpaquePixelsMatched": 8,
+          "predictedX": 253
+        },
+        {
+          "kind": "goomba",
+          "tick": 335,
+          "nativeFrame": 2516,
+          "camera": 0,
+          "screenX": 249,
+          "worldX": 249,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "clippedHeadOpaquePixelsMatched": 34,
+          "predictedX": 249
+        },
+        {
+          "kind": "goomba",
+          "tick": 336,
+          "nativeFrame": 2524,
+          "camera": 0,
+          "screenX": 245,
+          "worldX": 245,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "clippedHeadOpaquePixelsMatched": 65,
+          "predictedX": 245
+        },
+        {
+          "kind": "goomba",
+          "tick": 337,
+          "nativeFrame": 2531,
+          "camera": 0,
+          "screenX": 242,
+          "worldX": 242,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.20857,
+          "clippedHeadOpaquePixelsMatched": 80,
+          "predictedX": 242
+        },
+        {
+          "kind": "goomba",
+          "tick": 338,
+          "nativeFrame": 2539,
+          "camera": 0,
+          "screenX": 238,
+          "worldX": 238,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.20857,
+          "predictedX": 238
+        },
+        {
+          "kind": "goomba",
+          "tick": 339,
+          "nativeFrame": 2546,
+          "camera": 0,
+          "screenX": 234,
+          "worldX": 234,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.20857,
+          "predictedX": 234
+        },
+        {
+          "kind": "goomba",
+          "tick": 340,
+          "nativeFrame": 2554,
+          "camera": 0,
+          "screenX": 230,
+          "worldX": 230,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 230
+        },
+        {
+          "kind": "goomba",
+          "tick": 341,
+          "nativeFrame": 2561,
+          "camera": 0,
+          "screenX": 227,
+          "worldX": 227,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 227
+        },
+        {
+          "kind": "goomba",
+          "tick": 342,
+          "nativeFrame": 2569,
+          "camera": 5,
+          "screenX": 218,
+          "worldX": 223,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 223
+        },
+        {
+          "kind": "goomba",
+          "tick": 343,
+          "nativeFrame": 2576,
+          "camera": 14,
+          "screenX": 205,
+          "worldX": 219,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.48667,
+          "predictedX": 219
+        },
+        {
+          "kind": "goomba",
+          "tick": 344,
+          "nativeFrame": 2584,
+          "camera": 26,
+          "screenX": 189,
+          "worldX": 215,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.52594,
+          "predictedX": 215
+        },
+        {
+          "kind": "goomba",
+          "tick": 345,
+          "nativeFrame": 2591,
+          "camera": 37,
+          "screenX": 175,
+          "worldX": 212,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.51264,
+          "predictedX": 212
+        },
+        {
+          "kind": "goomba",
+          "tick": 346,
+          "nativeFrame": 2599,
+          "camera": 52,
+          "screenX": 156,
+          "worldX": 208,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 208
+        },
+        {
+          "kind": "goomba",
+          "tick": 347,
+          "nativeFrame": 2606,
+          "camera": 69,
+          "screenX": 135,
+          "worldX": 204,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.11187,
+          "predictedX": 204
+        }
+      ]
+    },
+    {
+      "initialX": 272,
+      "firstMovementNativeFrame": 2504,
+      "lastStationaryNativeFrame": 2503,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "kind": "goomba",
+          "tick": 339,
+          "nativeFrame": 2546,
+          "camera": 0,
+          "screenX": 250,
+          "worldX": 250,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.20857,
+          "clippedHeadOpaquePixelsMatched": 26,
+          "predictedX": 250
+        },
+        {
+          "kind": "goomba",
+          "tick": 340,
+          "nativeFrame": 2554,
+          "camera": 0,
+          "screenX": 246,
+          "worldX": 246,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "clippedHeadOpaquePixelsMatched": 58,
+          "predictedX": 246
+        },
+        {
+          "kind": "goomba",
+          "tick": 341,
+          "nativeFrame": 2561,
+          "camera": 0,
+          "screenX": 243,
+          "worldX": 243,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "clippedHeadOpaquePixelsMatched": 76,
+          "predictedX": 243
+        },
+        {
+          "kind": "goomba",
+          "tick": 342,
+          "nativeFrame": 2569,
+          "camera": 5,
+          "screenX": 234,
+          "worldX": 239,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 239
+        },
+        {
+          "kind": "goomba",
+          "tick": 343,
+          "nativeFrame": 2576,
+          "camera": 14,
+          "screenX": 221,
+          "worldX": 235,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.48667,
+          "predictedX": 235
+        },
+        {
+          "kind": "goomba",
+          "tick": 344,
+          "nativeFrame": 2584,
+          "camera": 26,
+          "screenX": 205,
+          "worldX": 231,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.52594,
+          "predictedX": 231
+        },
+        {
+          "kind": "goomba",
+          "tick": 345,
+          "nativeFrame": 2591,
+          "camera": 37,
+          "screenX": 191,
+          "worldX": 228,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.51264,
+          "predictedX": 228
+        },
+        {
+          "kind": "goomba",
+          "tick": 346,
+          "nativeFrame": 2599,
+          "camera": 52,
+          "screenX": 172,
+          "worldX": 224,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0,
+          "predictedX": 224
+        },
+        {
+          "kind": "goomba",
+          "tick": 347,
+          "nativeFrame": 2606,
+          "camera": 69,
+          "screenX": 151,
+          "worldX": 220,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.11187,
+          "predictedX": 220
+        },
+        {
+          "kind": "goomba",
+          "tick": 348,
+          "nativeFrame": 2614,
+          "camera": 89,
+          "screenX": 127,
+          "worldX": 216,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.1019,
+          "predictedX": 216
+        },
+        {
+          "kind": "goomba",
+          "tick": 349,
+          "nativeFrame": 2621,
+          "camera": 107,
+          "screenX": 106,
+          "worldX": 213,
+          "originY": 185,
+          "bottom": 209,
+          "cell": 14,
+          "flipX": false,
+          "palette": "enemy-table-0f-0c-3c-1c.png",
+          "registrationError": 0.09358,
+          "predictedX": 213
+        }
+      ]
+    }
+  ],
+  "laterGoombas": [
+    {
+      "initialX": 464,
+      "matchX": 448,
+      "spawnCamera": 164,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "tick": 355,
+          "nativeFrame": 2666,
+          "camera": 219,
+          "worldX": 453,
+          "screenX": 234,
+          "predictedX": 453
+        },
+        {
+          "tick": 356,
+          "nativeFrame": 2674,
+          "camera": 239,
+          "worldX": 449,
+          "screenX": 210,
+          "predictedX": 449
+        }
+      ],
+      "uncertainty": "Only2samples before the firstwall reversal; later rightward segment449@357→479@365 establishes+.5px/nativeframe over60nativeframes. Initial x464 and camera164 remain coupled inference."
+    },
+    {
+      "initialX": 992,
+      "matchX": 992,
+      "spawnCamera": 692,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "tick": 383,
+          "nativeFrame": 2877,
+          "camera": 744,
+          "worldX": 981,
+          "screenX": 237,
+          "predictedX": 981
+        },
+        {
+          "tick": 384,
+          "nativeFrame": 2884,
+          "camera": 757,
+          "worldX": 977,
+          "screenX": 220,
+          "predictedX": 977
+        },
+        {
+          "tick": 385,
+          "nativeFrame": 2892,
+          "camera": 770,
+          "worldX": 973,
+          "screenX": 203,
+          "predictedX": 973
+        },
+        {
+          "tick": 386,
+          "nativeFrame": 2899,
+          "camera": 785,
+          "worldX": 970,
+          "screenX": 185,
+          "predictedX": 970
+        },
+        {
+          "tick": 387,
+          "nativeFrame": 2907,
+          "camera": 805,
+          "worldX": 966,
+          "screenX": 161,
+          "predictedX": 966
+        },
+        {
+          "tick": 388,
+          "nativeFrame": 2914,
+          "camera": 805,
+          "worldX": 962,
+          "screenX": 157,
+          "predictedX": 962
+        },
+        {
+          "tick": 389,
+          "nativeFrame": 2922,
+          "camera": 805,
+          "worldX": 958,
+          "screenX": 153,
+          "predictedX": 958
+        },
+        {
+          "tick": 390,
+          "nativeFrame": 2929,
+          "camera": 811,
+          "worldX": 955,
+          "screenX": 144,
+          "predictedX": 955
+        },
+        {
+          "tick": 391,
+          "nativeFrame": 2937,
+          "camera": 821,
+          "worldX": 951,
+          "screenX": 130,
+          "predictedX": 951
+        },
+        {
+          "tick": 392,
+          "nativeFrame": 2944,
+          "camera": 833,
+          "worldX": 947,
+          "screenX": 114,
+          "predictedX": 947
+        },
+        {
+          "tick": 393,
+          "nativeFrame": 2952,
+          "camera": 850,
+          "worldX": 943,
+          "screenX": 93,
+          "predictedX": 943
+        },
+        {
+          "tick": 394,
+          "nativeFrame": 2959,
+          "camera": 864,
+          "worldX": 940,
+          "screenX": 76,
+          "predictedX": 940
+        },
+        {
+          "tick": 395,
+          "nativeFrame": 2967,
+          "camera": 864,
+          "worldX": 936,
+          "screenX": 72,
+          "predictedX": 936
+        },
+        {
+          "tick": 396,
+          "nativeFrame": 2974,
+          "camera": 864,
+          "worldX": 932,
+          "screenX": 68,
+          "predictedX": 932
+        },
+        {
+          "tick": 397,
+          "nativeFrame": 2982,
+          "camera": 864,
+          "worldX": 928,
+          "screenX": 64,
+          "predictedX": 928
+        },
+        {
+          "tick": 398,
+          "nativeFrame": 2989,
+          "camera": 864,
+          "worldX": 925,
+          "screenX": 61,
+          "predictedX": 925
+        },
+        {
+          "tick": 399,
+          "nativeFrame": 2997,
+          "camera": 864,
+          "worldX": 921,
+          "screenX": 57,
+          "predictedX": 921
+        },
+        {
+          "tick": 400,
+          "nativeFrame": 3004,
+          "camera": 864,
+          "worldX": 917,
+          "screenX": 53,
+          "predictedX": 917
+        },
+        {
+          "tick": 401,
+          "nativeFrame": 3012,
+          "camera": 864,
+          "worldX": 913,
+          "screenX": 49,
+          "predictedX": 913
+        },
+        {
+          "tick": 402,
+          "nativeFrame": 3019,
+          "camera": 864,
+          "worldX": 910,
+          "screenX": 46,
+          "predictedX": 910
+        },
+        {
+          "tick": 403,
+          "nativeFrame": 3027,
+          "camera": 864,
+          "worldX": 906,
+          "screenX": 42,
+          "predictedX": 906
+        },
+        {
+          "tick": 404,
+          "nativeFrame": 3034,
+          "camera": 864,
+          "worldX": 902,
+          "screenX": 38,
+          "predictedX": 902
+        },
+        {
+          "tick": 405,
+          "nativeFrame": 3042,
+          "camera": 864,
+          "worldX": 898,
+          "screenX": 34,
+          "predictedX": 898
+        }
+      ],
+      "uncertainty": "Initial16px-grid coordinate and offscreen activation are coupled inference, not exposed reference state."
+    },
+    {
+      "initialX": 1024,
+      "matchX": 1008,
+      "spawnCamera": 722,
+      "positionMaxErrorPixels": 1,
+      "checkpoints": [
+        {
+          "tick": 386,
+          "nativeFrame": 2899,
+          "camera": 785,
+          "worldX": 1008,
+          "screenX": 223,
+          "predictedX": 1008
+        },
+        {
+          "tick": 387,
+          "nativeFrame": 2907,
+          "camera": 805,
+          "worldX": 1004,
+          "screenX": 199,
+          "predictedX": 1004
+        },
+        {
+          "tick": 388,
+          "nativeFrame": 2914,
+          "camera": 805,
+          "worldX": 1001,
+          "screenX": 196,
+          "predictedX": 1000
+        },
+        {
+          "tick": 389,
+          "nativeFrame": 2922,
+          "camera": 805,
+          "worldX": 997,
+          "screenX": 192,
+          "predictedX": 996
+        },
+        {
+          "tick": 390,
+          "nativeFrame": 2929,
+          "camera": 811,
+          "worldX": 993,
+          "screenX": 182,
+          "predictedX": 993
+        },
+        {
+          "tick": 391,
+          "nativeFrame": 2937,
+          "camera": 821,
+          "worldX": 989,
+          "screenX": 168,
+          "predictedX": 989
+        },
+        {
+          "tick": 392,
+          "nativeFrame": 2944,
+          "camera": 833,
+          "worldX": 986,
+          "screenX": 153,
+          "predictedX": 985
+        },
+        {
+          "tick": 393,
+          "nativeFrame": 2952,
+          "camera": 850,
+          "worldX": 982,
+          "screenX": 132,
+          "predictedX": 981
+        },
+        {
+          "tick": 394,
+          "nativeFrame": 2959,
+          "camera": 864,
+          "worldX": 978,
+          "screenX": 114,
+          "predictedX": 978
+        },
+        {
+          "tick": 395,
+          "nativeFrame": 2967,
+          "camera": 864,
+          "worldX": 974,
+          "screenX": 110,
+          "predictedX": 974
+        },
+        {
+          "tick": 396,
+          "nativeFrame": 2974,
+          "camera": 864,
+          "worldX": 971,
+          "screenX": 107,
+          "predictedX": 970
+        },
+        {
+          "tick": 397,
+          "nativeFrame": 2982,
+          "camera": 864,
+          "worldX": 967,
+          "screenX": 103,
+          "predictedX": 966
+        },
+        {
+          "tick": 398,
+          "nativeFrame": 2989,
+          "camera": 864,
+          "worldX": 963,
+          "screenX": 99,
+          "predictedX": 963
+        },
+        {
+          "tick": 399,
+          "nativeFrame": 2997,
+          "camera": 864,
+          "worldX": 959,
+          "screenX": 95,
+          "predictedX": 959
+        },
+        {
+          "tick": 400,
+          "nativeFrame": 3004,
+          "camera": 864,
+          "worldX": 956,
+          "screenX": 92,
+          "predictedX": 955
+        },
+        {
+          "tick": 401,
+          "nativeFrame": 3012,
+          "camera": 864,
+          "worldX": 952,
+          "screenX": 88,
+          "predictedX": 951
+        },
+        {
+          "tick": 402,
+          "nativeFrame": 3019,
+          "camera": 864,
+          "worldX": 948,
+          "screenX": 84,
+          "predictedX": 948
+        },
+        {
+          "tick": 403,
+          "nativeFrame": 3027,
+          "camera": 864,
+          "worldX": 944,
+          "screenX": 80,
+          "predictedX": 944
+        },
+        {
+          "tick": 404,
+          "nativeFrame": 3034,
+          "camera": 864,
+          "worldX": 941,
+          "screenX": 77,
+          "predictedX": 940
+        },
+        {
+          "tick": 405,
+          "nativeFrame": 3042,
+          "camera": 864,
+          "worldX": 937,
+          "screenX": 73,
+          "predictedX": 936
+        },
+        {
+          "tick": 406,
+          "nativeFrame": 3049,
+          "camera": 864,
+          "worldX": 933,
+          "screenX": 69,
+          "predictedX": 933
+        },
+        {
+          "tick": 407,
+          "nativeFrame": 3057,
+          "camera": 864,
+          "worldX": 929,
+          "screenX": 65,
+          "predictedX": 929
+        }
+      ],
+      "uncertainty": "Initial16px-grid coordinate and offscreen activation are coupled inference, not exposed reference state."
+    }
+  ],
+  "ledgeGoombas": [
+    {
+      "initialX": 1168,
+      "matchX": 1152,
+      "spawnCamera": 867,
+      "initialFeetY": 80,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "tick": 415,
+          "nativeFrame": 3117,
+          "camera": 922,
+          "worldX": 1150,
+          "bottom": 81,
+          "predictedX": 1150
+        },
+        {
+          "tick": 416,
+          "nativeFrame": 3125,
+          "camera": 942,
+          "worldX": 1146,
+          "bottom": 81,
+          "predictedX": 1146
+        },
+        {
+          "tick": 417,
+          "nativeFrame": 3132,
+          "camera": 960,
+          "worldX": 1143,
+          "bottom": 81,
+          "predictedX": 1143
+        },
+        {
+          "tick": 418,
+          "nativeFrame": 3140,
+          "camera": 980,
+          "worldX": 1139,
+          "bottom": 89,
+          "predictedX": 1139
+        },
+        {
+          "tick": 419,
+          "nativeFrame": 3147,
+          "camera": 997,
+          "worldX": 1135,
+          "bottom": 109,
+          "predictedX": 1135
+        }
+      ],
+      "cameraUncertaintyPixels": 4
+    },
+    {
+      "initialX": 1224,
+      "matchX": 1216,
+      "spawnCamera": 946,
+      "initialFeetY": 144,
+      "positionMaxErrorPixels": 1,
+      "checkpoints": [
+        {
+          "tick": 418,
+          "nativeFrame": 3140,
+          "camera": 980,
+          "worldX": 1218,
+          "bottom": 145,
+          "predictedX": 1217
+        },
+        {
+          "tick": 419,
+          "nativeFrame": 3147,
+          "camera": 997,
+          "worldX": 1214,
+          "bottom": 145,
+          "predictedX": 1213
+        },
+        {
+          "tick": 420,
+          "nativeFrame": 3155,
+          "camera": 1017,
+          "worldX": 1210,
+          "bottom": 145,
+          "predictedX": 1209
+        },
+        {
+          "tick": 421,
+          "nativeFrame": 3162,
+          "camera": 1035,
+          "worldX": 1207,
+          "bottom": 145,
+          "predictedX": 1206
+        },
+        {
+          "tick": 422,
+          "nativeFrame": 3170,
+          "camera": 1055,
+          "worldX": 1203,
+          "bottom": 154,
+          "predictedX": 1202
+        }
+      ],
+      "cameraUncertaintyPixels": 4
+    },
+    {
+      "initialX": 1248,
+      "matchX": 1248,
+      "spawnCamera": 946,
+      "initialFeetY": 144,
+      "positionMaxErrorPixels": 0,
+      "checkpoints": [
+        {
+          "tick": 419,
+          "nativeFrame": 3147,
+          "camera": 997,
+          "worldX": 1237,
+          "bottom": 145,
+          "predictedX": 1237
+        },
+        {
+          "tick": 420,
+          "nativeFrame": 3155,
+          "camera": 1017,
+          "worldX": 1233,
+          "bottom": 145,
+          "predictedX": 1233
+        },
+        {
+          "tick": 421,
+          "nativeFrame": 3162,
+          "camera": 1035,
+          "worldX": 1230,
+          "bottom": 145,
+          "predictedX": 1230
+        },
+        {
+          "tick": 422,
+          "nativeFrame": 3170,
+          "camera": 1055,
+          "worldX": 1226,
+          "bottom": 145,
+          "predictedX": 1226
+        },
+        {
+          "tick": 423,
+          "nativeFrame": 3177,
+          "camera": 1072,
+          "worldX": 1222,
+          "bottom": 145,
+          "predictedX": 1222
+        },
+        {
+          "tick": 424,
+          "nativeFrame": 3185,
+          "camera": 1092,
+          "worldX": 1218,
+          "bottom": 145,
+          "predictedX": 1218
+        },
+        {
+          "tick": 425,
+          "nativeFrame": 3192,
+          "camera": 1110,
+          "worldX": 1215,
+          "bottom": 145,
+          "predictedX": 1215
+        },
+        {
+          "tick": 426,
+          "nativeFrame": 3200,
+          "camera": 1130,
+          "worldX": 1211,
+          "bottom": 145,
+          "predictedX": 1211
+        },
+        {
+          "tick": 427,
+          "nativeFrame": 3207,
+          "camera": 1147,
+          "worldX": 1207,
+          "bottom": 145,
+          "predictedX": 1207
+        },
+        {
+          "tick": 428,
+          "nativeFrame": 3215,
+          "camera": 1167,
+          "worldX": 1203,
+          "bottom": 151,
+          "predictedX": 1203
+        },
+        {
+          "tick": 429,
+          "nativeFrame": 3222,
+          "camera": 1185,
+          "worldX": 1200,
+          "bottom": 170,
+          "predictedX": 1200
+        }
+      ],
+      "cameraUncertaintyPixels": 4
+    }
+  ],
+  "ledgeControlled": {
+    "sourceTrace": "evidence/local/entity-1-2-ledge-stop/trace.jsonl",
+    "samples": [
+      {
+        "sequence": 3,
+        "tick": 414,
+        "request": {
+          "op": "auto",
+          "ticks": 174
+        },
+        "framesAdvanced": 1308,
+        "nativeFrame": 3110,
+        "camera": 906,
+        "registrationError": 0.00778816199376947,
+        "actors": []
+      },
+      {
+        "sequence": 4,
+        "tick": 416,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2
+        },
+        "framesAdvanced": 15,
+        "nativeFrame": 3125,
+        "camera": 933,
+        "registrationError": 0.006910850034554251,
+        "actors": [
+          {
+            "kind": "goomba",
+            "worldX": 1146,
+            "screenX": 213,
+            "originY": 57,
+            "bottom": 81
+          }
+        ]
+      },
+      {
+        "sequence": 5,
+        "tick": 432,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 16
+        },
+        "framesAdvanced": 120,
+        "nativeFrame": 3245,
+        "camera": 940,
+        "registrationError": 0,
+        "actors": [
+          {
+            "kind": "goomba",
+            "worldX": 1086,
+            "screenX": 146,
+            "originY": 185,
+            "bottom": 209
+          }
+        ]
+      }
+    ],
+    "upperActorCheck": {
+      "nativeFrame": 3245,
+      "worldX": 1086,
+      "predictedX": 1086,
+      "errorPixels": 0
+    },
+    "interpretation": "Camera stopped940 with no lower-ledge pair. This rules out initial1232/camera911 and supports group initial1224/1248 activation above940. Chosen shared camera946 fits both tracks<=1px."
+  },
+  "tolerances": {
+    "positionPixels": 2,
+    "meanSpeedErrorPixelsPerNativeFrame": 0.02,
+    "minimumMotionNativeFrameSpan": 30,
+    "scope": "Declared before evaluating this candidate fit. These tolerances do not establish original fixed-point state or full-game fidelity."
+  },
+  "independentChecks": [
+    {
+      "trace": "changed-controls",
+      "sequence": 5,
+      "nativeFrame": 2959,
+      "camera": 722,
+      "worldX": 884,
+      "predictedX": 883,
+      "errorPixels": -1
+    },
+    {
+      "trace": "changed-controls",
+      "sequence": 6,
+      "nativeFrame": 2989,
+      "camera": 722,
+      "worldX": 869,
+      "predictedX": 868,
+      "errorPixels": -1
+    },
+    {
+      "trace": "long-wait-refined",
+      "sequence": 11,
+      "nativeFrame": 3327,
+      "camera": 646,
+      "worldX": 878,
+      "predictedX": 879,
+      "errorPixels": 1
+    }
+  ],
+  "observed": {
+    "sourceTrace": "evidence/local/reference-campaign-dense/trace.jsonl",
+    "coordinates": "worldX=exact scenery registration+raw16px sprite-left. Visible head starts+4px for these left-facing poses; bottom209 is native scanline, simulation feet208.",
+    "traces": [
+      {
+        "matchX": 704,
+        "initialX": 704,
+        "spawnCamera": 454,
+        "classification": "inferred camera-triggered spawn and initial position; observed velocity and pixel checkpoints",
+        "nativeSpeed": -0.5066666666666667,
+        "observedNativeFrameSpan": 75,
+        "positionMaxErrorPixels": 0,
+        "checkpoints": [
+          {
+            "tick": 368,
+            "nativeFrame": 2764,
+            "camera": 464,
+            "worldX": 702,
+            "screenX": 238,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 702
+          },
+          {
+            "tick": 369,
+            "nativeFrame": 2772,
+            "camera": 484,
+            "worldX": 698,
+            "screenX": 214,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 698
+          },
+          {
+            "tick": 370,
+            "nativeFrame": 2779,
+            "camera": 502,
+            "worldX": 694,
+            "screenX": 192,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 694
+          },
+          {
+            "tick": 371,
+            "nativeFrame": 2787,
+            "camera": 522,
+            "worldX": 690,
+            "screenX": 168,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 690
+          },
+          {
+            "tick": 372,
+            "nativeFrame": 2794,
+            "camera": 539,
+            "worldX": 687,
+            "screenX": 148,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 687
+          },
+          {
+            "tick": 373,
+            "nativeFrame": 2802,
+            "camera": 559,
+            "worldX": 683,
+            "screenX": 124,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 683
+          },
+          {
+            "tick": 374,
+            "nativeFrame": 2809,
+            "camera": 577,
+            "worldX": 679,
+            "screenX": 102,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 679
+          },
+          {
+            "tick": 375,
+            "nativeFrame": 2817,
+            "camera": 597,
+            "worldX": 675,
+            "screenX": 78,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 675
+          },
+          {
+            "tick": 376,
+            "nativeFrame": 2824,
+            "camera": 614,
+            "worldX": 672,
+            "screenX": 58,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 672
+          },
+          {
+            "tick": 377,
+            "nativeFrame": 2832,
+            "camera": 634,
+            "worldX": 668,
+            "screenX": 34,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 668
+          },
+          {
+            "tick": 378,
+            "nativeFrame": 2839,
+            "camera": 652,
+            "worldX": 664,
+            "screenX": 12,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 664
+          }
+        ]
+      },
+      {
+        "matchX": 720,
+        "initialX": 728,
+        "spawnCamera": 449,
+        "classification": "inferred camera-triggered spawn and initial position; observed velocity and pixel checkpoints",
+        "nativeSpeed": -0.49333333333333335,
+        "observedNativeFrameSpan": 75,
+        "positionMaxErrorPixels": 1,
+        "checkpoints": [
+          {
+            "tick": 369,
+            "nativeFrame": 2772,
+            "camera": 484,
+            "worldX": 721,
+            "screenX": 237,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 721
+          },
+          {
+            "tick": 370,
+            "nativeFrame": 2779,
+            "camera": 502,
+            "worldX": 718,
+            "screenX": 216,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 717
+          },
+          {
+            "tick": 371,
+            "nativeFrame": 2787,
+            "camera": 522,
+            "worldX": 714,
+            "screenX": 192,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 713
+          },
+          {
+            "tick": 372,
+            "nativeFrame": 2794,
+            "camera": 539,
+            "worldX": 710,
+            "screenX": 171,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 710
+          },
+          {
+            "tick": 373,
+            "nativeFrame": 2802,
+            "camera": 559,
+            "worldX": 706,
+            "screenX": 147,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 706
+          },
+          {
+            "tick": 374,
+            "nativeFrame": 2809,
+            "camera": 577,
+            "worldX": 703,
+            "screenX": 126,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 702
+          },
+          {
+            "tick": 375,
+            "nativeFrame": 2817,
+            "camera": 597,
+            "worldX": 699,
+            "screenX": 102,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 698
+          },
+          {
+            "tick": 376,
+            "nativeFrame": 2824,
+            "camera": 614,
+            "worldX": 695,
+            "screenX": 81,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 695
+          },
+          {
+            "tick": 377,
+            "nativeFrame": 2832,
+            "camera": 634,
+            "worldX": 691,
+            "screenX": 57,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 691
+          },
+          {
+            "tick": 378,
+            "nativeFrame": 2839,
+            "camera": 652,
+            "worldX": 688,
+            "screenX": 36,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 687
+          },
+          {
+            "tick": 379,
+            "nativeFrame": 2847,
+            "camera": 672,
+            "worldX": 684,
+            "screenX": 12,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 683
+          }
+        ]
+      },
+      {
+        "matchX": 928,
+        "initialX": 944,
+        "spawnCamera": 645,
+        "classification": "inferred camera-triggered spawn and initial position; observed velocity and pixel checkpoints",
+        "nativeSpeed": -0.49606299212598426,
+        "observedNativeFrameSpan": 127,
+        "positionMaxErrorPixels": 1,
+        "checkpoints": [
+          {
+            "tick": 381,
+            "nativeFrame": 2862,
+            "camera": 709,
+            "worldX": 931,
+            "screenX": 222,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 931
+          },
+          {
+            "tick": 382,
+            "nativeFrame": 2869,
+            "camera": 727,
+            "worldX": 928,
+            "screenX": 201,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 927
+          },
+          {
+            "tick": 383,
+            "nativeFrame": 2877,
+            "camera": 744,
+            "worldX": 924,
+            "screenX": 180,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 923
+          },
+          {
+            "tick": 384,
+            "nativeFrame": 2884,
+            "camera": 757,
+            "worldX": 920,
+            "screenX": 163,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 920
+          },
+          {
+            "tick": 385,
+            "nativeFrame": 2892,
+            "camera": 770,
+            "worldX": 916,
+            "screenX": 146,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 916
+          },
+          {
+            "tick": 386,
+            "nativeFrame": 2899,
+            "camera": 785,
+            "worldX": 913,
+            "screenX": 128,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 912
+          },
+          {
+            "tick": 387,
+            "nativeFrame": 2907,
+            "camera": 805,
+            "worldX": 909,
+            "screenX": 104,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 908
+          },
+          {
+            "tick": 388,
+            "nativeFrame": 2914,
+            "camera": 805,
+            "worldX": 905,
+            "screenX": 100,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 905
+          },
+          {
+            "tick": 389,
+            "nativeFrame": 2922,
+            "camera": 805,
+            "worldX": 901,
+            "screenX": 96,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 901
+          },
+          {
+            "tick": 390,
+            "nativeFrame": 2929,
+            "camera": 811,
+            "worldX": 898,
+            "screenX": 87,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 897
+          },
+          {
+            "tick": 391,
+            "nativeFrame": 2937,
+            "camera": 821,
+            "worldX": 894,
+            "screenX": 73,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 893
+          },
+          {
+            "tick": 392,
+            "nativeFrame": 2944,
+            "camera": 833,
+            "worldX": 890,
+            "screenX": 57,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 890
+          },
+          {
+            "tick": 393,
+            "nativeFrame": 2952,
+            "camera": 850,
+            "worldX": 886,
+            "screenX": 36,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 886
+          },
+          {
+            "tick": 394,
+            "nativeFrame": 2959,
+            "camera": 864,
+            "worldX": 883,
+            "screenX": 19,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 882
+          },
+          {
+            "tick": 395,
+            "nativeFrame": 2967,
+            "camera": 864,
+            "worldX": 879,
+            "screenX": 15,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 878
+          },
+          {
+            "tick": 396,
+            "nativeFrame": 2974,
+            "camera": 864,
+            "worldX": 875,
+            "screenX": 11,
+            "spriteOriginY": 185,
+            "cell": 3,
+            "predictedX": 875
+          },
+          {
+            "tick": 397,
+            "nativeFrame": 2982,
+            "camera": 864,
+            "worldX": 871,
+            "screenX": 7,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 871
+          },
+          {
+            "tick": 398,
+            "nativeFrame": 2989,
+            "camera": 864,
+            "worldX": 868,
+            "screenX": 4,
+            "spriteOriginY": 185,
+            "cell": 2,
+            "predictedX": 867
+          }
+        ]
+      }
+    ],
+    "controlled": {
+      "sourceTrace": "evidence/local/entity-1-2-activation-live/trace.jsonl",
+      "samples": [
+        {
+          "sequence": 3,
+          "tick": 376,
+          "request": {
+            "op": "auto",
+            "ticks": 136
+          },
+          "framesAdvanced": 1022,
+          "nativeFrame": 2824,
+          "camera": 614,
+          "registrationError": 0.04678362573099415,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 672,
+              "screenX": 58,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "koopa",
+              "worldX": 695,
+              "screenX": 81,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 4,
+          "tick": 378,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 2
+          },
+          "framesAdvanced": 15,
+          "nativeFrame": 2839,
+          "camera": 647,
+          "registrationError": 0,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 664,
+              "screenX": 17,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "koopa",
+              "worldX": 688,
+              "screenX": 41,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 5,
+          "tick": 394,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "framesAdvanced": 120,
+          "nativeFrame": 2959,
+          "camera": 722,
+          "registrationError": 0.014210526315789474,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 884,
+              "screenX": 162,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "goomba",
+              "worldX": 945,
+              "screenX": 223,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 6,
+          "tick": 398,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "framesAdvanced": 30,
+          "nativeFrame": 2989,
+          "camera": 722,
+          "registrationError": 0.002631578947368421,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 869,
+              "screenX": 147,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "goomba",
+              "worldX": 930,
+              "screenX": 208,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 11,
+          "tick": 405,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 32
+          },
+          "framesAdvanced": 240,
+          "nativeFrame": 3042,
+          "camera": 561,
+          "registrationError": 0,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 563,
+              "screenX": 2,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "koopa",
+              "worldX": 586,
+              "screenX": 25,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 12,
+          "tick": 417,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 12
+          },
+          "framesAdvanced": 90,
+          "nativeFrame": 3132,
+          "camera": 561,
+          "registrationError": 0,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 570,
+              "screenX": 9,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 13,
+          "tick": 423,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "framesAdvanced": 45,
+          "nativeFrame": 3177,
+          "camera": 612,
+          "registrationError": 0,
+          "actors": []
+        },
+        {
+          "sequence": 14,
+          "tick": 427,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "framesAdvanced": 30,
+          "nativeFrame": 3207,
+          "camera": 646,
+          "registrationError": 0.036734693877551024,
+          "actors": []
+        },
+        {
+          "sequence": 15,
+          "tick": 443,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "framesAdvanced": 120,
+          "nativeFrame": 3327,
+          "camera": 646,
+          "registrationError": 0.0035714285714285713,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 668,
+              "screenX": 22,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "koopa",
+              "worldX": 878,
+              "screenX": 232,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        }
+      ]
+    },
+    "refined": {
+      "sourceTrace": "evidence/local/entity-1-2-refined/trace.jsonl",
+      "samples": [
+        {
+          "sequence": 5,
+          "tick": 417,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 44
+          },
+          "framesAdvanced": 330,
+          "nativeFrame": 3132,
+          "camera": 561,
+          "registrationError": 0,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 570,
+              "screenX": 9,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        },
+        {
+          "sequence": 6,
+          "tick": 423,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 6
+          },
+          "framesAdvanced": 45,
+          "nativeFrame": 3177,
+          "camera": 612,
+          "registrationError": 0,
+          "actors": []
+        },
+        {
+          "sequence": 7,
+          "tick": 424,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "framesAdvanced": 8,
+          "nativeFrame": 3185,
+          "camera": 629,
+          "registrationError": 0,
+          "actors": []
+        },
+        {
+          "sequence": 8,
+          "tick": 425,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "framesAdvanced": 7,
+          "nativeFrame": 3192,
+          "camera": 640,
+          "registrationError": 0,
+          "actors": []
+        },
+        {
+          "sequence": 9,
+          "tick": 426,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "framesAdvanced": 8,
+          "nativeFrame": 3200,
+          "camera": 646,
+          "registrationError": 0.036734693877551024,
+          "actors": []
+        },
+        {
+          "sequence": 10,
+          "tick": 427,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "framesAdvanced": 7,
+          "nativeFrame": 3207,
+          "camera": 646,
+          "registrationError": 0.036734693877551024,
+          "actors": []
+        },
+        {
+          "sequence": 11,
+          "tick": 443,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 16
+          },
+          "framesAdvanced": 120,
+          "nativeFrame": 3327,
+          "camera": 646,
+          "registrationError": 0.0035714285714285713,
+          "actors": [
+            {
+              "kind": "koopa",
+              "worldX": 668,
+              "screenX": 22,
+              "originY": 185,
+              "bottom": 209
+            },
+            {
+              "kind": "koopa",
+              "worldX": 878,
+              "screenX": 232,
+              "originY": 185,
+              "bottom": 209
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "inferred": {
+    "targetKoopa": {
+      "initialX": 944,
+      "spawnCamera": 645,
+      "cameraUncertaintyPixels": 4,
+      "originalSpawnAndActivationNotUniquelyObservable": true,
+      "independentValidation": "Changed controls stoppedcamera722: rawx884→869 over30nativeframes; another fresh start heldcamera561 for330nativeframes, approachedcamera646 and held120nativeframes: targetrawx878. The camera trigger fit predicts these changed-input observations within2px."
+    },
+    "firstPair": {
+      "initialCoordinates": [
+        704,
+        728
+      ],
+      "spawnCameras": [
+        454,
+        449
+      ],
+      "uncertainty": "Original initial positions and threshold are coupled in offscreen inference. The first pair has observed23–24px separation and0.5px/frame motion; inferred initial secondx728 preserves24px spacing. Native subpixel phases are unresolved."
+    }
+  },
+  "remaining": [
+    "Opening Goombas need ordinary scene activation: first movement2504 after entry load/hold. The parent is implementing a physical entry-scene enemyDelay; do not encode a recorded tick in gameplay.",
+    "Second opening Goomba reverses nearx212 after the first Goomba is stomped. Source PNGs348..352 show contact with the still-present flattened first actor; ordinary enemy-pair collision remains to verify.",
+    "Later three-Goomba pipe cluster and red Koopa spawns remain under measurement; repeated-scene camera registration has16px aliases aftertick438. Do not infer exact later coordinates until registration is corrected. Block contents, generators, damage interactions and collision behavior are outside this correction.",
+    "Camera thresholds are inferred within about4px from7/8-native-frame image samples; no hidden reference state was read."
+  ]
+}

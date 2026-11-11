@@ -1,0 +1,7 @@
+{
+  "level": "5-4",
+  "area": "main",
+  "match": {"x": 376, "y": 120, "length": 12, "speed": 0.032},
+  "visualOffsetY": 1,
+  "qualification": "Rendering-only offset from conditionally orientation-aligned source frames; detector selection, unscored frames, activation, motor phase and native collision remain qualified separately in evidence/five-four-longbar-offset-holdout-findings.md."
+}

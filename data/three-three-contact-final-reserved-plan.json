@@ -1,0 +1,65 @@
+{
+  "schema": "three-three-contact-final-reserved-v1",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3384,
+  "captureFromTick": 3364,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [],
+    "reserved": [
+      "reserved-final-wait1-under-cap"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "reserved-final-wait1-under-cap",
+      "segments": [
+        {
+          "stage": "wait",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "stage": "walk-under",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        {
+          "stage": "held-jump",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 8
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 8
+        }
+      ]
+    }
+  ],
+  "priorPlanSha256": "40e9deaf0b6cd9a191db6028862d100fe03f84708c43d08244c11f1863f93325",
+  "reason": "Independent new-process validation after discrete contact rule selected; extra release wait changes native enemy/raster phase. No numeric tuning from this result.",
+  "frozenHypothesis": {
+    "treeCapDescriptors": [
+      22,
+      23,
+      24
+    ],
+    "capCollision": "top landing and underside blocking; sides near edge appear blocking but not isolated",
+    "logicalCapY": [
+      112,
+      128
+    ],
+    "paintedColumn76": "pass-through",
+    "nextJump": "live bodytop near126..127 then downward by next sampleddecision; no claim of exact native collision epoch"
+  }
+}

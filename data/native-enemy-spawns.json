@@ -1,0 +1,3759 @@
+{
+ "schema": "native-enemy-spawns-v1",
+ "method": "tools/derive-enemy-spawns.py over a read-only native trace of the recorded winning route",
+ "corrections": [
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 352,
+    "y": 208
+   },
+   "replace": {
+    "x": 352,
+    "spawnCamera": 50
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 71,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 640,
+    "y": 208
+   },
+   "replace": {
+    "x": 640,
+    "spawnCamera": 337
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 186,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 832,
+    "y": 208
+   },
+   "replace": {
+    "x": 818,
+    "spawnCamera": 563
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 304,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 848,
+    "y": 208
+   },
+   "replace": {
+    "x": 841,
+    "spawnCamera": 563
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 304,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1280,
+    "y": 80
+   },
+   "replace": {
+    "x": 1280,
+    "spawnCamera": 978
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 470,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1312,
+    "y": 80
+   },
+   "replace": {
+    "x": 1312,
+    "spawnCamera": 1010
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 483,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1568,
+    "y": 208
+   },
+   "replace": {
+    "x": 1553,
+    "spawnCamera": 1298
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 598,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1584,
+    "y": 208
+   },
+   "replace": {
+    "x": 1577,
+    "spawnCamera": 1298
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 598,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1712,
+    "y": 208
+   },
+   "replace": {
+    "x": 1712,
+    "spawnCamera": 1413
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 644,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1840,
+    "y": 208
+   },
+   "replace": {
+    "x": 1828,
+    "spawnCamera": 1573
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 708,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1856,
+    "y": 208
+   },
+   "replace": {
+    "x": 1852,
+    "spawnCamera": 1573
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 708,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2000,
+    "y": 208
+   },
+   "replace": {
+    "x": 1988,
+    "spawnCamera": 1733
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 772,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2016,
+    "y": 208
+   },
+   "replace": {
+    "x": 2011,
+    "spawnCamera": 1733
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 772,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2064,
+    "y": 208
+   },
+   "replace": {
+    "x": 2048,
+    "spawnCamera": 1793
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 796,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2800,
+    "y": 208
+   },
+   "replace": {
+    "x": 2788,
+    "spawnCamera": 2533
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 1092,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2816,
+    "y": 208
+   },
+   "replace": {
+    "x": 2812,
+    "spawnCamera": 2533
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/lifecycle-findings-20261111.md",
+    "nativeFrame": 1092,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 464,
+    "y": 208
+   },
+   "replace": {
+    "x": 464,
+    "spawnCamera": 162
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2641,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "koopa",
+    "x": 704,
+    "y": 208
+   },
+   "replace": {
+    "x": 704,
+    "spawnCamera": 449
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2756,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "koopa",
+    "x": 728,
+    "y": 208
+   },
+   "replace": {
+    "x": 728,
+    "spawnCamera": 449
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2756,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "koopa",
+    "x": 944,
+    "y": 208
+   },
+   "replace": {
+    "x": 944,
+    "spawnCamera": 642
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2833,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 992,
+    "y": 208
+   },
+   "replace": {
+    "x": 992,
+    "spawnCamera": 689
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2852,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1024,
+    "y": 208
+   },
+   "replace": {
+    "x": 1024,
+    "spawnCamera": 722
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 2865,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1168,
+    "y": 80
+   },
+   "replace": {
+    "x": 1168,
+    "spawnCamera": 867
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3078,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1224,
+    "y": 144
+   },
+   "replace": {
+    "x": 1220,
+    "spawnCamera": 962
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3132,
+    "trigger": 258
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1248,
+    "y": 144
+   },
+   "replace": {
+    "x": 1243,
+    "spawnCamera": 962
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3132,
+    "trigger": 281
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1584,
+    "y": 208
+   },
+   "replace": {
+    "x": 1585,
+    "spawnCamera": 1330
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3278,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1600,
+    "y": 208
+   },
+   "replace": {
+    "x": 1609,
+    "spawnCamera": 1330
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3278,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 2176,
+    "y": 160
+   },
+   "replace": {
+    "x": 2161,
+    "spawnCamera": 1915
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3554,
+    "trigger": 246
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 2192,
+    "y": 144
+   },
+   "replace": {
+    "x": 2185,
+    "spawnCamera": 1915
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3554,
+    "trigger": 270
+   }
+  },
+  {
+   "level": "1-2",
+   "area": "area-2",
+   "match": {
+    "kind": "redKoopa",
+    "x": 2320,
+    "y": 208
+   },
+   "replace": {
+    "x": 2336,
+    "spawnCamera": 2042
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 3605,
+    "trigger": 294
+   }
+  },
+  {
+   "level": "1-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 464,
+    "y": 80
+   },
+   "replace": {
+    "x": 480,
+    "spawnCamera": 177
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 5059,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "1-3",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 720,
+    "y": 64
+   },
+   "replace": {
+    "x": 704,
+    "spawnCamera": 404
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 5257,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "1-3",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1264,
+    "y": 96
+   },
+   "replace": {
+    "x": 1280,
+    "spawnCamera": 979
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 5538,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "1-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1744,
+    "y": 112
+   },
+   "replace": {
+    "x": 1760,
+    "spawnCamera": 1460
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 5733,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "1-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 2112,
+    "y": 208
+   },
+   "replace": {
+    "x": 2128,
+    "spawnCamera": 1830
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 5881,
+    "trigger": 298
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 368,
+    "y": 144
+   },
+   "replace": {
+    "x": 384,
+    "spawnCamera": 85
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 8971,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 496,
+    "y": 208
+   },
+   "replace": {
+    "x": 528,
+    "spawnCamera": 227
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9028,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 672,
+    "y": 208
+   },
+   "replace": {
+    "x": 676,
+    "spawnCamera": 423
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9108,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 688,
+    "y": 208
+   },
+   "replace": {
+    "x": 699,
+    "spawnCamera": 423
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9108,
+    "trigger": 276
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 864,
+    "y": 144
+   },
+   "replace": {
+    "x": 880,
+    "spawnCamera": 584
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9172,
+    "trigger": 296
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 944,
+    "y": 208
+   },
+   "replace": {
+    "x": 944,
+    "spawnCamera": 689
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9254,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 960,
+    "y": 208
+   },
+   "replace": {
+    "x": 968,
+    "spawnCamera": 689
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9254,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1040,
+    "y": 208
+   },
+   "replace": {
+    "x": 1056,
+    "spawnCamera": 759
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9281,
+    "trigger": 297
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1088,
+    "y": 208
+   },
+   "replace": {
+    "x": 1088,
+    "spawnCamera": 839
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9314,
+    "trigger": 249
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1392,
+    "y": 208
+   },
+   "replace": {
+    "x": 1392,
+    "spawnCamera": 1141
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9437,
+    "trigger": 251
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1408,
+    "y": 208
+   },
+   "replace": {
+    "x": 1416,
+    "spawnCamera": 1141
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9437,
+    "trigger": 275
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1648,
+    "y": 144
+   },
+   "replace": {
+    "x": 1648,
+    "spawnCamera": 1353
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9522,
+    "trigger": 295
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1840,
+    "y": 176
+   },
+   "replace": {
+    "x": 1856,
+    "spawnCamera": 1558
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9604,
+    "trigger": 298
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1920,
+    "y": 208
+   },
+   "replace": {
+    "x": 1920,
+    "spawnCamera": 1656
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9672,
+    "trigger": 264
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2176,
+    "y": 208
+   },
+   "replace": {
+    "x": 2192,
+    "spawnCamera": 1901
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9816,
+    "trigger": 291
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2416,
+    "y": 160
+   },
+   "replace": {
+    "x": 2416,
+    "spawnCamera": 2122
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9906,
+    "trigger": 294
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2608,
+    "y": 208
+   },
+   "replace": {
+    "x": 2596,
+    "spawnCamera": 2350
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 9997,
+    "trigger": 246
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2720,
+    "y": 160
+   },
+   "replace": {
+    "x": 2704,
+    "spawnCamera": 2409
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 10021,
+    "trigger": 295
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2944,
+    "y": 208
+   },
+   "replace": {
+    "x": 2960,
+    "spawnCamera": 2670
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 10125,
+    "trigger": 290
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 384,
+    "y": 160
+   },
+   "replace": {
+    "x": 400,
+    "spawnCamera": 97
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 20931,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 432,
+    "y": 160
+   },
+   "replace": {
+    "x": 448,
+    "spawnCamera": 145
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 20950,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 848,
+    "y": 208
+   },
+   "replace": {
+    "x": 849,
+    "spawnCamera": 595
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21184,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 864,
+    "y": 208
+   },
+   "replace": {
+    "x": 873,
+    "spawnCamera": 595
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21184,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1312,
+    "y": 144
+   },
+   "replace": {
+    "x": 1312,
+    "spawnCamera": 1058
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21379,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1344,
+    "y": 144
+   },
+   "replace": {
+    "x": 1336,
+    "spawnCamera": 1058
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21379,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1328,
+    "y": 144
+   },
+   "replace": {
+    "x": 1360,
+    "spawnCamera": 1058
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21379,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1488,
+    "y": 208
+   },
+   "replace": {
+    "x": 1504,
+    "spawnCamera": 1253
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21461,
+    "trigger": 251
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1520,
+    "y": 208
+   },
+   "replace": {
+    "x": 1527,
+    "spawnCamera": 1253
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21461,
+    "trigger": 274
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1616,
+    "y": 208
+   },
+   "replace": {
+    "x": 1616,
+    "spawnCamera": 1335
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21494,
+    "trigger": 281
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2208,
+    "y": 160
+   },
+   "replace": {
+    "x": 2240,
+    "spawnCamera": 1938
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21778,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2368,
+    "y": 208
+   },
+   "replace": {
+    "x": 2384,
+    "spawnCamera": 2085
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21837,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2416,
+    "y": 80
+   },
+   "replace": {
+    "x": 2432,
+    "spawnCamera": 2128
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21854,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2464,
+    "y": 208
+   },
+   "replace": {
+    "x": 2468,
+    "spawnCamera": 2213
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21888,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2624,
+    "y": 160
+   },
+   "replace": {
+    "x": 2640,
+    "spawnCamera": 2335
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21937,
+    "trigger": 305
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2672,
+    "y": 160
+   },
+   "replace": {
+    "x": 2688,
+    "spawnCamera": 2384
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21960,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2704,
+    "y": 144
+   },
+   "replace": {
+    "x": 2720,
+    "spawnCamera": 2426
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 21979,
+    "trigger": 294
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2992,
+    "y": 128
+   },
+   "replace": {
+    "x": 3008,
+    "spawnCamera": 2701
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 22089,
+    "trigger": 307
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 3040,
+    "y": 80
+   },
+   "replace": {
+    "x": 3056,
+    "spawnCamera": 2749
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 22108,
+    "trigger": 307
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 384,
+    "y": 208
+   },
+   "replace": {
+    "x": 385,
+    "spawnCamera": 130
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23213,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 416,
+    "y": 208
+   },
+   "replace": {
+    "x": 409,
+    "spawnCamera": 130
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23213,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 528,
+    "y": 208
+   },
+   "replace": {
+    "x": 530,
+    "spawnCamera": 275
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23271,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 560,
+    "y": 208
+   },
+   "replace": {
+    "x": 554,
+    "spawnCamera": 275
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23271,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 688,
+    "y": 208
+   },
+   "replace": {
+    "x": 690,
+    "spawnCamera": 435
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23335,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 704,
+    "y": 208
+   },
+   "replace": {
+    "x": 714,
+    "spawnCamera": 435
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23335,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1136,
+    "y": 208
+   },
+   "replace": {
+    "x": 1136,
+    "spawnCamera": 878
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23517,
+    "trigger": 258
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1152,
+    "y": 208
+   },
+   "replace": {
+    "x": 1160,
+    "spawnCamera": 878
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23517,
+    "trigger": 282
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1232,
+    "y": 208
+   },
+   "replace": {
+    "x": 1248,
+    "spawnCamera": 946
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23544,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1456,
+    "y": 160
+   },
+   "replace": {
+    "x": 1472,
+    "spawnCamera": 1167
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23632,
+    "trigger": 305
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1760,
+    "y": 208
+   },
+   "replace": {
+    "x": 1776,
+    "spawnCamera": 1472
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23754,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1904,
+    "y": 208
+   },
+   "replace": {
+    "x": 1904,
+    "spawnCamera": 1647
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23824,
+    "trigger": 257
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1936,
+    "y": 208
+   },
+   "replace": {
+    "x": 1928,
+    "spawnCamera": 1647
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23824,
+    "trigger": 281
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2128,
+    "y": 208
+   },
+   "replace": {
+    "x": 2144,
+    "spawnCamera": 1838
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 23901,
+    "trigger": 306
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2240,
+    "y": 208
+   },
+   "replace": {
+    "x": 2242,
+    "spawnCamera": 1988
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24009,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2256,
+    "y": 208
+   },
+   "replace": {
+    "x": 2266,
+    "spawnCamera": 1988
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24009,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2288,
+    "y": 208
+   },
+   "replace": {
+    "x": 2290,
+    "spawnCamera": 1988
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24009,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2400,
+    "y": 208
+   },
+   "replace": {
+    "x": 2404,
+    "spawnCamera": 2150
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24079,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2432,
+    "y": 208
+   },
+   "replace": {
+    "x": 2428,
+    "spawnCamera": 2150
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24079,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2592,
+    "y": 208
+   },
+   "replace": {
+    "x": 2596,
+    "spawnCamera": 2342
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24156,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2608,
+    "y": 208
+   },
+   "replace": {
+    "x": 2620,
+    "spawnCamera": 2342
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24156,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2640,
+    "y": 208
+   },
+   "replace": {
+    "x": 2644,
+    "spawnCamera": 2342
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24156,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2864,
+    "y": 208
+   },
+   "replace": {
+    "x": 2864,
+    "spawnCamera": 2612
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24264,
+    "trigger": 252
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 3008,
+    "y": 208
+   },
+   "replace": {
+    "x": 3009,
+    "spawnCamera": 2755
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24321,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 3040,
+    "y": 208
+   },
+   "replace": {
+    "x": 3033,
+    "spawnCamera": 2755
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 24321,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "3-3",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 400,
+    "y": 112
+   },
+   "replace": {
+    "x": 416,
+    "spawnCamera": 115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 25350,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "3-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 816,
+    "y": 112
+   },
+   "replace": {
+    "x": 832,
+    "spawnCamera": 525
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 25591,
+    "trigger": 307
+   }
+  },
+  {
+   "level": "3-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1152,
+    "y": 208
+   },
+   "replace": {
+    "x": 1168,
+    "spawnCamera": 867
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 25731,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "3-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 2000,
+    "y": 160
+   },
+   "replace": {
+    "x": 1984,
+    "spawnCamera": 1681
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 26059,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "goomba",
+    "x": 688,
+    "y": 144
+   },
+   "replace": {
+    "x": 689,
+    "spawnCamera": 436
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 31892,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "goomba",
+    "x": 736,
+    "y": 144
+   },
+   "replace": {
+    "x": 712,
+    "spawnCamera": 436
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 31892,
+    "trigger": 276
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 1248,
+    "y": 208
+   },
+   "replace": {
+    "x": 1232,
+    "spawnCamera": 932
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32095,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 1600,
+    "y": 208
+   },
+   "replace": {
+    "x": 1601,
+    "spawnCamera": 1348
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32305,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 1632,
+    "y": 208
+   },
+   "replace": {
+    "x": 1624,
+    "spawnCamera": 1348
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32305,
+    "trigger": 276
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 2192,
+    "y": 208
+   },
+   "replace": {
+    "x": 2192,
+    "spawnCamera": 1912
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32537,
+    "trigger": 280
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 2704,
+    "y": 208
+   },
+   "replace": {
+    "x": 2692,
+    "spawnCamera": 2436
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32796,
+    "trigger": 256
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "koopa",
+    "x": 2736,
+    "y": 208
+   },
+   "replace": {
+    "x": 2716,
+    "spawnCamera": 2436
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32796,
+    "trigger": 280
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "beetle",
+    "x": 2880,
+    "y": 208
+   },
+   "replace": {
+    "x": 2864,
+    "spawnCamera": 2569
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 32849,
+    "trigger": 295
+   }
+  },
+  {
+   "level": "4-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 432,
+    "y": 144
+   },
+   "replace": {
+    "x": 464,
+    "spawnCamera": 162
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 34695,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "4-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1072,
+    "y": 208
+   },
+   "replace": {
+    "x": 1088,
+    "spawnCamera": 786
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 34953,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "4-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1232,
+    "y": 80
+   },
+   "replace": {
+    "x": 1248,
+    "spawnCamera": 944
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 35017,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 304,
+    "y": 208
+   },
+   "replace": {
+    "x": 305,
+    "spawnCamera": 50
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38520,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 320,
+    "y": 208
+   },
+   "replace": {
+    "x": 328,
+    "spawnCamera": 50
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38520,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 480,
+    "y": 208
+   },
+   "replace": {
+    "x": 480,
+    "spawnCamera": 225
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38590,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 656,
+    "y": 208
+   },
+   "replace": {
+    "x": 657,
+    "spawnCamera": 402
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38661,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 960,
+    "y": 176
+   },
+   "replace": {
+    "x": 976,
+    "spawnCamera": 678
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38805,
+    "trigger": 298
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1056,
+    "y": 208
+   },
+   "replace": {
+    "x": 1040,
+    "spawnCamera": 785
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38848,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1072,
+    "y": 208
+   },
+   "replace": {
+    "x": 1063,
+    "spawnCamera": 785
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38848,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1216,
+    "y": 208
+   },
+   "replace": {
+    "x": 1220,
+    "spawnCamera": 965
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38920,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1408,
+    "y": 176
+   },
+   "replace": {
+    "x": 1392,
+    "spawnCamera": 1090
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 38970,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1648,
+    "y": 208
+   },
+   "replace": {
+    "x": 1650,
+    "spawnCamera": 1395
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39092,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1664,
+    "y": 208
+   },
+   "replace": {
+    "x": 1673,
+    "spawnCamera": 1395
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39092,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1936,
+    "y": 208
+   },
+   "replace": {
+    "x": 1937,
+    "spawnCamera": 1682
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39207,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1968,
+    "y": 208
+   },
+   "replace": {
+    "x": 1961,
+    "spawnCamera": 1682
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39207,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2016,
+    "y": 208
+   },
+   "replace": {
+    "x": 2032,
+    "spawnCamera": 1730
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39226,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2176,
+    "y": 208
+   },
+   "replace": {
+    "x": 2160,
+    "spawnCamera": 1904
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39296,
+    "trigger": 256
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2144,
+    "y": 208
+   },
+   "replace": {
+    "x": 2183,
+    "spawnCamera": 1904
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39296,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2320,
+    "y": 208
+   },
+   "replace": {
+    "x": 2304,
+    "spawnCamera": 2049
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39357,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2288,
+    "y": 208
+   },
+   "replace": {
+    "x": 2328,
+    "spawnCamera": 2049
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 39357,
+    "trigger": 279
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "koopa",
+    "x": 352,
+    "y": 208
+   },
+   "replace": {
+    "x": 368,
+    "spawnCamera": 65
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 40585,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 624,
+    "y": 176
+   },
+   "replace": {
+    "x": 640,
+    "spawnCamera": 337
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 40694,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 1024,
+    "y": 160
+   },
+   "replace": {
+    "x": 1008,
+    "spawnCamera": 705
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 40846,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "beetle",
+    "x": 2144,
+    "y": 208
+   },
+   "replace": {
+    "x": 2192,
+    "spawnCamera": 1887
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 41330,
+    "trigger": 305
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "goomba",
+    "x": 2464,
+    "y": 208
+   },
+   "replace": {
+    "x": 2496,
+    "spawnCamera": 2191
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 41464,
+    "trigger": 305
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "redKoopa",
+    "x": 2496,
+    "y": 80
+   },
+   "replace": {
+    "x": 2512,
+    "spawnCamera": 2220
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 41483,
+    "trigger": 292
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2608,
+    "y": 176
+   },
+   "replace": {
+    "x": 2608,
+    "spawnCamera": 2307
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md; camera corrected 2297 -> 2307 in evidence/spawnlead-findings-20261111.md (2297 made the remake appear 4 rows early)",
+    "nativeFrame": 41527,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2624,
+    "y": 160
+   },
+   "replace": {
+    "x": 2656,
+    "spawnCamera": 2352
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 41545,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2960,
+    "y": 96
+   },
+   "replace": {
+    "x": 2976,
+    "spawnCamera": 2672
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 41673,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "5-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 464,
+    "y": 80
+   },
+   "replace": {
+    "x": 480,
+    "spawnCamera": 177
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 42775,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "5-3",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 720,
+    "y": 64
+   },
+   "replace": {
+    "x": 704,
+    "spawnCamera": 402
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 42917,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "5-3",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1264,
+    "y": 96
+   },
+   "replace": {
+    "x": 1280,
+    "spawnCamera": 978
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 43147,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "5-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1744,
+    "y": 112
+   },
+   "replace": {
+    "x": 1760,
+    "spawnCamera": 1456
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 43430,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 400,
+    "y": 208
+   },
+   "replace": {
+    "x": 416,
+    "spawnCamera": 115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 48927,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 848,
+    "y": 208
+   },
+   "replace": {
+    "x": 864,
+    "spawnCamera": 558
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 49153,
+    "trigger": 306
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1056,
+    "y": 160
+   },
+   "replace": {
+    "x": 1072,
+    "spawnCamera": 769
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 49256,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1456,
+    "y": 208
+   },
+   "replace": {
+    "x": 1472,
+    "spawnCamera": 1172
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 49447,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 2608,
+    "y": 208
+   },
+   "replace": {
+    "x": 2608,
+    "spawnCamera": 2313
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 50000,
+    "trigger": 295
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2704,
+    "y": 208
+   },
+   "replace": {
+    "x": 2704,
+    "spawnCamera": 2454
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 50057,
+    "trigger": 250
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 3264,
+    "y": 80
+   },
+   "replace": {
+    "x": 3296,
+    "spawnCamera": 3004
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 50337,
+    "trigger": 292
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 400,
+    "y": 160
+   },
+   "replace": {
+    "x": 416,
+    "spawnCamera": 115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 55945,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 688,
+    "y": 160
+   },
+   "replace": {
+    "x": 704,
+    "spawnCamera": 403
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 56065,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 832,
+    "y": 160
+   },
+   "replace": {
+    "x": 848,
+    "spawnCamera": 545
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 56122,
+    "trigger": 303
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1008,
+    "y": 208
+   },
+   "replace": {
+    "x": 1009,
+    "spawnCamera": 887,
+    "y": 178,
+    "spawnUnwinged": true
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera; it is the just-stomped Paratroopa (slot 2 id 14 -> id 0 on row 56283 at y 154, feet 178, state byte 1 while it falls until row 56303): it appears falling and untouchable like an unwinged Koopa (evidence/stomp6-findings-20261111.md)",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 56283,
+    "trigger": 122
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1808,
+    "y": 208
+   },
+   "replace": {
+    "x": 1824,
+    "spawnCamera": 1519
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 56541,
+    "trigger": 305
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 2688,
+    "y": 96
+   },
+   "replace": {
+    "x": 2704,
+    "spawnCamera": 2403
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 56929,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 816,
+    "y": 112
+   },
+   "replace": {
+    "x": 832,
+    "spawnCamera": 530
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 61743,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1248,
+    "y": 160
+   },
+   "replace": {
+    "x": 1264,
+    "spawnCamera": 965
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 61917,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "match": {
+    "kind": "redKoopa",
+    "x": 1888,
+    "y": 208
+   },
+   "replace": {
+    "x": 1904,
+    "spawnCamera": 1602
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 62210,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 378,
+    "y": 208
+   },
+   "replace": {
+    "x": 370,
+    "spawnCamera": 115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66031,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 398,
+    "y": 208
+   },
+   "replace": {
+    "x": 393,
+    "spawnCamera": 115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66031,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 688,
+    "y": 208
+   },
+   "replace": {
+    "x": 690,
+    "spawnCamera": 435
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66159,
+    "trigger": 255
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 704,
+    "y": 208
+   },
+   "replace": {
+    "x": 713,
+    "spawnCamera": 435
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66159,
+    "trigger": 278
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1104,
+    "y": 208
+   },
+   "replace": {
+    "x": 1105,
+    "spawnCamera": 849
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66325,
+    "trigger": 256
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1136,
+    "y": 208
+   },
+   "replace": {
+    "x": 1129,
+    "spawnCamera": 849
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66325,
+    "trigger": 280
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1120,
+    "y": 208
+   },
+   "replace": {
+    "x": 1153,
+    "spawnCamera": 849
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66325,
+    "trigger": 304
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1728,
+    "y": 208
+   },
+   "replace": {
+    "x": 1728,
+    "spawnCamera": 1475
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66606,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1744,
+    "y": 208
+   },
+   "replace": {
+    "x": 1751,
+    "spawnCamera": 1475
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66606,
+    "trigger": 276
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 1760,
+    "y": 208
+   },
+   "replace": {
+    "x": 1775,
+    "spawnCamera": 1475
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66606,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1872,
+    "y": 208
+   },
+   "replace": {
+    "x": 1904,
+    "spawnCamera": 1602
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66657,
+    "trigger": 302
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 1984,
+    "y": 208
+   },
+   "replace": {
+    "x": 1988,
+    "spawnCamera": 1735
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66710,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2000,
+    "y": 208
+   },
+   "replace": {
+    "x": 2012,
+    "spawnCamera": 1735
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66710,
+    "trigger": 277
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2064,
+    "y": 208
+   },
+   "replace": {
+    "x": 2081,
+    "spawnCamera": 1827
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66747,
+    "trigger": 254
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2368,
+    "y": 208
+   },
+   "replace": {
+    "x": 2368,
+    "spawnCamera": 2115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66862,
+    "trigger": 253
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 2384,
+    "y": 208
+   },
+   "replace": {
+    "x": 2391,
+    "spawnCamera": 2115
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66862,
+    "trigger": 276
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2592,
+    "y": 192
+   },
+   "replace": {
+    "x": 2576,
+    "spawnCamera": 2279
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 66932,
+    "trigger": 297
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 160
+   },
+   "replace": {
+    "x": 2752,
+    "spawnCamera": 2453
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67028,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 3312,
+    "y": 208
+   },
+   "replace": {
+    "x": 3312,
+    "spawnCamera": 3062
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67271,
+    "trigger": 250
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 3328,
+    "y": 208
+   },
+   "replace": {
+    "x": 3336,
+    "spawnCamera": 3062
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67271,
+    "trigger": 274
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 3712,
+    "y": 208
+   },
+   "replace": {
+    "x": 3712,
+    "spawnCamera": 3462
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67431,
+    "trigger": 250
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 3728,
+    "y": 208
+   },
+   "replace": {
+    "x": 3735,
+    "spawnCamera": 3462
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67431,
+    "trigger": 273
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 4048,
+    "y": 208
+   },
+   "replace": {
+    "x": 4064,
+    "spawnCamera": 3765
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67627,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 4112,
+    "y": 208
+   },
+   "replace": {
+    "x": 4113,
+    "spawnCamera": 3862
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67668,
+    "trigger": 251
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 4128,
+    "y": 208
+   },
+   "replace": {
+    "x": 4136,
+    "spawnCamera": 3862
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67668,
+    "trigger": 274
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 4144,
+    "y": 208
+   },
+   "replace": {
+    "x": 4161,
+    "spawnCamera": 3862
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67668,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "goomba",
+    "x": 4368,
+    "y": 208
+   },
+   "replace": {
+    "x": 4366,
+    "spawnCamera": 4114
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67769,
+    "trigger": 252
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 4512,
+    "y": 208
+   },
+   "replace": {
+    "x": 4528,
+    "spawnCamera": 4229
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67815,
+    "trigger": 299
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 4864,
+    "y": 208
+   },
+   "replace": {
+    "x": 4880,
+    "spawnCamera": 4579
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 67980,
+    "trigger": 301
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 5424,
+    "y": 208
+   },
+   "replace": {
+    "x": 5424,
+    "spawnCamera": 5172
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 68217,
+    "trigger": 252
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 5440,
+    "y": 208
+   },
+   "replace": {
+    "x": 5447,
+    "spawnCamera": 5172
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 68217,
+    "trigger": 275
+   }
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 464,
+    "y": 160
+   },
+   "replace": {
+    "x": 480,
+    "spawnCamera": 177
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 73009,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 2176,
+    "y": 208
+   },
+   "replace": {
+    "x": 2192,
+    "spawnCamera": 1892
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn x and camera",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "nativeFrame": 73694,
+    "trigger": 300
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 256,
+    "y": 208
+   },
+   "replace": {
+    "x": 272
+   },
+   "classification": "native enemy slot offset over the first co-existing frames (enemy present at level load)",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "offset": 15.75,
+    "samples": 40
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "koopa",
+    "x": 240,
+    "y": 208
+   },
+   "replace": {
+    "x": 256
+   },
+   "classification": "native enemy slot offset over the first co-existing frames (enemy present at level load)",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "offset": 15.75,
+    "samples": 40
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 256,
+    "y": 208
+   },
+   "replace": {
+    "x": 293
+   },
+   "classification": "native enemy slot offset over the first co-existing frames (enemy present at level load)",
+   "provenance": {
+    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
+    "offset": 37.25,
+    "samples": 40
+   }
+  }
+ ],
+ "additions": [
+  {"level":"1-1","area":"main","spec":{"kind":"goomba","x":2072,"y":208,"direction":-1,"spawnCamera":1793,"nativeSlot":"once","evidence":"second member of the native group at 2048: worlds 1-1 moods 0/3/5 rows 811/820/824; the route had one free slot"},"classification":"native group member with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"5-1","area":"main","spec":{"kind":"goomba","x":504,"y":208,"direction":-1,"palette":"0f-0f-36-17","spawnCamera":225,"nativeSlot":"once","evidence":"second member of the native group at 480: worlds 5-1 mood 0 rows 746/1726, mood 5 row 1791"},"classification":"native group member with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"5-1","area":"main","spec":{"kind":"goomba","x":528,"y":208,"direction":-1,"palette":"0f-0f-36-17","spawnCamera":225,"nativeSlot":"once","evidence":"third member of the native group at 480: worlds 5-1 mood 0 row 1726 (x 530 with the leader at 482)"},"classification":"native group member with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"8-1","area":"main","spec":{"kind":"goomba","x":524,"y":208,"direction":-1,"palette":"0f-0f-36-17","spawnCamera":271,"nativeSlot":"wait","evidence":"native object seen once: worlds 8-1 mood 3 row 199; moods 0/5 and the route had no free slot"},"classification":"native object with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"8-1","area":"main","spec":{"kind":"piranha","x":2248,"y":184,"direction":-1,"palette":"0f-1a-30-27","evidence":"native plant, y 160: worlds 8-1 moods 0/3/5 rows 1129/1108/1272; the route had no free slot"},"classification":"native plant with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"2-1","area":"main","spec":{"kind":"piranha","x":1192,"y":168,"direction":-1,"palette":"0f-1a-30-27","evidence":"native plant, y 144: worlds 2-1 moods 0/3/5 rows 589/620/591"},"classification":"native plant with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"6-2","area":"main","spec":{"kind":"paratroopa","x":688,"y":208,"direction":-1,"palette":"0f-1a-30-27","spawnCamera":387,"nativeSlot":"wait","evidence":"native Paratroopa, y 184: worlds 6-2 moods 0/3/5 rows 312/604/354; on the route the plant at 744 took the last slot"},"classification":"native object with no remake spec","provenance":{"report":"evidence/inventory2-findings-20261111.md"}},
+  {"level":"3-2","area":"main","spec":{"kind":"piranha","x":2712,"y":184,"direction":-1,"palette":"0f-1a-30-27","evidence":"native plant at pipe 2704 (hidden y 160), born with Mario 247 px left: free-play 3-2 mood7 (explore-w0, explore-r1); the winning route never reaches it"},"classification":"native plant with no remake spec","provenance":{"report":"evidence/piranha-findings-20261111.md"}},
+  {"level":"3-1","area":"main","spec":{"kind":"goomba","x":897,"y":208,"direction":-1,"palette":"0f-0f-36-17","spawnCamera":595,"nativeSlot":"once","evidence":"third member of the native group at 849: r8 3-1 mood0 row393 slots1/2/4 at849/872/897, mood2 row397 at848/871/896; absent when the fifth slot is occupied"},"classification":"native group member with no remake spec","provenance":{"report":"evidence/visible-vertical-three-one-group-findings-20261111.md"}}
+ ]
+}

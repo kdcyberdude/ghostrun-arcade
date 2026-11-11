@@ -1,0 +1,38 @@
+{
+  "lockedUTC": "2026-11-06T04:48:06.549Z",
+  "scope": "Fireball Goomba and measured green Koopa only. Other enemy scores remain unchanged and explicitly unqualified. Coin, Star, shell, death motion and projectile drift are separate.",
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "glyph": "Exact supplied opaque RGB; covered glyph is unobserved."
+  },
+  "scoreByObservedKind": {
+    "goomba": 100,
+    "koopa": 200
+  },
+  "popup": {
+    "feetYOffset": 32,
+    "pixelsUpPerActiveNativeFrame": 1,
+    "durationActiveNativeFrames": 50,
+    "coordinateSpace": "screen fixed at event, independent of subsequent camera",
+    "status": "Inferred shared launched-enemy duration 50: pulse6 training common conditional lifetime49..51 with raworigin176 at groundfoot208; allowing ±1 draw/birth phase gives48..52, all within2 of50. Not claimed exact. No victim squash attachment."
+  },
+  "evidence": {
+    "plan": "evidence/popup-awards-plan.json",
+    "training": "evidence/popup-awards-training-measurements.json",
+    "observations": "evidence/popup-awards-observations.json",
+    "analysis": "evidence/popup-awards-training-analysis.json"
+  },
+  "bindings": {
+    "evidence/popup-awards-plan.json": "434b09755cc62e5087cc4e440f04ecc838aa6bba1ee0001e0ebeaa6e5a402c35",
+    "evidence/popup-awards-training-measurements.json": "125d7c6c636fdef331531bb2895c8df8da8374e85684b447d508031bb5614042",
+    "evidence/popup-awards-observations.json": "1f5dae6ebf5fd9f9763d7d6d851bbdbbe714dd5902e8c1258534a9a41157d83f",
+    "evidence/popup-awards-training-analysis.json": "f4e08b17396ccae34b4e7f1a0b0651c981acb125d1bdfff88307d576d7eaa024"
+  },
+  "counterexamples": [
+    "Green Koopa200 must not be generalized to red Koopa, Hammer Bro, Bowser, Piranha or other unobserved types.",
+    "Stomped Goomba cleanup40 is a separate class; fireball death must retain launched motion and50 popup.",
+    "A hit on Bowser with hp remaining must not create an award or label."
+  ],
+  "reserved": "Already-declared pulse4 from popup-awards-plan; candidate frozen before any reserved capture."
+}

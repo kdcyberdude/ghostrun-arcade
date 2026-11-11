@@ -1,0 +1,925 @@
+{
+  "schema": "accepted-observed-brick-geometry-v1",
+  "level": "5-2",
+  "area": "area-2",
+  "sourceData": "data/five-two-vine-frontier.json",
+  "sourceTrace": "evidence/local/five-two-vine-frontier/trace.jsonl",
+  "tileSize": 16,
+  "tiles": [
+    [
+      118,
+      5,
+      81
+    ],
+    [
+      119,
+      5,
+      81
+    ],
+    [
+      120,
+      5,
+      81
+    ],
+    [
+      121,
+      5,
+      81
+    ],
+    [
+      122,
+      5,
+      81
+    ],
+    [
+      123,
+      5,
+      81
+    ],
+    [
+      124,
+      5,
+      81
+    ],
+    [
+      125,
+      5,
+      81
+    ],
+    [
+      118,
+      9,
+      81
+    ],
+    [
+      119,
+      9,
+      81
+    ],
+    [
+      120,
+      9,
+      81
+    ],
+    [
+      121,
+      9,
+      81
+    ],
+    [
+      122,
+      9,
+      81
+    ],
+    [
+      123,
+      9,
+      81
+    ],
+    [
+      124,
+      9,
+      81
+    ],
+    [
+      125,
+      9,
+      81
+    ],
+    [
+      168,
+      9,
+      81
+    ]
+  ],
+  "geometryStatus": "All17 promoted cells are complete16x16 zero-error supplied-art matches in actual pre-hit screenshots. World grid positions are image-inferred from independently observed static pipe/ground anchors.",
+  "anchors": [
+    {
+      "sourceSequence": 1004,
+      "worldPipeLeft": 1840,
+      "screenPipeLeft": 48,
+      "inferredCameraX": 1792,
+      "stripStartScreenX": 96,
+      "inferredStripStartWorldX": 1888,
+      "stripWidth": 128,
+      "rows": [
+        80,
+        144
+      ],
+      "pipeArtwork": [
+        {
+          "sourceSequence": 1004,
+          "sourceTick": 5640,
+          "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+          "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+          "screenOrigin": [
+            48,
+            176
+          ],
+          "metatileId": 16,
+          "atlas": "metatiles-palette-025.png",
+          "checkedPixels": 252,
+          "playerOccludedPixels": 4,
+          "mismatches": 0
+        },
+        {
+          "sourceSequence": 1004,
+          "sourceTick": 5640,
+          "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+          "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+          "screenOrigin": [
+            64,
+            176
+          ],
+          "metatileId": 17,
+          "atlas": "metatiles-palette-025.png",
+          "checkedPixels": 252,
+          "playerOccludedPixels": 4,
+          "mismatches": 0
+        }
+      ],
+      "qualification": "The visible first/last strip edges fix a finite8-brick row. Repeated plain-brick matches every8px are raster aliases, not extra blocks."
+    },
+    {
+      "evidence": {
+        "sequence": 7630,
+        "tick": 5548,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+      },
+      "whitePipeWorldX": 2768,
+      "whitePipeScreenX": 190,
+      "pipeTopY": 176,
+      "mainGroundEndWorldX": 2720,
+      "groundEndScreenX": 142,
+      "inferredCameraX": 2578,
+      "pipeLeftArtwork": {
+        "metatile": 16,
+        "screenOrigin": [
+          190,
+          176
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "pipeRightArtwork": {
+        "metatile": 17,
+        "screenOrigin": [
+          206,
+          176
+        ],
+        "width": 16,
+        "height": 16,
+        "exactAtlasColumnAlternatives": [
+          0
+        ],
+        "matchedPixels": 256
+      },
+      "note": "The two independent static anchors give camera2578; exact initial brick atscreen110 gives world2688. Older freeTile2686 was a drifted search anchor.",
+      "pipeArtwork": [
+        {
+          "sourceSequence": 7630,
+          "sourceTick": 5548,
+          "sentUtc": "2026-11-05T22:33:42.946511+00:00",
+          "sourceImage": "evidence/local/five-two-vine-frontier/07630-tick-05548.png",
+          "screenOrigin": [
+            190,
+            176
+          ],
+          "metatileId": 16,
+          "atlas": "metatiles-palette-025.png",
+          "checkedPixels": 256,
+          "playerOccludedPixels": 0,
+          "mismatches": 0
+        },
+        {
+          "sourceSequence": 7630,
+          "sourceTick": 5548,
+          "sentUtc": "2026-11-05T22:33:42.946511+00:00",
+          "sourceImage": "evidence/local/five-two-vine-frontier/07630-tick-05548.png",
+          "screenOrigin": [
+            206,
+            176
+          ],
+          "metatileId": 17,
+          "atlas": "metatiles-palette-025.png",
+          "checkedPixels": 256,
+          "playerOccludedPixels": 0,
+          "mismatches": 0
+        }
+      ]
+    }
+  ],
+  "supersededFreeTileRanges": [
+    {
+      "metatileId": 81,
+      "y": 80,
+      "xRangeInclusive": [
+        1886,
+        1998
+      ],
+      "exactXValues": [
+        1886,
+        1894,
+        1902,
+        1910,
+        1934,
+        1942,
+        1950,
+        1958,
+        1966,
+        1974,
+        1982,
+        1990,
+        1998
+      ],
+      "atlas": "metatiles-palette-025.png"
+    },
+    {
+      "metatileId": 81,
+      "y": 144,
+      "xRangeInclusive": [
+        1886,
+        1998
+      ],
+      "exactXValues": [
+        1886,
+        1894,
+        1902,
+        1910,
+        1918,
+        1926,
+        1934,
+        1942,
+        1950,
+        1958,
+        1966,
+        1974,
+        1982,
+        1990,
+        1998
+      ],
+      "atlas": "metatiles-palette-025.png"
+    },
+    {
+      "metatileId": 81,
+      "y": 144,
+      "xRangeInclusive": [
+        2686,
+        2686
+      ],
+      "exactXValues": [
+        2686
+      ],
+      "atlas": "metatiles-palette-025.png"
+    }
+  ],
+  "supersededFreeTiles": [
+    {
+      "x": 1886,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1886,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1894,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1894,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1902,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1902,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1910,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1910,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1918,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1926,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1934,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1934,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1942,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1942,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1950,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1950,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1958,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1958,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1966,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1966,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1974,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1974,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1982,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1982,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1990,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1990,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1998,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1998,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 2686,
+      "y": 144,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    }
+  ],
+  "removalQualification": "Remove only these id81 raster fragments at exact listed x/y/atlas. Do not remove other ids, adjacent structures or unseen cells. They are replaced by the complete observed grid strips/isolated brick, not copied to additional coordinates.",
+  "sourceWitnesses": [
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        96,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        118,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        112,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        119,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        128,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        120,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        144,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        121,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        160,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        122,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        176,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        123,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        192,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        124,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        208,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        125,
+        5,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        96,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        118,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        112,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        119,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        128,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        120,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        144,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        121,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        160,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        122,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        176,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        123,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        192,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        124,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        208,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        125,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        48,
+        176
+      ],
+      "metatileId": 16,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 252,
+      "playerOccludedPixels": 4,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 1004,
+      "sourceTick": 5640,
+      "sentUtc": "2026-11-05T21:57:27.095706+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/01004-tick-05640.png",
+      "screenOrigin": [
+        64,
+        176
+      ],
+      "metatileId": 17,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 252,
+      "playerOccludedPixels": 4,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 7630,
+      "sourceTick": 5548,
+      "sentUtc": "2026-11-05T22:33:42.946511+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/07630-tick-05548.png",
+      "screenOrigin": [
+        110,
+        144
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0,
+      "worldTile": [
+        168,
+        9,
+        81
+      ]
+    },
+    {
+      "sourceSequence": 7630,
+      "sourceTick": 5548,
+      "sentUtc": "2026-11-05T22:33:42.946511+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/07630-tick-05548.png",
+      "screenOrigin": [
+        190,
+        176
+      ],
+      "metatileId": 16,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 7630,
+      "sourceTick": 5548,
+      "sentUtc": "2026-11-05T22:33:42.946511+00:00",
+      "sourceImage": "evidence/local/five-two-vine-frontier/07630-tick-05548.png",
+      "screenOrigin": [
+        206,
+        176
+      ],
+      "metatileId": 17,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    }
+  ],
+  "tolerancePixels": 0,
+  "passed": true
+}

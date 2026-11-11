@@ -1,0 +1,812 @@
+{
+  "schema": "image-only-fixed-camera-room-v2",
+  "width": 16,
+  "atlas": "metatiles-palette-003.png",
+  "tiles": [
+    [
+      0,
+      2,
+      71
+    ],
+    [
+      0,
+      3,
+      71
+    ],
+    [
+      0,
+      4,
+      71
+    ],
+    [
+      0,
+      5,
+      71
+    ],
+    [
+      0,
+      6,
+      71
+    ],
+    [
+      0,
+      7,
+      71
+    ],
+    [
+      0,
+      8,
+      71
+    ],
+    [
+      0,
+      9,
+      71
+    ],
+    [
+      0,
+      10,
+      71
+    ],
+    [
+      0,
+      11,
+      71
+    ],
+    [
+      0,
+      12,
+      71
+    ],
+    [
+      0,
+      13,
+      84
+    ],
+    [
+      0,
+      14,
+      84
+    ],
+    [
+      1,
+      13,
+      84
+    ],
+    [
+      1,
+      14,
+      84
+    ],
+    [
+      2,
+      13,
+      84
+    ],
+    [
+      2,
+      14,
+      84
+    ],
+    [
+      3,
+      13,
+      84
+    ],
+    [
+      3,
+      14,
+      84
+    ],
+    [
+      4,
+      2,
+      71
+    ],
+    [
+      4,
+      7,
+      194
+    ],
+    [
+      4,
+      9,
+      194
+    ],
+    [
+      4,
+      10,
+      71
+    ],
+    [
+      4,
+      11,
+      71
+    ],
+    [
+      4,
+      12,
+      71
+    ],
+    [
+      4,
+      13,
+      84
+    ],
+    [
+      4,
+      14,
+      84
+    ],
+    [
+      5,
+      2,
+      71
+    ],
+    [
+      5,
+      5,
+      194
+    ],
+    [
+      5,
+      7,
+      194
+    ],
+    [
+      5,
+      9,
+      194
+    ],
+    [
+      5,
+      10,
+      71
+    ],
+    [
+      5,
+      11,
+      71
+    ],
+    [
+      5,
+      12,
+      71
+    ],
+    [
+      5,
+      13,
+      84
+    ],
+    [
+      5,
+      14,
+      84
+    ],
+    [
+      6,
+      2,
+      71
+    ],
+    [
+      6,
+      5,
+      194
+    ],
+    [
+      6,
+      7,
+      194
+    ],
+    [
+      6,
+      9,
+      194
+    ],
+    [
+      6,
+      10,
+      71
+    ],
+    [
+      6,
+      11,
+      71
+    ],
+    [
+      6,
+      12,
+      71
+    ],
+    [
+      6,
+      13,
+      84
+    ],
+    [
+      6,
+      14,
+      84
+    ],
+    [
+      7,
+      2,
+      71
+    ],
+    [
+      7,
+      5,
+      194
+    ],
+    [
+      7,
+      7,
+      194
+    ],
+    [
+      7,
+      9,
+      194
+    ],
+    [
+      7,
+      10,
+      71
+    ],
+    [
+      7,
+      11,
+      71
+    ],
+    [
+      7,
+      12,
+      71
+    ],
+    [
+      7,
+      13,
+      84
+    ],
+    [
+      7,
+      14,
+      84
+    ],
+    [
+      8,
+      2,
+      71
+    ],
+    [
+      8,
+      5,
+      194
+    ],
+    [
+      8,
+      7,
+      194
+    ],
+    [
+      8,
+      9,
+      194
+    ],
+    [
+      8,
+      10,
+      71
+    ],
+    [
+      8,
+      11,
+      71
+    ],
+    [
+      8,
+      12,
+      71
+    ],
+    [
+      8,
+      13,
+      84
+    ],
+    [
+      8,
+      14,
+      84
+    ],
+    [
+      9,
+      2,
+      71
+    ],
+    [
+      9,
+      5,
+      194
+    ],
+    [
+      9,
+      7,
+      194
+    ],
+    [
+      9,
+      9,
+      194
+    ],
+    [
+      9,
+      10,
+      71
+    ],
+    [
+      9,
+      11,
+      71
+    ],
+    [
+      9,
+      12,
+      71
+    ],
+    [
+      9,
+      13,
+      84
+    ],
+    [
+      9,
+      14,
+      84
+    ],
+    [
+      10,
+      2,
+      71
+    ],
+    [
+      10,
+      7,
+      194
+    ],
+    [
+      10,
+      9,
+      194
+    ],
+    [
+      10,
+      10,
+      71
+    ],
+    [
+      10,
+      11,
+      71
+    ],
+    [
+      10,
+      12,
+      71
+    ],
+    [
+      10,
+      13,
+      84
+    ],
+    [
+      10,
+      14,
+      84
+    ],
+    [
+      11,
+      13,
+      84
+    ],
+    [
+      11,
+      14,
+      84
+    ],
+    [
+      12,
+      13,
+      84
+    ],
+    [
+      12,
+      14,
+      84
+    ],
+    [
+      13,
+      11,
+      28
+    ],
+    [
+      13,
+      12,
+      31
+    ],
+    [
+      13,
+      13,
+      84
+    ],
+    [
+      13,
+      14,
+      84
+    ],
+    [
+      14,
+      11,
+      29
+    ],
+    [
+      14,
+      12,
+      32
+    ],
+    [
+      14,
+      13,
+      84
+    ],
+    [
+      14,
+      14,
+      84
+    ],
+    [
+      15,
+      2,
+      20
+    ],
+    [
+      15,
+      3,
+      20
+    ],
+    [
+      15,
+      4,
+      20
+    ],
+    [
+      15,
+      5,
+      20
+    ],
+    [
+      15,
+      6,
+      20
+    ],
+    [
+      15,
+      7,
+      20
+    ],
+    [
+      15,
+      8,
+      20
+    ],
+    [
+      15,
+      9,
+      20
+    ],
+    [
+      15,
+      10,
+      20
+    ],
+    [
+      15,
+      11,
+      30
+    ],
+    [
+      15,
+      12,
+      33
+    ],
+    [
+      15,
+      13,
+      84
+    ],
+    [
+      15,
+      14,
+      84
+    ]
+  ],
+  "unknownCells": [],
+  "evidence": [
+    {
+      "sequence": 2633,
+      "tick": 7562,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02633-tick-07562.png"
+    },
+    {
+      "sequence": 2634,
+      "tick": 7566,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02634-tick-07566.png"
+    },
+    {
+      "sequence": 2635,
+      "tick": 7578,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02635-tick-07578.png"
+    },
+    {
+      "sequence": 2636,
+      "tick": 7606,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02636-tick-07606.png"
+    },
+    {
+      "sequence": 2637,
+      "tick": 7611,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02637-tick-07611.png"
+    },
+    {
+      "sequence": 2638,
+      "tick": 7623,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02638-tick-07623.png"
+    }
+  ],
+  "method": "Exact supplied 16x16 atlas pixels, fixed camera0, explicit unique sequence bounds. Coin-presence union prevents collection from erasing initial coins. No hidden contents inferred.",
+  "sourceTrace": "evidence/local/optional-7-1/trace.jsonl",
+  "sourceSequenceRange": [
+    2633,
+    2638
+  ],
+  "id": "bonus-coins",
+  "level": "7-1",
+  "role": "optional-coin-room",
+  "background": "#000000",
+  "spawn": [
+    24,
+    0
+  ],
+  "coinsObserved": 19,
+  "spawnStatus": "Exact supplied-player template gives originX24 in the first room capture; initial offscreen feetY0 is inferred.",
+  "connections": [
+    {
+      "from": "main",
+      "to": "bonus-coins",
+      "kind": "pipe-down",
+      "entrance": {
+        "x": 1488,
+        "y": 160,
+        "width": 32
+      },
+      "target": {
+        "x": 24,
+        "feetY": 0,
+        "cameraX": 0
+      },
+      "status": "Entry and room observed through normal controller input; exact spawn height and transition frames inferred.",
+      "sourceTrace": "evidence/local/optional-7-1/trace.jsonl",
+      "sourceTicks": [
+        7517,
+        7562
+      ],
+      "sourceSequences": [
+        2626,
+        2633
+      ],
+      "sourceRangeQualification": "Full actual entry recipe, including any failed earlier encounters; exact transition lies inside its final entering request."
+    },
+    {
+      "from": "bonus-coins",
+      "to": "main",
+      "kind": "pipe-right",
+      "entrance": {
+        "x": 208,
+        "y": 176,
+        "width": 32,
+        "height": 32
+      },
+      "target": {
+        "x": 1848,
+        "feetY": 176,
+        "cameraX": 1792
+      },
+      "sourceTrace": "evidence/local/optional-7-1/trace.jsonl",
+      "sourceTicks": [
+        7562,
+        7709
+      ],
+      "sourceSequences": [
+        2634,
+        2645
+      ],
+      "status": "Side-pipe entry and return to actual main pipe x1840/top176 observed. Fixed camera1792 identified by main artwork; initial emergence position inferred."
+    }
+  ],
+  "entryRecipe": {
+    "resetThenRecordedPrefixTicks": 7517,
+    "sourceSequences": [
+      2626,
+      2633
+    ],
+    "requests": [
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 3,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 5,
+        "nativeFrames": 38
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 2,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12,
+        "nativeFrames": 90
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 8,
+        "nativeFrames": 60
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12,
+        "nativeFrames": 90
+      }
+    ]
+  },
+  "returnRecipe": [
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 4,
+      "nativeFrames": 30
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 12,
+      "nativeFrames": 90
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 28,
+      "nativeFrames": 210
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "a"
+      ],
+      "ticks": 5,
+      "nativeFrames": 38
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 12,
+      "nativeFrames": 90
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 28,
+      "nativeFrames": 211
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "left"
+      ],
+      "ticks": 6,
+      "nativeFrames": 45
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 2,
+      "nativeFrames": 15
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 6,
+      "nativeFrames": 45
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 16,
+      "nativeFrames": 120
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 12,
+      "nativeFrames": 90
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 16,
+      "nativeFrames": 120
+    }
+  ],
+  "uncertainties": [
+    "Hidden blocks/contents absent from screenshots are not established.",
+    "Exact transition frame counts not sampled every native frame.",
+    "Initial room spawn and main pipe emergence origins inferred from observed falling/emerging sprites."
+  ]
+}

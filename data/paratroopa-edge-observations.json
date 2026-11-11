@@ -1,0 +1,186 @@
+{
+  "generatedUtc": "2026-11-05T23:28:58.783Z",
+  "method": "Exact right-clipped supplied winged cells4/5 with at least24 visible opaque pixels. No extrapolated offscreen shape is labelled observed.",
+  "rows": [
+    {
+      "tick": 1319,
+      "nativeFrame": 9908,
+      "camera": 2113,
+      "image": "evidence/local/reference-campaign-dense/01320-tick-01319.png",
+      "actors": []
+    },
+    {
+      "tick": 1320,
+      "nativeFrame": 9916,
+      "camera": 2133,
+      "image": "evidence/local/reference-campaign-dense/01321-tick-01320.png",
+      "actors": []
+    },
+    {
+      "tick": 1321,
+      "nativeFrame": 9923,
+      "camera": 2151,
+      "image": "evidence/local/reference-campaign-dense/01322-tick-01321.png",
+      "actors": []
+    },
+    {
+      "tick": 1322,
+      "nativeFrame": 9931,
+      "camera": 2171,
+      "image": "evidence/local/reference-campaign-dense/01323-tick-01322.png",
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "cell": 5,
+          "flipX": false,
+          "x": 247,
+          "originY": 156,
+          "physicalFeetY": 179,
+          "visibleWidth": 9,
+          "matchedOpaque": 130,
+          "scope": "Exact visible opaque portion only; offscreen pixels unobserved.",
+          "worldX": 2418
+        }
+      ]
+    },
+    {
+      "tick": 1323,
+      "nativeFrame": 9938,
+      "camera": 2188,
+      "image": "evidence/local/reference-campaign-dense/01324-tick-01323.png",
+      "actors": []
+    },
+    {
+      "tick": 1324,
+      "nativeFrame": 9946,
+      "camera": 2208,
+      "image": "evidence/local/reference-campaign-dense/01325-tick-01324.png",
+      "actors": []
+    },
+    {
+      "tick": 1325,
+      "nativeFrame": 9953,
+      "camera": 2226,
+      "image": "evidence/local/reference-campaign-dense/01326-tick-01325.png",
+      "actors": []
+    },
+    {
+      "tick": 1326,
+      "nativeFrame": 9961,
+      "camera": 2246,
+      "image": "evidence/local/reference-campaign-dense/01327-tick-01326.png",
+      "actors": []
+    },
+    {
+      "tick": 1327,
+      "nativeFrame": 9968,
+      "camera": 2263,
+      "image": "evidence/local/reference-campaign-dense/01328-tick-01327.png",
+      "actors": []
+    },
+    {
+      "tick": 1328,
+      "nativeFrame": 9976,
+      "camera": 2283,
+      "image": "evidence/local/reference-campaign-dense/01329-tick-01328.png",
+      "actors": []
+    },
+    {
+      "tick": 1329,
+      "nativeFrame": 9983,
+      "camera": 2301,
+      "image": "evidence/local/reference-campaign-dense/01330-tick-01329.png",
+      "actors": []
+    },
+    {
+      "tick": 1330,
+      "nativeFrame": 9991,
+      "camera": 2321,
+      "image": "evidence/local/reference-campaign-dense/01331-tick-01330.png",
+      "actors": []
+    },
+    {
+      "tick": 1331,
+      "nativeFrame": 9998,
+      "camera": 2338,
+      "image": "evidence/local/reference-campaign-dense/01332-tick-01331.png",
+      "actors": []
+    },
+    {
+      "tick": 1332,
+      "nativeFrame": 10006,
+      "camera": 2358,
+      "image": "evidence/local/reference-campaign-dense/01333-tick-01332.png",
+      "actors": []
+    },
+    {
+      "tick": 1333,
+      "nativeFrame": 10013,
+      "camera": 2376,
+      "image": "evidence/local/reference-campaign-dense/01334-tick-01333.png",
+      "actors": []
+    },
+    {
+      "tick": 1334,
+      "nativeFrame": 10021,
+      "camera": 2396,
+      "image": "evidence/local/reference-campaign-dense/01335-tick-01334.png",
+      "actors": []
+    },
+    {
+      "tick": 1335,
+      "nativeFrame": 10028,
+      "camera": 2413,
+      "image": "evidence/local/reference-campaign-dense/01336-tick-01335.png",
+      "actors": []
+    },
+    {
+      "tick": 1336,
+      "nativeFrame": 10036,
+      "camera": 2433,
+      "image": "evidence/local/reference-campaign-dense/01337-tick-01336.png",
+      "actors": []
+    },
+    {
+      "tick": 1337,
+      "nativeFrame": 10043,
+      "camera": 2451,
+      "image": "evidence/local/reference-campaign-dense/01338-tick-01337.png",
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "cell": 5,
+          "flipX": false,
+          "x": 253,
+          "originY": 162,
+          "physicalFeetY": 185,
+          "visibleWidth": 3,
+          "matchedOpaque": 34,
+          "scope": "Exact visible opaque portion only; offscreen pixels unobserved.",
+          "worldX": 2704
+        }
+      ]
+    },
+    {
+      "tick": 1338,
+      "nativeFrame": 10051,
+      "camera": 2471,
+      "image": "evidence/local/reference-campaign-dense/01339-tick-01338.png",
+      "actors": []
+    },
+    {
+      "tick": 1339,
+      "nativeFrame": 10058,
+      "camera": 2488,
+      "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png",
+      "actors": []
+    },
+    {
+      "tick": 1340,
+      "nativeFrame": 10066,
+      "camera": 2508,
+      "image": "evidence/local/reference-campaign-dense/01341-tick-01340.png",
+      "actors": []
+    }
+  ]
+}

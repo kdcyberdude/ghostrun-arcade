@@ -1,0 +1,1806 @@
+{
+  "schema": "source-cloud-neutral-ride-end-v1",
+  "level": "3-1",
+  "sourceTrace": "evidence/local/optional-cloud-3-1-end/trace.jsonl",
+  "prefixDecisions": 2898,
+  "observations": [
+    {
+      "sequence": 530,
+      "tick": 3057,
+      "nativeFrames": 7,
+      "nativeFramesSinceContactSample": 0,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00530-tick-03057.png",
+      "player": {
+        "originX": 94,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 96,
+        "visibleRight": 108,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 94,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 75,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        10
+      ],
+      "exactFloorTileScreenXs": [
+        10,
+        26,
+        42,
+        58,
+        74,
+        90,
+        106,
+        122,
+        138,
+        154,
+        170,
+        186,
+        202,
+        218,
+        234
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 257,
+        "inferredCameraX": 182,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 531,
+      "tick": 3065,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 60,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00531-tick-03065.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        6
+      ],
+      "exactFloorTileScreenXs": [
+        6,
+        22,
+        38,
+        54,
+        70,
+        86,
+        102,
+        118,
+        134,
+        150,
+        166,
+        182,
+        198,
+        214,
+        230
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 317,
+        "inferredCameraX": 250,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 532,
+      "tick": 3073,
+      "nativeFrames": 61,
+      "nativeFramesSinceContactSample": 121,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00532-tick-03073.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        9
+      ],
+      "exactFloorTileScreenXs": [
+        9,
+        25,
+        41,
+        57,
+        73,
+        89,
+        105,
+        121,
+        137,
+        153,
+        169,
+        185,
+        201,
+        217,
+        233
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 378,
+        "inferredCameraX": 311,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 533,
+      "tick": 3081,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 181,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00533-tick-03081.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        13
+      ],
+      "exactFloorTileScreenXs": [
+        13,
+        29,
+        45,
+        61,
+        77,
+        93,
+        109,
+        125,
+        141,
+        157,
+        173,
+        189,
+        205,
+        221,
+        237
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 438,
+        "inferredCameraX": 371,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 534,
+      "tick": 3089,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 241,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00534-tick-03089.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        1
+      ],
+      "exactFloorTileScreenXs": [
+        1,
+        17,
+        33,
+        49,
+        65,
+        81,
+        97,
+        113,
+        129,
+        145,
+        161,
+        177,
+        193,
+        209,
+        225
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 498,
+        "inferredCameraX": 431,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 535,
+      "tick": 3097,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 301,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00535-tick-03097.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        5
+      ],
+      "exactFloorTileScreenXs": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 558,
+        "inferredCameraX": 491,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 536,
+      "tick": 3105,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 361,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00536-tick-03105.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        9
+      ],
+      "exactFloorTileScreenXs": [
+        9,
+        25,
+        41,
+        57,
+        73,
+        89,
+        105,
+        121,
+        137,
+        153,
+        169,
+        185,
+        201,
+        217,
+        233
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 618,
+        "inferredCameraX": 551,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 537,
+      "tick": 3113,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 421,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00537-tick-03113.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        13
+      ],
+      "exactFloorTileScreenXs": [
+        13,
+        29,
+        45,
+        61,
+        77,
+        93,
+        109,
+        125,
+        141,
+        157,
+        173,
+        189,
+        205,
+        221,
+        237
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 678,
+        "inferredCameraX": 611,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 538,
+      "tick": 3121,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 481,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00538-tick-03121.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        1
+      ],
+      "exactFloorTileScreenXs": [
+        1,
+        17,
+        33,
+        49,
+        65,
+        81,
+        97,
+        113,
+        129,
+        145,
+        161,
+        177,
+        193,
+        209,
+        225
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 738,
+        "inferredCameraX": 671,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 539,
+      "tick": 3129,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 541,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00539-tick-03129.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        5
+      ],
+      "exactFloorTileScreenXs": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117,
+        133,
+        149,
+        165,
+        181,
+        197,
+        213,
+        229
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 798,
+        "inferredCameraX": 731,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 540,
+      "tick": 3137,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 601,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00540-tick-03137.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        9
+      ],
+      "exactFloorTileScreenXs": [
+        9,
+        25,
+        41,
+        57,
+        73,
+        89,
+        105,
+        121,
+        137,
+        153,
+        169,
+        185,
+        201,
+        217,
+        233
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 858,
+        "inferredCameraX": 791,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 541,
+      "tick": 3145,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 661,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00541-tick-03145.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        13
+      ],
+      "exactFloorTileScreenXs": [
+        13,
+        29,
+        45,
+        61,
+        77,
+        93,
+        109,
+        125,
+        141,
+        157,
+        173,
+        189,
+        205,
+        221,
+        237
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 918,
+        "inferredCameraX": 851,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 542,
+      "tick": 3153,
+      "nativeFrames": 61,
+      "nativeFramesSinceContactSample": 722,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00542-tick-03153.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112,
+        128,
+        144,
+        160,
+        176,
+        192,
+        208,
+        224,
+        240
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 979,
+        "inferredCameraX": 912,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 543,
+      "tick": 3161,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 782,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00543-tick-03161.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        4
+      ],
+      "exactFloorTileScreenXs": [
+        4,
+        20,
+        36,
+        52,
+        68,
+        84,
+        100,
+        116,
+        132,
+        148,
+        164,
+        180,
+        196,
+        212,
+        228
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1039,
+        "inferredCameraX": 972,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 544,
+      "tick": 3169,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 842,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00544-tick-03169.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        8
+      ],
+      "exactFloorTileScreenXs": [
+        8,
+        24,
+        40,
+        56,
+        72,
+        88,
+        104,
+        120,
+        136,
+        152,
+        168,
+        184,
+        200,
+        216,
+        232
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1099,
+        "inferredCameraX": 1032,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 545,
+      "tick": 3177,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 902,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00545-tick-03177.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        12
+      ],
+      "exactFloorTileScreenXs": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124,
+        140,
+        156,
+        172,
+        188,
+        204,
+        220
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1159,
+        "inferredCameraX": 1092,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 546,
+      "tick": 3185,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 962,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00546-tick-03185.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112,
+        128,
+        144,
+        160
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1219,
+        "inferredCameraX": 1152,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 547,
+      "tick": 3193,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1022,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00547-tick-03193.png",
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 67,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        4
+      ],
+      "exactFloorTileScreenXs": [
+        4,
+        20,
+        36,
+        52,
+        68,
+        84,
+        100
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1279,
+        "inferredCameraX": 1212,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 548,
+      "tick": 3201,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1082,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00548-tick-03201.png",
+      "player": {
+        "originX": 136,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 138,
+        "visibleRight": 149,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 136,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 91,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1339,
+        "inferredCameraX": 1248,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 549,
+      "tick": 3209,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1142,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00549-tick-03209.png",
+      "player": {
+        "originX": 196,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 198,
+        "visibleRight": 209,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 196,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 151,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 48,
+        "matchedOpaquePixels": 312,
+        "clippedAtRight": false
+      },
+      "platformMatchAmbiguityCount": 1,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1399,
+        "inferredCameraX": 1248,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 550,
+      "tick": 3217,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1202,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00550-tick-03217.png",
+      "player": {
+        "originX": 240,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 242,
+        "visibleRight": 253,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 240,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": {
+        "screenX": 211,
+        "artworkY": 161,
+        "fullWidth": 48,
+        "visibleWidth": 45,
+        "matchedOpaquePixels": 294,
+        "clippedAtRight": true
+      },
+      "platformMatchAmbiguityCount": 5,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": {
+        "worldX": 1459,
+        "inferredCameraX": 1248,
+        "floorPhaseAgreement": true,
+        "qualification": "World position extrapolates independently measured1px/native motion. Camera is a consistency candidate, not independent proof of post-clamp world motion."
+      },
+      "allBlackImage": false
+    },
+    {
+      "sequence": 551,
+      "tick": 3225,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1262,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00551-tick-03225.png",
+      "player": {
+        "originX": 239,
+        "originY": 179,
+        "feetY": 210,
+        "visibleLeft": 241,
+        "visibleRight": 253,
+        "visibleTop": 196,
+        "visibleBottom": 210,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 239,
+            "originY": 179,
+            "feetY": 210,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": null,
+      "platformMatchAmbiguityCount": 0,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": null,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 552,
+      "tick": 3233,
+      "nativeFrames": 61,
+      "nativeFramesSinceContactSample": 1323,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00552-tick-03233.png",
+      "player": null,
+      "platform": null,
+      "platformMatchAmbiguityCount": 0,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": null,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 553,
+      "tick": 3241,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1383,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00553-tick-03241.png",
+      "player": null,
+      "platform": null,
+      "platformMatchAmbiguityCount": 0,
+      "exactFloorPhases": [
+        0
+      ],
+      "exactFloorTileScreenXs": [
+        0,
+        16,
+        32,
+        48,
+        64
+      ],
+      "constant1PixelMotionCandidate": null,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 554,
+      "tick": 3249,
+      "nativeFrames": 60,
+      "nativeFramesSinceContactSample": 1443,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-cloud-3-1-end/00554-tick-03249.png",
+      "player": {
+        "originX": 40,
+        "originY": 17,
+        "feetY": 48,
+        "visibleLeft": 42,
+        "visibleRight": 54,
+        "visibleTop": 34,
+        "visibleBottom": 48,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 40,
+            "originY": 17,
+            "feetY": 48,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "platform": null,
+      "platformMatchAmbiguityCount": 0,
+      "exactFloorPhases": [],
+      "exactFloorTileScreenXs": [],
+      "constant1PixelMotionCandidate": null,
+      "allBlackImage": false
+    }
+  ],
+  "referenceContactRepeatability": {
+    "source": "evidence/local/optional-cloud-3-1/00530-tick-03057.png",
+    "tolerancePixels": 0,
+    "mismatchingPixels": 0
+  },
+  "summary": {
+    "firstContact": {
+      "sequence": 530,
+      "tick": 3057
+    },
+    "lastCompletePlatform": {
+      "sequence": 549,
+      "tick": 3209
+    },
+    "lastClippedPlatform": {
+      "sequence": 550,
+      "tick": 3217
+    },
+    "firstAbsentPlatformAndFallingPlayer": {
+      "sequence": 551,
+      "tick": 3225
+    },
+    "firstClearedViewportTransition": {
+      "sequence": 553,
+      "tick": 3241
+    },
+    "firstMainReturn": {
+      "sequence": 554,
+      "tick": 3249
+    },
+    "behavior": "Neutral ride passes observed cloudfloor end. The platform reaches the right viewport edge while Mario is clampednearx240; it disappears, he falls belowviewport, then ordinary mainreturn is observed. No endpoint reversal/endstop was observed.",
+    "uncertainties": [
+      "Per8-decision capture cannot establish exact nativeframe of offscreenplatform removal or support loss.",
+      "Disappearance cannot distinguish offscreenculling fromdespawn.",
+      "Post-camera-clamp worldmotion onlyhas qualified extrapolation from measured1px/native speed; raw visiblepositions are independently exact.",
+      "This is source evidence, not a recreationgameplay pass."
+    ]
+  },
+  "rightBoundaryEvidence": {
+    "lastSupportedSample": {
+      "sequence": 550,
+      "tick": 3217,
+      "exactUniqueOpaquePlayer": {
+        "originX": 240,
+        "feetY": 160,
+        "visibleLeft": 242,
+        "visibleRight": 253,
+        "opaquePixels": 143
+      },
+      "platform": {
+        "screenX": 211,
+        "artworkY": 161,
+        "visibleWidth": 45,
+        "matchedOpaquePixels": 294
+      }
+    },
+    "firstFallingSample": {
+      "sequence": 551,
+      "tick": 3225,
+      "exactUniqueOpaquePlayer": {
+        "originX": 239,
+        "feetY": 210,
+        "visibleLeft": 241,
+        "visibleRight": 253,
+        "opaquePixels": 120
+      }
+    },
+    "cameraInference": {
+      "cameraX": 1248,
+      "sourceRoom": "data/three-one-optional.json destination",
+      "lastMappedFloorTile": [
+        82,
+        13,
+        136
+      ],
+      "lastExactFloorTileScreenX": 64,
+      "mappedFloorEnd": 1328,
+      "observedFloorEndScreenX": 80,
+      "status": "Image-inferred absolutecamera anchored to independently observed staticfloor endpoint and exactsuppliedfloor phase, agreeing with separate1px motion extrapolation."
+    },
+    "worldOriginAtLastSupport": [
+      1488,
+      160
+    ],
+    "normalRightScreenBoundCandidate": 239,
+    "carryOrderingCandidate": "Observed240 while supported and239 afterleave is consistent with normal239 bound appliedbefore1px platformcarry. Exact update order remains inferred;240 aftercarry differsby1pixel."
+  }
+}

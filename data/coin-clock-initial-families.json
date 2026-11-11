@@ -1,0 +1,5485 @@
+{
+  "createdUtc": "2026-11-06T08:54:14.608Z",
+  "sourcePacket": {
+    "file": "evidence/three-two-coin-packet.json",
+    "sha256": "590c1977cbb4f979f6ce968d1d0c2a366a5d1cd97469c54d5815628acdb710d2"
+  },
+  "sourceFit": {
+    "file": "evidence/three-two-coin-phase-fit-final.json",
+    "sha256": "ff15e5d79eb40096846d7e525b87016107a89d8aeb2f519b4a0fa5a57fe1544d"
+  },
+  "toolSha256": "bf8fa4981eff9685bdf4d55ea77b661827a55915a3a548609e6bfb320ddeea22",
+  "bounds": {
+    "period": [
+      1,
+      32
+    ],
+    "count": [
+      1,
+      32
+    ],
+    "periodTimesCount": [
+      170,
+      250
+    ],
+    "firstOffset": [
+      0,
+      6
+    ],
+    "repeatOffset": [
+      0,
+      6
+    ]
+  },
+  "models": [
+    {
+      "id": "16/13/0/0/6",
+      "period": 16,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "16/13/0/1/6",
+      "period": 16,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "16/13/1/0/5",
+      "period": 16,
+      "count": 13,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "16/14/6/6/0",
+      "period": 16,
+      "count": 14,
+      "phase": 6,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/0/4/0",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/0/4/1",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "17/13/0/5/0",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/0/5/1",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "17/13/0/6/0",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/0/6/1",
+      "period": 17,
+      "count": 13,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "17/13/1/3/0",
+      "period": 17,
+      "count": 13,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/1/4/0",
+      "period": 17,
+      "count": 13,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/1/5/0",
+      "period": 17,
+      "count": 13,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/1/6/0",
+      "period": 17,
+      "count": 13,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "17/13/15/6/2",
+      "period": 17,
+      "count": 13,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "17/13/15/6/3",
+      "period": 17,
+      "count": 13,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "17/13/16/5/1",
+      "period": 17,
+      "count": 13,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "17/13/16/5/2",
+      "period": 17,
+      "count": 13,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "17/13/16/6/1",
+      "period": 17,
+      "count": 13,
+      "phase": 16,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "17/13/16/6/2",
+      "period": 17,
+      "count": 13,
+      "phase": 16,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/4/6/6",
+      "period": 18,
+      "count": 12,
+      "phase": 4,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "18/12/5/5/5",
+      "period": 18,
+      "count": 12,
+      "phase": 5,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/5/5/6",
+      "period": 18,
+      "count": 12,
+      "phase": 5,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "18/12/5/6/5",
+      "period": 18,
+      "count": 12,
+      "phase": 5,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/5/6/6",
+      "period": 18,
+      "count": 12,
+      "phase": 5,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "18/12/6/4/4",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/6/4/5",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/6/4/6",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "18/12/6/5/4",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/6/5/5",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/6/5/6",
+      "period": 18,
+      "count": 12,
+      "phase": 6,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "18/12/7/3/3",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/7/3/4",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/7/3/5",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/7/4/3",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/7/4/4",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/7/4/5",
+      "period": 18,
+      "count": 12,
+      "phase": 7,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "18/12/8/2/2",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/8/2/3",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/8/2/4",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/8/3/2",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/8/3/3",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/8/3/4",
+      "period": 18,
+      "count": 12,
+      "phase": 8,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "18/12/9/1/1",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "18/12/9/1/2",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/9/1/3",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/9/2/1",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "18/12/9/2/2",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/9/2/3",
+      "period": 18,
+      "count": 12,
+      "phase": 9,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "18/12/10/0/0",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "18/12/10/0/1",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "18/12/10/0/2",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/10/1/0",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "18/12/10/1/1",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "18/12/10/1/2",
+      "period": 18,
+      "count": 12,
+      "phase": 10,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "18/12/11/0/0",
+      "period": 18,
+      "count": 12,
+      "phase": 11,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "18/12/11/0/1",
+      "period": 18,
+      "count": 12,
+      "phase": 11,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/10/6/3",
+      "period": 20,
+      "count": 11,
+      "phase": 10,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "20/11/10/6/4",
+      "period": 20,
+      "count": 11,
+      "phase": 10,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "20/11/11/5/2",
+      "period": 20,
+      "count": 11,
+      "phase": 11,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "20/11/11/5/3",
+      "period": 20,
+      "count": 11,
+      "phase": 11,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "20/11/11/6/2",
+      "period": 20,
+      "count": 11,
+      "phase": 11,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "20/11/11/6/3",
+      "period": 20,
+      "count": 11,
+      "phase": 11,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "20/11/12/4/1",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/12/4/2",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "20/11/12/5/1",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/12/5/2",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "20/11/12/6/1",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/12/6/2",
+      "period": 20,
+      "count": 11,
+      "phase": 12,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "20/11/13/3/0",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/13/3/1",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/13/4/0",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/13/4/1",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/13/5/0",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/13/5/1",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/13/6/0",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/13/6/1",
+      "period": 20,
+      "count": 11,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "20/11/14/2/0",
+      "period": 20,
+      "count": 11,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/14/3/0",
+      "period": 20,
+      "count": 11,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/14/4/0",
+      "period": 20,
+      "count": 11,
+      "phase": 14,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/14/5/0",
+      "period": 20,
+      "count": 11,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "20/11/14/6/0",
+      "period": 20,
+      "count": 11,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/9/1/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/9/2/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/9/3/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/9/4/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/9/5/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/9/6/6",
+      "period": 21,
+      "count": 10,
+      "phase": 9,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/0/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/0/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/1/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/1/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/2/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/2/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/3/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/3/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/4/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/4/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/5/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/5/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/10/6/5",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/10/6/6",
+      "period": 21,
+      "count": 10,
+      "phase": 10,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/0/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/0/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/0/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/1/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/1/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/1/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/2/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/2/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/2/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/3/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/3/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/3/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/4/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/4/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/4/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/5/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/5/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/5/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/11/6/4",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/11/6/5",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/11/6/6",
+      "period": 21,
+      "count": 10,
+      "phase": 11,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/0/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/0/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/0/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/0/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/1/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/1/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/1/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/1/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/2/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/2/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/2/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/2/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/3/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/3/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/3/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/3/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/4/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/4/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/4/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/4/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/12/5/3",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/12/5/4",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/12/5/5",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/12/5/6",
+      "period": 21,
+      "count": 10,
+      "phase": 12,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "21/10/13/0/2",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/13/0/3",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/13/0/4",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/13/0/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/1/2",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/13/1/3",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/13/1/4",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/13/1/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/2/2",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/13/2/3",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/13/2/4",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/13/2/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/3/2",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/13/3/3",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/13/3/4",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/13/3/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/13/4/2",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/13/4/3",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/13/4/4",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/13/4/5",
+      "period": 21,
+      "count": 10,
+      "phase": 13,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "21/10/14/0/1",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/14/0/2",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/14/0/3",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/14/0/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/14/1/1",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/14/1/2",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/14/1/3",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/14/1/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/14/2/1",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/14/2/2",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/14/2/3",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/14/2/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/14/3/1",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/14/3/2",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/14/3/3",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/14/3/4",
+      "period": 21,
+      "count": 10,
+      "phase": 14,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "21/10/15/0/0",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/15/0/1",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/15/0/2",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/15/0/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/15/1/0",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/15/1/1",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/15/1/2",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/15/1/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/15/2/0",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/15/2/1",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/15/2/2",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/15/2/3",
+      "period": 21,
+      "count": 10,
+      "phase": 15,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "21/10/16/0/0",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/16/0/1",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/16/0/2",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/16/1/0",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/16/1/1",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "21/10/16/1/2",
+      "period": 21,
+      "count": 10,
+      "phase": 16,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "21/10/17/0/0",
+      "period": 21,
+      "count": 10,
+      "phase": 17,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "21/10/17/0/1",
+      "period": 21,
+      "count": 10,
+      "phase": 17,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/2/6/0",
+      "period": 22,
+      "count": 10,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/2/6/1",
+      "period": 22,
+      "count": 10,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/2/6/2",
+      "period": 22,
+      "count": 10,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/2/6/3",
+      "period": 22,
+      "count": 10,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "22/10/2/6/4",
+      "period": 22,
+      "count": 10,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "22/10/3/5/0",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/3/5/1",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/3/5/2",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/3/5/3",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "22/10/3/6/0",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/3/6/1",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/3/6/2",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/3/6/3",
+      "period": 22,
+      "count": 10,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "22/10/4/4/0",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/4/4/1",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/4/4/2",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/4/5/0",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/4/5/1",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/4/5/2",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/4/6/0",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/4/6/1",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/4/6/2",
+      "period": 22,
+      "count": 10,
+      "phase": 4,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "22/10/5/3/0",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/5/3/1",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/5/4/0",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/5/4/1",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/5/5/0",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/5/5/1",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/5/6/0",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/5/6/1",
+      "period": 22,
+      "count": 10,
+      "phase": 5,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "22/10/6/2/0",
+      "period": 22,
+      "count": 10,
+      "phase": 6,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/6/3/0",
+      "period": 22,
+      "count": 10,
+      "phase": 6,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/6/4/0",
+      "period": 22,
+      "count": 10,
+      "phase": 6,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/6/5/0",
+      "period": 22,
+      "count": 10,
+      "phase": 6,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "22/10/6/6/0",
+      "period": 22,
+      "count": 10,
+      "phase": 6,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "23/9/0/0/0",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "23/9/0/0/1",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/0/0/2",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/0/0/3",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/0/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/0/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/0/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/0/1/0",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "23/9/0/1/1",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/0/1/2",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/0/1/3",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/0/1/4",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/0/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/0/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/1/0/0",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "23/9/1/0/1",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/1/0/2",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/1/0/3",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/1/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/1/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/17/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/17/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/17/3/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/17/4/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/17/5/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/17/6/6",
+      "period": 23,
+      "count": 9,
+      "phase": 17,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/2/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/3/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/3/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/4/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/4/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/5/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/5/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/18/6/5",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/18/6/6",
+      "period": 23,
+      "count": 9,
+      "phase": 18,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/1/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/2/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/2/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/3/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/3/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/3/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/4/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/4/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/4/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/19/5/4",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/19/5/5",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/19/5/6",
+      "period": 23,
+      "count": 9,
+      "phase": 19,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/20/0/3",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/20/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/20/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/20/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/20/1/3",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/20/1/4",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/20/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/20/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/20/2/3",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/20/2/4",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/20/2/5",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/20/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/20/3/3",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/20/3/4",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/20/3/5",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/20/3/6",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/20/4/3",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/20/4/4",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/20/4/5",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/20/4/6",
+      "period": 23,
+      "count": 9,
+      "phase": 20,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/21/0/2",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/21/0/3",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/21/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/21/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/21/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/21/1/2",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/21/1/3",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/21/1/4",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/21/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/21/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/21/2/2",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/21/2/3",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/21/2/4",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/21/2/5",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/21/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/21/3/2",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/21/3/3",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/21/3/4",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/21/3/5",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/21/3/6",
+      "period": 23,
+      "count": 9,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/22/0/1",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/22/0/2",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/22/0/3",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/22/0/4",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/22/0/5",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/22/0/6",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/22/1/1",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/22/1/2",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/22/1/3",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/22/1/4",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/22/1/5",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/22/1/6",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "23/9/22/2/1",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "23/9/22/2/2",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "23/9/22/2/3",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "23/9/22/2/4",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "23/9/22/2/5",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "23/9/22/2/6",
+      "period": 23,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/0/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/0/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/0/4/2",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/0/4/3",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/0/4/4",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/0/4/5",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/0/4/6",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/0/5/0",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/0/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/0/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/0/5/3",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/0/5/4",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/0/5/5",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/0/5/6",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/0/6/0",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/0/6/1",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/0/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/0/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/0/6/4",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/0/6/5",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/0/6/6",
+      "period": 24,
+      "count": 9,
+      "phase": 0,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/1/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/1/3/1",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/1/3/2",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/1/3/3",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/1/3/4",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/1/3/5",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/1/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/1/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/1/4/2",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/1/4/3",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/1/4/4",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/1/4/5",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/1/5/0",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/1/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/1/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/1/5/3",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/1/5/4",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/1/5/5",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/1/6/0",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/1/6/1",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/1/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/1/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/1/6/4",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/1/6/5",
+      "period": 24,
+      "count": 9,
+      "phase": 1,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/2/2/0",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/2/2/1",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/2/2/2",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/2/2/3",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/2/2/4",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/2/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/2/3/1",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/2/3/2",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/2/3/3",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/2/3/4",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/2/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/2/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/2/4/2",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/2/4/3",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/2/4/4",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/2/5/0",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/2/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/2/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/2/5/3",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/2/5/4",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/2/6/0",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/2/6/1",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/2/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/2/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/2/6/4",
+      "period": 24,
+      "count": 9,
+      "phase": 2,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/3/1/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/1/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/1/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/1/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/3/2/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/2/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/2/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/2/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/3/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/3/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/3/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/3/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/3/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/4/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/4/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/3/5/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/5/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/3/6/0",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/3/6/1",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/3/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/3/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 3,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/4/0/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/0/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/0/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/4/1/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/1/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/1/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/4/2/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/2/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/2/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/4/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/3/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/3/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/4/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/4/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/4/5/0",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/4/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/4/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 4,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/5/0/0",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/5/0/1",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/5/1/0",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/5/1/1",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/5/2/0",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/5/2/1",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/5/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/5/3/1",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/5/4/0",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/5/4/1",
+      "period": 24,
+      "count": 9,
+      "phase": 5,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/6/0/0",
+      "period": 24,
+      "count": 9,
+      "phase": 6,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/6/1/0",
+      "period": 24,
+      "count": 9,
+      "phase": 6,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/6/2/0",
+      "period": 24,
+      "count": 9,
+      "phase": 6,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/6/3/0",
+      "period": 24,
+      "count": 9,
+      "phase": 6,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "24/9/22/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/22/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/22/6/4",
+      "period": 24,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/22/6/5",
+      "period": 24,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/22/6/6",
+      "period": 24,
+      "count": 9,
+      "phase": 22,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/23/5/1",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/23/5/2",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/23/5/3",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/23/5/4",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/23/5/5",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/23/5/6",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "24/9/23/6/1",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "24/9/23/6/2",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "24/9/23/6/3",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "24/9/23/6/4",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "24/9/23/6/5",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "24/9/23/6/6",
+      "period": 24,
+      "count": 9,
+      "phase": 23,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/0/0/4",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/0/0/5",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/0/0/6",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/0/1/4",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/0/1/5",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/0/1/6",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/0/2/4",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/0/2/5",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/0/2/6",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/0/3/4",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/0/3/5",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/0/3/6",
+      "period": 26,
+      "count": 8,
+      "phase": 0,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/1/0/3",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/1/0/4",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/1/0/5",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/1/0/6",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/1/1/3",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/1/1/4",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/1/1/5",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/1/1/6",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/1/2/3",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/1/2/4",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/1/2/5",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/1/2/6",
+      "period": 26,
+      "count": 8,
+      "phase": 1,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/2/0/2",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "26/8/2/0/3",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/2/0/4",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/2/0/5",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/2/0/6",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/2/1/2",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "26/8/2/1/3",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/2/1/4",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 1,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/2/1/5",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/2/1/6",
+      "period": 26,
+      "count": 8,
+      "phase": 2,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/3/0/1",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "26/8/3/0/2",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "26/8/3/0/3",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 3
+    },
+    {
+      "id": "26/8/3/0/4",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 4
+    },
+    {
+      "id": "26/8/3/0/5",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/3/0/6",
+      "period": 26,
+      "count": 8,
+      "phase": 3,
+      "firstOffset": 0,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/24/2/6",
+      "period": 26,
+      "count": 8,
+      "phase": 24,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/24/3/6",
+      "period": 26,
+      "count": 8,
+      "phase": 24,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/24/4/6",
+      "period": 26,
+      "count": 8,
+      "phase": 24,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/24/5/6",
+      "period": 26,
+      "count": 8,
+      "phase": 24,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/25/1/5",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 1,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/25/1/6",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 1,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/25/2/5",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 2,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/25/2/6",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 2,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/25/3/5",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/25/3/6",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 3,
+      "repeatOffset": 6
+    },
+    {
+      "id": "26/8/25/4/5",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "26/8/25/4/6",
+      "period": 26,
+      "count": 8,
+      "phase": 25,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/13/6/2",
+      "period": 27,
+      "count": 8,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/13/6/3",
+      "period": 27,
+      "count": 8,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/13/6/4",
+      "period": 27,
+      "count": 8,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/13/6/5",
+      "period": 27,
+      "count": 8,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/13/6/6",
+      "period": 27,
+      "count": 8,
+      "phase": 13,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/14/5/1",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/14/5/2",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/14/5/3",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/14/5/4",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/14/5/5",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/14/5/6",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/14/6/1",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/14/6/2",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/14/6/3",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/14/6/4",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/14/6/5",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/14/6/6",
+      "period": 27,
+      "count": 8,
+      "phase": 14,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/15/4/0",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/15/4/1",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/15/4/2",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/15/4/3",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/15/4/4",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/15/4/5",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/15/4/6",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 4,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/15/5/0",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/15/5/1",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/15/5/2",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/15/5/3",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/15/5/4",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/15/5/5",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/15/5/6",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/15/6/0",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/15/6/1",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/15/6/2",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/15/6/3",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/15/6/4",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/15/6/5",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/15/6/6",
+      "period": 27,
+      "count": 8,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "27/8/16/3/0",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/16/3/1",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/16/3/2",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/16/3/3",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/16/3/4",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/16/3/5",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 3,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/16/4/0",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/16/4/1",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/16/4/2",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/16/4/3",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/16/4/4",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/16/4/5",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/16/5/0",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/16/5/1",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/16/5/2",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/16/5/3",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/16/5/4",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/16/5/5",
+      "period": 27,
+      "count": 8,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "27/8/17/2/0",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/17/2/1",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/17/2/2",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/17/2/3",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/17/2/4",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 2,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/17/3/0",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/17/3/1",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/17/3/2",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/17/3/3",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/17/3/4",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/17/4/0",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/17/4/1",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/17/4/2",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/17/4/3",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/17/4/4",
+      "period": 27,
+      "count": 8,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "27/8/18/1/0",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/18/1/1",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/18/1/2",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/18/1/3",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 1,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/18/2/0",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/18/2/1",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/18/2/2",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/18/2/3",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/18/3/0",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/18/3/1",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/18/3/2",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/18/3/3",
+      "period": 27,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "27/8/19/0/0",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/19/0/1",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/19/0/2",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 0,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/19/1/0",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/19/1/1",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/19/1/2",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/19/2/0",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/19/2/1",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/19/2/2",
+      "period": 27,
+      "count": 8,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "27/8/20/0/0",
+      "period": 27,
+      "count": 8,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/20/0/1",
+      "period": 27,
+      "count": 8,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/20/1/0",
+      "period": 27,
+      "count": 8,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "27/8/20/1/1",
+      "period": 27,
+      "count": 8,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "27/8/21/0/0",
+      "period": 27,
+      "count": 8,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "28/8/18/6/0",
+      "period": 28,
+      "count": 8,
+      "phase": 18,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/15/5/6",
+      "period": 31,
+      "count": 7,
+      "phase": 15,
+      "firstOffset": 5,
+      "repeatOffset": 6
+    },
+    {
+      "id": "31/7/15/6/6",
+      "period": 31,
+      "count": 7,
+      "phase": 15,
+      "firstOffset": 6,
+      "repeatOffset": 6
+    },
+    {
+      "id": "31/7/16/4/5",
+      "period": 31,
+      "count": 7,
+      "phase": 16,
+      "firstOffset": 4,
+      "repeatOffset": 5
+    },
+    {
+      "id": "31/7/16/5/5",
+      "period": 31,
+      "count": 7,
+      "phase": 16,
+      "firstOffset": 5,
+      "repeatOffset": 5
+    },
+    {
+      "id": "31/7/16/6/5",
+      "period": 31,
+      "count": 7,
+      "phase": 16,
+      "firstOffset": 6,
+      "repeatOffset": 5
+    },
+    {
+      "id": "31/7/17/3/4",
+      "period": 31,
+      "count": 7,
+      "phase": 17,
+      "firstOffset": 3,
+      "repeatOffset": 4
+    },
+    {
+      "id": "31/7/17/4/4",
+      "period": 31,
+      "count": 7,
+      "phase": 17,
+      "firstOffset": 4,
+      "repeatOffset": 4
+    },
+    {
+      "id": "31/7/17/5/4",
+      "period": 31,
+      "count": 7,
+      "phase": 17,
+      "firstOffset": 5,
+      "repeatOffset": 4
+    },
+    {
+      "id": "31/7/17/6/4",
+      "period": 31,
+      "count": 7,
+      "phase": 17,
+      "firstOffset": 6,
+      "repeatOffset": 4
+    },
+    {
+      "id": "31/7/18/2/3",
+      "period": 31,
+      "count": 7,
+      "phase": 18,
+      "firstOffset": 2,
+      "repeatOffset": 3
+    },
+    {
+      "id": "31/7/18/3/3",
+      "period": 31,
+      "count": 7,
+      "phase": 18,
+      "firstOffset": 3,
+      "repeatOffset": 3
+    },
+    {
+      "id": "31/7/18/4/3",
+      "period": 31,
+      "count": 7,
+      "phase": 18,
+      "firstOffset": 4,
+      "repeatOffset": 3
+    },
+    {
+      "id": "31/7/18/5/3",
+      "period": 31,
+      "count": 7,
+      "phase": 18,
+      "firstOffset": 5,
+      "repeatOffset": 3
+    },
+    {
+      "id": "31/7/18/6/3",
+      "period": 31,
+      "count": 7,
+      "phase": 18,
+      "firstOffset": 6,
+      "repeatOffset": 3
+    },
+    {
+      "id": "31/7/19/1/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 1,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/19/2/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 2,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/19/3/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 3,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/19/4/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 4,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/19/5/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 5,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/19/6/2",
+      "period": 31,
+      "count": 7,
+      "phase": 19,
+      "firstOffset": 6,
+      "repeatOffset": 2
+    },
+    {
+      "id": "31/7/20/0/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 0,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/1/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 1,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/2/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 2,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/3/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 3,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/4/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 4,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/5/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 5,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/20/6/1",
+      "period": 31,
+      "count": 7,
+      "phase": 20,
+      "firstOffset": 6,
+      "repeatOffset": 1
+    },
+    {
+      "id": "31/7/21/0/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 0,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/21/1/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 1,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/21/2/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 2,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/21/3/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 3,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/21/4/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 4,
+      "repeatOffset": 0
+    },
+    {
+      "id": "31/7/21/5/0",
+      "period": 31,
+      "count": 7,
+      "phase": 21,
+      "firstOffset": 5,
+      "repeatOffset": 0
+    },
+    {
+      "id": "32/7/6/6/0",
+      "period": 32,
+      "count": 7,
+      "phase": 6,
+      "firstOffset": 6,
+      "repeatOffset": 0
+    }
+  ],
+  "qualification": "681 original surviving hypotheses frozen. Further evidence may eliminate IDs only. No unique native period/count/epoch claim; offsets describe unobserved collision-to-image latency."
+}

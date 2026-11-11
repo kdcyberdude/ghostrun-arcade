@@ -1,0 +1,3175 @@
+{
+  "tolerancePixels": 2,
+  "method": "Exact reference applied input/native durations. Feet use sprite cell origin+31, independent of opaque pose bounds. Exact sprite-template detection can mistake enemies for Mario; ambiguous checkpoints require visual review.",
+  "pass": false,
+  "rows": [
+    {
+      "tick": 1,
+      "nativeFrame": 7,
+      "reference": {
+        "x": 40,
+        "y": 208,
+        "camera": 0,
+        "cell": 13
+      },
+      "remake": {
+        "x": 40,
+        "y": 208,
+        "camera": 0
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 2,
+      "nativeFrame": 15,
+      "reference": {
+        "x": 44,
+        "y": 208,
+        "camera": 0,
+        "cell": 14
+      },
+      "remake": {
+        "x": 44,
+        "y": 208,
+        "camera": 0
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 3,
+      "nativeFrame": 22,
+      "reference": {
+        "x": 51,
+        "y": 208,
+        "camera": 0,
+        "cell": 12
+      },
+      "remake": {
+        "x": 51,
+        "y": 208,
+        "camera": 0
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 4,
+      "nativeFrame": 30,
+      "reference": {
+        "x": 62,
+        "y": 208,
+        "camera": 0,
+        "cell": 14
+      },
+      "remake": {
+        "x": 62,
+        "y": 208,
+        "camera": 0
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 5,
+      "nativeFrame": 37,
+      "reference": {
+        "x": 74,
+        "y": 208,
+        "camera": 0,
+        "cell": 13
+      },
+      "remake": {
+        "x": 74,
+        "y": 208,
+        "camera": 0
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 6,
+      "nativeFrame": 45,
+      "reference": {
+        "x": 92,
+        "y": 208,
+        "camera": 7,
+        "cell": 14
+      },
+      "remake": {
+        "x": 92,
+        "y": 208,
+        "camera": 8
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 7,
+      "nativeFrame": 52,
+      "reference": {
+        "x": 109,
+        "y": 208,
+        "camera": 17,
+        "cell": 14
+      },
+      "remake": {
+        "x": 109,
+        "y": 208,
+        "camera": 18
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 8,
+      "nativeFrame": 60,
+      "reference": {
+        "x": 129,
+        "y": 208,
+        "camera": 29,
+        "cell": 12
+      },
+      "remake": {
+        "x": 129,
+        "y": 208,
+        "camera": 30
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 9,
+      "nativeFrame": 67,
+      "reference": {
+        "x": 147,
+        "y": 208,
+        "camera": 40,
+        "cell": 13
+      },
+      "remake": {
+        "x": 146,
+        "y": 208,
+        "camera": 40
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 10,
+      "nativeFrame": 75,
+      "reference": {
+        "x": 167,
+        "y": 208,
+        "camera": 55,
+        "cell": 14
+      },
+      "remake": {
+        "x": 166,
+        "y": 208,
+        "camera": 54
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 11,
+      "nativeFrame": 82,
+      "reference": {
+        "x": 184,
+        "y": 208,
+        "camera": 72,
+        "cell": 14
+      },
+      "remake": {
+        "x": 184,
+        "y": 208,
+        "camera": 72
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 12,
+      "nativeFrame": 90,
+      "reference": {
+        "x": 204,
+        "y": 208,
+        "camera": 92,
+        "cell": 12
+      },
+      "remake": {
+        "x": 204,
+        "y": 208,
+        "camera": 92
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 13,
+      "nativeFrame": 97,
+      "reference": {
+        "x": 222,
+        "y": 208,
+        "camera": 110,
+        "cell": 13
+      },
+      "remake": {
+        "x": 221,
+        "y": 208,
+        "camera": 109
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 14,
+      "nativeFrame": 105,
+      "reference": {
+        "x": 242,
+        "y": 208,
+        "camera": 130,
+        "cell": 14
+      },
+      "remake": {
+        "x": 241,
+        "y": 208,
+        "camera": 129
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 15,
+      "nativeFrame": 112,
+      "reference": {
+        "x": 259,
+        "y": 208,
+        "camera": 147,
+        "cell": 14
+      },
+      "remake": {
+        "x": 259,
+        "y": 208,
+        "camera": 147
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 16,
+      "nativeFrame": 120,
+      "reference": {
+        "x": 279,
+        "y": 208,
+        "camera": 167,
+        "cell": 12
+      },
+      "remake": {
+        "x": 279,
+        "y": 208,
+        "camera": 167
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 17,
+      "nativeFrame": 127,
+      "reference": {
+        "x": 297,
+        "y": 208,
+        "camera": 185,
+        "cell": 13
+      },
+      "remake": {
+        "x": 296,
+        "y": 208,
+        "camera": 184
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 18,
+      "nativeFrame": 135,
+      "reference": {
+        "x": 317,
+        "y": 180,
+        "camera": 205,
+        "cell": 16
+      },
+      "remake": {
+        "x": 316,
+        "y": 180,
+        "camera": 204
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 19,
+      "nativeFrame": 142,
+      "reference": {
+        "x": 334,
+        "y": 179,
+        "camera": 222,
+        "cell": 16
+      },
+      "remake": {
+        "x": 334,
+        "y": 178,
+        "camera": 222
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 0
+    },
+    {
+      "tick": 20,
+      "nativeFrame": 150,
+      "reference": {
+        "x": 354,
+        "y": 208,
+        "camera": 242,
+        "cell": 12
+      },
+      "remake": {
+        "x": 354,
+        "y": 208,
+        "camera": 242
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 21,
+      "nativeFrame": 157,
+      "reference": {
+        "x": 372,
+        "y": 208,
+        "camera": 260,
+        "cell": 13
+      },
+      "remake": {
+        "x": 371,
+        "y": 208,
+        "camera": 259
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 22,
+      "nativeFrame": 165,
+      "reference": {
+        "x": 392,
+        "y": 180,
+        "camera": 280,
+        "cell": 16
+      },
+      "remake": {
+        "x": 391,
+        "y": 180,
+        "camera": 279
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 23,
+      "nativeFrame": 172,
+      "reference": {
+        "x": 409,
+        "y": 155,
+        "camera": 297,
+        "cell": 16
+      },
+      "remake": {
+        "x": 409,
+        "y": 155,
+        "camera": 297
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 24,
+      "nativeFrame": 180,
+      "reference": {
+        "x": 429,
+        "y": 135,
+        "camera": 317,
+        "cell": 16
+      },
+      "remake": {
+        "x": 429,
+        "y": 135,
+        "camera": 317
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 25,
+      "nativeFrame": 187,
+      "reference": {
+        "x": 447,
+        "y": 131,
+        "camera": 335,
+        "cell": 16
+      },
+      "remake": {
+        "x": 446,
+        "y": 131,
+        "camera": 334
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 26,
+      "nativeFrame": 195,
+      "reference": {
+        "x": 467,
+        "y": 156,
+        "camera": 355,
+        "cell": 16
+      },
+      "remake": {
+        "x": 466,
+        "y": 155,
+        "camera": 354
+      },
+      "dx": -1,
+      "dy": -1,
+      "cameraError": -1
+    },
+    {
+      "tick": 27,
+      "nativeFrame": 202,
+      "reference": {
+        "x": 484,
+        "y": 184,
+        "camera": 372,
+        "cell": 16
+      },
+      "remake": {
+        "x": 484,
+        "y": 183,
+        "camera": 372
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 0
+    },
+    {
+      "tick": 28,
+      "nativeFrame": 210,
+      "reference": {
+        "x": 504,
+        "y": 208,
+        "camera": 392,
+        "cell": 13
+      },
+      "remake": {
+        "x": 504,
+        "y": 208,
+        "camera": 392
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 29,
+      "nativeFrame": 217,
+      "reference": {
+        "x": 522,
+        "y": 208,
+        "camera": 410,
+        "cell": 14
+      },
+      "remake": {
+        "x": 521,
+        "y": 208,
+        "camera": 409
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 30,
+      "nativeFrame": 225,
+      "reference": {
+        "x": 542,
+        "y": 208,
+        "camera": 430,
+        "cell": 12
+      },
+      "remake": {
+        "x": 541,
+        "y": 208,
+        "camera": 429
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 31,
+      "nativeFrame": 232,
+      "reference": {
+        "x": 559,
+        "y": 208,
+        "camera": 447,
+        "cell": 12
+      },
+      "remake": {
+        "x": 559,
+        "y": 208,
+        "camera": 447
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 32,
+      "nativeFrame": 240,
+      "reference": {
+        "x": 579,
+        "y": 208,
+        "camera": 467,
+        "cell": 13
+      },
+      "remake": {
+        "x": 579,
+        "y": 208,
+        "camera": 467
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 33,
+      "nativeFrame": 247,
+      "reference": {
+        "x": 596,
+        "y": 184,
+        "camera": 485,
+        "cell": 16
+      },
+      "remake": {
+        "x": 595,
+        "y": 184,
+        "camera": 483
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": -2
+    },
+    {
+      "tick": 34,
+      "nativeFrame": 255,
+      "reference": {
+        "x": 594,
+        "y": 161,
+        "camera": 485,
+        "cell": 16
+      },
+      "remake": {
+        "x": 595,
+        "y": 161,
+        "camera": 483
+      },
+      "dx": 1,
+      "dy": 0,
+      "cameraError": -2
+    },
+    {
+      "tick": 35,
+      "nativeFrame": 262,
+      "reference": {
+        "x": 598,
+        "y": 160,
+        "camera": 485,
+        "cell": 14
+      },
+      "remake": {
+        "x": 598,
+        "y": 160,
+        "camera": 486
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 36,
+      "nativeFrame": 270,
+      "reference": {
+        "x": 605,
+        "y": 160,
+        "camera": 491,
+        "cell": 12
+      },
+      "remake": {
+        "x": 605,
+        "y": 160,
+        "camera": 493
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 37,
+      "nativeFrame": 277,
+      "reference": {
+        "x": 614,
+        "y": 160,
+        "camera": 500,
+        "cell": 14
+      },
+      "remake": {
+        "x": 614,
+        "y": 160,
+        "camera": 502
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 38,
+      "nativeFrame": 285,
+      "reference": {
+        "x": 627,
+        "y": 132,
+        "camera": 513,
+        "cell": 16
+      },
+      "remake": {
+        "x": 627,
+        "y": 132,
+        "camera": 515
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 39,
+      "nativeFrame": 292,
+      "reference": {
+        "x": 642,
+        "y": 107,
+        "camera": 528,
+        "cell": 16
+      },
+      "remake": {
+        "x": 642,
+        "y": 107,
+        "camera": 530
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 40,
+      "nativeFrame": 300,
+      "reference": {
+        "x": 662,
+        "y": 87,
+        "camera": 548,
+        "cell": 16
+      },
+      "remake": {
+        "x": 662,
+        "y": 87,
+        "camera": 550
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 41,
+      "nativeFrame": 308,
+      "reference": {
+        "x": 682,
+        "y": 84,
+        "camera": 568,
+        "cell": 16
+      },
+      "remake": {
+        "x": 682,
+        "y": 84,
+        "camera": 570
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 42,
+      "nativeFrame": 315,
+      "reference": {
+        "x": 699,
+        "y": 108,
+        "camera": 585,
+        "cell": 16
+      },
+      "remake": {
+        "x": 699,
+        "y": 107,
+        "camera": 587
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 43,
+      "nativeFrame": 323,
+      "reference": {
+        "x": 719,
+        "y": 140,
+        "camera": 605,
+        "cell": 16
+      },
+      "remake": {
+        "x": 719,
+        "y": 139,
+        "camera": 607
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 44,
+      "nativeFrame": 330,
+      "reference": {
+        "x": 737,
+        "y": 144,
+        "camera": 623,
+        "cell": 14
+      },
+      "remake": {
+        "x": 737,
+        "y": 144,
+        "camera": 625
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 45,
+      "nativeFrame": 338,
+      "reference": {
+        "x": 757,
+        "y": 144,
+        "camera": 643,
+        "cell": 12
+      },
+      "remake": {
+        "x": 757,
+        "y": 144,
+        "camera": 645
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 46,
+      "nativeFrame": 345,
+      "reference": {
+        "x": 774,
+        "y": 120,
+        "camera": 660,
+        "cell": 16
+      },
+      "remake": {
+        "x": 774,
+        "y": 120,
+        "camera": 662
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 47,
+      "nativeFrame": 353,
+      "reference": {
+        "x": 794,
+        "y": 91,
+        "camera": 680,
+        "cell": 16
+      },
+      "remake": {
+        "x": 794,
+        "y": 91,
+        "camera": 682
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 48,
+      "nativeFrame": 360,
+      "reference": {
+        "x": 812,
+        "y": 73,
+        "camera": 698,
+        "cell": 16
+      },
+      "remake": {
+        "x": 812,
+        "y": 73,
+        "camera": 700
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 49,
+      "nativeFrame": 368,
+      "reference": {
+        "x": 832,
+        "y": 63,
+        "camera": 718,
+        "cell": 16
+      },
+      "remake": {
+        "x": 832,
+        "y": 63,
+        "camera": 720
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 50,
+      "nativeFrame": 375,
+      "reference": {
+        "x": 849,
+        "y": 63,
+        "camera": 735,
+        "cell": 16
+      },
+      "remake": {
+        "x": 849,
+        "y": 63,
+        "camera": 737
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 51,
+      "nativeFrame": 383,
+      "reference": {
+        "x": 869,
+        "y": 89,
+        "camera": 755,
+        "cell": 16
+      },
+      "remake": {
+        "x": 869,
+        "y": 89,
+        "camera": 757
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 52,
+      "nativeFrame": 390,
+      "reference": {
+        "x": 887,
+        "y": 117,
+        "camera": 773,
+        "cell": 16
+      },
+      "remake": {
+        "x": 887,
+        "y": 117,
+        "camera": 775
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 53,
+      "nativeFrame": 398,
+      "reference": {
+        "x": 907,
+        "y": 144,
+        "camera": 793,
+        "cell": 13
+      },
+      "remake": {
+        "x": 907,
+        "y": 144,
+        "camera": 795
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 54,
+      "nativeFrame": 405,
+      "reference": {
+        "x": 924,
+        "y": 144,
+        "camera": 810,
+        "cell": 13
+      },
+      "remake": {
+        "x": 924,
+        "y": 144,
+        "camera": 812
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 55,
+      "nativeFrame": 413,
+      "reference": {
+        "x": 944,
+        "y": 144,
+        "camera": 830,
+        "cell": 14
+      },
+      "remake": {
+        "x": 944,
+        "y": 144,
+        "camera": 832
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 56,
+      "nativeFrame": 420,
+      "reference": {
+        "x": 962,
+        "y": 160,
+        "camera": 848,
+        "cell": 14
+      },
+      "remake": {
+        "x": 962,
+        "y": 159,
+        "camera": 850
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 57,
+      "nativeFrame": 428,
+      "reference": {
+        "x": 982,
+        "y": 192,
+        "camera": 868,
+        "cell": 14
+      },
+      "remake": {
+        "x": 982,
+        "y": 192,
+        "camera": 870
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 58,
+      "nativeFrame": 435,
+      "reference": {
+        "x": 999,
+        "y": 208,
+        "camera": 885,
+        "cell": 13
+      },
+      "remake": {
+        "x": 999,
+        "y": 208,
+        "camera": 887
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 59,
+      "nativeFrame": 443,
+      "reference": {
+        "x": 1019,
+        "y": 208,
+        "camera": 905,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1019,
+        "y": 208,
+        "camera": 907
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 60,
+      "nativeFrame": 450,
+      "reference": {
+        "x": 1037,
+        "y": 208,
+        "camera": 923,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1037,
+        "y": 208,
+        "camera": 925
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 61,
+      "nativeFrame": 458,
+      "reference": {
+        "x": 1057,
+        "y": 180,
+        "camera": 943,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1057,
+        "y": 180,
+        "camera": 945
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 62,
+      "nativeFrame": 465,
+      "reference": {
+        "x": 1074,
+        "y": 155,
+        "camera": 960,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1074,
+        "y": 155,
+        "camera": 962
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 63,
+      "nativeFrame": 473,
+      "reference": {
+        "x": 1094,
+        "y": 135,
+        "camera": 980,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1094,
+        "y": 135,
+        "camera": 982
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 64,
+      "nativeFrame": 480,
+      "reference": {
+        "x": 1112,
+        "y": 127,
+        "camera": 998,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1112,
+        "y": 127,
+        "camera": 1000
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 65,
+      "nativeFrame": 488,
+      "reference": {
+        "x": 1132,
+        "y": 132,
+        "camera": 1018,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1132,
+        "y": 132,
+        "camera": 1020
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 66,
+      "nativeFrame": 495,
+      "reference": {
+        "x": 1149,
+        "y": 159,
+        "camera": 1035,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1149,
+        "y": 159,
+        "camera": 1037
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 67,
+      "nativeFrame": 503,
+      "reference": {
+        "x": 1169,
+        "y": 191,
+        "camera": 1055,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1169,
+        "y": 191,
+        "camera": 1057
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 68,
+      "nativeFrame": 510,
+      "reference": {
+        "x": 1187,
+        "y": 208,
+        "camera": 1073,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1187,
+        "y": 208,
+        "camera": 1075
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 69,
+      "nativeFrame": 518,
+      "reference": {
+        "x": 1207,
+        "y": 208,
+        "camera": 1093,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1207,
+        "y": 208,
+        "camera": 1095
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 70,
+      "nativeFrame": 525,
+      "reference": {
+        "x": 1224,
+        "y": 208,
+        "camera": 1110,
+        "cell": 12
+      },
+      "remake": {
+        "x": 1224,
+        "y": 208,
+        "camera": 1112
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 71,
+      "nativeFrame": 533,
+      "reference": {
+        "x": 1244,
+        "y": 208,
+        "camera": 1130,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1244,
+        "y": 208,
+        "camera": 1132
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 72,
+      "nativeFrame": 540,
+      "reference": {
+        "x": 1262,
+        "y": 208,
+        "camera": 1148,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1262,
+        "y": 208,
+        "camera": 1150
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 73,
+      "nativeFrame": 548,
+      "reference": {
+        "x": 1282,
+        "y": 208,
+        "camera": 1168,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1282,
+        "y": 208,
+        "camera": 1170
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 74,
+      "nativeFrame": 555,
+      "reference": {
+        "x": 1299,
+        "y": 208,
+        "camera": 1185,
+        "cell": 12
+      },
+      "remake": {
+        "x": 1299,
+        "y": 208,
+        "camera": 1187
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 75,
+      "nativeFrame": 563,
+      "reference": {
+        "x": 1319,
+        "y": 208,
+        "camera": 1205,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1319,
+        "y": 208,
+        "camera": 1207
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 76,
+      "nativeFrame": 570,
+      "reference": {
+        "x": 1337,
+        "y": 208,
+        "camera": 1223,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1337,
+        "y": 208,
+        "camera": 1225
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 77,
+      "nativeFrame": 578,
+      "reference": {
+        "x": 1357,
+        "y": 180,
+        "camera": 1243,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1357,
+        "y": 180,
+        "camera": 1245
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 78,
+      "nativeFrame": 585,
+      "reference": {
+        "x": 1374,
+        "y": 155,
+        "camera": 1260,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1374,
+        "y": 155,
+        "camera": 1262
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 79,
+      "nativeFrame": 593,
+      "reference": {
+        "x": 1394,
+        "y": 135,
+        "camera": 1280,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1394,
+        "y": 135,
+        "camera": 1282
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 80,
+      "nativeFrame": 600,
+      "reference": {
+        "x": 1412,
+        "y": 127,
+        "camera": 1298,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1412,
+        "y": 127,
+        "camera": 1300
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 81,
+      "nativeFrame": 608,
+      "reference": {
+        "x": 1432,
+        "y": 132,
+        "camera": 1318,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1432,
+        "y": 132,
+        "camera": 1320
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 82,
+      "nativeFrame": 616,
+      "reference": {
+        "x": 1452,
+        "y": 163,
+        "camera": 1338,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1452,
+        "y": 163,
+        "camera": 1340
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 83,
+      "nativeFrame": 623,
+      "reference": {
+        "x": 1469,
+        "y": 191,
+        "camera": 1355,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1469,
+        "y": 191,
+        "camera": 1357
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 84,
+      "nativeFrame": 631,
+      "reference": {
+        "x": 1489,
+        "y": 208,
+        "camera": 1375,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1489,
+        "y": 208,
+        "camera": 1377
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 85,
+      "nativeFrame": 638,
+      "reference": {
+        "x": 1507,
+        "y": 184,
+        "camera": 1393,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1507,
+        "y": 184,
+        "camera": 1395
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 86,
+      "nativeFrame": 646,
+      "reference": {
+        "x": 1527,
+        "y": 155,
+        "camera": 1413,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1527,
+        "y": 155,
+        "camera": 1415
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 87,
+      "nativeFrame": 653,
+      "reference": {
+        "x": 1544,
+        "y": 137,
+        "camera": 1430,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1544,
+        "y": 137,
+        "camera": 1432
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 88,
+      "nativeFrame": 661,
+      "reference": {
+        "x": 1564,
+        "y": 127,
+        "camera": 1450,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1564,
+        "y": 127,
+        "camera": 1452
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 89,
+      "nativeFrame": 668,
+      "reference": {
+        "x": 1582,
+        "y": 130,
+        "camera": 1468,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1582,
+        "y": 130,
+        "camera": 1470
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 90,
+      "nativeFrame": 676,
+      "reference": {
+        "x": 1602,
+        "y": 144,
+        "camera": 1488,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1602,
+        "y": 144,
+        "camera": 1490
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 91,
+      "nativeFrame": 683,
+      "reference": {
+        "x": 1619,
+        "y": 144,
+        "camera": 1505,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1619,
+        "y": 144,
+        "camera": 1507
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 92,
+      "nativeFrame": 691,
+      "reference": {
+        "x": 1639,
+        "y": 147,
+        "camera": 1525,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1639,
+        "y": 148,
+        "camera": 1527
+      },
+      "dx": 0,
+      "dy": 1,
+      "cameraError": 2
+    },
+    {
+      "tick": 93,
+      "nativeFrame": 698,
+      "reference": {
+        "x": 1657,
+        "y": 172,
+        "camera": 1543,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1657,
+        "y": 171,
+        "camera": 1545
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 94,
+      "nativeFrame": 706,
+      "reference": {
+        "x": 1677,
+        "y": 204,
+        "camera": 1563,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1677,
+        "y": 204,
+        "camera": 1565
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 95,
+      "nativeFrame": 713,
+      "reference": {
+        "x": 1694,
+        "y": 187,
+        "camera": 1580,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1694,
+        "y": 188,
+        "camera": 1582
+      },
+      "dx": 0,
+      "dy": 1,
+      "cameraError": 2
+    },
+    {
+      "tick": 96,
+      "nativeFrame": 721,
+      "reference": {
+        "x": 1714,
+        "y": 203,
+        "camera": 1600,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1714,
+        "y": 204,
+        "camera": 1602
+      },
+      "dx": 0,
+      "dy": 1,
+      "cameraError": 2
+    },
+    {
+      "tick": 97,
+      "nativeFrame": 728,
+      "reference": {
+        "x": 1732,
+        "y": 208,
+        "camera": 1618,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1732,
+        "y": 208,
+        "camera": 1620
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 98,
+      "nativeFrame": 736,
+      "reference": {
+        "x": 1752,
+        "y": 180,
+        "camera": 1638,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1752,
+        "y": 180,
+        "camera": 1640
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 99,
+      "nativeFrame": 743,
+      "reference": {
+        "x": 1769,
+        "y": 155,
+        "camera": 1655,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1769,
+        "y": 155,
+        "camera": 1657
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 100,
+      "nativeFrame": 751,
+      "reference": {
+        "x": 1789,
+        "y": 135,
+        "camera": 1675,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1789,
+        "y": 135,
+        "camera": 1677
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 101,
+      "nativeFrame": 758,
+      "reference": {
+        "x": 1807,
+        "y": 131,
+        "camera": 1693,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1807,
+        "y": 131,
+        "camera": 1695
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 102,
+      "nativeFrame": 766,
+      "reference": {
+        "x": 1827,
+        "y": 156,
+        "camera": 1713,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1827,
+        "y": 155,
+        "camera": 1715
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 103,
+      "nativeFrame": 773,
+      "reference": {
+        "x": 1844,
+        "y": 184,
+        "camera": 1730,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1844,
+        "y": 183,
+        "camera": 1732
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 104,
+      "nativeFrame": 781,
+      "reference": {
+        "x": 1864,
+        "y": 208,
+        "camera": 1750,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1864,
+        "y": 208,
+        "camera": 1752
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 105,
+      "nativeFrame": 788,
+      "reference": {
+        "x": 1882,
+        "y": 208,
+        "camera": 1768,
+        "cell": 14
+      },
+      "remake": {
+        "x": 1882,
+        "y": 208,
+        "camera": 1770
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 106,
+      "nativeFrame": 796,
+      "reference": {
+        "x": 1902,
+        "y": 208,
+        "camera": 1788,
+        "cell": 12
+      },
+      "remake": {
+        "x": 1902,
+        "y": 208,
+        "camera": 1790
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 107,
+      "nativeFrame": 803,
+      "reference": {
+        "x": 1919,
+        "y": 208,
+        "camera": 1805,
+        "cell": 12
+      },
+      "remake": {
+        "x": 1919,
+        "y": 208,
+        "camera": 1807
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 108,
+      "nativeFrame": 811,
+      "reference": {
+        "x": 1939,
+        "y": 208,
+        "camera": 1825,
+        "cell": 13
+      },
+      "remake": {
+        "x": 1939,
+        "y": 208,
+        "camera": 1827
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 109,
+      "nativeFrame": 818,
+      "reference": {
+        "x": 1957,
+        "y": 184,
+        "camera": 1843,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1957,
+        "y": 184,
+        "camera": 1845
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 110,
+      "nativeFrame": 826,
+      "reference": {
+        "x": 1977,
+        "y": 161,
+        "camera": 1863,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1977,
+        "y": 161,
+        "camera": 1865
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 111,
+      "nativeFrame": 833,
+      "reference": {
+        "x": 1994,
+        "y": 169,
+        "camera": 1880,
+        "cell": 16
+      },
+      "remake": {
+        "x": 1994,
+        "y": 169,
+        "camera": 1882
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 112,
+      "nativeFrame": 841,
+      "reference": {
+        "x": 2014,
+        "y": 200,
+        "camera": 1900,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2014,
+        "y": 200,
+        "camera": 1902
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 113,
+      "nativeFrame": 848,
+      "reference": {
+        "x": 2032,
+        "y": 189,
+        "camera": 1918,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2032,
+        "y": 189,
+        "camera": 1920
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 114,
+      "nativeFrame": 856,
+      "reference": {
+        "x": 2052,
+        "y": 199,
+        "camera": 1938,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2052,
+        "y": 199,
+        "camera": 1940
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 115,
+      "nativeFrame": 863,
+      "reference": {
+        "x": 2069,
+        "y": 208,
+        "camera": 1955,
+        "cell": 12
+      },
+      "remake": {
+        "x": 2069,
+        "y": 208,
+        "camera": 1957
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 116,
+      "nativeFrame": 871,
+      "reference": {
+        "x": 2089,
+        "y": 208,
+        "camera": 1975,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2089,
+        "y": 208,
+        "camera": 1977
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 117,
+      "nativeFrame": 878,
+      "reference": {
+        "x": 2107,
+        "y": 184,
+        "camera": 1993,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2107,
+        "y": 184,
+        "camera": 1995
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 118,
+      "nativeFrame": 886,
+      "reference": {
+        "x": 2127,
+        "y": 155,
+        "camera": 2013,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2127,
+        "y": 155,
+        "camera": 2015
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 119,
+      "nativeFrame": 893,
+      "reference": {
+        "x": 2144,
+        "y": 141,
+        "camera": 2030,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2144,
+        "y": 141,
+        "camera": 2032
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 120,
+      "nativeFrame": 901,
+      "reference": {
+        "x": 2164,
+        "y": 158,
+        "camera": 2050,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2164,
+        "y": 158,
+        "camera": 2052
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 121,
+      "nativeFrame": 908,
+      "reference": {
+        "x": 2182,
+        "y": 136,
+        "camera": 2068,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2182,
+        "y": 136,
+        "camera": 2070
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 122,
+      "nativeFrame": 916,
+      "reference": {
+        "x": 2202,
+        "y": 113,
+        "camera": 2088,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2202,
+        "y": 113,
+        "camera": 2090
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 123,
+      "nativeFrame": 924,
+      "reference": {
+        "x": 2222,
+        "y": 124,
+        "camera": 2108,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2222,
+        "y": 124,
+        "camera": 2110
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 124,
+      "nativeFrame": 931,
+      "reference": {
+        "x": 2239,
+        "y": 144,
+        "camera": 2125,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2239,
+        "y": 144,
+        "camera": 2127
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 125,
+      "nativeFrame": 939,
+      "reference": {
+        "x": 2259,
+        "y": 145,
+        "camera": 2145,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2259,
+        "y": 145,
+        "camera": 2147
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 126,
+      "nativeFrame": 946,
+      "reference": {
+        "x": 2277,
+        "y": 164,
+        "camera": 2163,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2277,
+        "y": 163,
+        "camera": 2165
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 127,
+      "nativeFrame": 954,
+      "reference": {
+        "x": 2297,
+        "y": 179,
+        "camera": 2183,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2297,
+        "y": 180,
+        "camera": 2185
+      },
+      "dx": 0,
+      "dy": 1,
+      "cameraError": 2
+    },
+    {
+      "tick": 128,
+      "nativeFrame": 961,
+      "reference": {
+        "x": 2314,
+        "y": 204,
+        "camera": 2200,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2314,
+        "y": 203,
+        "camera": 2202
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 129,
+      "nativeFrame": 969,
+      "reference": {
+        "x": 2334,
+        "y": 180,
+        "camera": 2220,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2334,
+        "y": 180,
+        "camera": 2222
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 130,
+      "nativeFrame": 976,
+      "reference": {
+        "x": 2352,
+        "y": 155,
+        "camera": 2238,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2352,
+        "y": 155,
+        "camera": 2240
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 131,
+      "nativeFrame": 984,
+      "reference": {
+        "x": 2372,
+        "y": 135,
+        "camera": 2258,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2372,
+        "y": 135,
+        "camera": 2260
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 132,
+      "nativeFrame": 991,
+      "reference": {
+        "x": 2389,
+        "y": 127,
+        "camera": 2275,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2389,
+        "y": 127,
+        "camera": 2277
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 133,
+      "nativeFrame": 999,
+      "reference": {
+        "x": 2409,
+        "y": 128,
+        "camera": 2295,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2409,
+        "y": 128,
+        "camera": 2297
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 134,
+      "nativeFrame": 1006,
+      "reference": {
+        "x": 2427,
+        "y": 144,
+        "camera": 2313,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2427,
+        "y": 144,
+        "camera": 2315
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 135,
+      "nativeFrame": 1014,
+      "reference": {
+        "x": 2447,
+        "y": 116,
+        "camera": 2333,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2447,
+        "y": 116,
+        "camera": 2335
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 136,
+      "nativeFrame": 1021,
+      "reference": {
+        "x": 2464,
+        "y": 95,
+        "camera": 2350,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2464,
+        "y": 95,
+        "camera": 2352
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 137,
+      "nativeFrame": 1029,
+      "reference": {
+        "x": 2484,
+        "y": 103,
+        "camera": 2370,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2484,
+        "y": 103,
+        "camera": 2372
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 138,
+      "nativeFrame": 1036,
+      "reference": {
+        "x": 2502,
+        "y": 131,
+        "camera": 2388,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2502,
+        "y": 131,
+        "camera": 2390
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 139,
+      "nativeFrame": 1044,
+      "reference": {
+        "x": 2522,
+        "y": 163,
+        "camera": 2408,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2522,
+        "y": 163,
+        "camera": 2410
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 140,
+      "nativeFrame": 1051,
+      "reference": {
+        "x": 2539,
+        "y": 191,
+        "camera": 2425,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2539,
+        "y": 191,
+        "camera": 2427
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 141,
+      "nativeFrame": 1059,
+      "reference": {
+        "x": 2559,
+        "y": 208,
+        "camera": 2445,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2559,
+        "y": 208,
+        "camera": 2447
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 142,
+      "nativeFrame": 1066,
+      "reference": {
+        "x": 2577,
+        "y": 184,
+        "camera": 2463,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2577,
+        "y": 184,
+        "camera": 2465
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 143,
+      "nativeFrame": 1074,
+      "reference": {
+        "x": 2597,
+        "y": 155,
+        "camera": 2483,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2597,
+        "y": 155,
+        "camera": 2485
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 144,
+      "nativeFrame": 1081,
+      "reference": {
+        "x": 2614,
+        "y": 137,
+        "camera": 2500,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2614,
+        "y": 137,
+        "camera": 2502
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 145,
+      "nativeFrame": 1089,
+      "reference": {
+        "x": 2634,
+        "y": 133,
+        "camera": 2520,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2634,
+        "y": 133,
+        "camera": 2522
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 146,
+      "nativeFrame": 1096,
+      "reference": {
+        "x": 2652,
+        "y": 155,
+        "camera": 2538,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2652,
+        "y": 155,
+        "camera": 2540
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 147,
+      "nativeFrame": 1104,
+      "reference": {
+        "x": 2672,
+        "y": 187,
+        "camera": 2558,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2672,
+        "y": 187,
+        "camera": 2560
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 148,
+      "nativeFrame": 1111,
+      "reference": {
+        "x": 2689,
+        "y": 208,
+        "camera": 2575,
+        "cell": 13
+      },
+      "remake": {
+        "x": 2689,
+        "y": 208,
+        "camera": 2577
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 149,
+      "nativeFrame": 1119,
+      "reference": {
+        "x": 2709,
+        "y": 208,
+        "camera": 2595,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2709,
+        "y": 208,
+        "camera": 2597
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 150,
+      "nativeFrame": 1126,
+      "reference": {
+        "x": 2727,
+        "y": 184,
+        "camera": 2613,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2727,
+        "y": 184,
+        "camera": 2615
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 151,
+      "nativeFrame": 1134,
+      "reference": {
+        "x": 2747,
+        "y": 179,
+        "camera": 2633,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2747,
+        "y": 178,
+        "camera": 2635
+      },
+      "dx": 0,
+      "dy": -1,
+      "cameraError": 2
+    },
+    {
+      "tick": 152,
+      "nativeFrame": 1141,
+      "reference": {
+        "x": 2764,
+        "y": 198,
+        "camera": 2650,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2764,
+        "y": 204,
+        "camera": 2652
+      },
+      "dx": 0,
+      "dy": 6,
+      "cameraError": 2
+    },
+    {
+      "tick": 153,
+      "nativeFrame": 1149,
+      "reference": {
+        "x": 2784,
+        "y": 186,
+        "camera": 2670,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2784,
+        "y": 187,
+        "camera": 2672
+      },
+      "dx": 0,
+      "dy": 1,
+      "cameraError": 2
+    },
+    {
+      "tick": 154,
+      "nativeFrame": 1156,
+      "reference": {
+        "x": 2802,
+        "y": 205,
+        "camera": 2688,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2802,
+        "y": 203,
+        "camera": 2690
+      },
+      "dx": 0,
+      "dy": -2,
+      "cameraError": 2
+    },
+    {
+      "tick": 155,
+      "nativeFrame": 1164,
+      "reference": {
+        "x": 2822,
+        "y": 180,
+        "camera": 2708,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2822,
+        "y": 180,
+        "camera": 2710
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 156,
+      "nativeFrame": 1171,
+      "reference": {
+        "x": 2839,
+        "y": 159,
+        "camera": 2725,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2839,
+        "y": 159,
+        "camera": 2727
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 157,
+      "nativeFrame": 1179,
+      "reference": {
+        "x": 2859,
+        "y": 167,
+        "camera": 2745,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2859,
+        "y": 167,
+        "camera": 2747
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 158,
+      "nativeFrame": 1186,
+      "reference": {
+        "x": 2877,
+        "y": 176,
+        "camera": 2763,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2876,
+        "y": 176,
+        "camera": 2764
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 159,
+      "nativeFrame": 1194,
+      "reference": {
+        "x": 2893,
+        "y": 176,
+        "camera": 2779,
+        "cell": 12
+      },
+      "remake": {
+        "x": 2893,
+        "y": 176,
+        "camera": 2781
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 2
+    },
+    {
+      "tick": 160,
+      "nativeFrame": 1201,
+      "reference": {
+        "x": 2908,
+        "y": 176,
+        "camera": 2794,
+        "cell": 14
+      },
+      "remake": {
+        "x": 2907,
+        "y": 176,
+        "camera": 2795
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 161,
+      "nativeFrame": 1209,
+      "reference": {
+        "x": 2923,
+        "y": 148,
+        "camera": 2809,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2922,
+        "y": 148,
+        "camera": 2810
+      },
+      "dx": -1,
+      "dy": 0,
+      "cameraError": 1
+    },
+    {
+      "tick": 162,
+      "nativeFrame": 1216,
+      "reference": {
+        "x": 2936,
+        "y": 123,
+        "camera": 2822,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2934,
+        "y": 123,
+        "camera": 2822
+      },
+      "dx": -2,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 163,
+      "nativeFrame": 1224,
+      "reference": {
+        "x": 2951,
+        "y": 103,
+        "camera": 2837,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2948,
+        "y": 103,
+        "camera": 2836
+      },
+      "dx": -3,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 164,
+      "nativeFrame": 1232,
+      "reference": {
+        "x": 2966,
+        "y": 94,
+        "camera": 2852,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2963,
+        "y": 94,
+        "camera": 2851
+      },
+      "dx": -3,
+      "dy": 0,
+      "cameraError": -1
+    },
+    {
+      "tick": 165,
+      "nativeFrame": 1239,
+      "reference": {
+        "x": 2980,
+        "y": 96,
+        "camera": 2866,
+        "cell": 12
+      },
+      "remake": {
+        "x": 2976,
+        "y": 98,
+        "camera": 2864
+      },
+      "dx": -4,
+      "dy": 2,
+      "cameraError": -2
+    },
+    {
+      "tick": 166,
+      "nativeFrame": 1247,
+      "reference": {
+        "x": 2999,
+        "y": 68,
+        "camera": 2885,
+        "cell": 16
+      },
+      "remake": {
+        "x": 2994,
+        "y": 68,
+        "camera": 2882
+      },
+      "dx": -5,
+      "dy": 0,
+      "cameraError": -3
+    },
+    {
+      "tick": 171,
+      "nativeFrame": 1284,
+      "reference": {
+        "x": 3091,
+        "y": 72,
+        "camera": 2977,
+        "cell": 16
+      },
+      "remake": {
+        "x": 3087,
+        "y": 71,
+        "camera": 2975
+      },
+      "dx": -4,
+      "dy": -1,
+      "cameraError": -2
+    },
+    {
+      "tick": 172,
+      "nativeFrame": 1292,
+      "reference": {
+        "x": 3111,
+        "y": 104,
+        "camera": 2997,
+        "cell": 16
+      },
+      "remake": {
+        "x": 3107,
+        "y": 103,
+        "camera": 2995
+      },
+      "dx": -4,
+      "dy": -1,
+      "cameraError": -2
+    },
+    {
+      "tick": 173,
+      "nativeFrame": 1299,
+      "reference": {
+        "x": 3129,
+        "y": 132,
+        "camera": 3015,
+        "cell": 16
+      },
+      "remake": {
+        "x": 3124,
+        "y": 131,
+        "camera": 3012
+      },
+      "dx": -5,
+      "dy": -1,
+      "cameraError": -3
+    },
+    {
+      "tick": 174,
+      "nativeFrame": 1307,
+      "reference": {
+        "x": 3149,
+        "y": 164,
+        "camera": 3035,
+        "cell": 16
+      },
+      "remake": {
+        "x": 3144,
+        "y": 163,
+        "camera": 3032
+      },
+      "dx": -5,
+      "dy": -1,
+      "cameraError": -3
+    },
+    {
+      "tick": 175,
+      "nativeFrame": 1314,
+      "reference": {
+        "x": 3161,
+        "y": 185,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 187,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 2,
+      "cameraError": 0
+    },
+    {
+      "tick": 176,
+      "nativeFrame": 1322,
+      "reference": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 177,
+      "nativeFrame": 1329,
+      "reference": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 178,
+      "nativeFrame": 1337,
+      "reference": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 179,
+      "nativeFrame": 1344,
+      "reference": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    },
+    {
+      "tick": 180,
+      "nativeFrame": 1352,
+      "reference": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045,
+        "cell": 20
+      },
+      "remake": {
+        "x": 3161,
+        "y": 191,
+        "camera": 3045
+      },
+      "dx": 0,
+      "dy": 0,
+      "cameraError": 0
+    }
+  ]
+}

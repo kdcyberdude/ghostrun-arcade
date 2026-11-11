@@ -1,0 +1,686 @@
+{
+  "schema": "ordinary-input-optional-room-route-v1",
+  "resetThenRecordedPrefixTicks": 1250,
+  "source": "data/observed-winning-inputs.json",
+  "manual": [
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "tick": 1252,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00541-tick-01252.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "tick": 1260,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00542-tick-01260.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 6
+      },
+      "nativeFrames": 45,
+      "tick": 1266,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00543-tick-01266.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "tick": 1268,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00544-tick-01268.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "tick": 1276,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00545-tick-01276.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 5
+      },
+      "nativeFrames": 38,
+      "tick": 1281,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00546-tick-01281.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "tick": 1283,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00547-tick-01283.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "tick": 1291,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00548-tick-01291.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1295,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00549-tick-01295.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 12
+      },
+      "nativeFrames": 90,
+      "tick": 1307,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00550-tick-01307.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3
+      },
+      "nativeFrames": 23,
+      "tick": 1310,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00551-tick-01310.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3
+      },
+      "nativeFrames": 22,
+      "tick": 1313,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00552-tick-01313.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1317,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00553-tick-01317.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 10
+      },
+      "nativeFrames": 75,
+      "tick": 1327,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00554-tick-01327.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3
+      },
+      "nativeFrames": 23,
+      "tick": 1330,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00555-tick-01330.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "tick": 1331,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00556-tick-01331.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "tick": 1333,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00557-tick-01333.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1337,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00558-tick-01337.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 16
+      },
+      "nativeFrames": 121,
+      "tick": 1353,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00559-tick-01353.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up",
+          "a"
+        ],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "tick": 1361,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00560-tick-01361.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 24
+      },
+      "nativeFrames": 180,
+      "tick": 1385,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00561-tick-01385.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1389,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00562-tick-01389.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1393,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00563-tick-01393.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1397,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00564-tick-01397.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 3
+      },
+      "nativeFrames": 23,
+      "tick": 1400,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00565-tick-01400.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up",
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1404,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00566-tick-01404.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 24
+      },
+      "nativeFrames": 180,
+      "tick": 1428,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00567-tick-01428.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "tick": 1436,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00568-tick-01436.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1440,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00569-tick-01440.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1444,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00570-tick-01444.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1448,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00571-tick-01448.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1452,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00572-tick-01452.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1456,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00573-tick-01456.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1460,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00574-tick-01460.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1464,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00575-tick-01464.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1468,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00576-tick-01468.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1472,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00577-tick-01472.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 24
+      },
+      "nativeFrames": 181,
+      "tick": 1496,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00578-tick-01496.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1500,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00579-tick-01500.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1504,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00580-tick-01504.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1508,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00581-tick-01508.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1512,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00582-tick-01512.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1516,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00583-tick-01516.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1520,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00584-tick-01520.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1524,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00585-tick-01524.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1528,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00586-tick-01528.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1532,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00587-tick-01532.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1536,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00588-tick-01536.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1540,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00589-tick-01540.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1544,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00590-tick-01544.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1548,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00591-tick-01548.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1552,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00592-tick-01552.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 31,
+      "tick": 1556,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00593-tick-01556.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1560,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00594-tick-01560.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1564,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00595-tick-01564.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1568,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00596-tick-01568.png"
+    },
+    {
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "tick": 1572,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-2-1-vine/00597-tick-01572.png"
+    }
+  ],
+  "sourceTrace": "evidence/local/subarea-2-1-vine/trace.jsonl",
+  "limitations": [
+    "Routeincludesdeliberatebrickinspectionandpauses;notminimalwinningroute.",
+    "Ordinarycontrolswithnativeframesrecorded,noRAMorstatesaccessed."
+  ]
+}

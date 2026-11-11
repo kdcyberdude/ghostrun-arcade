@@ -1,0 +1,1474 @@
+{
+  "reference_palette": [
+    34,
+    41,
+    26,
+    15,
+    15,
+    54,
+    23,
+    15,
+    15,
+    48,
+    33,
+    15,
+    15,
+    39,
+    23,
+    15,
+    0,
+    22,
+    39,
+    24,
+    15,
+    26,
+    48,
+    39,
+    15,
+    22,
+    48,
+    39,
+    15,
+    15,
+    54,
+    23
+  ],
+  "records": [
+    {
+      "file": "sprite-jumping_coins-0.png",
+      "descriptor": {
+        "frame": 0,
+        "width": 8,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 96,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 96,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-jumping_coins-1.png",
+      "descriptor": {
+        "frame": 1,
+        "width": 8,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 97,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 97,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-jumping_coins-2.png",
+      "descriptor": {
+        "frame": 2,
+        "width": 8,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 98,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 98,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-jumping_coins-3.png",
+      "descriptor": {
+        "frame": 3,
+        "width": 8,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 99,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 99,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-powerups-0.png",
+      "descriptor": {
+        "type": 0,
+        "source_name": "mushroom",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 118,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 119,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 120,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 121,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ],
+        "palette_animation": "none"
+      }
+    },
+    {
+      "file": "sprite-powerups-1.png",
+      "descriptor": {
+        "type": 1,
+        "source_name": "flower",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 214,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 214,
+            "attributes": 65,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 217,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 217,
+            "attributes": 65,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          }
+        ],
+        "palette_animation": "top cycles0..3 every2frames; flower bottom remains1; star bottom cycles too"
+      }
+    },
+    {
+      "file": "sprite-powerups-2.png",
+      "descriptor": {
+        "type": 2,
+        "source_name": "star",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 141,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 141,
+            "attributes": 66,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 228,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 228,
+            "attributes": 66,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 2
+          }
+        ],
+        "palette_animation": "top cycles0..3 every2frames; flower bottom remains1; star bottom cycles too"
+      }
+    },
+    {
+      "file": "sprite-powerups-3.png",
+      "descriptor": {
+        "type": 3,
+        "source_name": "1up",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 118,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 119,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 120,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 121,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          }
+        ],
+        "palette_animation": "none"
+      }
+    },
+    {
+      "file": "sprite-castle_star_flag.png",
+      "descriptor": {
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 84,
+            "attributes": 34,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 85,
+            "attributes": 34,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 86,
+            "attributes": 34,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 87,
+            "attributes": 34,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-hammers-0.png",
+      "descriptor": {
+        "phase": 0,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 4,
+            "y": 0,
+            "tile": 128,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 4,
+            "y": 8,
+            "tile": 129,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-hammers-1.png",
+      "descriptor": {
+        "phase": 1,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 4,
+            "tile": 130,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 4,
+            "tile": 131,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-hammers-2.png",
+      "descriptor": {
+        "phase": 2,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 4,
+            "y": 0,
+            "tile": 129,
+            "attributes": 195,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 3
+          },
+          {
+            "x": 4,
+            "y": 8,
+            "tile": 128,
+            "attributes": 195,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 3
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-hammers-3.png",
+      "descriptor": {
+        "phase": 3,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 4,
+            "tile": 131,
+            "attributes": 195,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 4,
+            "tile": 130,
+            "attributes": 195,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 3
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-flagpole_flag.png",
+      "descriptor": {
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 126,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 127,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 126,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-bowser_flame-0.png",
+      "descriptor": {
+        "phase": 0,
+        "width": 24,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 81,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 82,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 83,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-bowser_flame-1.png",
+      "descriptor": {
+        "phase": 1,
+        "width": 24,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 81,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 82,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 83,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-fireball_or_firebar-0.png",
+      "descriptor": {
+        "phase": 0,
+        "width": 8,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 100,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-fireball_or_firebar-1.png",
+      "descriptor": {
+        "phase": 1,
+        "width": 8,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 101,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-fireball_or_firebar-2.png",
+      "descriptor": {
+        "phase": 2,
+        "width": 8,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 100,
+            "attributes": 194,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-fireball_or_firebar-3.png",
+      "descriptor": {
+        "phase": 3,
+        "width": 8,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 101,
+            "attributes": 194,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-explosions-0.png",
+      "descriptor": {
+        "phase": 0,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 104,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 104,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 104,
+            "attributes": 66,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 104,
+            "attributes": 194,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-explosions-1.png",
+      "descriptor": {
+        "phase": 1,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 103,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 103,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 103,
+            "attributes": 66,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 103,
+            "attributes": 194,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-explosions-2.png",
+      "descriptor": {
+        "phase": 2,
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 102,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 102,
+            "attributes": 130,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 102,
+            "attributes": 66,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 102,
+            "attributes": 194,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-vine_segments-0.png",
+      "descriptor": {
+        "top": true,
+        "width": 14,
+        "height": 48,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 224,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 8,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 16,
+            "tile": 225,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 24,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 32,
+            "tile": 225,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 40,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-vine_segments-1.png",
+      "descriptor": {
+        "top": false,
+        "width": 14,
+        "height": 48,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 225,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 8,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 16,
+            "tile": 225,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 24,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 32,
+            "tile": 225,
+            "attributes": 33,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 6,
+            "y": 40,
+            "tile": 225,
+            "attributes": 97,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-bubble.png",
+      "descriptor": {
+        "width": 8,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 116,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-large_platforms-0.png",
+      "descriptor": {
+        "kind": "girder48",
+        "width": 48,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 24,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 32,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 40,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-large_platforms-1.png",
+      "descriptor": {
+        "kind": "girder32",
+        "width": 32,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 24,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-large_platforms-2.png",
+      "descriptor": {
+        "kind": "cloud48",
+        "width": 48,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 24,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 32,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 40,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-large_platforms-3.png",
+      "descriptor": {
+        "kind": "cloud32",
+        "width": 32,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 24,
+            "y": 0,
+            "tile": 117,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-small_platform.png",
+      "descriptor": {
+        "width": 24,
+        "height": 8,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          },
+          {
+            "x": 16,
+            "y": 0,
+            "tile": 91,
+            "attributes": 2,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 2
+          }
+        ],
+        "runtime_copy_y": 128
+      }
+    },
+    {
+      "file": "sprite-hit_block_default.png",
+      "descriptor": {
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 133,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 133,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 134,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 134,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          }
+        ],
+        "area_variant": "outside Ground replace top row with PRG immediate at$EC03"
+      }
+    },
+    {
+      "file": "sprite-hit_block_used-0.png",
+      "descriptor": {
+        "area_kind": "Ground",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 135,
+            "attributes": 3,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 135,
+            "attributes": 67,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 3
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 135,
+            "attributes": 131,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 3
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 135,
+            "attributes": 195,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 3
+          }
+        ]
+      }
+    },
+    {
+      "file": "sprite-hit_block_used-1.png",
+      "descriptor": {
+        "area_kind": "other",
+        "width": 16,
+        "height": 16,
+        "sprites": [
+          {
+            "x": 0,
+            "y": 0,
+            "tile": 135,
+            "attributes": 1,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 0,
+            "tile": 135,
+            "attributes": 65,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": false,
+            "palette": 1
+          },
+          {
+            "x": 0,
+            "y": 8,
+            "tile": 135,
+            "attributes": 129,
+            "pattern_table": 0,
+            "flip_x": false,
+            "flip_y": true,
+            "palette": 1
+          },
+          {
+            "x": 8,
+            "y": 8,
+            "tile": 135,
+            "attributes": 193,
+            "pattern_table": 0,
+            "flip_x": true,
+            "flip_y": true,
+            "palette": 1
+          }
+        ]
+      }
+    }
+  ],
+  "note": "Static source descriptors with the first ground-area runtime palette; timing and state-dependent variants remain game logic."
+}

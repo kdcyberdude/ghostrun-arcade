@@ -1,0 +1,225 @@
+{
+  "music_ground": {
+    "file": "music_ground.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_water": {
+    "file": "music_water.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_underground": {
+    "file": "music_underground.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_castle": {
+    "file": "music_castle.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_cloud": {
+    "file": "music_cloud.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_pipe_intro": {
+    "file": "music_pipe_intro.wav",
+    "kind": "area_music",
+    "seconds": 2.445708333333333
+  },
+  "music_star": {
+    "file": "music_star.wav",
+    "kind": "area_music",
+    "seconds": 180
+  },
+  "music_ground_hurry": {
+    "file": "music_ground_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "music_water_hurry": {
+    "file": "music_water_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "music_underground_hurry": {
+    "file": "music_underground_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "music_castle_hurry": {
+    "file": "music_castle_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "music_cloud_hurry": {
+    "file": "music_cloud_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "music_star_hurry": {
+    "file": "music_star_hurry.wav",
+    "kind": "area_music_variant",
+    "seconds": 180
+  },
+  "event_death": {
+    "file": "event_death.wav",
+    "kind": "event_music",
+    "seconds": 2.7646875
+  },
+  "event_game_over": {
+    "file": "event_game_over.wav",
+    "kind": "event_music",
+    "seconds": 3.7832083333333335
+  },
+  "event_victory": {
+    "file": "event_victory.wav",
+    "kind": "event_music",
+    "seconds": 30
+  },
+  "event_castle_clear": {
+    "file": "event_castle_clear.wav",
+    "kind": "event_music",
+    "seconds": 6.240166666666667
+  },
+  "event_alt_game_over": {
+    "file": "event_alt_game_over.wav",
+    "kind": "event_music",
+    "seconds": 3.3636666666666666
+  },
+  "event_level_clear": {
+    "file": "event_level_clear.wav",
+    "kind": "event_music",
+    "seconds": 5.5791875
+  },
+  "event_hurry": {
+    "file": "event_hurry.wav",
+    "kind": "event_music",
+    "seconds": 2.9821875
+  },
+  "sfx_big_jump": {
+    "file": "sfx_big_jump.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.698625
+  },
+  "sfx_bump": {
+    "file": "sfx_bump.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.3322291666666667
+  },
+  "sfx_swim_stomp": {
+    "file": "sfx_swim_stomp.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.3998333333333333
+  },
+  "sfx_enemy_smack": {
+    "file": "sfx_enemy_smack.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.30064583333333333
+  },
+  "sfx_pipe_down_injury": {
+    "file": "sfx_pipe_down_injury.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.9398958333333334
+  },
+  "sfx_fireball": {
+    "file": "sfx_fireball.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.2503958333333333
+  },
+  "sfx_flagpole": {
+    "file": "sfx_flagpole.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 1.2311041666666667
+  },
+  "sfx_small_jump": {
+    "file": "sfx_small_jump.wav",
+    "kind": "sound_effect",
+    "channel": "square1",
+    "seconds": 0.6995625
+  },
+  "sfx_coin": {
+    "file": "sfx_coin.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 1.042375
+  },
+  "sfx_powerup_appears": {
+    "file": "sfx_powerup_appears.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 0.6994583333333333
+  },
+  "sfx_vine_grows": {
+    "file": "sfx_vine_grows.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 1.23225
+  },
+  "sfx_blast_fireworks": {
+    "file": "sfx_blast_fireworks.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 0.5367916666666667
+  },
+  "sfx_timer_tick": {
+    "file": "sfx_timer_tick.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 0.265875
+  },
+  "sfx_powerup_collected": {
+    "file": "sfx_powerup_collected.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 1.0637083333333333
+  },
+  "sfx_extra_life": {
+    "file": "sfx_extra_life.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 0.9642916666666667
+  },
+  "sfx_bowser_falls": {
+    "file": "sfx_bowser_falls.wav",
+    "kind": "sound_effect",
+    "channel": "square2",
+    "seconds": 1.100875
+  },
+  "sfx_brick_shatter": {
+    "file": "sfx_brick_shatter.wav",
+    "kind": "sound_effect",
+    "channel": "noise",
+    "seconds": 0.6828958333333334
+  },
+  "sfx_bowser_flame": {
+    "file": "sfx_bowser_flame.wav",
+    "kind": "sound_effect",
+    "channel": "noise",
+    "seconds": 1.2303333333333333
+  },
+  "sfx_pause": {
+    "file": "sfx_pause.wav",
+    "kind": "pause_command",
+    "seconds": 0.7928125
+  },
+  "sfx_unpause": {
+    "file": "sfx_unpause.wav",
+    "kind": "pause_command",
+    "seconds": 0.7927083333333333
+  },
+  "command_silence": {
+    "file": "command_silence.wav",
+    "kind": "silence_command",
+    "seconds": 1
+  }
+}

@@ -1,0 +1,5581 @@
+{
+  "schema": "observed-first-5-2-water-blooper-v1",
+  "status": "Reference observations and explicit hypotheses only; no production simulation or canonical spawn was changed.",
+  "area": "5-2 optional water",
+  "sourceOnly": true,
+  "toleranceForFutureCalibration": {
+    "positionPixels": 2,
+    "eventNativeFrames": 2,
+    "status": "Future candidate comparison criterion; no production pass claimed."
+  },
+  "activationBoundary": {
+    "observedNoVisibleApproach": {
+      "camera": 0,
+      "playerWorldX": 74,
+      "playerFeet": 208,
+      "neutralNativeFrames": 600,
+      "case": "stop-low"
+    },
+    "observedApproach": {
+      "camera": 2,
+      "playerWorldX": 82,
+      "playerFeet": 208,
+      "case": "stop-mid"
+    },
+    "independentApproach": {
+      "camera": 10,
+      "playerWorldX": 89,
+      "playerFeet": 208,
+      "case": "stop-high"
+    },
+    "conditionalCameraThresholdBracket": {
+      "lowerExclusive": 0,
+      "upperInclusive": 2
+    },
+    "inference": "First positive camera movement, candidate integer threshold1. Camera movement and player proximity remain coupled in these controls; this does not prove whether the native code loads an actor or enables its movement.",
+    "counterexampleToImmediateGenericMovement": "At camera0 the stationary source never shows the actor during600nativeframes; current generic remake drift from inferred272 would enter the screen."
+  },
+  "spawnAndMotion": {
+    "measuredFirstRestWorldX": 272,
+    "measuredFirstFullCell11SpriteOriginY": 156,
+    "measuredFirstFullCell11DescriptorFeet": 179,
+    "preVisibleInitialX": null,
+    "preVisibleInitialY": null,
+    "initialVelocity": null,
+    "candidateInitialX": {
+      "value": 304,
+      "status": "Inferred only: repeated subsequent32px pulses suggest the first272rest may follow an unseen32px approach. Do not install as measured spawn."
+    },
+    "observedBehavior": "Horizontal rests alternate withbursts of32px unsignedspeedintegration. Duringaplayer-sideintervention directionchangeswithinaburst andnetdisplacementis18px. Alwayschasingatburststart fails. Groundedlongneutralcausesapproachandhover; sourcecanthencontinueawayfromplayer.",
+    "headVsPhysics": "Head positions remain measurable during intermediate compression; physical feet and exact internal velocity are not assigned to those unmatched poses."
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "sourceTrace": "evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/trace.jsonl",
+      "moveStartNativeFrame": 41302,
+      "firstVisibleExactHead": {
+        "sequence": 930,
+        "tick": 5510,
+        "nativeFrame": 41392,
+        "camera": 32,
+        "heads": [
+          {
+            "worldX": 272,
+            "screenX": 240,
+            "headY": 156,
+            "opaqueHeadPixelsExact": 80
+          }
+        ],
+        "exactFullDescriptorPoses": [
+          {
+            "cell": 11,
+            "worldX": 272,
+            "spriteOriginY": 156,
+            "descriptorFeetY": 179,
+            "opaquePixels": 218
+          }
+        ],
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0930-baseline-t5510.png"
+      },
+      "observations": [
+        {
+          "sequence": 930,
+          "tick": 5510,
+          "nativeFrame": 41392,
+          "camera": 32,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 240,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 272,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0930-baseline-t5510.png"
+        },
+        {
+          "sequence": 931,
+          "tick": 5511,
+          "nativeFrame": 41399,
+          "camera": 39,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 233,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 272,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0931-baseline-t5511.png"
+        },
+        {
+          "sequence": 932,
+          "tick": 5512,
+          "nativeFrame": 41407,
+          "camera": 47,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 225,
+              "headY": 168,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0932-baseline-t5512.png"
+        },
+        {
+          "sequence": 933,
+          "tick": 5513,
+          "nativeFrame": 41414,
+          "camera": 54,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 218,
+              "headY": 172,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0933-baseline-t5513.png"
+        },
+        {
+          "sequence": 934,
+          "tick": 5514,
+          "nativeFrame": 41422,
+          "camera": 62,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 210,
+              "headY": 168,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0934-baseline-t5514.png"
+        },
+        {
+          "sequence": 935,
+          "tick": 5515,
+          "nativeFrame": 41429,
+          "camera": 71,
+          "heads": [
+            {
+              "worldX": 266,
+              "screenX": 195,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0935-baseline-t5515.png"
+        },
+        {
+          "sequence": 936,
+          "tick": 5516,
+          "nativeFrame": 41437,
+          "camera": 83,
+          "heads": [
+            {
+              "worldX": 252,
+              "screenX": 169,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 252,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0936-baseline-t5516.png"
+        },
+        {
+          "sequence": 937,
+          "tick": 5517,
+          "nativeFrame": 41444,
+          "camera": 94,
+          "heads": [
+            {
+              "worldX": 243,
+              "screenX": 149,
+              "headY": 139,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 243,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0937-baseline-t5517.png"
+        },
+        {
+          "sequence": 938,
+          "tick": 5518,
+          "nativeFrame": 41452,
+          "camera": 106,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 134,
+              "headY": 138,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0938-baseline-t5518.png"
+        },
+        {
+          "sequence": 939,
+          "tick": 5519,
+          "nativeFrame": 41459,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0939-baseline-t5519.png"
+        },
+        {
+          "sequence": 940,
+          "tick": 5520,
+          "nativeFrame": 41467,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 142,
+              "descriptorFeetY": 165,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0940-baseline-t5520.png"
+        },
+        {
+          "sequence": 941,
+          "tick": 5521,
+          "nativeFrame": 41475,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0941-baseline-t5521.png"
+        },
+        {
+          "sequence": 942,
+          "tick": 5522,
+          "nativeFrame": 41482,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 151,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 151,
+              "descriptorFeetY": 174,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0942-baseline-t5522.png"
+        },
+        {
+          "sequence": 943,
+          "tick": 5523,
+          "nativeFrame": 41490,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 237,
+              "screenX": 121,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 237,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0943-baseline-t5523.png"
+        },
+        {
+          "sequence": 944,
+          "tick": 5524,
+          "nativeFrame": 41497,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 228,
+              "screenX": 112,
+              "headY": 139,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 228,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0944-baseline-t5524.png"
+        },
+        {
+          "sequence": 945,
+          "tick": 5525,
+          "nativeFrame": 41505,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 214,
+              "screenX": 98,
+              "headY": 125,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 214,
+              "spriteOriginY": 125,
+              "descriptorFeetY": 148,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0945-baseline-t5525.png"
+        },
+        {
+          "sequence": 946,
+          "tick": 5526,
+          "nativeFrame": 41512,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 119,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 119,
+              "descriptorFeetY": 142,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0946-baseline-t5526.png"
+        },
+        {
+          "sequence": 947,
+          "tick": 5527,
+          "nativeFrame": 41520,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 123,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 123,
+              "descriptorFeetY": 146,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0947-baseline-t5527.png"
+        },
+        {
+          "sequence": 948,
+          "tick": 5528,
+          "nativeFrame": 41527,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 131,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 123,
+              "descriptorFeetY": 146,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0948-baseline-t5528.png"
+        },
+        {
+          "sequence": 949,
+          "tick": 5529,
+          "nativeFrame": 41535,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 135,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 127,
+              "descriptorFeetY": 150,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0949-baseline-t5529.png"
+        },
+        {
+          "sequence": 950,
+          "tick": 5530,
+          "nativeFrame": 41542,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 134,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 134,
+              "descriptorFeetY": 157,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0950-baseline-t5530.png"
+        },
+        {
+          "sequence": 951,
+          "tick": 5531,
+          "nativeFrame": 41550,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 201,
+              "screenX": 85,
+              "headY": 127,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 201,
+              "spriteOriginY": 127,
+              "descriptorFeetY": 150,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0951-baseline-t5531.png"
+        },
+        {
+          "sequence": 952,
+          "tick": 5532,
+          "nativeFrame": 41557,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 188,
+              "screenX": 72,
+              "headY": 114,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 188,
+              "spriteOriginY": 114,
+              "descriptorFeetY": 137,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0952-baseline-t5532.png"
+        },
+        {
+          "sequence": 953,
+          "tick": 5533,
+          "nativeFrame": 41565,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 178,
+              "screenX": 62,
+              "headY": 104,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 178,
+              "spriteOriginY": 104,
+              "descriptorFeetY": 127,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0953-baseline-t5533.png"
+        },
+        {
+          "sequence": 954,
+          "tick": 5534,
+          "nativeFrame": 41572,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 60,
+              "headY": 104,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 104,
+              "descriptorFeetY": 127,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0954-baseline-t5534.png"
+        },
+        {
+          "sequence": 955,
+          "tick": 5535,
+          "nativeFrame": 41580,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 60,
+              "headY": 108,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 108,
+              "descriptorFeetY": 131,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0955-baseline-t5535.png"
+        },
+        {
+          "sequence": 956,
+          "tick": 5536,
+          "nativeFrame": 41587,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 60,
+              "headY": 116,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 108,
+              "descriptorFeetY": 131,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0956-baseline-t5536.png"
+        },
+        {
+          "sequence": 957,
+          "tick": 5537,
+          "nativeFrame": 41595,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 60,
+              "headY": 120,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 112,
+              "descriptorFeetY": 135,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0957-baseline-t5537.png"
+        },
+        {
+          "sequence": 958,
+          "tick": 5538,
+          "nativeFrame": 41602,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 60,
+              "headY": 124,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 116,
+              "descriptorFeetY": 139,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0958-baseline-t5538.png"
+        },
+        {
+          "sequence": 959,
+          "tick": 5539,
+          "nativeFrame": 41610,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 173,
+              "screenX": 57,
+              "headY": 117,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 173,
+              "spriteOriginY": 117,
+              "descriptorFeetY": 140,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0959-baseline-t5539.png"
+        },
+        {
+          "sequence": 960,
+          "tick": 5540,
+          "nativeFrame": 41617,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 164,
+              "screenX": 48,
+              "headY": 108,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 164,
+              "spriteOriginY": 108,
+              "descriptorFeetY": 131,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0960-baseline-t5540.png"
+        },
+        {
+          "sequence": 961,
+          "tick": 5541,
+          "nativeFrame": 41625,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 150,
+              "screenX": 34,
+              "headY": 94,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 150,
+              "spriteOriginY": 94,
+              "descriptorFeetY": 117,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0961-baseline-t5541.png"
+        },
+        {
+          "sequence": 962,
+          "tick": 5542,
+          "nativeFrame": 41632,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 152,
+              "screenX": 36,
+              "headY": 88,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 152,
+              "spriteOriginY": 88,
+              "descriptorFeetY": 111,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/0962-baseline-t5542.png"
+        }
+      ]
+    },
+    {
+      "name": "late-wait",
+      "sourceTrace": "evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/trace.jsonl",
+      "moveStartNativeFrame": 41542,
+      "firstVisibleExactHead": {
+        "sequence": 1924,
+        "tick": 5542,
+        "nativeFrame": 41632,
+        "camera": 32,
+        "heads": [
+          {
+            "worldX": 272,
+            "screenX": 240,
+            "headY": 156,
+            "opaqueHeadPixelsExact": 80
+          }
+        ],
+        "exactFullDescriptorPoses": [
+          {
+            "cell": 11,
+            "worldX": 272,
+            "spriteOriginY": 156,
+            "descriptorFeetY": 179,
+            "opaquePixels": 218
+          }
+        ],
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1924-late-wait-t5542.png"
+      },
+      "observations": [
+        {
+          "sequence": 1924,
+          "tick": 5542,
+          "nativeFrame": 41632,
+          "camera": 32,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 240,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 272,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1924-late-wait-t5542.png"
+        },
+        {
+          "sequence": 1925,
+          "tick": 5543,
+          "nativeFrame": 41640,
+          "camera": 40,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 232,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1925-late-wait-t5543.png"
+        },
+        {
+          "sequence": 1926,
+          "tick": 5544,
+          "nativeFrame": 41647,
+          "camera": 47,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 225,
+              "headY": 168,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1926-late-wait-t5544.png"
+        },
+        {
+          "sequence": 1927,
+          "tick": 5545,
+          "nativeFrame": 41655,
+          "camera": 55,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 217,
+              "headY": 172,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1927-late-wait-t5545.png"
+        },
+        {
+          "sequence": 1929,
+          "tick": 5547,
+          "nativeFrame": 41670,
+          "camera": 73,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 199,
+              "headY": 174,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1929-late-wait-t5547.png"
+        },
+        {
+          "sequence": 1930,
+          "tick": 5548,
+          "nativeFrame": 41677,
+          "camera": 83,
+          "heads": [
+            {
+              "worldX": 266,
+              "screenX": 183,
+              "headY": 168,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1930-late-wait-t5548.png"
+        },
+        {
+          "sequence": 1931,
+          "tick": 5549,
+          "nativeFrame": 41685,
+          "camera": 95,
+          "heads": [
+            {
+              "worldX": 252,
+              "screenX": 157,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 252,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1931-late-wait-t5549.png"
+        },
+        {
+          "sequence": 1932,
+          "tick": 5550,
+          "nativeFrame": 41692,
+          "camera": 106,
+          "heads": [
+            {
+              "worldX": 243,
+              "screenX": 137,
+              "headY": 145,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 243,
+              "spriteOriginY": 145,
+              "descriptorFeetY": 168,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1932-late-wait-t5550.png"
+        },
+        {
+          "sequence": 1933,
+          "tick": 5551,
+          "nativeFrame": 41700,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1933-late-wait-t5551.png"
+        },
+        {
+          "sequence": 1934,
+          "tick": 5552,
+          "nativeFrame": 41707,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 147,
+              "descriptorFeetY": 170,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1934-late-wait-t5552.png"
+        },
+        {
+          "sequence": 1935,
+          "tick": 5553,
+          "nativeFrame": 41715,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1935-late-wait-t5553.png"
+        },
+        {
+          "sequence": 1936,
+          "tick": 5554,
+          "nativeFrame": 41722,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1936-late-wait-t5554.png"
+        },
+        {
+          "sequence": 1937,
+          "tick": 5555,
+          "nativeFrame": 41730,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1937-late-wait-t5555.png"
+        },
+        {
+          "sequence": 1938,
+          "tick": 5556,
+          "nativeFrame": 41737,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 238,
+              "screenX": 122,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 238,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1938-late-wait-t5556.png"
+        },
+        {
+          "sequence": 1939,
+          "tick": 5557,
+          "nativeFrame": 41745,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 228,
+              "screenX": 112,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 228,
+              "spriteOriginY": 147,
+              "descriptorFeetY": 170,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1939-late-wait-t5557.png"
+        },
+        {
+          "sequence": 1940,
+          "tick": 5558,
+          "nativeFrame": 41752,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 215,
+              "screenX": 99,
+              "headY": 134,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 215,
+              "spriteOriginY": 134,
+              "descriptorFeetY": 157,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1940-late-wait-t5558.png"
+        },
+        {
+          "sequence": 1941,
+          "tick": 5559,
+          "nativeFrame": 41760,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 127,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 127,
+              "descriptorFeetY": 150,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1941-late-wait-t5559.png"
+        },
+        {
+          "sequence": 1942,
+          "tick": 5560,
+          "nativeFrame": 41767,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 130,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 130,
+              "descriptorFeetY": 153,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1942-late-wait-t5560.png"
+        },
+        {
+          "sequence": 1943,
+          "tick": 5561,
+          "nativeFrame": 41775,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 139,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 131,
+              "descriptorFeetY": 154,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1943-late-wait-t5561.png"
+        },
+        {
+          "sequence": 1944,
+          "tick": 5562,
+          "nativeFrame": 41783,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 135,
+              "descriptorFeetY": 158,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1944-late-wait-t5562.png"
+        },
+        {
+          "sequence": 1945,
+          "tick": 5563,
+          "nativeFrame": 41790,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1945-late-wait-t5563.png"
+        },
+        {
+          "sequence": 1946,
+          "tick": 5564,
+          "nativeFrame": 41798,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 92,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1946-late-wait-t5564.png"
+        },
+        {
+          "sequence": 1947,
+          "tick": 5565,
+          "nativeFrame": 41805,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 214,
+              "screenX": 98,
+              "headY": 138,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 214,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1947-late-wait-t5565.png"
+        },
+        {
+          "sequence": 1948,
+          "tick": 5566,
+          "nativeFrame": 41813,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 228,
+              "screenX": 112,
+              "headY": 124,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 228,
+              "spriteOriginY": 124,
+              "descriptorFeetY": 147,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1948-late-wait-t5566.png"
+        },
+        {
+          "sequence": 1949,
+          "tick": 5567,
+          "nativeFrame": 41820,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 237,
+              "screenX": 121,
+              "headY": 115,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 237,
+              "spriteOriginY": 115,
+              "descriptorFeetY": 138,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1949-late-wait-t5567.png"
+        },
+        {
+          "sequence": 1950,
+          "tick": 5568,
+          "nativeFrame": 41828,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 114,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 114,
+              "descriptorFeetY": 137,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1950-late-wait-t5568.png"
+        },
+        {
+          "sequence": 1951,
+          "tick": 5569,
+          "nativeFrame": 41835,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 117,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 117,
+              "descriptorFeetY": 140,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1951-late-wait-t5569.png"
+        },
+        {
+          "sequence": 1952,
+          "tick": 5570,
+          "nativeFrame": 41843,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 126,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 118,
+              "descriptorFeetY": 141,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1952-late-wait-t5570.png"
+        },
+        {
+          "sequence": 1953,
+          "tick": 5571,
+          "nativeFrame": 41850,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 130,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 122,
+              "descriptorFeetY": 145,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1953-late-wait-t5571.png"
+        },
+        {
+          "sequence": 1954,
+          "tick": 5572,
+          "nativeFrame": 41858,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 124,
+              "headY": 128,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 128,
+              "descriptorFeetY": 151,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1954-late-wait-t5572.png"
+        },
+        {
+          "sequence": 1955,
+          "tick": 5573,
+          "nativeFrame": 41865,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 242,
+              "screenX": 126,
+              "headY": 126,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 242,
+              "spriteOriginY": 126,
+              "descriptorFeetY": 149,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1955-late-wait-t5573.png"
+        },
+        {
+          "sequence": 1956,
+          "tick": 5574,
+          "nativeFrame": 41873,
+          "camera": 116,
+          "heads": [
+            {
+              "worldX": 252,
+              "screenX": 136,
+              "headY": 116,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 252,
+              "spriteOriginY": 116,
+              "descriptorFeetY": 139,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/1956-late-wait-t5574.png"
+        }
+      ]
+    },
+    {
+      "name": "grounded",
+      "sourceTrace": "evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/trace.jsonl",
+      "moveStartNativeFrame": 41302,
+      "firstVisibleExactHead": {
+        "sequence": 2887,
+        "tick": 5511,
+        "nativeFrame": 41399,
+        "camera": 27,
+        "heads": [
+          {
+            "worldX": 272,
+            "screenX": 245,
+            "headY": 156,
+            "opaqueHeadPixelsExact": 63
+          }
+        ],
+        "exactFullDescriptorPoses": [
+          {
+            "cell": 11,
+            "worldX": 272,
+            "spriteOriginY": 156,
+            "descriptorFeetY": 179,
+            "opaquePixels": 171
+          }
+        ],
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2887-grounded-t5511.png"
+      },
+      "observations": [
+        {
+          "sequence": 2887,
+          "tick": 5511,
+          "nativeFrame": 41399,
+          "camera": 27,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 245,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 63
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 272,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 171
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2887-grounded-t5511.png"
+        },
+        {
+          "sequence": 2888,
+          "tick": 5512,
+          "nativeFrame": 41407,
+          "camera": 35,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 237,
+              "headY": 159,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2888-grounded-t5512.png"
+        },
+        {
+          "sequence": 2889,
+          "tick": 5513,
+          "nativeFrame": 41414,
+          "camera": 42,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 230,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2889-grounded-t5513.png"
+        },
+        {
+          "sequence": 2890,
+          "tick": 5514,
+          "nativeFrame": 41422,
+          "camera": 50,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 222,
+              "headY": 172,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2890-grounded-t5514.png"
+        },
+        {
+          "sequence": 2892,
+          "tick": 5516,
+          "nativeFrame": 41437,
+          "camera": 61,
+          "heads": [
+            {
+              "worldX": 272,
+              "screenX": 211,
+              "headY": 174,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2892-grounded-t5516.png"
+        },
+        {
+          "sequence": 2893,
+          "tick": 5517,
+          "nativeFrame": 41444,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 267,
+              "screenX": 203,
+              "headY": 169,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2893-grounded-t5517.png"
+        },
+        {
+          "sequence": 2894,
+          "tick": 5518,
+          "nativeFrame": 41452,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 254,
+              "screenX": 190,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 254,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2894-grounded-t5518.png"
+        },
+        {
+          "sequence": 2895,
+          "tick": 5519,
+          "nativeFrame": 41459,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 244,
+              "screenX": 180,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 244,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2895-grounded-t5519.png"
+        },
+        {
+          "sequence": 2896,
+          "tick": 5520,
+          "nativeFrame": 41467,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 143,
+              "descriptorFeetY": 166,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2896-grounded-t5520.png"
+        },
+        {
+          "sequence": 2897,
+          "tick": 5521,
+          "nativeFrame": 41475,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 147,
+              "descriptorFeetY": 170,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2897-grounded-t5521.png"
+        },
+        {
+          "sequence": 2898,
+          "tick": 5522,
+          "nativeFrame": 41482,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2898-grounded-t5522.png"
+        },
+        {
+          "sequence": 2899,
+          "tick": 5523,
+          "nativeFrame": 41490,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2899-grounded-t5523.png"
+        },
+        {
+          "sequence": 2900,
+          "tick": 5524,
+          "nativeFrame": 41497,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 155,
+              "descriptorFeetY": 178,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2900-grounded-t5524.png"
+        },
+        {
+          "sequence": 2901,
+          "tick": 5525,
+          "nativeFrame": 41505,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 176,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 162,
+              "descriptorFeetY": 185,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2901-grounded-t5525.png"
+        },
+        {
+          "sequence": 2902,
+          "tick": 5526,
+          "nativeFrame": 41512,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 239,
+              "screenX": 175,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2902-grounded-t5526.png"
+        },
+        {
+          "sequence": 2903,
+          "tick": 5527,
+          "nativeFrame": 41520,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 230,
+              "screenX": 166,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 230,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2903-grounded-t5527.png"
+        },
+        {
+          "sequence": 2904,
+          "tick": 5528,
+          "nativeFrame": 41527,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 216,
+              "screenX": 152,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 216,
+              "spriteOriginY": 140,
+              "descriptorFeetY": 163,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2904-grounded-t5528.png"
+        },
+        {
+          "sequence": 2905,
+          "tick": 5529,
+          "nativeFrame": 41535,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 132,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2905-grounded-t5529.png"
+        },
+        {
+          "sequence": 2906,
+          "tick": 5530,
+          "nativeFrame": 41542,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2906-grounded-t5530.png"
+        },
+        {
+          "sequence": 2907,
+          "tick": 5531,
+          "nativeFrame": 41550,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2907-grounded-t5531.png"
+        },
+        {
+          "sequence": 2908,
+          "tick": 5532,
+          "nativeFrame": 41557,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2908-grounded-t5532.png"
+        },
+        {
+          "sequence": 2909,
+          "tick": 5533,
+          "nativeFrame": 41565,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2909-grounded-t5533.png"
+        },
+        {
+          "sequence": 2910,
+          "tick": 5534,
+          "nativeFrame": 41572,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 150,
+              "descriptorFeetY": 173,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2910-grounded-t5534.png"
+        },
+        {
+          "sequence": 2911,
+          "tick": 5535,
+          "nativeFrame": 41580,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2911-grounded-t5535.png"
+        },
+        {
+          "sequence": 2912,
+          "tick": 5536,
+          "nativeFrame": 41587,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2912-grounded-t5536.png"
+        },
+        {
+          "sequence": 2913,
+          "tick": 5537,
+          "nativeFrame": 41595,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 161,
+              "descriptorFeetY": 184,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2913-grounded-t5537.png"
+        },
+        {
+          "sequence": 2914,
+          "tick": 5538,
+          "nativeFrame": 41602,
+          "camera": 64,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 144,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-2026-11-05T22-31-53.759Z/2914-grounded-t5538.png"
+        }
+      ]
+    },
+    {
+      "name": "stop-low",
+      "sourceTrace": "evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/trace.jsonl",
+      "moveStartNativeFrame": 41302,
+      "firstVisibleExactHead": null,
+      "observations": []
+    },
+    {
+      "name": "stop-mid",
+      "sourceTrace": "evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/trace.jsonl",
+      "moveStartNativeFrame": 41302,
+      "firstVisibleExactHead": {
+        "sequence": 1946,
+        "tick": 5519,
+        "nativeFrame": 41459,
+        "camera": 2,
+        "heads": [
+          {
+            "worldX": 244,
+            "screenX": 242,
+            "headY": 146,
+            "opaqueHeadPixelsExact": 77
+          }
+        ],
+        "exactFullDescriptorPoses": [
+          {
+            "cell": 11,
+            "worldX": 244,
+            "spriteOriginY": 146,
+            "descriptorFeetY": 169,
+            "opaquePixels": 215
+          }
+        ],
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1946-stop-mid-t5519.png"
+      },
+      "observations": [
+        {
+          "sequence": 1946,
+          "tick": 5519,
+          "nativeFrame": 41459,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 244,
+              "screenX": 242,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 77
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 244,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 215
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1946-stop-mid-t5519.png"
+        },
+        {
+          "sequence": 1947,
+          "tick": 5520,
+          "nativeFrame": 41467,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 143,
+              "descriptorFeetY": 166,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1947-stop-mid-t5520.png"
+        },
+        {
+          "sequence": 1948,
+          "tick": 5521,
+          "nativeFrame": 41475,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 147,
+              "descriptorFeetY": 170,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1948-stop-mid-t5521.png"
+        },
+        {
+          "sequence": 1949,
+          "tick": 5522,
+          "nativeFrame": 41482,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1949-stop-mid-t5522.png"
+        },
+        {
+          "sequence": 1950,
+          "tick": 5523,
+          "nativeFrame": 41490,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1950-stop-mid-t5523.png"
+        },
+        {
+          "sequence": 1951,
+          "tick": 5524,
+          "nativeFrame": 41497,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 155,
+              "descriptorFeetY": 178,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1951-stop-mid-t5524.png"
+        },
+        {
+          "sequence": 1952,
+          "tick": 5525,
+          "nativeFrame": 41505,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 238,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 162,
+              "descriptorFeetY": 185,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1952-stop-mid-t5525.png"
+        },
+        {
+          "sequence": 1953,
+          "tick": 5526,
+          "nativeFrame": 41512,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 239,
+              "screenX": 237,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1953-stop-mid-t5526.png"
+        },
+        {
+          "sequence": 1954,
+          "tick": 5527,
+          "nativeFrame": 41520,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 230,
+              "screenX": 228,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 230,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1954-stop-mid-t5527.png"
+        },
+        {
+          "sequence": 1955,
+          "tick": 5528,
+          "nativeFrame": 41527,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 216,
+              "screenX": 214,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 216,
+              "spriteOriginY": 140,
+              "descriptorFeetY": 163,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1955-stop-mid-t5528.png"
+        },
+        {
+          "sequence": 1956,
+          "tick": 5529,
+          "nativeFrame": 41535,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 132,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1956-stop-mid-t5529.png"
+        },
+        {
+          "sequence": 1957,
+          "tick": 5530,
+          "nativeFrame": 41542,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1957-stop-mid-t5530.png"
+        },
+        {
+          "sequence": 1958,
+          "tick": 5531,
+          "nativeFrame": 41550,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1958-stop-mid-t5531.png"
+        },
+        {
+          "sequence": 1959,
+          "tick": 5532,
+          "nativeFrame": 41557,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1959-stop-mid-t5532.png"
+        },
+        {
+          "sequence": 1960,
+          "tick": 5533,
+          "nativeFrame": 41565,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1960-stop-mid-t5533.png"
+        },
+        {
+          "sequence": 1961,
+          "tick": 5534,
+          "nativeFrame": 41572,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 150,
+              "descriptorFeetY": 173,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1961-stop-mid-t5534.png"
+        },
+        {
+          "sequence": 1962,
+          "tick": 5535,
+          "nativeFrame": 41580,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1962-stop-mid-t5535.png"
+        },
+        {
+          "sequence": 1963,
+          "tick": 5536,
+          "nativeFrame": 41587,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1963-stop-mid-t5536.png"
+        },
+        {
+          "sequence": 1964,
+          "tick": 5537,
+          "nativeFrame": 41595,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 161,
+              "descriptorFeetY": 184,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1964-stop-mid-t5537.png"
+        },
+        {
+          "sequence": 1965,
+          "tick": 5538,
+          "nativeFrame": 41602,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 206,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1965-stop-mid-t5538.png"
+        },
+        {
+          "sequence": 1966,
+          "tick": 5539,
+          "nativeFrame": 41610,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 205,
+              "screenX": 203,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1966-stop-mid-t5539.png"
+        },
+        {
+          "sequence": 1967,
+          "tick": 5540,
+          "nativeFrame": 41617,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 196,
+              "screenX": 194,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 196,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1967-stop-mid-t5540.png"
+        },
+        {
+          "sequence": 1968,
+          "tick": 5541,
+          "nativeFrame": 41625,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 182,
+              "screenX": 180,
+              "headY": 138,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 182,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1968-stop-mid-t5541.png"
+        },
+        {
+          "sequence": 1969,
+          "tick": 5542,
+          "nativeFrame": 41632,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 132,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1969-stop-mid-t5542.png"
+        },
+        {
+          "sequence": 1970,
+          "tick": 5543,
+          "nativeFrame": 41640,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 136,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1970-stop-mid-t5543.png"
+        },
+        {
+          "sequence": 1971,
+          "tick": 5544,
+          "nativeFrame": 41647,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1971-stop-mid-t5544.png"
+        },
+        {
+          "sequence": 1972,
+          "tick": 5545,
+          "nativeFrame": 41655,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 140,
+              "descriptorFeetY": 163,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1972-stop-mid-t5545.png"
+        },
+        {
+          "sequence": 1973,
+          "tick": 5546,
+          "nativeFrame": 41662,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1973-stop-mid-t5546.png"
+        },
+        {
+          "sequence": 1974,
+          "tick": 5547,
+          "nativeFrame": 41670,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 151,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 151,
+              "descriptorFeetY": 174,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1974-stop-mid-t5547.png"
+        },
+        {
+          "sequence": 1975,
+          "tick": 5548,
+          "nativeFrame": 41677,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1975-stop-mid-t5548.png"
+        },
+        {
+          "sequence": 1976,
+          "tick": 5549,
+          "nativeFrame": 41685,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 158,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 158,
+              "descriptorFeetY": 181,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1976-stop-mid-t5549.png"
+        },
+        {
+          "sequence": 1977,
+          "tick": 5550,
+          "nativeFrame": 41692,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1977-stop-mid-t5550.png"
+        },
+        {
+          "sequence": 1978,
+          "tick": 5551,
+          "nativeFrame": 41700,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 174,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1978-stop-mid-t5551.png"
+        },
+        {
+          "sequence": 1979,
+          "tick": 5552,
+          "nativeFrame": 41707,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 172,
+              "screenX": 170,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1979-stop-mid-t5552.png"
+        },
+        {
+          "sequence": 1980,
+          "tick": 5553,
+          "nativeFrame": 41715,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 160,
+              "screenX": 158,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 160,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1980-stop-mid-t5553.png"
+        },
+        {
+          "sequence": 1981,
+          "tick": 5554,
+          "nativeFrame": 41722,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 149,
+              "screenX": 147,
+              "headY": 137,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 149,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1981-stop-mid-t5554.png"
+        },
+        {
+          "sequence": 1982,
+          "tick": 5555,
+          "nativeFrame": 41730,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 133,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1982-stop-mid-t5555.png"
+        },
+        {
+          "sequence": 1983,
+          "tick": 5556,
+          "nativeFrame": 41737,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 141,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 144,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1983-stop-mid-t5556.png"
+        },
+        {
+          "sequence": 1984,
+          "tick": 5557,
+          "nativeFrame": 41745,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 145,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 144,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1984-stop-mid-t5557.png"
+        },
+        {
+          "sequence": 1985,
+          "tick": 5558,
+          "nativeFrame": 41752,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1985-stop-mid-t5558.png"
+        },
+        {
+          "sequence": 1986,
+          "tick": 5559,
+          "nativeFrame": 41760,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1986-stop-mid-t5559.png"
+        },
+        {
+          "sequence": 1987,
+          "tick": 5560,
+          "nativeFrame": 41767,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 151,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 151,
+              "descriptorFeetY": 174,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1987-stop-mid-t5560.png"
+        },
+        {
+          "sequence": 1988,
+          "tick": 5561,
+          "nativeFrame": 41775,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 155,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 155,
+              "descriptorFeetY": 178,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1988-stop-mid-t5561.png"
+        },
+        {
+          "sequence": 1989,
+          "tick": 5562,
+          "nativeFrame": 41783,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 159,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 159,
+              "descriptorFeetY": 182,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1989-stop-mid-t5562.png"
+        },
+        {
+          "sequence": 1990,
+          "tick": 5563,
+          "nativeFrame": 41790,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1990-stop-mid-t5563.png"
+        },
+        {
+          "sequence": 1991,
+          "tick": 5564,
+          "nativeFrame": 41798,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 142,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1991-stop-mid-t5564.png"
+        },
+        {
+          "sequence": 1992,
+          "tick": 5565,
+          "nativeFrame": 41805,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 138,
+              "screenX": 136,
+              "headY": 158,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 138,
+              "spriteOriginY": 158,
+              "descriptorFeetY": 181,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1992-stop-mid-t5565.png"
+        },
+        {
+          "sequence": 1993,
+          "tick": 5566,
+          "nativeFrame": 41813,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 124,
+              "screenX": 122,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 124,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1993-stop-mid-t5566.png"
+        },
+        {
+          "sequence": 1994,
+          "tick": 5567,
+          "nativeFrame": 41820,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 115,
+              "screenX": 113,
+              "headY": 135,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 115,
+              "spriteOriginY": 135,
+              "descriptorFeetY": 158,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1994-stop-mid-t5567.png"
+        },
+        {
+          "sequence": 1995,
+          "tick": 5568,
+          "nativeFrame": 41828,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 134,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 134,
+              "descriptorFeetY": 157,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1995-stop-mid-t5568.png"
+        },
+        {
+          "sequence": 1996,
+          "tick": 5569,
+          "nativeFrame": 41835,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 137,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1996-stop-mid-t5569.png"
+        },
+        {
+          "sequence": 1997,
+          "tick": 5570,
+          "nativeFrame": 41843,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 112,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1997-stop-mid-t5570.png"
+        },
+        {
+          "sequence": 1998,
+          "tick": 5571,
+          "nativeFrame": 41850,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 112,
+              "spriteOriginY": 142,
+              "descriptorFeetY": 165,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1998-stop-mid-t5571.png"
+        },
+        {
+          "sequence": 1999,
+          "tick": 5572,
+          "nativeFrame": 41858,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 149,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 149,
+              "descriptorFeetY": 172,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/1999-stop-mid-t5572.png"
+        },
+        {
+          "sequence": 2000,
+          "tick": 5573,
+          "nativeFrame": 41865,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2000-stop-mid-t5573.png"
+        },
+        {
+          "sequence": 2001,
+          "tick": 5574,
+          "nativeFrame": 41873,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2001-stop-mid-t5574.png"
+        },
+        {
+          "sequence": 2002,
+          "tick": 5575,
+          "nativeFrame": 41880,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 160,
+              "descriptorFeetY": 183,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2002-stop-mid-t5575.png"
+        },
+        {
+          "sequence": 2003,
+          "tick": 5576,
+          "nativeFrame": 41888,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2003-stop-mid-t5576.png"
+        },
+        {
+          "sequence": 2004,
+          "tick": 5577,
+          "nativeFrame": 41895,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 110,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2004-stop-mid-t5577.png"
+        },
+        {
+          "sequence": 2005,
+          "tick": 5578,
+          "nativeFrame": 41903,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 104,
+              "screenX": 102,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 104,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2005-stop-mid-t5578.png"
+        },
+        {
+          "sequence": 2006,
+          "tick": 5579,
+          "nativeFrame": 41910,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 90,
+              "screenX": 88,
+              "headY": 142,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 90,
+              "spriteOriginY": 142,
+              "descriptorFeetY": 165,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2006-stop-mid-t5579.png"
+        },
+        {
+          "sequence": 2007,
+          "tick": 5580,
+          "nativeFrame": 41918,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 81,
+              "screenX": 79,
+              "headY": 133,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 81,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2007-stop-mid-t5580.png"
+        },
+        {
+          "sequence": 2008,
+          "tick": 5581,
+          "nativeFrame": 41925,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 139,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 131,
+              "descriptorFeetY": 154,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2008-stop-mid-t5581.png"
+        },
+        {
+          "sequence": 2009,
+          "tick": 5582,
+          "nativeFrame": 41933,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 135,
+              "descriptorFeetY": 158,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2009-stop-mid-t5582.png"
+        },
+        {
+          "sequence": 2010,
+          "tick": 5583,
+          "nativeFrame": 41940,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2010-stop-mid-t5583.png"
+        },
+        {
+          "sequence": 2011,
+          "tick": 5584,
+          "nativeFrame": 41948,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2011-stop-mid-t5584.png"
+        },
+        {
+          "sequence": 2012,
+          "tick": 5585,
+          "nativeFrame": 41955,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 149,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 149,
+              "descriptorFeetY": 172,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2012-stop-mid-t5585.png"
+        },
+        {
+          "sequence": 2013,
+          "tick": 5586,
+          "nativeFrame": 41963,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 153,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2013-stop-mid-t5586.png"
+        },
+        {
+          "sequence": 2014,
+          "tick": 5587,
+          "nativeFrame": 41970,
+          "camera": 2,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 78,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2014-stop-mid-t5587.png"
+        }
+      ]
+    },
+    {
+      "name": "stop-high",
+      "sourceTrace": "evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/trace.jsonl",
+      "moveStartNativeFrame": 41302,
+      "firstVisibleExactHead": {
+        "sequence": 2953,
+        "tick": 5518,
+        "nativeFrame": 41452,
+        "camera": 10,
+        "heads": [
+          {
+            "worldX": 254,
+            "screenX": 244,
+            "headY": 156,
+            "opaqueHeadPixelsExact": 69
+          }
+        ],
+        "exactFullDescriptorPoses": [
+          {
+            "cell": 11,
+            "worldX": 254,
+            "spriteOriginY": 156,
+            "descriptorFeetY": 179,
+            "opaquePixels": 185
+          }
+        ],
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2953-stop-high-t5518.png"
+      },
+      "observations": [
+        {
+          "sequence": 2953,
+          "tick": 5518,
+          "nativeFrame": 41452,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 254,
+              "screenX": 244,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 69
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 254,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 185
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2953-stop-high-t5518.png"
+        },
+        {
+          "sequence": 2954,
+          "tick": 5519,
+          "nativeFrame": 41459,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 244,
+              "screenX": 234,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 244,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2954-stop-high-t5519.png"
+        },
+        {
+          "sequence": 2955,
+          "tick": 5520,
+          "nativeFrame": 41467,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 143,
+              "descriptorFeetY": 166,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2955-stop-high-t5520.png"
+        },
+        {
+          "sequence": 2956,
+          "tick": 5521,
+          "nativeFrame": 41475,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 147,
+              "descriptorFeetY": 170,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2956-stop-high-t5521.png"
+        },
+        {
+          "sequence": 2957,
+          "tick": 5522,
+          "nativeFrame": 41482,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2957-stop-high-t5522.png"
+        },
+        {
+          "sequence": 2958,
+          "tick": 5523,
+          "nativeFrame": 41490,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2958-stop-high-t5523.png"
+        },
+        {
+          "sequence": 2959,
+          "tick": 5524,
+          "nativeFrame": 41497,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 240,
+              "spriteOriginY": 155,
+              "descriptorFeetY": 178,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2959-stop-high-t5524.png"
+        },
+        {
+          "sequence": 2960,
+          "tick": 5525,
+          "nativeFrame": 41505,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 240,
+              "screenX": 230,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 240,
+              "spriteOriginY": 162,
+              "descriptorFeetY": 185,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2960-stop-high-t5525.png"
+        },
+        {
+          "sequence": 2961,
+          "tick": 5526,
+          "nativeFrame": 41512,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 239,
+              "screenX": 229,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2961-stop-high-t5526.png"
+        },
+        {
+          "sequence": 2962,
+          "tick": 5527,
+          "nativeFrame": 41520,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 230,
+              "screenX": 220,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 230,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2962-stop-high-t5527.png"
+        },
+        {
+          "sequence": 2963,
+          "tick": 5528,
+          "nativeFrame": 41527,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 216,
+              "screenX": 206,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 216,
+              "spriteOriginY": 140,
+              "descriptorFeetY": 163,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2963-stop-high-t5528.png"
+        },
+        {
+          "sequence": 2964,
+          "tick": 5529,
+          "nativeFrame": 41535,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 132,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2964-stop-high-t5529.png"
+        },
+        {
+          "sequence": 2965,
+          "tick": 5530,
+          "nativeFrame": 41542,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 140,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2965-stop-high-t5530.png"
+        },
+        {
+          "sequence": 2966,
+          "tick": 5531,
+          "nativeFrame": 41550,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2966-stop-high-t5531.png"
+        },
+        {
+          "sequence": 2967,
+          "tick": 5532,
+          "nativeFrame": 41557,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 208,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2967-stop-high-t5532.png"
+        },
+        {
+          "sequence": 2968,
+          "tick": 5533,
+          "nativeFrame": 41565,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2968-stop-high-t5533.png"
+        },
+        {
+          "sequence": 2969,
+          "tick": 5534,
+          "nativeFrame": 41572,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 150,
+              "descriptorFeetY": 173,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2969-stop-high-t5534.png"
+        },
+        {
+          "sequence": 2970,
+          "tick": 5535,
+          "nativeFrame": 41580,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2970-stop-high-t5535.png"
+        },
+        {
+          "sequence": 2971,
+          "tick": 5536,
+          "nativeFrame": 41587,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2971-stop-high-t5536.png"
+        },
+        {
+          "sequence": 2972,
+          "tick": 5537,
+          "nativeFrame": 41595,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 161,
+              "descriptorFeetY": 184,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2972-stop-high-t5537.png"
+        },
+        {
+          "sequence": 2973,
+          "tick": 5538,
+          "nativeFrame": 41602,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 208,
+              "screenX": 198,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 208,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2973-stop-high-t5538.png"
+        },
+        {
+          "sequence": 2974,
+          "tick": 5539,
+          "nativeFrame": 41610,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 205,
+              "screenX": 195,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2974-stop-high-t5539.png"
+        },
+        {
+          "sequence": 2975,
+          "tick": 5540,
+          "nativeFrame": 41617,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 196,
+              "screenX": 186,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 196,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2975-stop-high-t5540.png"
+        },
+        {
+          "sequence": 2976,
+          "tick": 5541,
+          "nativeFrame": 41625,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 182,
+              "screenX": 172,
+              "headY": 138,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 182,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2976-stop-high-t5541.png"
+        },
+        {
+          "sequence": 2977,
+          "tick": 5542,
+          "nativeFrame": 41632,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 132,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 132,
+              "descriptorFeetY": 155,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2977-stop-high-t5542.png"
+        },
+        {
+          "sequence": 2978,
+          "tick": 5543,
+          "nativeFrame": 41640,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 136,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2978-stop-high-t5543.png"
+        },
+        {
+          "sequence": 2979,
+          "tick": 5544,
+          "nativeFrame": 41647,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 136,
+              "descriptorFeetY": 159,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2979-stop-high-t5544.png"
+        },
+        {
+          "sequence": 2980,
+          "tick": 5545,
+          "nativeFrame": 41655,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 140,
+              "descriptorFeetY": 163,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2980-stop-high-t5545.png"
+        },
+        {
+          "sequence": 2981,
+          "tick": 5546,
+          "nativeFrame": 41662,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 176,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2981-stop-high-t5546.png"
+        },
+        {
+          "sequence": 2982,
+          "tick": 5547,
+          "nativeFrame": 41670,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 151,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 151,
+              "descriptorFeetY": 174,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2982-stop-high-t5547.png"
+        },
+        {
+          "sequence": 2983,
+          "tick": 5548,
+          "nativeFrame": 41677,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 154,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 154,
+              "descriptorFeetY": 177,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2983-stop-high-t5548.png"
+        },
+        {
+          "sequence": 2984,
+          "tick": 5549,
+          "nativeFrame": 41685,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 158,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 158,
+              "descriptorFeetY": 181,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2984-stop-high-t5549.png"
+        },
+        {
+          "sequence": 2985,
+          "tick": 5550,
+          "nativeFrame": 41692,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 162,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2985-stop-high-t5550.png"
+        },
+        {
+          "sequence": 2986,
+          "tick": 5551,
+          "nativeFrame": 41700,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 176,
+              "screenX": 166,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 176,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2986-stop-high-t5551.png"
+        },
+        {
+          "sequence": 2987,
+          "tick": 5552,
+          "nativeFrame": 41707,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 172,
+              "screenX": 162,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2987-stop-high-t5552.png"
+        },
+        {
+          "sequence": 2988,
+          "tick": 5553,
+          "nativeFrame": 41715,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 160,
+              "screenX": 150,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 160,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2988-stop-high-t5553.png"
+        },
+        {
+          "sequence": 2989,
+          "tick": 5554,
+          "nativeFrame": 41722,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 149,
+              "screenX": 139,
+              "headY": 137,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 149,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2989-stop-high-t5554.png"
+        },
+        {
+          "sequence": 2990,
+          "tick": 5555,
+          "nativeFrame": 41730,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 133,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2990-stop-high-t5555.png"
+        },
+        {
+          "sequence": 2991,
+          "tick": 5556,
+          "nativeFrame": 41737,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 141,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 144,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2991-stop-high-t5556.png"
+        },
+        {
+          "sequence": 2992,
+          "tick": 5557,
+          "nativeFrame": 41745,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 145,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 144,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2992-stop-high-t5557.png"
+        },
+        {
+          "sequence": 2993,
+          "tick": 5558,
+          "nativeFrame": 41752,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2993-stop-high-t5558.png"
+        },
+        {
+          "sequence": 2994,
+          "tick": 5559,
+          "nativeFrame": 41760,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 148,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 148,
+              "descriptorFeetY": 171,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2994-stop-high-t5559.png"
+        },
+        {
+          "sequence": 2995,
+          "tick": 5560,
+          "nativeFrame": 41767,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 151,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 151,
+              "descriptorFeetY": 174,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2995-stop-high-t5560.png"
+        },
+        {
+          "sequence": 2996,
+          "tick": 5561,
+          "nativeFrame": 41775,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 155,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 155,
+              "descriptorFeetY": 178,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2996-stop-high-t5561.png"
+        },
+        {
+          "sequence": 2997,
+          "tick": 5562,
+          "nativeFrame": 41783,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 159,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 159,
+              "descriptorFeetY": 182,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2997-stop-high-t5562.png"
+        },
+        {
+          "sequence": 2998,
+          "tick": 5563,
+          "nativeFrame": 41790,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 163,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2998-stop-high-t5563.png"
+        },
+        {
+          "sequence": 2999,
+          "tick": 5564,
+          "nativeFrame": 41798,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 144,
+              "screenX": 134,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 144,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/2999-stop-high-t5564.png"
+        },
+        {
+          "sequence": 3000,
+          "tick": 5565,
+          "nativeFrame": 41805,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 138,
+              "screenX": 128,
+              "headY": 158,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 138,
+              "spriteOriginY": 158,
+              "descriptorFeetY": 181,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3000-stop-high-t5565.png"
+        },
+        {
+          "sequence": 3001,
+          "tick": 5566,
+          "nativeFrame": 41813,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 124,
+              "screenX": 114,
+              "headY": 144,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 124,
+              "spriteOriginY": 144,
+              "descriptorFeetY": 167,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3001-stop-high-t5566.png"
+        },
+        {
+          "sequence": 3002,
+          "tick": 5567,
+          "nativeFrame": 41820,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 115,
+              "screenX": 105,
+              "headY": 135,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 115,
+              "spriteOriginY": 135,
+              "descriptorFeetY": 158,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3002-stop-high-t5567.png"
+        },
+        {
+          "sequence": 3003,
+          "tick": 5568,
+          "nativeFrame": 41828,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 134,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 134,
+              "descriptorFeetY": 157,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3003-stop-high-t5568.png"
+        },
+        {
+          "sequence": 3004,
+          "tick": 5569,
+          "nativeFrame": 41835,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 137,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 137,
+              "descriptorFeetY": 160,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3004-stop-high-t5569.png"
+        },
+        {
+          "sequence": 3005,
+          "tick": 5570,
+          "nativeFrame": 41843,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 112,
+              "spriteOriginY": 138,
+              "descriptorFeetY": 161,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3005-stop-high-t5570.png"
+        },
+        {
+          "sequence": 3006,
+          "tick": 5571,
+          "nativeFrame": 41850,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 150,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 112,
+              "spriteOriginY": 142,
+              "descriptorFeetY": 165,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3006-stop-high-t5571.png"
+        },
+        {
+          "sequence": 3007,
+          "tick": 5572,
+          "nativeFrame": 41858,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 149,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 149,
+              "descriptorFeetY": 172,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3007-stop-high-t5572.png"
+        },
+        {
+          "sequence": 3008,
+          "tick": 5573,
+          "nativeFrame": 41865,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 152,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 152,
+              "descriptorFeetY": 175,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3008-stop-high-t5573.png"
+        },
+        {
+          "sequence": 3009,
+          "tick": 5574,
+          "nativeFrame": 41873,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3009-stop-high-t5574.png"
+        },
+        {
+          "sequence": 3010,
+          "tick": 5575,
+          "nativeFrame": 41880,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 160,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 160,
+              "descriptorFeetY": 183,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3010-stop-high-t5575.png"
+        },
+        {
+          "sequence": 3011,
+          "tick": 5576,
+          "nativeFrame": 41888,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3011-stop-high-t5576.png"
+        },
+        {
+          "sequence": 3012,
+          "tick": 5577,
+          "nativeFrame": 41895,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 112,
+              "screenX": 102,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 112,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3012-stop-high-t5577.png"
+        },
+        {
+          "sequence": 3013,
+          "tick": 5578,
+          "nativeFrame": 41903,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 104,
+              "screenX": 94,
+              "headY": 156,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 104,
+              "spriteOriginY": 156,
+              "descriptorFeetY": 179,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3013-stop-high-t5578.png"
+        },
+        {
+          "sequence": 3014,
+          "tick": 5579,
+          "nativeFrame": 41910,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 90,
+              "screenX": 80,
+              "headY": 142,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 90,
+              "spriteOriginY": 142,
+              "descriptorFeetY": 165,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3014-stop-high-t5579.png"
+        },
+        {
+          "sequence": 3015,
+          "tick": 5580,
+          "nativeFrame": 41918,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 81,
+              "screenX": 71,
+              "headY": 133,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 81,
+              "spriteOriginY": 133,
+              "descriptorFeetY": 156,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3015-stop-high-t5580.png"
+        },
+        {
+          "sequence": 3016,
+          "tick": 5581,
+          "nativeFrame": 41925,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 139,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 131,
+              "descriptorFeetY": 154,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3016-stop-high-t5581.png"
+        },
+        {
+          "sequence": 3017,
+          "tick": 5582,
+          "nativeFrame": 41933,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 143,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 135,
+              "descriptorFeetY": 158,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3017-stop-high-t5582.png"
+        },
+        {
+          "sequence": 3018,
+          "tick": 5583,
+          "nativeFrame": 41940,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 147,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 10,
+              "worldX": 80,
+              "spriteOriginY": 139,
+              "descriptorFeetY": 162,
+              "opaquePixels": 172
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3018-stop-high-t5583.png"
+        },
+        {
+          "sequence": 3019,
+          "tick": 5584,
+          "nativeFrame": 41948,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 146,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 146,
+              "descriptorFeetY": 169,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3019-stop-high-t5584.png"
+        },
+        {
+          "sequence": 3020,
+          "tick": 5585,
+          "nativeFrame": 41955,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 149,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 149,
+              "descriptorFeetY": 172,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3020-stop-high-t5585.png"
+        },
+        {
+          "sequence": 3021,
+          "tick": 5586,
+          "nativeFrame": 41963,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 153,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3021-stop-high-t5586.png"
+        },
+        {
+          "sequence": 3022,
+          "tick": 5587,
+          "nativeFrame": 41970,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 157,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 157,
+              "descriptorFeetY": 180,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3022-stop-high-t5587.png"
+        },
+        {
+          "sequence": 3023,
+          "tick": 5588,
+          "nativeFrame": 41978,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 161,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3023-stop-high-t5588.png"
+        },
+        {
+          "sequence": 3024,
+          "tick": 5589,
+          "nativeFrame": 41985,
+          "camera": 10,
+          "heads": [
+            {
+              "worldX": 80,
+              "screenX": 70,
+              "headY": 164,
+              "opaqueHeadPixelsExact": 80
+            }
+          ],
+          "exactFullDescriptorPoses": [
+            {
+              "cell": 11,
+              "worldX": 80,
+              "spriteOriginY": 164,
+              "descriptorFeetY": 187,
+              "opaquePixels": 218
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-5-2-water-camera-2026-11-05T22-59-25.909Z/3024-stop-high-t5589.png"
+        }
+      ]
+    }
+  ],
+  "repeatability": {
+    "initialThreeCasesExactPngChecks": 29,
+    "groundedCameraCasesExactPngChecks": 9,
+    "independentGroundedPrefixFirst9Identical": true
+  },
+  "limitations": [
+    "The first birth coordinate and physical vertical state are offscreen.",
+    "The camera boundary is conditional on coupled player position; not an exact native parser-state measurement.",
+    "Sprite compression causes headY to shift relative to the descriptorfeet. Only fully exact descriptor poses have drawnfeet assigned.",
+    "The earlier swimming-camera-stop attempt failed because momentum kept scrolling; excluded from boundary evidence.",
+    "These are local optional-area mechanics measurements, not campaign wins or source/remake equivalence."
+  ],
+  "followupResearch": "data/blooper-motion-candidate.json"
+}

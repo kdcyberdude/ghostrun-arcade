@@ -1,0 +1,109 @@
+{
+  "method": "Exact supplied green walker/winged templates on genuine dense 1-1 source; no source edits.",
+  "inspectedTicks": [
+    55,
+    100
+  ],
+  "rows": [
+    {
+      "tick": 89,
+      "image": "evidence/local/reference-campaign-dense/00090-tick-00089.png",
+      "camera": 1468,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 234,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 1702
+        }
+      ]
+    },
+    {
+      "tick": 90,
+      "image": "evidence/local/reference-campaign-dense/00091-tick-00090.png",
+      "camera": 1488,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 210,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 1698
+        }
+      ]
+    },
+    {
+      "tick": 91,
+      "image": "evidence/local/reference-campaign-dense/00092-tick-00091.png",
+      "camera": 1505,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 189,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 1694
+        }
+      ]
+    },
+    {
+      "tick": 92,
+      "image": "evidence/local/reference-campaign-dense/00093-tick-00092.png",
+      "camera": 1525,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 165,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 1690
+        }
+      ]
+    },
+    {
+      "tick": 93,
+      "image": "evidence/local/reference-campaign-dense/00094-tick-00093.png",
+      "camera": 1543,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 144,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 1687
+        }
+      ]
+    }
+  ]
+}

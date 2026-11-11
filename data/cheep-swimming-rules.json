@@ -1,0 +1,13 @@
+{
+  "schema": "cheep-swimming-horizontal-rules-v1",
+  "horizontalSpeedByPalette": {"0f-10-30-27": 0.25, "0f-16-30-27": 0.5},
+  "direction": "Preserve current velocity sign. All fresh observed source tracks move left; rightward sign transfer remains inferred.",
+  "scope": "Alive nonflying Cheep only. Unknown palettes retain the existing legacy motor. No vertical, birth, activation, pose-clock or population rule is supplied.",
+  "evidence": {
+    "fresh2-2": "Four predeclared calibration and three untouched reserved ordinary-control cases:471 one-seed-per-actor X samples within1pixel, unchanged2pixel tolerance.",
+    "passive7-2": "Existing original grey/red tracks independently corroborate0.25/0.5speeds; no fresh7-2 varied-control pass.",
+    "otherContexts": "Shared class transfer is inferred, including8-4 and optional water areas. Flying Cheep are excluded.",
+    "lock": "data/cheep-two-two-calibration-lock.json",
+    "validation": "evidence/cheep-two-two-candidate-validation.json"
+  }
+}

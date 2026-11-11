@@ -1,0 +1,4294 @@
+{
+  "schema": "public-bowser-interaction-observations-v1",
+  "updatedUtc": "2026-11-06T01:50:53.953Z",
+  "level": "2-4",
+  "directory": "evidence/local/bowser-2026-11-06T01-49-39.127Z",
+  "trace": "evidence/local/bowser-2026-11-06T01-49-39.127Z/trace.jsonl",
+  "method": "Fresh standard recorded masks verified against dense source, then ordinary manual controls. Actual native-frame sums and exact opaque supplied-art matches only. Camera inferred by zero-tolerance RGB known-map registration constrained to0..24px per7/8-frame decision.",
+  "limits": [
+    "Enemy match requires complete front/rear supplied cells and may fail under occlusion or split sprite rows; missing poses are not invented.",
+    "Flame match requires all opaque supplied pixels; partially obscured flames can be missed.",
+    "Event times remain bounded by the actual7/8-frame screenshot spacing.",
+    "No fire-flower/Bowser hit-point or reward measurement yet."
+  ],
+  "prefixVerifications": [
+    {
+      "tick": 2606,
+      "nativeFrame": 19576,
+      "expectedNativeFrame": 19576,
+      "samePng": true
+    }
+  ],
+  "observations": [
+    {
+      "branch": 1,
+      "sequence": 429,
+      "experiment": "generator-v2alive-frontier-brake-jump",
+      "tick": 2607,
+      "nativeFrame": 19584,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        52
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00429-generator-v2alive-frontier-brake-jump-t2607.png",
+      "camera": 1261,
+      "cameraCandidates": [
+        {
+          "camera": 1261,
+          "mismatch": 189,
+          "support": 8560,
+          "error": 0.02207943925233645
+        },
+        {
+          "camera": 1253,
+          "mismatch": 683,
+          "support": 8528,
+          "error": 0.08008911819887429
+        },
+        {
+          "camera": 1269,
+          "mismatch": 733,
+          "support": 8592,
+          "error": 0.08531191806331472
+        }
+      ],
+      "worldArtworkPixels": 6686,
+      "player": {
+        "originX": 112,
+        "originY": 144,
+        "visibleLeft": 112,
+        "visibleTop": 160,
+        "visibleRight": 127,
+        "visibleBottom": 175,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1373,
+        "feetY": 175
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 430,
+      "experiment": "generator-v2alive-frontier-brake-jump",
+      "tick": 2608,
+      "nativeFrame": 19591,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        52
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00430-generator-v2alive-frontier-brake-jump-t2608.png",
+      "camera": 1268,
+      "cameraCandidates": [
+        {
+          "camera": 1268,
+          "mismatch": 187,
+          "support": 8592,
+          "error": 0.02176443202979516
+        },
+        {
+          "camera": 1267,
+          "mismatch": 799,
+          "support": 8584,
+          "error": 0.09308014911463187
+        },
+        {
+          "camera": 1276,
+          "mismatch": 860,
+          "support": 8624,
+          "error": 0.09972170686456401
+        }
+      ],
+      "worldArtworkPixels": 6766,
+      "player": {
+        "originX": 112,
+        "originY": 124,
+        "visibleLeft": 112,
+        "visibleTop": 140,
+        "visibleRight": 127,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1380,
+        "feetY": 155
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 431,
+      "experiment": "generator-v2alive-frontier-brake-jump",
+      "tick": 2609,
+      "nativeFrame": 19599,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        52
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00431-generator-v2alive-frontier-brake-jump-t2609.png",
+      "camera": 1272,
+      "cameraCandidates": [
+        {
+          "camera": 1272,
+          "mismatch": 172,
+          "support": 8608,
+          "error": 0.019981412639405203
+        },
+        {
+          "camera": 1271,
+          "mismatch": 797,
+          "support": 8600,
+          "error": 0.09267441860465116
+        },
+        {
+          "camera": 1280,
+          "mismatch": 804,
+          "support": 8640,
+          "error": 0.09305555555555556
+        }
+      ],
+      "worldArtworkPixels": 6730,
+      "player": {
+        "originX": 112,
+        "originY": 107,
+        "visibleLeft": 112,
+        "visibleTop": 123,
+        "visibleRight": 127,
+        "visibleBottom": 138,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1384,
+        "feetY": 138
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 432,
+      "experiment": "generator-v2alive-frontier-brake-jump",
+      "tick": 2610,
+      "nativeFrame": 19606,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        52
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00432-generator-v2alive-frontier-brake-jump-t2610.png",
+      "camera": 1275,
+      "cameraCandidates": [
+        {
+          "camera": 1275,
+          "mismatch": 170,
+          "support": 8616,
+          "error": 0.019730733519034354
+        },
+        {
+          "camera": 1283,
+          "mismatch": 687,
+          "support": 8648,
+          "error": 0.07944033302497687
+        },
+        {
+          "camera": 1276,
+          "mismatch": 830,
+          "support": 8624,
+          "error": 0.0962430426716141
+        }
+      ],
+      "worldArtworkPixels": 6795,
+      "player": {
+        "originX": 112,
+        "originY": 99,
+        "visibleLeft": 112,
+        "visibleTop": 115,
+        "visibleRight": 127,
+        "visibleBottom": 130,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1387,
+        "feetY": 130
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 433,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2611,
+      "nativeFrame": 19614,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00433-generator-v2alive-frontier-wait-t2611.png",
+      "camera": 1276,
+      "cameraCandidates": [
+        {
+          "camera": 1276,
+          "mismatch": 170,
+          "support": 8624,
+          "error": 0.01971243042671614
+        },
+        {
+          "camera": 1284,
+          "mismatch": 801,
+          "support": 8656,
+          "error": 0.0925369685767098
+        },
+        {
+          "camera": 1275,
+          "mismatch": 812,
+          "support": 8616,
+          "error": 0.09424326833797586
+        }
+      ],
+      "worldArtworkPixels": 6808,
+      "player": {
+        "originX": 112,
+        "originY": 100,
+        "visibleLeft": 112,
+        "visibleTop": 116,
+        "visibleRight": 127,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1388,
+        "feetY": 131
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 434,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2612,
+      "nativeFrame": 19621,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00434-generator-v2alive-frontier-wait-t2612.png",
+      "camera": 1276,
+      "cameraCandidates": [
+        {
+          "camera": 1276,
+          "mismatch": 202,
+          "support": 8624,
+          "error": 0.023423005565862708
+        },
+        {
+          "camera": 1284,
+          "mismatch": 770,
+          "support": 8656,
+          "error": 0.08895563770794825
+        },
+        {
+          "camera": 1277,
+          "mismatch": 932,
+          "support": 8624,
+          "error": 0.10807050092764378
+        }
+      ],
+      "worldArtworkPixels": 6820,
+      "player": {
+        "originX": 112,
+        "originY": 120,
+        "visibleLeft": 112,
+        "visibleTop": 136,
+        "visibleRight": 127,
+        "visibleBottom": 151,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1388,
+        "feetY": 151
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 435,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2613,
+      "nativeFrame": 19629,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00435-generator-v2alive-frontier-wait-t2613.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 190,
+          "support": 8624,
+          "error": 0.022031539888682745
+        },
+        {
+          "camera": 1285,
+          "mismatch": 688,
+          "support": 8656,
+          "error": 0.07948243992606285
+        },
+        {
+          "camera": 1278,
+          "mismatch": 857,
+          "support": 8632,
+          "error": 0.0992817423540315
+        }
+      ],
+      "worldArtworkPixels": 6845,
+      "player": {
+        "originX": 112,
+        "originY": 119,
+        "visibleLeft": 114,
+        "visibleTop": 135,
+        "visibleRight": 125,
+        "visibleBottom": 150,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 150
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 223,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1500
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 436,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2614,
+      "nativeFrame": 19636,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00436-generator-v2alive-frontier-wait-t2614.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 211,
+          "support": 8624,
+          "error": 0.02446660482374768
+        },
+        {
+          "camera": 1285,
+          "mismatch": 702,
+          "support": 8656,
+          "error": 0.08109981515711645
+        },
+        {
+          "camera": 1278,
+          "mismatch": 881,
+          "support": 8632,
+          "error": 0.10206209453197405
+        }
+      ],
+      "worldArtworkPixels": 6865,
+      "player": {
+        "originX": 112,
+        "originY": 112,
+        "visibleLeft": 114,
+        "visibleTop": 128,
+        "visibleRight": 125,
+        "visibleBottom": 143,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 143
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 215,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1492
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 437,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2615,
+      "nativeFrame": 19644,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00437-generator-v2alive-frontier-wait-t2615.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 236,
+          "support": 8624,
+          "error": 0.02736549165120594
+        },
+        {
+          "camera": 1285,
+          "mismatch": 730,
+          "support": 8656,
+          "error": 0.08433456561922366
+        },
+        {
+          "camera": 1278,
+          "mismatch": 899,
+          "support": 8632,
+          "error": 0.10414735866543096
+        }
+      ],
+      "worldArtworkPixels": 6922,
+      "player": {
+        "originX": 112,
+        "originY": 105,
+        "visibleLeft": 114,
+        "visibleTop": 121,
+        "visibleRight": 125,
+        "visibleBottom": 136,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 136
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 205,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1482
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 438,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2616,
+      "nativeFrame": 19651,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00438-generator-v2alive-frontier-wait-t2616.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 229,
+          "support": 8624,
+          "error": 0.026553803339517627
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 892,
+          "support": 8632,
+          "error": 0.10333642261353104
+        }
+      ],
+      "worldArtworkPixels": 6925,
+      "player": {
+        "originX": 112,
+        "originY": 98,
+        "visibleLeft": 114,
+        "visibleTop": 114,
+        "visibleRight": 125,
+        "visibleBottom": 129,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 129
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 196,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1473
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 439,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2617,
+      "nativeFrame": 19659,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00439-generator-v2alive-frontier-wait-t2617.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 242,
+          "support": 8624,
+          "error": 0.02806122448979592
+        },
+        {
+          "camera": 1285,
+          "mismatch": 742,
+          "support": 8656,
+          "error": 0.08572088724584104
+        },
+        {
+          "camera": 1278,
+          "mismatch": 910,
+          "support": 8632,
+          "error": 0.10542168674698796
+        }
+      ],
+      "worldArtworkPixels": 6922,
+      "player": {
+        "originX": 112,
+        "originY": 91,
+        "visibleLeft": 114,
+        "visibleTop": 107,
+        "visibleRight": 125,
+        "visibleBottom": 122,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 122
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 186,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1463
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 440,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2618,
+      "nativeFrame": 19667,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00440-generator-v2alive-frontier-wait-t2618.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 233,
+          "support": 8624,
+          "error": 0.027017625231910945
+        },
+        {
+          "camera": 1285,
+          "mismatch": 742,
+          "support": 8656,
+          "error": 0.08572088724584104
+        },
+        {
+          "camera": 1278,
+          "mismatch": 901,
+          "support": 8632,
+          "error": 0.1043790546802595
+        }
+      ],
+      "worldArtworkPixels": 6931,
+      "player": {
+        "originX": 112,
+        "originY": 83,
+        "visibleLeft": 114,
+        "visibleTop": 99,
+        "visibleRight": 125,
+        "visibleBottom": 114,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 114
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 176,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1453
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 441,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2619,
+      "nativeFrame": 19674,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00441-generator-v2alive-frontier-wait-t2619.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 249,
+          "support": 8624,
+          "error": 0.02887291280148423
+        },
+        {
+          "camera": 1285,
+          "mismatch": 735,
+          "support": 8656,
+          "error": 0.08491219963031424
+        },
+        {
+          "camera": 1278,
+          "mismatch": 922,
+          "support": 8632,
+          "error": 0.10681186283595923
+        }
+      ],
+      "worldArtworkPixels": 6998,
+      "player": {
+        "originX": 112,
+        "originY": 77,
+        "visibleLeft": 114,
+        "visibleTop": 93,
+        "visibleRight": 125,
+        "visibleBottom": 108,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 108
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 167,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1444
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 442,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2620,
+      "nativeFrame": 19682,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00442-generator-v2alive-frontier-wait-t2620.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 226,
+          "support": 8624,
+          "error": 0.026205936920222633
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 909,
+          "support": 8632,
+          "error": 0.10530583873957368
+        }
+      ],
+      "worldArtworkPixels": 7029,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 157,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1434
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 443,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2621,
+      "nativeFrame": 19689,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00443-generator-v2alive-frontier-wait-t2621.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 210,
+          "support": 8624,
+          "error": 0.024350649350649352
+        },
+        {
+          "camera": 1285,
+          "mismatch": 716,
+          "support": 8656,
+          "error": 0.08271719038817006
+        },
+        {
+          "camera": 1278,
+          "mismatch": 896,
+          "support": 8632,
+          "error": 0.10379981464318813
+        }
+      ],
+      "worldArtworkPixels": 7032,
+      "player": {
+        "originX": 112,
+        "originY": 62,
+        "visibleLeft": 114,
+        "visibleTop": 78,
+        "visibleRight": 125,
+        "visibleBottom": 93,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 93
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 148,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1425
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 444,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2622,
+      "nativeFrame": 19697,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00444-generator-v2alive-frontier-wait-t2622.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 178,
+          "support": 8624,
+          "error": 0.020640074211502782
+        },
+        {
+          "camera": 1285,
+          "mismatch": 689,
+          "support": 8656,
+          "error": 0.07959796672828096
+        },
+        {
+          "camera": 1278,
+          "mismatch": 866,
+          "support": 8632,
+          "error": 0.10032437442075996
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": {
+        "originX": 112,
+        "originY": 54,
+        "visibleLeft": 114,
+        "visibleTop": 70,
+        "visibleRight": 125,
+        "visibleBottom": 85,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 85
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 138,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1415
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 445,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2623,
+      "nativeFrame": 19704,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00445-generator-v2alive-frontier-wait-t2623.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 220,
+          "support": 8624,
+          "error": 0.025510204081632654
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 908,
+          "support": 8632,
+          "error": 0.10518999073215941
+        }
+      ],
+      "worldArtworkPixels": 7036,
+      "player": {
+        "originX": 112,
+        "originY": 47,
+        "visibleLeft": 114,
+        "visibleTop": 63,
+        "visibleRight": 125,
+        "visibleBottom": 78,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 78
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 130,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1407
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 446,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2624,
+      "nativeFrame": 19712,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00446-generator-v2alive-frontier-wait-t2624.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 228,
+          "support": 8624,
+          "error": 0.026437847866419294
+        },
+        {
+          "camera": 1285,
+          "mismatch": 733,
+          "support": 8656,
+          "error": 0.084681146025878
+        },
+        {
+          "camera": 1278,
+          "mismatch": 915,
+          "support": 8632,
+          "error": 0.10600092678405931
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": {
+        "originX": 112,
+        "originY": 40,
+        "visibleLeft": 114,
+        "visibleTop": 56,
+        "visibleRight": 125,
+        "visibleBottom": 71,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 71
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 120,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1397
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 447,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2625,
+      "nativeFrame": 19719,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00447-generator-v2alive-frontier-wait-t2625.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 253,
+          "support": 8624,
+          "error": 0.029336734693877552
+        },
+        {
+          "camera": 1285,
+          "mismatch": 753,
+          "support": 8656,
+          "error": 0.0869916820702403
+        },
+        {
+          "camera": 1278,
+          "mismatch": 941,
+          "support": 8632,
+          "error": 0.10901297497683039
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": {
+        "originX": 112,
+        "originY": 33,
+        "visibleLeft": 114,
+        "visibleTop": 49,
+        "visibleRight": 125,
+        "visibleBottom": 64,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 64
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 111,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1388
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 448,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2626,
+      "nativeFrame": 19727,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00448-generator-v2alive-frontier-wait-t2626.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 225,
+          "support": 8624,
+          "error": 0.026089981447124305
+        },
+        {
+          "camera": 1285,
+          "mismatch": 728,
+          "support": 8656,
+          "error": 0.08410351201478743
+        },
+        {
+          "camera": 1278,
+          "mismatch": 912,
+          "support": 8632,
+          "error": 0.1056533827618165
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 101,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1378
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 449,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2627,
+      "nativeFrame": 19734,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00449-generator-v2alive-frontier-wait-t2627.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 210,
+          "support": 8624,
+          "error": 0.024350649350649352
+        },
+        {
+          "camera": 1285,
+          "mismatch": 708,
+          "support": 8656,
+          "error": 0.08179297597042513
+        },
+        {
+          "camera": 1278,
+          "mismatch": 897,
+          "support": 8632,
+          "error": 0.10391566265060241
+        }
+      ],
+      "worldArtworkPixels": 7033,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 92,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1369
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 450,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2628,
+      "nativeFrame": 19742,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00450-generator-v2alive-frontier-wait-t2628.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 189,
+          "support": 8624,
+          "error": 0.021915584415584416
+        },
+        {
+          "camera": 1285,
+          "mismatch": 697,
+          "support": 8656,
+          "error": 0.08052218114602588
+        },
+        {
+          "camera": 1278,
+          "mismatch": 877,
+          "support": 8632,
+          "error": 0.10159870250231696
+        }
+      ],
+      "worldArtworkPixels": 7031,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 82,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1359
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 451,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2629,
+      "nativeFrame": 19749,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00451-generator-v2alive-frontier-wait-t2629.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 198,
+          "support": 8624,
+          "error": 0.02295918367346939
+        },
+        {
+          "camera": 1285,
+          "mismatch": 700,
+          "support": 8656,
+          "error": 0.08086876155268022
+        },
+        {
+          "camera": 1278,
+          "mismatch": 886,
+          "support": 8632,
+          "error": 0.10264133456904541
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 73,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1350
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 452,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2630,
+      "nativeFrame": 19757,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00452-generator-v2alive-frontier-wait-t2630.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 191,
+          "support": 8624,
+          "error": 0.022147495361781077
+        },
+        {
+          "camera": 1285,
+          "mismatch": 695,
+          "support": 8656,
+          "error": 0.08029112754158965
+        },
+        {
+          "camera": 1278,
+          "mismatch": 879,
+          "support": 8632,
+          "error": 0.10183039851714551
+        }
+      ],
+      "worldArtworkPixels": 7037,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 63,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1340
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 453,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2631,
+      "nativeFrame": 19764,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00453-generator-v2alive-frontier-wait-t2631.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 200,
+          "support": 8624,
+          "error": 0.023191094619666047
+        },
+        {
+          "camera": 1285,
+          "mismatch": 702,
+          "support": 8656,
+          "error": 0.08109981515711645
+        },
+        {
+          "camera": 1278,
+          "mismatch": 888,
+          "support": 8632,
+          "error": 0.10287303058387395
+        }
+      ],
+      "worldArtworkPixels": 7036,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 55,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1332
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 454,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2632,
+      "nativeFrame": 19772,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00454-generator-v2alive-frontier-wait-t2632.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 225,
+          "support": 8624,
+          "error": 0.026089981447124305
+        },
+        {
+          "camera": 1285,
+          "mismatch": 730,
+          "support": 8656,
+          "error": 0.08433456561922366
+        },
+        {
+          "camera": 1278,
+          "mismatch": 914,
+          "support": 8632,
+          "error": 0.10588507877664505
+        }
+      ],
+      "worldArtworkPixels": 7036,
+      "player": {
+        "originX": 112,
+        "originY": 41,
+        "visibleLeft": 114,
+        "visibleTop": 58,
+        "visibleRight": 126,
+        "visibleBottom": 72,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1389,
+        "feetY": 72
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 45,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1322
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 455,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2633,
+      "nativeFrame": 19779,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00455-generator-v2alive-frontier-wait-t2633.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 212,
+          "support": 8624,
+          "error": 0.02458256029684601
+        },
+        {
+          "camera": 1285,
+          "mismatch": 715,
+          "support": 8656,
+          "error": 0.08260166358595195
+        },
+        {
+          "camera": 1278,
+          "mismatch": 901,
+          "support": 8632,
+          "error": 0.1043790546802595
+        }
+      ],
+      "worldArtworkPixels": 7030,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 36,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1313
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 456,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2634,
+      "nativeFrame": 19787,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00456-generator-v2alive-frontier-wait-t2634.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 223,
+          "support": 8624,
+          "error": 0.025858070500927643
+        },
+        {
+          "camera": 1285,
+          "mismatch": 735,
+          "support": 8656,
+          "error": 0.08491219963031424
+        },
+        {
+          "camera": 1278,
+          "mismatch": 914,
+          "support": 8632,
+          "error": 0.10588507877664505
+        }
+      ],
+      "worldArtworkPixels": 7018,
+      "player": {
+        "originX": 112,
+        "originY": 99,
+        "visibleLeft": 114,
+        "visibleTop": 115,
+        "visibleRight": 125,
+        "visibleBottom": 130,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 130
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 26,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1303
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 457,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2635,
+      "nativeFrame": 19794,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00457-generator-v2alive-frontier-wait-t2635.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 205,
+          "support": 8624,
+          "error": 0.0237708719851577
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 898,
+          "support": 8632,
+          "error": 0.10403151065801668
+        }
+      ],
+      "worldArtworkPixels": 6928,
+      "player": {
+        "originX": 112,
+        "originY": 92,
+        "visibleLeft": 114,
+        "visibleTop": 108,
+        "visibleRight": 125,
+        "visibleBottom": 123,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 123
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 17,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1294
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 458,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2636,
+      "nativeFrame": 19802,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00458-generator-v2alive-frontier-wait-t2636.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 202,
+          "support": 8624,
+          "error": 0.023423005565862708
+        },
+        {
+          "camera": 1285,
+          "mismatch": 713,
+          "support": 8656,
+          "error": 0.08237060998151571
+        },
+        {
+          "camera": 1278,
+          "mismatch": 881,
+          "support": 8632,
+          "error": 0.10206209453197405
+        }
+      ],
+      "worldArtworkPixels": 6888,
+      "player": {
+        "originX": 112,
+        "originY": 85,
+        "visibleLeft": 114,
+        "visibleTop": 101,
+        "visibleRight": 125,
+        "visibleBottom": 116,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 116
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 7,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1284
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 459,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2637,
+      "nativeFrame": 19809,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00459-generator-v2alive-frontier-wait-t2637.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 193,
+          "support": 8624,
+          "error": 0.022379406307977738
+        },
+        {
+          "camera": 1285,
+          "mismatch": 701,
+          "support": 8656,
+          "error": 0.08098428835489833
+        },
+        {
+          "camera": 1278,
+          "mismatch": 866,
+          "support": 8632,
+          "error": 0.10032437442075996
+        }
+      ],
+      "worldArtworkPixels": 6838,
+      "player": {
+        "originX": 112,
+        "originY": 78,
+        "visibleLeft": 114,
+        "visibleTop": 94,
+        "visibleRight": 125,
+        "visibleBottom": 109,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 109
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 460,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2638,
+      "nativeFrame": 19817,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00460-generator-v2alive-frontier-wait-t2638.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 166,
+          "support": 8624,
+          "error": 0.01924860853432282
+        },
+        {
+          "camera": 1285,
+          "mismatch": 676,
+          "support": 8656,
+          "error": 0.07809611829944547
+        },
+        {
+          "camera": 1278,
+          "mismatch": 837,
+          "support": 8632,
+          "error": 0.09696478220574606
+        }
+      ],
+      "worldArtworkPixels": 6809,
+      "player": {
+        "originX": 112,
+        "originY": 70,
+        "visibleLeft": 114,
+        "visibleTop": 86,
+        "visibleRight": 125,
+        "visibleBottom": 101,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 101
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 461,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2639,
+      "nativeFrame": 19824,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00461-generator-v2alive-frontier-wait-t2639.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 131,
+          "support": 8624,
+          "error": 0.015190166975881261
+        },
+        {
+          "camera": 1285,
+          "mismatch": 646,
+          "support": 8656,
+          "error": 0.07463031423290203
+        },
+        {
+          "camera": 1278,
+          "mismatch": 803,
+          "support": 8632,
+          "error": 0.0930259499536608
+        }
+      ],
+      "worldArtworkPixels": 6829,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 462,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2640,
+      "nativeFrame": 19832,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00462-generator-v2alive-frontier-wait-t2640.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 119,
+          "support": 8624,
+          "error": 0.013798701298701298
+        },
+        {
+          "camera": 1285,
+          "mismatch": 641,
+          "support": 8656,
+          "error": 0.07405268022181145
+        },
+        {
+          "camera": 1278,
+          "mismatch": 788,
+          "support": 8632,
+          "error": 0.09128822984244671
+        }
+      ],
+      "worldArtworkPixels": 6837,
+      "player": {
+        "originX": 112,
+        "originY": 55,
+        "visibleLeft": 114,
+        "visibleTop": 71,
+        "visibleRight": 125,
+        "visibleBottom": 86,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 86
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 463,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2641,
+      "nativeFrame": 19839,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00463-generator-v2alive-frontier-wait-t2641.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 134,
+          "support": 8624,
+          "error": 0.015538033395176253
+        },
+        {
+          "camera": 1285,
+          "mismatch": 649,
+          "support": 8656,
+          "error": 0.07497689463955638
+        },
+        {
+          "camera": 1278,
+          "mismatch": 801,
+          "support": 8632,
+          "error": 0.09279425393883226
+        }
+      ],
+      "worldArtworkPixels": 6886,
+      "player": {
+        "originX": 112,
+        "originY": 49,
+        "visibleLeft": 114,
+        "visibleTop": 65,
+        "visibleRight": 125,
+        "visibleBottom": 80,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 80
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 464,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2642,
+      "nativeFrame": 19847,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00464-generator-v2alive-frontier-wait-t2642.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 194,
+          "support": 8624,
+          "error": 0.022495361781076067
+        },
+        {
+          "camera": 1285,
+          "mismatch": 698,
+          "support": 8656,
+          "error": 0.08063770794824399
+        },
+        {
+          "camera": 1278,
+          "mismatch": 860,
+          "support": 8632,
+          "error": 0.09962928637627433
+        }
+      ],
+      "worldArtworkPixels": 6917,
+      "player": {
+        "originX": 112,
+        "originY": 41,
+        "visibleLeft": 114,
+        "visibleTop": 57,
+        "visibleRight": 125,
+        "visibleBottom": 72,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 72
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 465,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2643,
+      "nativeFrame": 19854,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00465-generator-v2alive-frontier-wait-t2643.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 202,
+          "support": 8624,
+          "error": 0.023423005565862708
+        },
+        {
+          "camera": 1285,
+          "mismatch": 703,
+          "support": 8656,
+          "error": 0.08121534195933457
+        },
+        {
+          "camera": 1278,
+          "mismatch": 871,
+          "support": 8632,
+          "error": 0.10090361445783133
+        }
+      ],
+      "worldArtworkPixels": 6929,
+      "player": {
+        "originX": 112,
+        "originY": 35,
+        "visibleLeft": 114,
+        "visibleTop": 51,
+        "visibleRight": 125,
+        "visibleBottom": 66,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 66
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 466,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2644,
+      "nativeFrame": 19862,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00466-generator-v2alive-frontier-wait-t2644.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 198,
+          "support": 8624,
+          "error": 0.02295918367346939
+        },
+        {
+          "camera": 1285,
+          "mismatch": 699,
+          "support": 8656,
+          "error": 0.0807532347504621
+        },
+        {
+          "camera": 1278,
+          "mismatch": 869,
+          "support": 8632,
+          "error": 0.10067191844300279
+        }
+      ],
+      "worldArtworkPixels": 6907,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 467,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2645,
+      "nativeFrame": 19869,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00467-generator-v2alive-frontier-wait-t2645.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 184,
+          "support": 8624,
+          "error": 0.021335807050092765
+        },
+        {
+          "camera": 1285,
+          "mismatch": 684,
+          "support": 8656,
+          "error": 0.07902033271719039
+        },
+        {
+          "camera": 1278,
+          "mismatch": 853,
+          "support": 8632,
+          "error": 0.09881835032437442
+        }
+      ],
+      "worldArtworkPixels": 6941,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 468,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2646,
+      "nativeFrame": 19877,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00468-generator-v2alive-frontier-wait-t2646.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 174,
+          "support": 8624,
+          "error": 0.020176252319109463
+        },
+        {
+          "camera": 1285,
+          "mismatch": 657,
+          "support": 8656,
+          "error": 0.0759011090573013
+        },
+        {
+          "camera": 1278,
+          "mismatch": 847,
+          "support": 8632,
+          "error": 0.09812326227988878
+        }
+      ],
+      "worldArtworkPixels": 6995,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 469,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2647,
+      "nativeFrame": 19884,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00469-generator-v2alive-frontier-wait-t2647.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 159,
+          "support": 8624,
+          "error": 0.018436920222634507
+        },
+        {
+          "camera": 1285,
+          "mismatch": 645,
+          "support": 8656,
+          "error": 0.07451478743068392
+        },
+        {
+          "camera": 1278,
+          "mismatch": 838,
+          "support": 8632,
+          "error": 0.09708063021316034
+        }
+      ],
+      "worldArtworkPixels": 7019,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 470,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2648,
+      "nativeFrame": 19892,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00470-generator-v2alive-frontier-wait-t2648.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 170,
+          "support": 8624,
+          "error": 0.01971243042671614
+        },
+        {
+          "camera": 1285,
+          "mismatch": 657,
+          "support": 8656,
+          "error": 0.0759011090573013
+        },
+        {
+          "camera": 1278,
+          "mismatch": 852,
+          "support": 8632,
+          "error": 0.09870250231696015
+        }
+      ],
+      "worldArtworkPixels": 7028,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 471,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2649,
+      "nativeFrame": 19899,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00471-generator-v2alive-frontier-wait-t2649.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 176,
+          "support": 8624,
+          "error": 0.02040816326530612
+        },
+        {
+          "camera": 1285,
+          "mismatch": 667,
+          "support": 8656,
+          "error": 0.07705637707948244
+        },
+        {
+          "camera": 1278,
+          "mismatch": 860,
+          "support": 8632,
+          "error": 0.09962928637627433
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 472,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2650,
+      "nativeFrame": 19907,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00472-generator-v2alive-frontier-wait-t2650.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 232,
+          "support": 8624,
+          "error": 0.026901669758812616
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 919,
+          "support": 8632,
+          "error": 0.1064643188137164
+        }
+      ],
+      "worldArtworkPixels": 7038,
+      "player": {
+        "originX": 112,
+        "originY": 37,
+        "visibleLeft": 114,
+        "visibleTop": 54,
+        "visibleRight": 126,
+        "visibleBottom": 68,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1389,
+        "feetY": 68
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 473,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2651,
+      "nativeFrame": 19914,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00473-generator-v2alive-frontier-wait-t2651.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 202,
+          "support": 8624,
+          "error": 0.023423005565862708
+        },
+        {
+          "camera": 1285,
+          "mismatch": 698,
+          "support": 8656,
+          "error": 0.08063770794824399
+        },
+        {
+          "camera": 1278,
+          "mismatch": 887,
+          "support": 8632,
+          "error": 0.10275718257645969
+        }
+      ],
+      "worldArtworkPixels": 7038,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 228,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1505
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 474,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2652,
+      "nativeFrame": 19922,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00474-generator-v2alive-frontier-wait-t2652.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 237,
+          "support": 8624,
+          "error": 0.027481447124304267
+        },
+        {
+          "camera": 1285,
+          "mismatch": 730,
+          "support": 8656,
+          "error": 0.08433456561922366
+        },
+        {
+          "camera": 1278,
+          "mismatch": 923,
+          "support": 8632,
+          "error": 0.10692771084337349
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": {
+        "originX": 112,
+        "originY": 96,
+        "visibleLeft": 114,
+        "visibleTop": 113,
+        "visibleRight": 126,
+        "visibleBottom": 127,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1389,
+        "feetY": 127
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 218,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1495
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 475,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2653,
+      "nativeFrame": 19929,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00475-generator-v2alive-frontier-wait-t2653.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 240,
+          "support": 8624,
+          "error": 0.027829313543599257
+        },
+        {
+          "camera": 1285,
+          "mismatch": 740,
+          "support": 8656,
+          "error": 0.0854898336414048
+        },
+        {
+          "camera": 1278,
+          "mismatch": 925,
+          "support": 8632,
+          "error": 0.10715940685820204
+        }
+      ],
+      "worldArtworkPixels": 7033,
+      "player": {
+        "originX": 112,
+        "originY": 93,
+        "visibleLeft": 114,
+        "visibleTop": 109,
+        "visibleRight": 125,
+        "visibleBottom": 124,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 124
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 209,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1486
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 476,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2654,
+      "nativeFrame": 19937,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00476-generator-v2alive-frontier-wait-t2654.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 244,
+          "support": 8624,
+          "error": 0.02829313543599258
+        },
+        {
+          "camera": 1285,
+          "mismatch": 746,
+          "support": 8656,
+          "error": 0.08618299445471349
+        },
+        {
+          "camera": 1278,
+          "mismatch": 929,
+          "support": 8632,
+          "error": 0.10762279888785913
+        }
+      ],
+      "worldArtworkPixels": 7032,
+      "player": {
+        "originX": 112,
+        "originY": 86,
+        "visibleLeft": 114,
+        "visibleTop": 102,
+        "visibleRight": 125,
+        "visibleBottom": 117,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 117
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 199,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1476
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 477,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2655,
+      "nativeFrame": 19944,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00477-generator-v2alive-frontier-wait-t2655.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 235,
+          "support": 8624,
+          "error": 0.027249536178107606
+        },
+        {
+          "camera": 1285,
+          "mismatch": 748,
+          "support": 8656,
+          "error": 0.08641404805914972
+        },
+        {
+          "camera": 1278,
+          "mismatch": 923,
+          "support": 8632,
+          "error": 0.10692771084337349
+        }
+      ],
+      "worldArtworkPixels": 7033,
+      "player": {
+        "originX": 112,
+        "originY": 79,
+        "visibleLeft": 114,
+        "visibleTop": 95,
+        "visibleRight": 125,
+        "visibleBottom": 110,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 110
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 190,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1467
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 478,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2656,
+      "nativeFrame": 19952,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00478-generator-v2alive-frontier-wait-t2656.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 233,
+          "support": 8624,
+          "error": 0.027017625231910945
+        },
+        {
+          "camera": 1285,
+          "mismatch": 740,
+          "support": 8656,
+          "error": 0.0854898336414048
+        },
+        {
+          "camera": 1278,
+          "mismatch": 921,
+          "support": 8632,
+          "error": 0.10669601482854495
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": {
+        "originX": 112,
+        "originY": 72,
+        "visibleLeft": 114,
+        "visibleTop": 88,
+        "visibleRight": 125,
+        "visibleBottom": 103,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 103
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 479,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2657,
+      "nativeFrame": 19959,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00479-generator-v2alive-frontier-wait-t2657.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 206,
+          "support": 8624,
+          "error": 0.02388682745825603
+        },
+        {
+          "camera": 1285,
+          "mismatch": 723,
+          "support": 8656,
+          "error": 0.08352587800369686
+        },
+        {
+          "camera": 1278,
+          "mismatch": 896,
+          "support": 8632,
+          "error": 0.10379981464318813
+        }
+      ],
+      "worldArtworkPixels": 7037,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 172,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1449
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 480,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2658,
+      "nativeFrame": 19967,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00480-generator-v2alive-frontier-wait-t2658.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 203,
+          "support": 8624,
+          "error": 0.02353896103896104
+        },
+        {
+          "camera": 1285,
+          "mismatch": 723,
+          "support": 8656,
+          "error": 0.08352587800369686
+        },
+        {
+          "camera": 1278,
+          "mismatch": 893,
+          "support": 8632,
+          "error": 0.10345227062094532
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": {
+        "originX": 112,
+        "originY": 57,
+        "visibleLeft": 114,
+        "visibleTop": 73,
+        "visibleRight": 125,
+        "visibleBottom": 88,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 0.986013986013986,
+        "matchedPixels": 141,
+        "worldX": 1389,
+        "feetY": 88
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 162,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1439
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 481,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2659,
+      "nativeFrame": 19975,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00481-generator-v2alive-frontier-wait-t2659.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 199,
+          "support": 8624,
+          "error": 0.023075139146567718
+        },
+        {
+          "camera": 1285,
+          "mismatch": 721,
+          "support": 8656,
+          "error": 0.08329482439926063
+        },
+        {
+          "camera": 1278,
+          "mismatch": 890,
+          "support": 8632,
+          "error": 0.1031047265987025
+        }
+      ],
+      "worldArtworkPixels": 7038,
+      "player": {
+        "originX": 112,
+        "originY": 49,
+        "visibleLeft": 114,
+        "visibleTop": 65,
+        "visibleRight": 125,
+        "visibleBottom": 80,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 80
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 152,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1429
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 482,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2660,
+      "nativeFrame": 19982,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00482-generator-v2alive-frontier-wait-t2660.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 208,
+          "support": 8624,
+          "error": 0.02411873840445269
+        },
+        {
+          "camera": 1285,
+          "mismatch": 720,
+          "support": 8656,
+          "error": 0.08317929759704251
+        },
+        {
+          "camera": 1278,
+          "mismatch": 901,
+          "support": 8632,
+          "error": 0.1043790546802595
+        }
+      ],
+      "worldArtworkPixels": 7033,
+      "player": {
+        "originX": 112,
+        "originY": 43,
+        "visibleLeft": 114,
+        "visibleTop": 59,
+        "visibleRight": 125,
+        "visibleBottom": 74,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 74
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 143,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1420
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 483,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2661,
+      "nativeFrame": 19990,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00483-generator-v2alive-frontier-wait-t2661.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 233,
+          "support": 8624,
+          "error": 0.027017625231910945
+        },
+        {
+          "camera": 1285,
+          "mismatch": 742,
+          "support": 8656,
+          "error": 0.08572088724584104
+        },
+        {
+          "camera": 1278,
+          "mismatch": 925,
+          "support": 8632,
+          "error": 0.10715940685820204
+        }
+      ],
+      "worldArtworkPixels": 7018,
+      "player": {
+        "originX": 112,
+        "originY": 35,
+        "visibleLeft": 114,
+        "visibleTop": 51,
+        "visibleRight": 125,
+        "visibleBottom": 66,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 66
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 133,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1410
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 484,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2662,
+      "nativeFrame": 19997,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00484-generator-v2alive-frontier-wait-t2662.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 213,
+          "support": 8624,
+          "error": 0.02469851576994434
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 903,
+          "support": 8632,
+          "error": 0.10461075069508805
+        }
+      ],
+      "worldArtworkPixels": 6980,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 124,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1401
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 485,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2663,
+      "nativeFrame": 20005,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00485-generator-v2alive-frontier-wait-t2663.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 176,
+          "support": 8624,
+          "error": 0.02040816326530612
+        },
+        {
+          "camera": 1285,
+          "mismatch": 691,
+          "support": 8656,
+          "error": 0.07982902033271719
+        },
+        {
+          "camera": 1278,
+          "mismatch": 859,
+          "support": 8632,
+          "error": 0.09951343836886005
+        }
+      ],
+      "worldArtworkPixels": 6862,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 114,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1391
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 486,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2664,
+      "nativeFrame": 20012,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00486-generator-v2alive-frontier-wait-t2664.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 162,
+          "support": 8624,
+          "error": 0.0187847866419295
+        },
+        {
+          "camera": 1285,
+          "mismatch": 672,
+          "support": 8656,
+          "error": 0.07763401109057301
+        },
+        {
+          "camera": 1278,
+          "mismatch": 834,
+          "support": 8632,
+          "error": 0.09661723818350325
+        }
+      ],
+      "worldArtworkPixels": 6836,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 105,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1382
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 487,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2665,
+      "nativeFrame": 20020,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00487-generator-v2alive-frontier-wait-t2665.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 153,
+          "support": 8624,
+          "error": 0.017741187384044527
+        },
+        {
+          "camera": 1285,
+          "mismatch": 649,
+          "support": 8656,
+          "error": 0.07497689463955638
+        },
+        {
+          "camera": 1278,
+          "mismatch": 828,
+          "support": 8632,
+          "error": 0.09592215013901761
+        }
+      ],
+      "worldArtworkPixels": 6822,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 95,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1372
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 488,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2666,
+      "nativeFrame": 20027,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00488-generator-v2alive-frontier-wait-t2666.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 148,
+          "support": 8624,
+          "error": 0.017161410018552876
+        },
+        {
+          "camera": 1285,
+          "mismatch": 646,
+          "support": 8656,
+          "error": 0.07463031423290203
+        },
+        {
+          "camera": 1278,
+          "mismatch": 817,
+          "support": 8632,
+          "error": 0.09464782205746061
+        }
+      ],
+      "worldArtworkPixels": 6838,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 87,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1364
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 489,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2667,
+      "nativeFrame": 20035,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00489-generator-v2alive-frontier-wait-t2667.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 160,
+          "support": 8624,
+          "error": 0.01855287569573284
+        },
+        {
+          "camera": 1285,
+          "mismatch": 655,
+          "support": 8656,
+          "error": 0.07567005545286506
+        },
+        {
+          "camera": 1278,
+          "mismatch": 833,
+          "support": 8632,
+          "error": 0.09650139017608897
+        }
+      ],
+      "worldArtworkPixels": 6834,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 77,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1354
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 490,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2668,
+      "nativeFrame": 20042,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00490-generator-v2alive-frontier-wait-t2668.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 178,
+          "support": 8624,
+          "error": 0.020640074211502782
+        },
+        {
+          "camera": 1285,
+          "mismatch": 676,
+          "support": 8656,
+          "error": 0.07809611829944547
+        },
+        {
+          "camera": 1278,
+          "mismatch": 844,
+          "support": 8632,
+          "error": 0.09777571825764597
+        }
+      ],
+      "worldArtworkPixels": 6842,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 68,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1345
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 491,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2669,
+      "nativeFrame": 20050,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00491-generator-v2alive-frontier-wait-t2669.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 194,
+          "support": 8624,
+          "error": 0.022495361781076067
+        },
+        {
+          "camera": 1285,
+          "mismatch": 684,
+          "support": 8656,
+          "error": 0.07902033271719039
+        },
+        {
+          "camera": 1278,
+          "mismatch": 857,
+          "support": 8632,
+          "error": 0.0992817423540315
+        }
+      ],
+      "worldArtworkPixels": 6868,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 58,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1335
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 492,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2670,
+      "nativeFrame": 20057,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00492-generator-v2alive-frontier-wait-t2670.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 226,
+          "support": 8624,
+          "error": 0.026205936920222633
+        },
+        {
+          "camera": 1285,
+          "mismatch": 725,
+          "support": 8656,
+          "error": 0.08375693160813309
+        },
+        {
+          "camera": 1278,
+          "mismatch": 890,
+          "support": 8632,
+          "error": 0.1031047265987025
+        }
+      ],
+      "worldArtworkPixels": 6933,
+      "player": {
+        "originX": 112,
+        "originY": 87,
+        "visibleLeft": 114,
+        "visibleTop": 104,
+        "visibleRight": 126,
+        "visibleBottom": 118,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1389,
+        "feetY": 118
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 49,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1326
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 493,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2671,
+      "nativeFrame": 20065,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00493-generator-v2alive-frontier-wait-t2671.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 240,
+          "support": 8624,
+          "error": 0.027829313543599257
+        },
+        {
+          "camera": 1285,
+          "mismatch": 736,
+          "support": 8656,
+          "error": 0.08502772643253234
+        },
+        {
+          "camera": 1278,
+          "mismatch": 910,
+          "support": 8632,
+          "error": 0.10542168674698796
+        }
+      ],
+      "worldArtworkPixels": 6935,
+      "player": {
+        "originX": 112,
+        "originY": 94,
+        "visibleLeft": 114,
+        "visibleTop": 110,
+        "visibleRight": 125,
+        "visibleBottom": 125,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 125
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 39,
+          "y": 129,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1316
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 494,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2672,
+      "nativeFrame": 20072,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00494-generator-v2alive-frontier-wait-t2672.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 233,
+          "support": 8624,
+          "error": 0.027017625231910945
+        },
+        {
+          "camera": 1285,
+          "mismatch": 736,
+          "support": 8656,
+          "error": 0.08502772643253234
+        },
+        {
+          "camera": 1278,
+          "mismatch": 899,
+          "support": 8632,
+          "error": 0.10414735866543096
+        }
+      ],
+      "worldArtworkPixels": 6941,
+      "player": {
+        "originX": 112,
+        "originY": 87,
+        "visibleLeft": 114,
+        "visibleTop": 103,
+        "visibleRight": 125,
+        "visibleBottom": 118,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 118
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 30,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1307
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 495,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2673,
+      "nativeFrame": 20080,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00495-generator-v2alive-frontier-wait-t2673.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 245,
+          "support": 8624,
+          "error": 0.028409090909090908
+        },
+        {
+          "camera": 1285,
+          "mismatch": 729,
+          "support": 8656,
+          "error": 0.08421903881700554
+        },
+        {
+          "camera": 1278,
+          "mismatch": 915,
+          "support": 8632,
+          "error": 0.10600092678405931
+        }
+      ],
+      "worldArtworkPixels": 6997,
+      "player": {
+        "originX": 112,
+        "originY": 80,
+        "visibleLeft": 114,
+        "visibleTop": 96,
+        "visibleRight": 125,
+        "visibleBottom": 111,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 111
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 20,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1297
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 496,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2674,
+      "nativeFrame": 20087,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00496-generator-v2alive-frontier-wait-t2674.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 236,
+          "support": 8624,
+          "error": 0.02736549165120594
+        },
+        {
+          "camera": 1285,
+          "mismatch": 731,
+          "support": 8656,
+          "error": 0.08445009242144177
+        },
+        {
+          "camera": 1278,
+          "mismatch": 914,
+          "support": 8632,
+          "error": 0.10588507877664505
+        }
+      ],
+      "worldArtworkPixels": 7016,
+      "player": {
+        "originX": 112,
+        "originY": 73,
+        "visibleLeft": 114,
+        "visibleTop": 89,
+        "visibleRight": 125,
+        "visibleBottom": 104,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 104
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 12,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1289
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 497,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2675,
+      "nativeFrame": 20095,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00497-generator-v2alive-frontier-wait-t2675.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 219,
+          "support": 8624,
+          "error": 0.02539424860853432
+        },
+        {
+          "camera": 1285,
+          "mismatch": 716,
+          "support": 8656,
+          "error": 0.08271719038817006
+        },
+        {
+          "camera": 1278,
+          "mismatch": 903,
+          "support": 8632,
+          "error": 0.10461075069508805
+        }
+      ],
+      "worldArtworkPixels": 7029,
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 2,
+          "y": 129,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1279
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 498,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2676,
+      "nativeFrame": 20102,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00498-generator-v2alive-frontier-wait-t2676.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 183,
+          "support": 8624,
+          "error": 0.021219851576994433
+        },
+        {
+          "camera": 1285,
+          "mismatch": 699,
+          "support": 8656,
+          "error": 0.0807532347504621
+        },
+        {
+          "camera": 1278,
+          "mismatch": 871,
+          "support": 8632,
+          "error": 0.10090361445783133
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 499,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2677,
+      "nativeFrame": 20110,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00499-generator-v2alive-frontier-wait-t2677.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 175,
+          "support": 8624,
+          "error": 0.020292207792207792
+        },
+        {
+          "camera": 1285,
+          "mismatch": 689,
+          "support": 8656,
+          "error": 0.07959796672828096
+        },
+        {
+          "camera": 1278,
+          "mismatch": 862,
+          "support": 8632,
+          "error": 0.09986098239110287
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": {
+        "originX": 112,
+        "originY": 51,
+        "visibleLeft": 114,
+        "visibleTop": 67,
+        "visibleRight": 125,
+        "visibleBottom": 82,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 82
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 500,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2678,
+      "nativeFrame": 20117,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00500-generator-v2alive-frontier-wait-t2678.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 182,
+          "support": 8624,
+          "error": 0.021103896103896104
+        },
+        {
+          "camera": 1285,
+          "mismatch": 689,
+          "support": 8656,
+          "error": 0.07959796672828096
+        },
+        {
+          "camera": 1278,
+          "mismatch": 869,
+          "support": 8632,
+          "error": 0.10067191844300279
+        }
+      ],
+      "worldArtworkPixels": 7036,
+      "player": {
+        "originX": 112,
+        "originY": 44,
+        "visibleLeft": 114,
+        "visibleTop": 60,
+        "visibleRight": 125,
+        "visibleBottom": 75,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 75
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 501,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2679,
+      "nativeFrame": 20125,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00501-generator-v2alive-frontier-wait-t2679.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 212,
+          "support": 8624,
+          "error": 0.02458256029684601
+        },
+        {
+          "camera": 1285,
+          "mismatch": 715,
+          "support": 8656,
+          "error": 0.08260166358595195
+        },
+        {
+          "camera": 1278,
+          "mismatch": 899,
+          "support": 8632,
+          "error": 0.10414735866543096
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": {
+        "originX": 112,
+        "originY": 37,
+        "visibleLeft": 114,
+        "visibleTop": 53,
+        "visibleRight": 125,
+        "visibleBottom": 68,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 68
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 502,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2680,
+      "nativeFrame": 20132,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00502-generator-v2alive-frontier-wait-t2680.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 199,
+          "support": 8624,
+          "error": 0.023075139146567718
+        },
+        {
+          "camera": 1285,
+          "mismatch": 703,
+          "support": 8656,
+          "error": 0.08121534195933457
+        },
+        {
+          "camera": 1278,
+          "mismatch": 887,
+          "support": 8632,
+          "error": 0.10275718257645969
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 503,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2681,
+      "nativeFrame": 20140,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00503-generator-v2alive-frontier-wait-t2681.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 184,
+          "support": 8624,
+          "error": 0.021335807050092765
+        },
+        {
+          "camera": 1285,
+          "mismatch": 691,
+          "support": 8656,
+          "error": 0.07982902033271719
+        },
+        {
+          "camera": 1278,
+          "mismatch": 872,
+          "support": 8632,
+          "error": 0.1010194624652456
+        }
+      ],
+      "worldArtworkPixels": 7033,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 504,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2682,
+      "nativeFrame": 20147,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00504-generator-v2alive-frontier-wait-t2682.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 163,
+          "support": 8624,
+          "error": 0.01890074211502783
+        },
+        {
+          "camera": 1285,
+          "mismatch": 672,
+          "support": 8656,
+          "error": 0.07763401109057301
+        },
+        {
+          "camera": 1278,
+          "mismatch": 849,
+          "support": 8632,
+          "error": 0.09835495829471733
+        }
+      ],
+      "worldArtworkPixels": 7034,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 505,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2683,
+      "nativeFrame": 20155,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00505-generator-v2alive-frontier-wait-t2683.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 165,
+          "support": 8624,
+          "error": 0.01913265306122449
+        },
+        {
+          "camera": 1285,
+          "mismatch": 671,
+          "support": 8656,
+          "error": 0.0775184842883549
+        },
+        {
+          "camera": 1278,
+          "mismatch": 853,
+          "support": 8632,
+          "error": 0.09881835032437442
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 506,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2684,
+      "nativeFrame": 20162,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00506-generator-v2alive-frontier-wait-t2684.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 157,
+          "support": 8624,
+          "error": 0.01820500927643785
+        },
+        {
+          "camera": 1285,
+          "mismatch": 662,
+          "support": 8656,
+          "error": 0.07647874306839186
+        },
+        {
+          "camera": 1278,
+          "mismatch": 845,
+          "support": 8632,
+          "error": 0.09789156626506024
+        }
+      ],
+      "worldArtworkPixels": 7037,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 507,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2685,
+      "nativeFrame": 20170,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00507-generator-v2alive-frontier-wait-t2685.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 156,
+          "support": 8624,
+          "error": 0.018089053803339517
+        },
+        {
+          "camera": 1285,
+          "mismatch": 662,
+          "support": 8656,
+          "error": 0.07647874306839186
+        },
+        {
+          "camera": 1278,
+          "mismatch": 844,
+          "support": 8632,
+          "error": 0.09777571825764597
+        }
+      ],
+      "worldArtworkPixels": 7038,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 508,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2686,
+      "nativeFrame": 20177,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00508-generator-v2alive-frontier-wait-t2686.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 172,
+          "support": 8624,
+          "error": 0.019944341372912802
+        },
+        {
+          "camera": 1285,
+          "mismatch": 677,
+          "support": 8656,
+          "error": 0.07821164510166359
+        },
+        {
+          "camera": 1278,
+          "mismatch": 861,
+          "support": 8632,
+          "error": 0.0997451343836886
+        }
+      ],
+      "worldArtworkPixels": 7035,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 509,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2687,
+      "nativeFrame": 20185,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00509-generator-v2alive-frontier-wait-t2687.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 190,
+          "support": 8624,
+          "error": 0.022031539888682745
+        },
+        {
+          "camera": 1285,
+          "mismatch": 697,
+          "support": 8656,
+          "error": 0.08052218114602588
+        },
+        {
+          "camera": 1278,
+          "mismatch": 879,
+          "support": 8632,
+          "error": 0.10183039851714551
+        }
+      ],
+      "worldArtworkPixels": 7037,
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 510,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2688,
+      "nativeFrame": 20192,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00510-generator-v2alive-frontier-wait-t2688.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 195,
+          "support": 8624,
+          "error": 0.022611317254174396
+        },
+        {
+          "camera": 1285,
+          "mismatch": 704,
+          "support": 8656,
+          "error": 0.08133086876155268
+        },
+        {
+          "camera": 1278,
+          "mismatch": 885,
+          "support": 8632,
+          "error": 0.10252548656163114
+        }
+      ],
+      "worldArtworkPixels": 7021,
+      "player": {
+        "originX": 112,
+        "originY": 84,
+        "visibleLeft": 114,
+        "visibleTop": 101,
+        "visibleRight": 126,
+        "visibleBottom": 115,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1389,
+        "feetY": 115
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 511,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2689,
+      "nativeFrame": 20200,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00511-generator-v2alive-frontier-wait-t2689.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 213,
+          "support": 8624,
+          "error": 0.02469851576994434
+        },
+        {
+          "camera": 1285,
+          "mismatch": 729,
+          "support": 8656,
+          "error": 0.08421903881700554
+        },
+        {
+          "camera": 1278,
+          "mismatch": 898,
+          "support": 8632,
+          "error": 0.10403151065801668
+        }
+      ],
+      "worldArtworkPixels": 6977,
+      "player": {
+        "originX": 112,
+        "originY": 95,
+        "visibleLeft": 114,
+        "visibleTop": 111,
+        "visibleRight": 125,
+        "visibleBottom": 126,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 126
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 232,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1509
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 512,
+      "experiment": "generator-v2alive-frontier-wait",
+      "tick": 2690,
+      "nativeFrame": 20207,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-49-39.127Z/00512-generator-v2alive-frontier-wait-t2690.png",
+      "camera": 1277,
+      "cameraCandidates": [
+        {
+          "camera": 1277,
+          "mismatch": 196,
+          "support": 8624,
+          "error": 0.022727272727272728
+        },
+        {
+          "camera": 1285,
+          "mismatch": 718,
+          "support": 8656,
+          "error": 0.08294824399260628
+        },
+        {
+          "camera": 1278,
+          "mismatch": 881,
+          "support": 8632,
+          "error": 0.10206209453197405
+        }
+      ],
+      "worldArtworkPixels": 6907,
+      "player": {
+        "originX": 112,
+        "originY": 89,
+        "visibleLeft": 114,
+        "visibleTop": 105,
+        "visibleRight": 125,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1389,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "lockedUTC": "2026-11-06T06:46:35.726Z",
+  "scope": "Grounded Goomba defeated by a right-moving green Koopa shell: visible16x16body anchor, immediate vertical flip, horizontal drift, vertical trajectory and following-update start. Othervictims/defeatcauses/directions/airbornecontacts remain outside source qualification; no awards.",
+  "tolerances": {
+    "bodyOriginPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "pose": "Exact supplied180opaque RGB at the observed body origin; covered pixels unobserved"
+  },
+  "rule": {
+    "initialVerticalVelocity": -3.0625,
+    "gravity": 0.25,
+    "maximumFallVelocity": 3,
+    "initialPosition": "Preserve the actual live world position and fractional remainder. No added origin offset or pixel teleport. Calibration uses observed integer193 top as zero-fraction representative.",
+    "horizontalVelocity": 1,
+    "order": "Contact frame changes pose only; first X/Y displacement on next active native update. Position before gravity; then cap downward velocity.",
+    "visibleBodyTopFromFeet": -15,
+    "render": "Reverse the two visible8pxrows and flipY each tile, preserving raw16x16body origin. Do not flip the containing24pxcell."
+  },
+  "qualification": "Inferred bounded representative, not exact native forces. Of6800 declared models,77 satisfy1px calibration;4 preserve integer origin. Prefer nearest−3 impulse and integer3 cap with no hidden position offset rather than fitting extra fractions. Six image-inferred birth tracks/36unique samples max1px; existing uncapped−3 model max11px. Reserved capture must pass unchanged or reject.",
+  "bindings": {
+    "evidence/shell-launch-vertical-calibration.json": "4e46d94e4432e4b59106184c55aff700ce22319c2869035e8840f2e9766dc561",
+    "evidence/shell-launch-vertical-plan.json": "5256b0af075cb8d248bfccfc3952e8acc7132dc9028dc270d6134b2bc0d78365"
+  },
+  "status": "Frozen before new reserved controls; no runtime integration proposal until evaluation."
+}

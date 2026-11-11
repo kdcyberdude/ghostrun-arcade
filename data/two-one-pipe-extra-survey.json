@@ -1,0 +1,4634 @@
+{
+  "schema": "image-only-targeted-pipe-survey-v1",
+  "level": "2-1",
+  "candidate": {
+    "worldX": 2080,
+    "topY": 128,
+    "width": 32
+  },
+  "status": "centered-down-no-transition-observed",
+  "acceptedOptionalEntrance": false,
+  "supersedes": "data/two-one-pipe-survey.json candidate2080 unresolved status; earlier completed file intentionally unchanged.",
+  "sourceTrace": "evidence/local/two-one-pipe-extra/trace.jsonl",
+  "atlas": "metatiles-palette-001.png",
+  "finalCenteredTrial": {
+    "sequence": 746,
+    "tick": 1636,
+    "sentUtc": "2026-11-05T22:28:10.252776+00:00",
+    "request": {
+      "op": "step",
+      "buttons": [
+        "down"
+      ],
+      "ticks": 20
+    },
+    "nativeFrames": 151,
+    "image": "evidence/local/two-one-pipe-extra/00746-tick-01636.png",
+    "player": {
+      "originX": 87,
+      "originY": 97,
+      "visibleLeft": 89,
+      "visibleTop": 113,
+      "visibleRight": 100,
+      "visibleBottom": 128,
+      "cell": 23,
+      "direction": "left",
+      "annotation": "small player standing",
+      "confidence": 1,
+      "matchedPixels": 143
+    },
+    "pipes": [
+      {
+        "x": 79,
+        "y": 128,
+        "confidence": 0.984375,
+        "relativePlayerX": 8
+      }
+    ],
+    "targetPipe2080Artwork": [
+      {
+        "x": 79,
+        "y": 128,
+        "confidence": 0.984375,
+        "relativePlayerX": 8
+      }
+    ],
+    "previousPipe2016Artwork": [
+      {
+        "x": 15,
+        "y": 160,
+        "confidence": 1,
+        "relativePlayerX": 72
+      }
+    ],
+    "nativeFramesSinceLeftLipStage": 819,
+    "relativePlayerOriginX": 8,
+    "pipeConfidence": 0.984375,
+    "inferredCameraX": 2001,
+    "inferredPlayerWorldX": 2088,
+    "outcome": "Exact living full standing sprite remains on actual main2080pipe after151nativeframesDOWN; no new room observed."
+  },
+  "variants": [
+    {
+      "id": "three-run-three-jump-down-short",
+      "sourceSequenceRange": [
+        202,
+        241
+      ],
+      "stageSequence": 230,
+      "resetThenRecordedPrefixTicks": 1298,
+      "recordedPrefixSource": "data/observed-winning-inputs.json",
+      "recipe": [
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 203,
+          "endTick": 1301
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 204,
+          "endTick": 1313
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 7,
+          "nativeFrames": 53,
+          "sequence": 205,
+          "endTick": 1320
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 206,
+          "endTick": 1340
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 37,
+          "sequence": 207,
+          "endTick": 1345
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 208,
+          "endTick": 1347
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 91,
+          "sequence": 209,
+          "endTick": 1359
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3,
+          "nativeFrames": 22,
+          "sequence": 210,
+          "endTick": 1362
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 211,
+          "endTick": 1363
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 212,
+          "endTick": 1383
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 213,
+          "endTick": 1385
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 214,
+          "endTick": 1405
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 215,
+          "endTick": 1406
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 216,
+          "endTick": 1426
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 217,
+          "endTick": 1427
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 151,
+          "sequence": 218,
+          "endTick": 1447
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 219,
+          "endTick": 1455
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 220,
+          "endTick": 1457
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 221,
+          "endTick": 1469
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 222,
+          "endTick": 1471
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4,
+          "nativeFrames": 30,
+          "sequence": 223,
+          "endTick": 1475
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 38,
+          "sequence": 224,
+          "endTick": 1480
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 225,
+          "endTick": 1482
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 226,
+          "endTick": 1494
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 227,
+          "endTick": 1496
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 228,
+          "endTick": 1516
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 229,
+          "endTick": 1519
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 230,
+          "endTick": 1527
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 231,
+          "endTick": 1528
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 232,
+          "endTick": 1529
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 233,
+          "endTick": 1530
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 234,
+          "endTick": 1531
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 235,
+          "endTick": 1532
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 236,
+          "endTick": 1533
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 237,
+          "endTick": 1534
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 238,
+          "endTick": 1535
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 239,
+          "endTick": 1536
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 240,
+          "endTick": 1537
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 241,
+          "endTick": 1538
+        }
+      ],
+      "observations": [
+        {
+          "sequence": 230,
+          "tick": 1527,
+          "sentUtc": "2026-11-05T22:20:55.302020+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/two-one-pipe-extra/00230-tick-01527.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 76,
+            "visibleTop": 145,
+            "visibleRight": 87,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 0
+        },
+        {
+          "sequence": 231,
+          "tick": 1528,
+          "sentUtc": "2026-11-05T22:21:20.837256+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00231-tick-01528.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 74,
+            "visibleTop": 145,
+            "visibleRight": 88,
+            "visibleBottom": 160,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 7
+        },
+        {
+          "sequence": 232,
+          "tick": 1529,
+          "sentUtc": "2026-11-05T22:21:20.847106+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00232-tick-01529.png",
+          "player": {
+            "originX": 78,
+            "originY": 129,
+            "visibleLeft": 81,
+            "visibleTop": 145,
+            "visibleRight": 91,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -4
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 15
+        },
+        {
+          "sequence": 233,
+          "tick": 1530,
+          "sentUtc": "2026-11-05T22:21:20.856737+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00233-tick-01530.png",
+          "player": {
+            "originX": 80,
+            "originY": 129,
+            "visibleLeft": 82,
+            "visibleTop": 146,
+            "visibleRight": 94,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "right",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 78,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 2
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 22
+        },
+        {
+          "sequence": 234,
+          "tick": 1531,
+          "sentUtc": "2026-11-05T22:21:33.351539+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00234-tick-01531.png",
+          "player": {
+            "originX": 82,
+            "originY": 106,
+            "visibleLeft": 82,
+            "visibleTop": 122,
+            "visibleRight": 97,
+            "visibleBottom": 137,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 70,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 12
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 30
+        },
+        {
+          "sequence": 235,
+          "tick": 1532,
+          "sentUtc": "2026-11-05T22:21:33.361509+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00235-tick-01532.png",
+          "player": {
+            "originX": 85,
+            "originY": 86,
+            "visibleLeft": 85,
+            "visibleTop": 102,
+            "visibleRight": 100,
+            "visibleBottom": 117,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -42
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -42
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 63,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 22
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 37
+        },
+        {
+          "sequence": 236,
+          "tick": 1533,
+          "sentUtc": "2026-11-05T22:21:33.370170+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00236-tick-01533.png",
+          "player": {
+            "originX": 89,
+            "originY": 83,
+            "visibleLeft": 89,
+            "visibleTop": 99,
+            "visibleRight": 104,
+            "visibleBottom": 114,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 119,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -30
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 119,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -30
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 55,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 34
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 45
+        },
+        {
+          "sequence": 237,
+          "tick": 1534,
+          "sentUtc": "2026-11-05T22:22:20.818843+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00237-tick-01534.png",
+          "player": {
+            "originX": 93,
+            "originY": 107,
+            "visibleLeft": 93,
+            "visibleTop": 123,
+            "visibleRight": 108,
+            "visibleBottom": 138,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 112,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -19
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 112,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -19
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 48,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 45
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 52
+        },
+        {
+          "sequence": 238,
+          "tick": 1535,
+          "sentUtc": "2026-11-05T22:22:20.828005+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00238-tick-01535.png",
+          "player": {
+            "originX": 94,
+            "originY": 141,
+            "visibleLeft": 94,
+            "visibleTop": 157,
+            "visibleRight": 109,
+            "visibleBottom": 172,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 44,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 50
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 60
+        },
+        {
+          "sequence": 239,
+          "tick": 1536,
+          "sentUtc": "2026-11-05T22:22:20.838294+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00239-tick-01536.png",
+          "player": {
+            "originX": 94,
+            "originY": 170,
+            "visibleLeft": 94,
+            "visibleTop": 186,
+            "visibleRight": 109,
+            "visibleBottom": 201,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 44,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 50
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 67
+        },
+        {
+          "sequence": 240,
+          "tick": 1537,
+          "sentUtc": "2026-11-05T22:22:20.846939+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00240-tick-01537.png",
+          "player": {
+            "originX": 94,
+            "originY": 177,
+            "visibleLeft": 96,
+            "visibleTop": 193,
+            "visibleRight": 107,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 44,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 50
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 75
+        },
+        {
+          "sequence": 241,
+          "tick": 1538,
+          "sentUtc": "2026-11-05T22:22:20.856466+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00241-tick-01538.png",
+          "player": {
+            "originX": 94,
+            "originY": 177,
+            "visibleLeft": 96,
+            "visibleTop": 193,
+            "visibleRight": 107,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 108,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -14
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 44,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 50
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 82
+        }
+      ]
+    },
+    {
+      "id": "five-run-two-jump-three-brake-overshoot",
+      "sourceSequenceRange": [
+        443,
+        489
+      ],
+      "stageSequence": 471,
+      "resetThenRecordedPrefixTicks": 1298,
+      "recordedPrefixSource": "data/observed-winning-inputs.json",
+      "recipe": [
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 444,
+          "endTick": 1301
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 445,
+          "endTick": 1313
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 7,
+          "nativeFrames": 53,
+          "sequence": 446,
+          "endTick": 1320
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 447,
+          "endTick": 1340
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 37,
+          "sequence": 448,
+          "endTick": 1345
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 449,
+          "endTick": 1347
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 91,
+          "sequence": 450,
+          "endTick": 1359
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3,
+          "nativeFrames": 22,
+          "sequence": 451,
+          "endTick": 1362
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 452,
+          "endTick": 1363
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 453,
+          "endTick": 1383
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 454,
+          "endTick": 1385
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 455,
+          "endTick": 1405
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 456,
+          "endTick": 1406
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 457,
+          "endTick": 1426
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 458,
+          "endTick": 1427
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 151,
+          "sequence": 459,
+          "endTick": 1447
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 460,
+          "endTick": 1455
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 461,
+          "endTick": 1457
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 462,
+          "endTick": 1469
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 463,
+          "endTick": 1471
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4,
+          "nativeFrames": 30,
+          "sequence": 464,
+          "endTick": 1475
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 38,
+          "sequence": 465,
+          "endTick": 1480
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 466,
+          "endTick": 1482
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 467,
+          "endTick": 1494
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 468,
+          "endTick": 1496
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 469,
+          "endTick": 1516
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 470,
+          "endTick": 1519
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 471,
+          "endTick": 1527
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 472,
+          "endTick": 1528
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 473,
+          "endTick": 1529
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 474,
+          "endTick": 1530
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 475,
+          "endTick": 1531
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 476,
+          "endTick": 1532
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 477,
+          "endTick": 1533
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 478,
+          "endTick": 1534
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 479,
+          "endTick": 1535
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 480,
+          "endTick": 1536
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 481,
+          "endTick": 1537
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 482,
+          "endTick": 1538
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 483,
+          "endTick": 1539
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 484,
+          "endTick": 1540
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 485,
+          "endTick": 1541
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 486,
+          "endTick": 1542
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 487,
+          "endTick": 1543
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 488,
+          "endTick": 1544
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 489,
+          "endTick": 1545
+        }
+      ],
+      "observations": [
+        {
+          "sequence": 471,
+          "tick": 1527,
+          "sentUtc": "2026-11-05T22:23:06.998380+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/two-one-pipe-extra/00471-tick-01527.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 76,
+            "visibleTop": 145,
+            "visibleRight": 87,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 0
+        },
+        {
+          "sequence": 472,
+          "tick": 1528,
+          "sentUtc": "2026-11-05T22:23:07.058765+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00472-tick-01528.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 74,
+            "visibleTop": 145,
+            "visibleRight": 88,
+            "visibleBottom": 160,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 7
+        },
+        {
+          "sequence": 473,
+          "tick": 1529,
+          "sentUtc": "2026-11-05T22:23:07.067232+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00473-tick-01529.png",
+          "player": {
+            "originX": 78,
+            "originY": 129,
+            "visibleLeft": 81,
+            "visibleTop": 145,
+            "visibleRight": 91,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -4
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 15
+        },
+        {
+          "sequence": 474,
+          "tick": 1530,
+          "sentUtc": "2026-11-05T22:23:07.076577+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00474-tick-01530.png",
+          "player": {
+            "originX": 80,
+            "originY": 129,
+            "visibleLeft": 82,
+            "visibleTop": 146,
+            "visibleRight": 94,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "right",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 78,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 2
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 22
+        },
+        {
+          "sequence": 475,
+          "tick": 1531,
+          "sentUtc": "2026-11-05T22:23:07.085015+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00475-tick-01531.png",
+          "player": {
+            "originX": 82,
+            "originY": 129,
+            "visibleLeft": 85,
+            "visibleTop": 145,
+            "visibleRight": 95,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 70,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 12
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 30
+        },
+        {
+          "sequence": 476,
+          "tick": 1532,
+          "sentUtc": "2026-11-05T22:23:07.094486+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00476-tick-01532.png",
+          "player": {
+            "originX": 87,
+            "originY": 129,
+            "visibleLeft": 87,
+            "visibleTop": 145,
+            "visibleRight": 101,
+            "visibleBottom": 160,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -40
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -40
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 63,
+              "y": 160,
+              "confidence": 0.994140625,
+              "relativePlayerX": 24
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 37
+        },
+        {
+          "sequence": 477,
+          "tick": 1533,
+          "sentUtc": "2026-11-05T22:23:37.557135+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00477-tick-01533.png",
+          "player": {
+            "originX": 95,
+            "originY": 101,
+            "visibleLeft": 95,
+            "visibleTop": 117,
+            "visibleRight": 110,
+            "visibleBottom": 132,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 118,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -23
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 118,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -23
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 54,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 41
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 45
+        },
+        {
+          "sequence": 478,
+          "tick": 1534,
+          "sentUtc": "2026-11-05T22:23:37.567065+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00478-tick-01534.png",
+          "player": {
+            "originX": 102,
+            "originY": 76,
+            "visibleLeft": 102,
+            "visibleTop": 92,
+            "visibleRight": 117,
+            "visibleBottom": 107,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 107,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -5
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 107,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -5
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 43,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 59
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 52
+        },
+        {
+          "sequence": 479,
+          "tick": 1535,
+          "sentUtc": "2026-11-05T22:23:59.916055+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00479-tick-01535.png",
+          "player": {
+            "originX": 110,
+            "originY": 56,
+            "visibleLeft": 110,
+            "visibleTop": 72,
+            "visibleRight": 125,
+            "visibleBottom": 87,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 96,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 14
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 96,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 14
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 32,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 78
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 60
+        },
+        {
+          "sequence": 480,
+          "tick": 1536,
+          "sentUtc": "2026-11-05T22:23:59.926155+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00480-tick-01536.png",
+          "player": {
+            "originX": 112,
+            "originY": 48,
+            "visibleLeft": 112,
+            "visibleTop": 64,
+            "visibleRight": 127,
+            "visibleBottom": 79,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 85,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 27
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 85,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 27
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 21,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 91
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 67
+        },
+        {
+          "sequence": 481,
+          "tick": 1537,
+          "sentUtc": "2026-11-05T22:23:59.934801+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00481-tick-01537.png",
+          "player": {
+            "originX": 112,
+            "originY": 49,
+            "visibleLeft": 112,
+            "visibleTop": 65,
+            "visibleRight": 127,
+            "visibleBottom": 80,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 72,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 40
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 72,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 40
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 8,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 104
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 75
+        },
+        {
+          "sequence": 482,
+          "tick": 1538,
+          "sentUtc": "2026-11-05T22:23:59.944209+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00482-tick-01538.png",
+          "player": {
+            "originX": 112,
+            "originY": 74,
+            "visibleLeft": 112,
+            "visibleTop": 90,
+            "visibleRight": 127,
+            "visibleBottom": 105,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 63,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 49
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 63,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 49
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 82
+        },
+        {
+          "sequence": 483,
+          "tick": 1539,
+          "sentUtc": "2026-11-05T22:23:59.952845+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00483-tick-01539.png",
+          "player": {
+            "originX": 112,
+            "originY": 106,
+            "visibleLeft": 112,
+            "visibleTop": 122,
+            "visibleRight": 127,
+            "visibleBottom": 137,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 53,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 59
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 53,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 59
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 90
+        },
+        {
+          "sequence": 484,
+          "tick": 1540,
+          "sentUtc": "2026-11-05T22:23:59.962446+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00484-tick-01540.png",
+          "player": {
+            "originX": 112,
+            "originY": 134,
+            "visibleLeft": 112,
+            "visibleTop": 150,
+            "visibleRight": 127,
+            "visibleBottom": 165,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 45,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 67
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 45,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 67
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 97
+        },
+        {
+          "sequence": 485,
+          "tick": 1541,
+          "sentUtc": "2026-11-05T22:23:59.970908+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00485-tick-01541.png",
+          "player": {
+            "originX": 112,
+            "originY": 166,
+            "visibleLeft": 112,
+            "visibleTop": 182,
+            "visibleRight": 127,
+            "visibleBottom": 197,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 35,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 77
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 35,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 77
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 105
+        },
+        {
+          "sequence": 486,
+          "tick": 1542,
+          "sentUtc": "2026-11-05T22:23:59.980351+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00486-tick-01542.png",
+          "player": {
+            "originX": 112,
+            "originY": 177,
+            "visibleLeft": 115,
+            "visibleTop": 193,
+            "visibleRight": 125,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 26,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 86
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 26,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 86
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 112
+        },
+        {
+          "sequence": 487,
+          "tick": 1543,
+          "sentUtc": "2026-11-05T22:23:59.989257+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00487-tick-01543.png",
+          "player": {
+            "originX": 112,
+            "originY": 177,
+            "visibleLeft": 112,
+            "visibleTop": 193,
+            "visibleRight": 126,
+            "visibleBottom": 208,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 120
+        },
+        {
+          "sequence": 488,
+          "tick": 1544,
+          "sentUtc": "2026-11-05T22:23:59.998718+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00488-tick-01544.png",
+          "player": {
+            "originX": 112,
+            "originY": 177,
+            "visibleLeft": 114,
+            "visibleTop": 193,
+            "visibleRight": 125,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 127
+        },
+        {
+          "sequence": 489,
+          "tick": 1545,
+          "sentUtc": "2026-11-05T22:24:00.007095+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00489-tick-01545.png",
+          "player": {
+            "originX": 112,
+            "originY": 177,
+            "visibleLeft": 114,
+            "visibleTop": 193,
+            "visibleRight": 125,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 20,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 92
+            }
+          ],
+          "previousPipe2016Artwork": [],
+          "nativeFramesSinceLeftLipStage": 135
+        }
+      ]
+    },
+    {
+      "id": "four-run-one-jump-five-brake-valid",
+      "sourceSequenceRange": [
+        691,
+        746
+      ],
+      "stageSequence": 719,
+      "resetThenRecordedPrefixTicks": 1298,
+      "recordedPrefixSource": "data/observed-winning-inputs.json",
+      "recipe": [
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 692,
+          "endTick": 1301
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 693,
+          "endTick": 1313
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 7,
+          "nativeFrames": 53,
+          "sequence": 694,
+          "endTick": 1320
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 695,
+          "endTick": 1340
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 37,
+          "sequence": 696,
+          "endTick": 1345
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 697,
+          "endTick": 1347
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 91,
+          "sequence": 698,
+          "endTick": 1359
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3,
+          "nativeFrames": 22,
+          "sequence": 699,
+          "endTick": 1362
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 700,
+          "endTick": 1363
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 701,
+          "endTick": 1383
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 702,
+          "endTick": 1385
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 703,
+          "endTick": 1405
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 704,
+          "endTick": 1406
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 705,
+          "endTick": 1426
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 706,
+          "endTick": 1427
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 151,
+          "sequence": 707,
+          "endTick": 1447
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 708,
+          "endTick": 1455
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 709,
+          "endTick": 1457
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 710,
+          "endTick": 1469
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 711,
+          "endTick": 1471
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4,
+          "nativeFrames": 30,
+          "sequence": 712,
+          "endTick": 1475
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 38,
+          "sequence": 713,
+          "endTick": 1480
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 714,
+          "endTick": 1482
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 715,
+          "endTick": 1494
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15,
+          "sequence": 716,
+          "endTick": 1496
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 717,
+          "endTick": 1516
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23,
+          "sequence": 718,
+          "endTick": 1519
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 8,
+          "nativeFrames": 60,
+          "sequence": 719,
+          "endTick": 1527
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 720,
+          "endTick": 1528
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 721,
+          "endTick": 1529
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 722,
+          "endTick": 1530
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 723,
+          "endTick": 1531
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 724,
+          "endTick": 1532
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 725,
+          "endTick": 1533
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 726,
+          "endTick": 1534
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 727,
+          "endTick": 1535
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 728,
+          "endTick": 1536
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 729,
+          "endTick": 1537
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 730,
+          "endTick": 1538
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 731,
+          "endTick": 1539
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 732,
+          "endTick": 1540
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 733,
+          "endTick": 1541
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 734,
+          "endTick": 1542
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 735,
+          "endTick": 1543
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 736,
+          "endTick": 1544
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 737,
+          "endTick": 1545
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 738,
+          "endTick": 1557
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 739,
+          "endTick": 1577
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4,
+          "nativeFrames": 30,
+          "sequence": 740,
+          "endTick": 1581
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 741,
+          "endTick": 1582
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90,
+          "sequence": 742,
+          "endTick": 1594
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 8,
+          "sequence": 743,
+          "endTick": 1595
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 150,
+          "sequence": 744,
+          "endTick": 1615
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1,
+          "nativeFrames": 7,
+          "sequence": 745,
+          "endTick": 1616
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20,
+          "nativeFrames": 151,
+          "sequence": 746,
+          "endTick": 1636
+        }
+      ],
+      "observations": [
+        {
+          "sequence": 719,
+          "tick": 1527,
+          "sentUtc": "2026-11-05T22:25:12.634075+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/two-one-pipe-extra/00719-tick-01527.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 76,
+            "visibleTop": 145,
+            "visibleRight": 87,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 0
+        },
+        {
+          "sequence": 720,
+          "tick": 1528,
+          "sentUtc": "2026-11-05T22:25:12.694367+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00720-tick-01528.png",
+          "player": {
+            "originX": 74,
+            "originY": 129,
+            "visibleLeft": 74,
+            "visibleTop": 145,
+            "visibleRight": 88,
+            "visibleBottom": 160,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": -8
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 7
+        },
+        {
+          "sequence": 721,
+          "tick": 1529,
+          "sentUtc": "2026-11-05T22:25:12.703093+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00721-tick-01529.png",
+          "player": {
+            "originX": 78,
+            "originY": 129,
+            "visibleLeft": 81,
+            "visibleTop": 145,
+            "visibleRight": 91,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -68
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 82,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": -4
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 15
+        },
+        {
+          "sequence": 722,
+          "tick": 1530,
+          "sentUtc": "2026-11-05T22:25:12.712701+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00722-tick-01530.png",
+          "player": {
+            "originX": 80,
+            "originY": 129,
+            "visibleLeft": 82,
+            "visibleTop": 146,
+            "visibleRight": 94,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "right",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 142,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -62
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 78,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 2
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 22
+        },
+        {
+          "sequence": 723,
+          "tick": 1531,
+          "sentUtc": "2026-11-05T22:25:12.721407+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00723-tick-01531.png",
+          "player": {
+            "originX": 82,
+            "originY": 129,
+            "visibleLeft": 85,
+            "visibleTop": 145,
+            "visibleRight": 95,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 134,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 70,
+              "y": 160,
+              "confidence": 0.9921875,
+              "relativePlayerX": 12
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 30
+        },
+        {
+          "sequence": 724,
+          "tick": 1532,
+          "sentUtc": "2026-11-05T22:25:42.158336+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00724-tick-01532.png",
+          "player": {
+            "originX": 87,
+            "originY": 105,
+            "visibleLeft": 87,
+            "visibleTop": 121,
+            "visibleRight": 102,
+            "visibleBottom": 136,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -40
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 127,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -40
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 63,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 24
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 37
+        },
+        {
+          "sequence": 725,
+          "tick": 1533,
+          "sentUtc": "2026-11-05T22:25:42.167489+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00725-tick-01533.png",
+          "player": {
+            "originX": 94,
+            "originY": 76,
+            "visibleLeft": 94,
+            "visibleTop": 92,
+            "visibleRight": 109,
+            "visibleBottom": 107,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 119,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -25
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 119,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -25
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 55,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 39
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 45
+        },
+        {
+          "sequence": 726,
+          "tick": 1534,
+          "sentUtc": "2026-11-05T22:25:42.177410+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00726-tick-01534.png",
+          "player": {
+            "originX": 97,
+            "originY": 88,
+            "visibleLeft": 97,
+            "visibleTop": 104,
+            "visibleRight": 112,
+            "visibleBottom": 119,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 112,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -15
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 112,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -15
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 48,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 49
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 52
+        },
+        {
+          "sequence": 727,
+          "tick": 1535,
+          "sentUtc": "2026-11-05T22:25:42.186167+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00727-tick-01535.png",
+          "player": {
+            "originX": 98,
+            "originY": 97,
+            "visibleLeft": 100,
+            "visibleTop": 113,
+            "visibleRight": 112,
+            "visibleBottom": 128,
+            "cell": 15,
+            "direction": "left",
+            "annotation": "skidding",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 104,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": -6
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 104,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": -6
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 40,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 58
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 60
+        },
+        {
+          "sequence": 728,
+          "tick": 1536,
+          "sentUtc": "2026-11-05T22:25:42.195775+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00728-tick-01536.png",
+          "player": {
+            "originX": 98,
+            "originY": 97,
+            "visibleLeft": 99,
+            "visibleTop": 113,
+            "visibleRight": 113,
+            "visibleBottom": 128,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -3
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -3
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 61
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 67
+        },
+        {
+          "sequence": 729,
+          "tick": 1537,
+          "sentUtc": "2026-11-05T22:25:42.204422+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00729-tick-01537.png",
+          "player": {
+            "originX": 94,
+            "originY": 97,
+            "visibleLeft": 96,
+            "visibleTop": 113,
+            "visibleRight": 106,
+            "visibleBottom": 128,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": -7
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": -7
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 57
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 75
+        },
+        {
+          "sequence": 730,
+          "tick": 1538,
+          "sentUtc": "2026-11-05T22:25:42.214552+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00730-tick-01538.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 82
+        },
+        {
+          "sequence": 731,
+          "tick": 1539,
+          "sentUtc": "2026-11-05T22:25:42.223526+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00731-tick-01539.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 90
+        },
+        {
+          "sequence": 732,
+          "tick": 1540,
+          "sentUtc": "2026-11-05T22:25:42.232908+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00732-tick-01540.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 97
+        },
+        {
+          "sequence": 733,
+          "tick": 1541,
+          "sentUtc": "2026-11-05T22:25:42.241394+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00733-tick-01541.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 105
+        },
+        {
+          "sequence": 734,
+          "tick": 1542,
+          "sentUtc": "2026-11-05T22:25:42.250841+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00734-tick-01542.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 112
+        },
+        {
+          "sequence": 735,
+          "tick": 1543,
+          "sentUtc": "2026-11-05T22:25:42.259409+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00735-tick-01543.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 120
+        },
+        {
+          "sequence": 736,
+          "tick": 1544,
+          "sentUtc": "2026-11-05T22:25:42.268799+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00736-tick-01544.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 127
+        },
+        {
+          "sequence": 737,
+          "tick": 1545,
+          "sentUtc": "2026-11-05T22:25:42.277290+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00737-tick-01545.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 135
+        },
+        {
+          "sequence": 738,
+          "tick": 1557,
+          "sentUtc": "2026-11-05T22:26:43.212675+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-extra/00738-tick-01557.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 225
+        },
+        {
+          "sequence": 739,
+          "tick": 1577,
+          "sentUtc": "2026-11-05T22:27:33.735288+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/two-one-pipe-extra/00739-tick-01577.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 101,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": -11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 37,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 53
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 375
+        },
+        {
+          "sequence": 740,
+          "tick": 1581,
+          "sentUtc": "2026-11-05T22:27:52.187731+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/two-one-pipe-extra/00740-tick-01581.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 90,
+            "visibleTop": 113,
+            "visibleRight": 104,
+            "visibleBottom": 128,
+            "cell": 13,
+            "direction": "right",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 87,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 3
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 87,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 3
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 23,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 67
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 405
+        },
+        {
+          "sequence": 741,
+          "tick": 1582,
+          "sentUtc": "2026-11-05T22:27:52.221880+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00741-tick-01582.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 104,
+            "visibleBottom": 128,
+            "cell": 15,
+            "direction": "left",
+            "annotation": "skidding",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 80,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": 10
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 80,
+              "y": 128,
+              "confidence": 0.9921875,
+              "relativePlayerX": 10
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 16,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 74
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 413
+        },
+        {
+          "sequence": 742,
+          "tick": 1594,
+          "sentUtc": "2026-11-05T22:27:52.231407+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-extra/00742-tick-01594.png",
+          "player": {
+            "originX": 90,
+            "originY": 97,
+            "visibleLeft": 92,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 11
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 11
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 15,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 75
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 503
+        },
+        {
+          "sequence": 743,
+          "tick": 1595,
+          "sentUtc": "2026-11-05T22:28:10.086205+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-extra/00743-tick-01595.png",
+          "player": {
+            "originX": 89,
+            "originY": 97,
+            "visibleLeft": 90,
+            "visibleTop": 113,
+            "visibleRight": 104,
+            "visibleBottom": 128,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 10
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 10
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 15,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 74
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 511
+        },
+        {
+          "sequence": 744,
+          "tick": 1615,
+          "sentUtc": "2026-11-05T22:28:10.096939+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/two-one-pipe-extra/00744-tick-01615.png",
+          "player": {
+            "originX": 88,
+            "originY": 97,
+            "visibleLeft": 90,
+            "visibleTop": 113,
+            "visibleRight": 101,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 9
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 9
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 15,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 73
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 661
+        },
+        {
+          "sequence": 745,
+          "tick": 1616,
+          "sentUtc": "2026-11-05T22:28:10.244294+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/two-one-pipe-extra/00745-tick-01616.png",
+          "player": {
+            "originX": 88,
+            "originY": 97,
+            "visibleLeft": 89,
+            "visibleTop": 113,
+            "visibleRight": 103,
+            "visibleBottom": 128,
+            "cell": 13,
+            "direction": "left",
+            "annotation": "frame 2",
+            "confidence": 1,
+            "matchedPixels": 145
+          },
+          "pipes": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 9
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.994140625,
+              "relativePlayerX": 9
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 15,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 73
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 668
+        },
+        {
+          "sequence": 746,
+          "tick": 1636,
+          "sentUtc": "2026-11-05T22:28:10.252776+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 151,
+          "image": "evidence/local/two-one-pipe-extra/00746-tick-01636.png",
+          "player": {
+            "originX": 87,
+            "originY": 97,
+            "visibleLeft": 89,
+            "visibleTop": 113,
+            "visibleRight": 100,
+            "visibleBottom": 128,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ],
+          "targetPipe2080Artwork": [
+            {
+              "x": 79,
+              "y": 128,
+              "confidence": 0.984375,
+              "relativePlayerX": 8
+            }
+          ],
+          "previousPipe2016Artwork": [
+            {
+              "x": 15,
+              "y": 160,
+              "confidence": 1,
+              "relativePlayerX": 72
+            }
+          ],
+          "nativeFramesSinceLeftLipStage": 819
+        }
+      ]
+    }
+  ],
+  "method": "Actual recorded-input prefix and ordinary public controller inputs, screenshot-only exact supplied Mario/pipe artwork. Jump/run/contact checkpoints sampled every7/8native-frame decision. No hidden game state.",
+  "findings": [
+    "The2016left-lip stage is an exact living standing pose at relativeorigin\u22128/feet160.",
+    "Three run decisions end supported at relativeoffset2 but the following jump is too short horizontally before dropping below target128.",
+    "Five run decisions end supported at offset24; the higher faster jump clears height but overshoots the target.",
+    "Four run decisions end supported at offset12. One R+A+B decision then five LEFT+A+B decisions establish actual2080top contact at leftlip.",
+    "Waiting an additional90+150nativeframes lets the plant visibly retract before centering.",
+    "Only the final full standing offset8DOWN151nativeframe trial supports the recorded no-transition result."
+  ],
+  "limitations": [
+    "Outcome is conditional on these recorded ordinary inputs; alternate activation conditions are unresolved.",
+    "Failed/short/overshot variants are not counted as non-entry trials.",
+    "World pipe identity/camera derive from registered main artwork and adjacent2016pipe64pixelsleft, not native telemetry.",
+    "Reference process closed after final test."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schema": "chain5-4-missing-hazard-candidate-v1",
+  "frozenUtc": "2026-11-06T03:12:58.912821+00:00",
+  "scope": "Read-only candidate before opening declared motor reservations. No runtime/compiler integration requested.",
+  "level": "5-4",
+  "area": "main",
+  "observedInnerCenter": [
+    696,
+    217
+  ],
+  "logicalPivot": [
+    696,
+    216
+  ],
+  "logicalPivotStatus": "Inferred same +1Y convention from supplied16pxbase; visible center independently observed.",
+  "length": 6,
+  "direction": 1,
+  "motor": {
+    "unitsPerNativeFrame": 5,
+    "orientationBins": 32,
+    "unitsPerBin": 32,
+    "modulus": 1024,
+    "averagePeriodNativeFrames": 204.8,
+    "lookup": "data/firebar-motion-rules.json"
+  },
+  "calibration": {
+    "twoSourceHistories": "early and remainder one-brake training, same fresh standard prefix through activation",
+    "uniqueCounterOffsetAtNative0": 934,
+    "native0CounterStatus": "Descriptive phase intercept inferred from source-native observations; never a runtime tick script.",
+    "negativeDirectionHasNoConsistentCounter": true,
+    "coherentOrientationObservations": [
+      58,
+      60
+    ],
+    "flameCenters": [
+      317,
+      319
+    ],
+    "maxCoherentSamePhaseShapeErrorPixels": 3,
+    "retainedFailure": "Five timestamps per branch mix adjacent native orientations among inner/outer orbs. Example5995 innerbin25,outerbin26;6018 upper spritepose0 vs lowerpose3. Full coherent-snapshot2px tolerance fails; preserve raw3px."
+  },
+  "activation": {
+    "centralQuadThresholdCamera": 437,
+    "bracket": {
+      "beforeTick": 5966,
+      "beforeNative": 44817,
+      "latestCamera": 434,
+      "displayedRow217CrossfitCamera": 432,
+      "afterTick": 5967,
+      "afterNative": 44825,
+      "afterLatestCamera": 454,
+      "afterDisplayedRow217CrossfitCamera": 452
+    },
+    "nativeLatestNearestActivation": 44818,
+    "displayedRowNearestActivation": 44819,
+    "initialUnitsAlternatives": [
+      {
+        "epoch": "native latest",
+        "activationNative": 44818,
+        "initialUnits": 763
+      },
+      {
+        "epoch": "presented row",
+        "activationNative": 44819,
+        "initialUnits": 768
+      }
+    ],
+    "status": "Unresolved one-native camera/presentation order. Both fields explicit; no alternative chosen from flame phase. Fresh preactivation waits will test history invariance."
+  },
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservedScope": "early heldout5973..6039 and remainder heldout5973..6040, excluding already upstream-disclosed5972 geometry. Camera registries were learned independently of flames.",
+  "hashes": {
+    "data/firebar-5-4-chain-plan.json": "6e3d761a59639e74a6843c0bd6f444409543c2e0e3e48894926bc07d11b3d66e",
+    "evidence/firebar-5-4-chain-calibration.json": "6960952ee8a194783174caee7b2b4cc31ad893ec86468188b37af87fb080d22c",
+    "tools/firebar-5-4-chain-measure.py": "651287dba41e301c09c9b54b5639bed3485af26dcf49e79774665647b6bc3559",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695"
+  },
+  "limits": [
+    "Source pose may mix adjacent native states; diagnostic adjacent-frame explanation does not make coherent raw images pass.",
+    "No collision radius, level traversal or complete-scene99% equivalence claimed.",
+    "No quarantined legacy coordinate/phase exports used."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "level": "6-2",
+  "area": "optional-water",
+  "source": "data/water-optional-entry-measurements.json",
+  "classification": "Inferred fixed-gravity fit to six observed entry poses; unseen spawn and sub-decision transition timing remain unresolved.",
+  "transitionFrames": 72,
+  "visibleDelay": 6,
+  "spawn": [
+    24,
+    31.512369791666668
+  ],
+  "spawnVelocity": [
+    0,
+    0.25390625
+  ],
+  "platformEpochOffsetFrames": 78,
+  "explanation": "Two delayed controller frames precede the pipe trigger.72pipeframes load the room at75 after source6593;6hidden entryframes give the first falling update at82. That update reaches the fitted first pose31.8678385 with velocity0.35546875. Gravity is the independently measured water-entry candidate0.1015625, terminal4.125. Timing choices are within observed windows, not uniquely measured.",
+  "controlFeetY": 80,
+  "hudEvidence": "Observed TIME digits blank atfeet32/39/49/68 and visibleat88/122. Geometric80 release fits these samples; exact threshold and early horizontal control remain inferred."
+}

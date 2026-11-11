@@ -1,0 +1,2266 @@
+{
+  "schema": "reference-bonus-entry-audit-v1",
+  "method": "Read-only actual PNG inspection plus exact opaque-pixel matching against supplied Mario sheets using tools/physics-reference-measure.mjs. No ROM/executable/state access. Cell origin is the left/top of the 16x32 source frame; feetY=cellOriginY+31. It is not the visible-pixel centroid or sprite center.",
+  "sources": {
+    "reference11": "evidence/local/reference-bonus-return2/trace.jsonl",
+    "reference12": "evidence/local/subarea-1-2-controlled/trace.jsonl"
+  },
+  "findings": [
+    {
+      "level": "1-1",
+      "operation": "bonus-entry",
+      "observed": {
+        "cellOriginX": 24,
+        "cameraX": 0,
+        "firstVisibleFeetY": 64,
+        "firstVisibleTick": 66,
+        "firstVisibleSequence": 15,
+        "landingFeetY": 208,
+        "landingTick": 73
+      },
+      "rejectedAssumption": {
+        "cellOriginX": 32,
+        "feetY": 0
+      },
+      "recommendation": "Use cellOriginX24. The first presented room frame is feet64; spawn24,64 is directly supported at the render boundary. A pre-visible spawn feet0 is not established and requires explicit hidden transition advancement if retained.",
+      "status": "x24 and first visible feet64 observed exactly; internal placement before first room frame unresolved",
+      "evidence": [
+        {
+          "sequence": 9,
+          "tick": 60,
+          "nativeFrame": 450,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00009-tick-00060.png",
+          "imageSha256": "ea761af669b8d4ac5445060b0421c35e99dfe53e64598024563e626207dab989",
+          "framesFromFirstVisible": -45
+        },
+        {
+          "sequence": 10,
+          "tick": 61,
+          "nativeFrame": 458,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00010-tick-00061.png",
+          "imageSha256": "a4a5cff54aa5456849ed3f5ccd6582a34c08da8ee50c7a0aaf692e7aa51900a8",
+          "framesFromFirstVisible": -37
+        },
+        {
+          "sequence": 11,
+          "tick": 62,
+          "nativeFrame": 465,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00011-tick-00062.png",
+          "imageSha256": "d82701151c152b7a9894d01d996f2b75656d3c748ff2c5d605761d3058f43751",
+          "framesFromFirstVisible": -30
+        },
+        {
+          "sequence": 12,
+          "tick": 63,
+          "nativeFrame": 473,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00012-tick-00063.png",
+          "imageSha256": "5b90799fe8a106b2ee58a379f9c109c7b36168ad5425f400a546d9258dad5d14",
+          "framesFromFirstVisible": -22
+        },
+        {
+          "sequence": 13,
+          "tick": 64,
+          "nativeFrame": 480,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00013-tick-00064.png",
+          "imageSha256": "5b90799fe8a106b2ee58a379f9c109c7b36168ad5425f400a546d9258dad5d14",
+          "framesFromFirstVisible": -15
+        },
+        {
+          "sequence": 14,
+          "tick": 65,
+          "nativeFrame": 488,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00014-tick-00065.png",
+          "imageSha256": "5b90799fe8a106b2ee58a379f9c109c7b36168ad5425f400a546d9258dad5d14",
+          "framesFromFirstVisible": -7
+        },
+        {
+          "sequence": 15,
+          "tick": 66,
+          "nativeFrame": 495,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 33,
+            "feetY": 64,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00015-tick-00066.png",
+          "imageSha256": "8111aadae1677769982d77a6255ea3709599199ac5bf43724a46991b665fc982",
+          "framesFromFirstVisible": 0
+        },
+        {
+          "sequence": 16,
+          "tick": 67,
+          "nativeFrame": 503,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 43,
+            "feetY": 74,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00016-tick-00067.png",
+          "imageSha256": "527ed826c90ea7116ce180bc1bcc7ff6aab8263f6cf26f0c558c03b0bbbdd3d7",
+          "framesFromFirstVisible": 8
+        },
+        {
+          "sequence": 17,
+          "tick": 68,
+          "nativeFrame": 510,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 56,
+            "feetY": 87,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00017-tick-00068.png",
+          "imageSha256": "a8217861aa12bbf4ca7536f8710c57803b4649d4aede633efe6b13cd768670dd",
+          "framesFromFirstVisible": 15
+        },
+        {
+          "sequence": 18,
+          "tick": 69,
+          "nativeFrame": 518,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 83,
+            "feetY": 114,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00018-tick-00069.png",
+          "imageSha256": "86a210e72dbaddc4e6a11d9a356bb1ff1585aa19565397b0c562ee2e7e4c529c",
+          "framesFromFirstVisible": 23
+        },
+        {
+          "sequence": 19,
+          "tick": 70,
+          "nativeFrame": 525,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 113,
+            "feetY": 144,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00019-tick-00070.png",
+          "imageSha256": "b4439d180a9f1db5670e5fcb1ace628b62794299df85113a44ba14e5b53e6b61",
+          "framesFromFirstVisible": 30
+        },
+        {
+          "sequence": 20,
+          "tick": 71,
+          "nativeFrame": 533,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 147,
+            "feetY": 178,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00020-tick-00071.png",
+          "imageSha256": "4f997ac6a53b763c8b8e3b5df2cfb564a4c318a268bef274a68d7d0fa28b1819",
+          "framesFromFirstVisible": 38
+        },
+        {
+          "sequence": 21,
+          "tick": 72,
+          "nativeFrame": 540,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 176,
+            "feetY": 207,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00021-tick-00072.png",
+          "imageSha256": "19c48c64e83e1913c3715d16681bea9c33380a4004dda7dabc78d896317957ab",
+          "framesFromFirstVisible": 45
+        },
+        {
+          "sequence": 22,
+          "tick": 73,
+          "nativeFrame": 548,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right",
+            "matchedOpaquePixels": 143,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00022-tick-00073.png",
+          "imageSha256": "45914e8789e84d2adafc940f172ff28439a843faacd261aaf10d09730bd5f78b",
+          "framesFromFirstVisible": 53
+        },
+        {
+          "sequence": 23,
+          "tick": 74,
+          "nativeFrame": 555,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right",
+            "matchedOpaquePixels": 143,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00023-tick-00074.png",
+          "imageSha256": "41984df05dc0f2c9bfc153853cdacf4d909bdeca9cc13193f7a396c1d59e6a2e",
+          "framesFromFirstVisible": 60
+        },
+        {
+          "sequence": 24,
+          "tick": 75,
+          "nativeFrame": 563,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 1
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right",
+            "matchedOpaquePixels": 143,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00024-tick-00075.png",
+          "imageSha256": "295532d3b034251a5b93436e2377e4b6bcebabd7c7c1cc38267d6d0c353db462",
+          "framesFromFirstVisible": 68
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "operation": "bonus-entry",
+      "observed": {
+        "cellOriginX": 24,
+        "cameraX": 0,
+        "firstCapturedFeetY": 178,
+        "firstCapturedTick": 503,
+        "landingFeetY": 208,
+        "landingTick": 511
+      },
+      "rejectedAssumption": {
+        "cellOriginX": 32
+      },
+      "recommendation": "Change entry target and room spawn x32 to x24. Existing coarse trace does not establish first room frame or initial feetY; first captured fall pose exactly matches1-1 later fall feet178.",
+      "status": "x24 observed exactly; initial feetY/velocity unresolved",
+      "evidence": [
+        {
+          "sequence": 135,
+          "tick": 487,
+          "nativeFrame": 3658,
+          "framesAdvanced": 15,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "player": {
+            "cellOriginX": 114,
+            "cellOriginY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "right",
+            "matchedOpaquePixels": 124,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00135-tick-00487.png",
+          "imageSha256": "1afbfec4d85d5f7d2d4c37f18a2ca99b0450a5ba25540ae80350c1353553086e"
+        },
+        {
+          "sequence": 136,
+          "tick": 503,
+          "nativeFrame": 3778,
+          "framesAdvanced": 120,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 16
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 147,
+            "feetY": 178,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00136-tick-00503.png",
+          "imageSha256": "2e29325ecb91c04a04a3f175d104e4f8217878455df58ab8e91aa00672d3e86d"
+        },
+        {
+          "sequence": 137,
+          "tick": 511,
+          "nativeFrame": 3838,
+          "framesAdvanced": 60,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "player": {
+            "cellOriginX": 24,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right",
+            "matchedOpaquePixels": 143,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00137-tick-00511.png",
+          "imageSha256": "ed5c4f54da5fbf22a54cf0d821ae82265573d277bfc5cf60f38279b7b7091236"
+        },
+        {
+          "sequence": 138,
+          "tick": 521,
+          "nativeFrame": 3913,
+          "framesAdvanced": 75,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 10
+          },
+          "player": {
+            "cellOriginX": 104,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "right",
+            "matchedOpaquePixels": 120,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00138-tick-00521.png",
+          "imageSha256": "b3746da4deb6b42721ddc8bb511fd84ca377335c3fc53371df442a8631e971f7"
+        }
+      ]
+    },
+    {
+      "level": "1-1",
+      "operation": "bonus-return",
+      "observed": {
+        "mainPipeX": 2608,
+        "pipeTopY": 176,
+        "cameraX": 2560,
+        "lastCaptureTick": 171,
+        "partialHatVisible": true,
+        "partialFits": [
+          {
+            "cell": 12,
+            "screenCellOriginX": 55,
+            "feetY": 188,
+            "matchedOpaquePixels": 14
+          },
+          {
+            "cell": 13,
+            "screenCellOriginX": 56,
+            "feetY": 189,
+            "matchedOpaquePixels": 14
+          },
+          {
+            "cell": 14,
+            "screenCellOriginX": 56,
+            "feetY": 189,
+            "matchedOpaquePixels": 14
+          },
+          {
+            "cell": 23,
+            "screenCellOriginX": 56,
+            "feetY": 189,
+            "matchedOpaquePixels": 14
+          }
+        ],
+        "cameraProvenance": "Mapped main pipe world x minus observed screen pipe left48; screenshot geometry registration, not hidden state"
+      },
+      "existingTarget": {
+        "x": 2616,
+        "feetY": 176,
+        "cameraX": 2560
+      },
+      "recommendation": "Keep2616/176 only as the inferred completed emergence endpoint. Trace ends with just14hat pixels above the pipe, so full origin/feet176 is not yet observed. The hat bounds support screenorigin55–56 (world2615–2616) during emergence.",
+      "status": "return scene and pipe observed; completed emergence target remains inferred",
+      "evidence": [
+        {
+          "sequence": 108,
+          "tick": 162,
+          "nativeFrame": 1216,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00108-tick-00162.png",
+          "imageSha256": "413734a495d9240c528c0c9415077fc41dc8cdc82b9187cadbaf0ade62666cd9"
+        },
+        {
+          "sequence": 109,
+          "tick": 163,
+          "nativeFrame": 1224,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00109-tick-00163.png",
+          "imageSha256": "a139d7fd95cac862888b47c9a9d25fba1b1e67e4ba4a1c0d823c60121769c377"
+        },
+        {
+          "sequence": 110,
+          "tick": 164,
+          "nativeFrame": 1232,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00110-tick-00164.png",
+          "imageSha256": "f109a5883a43cfbe9412c793b2900eecd7e52940d8e2a953e064612b79f09dc5"
+        },
+        {
+          "sequence": 111,
+          "tick": 165,
+          "nativeFrame": 1239,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00111-tick-00165.png",
+          "imageSha256": "1fb0bd822d5cf986dbcb933bd7e957b0450d8dfe35ebdfed7f47acaf81576c57"
+        },
+        {
+          "sequence": 112,
+          "tick": 166,
+          "nativeFrame": 1247,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00112-tick-00166.png",
+          "imageSha256": "27df99bb6bfc3fd0d0036f226123b327671212b0be64fb32d1c8eaa72ab8059f"
+        },
+        {
+          "sequence": 113,
+          "tick": 167,
+          "nativeFrame": 1254,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00113-tick-00167.png",
+          "imageSha256": "20ae90d6bfb3fdd45b49c12e1c7731f551a41cf6917c6e556fb050767680de22"
+        },
+        {
+          "sequence": 114,
+          "tick": 168,
+          "nativeFrame": 1262,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00114-tick-00168.png",
+          "imageSha256": "3e5b9ff9e65b8bb3c02cd92392c99060daa730053949fd81d469fc6de670aafb"
+        },
+        {
+          "sequence": 115,
+          "tick": 169,
+          "nativeFrame": 1269,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00115-tick-00169.png",
+          "imageSha256": "7d9d43aafaf414b432706ecc0608da41875ecc6e733df9c7934af36a9c677cad"
+        },
+        {
+          "sequence": 116,
+          "tick": 170,
+          "nativeFrame": 1277,
+          "framesAdvanced": 8,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00116-tick-00170.png",
+          "imageSha256": "dab36c4ba2309f6f35cfb29bae32125d1338839c6728701a759ebff7ca9a30e9"
+        },
+        {
+          "sequence": 117,
+          "tick": 171,
+          "nativeFrame": 1284,
+          "framesAdvanced": 7,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00117-tick-00171.png",
+          "imageSha256": "9fce58ba047a81817f87e85a6fff9575bb19943a5e10c70d73fdc67c8aabcc91"
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "operation": "bonus-return",
+      "observed": {
+        "mainPipeX": 1856,
+        "pipeTopY": 176,
+        "cameraX": 1808,
+        "screenCellOriginX": 56,
+        "worldCellOriginX": 1864,
+        "feetY": 176,
+        "cell": 13,
+        "matchedOpaquePixels": 145,
+        "tick": 556,
+        "cameraProvenance": "Mapped main pipe world x minus observed screen pipe left48; screenshot geometry registration, not hidden state"
+      },
+      "existingTarget": {
+        "x": 1864,
+        "feetY": 176,
+        "cameraX": 1808
+      },
+      "recommendation": "Return target1864,176/camera1808 is supported by a complete exact player pose. No coordinate correction.",
+      "status": "completed emergence pose observed exactly",
+      "evidence": [
+        {
+          "sequence": 139,
+          "tick": 528,
+          "nativeFrame": 3966,
+          "framesAdvanced": 53,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 7
+          },
+          "player": {
+            "cellOriginX": 183,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 14,
+            "direction": "right",
+            "matchedOpaquePixels": 124,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00139-tick-00528.png",
+          "imageSha256": "bcbe544436844deaebdcd6fb5629ad85379f93628ae25768036188e3bd9f8ef4"
+        },
+        {
+          "sequence": 140,
+          "tick": 532,
+          "nativeFrame": 3996,
+          "framesAdvanced": 30,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 4
+          },
+          "player": {
+            "cellOriginX": 194,
+            "cellOriginY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "right",
+            "matchedOpaquePixels": 145,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00140-tick-00532.png",
+          "imageSha256": "02dbe716848e971034b858040917e584b20cb779e9de5f581d74e09926dc772b"
+        },
+        {
+          "sequence": 141,
+          "tick": 544,
+          "nativeFrame": 4086,
+          "framesAdvanced": 90,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 12
+          },
+          "player": null,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00141-tick-00544.png",
+          "imageSha256": "e05c6ec81c79949707dca29c7da94522dc1bf5b7991e5af7c3acb7ee6b680aaa"
+        },
+        {
+          "sequence": 142,
+          "tick": 556,
+          "nativeFrame": 4176,
+          "framesAdvanced": 90,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 12
+          },
+          "player": {
+            "cellOriginX": 56,
+            "cellOriginY": 145,
+            "feetY": 176,
+            "cell": 13,
+            "direction": "right",
+            "matchedOpaquePixels": 145,
+            "confidence": 1
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00142-tick-00556.png",
+          "imageSha256": "de0c519b5cb1e13cf231b072acd06f4c68be7d6d4498f7b342e10e561c820fb1"
+        }
+      ]
+    }
+  ],
+  "minimalCompilerChanges": [
+    {
+      "level": "1-1",
+      "path": "optional bonus connection target.x and bonus area.spawn[0]",
+      "from": 32,
+      "to": 24,
+      "status": "observed exact source cell origin"
+    },
+    {
+      "level": "1-2",
+      "path": "data/subarea-1-2-coin-room.json spawn[0] and connections[pipe-down].target.x",
+      "from": 32,
+      "to": 24,
+      "status": "observed exact source cell origin"
+    },
+    {
+      "level": "1-1",
+      "path": "bonus entry target.feetY and initial-fall state",
+      "from": 0,
+      "to": 64,
+      "status": "64 is first visible frame only; engine transition/fall staging must be calibrated to the measured trajectory rather than treating0 as observed"
+    }
+  ],
+  "unresolved": [
+    "World1-2 coarse entry trace skips all early room frames; first visible feetY needs a fresh ticks1 capture to confirm64 equivalence.",
+    "World1-1 return trace stops before full emergence;2616/176 is a reasonable geometric endpoint but still inferred in this evidence set.",
+    "Initial entry vertical velocity/update gating cannot be uniquely recovered from7–8frame samples. Use actual fall checkpoints, not a single constant-speed assumption."
+  ],
+  "runtimeCandidates": {
+    "method": "Position is floored for rendering; movement before gravity; candidates constant acceleration/capped fall only. No scripted events or tick-dependent forces.",
+    "proposed": {
+      "spawn": [
+        24,
+        64.5
+      ],
+      "initialVy": 0.5,
+      "gravity": 0.15625,
+      "fallCap": 4.125,
+      "positionQuantization": "floor",
+      "movementOrder": "move then gravity",
+      "fit": {
+        "max": 2,
+        "sum": 6,
+        "rows": [
+          {
+            "frame": 0,
+            "predicted": 64,
+            "observed": 64,
+            "error": 0
+          },
+          {
+            "frame": 8,
+            "predicted": 72,
+            "observed": 74,
+            "error": -2
+          },
+          {
+            "frame": 15,
+            "predicted": 88,
+            "observed": 87,
+            "error": 1
+          },
+          {
+            "frame": 23,
+            "predicted": 115,
+            "observed": 114,
+            "error": 1
+          },
+          {
+            "frame": 30,
+            "predicted": 144,
+            "observed": 144,
+            "error": 0
+          },
+          {
+            "frame": 38,
+            "predicted": 177,
+            "observed": 178,
+            "error": -1
+          },
+          {
+            "frame": 45,
+            "predicted": 206,
+            "observed": 207,
+            "error": -1
+          }
+        ]
+      },
+      "status": "simple physically parameterized candidate within predeclared2pxpositiontolerance at observed fall checkpoints; not exact identified constants",
+      "transitionFrames": 80,
+      "transitionTimingStatus": "Candidate from first partial pipe entry420, final main geometry458, black473..488 and first room495. Accepted entry frame is bracketed;80 is not an exactly measured native duration."
+    },
+    "bestGridFit": {
+      "spawnFeetY": 64.75,
+      "initialVy": 0.5,
+      "gravity": 0.15234375,
+      "fallCap": 4.234375,
+      "max": 1,
+      "sum": 2,
+      "rows": [
+        {
+          "frame": 0,
+          "predicted": 64,
+          "observed": 64,
+          "error": 0
+        },
+        {
+          "frame": 8,
+          "predicted": 73,
+          "observed": 74,
+          "error": -1
+        },
+        {
+          "frame": 15,
+          "predicted": 88,
+          "observed": 87,
+          "error": 1
+        },
+        {
+          "frame": 23,
+          "predicted": 114,
+          "observed": 114,
+          "error": 0
+        },
+        {
+          "frame": 30,
+          "predicted": 144,
+          "observed": 144,
+          "error": 0
+        },
+        {
+          "frame": 38,
+          "predicted": 178,
+          "observed": 178,
+          "error": 0
+        },
+        {
+          "frame": 45,
+          "predicted": 207,
+          "observed": 207,
+          "error": 0
+        }
+      ],
+      "status": "diagnostic fit only; do not replace simple reused constants with sample-specific parameters merely to reduce1pxresidual"
+    },
+    "identifiability": {
+      "nearbyCandidateCountWithin1px": 1439,
+      "explanation": "7–8nativeframe samples and integer sprite coordinates admit many subpixel initial states/accelerations/caps. Exact constants cannot be uniquely inferred."
+    },
+    "releaseRule": {
+      "candidate": "Unlock horizontal input once entry fall reaches aboutfeet80, retain ordinary airborne acceleration/collision, release entry vertical gravity on actual landing.",
+      "observedBounds": {
+        "stillX24AtFeet": 74,
+        "lastIntegerX24AtFeet": 87,
+        "firstMovedX26AtFeet": 114
+      },
+      "status": "geometry threshold inferred, not a scripted tick. Need account for subpixel acceleration before first whole-pixel movement."
+    },
+    "earlyInputTrace": "evidence/local/subarea-entry-fit/trace.jsonl",
+    "controlledExperiments": {
+      "sourceTrace": "evidence/local/subarea-entry-fit/trace.jsonl",
+      "method": "Fresh standard reset and identical recorded52decision prefix per experiment, right1,left2,down8,then varied buttons fromtick64. Exact supplied sprite template matching. All requests ordinary public controls.",
+      "experiments": [
+        {
+          "id": 1,
+          "buttonsDuringTransition": [
+            "right",
+            "b"
+          ],
+          "startHoldingAtTick": 64,
+          "samples": [
+            {
+              "sequence": 21,
+              "tick": 63,
+              "nativeFrame": 473,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "down"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00021-tick-00063.png"
+            },
+            {
+              "sequence": 22,
+              "tick": 64,
+              "nativeFrame": 480,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00022-tick-00064.png"
+            },
+            {
+              "sequence": 23,
+              "tick": 65,
+              "nativeFrame": 488,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00023-tick-00065.png"
+            },
+            {
+              "sequence": 24,
+              "tick": 66,
+              "nativeFrame": 495,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 64,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00024-tick-00066.png"
+            },
+            {
+              "sequence": 25,
+              "tick": 67,
+              "nativeFrame": 503,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 74,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00025-tick-00067.png"
+            },
+            {
+              "sequence": 26,
+              "tick": 68,
+              "nativeFrame": 510,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 87,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00026-tick-00068.png"
+            },
+            {
+              "sequence": 27,
+              "tick": 69,
+              "nativeFrame": 518,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 26,
+                "feetY": 114,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00027-tick-00069.png"
+            },
+            {
+              "sequence": 28,
+              "tick": 70,
+              "nativeFrame": 525,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 30,
+                "feetY": 144,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00028-tick-00070.png"
+            },
+            {
+              "sequence": 29,
+              "tick": 71,
+              "nativeFrame": 533,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 37,
+                "feetY": 178,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00029-tick-00071.png"
+            },
+            {
+              "sequence": 30,
+              "tick": 72,
+              "nativeFrame": 540,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 45,
+                "feetY": 207,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00030-tick-00072.png"
+            },
+            {
+              "sequence": 31,
+              "tick": 73,
+              "nativeFrame": 548,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00031-tick-00073.png"
+            },
+            {
+              "sequence": 32,
+              "tick": 74,
+              "nativeFrame": 555,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 14,
+                "direction": "right",
+                "matchedOpaquePixels": 124
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00032-tick-00074.png"
+            },
+            {
+              "sequence": 33,
+              "tick": 75,
+              "nativeFrame": 563,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00033-tick-00075.png"
+            },
+            {
+              "sequence": 34,
+              "tick": 76,
+              "nativeFrame": 570,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 14,
+                "direction": "right",
+                "matchedOpaquePixels": 124
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00034-tick-00076.png"
+            },
+            {
+              "sequence": 35,
+              "tick": 77,
+              "nativeFrame": 578,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00035-tick-00077.png"
+            },
+            {
+              "sequence": 36,
+              "tick": 78,
+              "nativeFrame": 585,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00036-tick-00078.png"
+            },
+            {
+              "sequence": 37,
+              "tick": 79,
+              "nativeFrame": 593,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 14,
+                "direction": "right",
+                "matchedOpaquePixels": 124
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00037-tick-00079.png"
+            },
+            {
+              "sequence": 38,
+              "tick": 80,
+              "nativeFrame": 600,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00038-tick-00080.png"
+            },
+            {
+              "sequence": 39,
+              "tick": 81,
+              "nativeFrame": 608,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00039-tick-00081.png"
+            },
+            {
+              "sequence": 40,
+              "tick": 82,
+              "nativeFrame": 616,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 14,
+                "direction": "right",
+                "matchedOpaquePixels": 124
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00040-tick-00082.png"
+            },
+            {
+              "sequence": 41,
+              "tick": 83,
+              "nativeFrame": 623,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right",
+                  "b"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00041-tick-00083.png"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "buttonsDuringTransition": [
+            "right"
+          ],
+          "startHoldingAtTick": 64,
+          "samples": [
+            {
+              "sequence": 62,
+              "tick": 63,
+              "nativeFrame": 473,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "down"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00062-tick-00063.png"
+            },
+            {
+              "sequence": 63,
+              "tick": 64,
+              "nativeFrame": 480,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00063-tick-00064.png"
+            },
+            {
+              "sequence": 64,
+              "tick": 65,
+              "nativeFrame": 488,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00064-tick-00065.png"
+            },
+            {
+              "sequence": 65,
+              "tick": 66,
+              "nativeFrame": 495,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 64,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00065-tick-00066.png"
+            },
+            {
+              "sequence": 66,
+              "tick": 67,
+              "nativeFrame": 503,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 74,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00066-tick-00067.png"
+            },
+            {
+              "sequence": 67,
+              "tick": 68,
+              "nativeFrame": 510,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 87,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00067-tick-00068.png"
+            },
+            {
+              "sequence": 68,
+              "tick": 69,
+              "nativeFrame": 518,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 26,
+                "feetY": 114,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00068-tick-00069.png"
+            },
+            {
+              "sequence": 69,
+              "tick": 70,
+              "nativeFrame": 525,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 30,
+                "feetY": 144,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00069-tick-00070.png"
+            },
+            {
+              "sequence": 70,
+              "tick": 71,
+              "nativeFrame": 533,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 37,
+                "feetY": 178,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00070-tick-00071.png"
+            },
+            {
+              "sequence": 71,
+              "tick": 72,
+              "nativeFrame": 540,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 45,
+                "feetY": 207,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00071-tick-00072.png"
+            },
+            {
+              "sequence": 72,
+              "tick": 73,
+              "nativeFrame": 548,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00072-tick-00073.png"
+            },
+            {
+              "sequence": 73,
+              "tick": 74,
+              "nativeFrame": 555,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 14,
+                "direction": "right",
+                "matchedOpaquePixels": 124
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00073-tick-00074.png"
+            },
+            {
+              "sequence": 74,
+              "tick": 75,
+              "nativeFrame": 563,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 50,
+                "feetY": 208,
+                "cell": 13,
+                "direction": "right",
+                "matchedOpaquePixels": 145
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00074-tick-00075.png"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "buttonsDuringTransition": [
+            "a"
+          ],
+          "startHoldingAtTick": 64,
+          "samples": [
+            {
+              "sequence": 95,
+              "tick": 63,
+              "nativeFrame": 473,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "down"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00095-tick-00063.png"
+            },
+            {
+              "sequence": 96,
+              "tick": 64,
+              "nativeFrame": 480,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00096-tick-00064.png"
+            },
+            {
+              "sequence": 97,
+              "tick": 65,
+              "nativeFrame": 488,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": null,
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00097-tick-00065.png"
+            },
+            {
+              "sequence": 98,
+              "tick": 66,
+              "nativeFrame": 495,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 64,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00098-tick-00066.png"
+            },
+            {
+              "sequence": 99,
+              "tick": 67,
+              "nativeFrame": 503,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 74,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00099-tick-00067.png"
+            },
+            {
+              "sequence": 100,
+              "tick": 68,
+              "nativeFrame": 510,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 87,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00100-tick-00068.png"
+            },
+            {
+              "sequence": 101,
+              "tick": 69,
+              "nativeFrame": 518,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 114,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00101-tick-00069.png"
+            },
+            {
+              "sequence": 102,
+              "tick": 70,
+              "nativeFrame": 525,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 144,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00102-tick-00070.png"
+            },
+            {
+              "sequence": 103,
+              "tick": 71,
+              "nativeFrame": 533,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 178,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00103-tick-00071.png"
+            },
+            {
+              "sequence": 104,
+              "tick": 72,
+              "nativeFrame": 540,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 207,
+                "cell": 12,
+                "direction": "right",
+                "matchedOpaquePixels": 120
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00104-tick-00072.png"
+            },
+            {
+              "sequence": 105,
+              "tick": 73,
+              "nativeFrame": 548,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00105-tick-00073.png"
+            },
+            {
+              "sequence": 106,
+              "tick": 74,
+              "nativeFrame": 555,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00106-tick-00074.png"
+            },
+            {
+              "sequence": 107,
+              "tick": 75,
+              "nativeFrame": 563,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00107-tick-00075.png"
+            },
+            {
+              "sequence": 108,
+              "tick": 76,
+              "nativeFrame": 570,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00108-tick-00076.png"
+            },
+            {
+              "sequence": 109,
+              "tick": 77,
+              "nativeFrame": 578,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00109-tick-00077.png"
+            },
+            {
+              "sequence": 110,
+              "tick": 78,
+              "nativeFrame": 585,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 208,
+                "cell": 23,
+                "direction": "right",
+                "matchedOpaquePixels": 143
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00110-tick-00078.png"
+            },
+            {
+              "sequence": 111,
+              "tick": 79,
+              "nativeFrame": 593,
+              "framesAdvanced": 8,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "a"
+                ],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 185,
+                "cell": 16,
+                "direction": "right",
+                "matchedOpaquePixels": 171
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00111-tick-00079.png"
+            },
+            {
+              "sequence": 112,
+              "tick": 80,
+              "nativeFrame": 600,
+              "framesAdvanced": 7,
+              "request": {
+                "op": "step",
+                "buttons": [],
+                "ticks": 1
+              },
+              "player": {
+                "x": 24,
+                "feetY": 168,
+                "cell": 16,
+                "direction": "right",
+                "matchedOpaquePixels": 171
+              },
+              "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-entry-fit/00112-tick-00080.png"
+            }
+          ]
+        }
+      ],
+      "results": [
+        "All three variations reproduce identical vertical pixels at66..73:64,74,87,114,144,178,207,208.",
+        "Right and right+B produce identical horizontal origins24,24,24,26,30,37,45,50at66..73. B does not change entry air acceleration in this case.",
+        "A held during fall gives walking cell12 and does not change gravity or jump at landing; fresh release and repress restores ordinary jump.",
+        "First integer horizontal motion is visible between feet87 and114; acceleration may have begun before87 with subpixel motion."
+      ]
+    },
+    "fallCapEvidence": {
+      "intervals": [
+        {
+          "fromTick": 70,
+          "toTick": 71,
+          "nativeFrames": 8,
+          "feetDelta": 34
+        },
+        {
+          "fromTick": 71,
+          "toTick": 72,
+          "nativeFrames": 7,
+          "feetDelta": 29
+        }
+      ],
+      "inference": "If both intervals are already at constant terminal speed, integer-render coordinates bound speed approximately4.125<cap<4.285714;4.25 is consistent. Proposed4.125 is a useful within2pxapproximation, not an exact measured cap.",
+      "status": "conditional; must not mistake integer-frame position differences for unique underlying fractional velocities"
+    },
+    "horizontalCandidate": {
+      "startX": 24,
+      "releaseFeetY": 80,
+      "acceleration": 0.037109375,
+      "maxSpeed": 1.5,
+      "motionQuantization": "floor(abs(vx)*32)/32 per native frame",
+      "fit": [
+        {
+          "nativeFrameOffset": 0,
+          "predictedX": 24,
+          "observedX": 24,
+          "error": 0
+        },
+        {
+          "nativeFrameOffset": 8,
+          "predictedX": 24,
+          "observedX": 24,
+          "error": 0
+        },
+        {
+          "nativeFrameOffset": 15,
+          "predictedX": 24,
+          "observedX": 24,
+          "error": 0
+        },
+        {
+          "nativeFrameOffset": 23,
+          "predictedX": 26,
+          "observedX": 26,
+          "error": 0
+        },
+        {
+          "nativeFrameOffset": 30,
+          "predictedX": 30,
+          "observedX": 30,
+          "error": 0
+        },
+        {
+          "nativeFrameOffset": 38,
+          "predictedX": 36,
+          "observedX": 37,
+          "error": -1
+        },
+        {
+          "nativeFrameOffset": 45,
+          "predictedX": 44,
+          "observedX": 45,
+          "error": -1
+        }
+      ],
+      "maxAbsoluteError": 1,
+      "status": "Uses separately measured walking acceleration and a geometric threshold. Gate76 also fits within1px, so exact release boundary remains inferred;80 is a simple candidate consistent with tile geometry."
+    }
+  },
+  "transitionVisibilityEvents": [
+    {
+      "tick": 55,
+      "nativeFrame": 413,
+      "framesSinceLastFullPlayer": 0,
+      "event": "last full player on entrance pipe",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00004-tick-00055.png"
+    },
+    {
+      "tick": 56,
+      "nativeFrame": 420,
+      "framesSinceLastFullPlayer": 7,
+      "event": "body partly clipped by pipe",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00005-tick-00056.png"
+    },
+    {
+      "tick": 57,
+      "nativeFrame": 428,
+      "framesSinceLastFullPlayer": 15,
+      "event": "hat partly visible above pipe",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00006-tick-00057.png"
+    },
+    {
+      "tick": 58,
+      "nativeFrame": 435,
+      "framesSinceLastFullPlayer": 22,
+      "event": "player fully clipped by pipe",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00007-tick-00058.png"
+    },
+    {
+      "tick": 59,
+      "nativeFrame": 443,
+      "framesSinceLastFullPlayer": 30,
+      "event": "main geometry, player hidden",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00008-tick-00059.png"
+    },
+    {
+      "tick": 60,
+      "nativeFrame": 450,
+      "framesSinceLastFullPlayer": 37,
+      "event": "main geometry, player hidden",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00009-tick-00060.png"
+    },
+    {
+      "tick": 61,
+      "nativeFrame": 458,
+      "framesSinceLastFullPlayer": 45,
+      "event": "last captured main geometry",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00010-tick-00061.png"
+    },
+    {
+      "tick": 62,
+      "nativeFrame": 465,
+      "framesSinceLastFullPlayer": 52,
+      "event": "flat universal-blue viewport",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00011-tick-00062.png"
+    },
+    {
+      "tick": 63,
+      "nativeFrame": 473,
+      "framesSinceLastFullPlayer": 60,
+      "event": "black viewport",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00012-tick-00063.png"
+    },
+    {
+      "tick": 64,
+      "nativeFrame": 480,
+      "framesSinceLastFullPlayer": 67,
+      "event": "black viewport",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00013-tick-00064.png"
+    },
+    {
+      "tick": 65,
+      "nativeFrame": 488,
+      "framesSinceLastFullPlayer": 75,
+      "event": "last captured black viewport",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00014-tick-00065.png"
+    },
+    {
+      "tick": 66,
+      "nativeFrame": 495,
+      "framesSinceLastFullPlayer": 82,
+      "event": "first room geometry and full falling player",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-bonus-return2/00015-tick-00066.png"
+    }
+  ],
+  "minimumTransitionPipeline": [
+    {
+      "stage": "enter pipe",
+      "trigger": "ordinary down while grounded/aligned on entrance",
+      "behavior": "translate and clip against pipe geometry; freeze input/timer during plumbing",
+      "status": "physical clipping observed55..58; precise accepted input frame is bracketed, not exact"
+    },
+    {
+      "stage": "scene transition",
+      "behavior": "last main geometry at61, blue clear62, black63..65, first room66",
+      "status": "observed one-decision brackets; duration is approximate until native-frame control is finer than7–8frames"
+    },
+    {
+      "stage": "room entry fall",
+      "behavior": "present first frame at source-origin24, feet about64; falling walkingcell12; use one capped-gravity trajectory",
+      "status": "observed; simple candidate is physical fit rather than a tick-indexed path"
+    },
+    {
+      "stage": "release controls",
+      "behavior": "allow ordinary airborne horizontal input after feet crosses around80; do not lock until landing",
+      "status": "inferred geometry threshold from controlled input experiment"
+    },
+    {
+      "stage": "landing",
+      "behavior": "normal collision with actual floor208 ends entry fall; ordinary jump requires fresh A press",
+      "status": "observed A-held landing stays standing; fresh A experiment appended"
+    }
+  ]
+}

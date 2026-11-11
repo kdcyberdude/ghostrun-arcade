@@ -1,0 +1,94 @@
+{
+  "declaredUTC": "2026-11-08T04:37:32.208033+00:00",
+  "purpose": "Predeclared frame-dense ascent/descent comparison from a different 2-2 state; test a general two-slice stroke-position timing hypothesis, without changing production.",
+  "sourcePrefix": [
+    {
+      "op": "auto",
+      "ticks": 1652
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 24
+    }
+  ],
+  "encounters": [
+    {
+      "name": "ascent",
+      "prefix": [
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8
+        },
+        {
+          "buttons": [],
+          "frames": 7
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8
+        },
+        {
+          "buttons": [],
+          "frames": 7
+        }
+      ]
+    },
+    {
+      "name": "descent",
+      "prefix": [
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8
+        },
+        {
+          "buttons": [],
+          "frames": 7
+        },
+        {
+          "buttons": [
+            "a"
+          ],
+          "frames": 8
+        },
+        {
+          "buttons": [],
+          "frames": 47
+        }
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "name": "neutral",
+      "heldFrames": 0,
+      "role": "calibration"
+    },
+    {
+      "name": "stroke8",
+      "heldFrames": 8,
+      "role": "calibration"
+    },
+    {
+      "name": "pulse1",
+      "heldFrames": 1,
+      "role": "held-out"
+    },
+    {
+      "name": "pulse4",
+      "heldFrames": 4,
+      "role": "held-out"
+    }
+  ],
+  "branchFrames": 40,
+  "positionTolerancePixels": 2,
+  "scoring": "Only exact opaque supplied templates. Other positions remain unscored. Source live PNGs and completed PNGs remain separate; no image shift.",
+  "candidate": "Before seeing any captures, separately evaluate the general timing hypothesis y := y - 2*vy immediately before the existing fresh-stroke position reset, applied to every water stroke. This copies the estimated two-frame input/render skew into the simulation position; it is an intentionally testable hypothesis, not a claimed native rule.",
+  "validation": "Compare neutral and 8-slice calibration cases first. Freeze the unmodified candidate, then evaluate 1/4-slice branches and the prior 150-slice surface cases. Run the existing water tests. Reject on any individual >2px exact-position result or existing regression; do not tune thresholds. Branches share restored encounter states and are not independent full-campaign gameplay."
+}

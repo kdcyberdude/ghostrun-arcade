@@ -1,0 +1,234 @@
+{
+  "schema": "supplied-art-hud-coin-assembly-v1",
+  "classification": "Image-validated supplied-art composition; proposed renderer integration only",
+  "sourceReport": "evidence/background-animation-verification.json",
+  "sourceMetadata": "assets/screens/level-W-L.json.oam[0]",
+  "backgroundTile": 46,
+  "backgroundOrigin": [
+    88,
+    24
+  ],
+  "spriteTile": 255,
+  "spriteOrigin": [
+    88,
+    25
+  ],
+  "spritePaletteGroup": 3,
+  "behindBackground": true,
+  "suppliedOamTuple": [
+    24,
+    255,
+    35,
+    88
+  ],
+  "oamMeaning": "[Y-minus-one,tile,attribute,X]; attribute0x23 selects sprite palette3 and behind-background priority",
+  "spriteOpaquePixels": 8,
+  "uncoveredSpritePixels": 5,
+  "visibleContributionRows": [
+    30,
+    31
+  ],
+  "flips": false,
+  "customPixels": false,
+  "clipping": "All five exposed underlay pixels lie above terrain boundary32. Water-entry actors at sourceY18/25 coexist with a complete HUD coin; no captured player overlaps the coin patch itself.",
+  "backgroundIndices": [
+    [
+      0,
+      0,
+      1,
+      1,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "spriteIndices": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      1,
+      1,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      3,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "backgroundRect": [
+    112,
+    16,
+    8,
+    8
+  ],
+  "spriteRect": [
+    120,
+    120,
+    8,
+    8
+  ],
+  "proposedZ": {
+    "background": 1,
+    "underlay": 0.9,
+    "ordinaryActors": 2,
+    "player": 3
+  },
+  "paletteSelection": "manifest.palette_observations[area.palette].palette.slice(28,32), rendered using supplied sprite-tiles-HEX-HEX-HEX-HEX.png",
+  "phaseGating": {
+    "measuredEnabled": [
+      "title",
+      "ordinary gameplay",
+      "native ending"
+    ],
+    "measuredDisabled": [
+      "normal-level intro",
+      "warp7/8 intro",
+      "death-respawn intro"
+    ],
+    "inferredDisabled": [
+      "gameover"
+    ],
+    "loading": "Existing HUD caller omits loading/clearing entirely; do not add an independent clock"
+  },
+  "scope": "Add supplied underlay only. Existing fixed bright ground BGcoin and unresolved palette clock remain separate discrepancies."
+}

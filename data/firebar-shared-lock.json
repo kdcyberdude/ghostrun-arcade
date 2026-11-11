@@ -1,0 +1,37 @@
+{
+  "schema": "shared-firebar-reservation-lock-v1",
+  "lockedUtc": "2026-11-06T01:25:05.906Z",
+  "scope": "Puregeneric candidate and directlyqualifiedobjectmetadata only; no runtimeintegration. Preserveoriginalfirstbarlockedfiles.",
+  "hashes": {
+    "src/firebar-motion.ts": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "data/firebar-motion-objects-candidate.json": "0652948323d80a4e683b956814b332480e92482cee1f648ef96e35b848b93f2b",
+    "data/firebar-shared-candidate.json": "43c7e972aafcb3a89a922668d3a08c34df229905a0bda23c5ddfeaa45fbe842e",
+    "data/firebar-1-4-camera-anchor-chain.json": "b0d16cb5a2375d80affb4e22329ffc8aa3bb6d00111ad75d8a7082d27a7b6a22",
+    "data/firebar-hazard-corrections-candidate.json": "9cbe4cc355f1a69adb81ba29a064f3d4e08f2498db5cb8f766578ca772b7beca",
+    "tools/firebar-camera-track.py": "7e49919ec974fdb0f4be9ef696c36769d3aa92c838dc726b3aa35ded1cb5d69f",
+    "tools/firebar-shared-extract.py": "6fd44cb826bfc99176f9de5d371ce4c689cc784da4168bc06c486733aaa3c38f",
+    "tools/firebar-shared-fit.py": "dcbbecd4a27b9acf31211276fe5e570b1863eea8c0172382844ef17bbc434cf5",
+    "tools/firebar-shared-validate.ts": "7b85f58c16426dc84385eb40f6aefeb83919a7d638db01f2d9c6ed731fc319e9"
+  },
+  "reservations": [
+    {
+      "directory": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z",
+      "case": "reserved-2-4-ccw-13"
+    },
+    {
+      "directory": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z",
+      "case": "reserved-1-4-cw-13"
+    },
+    {
+      "directory": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z",
+      "case": "reserved-1-4-lastcw-13"
+    }
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "retainedCalibrationFailure": "CW1416prewait0 fixednearestcameraactivation estimate is1nativeframe late;11/60orientations differ,maxrawcenter8px. Samephasegeometry0px and motor5/32exact. No epochparameter tuned fromorbs."
+}

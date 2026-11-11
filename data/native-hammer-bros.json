@@ -1,0 +1,362 @@
+{
+ "schema": "native-hammer-bros-v1",
+ "evidence": "Native Hammer Bros (id 5) of the recorded route (tools/derive-hammer-schedule.mjs): spawn x, native feet y, strong/weak jump times and throw times are hidden random state recorded per Bro as frames since the Bro first appeared (throws: since its first throw cycle `trigger`); the patrol clock, hand/flight motion and jump physics are rules.",
+ "rules": {
+  "patrolSpeed": 0.25,
+  "patrolHalf": 64,
+  "clockShift": -1,
+  "freshClock": 176,
+  "levelClock": 162,
+  "pipeClock": 22,
+  "handFrames": 14,
+  "handDx": 2,
+  "handDy": -10,
+  "throwSpeed": 1,
+  "throwImpulse": 2.0625,
+  "throwGravity": 0.0625,
+  "period": {
+   "early": 49,
+   "late": 29
+  },
+  "stompScore": 1000,
+  "triggerScreenX": 245,
+  "jump": {
+   "strong": 6,
+   "weak": 3,
+   "gravity": 0.23828125,
+   "maxFall": 3.234375
+  }
+ },
+ "bros": [
+  {
+   "level": "3-1",
+   "area": "main",
+   "x": 1808,
+   "y": 144,
+   "jumps": [
+    [
+     2,
+     1
+    ]
+   ],
+   "trigger": 115,
+   "throws": [
+    0
+   ],
+   "frames": 170
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "x": 1856,
+   "y": 208,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 24,
+   "throws": [],
+   "frames": 123
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "x": 736,
+   "y": 160,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 24,
+   "throws": [],
+   "frames": 126
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "x": 1296,
+   "y": 128,
+   "jumps": [
+    [
+     13,
+     1
+    ]
+   ],
+   "trigger": 20,
+   "throws": [
+    49
+   ],
+   "frames": 127
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "x": 1920,
+   "y": 144,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 21,
+   "throws": [
+    0,
+    49
+   ],
+   "frames": 135
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "x": 1984,
+   "y": 80,
+   "jumps": [
+    [
+     1,
+     1
+    ]
+   ],
+   "trigger": 30,
+   "throws": [
+    0,
+    49
+   ],
+   "frames": 154
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "x": 1344,
+   "y": 208,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 25,
+   "throws": [
+    29,
+    58
+   ],
+   "frames": 134
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "x": 1376,
+   "y": 144,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 24,
+   "throws": [
+    29,
+    86
+   ],
+   "frames": 133
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "x": 2160,
+   "y": 208,
+   "jumps": [],
+   "trigger": 21,
+   "throws": [
+    29
+   ],
+   "frames": 118
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "x": 2192,
+   "y": 144,
+   "jumps": [
+    [
+     81,
+     1
+    ]
+   ],
+   "trigger": 25,
+   "throws": [
+    29,
+    59
+   ],
+   "frames": 144
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 1008,
+   "y": 208,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 22,
+   "throws": [
+    29,
+    58
+   ],
+   "frames": 128
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 1040,
+   "y": 144,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 25,
+   "throws": [
+    0,
+    29,
+    58
+   ],
+   "frames": 128
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 1872,
+   "y": 144,
+   "jumps": [
+    [
+     1,
+     1
+    ]
+   ],
+   "trigger": 20,
+   "throws": [
+    29
+   ],
+   "frames": 128
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 1904,
+   "y": 208,
+   "jumps": [
+    [
+     67,
+     0
+    ]
+   ],
+   "trigger": 20,
+   "throws": [
+    0,
+    29,
+    59,
+    88
+   ],
+   "frames": 127
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 2336,
+   "y": 208,
+   "jumps": [
+    [
+     117,
+     0
+    ]
+   ],
+   "trigger": 24,
+   "throws": [
+    29,
+    58
+   ],
+   "frames": 128
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 2544,
+   "y": 208,
+   "jumps": [
+    [
+     1,
+     0
+    ]
+   ],
+   "trigger": 19,
+   "throws": [
+    29,
+    86
+   ],
+   "frames": 127
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 2832,
+   "y": 208,
+   "jumps": [],
+   "trigger": 20,
+   "throws": [
+    29,
+    86
+   ],
+   "frames": 128
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "x": 2960,
+   "y": 208,
+   "jumps": [
+    [
+     110,
+     0
+    ]
+   ],
+   "trigger": 26,
+   "throws": [
+    29,
+    58
+   ],
+   "frames": 129
+  },
+  {
+   "level": "8-4",
+   "area": "area-5",
+   "x": 272,
+   "y": 208,
+   "appear": 28,
+   "jumps": [
+    [
+     2,
+     0
+    ],
+    [
+     206,
+     0
+    ]
+   ],
+   "trigger": 157,
+   "throws": [
+    58,
+    87
+   ],
+   "frames": 274
+  }
+ ]
+}

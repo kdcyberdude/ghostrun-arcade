@@ -1,0 +1,6 @@
+{
+  "scope": "Fitted browser alignment for the World 1-1 bonus pipe. This is not a measured native collision-box size.",
+  "calibrations": [
+    {"level": "1-1", "from": "main", "to": "bonus-coins", "entryHorizontalTolerance": 5}
+  ]
+}

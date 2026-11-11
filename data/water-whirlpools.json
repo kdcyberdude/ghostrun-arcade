@@ -1,0 +1,11 @@
+{
+  "classification": "Whirlpool zones of the water levels, measured from read-only native captures (tools/fidelity-lab/water-probe.mjs, native-water-score.ts); see evidence/water-motor-findings-20261109.md.",
+  "rule": "Inside a zone (left <= native x <= left + length) every frame takes a second gravity pass (gravity 16, speed cap 1) and every second frame x moves one pixel toward the zone centre; a stroke started in a zone uses the whirlpool stroke class.",
+  "zones": {
+    "2-2/area-2": [{"left": 1040, "length": 96}, {"left": 2080, "length": 160}, {"left": 2496, "length": 128}],
+    "7-2/area-4": [{"left": 1040, "length": 96}, {"left": 2080, "length": 160}, {"left": 2496, "length": 128}],
+    "5-2/optional-water": [{"left": 336, "length": 80}, {"left": 432, "length": 80}, {"left": 592, "length": 48}, {"left": 656, "length": 48}],
+    "6-2/optional-water": [{"left": 336, "length": 80}, {"left": 432, "length": 80}, {"left": 592, "length": 48}, {"left": 656, "length": 48}]
+  },
+  "provenance": "2-2: native winning route frames 12400-16200 plus 150 branched probes; 7-2: route frames 58270-60800 (the same boundaries within 1 px, the capture phase differs); 8-4 water room: no whirlpool in the visited x range; 5-2 pipe room: measured (area waterbig), about 45,000 frames of the five water-probe sweep plans run with small and with big Mario from the room entry (landing x 336..416 / 432..512 / 592..640 / 656..704, the pull direction flips at x 376 so each zone pulls toward its own centre; docs/NATIVE_ROLES.md (water: big Mario and the 5-2/6-2 room)). 6-2 pipe room: NOT measured natively, copied from 5-2 because the remake's two rooms have identical tiles (the room is one native layout; 2-2 and 7-2 measured identical zones)."
+}

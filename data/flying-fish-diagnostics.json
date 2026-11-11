@@ -1,0 +1,2006 @@
+{
+  "schema": "flying-fish-diagnostics-v1",
+  "analyzedUtc": "2026-11-06T02:41:17.545Z",
+  "freeze": {
+    "path": "data/flying-fish-candidate-freeze.json",
+    "sha256": "742dcb6412405f59adff78b2e95f6cfb6e6f3c3dfb04efbc56fec7567ed6c5d3"
+  },
+  "heldoutTrace": {
+    "path": "evidence/local/flying-fish-2026-11-06T02-30-44.002Z/trace.jsonl",
+    "sha256": "011aa530d8f4bbeaeb20393a44948963f21160468ba534622db62e5733edbf06"
+  },
+  "prefixVerifications": [
+    {
+      "tick": 2252,
+      "nativeFrame": 16917,
+      "expectedNativeFrame": 16917,
+      "samePng": true
+    },
+    {
+      "tick": 2256,
+      "nativeFrame": 16947,
+      "expectedNativeFrame": 16947,
+      "samePng": true
+    },
+    {
+      "tick": 2248,
+      "nativeFrame": 16887,
+      "expectedNativeFrame": 16887,
+      "samePng": true
+    },
+    {
+      "tick": 2252,
+      "nativeFrame": 16917,
+      "expectedNativeFrame": 16917,
+      "samePng": true
+    },
+    {
+      "tick": 2256,
+      "nativeFrame": 16947,
+      "expectedNativeFrame": 16947,
+      "samePng": true
+    },
+    {
+      "tick": 2248,
+      "nativeFrame": 16887,
+      "expectedNativeFrame": 16887,
+      "samePng": true
+    }
+  ],
+  "tolerances": {
+    "actorPixels": 2,
+    "cameraPixels": 2,
+    "eventNativeFrames": 8
+  },
+  "tracks": [
+    {
+      "name": "cal-run-first",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2257,
+          "frame": 16955,
+          "x": 370,
+          "y": 171,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00397-fish-cal-run-t2257.png"
+        },
+        {
+          "tick": 2258,
+          "frame": 16962,
+          "x": 379,
+          "y": 146,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00398-fish-cal-run-t2258.png"
+        },
+        {
+          "tick": 2259,
+          "frame": 16970,
+          "x": 389,
+          "y": 121,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00399-fish-cal-run-t2259.png"
+        },
+        {
+          "tick": 2260,
+          "frame": 16977,
+          "x": 398,
+          "y": 101,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00400-fish-cal-run-t2260.png"
+        },
+        {
+          "tick": 2262,
+          "frame": 16992,
+          "x": 415,
+          "y": 66,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00402-fish-cal-run-t2262.png"
+        },
+        {
+          "tick": 2263,
+          "frame": 17000,
+          "x": 425,
+          "y": 54,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00403-fish-cal-run-t2263.png"
+        },
+        {
+          "tick": 2264,
+          "frame": 17007,
+          "x": 435,
+          "y": 47,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00404-fish-cal-run-t2264.png"
+        },
+        {
+          "tick": 2265,
+          "frame": 17015,
+          "x": 445,
+          "y": 42,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00405-fish-cal-run-t2265.png"
+        },
+        {
+          "tick": 2266,
+          "frame": 17022,
+          "x": 452,
+          "y": 41,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00406-fish-cal-run-t2266.png"
+        },
+        {
+          "tick": 2267,
+          "frame": 17030,
+          "x": 462,
+          "y": 42,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00407-fish-cal-run-t2267.png"
+        },
+        {
+          "tick": 2268,
+          "frame": 17037,
+          "x": 472,
+          "y": 46,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00408-fish-cal-run-t2268.png"
+        },
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 482,
+          "y": 54,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00409-fish-cal-run-t2269.png"
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 490,
+          "y": 63,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00410-fish-cal-run-t2270.png"
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 510,
+          "y": 92,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00412-fish-cal-run-t2272.png"
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 520,
+          "y": 112,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00413-fish-cal-run-t2273.png"
+        },
+        {
+          "tick": 2274,
+          "frame": 17082,
+          "x": 529,
+          "y": 133,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00414-fish-cal-run-t2274.png"
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 539,
+          "y": 161,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00415-fish-cal-run-t2275.png"
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 548,
+          "y": 187,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00416-fish-cal-run-t2276.png"
+        }
+      ],
+      "motor": {
+        "vx": 1.25,
+        "firstMeasuredX": 370,
+        "bestContinuousInitialX": 369.375,
+        "maxError": 1.125,
+        "fixedFirstAnchorMaxError": 1.75
+      }
+    },
+    {
+      "name": "cal-stop-second",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2268,
+          "frame": 17037,
+          "x": 205,
+          "y": 229,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00821-fish-cal-stop-wait-t2268.png"
+        },
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 212,
+          "y": 194,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00822-fish-cal-stop-wait-t2269.png"
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 219,
+          "y": 167,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00823-fish-cal-stop-wait-t2270.png"
+        },
+        {
+          "tick": 2271,
+          "frame": 17060,
+          "x": 226,
+          "y": 139,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00824-fish-cal-stop-wait-t2271.png"
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 232,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00825-fish-cal-stop-wait-t2272.png"
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 239,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00826-fish-cal-stop-wait-t2273.png"
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 253,
+          "y": 62,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00828-fish-cal-stop-wait-t2275.png"
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 259,
+          "y": 53,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00829-fish-cal-stop-wait-t2276.png"
+        },
+        {
+          "tick": 2277,
+          "frame": 17105,
+          "x": 266,
+          "y": 45,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00830-fish-cal-stop-wait-t2277.png"
+        },
+        {
+          "tick": 2278,
+          "frame": 17112,
+          "x": 272,
+          "y": 42,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00831-fish-cal-stop-wait-t2278.png"
+        },
+        {
+          "tick": 2279,
+          "frame": 17120,
+          "x": 279,
+          "y": 41,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00832-fish-cal-stop-wait-t2279.png"
+        },
+        {
+          "tick": 2280,
+          "frame": 17127,
+          "x": 285,
+          "y": 43,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00833-fish-cal-stop-wait-t2280.png"
+        },
+        {
+          "tick": 2281,
+          "frame": 17135,
+          "x": 292,
+          "y": 48,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00834-fish-cal-stop-wait-t2281.png"
+        },
+        {
+          "tick": 2282,
+          "frame": 17142,
+          "x": 298,
+          "y": 55,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00835-fish-cal-stop-wait-t2282.png"
+        },
+        {
+          "tick": 2283,
+          "frame": 17150,
+          "x": 305,
+          "y": 67,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00836-fish-cal-stop-wait-t2283.png"
+        },
+        {
+          "tick": 2285,
+          "frame": 17165,
+          "x": 317,
+          "y": 96,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00838-fish-cal-stop-wait-t2285.png"
+        },
+        {
+          "tick": 2286,
+          "frame": 17172,
+          "x": 324,
+          "y": 115,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00839-fish-cal-stop-wait-t2286.png"
+        },
+        {
+          "tick": 2287,
+          "frame": 17180,
+          "x": 331,
+          "y": 140,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00840-fish-cal-stop-wait-t2287.png"
+        },
+        {
+          "tick": 2288,
+          "frame": 17187,
+          "x": 337,
+          "y": 164,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00841-fish-cal-stop-wait-t2288.png"
+        },
+        {
+          "tick": 2289,
+          "frame": 17195,
+          "x": 344,
+          "y": 195,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00842-fish-cal-stop-wait-t2289.png"
+        },
+        {
+          "tick": 2290,
+          "frame": 17202,
+          "x": 350,
+          "y": 225,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00843-fish-cal-stop-wait-t2290.png"
+        }
+      ],
+      "motor": {
+        "vx": 0.875,
+        "firstMeasuredX": 205,
+        "bestContinuousInitialX": 205.8125,
+        "maxError": 0.8125,
+        "fixedFirstAnchorMaxError": 1.625
+      }
+    },
+    {
+      "name": "cal-delay-first",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2295,
+          "frame": 17240,
+          "x": 132,
+          "y": 238,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01287-fish-cal-delay-approach-t2295.png"
+        },
+        {
+          "tick": 2296,
+          "frame": 17248,
+          "x": 149,
+          "y": 203,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01288-fish-cal-delay-approach-t2296.png"
+        },
+        {
+          "tick": 2297,
+          "frame": 17255,
+          "x": 164,
+          "y": 175,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01289-fish-cal-delay-approach-t2297.png"
+        },
+        {
+          "tick": 2298,
+          "frame": 17263,
+          "x": 181,
+          "y": 146,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01290-fish-cal-delay-approach-t2298.png"
+        },
+        {
+          "tick": 2299,
+          "frame": 17270,
+          "x": 196,
+          "y": 124,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01291-fish-cal-delay-approach-t2299.png"
+        },
+        {
+          "tick": 2300,
+          "frame": 17278,
+          "x": 213,
+          "y": 101,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01292-fish-cal-delay-approach-t2300.png"
+        },
+        {
+          "tick": 2302,
+          "frame": 17293,
+          "x": 244,
+          "y": 66,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01294-fish-cal-delay-approach-t2302.png"
+        },
+        {
+          "tick": 2303,
+          "frame": 17300,
+          "x": 260,
+          "y": 55,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01295-fish-cal-delay-approach-t2303.png"
+        },
+        {
+          "tick": 2304,
+          "frame": 17308,
+          "x": 277,
+          "y": 47,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01296-fish-cal-delay-approach-t2304.png"
+        },
+        {
+          "tick": 2305,
+          "frame": 17315,
+          "x": 291,
+          "y": 43,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01297-fish-cal-delay-approach-t2305.png"
+        },
+        {
+          "tick": 2306,
+          "frame": 17323,
+          "x": 308,
+          "y": 41,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01298-fish-cal-delay-approach-t2306.png"
+        },
+        {
+          "tick": 2307,
+          "frame": 17330,
+          "x": 324,
+          "y": 42,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01299-fish-cal-delay-approach-t2307.png"
+        },
+        {
+          "tick": 2308,
+          "frame": 17338,
+          "x": 341,
+          "y": 46,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01300-fish-cal-delay-approach-t2308.png"
+        },
+        {
+          "tick": 2309,
+          "frame": 17345,
+          "x": 355,
+          "y": 52,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01301-fish-cal-delay-approach-t2309.png"
+        },
+        {
+          "tick": 2310,
+          "frame": 17353,
+          "x": 372,
+          "y": 63,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01302-fish-cal-delay-approach-t2310.png"
+        }
+      ],
+      "motor": {
+        "vx": 2.125,
+        "firstMeasuredX": 132,
+        "bestContinuousInitialX": 132.0625,
+        "maxError": 0.6875,
+        "fixedFirstAnchorMaxError": 0.75
+      }
+    },
+    {
+      "name": "held-walk-first",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 483,
+          "y": 54,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00409-fish-held-walk-t2269.png"
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 491,
+          "y": 63,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00410-fish-held-walk-t2270.png"
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 510,
+          "y": 92,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00412-fish-held-walk-t2272.png"
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 520,
+          "y": 112,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00413-fish-held-walk-t2273.png"
+        },
+        {
+          "tick": 2274,
+          "frame": 17082,
+          "x": 529,
+          "y": 133,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00414-fish-held-walk-t2274.png"
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 539,
+          "y": 161,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00415-fish-held-walk-t2275.png"
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 548,
+          "y": 187,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00416-fish-held-walk-t2276.png"
+        }
+      ],
+      "motor": {
+        "vx": 1.25,
+        "firstMeasuredX": 483,
+        "bestContinuousInitialX": 482.625,
+        "maxError": 0.375,
+        "fixedFirstAnchorMaxError": 0.75
+      }
+    },
+    {
+      "name": "held-walk-second",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2268,
+          "frame": 17037,
+          "x": 295,
+          "y": 229,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00408-fish-held-walk-t2268.png"
+        },
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 309,
+          "y": 194,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00409-fish-held-walk-t2269.png"
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 322,
+          "y": 167,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00410-fish-held-walk-t2270.png"
+        },
+        {
+          "tick": 2271,
+          "frame": 17060,
+          "x": 336,
+          "y": 139,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00411-fish-held-walk-t2271.png"
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 348,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00412-fish-held-walk-t2272.png"
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 362,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00413-fish-held-walk-t2273.png"
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 388,
+          "y": 62,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00415-fish-held-walk-t2275.png"
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 401,
+          "y": 53,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00416-fish-held-walk-t2276.png"
+        }
+      ],
+      "motor": {
+        "vx": 1.75,
+        "firstMeasuredX": 295,
+        "bestContinuousInitialX": 295.5,
+        "maxError": 0.5,
+        "fixedFirstAnchorMaxError": 1
+      }
+    },
+    {
+      "name": "held-jump-second",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2268,
+          "frame": 17037,
+          "x": 222,
+          "y": 229,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00821-fish-held-jump-wait-t2268.png"
+        },
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 237,
+          "y": 194,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00822-fish-held-jump-wait-t2269.png"
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 251,
+          "y": 167,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00823-fish-held-jump-wait-t2270.png"
+        },
+        {
+          "tick": 2271,
+          "frame": 17060,
+          "x": 266,
+          "y": 139,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00824-fish-held-jump-wait-t2271.png"
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 279,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00825-fish-held-jump-wait-t2272.png"
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 294,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00826-fish-held-jump-wait-t2273.png"
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 324,
+          "y": 62,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00828-fish-held-jump-wait-t2275.png"
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 337,
+          "y": 53,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00829-fish-held-jump-wait-t2276.png"
+        },
+        {
+          "tick": 2277,
+          "frame": 17105,
+          "x": 352,
+          "y": 45,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00830-fish-held-jump-wait-t2277.png"
+        },
+        {
+          "tick": 2278,
+          "frame": 17112,
+          "x": 365,
+          "y": 42,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00831-fish-held-jump-wait-t2278.png"
+        },
+        {
+          "tick": 2279,
+          "frame": 17120,
+          "x": 380,
+          "y": 41,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00832-fish-held-jump-wait-t2279.png"
+        }
+      ],
+      "motor": {
+        "vx": 1.875,
+        "firstMeasuredX": 222,
+        "bestContinuousInitialX": 223.3125,
+        "maxError": 1.3125,
+        "fixedFirstAnchorMaxError": 2.625
+      }
+    },
+    {
+      "name": "held-delay-first",
+      "association": "Descriptive whole-track nearest constant-X trajectory, with all exact supplied-art matches retained; not a runtime speed selector.",
+      "rows": [
+        {
+          "tick": 2290,
+          "frame": 17202,
+          "x": 373,
+          "y": 167,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01275-fish-held-delay-approach-t2290.png"
+        },
+        {
+          "tick": 2291,
+          "frame": 17210,
+          "x": 383,
+          "y": 139,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01276-fish-held-delay-approach-t2291.png"
+        },
+        {
+          "tick": 2292,
+          "frame": 17218,
+          "x": 393,
+          "y": 115,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01277-fish-held-delay-approach-t2292.png"
+        },
+        {
+          "tick": 2293,
+          "frame": 17225,
+          "x": 401,
+          "y": 96,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01278-fish-held-delay-approach-t2293.png"
+        },
+        {
+          "tick": 2294,
+          "frame": 17233,
+          "x": 411,
+          "y": 75,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01279-fish-held-delay-approach-t2294.png"
+        },
+        {
+          "tick": 2295,
+          "frame": 17240,
+          "x": 418,
+          "y": 62,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01280-fish-held-delay-approach-t2295.png"
+        },
+        {
+          "tick": 2296,
+          "frame": 17248,
+          "x": 428,
+          "y": 52,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01281-fish-held-delay-approach-t2296.png"
+        },
+        {
+          "tick": 2297,
+          "frame": 17255,
+          "x": 438,
+          "y": 45,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01282-fish-held-delay-approach-t2297.png"
+        },
+        {
+          "tick": 2298,
+          "frame": 17263,
+          "x": 448,
+          "y": 42,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01283-fish-held-delay-approach-t2298.png"
+        },
+        {
+          "tick": 2299,
+          "frame": 17270,
+          "x": 456,
+          "y": 41,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01284-fish-held-delay-approach-t2299.png"
+        },
+        {
+          "tick": 2300,
+          "frame": 17278,
+          "x": 466,
+          "y": 43,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01285-fish-held-delay-approach-t2300.png"
+        },
+        {
+          "tick": 2301,
+          "frame": 17285,
+          "x": 476,
+          "y": 48,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01286-fish-held-delay-approach-t2301.png"
+        },
+        {
+          "tick": 2302,
+          "frame": 17293,
+          "x": 486,
+          "y": 56,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01287-fish-held-delay-approach-t2302.png"
+        },
+        {
+          "tick": 2303,
+          "frame": 17300,
+          "x": 493,
+          "y": 67,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01288-fish-held-delay-approach-t2303.png"
+        },
+        {
+          "tick": 2305,
+          "frame": 17315,
+          "x": 514,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01290-fish-held-delay-approach-t2305.png"
+        },
+        {
+          "tick": 2306,
+          "frame": 17323,
+          "x": 524,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01291-fish-held-delay-approach-t2306.png"
+        },
+        {
+          "tick": 2307,
+          "frame": 17330,
+          "x": 533,
+          "y": 140,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01292-fish-held-delay-approach-t2307.png"
+        },
+        {
+          "tick": 2308,
+          "frame": 17338,
+          "x": 543,
+          "y": 168,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01293-fish-held-delay-approach-t2308.png"
+        },
+        {
+          "tick": 2309,
+          "frame": 17345,
+          "x": 551,
+          "y": 195,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01294-fish-held-delay-approach-t2309.png"
+        },
+        {
+          "tick": 2310,
+          "frame": 17353,
+          "x": 561,
+          "y": 229,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01295-fish-held-delay-approach-t2310.png"
+        }
+      ],
+      "motor": {
+        "vx": 1.25,
+        "firstMeasuredX": 373,
+        "bestContinuousInitialX": 371.75,
+        "maxError": 1.25,
+        "fixedFirstAnchorMaxError": 2.5
+      }
+    }
+  ],
+  "gravityBounds": [
+    {
+      "name": "cal-run-first",
+      "bounds": [
+        {
+          "cell": null,
+          "poses": 18,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.06222222222222229,
+            "triple": [
+              {
+                "tick": 2260,
+                "frame": 16977,
+                "x": 398,
+                "y": 101,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00400-fish-cal-run-t2260.png"
+              },
+              {
+                "tick": 2262,
+                "frame": 16992,
+                "x": 415,
+                "y": 66,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00402-fish-cal-run-t2262.png"
+              },
+              {
+                "tick": 2264,
+                "frame": 17007,
+                "x": 435,
+                "y": 47,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00404-fish-cal-run-t2264.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.051105651105651156,
+            "triple": [
+              {
+                "tick": 2257,
+                "frame": 16955,
+                "x": 370,
+                "y": 171,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00397-fish-cal-run-t2257.png"
+              },
+              {
+                "tick": 2259,
+                "frame": 16970,
+                "x": 389,
+                "y": 121,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00399-fish-cal-run-t2259.png"
+              },
+              {
+                "tick": 2262,
+                "frame": 16992,
+                "x": 415,
+                "y": 66,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00402-fish-cal-run-t2262.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 12,
+          "poses": 10,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.06013986013986013,
+            "triple": [
+              {
+                "tick": 2259,
+                "frame": 16970,
+                "x": 389,
+                "y": 121,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00399-fish-cal-run-t2259.png"
+              },
+              {
+                "tick": 2263,
+                "frame": 17000,
+                "x": 425,
+                "y": 54,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00403-fish-cal-run-t2263.png"
+              },
+              {
+                "tick": 2266,
+                "frame": 17022,
+                "x": 452,
+                "y": 41,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00406-fish-cal-run-t2266.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.0533259423503326,
+            "triple": [
+              {
+                "tick": 2263,
+                "frame": 17000,
+                "x": 425,
+                "y": 54,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00403-fish-cal-run-t2263.png"
+              },
+              {
+                "tick": 2266,
+                "frame": 17022,
+                "x": 452,
+                "y": 41,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00406-fish-cal-run-t2266.png"
+              },
+              {
+                "tick": 2274,
+                "frame": 17082,
+                "x": 529,
+                "y": 133,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00414-fish-cal-run-t2274.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 13,
+          "poses": 8,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.06222222222222229,
+            "triple": [
+              {
+                "tick": 2260,
+                "frame": 16977,
+                "x": 398,
+                "y": 101,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00400-fish-cal-run-t2260.png"
+              },
+              {
+                "tick": 2262,
+                "frame": 16992,
+                "x": 415,
+                "y": 66,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00402-fish-cal-run-t2262.png"
+              },
+              {
+                "tick": 2264,
+                "frame": 17007,
+                "x": 435,
+                "y": 47,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00404-fish-cal-run-t2264.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.05319917440660474,
+            "triple": [
+              {
+                "tick": 2264,
+                "frame": 17007,
+                "x": 435,
+                "y": 47,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00404-fish-cal-run-t2264.png"
+              },
+              {
+                "tick": 2269,
+                "frame": 17045,
+                "x": 482,
+                "y": 54,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00409-fish-cal-run-t2269.png"
+              },
+              {
+                "tick": 2273,
+                "frame": 17075,
+                "x": 520,
+                "y": 112,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00413-fish-cal-run-t2273.png"
+              }
+            ]
+          },
+          "feasible": false
+        }
+      ]
+    },
+    {
+      "name": "cal-stop-second",
+      "bounds": [
+        {
+          "cell": null,
+          "poses": 21,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.07012987012987015,
+            "triple": [
+              {
+                "tick": 2273,
+                "frame": 17075,
+                "x": 239,
+                "y": 96,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00826-fish-cal-stop-wait-t2273.png"
+              },
+              {
+                "tick": 2275,
+                "frame": 17090,
+                "x": 253,
+                "y": 62,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00828-fish-cal-stop-wait-t2275.png"
+              },
+              {
+                "tick": 2276,
+                "frame": 17097,
+                "x": 259,
+                "y": 53,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00829-fish-cal-stop-wait-t2276.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.04888888888888887,
+            "triple": [
+              {
+                "tick": 2269,
+                "frame": 17045,
+                "x": 212,
+                "y": 194,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00822-fish-cal-stop-wait-t2269.png"
+              },
+              {
+                "tick": 2273,
+                "frame": 17075,
+                "x": 239,
+                "y": 96,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00826-fish-cal-stop-wait-t2273.png"
+              },
+              {
+                "tick": 2275,
+                "frame": 17090,
+                "x": 253,
+                "y": 62,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00828-fish-cal-stop-wait-t2275.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 12,
+          "poses": 10,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.05925925925925926,
+            "triple": [
+              {
+                "tick": 2272,
+                "frame": 17067,
+                "x": 232,
+                "y": 118,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00825-fish-cal-stop-wait-t2272.png"
+              },
+              {
+                "tick": 2276,
+                "frame": 17097,
+                "x": 259,
+                "y": 53,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00829-fish-cal-stop-wait-t2276.png"
+              },
+              {
+                "tick": 2278,
+                "frame": 17112,
+                "x": 272,
+                "y": 42,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00831-fish-cal-stop-wait-t2278.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.05160932297447279,
+            "triple": [
+              {
+                "tick": 2276,
+                "frame": 17097,
+                "x": 259,
+                "y": 53,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00829-fish-cal-stop-wait-t2276.png"
+              },
+              {
+                "tick": 2283,
+                "frame": 17150,
+                "x": 305,
+                "y": 67,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00836-fish-cal-stop-wait-t2283.png"
+              },
+              {
+                "tick": 2285,
+                "frame": 17165,
+                "x": 317,
+                "y": 96,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00838-fish-cal-stop-wait-t2285.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 13,
+          "poses": 11,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.0666666666666666,
+            "triple": [
+              {
+                "tick": 2273,
+                "frame": 17075,
+                "x": 239,
+                "y": 96,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00826-fish-cal-stop-wait-t2273.png"
+              },
+              {
+                "tick": 2275,
+                "frame": 17090,
+                "x": 253,
+                "y": 62,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00828-fish-cal-stop-wait-t2275.png"
+              },
+              {
+                "tick": 2277,
+                "frame": 17105,
+                "x": 266,
+                "y": 45,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00830-fish-cal-stop-wait-t2277.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.04888888888888887,
+            "triple": [
+              {
+                "tick": 2269,
+                "frame": 17045,
+                "x": 212,
+                "y": 194,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00822-fish-cal-stop-wait-t2269.png"
+              },
+              {
+                "tick": 2273,
+                "frame": 17075,
+                "x": 239,
+                "y": 96,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00826-fish-cal-stop-wait-t2273.png"
+              },
+              {
+                "tick": 2275,
+                "frame": 17090,
+                "x": 253,
+                "y": 62,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00828-fish-cal-stop-wait-t2275.png"
+              }
+            ]
+          },
+          "feasible": false
+        }
+      ]
+    },
+    {
+      "name": "cal-delay-first",
+      "bounds": [
+        {
+          "cell": null,
+          "poses": 15,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.0637182637182637,
+            "triple": [
+              {
+                "tick": 2300,
+                "frame": 17278,
+                "x": 213,
+                "y": 101,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01292-fish-cal-delay-approach-t2300.png"
+              },
+              {
+                "tick": 2303,
+                "frame": 17300,
+                "x": 260,
+                "y": 55,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01295-fish-cal-delay-approach-t2303.png"
+              },
+              {
+                "tick": 2305,
+                "frame": 17315,
+                "x": 291,
+                "y": 43,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01297-fish-cal-delay-approach-t2305.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.051134809953513854,
+            "triple": [
+              {
+                "tick": 2295,
+                "frame": 17240,
+                "x": 132,
+                "y": 238,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01287-fish-cal-delay-approach-t2295.png"
+              },
+              {
+                "tick": 2299,
+                "frame": 17270,
+                "x": 196,
+                "y": 124,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01291-fish-cal-delay-approach-t2299.png"
+              },
+              {
+                "tick": 2302,
+                "frame": 17293,
+                "x": 244,
+                "y": 66,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01294-fish-cal-delay-approach-t2302.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 12,
+          "poses": 8,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.06222222222222229,
+            "triple": [
+              {
+                "tick": 2300,
+                "frame": 17278,
+                "x": 213,
+                "y": 101,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01292-fish-cal-delay-approach-t2300.png"
+              },
+              {
+                "tick": 2302,
+                "frame": 17293,
+                "x": 244,
+                "y": 66,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01294-fish-cal-delay-approach-t2302.png"
+              },
+              {
+                "tick": 2304,
+                "frame": 17308,
+                "x": 277,
+                "y": 47,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01296-fish-cal-delay-approach-t2304.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.051506123800066195,
+            "triple": [
+              {
+                "tick": 2295,
+                "frame": 17240,
+                "x": 132,
+                "y": 238,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01287-fish-cal-delay-approach-t2295.png"
+              },
+              {
+                "tick": 2300,
+                "frame": 17278,
+                "x": 213,
+                "y": 101,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01292-fish-cal-delay-approach-t2300.png"
+              },
+              {
+                "tick": 2302,
+                "frame": 17293,
+                "x": 244,
+                "y": 66,
+                "cell": 12,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01294-fish-cal-delay-approach-t2302.png"
+              }
+            ]
+          },
+          "feasible": false
+        },
+        {
+          "cell": 13,
+          "poses": 7,
+          "assumption": "Each drawing anchor physical Y lies in [observed integer Y, observed Y+1). All triples eliminate unknown initial Y/vy; constant pose offsets cancel within a cell.",
+          "lower": {
+            "value": 0.062222222222222234,
+            "triple": [
+              {
+                "tick": 2299,
+                "frame": 17270,
+                "x": 196,
+                "y": 124,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01291-fish-cal-delay-approach-t2299.png"
+              },
+              {
+                "tick": 2303,
+                "frame": 17300,
+                "x": 260,
+                "y": 55,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01295-fish-cal-delay-approach-t2303.png"
+              },
+              {
+                "tick": 2305,
+                "frame": 17315,
+                "x": 291,
+                "y": 43,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01297-fish-cal-delay-approach-t2305.png"
+              }
+            ]
+          },
+          "upper": {
+            "value": 0.05268065268065267,
+            "triple": [
+              {
+                "tick": 2296,
+                "frame": 17248,
+                "x": 149,
+                "y": 203,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01288-fish-cal-delay-approach-t2296.png"
+              },
+              {
+                "tick": 2299,
+                "frame": 17270,
+                "x": 196,
+                "y": 124,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01291-fish-cal-delay-approach-t2299.png"
+              },
+              {
+                "tick": 2303,
+                "frame": 17300,
+                "x": 260,
+                "y": 55,
+                "cell": 13,
+                "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01295-fish-cal-delay-approach-t2303.png"
+              }
+            ]
+          },
+          "feasible": false
+        }
+      ]
+    }
+  ],
+  "firstArcBestPossibleFits": [
+    {
+      "g": 0.125,
+      "vy": -8.69970703125,
+      "initialY": 259.293212890625,
+      "maxError": 88.309814453125,
+      "qualification": "Optimistic descriptive minimax fit over every observed pose. This is not prospective validation or runtime state initialization."
+    },
+    {
+      "g": 0.0625,
+      "vy": -4.29345703125,
+      "initialY": 180.777587890625,
+      "maxError": 9.794189453125,
+      "qualification": "Optimistic descriptive minimax fit over every observed pose. This is not prospective validation or runtime state initialization."
+    },
+    {
+      "g": 0.055,
+      "vy": -3.753173828125,
+      "initialY": 169.88001953125,
+      "maxError": 1.6425878906249949,
+      "qualification": "Optimistic descriptive minimax fit over every observed pose. This is not prospective validation or runtime state initialization."
+    }
+  ],
+  "prospectiveEvaluations": [
+    {
+      "name": "held-walk-first",
+      "initialization": {
+        "frame": 16955,
+        "y": 171,
+        "vy": -3.77,
+        "source": "Frozen calibration anchor for the same first source fish"
+      },
+      "g": 0.055,
+      "evaluation": [
+        {
+          "tick": 2269,
+          "frame": 17045,
+          "x": 483,
+          "y": 54,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00409-fish-held-walk-t2269.png",
+          "predicted": 51.974999999999994,
+          "error": -2.0250000000000057,
+          "renderedY": 51,
+          "renderedError": -3
+        },
+        {
+          "tick": 2270,
+          "frame": 17052,
+          "x": 491,
+          "y": 63,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00410-fish-held-walk-t2270.png",
+          "predicted": 61.389999999999986,
+          "error": -1.6100000000000136,
+          "renderedY": 61,
+          "renderedError": -2
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 510,
+          "y": 92,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00412-fish-held-walk-t2272.png",
+          "predicted": 90.63999999999999,
+          "error": -1.3600000000000136,
+          "renderedY": 90,
+          "renderedError": -2
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 520,
+          "y": 112,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00413-fish-held-walk-t2273.png",
+          "predicted": 111.30000000000001,
+          "error": -0.6999999999999886,
+          "renderedY": 111,
+          "renderedError": -1
+        },
+        {
+          "tick": 2274,
+          "frame": 17082,
+          "x": 529,
+          "y": 133,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00414-fish-held-walk-t2274.png",
+          "predicted": 132.265,
+          "error": -0.7350000000000136,
+          "renderedY": 132,
+          "renderedError": -1
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 539,
+          "y": 161,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00415-fish-held-walk-t2275.png",
+          "predicted": 159.52499999999998,
+          "error": -1.4750000000000227,
+          "renderedY": 159,
+          "renderedError": -2
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 548,
+          "y": 187,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00416-fish-held-walk-t2276.png",
+          "predicted": 186.265,
+          "error": -0.7350000000000136,
+          "renderedY": 186,
+          "renderedError": -1
+        }
+      ],
+      "maxError": 2.0250000000000057,
+      "pass": false,
+      "maxRenderedError": 3,
+      "renderedPass": false
+    },
+    {
+      "name": "held-jump-second",
+      "initialization": {
+        "frame": 17037,
+        "y": 229,
+        "vy": -4.529221453287198,
+        "source": "Frozen procedure: first three exact poses only; no later refit"
+      },
+      "g": 0.055,
+      "evaluation": [
+        {
+          "tick": 2271,
+          "frame": 17060,
+          "x": 266,
+          "y": 139,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00824-fish-held-jump-wait-t2271.png",
+          "predicted": 138.74290657439445,
+          "error": -0.2570934256055466,
+          "renderedY": 138,
+          "renderedError": -1
+        },
+        {
+          "tick": 2272,
+          "frame": 17067,
+          "x": 279,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00825-fish-held-jump-wait-t2272.png",
+          "predicted": 117.04835640138405,
+          "error": -0.951643598615945,
+          "renderedY": 117,
+          "renderedError": -1
+        },
+        {
+          "tick": 2273,
+          "frame": 17075,
+          "x": 294,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00826-fish-held-jump-wait-t2273.png",
+          "predicted": 95.55458477508648,
+          "error": -0.4454152249135177,
+          "renderedY": 95,
+          "renderedError": -1
+        },
+        {
+          "tick": 2275,
+          "frame": 17090,
+          "x": 324,
+          "y": 62,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00828-fish-held-jump-wait-t2275.png",
+          "predicted": 64.74126297577853,
+          "error": 2.7412629757785254,
+          "renderedY": 64,
+          "renderedError": 2
+        },
+        {
+          "tick": 2276,
+          "frame": 17097,
+          "x": 337,
+          "y": 53,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00829-fish-held-jump-wait-t2276.png",
+          "predicted": 54.59671280276811,
+          "error": 1.59671280276811,
+          "renderedY": 54,
+          "renderedError": 1
+        },
+        {
+          "tick": 2277,
+          "frame": 17105,
+          "x": 352,
+          "y": 45,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00830-fish-held-jump-wait-t2277.png",
+          "predicted": 46.30294117647058,
+          "error": 1.3029411764705827,
+          "renderedY": 46,
+          "renderedError": 1
+        },
+        {
+          "tick": 2278,
+          "frame": 17112,
+          "x": 365,
+          "y": 42,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00831-fish-held-jump-wait-t2278.png",
+          "predicted": 41.933391003460144,
+          "error": -0.06660899653985553,
+          "renderedY": 41,
+          "renderedError": -1
+        },
+        {
+          "tick": 2279,
+          "frame": 17120,
+          "x": 380,
+          "y": 41,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/00832-fish-held-jump-wait-t2279.png",
+          "predicted": 40.239619377162626,
+          "error": -0.7603806228373742,
+          "renderedY": 40,
+          "renderedError": -1
+        }
+      ],
+      "maxError": 2.7412629757785254,
+      "pass": false,
+      "maxRenderedError": 2,
+      "renderedPass": true
+    },
+    {
+      "name": "held-delay-first",
+      "initialization": {
+        "frame": 17202,
+        "y": 167,
+        "vy": -3.6685000000000003,
+        "source": "Frozen procedure: first three exact poses only; no later refit"
+      },
+      "g": 0.055,
+      "evaluation": [
+        {
+          "tick": 2293,
+          "frame": 17225,
+          "x": 401,
+          "y": 96,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01278-fish-held-delay-approach-t2293.png",
+          "predicted": 96.5395,
+          "error": 0.5395000000000039,
+          "renderedY": 96,
+          "renderedError": 0
+        },
+        {
+          "tick": 2294,
+          "frame": 17233,
+          "x": 411,
+          "y": 75,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01279-fish-held-delay-approach-t2294.png",
+          "predicted": 78.85149999999999,
+          "error": 3.8514999999999873,
+          "renderedY": 78,
+          "renderedError": 3
+        },
+        {
+          "tick": 2295,
+          "frame": 17240,
+          "x": 418,
+          "y": 62,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01280-fish-held-delay-approach-t2295.png",
+          "predicted": 66.26199999999997,
+          "error": 4.261999999999972,
+          "renderedY": 66,
+          "renderedError": 4
+        },
+        {
+          "tick": 2296,
+          "frame": 17248,
+          "x": 428,
+          "y": 52,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01281-fish-held-delay-approach-t2296.png",
+          "predicted": 55.17399999999999,
+          "error": 3.1739999999999924,
+          "renderedY": 55,
+          "renderedError": 3
+        },
+        {
+          "tick": 2297,
+          "frame": 17255,
+          "x": 438,
+          "y": 45,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01282-fish-held-delay-approach-t2297.png",
+          "predicted": 48.35949999999998,
+          "error": 3.359499999999983,
+          "renderedY": 48,
+          "renderedError": 3
+        },
+        {
+          "tick": 2298,
+          "frame": 17263,
+          "x": 448,
+          "y": 42,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01283-fish-held-delay-approach-t2298.png",
+          "predicted": 43.8715,
+          "error": 1.8714999999999975,
+          "renderedY": 43,
+          "renderedError": 1
+        },
+        {
+          "tick": 2299,
+          "frame": 17270,
+          "x": 456,
+          "y": 41,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01284-fish-held-delay-approach-t2299.png",
+          "predicted": 42.83199999999998,
+          "error": 1.8319999999999794,
+          "renderedY": 42,
+          "renderedError": 1
+        },
+        {
+          "tick": 2300,
+          "frame": 17278,
+          "x": 466,
+          "y": 43,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01285-fish-held-delay-approach-t2300.png",
+          "predicted": 44.94399999999996,
+          "error": 1.94399999999996,
+          "renderedY": 44,
+          "renderedError": 1
+        },
+        {
+          "tick": 2301,
+          "frame": 17285,
+          "x": 476,
+          "y": 48,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01286-fish-held-delay-approach-t2301.png",
+          "predicted": 49.67950000000002,
+          "error": 1.6795000000000186,
+          "renderedY": 49,
+          "renderedError": 1
+        },
+        {
+          "tick": 2302,
+          "frame": 17293,
+          "x": 486,
+          "y": 56,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01287-fish-held-delay-approach-t2302.png",
+          "predicted": 58.39149999999998,
+          "error": 2.3914999999999793,
+          "renderedY": 58,
+          "renderedError": 2
+        },
+        {
+          "tick": 2303,
+          "frame": 17300,
+          "x": 493,
+          "y": 67,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01288-fish-held-delay-approach-t2303.png",
+          "predicted": 68.90199999999993,
+          "error": 1.90199999999993,
+          "renderedY": 68,
+          "renderedError": 1
+        },
+        {
+          "tick": 2305,
+          "frame": 17315,
+          "x": 514,
+          "y": 96,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01290-fish-held-delay-approach-t2305.png",
+          "predicted": 100.49949999999995,
+          "error": 4.499499999999955,
+          "renderedY": 100,
+          "renderedError": 4
+        },
+        {
+          "tick": 2306,
+          "frame": 17323,
+          "x": 524,
+          "y": 118,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01291-fish-held-delay-approach-t2306.png",
+          "predicted": 122.41149999999999,
+          "error": 4.4114999999999895,
+          "renderedY": 122,
+          "renderedError": 4
+        },
+        {
+          "tick": 2307,
+          "frame": 17330,
+          "x": 533,
+          "y": 140,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01292-fish-held-delay-approach-t2307.png",
+          "predicted": 144.47199999999998,
+          "error": 4.47199999999998,
+          "renderedY": 144,
+          "renderedError": 4
+        },
+        {
+          "tick": 2308,
+          "frame": 17338,
+          "x": 543,
+          "y": 168,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01293-fish-held-delay-approach-t2308.png",
+          "predicted": 172.98399999999998,
+          "error": 4.9839999999999804,
+          "renderedY": 172,
+          "renderedError": 4
+        },
+        {
+          "tick": 2309,
+          "frame": 17345,
+          "x": 551,
+          "y": 195,
+          "cell": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01294-fish-held-delay-approach-t2309.png",
+          "predicted": 200.81949999999995,
+          "error": 5.819499999999948,
+          "renderedY": 200,
+          "renderedError": 5
+        },
+        {
+          "tick": 2310,
+          "frame": 17353,
+          "x": 561,
+          "y": 229,
+          "cell": 12,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-30-44.002Z/01295-fish-held-delay-approach-t2310.png",
+          "predicted": 235.93149999999991,
+          "error": 6.9314999999999145,
+          "renderedY": 235,
+          "renderedError": 6
+        }
+      ],
+      "maxError": 6.9314999999999145,
+      "pass": false,
+      "maxRenderedError": 6,
+      "renderedPass": false
+    }
+  ],
+  "status": "FAIL: frozen empirical vertical candidate rejected; no production gravity/birth/cadence or controller-dependent speed rule selected.",
+  "limits": [
+    "Exact reference simulation update clock is hidden; observed native durations need not identify an internal per-entity update schedule.",
+    "World X depends on measured camera registration. Independent static-art checks are saved separately.",
+    "Track-specific motors are descriptive source measurements, not fitted per-object production states.",
+    "Initial offscreen birth is not an observed event. First full/partial visibility must not be relabeled as birth.",
+    "Two similar low-entry fish seen 15 native frames apart reject relying on a universal 80-frame visible-entry cadence; they do not alone identify spawn clocks."
+  ]
+}

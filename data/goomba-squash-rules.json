@@ -1,0 +1,6 @@
+{
+  "durationActiveNativeFrames": 40,
+  "status": "Inferred within2 active native frames; independent source-compatible shared durations are38 and39. Not an exact native constant.",
+  "source": "evidence/goomba-squash-heldout-validation.json",
+  "scope": "Goomba stomp squash only; launched, fireball, star, shell and block-hit deaths retain their existing behavior."
+}

@@ -1,0 +1,175 @@
+{
+  "schema": "lower-row-crossing-followup-cells-v1",
+  "frozenInputDescriptor": "evidence/lower-row-crossing-frozen-inputs.json",
+  "frozenSourceHashes": {
+    "data/observed-levels.json": "ba114cfd709356b945ee7e4d9d87a2a014ccf477d4e89f8f9270772538f3af87",
+    "data/observed-upper-rows.json": "8d2a1812be70a7bbec5af5318d459c5afd32b101f5c197e9a881ab6f98e184be",
+    "data/observed-lower-supplement.json": "746990e849296efb2e90fca875c2916001f66e3d3e5ae1c001303abbe42963d5",
+    "data/lower-row-exact-followup.json": "94a76cf0b56765bd0b0dc644c0c8cbb17d678b5b8c3a1d08a1773c96a65300ee",
+    "data/lower-row-exact-second.json": "6760badf1e2ce3c1c5c879ce61e8779be00db432c8cf751b06499901b1f7166c",
+    "data/lower-row-fresh-reference-delta.json": "d75dd50ec6208ce174b836f672d25a2436f80fba7185f70b38a30b526880af6b",
+    "data/lower-row-fresh-second-delta.json": "b1229bf92ece49d4f324eb2b96ad6984d663dac74028c26455fcb53e64e5373a",
+    "data/lower-row-edge-cells.json": "42da3abeb44de4d24210574524911d4d0a077ceb42d018d054842fba2bd3193e",
+    "data/lower-row-5163-delta.json": "0aca59992a3078ab795c4f89fb1ae6c1b8bf910c19281cfbd69a7514459ff834",
+    "data/lower-row-5163-followup-delta.json": "13f05cfa069a091bbf200f50494d9b06f66ab390b8f17b3e9422badb286797d7",
+    "data/lower-row-superseded-fragments.json": "034452eee0a30dec4d80dbcee3d5e5ee10a48f457f865bc842ebe6a61a8babf1",
+    "data/lower-row-edge-fragment-corrections.json": "5eb416d86c535bad1b3804b22146b0c43041d8ca772554102e280a22a33f1272",
+    "data/lower-row-5163-followup-fragment-corrections.json": "d98df54edcea19a2abe4e31b8c73a08abec7435f60d9767cd183bdb3d039e310",
+    "data/ground-terrain-corrections.json": "e45fb37aae8bb567076fb5b019c01dbbcf82ad18df180dcfc9ffb088ddb44a01",
+    "tools/lower-row-crossing-plan.json": "5da779fcfbcc42665255dacaa3fdbcb56c169ce8c06b88002554257052f4b70a",
+    "tools/lower-row-5163-reference.mjs": "2a250d8581d4a9283e4defb95163338a99654ecad1304e8f234acc68b0550afd",
+    "assets/graphics/graphics-manifest.json": "719545906a272101e7f5e37ff5f176167e9e11558ddd5721d3d25675f0798e67"
+  },
+  "RGBTolerance": 0,
+  "minimumTrainingWitnessesPerPixel": 2,
+  "minimumIndependentHeldoutWitnessesPerPixel": 1,
+  "method": "One further fresh standard-reset training/heldout pair; release jump until landing, then fresh jump6/8decisions to avoid the preceding floor-player occlusion. Unchanged pixel/registration thresholds, and no preceding evidence cut relaxed.",
+  "levels": [
+    {
+      "id": "5-4",
+      "segments": [
+        {
+          "id": "main",
+          "atlas": "metatiles-palette-007.png",
+          "recoveries": [],
+          "unresolvedCells": [
+            [
+              43,
+              13
+            ],
+            [
+              44,
+              13
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "branchEvidence": [
+    {
+      "sourceTrace": "evidence/local/lower-row-crossing-followup-training-2026-11-06T01-22-04.816Z/trace.jsonl",
+      "traceSha256": "2a20464812e5fdac6c5d334e5afb13dec7d8c5df72130468f64ebb11a89b6cb2",
+      "branch": "5-4-floor-jump",
+      "role": "training",
+      "registeredSceneFrames": 3
+    },
+    {
+      "sourceTrace": "evidence/local/lower-row-crossing-followup-heldout-2026-11-06T01-22-04.608Z/trace.jsonl",
+      "traceSha256": "24eab0db7da7a34ea2006a5a21f33510a561f465c5c4b98b4b303292df566d08",
+      "branch": "5-4-floor-jump",
+      "role": "heldout",
+      "registeredSceneFrames": 3
+    }
+  ],
+  "freshPrefixVerifications": [
+    {
+      "branch": "5-4-floor-jump",
+      "level": "5-4",
+      "prefix": 5970,
+      "cameraAnchor": 510,
+      "role": "training",
+      "nativeFrame": 44847,
+      "expectedNativeFrame": 44847,
+      "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/05971-tick-05970.png",
+      "endpointImage": "evidence/local/lower-row-crossing-followup-training-2026-11-06T01-22-04.816Z/001004-5-4-floor-jump-t5970.png",
+      "byteIdentical": true
+    },
+    {
+      "branch": "5-4-floor-jump",
+      "level": "5-4",
+      "prefix": 5970,
+      "cameraAnchor": 510,
+      "role": "heldout",
+      "nativeFrame": 44847,
+      "expectedNativeFrame": 44847,
+      "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/05971-tick-05970.png",
+      "endpointImage": "evidence/local/lower-row-crossing-followup-heldout-2026-11-06T01-22-04.608Z/001004-5-4-floor-jump-t5970.png",
+      "byteIdentical": true
+    }
+  ],
+  "conservativeEvidenceCuts": [
+    {
+      "sourceTrace": "evidence/local/lower-row-crossing-followup-training-2026-11-06T01-22-04.816Z/trace.jsonl",
+      "branch": "5-4-floor-jump",
+      "heldout": false,
+      "firstExcludedSequence": 1007,
+      "firstExcludedTick": 5973,
+      "image": "evidence/local/lower-row-crossing-followup-training-2026-11-06T01-22-04.816Z/001007-5-4-floor-jump-t5973.png",
+      "reason": "Unmatched player after low pose; conservative clipping/occlusion cut",
+      "player": null,
+      "precedingPlayer": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 114,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143
+      }
+    },
+    {
+      "sourceTrace": "evidence/local/lower-row-crossing-followup-heldout-2026-11-06T01-22-04.608Z/trace.jsonl",
+      "branch": "5-4-floor-jump",
+      "heldout": true,
+      "firstExcludedSequence": 1007,
+      "firstExcludedTick": 5973,
+      "image": "evidence/local/lower-row-crossing-followup-heldout-2026-11-06T01-22-04.608Z/001007-5-4-floor-jump-t5973.png",
+      "reason": "Unmatched player after low pose; conservative clipping/occlusion cut",
+      "player": null,
+      "precedingPlayer": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 114,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143
+      }
+    }
+  ],
+  "cellDiagnostics": [
+    {
+      "level": "5-4",
+      "area": "main",
+      "col": 43,
+      "row": 13,
+      "trainingFrames": 3,
+      "heldoutFrames": 3,
+      "completeTrainingCandidates": [],
+      "bestTwoTrainingPixels": 158
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "col": 44,
+      "row": 13,
+      "trainingFrames": 3,
+      "heldoutFrames": 3,
+      "completeTrainingCandidates": [],
+      "bestTwoTrainingPixels": 236
+    }
+  ],
+  "summary": {
+    "freshStandardBranches": 2,
+    "targetCells": 2,
+    "fullyReobservedCells": 0,
+    "newWholeCells": 0,
+    "remainingUnprovedCells": 2
+  },
+  "limits": [
+    "No crossing fragment is removed by this cell export.",
+    "Split-scroll band origins must be independently supported or retain all global candidates.",
+    "No target or fragment supplied its own registration anchor.",
+    "No native collision or campaign win is established by image evidence."
+  ],
+  "additionalFrozenInputDescriptor": "evidence/lower-row-crossing-followup-frozen-inputs.json"
+}

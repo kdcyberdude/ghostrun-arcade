@@ -1,0 +1,254 @@
+{
+ "schema": "native-flying-fish-v2",
+ "method": "Launches of object id 20 against the native random register (RAM 0x7A7-0x7AD), the timer RAM 0x78F and the speed byte RAM 0x57: 157 launches and 61 blocked attempts of model-play runs, 59 standing launches of branch probes",
+ "rules": {
+  "launch": {
+   "feetY": 272,
+   "vy": -5,
+   "gravity": 0.0546875,
+   "note": "native y 248 + 24 = remake feet y; the fish holds its spawn position for the spawn step, then moves; it is gone when feet y > 280 (187 frames)"
+  },
+  "frenzy": {
+   "waits": [
+    16,
+    96,
+    32,
+    72
+   ],
+   "walkSpeedLimit": 25,
+   "offsets": [
+    -128,
+    -48,
+    64,
+    128,
+    -48,
+    -80,
+    80,
+    112,
+    -32,
+    -64,
+    128,
+    160,
+    -112,
+    -64,
+    144,
+    104
+   ],
+   "speeds": [
+    0.875,
+    0.3125,
+    0.375,
+    0.875,
+    1.75,
+    2,
+    1,
+    0.75,
+    1.875,
+    2.125,
+    1.5,
+    1.25
+   ]
+  },
+  "classes": [
+   {
+    "offsetX": -64,
+    "speed": 2.125
+   },
+   {
+    "offsetX": -32,
+    "speed": 1.875
+   },
+   {
+    "offsetX": 128,
+    "speed": 1.5
+   },
+   {
+    "offsetX": 160,
+    "speed": 1.25
+   }
+  ]
+ },
+ "provenance": {
+  "report": "evidence/flyers-findings-20261109.md",
+  "lives": 34
+ },
+ "areas": [
+  {
+   "level": "2-3",
+   "area": "main",
+   "fromCamera": 64,
+   "maxFish": 3
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "fromCamera": 64,
+   "maxFish": 4
+  },
+  {
+   "level": "8-4",
+   "area": "area-3",
+   "fromCamera": 104,
+   "maxFish": 4
+  }
+ ],
+ "schedules": [
+  {
+   "level": "2-3",
+   "area": "main",
+   "events": [
+    [
+     245,
+     3
+    ],
+    [
+     342,
+     1
+    ],
+    [
+     437,
+     0
+    ],
+    [
+     454,
+     0
+    ],
+    [
+     566,
+     1
+    ],
+    [
+     693,
+     0
+    ],
+    [
+     726,
+     2
+    ],
+    [
+     822,
+     3
+    ],
+    [
+     925,
+     0
+    ],
+    [
+     942,
+     0
+    ],
+    [
+     1141,
+     1
+    ],
+    [
+     1214,
+     0
+    ],
+    [
+     1286,
+     1
+    ]
+   ],
+   "period": 1128
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "events": [
+    [
+     245,
+     0
+    ],
+    [
+     317,
+     0
+    ],
+    [
+     413,
+     1
+    ],
+    [
+     485,
+     2
+    ],
+    [
+     557,
+     2
+    ],
+    [
+     630,
+     2
+    ],
+    [
+     734,
+     3
+    ],
+    [
+     806,
+     3
+    ],
+    [
+     838,
+     0
+    ],
+    [
+     926,
+     1
+    ],
+    [
+     998,
+     3
+    ],
+    [
+     1158,
+     1
+    ],
+    [
+     1230,
+     3
+    ],
+    [
+     1246,
+     3
+    ],
+    [
+     1262,
+     3
+    ],
+    [
+     1358,
+     1
+    ]
+   ],
+   "period": 1187
+  },
+  {
+   "level": "8-4",
+   "area": "area-3",
+   "events": [
+    [
+     194,
+     0
+    ],
+    [
+     227,
+     0
+    ],
+    [
+     619,
+     0
+    ],
+    [
+     1241,
+     3
+    ],
+    [
+     1258,
+     1
+    ]
+   ],
+   "period": 1330
+  }
+ ]
+}

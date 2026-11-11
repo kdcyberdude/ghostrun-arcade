@@ -1,0 +1,351 @@
+{
+  "schema": "image-controller-maze-observations-v1",
+  "method": "Only genuine reference images and documented reset/auto/step controls. No ROM or executable state inspection. Coordinates are registered image coordinates, not native telemetry.",
+  "levels": [
+    {
+      "id": "4-4",
+      "area": "main",
+      "firstMaze": {
+        "status": "Wrong first lower-corridor scenery repeat directly observed after an ordinary jump through the real wall gap.",
+        "loopOffset": 1024,
+        "visibleSeamInterval": [
+          1280,
+          1312
+        ],
+        "evidence": "evidence/maze-seam-4-4.json",
+        "requestFile": "evidence/maze-requests-4-4-first-lower.jsonl",
+        "wrongRoute": {
+          "freshPrefixTick": 4842,
+          "choice": "Run beneath first long shelf; jump over pipe, continue beneath shelf, jump through96..160 wall gap.",
+          "framesCompared": 15,
+          "staticGrayPixelErrors": 0,
+          "comparedVerticalBand": [
+            48,
+            159
+          ]
+        },
+        "correctRoute": {
+          "sourceTrace": "evidence/local/reference-campaign/trace.jsonl",
+          "observedWorldLeftAndFeet": [
+            [
+              348,
+              96
+            ],
+            [
+              423,
+              96
+            ],
+            [
+              498,
+              96
+            ],
+            [
+              571,
+              96
+            ],
+            [
+              646,
+              96
+            ],
+            [
+              723,
+              96
+            ],
+            [
+              798,
+              96
+            ],
+            [
+              873,
+              96
+            ],
+            [
+              948,
+              96
+            ],
+            [
+              1023,
+              96
+            ],
+            [
+              1098,
+              96
+            ],
+            [
+              1173,
+              96
+            ]
+          ],
+          "outcome": "Observed next distinct corridor and castle completion in fresh full reference win."
+        },
+        "runtimeCandidate": {
+          "loopAt": 1280,
+          "loopTo": 256,
+          "gates": [
+            {
+              "from": 288,
+              "to": 768,
+              "minFeetY": 0,
+              "maxFeetY": 112
+            }
+          ],
+          "evidence": "Measured loop displacement1024. Representative seam1280 lies within equivalent1280..1312. At representative x768 the solid shelf spans96..160, separating reachable upper and lower corridors. maxFeetY112 selects the entire upper corridor; exact native gate is not exposed.",
+          "unresolved": [
+            "Native gate x, height thresholds, and whether a corridor may be corrected after a miss are unmeasured.",
+            "A content-stream repeat is observed. Subtracting1024 from camera/player is a proposed coordinate normalization, not evidence for a visible teleport.",
+            "Comparison excludes y160..207 because correct-route static composite has an independent8px bottom-wall artwork assembly error."
+          ],
+          "crossSection": {
+            "x": 768,
+            "shelfY": [
+              96,
+              160
+            ],
+            "correctCorridor": "upper",
+            "standingFeet": 96,
+            "thresholdStatus": "Inferred separating threshold between physically disjoint corridors; not measured native Y check."
+          }
+        }
+      },
+      "laterCorridor": {
+        "status": "Wrong middle branch physically dead-ends at a tall wall; no independent second repeat established.",
+        "sourceTrace": "evidence/local/reference-4-4-wrong-corridor/trace.jsonl",
+        "correctFeet": 208,
+        "unresolved": [
+          "Do not synthesize a second loop or gate from this collision alone."
+        ]
+      }
+    },
+    {
+      "id": "7-4",
+      "area": "main",
+      "firstMaze": {
+        "status": "Wrong first upper and independently wrong third lower choices both cause the same1024px scenery repeat.",
+        "loopOffset": 1024,
+        "visibleSeamInterval": [
+          1536,
+          1568
+        ],
+        "independentNegativeCases": [
+          {
+            "choice": "First upper instead of lower",
+            "evidence": "evidence/reference-maze-seam-7-4.json",
+            "framesCompared": 15,
+            "staticGrayPixelErrors": 0
+          },
+          {
+            "choice": "Third lower after correct first lower/second middle",
+            "evidence": "evidence/maze-third-seam-7-4.json",
+            "requestFile": "evidence/maze-requests-7-4-third-wrong.jsonl",
+            "freshPrefixTick": 8532,
+            "framesCompared": 3,
+            "staticGrayPixelErrors": 0
+          }
+        ],
+        "correctRoute": {
+          "sourceTrace": "evidence/local/reference-campaign/trace.jsonl",
+          "corridors": [
+            {
+              "choice": "lower",
+              "worldLeftInterval": [
+                612,
+                762
+              ],
+              "feet": 208
+            },
+            {
+              "choice": "middle",
+              "worldLeftInterval": [
+                912,
+                987
+              ],
+              "feet": 160
+            },
+            {
+              "choice": "upper",
+              "worldLeftInterval": [
+                1134,
+                1452
+              ],
+              "feet": 96
+            }
+          ],
+          "outcome": "Fresh full reference win proceeds into second distinct corridor."
+        },
+        "runtimeCandidate": {
+          "loopAt": 1536,
+          "loopTo": 512,
+          "gates": [
+            {
+              "from": 544,
+              "to": 704,
+              "minFeetY": 128,
+              "maxFeetY": 240
+            },
+            {
+              "from": 816,
+              "to": 960,
+              "minFeetY": 112,
+              "maxFeetY": 176
+            },
+            {
+              "from": 1120,
+              "to": 1248,
+              "minFeetY": 0,
+              "maxFeetY": 112
+            }
+          ],
+          "evidence": "Displacement1024 measured in two independent wrong routes. Representative seam1536. Gates sample physically disjoint corridor cross-sections, with separating thresholds between solid bands; exact native gate x/Y is not exposed. Broad bands include reachable jump poses in the selected corridor.",
+          "unresolved": [
+            "Second middle choice is observed in winning route, but its independent wrong choice has not yet been isolated.",
+            "Native gate x and thresholds not measured; these editable candidates must not be described as exact.",
+            "Subtraction preserves a periodic scene in normalized coordinates; native content-stream bookkeeping is not exposed."
+          ],
+          "crossSections": [
+            {
+              "x": 704,
+              "solidBands": [
+                [
+                  96,
+                  128
+                ]
+              ],
+              "correctCorridor": "below shelf",
+              "standingFeet": 208
+            },
+            {
+              "x": 960,
+              "solidBands": [
+                [
+                  96,
+                  112
+                ],
+                [
+                  160,
+                  176
+                ]
+              ],
+              "correctCorridor": "between shelves",
+              "standingFeet": 160
+            },
+            {
+              "x": 1248,
+              "solidBands": [
+                [
+                  96,
+                  176
+                ]
+              ],
+              "correctCorridor": "above block",
+              "standingFeet": 96
+            }
+          ]
+        }
+      },
+      "secondMaze": {
+        "status": "Independent wrong third corridor causes second1024px scenery repeat, then genuine fall into repeated lava.",
+        "unresolved": [
+          "Exact native gate coordinates and seam activation timing remain unmeasured.",
+          "Native content-stream bookkeeping is not exposed."
+        ],
+        "loopOffset": 1024,
+        "visibleSeamInterval": [
+          2512,
+          2608
+        ],
+        "evidence": "evidence/maze-second-seam-7-4.json",
+        "requestFile": "evidence/maze-requests-7-4-second-third-wrong.jsonl",
+        "negativeCase": {
+          "freshPrefixTick": 8596,
+          "freshEpochResetSequence": 86,
+          "choice": "Omit upper third corridor after successful first maze and second upper/middle; run feet160 instead.",
+          "framesCompared": 12,
+          "rawGrayPixelErrors": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            31,
+            64,
+            63,
+            63
+          ],
+          "staticPixelErrors": 0,
+          "occlusionMask": "Four-pixel halo around actual colored sprites excludes firebar white cores; raw counts retained."
+        },
+        "correctRoute": {
+          "observedWorldLeftAndFeet": [
+            [
+              1604,
+              96
+            ],
+            [
+              1678,
+              96
+            ],
+            [
+              1753,
+              96
+            ],
+            [
+              1900,
+              160
+            ],
+            [
+              2038,
+              160
+            ],
+            [
+              2246,
+              96
+            ],
+            [
+              2321,
+              96
+            ],
+            [
+              2396,
+              96
+            ]
+          ],
+          "outcome": "Fresh full reference win reaches final Bowser corridor."
+        },
+        "runtimeCandidate": {
+          "loopAt": 2560,
+          "loopTo": 1536,
+          "gates": [
+            {
+              "from": 1584,
+              "to": 1728,
+              "minFeetY": 0,
+              "maxFeetY": 112
+            },
+            {
+              "from": 1888,
+              "to": 2016,
+              "minFeetY": 112,
+              "maxFeetY": 176
+            },
+            {
+              "from": 2192,
+              "to": 2320,
+              "minFeetY": 0,
+              "maxFeetY": 112
+            }
+          ],
+          "evidence": "Second repeat displacement1024 and wrong-third behavior observed. Seam2560 is representative within equivalent2512..2608. Upper/middle/upper samples are inferred cross-sections of physically separated corridors, not measured native gates.",
+          "unresolved": [
+            "Native gate x and Y thresholds remain unmeasured.",
+            "Independent wrong first-upper and second-middle alternatives have not been isolated for this second maze.",
+            "Image-equivalent repeat boundary spans96px; do not label2560 exact."
+          ]
+        }
+      }
+    }
+  ],
+  "implementationNote": "Render/collide repeated source geometry ahead of a failed route while preserving continuous player/camera. Normalize coordinates only after camera passes seam; normalizing at player crossing can visibly change scenery behind him. Each7-4 maze has its own gate state and repeat."
+}

@@ -1,0 +1,404 @@
+{
+ "initial": {
+  "x": 1234,
+  "sub": 48,
+  "y": 54,
+  "vx": 48,
+  "vy": 1,
+  "force": 232,
+  "frac": 120,
+  "contact": 254
+ },
+ "cases": [
+  {
+   "name": "along",
+   "pads": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "rows": [
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 56,
+     "vx": 48,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 58,
+     "vx": 200,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 64,
+     "y": 60,
+     "vx": 352,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 80,
+     "y": 62,
+     "vx": 504,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    }
+   ]
+  },
+  {
+   "name": "neutral-then-along",
+   "pads": [
+    0,
+    8,
+    8,
+    8
+   ],
+   "rows": [
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 56,
+     "vx": 48,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 58,
+     "vx": 200,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 64,
+     "y": 60,
+     "vx": 352,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 80,
+     "y": 62,
+     "vx": 504,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    }
+   ]
+  },
+  {
+   "name": "neutral3-then-along",
+   "pads": [
+    0,
+    0,
+    0,
+    8,
+    8,
+    8
+   ],
+   "rows": [
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 56,
+     "vx": 48,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 58,
+     "vx": 48,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 60,
+     "vx": 48,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 62,
+     "vx": 200,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 64,
+     "y": 64,
+     "vx": 352,
+     "vy": 2,
+     "force": 26,
+     "frac": 100,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 80,
+     "y": 66,
+     "vx": 504,
+     "vy": 2,
+     "force": 36,
+     "frac": 126,
+     "contact": 255
+    }
+   ]
+  },
+  {
+   "name": "away",
+   "pads": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "rows": [
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 32,
+     "y": 56,
+     "vx": -152,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 0,
+     "y": 58,
+     "vx": -304,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1233,
+     "sub": 224,
+     "y": 60,
+     "vx": -456,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1233,
+     "sub": 176,
+     "y": 62,
+     "vx": -608,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    }
+   ]
+  },
+  {
+   "name": "neutral3-then-away",
+   "pads": [
+    0,
+    0,
+    0,
+    4,
+    4,
+    4
+   ],
+   "rows": [
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 56,
+     "vx": 48,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 58,
+     "vx": 48,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 0,
+     "x": 1234,
+     "sub": 48,
+     "y": 60,
+     "vx": 48,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 32,
+     "y": 62,
+     "vx": -152,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 0,
+     "y": 64,
+     "vx": -304,
+     "vy": 2,
+     "force": 26,
+     "frac": 100,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1233,
+     "sub": 224,
+     "y": 66,
+     "vx": -456,
+     "vy": 2,
+     "force": 36,
+     "frac": 126,
+     "contact": 255
+    }
+   ]
+  },
+  {
+   "name": "along2-then-away",
+   "pads": [
+    8,
+    8,
+    4,
+    4,
+    4
+   ],
+   "rows": [
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 56,
+     "vx": 48,
+     "vy": 1,
+     "force": 242,
+     "frac": 96,
+     "contact": 255
+    },
+    {
+     "mask": 8,
+     "x": 1234,
+     "sub": 48,
+     "y": 58,
+     "vx": 200,
+     "vy": 1,
+     "force": 252,
+     "frac": 82,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 32,
+     "y": 60,
+     "vx": -152,
+     "vy": 2,
+     "force": 6,
+     "frac": 78,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1234,
+     "sub": 0,
+     "y": 62,
+     "vx": -304,
+     "vy": 2,
+     "force": 16,
+     "frac": 84,
+     "contact": 255
+    },
+    {
+     "mask": 4,
+     "x": 1233,
+     "sub": 224,
+     "y": 64,
+     "vx": -456,
+     "vy": 2,
+     "force": 26,
+     "frac": 100,
+     "contact": 255
+    }
+   ]
+  }
+ ]
+}

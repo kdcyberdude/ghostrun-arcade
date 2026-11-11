@@ -1,0 +1,4390 @@
+{
+  "schema": "public-bowser-interaction-observations-v1",
+  "updatedUtc": "2026-11-06T00:34:44.535Z",
+  "level": "2-4",
+  "directory": "evidence/local/bowser-2026-11-06T00-33-15.387Z",
+  "trace": "evidence/local/bowser-2026-11-06T00-33-15.387Z/trace.jsonl",
+  "method": "Fresh standard recorded masks verified against dense source, then ordinary manual controls. Actual native-frame sums and exact opaque supplied-art matches only. Camera inferred by zero-tolerance RGB known-map registration constrained to0..24px per7/8-frame decision.",
+  "limits": [
+    "Enemy match requires complete front/rear supplied cells and may fail under occlusion or split sprite rows; missing poses are not invented.",
+    "Flame match requires all opaque supplied pixels; partially obscured flames can be missed.",
+    "Event times remain bounded by the actual7/8-frame screenshot spacing.",
+    "No fire-flower/Bowser hit-point or reward measurement yet."
+  ],
+  "prefixVerifications": [
+    {
+      "tick": 2644,
+      "nativeFrame": 19862,
+      "expectedNativeFrame": 19862,
+      "samePng": true
+    }
+  ],
+  "observations": [
+    {
+      "branch": 1,
+      "sequence": 441,
+      "experiment": "held2-4-boss-brake",
+      "tick": 2645,
+      "nativeFrame": 19869,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00441-held2-4-boss-brake-t2645.png",
+      "camera": 1934,
+      "cameraCandidates": [
+        {
+          "camera": 1934,
+          "mismatch": 276,
+          "support": 9456,
+          "error": 0.02918781725888325
+        },
+        {
+          "camera": 1926,
+          "mismatch": 728,
+          "support": 9392,
+          "error": 0.07751277683134583
+        },
+        {
+          "camera": 1942,
+          "mismatch": 762,
+          "support": 9520,
+          "error": 0.08004201680672268
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 116,
+        "visibleLeft": 112,
+        "visibleTop": 132,
+        "visibleRight": 127,
+        "visibleBottom": 147,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 2046,
+        "feetY": 147
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 70,
+          "y": 113,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2004
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 442,
+      "experiment": "held2-4-boss-brake",
+      "tick": 2646,
+      "nativeFrame": 19877,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00442-held2-4-boss-brake-t2646.png",
+      "camera": 1949,
+      "cameraCandidates": [
+        {
+          "camera": 1949,
+          "mismatch": 509,
+          "support": 9568,
+          "error": 0.053198160535117056
+        },
+        {
+          "camera": 1941,
+          "mismatch": 839,
+          "support": 9504,
+          "error": 0.08827861952861953
+        },
+        {
+          "camera": 1957,
+          "mismatch": 855,
+          "support": 9632,
+          "error": 0.08876661129568106
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2061,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 45,
+          "y": 113,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1994
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 443,
+      "experiment": "held2-4-boss-brake",
+      "tick": 2647,
+      "nativeFrame": 19884,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00443-held2-4-boss-brake-t2647.png",
+      "camera": 1958,
+      "cameraCandidates": [
+        {
+          "camera": 1958,
+          "mismatch": 445,
+          "support": 9648,
+          "error": 0.04612354892205638
+        },
+        {
+          "camera": 1966,
+          "mismatch": 835,
+          "support": 9712,
+          "error": 0.08597611202635914
+        },
+        {
+          "camera": 1950,
+          "mismatch": 843,
+          "support": 9584,
+          "error": 0.08795909849749582
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2070,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 27,
+          "y": 113,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1985
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 444,
+      "experiment": "held2-4-boss-brake",
+      "tick": 2648,
+      "nativeFrame": 19892,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00444-held2-4-boss-brake-t2648.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 976,
+          "support": 9664,
+          "error": 0.10099337748344371
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 2071,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 15,
+          "y": 113,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1975
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 445,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2649,
+      "nativeFrame": 19899,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00445-held2-4-boss-wait-t2649.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 301,
+          "support": 9664,
+          "error": 0.031146523178807946
+        },
+        {
+          "camera": 1968,
+          "mismatch": 711,
+          "support": 9728,
+          "error": 0.07308799342105263
+        },
+        {
+          "camera": 1961,
+          "mismatch": 936,
+          "support": 9664,
+          "error": 0.09685430463576158
+        }
+      ],
+      "player": {
+        "originX": 108,
+        "originY": 129,
+        "visibleLeft": 110,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 2068,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 7,
+          "y": 113,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1967
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 446,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2650,
+      "nativeFrame": 19907,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00446-held2-4-boss-wait-t2650.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 297,
+          "support": 9664,
+          "error": 0.030732615894039736
+        },
+        {
+          "camera": 1968,
+          "mismatch": 707,
+          "support": 9728,
+          "error": 0.07267680921052631
+        },
+        {
+          "camera": 1961,
+          "mismatch": 931,
+          "support": 9664,
+          "error": 0.09633692052980132
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 447,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2651,
+      "nativeFrame": 19914,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00447-held2-4-boss-wait-t2651.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 302,
+          "support": 9664,
+          "error": 0.03125
+        },
+        {
+          "camera": 1968,
+          "mismatch": 712,
+          "support": 9728,
+          "error": 0.07319078947368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 936,
+          "support": 9664,
+          "error": 0.09685430463576158
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 448,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2652,
+      "nativeFrame": 19922,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00448-held2-4-boss-wait-t2652.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 323,
+          "support": 9664,
+          "error": 0.03342301324503311
+        },
+        {
+          "camera": 1968,
+          "mismatch": 733,
+          "support": 9728,
+          "error": 0.07534950657894737
+        },
+        {
+          "camera": 1961,
+          "mismatch": 957,
+          "support": 9664,
+          "error": 0.0990273178807947
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 449,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2653,
+      "nativeFrame": 19929,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00449-held2-4-boss-wait-t2653.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 971,
+          "support": 9664,
+          "error": 0.10047599337748345
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 450,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2654,
+      "nativeFrame": 19937,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00450-held2-4-boss-wait-t2654.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 345,
+          "support": 9664,
+          "error": 0.03569950331125828
+        },
+        {
+          "camera": 1968,
+          "mismatch": 755,
+          "support": 9728,
+          "error": 0.0776110197368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 979,
+          "support": 9664,
+          "error": 0.10130380794701986
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 451,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2655,
+      "nativeFrame": 19944,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00451-held2-4-boss-wait-t2655.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 350,
+          "support": 9664,
+          "error": 0.03621688741721854
+        },
+        {
+          "camera": 1968,
+          "mismatch": 760,
+          "support": 9728,
+          "error": 0.078125
+        },
+        {
+          "camera": 1961,
+          "mismatch": 982,
+          "support": 9664,
+          "error": 0.10161423841059603
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 224,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 240,
+          "opaquePixels": 518,
+          "worldX": 2184
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 452,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2656,
+      "nativeFrame": 19952,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00452-held2-4-boss-wait-t2656.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 355,
+          "support": 9664,
+          "error": 0.036734271523178805
+        },
+        {
+          "camera": 1968,
+          "mismatch": 767,
+          "support": 9728,
+          "error": 0.07884457236842106
+        },
+        {
+          "camera": 1961,
+          "mismatch": 986,
+          "support": 9664,
+          "error": 0.10202814569536424
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 222,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 238,
+          "opaquePixels": 518,
+          "worldX": 2182
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 453,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2657,
+      "nativeFrame": 19959,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00453-held2-4-boss-wait-t2657.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 354,
+          "support": 9664,
+          "error": 0.036630794701986755
+        },
+        {
+          "camera": 1968,
+          "mismatch": 764,
+          "support": 9728,
+          "error": 0.07853618421052631
+        },
+        {
+          "camera": 1961,
+          "mismatch": 987,
+          "support": 9664,
+          "error": 0.10213162251655629
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 220,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 236,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 454,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2658,
+      "nativeFrame": 19967,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00454-held2-4-boss-wait-t2658.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 349,
+          "support": 9664,
+          "error": 0.03611341059602649
+        },
+        {
+          "camera": 1968,
+          "mismatch": 760,
+          "support": 9728,
+          "error": 0.078125
+        },
+        {
+          "camera": 1961,
+          "mismatch": 983,
+          "support": 9664,
+          "error": 0.10171771523178808
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 218,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 234,
+          "opaquePixels": 520,
+          "worldX": 2178
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 455,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2659,
+      "nativeFrame": 19975,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00455-held2-4-boss-wait-t2659.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 350,
+          "support": 9664,
+          "error": 0.03621688741721854
+        },
+        {
+          "camera": 1968,
+          "mismatch": 761,
+          "support": 9728,
+          "error": 0.07822779605263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 984,
+          "support": 9664,
+          "error": 0.10182119205298014
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 216,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 232,
+          "opaquePixels": 520,
+          "worldX": 2176
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 456,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2660,
+      "nativeFrame": 19982,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00456-held2-4-boss-wait-t2660.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 348,
+          "support": 9664,
+          "error": 0.036009933774834434
+        },
+        {
+          "camera": 1968,
+          "mismatch": 759,
+          "support": 9728,
+          "error": 0.07802220394736842
+        },
+        {
+          "camera": 1961,
+          "mismatch": 982,
+          "support": 9664,
+          "error": 0.10161423841059603
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 215,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 231,
+          "opaquePixels": 520,
+          "worldX": 2175
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 457,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2661,
+      "nativeFrame": 19990,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00457-held2-4-boss-wait-t2661.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 347,
+          "support": 9664,
+          "error": 0.035906456953642384
+        },
+        {
+          "camera": 1968,
+          "mismatch": 758,
+          "support": 9728,
+          "error": 0.07791940789473684
+        },
+        {
+          "camera": 1961,
+          "mismatch": 981,
+          "support": 9664,
+          "error": 0.10151076158940397
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 213,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 229,
+          "opaquePixels": 520,
+          "worldX": 2173
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 458,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2662,
+      "nativeFrame": 19997,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00458-held2-4-boss-wait-t2662.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 352,
+          "support": 9664,
+          "error": 0.03642384105960265
+        },
+        {
+          "camera": 1968,
+          "mismatch": 762,
+          "support": 9728,
+          "error": 0.07833059210526316
+        },
+        {
+          "camera": 1961,
+          "mismatch": 986,
+          "support": 9664,
+          "error": 0.10202814569536424
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 211,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 227,
+          "opaquePixels": 520,
+          "worldX": 2171
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 459,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2663,
+      "nativeFrame": 20005,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00459-held2-4-boss-wait-t2663.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 350,
+          "support": 9664,
+          "error": 0.03621688741721854
+        },
+        {
+          "camera": 1968,
+          "mismatch": 760,
+          "support": 9728,
+          "error": 0.078125
+        },
+        {
+          "camera": 1961,
+          "mismatch": 984,
+          "support": 9664,
+          "error": 0.10182119205298014
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 209,
+          "frontY": 125,
+          "feetY": 156,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 225,
+          "opaquePixels": 518,
+          "worldX": 2169
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 460,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2664,
+      "nativeFrame": 20012,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00460-held2-4-boss-wait-t2664.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 346,
+          "support": 9664,
+          "error": 0.035802980132450334
+        },
+        {
+          "camera": 1968,
+          "mismatch": 756,
+          "support": 9728,
+          "error": 0.07771381578947369
+        },
+        {
+          "camera": 1961,
+          "mismatch": 980,
+          "support": 9664,
+          "error": 0.10140728476821192
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 207,
+          "frontY": 113,
+          "feetY": 144,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 223,
+          "opaquePixels": 518,
+          "worldX": 2167
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 461,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2665,
+      "nativeFrame": 20020,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00461-held2-4-boss-wait-t2665.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 351,
+          "support": 9664,
+          "error": 0.0363203642384106
+        },
+        {
+          "camera": 1968,
+          "mismatch": 761,
+          "support": 9728,
+          "error": 0.07822779605263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 985,
+          "support": 9664,
+          "error": 0.10192466887417219
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 205,
+          "frontY": 102,
+          "feetY": 133,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 221,
+          "opaquePixels": 518,
+          "worldX": 2165
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 462,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2666,
+      "nativeFrame": 20027,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00462-held2-4-boss-wait-t2666.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 343,
+          "support": 9664,
+          "error": 0.03549254966887417
+        },
+        {
+          "camera": 1968,
+          "mismatch": 753,
+          "support": 9728,
+          "error": 0.07740542763157894
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 463,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2667,
+      "nativeFrame": 20035,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00463-held2-4-boss-wait-t2667.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 351,
+          "support": 9664,
+          "error": 0.0363203642384106
+        },
+        {
+          "camera": 1968,
+          "mismatch": 761,
+          "support": 9728,
+          "error": 0.07822779605263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 985,
+          "support": 9664,
+          "error": 0.10192466887417219
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 201,
+          "frontY": 94,
+          "feetY": 125,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 217,
+          "opaquePixels": 520,
+          "worldX": 2161
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 464,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2668,
+      "nativeFrame": 20042,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00464-held2-4-boss-wait-t2668.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 349,
+          "support": 9664,
+          "error": 0.03611341059602649
+        },
+        {
+          "camera": 1968,
+          "mismatch": 759,
+          "support": 9728,
+          "error": 0.07802220394736842
+        },
+        {
+          "camera": 1961,
+          "mismatch": 983,
+          "support": 9664,
+          "error": 0.10171771523178808
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 200,
+          "frontY": 94,
+          "feetY": 125,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 216,
+          "opaquePixels": 520,
+          "worldX": 2160
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 465,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2669,
+      "nativeFrame": 20050,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00465-held2-4-boss-wait-t2669.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 338,
+          "support": 9664,
+          "error": 0.034975165562913905
+        },
+        {
+          "camera": 1968,
+          "mismatch": 748,
+          "support": 9728,
+          "error": 0.07689144736842106
+        },
+        {
+          "camera": 1961,
+          "mismatch": 972,
+          "support": 9664,
+          "error": 0.1005794701986755
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 198,
+          "frontY": 98,
+          "feetY": 129,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 214,
+          "opaquePixels": 520,
+          "worldX": 2158
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 466,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2670,
+      "nativeFrame": 20057,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00466-held2-4-boss-wait-t2670.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 332,
+          "support": 9664,
+          "error": 0.03435430463576159
+        },
+        {
+          "camera": 1968,
+          "mismatch": 742,
+          "support": 9728,
+          "error": 0.07627467105263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 966,
+          "support": 9664,
+          "error": 0.09995860927152318
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 196,
+          "frontY": 104,
+          "feetY": 135,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 212,
+          "opaquePixels": 520,
+          "worldX": 2156
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 467,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2671,
+      "nativeFrame": 20065,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00467-held2-4-boss-wait-t2671.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 325,
+          "support": 9664,
+          "error": 0.03362996688741722
+        },
+        {
+          "camera": 1968,
+          "mismatch": 735,
+          "support": 9728,
+          "error": 0.07555509868421052
+        },
+        {
+          "camera": 1961,
+          "mismatch": 959,
+          "support": 9664,
+          "error": 0.0992342715231788
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 195,
+          "frontY": 115,
+          "feetY": 146,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 211,
+          "opaquePixels": 531,
+          "worldX": 2155
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 468,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2672,
+      "nativeFrame": 20072,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00468-held2-4-boss-wait-t2672.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 322,
+          "support": 9664,
+          "error": 0.033319536423841056
+        },
+        {
+          "camera": 1968,
+          "mismatch": 732,
+          "support": 9728,
+          "error": 0.07524671052631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 956,
+          "support": 9664,
+          "error": 0.09892384105960265
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 195,
+          "frontY": 128,
+          "feetY": 159,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 211,
+          "opaquePixels": 531,
+          "worldX": 2155
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 469,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2673,
+      "nativeFrame": 20080,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00469-held2-4-boss-wait-t2673.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 317,
+          "support": 9664,
+          "error": 0.03280215231788079
+        },
+        {
+          "camera": 1968,
+          "mismatch": 727,
+          "support": 9728,
+          "error": 0.0747327302631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 951,
+          "support": 9664,
+          "error": 0.09840645695364239
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 195,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 211,
+          "opaquePixels": 531,
+          "worldX": 2155
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 470,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2674,
+      "nativeFrame": 20087,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00470-held2-4-boss-wait-t2674.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 312,
+          "support": 9664,
+          "error": 0.03228476821192053
+        },
+        {
+          "camera": 1968,
+          "mismatch": 722,
+          "support": 9728,
+          "error": 0.07421875
+        },
+        {
+          "camera": 1961,
+          "mismatch": 946,
+          "support": 9664,
+          "error": 0.09788907284768211
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 195,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 37,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 211,
+          "opaquePixels": 531,
+          "worldX": 2155
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 471,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2675,
+      "nativeFrame": 20095,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00471-held2-4-boss-wait-t2675.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 332,
+          "support": 9664,
+          "error": 0.03435430463576159
+        },
+        {
+          "camera": 1968,
+          "mismatch": 742,
+          "support": 9728,
+          "error": 0.07627467105263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 966,
+          "support": 9664,
+          "error": 0.09995860927152318
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 194,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 210,
+          "opaquePixels": 518,
+          "worldX": 2154
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 472,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2676,
+      "nativeFrame": 20102,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00472-held2-4-boss-wait-t2676.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 328,
+          "support": 9664,
+          "error": 0.03394039735099338
+        },
+        {
+          "camera": 1968,
+          "mismatch": 738,
+          "support": 9728,
+          "error": 0.07586348684210527
+        },
+        {
+          "camera": 1961,
+          "mismatch": 962,
+          "support": 9664,
+          "error": 0.09954470198675497
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 169,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2129
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 473,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2677,
+      "nativeFrame": 20110,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00473-held2-4-boss-wait-t2677.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 335,
+          "support": 9664,
+          "error": 0.03466473509933775
+        },
+        {
+          "camera": 1968,
+          "mismatch": 745,
+          "support": 9728,
+          "error": 0.07658305921052631
+        },
+        {
+          "camera": 1961,
+          "mismatch": 969,
+          "support": 9664,
+          "error": 0.10026903973509933
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 191,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 207,
+          "opaquePixels": 518,
+          "worldX": 2151
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 474,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2678,
+      "nativeFrame": 20117,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00474-held2-4-boss-wait-t2678.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 336,
+          "support": 9664,
+          "error": 0.0347682119205298
+        },
+        {
+          "camera": 1968,
+          "mismatch": 746,
+          "support": 9728,
+          "error": 0.0766858552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 970,
+          "support": 9664,
+          "error": 0.1003725165562914
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 151,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2111
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 475,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2679,
+      "nativeFrame": 20125,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00475-held2-4-boss-wait-t2679.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 339,
+          "support": 9664,
+          "error": 0.03507864238410596
+        },
+        {
+          "camera": 1968,
+          "mismatch": 749,
+          "support": 9728,
+          "error": 0.07699424342105263
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 187,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 203,
+          "opaquePixels": 518,
+          "worldX": 2147
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 476,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2680,
+      "nativeFrame": 20132,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00476-held2-4-boss-wait-t2680.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 345,
+          "support": 9664,
+          "error": 0.03569950331125828
+        },
+        {
+          "camera": 1968,
+          "mismatch": 755,
+          "support": 9728,
+          "error": 0.0776110197368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 979,
+          "support": 9664,
+          "error": 0.10130380794701986
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 132,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2092
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 477,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2681,
+      "nativeFrame": 20140,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00477-held2-4-boss-wait-t2681.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 368,
+          "support": 9664,
+          "error": 0.0380794701986755
+        },
+        {
+          "camera": 1968,
+          "mismatch": 778,
+          "support": 9728,
+          "error": 0.07997532894736842
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1002,
+          "support": 9664,
+          "error": 0.10368377483443708
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 120,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 183,
+          "frontY": 123,
+          "feetY": 154,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 199,
+          "opaquePixels": 520,
+          "worldX": 2143
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 478,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2682,
+      "nativeFrame": 20147,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00478-held2-4-boss-wait-t2682.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 371,
+          "support": 9664,
+          "error": 0.038389900662251654
+        },
+        {
+          "camera": 1968,
+          "mismatch": 781,
+          "support": 9728,
+          "error": 0.08028371710526316
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1007,
+          "support": 9664,
+          "error": 0.10420115894039735
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 108,
+        "visibleTop": 145,
+        "visibleRight": 121,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 479,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2683,
+      "nativeFrame": 20155,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00479-held2-4-boss-wait-t2683.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 371,
+          "support": 9664,
+          "error": 0.038389900662251654
+        },
+        {
+          "camera": 1968,
+          "mismatch": 781,
+          "support": 9728,
+          "error": 0.08028371710526316
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1007,
+          "support": 9664,
+          "error": 0.10420115894039735
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 108,
+        "visibleTop": 145,
+        "visibleRight": 121,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 480,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2684,
+      "nativeFrame": 20162,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00480-held2-4-boss-wait-t2684.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 370,
+          "support": 9664,
+          "error": 0.038286423841059604
+        },
+        {
+          "camera": 1968,
+          "mismatch": 780,
+          "support": 9728,
+          "error": 0.08018092105263158
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1006,
+          "support": 9664,
+          "error": 0.1040976821192053
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 129,
+        "visibleLeft": 108,
+        "visibleTop": 145,
+        "visibleRight": 121,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 481,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2685,
+      "nativeFrame": 20170,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00481-held2-4-boss-wait-t2685.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 374,
+          "support": 9664,
+          "error": 0.03870033112582782
+        },
+        {
+          "camera": 1968,
+          "mismatch": 784,
+          "support": 9728,
+          "error": 0.0805921052631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1010,
+          "support": 9664,
+          "error": 0.10451158940397351
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 101,
+        "visibleLeft": 108,
+        "visibleTop": 117,
+        "visibleRight": 121,
+        "visibleBottom": 130,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 132
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 482,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2686,
+      "nativeFrame": 20177,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00482-held2-4-boss-wait-t2686.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 374,
+          "support": 9664,
+          "error": 0.03870033112582782
+        },
+        {
+          "camera": 1968,
+          "mismatch": 784,
+          "support": 9728,
+          "error": 0.0805921052631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1010,
+          "support": 9664,
+          "error": 0.10451158940397351
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 85,
+        "visibleLeft": 108,
+        "visibleTop": 101,
+        "visibleRight": 121,
+        "visibleBottom": 114,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 116
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 483,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2687,
+      "nativeFrame": 20185,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00483-held2-4-boss-wait-t2687.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 374,
+          "support": 9664,
+          "error": 0.03870033112582782
+        },
+        {
+          "camera": 1968,
+          "mismatch": 784,
+          "support": 9728,
+          "error": 0.0805921052631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1008,
+          "support": 9664,
+          "error": 0.10430463576158941
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 76,
+        "visibleLeft": 108,
+        "visibleTop": 92,
+        "visibleRight": 121,
+        "visibleBottom": 105,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 107
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 484,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2688,
+      "nativeFrame": 20192,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00484-held2-4-boss-wait-t2688.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 378,
+          "support": 9664,
+          "error": 0.039114238410596025
+        },
+        {
+          "camera": 1968,
+          "mismatch": 788,
+          "support": 9728,
+          "error": 0.08100328947368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1013,
+          "support": 9664,
+          "error": 0.10482201986754967
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 77,
+        "visibleLeft": 108,
+        "visibleTop": 93,
+        "visibleRight": 121,
+        "visibleBottom": 106,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 108
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 485,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2689,
+      "nativeFrame": 20200,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00485-held2-4-boss-wait-t2689.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 378,
+          "support": 9664,
+          "error": 0.039114238410596025
+        },
+        {
+          "camera": 1968,
+          "mismatch": 788,
+          "support": 9728,
+          "error": 0.08100328947368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1014,
+          "support": 9664,
+          "error": 0.10492549668874172
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 87,
+        "visibleLeft": 108,
+        "visibleTop": 103,
+        "visibleRight": 121,
+        "visibleBottom": 116,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 118
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 486,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2690,
+      "nativeFrame": 20207,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00486-held2-4-boss-wait-t2690.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 378,
+          "support": 9664,
+          "error": 0.039114238410596025
+        },
+        {
+          "camera": 1968,
+          "mismatch": 788,
+          "support": 9728,
+          "error": 0.08100328947368421
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1014,
+          "support": 9664,
+          "error": 0.10492549668874172
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 103,
+        "visibleLeft": 108,
+        "visibleTop": 119,
+        "visibleRight": 121,
+        "visibleBottom": 132,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 134
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 487,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2691,
+      "nativeFrame": 20215,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00487-held2-4-boss-wait-t2691.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 372,
+          "support": 9664,
+          "error": 0.03849337748344371
+        },
+        {
+          "camera": 1968,
+          "mismatch": 782,
+          "support": 9728,
+          "error": 0.08038651315789473
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1005,
+          "support": 9664,
+          "error": 0.10399420529801325
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 132,
+        "visibleLeft": 108,
+        "visibleTop": 148,
+        "visibleRight": 121,
+        "visibleBottom": 161,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 163
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 488,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2692,
+      "nativeFrame": 20222,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00488-held2-4-boss-wait-t2692.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 374,
+          "support": 9664,
+          "error": 0.03870033112582782
+        },
+        {
+          "camera": 1968,
+          "mismatch": 784,
+          "support": 9728,
+          "error": 0.0805921052631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 1010,
+          "support": 9664,
+          "error": 0.10451158940397351
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 162,
+        "visibleLeft": 108,
+        "visibleTop": 178,
+        "visibleRight": 121,
+        "visibleBottom": 191,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 193
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 489,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2693,
+      "nativeFrame": 20230,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00489-held2-4-boss-wait-t2693.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 196,
+        "visibleLeft": 108,
+        "visibleTop": 212,
+        "visibleRight": 121,
+        "visibleBottom": 225,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2067,
+        "feetY": 227
+      },
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 490,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2694,
+      "nativeFrame": 20237,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00490-held2-4-boss-wait-t2694.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 491,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2695,
+      "nativeFrame": 20245,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00491-held2-4-boss-wait-t2695.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 492,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2696,
+      "nativeFrame": 20252,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00492-held2-4-boss-wait-t2696.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 493,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2697,
+      "nativeFrame": 20260,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00493-held2-4-boss-wait-t2697.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 494,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2698,
+      "nativeFrame": 20267,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00494-held2-4-boss-wait-t2698.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 495,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2699,
+      "nativeFrame": 20275,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00495-held2-4-boss-wait-t2699.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 496,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2700,
+      "nativeFrame": 20283,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00496-held2-4-boss-wait-t2700.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 497,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2701,
+      "nativeFrame": 20290,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00497-held2-4-boss-wait-t2701.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 498,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2702,
+      "nativeFrame": 20298,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00498-held2-4-boss-wait-t2702.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 499,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2703,
+      "nativeFrame": 20305,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00499-held2-4-boss-wait-t2703.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 500,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2704,
+      "nativeFrame": 20313,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00500-held2-4-boss-wait-t2704.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 501,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2705,
+      "nativeFrame": 20320,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00501-held2-4-boss-wait-t2705.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 502,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2706,
+      "nativeFrame": 20328,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00502-held2-4-boss-wait-t2706.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 503,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2707,
+      "nativeFrame": 20335,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00503-held2-4-boss-wait-t2707.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 504,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2708,
+      "nativeFrame": 20343,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00504-held2-4-boss-wait-t2708.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 341,
+          "support": 9664,
+          "error": 0.03528559602649007
+        },
+        {
+          "camera": 1968,
+          "mismatch": 751,
+          "support": 9728,
+          "error": 0.07719983552631579
+        },
+        {
+          "camera": 1961,
+          "mismatch": 977,
+          "support": 9664,
+          "error": 0.10109685430463576
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 505,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2709,
+      "nativeFrame": 20350,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00505-held2-4-boss-wait-t2709.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 506,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2710,
+      "nativeFrame": 20358,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00506-held2-4-boss-wait-t2710.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 507,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2711,
+      "nativeFrame": 20365,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00507-held2-4-boss-wait-t2711.png",
+      "camera": 1960,
+      "cameraCandidates": [
+        {
+          "camera": 1960,
+          "mismatch": 337,
+          "support": 9664,
+          "error": 0.034871688741721855
+        },
+        {
+          "camera": 1968,
+          "mismatch": 747,
+          "support": 9728,
+          "error": 0.07678865131578948
+        },
+        {
+          "camera": 1961,
+          "mismatch": 973,
+          "support": 9664,
+          "error": 0.10068294701986755
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 181,
+          "frontY": 112,
+          "feetY": 143,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 197,
+          "opaquePixels": 520,
+          "worldX": 2141
+        }
+      ],
+      "flames": [
+        {
+          "screenX": 113,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 2073
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 508,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2712,
+      "nativeFrame": 20373,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00508-held2-4-boss-wait-t2712.png",
+      "camera": 1984,
+      "cameraCandidates": [
+        {
+          "camera": 1984,
+          "mismatch": 1248,
+          "support": 9856,
+          "error": 0.1266233766233766
+        },
+        {
+          "camera": 1982,
+          "mismatch": 1272,
+          "support": 9840,
+          "error": 0.12926829268292683
+        },
+        {
+          "camera": 1983,
+          "mismatch": 1292,
+          "support": 9840,
+          "error": 0.13130081300813007
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 509,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2713,
+      "nativeFrame": 20380,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00509-held2-4-boss-wait-t2713.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 510,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2714,
+      "nativeFrame": 20388,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00510-held2-4-boss-wait-t2714.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 511,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2715,
+      "nativeFrame": 20395,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00511-held2-4-boss-wait-t2715.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 512,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2716,
+      "nativeFrame": 20403,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00512-held2-4-boss-wait-t2716.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 513,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2717,
+      "nativeFrame": 20410,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00513-held2-4-boss-wait-t2717.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 514,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2718,
+      "nativeFrame": 20418,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00514-held2-4-boss-wait-t2718.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 515,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2719,
+      "nativeFrame": 20425,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00515-held2-4-boss-wait-t2719.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    },
+    {
+      "branch": 1,
+      "sequence": 516,
+      "experiment": "held2-4-boss-wait",
+      "tick": 2720,
+      "nativeFrame": 20433,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-33-15.387Z/00516-held2-4-boss-wait-t2720.png",
+      "camera": null,
+      "cameraCandidates": [],
+      "player": {
+        "originX": 96,
+        "originY": 89,
+        "visibleLeft": 98,
+        "visibleTop": 105,
+        "visibleRight": 109,
+        "visibleBottom": 120,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": null,
+        "feetY": 120
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": true
+    }
+  ]
+}

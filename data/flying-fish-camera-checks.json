@@ -1,0 +1,425 @@
+[
+  {
+    "branch": 1,
+    "tick": 2257,
+    "pairwiseCamera": 130,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00397-fish-cal-run-t2257.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 130,
+        "mismatch": 75,
+        "support": 9984,
+        "error": 0.007512019230769231
+      },
+      {
+        "camera": 131,
+        "mismatch": 464,
+        "support": 9984,
+        "error": 0.046474358974358976
+      },
+      {
+        "camera": 129,
+        "mismatch": 500,
+        "support": 9984,
+        "error": 0.05008012820512821
+      },
+      {
+        "camera": 114,
+        "mismatch": 644,
+        "support": 9984,
+        "error": 0.06450320512820513
+      },
+      {
+        "camera": 146,
+        "mismatch": 653,
+        "support": 9984,
+        "error": 0.06540464743589744
+      },
+      {
+        "camera": 128,
+        "mismatch": 791,
+        "support": 9984,
+        "error": 0.07922676282051282
+      }
+    ]
+  },
+  {
+    "branch": 1,
+    "tick": 2264,
+    "pairwiseCamera": 260,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00404-fish-cal-run-t2264.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 260,
+        "mismatch": 38,
+        "support": 9984,
+        "error": 0.0038060897435897435
+      },
+      {
+        "camera": 252,
+        "mismatch": 372,
+        "support": 9984,
+        "error": 0.037259615384615384
+      },
+      {
+        "camera": 259,
+        "mismatch": 394,
+        "support": 9984,
+        "error": 0.039463141025641024
+      },
+      {
+        "camera": 268,
+        "mismatch": 422,
+        "support": 9984,
+        "error": 0.04226762820512821
+      },
+      {
+        "camera": 244,
+        "mismatch": 448,
+        "support": 9984,
+        "error": 0.04487179487179487
+      },
+      {
+        "camera": 236,
+        "mismatch": 466,
+        "support": 9984,
+        "error": 0.04667467948717949
+      }
+    ]
+  },
+  {
+    "branch": 1,
+    "tick": 2276,
+    "pairwiseCamera": 485,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00416-fish-cal-run-t2276.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 485,
+        "mismatch": 178,
+        "support": 10240,
+        "error": 0.0173828125
+      },
+      {
+        "camera": 2021,
+        "mismatch": 315,
+        "support": 10240,
+        "error": 0.03076171875
+      },
+      {
+        "camera": 1253,
+        "mismatch": 581,
+        "support": 10240,
+        "error": 0.05673828125
+      },
+      {
+        "camera": 486,
+        "mismatch": 609,
+        "support": 10240,
+        "error": 0.05947265625
+      },
+      {
+        "camera": 213,
+        "mismatch": 664,
+        "support": 9984,
+        "error": 0.06650641025641026
+      },
+      {
+        "camera": 2022,
+        "mismatch": 718,
+        "support": 10240,
+        "error": 0.0701171875
+      }
+    ]
+  },
+  {
+    "branch": 2,
+    "tick": 2258,
+    "pairwiseCamera": 139,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00811-fish-cal-stop-brake-t2258.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 139,
+        "mismatch": 79,
+        "support": 9984,
+        "error": 0.007912660256410256
+      },
+      {
+        "camera": 138,
+        "mismatch": 492,
+        "support": 9984,
+        "error": 0.04927884615384615
+      },
+      {
+        "camera": 140,
+        "mismatch": 522,
+        "support": 9984,
+        "error": 0.05228365384615385
+      },
+      {
+        "camera": 123,
+        "mismatch": 658,
+        "support": 9984,
+        "error": 0.06590544871794872
+      },
+      {
+        "camera": 155,
+        "mismatch": 658,
+        "support": 9984,
+        "error": 0.06590544871794872
+      },
+      {
+        "camera": 137,
+        "mismatch": 691,
+        "support": 9984,
+        "error": 0.06921073717948718
+      }
+    ]
+  },
+  {
+    "branch": 2,
+    "tick": 2268,
+    "pairwiseCamera": 144,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00821-fish-cal-stop-wait-t2268.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 144,
+        "mismatch": 36,
+        "support": 9984,
+        "error": 0.003605769230769231
+      },
+      {
+        "camera": 145,
+        "mismatch": 458,
+        "support": 9984,
+        "error": 0.04587339743589743
+      },
+      {
+        "camera": 143,
+        "mismatch": 484,
+        "support": 9984,
+        "error": 0.048477564102564104
+      },
+      {
+        "camera": 160,
+        "mismatch": 601,
+        "support": 9984,
+        "error": 0.060196314102564104
+      },
+      {
+        "camera": 128,
+        "mismatch": 604,
+        "support": 9984,
+        "error": 0.06049679487179487
+      },
+      {
+        "camera": 142,
+        "mismatch": 799,
+        "support": 9984,
+        "error": 0.08002804487179487
+      }
+    ]
+  },
+  {
+    "branch": 2,
+    "tick": 2286,
+    "pairwiseCamera": 144,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/00839-fish-cal-stop-wait-t2286.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 144,
+        "mismatch": 170,
+        "support": 9984,
+        "error": 0.017027243589743588
+      },
+      {
+        "camera": 145,
+        "mismatch": 592,
+        "support": 9984,
+        "error": 0.05929487179487179
+      },
+      {
+        "camera": 143,
+        "mismatch": 618,
+        "support": 9984,
+        "error": 0.061899038461538464
+      },
+      {
+        "camera": 160,
+        "mismatch": 735,
+        "support": 9984,
+        "error": 0.07361778846153846
+      },
+      {
+        "camera": 128,
+        "mismatch": 738,
+        "support": 9984,
+        "error": 0.07391826923076923
+      },
+      {
+        "camera": 142,
+        "mismatch": 933,
+        "support": 9984,
+        "error": 0.09344951923076923
+      }
+    ]
+  },
+  {
+    "branch": 3,
+    "tick": 2295,
+    "pairwiseCamera": 90,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01287-fish-cal-delay-approach-t2295.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 90,
+        "mismatch": 63,
+        "support": 10008,
+        "error": 0.006294964028776978
+      },
+      {
+        "camera": 91,
+        "mismatch": 393,
+        "support": 10008,
+        "error": 0.03926858513189448
+      },
+      {
+        "camera": 89,
+        "mismatch": 468,
+        "support": 10016,
+        "error": 0.04672523961661342
+      },
+      {
+        "camera": 106,
+        "mismatch": 663,
+        "support": 9984,
+        "error": 0.06640625
+      },
+      {
+        "camera": 92,
+        "mismatch": 691,
+        "support": 10000,
+        "error": 0.0691
+      },
+      {
+        "camera": 88,
+        "mismatch": 722,
+        "support": 10016,
+        "error": 0.07208466453674121
+      }
+    ]
+  },
+  {
+    "branch": 3,
+    "tick": 2304,
+    "pairwiseCamera": 259,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01296-fish-cal-delay-approach-t2304.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 259,
+        "mismatch": 76,
+        "support": 9984,
+        "error": 0.007612179487179487
+      },
+      {
+        "camera": 251,
+        "mismatch": 373,
+        "support": 9984,
+        "error": 0.03735977564102564
+      },
+      {
+        "camera": 260,
+        "mismatch": 434,
+        "support": 9984,
+        "error": 0.04346955128205128
+      },
+      {
+        "camera": 267,
+        "mismatch": 448,
+        "support": 9984,
+        "error": 0.04487179487179487
+      },
+      {
+        "camera": 243,
+        "mismatch": 463,
+        "support": 9984,
+        "error": 0.04637419871794872
+      },
+      {
+        "camera": 1027,
+        "mismatch": 493,
+        "support": 9856,
+        "error": 0.05002029220779221
+      }
+    ]
+  },
+  {
+    "branch": 3,
+    "tick": 2308,
+    "pairwiseCamera": 334,
+    "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/flying-fish-2026-11-06T02-23-20.324Z/01300-fish-cal-delay-approach-t2308.png",
+    "level": "2-3",
+    "segment": "main",
+    "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+    "candidates": [
+      {
+        "camera": 334,
+        "mismatch": 32,
+        "support": 10168,
+        "error": 0.003147128245476003
+      },
+      {
+        "camera": 1870,
+        "mismatch": 362,
+        "support": 10168,
+        "error": 0.03560188827694728
+      },
+      {
+        "camera": 333,
+        "mismatch": 428,
+        "support": 10160,
+        "error": 0.04212598425196851
+      },
+      {
+        "camera": 1102,
+        "mismatch": 490,
+        "support": 10040,
+        "error": 0.04880478087649402
+      },
+      {
+        "camera": 326,
+        "mismatch": 509,
+        "support": 10136,
+        "error": 0.05021704814522494
+      },
+      {
+        "camera": 342,
+        "mismatch": 559,
+        "support": 10200,
+        "error": 0.05480392156862745
+      }
+    ]
+  }
+]

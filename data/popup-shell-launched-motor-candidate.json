@@ -1,0 +1,20 @@
+{
+  "lockedUTC": "2026-11-06T06:06:51.795Z",
+  "scope": "Measured diagnostic right-moving green Koopa shell-launched Goomba horizontal movement and immediate body orientation only. Score origins, source contact threshold, vertical motor, left-moving hits and other victim types remain unqualified.",
+  "tolerances": {
+    "horizontalPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "pose": "Complete180opaque supplied RGB vertical-flipped Goomba"
+  },
+  "rule": {
+    "horizontalVelocityPerActiveNativeFrame": 1,
+    "firstPostHitPose": "Vertically flipped normal16x16Goomba, not flattened; body anchor preserves the prior16x16origin before vertical displacement.",
+    "horizontalUpdateOrderCandidate": "No horizontal teleport at defeat; first+1 update occurs on the following active native update. Death-frame phase stays an uncertainty until bracketed.",
+    "verticalMotor": "Excluded from candidate. Existing source samples do not qualify current uncapped vertical motor; report raw Y separately."
+  },
+  "trainingBindings": {
+    "evidence/popup-shell-origin-diagnosis.json": "81307a6faeecac18c7a282d549638ae6dff6b6b753a1036520a0ae715ce272cb",
+    "evidence/popup-shell-birth-analysis.json": "e9d6a8b402305b2d45a7eae409e1e8673fa4afb78a836c5a90860ffba12eb93a"
+  },
+  "validation": "Use independently changed6decision reverse approach. Register camera with actual static PNG pixels. Initialize each fully visible post-hit track once from its first actual image only, then predict subsequent X using actual active native durations. Report every matching pose and failure. This is conditional-motion proof, not an exact event-origin pass."
+}

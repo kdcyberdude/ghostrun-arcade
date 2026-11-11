@@ -1,0 +1,9 @@
+{
+  "source": "data/stomp-measurements.json",
+  "scores": [100, 200, 400, 500, 800],
+  "firstParatroopa": 400,
+  "firstParatroopaEvidence": "Fresh red and green wing-loss contacts award 400; subsequent ordinary 100 is observed. Native chain state is hidden, and nonzero-chain Paratroopa scoring remains unmeasured. See evidence/first-para-score-findings.md and evidence/three-two-para-score-prospective-result.json.",
+  "status": "Two airborne original-Koopa stomps establish100 then200; ordinary grounded landings restore100.",
+  "beyondObserved": "100 200 400 500 800 measured from native score digits (stomps, double stomps and shell kicks; evidence/blocks-findings-20261111.md). Later steps are unmeasured: the last value repeats.",
+  "reset": "Actual terrain/platform grounded contact, area load, actual damage and death. Floor reset is observed; other reset boundaries and generalization to all stompable kinds are inferred."
+}

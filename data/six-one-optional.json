@@ -1,0 +1,608 @@
+{
+  "schema": "image-only-optional-candidate-observation-v1",
+  "level": "6-1",
+  "candidate": {
+    "kind": "pipe-down",
+    "worldX": 1632,
+    "topY": 160,
+    "width": 32,
+    "source": "data/levels.json observed main tiles [102,10,16] and [103,10,17]"
+  },
+  "status": "surveyed-no-transition-observed",
+  "accepted": false,
+  "optionalRoom": null,
+  "mapStatus": "No optional room entered; no room map or return connection inferred.",
+  "entryRecipe": {
+    "resetThenRecordedPrefixTicks": 6312,
+    "recordedPrefixSource": "data/observed-winning-inputs.json",
+    "requests": [
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 37,
+        "sequence": 1052,
+        "endTick": 6317
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "sequence": 1053,
+        "endTick": 6325
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "sequence": 1054,
+        "endTick": 6330
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "sequence": 1055,
+        "endTick": 6332
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "sequence": 1056,
+        "endTick": 6344
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "sequence": 1057,
+        "endTick": 6345
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 16
+        },
+        "nativeFrames": 120,
+        "sequence": 1058,
+        "endTick": 6361
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "sequence": 1059,
+        "endTick": 6362
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 16
+        },
+        "nativeFrames": 120,
+        "sequence": 1060,
+        "endTick": 6378
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "sequence": 1061,
+        "endTick": 6379
+      },
+      {
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 40
+        },
+        "nativeFrames": 300,
+        "sequence": 1062,
+        "endTick": 6419
+      }
+    ]
+  },
+  "centralDownTrials": [
+    {
+      "sequence": 1058,
+      "ticks": 16,
+      "nativeFrames": 120,
+      "startTick": 6345,
+      "endTick": 6361,
+      "endRelativePlayerOriginX": 9
+    },
+    {
+      "sequence": 1060,
+      "ticks": 16,
+      "nativeFrames": 120,
+      "startTick": 6362,
+      "endTick": 6378,
+      "endRelativePlayerOriginX": 8
+    },
+    {
+      "sequence": 1062,
+      "ticks": 40,
+      "nativeFrames": 300,
+      "startTick": 6379,
+      "endTick": 6419,
+      "endRelativePlayerOriginX": 6
+    }
+  ],
+  "result": "Mario visibly remains standing on pipe top160 after centered DOWN windows at relative player originX9,8,6. The same main background and pipe remain visible. No transition observed, and no death occurred during this candidate survey.",
+  "evidence": [
+    {
+      "sequence": 1051,
+      "tick": 6312,
+      "sentUtc": "2026-11-05T19:56:33.179423+00:00",
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 114,
+        "visibleTop": 194,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "pipes": [
+        {
+          "x": 163,
+          "y": 160,
+          "confidence": 1,
+          "relativePlayerX": -51
+        }
+      ],
+      "image": "evidence/local/six-one-live/01051-tick-06312.png"
+    },
+    {
+      "sequence": 1052,
+      "tick": 6317,
+      "sentUtc": "2026-11-05T19:56:45.380734+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 5
+      },
+      "nativeFrames": 37,
+      "player": {
+        "originX": 109,
+        "originY": 177,
+        "visibleLeft": 111,
+        "visibleTop": 194,
+        "visibleRight": 123,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "pipes": [
+        {
+          "x": 123,
+          "y": 160,
+          "confidence": 1,
+          "relativePlayerX": -14
+        }
+      ],
+      "image": "evidence/local/six-one-live/01052-tick-06317.png"
+    },
+    {
+      "sequence": 1053,
+      "tick": 6325,
+      "sentUtc": "2026-11-05T19:57:00.489448+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "player": {
+        "originX": 109,
+        "originY": 177,
+        "visibleLeft": 111,
+        "visibleTop": 193,
+        "visibleRight": 122,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "pipes": [
+        {
+          "x": 123,
+          "y": 160,
+          "confidence": 0.95703125,
+          "relativePlayerX": -14
+        }
+      ],
+      "image": "evidence/local/six-one-live/01053-tick-06325.png"
+    },
+    {
+      "sequence": 1054,
+      "tick": 6330,
+      "sentUtc": "2026-11-05T19:57:00.554186+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 5
+      },
+      "nativeFrames": 38,
+      "player": {
+        "originX": 112,
+        "originY": 115,
+        "visibleLeft": 112,
+        "visibleTop": 131,
+        "visibleRight": 127,
+        "visibleBottom": 146,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "pipes": [
+        {
+          "x": 110,
+          "y": 160,
+          "confidence": 1,
+          "relativePlayerX": 2
+        }
+      ],
+      "image": "evidence/local/six-one-live/01054-tick-06330.png"
+    },
+    {
+      "sequence": 1055,
+      "tick": 6332,
+      "sentUtc": "2026-11-05T19:57:00.593615+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15,
+      "player": {
+        "originX": 111,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.994140625,
+          "relativePlayerX": 11
+        }
+      ],
+      "image": "evidence/local/six-one-live/01055-tick-06332.png"
+    },
+    {
+      "sequence": 1056,
+      "tick": 6344,
+      "sentUtc": "2026-11-05T19:57:00.610088+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12
+      },
+      "nativeFrames": 90,
+      "player": {
+        "originX": 111,
+        "originY": 129,
+        "visibleLeft": 113,
+        "visibleTop": 145,
+        "visibleRight": 124,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.984375,
+          "relativePlayerX": 11
+        }
+      ],
+      "image": "evidence/local/six-one-live/01056-tick-06344.png"
+    },
+    {
+      "sequence": 1057,
+      "tick": 6345,
+      "sentUtc": "2026-11-05T19:57:14.115227+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "visibleLeft": 110,
+        "visibleTop": 145,
+        "visibleRight": 124,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.994140625,
+          "relativePlayerX": 9
+        }
+      ],
+      "image": "evidence/local/six-one-live/01057-tick-06345.png"
+    },
+    {
+      "sequence": 1058,
+      "tick": 6361,
+      "sentUtc": "2026-11-05T19:57:14.125274+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 16
+      },
+      "nativeFrames": 120,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "visibleLeft": 111,
+        "visibleTop": 145,
+        "visibleRight": 122,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.984375,
+          "relativePlayerX": 9
+        }
+      ],
+      "image": "evidence/local/six-one-live/01058-tick-06361.png"
+    },
+    {
+      "sequence": 1059,
+      "tick": 6362,
+      "sentUtc": "2026-11-05T19:57:29.319654+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "player": {
+        "originX": 108,
+        "originY": 129,
+        "visibleLeft": 109,
+        "visibleTop": 145,
+        "visibleRight": 123,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.994140625,
+          "relativePlayerX": 8
+        }
+      ],
+      "image": "evidence/local/six-one-live/01059-tick-06362.png"
+    },
+    {
+      "sequence": 1060,
+      "tick": 6378,
+      "sentUtc": "2026-11-05T19:57:29.328636+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 16
+      },
+      "nativeFrames": 120,
+      "player": {
+        "originX": 108,
+        "originY": 129,
+        "visibleLeft": 110,
+        "visibleTop": 145,
+        "visibleRight": 121,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.984375,
+          "relativePlayerX": 8
+        }
+      ],
+      "image": "evidence/local/six-one-live/01060-tick-06378.png"
+    },
+    {
+      "sequence": 1061,
+      "tick": 6379,
+      "sentUtc": "2026-11-05T19:57:54.365289+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "player": {
+        "originX": 106,
+        "originY": 129,
+        "visibleLeft": 107,
+        "visibleTop": 145,
+        "visibleRight": 121,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.994140625,
+          "relativePlayerX": 6
+        }
+      ],
+      "image": "evidence/local/six-one-live/01061-tick-06379.png"
+    },
+    {
+      "sequence": 1062,
+      "tick": 6419,
+      "sentUtc": "2026-11-05T19:57:54.375172+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 40
+      },
+      "nativeFrames": 300,
+      "player": {
+        "originX": 106,
+        "originY": 129,
+        "visibleLeft": 108,
+        "visibleTop": 145,
+        "visibleRight": 119,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "pipes": [
+        {
+          "x": 100,
+          "y": 160,
+          "confidence": 0.984375,
+          "relativePlayerX": 6
+        }
+      ],
+      "image": "evidence/local/six-one-live/01062-tick-06419.png"
+    }
+  ],
+  "sourceTrace": "evidence/local/six-one-live/trace.jsonl",
+  "uncertainties": [
+    "This establishes no transition for these observed controller inputs only. Alternate activation conditions and unseen optional areas remain unresolved.",
+    "Pipe world position comes from previously observed main geometry; candidate screenshots independently establish screen pipe x100 at top160 after camera stops.",
+    "No ROM or executable contents were inspected; reference interaction used ordinary controller input and PNG observations only."
+  ]
+}

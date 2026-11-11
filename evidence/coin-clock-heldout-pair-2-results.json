@@ -1,0 +1,333 @@
+{
+  "createdUtc": "2026-11-06T09:13:16.825Z",
+  "pair": 2,
+  "planFile": "evidence/coin-clock-heldout-plan.json",
+  "planSha256": "c308a77250d157a6aead445c4eced5b19a1ed282a1a2e0a1fad9a69322526c36",
+  "candidateFile": "data/coin-clock-candidate.json",
+  "candidateSha256": "00ecd6fe57b458ed485e7ea7080ce45794496208a328e5178b081849e6e4a856",
+  "representative": {
+    "id": "21/10/12/3/6",
+    "period": 21,
+    "count": 10,
+    "phase": 12,
+    "firstOffset": 3,
+    "repeatOffset": 6
+  },
+  "results": [
+    {
+      "id": "coin-clock-held-3",
+      "shift": 8,
+      "wait": 24,
+      "firstSample": 24136,
+      "hitSample": 24354,
+      "nominalElapsed": 218,
+      "used": false,
+      "events": [
+        {
+          "sequence": 3073,
+          "tick": 3213,
+          "nativeFrame": 24136,
+          "impactNativeBracket": [
+            24130,
+            24136
+          ],
+          "block": "brick",
+          "bump": {
+            "id": 81,
+            "y": 138,
+            "fullRgbPixels": 256,
+            "rgbMismatches": 0
+          },
+          "registration": [
+            {
+              "camera": 1189,
+              "rightPillarComparedPixels": 512,
+              "rightPillarRgbMismatches": 0,
+              "leftPillarRgbMismatches": 0
+            }
+          ],
+          "hud": {
+            "score": {
+              "value": "117350",
+              "errors": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "coins": {
+              "value": "29",
+              "errors": [
+                0,
+                0
+              ]
+            }
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-56.603Z/03073-coin-clock-held-3-t3213.png",
+          "pngSha256": "38b1f0f5f3280d2745572768c11abcc52df429bdbd0270b9003258152c06e669",
+          "player": {
+            "originX": 44,
+            "originY": 144,
+            "visibleBottom": 175,
+            "cell": 16,
+            "direction": "right",
+            "phase": "star-green",
+            "opaquePixels": 171,
+            "rgbMismatches": 0
+          }
+        },
+        {
+          "sequence": 3102,
+          "tick": 3242,
+          "nativeFrame": 24354,
+          "impactNativeBracket": [
+            24348,
+            24354
+          ],
+          "block": "brick",
+          "bump": {
+            "id": 81,
+            "y": 139,
+            "fullRgbPixels": 256,
+            "rgbMismatches": 0
+          },
+          "registration": [
+            {
+              "camera": 1189,
+              "rightPillarComparedPixels": 512,
+              "rightPillarRgbMismatches": 0,
+              "leftPillarRgbMismatches": 0
+            }
+          ],
+          "hud": {
+            "score": {
+              "value": "117550",
+              "errors": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "coins": {
+              "value": "30",
+              "errors": [
+                0,
+                0
+              ]
+            }
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-56.603Z/03102-coin-clock-held-3-t3242.png",
+          "pngSha256": "5d35932729acdd210b361643108603c0a2c1cd0079edc687996307f718701622",
+          "player": {
+            "originX": 49,
+            "originY": 144,
+            "visibleBottom": 175,
+            "cell": 16,
+            "direction": "left",
+            "phase": "star-white",
+            "opaquePixels": 171,
+            "rgbMismatches": 0
+          }
+        }
+      ],
+      "settled": {
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-56.603Z/03107-coin-clock-held-3-t3247.png",
+        "pngSha256": "6bc9aa18fc91c9d19f43a52605465c913419922527940c531fb6245a556787e6",
+        "lower": {
+          "world": [
+            1232,
+            144
+          ],
+          "screen": [
+            43,
+            144
+          ],
+          "brickRgbMismatches": 0,
+          "usedRgbMismatches": 96,
+          "bumpCandidates": [
+            {
+              "id": 81,
+              "y": 144,
+              "fullRgbPixels": 256,
+              "rgbMismatches": 0
+            }
+          ]
+        }
+      },
+      "eliminated": [],
+      "valid": true,
+      "source": {
+        "directory": "evidence/local/coin-clock-2026-11-06T08-55-56.603Z",
+        "throughSequence": 3107
+      },
+      "controlsSha256": "c308a77250d157a6aead445c4eced5b19a1ed282a1a2e0a1fad9a69322526c36",
+      "predictedUsed": false,
+      "passed": true
+    },
+    {
+      "id": "coin-clock-held-4",
+      "shift": 8,
+      "wait": 25,
+      "firstSample": 24136,
+      "hitSample": 24362,
+      "nominalElapsed": 226,
+      "used": true,
+      "events": [
+        {
+          "sequence": 3081,
+          "tick": 3213,
+          "nativeFrame": 24136,
+          "impactNativeBracket": [
+            24130,
+            24136
+          ],
+          "block": "brick",
+          "bump": {
+            "id": 81,
+            "y": 138,
+            "fullRgbPixels": 256,
+            "rgbMismatches": 0
+          },
+          "registration": [
+            {
+              "camera": 1189,
+              "rightPillarComparedPixels": 512,
+              "rightPillarRgbMismatches": 0,
+              "leftPillarRgbMismatches": 0
+            }
+          ],
+          "hud": {
+            "score": {
+              "value": "117350",
+              "errors": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "coins": {
+              "value": "29",
+              "errors": [
+                0,
+                0
+              ]
+            }
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-57.496Z/03081-coin-clock-held-4-t3213.png",
+          "pngSha256": "38b1f0f5f3280d2745572768c11abcc52df429bdbd0270b9003258152c06e669",
+          "player": {
+            "originX": 44,
+            "originY": 144,
+            "visibleBottom": 175,
+            "cell": 16,
+            "direction": "right",
+            "phase": "star-green",
+            "opaquePixels": 171,
+            "rgbMismatches": 0
+          }
+        },
+        {
+          "sequence": 3111,
+          "tick": 3243,
+          "nativeFrame": 24362,
+          "impactNativeBracket": [
+            24355,
+            24362
+          ],
+          "block": "used",
+          "bump": {
+            "id": 196,
+            "y": 139,
+            "fullRgbPixels": 256,
+            "rgbMismatches": 0
+          },
+          "registration": [
+            {
+              "camera": 1189,
+              "rightPillarComparedPixels": 512,
+              "rightPillarRgbMismatches": 0,
+              "leftPillarRgbMismatches": 0
+            }
+          ],
+          "hud": {
+            "score": {
+              "value": "117550",
+              "errors": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "coins": {
+              "value": "30",
+              "errors": [
+                0,
+                0
+              ]
+            }
+          },
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-57.496Z/03111-coin-clock-held-4-t3243.png",
+          "pngSha256": "bdd69e5bb2fee9330124262a6d7dafb07bf2dbb5499b88eadf0252315127e523",
+          "player": {
+            "originX": 49,
+            "originY": 144,
+            "visibleBottom": 175,
+            "cell": 16,
+            "direction": "left",
+            "phase": "star-white",
+            "opaquePixels": 171,
+            "rgbMismatches": 0
+          }
+        }
+      ],
+      "settled": {
+        "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/coin-clock-2026-11-06T08-55-57.496Z/03116-coin-clock-held-4-t3248.png",
+        "pngSha256": "737064059e9e028686be2160bddd968d71c108418f9740363247f6c88c62a4cd",
+        "lower": {
+          "world": [
+            1232,
+            144
+          ],
+          "screen": [
+            43,
+            144
+          ],
+          "brickRgbMismatches": 96,
+          "usedRgbMismatches": 0,
+          "bumpCandidates": [
+            {
+              "id": 196,
+              "y": 144,
+              "fullRgbPixels": 256,
+              "rgbMismatches": 0
+            }
+          ]
+        }
+      },
+      "eliminated": [],
+      "valid": true,
+      "source": {
+        "directory": "evidence/local/coin-clock-2026-11-06T08-55-57.496Z",
+        "throughSequence": 3116
+      },
+      "controlsSha256": "c308a77250d157a6aead445c4eced5b19a1ed282a1a2e0a1fad9a69322526c36",
+      "predictedUsed": true,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "candidateUnchanged": true,
+  "noRetuning": true
+}

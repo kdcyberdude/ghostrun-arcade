@@ -1,0 +1,18 @@
+{
+  "level": "5-2",
+  "area": "area-2",
+  "hiddenFreeTiles": [
+    {"x": 254, "y": 144, "id": 97, "palette": 25},
+    {"x": 270, "y": 144, "id": 97, "palette": 25},
+    {"x": 286, "y": 144, "id": 97, "palette": 25},
+    {"x": 270, "y": 112, "id": 100, "palette": 25},
+    {"x": 270, "y": 128, "id": 101, "palette": 25}
+  ],
+  "decorations": [
+    {"x": 256, "y": 144, "id": 97, "palette": 25, "aboveFreeTiles": true},
+    {"x": 272, "y": 144, "id": 97, "palette": 25, "aboveFreeTiles": true},
+    {"x": 272, "y": 112, "id": 100, "palette": 25, "aboveFreeTiles": true},
+    {"x": 272, "y": 128, "id": 101, "palette": 25, "aboveFreeTiles": true}
+  ],
+  "qualification": "The source artwork is aligned to x272, but native horizontal collision edges are not independently established. The original solid free tiles are retained unchanged; only their rendering is replaced. See evidence/five-two-launcher-support-findings.md and evidence/five-two-launcher-visual-only-browser.json."
+}

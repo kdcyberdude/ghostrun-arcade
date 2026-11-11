@@ -1,0 +1,1101 @@
+{
+ "schema": "native-water-actors-v1",
+ "method": "tools/derive-water-actors.mjs over a read-only native trace of the recorded winning route",
+ "provenance": {
+  "report": "evidence/flyers-findings-20261109.md"
+ },
+ "rules": {
+  "podoboo": {
+   "gravity": 0.109375,
+   "maxFall": 3.25,
+   "v0": 6.2,
+   "relaunchFeetY": 278,
+   "note": "remake feet y = native y + 24; v0 6.2 is the mean of 5.9-6.5 fitted per jump (apex native y 64-90); relaunch at native y 254"
+  },
+  "blooperTurnMask": {
+   "2-2": 63,
+   "7-2": 3,
+   "8-4": 3
+  },
+  "blooperRestY": 184,
+  "swimCheepGenerator": {
+   "note": "Free play only (the recorded route replays its own list). 2-2/7-2 water: each frame, once the 32-frame timer is 0 and the lowest free enemy slot s is below 3, a Cheep appears at camera + 287 (then the timer restarts). Random byte s (RAM 0x7A7+s): id = highId when >= 170, else lowId; height = heights[q] where q = byte & 7, moved up (mod 8) past heights already used; all 8 used -> bag empties; it also empties on an area load. Free-play first lives: 129/135 heights, 186/187 ids (evidence/swimcheep-findings-20261111.md). Stop camera: between the last spawn and the first refused free slot (2-2 2661..2737, 7-2 2533..2595), midpoint taken. Bob (+-15 px) is unexplained by the register: generated fish do not bob.",
+   "heights": [72, 56, 152, 88, 40, 104, 168, 120],
+   "feetOffset": 24,
+   "idThreshold": 170,
+   "slots": 3,
+   "timer": 32,
+   "spawnAhead": 287,   "palettes": {"10": "0f-10-30-27", "11": "0f-16-30-27"},
+   "levels": {
+    "2-2": {"fromCamera": 931, "toCamera": 2700, "highId": 11, "lowId": 10},
+    "7-2": {"fromCamera": 931, "toCamera": 2564, "highId": 10, "lowId": 11}
+   }
+  }
+ },
+ "areas": [
+  {
+   "level": "2-2",
+   "area": "area-2",
+   "replaceKinds": [
+    "cheep",
+    "blooper"
+   ],
+   "enemies": [
+    {
+     "kind": "blooper",
+     "x": 352,
+     "y": 208,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 50,
+     "stroke": {
+      "first": 6,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 12527): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 736,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 435,
+     "stroke": {
+      "first": 1,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 12788): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 880,
+     "y": 192,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 581,
+     "stroke": {
+      "first": 8,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 12885): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1219,
+     "y": 112,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 935,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13120): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1267,
+     "y": 192,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 989,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 13152): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1328,
+     "y": 160,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1031,
+     "stroke": {
+      "first": 6,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 13191): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1370,
+     "y": 64,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1085,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 13229): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1504,
+     "y": 80,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1203,
+     "stroke": {
+      "first": 1,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 13308): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1528,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1242,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13334): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1576,
+     "y": 80,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1290,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13366): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1643,
+     "y": 96,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1358,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13411): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1838,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1553,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13541): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1886,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1601,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13573): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1954,
+     "y": 96,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1668,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13618): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2149,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1863,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13748): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2197,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1911,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13780): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2264,
+     "y": 112,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1983,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13825): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2457,
+     "y": 80,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2172,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13967): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2505,
+     "y": 64,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2220,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 13999): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2571,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2286,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 14043): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2658,
+     "y": 192,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2371,
+     "swim": {},
+     "spawnFrame": 2176,
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 14605): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2658,
+     "y": 192,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2371,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "spawnFrame": 2400,
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 14829): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2658,
+     "y": 112,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2371,
+     "swim": {},
+     "spawnFrame": 2708,
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 15137): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2783,
+     "y": 64,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2494,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 15304): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2835,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2547,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 15345): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2949,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2661,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 15421): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "7-2",
+   "area": "area-4",
+   "replaceKinds": [
+    "cheep",
+    "blooper"
+   ],
+   "enemies": [
+    {
+     "kind": "blooper",
+     "x": 352,
+     "y": 208,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 49,
+     "stroke": {
+      "first": 6,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58396): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 400,
+     "y": 144,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 99,
+     "stroke": {
+      "first": 8,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58434): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 736,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 434,
+     "stroke": {
+      "first": 1,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58657): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 832,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 530,
+     "stroke": {
+      "first": 1,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58721): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 880,
+     "y": 192,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 579,
+     "stroke": {
+      "first": 8,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58754): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1232,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 930,
+     "stroke": {
+      "first": 7,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 58987): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1219,
+     "y": 112,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 934,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 58989): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1266,
+     "y": 80,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 985,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59021): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1328,
+     "y": 160,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1023,
+     "stroke": {
+      "first": 7,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 59059): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1440,
+     "y": 208,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1136,
+     "stroke": {
+      "first": 4,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 59134): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1504,
+     "y": 80,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1199,
+     "stroke": {
+      "first": 2,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 59176): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1563,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1274,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59226): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1611,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1322,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59258): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 1680,
+     "y": 208,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 1374,
+     "stroke": {
+      "first": 5,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 59293): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1836,
+     "y": 96,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1547,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59408): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1884,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1595,
+     "swim": {
+      "bob": {
+       "dir": 1,
+       "first": 8
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59440): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 1932,
+     "y": 192,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1643,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59472): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2109,
+     "y": 64,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1820,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59590): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2157,
+     "y": 64,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1868,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59622): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2243,
+     "y": 192,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 1953,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59679): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 2400,
+     "y": 160,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 2097,
+     "stroke": {
+      "first": 4,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 59774): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2417,
+     "y": 176,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2130,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59807): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2466,
+     "y": 112,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2180,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 59840): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2552,
+     "y": 80,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2265,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 59897): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2728,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-10-30-27",
+     "spawnCamera": 2455,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 10, row 60015): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 2768,
+     "y": 208,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 2472,
+     "stroke": {
+      "first": 2,
+      "firstDir": -1
+     },
+     "spawnFrame": 1733,
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 60032): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2776,
+     "y": 144,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2487,
+     "swim": {
+      "bob": {
+       "dir": -1,
+       "first": 1
+      }
+     },
+     "spawnFrame": 1748,
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 60047): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "cheep",
+     "x": 2821,
+     "y": 96,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2533,
+     "swim": {},
+     "evidence": "native first appearance (read-only enemy slot, id 11, row 60086): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "8-4",
+   "area": "area-4",
+   "replaceKinds": [
+    "cheep",
+    "blooper"
+   ],
+   "enemies": [
+    {
+     "kind": "blooper",
+     "x": 448,
+     "y": 208,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 145,
+     "stroke": {
+      "first": 7,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 78443): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 816,
+     "y": 192,
+     "direction": 1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 514,
+     "stroke": {
+      "first": 1,
+      "firstDir": 1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 78689): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "blooper",
+     "x": 848,
+     "y": 128,
+     "direction": -1,
+     "palette": "0f-0f-30-10",
+     "spawnCamera": 549,
+     "stroke": {
+      "first": 2,
+      "firstDir": -1
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 7, row 78712): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "2-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 256,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "launch": {
+      "delay": 2,
+      "v0": 6.21
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 18991): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 480,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 176,
+     "launch": {
+      "delay": 2,
+      "v0": 6.41
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 19118): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "4-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 2640,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2339,
+     "launch": {
+      "delay": 3,
+      "v0": 6.42
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 37459): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "5-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 256,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "launch": {
+      "delay": 2,
+      "v0": 6.18
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 44585): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 320,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 18,
+     "launch": {
+      "delay": 9,
+      "v0": 6.4
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 44641): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 480,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 177,
+     "launch": {
+      "delay": 1,
+      "v0": 6.33
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 44712): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1744,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1441,
+     "launch": {
+      "delay": 12,
+      "v0": 6.05
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 45288): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1808,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1508,
+     "launch": {
+      "delay": 0,
+      "v0": 6.07
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 45322): x, height and camera; cheep speed by palette, bob measured"
+    },
+    {
+     "kind": "podoboo",
+     "x": 2096,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1791,
+     "launch": {
+      "delay": 6,
+      "v0": 6.16
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 45547): x, height and camera; cheep speed by palette, bob measured"
+    }
+   ]
+  },
+  {
+   "level": "3-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 256,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 0,
+     "launch": {
+      "delay": 1,
+      "v0": 6.15
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27123): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 416,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 114,
+     "launch": {
+      "delay": 6,
+      "v0": 6.18
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27224): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1408,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1107,
+     "launch": {
+      "delay": 8,
+      "v0": 6.29
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27621): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1552,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1252,
+     "launch": {
+      "delay": 12,
+      "v0": 6.52
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27679): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1648,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1359,
+     "launch": {
+      "delay": 11,
+      "v0": 6.03
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27722): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 1744,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1442,
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 27755): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)",
+     "launch": {
+      "delay": 3,
+      "v0": 6.2
+     }
+    }
+   ]
+  },
+  {
+   "level": "6-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 432,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 129,
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 54063): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)",
+     "launch": {
+      "delay": 3,
+      "v0": 6.2
+     }
+    },
+    {
+     "kind": "podoboo",
+     "x": 528,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 229,
+     "launch": {
+      "delay": 1,
+      "v0": 6.38
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 54103): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 2096,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 1794,
+     "launch": {
+      "delay": 12,
+      "v0": 6.4
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 54805): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    }
+   ]
+  },
+  {
+   "level": "7-4",
+   "area": "main",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 320,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 17,
+     "launch": {
+      "delay": 9,
+      "v0": 6.11
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 63720): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    },
+    {
+     "kind": "podoboo",
+     "x": 3136,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 2831,
+     "launch": {
+      "delay": 4,
+      "v0": 6.45
+     },
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 64943): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)"
+    }
+   ]
+  },
+  {
+   "level": "8-4",
+   "area": "area-5",
+   "replaceKinds": [
+    "podoboo"
+   ],
+   "enemies": [
+    {
+     "kind": "podoboo",
+     "x": 368,
+     "y": 282,
+     "direction": -1,
+     "palette": "0f-16-30-27",
+     "spawnCamera": 68,
+     "evidence": "native first appearance (read-only enemy slot, id 12, row 79246): x, height and camera; delay/v0 fitted per object; objects without a native jump use delay 3, v0 6.2 (the mean)",
+     "launch": {
+      "delay": 3,
+      "v0": 6.2
+     }
+    }
+   ]
+  }
+ ]
+}

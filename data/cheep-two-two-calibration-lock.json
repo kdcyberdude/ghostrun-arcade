@@ -1,0 +1,23 @@
+{
+  "schema": "cheep-two-two-calibration-lock-v1",
+  "frozenUtc": "2026-11-06T02:25:16.463247+00:00",
+  "planSha256": "452a982c9fa6ae026b9d721136b5329c95b3bb31c9b7037d0776ecde3f07a889",
+  "calibrationTraceSha256": "3c77e6faf5ce3459c4affa488ad4f994f53d69029cf551c866d08c3fe5fcfae1",
+  "calibrationMeasurementsSha256": "d1f46ee1cc25229b2c637b67390cd5532df35c92fa95e47fffa2f237a75f6d80",
+  "horizontalMotor": {
+    "greyPixelsPerNativeFrame": -0.25,
+    "redPixelsPerNativeFrame": -0.5,
+    "seedRasterFraction": 0.25
+  },
+  "calibrationSummary": {
+    "samples": 323,
+    "tracks": 15,
+    "candidateExactX": 288,
+    "candidateWithin2": 323,
+    "currentMotorWithin2": 19,
+    "candidateMaxXError": 1,
+    "currentMotorMaxXError": 157
+  },
+  "status": "Horizontal-only isolated candidate. No full production fish replacement is accepted. Vertical bounds/subtypes, spawning/activation, lifetime and initial phase remain unresolved.",
+  "reservedStatus": "Declared reserved controls not captured yet."
+}

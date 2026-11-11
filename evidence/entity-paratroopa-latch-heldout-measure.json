@@ -1,0 +1,2049 @@
+{
+  "method": "Images only: exact supplied normal Mario opaque pose, red Koopa/Paratroopa top16 opaque fragment and every descriptor8px part underH/V variants, supplied HUD font digit masks. No hidden reference state. Sprite logical feet are drawing anchors; they do not prove collision bounds. Native duration and applied controls are protocol values.",
+  "sourceControls": "evidence/entity-paratroopa-latch-heldout-controls.json",
+  "checks": [],
+  "cases": [
+    {
+      "name": "flat-mediumphase-short",
+      "prefix": 0,
+      "awards": [],
+      "samples": [
+        {
+          "sequence": 10,
+          "tick": 8,
+          "nativeFrame": 60,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "request": {
+            "op": "observe"
+          },
+          "stage": "start",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0010-flat-mediumphase-short-t8.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 52,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 52,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 11,
+          "tick": 9,
+          "nativeFrame": 67,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            56
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0011-flat-mediumphase-short-t9.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 61,
+            "originY": 158,
+            "feetY": 189,
+            "visibleTop": 174,
+            "visibleBottom": 189,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 61,
+              "originY": 158,
+              "feetY": 189,
+              "visibleTop": 174,
+              "visibleBottom": 189,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 12,
+          "tick": 10,
+          "nativeFrame": 75,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0012-flat-mediumphase-short-t10.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 73,
+            "originY": 138,
+            "feetY": 169,
+            "visibleTop": 154,
+            "visibleBottom": 169,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 73,
+              "originY": 138,
+              "feetY": 169,
+              "visibleTop": 154,
+              "visibleBottom": 169,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 13,
+          "tick": 11,
+          "nativeFrame": 82,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0013-flat-mediumphase-short-t11.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 82,
+            "originY": 139,
+            "feetY": 170,
+            "visibleTop": 155,
+            "visibleBottom": 170,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 82,
+              "originY": 139,
+              "feetY": 170,
+              "visibleTop": 155,
+              "visibleBottom": 170,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 14,
+          "tick": 12,
+          "nativeFrame": 90,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0014-flat-mediumphase-short-t12.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 86,
+            "originY": 163,
+            "feetY": 194,
+            "visibleTop": 179,
+            "visibleBottom": 194,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 86,
+              "originY": 163,
+              "feetY": 194,
+              "visibleTop": 179,
+              "visibleBottom": 194,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 15,
+          "tick": 13,
+          "nativeFrame": 97,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0015-flat-mediumphase-short-t13.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 90,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 90,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 16,
+          "tick": 14,
+          "nativeFrame": 105,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0016-flat-mediumphase-short-t14.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 97,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 97,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 17,
+          "tick": 15,
+          "nativeFrame": 112,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0017-flat-mediumphase-short-t15.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 104,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 104,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        }
+      ]
+    },
+    {
+      "name": "flat-mediumphase-repress",
+      "prefix": 0,
+      "awards": [],
+      "samples": [
+        {
+          "sequence": 27,
+          "tick": 8,
+          "nativeFrame": 60,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "request": {
+            "op": "observe"
+          },
+          "stage": "start",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0027-flat-mediumphase-repress-t8.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 52,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 52,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 28,
+          "tick": 9,
+          "nativeFrame": 67,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            56
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0028-flat-mediumphase-repress-t9.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 61,
+            "originY": 158,
+            "feetY": 189,
+            "visibleTop": 174,
+            "visibleBottom": 189,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 61,
+              "originY": 158,
+              "feetY": 189,
+              "visibleTop": 174,
+              "visibleBottom": 189,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 29,
+          "tick": 10,
+          "nativeFrame": 75,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0029-flat-mediumphase-repress-t10.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 73,
+            "originY": 138,
+            "feetY": 169,
+            "visibleTop": 154,
+            "visibleBottom": 169,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 73,
+              "originY": 138,
+              "feetY": 169,
+              "visibleTop": 154,
+              "visibleBottom": 169,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 30,
+          "tick": 11,
+          "nativeFrame": 82,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            56
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0030-flat-mediumphase-repress-t11.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 82,
+            "originY": 139,
+            "feetY": 170,
+            "visibleTop": 155,
+            "visibleBottom": 170,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 82,
+              "originY": 139,
+              "feetY": 170,
+              "visibleTop": 155,
+              "visibleBottom": 170,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 31,
+          "tick": 12,
+          "nativeFrame": 90,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            56
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0031-flat-mediumphase-repress-t12.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 86,
+            "originY": 163,
+            "feetY": 194,
+            "visibleTop": 179,
+            "visibleBottom": 194,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 86,
+              "originY": 163,
+              "feetY": 194,
+              "visibleTop": 179,
+              "visibleBottom": 194,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 32,
+          "tick": 13,
+          "nativeFrame": 97,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0032-flat-mediumphase-repress-t13.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 90,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 90,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 33,
+          "tick": 14,
+          "nativeFrame": 105,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0033-flat-mediumphase-repress-t14.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 97,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 97,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 34,
+          "tick": 15,
+          "nativeFrame": 112,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            40
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0034-flat-mediumphase-repress-t15.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 104,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 104,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        }
+      ]
+    },
+    {
+      "name": "flat-mediumwalk-short",
+      "prefix": 0,
+      "awards": [],
+      "samples": [
+        {
+          "sequence": 45,
+          "tick": 9,
+          "nativeFrame": 67,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "request": {
+            "op": "observe"
+          },
+          "stage": "start",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0045-flat-mediumwalk-short-t9.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 63,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 63,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 46,
+          "tick": 10,
+          "nativeFrame": 75,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            24
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0046-flat-mediumwalk-short-t10.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 75,
+            "originY": 154,
+            "feetY": 185,
+            "visibleTop": 170,
+            "visibleBottom": 185,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 75,
+              "originY": 154,
+              "feetY": 185,
+              "visibleTop": 170,
+              "visibleBottom": 185,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 47,
+          "tick": 11,
+          "nativeFrame": 82,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0047-flat-mediumwalk-short-t11.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 82,
+            "originY": 136,
+            "feetY": 167,
+            "visibleTop": 152,
+            "visibleBottom": 167,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 82,
+              "originY": 136,
+              "feetY": 167,
+              "visibleTop": 152,
+              "visibleBottom": 167,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 48,
+          "tick": 12,
+          "nativeFrame": 90,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0048-flat-mediumwalk-short-t12.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 86,
+            "originY": 137,
+            "feetY": 168,
+            "visibleTop": 153,
+            "visibleBottom": 168,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 86,
+              "originY": 137,
+              "feetY": 168,
+              "visibleTop": 153,
+              "visibleBottom": 168,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 49,
+          "tick": 13,
+          "nativeFrame": 97,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0049-flat-mediumwalk-short-t13.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 90,
+            "originY": 158,
+            "feetY": 189,
+            "visibleTop": 174,
+            "visibleBottom": 189,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 90,
+              "originY": 158,
+              "feetY": 189,
+              "visibleTop": 174,
+              "visibleBottom": 189,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 50,
+          "tick": 14,
+          "nativeFrame": 105,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0050-flat-mediumwalk-short-t14.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 94,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 94,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 51,
+          "tick": 15,
+          "nativeFrame": 112,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0051-flat-mediumwalk-short-t15.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 97,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 97,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 52,
+          "tick": 16,
+          "nativeFrame": 120,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0052-flat-mediumwalk-short-t16.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 14,
+            "direction": "right",
+            "screenX": 101,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 124,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 14,
+              "direction": "right",
+              "screenX": 101,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 124,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        }
+      ]
+    },
+    {
+      "name": "flat-mediumwalk-repress",
+      "prefix": 0,
+      "awards": [],
+      "samples": [
+        {
+          "sequence": 63,
+          "tick": 9,
+          "nativeFrame": 67,
+          "framesAdvanced": 0,
+          "appliedMasks": [],
+          "request": {
+            "op": "observe"
+          },
+          "stage": "start",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0063-flat-mediumwalk-repress-t9.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 63,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 63,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 64,
+          "tick": 10,
+          "nativeFrame": 75,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            24
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0064-flat-mediumwalk-repress-t10.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 75,
+            "originY": 154,
+            "feetY": 185,
+            "visibleTop": 170,
+            "visibleBottom": 185,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 75,
+              "originY": 154,
+              "feetY": 185,
+              "visibleTop": 170,
+              "visibleBottom": 185,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 65,
+          "tick": 11,
+          "nativeFrame": 82,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0065-flat-mediumwalk-repress-t11.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 82,
+            "originY": 136,
+            "feetY": 167,
+            "visibleTop": 152,
+            "visibleBottom": 167,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 82,
+              "originY": 136,
+              "feetY": 167,
+              "visibleTop": 152,
+              "visibleBottom": 167,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 66,
+          "tick": 12,
+          "nativeFrame": 90,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            24
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0066-flat-mediumwalk-repress-t12.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 86,
+            "originY": 137,
+            "feetY": 168,
+            "visibleTop": 153,
+            "visibleBottom": 168,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 86,
+              "originY": 137,
+              "feetY": 168,
+              "visibleTop": 153,
+              "visibleBottom": 168,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 67,
+          "tick": 13,
+          "nativeFrame": 97,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            24
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0067-flat-mediumwalk-repress-t13.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 16,
+            "direction": "right",
+            "screenX": 90,
+            "originY": 158,
+            "feetY": 189,
+            "visibleTop": 174,
+            "visibleBottom": 189,
+            "opaquePixels": 171,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 16,
+              "direction": "right",
+              "screenX": 90,
+              "originY": 158,
+              "feetY": 189,
+              "visibleTop": 174,
+              "visibleBottom": 189,
+              "opaquePixels": 171,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 68,
+          "tick": 14,
+          "nativeFrame": 105,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0068-flat-mediumwalk-repress-t14.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 13,
+            "direction": "right",
+            "screenX": 94,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 145,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 13,
+              "direction": "right",
+              "screenX": 94,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 145,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 69,
+          "tick": 15,
+          "nativeFrame": 112,
+          "framesAdvanced": 7,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0069-flat-mediumwalk-repress-t15.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 12,
+            "direction": "right",
+            "screenX": 97,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 194,
+            "visibleBottom": 208,
+            "opaquePixels": 120,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 12,
+              "direction": "right",
+              "screenX": 97,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 194,
+              "visibleBottom": 208,
+              "opaquePixels": 120,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        },
+        {
+          "sequence": 70,
+          "tick": 16,
+          "nativeFrame": 120,
+          "framesAdvanced": 8,
+          "appliedMasks": [
+            8
+          ],
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1
+          },
+          "stage": "probe",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/entity-paratroopa-latch-heldout-2026-11-06T00-27-47.211Z/0070-flat-mediumwalk-repress-t16.png",
+          "score": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "coins": {
+            "value": 0,
+            "digitErrors": [
+              0,
+              0
+            ]
+          },
+          "player": {
+            "cell": 14,
+            "direction": "right",
+            "screenX": 101,
+            "originY": 177,
+            "feetY": 208,
+            "visibleTop": 193,
+            "visibleBottom": 208,
+            "opaquePixels": 124,
+            "palette": "supplied-normal-Mario",
+            "opaqueMismatchPixels": 0
+          },
+          "playerCandidates": [
+            {
+              "cell": 14,
+              "direction": "right",
+              "screenX": 101,
+              "originY": 177,
+              "feetY": 208,
+              "visibleTop": 193,
+              "visibleBottom": 208,
+              "opaquePixels": 124,
+              "palette": "supplied-normal-Mario",
+              "opaqueMismatchPixels": 0
+            }
+          ],
+          "actors": []
+        }
+      ]
+    }
+  ]
+}

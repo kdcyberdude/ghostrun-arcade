@@ -1,0 +1,140 @@
+{
+  "schema": "blooper-motion-research-candidate-v1",
+  "status": "Read-only research. Fullbehaviorcandidate rejected by moving-player and fresh2-2held-outcontrols. Production source unchanged.",
+  "tolerances": {
+    "positionPixels": 2,
+    "eventNativeFrames": 2,
+    "noThresholdChanges": true
+  },
+  "observedMotor": {
+    "acceleration": 0.125,
+    "speedCap": 2,
+    "speedShape": "Accelerate tocapthen decelerateto0; integrateeachnativeframe.",
+    "burstNativeFrames": 32,
+    "unsignedDistance": 32,
+    "sinkSpeed": 0.5,
+    "support": [
+      "Seven5-2burstprofiles max1px afterdiagnostic eventclockalignment.",
+      "Eightfresh2-2left/rightburstprofiles max1px withpreboundmotor andfraction0; eventclockaligneddiagnostically.",
+      "Stationary2-2sideinterventions establish directioncanreverseduringburst;32isunsignedpathlength, notguaranteednetX."
+    ],
+    "limits": "Eventclockalignment is not free in gameplay. Neither source NPC birth nor its direction-selection gate was measured as hiddenstate."
+  },
+  "groundedResearchRules": {
+    "acceleration": 0.125,
+    "speedCap": 2,
+    "sinkSpeed": 0.5,
+    "minimumRest": 32,
+    "targetGap": 21,
+    "compressedStart": 4,
+    "compressedEnd": 30,
+    "compressedFootOffset": 3
+  },
+  "groundedResults": [
+    {
+      "case": "stop-mid",
+      "physicalMaxError": 2,
+      "headMaxError": 7,
+      "strictPhysicalPass": true,
+      "strictHeadPass": false
+    },
+    {
+      "case": "stop-high",
+      "physicalMaxError": 2,
+      "headMaxError": 7,
+      "strictPhysicalPass": true,
+      "strictHeadPass": false
+    },
+    {
+      "case": "grounded",
+      "physicalMaxError": 2,
+      "headMaxError": 7,
+      "strictPhysicalPass": true,
+      "strictHeadPass": false
+    },
+    {
+      "case": "baseline",
+      "physicalMaxError": 78,
+      "headMaxError": 18,
+      "strictPhysicalPass": false,
+      "strictHeadPass": false
+    },
+    {
+      "case": "late-wait",
+      "physicalMaxError": 24,
+      "headMaxError": 6,
+      "strictPhysicalPass": false,
+      "strictHeadPass": false
+    }
+  ],
+  "freshHeldout": {
+    "level": "2-2",
+    "candidateHashMatchesPrebound": true,
+    "physicalMaxError": 72,
+    "headMaxError": 22,
+    "strictPhysicalPass": false,
+    "strictDrawingPass": false,
+    "firstDivergenceFrame": 12598,
+    "firstDivergenceTick": 1677,
+    "reasonCandidates": [
+      "Unmeasured seededrestage0 missalignsinitialpause.",
+      "Alwaystowardplayeratburststart failsobserveddirectionretentionandmid-burstreversal.",
+      "Sprite compressionclock remainsunqualified."
+    ]
+  },
+  "directionObservations": {
+    "stationaryBaseline": {
+      "playerWorldX": 210,
+      "playerFeet": 208,
+      "restPositions": [
+        320,
+        288,
+        256,
+        224,
+        192,
+        224,
+        256,
+        288,
+        256
+      ]
+    },
+    "sameClockLeftIntervention": {
+      "prefixTick": 1718,
+      "playerWorldX": 190,
+      "playerFeet": 208,
+      "burstPositions": [
+        192,
+        185,
+        198,
+        208,
+        210
+      ],
+      "laterRests": [
+        210,
+        242,
+        274,
+        242
+      ],
+      "prefixPngAndNativeFrameChecks": 2,
+      "note": "Left4andLeft7bothstopat190againstcoral, so theyrepeatthesameplayerpositionratherthantwoindependenttargetdistances."
+    },
+    "inference": "Some retained/gateddirectionstate canrespond toplayerposition duringaburst. Random/globalphase is possible but unproven. No exact gateprobability orPRNGisclaimed."
+  },
+  "unresolved": [
+    "TrueinitialspawnX/AIY/velocityareoffscreen; possible304/352initialXfollowedby32pxapproach remainsinferred.",
+    "Observable5-2activationboundary camera0/player74versuscamera2/player82 doesnotseparate camera parserfromproximity.",
+    "Pauseminimum/timerseed cannot be fitted universally fromthegroundedcase alone.",
+    "Intermediatecompression/head-phaseerrors areseparatefromfullbody-anchorphysics.",
+    "No source-conditionedfixtureisafreshbrowsergameplaywin."
+  ],
+  "files": {
+    "candidate": "tools/entity-blooper-candidate.mjs",
+    "fit": "evidence/entity-blooper-candidate-fit.json",
+    "independentControls": "evidence/entity-blooper-candidate-validation.json",
+    "freshHeldoutPlan": "evidence/entity-blooper-heldout-plan.json",
+    "freshHeldoutValidation": "evidence/entity-blooper-heldout-validation.json",
+    "freshHeldoutMotorOnly": "evidence/entity-blooper-heldout-bursts.json",
+    "directionControl": "evidence/entity-blooper-direction-controls.json",
+    "directionMeasurement": "evidence/entity-blooper-direction-measure.json"
+  }
+}

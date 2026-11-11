@@ -1,0 +1,671 @@
+{
+ "schema": "native-platform-motion-v1",
+ "evidence": "evidence/moving-platform-phase-findings-20261109.md",
+ "note": "Native platform objects are spawned when the scroll position reaches spawnCamera (x - 303 within camera steps) and run from that frame, not from the level timeline. horizontal: x = x - drop[(t - phase) mod period]; lift: y = y +/- drop[t mod period] (up: one pixel more after the first frame); balance: static until a rider stands on one of the pair, see pulley; drop: falls only while ridden, see drop. wrap: (38/43 up, 39/44 down) y = y0 -/+ floor((phase + 15 age) / 16) modulo 256, phase = hidden idle-step position of that object.",
+ "pulley": {
+  "accel": 0.02,
+  "release": 0.02,
+  "speedCap": 2,
+  "travelCap": 60
+ },
+ "drop": {
+  "accel": 0.35,
+  "release": 100,
+  "speedCap": 2.15,
+  "travelCap": 1000
+ },
+ "horizontal": {
+  "period": 240,
+  "phase": 1.45,
+  "drop": [0,1,1,1,1,1,1,1,1,1,2,2,2,2,2,3,3,3,4,4,4,5,5,5,6,6,7,7,7,8,8,9,9,10,11,11,12,12,13,14,14,15,16,16,17,18,18,19,20,21,22,22,23,24,25,26,27,28,28,29,30,31,32,33,33,34,35,36,36,37,38,39,39,40,40,41,42,42,43,43,44,44,45,45,46,46,47,47,48,48,48,49,49,50,50,50,50,51,51,51,51,52,52,52,52,52,52,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,53,52,52,52,52,52,52,51,51,51,51,50,50,50,50,49,49,48,48,48,47,47,46,46,45,45,44,44,43,43,42,42,41,40,40,39,39,38,37,36,36,35,34,33,33,32,31,30,29,28,28,27,26,25,24,23,22,22,21,20,19,18,18,17,16,16,15,14,14,13,12,12,11,11,10,9,9,8,8,7,7,7,6,6,5,5,5,4,4,4,3,3,3,2,2,2,2,2,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0]
+ },
+ "lift": {
+  "period": 384,
+  "drop": [0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,2,2,2,3,3,4,4,4,5,5,6,6,7,7,8,9,9,10,10,11,12,13,13,14,15,16,16,17,18,19,20,21,22,22,23,24,25,26,27,29,30,31,32,33,34,35,36,38,39,40,41,43,44,45,47,48,49,51,52,54,55,57,58,60,61,63,64,66,68,69,71,72,74,75,77,78,80,81,82,84,85,86,88,89,90,91,93,94,95,96,97,99,100,101,102,103,104,105,106,107,108,109,110,111,111,112,113,114,115,116,116,117,118,119,119,120,121,121,122,122,123,123,124,124,125,125,126,126,127,127,127,128,128,128,129,129,129,130,130,130,130,130,130,131,131,131,131,131,131,131,130,130,130,130,130,130,130,130,130,129,129,129,129,128,128,128,128,127,127,126,126,126,125,125,124,124,123,123,122,121,121,120,120,119,118,117,117,116,115,114,114,113,112,111,110,109,108,108,107,106,105,104,103,101,100,99,98,97,96,95,94,92,91,90,89,87,86,85,83,82,81,79,78,76,75,73,72,70,69,67,66,64,62,61,59,58,56,54,53,51,50,48,47,45,44,43,41,40,39,37,36,35,33,32,31,30,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,10,9,8,7,6,6,5,4,4,3,2,2,1,1,0,0,-1,-1,-2,-2,-3,-3,-4,-4,-4,-5,-5,-5,-6,-6,-6,-6,-6,-7,-7,-7,-7,-7,-7,-7,-7,-7,-7,-7,-7,-6,-6,-6,-6,-6,-6,-6,-6,-5,-5,-5,-5,-5,-5,-5,-5,-4,-4,-4,-4,-4,-4,-4,-4,-3,-3,-3,-3,-3,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,-1,-1,-1,-1,-1]
+ },
+ "objects": {
+  "1-3/main": [
+   {
+    "kind": "lift",
+    "spec": [880,175],
+    "x": 880,
+    "y": 96,
+    "direction": "down",
+    "spawnCamera": 576
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1346,129],
+    "x": 1376,
+    "y": 128,
+    "spawnCamera": 1074
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1472,145],
+    "x": 1504,
+    "y": 144,
+    "spawnCamera": 1201
+   },
+   {
+    "kind": "horizontal",
+    "spec": [2064,97],
+    "x": 2096,
+    "y": 96,
+    "spawnCamera": 1794
+   }
+  ],
+  "1-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [2182,97],
+    "x": 2208,
+    "y": 96,
+    "spawnCamera": 1907
+   }
+  ],
+  "2-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [2176,97],
+    "x": 2208,
+    "y": 96,
+    "spawnCamera": 1908
+   },
+   {
+    "kind": "wrap",
+    "spec": [1372,160],
+    "x": 1372,
+    "y": 160,
+    "direction": "up",
+    "phase": 15,
+    "spawnCamera": 1062
+   },
+   {
+    "kind": "wrap",
+    "spec": [1420,160],
+    "x": 1420,
+    "y": 160,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 1107
+   }
+  ],
+  "3-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [2164,97],
+    "x": 2208,
+    "y": 96,
+    "spawnCamera": 1905
+   }
+  ],
+  "5-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [2181,97],
+    "x": 2208,
+    "y": 96,
+    "spawnCamera": 1903
+   },
+   {
+    "kind": "wrap",
+    "spec": [1372,160],
+    "x": 1372,
+    "y": 160,
+    "direction": "up",
+    "phase": 15,
+    "spawnCamera": 1056
+   },
+   {
+    "kind": "wrap",
+    "spec": [1420,160],
+    "x": 1420,
+    "y": 160,
+    "direction": "down",
+    "phase": 15,
+    "spawnCamera": 1106
+   }
+  ],
+  "6-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [2145,97],
+    "x": 2208,
+    "y": 96,
+    "spawnCamera": 1906
+   }
+  ],
+  "3-3/main": [
+   {
+    "kind": "horizontal",
+    "spec": [452,65],
+    "x": 480,
+    "y": 64,
+    "spawnCamera": 177
+   },
+   {
+    "kind": "horizontal",
+    "spec": [486,129],
+    "x": 528,
+    "y": 128,
+    "spawnCamera": 224
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1474,145],
+    "x": 1504,
+    "y": 144,
+    "spawnCamera": 1199
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1501,81],
+    "x": 1536,
+    "y": 80,
+    "spawnCamera": 1234
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1618,177],
+    "x": 1648,
+    "y": 176,
+    "spawnCamera": 1352
+   },
+   {
+    "kind": "horizontal",
+    "spec": [2082,97],
+    "x": 2112,
+    "y": 96,
+    "spawnCamera": 1809
+   },
+   {
+    "kind": "balance",
+    "spec": [1293,95],
+    "x": 1296,
+    "y": 94,
+    "pair": [1293,95],
+    "side": 1,
+    "spawnCamera": 997
+   },
+   {
+    "kind": "balance",
+    "spec": [1420,128],
+    "x": 1408,
+    "y": 126,
+    "pair": [1293,95],
+    "side": -1,
+    "spawnCamera": 1107
+   },
+   {
+    "kind": "balance",
+    "spec": [2175,79],
+    "x": 2176,
+    "y": 78,
+    "pair": [2175,79],
+    "side": 1,
+    "spawnCamera": 1874
+   },
+   {
+    "kind": "balance",
+    "spec": [2212,104],
+    "x": 2240,
+    "y": 126,
+    "pair": [2175,79],
+    "side": -1,
+    "spawnCamera": 1937
+   },
+   {
+    "kind": "drop",
+    "spec": [959,112],
+    "x": 960,
+    "y": 96,
+    "pair": [959,112],
+    "side": 1,
+    "spawnCamera": 658
+   }
+  ],
+  "4-3/main": [
+   {
+    "kind": "lift",
+    "spec": [962,138],
+    "x": 928,
+    "y": 96,
+    "direction": "down",
+    "spawnCamera": 624
+   },
+   {
+    "kind": "lift",
+    "spec": [992,138],
+    "x": 992,
+    "y": 64,
+    "direction": "down",
+    "spawnCamera": 688
+   },
+   {
+    "kind": "lift",
+    "spec": [2183,146],
+    "x": 2176,
+    "y": 80,
+    "direction": "down",
+    "spawnCamera": 1871
+   },
+   {
+    "kind": "balance",
+    "spec": [766,80],
+    "x": 768,
+    "y": 78,
+    "pair": [766,80],
+    "side": 1,
+    "spawnCamera": 466
+   },
+   {
+    "kind": "balance",
+    "spec": [880,126],
+    "x": 880,
+    "y": 126,
+    "pair": [766,80],
+    "side": -1,
+    "spawnCamera": 581
+   },
+   {
+    "kind": "balance",
+    "spec": [1279,81],
+    "x": 1280,
+    "y": 78,
+    "pair": [1279,81],
+    "side": 1,
+    "spawnCamera": 979
+   },
+   {
+    "kind": "balance",
+    "spec": [1408,136],
+    "x": 1408,
+    "y": 142,
+    "pair": [1279,81],
+    "side": -1,
+    "spawnCamera": 1106
+   },
+   {
+    "kind": "balance",
+    "spec": [1456,85],
+    "x": 1456,
+    "y": 78,
+    "pair": [1456,85],
+    "side": 1,
+    "spawnCamera": 1154
+   },
+   {
+    "kind": "balance",
+    "spec": [1536,132],
+    "x": 1536,
+    "y": 142,
+    "pair": [1456,85],
+    "side": -1,
+    "spawnCamera": 1234
+   },
+   {
+    "kind": "balance",
+    "spec": [1632,81],
+    "x": 1632,
+    "y": 78,
+    "pair": [1632,81],
+    "side": 1,
+    "spawnCamera": 1329
+   },
+   {
+    "kind": "balance",
+    "spec": [1728,141],
+    "x": 1728,
+    "y": 142,
+    "pair": [1632,81],
+    "side": -1,
+    "spawnCamera": 1426
+   }
+  ],
+  "5-3/main": [
+   {
+    "kind": "lift",
+    "spec": [880,129],
+    "x": 880,
+    "y": 96,
+    "direction": "down",
+    "spawnCamera": 577
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1346,129],
+    "x": 1376,
+    "y": 128,
+    "spawnCamera": 1074
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1466,145],
+    "x": 1504,
+    "y": 144,
+    "spawnCamera": 1202
+   },
+   {
+    "kind": "horizontal",
+    "spec": [2065,97],
+    "x": 2096,
+    "y": 96,
+    "spawnCamera": 1791
+   }
+  ],
+  "6-3/main": [
+   {
+    "kind": "lift",
+    "spec": [448,142],
+    "x": 448,
+    "y": 208,
+    "direction": "up",
+    "spawnCamera": 145
+   },
+   {
+    "kind": "horizontal",
+    "spec": [658,81],
+    "x": 688,
+    "y": 80,
+    "spawnCamera": 389
+   },
+   {
+    "kind": "horizontal",
+    "spec": [736,113],
+    "x": 768,
+    "y": 112,
+    "spawnCamera": 467
+   },
+   {
+    "kind": "horizontal",
+    "spec": [846,97],
+    "x": 880,
+    "y": 96,
+    "spawnCamera": 581
+   },
+   {
+    "kind": "lift",
+    "spec": [960,128],
+    "x": 960,
+    "y": 192,
+    "direction": "up",
+    "spawnCamera": 660
+   },
+   {
+    "kind": "horizontal",
+    "spec": [1910,81],
+    "x": 1936,
+    "y": 80,
+    "spawnCamera": 1634
+   },
+   {
+    "kind": "balance",
+    "spec": [1128,88],
+    "x": 1128,
+    "y": 78,
+    "pair": [1128,88],
+    "side": 1,
+    "spawnCamera": 818
+   },
+   {
+    "kind": "balance",
+    "spec": [1192,132],
+    "x": 1192,
+    "y": 142,
+    "pair": [1128,88],
+    "side": -1,
+    "spawnCamera": 883
+   },
+   {
+    "kind": "balance",
+    "spec": [1256,80],
+    "x": 1256,
+    "y": 78,
+    "pair": [1256,80],
+    "side": 1,
+    "spawnCamera": 945
+   },
+   {
+    "kind": "balance",
+    "spec": [1304,141],
+    "x": 1304,
+    "y": 142,
+    "pair": [1256,80],
+    "side": -1,
+    "spawnCamera": 997
+   },
+   {
+    "kind": "balance",
+    "spec": [2024,95],
+    "x": 2024,
+    "y": 94,
+    "pair": [2024,95],
+    "side": 1,
+    "spawnCamera": 1714
+   },
+   {
+    "kind": "balance",
+    "spec": [2072,145],
+    "x": 2072,
+    "y": 142,
+    "pair": [2024,95],
+    "side": -1,
+    "spawnCamera": 1762
+   },
+   {
+    "kind": "drop",
+    "spec": [2256,126],
+    "x": 2256,
+    "y": 112,
+    "pair": [2256,126],
+    "side": 1,
+    "spawnCamera": 1957
+   },
+   {
+    "kind": "drop",
+    "spec": [2320,97],
+    "x": 2320,
+    "y": 96,
+    "pair": [2320,97],
+    "side": 1,
+    "spawnCamera": 2017
+   },
+   {
+    "kind": "drop",
+    "spec": [2384,129],
+    "x": 2384,
+    "y": 128,
+    "pair": [2384,129],
+    "side": 1,
+    "spawnCamera": 2084
+   },
+   {
+    "kind": "drop",
+    "spec": [2448,116],
+    "x": 2448,
+    "y": 112,
+    "pair": [2448,116],
+    "side": 1,
+    "spawnCamera": 2147
+   }
+  ],
+  "7-4/main": [
+   {
+    "kind": "drop",
+    "spec": [288,113],
+    "x": 288,
+    "y": 112,
+    "pair": [288,113],
+    "side": 1,
+    "spawnCamera": 0
+   },
+   {
+    "kind": "drop",
+    "spec": [352,139],
+    "x": 352,
+    "y": 128,
+    "pair": [352,139],
+    "side": 1,
+    "spawnCamera": 49
+   }
+  ],
+  "1-2/area-2": [
+   {
+    "kind": "wrap",
+    "spec": [2236,112],
+    "x": 2236,
+    "y": 112,
+    "direction": "down",
+    "phase": 14,
+    "spawnCamera": 1930
+   },
+   {
+    "kind": "wrap",
+    "spec": [2236,208],
+    "x": 2236,
+    "y": 208,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 1930
+   },
+   {
+    "kind": "wrap",
+    "spec": [2476,16],
+    "x": 2476,
+    "y": 16,
+    "direction": "up",
+    "phase": 11,
+    "spawnCamera": 2192
+   },
+   {
+    "kind": "wrap",
+    "spec": [2476,144],
+    "x": 2476,
+    "y": 144,
+    "direction": "up",
+    "phase": 7,
+    "spawnCamera": 2212
+   }
+  ],
+  "4-2/area-3": [
+   {
+    "kind": "wrap",
+    "spec": [940,80],
+    "x": 940,
+    "y": 80,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 626
+   },
+   {
+    "kind": "wrap",
+    "spec": [1836,80],
+    "x": 1836,
+    "y": 80,
+    "direction": "down",
+    "phase": 15,
+    "spawnCamera": 1523
+   },
+   {
+    "kind": "wrap",
+    "spec": [1836,192],
+    "x": 1836,
+    "y": 192,
+    "direction": "down",
+    "phase": 8,
+    "spawnCamera": 1523
+   },
+   {
+    "kind": "wrap",
+    "spec": [1980,32],
+    "x": 1980,
+    "y": 32,
+    "direction": "up",
+    "phase": 7,
+    "spawnCamera": 1668
+   },
+   {
+    "kind": "wrap",
+    "spec": [1980,144],
+    "x": 1980,
+    "y": 144,
+    "direction": "up",
+    "phase": 11,
+    "spawnCamera": 1708
+   },
+   {
+    "kind": "wrap",
+    "spec": [2492,80],
+    "x": 2492,
+    "y": 80,
+    "direction": "down",
+    "phase": 4,
+    "spawnCamera": 2179
+   },
+   {
+    "kind": "wrap",
+    "spec": [2492,192],
+    "x": 2492,
+    "y": 192,
+    "direction": "down",
+    "phase": 14,
+    "spawnCamera": 2224
+   }
+  ],
+  "8-4/main": [
+   {
+    "kind": "horizontal",
+    "spec": [918,209],
+    "x": 1120,
+    "y": 208,
+    "spawnCamera": 817
+   }
+  ],
+  "5-2/optional-water": [
+   {
+    "kind": "wrap",
+    "spec": [364,96],
+    "x": 364,
+    "y": 96,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 49
+   },
+   {
+    "kind": "wrap",
+    "spec": [460,192],
+    "x": 460,
+    "y": 192,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 145
+   }
+  ],
+  "6-2/optional-water": [
+   {
+    "kind": "wrap",
+    "spec": [364,96],
+    "x": 364,
+    "y": 96,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 49
+   },
+   {
+    "kind": "wrap",
+    "spec": [460,192],
+    "x": 460,
+    "y": 192,
+    "direction": "down",
+    "phase": 0,
+    "spawnCamera": 145
+   }
+  ]
+ },
+ "wrap": {
+  "stepsPerPeriod": 15,
+  "period": 16,
+  "span": 256
+ }
+}

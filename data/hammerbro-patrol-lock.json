@@ -1,0 +1,18 @@
+{
+  "schema": "hammerbro-patrol-lock-v1",
+  "lockedUtc": "2026-11-06T04:37:43.724Z",
+  "planSha256": "a3fa8222f3b13455d8f2326a2b5e53fce43e8141b4d9292c4e304c155a4077ba",
+  "calibrationSha256": "5ad0d8a7126a35de732a7a62df9d3e63f9d6a48d1e8f7402bfe6711cd18a7827",
+  "motor": {
+    "speed": 0.25,
+    "span": 16,
+    "observedBounds": [
+      1292,
+      1308
+    ],
+    "reversal": "Reflect overshoot at endpoints; continuousnativecounterphase unobserved."
+  },
+  "rasterFraction": 0.5,
+  "initialDirection": -1,
+  "qualification": "Thesecontrols initiallymatchsameknownsourceprefix; initialdirectedphase is an observed localfixtureanchor, notnativebirthphase orfullAIprediction."
+}

@@ -1,0 +1,369 @@
+{
+  "schema": "firebar-collision-plan-v1",
+  "declaredUtc": "2026-11-06T00:47:57.167Z",
+  "scope": "Read-only reference controller/images; no runtime/compiler/renderer changes",
+  "prefix": {
+    "winningDecisions": 924,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "safeApproach": [
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [
+        "right",
+        "a",
+        "b"
+      ],
+      "ticks": 8
+    },
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 2
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-contact-0",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 8,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-contact-8",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 8,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 8,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-contact-16",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 8,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 16,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "reserved-contact-5",
+      "extraNeutralTicks": 0,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 8,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 5,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7,
+          "stage": "contact",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "contact",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 35,
+  "hypotheses": [
+    "Global/area clock; additional preactivation delay changes later angle by elapsed native time",
+    "Object activation clock; identical spatial approach gives same angles despite earlier waiting",
+    "Discrete angle states vs continuous sine",
+    "Actual flame quad center relative to pivot block; animation phase independent of angular phase"
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "firstDamageNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Do not open or fit reserved-contact-5 before freezing a collision-shape candidate. Original motion reserved13 is also still unopened.",
+  "limits": [
+    "A source death is not automatically attributed to a firebar. Lava, falls or unclear images remain ambiguous.",
+    "Seven/eight-native-frame image intervals can leave collision radius unresolved. No exact radius is claimed without discriminating evidence."
+  ],
+  "goal": "Ordinary jump to the first firebar pillar under three calibrated approach phases plus an unopened5-tick heldout phase; distinguish orb damage from lava by actual player/orb PNG positions. Measure whether bar motion freezes during death."
+}

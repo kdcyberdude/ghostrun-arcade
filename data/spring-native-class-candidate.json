@@ -1,0 +1,80 @@
+{
+  "lockedUTC": "2026-11-06T08:42:03.355Z",
+  "scope": "Observed3-1 running-approach and stationary/walking-approach spring components only; no medium/swim/other-size/other-level generalization.",
+  "tolerances": {
+    "positionPixels": 2,
+    "eventActiveNativeFrames": 2
+  },
+  "baseCandidate": {
+    "path": "data/spring-native-candidate.json",
+    "sha256": "817c0faa7362622334d9d9c71bf5c18cf0ba21381c90b5833afe92d00abc3f79"
+  },
+  "rule": {
+    "restSurfaceYFromSpringBase": -24,
+    "contact": "Descending registered feet cross restSurfaceY with observed aligned player. Horizontal contact width is unresolved and is not fabricated here.",
+    "contactFraction": "Clamp the integer feet coordinate to rest surface while preserving the incoming fractional Y; inferred from independently calibrated ordinary jump history and both observed contact phases.",
+    "compression": {
+      "downSteps": 8,
+      "upSteps": 6,
+      "pixelsPerStep": 2,
+      "firstDownStepOnContact": true
+    },
+    "graphics": {
+      "phaseLengths": [
+        4,
+        4,
+        4
+      ],
+      "cells": [
+        41,
+        42,
+        41
+      ],
+      "restCell": 40,
+      "palette": "0f-16-30-27",
+      "baseY": 200
+    },
+    "boost": "New A press while compression was already active requests high launch. A held before/on contact and new A after expansion do not request high launch. Exact first/last eligible native-frame boundary remains inferred, not measured.",
+    "firstLaunchDisplacement": {
+      "low": -5,
+      "high": -10
+    },
+    "followingTrajectory": {
+      "initialVelocityLow": -7,
+      "initialVelocityHigh": -12,
+      "gravityBeforeMovementByPriorJumpClass": {
+        "run": 0.5625,
+        "walk": 0.4375
+      },
+      "maximumFallByPriorJumpClass": {
+        "run": 4,
+        "walk": 4.125
+      },
+      "order": "For every subsequent active update: v=min(maxFall,v+gravity); y+=v. First launch displacement is distinct from this following-trajectory velocity representative."
+    },
+    "horizontalContact": "Observed left negative at registeredX=padX-14, positive atpadX-12; consistent with strict playerX+14>padX. Right boundary remains unmeasured.",
+    "boostQualification": "A rising edge on contact ignored; during active compression requests boost. Freshage3/11checks pending. Exact first/last boundary inferred, not exact source facts."
+  },
+  "sourceQualification": {
+    "running": "V1 retained: stable training/reserved position error<=1px, ordinary high-speed PNG raw4px discrepancies retained; fixed±1native row-phase envelope explains them without force changes.",
+    "walking": "The subsequent ordinary A-only/right-nudge experiment is a V1 universal-gravity counterexample. Same carry/launch with prior walk7/16gravity/cap4.125 fits its two consecutive no-input bounces; frozen now before new walking low/high/lateedge reserved captures.",
+    "historyFractions": {
+      "runEarly": 0.75,
+      "runLater": 0.0625,
+      "walkNudge": 0.125
+    },
+    "arithmeticCorrection": "evidence/spring-native-candidate-provenance-correction.json",
+    "unresolved": [
+      "Vertical base collision bounds: edge cases intercepted by spring or missbase.",
+      "Camera scrolling during horizontal spring lock.",
+      "Unmeasured jump classes/sizes/levels."
+    ]
+  },
+  "bindings": {
+    "evidence/spring-native-base-collision-v2-training-measurements.json": "b05276cf0266fd3307e66c56cd3ea817e6b405b321c57b38619440032bdb6e9b",
+    "evidence/spring-native-base-collision-v2-analysis.json": "d1a065930308c5ab42c09c0eaf72c7b7c0a89abf02614d6bc28b0977c7cfbd41",
+    "evidence/spring-native-reserved-validation.json": "7210b7559c17559665eefad7db1f6c109711f852141e7ce1b8dc48ce39fdc65c",
+    "evidence/spring-native-reserved-early-validation.json": "5932321cc932fdb5b8506cf7e90ce23a79775326eb45a178fd2692777e53a011"
+  },
+  "status": "Prospective two-observed-class diagnostic candidate; no runtime integration."
+}

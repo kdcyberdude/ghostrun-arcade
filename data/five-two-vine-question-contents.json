@@ -1,0 +1,807 @@
+{
+  "schema": "accepted-observed-question-contents-v1",
+  "level": "5-2",
+  "area": "area-2",
+  "sourceTrace": "evidence/local/five-two-vine-remaining/trace.jsonl",
+  "geometry": "data/five-two-vine-question-geometry.json",
+  "status": "all-five-question-contents-physically-observed-coins",
+  "contents": [
+    {
+      "column": 78,
+      "row": 9,
+      "worldX": 1248,
+      "worldY": 144,
+      "content": "coin",
+      "outcome": "coin-release-and-question-becomes-used",
+      "before": {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      "activation": {
+        "sequence": 19617,
+        "tick": 5485,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19617-tick-05485.png"
+      },
+      "after": {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 192,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          85,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "exactAfterArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          22,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "coinCounter": {
+        "before": 63,
+        "after": 64
+      },
+      "coinArtwork": {
+        "asset": "assets/graphics/special/sprite-jumping_coins-1.png",
+        "origin": [
+          72,
+          93
+        ],
+        "matchedOpaquePixels": 48,
+        "paletteChanged": false
+      },
+      "note": "No coin was present above this question block before activation. The specific head-hit frame increments the coin counter by one and the same block is used afterward."
+    },
+    {
+      "column": 79,
+      "row": 9,
+      "worldX": 1264,
+      "worldY": 144,
+      "content": "coin",
+      "outcome": "coin-release-and-question-becomes-used",
+      "before": {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      "activation": {
+        "sequence": 19614,
+        "tick": 5478,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19614-tick-05478.png"
+      },
+      "after": {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 192,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          101,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "exactAfterArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          38,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "coinCounter": {
+        "before": 62,
+        "after": 63
+      },
+      "coinArtwork": {
+        "asset": "assets/graphics/special/sprite-jumping_coins-2.png",
+        "origin": [
+          88,
+          88
+        ],
+        "matchedOpaquePixels": 14,
+        "paletteChanged": false
+      },
+      "note": "No coin was present above this question block before activation. The specific head-hit frame increments the coin counter by one and the same block is used afterward."
+    },
+    {
+      "column": 80,
+      "row": 9,
+      "worldX": 1280,
+      "worldY": 144,
+      "content": "coin",
+      "outcome": "coin-release-and-question-becomes-used",
+      "before": {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      "activation": {
+        "sequence": 19609,
+        "tick": 5466,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19609-tick-05466.png"
+      },
+      "after": {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 192,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          117,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "exactAfterArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          54,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "coinCounter": {
+        "before": 61,
+        "after": 62
+      },
+      "coinArtwork": {
+        "asset": "assets/graphics/special/sprite-jumping_coins-1.png",
+        "origin": [
+          111,
+          88
+        ],
+        "matchedOpaquePixels": 48,
+        "paletteChanged": false
+      },
+      "note": "No coin was present above this question block before activation. The specific head-hit frame increments the coin counter by one and the same block is used afterward."
+    },
+    {
+      "column": 81,
+      "row": 9,
+      "worldX": 1296,
+      "worldY": 144,
+      "content": "coin",
+      "outcome": "coin-release-and-question-becomes-used",
+      "before": {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      "activation": {
+        "sequence": 19623,
+        "tick": 5500,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/19623-tick-05500.png"
+      },
+      "after": {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 192,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          133,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "exactAfterArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          70,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "coinCounter": {
+        "before": 64,
+        "after": 65
+      },
+      "coinArtwork": {
+        "asset": "assets/graphics/special/sprite-jumping_coins-1.png",
+        "origin": [
+          87,
+          87
+        ],
+        "matchedOpaquePixels": 48,
+        "paletteChanged": false
+      },
+      "note": "No coin was present above this question block before activation. The specific head-hit frame increments the coin counter by one and the same block is used afterward."
+    },
+    {
+      "column": 82,
+      "row": 9,
+      "worldX": 1312,
+      "worldY": 144,
+      "content": "coin",
+      "outcome": "coin-release-and-question-becomes-used",
+      "before": {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      "activation": {
+        "sequence": 19628,
+        "tick": 5513,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19628-tick-05513.png"
+      },
+      "after": {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      },
+      "exactBeforeArtwork": {
+        "metatile": 192,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          149,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "exactAfterArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          86,
+          144
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "coinCounter": {
+        "before": 65,
+        "after": 66
+      },
+      "coinArtwork": null,
+      "note": "No coin was present above this question block before activation. The specific head-hit frame increments the coin counter by one and the same block is used afterward. The fifth popup is not an exact unoccluded supplied-sprite match in the captured activation frame; the direct65-to66 counter change and exact raised/settled used block prove its coin release.",
+      "exactRaisedUsedArtwork": {
+        "metatile": 196,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          86,
+          142
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      }
+    }
+  ],
+  "reproduction": {
+    "winningPrefixTicks": 5459,
+    "prefixSource": "data/observed-winning-inputs.json",
+    "prefixEvidence": {
+      "sequence": 19606,
+      "tick": 5459,
+      "request": {
+        "op": "step",
+        "mask": 40,
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-remaining/19606-tick-05459.png"
+    },
+    "requests": [
+      {
+        "sequence": 19607,
+        "tick": 5462,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19607-tick-05462.png"
+      },
+      {
+        "sequence": 19608,
+        "tick": 5463,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+      },
+      {
+        "sequence": 19609,
+        "tick": 5466,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19609-tick-05466.png"
+      },
+      {
+        "sequence": 19610,
+        "tick": 5468,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19610-tick-05468.png"
+      },
+      {
+        "sequence": 19611,
+        "tick": 5471,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/19611-tick-05471.png"
+      },
+      {
+        "sequence": 19612,
+        "tick": 5473,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19612-tick-05473.png"
+      },
+      {
+        "sequence": 19613,
+        "tick": 5475,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19613-tick-05475.png"
+      },
+      {
+        "sequence": 19614,
+        "tick": 5478,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19614-tick-05478.png"
+      },
+      {
+        "sequence": 19615,
+        "tick": 5480,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/five-two-vine-remaining/19615-tick-05480.png"
+      },
+      {
+        "sequence": 19616,
+        "tick": 5482,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19616-tick-05482.png"
+      },
+      {
+        "sequence": 19617,
+        "tick": 5485,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19617-tick-05485.png"
+      },
+      {
+        "sequence": 19618,
+        "tick": 5486,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19618-tick-05486.png"
+      },
+      {
+        "sequence": 19619,
+        "tick": 5489,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19619-tick-05489.png"
+      },
+      {
+        "sequence": 19620,
+        "tick": 5494,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/five-two-vine-remaining/19620-tick-05494.png"
+      },
+      {
+        "sequence": 19621,
+        "tick": 5495,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 7,
+        "image": "evidence/local/five-two-vine-remaining/19621-tick-05495.png"
+      },
+      {
+        "sequence": 19622,
+        "tick": 5497,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19622-tick-05497.png"
+      },
+      {
+        "sequence": 19623,
+        "tick": 5500,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/five-two-vine-remaining/19623-tick-05500.png"
+      },
+      {
+        "sequence": 19624,
+        "tick": 5504,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19624-tick-05504.png"
+      },
+      {
+        "sequence": 19625,
+        "tick": 5507,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19625-tick-05507.png"
+      },
+      {
+        "sequence": 19626,
+        "tick": 5508,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 1
+        },
+        "nativeFrames": 8,
+        "image": "evidence/local/five-two-vine-remaining/19626-tick-05508.png"
+      },
+      {
+        "sequence": 19627,
+        "tick": 5510,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/five-two-vine-remaining/19627-tick-05510.png"
+      },
+      {
+        "sequence": 19628,
+        "tick": 5513,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/five-two-vine-remaining/19628-tick-05513.png"
+      },
+      {
+        "sequence": 19629,
+        "tick": 5517,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+      }
+    ]
+  },
+  "beforeMap": {
+    "evidence": {
+      "sequence": 19608,
+      "tick": 5463,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "image": "evidence/local/five-two-vine-remaining/19608-tick-05463.png"
+    },
+    "knownUpperArtwork": {
+      "metatile": 81,
+      "atlas": "metatiles-palette-025.png",
+      "screenOrigin": [
+        197,
+        80
+      ],
+      "width": 16,
+      "height": 16,
+      "matchedPixels": 256
+    },
+    "inferredCameraX": 1163
+  },
+  "afterMap": {
+    "evidence": {
+      "sequence": 19629,
+      "tick": 5517,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+    },
+    "knownUpperArtwork": {
+      "metatile": 81,
+      "atlas": "metatiles-palette-025.png",
+      "screenOrigin": [
+        134,
+        80
+      ],
+      "width": 16,
+      "height": 16,
+      "matchedPixels": 256
+    },
+    "inferredCameraX": 1226
+  },
+  "actualLastLivingPlayer": {
+    "evidence": {
+      "sequence": 19629,
+      "tick": 5517,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+    },
+    "direction": "left",
+    "cell": 23,
+    "originX": 82,
+    "originY": 177,
+    "feetY": 208,
+    "matchedPixels": 143
+  },
+  "postFifthBumpActorObservation": {
+    "evidence": {
+      "sequence": 19629,
+      "tick": 5517,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/five-two-vine-remaining/19629-tick-05517.png"
+    },
+    "description": "The green jumping actor above the fifth block is visibly upended and moves away;1000 score text appears. This is separate from the fifth coin release already visible at19628.",
+    "classificationNote": "Earlier exploratory notes called this actor a paratroopa. The screenshots show it associated with thrown hammers; no species assumption is needed for the content result."
+  },
+  "scope": "All five specific question blocks are now proven coins. This does not determine the earlier upper bricks or any other5-2 item contents."
+}

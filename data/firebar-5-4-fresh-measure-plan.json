@@ -1,0 +1,49 @@
+{
+  "schema": "firebar5-4-fresh-motor-measurement-partition-v1",
+  "declaredUtc": "2026-11-06T03:25:04.930356+00:00",
+  "calibration": [
+    {
+      "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+      "role": "cal0",
+      "ticksInclusive": [
+        5936,
+        6086
+      ]
+    },
+    {
+      "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+      "role": "cal20",
+      "ticksInclusive": [
+        5936,
+        6086
+      ]
+    }
+  ],
+  "reserved": [
+    {
+      "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+      "role": "reserved13",
+      "ticksInclusive": [
+        5936,
+        6079
+      ]
+    }
+  ],
+  "geometry": {
+    "observedInnerCenter": [
+      696,
+      217
+    ],
+    "logicalPivotCandidate": [
+      696,
+      216
+    ]
+  },
+  "reservation": "Fresh reserved13 static/player registry is qualified, but flame geometry is not extracted until calibration candidate freezes. No image-phase/camera selection on target flames.",
+  "sourceHashes": {
+    "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json": "a39435021bac0b9d35f9eb8ab9447a5a689264d1e178d3906451f3eab3d66cfa",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "data/firebar-5-4-preactivation-plan.json": "8ba0f1f389c1fcff18540850adf0ad2c45f879dc2eda98b3377b73d146735b49",
+    "tools/firebar-5-4-fresh-registry.mjs": "58b787286853ea456bcb23b9a1dca685f40fe3280ef932084679e49a2b99c46b"
+  }
+}

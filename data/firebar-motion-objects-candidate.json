@@ -1,0 +1,52 @@
+{
+  "schema": "qualified-firebar-objects-candidate-v1",
+  "createdUtc": "2026-11-06T01:24:32.975138+00:00",
+  "objects": [
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 488,
+      "y": 168,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 768,
+      "qualification": "Firstlockedcandidate101heldoutangle/597centersall0px/0epocherror."
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "x": 792,
+      "y": 152,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 864,
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 968,
+      "y": 104,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 128,
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 1416,
+      "y": 72,
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    }
+  ],
+  "limitations": [
+    "No universalinitialorientation established: directly observedphases differamongbars. These valuesmayencodeperbarinit orobjectslot/history; qualificationcannotresolvewhich.",
+    "Camera-entryactivation epoch usesfixednearestinterpolation atcentralquadboundary, notorbphase-fitting orrecordedtickforcing.",
+    "Long12bead andapparentlyfastbars areseparateunqualifiedclasses.",
+    "Fullscene99percentRGB, flameanimationepoch, collisionradius, andall-castlecompletenessremainunproved."
+  ]
+}

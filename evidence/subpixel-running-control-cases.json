@@ -1,0 +1,953 @@
+{
+  "tolerancePixels": 2,
+  "method": "Reserved fresh reference controls declared before capture; exact actual native frame counts and viewed PNG measurements. Same production Simulation as browser. Candidate constants were not retuned after this held-out set.",
+  "plan": "evidence/subpixel-heldout6-plan.json",
+  "planSha256": "3f540f92a775e50ca3e70b1f61e53b4e81b8a05d8852ad7fc99177fdab025744",
+  "baselineSourceSha256": "b3cd29ae66cd727f48740106d15cd9f74c2513faafa4c7fb37572304d3f7a2c4",
+  "candidateSourceSha256": "b61a51550a718e78f6fcb6263cee826dc0cfec1bb9c33179dd786b094b4df3c0",
+  "freshObservationCount": 82,
+  "cases": [
+    {
+      "name": "heldout6-partial-coast-one-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-002.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-003.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-007.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 60,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-008.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 65,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-009.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-010.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 56,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-011.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 47,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 37,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 25,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 14,
+          "y": 150,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-coast-one-turn-015.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout6-intermediate-run-coast-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-001.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 41,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 52,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 76,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-006.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 90,
+          "y": 208,
+          "camera": 5,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-007.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 103,
+          "y": 208,
+          "camera": 13,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-008.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 111,
+          "y": 208,
+          "camera": 20,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-009.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 112,
+          "y": 208,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-010.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 108,
+          "y": 208,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-011.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 100,
+          "y": 208,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-012.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 91,
+          "y": 189,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-013.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 80,
+          "y": 165,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 71,
+          "y": 150,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 61,
+          "y": 140,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-intermediate-run-coast-turn-016.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout6-low-run-turn-short-jump",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-002.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 41,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-005.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 48,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-006.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 45,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-007.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 38,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-008.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 29,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 20,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-low-run-turn-short-jump-010.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout6-double-full-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-002.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-003.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-007.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-008.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 108,
+          "y": 208,
+          "camera": 16,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-009.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 120,
+          "y": 208,
+          "camera": 24,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-010.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 125,
+          "y": 208,
+          "camera": 29,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-011.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 126,
+          "y": 208,
+          "camera": 30,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-012.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 129,
+          "y": 208,
+          "camera": 33,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-013.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 136,
+          "y": 208,
+          "camera": 40,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-014.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 146,
+          "y": 208,
+          "camera": 47,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-015.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 158,
+          "y": 208,
+          "camera": 55,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-016.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 166,
+          "y": 208,
+          "camera": 62,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-017.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 174,
+          "y": 208,
+          "camera": 70,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-double-full-turn-018.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout6-partial-bheld-coast-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-002.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-003.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-004.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 41,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-007.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 52,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-008.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-009.png"
+        },
+        {
+          "mask": 32,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-010.png"
+        },
+        {
+          "mask": 32,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 83,
+          "y": 208,
+          "camera": 3,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-011.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 91,
+          "y": 208,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-012.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 90,
+          "y": 208,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-013.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 85,
+          "y": 208,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-014.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 78,
+          "y": 189,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-015.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 71,
+          "y": 165,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-016.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 64,
+          "y": 151,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-017.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 57,
+          "y": 143,
+          "camera": 10,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-50-12.956Z/heldout6-partial-bheld-coast-turn-018.png"
+        }
+      ]
+    }
+  ],
+  "regressionCases": [
+    {
+      "name": "stable-reverse",
+      "evidence": "data/physics-measurements.json",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-002.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-003.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-004.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-005.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 44,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-006.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-007.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-008.png"
+        },
+        {
+          "mask": 40,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 74,
+          "y": 208,
+          "camera": 0,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-009.png"
+        },
+        {
+          "mask": 40,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 92,
+          "y": 208,
+          "camera": 7,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-010.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 108,
+          "y": 208,
+          "camera": 16,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-011.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 120,
+          "y": 208,
+          "camera": 24,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-012.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 125,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-013.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 122,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-014.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 117,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-015.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 107,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-016.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 96,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-017.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 79,
+          "y": 208,
+          "camera": 29,
+          "image": "evidence/local/physics-2026-11-05T17-41-10-938Z/stable-reverse-018.png"
+        }
+      ]
+    }
+  ]
+}

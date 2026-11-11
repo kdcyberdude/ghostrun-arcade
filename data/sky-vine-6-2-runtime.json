@@ -1,0 +1,49 @@
+{
+  "source": "data/six-two-vine.json",
+  "mainArea": "main",
+  "room": "6-2-vine-sky",
+  "mainVine": {
+    "id": "6-2-sky-vine",
+    "x": 1296,
+    "baseY": 80,
+    "topY": -32,
+    "autoClimbFeetY": 64,
+    "transitionFeetY": 0
+  },
+  "entrySpawn": [56, 240],
+  "entryVine": {
+    "id": "6-2-sky-entry",
+    "x": 64,
+    "baseY": 256,
+    "topY": 144,
+    "initialHeight": 0
+  },
+  "entry": {
+    "untilFeetY": 184,
+    "waitUntilGrowthComplete": true,
+    "exitRightX": 75,
+    "exitGroundFeetY": 208
+  },
+  "return": {
+    "belowY": 256,
+    "to": "main",
+    "spawn": [2600, 0],
+    "camera": 2560
+  },
+  "status": "Block81,row5 activation, vine climb, distinct 95-column sky geometry, neutral standing75/208, and ordinary fall-return standing2600/80 are observed. Unseen entrance/return spawns, growth/climb thresholds and transition heights reuse the common2-1 candidate and remain inferred. Existing main upper160..162,row5 catches the return naturally. No missing destination cells are synthesized.",
+  "mainTiles": [[77,5,81],[78,5,81],[79,5,81],[80,5,81],[81,5,81],[82,9,95]],
+  "mainTileEvidence": {
+    "upperStrip": {
+      "image": "evidence/local/six-two-vine/05599-tick-06590.png",
+      "palette": 18,
+      "pipeAnchor": {"worldX":1280,"screenX":111,"y":160,"metatile":16,"matchedPixels":256},
+      "camera": 1169,
+      "brickScreenOrigins": [[63,80],[79,80],[95,80],[111,80],[127,80]],
+      "matchedPixelsPerTile": 256,
+      "qualification": "The 8px repeating brick pattern also matches intermediate offsets; the independent pipe anchor selects the 16px main grid."
+    },
+    "hiddenStep": "data/six-two-vine.json hiddenSupportBlock: before5606 is uniformly black; raised5607 and settled5608 match used196; coin counter75→76. Initially invisible95 is an inferred semantic representation of the observed single-coin head hit and subsequent support."
+  },
+  "platform": {"x":256,"y":161,"width":32,"axis":"x","range":0,"speed":1},
+  "platformStatus": "data/vine-optional-cloud-6-2.json independently observes29complete32pxcloudposes and contact atfeet160/art161, right1px/native motion for210nativeframes, neutralcarry and continuedmotion afterjump/walkoff. Exactcontactnativeframe, cameraend, undersidebehavior andoffscreenwrap remain unresolved."
+}

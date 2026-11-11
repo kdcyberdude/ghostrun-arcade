@@ -1,0 +1,84 @@
+{
+  "source": "data/five-two-vine-rider.json",
+  "mainArea": "area-2",
+  "room": "5-2-vine-sky",
+  "mainVine": {
+    "id": "5-2-sky-vine",
+    "x": 1360,
+    "baseY": 80,
+    "topY": -32,
+    "autoClimbFeetY": 64,
+    "transitionFeetY": 0
+  },
+  "entrySpawn": [
+    56,
+    240
+  ],
+  "entryVine": {
+    "id": "5-2-sky-entry",
+    "x": 64,
+    "baseY": 256,
+    "topY": 144,
+    "initialHeight": 0
+  },
+  "entry": {
+    "untilFeetY": 184,
+    "waitUntilGrowthComplete": true,
+    "exitRightX": 75,
+    "exitGroundFeetY": 208
+  },
+  "return": {
+    "belowY": 256,
+    "to": "area-2",
+    "spawn": [
+      2088,
+      0
+    ],
+    "camera": 2048
+  },
+  "mainTiles": [
+    [
+      85,
+      5,
+      81
+    ],
+    [
+      86,
+      5,
+      81
+    ],
+    [
+      87,
+      5,
+      81
+    ],
+    [
+      84,
+      9,
+      95
+    ]
+  ],
+  "mainTileEvidence": {
+    "upperStrip": "data/five-two-vine-remaining-geometry.json: three full pre-hit cells85..87,row5, independently anchored by exact ground91,13 in source6491; actual first85 vine activation in data/five-two-vine-sky.json.",
+    "hiddenStep": "data/five-two-vine-hidden-coin.json: before uniformly blue256pixels, then full raised/settled196, direct66\u219267 and exact14opaque emitted coin. Descriptor95 is an inferred semantic mapping to that observed invisible single-coin foothold."
+  },
+  "platform": {
+    "x": 256,
+    "y": 161,
+    "width": 48,
+    "axis": "x",
+    "range": 0,
+    "speed": 1
+  },
+  "platformStatus": "Fresh rider proof measures top contact atfeet160/art161, actual activation after stationary pre-contact samples, right1px/native for721 independently registered nativeframes, neutralcarry, continuedmotion after camera992 clamp, supported directional boundary and ordinary neutral fall-return. Nominal initialx256 is aligned in source1034; raw initial bitmap world samples254..256 retain raster-phase variation. Exact landing nativeframe, underside and offscreen despawn remain unresolved.",
+  "cameraEnd": 992,
+  "cameraEndEvidence": "Rider source1048 last floor61/world976 atscreen8 fixes camera968. Three low coin bounds139/155/171 shift24px at1049, fixing992; they remain unchanged as platform and rider advance. Exact replay2119/2120 pressesright8+7native while still supported: Mario clamps240/feet160 and the view remains fixed. New destination width78 covers1248pixels with two explicit unknown cells.",
+  "status": "Observed hidden84,9 coin foothold, upper85,5 vine activation and climb, distinct sky102tiles/41coins, actual75/208 entry standing,48px carrier contact/carry/rightwardmotion, directional camera992 boundary, and neutralfall-return2088 with firstfeet48 then208. Older walking-only width74/camera926 are historical partial coverage. No unknown destination cells are synthesized.",
+  "inferredParameters": {
+    "mainVineGrowthAndTop": "topY-32 and the existing common-vine growth/climb behavior are reused candidates; actual growth and climb were seen but exact speed/top outside the viewport were not measured.",
+    "mainVineThresholds": "autoClimbFeetY64 and transitionFeetY0 reuse the existing2-1/3-1 candidate; exact native threshold was not measured.",
+    "entrySpawnAndVine": "56,240 spawn, base256/top144/initialHeight0 and untilFeetY184/wait-growth are common-entry inferences. Actual first visible56,213/feet244 and later standing75,177/feet208 are source facts.",
+    "returnTriggerAndSpawnY": "belowY256, unseen initial returnY0 and reuse of the common delayed transition are inferred. Actual mainreturn originX2088/camera2048 and feet48\u2192188\u2192208 are measured.",
+    "platformSpawn": "Nominal logicalx256 is inferred from exact full platform/floor alignment at1034 and supported by raw initial world samples254..256; y161 artwork and collision top160 are measured independently."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema":"palette-transition-water-dense-v1",
+  "purpose":"Predeclared exact-slice observation of the distinct 2-2 surface-to-water pipe transition. Compare the existing global palette clock and previously proposed universal area-reset model without per-level offsets.",
+  "freshPrefixAutoDecisions":1640,
+  "continuationAutoDecisions":32,
+  "sampling":"Save once after the fresh prefix. Record the next 32 actual auto masks and integer native-slice durations; restore the checkpoint, replay each actual mask one 29781-cycle slice at a time, capture separately labeled live and completed images plus separate read-only palette/PPU timing diagnostics. Verify every replayed decision-end live PNG against its original auto PNG and all control/cycle accounting.",
+  "clock":{"cycle":[39,39,39,23,7,23],"framesPerStage":8,"freshResetClock":16,"pause":"freeze during pause","global":"carry the clock through the entry","genericVisibleReset":"reset clock to zero on first HUD-bearing destination-area live image; no fitted per-world offsets"},
+  "scope":"Exact supplied HUD patch colors only; unrecognized or mixed observations remain unscored. Palette snapshots are separately observed state at the capture instant and must not be equated with pixels already rendered. Live and completed images are distinct. Restored measurement branches are not fresh wins.",
+  "validation":"Do not fit the transition origin or change the clock. Record pre-entry and post-entry color errors, image age, and palette snapshot differences, and retain the last 12 decisions as an independently withheld control tail. No threshold relaxation or changes to production."
+}

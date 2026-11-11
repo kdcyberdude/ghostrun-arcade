@@ -1,0 +1,25 @@
+{
+  "schema": "water-firebar-reservation-lock-v1",
+  "lockedUtc": "2026-11-06T01:45:11.064Z",
+  "motorPriorLock": "data/firebar-shared-lock.json",
+  "hashes": {
+    "src/firebar-motion.ts": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "data/firebar-water-candidate.json": "72586d7468871e481376e02909159ae6595a5da6f23ff12eaa443f2bd1d32b47",
+    "tools/firebar-water-extract.py": "96111fd8d605ad80e7767e278bfa926f3fdee13cb112f6911ea84f92bcff9fa8",
+    "tools/firebar-water-fit.py": "0f461d4cafc9f149c8848a2aee39a38b39056c0e076927c6a1eae7209e2d6f31",
+    "tools/firebar-water-validate.ts": "56806b598641cc994876659a46c85314e038b4ea01a9ae7e27ab3adf6b2f463e"
+  },
+  "reservations": [
+    {
+      "directory": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z",
+      "case": "reserved-8-4-water-cw-13"
+    }
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "scope": "Same generic motor/rules frozen before original three reservations. New water-object initial phase selected only from calibration0/20; reserved13 images unopened at this freeze."
+}

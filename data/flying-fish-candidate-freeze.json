@@ -1,0 +1,63 @@
+{
+  "schema": "flying-fish-candidate-freeze-v1",
+  "frozenUtc": "2026-11-06T02:30:38.628Z",
+  "status": "Empirical trajectory candidate for prospective diagnostics; not an accepted production constant.",
+  "source": [
+    {
+      "path": "data/flying-fish-plan.json",
+      "sha256": "42dca3b114bb2824d7a9447358983ec3c87fb5b104ec06225e2d7c763073081e"
+    },
+    {
+      "path": "data/flying-fish-original-measurements.json",
+      "sha256": "e04597c89c47df11b5b72b941e1a003f3d563819678df8b04613b6fa75a839bc"
+    },
+    {
+      "path": "data/flying-fish-calibration-measurements.json",
+      "sha256": "c337c4c8a5d606b00cfe6b9fe50110f694e93fb4a521f1d8bf39c3f9ed018370"
+    },
+    {
+      "path": "data/flying-fish-camera-checks.json",
+      "sha256": "7b4fa4be87d7ac0fb304ff6dcff9d56aab4448f4f14d61c5436cd26184d85151"
+    }
+  ],
+  "tolerances": {
+    "actorPixels": 2,
+    "cameraPixels": 2,
+    "eventNativeFrames": 8
+  },
+  "candidate": {
+    "vertical": {
+      "order": "y += vy; vy += gravity",
+      "gravity": 0.055,
+      "qualification": "Approximate curvature in displayed/native-frame domain. Does not establish hidden native fractional-force code or drawing/physical feet equivalence.",
+      "firstFishAnchor": {
+        "nativeFrame": 16955,
+        "descriptorFeet": 171,
+        "vy": -3.77
+      },
+      "initialization": "Same first source fish at the authenticated 2252/2256 prefixes uses this frozen anchor. For a new fish, initialize y to its first complete descriptor feet; infer initial vy from its first three consecutive available images only using the same fixed gravity; reserve all subsequent poses for prediction. Do not adjust a later pose or phase.",
+      "sampling": "Continuous predicted positions compared against exact descriptor anchors; failures retained."
+    },
+    "horizontal": {
+      "firstFishMotor": 1.25,
+      "qualification": "First fish only. Later fish demonstrably differ. No single universal magnitude or direction selector is accepted."
+    }
+  },
+  "activationHypothesis": {
+    "type": "Unselected frontier hypothesis",
+    "playerOriginX": 192,
+    "qualification": "First visible arcs extrapolate near initial approach to world x192. Birth may be offscreen; neither trigger nor latent timer is identified."
+  },
+  "notSelected": [
+    "Universal generator interval",
+    "RNG/direction/speed selection",
+    "Exact birth feet/velocity",
+    "Controller-specific speed multiplier",
+    "Native gravity constant"
+  ],
+  "reservedInputs": {
+    "path": "tools/flying-fish-reserved-inputs.jsonl",
+    "sha256": "d3c070f056879ae15418a7ef265829aba859b465d1eddeef1d7fc9b2adf2ba8e",
+    "collected": false
+  }
+}

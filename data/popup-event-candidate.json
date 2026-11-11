@@ -1,0 +1,49 @@
+{
+  "schema": "event-relative-popup-candidate-v1",
+  "lockedUTC": "2026-11-06T03:43:53.376Z",
+  "lockedBeforeFreshReservedCapture": true,
+  "scope": "Isolated candidate only: Goomba/Koopa stomp score labels and1UP collection. No production edit. Assembly for other supplied labels exists, but their events/lifecycles are not qualified here.",
+  "runtimeIntegrationReadiness": "Provisional bounded implementation; item eventorigin/draw ordering explicitly inferred. Root decides integration after isolated checks.",
+  "assembly": "data/popup-assemblies.json",
+  "rules": {
+    "screenCoordinateSpace": true,
+    "captureXAfterCameraCommit": true,
+    "verticalPixelsPerActiveNativeFrame": -1,
+    "firstMovementAge": 1,
+    "enemyFeetYOffset": 32,
+    "itemTopYOffset": 16,
+    "goombaCleanup": "Attached to the actual squashedGoomba removal, currently inferred40activeupdates.",
+    "koopaDurationActiveNativeFrames": 50,
+    "itemDurationActiveNativeFrames": 48
+  },
+  "classification": {
+    "motion": "Measured exact across old253training+111reserved points and new91cleartraining points.",
+    "assembly": "100/1UP exactopaqueRGB+white-mask shape; other numbers suppliedsemanticartwork only.",
+    "enemyOrigin": "Enemyfeet−32. FreshKoopa705absence/706firstlabel at176 plusGoomba842..843first175..176 supportwithin1px.",
+    "itemOrigin": "Inferred itemphysicaltop−16, with one-frame native draw/event phase uncertainty. Fallingitem remains at183at581; ground-routeitem actuallyfalls to198at623 (167visiblepixels), so earlierfixedfloor193/−12hypothesis rejected.",
+    "koopaLifetime": "Inferred50: compatible firstdraw-relative source48..52; maximum2activeframes under declaredsharedprefixcontact.",
+    "itemLifetime": "Inferred48: conditional shareditem source46..48 after retained±1birth/firstdrawphase; maximum2activeframes. Jointorigin/phase model is not independentlyobserved native memory.",
+    "goombaLifetime": "Qualified separately with squashcandidate: source38/39, inferred40within2; useactorcleanup, notuniversalpopupN."
+  },
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "glyph": "exactsuppliedopaqueRGB+white-mask; coveredlabelsremainunobserved"
+  },
+  "trainingBindings": {
+    "evidence/popup-event-plan.json": "dd855d11b99b9daff5c7b04ba01a8e8f0bea2d9d8bf83a38059b1985e7cb522d",
+    "evidence/popup-event-phase-plan.json": "c4401e207ee50d128452c07abd2bc0e9de2042693ae1451d1e3dac59d53dcfd7",
+    "evidence/popup-event-fall-birth-plan.json": "57b700961f69657230f30b73a19d29314cdb68157730f5472de966d8808d962b",
+    "evidence/popup-event-reserved-extra-plan.json": "7cd81711eb502b0e69fca3981ca4f22a1c354fe8fad8c7dee12f09f271aaec77",
+    "evidence/popup-event-training-measurements.json": "46b6eb8d05b034af07d7a758ddc23b07353bdb05810e7951cb716c435387fae7",
+    "evidence/popup-event-phase-training-measurements.json": "bc4c74d51d0b7aa9112db9012a8cdbcad473d1ccba1f7ef1ef254452cd9a8ea7",
+    "evidence/popup-event-fall-birth-training-measurements.json": "40838d7524c74d115fc817fa0f7e0f553682905bb215e25773674e95812c4d2e",
+    "evidence/popup-event-training-analysis.json": "27daafb70e2524a84e7fae65940a1fc141f8b1a5620498ada67d7e225589b02f"
+  },
+  "limitations": [
+    "Physicalcollision/firstdrawing order is inferredwithinoneframe. Defaultisnomovementonbirth thenonepixelperactiveframe.",
+    "Do not countinitializationfromfirstclearlabelasoriginverification. Conditionalitemeventgeometry/model isreportedseparately.",
+    "No popupawardtiming, HUDlag, growthfreezemovement, simultaneouslabels, otherenemyfamilies orotherworldcoverage claimed.",
+    "No timinglaw containsglobalnativeframes, decisionticks orper-encounterscripts."
+  ]
+}

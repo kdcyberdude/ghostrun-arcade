@@ -1,0 +1,1177 @@
+{
+  "schema": "image-only-coin-entry-measurement-v1",
+  "level": "2-1",
+  "sourceTrace": "evidence/local/optional-2-1-entry/trace.jsonl",
+  "prefixDecisions": 1274,
+  "measurementStartTick": 1296,
+  "sourceGeometry": "evidence/local/optional-2-1-entry/source-room.json",
+  "tolerance": {
+    "spriteIdentityPixels": 0,
+    "geometryIdentityPixels": 0,
+    "positionComparisonPixels": 2
+  },
+  "method": "Exact supplied opaque Mario template matching across whole image; all opaque pixels visible. Actual7/8 native frame responses retained. Firstpartialscene requires10 exact nonblack noncoin16px source scanlines, corroborated by inspectedPNG; firstcompletescene separately requires10 complete16px cells. No hidden-state input.",
+  "summary": {
+    "firstGeometryTick": 1306,
+    "firstGeometryNativeFramesSinceStart": 75,
+    "firstCompleteGeometryTick": 1307,
+    "firstCompleteGeometryNativeFramesSinceStart": 83,
+    "firstCompletePlayerTick": 1307,
+    "firstCompletePlayerNativeFramesSinceStart": 83,
+    "firstCompletePlayer": {
+      "originX": 24,
+      "originY": 34,
+      "feetY": 65,
+      "visibleLeft": 26,
+      "visibleRight": 38,
+      "visibleTop": 51,
+      "visibleBottom": 65,
+      "cell": 12,
+      "direction": "right",
+      "annotation": "walking frame 1",
+      "confidence": 1,
+      "matchedPixels": 120,
+      "opaquePixels": 120,
+      "fullyVisibleOpaquePose": true,
+      "poseCandidatesAbove98Percent": 1,
+      "exactOpaquePoseCandidates": 1,
+      "strongestPoseAmbiguityCount": 1,
+      "strongestPoseCandidates": [
+        {
+          "originX": 24,
+          "originY": 34,
+          "feetY": 65,
+          "cell": 12,
+          "direction": "right"
+        }
+      ]
+    },
+    "firstFloorTick": 1313,
+    "firstFloorNativeFramesSinceStart": 128,
+    "allBlackTicks": [
+      1304,
+      1305
+    ]
+  },
+  "measurements": [
+    {
+      "sequence": 199,
+      "tick": 1296,
+      "sentUtc": "2026-11-05T22:02:09.724610+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 0,
+      "image": "evidence/local/optional-2-1-entry/00199-tick-01296.png",
+      "player": {
+        "originX": 114,
+        "originY": 113,
+        "feetY": 144,
+        "visibleLeft": 115,
+        "visibleRight": 127,
+        "visibleTop": 130,
+        "visibleBottom": 144,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 113,
+            "feetY": 144,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 200,
+      "tick": 1297,
+      "sentUtc": "2026-11-05T22:02:09.732998+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 8,
+      "image": "evidence/local/optional-2-1-entry/00200-tick-01297.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 201,
+      "tick": 1298,
+      "sentUtc": "2026-11-05T22:02:09.742089+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 15,
+      "image": "evidence/local/optional-2-1-entry/00201-tick-01298.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 202,
+      "tick": 1299,
+      "sentUtc": "2026-11-05T22:02:09.750135+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 23,
+      "image": "evidence/local/optional-2-1-entry/00202-tick-01299.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 203,
+      "tick": 1300,
+      "sentUtc": "2026-11-05T22:02:09.759132+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 30,
+      "image": "evidence/local/optional-2-1-entry/00203-tick-01300.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 204,
+      "tick": 1301,
+      "sentUtc": "2026-11-05T22:02:09.767149+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 38,
+      "image": "evidence/local/optional-2-1-entry/00204-tick-01301.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 205,
+      "tick": 1302,
+      "sentUtc": "2026-11-05T22:02:09.776106+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 45,
+      "image": "evidence/local/optional-2-1-entry/00205-tick-01302.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 206,
+      "tick": 1303,
+      "sentUtc": "2026-11-05T22:02:09.784165+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 53,
+      "image": "evidence/local/optional-2-1-entry/00206-tick-01303.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 207,
+      "tick": 1304,
+      "sentUtc": "2026-11-05T22:02:09.790972+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 60,
+      "image": "evidence/local/optional-2-1-entry/00207-tick-01304.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": true
+    },
+    {
+      "sequence": 208,
+      "tick": 1305,
+      "sentUtc": "2026-11-05T22:02:09.794774+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 68,
+      "image": "evidence/local/optional-2-1-entry/00208-tick-01305.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 0,
+      "expectedStaticTiles": 86,
+      "allBlackImage": true
+    },
+    {
+      "sequence": 209,
+      "tick": 1306,
+      "sentUtc": "2026-11-05T22:02:09.799218+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 75,
+      "image": "evidence/local/optional-2-1-entry/00209-tick-01306.png",
+      "player": null,
+      "exactStaticTiles": 0,
+      "exactColoredStaticScanlines": 83,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 210,
+      "tick": 1307,
+      "sentUtc": "2026-11-05T22:02:09.803252+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 83,
+      "image": "evidence/local/optional-2-1-entry/00210-tick-01307.png",
+      "player": {
+        "originX": 24,
+        "originY": 34,
+        "feetY": 65,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 51,
+        "visibleBottom": 65,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 34,
+            "feetY": 65,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 211,
+      "tick": 1308,
+      "sentUtc": "2026-11-05T22:02:09.812067+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 90,
+      "image": "evidence/local/optional-2-1-entry/00211-tick-01308.png",
+      "player": {
+        "originX": 24,
+        "originY": 43,
+        "feetY": 74,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 60,
+        "visibleBottom": 74,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 43,
+            "feetY": 74,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 212,
+      "tick": 1309,
+      "sentUtc": "2026-11-05T22:02:09.820739+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 98,
+      "image": "evidence/local/optional-2-1-entry/00212-tick-01309.png",
+      "player": {
+        "originX": 24,
+        "originY": 59,
+        "feetY": 90,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 76,
+        "visibleBottom": 90,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 59,
+            "feetY": 90,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 213,
+      "tick": 1310,
+      "sentUtc": "2026-11-05T22:02:09.829493+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 106,
+      "image": "evidence/local/optional-2-1-entry/00213-tick-01310.png",
+      "player": {
+        "originX": 24,
+        "originY": 87,
+        "feetY": 118,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 104,
+        "visibleBottom": 118,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 87,
+            "feetY": 118,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 214,
+      "tick": 1311,
+      "sentUtc": "2026-11-05T22:02:09.838348+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 113,
+      "image": "evidence/local/optional-2-1-entry/00214-tick-01311.png",
+      "player": {
+        "originX": 24,
+        "originY": 117,
+        "feetY": 148,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 134,
+        "visibleBottom": 148,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 117,
+            "feetY": 148,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 215,
+      "tick": 1312,
+      "sentUtc": "2026-11-05T22:02:09.846326+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 121,
+      "image": "evidence/local/optional-2-1-entry/00215-tick-01312.png",
+      "player": {
+        "originX": 24,
+        "originY": 151,
+        "feetY": 182,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 168,
+        "visibleBottom": 182,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 151,
+            "feetY": 182,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 86,
+      "exactColoredStaticScanlines": 1218,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 216,
+      "tick": 1313,
+      "sentUtc": "2026-11-05T22:02:09.855182+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 128,
+      "image": "evidence/local/optional-2-1-entry/00216-tick-01313.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 217,
+      "tick": 1314,
+      "sentUtc": "2026-11-05T22:02:09.863124+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 136,
+      "image": "evidence/local/optional-2-1-entry/00217-tick-01314.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 218,
+      "tick": 1315,
+      "sentUtc": "2026-11-05T22:02:09.872042+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 143,
+      "image": "evidence/local/optional-2-1-entry/00218-tick-01315.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 219,
+      "tick": 1316,
+      "sentUtc": "2026-11-05T22:02:09.879952+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 151,
+      "image": "evidence/local/optional-2-1-entry/00219-tick-01316.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 220,
+      "tick": 1317,
+      "sentUtc": "2026-11-05T22:02:09.888770+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 158,
+      "image": "evidence/local/optional-2-1-entry/00220-tick-01317.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 221,
+      "tick": 1318,
+      "sentUtc": "2026-11-05T22:02:09.896734+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 166,
+      "image": "evidence/local/optional-2-1-entry/00221-tick-01318.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 222,
+      "tick": 1319,
+      "sentUtc": "2026-11-05T22:02:09.905523+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 173,
+      "image": "evidence/local/optional-2-1-entry/00222-tick-01319.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 223,
+      "tick": 1320,
+      "sentUtc": "2026-11-05T22:02:09.913493+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 181,
+      "image": "evidence/local/optional-2-1-entry/00223-tick-01320.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 224,
+      "tick": 1321,
+      "sentUtc": "2026-11-05T22:02:09.922272+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 188,
+      "image": "evidence/local/optional-2-1-entry/00224-tick-01321.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 225,
+      "tick": 1322,
+      "sentUtc": "2026-11-05T22:02:09.930198+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 196,
+      "image": "evidence/local/optional-2-1-entry/00225-tick-01322.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 226,
+      "tick": 1323,
+      "sentUtc": "2026-11-05T22:02:09.938991+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSinceStart": 203,
+      "image": "evidence/local/optional-2-1-entry/00226-tick-01323.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 227,
+      "tick": 1324,
+      "sentUtc": "2026-11-05T22:02:09.946913+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSinceStart": 211,
+      "image": "evidence/local/optional-2-1-entry/00227-tick-01324.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "exactStaticTiles": 84,
+      "exactColoredStaticScanlines": 1216,
+      "expectedStaticTiles": 86,
+      "allBlackImage": false
+    }
+  ],
+  "referenceRepeatability": {
+    "scope": "Reference-to-reference only, independent standardstarts and actualsamecontrols. OneDOWN20 compared with twentyDOWN1 requests at same151nativeframe endpoint.",
+    "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+    "tolerancePixels": 0,
+    "cases": [
+      {
+        "ownSequence": 199,
+        "independentSequence": 199,
+        "ownTick": 1296,
+        "independentTick": 1296,
+        "mismatchingPixels": 0
+      },
+      {
+        "ownSequence": 219,
+        "independentSequence": 200,
+        "ownTick": 1316,
+        "independentTick": 1316,
+        "mismatchingPixels": 0
+      }
+    ]
+  },
+  "uncertainties": [
+    "Transition activation inside each7/8native decision window unresolved.",
+    "Earliest offscreen roomspawn is not measured; complete visible entryposes are reported separately.",
+    "This evidence does not establish a browsergame comparison or winning recreationrun."
+  ]
+}

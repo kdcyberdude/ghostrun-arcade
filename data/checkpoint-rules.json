@@ -1,0 +1,343 @@
+{
+  "schema": "observed-checkpoint-runtime-candidates-v1",
+  "source": "data/checkpoint-measurements.json; data/checkpoint-activation-measurements.json; data/checkpoint-extra-measurements.json; data/checkpoint-later-activation-measurements.json",
+  "checkpoints": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "activationX": 1392,
+      "spawn": [
+        1320,
+        208
+      ],
+      "camera": 1280,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1374,
+        1412
+      ],
+      "evidence": "data/checkpoint-measurements.json: negative-timeout76 peak1371 (+/-2px image uncertainty) restarts at0; positive77 peak1410 returns to camera1280 and exact screenX40. Activation1392 is an interior candidate, not a measured native threshold."
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "activationX": 1664,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1653,
+        1738
+      ],
+      "evidence": "Native respawn (it000972 mood0 row 4197) is x 1576, camera 1536 (page 6 + 40, like 1-1/1-3/2-1/2-2); the screenshot measurement read camera1552 and spawn 1592 (data/checkpoint-extra-measurements.json: independent negative peak1650 returns entrance; positive peak1736 returns area-2 camera1552 and exact standing screenX40. Candidate 1664 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "activationX": 1136,
+      "spawn": [
+        1064,
+        208
+      ],
+      "camera": 1024,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1109,
+        1144
+      ],
+      "evidence": "data/checkpoint-measurements.json: negative737 visiblepeak1106 (+/-2px image uncertainty) restarts at0; positive738 peak1142 returns camera1024 and exact screenX40. Activation1136 is an interior candidate, not a measured native threshold."
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1640,
+        1656
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 2-1-after peak1637 returns entrance; 2-1-intermediate peak1654 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "activationX": 1392,
+      "spawn": [
+        1320,
+        208
+      ],
+      "camera": 1280,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1380,
+        1422
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1377 returns entrance; positive peak1420 returns area-2 camera1280 and exact standing screenX40. Candidate 1392 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "activationX": 1904,
+      "spawn": [
+        1832,
+        208
+      ],
+      "camera": 1792,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1836,
+        1985
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1833 returns entrance; positive peak1983 returns main camera1792 and exact standing screenX40. Candidate 1904 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1637,
+        1659
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 3-1-before peak1634 returns entrance; 3-1-pipe-clearance peak1657 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "activationX": 1650,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1650,
+        1761
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1647 returns entrance; positive peak1759 returns main camera1536 and exact standing screenX40. Candidate 1650 is inferred within the retained2px candidate-bound convention, not a measured native threshold. Repeated scenery aliases were resolved by ordinary forward play and continuous camera anchoring. Raw negative1647 does not prove that an exact1648 native gate is excluded under image uncertainty."
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "activationX": 1136,
+      "spawn": [
+        1064,
+        208
+      ],
+      "camera": 1024,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1074,
+        1214
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1071 returns entrance; positive peak1212 returns main camera1024 and exact standing screenX40. Candidate 1136 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1633,
+        1664
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 4-1-before peak1630 returns entrance; 4-1-after peak1662 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "activationX": 1664,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1652,
+        1722
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1649 returns entrance; positive peak1720 returns area-3 camera1552 and exact standing screenX40. Candidate 1664 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "activationX": 1136,
+      "spawn": [
+        1064,
+        208
+      ],
+      "camera": 1024,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1062,
+        1197
+      ],
+      "evidence": "data/checkpoint-extra-measurements.json: independent negative peak1059 returns entrance; positive peak1195 returns main camera1024 and exact standing screenX40. Candidate 1136 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1616,
+        1684
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 5-1-before peak1613 returns entrance; 5-1-after peak1682 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1636,
+        1662
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1633 returns entrance; positive peak1660 returns area-2 camera1536 and exact standing screenX40. Candidate 1648 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "activationX": 1136,
+      "spawn": [
+        1064,
+        208
+      ],
+      "camera": 1024,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1136,
+        1147
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1133 returns entrance; positive peak1145 returns main camera1024 and exact standing screenX40. Candidate 1136 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1638,
+        1693
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 6-1-after peak1635 returns entrance; 6-1-intermediate peak1691 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1620,
+        1654
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1617 returns entrance; positive peak1652 returns main camera1536 and exact standing screenX40. Candidate 1648 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "activationX": 1650,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1650,
+        1660
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1647 returns entrance; positive peak1658 returns main camera1536 and exact standing screenX40. Candidate 1650 is inferred within the retained2px candidate-bound convention, not a measured native threshold. Raw negative1647 does not prove that an exact1648 native gate is excluded under image uncertainty."
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "activationX": 1648,
+      "spawn": [
+        1576,
+        208
+      ],
+      "camera": 1536,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1632,
+        1665
+      ],
+      "evidence": "data/checkpoint-activation-measurements.json: independent 7-1-before peak1629 returns entrance; 7-1-after peak1663 returns unique camera1536 and screenX40.2px coordinate uncertainty retained.1648 is an interior candidate, not a measured exact native threshold."
+    },
+    {
+      "level": "7-2",
+      "area": "area-4",
+      "activationX": 1392,
+      "spawn": [
+        1320,
+        208
+      ],
+      "camera": 1280,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1392,
+        1402
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1389 returns entrance; positive peak1400 returns area-4 camera1280 and exact standing screenX40. Candidate 1392 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "activationX": 1904,
+      "spawn": [
+        1832,
+        208
+      ],
+      "camera": 1792,
+      "activationStatus": "inferred",
+      "activationBracket": [
+        1853,
+        1911
+      ],
+      "evidence": "data/checkpoint-later-activation-measurements.json: independent negative peak1850 returns entrance; positive peak1909 returns main camera1792 and exact standing screenX40. Candidate 1904 is inferred within the retained2px candidate-bound convention, not a measured native threshold."
+    }
+  ],
+  "unresolved": "Twenty-one independently opposed world1-7 noncastle midpoint connections are integrated. Activation candidates remain inferred within explicit retained intervals; several bounds are wide. Tested late World8 deaths return to the entrance, without proving every route lacks a checkpoint. Castle checkpoints are not invented."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "actual-map-support-fixtures-v1",
+  "level": "6-2",
+  "area": "main",
+  "camera": 2132,
+  "proofSource": "data/lower-next-six-two-support.json",
+  "proofSha256": "32786102125709e9eb8cf06ed33365df3c12da08a4e2f2bf99e10214d1b5ea72",
+  "declaredBeforeExecution": true,
+  "scope": "Declared placements on the actual production map, with enemies, generators and exit disabled before stepping. All terrain, hidden blocks, fragments and other geometry remain. Public ordinary controllers thereafter. These are collision fixtures, not campaign traversal or exact native timing comparisons.",
+  "backgroundLimitation": "The two all-black cells establish observed RGB. These fixtures do not establish absence of invisible blocks or every native collision rule.",
+  "ground": [139, 140, 142, 144],
+  "background": [141, 143],
+  "row": 13,
+  "fall": {"spawnFeetY": 176, "frames": 20, "buttons": [], "groundFeetY": 208, "omittedGroundFeetY": 224, "backgroundFeetYGreaterThan": 224},
+  "traversals": [
+    {"name": "walk", "spawn": [2212, 208], "buttons": ["right"], "frames": 45},
+    {"name": "run", "spawn": [2212, 208], "buttons": ["right", "b"], "frames": 38}
+  ],
+  "traversalEndX": {"atLeast": 2240, "lessThan": 2254},
+  "nativeFramesPerRequest": 1,
+  "staticDifferentRGBPixels": 0,
+  "preservedOriginalFragments": 22
+}

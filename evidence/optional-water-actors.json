@@ -1,0 +1,387 @@
+{
+  "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+  "sourceSequenceRange": [
+    5550,
+    5634
+  ],
+  "observations": 140,
+  "enemies": [
+    {
+      "kind": "blooper",
+      "x": 272,
+      "y": 176,
+      "direction": -1,
+      "palette": "0f-0f-30-10",
+      "evidence": "Exact supplied sprite first seen sequence5562/tick6625; first moving position272/180; grid spawn inferred."
+    },
+    {
+      "kind": "blooper",
+      "x": 528,
+      "y": 192,
+      "direction": 1,
+      "palette": "0f-0f-30-10",
+      "evidence": "Exact supplied sprite first seen sequence5587/tick6663; first moving position528/184; grid spawn inferred."
+    },
+    {
+      "kind": "cheep",
+      "x": 672,
+      "y": 96,
+      "direction": -1,
+      "palette": "0f-10-30-27",
+      "evidence": "Exact supplied sprite first seen sequence5597/tick6673; first moving position658/96; grid spawn inferred."
+    },
+    {
+      "kind": "blooper",
+      "x": 736,
+      "y": 192,
+      "direction": 1,
+      "palette": "0f-0f-30-10",
+      "evidence": "Exact supplied sprite first seen sequence5605/tick6681; first moving position744/188; grid spawn inferred."
+    },
+    {
+      "kind": "cheep",
+      "x": 816,
+      "y": 128,
+      "direction": -1,
+      "palette": "0f-16-30-27",
+      "evidence": "Exact supplied sprite first seen sequence5607/tick6689; first moving position801/123; grid spawn inferred."
+    },
+    {
+      "kind": "cheep",
+      "x": 960,
+      "y": 112,
+      "direction": -1,
+      "palette": "0f-10-30-27",
+      "evidence": "Exact supplied sprite first seen sequence5621/tick6706; first moving position959/112; grid spawn inferred."
+    }
+  ],
+  "spawnEvidence": [
+    {
+      "spec": {
+        "kind": "blooper",
+        "x": 272,
+        "y": 176,
+        "direction": -1,
+        "palette": "0f-0f-30-10",
+        "evidence": "Exact supplied sprite first seen sequence5562/tick6625; first moving position272/180; grid spawn inferred."
+      },
+      "observedXRange": [
+        208,
+        272
+      ],
+      "observedFeetRange": [
+        143,
+        195
+      ],
+      "firstSequence": 5562,
+      "lastSequence": 5582,
+      "observationCount": 21,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    },
+    {
+      "spec": {
+        "kind": "blooper",
+        "x": 528,
+        "y": 192,
+        "direction": 1,
+        "palette": "0f-0f-30-10",
+        "evidence": "Exact supplied sprite first seen sequence5587/tick6663; first moving position528/184; grid spawn inferred."
+      },
+      "observedXRange": [
+        496,
+        550
+      ],
+      "observedFeetRange": [
+        146,
+        197
+      ],
+      "firstSequence": 5587,
+      "lastSequence": 5606,
+      "observationCount": 20,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    },
+    {
+      "spec": {
+        "kind": "cheep",
+        "x": 672,
+        "y": 96,
+        "direction": -1,
+        "palette": "0f-10-30-27",
+        "evidence": "Exact supplied sprite first seen sequence5597/tick6673; first moving position658/96; grid spawn inferred."
+      },
+      "observedXRange": [
+        619,
+        658
+      ],
+      "observedFeetRange": [
+        96,
+        96
+      ],
+      "firstSequence": 5597,
+      "lastSequence": 5609,
+      "observationCount": 13,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    },
+    {
+      "spec": {
+        "kind": "blooper",
+        "x": 736,
+        "y": 192,
+        "direction": 1,
+        "palette": "0f-0f-30-10",
+        "evidence": "Exact supplied sprite first seen sequence5605/tick6681; first moving position744/188; grid spawn inferred."
+      },
+      "observedXRange": [
+        744,
+        930
+      ],
+      "observedFeetRange": [
+        89,
+        188
+      ],
+      "firstSequence": 5605,
+      "lastSequence": 5634,
+      "observationCount": 30,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    },
+    {
+      "spec": {
+        "kind": "cheep",
+        "x": 816,
+        "y": 128,
+        "direction": -1,
+        "palette": "0f-16-30-27",
+        "evidence": "Exact supplied sprite first seen sequence5607/tick6689; first moving position801/123; grid spawn inferred."
+      },
+      "observedXRange": [
+        734,
+        801
+      ],
+      "observedFeetRange": [
+        114,
+        123
+      ],
+      "firstSequence": 5607,
+      "lastSequence": 5622,
+      "observationCount": 16,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    },
+    {
+      "spec": {
+        "kind": "cheep",
+        "x": 960,
+        "y": 112,
+        "direction": -1,
+        "palette": "0f-10-30-27",
+        "evidence": "Exact supplied sprite first seen sequence5621/tick6706; first moving position959/112; grid spawn inferred."
+      },
+      "observedXRange": [
+        919,
+        959
+      ],
+      "observedFeetRange": [
+        112,
+        112
+      ],
+      "firstSequence": 5621,
+      "lastSequence": 5634,
+      "observationCount": 14,
+      "status": "Bitmap appearance and moving coordinates observed. Track identity, initial grid spawn/activation, direction and trajectory are inferred."
+    }
+  ],
+  "platforms": [
+    {
+      "spec": {
+        "x": 364,
+        "y": 78,
+        "width": 32,
+        "axis": "y",
+        "range": 38,
+        "speed": 0.933
+      },
+      "observedXRange": [
+        364,
+        364
+      ],
+      "observedArtworkYRange": [
+        36,
+        113
+      ],
+      "medianSignedYSpeedPixelsPerNativeFrame": 0.9333333333333333,
+      "candidateDownwardWrapFit": {
+        "speed": 0.9375,
+        "wrapPixels": 256,
+        "phaseAtTick6613": 252.6875,
+        "maximumErrorPixels": 0,
+        "meanErrorPixels": 0.0,
+        "status": "Candidate fit only. The retained complete poses do not show wrapping or establish activation/epoch behavior."
+      },
+      "observationCount": 8,
+      "samples": [
+        [
+          315,
+          36,
+          5582
+        ],
+        [
+          323,
+          43,
+          5583
+        ],
+        [
+          330,
+          50,
+          5584
+        ],
+        [
+          345,
+          64,
+          5586
+        ],
+        [
+          375,
+          92,
+          5587
+        ],
+        [
+          383,
+          99,
+          5588
+        ],
+        [
+          390,
+          106,
+          5589
+        ],
+        [
+          398,
+          113,
+          5590
+        ]
+      ],
+      "status": "Exact moving platform sprite and coordinate samples observed. Full motion path, wrapping bounds, load epoch and phase remain unresolved; generic axis/range spec is explicit fallback inference."
+    },
+    {
+      "spec": {
+        "x": 460,
+        "y": 84,
+        "width": 32,
+        "axis": "y",
+        "range": 70,
+        "speed": 1.0
+      },
+      "observedXRange": [
+        460,
+        460
+      ],
+      "observedArtworkYRange": [
+        3,
+        144
+      ],
+      "medianSignedYSpeedPixelsPerNativeFrame": 1.0,
+      "candidateDownwardWrapFit": {
+        "speed": 0.9375,
+        "wrapPixels": 256,
+        "phaseAtTick6613": 212.75,
+        "maximumErrorPixels": 0,
+        "meanErrorPixels": 0.0,
+        "status": "Candidate fit only. The retained complete poses do not show wrapping or establish activation/epoch behavior."
+      },
+      "observationCount": 18,
+      "samples": [
+        [
+          323,
+          3,
+          5583
+        ],
+        [
+          330,
+          10,
+          5584
+        ],
+        [
+          338,
+          17,
+          5585
+        ],
+        [
+          345,
+          24,
+          5586
+        ],
+        [
+          375,
+          52,
+          5587
+        ],
+        [
+          383,
+          59,
+          5588
+        ],
+        [
+          390,
+          66,
+          5589
+        ],
+        [
+          398,
+          73,
+          5590
+        ],
+        [
+          406,
+          81,
+          5591
+        ],
+        [
+          413,
+          87,
+          5592
+        ],
+        [
+          421,
+          95,
+          5593
+        ],
+        [
+          428,
+          102,
+          5594
+        ],
+        [
+          436,
+          109,
+          5595
+        ],
+        [
+          443,
+          116,
+          5596
+        ],
+        [
+          451,
+          123,
+          5597
+        ],
+        [
+          458,
+          130,
+          5598
+        ],
+        [
+          466,
+          137,
+          5599
+        ],
+        [
+          473,
+          144,
+          5600
+        ]
+      ],
+      "status": "Exact moving platform sprite and coordinate samples observed. Full motion path, wrapping bounds, load epoch and phase remain unresolved; generic axis/range spec is explicit fallback inference."
+    }
+  ],
+  "scope": "Source appearance observations and explicit spawn/motion inferences, not recreation verification."
+}

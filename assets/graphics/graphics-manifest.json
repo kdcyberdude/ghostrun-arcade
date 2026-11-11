@@ -1,0 +1,3037 @@
+{
+  "patterns": 512,
+  "chr_roundtrip_exact": true,
+  "metatiles": [
+    {
+      "id": 0,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 1,
+      "palette_group": 0,
+      "tiles": [
+        39,
+        39,
+        39,
+        39
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 2,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        36,
+        36,
+        53
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 3,
+      "palette_group": 0,
+      "tiles": [
+        54,
+        37,
+        55,
+        37
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 4,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        56,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 5,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        48,
+        48,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 6,
+      "palette_group": 0,
+      "tiles": [
+        38,
+        38,
+        52,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 7,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        49,
+        36,
+        50
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 8,
+      "palette_group": 0,
+      "tiles": [
+        51,
+        38,
+        36,
+        51
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 9,
+      "palette_group": 0,
+      "tiles": [
+        52,
+        38,
+        38,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 10,
+      "palette_group": 0,
+      "tiles": [
+        38,
+        38,
+        38,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 11,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        192,
+        36,
+        192
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 12,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        127,
+        127,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 13,
+      "palette_group": 0,
+      "tiles": [
+        184,
+        186,
+        185,
+        187
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 14,
+      "palette_group": 0,
+      "tiles": [
+        184,
+        188,
+        185,
+        189
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 15,
+      "palette_group": 0,
+      "tiles": [
+        186,
+        188,
+        187,
+        189
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        0,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 16,
+      "palette_group": 0,
+      "tiles": [
+        96,
+        100,
+        97,
+        101
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 17,
+      "palette_group": 0,
+      "tiles": [
+        98,
+        102,
+        99,
+        103
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 18,
+      "palette_group": 0,
+      "tiles": [
+        96,
+        100,
+        97,
+        101
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 19,
+      "palette_group": 0,
+      "tiles": [
+        98,
+        102,
+        99,
+        103
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 20,
+      "palette_group": 0,
+      "tiles": [
+        104,
+        104,
+        105,
+        105
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 21,
+      "palette_group": 0,
+      "tiles": [
+        38,
+        38,
+        106,
+        106
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 22,
+      "palette_group": 0,
+      "tiles": [
+        75,
+        76,
+        77,
+        78
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 23,
+      "palette_group": 0,
+      "tiles": [
+        77,
+        79,
+        77,
+        79
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 24,
+      "palette_group": 0,
+      "tiles": [
+        77,
+        78,
+        80,
+        81
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 25,
+      "palette_group": 0,
+      "tiles": [
+        107,
+        112,
+        44,
+        45
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 26,
+      "palette_group": 0,
+      "tiles": [
+        108,
+        113,
+        109,
+        114
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 27,
+      "palette_group": 0,
+      "tiles": [
+        110,
+        115,
+        111,
+        116
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 28,
+      "palette_group": 0,
+      "tiles": [
+        134,
+        138,
+        135,
+        139
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 29,
+      "palette_group": 0,
+      "tiles": [
+        136,
+        140,
+        136,
+        140
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 30,
+      "palette_group": 0,
+      "tiles": [
+        137,
+        141,
+        105,
+        105
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 31,
+      "palette_group": 0,
+      "tiles": [
+        142,
+        145,
+        143,
+        146
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        16,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 32,
+      "palette_group": 0,
+      "tiles": [
+        38,
+        147,
+        38,
+        147
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 33,
+      "palette_group": 0,
+      "tiles": [
+        144,
+        148,
+        105,
+        105
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 34,
+      "palette_group": 0,
+      "tiles": [
+        164,
+        233,
+        234,
+        235
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 35,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 36,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        47,
+        36,
+        61
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 37,
+      "palette_group": 0,
+      "tiles": [
+        162,
+        162,
+        163,
+        163
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 38,
+      "palette_group": 0,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 64,
+      "palette_group": 1,
+      "tiles": [
+        162,
+        162,
+        163,
+        163
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 65,
+      "palette_group": 1,
+      "tiles": [
+        153,
+        36,
+        153,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 66,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        162,
+        62,
+        63
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 67,
+      "palette_group": 1,
+      "tiles": [
+        91,
+        92,
+        36,
+        163
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 68,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 69,
+      "palette_group": 1,
+      "tiles": [
+        157,
+        71,
+        158,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 70,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        39,
+        39
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 71,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 72,
+      "palette_group": 1,
+      "tiles": [
+        39,
+        39,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 73,
+      "palette_group": 1,
+      "tiles": [
+        169,
+        71,
+        170,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 74,
+      "palette_group": 1,
+      "tiles": [
+        155,
+        39,
+        156,
+        39
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 75,
+      "palette_group": 1,
+      "tiles": [
+        39,
+        39,
+        39,
+        39
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 76,
+      "palette_group": 1,
+      "tiles": [
+        82,
+        82,
+        82,
+        82
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 77,
+      "palette_group": 1,
+      "tiles": [
+        128,
+        160,
+        129,
+        161
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 78,
+      "palette_group": 1,
+      "tiles": [
+        190,
+        190,
+        191,
+        191
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 79,
+      "palette_group": 1,
+      "tiles": [
+        117,
+        186,
+        118,
+        187
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 80,
+      "palette_group": 1,
+      "tiles": [
+        186,
+        186,
+        187,
+        187
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 81,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 82,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 83,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 84,
+      "palette_group": 1,
+      "tiles": [
+        180,
+        182,
+        181,
+        183
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 85,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 86,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 87,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 88,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        48,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 89,
+      "palette_group": 1,
+      "tiles": [
+        69,
+        71,
+        69,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 90,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 91,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 92,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 93,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 94,
+      "palette_group": 1,
+      "tiles": [
+        71,
+        71,
+        71,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 95,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 96,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 97,
+      "palette_group": 1,
+      "tiles": [
+        171,
+        172,
+        173,
+        174
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 98,
+      "palette_group": 1,
+      "tiles": [
+        93,
+        94,
+        93,
+        94
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 99,
+      "palette_group": 1,
+      "tiles": [
+        193,
+        36,
+        193,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 100,
+      "palette_group": 1,
+      "tiles": [
+        198,
+        200,
+        199,
+        201
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 101,
+      "palette_group": 1,
+      "tiles": [
+        202,
+        204,
+        203,
+        205
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 102,
+      "palette_group": 1,
+      "tiles": [
+        42,
+        42,
+        64,
+        64
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 103,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 104,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        71,
+        36,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        64,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 105,
+      "palette_group": 1,
+      "tiles": [
+        130,
+        131,
+        132,
+        133
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 106,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        71,
+        36,
+        71
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 107,
+      "palette_group": 1,
+      "tiles": [
+        134,
+        138,
+        135,
+        139
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 108,
+      "palette_group": 1,
+      "tiles": [
+        142,
+        145,
+        143,
+        146
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 109,
+      "palette_group": 1,
+      "tiles": [
+        36,
+        47,
+        36,
+        61
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 128,
+      "palette_group": 2,
+      "tiles": [
+        36,
+        36,
+        36,
+        53
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        80,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 129,
+      "palette_group": 2,
+      "tiles": [
+        54,
+        37,
+        55,
+        37
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        96,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 130,
+      "palette_group": 2,
+      "tiles": [
+        36,
+        56,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        112,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 131,
+      "palette_group": 2,
+      "tiles": [
+        36,
+        36,
+        57,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        128,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 132,
+      "palette_group": 2,
+      "tiles": [
+        58,
+        36,
+        59,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        144,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 133,
+      "palette_group": 2,
+      "tiles": [
+        60,
+        36,
+        36,
+        36
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        160,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 134,
+      "palette_group": 2,
+      "tiles": [
+        65,
+        38,
+        65,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        176,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 135,
+      "palette_group": 2,
+      "tiles": [
+        38,
+        38,
+        38,
+        38
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        192,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 136,
+      "palette_group": 2,
+      "tiles": [
+        176,
+        177,
+        178,
+        179
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        208,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 137,
+      "palette_group": 2,
+      "tiles": [
+        119,
+        121,
+        119,
+        121
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        224,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 192,
+      "palette_group": 3,
+      "tiles": [
+        83,
+        85,
+        84,
+        86
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        240,
+        80,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 193,
+      "palette_group": 3,
+      "tiles": [
+        83,
+        85,
+        84,
+        86
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        0,
+        96,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 194,
+      "palette_group": 3,
+      "tiles": [
+        165,
+        167,
+        166,
+        168
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        16,
+        96,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 195,
+      "palette_group": 3,
+      "tiles": [
+        194,
+        196,
+        195,
+        197
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        32,
+        96,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 196,
+      "palette_group": 3,
+      "tiles": [
+        87,
+        89,
+        88,
+        90
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        48,
+        96,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 197,
+      "palette_group": 3,
+      "tiles": [
+        123,
+        125,
+        124,
+        126
+      ],
+      "order": "TL,BL,TR,BR",
+      "rect": [
+        64,
+        96,
+        16,
+        16
+      ]
+    }
+  ],
+  "player_cells": 26,
+  "enemy_table_cells": 43,
+  "player_cell_size": [
+    16,
+    32
+  ],
+  "player_columns": 13,
+  "enemy_cell_size": [
+    16,
+    24
+  ],
+  "enemy_columns": 11,
+  "palette_observations": [
+    {
+      "palette": [
+        34,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": -1,
+      "level": [
+        1,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-000.png"
+    },
+    {
+      "palette": [
+        34,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 0,
+      "level": [
+        1,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-001.png"
+    },
+    {
+      "palette": [
+        34,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 1,
+      "level": [
+        1,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-002.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        9,
+        15,
+        60,
+        28,
+        15,
+        15,
+        48,
+        33,
+        28,
+        15,
+        39,
+        23,
+        28,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        12,
+        60,
+        28
+      ],
+      "first_decision": 263,
+      "level": [
+        1,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-003.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        9,
+        15,
+        60,
+        28,
+        15,
+        15,
+        48,
+        33,
+        28,
+        15,
+        23,
+        23,
+        28,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        12,
+        60,
+        28
+      ],
+      "first_decision": 336,
+      "level": [
+        1,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-004.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        9,
+        15,
+        60,
+        28,
+        15,
+        15,
+        48,
+        33,
+        28,
+        15,
+        7,
+        23,
+        28,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        12,
+        60,
+        28
+      ],
+      "first_decision": 337,
+      "level": [
+        1,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-005.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        39,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 913,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-006.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        23,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 918,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-007.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        7,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 919,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-008.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        23,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 1026,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-009.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        7,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 1028,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-010.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        39,
+        23,
+        0,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 1030,
+      "level": [
+        1,
+        4
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-011.png"
+    },
+    {
+      "palette": [
+        34,
+        21,
+        18,
+        37,
+        15,
+        58,
+        26,
+        15,
+        15,
+        48,
+        18,
+        15,
+        15,
+        39,
+        18,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        16,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        48,
+        16
+      ],
+      "first_decision": 1649,
+      "level": [
+        2,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-012.png"
+    },
+    {
+      "palette": [
+        34,
+        21,
+        18,
+        37,
+        15,
+        58,
+        26,
+        15,
+        15,
+        48,
+        18,
+        15,
+        15,
+        23,
+        18,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        16,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        48,
+        16
+      ],
+      "first_decision": 1653,
+      "level": [
+        2,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-013.png"
+    },
+    {
+      "palette": [
+        34,
+        21,
+        18,
+        37,
+        15,
+        58,
+        26,
+        15,
+        15,
+        48,
+        18,
+        15,
+        15,
+        7,
+        18,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        16,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        48,
+        16
+      ],
+      "first_decision": 1654,
+      "level": [
+        2,
+        2
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-014.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 2773,
+      "level": [
+        3,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-015.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 2778,
+      "level": [
+        3,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-016.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 2779,
+      "level": [
+        3,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-017.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 3361,
+      "level": [
+        3,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-018.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 3365,
+      "level": [
+        3,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-019.png"
+    },
+    {
+      "palette": [
+        15,
+        41,
+        26,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 3366,
+      "level": [
+        3,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-020.png"
+    },
+    {
+      "palette": [
+        34,
+        39,
+        22,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 4597,
+      "level": [
+        4,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-021.png"
+    },
+    {
+      "palette": [
+        34,
+        39,
+        22,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 4601,
+      "level": [
+        4,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-022.png"
+    },
+    {
+      "palette": [
+        34,
+        39,
+        22,
+        15,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 4603,
+      "level": [
+        4,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-023.png"
+    },
+    {
+      "palette": [
+        34,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 5117,
+      "level": [
+        5,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-024.png"
+    },
+    {
+      "palette": [
+        34,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 5122,
+      "level": [
+        5,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-025.png"
+    },
+    {
+      "palette": [
+        34,
+        48,
+        0,
+        16,
+        15,
+        54,
+        23,
+        15,
+        15,
+        48,
+        33,
+        15,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        26,
+        48,
+        39,
+        15,
+        22,
+        48,
+        39,
+        15,
+        15,
+        54,
+        23
+      ],
+      "first_decision": 5123,
+      "level": [
+        5,
+        1
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-026.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        39,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 6830,
+      "level": [
+        6,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-027.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        23,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 6834,
+      "level": [
+        6,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-028.png"
+    },
+    {
+      "palette": [
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        16,
+        0,
+        15,
+        48,
+        22,
+        0,
+        15,
+        7,
+        23,
+        15,
+        0,
+        22,
+        39,
+        24,
+        15,
+        28,
+        54,
+        23,
+        15,
+        22,
+        48,
+        39,
+        15,
+        0,
+        48,
+        16
+      ],
+      "first_decision": 6835,
+      "level": [
+        6,
+        3
+      ],
+      "metatile_atlas": "graphics/metatiles-palette-029.png"
+    }
+  ],
+  "sprite_subpalettes": 9,
+  "background_subpalettes": 32,
+  "notes": [
+    "Final20 CHR patterns overlap title-screen command data; raw patterns are not all artwork.",
+    "Enemy table sheets show raw row-major cells; runtime code adds flips, animation, clipping and palette choices.",
+    "Player sheets show ordinary right-facing cells; swim feet/death/size changes need native state-dependent rules.",
+    "Palette cross-products are reference variants; not all combinations occur in gameplay.",
+    "32 level-start nametables are snapshots, not complete level geometry."
+  ],
+  "replay": {
+    "decisions": 10626,
+    "native_frames": 79824,
+    "levels_captured": 32,
+    "all32": true,
+    "final_win": true,
+    "deaths": 0,
+    "lost_lives": 0,
+    "all_policy_rgb_hashes_equal": true,
+    "trace_sha256": "6ff8697218905e4cda520723940b64c431d7dc50f1e1e3c51d247a6c4c83e056",
+    "observer": {
+      "core_sha256": "d2d8d8163bb52155ac410076d59b0613730d77459f0730907c815e967bedd230",
+      "observer_sha256": "17d2ff93df1b58869ec605c4d7f466ae394079394eacdd744933ae688f31a547",
+      "source_sha256": "b5261ccfeb5b33cef5e7d8da0710e5d066c1bb78e5645edd68f5a3d158e9e54f",
+      "compile_command": [
+        "g++",
+        "-O2",
+        "-std=c++11",
+        "-shared",
+        "-fPIC",
+        "-I",
+        "/home/kd/Desktop/proj/llm_gameplay/.cache/fast-mario-source/nes_py-8.2.1/nes_py/nes/include",
+        "/home/kd/Desktop/proj/llm_gameplay/scripts/mario_assets/observer.cpp",
+        "/home/kd/Desktop/proj/llm_gameplay/.cache/fast-mario-source/lib_fast_mario.so",
+        "-Wl,-rpath,/home/kd/Desktop/proj/llm_gameplay/.cache/fast-mario-source",
+        "-o",
+        "/home/kd/Desktop/proj/llm_gameplay/.cache/mario-assets-20261105-v2-build/observer.so"
+      ]
+    },
+    "scope": "Controller replay for graphics extraction; no new model inference or training."
+  }
+}

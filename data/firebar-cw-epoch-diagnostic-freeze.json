@@ -1,0 +1,37 @@
+{
+  "schema": "clockwise-epoch-diagnostic-freeze-v1",
+  "frozenUtc": "2026-11-06T02:31:00.644144+00:00",
+  "reservation": {
+    "directory": "evidence/local/firebar-epoch-fresh-2026-11-06T02-28-20Z",
+    "case": "reserved-cw-epoch-winning-prefix",
+    "status": "Captured using ordinary known winning controls; PNGs not opened/extracted before this freeze."
+  },
+  "motor": {
+    "modulus": 1024,
+    "unitsPerBin": 32,
+    "increment": 5,
+    "initialUnits": 768,
+    "pivot": [
+      1416,
+      72
+    ],
+    "apparentPivotY": 73
+  },
+  "originalCameraEstimator": "Nearest native frame from two independently registered source-camera endpoints crossing1157; retain raw mismatch.",
+  "diagnosticCameraEstimator": "Quadratic through the before/after/next independent camera endpoints, nearest physical root within crossing interval. It yields7559 vs linear7560 on cal0 and7709 on cal20. REJECTED as global estimator: it breaks three already exact first-bar calibration histories (raw8px), so it cannot justify a global activation/camera change.",
+  "bandFinding": "Existing cal0/cal20 bracket images have same best horizontal displacement for upper34..95 and lower96..207 bands. Cal0 top mismatch is confined to rows32..33. No evidenced one-pixel camera translation near the actual bar row73.",
+  "hypothesis": "Unobserved nonlinear braking inside7/8-native endpoint interval may place cal0 crossing at7559; this is a physical inference, not a direct observation of that native frame.",
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "changePolicy": "No runtime or qualified object change. Fresh evaluation reports unchanged-linear and diagnostic-quadratic raw errors separately without phase fitting. Original dead reserved13 stays retained.",
+  "hashes": {
+    "data/firebar-cw-epoch-heldout-plan.json": "0c261d5a4fbd60ae81cb82b7da95349d8dbead71726202be678159debb19f62b",
+    "src/firebar-motion.ts": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "tools/firebar-cw-epoch-capture.py": "aa3dc5a6cd9e52e3f00f92c9f7e934015d7e8293d0442d83f83fa34764eb8315",
+    "tools/firebar-cw-epoch-extract.py": "8fed6370ace31d8e095c27ca46fc9c7913ff663c66ca75f69a83989f1353741d"
+  }
+}

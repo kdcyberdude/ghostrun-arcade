@@ -1,0 +1,66 @@
+{
+  "schema": "frozen-bowser-candidates-v1",
+  "frozenUtc": "2026-11-06T00:29:04.790Z",
+  "scope": "Two small screenshot-fitted physical candidates frozen before the declared fresh held-out controls; no production integration.",
+  "calibration": [
+    {
+      "path": "data/bowser-interaction-measurements.json",
+      "sha256": "bbc72514767904b89c9103858617e8207c86c3be15b4e015cea7b4bac6fa5fab"
+    },
+    {
+      "path": "data/bowser-target-calibration-measurements.json",
+      "sha256": "b08c2937318012264c3484a47eff3daeb730954728f21a2d78fc82a361338b7c"
+    }
+  ],
+  "heldoutControls": [
+    {
+      "path": "tools/bowser-target-heldout-inputs.jsonl",
+      "sha256": "b57c74fdb3adf0ca30e220a7097107364bd55ec4e2adebc193c0a49a37d953e9",
+      "level": "1-4",
+      "prefix": 1028
+    },
+    {
+      "path": "tools/bowser-jump-heldout-two-four-inputs.jsonl",
+      "sha256": "1b71b515f6683b8c2cd6aa9df0db7a25610c091b8aa639f8a7a2ddb372aec9ce",
+      "level": "2-4",
+      "prefix": 2640
+    }
+  ],
+  "tolerances": {
+    "positionPixels": 2,
+    "eventNativeFrames": 8,
+    "opaqueRGB": "exact"
+  },
+  "flame": {
+    "horizontalSpeed": 1.25,
+    "steeringSpeed": 1,
+    "targetFirstLaneLogicalOffsetFromSupport": -16,
+    "rasterYOffset": 1,
+    "steering": "At each native frame, advance toward a fixed per-projectile target by at most1px; stop vertical motion at the target. Target-lane selection and initialization time remain unresolved.",
+    "scope": "Observed first1-4 projectile lane; held-out2-4 tests transfer but is not guaranteed."
+  },
+  "jump": {
+    "impulse": -2.1875,
+    "gravity": 0.0625,
+    "order": "gravity-before-position",
+    "maxFall": 4,
+    "rasterOriginUncertaintyPixels": 2,
+    "diagnosticTakeoffBrackets": [
+      [
+        7843,
+        7850
+      ],
+      [
+        7948,
+        7962
+      ]
+    ],
+    "qualification": "Discrete coarse candidate fits two full assembled calibration arcs within1px after bounded takeoff and initial raster/subpixel phase fitting. Ground penetration/raster phase and exact integration order/neighboring impulse-gravity combinations remain unresolved; no per-arc parameter becomes a runtime schedule."
+  },
+  "rejectedOrUnestablished": [
+    "Prior production flame1.5/flat140 misses the clean calibration path by9/7px.",
+    "Prior production jump-3/gravity.25 has only16.5px maximum rise versus at least35 observed.",
+    "Late airborne Mario does not change the first observed target lane; continuously tracking current player height is unsupported.",
+    "No conclusion about RNG, general lane selection, attack cooldown, exact body collision boxes, Bowser HP, fireball death form or reward."
+  ]
+}

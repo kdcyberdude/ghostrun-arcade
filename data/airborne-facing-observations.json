@@ -1,0 +1,1090 @@
+{
+  "schema": "airborne-facing-source-regressions-v1",
+  "source": "Twofreshcalibrationandfiveindependentfreshchanged-inputheldouts, originalopaque-spriteRGBmatches. Focusedtestsassertinitiatedairbornefacing; retainedlandingcadence/position failures belongto separate reports.",
+  "frozenCandidateSha256": "32a6489951bf2ed3f6525fbe6bf0c8e84c6ef76108bf0d1f7a0226e67bb155b0",
+  "cases": [
+    {
+      "name": "facing-calibration-zero",
+      "trace": "evidence/local/bridge-jump-facing-calibration-zero-2026-11-06T06-57-16.776Z/trace.jsonl",
+      "traceSha256": "7976f9c2d1667a623d8894ab434b3f5f996a08e7c380df533e3bfbdb28df5811",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 20,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 20,
+          "frames": 8
+        }
+      ],
+      "samples": [
+        {
+          "frame": 37,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-zero-2026-11-06T06-57-16.776Z/0006-calibration-jump-t5.png",
+          "imageSha256": "8540a108e026eda88280505acd1048773098cb291de3a9d10cf70b397cd21275"
+        },
+        {
+          "frame": 45,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-zero-2026-11-06T06-57-16.776Z/0007-calibration-jump-t6.png",
+          "imageSha256": "3f8b00015a0d3e8829894480cf18500f1d586dcff1f5ce47e36f11d2db698faf"
+        }
+      ]
+    },
+    {
+      "name": "facing-calibration-preskid",
+      "trace": "evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/trace.jsonl",
+      "traceSha256": "0419dffe072356db305f180d98f92704f6cd782017ea7b7bc056f62169963295",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 150,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 157,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 165,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 172,
+          "mask": 36,
+          "frames": 7
+        }
+      ],
+      "samples": [
+        {
+          "frame": 97,
+          "stage": "prejump-skid",
+          "cell": 15,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0014-prejump-skid-t13.png",
+          "imageSha256": "568c6c0c618791b5d25a205b7ceb4fc0d4b3d77ea3c71e98f73446a3f93f71b7"
+        },
+        {
+          "frame": 105,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0015-calibration-jump-t14.png",
+          "imageSha256": "18f68586934218be6c2f8f8cc8c59e2741a008997f9d5e1d786b38db9f1f244c"
+        },
+        {
+          "frame": 112,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0016-calibration-jump-t15.png",
+          "imageSha256": "608a71778622894e1e4ed64d8d1556964164427087de346bcf30ce227ec270ec"
+        },
+        {
+          "frame": 120,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0017-calibration-jump-t16.png",
+          "imageSha256": "5d935400df06d9ca041a5b3e51537586a352aac0002c008e8063d6455898e44a"
+        },
+        {
+          "frame": 127,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0018-calibration-jump-t17.png",
+          "imageSha256": "e6f3b95d324564aa6ec8c057613f2741ff1adf41e1eb3f72e2454f3843aaf753"
+        },
+        {
+          "frame": 135,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0019-calibration-jump-t18.png",
+          "imageSha256": "21a764304a0f2237328de980fdef06543be4e51223546a17ecd522249ae5e38c"
+        },
+        {
+          "frame": 142,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0020-calibration-jump-t19.png",
+          "imageSha256": "85112a7eabf6dc3588a400eb64f5e8cbcda110033c3f73fcfda459d55aa4641c"
+        },
+        {
+          "frame": 150,
+          "stage": "calibration-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0021-calibration-jump-t20.png",
+          "imageSha256": "c10b51532fe14cef6d0be35ccc9d8c3e7f3a8dca6900f971738add449b16a39e"
+        },
+        {
+          "frame": 157,
+          "stage": "landing-reverse",
+          "cell": 13,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0022-landing-reverse-t21.png",
+          "imageSha256": "a040630f166cb053d45772d2574ffcb7dc268ae8118227da58259d2bba6c126d"
+        },
+        {
+          "frame": 165,
+          "stage": "landing-reverse",
+          "cell": 13,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0023-landing-reverse-t22.png",
+          "imageSha256": "1d2dd7d1e3fc331ff3a2aff9bf706bcb34ff54fda3be22226188c579234eda94"
+        },
+        {
+          "frame": 172,
+          "stage": "landing-reverse",
+          "cell": 13,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-calibration-preskid-2026-11-06T06-57-12.831Z/0024-landing-reverse-t23.png",
+          "imageSha256": "3952db7ccdcac55482ba5677be11a31a97d7fc4ca437934482a84a977f995a6b"
+        }
+      ]
+    },
+    {
+      "name": "facing-heldout-runup8-full",
+      "trace": "evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/trace.jsonl",
+      "traceSha256": "bd4594bb6708d27ed2b17fcaca10b765b518b80fd637d9f5ee298300d21bd481",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 150,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 157,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 165,
+          "mask": 52,
+          "frames": 8
+        }
+      ],
+      "samples": [
+        {
+          "frame": 97,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0014-heldout-jump-t13.png",
+          "imageSha256": "347799507db48778395c5296207bf33cc1db97ccc9542fc017c62386d87e62e2"
+        },
+        {
+          "frame": 105,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0015-heldout-jump-t14.png",
+          "imageSha256": "aac20b70b90a36db1e5587a081dfc0b80fcc43f9bc81917b7be278a57176e6a7"
+        },
+        {
+          "frame": 112,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0016-heldout-jump-t15.png",
+          "imageSha256": "0940b162c0c0ad67286066a1c5475b7321ab5079f58adbddfe9400c3f9fb3f71"
+        },
+        {
+          "frame": 120,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0017-heldout-jump-t16.png",
+          "imageSha256": "759ef06e43479c4d96bad3aa12b55c1b1d148b2eda0e539b6c3e628500fb43d9"
+        },
+        {
+          "frame": 127,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0018-heldout-jump-t17.png",
+          "imageSha256": "eb8c1a2ef364b5a2ed2d5fd18407852d6e711c013f967b01ec063f0b45302f43"
+        },
+        {
+          "frame": 135,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0019-heldout-jump-t18.png",
+          "imageSha256": "9a794c4c0b6bfe93d8ab8db91a71883e46294c4d7141353b0c61f642433272d7"
+        },
+        {
+          "frame": 142,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-full-2026-11-06T07-00-00.887Z/0020-heldout-jump-t19.png",
+          "imageSha256": "3de1d5dcd8a4119178222bc27d4834d55432e07963eb0992e768e854b962c52d"
+        }
+      ]
+    },
+    {
+      "name": "facing-heldout-runup8-short",
+      "trace": "evidence/local/bridge-jump-facing-heldout-runup8-short-2026-11-06T07-00-14.564Z/trace.jsonl",
+      "traceSha256": "6a937dc758df8c7853842619d05c4269aa5f3b9c3b124f4028a98bb818fc8359",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 150,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 157,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 165,
+          "mask": 36,
+          "frames": 8
+        }
+      ],
+      "samples": [
+        {
+          "frame": 97,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-short-2026-11-06T07-00-14.564Z/0014-heldout-jump-t13.png",
+          "imageSha256": "347799507db48778395c5296207bf33cc1db97ccc9542fc017c62386d87e62e2"
+        },
+        {
+          "frame": 105,
+          "stage": "heldout-releaseA",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-short-2026-11-06T07-00-14.564Z/0015-heldout-releaseA-t14.png",
+          "imageSha256": "e26f34c94df550475a4d397b76aa40a3d78441e8e5d42fd439b1a83005a405ca"
+        },
+        {
+          "frame": 112,
+          "stage": "heldout-releaseA",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-short-2026-11-06T07-00-14.564Z/0016-heldout-releaseA-t15.png",
+          "imageSha256": "05500af7881ef72374bf7ea6d177c38b4bc79b922adcd724c01bc7c43fe99c5c"
+        },
+        {
+          "frame": 120,
+          "stage": "heldout-releaseA",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-runup8-short-2026-11-06T07-00-14.564Z/0017-heldout-releaseA-t16.png",
+          "imageSha256": "fe43e9e8962425d3d84c15dde8773b58ad4178bb18aac19a83d17910d76fc677"
+        }
+      ]
+    },
+    {
+      "name": "facing-heldout-late-airturn",
+      "trace": "evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/trace.jsonl",
+      "traceSha256": "1777593145eea7bd535cccdf3e266288ad617849facdbf5ccf4f991b17893682",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 52,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 52,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 150,
+          "mask": 40,
+          "frames": 8
+        }
+      ],
+      "samples": [
+        {
+          "frame": 97,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0014-heldout-jump-t13.png",
+          "imageSha256": "56d98ba20f55ff14cb6149426a3edb55d2e53914557b9a49688c4b3b4e49b4f5"
+        },
+        {
+          "frame": 105,
+          "stage": "heldout-airturn",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0015-heldout-airturn-t14.png",
+          "imageSha256": "99d780cd4df2236fa7035ef87b50f90f9a7d9311eb9a43503ecb8cc1c7b3cb2e"
+        },
+        {
+          "frame": 112,
+          "stage": "heldout-airturn",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0016-heldout-airturn-t15.png",
+          "imageSha256": "9f6cfabfe8ec7213c35b0e914a6b984a6c33133585f1c798129cfbaf7423c856"
+        },
+        {
+          "frame": 120,
+          "stage": "heldout-airturn",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0017-heldout-airturn-t16.png",
+          "imageSha256": "bd1eac97822ee010fc6ceb7e215ca859e77c26329dd9ce219e9a3bc2058cd8d7"
+        },
+        {
+          "frame": 127,
+          "stage": "heldout-airturn",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0018-heldout-airturn-t17.png",
+          "imageSha256": "686582a9779adc7e6b65764b8983edeec3d771a8ce369a3e478e52858cf12bc9"
+        },
+        {
+          "frame": 135,
+          "stage": "heldout-airturn",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0019-heldout-airturn-t18.png",
+          "imageSha256": "20c40dfb77844c18859fc416a8e2f7003617e50b412009e51d22ba055e44c1a8"
+        },
+        {
+          "frame": 142,
+          "stage": "heldout-releaseA-returnright",
+          "cell": 16,
+          "facing": "right",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-late-airturn-2026-11-06T07-00-16.233Z/0020-heldout-releaseA-returnright-t19.png",
+          "imageSha256": "daffc8a9471765656fb8c19c2334ea75429ee1048f2bf2b97fde6672216a5fbb"
+        }
+      ]
+    },
+    {
+      "name": "facing-heldout-negative-momentum",
+      "trace": "evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/trace.jsonl",
+      "traceSha256": "cf5d7c919cb125c484bd4753804547f5a79ba1606e9b4726df82f59276da6645",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 40,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 40,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 36,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 36,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 150,
+          "mask": 56,
+          "frames": 8
+        },
+        {
+          "frame": 157,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 165,
+          "mask": 56,
+          "frames": 8
+        },
+        {
+          "frame": 172,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 180,
+          "mask": 56,
+          "frames": 8
+        },
+        {
+          "frame": 187,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 195,
+          "mask": 56,
+          "frames": 8
+        },
+        {
+          "frame": 202,
+          "mask": 56,
+          "frames": 7
+        },
+        {
+          "frame": 210,
+          "mask": 56,
+          "frames": 8
+        }
+      ],
+      "samples": [
+        {
+          "frame": 142,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0020-heldout-jump-t19.png",
+          "imageSha256": "315a015d0b62ad94a66fab777234eb2c6789d2f2a2d6fa7d8fca76afd8d83ff0"
+        },
+        {
+          "frame": 150,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0021-heldout-jump-t20.png",
+          "imageSha256": "d7152c1bf093b2757183444f9da8a91a049fd1c7c4cc2646b3501572dceb0697"
+        },
+        {
+          "frame": 157,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0022-heldout-jump-t21.png",
+          "imageSha256": "40933502486c18c3440b3f70d95d623738f788ae4728c44f40cfb448130fab60"
+        },
+        {
+          "frame": 165,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0023-heldout-jump-t22.png",
+          "imageSha256": "595d1f4c97fa178f36d0f7ef810b0c2da56ac1da81e59d6fd359cd8baa3e379e"
+        },
+        {
+          "frame": 172,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0024-heldout-jump-t23.png",
+          "imageSha256": "fa1a9201ec3dc1bfc90985b7e3534fdbcfa0fe266f9f3dddd451753b7bf1cfba"
+        },
+        {
+          "frame": 180,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0025-heldout-jump-t24.png",
+          "imageSha256": "036369df31f97e961702568e7422cd3e32d7c6afb2bdac212e841b275fc47a0b"
+        },
+        {
+          "frame": 187,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-negative-momentum-2026-11-06T07-00-16.194Z/0026-heldout-jump-t25.png",
+          "imageSha256": "216eff04674fee85e070cbb9b3efb5580af2d464b186d2f2c93822a1cdc08513"
+        }
+      ]
+    },
+    {
+      "name": "facing-heldout-reflected-zero",
+      "trace": "evidence/local/bridge-jump-facing-heldout-reflected-zero-2026-11-06T07-00-16.264Z/trace.jsonl",
+      "traceSha256": "96e3a17868702a5d75e0677f398c7a570446bd42f14851e2e908f4deeb4be464",
+      "controls": [
+        {
+          "frame": 7,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 15,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 22,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 30,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 37,
+          "mask": 4,
+          "frames": 7
+        },
+        {
+          "frame": 45,
+          "mask": 4,
+          "frames": 8
+        },
+        {
+          "frame": 52,
+          "mask": 4,
+          "frames": 7
+        },
+        {
+          "frame": 60,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 67,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 75,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 82,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 90,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 97,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 105,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 112,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 120,
+          "mask": 0,
+          "frames": 8
+        },
+        {
+          "frame": 127,
+          "mask": 0,
+          "frames": 7
+        },
+        {
+          "frame": 135,
+          "mask": 24,
+          "frames": 8
+        },
+        {
+          "frame": 142,
+          "mask": 24,
+          "frames": 7
+        }
+      ],
+      "samples": [
+        {
+          "frame": 135,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-reflected-zero-2026-11-06T07-00-16.264Z/0019-heldout-jump-t18.png",
+          "imageSha256": "58847fd2d20859c2fe6fdea446fd06762baa54c07bfe0763a77e318aec44c1be"
+        },
+        {
+          "frame": 142,
+          "stage": "heldout-jump",
+          "cell": 16,
+          "facing": "left",
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bridge-jump-facing-heldout-reflected-zero-2026-11-06T07-00-16.264Z/0020-heldout-jump-t19.png",
+          "imageSha256": "3fe43d143ef91cbe9041b2cc854aef0b11b28f13a52e67e2ab88d6e48097be28"
+        }
+      ]
+    }
+  ]
+}

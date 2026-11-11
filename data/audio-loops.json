@@ -1,0 +1,67 @@
+{
+  "music_ground": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 4381248
+  },
+  "music_water": {
+    "sampleRate": 48000,
+    "startFrame": 264432,
+    "endFrame": 1491502
+  },
+  "music_underground": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 843840
+  },
+  "music_castle": {
+    "sampleRate": 48000,
+    "startFrame": 248316,
+    "endFrame": 631878
+  },
+  "music_cloud": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 393360
+  },
+  "music_star": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 393360
+  },
+  "music_ground_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 3000816
+  },
+  "music_water_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 257247,
+    "endFrame": 1177552
+  },
+  "music_underground_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 240000,
+    "endFrame": 642480
+  },
+  "music_castle_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 285516,
+    "endFrame": 592211
+  },
+  "music_cloud_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 275922,
+    "endFrame": 352584
+  },
+  "music_star_hurry": {
+    "sampleRate": 48000,
+    "startFrame": 275922,
+    "endFrame": 352587
+  },
+  "event_victory": {
+    "sampleRate": 48000,
+    "startFrame": 240309,
+    "endFrame": 547015
+  }
+}

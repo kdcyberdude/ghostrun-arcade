@@ -1,0 +1,43 @@
+{
+  "schema": "observed-shell-launched-goomba-visible-body-v1",
+  "scope": "Right-moving green-shell-launched grounded Goomba only",
+  "palette": "0f-0f-36-17",
+  "patternTable": 0,
+  "width": 16,
+  "height": 16,
+  "visibleTopFromRegisteredFeet": -15,
+  "flipX": false,
+  "pieces": [
+    {
+      "tile": 114,
+      "x": 0,
+      "y": 0,
+      "flipY": true
+    },
+    {
+      "tile": 115,
+      "x": 8,
+      "y": 0,
+      "flipY": true
+    },
+    {
+      "tile": 112,
+      "x": 0,
+      "y": 8,
+      "flipY": true
+    },
+    {
+      "tile": 113,
+      "x": 8,
+      "y": 8,
+      "flipY": true
+    }
+  ],
+  "opaquePixels": 180,
+  "sourcePoseDelayActiveNativeFrames": [
+    0,
+    1
+  ],
+  "status": "Body shape/origin are observed. Feet208 is the remake/registered-level convention; the native internal coordinate is not exposed. Do not infer physical gravity from the8px padded-cell flip error.",
+  "evidence": "evidence/shell-launch-origin-proof.json"
+}

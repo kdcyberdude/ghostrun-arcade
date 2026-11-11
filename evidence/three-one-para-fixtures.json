@@ -1,0 +1,1161 @@
+{
+  "classification": "Explicitly image-conditioned single-NPC regression fixtures; not native birth or gameplay wins.",
+  "lockSha256": "3e24cd542edc1f8914a9ab8e8903935bc87023bb801a7ad8ea5c3fb69f2475c8",
+  "cases": [
+    {
+      "group": "calibration",
+      "name": "brake4",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0447-brake4-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0448-brake4-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0449-brake4-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0450-brake4-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0451-brake4-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0452-brake4-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0453-brake4-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0454-brake4-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0455-brake4-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0456-brake4-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0457-brake4-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0458-brake4-t2802.png"
+        },
+        {
+          "frame": 21056,
+          "x": 339,
+          "y": 205,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0459-brake4-t2803.png"
+        },
+        {
+          "frame": 21064,
+          "x": 335,
+          "y": 190,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0460-brake4-t2804.png"
+        },
+        {
+          "frame": 21071,
+          "x": 332,
+          "y": 176,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0461-brake4-t2805.png"
+        },
+        {
+          "frame": 21079,
+          "x": 328,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0462-brake4-t2806.png"
+        },
+        {
+          "frame": 21086,
+          "x": 324,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0463-brake4-t2807.png"
+        },
+        {
+          "frame": 21094,
+          "x": 320,
+          "y": 170,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0464-brake4-t2808.png"
+        },
+        {
+          "frame": 21101,
+          "x": 317,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0465-brake4-t2809.png"
+        }
+      ]
+    },
+    {
+      "group": "calibration",
+      "name": "brake2",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0938-brake2-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0939-brake2-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0940-brake2-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0941-brake2-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0942-brake2-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0943-brake2-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0944-brake2-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0945-brake2-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0946-brake2-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0947-brake2-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0948-brake2-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/0949-brake2-t2802.png"
+        }
+      ]
+    },
+    {
+      "group": "calibration",
+      "name": "neutral",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1429-neutral-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1430-neutral-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1431-neutral-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1432-neutral-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1433-neutral-t2795.png"
+        }
+      ]
+    },
+    {
+      "group": "calibration",
+      "name": "early-brake6",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1920-early-brake6-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1921-early-brake6-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1922-early-brake6-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1923-early-brake6-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1924-early-brake6-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1925-early-brake6-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1926-early-brake6-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": false,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1927-early-brake6-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1928-early-brake6-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1929-early-brake6-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1930-early-brake6-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1931-early-brake6-t2802.png"
+        },
+        {
+          "frame": 21056,
+          "x": 339,
+          "y": 205,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1932-early-brake6-t2803.png"
+        },
+        {
+          "frame": 21064,
+          "x": 335,
+          "y": 190,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1933-early-brake6-t2804.png"
+        },
+        {
+          "frame": 21071,
+          "x": 332,
+          "y": 176,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1934-early-brake6-t2805.png"
+        },
+        {
+          "frame": 21079,
+          "x": 328,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1935-early-brake6-t2806.png"
+        },
+        {
+          "frame": 21086,
+          "x": 324,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1936-early-brake6-t2807.png"
+        },
+        {
+          "frame": 21094,
+          "x": 320,
+          "y": 170,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1937-early-brake6-t2808.png"
+        },
+        {
+          "frame": 21101,
+          "x": 317,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1938-early-brake6-t2809.png"
+        },
+        {
+          "frame": 21109,
+          "x": 313,
+          "y": 197,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1939-early-brake6-t2810.png"
+        },
+        {
+          "frame": 21116,
+          "x": 309,
+          "y": 199,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1940-early-brake6-t2811.png"
+        },
+        {
+          "frame": 21124,
+          "x": 305,
+          "y": 181,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1941-early-brake6-t2812.png"
+        },
+        {
+          "frame": 21131,
+          "x": 302,
+          "y": 170,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1942-early-brake6-t2813.png"
+        },
+        {
+          "frame": 21139,
+          "x": 298,
+          "y": 165,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1943-early-brake6-t2814.png"
+        },
+        {
+          "frame": 21146,
+          "x": 294,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1944-early-brake6-t2815.png"
+        },
+        {
+          "frame": 21154,
+          "x": 290,
+          "y": 174,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1945-early-brake6-t2816.png"
+        },
+        {
+          "frame": 21161,
+          "x": 287,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1946-early-brake6-t2817.png"
+        },
+        {
+          "frame": 21169,
+          "x": 283,
+          "y": 208,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1947-early-brake6-t2818.png"
+        },
+        {
+          "frame": 21176,
+          "x": 279,
+          "y": 189,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1948-early-brake6-t2819.png"
+        },
+        {
+          "frame": 21184,
+          "x": 275,
+          "y": 175,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1949-early-brake6-t2820.png"
+        },
+        {
+          "frame": 21191,
+          "x": 272,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1950-early-brake6-t2821.png"
+        },
+        {
+          "frame": 21199,
+          "x": 268,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1951-early-brake6-t2822.png"
+        },
+        {
+          "frame": 21207,
+          "x": 264,
+          "y": 171,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1952-early-brake6-t2823.png"
+        },
+        {
+          "frame": 21214,
+          "x": 260,
+          "y": 181,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1953-early-brake6-t2824.png"
+        },
+        {
+          "frame": 21222,
+          "x": 256,
+          "y": 200,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1954-early-brake6-t2825.png"
+        },
+        {
+          "frame": 21229,
+          "x": 253,
+          "y": 196,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1955-early-brake6-t2826.png"
+        },
+        {
+          "frame": 21237,
+          "x": 249,
+          "y": 179,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1956-early-brake6-t2827.png"
+        },
+        {
+          "frame": 21244,
+          "x": 245,
+          "y": 169,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1957-early-brake6-t2828.png"
+        },
+        {
+          "frame": 21252,
+          "x": 241,
+          "y": 165,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1958-early-brake6-t2829.png"
+        },
+        {
+          "frame": 21259,
+          "x": 238,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1959-early-brake6-t2830.png"
+        },
+        {
+          "frame": 21267,
+          "x": 234,
+          "y": 176,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1960-early-brake6-t2831.png"
+        },
+        {
+          "frame": 21274,
+          "x": 230,
+          "y": 189,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1961-early-brake6-t2832.png"
+        },
+        {
+          "frame": 21282,
+          "x": 226,
+          "y": 205,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1962-early-brake6-t2833.png"
+        },
+        {
+          "frame": 21289,
+          "x": 223,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1963-early-brake6-t2834.png"
+        },
+        {
+          "frame": 21297,
+          "x": 219,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1964-early-brake6-t2835.png"
+        },
+        {
+          "frame": 21304,
+          "x": 215,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-calibration-2026-11-06T06-00-31.108Z/1965-early-brake6-t2836.png"
+        }
+      ]
+    },
+    {
+      "group": "reserved",
+      "name": "brake3",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0447-brake3-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0448-brake3-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0449-brake3-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0450-brake3-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0451-brake3-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0452-brake3-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0453-brake3-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0454-brake3-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0455-brake3-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0456-brake3-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0457-brake3-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0458-brake3-t2802.png"
+        }
+      ]
+    },
+    {
+      "group": "reserved",
+      "name": "early-brake4",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0938-early-brake4-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0939-early-brake4-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0940-early-brake4-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0941-early-brake4-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0942-early-brake4-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0943-early-brake4-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0944-early-brake4-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0945-early-brake4-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0946-early-brake4-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0947-early-brake4-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0948-early-brake4-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0949-early-brake4-t2802.png"
+        },
+        {
+          "frame": 21056,
+          "x": 339,
+          "y": 205,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0950-early-brake4-t2803.png"
+        },
+        {
+          "frame": 21064,
+          "x": 335,
+          "y": 190,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0951-early-brake4-t2804.png"
+        },
+        {
+          "frame": 21071,
+          "x": 332,
+          "y": 176,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0952-early-brake4-t2805.png"
+        },
+        {
+          "frame": 21079,
+          "x": 328,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0953-early-brake4-t2806.png"
+        },
+        {
+          "frame": 21086,
+          "x": 324,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0954-early-brake4-t2807.png"
+        },
+        {
+          "frame": 21094,
+          "x": 320,
+          "y": 170,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0955-early-brake4-t2808.png"
+        },
+        {
+          "frame": 21101,
+          "x": 317,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0956-early-brake4-t2809.png"
+        },
+        {
+          "frame": 21109,
+          "x": 313,
+          "y": 197,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0957-early-brake4-t2810.png"
+        },
+        {
+          "frame": 21116,
+          "x": 309,
+          "y": 199,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0958-early-brake4-t2811.png"
+        },
+        {
+          "frame": 21124,
+          "x": 305,
+          "y": 181,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0959-early-brake4-t2812.png"
+        },
+        {
+          "frame": 21131,
+          "x": 302,
+          "y": 170,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0960-early-brake4-t2813.png"
+        },
+        {
+          "frame": 21139,
+          "x": 298,
+          "y": 165,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0961-early-brake4-t2814.png"
+        },
+        {
+          "frame": 21146,
+          "x": 294,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0962-early-brake4-t2815.png"
+        },
+        {
+          "frame": 21154,
+          "x": 290,
+          "y": 174,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0963-early-brake4-t2816.png"
+        },
+        {
+          "frame": 21161,
+          "x": 287,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0964-early-brake4-t2817.png"
+        },
+        {
+          "frame": 21169,
+          "x": 283,
+          "y": 208,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0965-early-brake4-t2818.png"
+        },
+        {
+          "frame": 21176,
+          "x": 279,
+          "y": 189,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0966-early-brake4-t2819.png"
+        },
+        {
+          "frame": 21184,
+          "x": 275,
+          "y": 175,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0967-early-brake4-t2820.png"
+        },
+        {
+          "frame": 21191,
+          "x": 272,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0968-early-brake4-t2821.png"
+        },
+        {
+          "frame": 21199,
+          "x": 268,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0969-early-brake4-t2822.png"
+        },
+        {
+          "frame": 21207,
+          "x": 264,
+          "y": 171,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0970-early-brake4-t2823.png"
+        },
+        {
+          "frame": 21214,
+          "x": 260,
+          "y": 181,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0971-early-brake4-t2824.png"
+        },
+        {
+          "frame": 21222,
+          "x": 256,
+          "y": 200,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0972-early-brake4-t2825.png"
+        },
+        {
+          "frame": 21229,
+          "x": 253,
+          "y": 196,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0973-early-brake4-t2826.png"
+        },
+        {
+          "frame": 21237,
+          "x": 249,
+          "y": 179,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0974-early-brake4-t2827.png"
+        },
+        {
+          "frame": 21244,
+          "x": 245,
+          "y": 169,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0975-early-brake4-t2828.png"
+        },
+        {
+          "frame": 21252,
+          "x": 241,
+          "y": 165,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0976-early-brake4-t2829.png"
+        },
+        {
+          "frame": 21259,
+          "x": 238,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0977-early-brake4-t2830.png"
+        },
+        {
+          "frame": 21267,
+          "x": 234,
+          "y": 176,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0978-early-brake4-t2831.png"
+        },
+        {
+          "frame": 21274,
+          "x": 230,
+          "y": 189,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/0979-early-brake4-t2832.png"
+        }
+      ]
+    },
+    {
+      "group": "reserved",
+      "name": "block-jump",
+      "seed": {
+        "x": 384.5,
+        "y": 168.25,
+        "vy": -0.7734375,
+        "vx": -0.5,
+        "landings": 0
+      },
+      "seedFrame": 20966,
+      "floor": 208,
+      "rows": [
+        {
+          "frame": 20966,
+          "x": 384,
+          "y": 168,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1430-block-jump-t2791.png"
+        },
+        {
+          "frame": 20974,
+          "x": 380,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1431-block-jump-t2792.png"
+        },
+        {
+          "frame": 20981,
+          "x": 377,
+          "y": 169,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1432-block-jump-t2793.png"
+        },
+        {
+          "frame": 20989,
+          "x": 373,
+          "y": 180,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1433-block-jump-t2794.png"
+        },
+        {
+          "frame": 20996,
+          "x": 369,
+          "y": 195,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1434-block-jump-t2795.png"
+        },
+        {
+          "frame": 21004,
+          "x": 365,
+          "y": 199,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1435-block-jump-t2796.png"
+        },
+        {
+          "frame": 21011,
+          "x": 362,
+          "y": 183,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1436-block-jump-t2797.png"
+        },
+        {
+          "frame": 21019,
+          "x": 358,
+          "y": 171,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1437-block-jump-t2798.png"
+        },
+        {
+          "frame": 21026,
+          "x": 354,
+          "y": 166,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1438-block-jump-t2799.png"
+        },
+        {
+          "frame": 21034,
+          "x": 350,
+          "y": 167,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1439-block-jump-t2800.png"
+        },
+        {
+          "frame": 21041,
+          "x": 347,
+          "y": 173,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1440-block-jump-t2801.png"
+        },
+        {
+          "frame": 21049,
+          "x": 343,
+          "y": 187,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1441-block-jump-t2802.png"
+        },
+        {
+          "frame": 21056,
+          "x": 339,
+          "y": 205,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1442-block-jump-t2803.png"
+        },
+        {
+          "frame": 21064,
+          "x": 335,
+          "y": 190,
+          "scored": true,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-para-reserved-2026-11-06T06-12-53.790Z/1443-block-jump-t2804.png"
+        }
+      ]
+    }
+  ]
+}

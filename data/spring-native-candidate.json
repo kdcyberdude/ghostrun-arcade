@@ -1,0 +1,79 @@
+{
+  "lockedUTC": "2026-11-06T08:25:34.400Z",
+  "scope": "Native3-1 spring vertical/contact-state hypothesis only; renderer palette/assembly are separately observed. No runtime integration or camera/horizontal parity claim.",
+  "tolerances": {
+    "positionPixels": 2,
+    "eventActiveNativeFrames": 2
+  },
+  "rule": {
+    "restSurfaceYFromSpringBase": -24,
+    "contact": "Descending registered feet cross restSurfaceY with observed aligned player. Horizontal contact width is unresolved and is not fabricated here.",
+    "contactFraction": "Clamp the integer feet coordinate to rest surface while preserving the incoming fractional Y; inferred from independently calibrated ordinary jump history and both observed contact phases.",
+    "compression": {
+      "downSteps": 8,
+      "upSteps": 6,
+      "pixelsPerStep": 2,
+      "firstDownStepOnContact": true
+    },
+    "graphics": {
+      "phaseLengths": [
+        4,
+        4,
+        4
+      ],
+      "cells": [
+        41,
+        42,
+        41
+      ],
+      "restCell": 40,
+      "palette": "0f-16-30-27",
+      "baseY": 200
+    },
+    "boost": "New A press while compression was already active requests high launch. A held before/on contact and new A after expansion do not request high launch. Exact first/last eligible native-frame boundary remains inferred, not measured.",
+    "firstLaunchDisplacement": {
+      "low": -5,
+      "high": -10
+    },
+    "followingTrajectory": {
+      "initialVelocityLow": -7,
+      "initialVelocityHigh": -12,
+      "gravityBeforeMovement": 0.5625,
+      "maximumFall": 4,
+      "order": "For every subsequent active update: v=min(maxFall,v+gravity); y+=v. First launch displacement is distinct from this following-trajectory velocity representative."
+    }
+  },
+  "sourceQualification": {
+    "ordinaryJumpInputs": "Fresh standard-start applied masks replayed through native3-1 prefix, then actual short jump. Independent normal run-jump model: start -5, held gravity5/32, released gravity9/16, maxfall4. Source images can contain adjacent-update rows; paused samples isolate coherent art.",
+    "originalApproach": {
+      "jumpFirstActiveFrame": 21728,
+      "heldThroughFrame": 21734,
+      "groundedFeetBeforeJump": 144,
+      "precontactFeetAt21764": 172.75,
+      "inferredContactFrame": 21765,
+      "incomingFraction": 0.75
+    },
+    "changedApproach": {
+      "jumpFirstActiveFrame": 21735,
+      "heldThroughFrame": 21742,
+      "groundedFeetBeforeJump": 144,
+      "inferredContactFrame": 21774,
+      "incomingFraction": 0.3125
+    },
+    "calibration": "Stable paused low/high first ascent and three later samples each exactly agree after preserving those fractions. Ordinary partial/mixed poses remain separate; one ordinary full pose can be one rendered update ahead of the nominal native response count. Do not claim a raw ordinary-image2px pass by masking this.",
+    "unresolved": [
+      "Exact horizontal contact width and screen-scroll behavior during X lock.",
+      "Exact first/last eligible boost edge within the active compression interval.",
+      "Full/half spring-base collision bounds; visible art only does not prove them.",
+      "Other spring instances/modes/sizes."
+    ]
+  },
+  "bindings": {
+    "evidence/spring-native-discovery-training-measurements.json": "04a617acbe9001d6a69cf814cc49e36d8bd22af5c2a338297e96df7650dbe2dc",
+    "evidence/spring-native-contact-training-measurements.json": "1a1e78c1e21fba4629f23cf16a550c23bf3837f4b566ee8035cf07b21b691bd5",
+    "evidence/spring-native-phase-training-measurements.json": "c617a74cc6c717b186281ef9b2baa1f9ad33e7527efae409cd4b32308e2a6db9",
+    "evidence/spring-native-arc-training-measurements.json": "938edb69f51f40142bcec6d1b1f12343be4da6f9701e2d61e18d23b64a202af6",
+    "data/spring-native-static-anchors.json": "819008720bc8091dff991a59ad48348459e649e5a04e8b8cf70058367ce263be"
+  },
+  "status": "Frozen prospective diagnostic candidate before changed-input heldout; not a qualified full runtime spring motor."
+}

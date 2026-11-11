@@ -1,0 +1,83 @@
+{
+  "schema": "popup-normal-powerup-extension-v1",
+  "lockedUTC": "2026-11-06T04:18:53.098Z",
+  "lockedBeforeReservedCapture": true,
+  "baseline": "evidence/popup-event-integrated-verification.json",
+  "scope": "Firstminimalextension ONLYnormalmushroom/flower1000awardhooks. No timer/motion/sourcephase retune. Starcollection/fireball/star/shell/blockcoin hooks remain measured-separately andpending.",
+  "runtimeCandidate": {
+    "value": 1000,
+    "origin": "Existingitemphysicaltop−16.",
+    "coordinate": "Existingpost-camera birthX then screenfixed.",
+    "motion": "Existing−1pixel/unpausednativeframe; continue whilepowerChangefreezesplayer.",
+    "lifetime": "Existinginferred48itemtimer, conditionalshare with1UP. Newnormalpowerup lifetimeintersection44..51 alone doesnot establish48within2; combineditemfamily46..49does. Thisgeneralizationisinferred."
+  },
+  "normalOriginCandidates": {
+    "fastMushroom": {
+      "firstDraw": [
+        767,
+        768
+      ],
+      "origin": 176
+    },
+    "walkMushroom": {
+      "firstDraw": [
+        774,
+        775
+      ],
+      "origin": 176
+    },
+    "flower": {
+      "conditionalFirstDraw": [
+        1985,
+        1986
+      ],
+      "origin": 112,
+      "status": "InitialglyphmayoverlapMario; currentitemtop128−16 andoneframefirstdrawphase arejointinference."
+    }
+  },
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2
+  },
+  "trainingSummary": {
+    "cases": 10,
+    "normalPowerupCases": 4,
+    "normalClearPoints": 41,
+    "normalOriginMaximumError": 1,
+    "motionMaximumError": 0,
+    "normalLifetimeIntersection": [
+      44,
+      51
+    ],
+    "conditionalSharedItemLifetime": [
+      46,
+      49
+    ],
+    "simultaneousMaximum": 3,
+    "values": [
+      1000,
+      400,
+      500,
+      800,
+      200,
+      100
+    ]
+  },
+  "trainingBindings": {
+    "evidence/popup-extension-plan.json": "00f5fdafb9da4308bad391fc5446b3c8ca0bd84f91bc103b0648140185290997",
+    "evidence/popup-extension-training-measurements.json": "3e3938182ee796df0fff3877325f36bba21f04f04c78442593b837bcb9d3657c",
+    "evidence/popup-extension-training-analysis.json": "fa5d63f97443ea375ba8e63416cc88badbf9ebd137bc8082a179888c60c88c5f",
+    "evidence/popup-event-heldout-validation.json": "c31c2191f5e30412c8e0413ef3418e8663213f7c8f12a2446ffedfa81dbb408c"
+  },
+  "otherClasses": {
+    "blockCoin": "Delayed200phase;−0.5px/framequantized, distinctfromenemy/item−1. Birth/spinningcointrajectorynotreadyforruntime.",
+    "shell": "400kick and500/800victims coexist. Three labels visible. Value/eventexpirykeptseparate; no universallifetimer proposed.",
+    "fireball": "100enemylabelmovesduringobservedshrinkfreeze. Exacteventbirth/lifetimepending.",
+    "star": "1000collection+simultaneous100contactawardsobserved; collisiongeometry/origin/lifetimepending."
+  },
+  "limitations": [
+    "No globalnativeframe/decisiontick entersruntimehook. Absoluteframesabove are sourceexperimentdiagnostics only.",
+    "Exacttransformduration/pose, HUDlag, otherpickupsemantics, overlappinglabelorder andmaxcapacity remainunqualified.",
+    "Normalpowerup48lifetime iscausalitemfamilyinference, not independentexacttimermeasurement."
+  ]
+}

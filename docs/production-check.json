@@ -1,0 +1,573 @@
+{
+  "date": "2026-11-11T16:29:32.487Z",
+  "buildHashes": {
+    "dist/index.html": "370b79e90859bb6101e768c887577e76289745143b2b13d2dd982b93035dfec2",
+    "dist/assets/index-4C0u3ezy.css": "9ce246a3af8d8c613bad58b507c5b6488115b7f32d1285b9e3a374c9fc12b1b5",
+    "dist/assets/index-DYFm9Yp6.js": "36fca9b69d4dfdde64f5a58041a64a5553e85052fca16a42a7be50b1c0556cab",
+    "dist/assets/main-CmPYnvqx.js": "4b90869bc717dcd079f3a0d8888404ffb7455abf591360f037e84449eb67197e",
+    "dist/assets/three.module-DOKonX29.js": "c2567eafdef6cbff86059a8ebd8ae1269d6b3cfe83e845220953a08626d2da55"
+  },
+  "scope": "Actual production preview, DOM buttons and real keyboard controls. No controller/debug bridge is present or used. A parallel analyser observes the real native Web Audio output, without replacing decoding/playback. This does not establish subjective listening or original-reference audio equivalence, and is not a campaign win.",
+  "checks": [
+    "startup/assets",
+    "no development bridge",
+    "title/start",
+    "real keyboard walk/jump",
+    "pause freezes bitmap",
+    "actual audio activation/decoding/loop",
+    "actual jump effect",
+    "pause cue then silence",
+    "mute silence/unmute signal",
+    "restart title",
+    "no model/ROM/policy network dependency"
+  ],
+  "errors": [],
+  "requests": [
+    "http://127.0.0.1:53944/",
+    "http://127.0.0.1:53944/assets/index-4C0u3ezy.css",
+    "http://127.0.0.1:53944/assets/index-DYFm9Yp6.js",
+    "http://127.0.0.1:53944/assets/three.module-DOKonX29.js",
+    "http://127.0.0.1:53944/assets/main-CmPYnvqx.js",
+    "http://127.0.0.1:53944/assets/graphics/special/index.json",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-000.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-001.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-002.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-003.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-004.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-006.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-007.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-008.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-005.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-009.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-010.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-012.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-013.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-011.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-014.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-015.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-016.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-018.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-017.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-020.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-019.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-021.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-022.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-023.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-026.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-024.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-025.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-027.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-028.png",
+    "http://127.0.0.1:53944/assets/graphics/player-mario-right.png",
+    "http://127.0.0.1:53944/assets/graphics/player-mario-left.png",
+    "http://127.0.0.1:53944/assets/graphics/metatiles-palette-029.png",
+    "http://127.0.0.1:53944/assets/graphics/player-luigi-right.png",
+    "http://127.0.0.1:53944/assets/graphics/player-luigi-left.png",
+    "http://127.0.0.1:53944/assets/graphics/player-fire-right.png",
+    "http://127.0.0.1:53944/assets/graphics/patterns-index.png",
+    "http://127.0.0.1:53944/assets/graphics/player-fire-left.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-29-1a-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-36-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-30-21-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-27-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-00-16-27-18.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-1a-30-27.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-16-30-27.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-17-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-0f-36-17.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-07-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-29-1a-09.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-30-21-1c.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-3c-1c-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-1c-36-17.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-27-17-1c.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-0c-3c-1c.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-07-17-1c.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-17-17-1c.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-30-10-00.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-30-16-00.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-27-17-00.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-00-30-10.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-17-17-00.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-07-17-00.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-15-12-25.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-30-12-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-3a-1a-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-27-12-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-10-30-27.png",
+    "http://127.0.0.1:53944/assets/graphics/sprite-tiles-0f-0f-30-10.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-07-12-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-17-12-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-30-00-10.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-36-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-27-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-30-21-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-17-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-07-17-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-0f-29-1a-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-27-16-0f.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-jumping_coins-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-jumping_coins-1.png",
+    "http://127.0.0.1:53944/assets/graphics/background-tiles-22-30-00-10.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-jumping_coins-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-jumping_coins-3.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-powerups-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-powerups-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-castle_star_flag.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-powerups-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-powerups-3.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hammers-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hammers-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-flagpole_flag.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hammers-3.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-bowser_flame-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hammers-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-bowser_flame-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-fireball_or_firebar-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-fireball_or_firebar-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-fireball_or_firebar-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-fireball_or_firebar-3.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-explosions-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-explosions-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-explosions-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-bubble.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-vine_segments-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-vine_segments-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-large_platforms-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-large_platforms-1.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-large_platforms-2.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-large_platforms-3.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hit_block_default.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-small_platform.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hit_block_used-0.png",
+    "http://127.0.0.1:53944/assets/graphics/special/sprite-hit_block_used-1.png",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_bump.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_swim_stomp.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_big_jump.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_enemy_smack.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_fireball.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_pipe_down_injury.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_flagpole.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_small_jump.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_coin.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_powerup_appears.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_blast_fireworks.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_vine_grows.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_timer_tick.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_powerup_collected.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_extra_life.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_bowser_falls.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_brick_shatter.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_bowser_flame.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_pause.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/sfx_unpause.mp3",
+    "http://127.0.0.1:53944/assets-web/audio/music_ground.mp3"
+  ],
+  "captures": [
+    {
+      "name": "title",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/title.png",
+      "sha256": "507c39d9a6a5084864655c36cedca2286ef24c73d1132f8dc2c83f71085ca8e8",
+      "player": null
+    },
+    {
+      "name": "started",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/started.png",
+      "sha256": "59345d5944b23905716c13f87d45d6c2f7fcf228dcc0cfb23e4656227dcab531",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 42,
+        "visibleRight": 53,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 40,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "walked",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/walked.png",
+      "sha256": "60d60861190c3125a690b98f89aa8762dc289c8f860f557d02b288c2c974b2c3",
+      "player": {
+        "originX": 81,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 83,
+        "visibleRight": 95,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 81,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "jumped",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/jumped.png",
+      "sha256": "cd931f1d67ea6a10434b973fb735e37fac1c6d51f5ce6427ab7d1920181399fd",
+      "player": {
+        "originX": 94,
+        "originY": 122,
+        "feetY": 153,
+        "visibleLeft": 94,
+        "visibleRight": 109,
+        "visibleTop": 138,
+        "visibleBottom": 153,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 94,
+            "originY": 122,
+            "feetY": 153,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "paused",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/paused.png",
+      "sha256": "4da66fdd5b613674f436dcbd27aa2b470ee6c3a397d3fffa4678312d93bdea0f",
+      "player": {
+        "originX": 97,
+        "originY": 112,
+        "feetY": 143,
+        "visibleLeft": 97,
+        "visibleRight": 112,
+        "visibleTop": 128,
+        "visibleBottom": 143,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 97,
+            "originY": 112,
+            "feetY": 143,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "paused-later",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/paused-later.png",
+      "sha256": "4da66fdd5b613674f436dcbd27aa2b470ee6c3a397d3fffa4678312d93bdea0f",
+      "player": {
+        "originX": 97,
+        "originY": 112,
+        "feetY": 143,
+        "visibleLeft": 97,
+        "visibleRight": 112,
+        "visibleTop": 128,
+        "visibleBottom": 143,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 97,
+            "originY": 112,
+            "feetY": 143,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "resumed",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/resumed.png",
+      "sha256": "f997948933d54cd08cabcc0e9c55173d152c47b40ab590b6527df869ae00478e",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "name": "restarted",
+      "file": "evidence/local/production-browser-2026-11-11T16-29-16.416Z/restarted.png",
+      "sha256": "507c39d9a6a5084864655c36cedca2286ef24c73d1132f8dc2c83f71085ca8e8",
+      "player": null
+    }
+  ],
+  "audio": [
+    {
+      "name": "started",
+      "contexts": [
+        "running"
+      ],
+      "currentTime": 3.7066666666666666,
+      "gains": [
+        0.699999988079071
+      ],
+      "rms": 0.000011105502070126403,
+      "starts": [
+        {
+          "time": 2.592,
+          "offset": 0,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        }
+      ]
+    },
+    {
+      "name": "jumped",
+      "contexts": [
+        "running"
+      ],
+      "currentTime": 5.034666666666666,
+      "gains": [
+        0.699999988079071
+      ],
+      "rms": 0.08560489720886966,
+      "starts": [
+        {
+          "time": 2.592,
+          "offset": 0,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        },
+        {
+          "time": 4.666666666666667,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.6995625
+        }
+      ]
+    },
+    {
+      "name": "paused-after-command",
+      "contexts": [
+        "running"
+      ],
+      "currentTime": 5.936,
+      "gains": [
+        0.699999988079071
+      ],
+      "rms": 0,
+      "starts": [
+        {
+          "time": 2.592,
+          "offset": 0,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        },
+        {
+          "time": 4.666666666666667,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.6995625
+        },
+        {
+          "time": 5.072,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.7928125
+        }
+      ]
+    },
+    {
+      "name": "muted-resumed",
+      "contexts": [
+        "running"
+      ],
+      "currentTime": 6.624,
+      "gains": [
+        0
+      ],
+      "rms": 0,
+      "starts": [
+        {
+          "time": 2.592,
+          "offset": 0,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        },
+        {
+          "time": 4.666666666666667,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.6995625
+        },
+        {
+          "time": 5.072,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.7928125
+        },
+        {
+          "time": 6.005333333333334,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.7927083333333333
+        },
+        {
+          "time": 6.005333333333334,
+          "offset": 2.48,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        }
+      ]
+    },
+    {
+      "name": "unmuted",
+      "contexts": [
+        "running"
+      ],
+      "currentTime": 6.656,
+      "gains": [
+        0.699999988079071
+      ],
+      "rms": 0.000020063249911215146,
+      "starts": [
+        {
+          "time": 2.592,
+          "offset": 0,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        },
+        {
+          "time": 4.666666666666667,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.6995625
+        },
+        {
+          "time": 5.072,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.7928125
+        },
+        {
+          "time": 6.005333333333334,
+          "offset": 0,
+          "loop": false,
+          "loopStart": 0,
+          "loopEnd": 0,
+          "bufferDuration": 0.7927083333333333
+        },
+        {
+          "time": 6.005333333333334,
+          "offset": 2.48,
+          "loop": true,
+          "loopStart": 5,
+          "loopEnd": 91.276,
+          "bufferDuration": 92.276
+        }
+      ]
+    }
+  ]
+}

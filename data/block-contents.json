@@ -1,0 +1,349 @@
+{
+  "schema": "controller-observed-block-contents-v1",
+  "blocks": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "col": 21,
+      "row": 9,
+      "kind": "powerup",
+      "evidence": "Controlled original1-1 small-player mushroom pickup; data/powerup-measurements.json. Flower for an already-large player is the inferred shared size-powerup rule."
+    },
+    {
+      "level": "1-1",
+      "area": "main",
+      "col": 78,
+      "row": 9,
+      "kind": "powerup",
+      "evidence": "Controlled original1-1 big-player hit produced a Fire Flower; exact block x1248/y144. data/powerup-measurements.json."
+    },
+    {
+      "level": "1-1",
+      "area": "main",
+      "col": 101,
+      "row": 9,
+      "kind": "star",
+      "evidence": "Original1-1 ordinary brick hit at x1616/y144 produced an emerging, bouncing Star and a later genuine pickup; data/powerup-measurements.json."
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "sourceGenerator": "tools/optional-accepted-block-contents.mjs",
+      "confidence": {
+        "content": "Observed emission after an actual head hit, exact supplied item artwork.",
+        "gridPosition": "Image-inferred grid coordinate from independently observed static pipe/ground anchors; small raster phase uncertainty retained."
+      },
+      "sourceData": "data/five-two-vine-frontier.json",
+      "col": 125,
+      "row": 5,
+      "kind": "star",
+      "evidence": "Actual rightmost upper brick of the second eight-brick structure emitted a Star. Full raised block and two complete122-opaque-pixel supplied Star poses match exactly; x2000/y80 is image-inferred from the observed water-return pipe1840 and registered strip1888..2015.",
+      "sourceTrace": "evidence/local/five-two-vine-frontier/trace.jsonl",
+      "sourceObservations": {
+        "activation": {
+          "sequence": 1037,
+          "tick": 5732,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/01037-tick-05732.png"
+        },
+        "itemArtwork": [
+          {
+            "evidence": {
+              "sequence": 1040,
+              "tick": 5743,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "right"
+                ],
+                "ticks": 3
+              },
+              "nativeFrames": 22,
+              "image": "evidence/local/five-two-vine-frontier/01040-tick-05743.png"
+            },
+            "sprite": "sprite-powerups-2.png",
+            "screenOrigin": [
+              90,
+              86
+            ],
+            "exactOpaquePixels": 122,
+            "paletteRemapping": null
+          },
+          {
+            "evidence": {
+              "sequence": 1041,
+              "tick": 5744,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "left"
+                ],
+                "ticks": 1
+              },
+              "nativeFrames": 8,
+              "image": "evidence/local/five-two-vine-frontier/01041-tick-05744.png"
+            },
+            "sprite": "sprite-powerups-2.png",
+            "screenOrigin": [
+              93,
+              108
+            ],
+            "exactOpaquePixels": 122,
+            "paletteRemapping": null
+          }
+        ]
+      },
+      "coordinateEvidence": {
+        "returnSequence": 1004,
+        "whitePipeWorldX": 1840,
+        "pipeScreenX": 48,
+        "pipeTopY": 176,
+        "inferredReturnCameraX": 1792,
+        "secondStripScreenX": 96,
+        "inferredSecondStripWorldX": 1888,
+        "stripWidthPixels": 128,
+        "upperY": 80,
+        "lowerY": 144,
+        "note": "Actual two-tier strip is inferred grid1888..2015 from the independently observed water-return pipe. Original freeTile1886 is a drifted search anchor. Later columns follow the same finite128px strip and static screenshot alignment; small raster phase differences remain possible."
+      }
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "sourceGenerator": "tools/optional-accepted-block-contents.mjs",
+      "confidence": {
+        "content": "Observed emission after an actual head hit, exact supplied item artwork.",
+        "gridPosition": "Image-inferred grid coordinate from independently observed static pipe/ground anchors; small raster phase uncertainty retained."
+      },
+      "sourceData": "data/five-two-vine-frontier.json",
+      "col": 168,
+      "row": 9,
+      "kind": "powerup",
+      "observedItem": "mushroom",
+      "evidence": "Actual isolated lower brick x2688/y144 emitted a Mushroom. Initial brick81, complete252-opaque-pixel used block and176-opaque-pixel supplied Mushroom match exactly. Position is image-inferred from main white pipe2768 and groundend2720. Flower for an already-large player remains the shared inferred size-powerup rule.",
+      "sourceTrace": "evidence/local/five-two-vine-frontier/trace.jsonl",
+      "sourceObservations": {
+        "before": {
+          "sequence": 7630,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+        },
+        "activation": {
+          "sequence": 7631,
+          "tick": 5550,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/five-two-vine-frontier/07631-tick-05550.png"
+        },
+        "used": {
+          "evidence": {
+            "sequence": 7633,
+            "tick": 5555,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 3
+            },
+            "nativeFrames": 23,
+            "image": "evidence/local/five-two-vine-frontier/07633-tick-05555.png"
+          },
+          "sprite": "sprite-hit_block_used-0.png",
+          "screenOrigin": [
+            110,
+            144
+          ],
+          "width": 16,
+          "height": 16,
+          "matchedOpaquePixels": 252
+        },
+        "item": {
+          "evidence": {
+            "sequence": 7634,
+            "tick": 5561,
+            "request": {
+              "op": "step",
+              "buttons": [],
+              "ticks": 6
+            },
+            "nativeFrames": 45,
+            "image": "evidence/local/five-two-vine-frontier/07634-tick-05561.png"
+          },
+          "sprite": "sprite-powerups-0.png",
+          "screenOrigin": [
+            110,
+            128
+          ],
+          "width": 16,
+          "height": 16,
+          "matchedOpaquePixels": 176,
+          "paletteRemapping": null
+        }
+      },
+      "coordinateEvidence": {
+        "evidence": {
+          "sequence": 7630,
+          "tick": 5548,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/five-two-vine-frontier/07630-tick-05548.png"
+        },
+        "whitePipeWorldX": 2768,
+        "whitePipeScreenX": 190,
+        "pipeTopY": 176,
+        "mainGroundEndWorldX": 2720,
+        "groundEndScreenX": 142,
+        "inferredCameraX": 2578,
+        "pipeLeftArtwork": {
+          "metatile": 16,
+          "screenOrigin": [
+            190,
+            176
+          ],
+          "width": 16,
+          "height": 16,
+          "exactAtlasColumnAlternatives": [
+            0
+          ],
+          "matchedPixels": 256
+        },
+        "pipeRightArtwork": {
+          "metatile": 17,
+          "screenOrigin": [
+            206,
+            176
+          ],
+          "width": 16,
+          "height": 16,
+          "exactAtlasColumnAlternatives": [
+            0
+          ],
+          "matchedPixels": 256
+        },
+        "note": "The two independent static anchors give camera2578; exact initial brick atscreen110 gives world2688. Older freeTile2686 was a drifted search anchor."
+      }
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "sourceGenerator": "tools/optional-accepted-block-contents.mjs",
+      "confidence": {
+        "content": "Observed emission after an actual head hit, exact supplied item artwork.",
+        "gridPosition": "Image-inferred grid coordinate from independently observed static pipe/ground anchors; small raster phase uncertainty retained."
+      },
+      "sourceData": "data/vine-optional-rooms.json",
+      "col": 34,
+      "row": 5,
+      "kind": "powerup",
+      "observedItem": "mushroom",
+      "sourceTrace": "evidence/local/vine-optional-5-2-live/trace.jsonl",
+      "evidence": "Actual rightmost upper brick of the first six-brick structure emitted a Mushroom. Raised used-block artwork matches252 opaque pixels; two later supplied Mushroom poses each match176 opaque pixels. Existing exact canonical upper strip columns29..34 identifies x544/y80. Flower for an already-large player remains the shared inferred size-powerup rule.",
+      "sourceObservations": {
+        "activation": {
+          "sequence": 1825,
+          "tick": 5475,
+          "sentUtc": "2026-11-05T19:55:52.035653+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/vine-optional-5-2-live/01825-tick-05475.png"
+        },
+        "raisedUsedArtwork": {
+          "sprite": "sprite-hit_block_used-0.png",
+          "screenOrigin": [
+            42,
+            74
+          ],
+          "opaquePixels": 252
+        },
+        "items": [
+          {
+            "evidence": {
+              "sequence": 1829,
+              "tick": 5484,
+              "sentUtc": "2026-11-05T19:56:08.719153+00:00",
+              "request": {
+                "op": "step",
+                "buttons": [],
+                "ticks": 3
+              },
+              "nativeFrames": 23,
+              "image": "evidence/local/vine-optional-5-2-live/01829-tick-05484.png"
+            },
+            "sprite": "sprite-powerups-0.png",
+            "screenOrigin": [
+              49,
+              65
+            ],
+            "opaquePixels": 176
+          },
+          {
+            "evidence": {
+              "sequence": 1830,
+              "tick": 5508,
+              "sentUtc": "2026-11-05T19:56:23.341974+00:00",
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "up"
+                ],
+                "ticks": 24
+              },
+              "nativeFrames": 180,
+              "image": "evidence/local/vine-optional-5-2-live/01830-tick-05508.png"
+            },
+            "sprite": "sprite-powerups-0.png",
+            "screenOrigin": [
+              144,
+              193
+            ],
+            "opaquePixels": 176
+          }
+        ]
+      },
+      "coordinateEvidence": {
+        "source": "data/observed-levels.json level5-2/area-2",
+        "canonicalUpperBrickColumns": [
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "row": 5,
+        "selected": "Observed rightmost upper brick",
+        "inferredCameraAtHit": 502,
+        "usedBlockScreenX": 42,
+        "inferredWorldX": 544
+      }
+    }
+  ]
+}

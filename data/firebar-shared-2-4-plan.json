@@ -1,0 +1,144 @@
+{
+  "schema": "firebar-shared-class-plan-v1",
+  "declaredUtc": "2026-11-06T01:00:08.829901+00:00",
+  "scope": "Image/controller-only qualification of existing locked5/32six-orb motor on anotherCCWcastle. No runtime edits.",
+  "level": "2-4",
+  "pivot": [
+    792,
+    152
+  ],
+  "direction": -1,
+  "prefix": {
+    "winningDecisions": 2560,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-2-4-ccw-0",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 10,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-2-4-ccw-20",
+      "extraNeutralTicks": 20,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 10,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "reserved-2-4-ccw-13",
+      "extraNeutralTicks": 13,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 10,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 90,
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Do not inspect/extract reserved13 before a shared motor candidate and initialization/activation rule are frozen. First1-4lockedfiles remain immutable.",
+  "hypotheses": [
+    "Same5/32bin/native clock vscoarse perbar decimal speed",
+    "Same initialunits768andsign\u22121 vsnewinitialphase",
+    "Centralquadentryactivation vslevelwideclock"
+  ],
+  "cameraSearch": [
+    380,
+    851
+  ],
+  "anchorCamera": 440,
+  "cameraMethod": "Actual consecutive reference-image registration, independently seeded from lava-anchored source chain; no firebar phase/pivot used to select camera."
+}

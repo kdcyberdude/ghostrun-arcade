@@ -1,0 +1,225 @@
+{
+  "schema": "qualified-firebar-production-v1",
+  "objects": [
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 488,
+      "y": 168,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 768,
+      "qualification": "Firstlockedcandidate101heldoutangle/597centersall0px/0epocherror.",
+      "expectedSpec": {
+        "x": 488,
+        "y": 168,
+        "length": 6,
+        "speed": -0.0321
+      }
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "x": 792,
+      "y": 152,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 864,
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified.",
+      "expectedSpec": {
+        "x": 792,
+        "y": 152,
+        "length": 6,
+        "speed": -0.02964
+      }
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 968,
+      "y": 104,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 128,
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified.",
+      "expectedSpec": {
+        "x": 968,
+        "y": 104,
+        "length": 6,
+        "speed": -0.032
+      }
+    },
+    {
+      "level": "8-4",
+      "area": "area-4",
+      "x": 328,
+      "y": 120,
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "qualification": "Fresh standard-start known prefix, then independent neutral prewait0/20. All calibration centers and fixed camera-entry phases match exactly.",
+      "expectedSpec": {
+        "x": 328,
+        "y": 120,
+        "length": 6,
+        "speed": 0.03244
+      }
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "x": 856,
+      "y": 104,
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "qualification": "Normal and three delayed source approaches conditionally match 112 qualified phases and 672 flame centers at the inferred camera-entry epoch; native collision geometry remains unmeasured.",
+      "expectedSpec": {
+        "x": 856,
+        "y": 104,
+        "length": 6,
+        "speed": 0.03276
+      }
+    },
+    {
+      "level": "7-4",
+      "area": "main",
+      "x": 1656,
+      "y": 120,
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "qualification": "Three delayed source approaches conditionally match 125 qualified phase samples and 624 flame centers at the inferred camera-entry epoch; native collision geometry remains unmeasured.",
+      "expectedSpec": {
+        "x": 1656,
+        "y": 120,
+        "length": 6,
+        "speed": 0.0321
+      }
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 792,
+      "y": 104,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 768,
+      "qualification": "Each live and completed stream matches 158 qualified phases and 790 centers across two delayed source approaches at inferred camera entry; native collision geometry remains unmeasured.",
+      "expectedSpec": {
+        "x": 792,
+        "y": 104,
+        "length": 6,
+        "speed": -0.02618
+      }
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "x": 1080,
+      "y": 104,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 768,
+      "qualification": "Each live and completed stream matches 200 qualified phases and 980 centers across two delayed source approaches at inferred camera entry; native collision geometry remains unmeasured.",
+      "expectedSpec": {
+        "x": 1080,
+        "y": 104,
+        "length": 6,
+        "speed": -0.03276
+      }
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "x": 984,
+      "y": 152,
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 768,
+      "qualification": "Four varied fresh source approaches: each live and completed stream separately matches 387 qualified frames with artwork pivot y153 and maximum 0px; inferred camera-entry activation; clipped/pre-entry visibility, arbitrary history, and native collision remain unqualified. Both y152 and y153 pivot hypotheses satisfy the frozen 2px threshold.",
+      "expectedSpec": {
+        "x": 984,
+        "y": 152,
+        "length": 6,
+        "speed": -0.03244
+      }
+    }
+  ],
+  "pivotCorrections": {
+    "level": "1-4",
+    "area": "main",
+    "expectedOriginalSpecs": [
+      {
+        "x": 488,
+        "y": 168,
+        "length": 6,
+        "speed": -0.0321
+      },
+      {
+        "x": 776,
+        "y": 104,
+        "length": 6,
+        "speed": -0.02618
+      },
+      {
+        "x": 952,
+        "y": 104,
+        "length": 6,
+        "speed": 0.032
+      },
+      {
+        "x": 1080,
+        "y": 104,
+        "length": 6,
+        "speed": -0.03276
+      },
+      {
+        "x": 1224,
+        "y": 152,
+        "length": 6,
+        "speed": -0.03233
+      },
+      {
+        "x": 1352,
+        "y": 152,
+        "length": 6,
+        "speed": -0.03244
+      },
+      {
+        "x": 1416,
+        "y": 72,
+        "length": 6,
+        "speed": 0.03244
+      }
+    ],
+    "replacements": [
+      {
+        "index": 1,
+        "spec": {
+          "x": 792,
+          "y": 104,
+          "length": 6,
+          "speed": -0.02618
+        }
+      },
+      {
+        "index": 2,
+        "spec": {
+          "x": 968,
+          "y": 104,
+          "length": 6,
+          "speed": -0.032
+        }
+      }
+    ],
+    "evidence": "data/firebar-hazard-corrections-candidate.json; evidence/firebar-hazard-corrections-heldout.json"
+  },
+  "limits": [
+    "Only individually qualified six-orb objects use this motor.",
+    "Explicit initial units fit the observed fresh starts and preactivation waits; arbitrary earlier object/history effects remain unresolved.",
+    "All other objects retain legacy motion, including the unqualified 1-4 clockwise1416 calibration failure (8px raw error) and long/fast classes.",
+    "Measured motor centers do not establish fullscene99% equivalence, flame animation epoch or collision radius.",
+    "The late 8-4 waterbar absolute positions remain grid inferences with16px ambiguity; this metadata changes only the proven first waterbar motor."
+  ]
+}

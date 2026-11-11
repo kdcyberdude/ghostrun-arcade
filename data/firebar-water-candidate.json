@@ -1,0 +1,74 @@
+{
+  "schema": "qualified-water-firebar-candidate-v1",
+  "frozenUtc": "2026-11-06T01:45:08.358032+00:00",
+  "objects": [
+    {
+      "level": "8-4",
+      "area": "area-4",
+      "x": 328,
+      "y": 120,
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "qualification": "Fresh standard-start known prefix, then independent neutral prewait0/20. All calibration centers and fixed camera-entry phases match exactly."
+    }
+  ],
+  "motorSource": "src/firebar-motion.ts",
+  "motorUnchangedFromLock": "data/firebar-shared-lock.json",
+  "cameraMethod": "256 exact RGB pixels at the nonperiodic blue/green entry-floor ledge, source camera0 and world rectangle80,168,32,8. Each comparison image matched directly; no accumulated image-registration drift or map coordinates.",
+  "source": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z/water-extracted-calibration.json",
+  "sourceSHA256": "3244ac4908f4a21ffe6fad090951d30a1e39b1af717ea830171ab0375ecd6649",
+  "calibration": [
+    {
+      "case": "cal-8-4-water-cw-0",
+      "orientations": 49,
+      "flameCenters": 243,
+      "initialUnits": 768,
+      "initialUnitsInterval": [
+        768.0,
+        769.0
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "estimatedActivationNative": 78494,
+      "activationCameraBracket": {
+        "beforeNative": 78487,
+        "beforeCamera": 62,
+        "afterNative": 78495,
+        "afterCamera": 70
+      },
+      "wrongOrientationSamples": 0,
+      "maxRawCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    },
+    {
+      "case": "cal-8-4-water-cw-20",
+      "orientations": 49,
+      "flameCenters": 242,
+      "initialUnits": 768,
+      "initialUnitsInterval": [
+        768.0,
+        769.0
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "estimatedActivationNative": 78644,
+      "activationCameraBracket": {
+        "beforeNative": 78637,
+        "beforeCamera": 62,
+        "afterNative": 78645,
+        "afterCamera": 70
+      },
+      "wrongOrientationSamples": 0,
+      "maxRawCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    }
+  ],
+  "reservation": {
+    "directory": "evidence/local/firebar-fresh-2026-11-06T01-34-51Z",
+    "case": "reserved-8-4-water-cw-13"
+  },
+  "limits": [
+    "Object initial phase and area are observed metadata; native initialization mechanism remains unknown.",
+    "No collision radius, fullscene99percent or flame-animation epoch claim.",
+    "Later water-bar coordinates are separately under audit and are not inferred from this first pivot."
+  ]
+}

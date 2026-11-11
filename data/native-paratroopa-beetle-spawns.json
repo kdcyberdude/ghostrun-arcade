@@ -1,0 +1,1063 @@
+{
+ "schema": "native-paratroopa-beetle-spawns-v1",
+ "method": "tools/derive-paratroopa-beetle-spawns.mjs over a read-only native trace of the recorded winning route",
+ "corrections": [
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2416,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.79
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 9906
+   }
+  },
+  {
+   "level": "2-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2704,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.79
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 10021
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 400,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 20931
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 448,
+    "y": 160
+   },
+   "replace": {
+    "y": 192,
+    "spawnVy": -0.12109375,
+    "spawnYFraction": 0.24
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 20950
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2640,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnVy": 0.9296875,
+    "spawnYFraction": 0.03
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 21937
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2688,
+    "y": 160
+   },
+   "replace": {
+    "y": 192,
+    "spawnVy": 3.19921875,
+    "spawnYFraction": 0.4
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 21960
+   }
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 21981
+   }
+  },
+  {
+   "level": "3-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1472,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 23632
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "beetle",
+    "x": 1328,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 32135
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "beetle",
+    "x": 2464,
+    "y": 176
+   },
+   "replace": {
+    "y": 160
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 32680
+   }
+  },
+  {
+   "level": "4-2",
+   "area": "area-3",
+   "match": {
+    "kind": "beetle",
+    "x": 2864,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 32849
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 976,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 38805
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1392,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 38970
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2848,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.2
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 39590
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 640,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 40694
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1696,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41127
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "beetle",
+    "x": 2176,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41324
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "beetle",
+    "x": 2192,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41330
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2608,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41527
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2656,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41545
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2976,
+    "y": 96
+   },
+   "replace": {
+    "y": 144,
+    "spawnYFraction": 0.79
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41673
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 864,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 49153
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1472,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 49447
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1920,
+    "y": 80
+   },
+   "replace": {
+    "y": 80
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 49672
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 2608,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 50000
+   }
+  },
+  {
+   "level": "6-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 3296,
+    "y": 80
+   },
+   "replace": {
+    "y": 80,
+    "spawnVy": 0.70703125,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 50337
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 416,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 55945
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 704,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 56065
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 848,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 56122
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1040,
+    "y": 192
+   },
+   "replace": {
+    "y": 208,
+    "spawnVy": -0.98046875,
+    "spawnYFraction": 0.45
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 56219
+   }
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 2704,
+    "y": 96
+   },
+   "replace": {
+    "y": 64
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 56929
+   }
+  },
+  {
+   "level": "7-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 832,
+    "y": 112
+   },
+   "replace": {
+    "y": 160,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 61743
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1296,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 66384
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2576,
+    "y": 192
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.2
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 66932
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2752,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 67028
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2816,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.51,
+    "x": 2832,
+    "spawnCamera": 2533
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 67060
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 4064,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 67627
+   }
+  },
+  {
+   "level": "8-1",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 4528,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 67815
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 912,
+    "y": 192
+   },
+   "replace": {
+    "y": 208,
+    "spawnVy": -1.98046875,
+    "spawnYFraction": 0.45
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 69958
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1056,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70016
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1088,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnVy": -2.98046875,
+    "spawnYFraction": 0.45,
+    "x": 1104,
+    "spawnCamera": 802
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70035
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1472,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.2
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70182
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1520,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02,
+    "spawnCamera": 1224
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70203
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1760,
+    "y": 208
+   },
+   "replace": {
+    "y": 208,
+    "x": 1776,
+    "spawnCamera": 1475
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70304
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1920,
+    "y": 208
+   },
+   "replace": {
+    "y": 208,
+    "x": 1936,
+    "spawnCamera": 1635
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70368
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 1968,
+    "y": 208
+   },
+   "replace": {
+    "y": 208
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70382
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2208,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.2,
+    "x": 2224,
+    "spawnCamera": 1922
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70483
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.79,
+    "x": 2720,
+    "spawnCamera": 2426
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70729
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnVy": -3,
+    "spawnYFraction": 0.75,
+    "x": 2752,
+    "spawnCamera": 2459
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70742
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 2800,
+    "y": 128
+   },
+   "replace": {
+    "y": 176,
+    "spawnVy": -2.98046875,
+    "spawnYFraction": 0.45,
+    "spawnCamera": 2509
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70762
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "beetle",
+    "x": 3008,
+    "y": 208
+   },
+   "replace": {
+    "y": 208,
+    "x": 3024,
+    "spawnCamera": 2736
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 70854
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 3248,
+    "y": 96
+   },
+   "replace": {
+    "y": 128,
+    "spawnYFraction": 0.51,
+    "spawnCamera": 2958
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 71006
+   }
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 480,
+    "y": 160
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 73009
+   }
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 1488,
+    "y": 176
+   },
+   "replace": {
+    "y": 208,
+    "spawnYFraction": 0.02
+   },
+   "classification": "native first appearance (read-only enemy slot): spawn height and vertical state",
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 73412
+   }
+  }
+ ],
+ "additions": [
+  {
+   "level": "2-1",
+   "area": "main",
+   "spec": {
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 208,
+    "direction": -1,
+    "palette": "0f-1a-30-27",
+    "spawnCamera": 2442,
+    "spawnVy": 0.53125,
+    "spawnYFraction": 0.35,
+    "evidence": "native first appearance (read-only enemy slot): paratroopa present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+   },
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 10034
+   }
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "spec": {
+    "kind": "paratroopa",
+    "x": 2912,
+    "y": 144,
+    "direction": -1,
+    "palette": "0f-1a-30-27",
+    "spawnCamera": 2613,
+    "spawnYFraction": 0.02,
+    "evidence": "native first appearance (read-only enemy slot): paratroopa present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+   },
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 39616
+   }
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "spec": {
+    "kind": "beetle",
+    "x": 2208,
+    "y": 208,
+    "direction": -1,
+    "palette": "0f-0f-36-17",
+    "spawnCamera": 1902,
+    "evidence": "native first appearance (read-only enemy slot): beetle present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+   },
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 41336
+   }
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "spec": {
+    "kind": "paratroopa",
+    "x": 384,
+    "y": 80,
+    "direction": -1,
+    "palette": "0f-1a-30-27",
+    "spawnCamera": 85,
+    "spawnYFraction": 0.02,
+    "evidence": "native first appearance (read-only enemy slot): paratroopa present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+   },
+   "provenance": {
+    "report": "evidence/paratroopa-beetle-findings-20261109.md",
+    "nativeFrame": 69715
+   }
+  }
+ ]
+}

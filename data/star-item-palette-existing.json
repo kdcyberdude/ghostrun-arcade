@@ -1,0 +1,454 @@
+{
+  "createdUtc": "2026-11-06T07:46:09.061Z",
+  "source": "data/three-two-star-measurements.json",
+  "sourceInventory": {
+    "descriptor": {
+      "type": 2,
+      "source_name": "star",
+      "width": 16,
+      "height": 16,
+      "sprites": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 141,
+          "attributes": 2,
+          "pattern_table": 0,
+          "flip_x": false,
+          "flip_y": false,
+          "palette": 2
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 141,
+          "attributes": 66,
+          "pattern_table": 0,
+          "flip_x": true,
+          "flip_y": false,
+          "palette": 2
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "tile": 228,
+          "attributes": 2,
+          "pattern_table": 0,
+          "flip_x": false,
+          "flip_y": false,
+          "palette": 2
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "tile": 228,
+          "attributes": 66,
+          "pattern_table": 0,
+          "flip_x": true,
+          "flip_y": false,
+          "palette": 2
+        }
+      ],
+      "palette_animation": "top cycles0..3 every2frames; flower bottom remains1; star bottom cycles too"
+    },
+    "descriptorFile": "assets/graphics/tables.json",
+    "descriptorSha256": "667e160f606d172caf3f1f45d473384b50e307e95245af3e91e64c6207ce2d9f",
+    "paletteObservation": 16,
+    "paletteMetadata": "assets/graphics/graphics-manifest.json",
+    "paletteMetadataSha256": "719545906a272101e7f5e37ff5f176167e9e11558ddd5721d3d25675f0798e67",
+    "defaultFile": "assets/graphics/special/sprite-powerups-2.png",
+    "defaultSha256": "bd5666b030bfc39ef4820213fc3e9a6701fa94c2e8d1ec3b54273956d05c29de",
+    "opaquePixels": 122,
+    "bodyPixels": 116,
+    "eyePixels": 6,
+    "templates": [
+      {
+        "group": 0,
+        "colors": [
+          0,
+          22,
+          39,
+          24
+        ],
+        "file": "assets/graphics/sprite-tiles-00-16-27-18.png",
+        "sha256": "250dd549a07fad101d5b57be926e6fea3f9cbad621dfb8993ff93caf4584cfd3",
+        "body": [
+          172,
+          124,
+          0
+        ],
+        "eyes": [
+          248,
+          56,
+          0
+        ]
+      },
+      {
+        "group": 1,
+        "colors": [
+          15,
+          26,
+          48,
+          39
+        ],
+        "file": "assets/graphics/sprite-tiles-0f-1a-30-27.png",
+        "sha256": "04ae25a52de3c6c97352afc35bbdc846972ba7ef65c14cdb177e8d0535807447",
+        "body": [
+          252,
+          160,
+          68
+        ],
+        "eyes": [
+          0,
+          168,
+          0
+        ]
+      },
+      {
+        "group": 2,
+        "colors": [
+          15,
+          22,
+          48,
+          39
+        ],
+        "file": "assets/graphics/sprite-tiles-0f-16-30-27.png",
+        "sha256": "d62801b7a5b2e7726010afdc71fa6374a995d962e10f4e5e550e1d668287d570",
+        "body": [
+          252,
+          160,
+          68
+        ],
+        "eyes": [
+          248,
+          56,
+          0
+        ]
+      },
+      {
+        "group": 3,
+        "colors": [
+          15,
+          15,
+          54,
+          23
+        ],
+        "file": "assets/graphics/sprite-tiles-0f-0f-36-17.png",
+        "sha256": "b560964c458dbdf8a22051cfb0ba23ab0c0dbcec37ffc62e1eae5b4bab014efe",
+        "body": [
+          228,
+          92,
+          16
+        ],
+        "eyes": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "qualification": "Area3-2 palette candidates from supplied observed palette16. Metadata says top/bottom cycle0..3 every2frames; that cadence/epoch is a hypothesis until observed."
+  },
+  "rows": [
+    {
+      "name": "three-two-bricks-early-jump",
+      "frame": 23948,
+      "tick": 3188,
+      "stars": [
+        {
+          "x": 41,
+          "y": 64,
+          "paletteGroup": 0,
+          "body": [
+            172,
+            124,
+            0
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03282-three-two-bricks-early-jump-t3188.png"
+    },
+    {
+      "name": "three-two-bricks-early-jump",
+      "frame": 23956,
+      "tick": 3189,
+      "stars": [
+        {
+          "x": 49,
+          "y": 67,
+          "paletteGroup": 0,
+          "body": [
+            172,
+            124,
+            0
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03283-three-two-bricks-early-jump-t3189.png"
+    },
+    {
+      "name": "three-two-bricks-early-jump",
+      "frame": 23964,
+      "tick": 3190,
+      "stars": [
+        {
+          "x": 57,
+          "y": 77,
+          "paletteGroup": 0,
+          "body": [
+            172,
+            124,
+            0
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03284-three-two-bricks-early-jump-t3190.png"
+    },
+    {
+      "name": "three-two-bricks-early-jump",
+      "frame": 23979,
+      "tick": 3192,
+      "stars": [
+        {
+          "x": 71,
+          "y": 111,
+          "paletteGroup": 3,
+          "body": [
+            228,
+            92,
+            16
+          ],
+          "eyes": [
+            0,
+            0,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03286-three-two-bricks-early-jump-t3192.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 23964,
+      "tick": 3190,
+      "stars": [
+        {
+          "x": 41,
+          "y": 64,
+          "paletteGroup": 0,
+          "body": [
+            172,
+            124,
+            0
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03886-three-two-star-heldout-t3190.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 23971,
+      "tick": 3191,
+      "stars": [
+        {
+          "x": 48,
+          "y": 66,
+          "paletteGroup": 3,
+          "body": [
+            228,
+            92,
+            16
+          ],
+          "eyes": [
+            0,
+            0,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03887-three-two-star-heldout-t3191.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 23979,
+      "tick": 3192,
+      "stars": [
+        {
+          "x": 56,
+          "y": 75,
+          "paletteGroup": 3,
+          "body": [
+            228,
+            92,
+            16
+          ],
+          "eyes": [
+            0,
+            0,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03888-three-two-star-heldout-t3192.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 23986,
+      "tick": 3193,
+      "stars": [
+        {
+          "x": 63,
+          "y": 89,
+          "paletteGroup": 3,
+          "body": [
+            228,
+            92,
+            16
+          ],
+          "eyes": [
+            0,
+            0,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03889-three-two-star-heldout-t3193.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 23994,
+      "tick": 3194,
+      "stars": [
+        {
+          "x": 70,
+          "y": 108,
+          "paletteGroup": 2,
+          "body": [
+            252,
+            160,
+            68
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03890-three-two-star-heldout-t3194.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 24001,
+      "tick": 3195,
+      "stars": [
+        {
+          "x": 77,
+          "y": 130,
+          "paletteGroup": 2,
+          "body": [
+            252,
+            160,
+            68
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03891-three-two-star-heldout-t3195.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 24009,
+      "tick": 3196,
+      "stars": [
+        {
+          "x": 85,
+          "y": 156,
+          "paletteGroup": 2,
+          "body": [
+            252,
+            160,
+            68
+          ],
+          "eyes": [
+            248,
+            56,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03892-three-two-star-heldout-t3196.png"
+    },
+    {
+      "name": "three-two-star-heldout",
+      "frame": 24016,
+      "tick": 3197,
+      "stars": [
+        {
+          "x": 92,
+          "y": 179,
+          "paletteGroup": 1,
+          "body": [
+            252,
+            160,
+            68
+          ],
+          "eyes": [
+            0,
+            168,
+            0
+          ],
+          "opaquePixels": 122,
+          "rgbMismatches": 0
+        }
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-two-block-2026-11-06T06-41-24.858Z/03893-three-two-star-heldout-t3197.png"
+    }
+  ]
+}

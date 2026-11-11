@@ -1,0 +1,82 @@
+{
+  "schema": "three-three-contact-platform-earlier-brake-v1",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3399,
+  "captureFromTick": 3384,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [
+      "cal-earlier-brake3"
+    ],
+    "reserved": [
+      "reserved-earlier-brake4"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "cal-earlier-brake3",
+      "segments": [
+        {
+          "stage": "brake",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "ride",
+          "buttons": [],
+          "ticks": 55
+        },
+        {
+          "stage": "jump-off",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "return",
+          "buttons": [],
+          "ticks": 20
+        }
+      ]
+    },
+    {
+      "name": "reserved-earlier-brake4",
+      "segments": [
+        {
+          "stage": "brake",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        {
+          "stage": "ride",
+          "buttons": [],
+          "ticks": 45
+        },
+        {
+          "stage": "jump-off",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "return",
+          "buttons": [],
+          "ticks": 20
+        }
+      ]
+    }
+  ],
+  "priorPlanSha256": "40e9deaf0b6cd9a191db6028862d100fe03f84708c43d08244c11f1863f93325",
+  "reason": "Initial3400 brakes leave the platform before horizontal inertia ends; both retained. Earlier3399 mount has40px remaining platform width."
+}

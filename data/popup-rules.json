@@ -1,0 +1,11 @@
+{
+  "enemyFeetYOffset": 32,
+  "itemTopYOffset": 16,
+  "koopaDurationActiveNativeFrames": 50,
+  "itemDurationActiveNativeFrames": 48,
+  "status": "Event-relative inference: Koopa first-draw-relative48..52; item training46..48 and reserved46..49, conditional on retained±1draw/birth phase. Inferred50/48 remain within2frames. Goomba follows separately qualified squash cleanup. Motion and100/1UPassembly are measured exact.",
+  "evidence": "data/popup-event-candidate.json",
+  "scope": "Goomba/Koopa stomp awards and1UP pickup only. Other award events, transformation freeze, and simultaneous-label source behavior remain unmeasured.",
+  "greenShellSideKickDurationActiveNativeFrames": 48,
+  "greenShellSideKickDurationStatus": "Inferred48, reserved event-relative lifetime47..50 after retained±1birth/draw phase, maximum2active-native-frame error. Pre-kick shellX is observed. Existing4px shell motor is unchanged and not qualified by this award hook; opposite direction is a symmetry inference."
+}

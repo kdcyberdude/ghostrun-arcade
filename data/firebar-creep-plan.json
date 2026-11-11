@@ -1,0 +1,216 @@
+{
+  "schema": "firebar-threshold-plan-v1",
+  "declaredUtc": "2026-11-06T00:43:27.435Z",
+  "scope": "Read-only reference controller/images; no runtime/compiler/renderer changes",
+  "prefix": {
+    "winningDecisions": 924,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "safeApproach": [
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [
+        "right",
+        "a",
+        "b"
+      ],
+      "ticks": 8
+    },
+    {
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 2
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-creep-activation",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 8,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 20,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 20,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 20,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 20,
+          "stage": "prewait",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 60,
+  "hypotheses": [
+    "Global/area clock; additional preactivation delay changes later angle by elapsed native time",
+    "Object activation clock; identical spatial approach gives same angles despite earlier waiting",
+    "Discrete angle states vs continuous sine",
+    "Actual flame quad center relative to pivot block; animation phase independent of angular phase"
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "firstDamageNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Original reserved-prewait13 remains unopened and unfitted until candidate freeze. These additional cases are calibration only.",
+  "limits": [
+    "The safe preparation/approach was piloted through genuine screenshots and leaves Mario on the platform before the first firebar.",
+    "Additional collision controls will be declared separately after safe motion measurement."
+  ],
+  "goal": "Starting at the proven inactive camera225 stop, advance by small ordinary walking pulses and wait after each to locate the activation boundary. All source images retained; original reserved13 remains unopened."
+}

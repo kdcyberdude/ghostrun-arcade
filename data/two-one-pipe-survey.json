@@ -1,0 +1,3728 @@
+{
+  "schema": "image-only-optional-pipe-survey-v1",
+  "level": "2-1",
+  "atlas": "metatiles-palette-001.png",
+  "summary": {
+    "acceptedEntrances": [
+      1648
+    ],
+    "observedMainReturnPipes": [
+      1840
+    ],
+    "centeredDownNoTransition": [
+      736,
+      1184,
+      1840,
+      1952,
+      2016,
+      2816
+    ],
+    "unresolvedCandidates": [
+      2080
+    ]
+  },
+  "candidates": [
+    {
+      "worldX": 736,
+      "topY": 144,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        938,
+        952
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1224,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 939,
+            "endTick": 1227,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 940,
+            "endTick": 1239,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 941,
+            "endTick": 1242,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 942,
+            "endTick": 1262,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 943,
+            "endTick": 1267,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 944,
+            "endTick": 1269,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 16
+          },
+          {
+            "sequence": 945,
+            "endTick": 1281,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 946,
+            "endTick": 1284,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 947,
+            "endTick": 1285,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 948,
+            "endTick": 1305,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 949,
+            "endTick": 1306,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 950,
+            "endTick": 1326,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 951,
+            "endTick": 1327,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 952,
+            "endTick": 1347,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 952,
+        "tick": 1347,
+        "sentUtc": "2026-11-05T22:00:36.467600+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 150,
+        "image": "evidence/local/two-one-pipe-survey/00952-tick-01347.png",
+        "player": {
+          "originX": 93,
+          "originY": 113,
+          "visibleLeft": 95,
+          "visibleTop": 129,
+          "visibleRight": 106,
+          "visibleBottom": 144,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 85,
+            "y": 144,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 651,
+        "inferredPlayerWorldX": 744,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    },
+    {
+      "worldX": 1184,
+      "topY": 144,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        760,
+        766
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1250,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 761,
+            "endTick": 1256,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6,
+            "nativeFrames": 45
+          },
+          {
+            "sequence": 762,
+            "endTick": 1268,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 763,
+            "endTick": 1269,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 764,
+            "endTick": 1289,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 765,
+            "endTick": 1290,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 766,
+            "endTick": 1310,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 766,
+        "tick": 1310,
+        "sentUtc": "2026-11-05T21:58:08.727842+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 151,
+        "image": "evidence/local/two-one-pipe-survey/00766-tick-01310.png",
+        "player": {
+          "originX": 115,
+          "originY": 113,
+          "visibleLeft": 117,
+          "visibleTop": 129,
+          "visibleRight": 128,
+          "visibleBottom": 144,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 107,
+            "y": 144,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 1077,
+        "inferredPlayerWorldX": 1192,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    },
+    {
+      "worldX": 1648,
+      "topY": 144,
+      "width": 32,
+      "status": "accepted-optional-coin-room-entrance-and-actual-return",
+      "acceptedOptionalEntrance": true,
+      "roomSource": "data/two-one-pipe-room.json",
+      "roomId": "bonus-coins",
+      "roomGeometrySequences": [
+        200,
+        201
+      ],
+      "roomGeometry": {
+        "atlas": "metatiles-palette-004.png",
+        "nonemptyTiles": 105,
+        "visibleCoins": 19,
+        "unknownCells": []
+      },
+      "actualReturn": {
+        "mainPipeX": 1840,
+        "mainPipeTop": 176,
+        "firstCompletePlayerWorld": [
+          1848,
+          176
+        ],
+        "cameraX": 1792,
+        "firstCompleteSequence": 255,
+        "firstCompleteTick": 1397
+      },
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        195,
+        255
+      ]
+    },
+    {
+      "worldX": 1840,
+      "topY": 176,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        195,
+        274
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1274,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 196,
+            "endTick": 1280,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6,
+            "nativeFrames": 45
+          },
+          {
+            "sequence": 197,
+            "endTick": 1292,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 198,
+            "endTick": 1295,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 199,
+            "endTick": 1296,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 200,
+            "endTick": 1316,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 201,
+            "endTick": 1324,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 8,
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 202,
+            "endTick": 1332,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 8,
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 203,
+            "endTick": 1333,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 204,
+            "endTick": 1334,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 205,
+            "endTick": 1335,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 206,
+            "endTick": 1336,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 207,
+            "endTick": 1337,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 208,
+            "endTick": 1338,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 209,
+            "endTick": 1339,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 210,
+            "endTick": 1340,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 211,
+            "endTick": 1344,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 212,
+            "endTick": 1354,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 10,
+            "nativeFrames": 75
+          },
+          {
+            "sequence": 213,
+            "endTick": 1355,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 214,
+            "endTick": 1356,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 215,
+            "endTick": 1357,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 216,
+            "endTick": 1358,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 217,
+            "endTick": 1359,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 218,
+            "endTick": 1360,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 219,
+            "endTick": 1361,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 220,
+            "endTick": 1362,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 221,
+            "endTick": 1363,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 222,
+            "endTick": 1364,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 223,
+            "endTick": 1365,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 224,
+            "endTick": 1366,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 225,
+            "endTick": 1367,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 226,
+            "endTick": 1368,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 227,
+            "endTick": 1369,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 228,
+            "endTick": 1370,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 229,
+            "endTick": 1371,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 230,
+            "endTick": 1372,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 231,
+            "endTick": 1373,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 232,
+            "endTick": 1374,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 233,
+            "endTick": 1375,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 234,
+            "endTick": 1376,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 235,
+            "endTick": 1377,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 236,
+            "endTick": 1378,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 237,
+            "endTick": 1379,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 238,
+            "endTick": 1380,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 239,
+            "endTick": 1381,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 240,
+            "endTick": 1382,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 241,
+            "endTick": 1383,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 242,
+            "endTick": 1384,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 243,
+            "endTick": 1385,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 244,
+            "endTick": 1386,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 245,
+            "endTick": 1387,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 246,
+            "endTick": 1388,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 247,
+            "endTick": 1389,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 248,
+            "endTick": 1390,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 249,
+            "endTick": 1391,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 250,
+            "endTick": 1392,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 251,
+            "endTick": 1393,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 252,
+            "endTick": 1394,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 253,
+            "endTick": 1395,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 254,
+            "endTick": 1396,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 255,
+            "endTick": 1397,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 256,
+            "endTick": 1398,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 257,
+            "endTick": 1399,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 258,
+            "endTick": 1400,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 259,
+            "endTick": 1403,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 260,
+            "endTick": 1423,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 261,
+            "endTick": 1426,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 262,
+            "endTick": 1427,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 263,
+            "endTick": 1439,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 264,
+            "endTick": 1441,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 265,
+            "endTick": 1461,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 266,
+            "endTick": 1463,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 267,
+            "endTick": 1464,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 268,
+            "endTick": 1484,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 269,
+            "endTick": 1486,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 270,
+            "endTick": 1506,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 271,
+            "endTick": 1507,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 272,
+            "endTick": 1527,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 273,
+            "endTick": 1528,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 274,
+            "endTick": 1548,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 274,
+        "tick": 1548,
+        "sentUtc": "2026-11-05T22:08:11.354348+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 150,
+        "image": "evidence/local/two-one-pipe-late/00274-tick-01548.png",
+        "player": {
+          "originX": 55,
+          "originY": 145,
+          "visibleLeft": 57,
+          "visibleTop": 161,
+          "visibleRight": 68,
+          "visibleBottom": 176,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 47,
+            "y": 176,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 1793,
+        "inferredPlayerWorldX": 1848,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    },
+    {
+      "worldX": 1952,
+      "topY": 144,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        1357,
+        1373
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1298,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 1358,
+            "endTick": 1301,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 1359,
+            "endTick": 1313,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1360,
+            "endTick": 1320,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 7,
+            "nativeFrames": 53
+          },
+          {
+            "sequence": 1361,
+            "endTick": 1340,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1362,
+            "endTick": 1345,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 1363,
+            "endTick": 1347,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1364,
+            "endTick": 1359,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 1365,
+            "endTick": 1362,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1366,
+            "endTick": 1363,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1367,
+            "endTick": 1383,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1368,
+            "endTick": 1385,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1369,
+            "endTick": 1405,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1370,
+            "endTick": 1406,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1371,
+            "endTick": 1426,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1372,
+            "endTick": 1427,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 1373,
+            "endTick": 1447,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 1373,
+        "tick": 1447,
+        "sentUtc": "2026-11-05T22:09:22.982222+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 151,
+        "image": "evidence/local/two-one-pipe-survey/01373-tick-01447.png",
+        "player": {
+          "originX": 92,
+          "originY": 113,
+          "visibleLeft": 94,
+          "visibleTop": 129,
+          "visibleRight": 105,
+          "visibleBottom": 144,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 84,
+            "y": 144,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 1868,
+        "inferredPlayerWorldX": 1960,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    },
+    {
+      "worldX": 2016,
+      "topY": 160,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        1357,
+        1383
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1298,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 1358,
+            "endTick": 1301,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 1359,
+            "endTick": 1313,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1360,
+            "endTick": 1320,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 7,
+            "nativeFrames": 53
+          },
+          {
+            "sequence": 1361,
+            "endTick": 1340,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1362,
+            "endTick": 1345,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 1363,
+            "endTick": 1347,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1364,
+            "endTick": 1359,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 1365,
+            "endTick": 1362,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1366,
+            "endTick": 1363,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1367,
+            "endTick": 1383,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1368,
+            "endTick": 1385,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1369,
+            "endTick": 1405,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1370,
+            "endTick": 1406,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1371,
+            "endTick": 1426,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1372,
+            "endTick": 1427,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 1373,
+            "endTick": 1447,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 1374,
+            "endTick": 1455,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 8,
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 1375,
+            "endTick": 1457,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1376,
+            "endTick": 1469,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1377,
+            "endTick": 1471,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1378,
+            "endTick": 1475,
+            "op": "step",
+            "buttons": [],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 1379,
+            "endTick": 1480,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 38
+          },
+          {
+            "sequence": 1380,
+            "endTick": 1482,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1381,
+            "endTick": 1494,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1382,
+            "endTick": 1496,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1383,
+            "endTick": 1516,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 1383,
+        "tick": 1516,
+        "sentUtc": "2026-11-05T22:10:36.588147+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 150,
+        "image": "evidence/local/two-one-pipe-survey/01383-tick-01516.png",
+        "player": {
+          "originX": 90,
+          "originY": 129,
+          "visibleLeft": 92,
+          "visibleTop": 145,
+          "visibleRight": 103,
+          "visibleBottom": 160,
+          "cell": 23,
+          "direction": "left",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 82,
+            "y": 160,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 1934,
+        "inferredPlayerWorldX": 2024,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    },
+    {
+      "worldX": 2080,
+      "topY": 128,
+      "width": 32,
+      "status": "unresolved-no-centered-standing-down-trial",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        1357,
+        1406
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1298,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 1358,
+            "endTick": 1301,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 1359,
+            "endTick": 1313,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1360,
+            "endTick": 1320,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 7,
+            "nativeFrames": 53
+          },
+          {
+            "sequence": 1361,
+            "endTick": 1340,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1362,
+            "endTick": 1345,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 1363,
+            "endTick": 1347,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1364,
+            "endTick": 1359,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 1365,
+            "endTick": 1362,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1366,
+            "endTick": 1363,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1367,
+            "endTick": 1383,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1368,
+            "endTick": 1385,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1369,
+            "endTick": 1405,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1370,
+            "endTick": 1406,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1371,
+            "endTick": 1426,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1372,
+            "endTick": 1427,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 7
+          },
+          {
+            "sequence": 1373,
+            "endTick": 1447,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 1374,
+            "endTick": 1455,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 8,
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 1375,
+            "endTick": 1457,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1376,
+            "endTick": 1469,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1377,
+            "endTick": 1471,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1378,
+            "endTick": 1475,
+            "op": "step",
+            "buttons": [],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 1379,
+            "endTick": 1480,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 38
+          },
+          {
+            "sequence": 1380,
+            "endTick": 1482,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1381,
+            "endTick": 1494,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1382,
+            "endTick": 1496,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1383,
+            "endTick": 1516,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1384,
+            "endTick": 1536,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 1385,
+            "endTick": 1541,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5,
+            "nativeFrames": 38
+          },
+          {
+            "sequence": 1386,
+            "endTick": 1544,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1387,
+            "endTick": 1556,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 1388,
+            "endTick": 1559,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1389,
+            "endTick": 1560,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1390,
+            "endTick": 1572,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1391,
+            "endTick": 1575,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1392,
+            "endTick": 1587,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1393,
+            "endTick": 1590,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 1394,
+            "endTick": 1598,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8,
+            "nativeFrames": 60
+          },
+          {
+            "sequence": 1395,
+            "endTick": 1602,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 1396,
+            "endTick": 1605,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 23
+          },
+          {
+            "sequence": 1397,
+            "endTick": 1610,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 1398,
+            "endTick": 1622,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 1399,
+            "endTick": 1626,
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 1400,
+            "endTick": 1627,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 1401,
+            "endTick": 1632,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 1402,
+            "endTick": 1644,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 91
+          },
+          {
+            "sequence": 1403,
+            "endTick": 1648,
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 4,
+            "nativeFrames": 30
+          },
+          {
+            "sequence": 1404,
+            "endTick": 1651,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3,
+            "nativeFrames": 22
+          },
+          {
+            "sequence": 1405,
+            "endTick": 1653,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 1406,
+            "endTick": 1665,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          }
+        ]
+      },
+      "result": "Ordinary jumps from previous2016pipe are constrained by overhead brick and were short or overshot. Return-side ground jumps did not establish supported feet128 contact. No non-entry conclusion is drawn.",
+      "attemptObservations": [
+        {
+          "sequence": 1383,
+          "tick": 1516,
+          "sentUtc": "2026-11-05T22:10:36.588147+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/two-one-pipe-survey/01383-tick-01516.png",
+          "player": {
+            "originX": 90,
+            "originY": 129,
+            "visibleLeft": 92,
+            "visibleTop": 145,
+            "visibleRight": 103,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -56
+            }
+          ]
+        },
+        {
+          "sequence": 1384,
+          "tick": 1536,
+          "sentUtc": "2026-11-05T22:11:18.064304+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 20
+          },
+          "nativeFrames": 150,
+          "image": "evidence/local/two-one-pipe-survey/01384-tick-01536.png",
+          "player": {
+            "originX": 90,
+            "originY": 129,
+            "visibleLeft": 92,
+            "visibleTop": 145,
+            "visibleRight": 103,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 146,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -56
+            }
+          ]
+        },
+        {
+          "sequence": 1385,
+          "tick": 1541,
+          "sentUtc": "2026-11-05T22:11:18.216603+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/two-one-pipe-survey/01385-tick-01541.png",
+          "player": {
+            "originX": 99,
+            "originY": 136,
+            "visibleLeft": 99,
+            "visibleTop": 152,
+            "visibleRight": 114,
+            "visibleBottom": 167,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 118,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -19
+            }
+          ]
+        },
+        {
+          "sequence": 1386,
+          "tick": 1544,
+          "sentUtc": "2026-11-05T22:11:18.256543+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/two-one-pipe-survey/01386-tick-01544.png",
+          "player": {
+            "originX": 92,
+            "originY": 177,
+            "visibleLeft": 94,
+            "visibleTop": 193,
+            "visibleRight": 104,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -22
+            }
+          ]
+        },
+        {
+          "sequence": 1387,
+          "tick": 1556,
+          "sentUtc": "2026-11-05T22:11:18.280467+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 91,
+          "image": "evidence/local/two-one-pipe-survey/01387-tick-01556.png",
+          "player": {
+            "originX": 81,
+            "originY": 177,
+            "visibleLeft": 83,
+            "visibleTop": 193,
+            "visibleRight": 94,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -33
+            }
+          ]
+        },
+        {
+          "sequence": 1388,
+          "tick": 1559,
+          "sentUtc": "2026-11-05T22:12:51.836177+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/two-one-pipe-survey/01388-tick-01559.png",
+          "player": {
+            "originX": 78,
+            "originY": 120,
+            "visibleLeft": 78,
+            "visibleTop": 136,
+            "visibleRight": 93,
+            "visibleBottom": 151,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -36
+            }
+          ]
+        },
+        {
+          "sequence": 1389,
+          "tick": 1560,
+          "sentUtc": "2026-11-05T22:12:51.861316+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-survey/01389-tick-01560.png",
+          "player": {
+            "originX": 75,
+            "originY": 112,
+            "visibleLeft": 75,
+            "visibleTop": 128,
+            "visibleRight": 90,
+            "visibleBottom": 143,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -39
+            }
+          ]
+        },
+        {
+          "sequence": 1390,
+          "tick": 1572,
+          "sentUtc": "2026-11-05T22:12:51.871076+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-survey/01390-tick-01572.png",
+          "player": {
+            "originX": 72,
+            "originY": 129,
+            "visibleLeft": 74,
+            "visibleTop": 145,
+            "visibleRight": 85,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -42
+            }
+          ]
+        },
+        {
+          "sequence": 1391,
+          "tick": 1575,
+          "sentUtc": "2026-11-05T22:12:51.962708+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/two-one-pipe-survey/01391-tick-01575.png",
+          "player": {
+            "originX": 64,
+            "originY": 129,
+            "visibleLeft": 65,
+            "visibleTop": 146,
+            "visibleRight": 77,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -50
+            }
+          ]
+        },
+        {
+          "sequence": 1392,
+          "tick": 1587,
+          "sentUtc": "2026-11-05T22:12:51.986520+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-survey/01392-tick-01587.png",
+          "player": {
+            "originX": 58,
+            "originY": 129,
+            "visibleLeft": 60,
+            "visibleTop": 145,
+            "visibleRight": 71,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -56
+            }
+          ]
+        },
+        {
+          "sequence": 1393,
+          "tick": 1590,
+          "sentUtc": "2026-11-05T22:13:18.393862+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/two-one-pipe-survey/01393-tick-01590.png",
+          "player": {
+            "originX": 49,
+            "originY": 129,
+            "visibleLeft": 50,
+            "visibleTop": 146,
+            "visibleRight": 62,
+            "visibleBottom": 160,
+            "cell": 12,
+            "direction": "left",
+            "annotation": "walking frame 1",
+            "confidence": 1,
+            "matchedPixels": 120
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -65
+            }
+          ]
+        },
+        {
+          "sequence": 1394,
+          "tick": 1598,
+          "sentUtc": "2026-11-05T22:13:18.419083+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/two-one-pipe-survey/01394-tick-01598.png",
+          "player": {
+            "originX": 42,
+            "originY": 129,
+            "visibleLeft": 44,
+            "visibleTop": 145,
+            "visibleRight": 55,
+            "visibleBottom": 160,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -72
+            }
+          ]
+        },
+        {
+          "sequence": 1395,
+          "tick": 1602,
+          "sentUtc": "2026-11-05T22:13:18.479872+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/two-one-pipe-survey/01395-tick-01602.png",
+          "player": {
+            "originX": 62,
+            "originY": 129,
+            "visibleLeft": 65,
+            "visibleTop": 145,
+            "visibleRight": 75,
+            "visibleBottom": 160,
+            "cell": 14,
+            "direction": "right",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 114,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -52
+            }
+          ]
+        },
+        {
+          "sequence": 1396,
+          "tick": 1605,
+          "sentUtc": "2026-11-05T22:13:18.511948+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/two-one-pipe-survey/01396-tick-01605.png",
+          "player": {
+            "originX": 93,
+            "originY": 56,
+            "visibleLeft": 93,
+            "visibleTop": 72,
+            "visibleRight": 108,
+            "visibleBottom": 87,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 96,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": -3
+            }
+          ]
+        },
+        {
+          "sequence": 1397,
+          "tick": 1610,
+          "sentUtc": "2026-11-05T22:13:18.536252+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/two-one-pipe-survey/01397-tick-01610.png",
+          "player": {
+            "originX": 112,
+            "originY": 134,
+            "visibleLeft": 112,
+            "visibleTop": 150,
+            "visibleRight": 127,
+            "visibleBottom": 165,
+            "cell": 16,
+            "direction": "right",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 54,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 58
+            }
+          ]
+        },
+        {
+          "sequence": 1398,
+          "tick": 1622,
+          "sentUtc": "2026-11-05T22:13:18.573471+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-survey/01398-tick-01622.png",
+          "player": {
+            "originX": 112,
+            "originY": 177,
+            "visibleLeft": 114,
+            "visibleTop": 193,
+            "visibleRight": 125,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": [
+            {
+              "x": 42,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 70
+            }
+          ]
+        },
+        {
+          "sequence": 1399,
+          "tick": 1626,
+          "sentUtc": "2026-11-05T22:14:01.375402+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/two-one-pipe-survey/01399-tick-01626.png",
+          "player": {
+            "originX": 89,
+            "originY": 177,
+            "visibleLeft": 91,
+            "visibleTop": 193,
+            "visibleRight": 101,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": [
+            {
+              "x": 42,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 47
+            }
+          ]
+        },
+        {
+          "sequence": 1400,
+          "tick": 1627,
+          "sentUtc": "2026-11-05T22:14:01.406789+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 8,
+          "image": "evidence/local/two-one-pipe-survey/01400-tick-01627.png",
+          "player": {
+            "originX": 74,
+            "originY": 149,
+            "visibleLeft": 74,
+            "visibleTop": 165,
+            "visibleRight": 89,
+            "visibleBottom": 180,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 42,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 32
+            }
+          ]
+        },
+        {
+          "sequence": 1401,
+          "tick": 1632,
+          "sentUtc": "2026-11-05T22:14:01.416211+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/two-one-pipe-survey/01401-tick-01632.png",
+          "player": {
+            "originX": 90,
+            "originY": 122,
+            "visibleLeft": 90,
+            "visibleTop": 138,
+            "visibleRight": 105,
+            "visibleBottom": 153,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": [
+            {
+              "x": 23,
+              "y": 128,
+              "confidence": 1,
+              "relativePlayerX": 67
+            }
+          ]
+        },
+        {
+          "sequence": 1402,
+          "tick": 1644,
+          "sentUtc": "2026-11-05T22:14:01.453869+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 91,
+          "image": "evidence/local/two-one-pipe-survey/01402-tick-01644.png",
+          "player": {
+            "originX": 98,
+            "originY": 177,
+            "visibleLeft": 100,
+            "visibleTop": 193,
+            "visibleRight": 111,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": []
+        },
+        {
+          "sequence": 1403,
+          "tick": 1648,
+          "sentUtc": "2026-11-05T22:14:51.399344+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/two-one-pipe-survey/01403-tick-01648.png",
+          "player": {
+            "originX": 75,
+            "originY": 177,
+            "visibleLeft": 77,
+            "visibleTop": 193,
+            "visibleRight": 87,
+            "visibleBottom": 208,
+            "cell": 14,
+            "direction": "left",
+            "annotation": "frame 3",
+            "confidence": 1,
+            "matchedPixels": 124
+          },
+          "pipes": []
+        },
+        {
+          "sequence": 1404,
+          "tick": 1651,
+          "sentUtc": "2026-11-05T22:14:51.430174+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/two-one-pipe-survey/01404-tick-01651.png",
+          "player": {
+            "originX": 28,
+            "originY": 106,
+            "visibleLeft": 28,
+            "visibleTop": 122,
+            "visibleRight": 43,
+            "visibleBottom": 137,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": []
+        },
+        {
+          "sequence": 1405,
+          "tick": 1653,
+          "sentUtc": "2026-11-05T22:14:51.452863+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/two-one-pipe-survey/01405-tick-01653.png",
+          "player": {
+            "originX": 33,
+            "originY": 96,
+            "visibleLeft": 33,
+            "visibleTop": 112,
+            "visibleRight": 48,
+            "visibleBottom": 127,
+            "cell": 16,
+            "direction": "left",
+            "annotation": "jumping",
+            "confidence": 1,
+            "matchedPixels": 171
+          },
+          "pipes": []
+        },
+        {
+          "sequence": 1406,
+          "tick": 1665,
+          "sentUtc": "2026-11-05T22:14:51.468270+00:00",
+          "request": {
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12
+          },
+          "nativeFrames": 90,
+          "image": "evidence/local/two-one-pipe-survey/01406-tick-01665.png",
+          "player": {
+            "originX": 59,
+            "originY": 177,
+            "visibleLeft": 61,
+            "visibleTop": 193,
+            "visibleRight": 72,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "left",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          },
+          "pipes": []
+        }
+      ]
+    },
+    {
+      "worldX": 2816,
+      "topY": 160,
+      "width": 32,
+      "status": "centered-down-no-transition-observed",
+      "acceptedOptionalEntrance": false,
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        487,
+        501
+      ],
+      "recipe": {
+        "resetThenRecordedPrefixTicks": 1348,
+        "prefixSource": "data/observed-winning-inputs.json",
+        "requests": [
+          {
+            "sequence": 488,
+            "endTick": 1354,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 6,
+            "nativeFrames": 45
+          },
+          {
+            "sequence": 489,
+            "endTick": 1366,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 490,
+            "endTick": 1372,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a",
+              "b"
+            ],
+            "ticks": 6,
+            "nativeFrames": 45
+          },
+          {
+            "sequence": 491,
+            "endTick": 1374,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 492,
+            "endTick": 1386,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 493,
+            "endTick": 1388,
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 494,
+            "endTick": 1408,
+            "op": "step",
+            "buttons": [],
+            "ticks": 20,
+            "nativeFrames": 151
+          },
+          {
+            "sequence": 495,
+            "endTick": 1413,
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5,
+            "nativeFrames": 37
+          },
+          {
+            "sequence": 496,
+            "endTick": 1415,
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2,
+            "nativeFrames": 15
+          },
+          {
+            "sequence": 497,
+            "endTick": 1427,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 12,
+            "nativeFrames": 90
+          },
+          {
+            "sequence": 498,
+            "endTick": 1428,
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 499,
+            "endTick": 1448,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          },
+          {
+            "sequence": 500,
+            "endTick": 1449,
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 1,
+            "nativeFrames": 8
+          },
+          {
+            "sequence": 501,
+            "endTick": 1469,
+            "op": "step",
+            "buttons": [
+              "down"
+            ],
+            "ticks": 20,
+            "nativeFrames": 150
+          }
+        ]
+      },
+      "finalCenteredTrial": {
+        "sequence": 501,
+        "tick": 1469,
+        "sentUtc": "2026-11-05T22:12:48.022070+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 20
+        },
+        "nativeFrames": 150,
+        "image": "evidence/local/two-one-pipe-late/00501-tick-01469.png",
+        "player": {
+          "originX": 86,
+          "originY": 129,
+          "visibleLeft": 88,
+          "visibleTop": 145,
+          "visibleRight": 99,
+          "visibleBottom": 160,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": [
+          {
+            "x": 78,
+            "y": 160,
+            "confidence": 0.984375,
+            "relativePlayerX": 8
+          }
+        ],
+        "relativePlayerOriginX": 8,
+        "inferredCameraX": 2738,
+        "inferredPlayerWorldX": 2824,
+        "outcome": "Exact living standing sprite remains on the same main pipe after centeredDOWN. No optional transition observed."
+      }
+    }
+  ],
+  "failedAttempts": [
+    {
+      "candidateWorldX": 736,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        172,
+        179
+      ],
+      "resetThenRecordedPrefixTicks": 1224,
+      "note": "First8-decision plant wait produced player loss after jump; later20-decision wait reaches pipe alive.",
+      "requests": [
+        {
+          "sequence": 173,
+          "endTick": 1227,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 174,
+          "endTick": 1239,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90
+        },
+        {
+          "sequence": 175,
+          "endTick": 1242,
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 176,
+          "endTick": 1250,
+          "op": "step",
+          "buttons": [],
+          "ticks": 8,
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 177,
+          "endTick": 1255,
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 37
+        },
+        {
+          "sequence": 178,
+          "endTick": 1257,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 179,
+          "endTick": 1269,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 91
+        }
+      ],
+      "finalObservation": {
+        "sequence": 179,
+        "tick": 1269,
+        "sentUtc": "2026-11-05T21:53:21.331656+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 91,
+        "image": "evidence/local/two-one-pipe-survey/00179-tick-01269.png",
+        "player": null,
+        "pipes": [
+          {
+            "x": 100,
+            "y": 144,
+            "confidence": 1,
+            "relativePlayerX": null
+          }
+        ]
+      }
+    },
+    {
+      "candidateWorldX": 1184,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        369,
+        374
+      ],
+      "resetThenRecordedPrefixTicks": 1252,
+      "note": "Airborne approach drifted past target; no pipe entry tested.",
+      "requests": [
+        {
+          "sequence": 370,
+          "endTick": 1255,
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 22
+        },
+        {
+          "sequence": 371,
+          "endTick": 1263,
+          "op": "step",
+          "buttons": [],
+          "ticks": 8,
+          "nativeFrames": 60
+        },
+        {
+          "sequence": 372,
+          "endTick": 1268,
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 38
+        },
+        {
+          "sequence": 373,
+          "endTick": 1270,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 374,
+          "endTick": 1282,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90
+        }
+      ],
+      "finalObservation": {
+        "sequence": 374,
+        "tick": 1282,
+        "sentUtc": "2026-11-05T21:54:32.694214+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/two-one-pipe-survey/00374-tick-01282.png",
+        "player": {
+          "originX": 115,
+          "originY": 113,
+          "visibleLeft": 117,
+          "visibleTop": 129,
+          "visibleRight": 128,
+          "visibleBottom": 144,
+          "cell": 23,
+          "direction": "left",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "pipes": []
+      }
+    },
+    {
+      "candidateWorldX": 1184,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        564,
+        571
+      ],
+      "resetThenRecordedPrefixTicks": 1252,
+      "note": "Airborne braking still passed the pipe, and later interaction with Goombas lost player. No valid pipe trial.",
+      "requests": [
+        {
+          "sequence": 565,
+          "endTick": 1255,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3,
+          "nativeFrames": 22
+        },
+        {
+          "sequence": 566,
+          "endTick": 1267,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90
+        },
+        {
+          "sequence": 567,
+          "endTick": 1270,
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "nativeFrames": 23
+        },
+        {
+          "sequence": 568,
+          "endTick": 1290,
+          "op": "step",
+          "buttons": [],
+          "ticks": 20,
+          "nativeFrames": 150
+        },
+        {
+          "sequence": 569,
+          "endTick": 1295,
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 5,
+          "nativeFrames": 38
+        },
+        {
+          "sequence": 570,
+          "endTick": 1297,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2,
+          "nativeFrames": 15
+        },
+        {
+          "sequence": 571,
+          "endTick": 1309,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90
+        }
+      ],
+      "finalObservation": {
+        "sequence": 571,
+        "tick": 1309,
+        "sentUtc": "2026-11-05T21:55:58.730607+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/two-one-pipe-survey/00571-tick-01309.png",
+        "player": null,
+        "pipes": [
+          {
+            "x": 12,
+            "y": 144,
+            "confidence": 1,
+            "relativePlayerX": null
+          }
+        ]
+      }
+    },
+    {
+      "candidateWorldX": 1952,
+      "sourceTrace": "evidence/local/two-one-pipe-survey/trace.jsonl",
+      "sourceSequences": [
+        1153,
+        1155
+      ],
+      "resetThenRecordedPrefixTicks": 1295,
+      "note": "Exact killed pose after long brake among nearby enemies; no non-entry conclusion.",
+      "requests": [
+        {
+          "sequence": 1154,
+          "endTick": 1301,
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 6,
+          "nativeFrames": 45
+        },
+        {
+          "sequence": 1155,
+          "endTick": 1313,
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12,
+          "nativeFrames": 90
+        }
+      ],
+      "finalObservation": {
+        "sequence": 1155,
+        "tick": 1313,
+        "sentUtc": "2026-11-05T22:06:21.689019+00:00",
+        "request": {
+          "op": "step",
+          "buttons": [
+            "down"
+          ],
+          "ticks": 12
+        },
+        "nativeFrames": 90,
+        "image": "evidence/local/two-one-pipe-survey/01155-tick-01313.png",
+        "player": {
+          "originX": 84,
+          "originY": 124,
+          "visibleLeft": 85,
+          "visibleTop": 140,
+          "visibleRight": 98,
+          "visibleBottom": 153,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        },
+        "pipes": [
+          {
+            "x": 131,
+            "y": 144,
+            "confidence": 1,
+            "relativePlayerX": -47
+          }
+        ]
+      }
+    }
+  ],
+  "method": "Ordinary recorded-input prefixes and public controller requests. Exact supplied artwork matching on PNGs, actual native frame counts retained. World positions identified against previously observed main geometry and neighboring pipes.",
+  "uncertainties": [
+    "A centeredDOWN non-transition only establishes the outcome of the recorded recipe; alternate activation conditions remain unresolved.",
+    "Pipe2080 was not reached in a valid standing trial and remains unresolved.",
+    "Room initial arrival is constrained by the parent independent fine-capture evidence, not this late floor capture.",
+    "No ROM/executable contents, hidden state, memory map, save-state inspection or collision bypass.",
+    "Both reference processes were closed after these surveys."
+  ]
+}

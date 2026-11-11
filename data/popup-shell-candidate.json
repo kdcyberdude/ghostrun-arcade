@@ -1,0 +1,35 @@
+{
+  "lockedUTC": "2026-11-06T05:26:31.938Z",
+  "scope": "Floating labels for shell-launched Goomba victims only, retaining the already implemented six-victim scores. No sidekick400 label, other victim-kind, later score, collision or enemy movement change.",
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "glyph": "Exact supplied opaque RGB; overlap is unobserved"
+  },
+  "victims": {
+    "scoreSource": "Existing shell-rules victimScores; no scoring changes",
+    "observedScores": [
+      500,
+      800,
+      1000,
+      2000,
+      4000,
+      5000
+    ],
+    "feetYOffset": 32,
+    "durationActiveNativeFrames": 50,
+    "pixelsUpPerActiveNativeFrame": 1,
+    "coordinateSpace": "Committed camera at event; screen fixed afterwards",
+    "status": "Training long-reversal case independently intersects lifetime50 conditional on groundfoot208/raworigin176; retaining±1 birth/draw phase yields49..51, within1 of inferred50. Separate from squash and sidekick400."
+  },
+  "excluded": {
+    "kick400": "Existing source bounds are too broad to qualify a separate lifetime within2 including phase uncertainty. Do not add a kick label in this patch.",
+    "otherKinds": "Keep prior score behavior and no label; Goombas are the observed six-victim1-1 source population."
+  },
+  "bindings": {
+    "evidence/popup-shell-phase-plan.json": "f22d98bd5f07076bf1644d6606fb1bfb3d256333ca810efdb2827368bb86a020",
+    "evidence/popup-shell-phase-training-measurements.json": "636c1a67c01aa6c761c916fe944d4e6c2b43ac7b531edb99073e70a88bbcd081",
+    "evidence/popup-shell-training-analysis.json": "a83ffbf17c1ab811c269d9e4fad8e16228ef880785da4c73d7300e0b1c886b7f"
+  },
+  "reserved": "Previously declared left5 reapproach, candidate locked before capture."
+}

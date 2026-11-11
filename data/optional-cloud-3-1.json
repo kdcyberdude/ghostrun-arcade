@@ -1,0 +1,3907 @@
+{
+  "schema": "public-controller-cloud-contact-measurement-v1",
+  "level": "3-1",
+  "sourceTrace": "evidence/local/optional-cloud-3-1/trace.jsonl",
+  "prefixDecisions": 2898,
+  "observations": [
+    {
+      "sequence": 512,
+      "tick": 3015,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 12
+      },
+      "nativeFrames": 90,
+      "nativeFramesSince3015": 0,
+      "cameraX": 0,
+      "cameraDelta": 0,
+      "cameraMethod": "Initial independently observed camera0",
+      "cameraBinaryError": 0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 0,
+      "platforms": [],
+      "player": {
+        "originX": 75,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 77,
+        "visibleRight": 88,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 75,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 75,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00512-tick-03015.png"
+    },
+    {
+      "sequence": 513,
+      "tick": 3031,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 16
+      },
+      "nativeFrames": 120,
+      "nativeFramesSince3015": 120,
+      "cameraX": 110,
+      "cameraDelta": 110,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.005208333333333333,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        110
+      ],
+      "exactFloorPhase": 2,
+      "platforms": [
+        {
+          "screenX": 146,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 222,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00513-tick-03031.png"
+    },
+    {
+      "sequence": 514,
+      "tick": 3035,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "nativeFramesSince3015": 150,
+      "cameraX": 141,
+      "cameraDelta": 31,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.021541568495456076,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        31
+      ],
+      "exactFloorPhase": 3,
+      "platforms": [
+        {
+          "screenX": 115,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 253,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00514-tick-03035.png"
+    },
+    {
+      "sequence": 515,
+      "tick": 3036,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 158,
+      "cameraX": 144,
+      "cameraDelta": 3,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.011685655857435,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        3
+      ],
+      "exactFloorPhase": 0,
+      "platforms": [
+        {
+          "screenX": 112,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 154,
+        "feetY": 185,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 170,
+        "visibleBottom": 185,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 154,
+            "feetY": 185,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 256,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00515-tick-03036.png"
+    },
+    {
+      "sequence": 516,
+      "tick": 3037,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 165,
+      "cameraX": 147,
+      "cameraDelta": 3,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        3
+      ],
+      "exactFloorPhase": 13,
+      "platforms": [
+        {
+          "screenX": 109,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 176,
+        "feetY": 207,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 192,
+        "visibleBottom": 207,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 176,
+            "feetY": 207,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 259,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00516-tick-03037.png"
+    },
+    {
+      "sequence": 517,
+      "tick": 3038,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 173,
+      "cameraX": 150,
+      "cameraDelta": 3,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.011768167107972934,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        3
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 112,
+        "visibleRight": 126,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00517-tick-03038.png"
+    },
+    {
+      "sequence": 518,
+      "tick": 3039,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 180,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00518-tick-03039.png"
+    },
+    {
+      "sequence": 519,
+      "tick": 3040,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 188,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00519-tick-03040.png"
+    },
+    {
+      "sequence": 520,
+      "tick": 3041,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 195,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00520-tick-03041.png"
+    },
+    {
+      "sequence": 521,
+      "tick": 3042,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 203,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00521-tick-03042.png"
+    },
+    {
+      "sequence": 522,
+      "tick": 3043,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 210,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 262,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00522-tick-03043.png"
+    },
+    {
+      "sequence": 523,
+      "tick": 3047,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "nativeFramesSince3015": 240,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 96,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 97,
+        "visibleRight": 111,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 96,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 246,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00523-tick-03047.png"
+    },
+    {
+      "sequence": 524,
+      "tick": 3051,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "nativeFramesSince3015": 270,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 77,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 78,
+        "visibleRight": 92,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 77,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 227,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00524-tick-03051.png"
+    },
+    {
+      "sequence": 525,
+      "tick": 3052,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 278,
+      "cameraX": 150,
+      "cameraDelta": 0,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 106,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 78,
+        "originY": 154,
+        "feetY": 185,
+        "visibleLeft": 78,
+        "visibleRight": 93,
+        "visibleTop": 170,
+        "visibleBottom": 185,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 78,
+            "originY": 154,
+            "feetY": 185,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 228,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00525-tick-03052.png"
+    },
+    {
+      "sequence": 526,
+      "tick": 3053,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 285,
+      "cameraX": 152,
+      "cameraDelta": 2,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.017326017903551833,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        2
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 104,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 80,
+        "originY": 134,
+        "feetY": 165,
+        "visibleLeft": 80,
+        "visibleRight": 95,
+        "visibleTop": 150,
+        "visibleBottom": 165,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 80,
+            "originY": 134,
+            "feetY": 165,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 232,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00526-tick-03053.png"
+    },
+    {
+      "sequence": 527,
+      "tick": 3054,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 293,
+      "cameraX": 160,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0005877167205406994,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 0,
+      "platforms": [
+        {
+          "screenX": 96,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 82,
+        "originY": 119,
+        "feetY": 150,
+        "visibleLeft": 82,
+        "visibleRight": 97,
+        "visibleTop": 135,
+        "visibleBottom": 150,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 82,
+            "originY": 119,
+            "feetY": 150,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 242,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00527-tick-03054.png"
+    },
+    {
+      "sequence": 528,
+      "tick": 3055,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 300,
+      "cameraX": 167,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0005815644082582146,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 9,
+      "platforms": [
+        {
+          "screenX": 89,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 85,
+        "originY": 112,
+        "feetY": 143,
+        "visibleLeft": 85,
+        "visibleRight": 100,
+        "visibleTop": 128,
+        "visibleBottom": 143,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 85,
+            "originY": 112,
+            "feetY": 143,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 252,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00528-tick-03055.png"
+    },
+    {
+      "sequence": 529,
+      "tick": 3056,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 308,
+      "cameraX": 175,
+      "cameraDelta": 8,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0002886836027713626,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 1,
+      "platforms": [
+        {
+          "screenX": 81,
+          "artworkY": 161,
+          "worldX": 256,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 89,
+        "originY": 113,
+        "feetY": 144,
+        "visibleLeft": 89,
+        "visibleRight": 104,
+        "visibleTop": 129,
+        "visibleBottom": 144,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 89,
+            "originY": 113,
+            "feetY": 144,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 264,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00529-tick-03056.png"
+    },
+    {
+      "sequence": 530,
+      "tick": 3057,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 315,
+      "cameraX": 182,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 10,
+      "platforms": [
+        {
+          "screenX": 75,
+          "artworkY": 161,
+          "worldX": 257,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 94,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 96,
+        "visibleRight": 108,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 94,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 276,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00530-tick-03057.png"
+    },
+    {
+      "sequence": 531,
+      "tick": 3058,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 323,
+      "cameraX": 193,
+      "cameraDelta": 11,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        11
+      ],
+      "exactFloorPhase": 15,
+      "platforms": [
+        {
+          "screenX": 72,
+          "artworkY": 161,
+          "worldX": 265,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 102,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 105,
+        "visibleRight": 115,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 102,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 295,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00531-tick-03058.png"
+    },
+    {
+      "sequence": 532,
+      "tick": 3059,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 330,
+      "cameraX": 200,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 72,
+          "artworkY": 161,
+          "worldX": 272,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 109,
+        "visibleRight": 123,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 309,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00532-tick-03059.png"
+    },
+    {
+      "sequence": 533,
+      "tick": 3060,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 338,
+      "cameraX": 212,
+      "cameraDelta": 12,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.022331154684095862,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        12
+      ],
+      "exactFloorPhase": 12,
+      "platforms": [
+        {
+          "screenX": 68,
+          "artworkY": 161,
+          "worldX": 280,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 324,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00533-tick-03060.png"
+    },
+    {
+      "sequence": 534,
+      "tick": 3061,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 345,
+      "cameraX": 221,
+      "cameraDelta": 9,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.0461456388370232,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        9
+      ],
+      "exactFloorPhase": 3,
+      "platforms": [
+        {
+          "screenX": 66,
+          "artworkY": 161,
+          "worldX": 287,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 111,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 332,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00534-tick-03061.png"
+    },
+    {
+      "sequence": 535,
+      "tick": 3062,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 353,
+      "cameraX": 228,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.046248715313463515,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 12,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 295,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 115,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 340,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00535-tick-03062.png"
+    },
+    {
+      "sequence": 536,
+      "tick": 3063,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 360,
+      "cameraX": 235,
+      "cameraDelta": 7,
+      "cameraMethod": "Observed first coin boundary plus exact floor phase",
+      "cameraBinaryError": 0.02432008368200837,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 5,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 302,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 347,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00536-tick-03063.png"
+    },
+    {
+      "sequence": 537,
+      "tick": 3064,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 368,
+      "cameraX": 243,
+      "cameraDelta": 8,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0007741935483870968,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 13,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 310,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 355,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00537-tick-03064.png"
+    },
+    {
+      "sequence": 538,
+      "tick": 3065,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 375,
+      "cameraX": 250,
+      "cameraDelta": 7,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0010598834128245894,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 317,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 362,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00538-tick-03065.png"
+    },
+    {
+      "sequence": 539,
+      "tick": 3066,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 383,
+      "cameraX": 258,
+      "cameraDelta": 8,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0013196093956188968,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 14,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 325,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 370,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00539-tick-03066.png"
+    },
+    {
+      "sequence": 540,
+      "tick": 3067,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 390,
+      "cameraX": 265,
+      "cameraDelta": 7,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0010799136069114472,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        7
+      ],
+      "exactFloorPhase": 7,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 332,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 377,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00540-tick-03067.png"
+    },
+    {
+      "sequence": 541,
+      "tick": 3068,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 398,
+      "cameraX": 273,
+      "cameraDelta": 8,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0015822784810126582,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 15,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 340,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 385,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00541-tick-03068.png"
+    },
+    {
+      "sequence": 542,
+      "tick": 3069,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 406,
+      "cameraX": 281,
+      "cameraDelta": 8,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0013276686139139671,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        8
+      ],
+      "exactFloorPhase": 7,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 348,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 393,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00542-tick-03069.png"
+    },
+    {
+      "sequence": 543,
+      "tick": 3077,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8
+      },
+      "nativeFrames": 60,
+      "nativeFramesSince3015": 466,
+      "cameraX": 341,
+      "cameraDelta": 60,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.012076484401207649,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        60
+      ],
+      "exactFloorPhase": 11,
+      "platforms": [
+        {
+          "screenX": 67,
+          "artworkY": 161,
+          "worldX": 408,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 453,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00543-tick-03077.png"
+    },
+    {
+      "sequence": 544,
+      "tick": 3078,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 473,
+      "cameraX": 344,
+      "cameraDelta": 3,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.030438205195486748,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        3
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 71,
+          "artworkY": 161,
+          "worldX": 415,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 110,
+        "feetY": 141,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 126,
+        "visibleBottom": 141,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 110,
+            "feetY": 141,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00544-tick-03078.png"
+    },
+    {
+      "sequence": 545,
+      "tick": 3079,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 481,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.022921108742004266,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 79,
+          "artworkY": 161,
+          "worldX": 423,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 86,
+        "feetY": 117,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 102,
+        "visibleBottom": 117,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 86,
+            "feetY": 117,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00545-tick-03079.png"
+    },
+    {
+      "sequence": 546,
+      "tick": 3080,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 488,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 86,
+          "artworkY": 161,
+          "worldX": 430,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 87,
+        "visibleBottom": 102,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00546-tick-03080.png"
+    },
+    {
+      "sequence": 547,
+      "tick": 3081,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 496,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.001362026695723236,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 94,
+          "artworkY": 161,
+          "worldX": 438,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 63,
+        "feetY": 94,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 79,
+        "visibleBottom": 94,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 63,
+            "feetY": 94,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00547-tick-03081.png"
+    },
+    {
+      "sequence": 548,
+      "tick": 3082,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 503,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 101,
+          "artworkY": 161,
+          "worldX": 445,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 65,
+        "feetY": 96,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 81,
+        "visibleBottom": 96,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 65,
+            "feetY": 96,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00548-tick-03082.png"
+    },
+    {
+      "sequence": 549,
+      "tick": 3083,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 511,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 109,
+          "artworkY": 161,
+          "worldX": 453,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 87,
+        "feetY": 118,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 103,
+        "visibleBottom": 118,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 87,
+            "feetY": 118,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00549-tick-03083.png"
+    },
+    {
+      "sequence": 550,
+      "tick": 3084,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 518,
+      "cameraX": 344,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 116,
+          "artworkY": 161,
+          "worldX": 460,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 111,
+        "originY": 116,
+        "feetY": 147,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 132,
+        "visibleBottom": 147,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 116,
+            "feetY": 147,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00550-tick-03084.png"
+    },
+    {
+      "sequence": 551,
+      "tick": 3085,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 526,
+      "cameraX": 349,
+      "cameraDelta": 5,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.028642247314789315,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        5
+      ],
+      "exactFloorPhase": 3,
+      "platforms": [
+        {
+          "screenX": 119,
+          "artworkY": 161,
+          "worldX": 468,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 125,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "playerWorldX": 461,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00551-tick-03085.png"
+    },
+    {
+      "sequence": 552,
+      "tick": 3086,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 533,
+      "cameraX": 355,
+      "cameraDelta": 6,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0008257638315441783,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        6
+      ],
+      "exactFloorPhase": 13,
+      "platforms": [
+        {
+          "screenX": 120,
+          "artworkY": 161,
+          "worldX": 475,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 113,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 13,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 467,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00552-tick-03086.png"
+    },
+    {
+      "sequence": 553,
+      "tick": 3087,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 541,
+      "cameraX": 360,
+      "cameraDelta": 5,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.02948539638386648,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        5
+      ],
+      "exactFloorPhase": 8,
+      "platforms": [
+        {
+          "screenX": 123,
+          "artworkY": 161,
+          "worldX": 483,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 114,
+        "visibleRight": 124,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 14,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 472,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00553-tick-03087.png"
+    },
+    {
+      "sequence": 554,
+      "tick": 3088,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 548,
+      "cameraX": 362,
+      "cameraDelta": 2,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        2
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 128,
+          "artworkY": 161,
+          "worldX": 490,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 110,
+        "visibleRight": 122,
+        "visibleTop": 146,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 471,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00554-tick-03088.png"
+    },
+    {
+      "sequence": 555,
+      "tick": 3089,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 556,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 136,
+          "artworkY": 161,
+          "worldX": 498,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 102,
+        "originY": 148,
+        "feetY": 179,
+        "visibleLeft": 103,
+        "visibleRight": 115,
+        "visibleTop": 165,
+        "visibleBottom": 179,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 102,
+            "originY": 148,
+            "feetY": 179,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 464,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00555-tick-03089.png"
+    },
+    {
+      "sequence": 556,
+      "tick": 3090,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 563,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 143,
+          "artworkY": 161,
+          "worldX": 505,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 93,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 94,
+        "visibleRight": 106,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 93,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 455,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00556-tick-03090.png"
+    },
+    {
+      "sequence": 557,
+      "tick": 3091,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 571,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 151,
+          "artworkY": 161,
+          "worldX": 513,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 82,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 84,
+        "visibleRight": 94,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 82,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 14,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 444,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00557-tick-03091.png"
+    },
+    {
+      "sequence": 558,
+      "tick": 3092,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 578,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 158,
+          "artworkY": 161,
+          "worldX": 520,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 72,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 73,
+        "visibleRight": 85,
+        "visibleTop": 194,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 72,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 434,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00558-tick-03092.png"
+    },
+    {
+      "sequence": 559,
+      "tick": 3093,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 586,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 166,
+          "artworkY": 161,
+          "worldX": 528,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 62,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 64,
+        "visibleRight": 74,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 62,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 14,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 424,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00559-tick-03093.png"
+    },
+    {
+      "sequence": 560,
+      "tick": 3094,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince3015": 593,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 173,
+          "artworkY": 161,
+          "worldX": 535,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 57,
+        "visibleRight": 71,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 56,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 13,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 418,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00560-tick-03094.png"
+    },
+    {
+      "sequence": 561,
+      "tick": 3095,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince3015": 601,
+      "cameraX": 362,
+      "cameraDelta": 0,
+      "cameraMethod": "Static binary registration plus exact floor phase",
+      "cameraBinaryError": 0.0,
+      "cameraDeltaAlternativesNoWorseThanChosen": [
+        0
+      ],
+      "exactFloorPhase": 6,
+      "platforms": [
+        {
+          "screenX": 181,
+          "artworkY": 161,
+          "worldX": 543,
+          "width": 48,
+          "height": 8,
+          "opaquePixels": 312
+        }
+      ],
+      "player": {
+        "originX": 51,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 53,
+        "visibleRight": 63,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 51,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 14,
+            "direction": "left"
+          }
+        ]
+      },
+      "playerWorldX": 413,
+      "sourceImage": "evidence/local/optional-cloud-3-1/00561-tick-03095.png"
+    }
+  ],
+  "identityTolerancePixels": 0,
+  "cameraQualification": "Image-inferred camera from exact cloud-floor phase and actual static image registration. Repetitive alternatives retained; no emulator state used.",
+  "scope": "Reference mechanic evidence only; no remake pass or complete run.",
+  "motionEvidence": {
+    "firstStandingContactSequence": 530,
+    "firstStandingContactTick": 3057,
+    "observedStandingFeetY": 160,
+    "observedArtworkY": 161,
+    "lastStationarySequence": 529,
+    "activationNativeFramesSince3015Window": [
+      309,
+      315
+    ],
+    "extrapolatedActivationEpochCandidateNativeFramesSince3015": 314,
+    "direction": "right",
+    "speedPixelsPerNativeFrame": 1,
+    "sampleCount": 32,
+    "maximumConstantSpeedResidualPixels": 0,
+    "samples": [
+      {
+        "sequence": 530,
+        "nativeFramesSinceFirstContactSample": 0,
+        "worldX": 257,
+        "predictedWorldX": 257
+      },
+      {
+        "sequence": 531,
+        "nativeFramesSinceFirstContactSample": 8,
+        "worldX": 265,
+        "predictedWorldX": 265
+      },
+      {
+        "sequence": 532,
+        "nativeFramesSinceFirstContactSample": 15,
+        "worldX": 272,
+        "predictedWorldX": 272
+      },
+      {
+        "sequence": 533,
+        "nativeFramesSinceFirstContactSample": 23,
+        "worldX": 280,
+        "predictedWorldX": 280
+      },
+      {
+        "sequence": 534,
+        "nativeFramesSinceFirstContactSample": 30,
+        "worldX": 287,
+        "predictedWorldX": 287
+      },
+      {
+        "sequence": 535,
+        "nativeFramesSinceFirstContactSample": 38,
+        "worldX": 295,
+        "predictedWorldX": 295
+      },
+      {
+        "sequence": 536,
+        "nativeFramesSinceFirstContactSample": 45,
+        "worldX": 302,
+        "predictedWorldX": 302
+      },
+      {
+        "sequence": 537,
+        "nativeFramesSinceFirstContactSample": 53,
+        "worldX": 310,
+        "predictedWorldX": 310
+      },
+      {
+        "sequence": 538,
+        "nativeFramesSinceFirstContactSample": 60,
+        "worldX": 317,
+        "predictedWorldX": 317
+      },
+      {
+        "sequence": 539,
+        "nativeFramesSinceFirstContactSample": 68,
+        "worldX": 325,
+        "predictedWorldX": 325
+      },
+      {
+        "sequence": 540,
+        "nativeFramesSinceFirstContactSample": 75,
+        "worldX": 332,
+        "predictedWorldX": 332
+      },
+      {
+        "sequence": 541,
+        "nativeFramesSinceFirstContactSample": 83,
+        "worldX": 340,
+        "predictedWorldX": 340
+      },
+      {
+        "sequence": 542,
+        "nativeFramesSinceFirstContactSample": 91,
+        "worldX": 348,
+        "predictedWorldX": 348
+      },
+      {
+        "sequence": 543,
+        "nativeFramesSinceFirstContactSample": 151,
+        "worldX": 408,
+        "predictedWorldX": 408
+      },
+      {
+        "sequence": 544,
+        "nativeFramesSinceFirstContactSample": 158,
+        "worldX": 415,
+        "predictedWorldX": 415
+      },
+      {
+        "sequence": 545,
+        "nativeFramesSinceFirstContactSample": 166,
+        "worldX": 423,
+        "predictedWorldX": 423
+      },
+      {
+        "sequence": 546,
+        "nativeFramesSinceFirstContactSample": 173,
+        "worldX": 430,
+        "predictedWorldX": 430
+      },
+      {
+        "sequence": 547,
+        "nativeFramesSinceFirstContactSample": 181,
+        "worldX": 438,
+        "predictedWorldX": 438
+      },
+      {
+        "sequence": 548,
+        "nativeFramesSinceFirstContactSample": 188,
+        "worldX": 445,
+        "predictedWorldX": 445
+      },
+      {
+        "sequence": 549,
+        "nativeFramesSinceFirstContactSample": 196,
+        "worldX": 453,
+        "predictedWorldX": 453
+      },
+      {
+        "sequence": 550,
+        "nativeFramesSinceFirstContactSample": 203,
+        "worldX": 460,
+        "predictedWorldX": 460
+      },
+      {
+        "sequence": 551,
+        "nativeFramesSinceFirstContactSample": 211,
+        "worldX": 468,
+        "predictedWorldX": 468
+      },
+      {
+        "sequence": 552,
+        "nativeFramesSinceFirstContactSample": 218,
+        "worldX": 475,
+        "predictedWorldX": 475
+      },
+      {
+        "sequence": 553,
+        "nativeFramesSinceFirstContactSample": 226,
+        "worldX": 483,
+        "predictedWorldX": 483
+      },
+      {
+        "sequence": 554,
+        "nativeFramesSinceFirstContactSample": 233,
+        "worldX": 490,
+        "predictedWorldX": 490
+      },
+      {
+        "sequence": 555,
+        "nativeFramesSinceFirstContactSample": 241,
+        "worldX": 498,
+        "predictedWorldX": 498
+      },
+      {
+        "sequence": 556,
+        "nativeFramesSinceFirstContactSample": 248,
+        "worldX": 505,
+        "predictedWorldX": 505
+      },
+      {
+        "sequence": 557,
+        "nativeFramesSinceFirstContactSample": 256,
+        "worldX": 513,
+        "predictedWorldX": 513
+      },
+      {
+        "sequence": 558,
+        "nativeFramesSinceFirstContactSample": 263,
+        "worldX": 520,
+        "predictedWorldX": 520
+      },
+      {
+        "sequence": 559,
+        "nativeFramesSinceFirstContactSample": 271,
+        "worldX": 528,
+        "predictedWorldX": 528
+      },
+      {
+        "sequence": 560,
+        "nativeFramesSinceFirstContactSample": 278,
+        "worldX": 535,
+        "predictedWorldX": 535
+      },
+      {
+        "sequence": 561,
+        "nativeFramesSinceFirstContactSample": 286,
+        "worldX": 543,
+        "predictedWorldX": 543
+      }
+    ],
+    "qualification": "Every fitted world coordinate comes from exact supplied312-opaque-pixel platform artwork and separately registered static floor/coins. Activation epoch is extrapolated inside the decision window, not a native-frame capture."
+  },
+  "runtimeCandidate": {
+    "status": "Evidence-based implementation candidate; collision-box lower edge and unseen path end remain inferred.",
+    "kind": "contact-cloud",
+    "initialX": 256,
+    "collisionTop": 160,
+    "artworkY": 161,
+    "width": 48,
+    "height": 8,
+    "direction": 1,
+    "speed": 1,
+    "activation": "First supported top contact",
+    "continuesWhenPlayerAirborne": true,
+    "continuesAfterPlayerWalksOff": true,
+    "carrySupportedPlayer": true,
+    "period": null,
+    "pathEnd": null,
+    "undersideCollisionCandidate": {
+      "supportedBySequences": [
+        514,
+        515,
+        516,
+        517
+      ],
+      "firstMeasuredBonkFeet": 185,
+      "laterFeet": [
+        207,
+        208
+      ],
+      "qualification": "Direct underneath held jump was truncated, while the subsequent left-edge held jump reached143 and landed160. Exact collision plane within the7/8-native-frame interval is inferred."
+    }
+  },
+  "referenceReplayAgreement": {
+    "originalSequence": 8826,
+    "replayedSequence": 512,
+    "tick": 3015,
+    "tolerancePixels": 0,
+    "mismatchingPixels": 0,
+    "scope": "Reference-to-reference only, fresh standardprefix plus actualacceptedvinerecipe."
+  },
+  "ordinaryControllerRecipe": {
+    "resetThenRecordedPrefixTicks": 2898,
+    "source": "data/three-one-optional.json routes/vine-entry-map-and-ordinary-return",
+    "requests": [
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 4,
+        "sourceSequence": 488,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1,
+        "sourceSequence": 489,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 2,
+        "sourceSequence": 490,
+        "nativeFrames": 16
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2,
+        "sourceSequence": 491,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 2,
+        "sourceSequence": 492,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3,
+        "sourceSequence": 493,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3,
+        "sourceSequence": 494,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3,
+        "sourceSequence": 495,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up",
+          "a"
+        ],
+        "ticks": 2,
+        "sourceSequence": 496,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "up",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 497,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 1,
+        "sourceSequence": 498,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 499,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 8,
+        "sourceSequence": 500,
+        "nativeFrames": 60
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3,
+        "sourceSequence": 501,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 3,
+        "sourceSequence": 502,
+        "nativeFrames": 23
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 2,
+        "sourceSequence": 503,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 2,
+        "sourceSequence": 504,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1,
+        "sourceSequence": 505,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up",
+          "a"
+        ],
+        "ticks": 2,
+        "sourceSequence": 506,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "up",
+          "a"
+        ],
+        "ticks": 3,
+        "sourceSequence": 507,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "up"
+        ],
+        "ticks": 16,
+        "sourceSequence": 508,
+        "nativeFrames": 120
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 16,
+        "sourceSequence": 509,
+        "nativeFrames": 120
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 4,
+        "sourceSequence": 510,
+        "nativeFrames": 31
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 16,
+        "sourceSequence": 511,
+        "nativeFrames": 120
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 12,
+        "sourceSequence": 512,
+        "nativeFrames": 90
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 16,
+        "sourceSequence": 513,
+        "nativeFrames": 120
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4,
+        "sourceSequence": 514,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 515,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 516,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 517,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 518,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 519,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 520,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 521,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 522,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 4,
+        "sourceSequence": 523,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4,
+        "sourceSequence": 524,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 525,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 526,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 527,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 528,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 529,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 530,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 531,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 532,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 533,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 534,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 535,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 536,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 537,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 538,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 539,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 540,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 541,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 542,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 8,
+        "sourceSequence": 543,
+        "nativeFrames": 60
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 544,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 545,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 546,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 547,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 548,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 549,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 550,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "a"
+        ],
+        "ticks": 1,
+        "sourceSequence": 551,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 552,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 553,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 554,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 555,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 556,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "sourceSequence": 557,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 558,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 559,
+        "nativeFrames": 8
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 560,
+        "nativeFrames": 7
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1,
+        "sourceSequence": 561,
+        "nativeFrames": 8
+      }
+    ]
+  },
+  "uncertainties": [
+    "Exact activation nativeframe remains extrapolated inside309..315 since tick3015.",
+    "Unseen endstop, reversal, despawn or repetition rule is not established by this finite rightward interval.",
+    "Collision supportfeet160 and artworkY161 are observed; full hidden collision geometry is an implementation candidate.",
+    "This independent sourceexperiment does not validate the browsergame."
+  ]
+}

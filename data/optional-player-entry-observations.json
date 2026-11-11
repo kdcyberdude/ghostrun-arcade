@@ -1,0 +1,295 @@
+{
+  "method": "Exact supplied opaque Mario sprite pixels in actual controller-protocol PNGs; sheet-cell origin retained.",
+  "correction": "Earlier optional-room originX32 was an unmeasured carry-over. All10 accepted coin rooms have exact first complete originX24.",
+  "rooms": [
+    {
+      "level": "2-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        208
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 200,
+        "tick": 1316,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-one-pipe-late/00200-tick-01316.png",
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "3-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 1828,
+        "tick": 2945,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-3-1/01828-tick-02945.png",
+        "originX": 24,
+        "originY": 147,
+        "visibleLeft": 26,
+        "visibleTop": 164,
+        "visibleRight": 38,
+        "visibleBottom": 178,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "4-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 2623,
+        "tick": 4024,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-1/02623-tick-04024.png",
+        "originX": 24,
+        "originY": 147,
+        "visibleLeft": 26,
+        "visibleTop": 164,
+        "visibleRight": 38,
+        "visibleBottom": 178,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "4-2",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 2783,
+        "tick": 4363,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-4-2-pipes/02783-tick-04363.png",
+        "originX": 24,
+        "originY": 45,
+        "visibleLeft": 26,
+        "visibleTop": 62,
+        "visibleRight": 38,
+        "visibleBottom": 76,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "5-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 7949,
+        "tick": 5328,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-5-1/07949-tick-05328.png",
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "priorCapturesWithoutExactCompletePose": [
+        {
+          "sequence": 7948,
+          "tick": 5324,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-5-1/07948-tick-05324.png"
+        }
+      ],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "6-2",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 3286,
+        "tick": 6768,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2/03286-tick-06768.png",
+        "originX": 24,
+        "originY": 151,
+        "visibleLeft": 26,
+        "visibleTop": 168,
+        "visibleRight": 38,
+        "visibleBottom": 182,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "6-2",
+      "room": "bonus-coins-late",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 11232,
+        "tick": 6710,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11232-tick-06710.png",
+        "originX": 24,
+        "originY": 33,
+        "visibleLeft": 26,
+        "visibleTop": 49,
+        "visibleRight": 37,
+        "visibleBottom": 64,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "7-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 2633,
+        "tick": 7562,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-7-1/02633-tick-07562.png",
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "8-1",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 9425,
+        "tick": 9020,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-8-1/09425-tick-09020.png",
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    },
+    {
+      "level": "8-2",
+      "room": "bonus-coins",
+      "declaredSpawn": [
+        24,
+        0
+      ],
+      "firstCompleteMeasuredPose": {
+        "sequence": 1683,
+        "tick": 9457,
+        "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-8-2/01683-tick-09457.png",
+        "originX": 24,
+        "originY": 151,
+        "visibleLeft": 26,
+        "visibleTop": 168,
+        "visibleRight": 38,
+        "visibleBottom": 182,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "priorCapturesWithoutExactCompletePose": [],
+      "initialOffscreenFeetYStatus": "Unmeasured; consult each room spawnStatus and entryPrecision. Declared late/fitted entry height is not an observed offscreen spawn. Complete sprite matcher excludes partially clipped/occluded poses."
+    }
+  ],
+  "legacy": {
+    "level": "1-2",
+    "declaredSpawn": [
+      32,
+      0
+    ],
+    "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subarea-1-2-controlled/00136-tick-00503.png",
+    "exactPose": {
+      "originX": 24,
+      "originY": 147,
+      "visibleLeft": 26,
+      "visibleTop": 164,
+      "visibleRight": 38,
+      "visibleBottom": 178,
+      "cell": 12,
+      "direction": "right",
+      "annotation": "walking frame 1",
+      "confidence": 1,
+      "matchedPixels": 120
+    },
+    "recommendation": "Correct the separate earlier room metadata to originX24; this audit does not edit its owner’s file."
+  },
+  "passed": true
+}

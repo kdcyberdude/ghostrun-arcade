@@ -1,0 +1,267 @@
+{
+  "schema": "shared-six-orb-firebar-candidate-v1",
+  "fittedUtc": "2026-11-06T01:22:53.226516+00:00",
+  "scope": "Read-only motor candidate; no runtimeintegration. Initialization listed only for directly qualified bars and route histories.",
+  "motor": {
+    "orientationBins": 32,
+    "unitsPerBin": 32,
+    "modulus": 1024,
+    "incrementUnitsPerGameplayFrame": 5,
+    "apparentPivotYOffset": 1,
+    "centralQuadOriginOffsetX": -4,
+    "activateWhenCentralQuadLeftLessThan": 256,
+    "activationFrameAdvances": true,
+    "pauseDuringDeath": "Observedonepositiveflamedeathonly; needsbroaderfreezequalification"
+  },
+  "lookupSource": "data/firebar-motion-candidate.json",
+  "lookupSHA256": "ba2e8404066b99a14c331e0b88e13e3b266039ad30811842e049249a5f4faac6",
+  "specs": [
+    {
+      "level": "2-4",
+      "pivot": [
+        792,
+        152
+      ],
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 864,
+      "sourcePaths": [
+        "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/extracted-calibration.json"
+      ],
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        968,
+        104
+      ],
+      "length": 6,
+      "direction": -1,
+      "initialUnits": 128,
+      "sourcePaths": [
+        "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/extracted-calibration.json"
+      ],
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        1416,
+        72
+      ],
+      "length": 6,
+      "direction": 1,
+      "initialUnits": 768,
+      "sourcePaths": [
+        "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/extracted-calibration.json"
+      ],
+      "qualification": "Freshstandardstartwinningprefix then safe stopped-camera prewait0/20; earlierbar/levelhistoryvariety remainsunqualified."
+    }
+  ],
+  "calibration": [
+    {
+      "level": "2-4",
+      "pivot": [
+        792,
+        152
+      ],
+      "direction": -1,
+      "case": "cal-2-4-ccw-0",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/extracted-calibration.json",
+      "samples": 109,
+      "flameCenterSamples": 654,
+      "phaseInterceptInterval": [
+        3055.90625,
+        3055.9375
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        864.0,
+        865.0
+      ],
+      "selectedInitialUnits": 864,
+      "estimatedActivationNative": 19386,
+      "activationImageBracket": {
+        "beforeNative": 19381,
+        "beforeCamera": 522,
+        "afterNative": 19389,
+        "afterCamera": 540
+      },
+      "wrongPhaseSamples": 0,
+      "maxCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    },
+    {
+      "level": "2-4",
+      "pivot": [
+        792,
+        152
+      ],
+      "direction": -1,
+      "case": "cal-2-4-ccw-20",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/extracted-calibration.json",
+      "samples": 109,
+      "flameCenterSamples": 654,
+      "phaseInterceptInterval": [
+        3079.5,
+        3079.53125
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        864.0,
+        865.0
+      ],
+      "selectedInitialUnits": 864,
+      "estimatedActivationNative": 19537,
+      "activationImageBracket": {
+        "beforeNative": 19531,
+        "beforeCamera": 520,
+        "afterNative": 19539,
+        "afterCamera": 537
+      },
+      "wrongPhaseSamples": 0,
+      "maxCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        968,
+        104
+      ],
+      "direction": -1,
+      "case": "cal-1-4-cw-0",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/extracted-calibration.json",
+      "samples": 74,
+      "flameCenterSamples": 417,
+      "phaseInterceptInterval": [
+        1186.15625,
+        1186.1875
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        128.0,
+        129.0
+      ],
+      "selectedInitialUnits": 128,
+      "estimatedActivationNative": 7362,
+      "activationImageBracket": {
+        "beforeNative": 7361,
+        "beforeCamera": 707,
+        "afterNative": 7369,
+        "afterCamera": 720
+      },
+      "wrongPhaseSamples": 0,
+      "maxCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        968,
+        104
+      ],
+      "direction": -1,
+      "case": "cal-1-4-cw-20",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/extracted-calibration.json",
+      "samples": 74,
+      "flameCenterSamples": 416,
+      "phaseInterceptInterval": [
+        1209.59375,
+        1209.625
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        128.0,
+        129.0
+      ],
+      "selectedInitialUnits": 128,
+      "estimatedActivationNative": 7512,
+      "activationImageBracket": {
+        "beforeNative": 7504,
+        "beforeCamera": 691,
+        "afterNative": 7512,
+        "afterCamera": 709
+      },
+      "wrongPhaseSamples": 0,
+      "maxCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        1416,
+        72
+      ],
+      "direction": 1,
+      "case": "cal-1-4-lastcw-0",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/extracted-calibration.json",
+      "samples": 60,
+      "flameCenterSamples": 329,
+      "phaseInterceptInterval": [
+        -1156.9375,
+        -1156.90625
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        773.0,
+        774.0
+      ],
+      "selectedInitialUnits": 768,
+      "estimatedActivationNative": 7560,
+      "activationImageBracket": {
+        "beforeNative": 7557,
+        "beforeCamera": 1153,
+        "afterNative": 7564,
+        "afterCamera": 1164
+      },
+      "wrongPhaseSamples": 11,
+      "maxCenterErrorPixels": 8,
+      "phaseEpochNativeError": 1.0
+    },
+    {
+      "level": "1-4",
+      "pivot": [
+        1416,
+        72
+      ],
+      "direction": 1,
+      "case": "cal-1-4-lastcw-20",
+      "source": "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/extracted-calibration.json",
+      "samples": 65,
+      "flameCenterSamples": 350,
+      "phaseInterceptInterval": [
+        -1180.375,
+        -1180.34375
+      ],
+      "phaseInterceptWidthBins": 0.03125,
+      "initialUnitsInterval": [
+        768.0,
+        769.0
+      ],
+      "selectedInitialUnits": 768,
+      "estimatedActivationNative": 7709,
+      "activationImageBracket": {
+        "beforeNative": 7707,
+        "beforeCamera": 1154,
+        "afterNative": 7715,
+        "afterCamera": 1166
+      },
+      "wrongPhaseSamples": 0,
+      "maxCenterErrorPixels": 0,
+      "phaseEpochNativeError": 0.0
+    }
+  ],
+  "sourceSHA256": {
+    "evidence/local/firebar-fresh-2026-11-06T01-00-12Z/extracted-calibration.json": "58f7a3abf49696f1bb5910f4a0f8bfe864382bc36ad8c11567280273db811884",
+    "evidence/local/firebar-fresh-2026-11-06T01-02-11Z/extracted-calibration.json": "e38fb16a9776d679198efdeef5bd0ddc91428f27995c008600ad5f0ab2f187e7",
+    "evidence/local/firebar-fresh-2026-11-06T01-19-42Z/extracted-calibration.json": "fcf777ebce0ba678c180fcdd32a60abb0377f88424d9db4f1973af4ed6bc105d"
+  },
+  "limitations": [
+    "No universalinitialorientation established: directly observedphases differamongbars. These valuesmayencodeperbarinit orobjectslot/history; qualificationcannotresolvewhich.",
+    "Camera-entryactivation epoch usesfixednearestinterpolation atcentralquadboundary, notorbphase-fitting orrecordedtickforcing.",
+    "Long12bead andapparentlyfastbars areseparateunqualifiedclasses.",
+    "Fullscene99percentRGB, flameanimationepoch, collisionradius, andall-castlecompletenessremainunproved."
+  ]
+}

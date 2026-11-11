@@ -1,0 +1,2205 @@
+{
+  "schema": "flying-fish-regime-results-v1",
+  "analyzedUtc": "2026-11-06T02:41:52.131Z",
+  "plan": {
+    "path": "data/flying-fish-regime-plan.json",
+    "sha256": "6d105f302a48e6509dd3196e0736ba97adaf38a35fd9ff8344e14e4480bfdde8"
+  },
+  "limits": [
+    "Old calibration only; no new heldout collected unless a common raster-compatible family is selected.",
+    "No per-frame replacements, animation-origin offsets, runtime writes or unseen birth states.",
+    "Fitted initial velocities are diagnostic within measured first-pair bounds and are not production per-object states."
+  ],
+  "results": [
+    {
+      "family": "ascent-descent",
+      "tracks": [
+        "cal-run-first"
+      ],
+      "search": "32 deterministic-seed Nelder-Mead restarts,1800 iterations; bounded parameters. An unsuccessful numerical search does not prove the family impossible.",
+      "parameters": [
+        0.05692883298229338,
+        0.05388456732179901,
+        5.988788949582865,
+        0.9999989999999945,
+        0.3010566498631264
+      ],
+      "gravityFields": [
+        "ascending",
+        "descending"
+      ],
+      "cap": 5.988788949582865,
+      "error": 0.6836664957059071,
+      "allWithinRasterIntervals": false,
+      "fits": [
+        {
+          "name": "cal-run-first",
+          "initialization": {
+            "frame": 16955,
+            "y": 171.999999,
+            "vy": -3.8440793316351725,
+            "vyBounds": [
+              -3.9842857142857144,
+              -3.5185714285714282
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 0.6836664957059071,
+          "maxDescriptorError": 1.6836664957058929,
+          "maxRenderedError": 1,
+          "errors": [
+            {
+              "frame": 16955,
+              "cell": 12,
+              "observed": 171,
+              "predicted": 171.999999,
+              "intervalError": 0,
+              "renderedY": 171,
+              "renderedError": 0
+            },
+            {
+              "frame": 16962,
+              "cell": 13,
+              "observed": 146,
+              "predicted": 146.28694917118187,
+              "intervalError": 0,
+              "renderedY": 146,
+              "renderedError": 0
+            },
+            {
+              "frame": 16970,
+              "cell": 12,
+              "observed": 121,
+              "predicted": 120.3163364886131,
+              "intervalError": 0.6836635113868965,
+              "renderedY": 120,
+              "renderedError": -1
+            },
+            {
+              "frame": 16977,
+              "cell": 13,
+              "observed": 101,
+              "predicted": 100.58081412293583,
+              "intervalError": 0.4191858770641659,
+              "renderedY": 100,
+              "renderedError": -1
+            },
+            {
+              "frame": 16992,
+              "cell": 13,
+              "observed": 66,
+              "predicted": 67.68366649570589,
+              "intervalError": 0.6836664957058929,
+              "renderedY": 67,
+              "renderedError": 1
+            },
+            {
+              "frame": 17000,
+              "cell": 12,
+              "observed": 54,
+              "predicted": 55.37597372888759,
+              "intervalError": 0.37597372888758684,
+              "renderedY": 55,
+              "renderedError": 1
+            },
+            {
+              "frame": 17007,
+              "cell": 13,
+              "observed": 47,
+              "predicted": 47.595506289491986,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17015,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 42.119273480548884,
+              "intervalError": 0,
+              "renderedY": 42,
+              "renderedError": 0
+            },
+            {
+              "frame": 17022,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.31633350429409,
+              "intervalError": 0.6836664957059071,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17030,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.60763107435582,
+              "intervalError": 0.3923689256441776,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 45.56911996500722,
+              "intervalError": 0.43088003499278216,
+              "renderedY": 45,
+              "renderedError": -1
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 54,
+              "predicted": 53.32960987934532,
+              "intervalError": 0.6703901206546803,
+              "renderedY": 53,
+              "renderedError": -1
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 62.94897833878561,
+              "intervalError": 0.05102166121439211,
+              "renderedY": 62,
+              "renderedError": -1
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 92,
+              "predicted": 92.45286435996876,
+              "intervalError": 0,
+              "renderedY": 92,
+              "renderedError": 0
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 112,
+              "predicted": 113.14565043153861,
+              "intervalError": 0.14565043153861268,
+              "renderedY": 113,
+              "renderedError": 1
+            },
+            {
+              "frame": 17082,
+              "cell": 12,
+              "observed": 133,
+              "predicted": 134.08077802855667,
+              "intervalError": 0.08077802855666505,
+              "renderedY": 134,
+              "renderedError": 1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 161,
+              "predicted": 161.2397121787424,
+              "intervalError": 0,
+              "renderedY": 161,
+              "renderedError": 0
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 187,
+              "predicted": 187.83271934454936,
+              "intervalError": 0,
+              "renderedY": 187,
+              "renderedError": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "velocity-regimes",
+      "tracks": [
+        "cal-run-first"
+      ],
+      "search": "32 deterministic-seed Nelder-Mead restarts,1800 iterations; bounded parameters. An unsuccessful numerical search does not prove the family impossible.",
+      "parameters": [
+        0.05621372498060084,
+        0.05608839977433285,
+        0.048417657516528406,
+        5.520933691027777,
+        0.48788367981173264,
+        0.3661480558104977
+      ],
+      "gravityFields": [
+        "fastAscent",
+        "apex",
+        "fastDescent"
+      ],
+      "cap": 5.520933691027777,
+      "error": 0.8161552073489702,
+      "allWithinRasterIntervals": false,
+      "fits": [
+        {
+          "name": "cal-run-first",
+          "initialization": {
+            "frame": 16955,
+            "y": 171.48788367981174,
+            "vy": -3.813765334008254,
+            "vyBounds": [
+              -3.9842857142857144,
+              -3.5185714285714282
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 0.8161552073489702,
+          "maxDescriptorError": 1.8161552073489702,
+          "maxRenderedError": 1,
+          "errors": [
+            {
+              "frame": 16955,
+              "cell": 12,
+              "observed": 171,
+              "predicted": 171.48788367981174,
+              "intervalError": 0,
+              "renderedY": 171,
+              "renderedError": 0
+            },
+            {
+              "frame": 16962,
+              "cell": 13,
+              "observed": 146,
+              "predicted": 145.9720145663466,
+              "intervalError": 0.027985433653412883,
+              "renderedY": 145,
+              "renderedError": -1
+            },
+            {
+              "frame": 16970,
+              "cell": 12,
+              "observed": 121,
+              "predicted": 120.18384479265104,
+              "intervalError": 0.816155207348956,
+              "renderedY": 120,
+              "renderedError": -1
+            },
+            {
+              "frame": 16977,
+              "cell": 13,
+              "observed": 101,
+              "predicted": 100.57041680214898,
+              "intervalError": 0.4295831978510165,
+              "renderedY": 100,
+              "renderedError": -1
+            },
+            {
+              "frame": 16992,
+              "cell": 13,
+              "observed": 66,
+              "predicted": 67.81615520734897,
+              "intervalError": 0.8161552073489702,
+              "renderedY": 67,
+              "renderedError": 1
+            },
+            {
+              "frame": 17000,
+              "cell": 12,
+              "observed": 54,
+              "predicted": 55.511759916621564,
+              "intervalError": 0.5117599166215641,
+              "renderedY": 55,
+              "renderedError": 1
+            },
+            {
+              "frame": 17007,
+              "cell": 13,
+              "observed": 47,
+              "predicted": 47.690055025387565,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17015,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 42.11626770758011,
+              "intervalError": 0,
+              "renderedY": 42,
+              "renderedError": 0
+            },
+            {
+              "frame": 17022,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.18384479265105,
+              "intervalError": 0.8161552073489489,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17030,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.340665447763534,
+              "intervalError": 0.6593345522364658,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 45.29752450913943,
+              "intervalError": 0.7024754908605715,
+              "renderedY": 45,
+              "renderedError": -1
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 54,
+              "predicted": 53.18495313717185,
+              "intervalError": 0.8150468628281473,
+              "renderedY": 53,
+              "renderedError": -1
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 63.0310941748527,
+              "intervalError": 0,
+              "renderedY": 63,
+              "renderedError": 0
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 92,
+              "predicted": 93.16977300657234,
+              "intervalError": 0.16977300657234196,
+              "renderedY": 93,
+              "renderedError": 1
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 112,
+              "predicted": 113.81270929272664,
+              "intervalError": 0.8127092927266375,
+              "renderedY": 113,
+              "renderedError": 1
+            },
+            {
+              "frame": 17082,
+              "cell": 12,
+              "observed": 133,
+              "predicted": 134.41720556272938,
+              "intervalError": 0.4172055627293787,
+              "renderedY": 134,
+              "renderedError": 1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 161,
+              "predicted": 160.87026075086712,
+              "intervalError": 0.12973924913288215,
+              "renderedY": 160,
+              "renderedError": -1
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 187,
+              "predicted": 186.5586110601054,
+              "intervalError": 0.44138893989460826,
+              "renderedY": 186,
+              "renderedError": -1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "ascent-descent",
+      "tracks": [
+        "cal-run-first",
+        "cal-stop-second",
+        "cal-delay-first",
+        "held-jump-second",
+        "held-delay-first"
+      ],
+      "search": "32 deterministic-seed Nelder-Mead restarts,1800 iterations; bounded parameters. An unsuccessful numerical search does not prove the family impossible.",
+      "parameters": [
+        0.05579177521841228,
+        0.05487649664684765,
+        5.082510236002926,
+        0.48329372522386327,
+        0.3924138889545083,
+        0.7467328147071687,
+        0.5261356827553851,
+        0.6568671250253078,
+        0.29876075990884876,
+        0.6318487793620394,
+        0.5366186288296351,
+        0.2607857563637217,
+        0.436980439901466
+      ],
+      "gravityFields": [
+        "ascending",
+        "descending"
+      ],
+      "cap": 5.082510236002926,
+      "error": 1.4008218243852042,
+      "allWithinRasterIntervals": false,
+      "fits": [
+        {
+          "name": "cal-run-first",
+          "initialization": {
+            "frame": 16955,
+            "y": 171.48329372522386,
+            "vy": -3.8015329602869006,
+            "vyBounds": [
+              -3.9842857142857144,
+              -3.5185714285714282
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.400821450884571,
+          "maxDescriptorError": 1.9838964900711318,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 16955,
+              "cell": 12,
+              "observed": 171,
+              "predicted": 171.48329372522386,
+              "intervalError": 0,
+              "renderedY": 171,
+              "renderedError": 0
+            },
+            {
+              "frame": 16962,
+              "cell": 13,
+              "observed": 146,
+              "predicted": 146.04419028280222,
+              "intervalError": 0,
+              "renderedY": 146,
+              "renderedError": 0
+            },
+            {
+              "frame": 16970,
+              "cell": 12,
+              "observed": 121,
+              "predicted": 120.31843571885366,
+              "intervalError": 0.6815642811463363,
+              "renderedY": 120,
+              "renderedError": -1
+            },
+            {
+              "frame": 16977,
+              "cell": 13,
+              "observed": 101,
+              "predicted": 100.7374686743653,
+              "intervalError": 0.26253132563469705,
+              "renderedY": 100,
+              "renderedError": -1
+            },
+            {
+              "frame": 16992,
+              "cell": 13,
+              "observed": 66,
+              "predicted": 67.98389649007113,
+              "intervalError": 0.9838964900711318,
+              "renderedY": 67,
+              "renderedError": 1
+            },
+            {
+              "frame": 17000,
+              "cell": 12,
+              "observed": 54,
+              "predicted": 55.64816797854151,
+              "intervalError": 0.6481679785415082,
+              "renderedY": 55,
+              "renderedError": 1
+            },
+            {
+              "frame": 17007,
+              "cell": 13,
+              "observed": 47,
+              "predicted": 47.783473729919734,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17015,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 42.142758244599584,
+              "intervalError": 0,
+              "renderedY": 42,
+              "renderedError": 0
+            },
+            {
+              "frame": 17022,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.136200393911096,
+              "intervalError": 0.8637996060889037,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17030,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.17676875622694,
+              "intervalError": 0.8232312437730585,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 44.970684753463175,
+              "intervalError": 1.0293152465368252,
+              "renderedY": 44,
+              "renderedError": -2
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 54,
+              "predicted": 52.59917854911543,
+              "intervalError": 1.400821450884571,
+              "renderedY": 52,
+              "renderedError": -2
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 62.155126694270656,
+              "intervalError": 0.8448733057293438,
+              "renderedY": 62,
+              "renderedError": -1
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 92,
+              "predicted": 91.68678038061886,
+              "intervalError": 0.31321961938114384,
+              "renderedY": 91,
+              "renderedError": -1
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 112,
+              "predicted": 112.48563337151455,
+              "intervalError": 0,
+              "renderedY": 112,
+              "renderedError": 0
+            },
+            {
+              "frame": 17082,
+              "cell": 12,
+              "observed": 133,
+              "predicted": 133.5656458125078,
+              "intervalError": 0,
+              "renderedY": 133,
+              "renderedError": 0
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 161,
+              "predicted": 160.94967840102524,
+              "intervalError": 0.05032159897476163,
+              "renderedY": 160,
+              "renderedError": -1
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 187,
+              "predicted": 187.7917229899375,
+              "intervalError": 0,
+              "renderedY": 187,
+              "renderedError": 0
+            }
+          ]
+        },
+        {
+          "name": "cal-stop-second",
+          "initialization": {
+            "frame": 17037,
+            "y": 229.74673281470717,
+            "vy": -4.572977585932524,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.4008179694825884,
+          "maxDescriptorError": 2.2599870112555323,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 229.74673281470717,
+              "intervalError": 0,
+              "renderedY": 229,
+              "renderedError": 0
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 194,
+              "predicted": 194.72508183336254,
+              "intervalError": 0,
+              "renderedY": 194,
+              "renderedError": 0
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 167,
+              "predicted": 167.0102054236526,
+              "intervalError": 0,
+              "renderedY": 167,
+              "renderedError": 0
+            },
+            {
+              "frame": 17060,
+              "cell": 13,
+              "observed": 139,
+              "predicted": 138.6835674685174,
+              "intervalError": 0.3164325314826044,
+              "renderedY": 138,
+              "renderedError": -1
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 116.8268274567408,
+              "intervalError": 1.1731725432591986,
+              "renderedY": 116,
+              "renderedError": -2
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 95.1952025278151,
+              "intervalError": 0.8047974721849016,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 62,
+              "predicted": 64.25998701125553,
+              "intervalError": 1.2599870112555323,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 53,
+              "predicted": 54.11951979534548,
+              "intervalError": 0.1195197953454823,
+              "renderedY": 54,
+              "renderedError": 1
+            },
+            {
+              "frame": 17105,
+              "cell": 13,
+              "observed": 45,
+              "predicted": 45.87792091883873,
+              "intervalError": 0,
+              "renderedY": 45,
+              "renderedError": 0
+            },
+            {
+              "frame": 17112,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 41.59559010086197,
+              "intervalError": 0.40440989913803094,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17120,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 40.04900425056469,
+              "intervalError": 0.9509957494353074,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17127,
+              "cell": 12,
+              "observed": 43,
+              "predicted": 41.59918203051741,
+              "intervalError": 1.4008179694825884,
+              "renderedY": 41,
+              "renderedError": -2
+            },
+            {
+              "frame": 17135,
+              "cell": 13,
+              "observed": 48,
+              "predicted": 46.66340357784565,
+              "intervalError": 1.3365964221543507,
+              "renderedY": 46,
+              "renderedError": -2
+            },
+            {
+              "frame": 17142,
+              "cell": 13,
+              "observed": 55,
+              "predicted": 53.97561350571738,
+              "intervalError": 1.0243864942826235,
+              "renderedY": 53,
+              "renderedError": -2
+            },
+            {
+              "frame": 17150,
+              "cell": 12,
+              "observed": 67,
+              "predicted": 65.62501465066734,
+              "intervalError": 1.3749853493326611,
+              "renderedY": 65,
+              "renderedError": -2
+            },
+            {
+              "frame": 17165,
+              "cell": 12,
+              "observed": 96,
+              "predicted": 96.93383746902973,
+              "intervalError": 0,
+              "renderedY": 96,
+              "renderedError": 0
+            },
+            {
+              "frame": 17172,
+              "cell": 13,
+              "observed": 115,
+              "predicted": 115.77011169273946,
+              "intervalError": 0,
+              "renderedY": 115,
+              "renderedError": 0
+            },
+            {
+              "frame": 17180,
+              "cell": 12,
+              "observed": 140,
+              "predicted": 140.58987203293287,
+              "intervalError": 0,
+              "renderedY": 140,
+              "renderedError": 0
+            },
+            {
+              "frame": 17187,
+              "cell": 13,
+              "observed": 164,
+              "predicted": 165.18817840456163,
+              "intervalError": 0.1881784045616257,
+              "renderedY": 165,
+              "renderedError": 1
+            },
+            {
+              "frame": 17195,
+              "cell": 12,
+              "observed": 195,
+              "predicted": 196.59311834237675,
+              "intervalError": 0.593118342376755,
+              "renderedY": 196,
+              "renderedError": 1
+            },
+            {
+              "frame": 17202,
+              "cell": 13,
+              "observed": 225,
+              "predicted": 226.9534568619245,
+              "intervalError": 0.9534568619245078,
+              "renderedY": 226,
+              "renderedError": 1
+            }
+          ]
+        },
+        {
+          "name": "cal-delay-first",
+          "initialization": {
+            "frame": 17240,
+            "y": 238.65686712502531,
+            "vy": -4.67757005044193,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.4008121682232115,
+          "maxDescriptorError": 1.754106235099286,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17240,
+              "cell": 12,
+              "observed": 238,
+              "predicted": 238.65686712502531,
+              "intervalError": 0,
+              "renderedY": 238,
+              "renderedError": 0
+            },
+            {
+              "frame": 17248,
+              "cell": 13,
+              "observed": 203,
+              "predicted": 202.79847642760544,
+              "intervalError": 0.20152357239456364,
+              "renderedY": 202,
+              "renderedError": -1
+            },
+            {
+              "frame": 17255,
+              "cell": 13,
+              "observed": 175,
+              "predicted": 174.3514527663297,
+              "intervalError": 0.648547233670314,
+              "renderedY": 174,
+              "renderedError": -1
+            },
+            {
+              "frame": 17263,
+              "cell": 12,
+              "observed": 146,
+              "predicted": 145.18807509511925,
+              "intervalError": 0.8119249048807546,
+              "renderedY": 145,
+              "renderedError": -1
+            },
+            {
+              "frame": 17270,
+              "cell": 13,
+              "observed": 124,
+              "predicted": 122.59918783177679,
+              "intervalError": 1.4008121682232115,
+              "renderedY": 122,
+              "renderedError": -2
+            },
+            {
+              "frame": 17278,
+              "cell": 12,
+              "observed": 101,
+              "predicted": 100.13082318677584,
+              "intervalError": 0.8691768132241577,
+              "renderedY": 100,
+              "renderedError": -1
+            },
+            {
+              "frame": 17293,
+              "cell": 12,
+              "observed": 66,
+              "predicted": 67.62672070257518,
+              "intervalError": 0.6267207025751844,
+              "renderedY": 67,
+              "renderedError": 1
+            },
+            {
+              "frame": 17300,
+              "cell": 13,
+              "observed": 55,
+              "predicted": 56.754106235099286,
+              "intervalError": 0.754106235099286,
+              "renderedY": 56,
+              "renderedError": 1
+            },
+            {
+              "frame": 17308,
+              "cell": 12,
+              "observed": 47,
+              "predicted": 47.675767642517286,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17315,
+              "cell": 13,
+              "observed": 43,
+              "predicted": 42.66128957297468,
+              "intervalError": 0.33871042702531895,
+              "renderedY": 42,
+              "renderedError": -1
+            },
+            {
+              "frame": 17323,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.277964006602154,
+              "intervalError": 0.7220359933978457,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17330,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.10789315641936,
+              "intervalError": 0.8921068435806419,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17338,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 45.35001944481739,
+              "intervalError": 0.6499805551826086,
+              "renderedY": 45,
+              "renderedError": -1
+            },
+            {
+              "frame": 17345,
+              "cell": 13,
+              "observed": 52,
+              "predicted": 51.94289602112517,
+              "intervalError": 0.05710397887482799,
+              "renderedY": 51,
+              "renderedError": -1
+            },
+            {
+              "frame": 17353,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 62.770201907144916,
+              "intervalError": 0.22979809285508423,
+              "renderedY": 62,
+              "renderedError": -1
+            }
+          ]
+        },
+        {
+          "name": "held-jump-second",
+          "initialization": {
+            "frame": 17037,
+            "y": 229.63184877936203,
+            "vy": -4.5681554307383685,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.4006772012006223,
+          "maxDescriptorError": 2.4006772012006223,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 229.63184877936203,
+              "intervalError": 0,
+              "renderedY": 229,
+              "renderedError": 0
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 194,
+              "predicted": 194.64877503957064,
+              "intervalError": 0,
+              "renderedY": 194,
+              "renderedError": 0
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 167,
+              "predicted": 166.96765371621981,
+              "intervalError": 0.03234628378018556,
+              "renderedY": 166,
+              "renderedError": -1
+            },
+            {
+              "frame": 17060,
+              "cell": 13,
+              "observed": 139,
+              "predicted": 138.67959300263786,
+              "intervalError": 0.3204069973621415,
+              "renderedY": 138,
+              "renderedError": -1
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 116.85660807722032,
+              "intervalError": 1.143391922779685,
+              "renderedY": 116,
+              "renderedError": -2
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 95.26356038984785,
+              "intervalError": 0.7364396101521464,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 62,
+              "predicted": 64.40067720120062,
+              "intervalError": 1.4006772012006223,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 53,
+              "predicted": 54.29396507164966,
+              "intervalError": 0.2939650716496587,
+              "renderedY": 54,
+              "renderedError": 1
+            },
+            {
+              "frame": 17105,
+              "cell": 13,
+              "observed": 45,
+              "predicted": 46.09094343669615,
+              "intervalError": 0.09094343669615057,
+              "renderedY": 46,
+              "renderedError": 1
+            },
+            {
+              "frame": 17112,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 41.84236770507847,
+              "intervalError": 0.15763229492152675,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17120,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 40.33435909633444,
+              "intervalError": 0.6656409036655617,
+              "renderedY": 40,
+              "renderedError": -1
+            }
+          ]
+        },
+        {
+          "name": "held-delay-first",
+          "initialization": {
+            "frame": 17202,
+            "y": 167.26078575636373,
+            "vy": -3.7389889976453254,
+            "vyBounds": [
+              -3.94,
+              -3.48
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.4008218243852042,
+          "maxDescriptorError": 2.400821824385204,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17202,
+              "cell": 13,
+              "observed": 167,
+              "predicted": 167.26078575636373,
+              "intervalError": 0,
+              "renderedY": 167,
+              "renderedError": 0
+            },
+            {
+              "frame": 17210,
+              "cell": 12,
+              "observed": 139,
+              "predicted": 138.91104348131665,
+              "intervalError": 0.08895651868334653,
+              "renderedY": 138,
+              "renderedError": -1
+            },
+            {
+              "frame": 17218,
+              "cell": 13,
+              "observed": 115,
+              "predicted": 114.131974820248,
+              "intervalError": 0.8680251797519958,
+              "renderedY": 114,
+              "renderedError": -1
+            },
+            {
+              "frame": 17225,
+              "cell": 12,
+              "observed": 96,
+              "predicted": 95.37935794077956,
+              "intervalError": 0.6206420592204438,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17233,
+              "cell": 13,
+              "observed": 75,
+              "predicted": 77.29530230592034,
+              "intervalError": 1.2953023059203446,
+              "renderedY": 77,
+              "renderedError": 2
+            },
+            {
+              "frame": 17240,
+              "cell": 12,
+              "observed": 62,
+              "predicted": 64.4008218243852,
+              "intervalError": 1.4008218243852042,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17248,
+              "cell": 13,
+              "observed": 52,
+              "predicted": 53.01177921573547,
+              "intervalError": 0.011779215735472803,
+              "renderedY": 53,
+              "renderedError": 1
+            },
+            {
+              "frame": 17255,
+              "cell": 12,
+              "observed": 45,
+              "predicted": 45.97543513213361,
+              "intervalError": 0,
+              "renderedY": 45,
+              "renderedError": 0
+            },
+            {
+              "frame": 17263,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.28140554969336,
+              "intervalError": 0.7185944503066395,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17270,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 40.103197864024786,
+              "intervalError": 0.8968021359752143,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17278,
+              "cell": 12,
+              "observed": 43,
+              "predicted": 42.0785535077902,
+              "intervalError": 0.9214464922098031,
+              "renderedY": 42,
+              "renderedError": -1
+            },
+            {
+              "frame": 17285,
+              "cell": 13,
+              "observed": 48,
+              "predicted": 46.68800577004443,
+              "intervalError": 1.3119942299555731,
+              "renderedY": 46,
+              "renderedError": -2
+            },
+            {
+              "frame": 17293,
+              "cell": 12,
+              "observed": 56,
+              "predicted": 55.248541011431556,
+              "intervalError": 0.7514589885684444,
+              "renderedY": 55,
+              "renderedError": -1
+            },
+            {
+              "frame": 17300,
+              "cell": 13,
+              "observed": 67,
+              "predicted": 65.6200254216048,
+              "intervalError": 1.3799745783952062,
+              "renderedY": 65,
+              "renderedError": -2
+            },
+            {
+              "frame": 17315,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 96.89925681870587,
+              "intervalError": 0,
+              "renderedY": 96,
+              "renderedError": 0
+            },
+            {
+              "frame": 17323,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 118.63015125533644,
+              "intervalError": 0,
+              "renderedY": 118,
+              "renderedError": 0
+            },
+            {
+              "frame": 17330,
+              "cell": 13,
+              "observed": 140,
+              "predicted": 140.5256999613477,
+              "intervalError": 0,
+              "renderedY": 140,
+              "renderedError": 0
+            },
+            {
+              "frame": 17338,
+              "cell": 12,
+              "observed": 168,
+              "predicted": 168.84177399560002,
+              "intervalError": 0,
+              "renderedY": 168,
+              "renderedError": 0
+            },
+            {
+              "frame": 17345,
+              "cell": 13,
+              "observed": 195,
+              "predicted": 196.49935484953028,
+              "intervalError": 0.49935484953027753,
+              "renderedY": 196,
+              "renderedError": 1
+            },
+            {
+              "frame": 17353,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 231.4006084814043,
+              "intervalError": 1.400608481404305,
+              "renderedY": 231,
+              "renderedError": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "family": "velocity-regimes",
+      "tracks": [
+        "cal-run-first",
+        "cal-stop-second",
+        "cal-delay-first",
+        "held-jump-second",
+        "held-delay-first"
+      ],
+      "search": "32 deterministic-seed Nelder-Mead restarts,1800 iterations; bounded parameters. An unsuccessful numerical search does not prove the family impossible.",
+      "parameters": [
+        0.05458485024434031,
+        0.05646358890836877,
+        0.051255068413223616,
+        4.9359089048705,
+        0.6696624743902896,
+        0.440742283424665,
+        0.42810375043002186,
+        0.6081690517440171,
+        0.4936512780605369,
+        0.38415035536739234,
+        0.5061322611795009,
+        0.6102643050710936,
+        0.4908030455060856,
+        0.47003869011297494
+      ],
+      "gravityFields": [
+        "fastAscent",
+        "apex",
+        "fastDescent"
+      ],
+      "cap": 4.9359089048705,
+      "error": 1.435510130135441,
+      "allWithinRasterIntervals": false,
+      "fits": [
+        {
+          "name": "cal-run-first",
+          "initialization": {
+            "frame": 16955,
+            "y": 171.6696624743903,
+            "vy": -3.779025736576513,
+            "vyBounds": [
+              -3.9842857142857144,
+              -3.5185714285714282
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.360991749337046,
+          "maxDescriptorError": 2.360991749337046,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 16955,
+              "cell": 12,
+              "observed": 171,
+              "predicted": 171.6696624743903,
+              "intervalError": 0,
+              "renderedY": 171,
+              "renderedError": 0
+            },
+            {
+              "frame": 16962,
+              "cell": 13,
+              "observed": 146,
+              "predicted": 146.3627641734859,
+              "intervalError": 0,
+              "renderedY": 146,
+              "renderedError": 0
+            },
+            {
+              "frame": 16970,
+              "cell": 12,
+              "observed": 121,
+              "predicted": 120.7156857013984,
+              "intervalError": 0.2843142986016005,
+              "renderedY": 120,
+              "renderedError": -1
+            },
+            {
+              "frame": 16977,
+              "cell": 13,
+              "observed": 101,
+              "predicted": 101.14019667614971,
+              "intervalError": 0,
+              "renderedY": 101,
+              "renderedError": 0
+            },
+            {
+              "frame": 16992,
+              "cell": 13,
+              "observed": 66,
+              "predicted": 68.2104929157743,
+              "intervalError": 1.2104929157742959,
+              "renderedY": 68,
+              "renderedError": 2
+            },
+            {
+              "frame": 17000,
+              "cell": 12,
+              "observed": 54,
+              "predicted": 55.77650282217019,
+              "intervalError": 0.7765028221701868,
+              "renderedY": 55,
+              "renderedError": 1
+            },
+            {
+              "frame": 17007,
+              "cell": 13,
+              "observed": 47,
+              "predicted": 47.861099907955946,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17015,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 42.20274048335609,
+              "intervalError": 0,
+              "renderedY": 42,
+              "renderedError": 0
+            },
+            {
+              "frame": 17022,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.21601440452057,
+              "intervalError": 0.7839855954794288,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17030,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.333285648924964,
+              "intervalError": 0.6667143510750364,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 45.27523640546816,
+              "intervalError": 0.7247635945318365,
+              "renderedY": 45,
+              "renderedError": -1
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 54,
+              "predicted": 53.16813831887681,
+              "intervalError": 0.8318616811231934,
+              "renderedY": 53,
+              "renderedError": -1
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 63.03876591079872,
+              "intervalError": 0,
+              "renderedY": 63,
+              "renderedError": 0
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 92,
+              "predicted": 93.3607643466482,
+              "intervalError": 0.360764346648196,
+              "renderedY": 93,
+              "renderedError": 1
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 112,
+              "predicted": 114.32574371251198,
+              "intervalError": 1.3257437125119793,
+              "renderedY": 114,
+              "renderedError": 2
+            },
+            {
+              "frame": 17082,
+              "cell": 12,
+              "observed": 133,
+              "predicted": 135.36099174933705,
+              "intervalError": 1.360991749337046,
+              "renderedY": 135,
+              "renderedError": 2
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 161,
+              "predicted": 162.4765793247877,
+              "intervalError": 0.47657932478770704,
+              "renderedY": 162,
+              "renderedError": 1
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 187,
+              "predicted": 188.89360954500125,
+              "intervalError": 0.8936095450012544,
+              "renderedY": 188,
+              "renderedError": 1
+            }
+          ]
+        },
+        {
+          "name": "cal-stop-second",
+          "initialization": {
+            "frame": 17037,
+            "y": 229.42810375043,
+            "vy": -4.535242236197752,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.435490152286519,
+          "maxDescriptorError": 2.435490152286519,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 229.42810375043,
+              "intervalError": 0,
+              "renderedY": 229,
+              "renderedError": 0
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 194,
+              "predicted": 194.67454166768954,
+              "intervalError": 0,
+              "renderedY": 194,
+              "renderedError": 0
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 167,
+              "predicted": 167.13087948311943,
+              "intervalError": 0,
+              "renderedY": 167,
+              "renderedError": 0
+            },
+            {
+              "frame": 17060,
+              "cell": 13,
+              "observed": 139,
+              "predicted": 138.92749942969976,
+              "intervalError": 0.07250057030023527,
+              "renderedY": 138,
+              "renderedError": -1
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 117.11524652078546,
+              "intervalError": 0.8847534792145382,
+              "renderedY": 117,
+              "renderedError": -1
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 95.46204849668665,
+              "intervalError": 0.5379515033133515,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 62,
+              "predicted": 64.30636994861054,
+              "intervalError": 1.3063699486105378,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 53,
+              "predicted": 54.07529612684148,
+              "intervalError": 0.07529612684147935,
+              "renderedY": 54,
+              "renderedError": 1
+            },
+            {
+              "frame": 17105,
+              "cell": 13,
+              "observed": 45,
+              "predicted": 45.7704556650361,
+              "intervalError": 0,
+              "renderedY": 45,
+              "renderedError": 0
+            },
+            {
+              "frame": 17112,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 41.46805867864576,
+              "intervalError": 0.531941321354239,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17120,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 39.938848885844635,
+              "intervalError": 1.061151114155365,
+              "renderedY": 39,
+              "renderedError": -2
+            },
+            {
+              "frame": 17127,
+              "cell": 12,
+              "observed": 43,
+              "predicted": 41.56512873483301,
+              "intervalError": 1.43487126516699,
+              "renderedY": 41,
+              "renderedError": -2
+            },
+            {
+              "frame": 17135,
+              "cell": 13,
+              "observed": 48,
+              "predicted": 46.81154961103614,
+              "intervalError": 1.188450388963858,
+              "renderedY": 46,
+              "renderedError": -2
+            },
+            {
+              "frame": 17142,
+              "cell": 13,
+              "observed": 55,
+              "predicted": 54.36650629540324,
+              "intervalError": 0.6334937045967592,
+              "renderedY": 54,
+              "renderedError": -1
+            },
+            {
+              "frame": 17150,
+              "cell": 12,
+              "observed": 67,
+              "predicted": 66.38855784061062,
+              "intervalError": 0.6114421593893837,
+              "renderedY": 66,
+              "renderedError": -1
+            },
+            {
+              "frame": 17165,
+              "cell": 12,
+              "observed": 96,
+              "predicted": 98.43549015228652,
+              "intervalError": 1.435490152286519,
+              "renderedY": 98,
+              "renderedError": 2
+            },
+            {
+              "frame": 17172,
+              "cell": 13,
+              "observed": 115,
+              "predicted": 117.37382514235286,
+              "intervalError": 1.3738251423528567,
+              "renderedY": 117,
+              "renderedError": 2
+            },
+            {
+              "frame": 17180,
+              "cell": 12,
+              "observed": 140,
+              "predicted": 142.09294066436496,
+              "intervalError": 1.09294066436496,
+              "renderedY": 142,
+              "renderedError": 2
+            },
+            {
+              "frame": 17187,
+              "cell": 13,
+              "observed": 164,
+              "predicted": 166.4130578378198,
+              "intervalError": 1.4130578378197924,
+              "renderedY": 166,
+              "renderedError": 2
+            },
+            {
+              "frame": 17195,
+              "cell": 12,
+              "observed": 195,
+              "predicted": 197.28278156941874,
+              "intervalError": 1.282781569418745,
+              "renderedY": 197,
+              "renderedError": 2
+            },
+            {
+              "frame": 17202,
+              "cell": 13,
+              "observed": 225,
+              "predicted": 226.98468092626206,
+              "intervalError": 0.9846809262620582,
+              "renderedY": 226,
+              "renderedError": 1
+            }
+          ]
+        },
+        {
+          "name": "cal-delay-first",
+          "initialization": {
+            "frame": 17240,
+            "y": 238.49365127806053,
+            "vy": -4.638290836531,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 0.9147166452044928,
+          "maxDescriptorError": 1.9147166452044928,
+          "maxRenderedError": 1,
+          "errors": [
+            {
+              "frame": 17240,
+              "cell": 12,
+              "observed": 238,
+              "predicted": 238.49365127806053,
+              "intervalError": 0,
+              "renderedY": 238,
+              "renderedError": 0
+            },
+            {
+              "frame": 17248,
+              "cell": 13,
+              "observed": 203,
+              "predicted": 202.91570039265412,
+              "intervalError": 0.08429960734588349,
+              "renderedY": 202,
+              "renderedError": -1
+            },
+            {
+              "frame": 17255,
+              "cell": 13,
+              "observed": 175,
+              "predicted": 174.65069800575134,
+              "intervalError": 0.3493019942486626,
+              "renderedY": 174,
+              "renderedError": -1
+            },
+            {
+              "frame": 17263,
+              "cell": 12,
+              "observed": 146,
+              "predicted": 145.62292914966565,
+              "intervalError": 0.3770708503343485,
+              "renderedY": 145,
+              "renderedError": -1
+            },
+            {
+              "frame": 17270,
+              "cell": 13,
+              "observed": 124,
+              "predicted": 123.08933603841857,
+              "intervalError": 0.9106639615814345,
+              "renderedY": 123,
+              "renderedError": -1
+            },
+            {
+              "frame": 17278,
+              "cell": 12,
+              "observed": 101,
+              "predicted": 100.61174921165377,
+              "intervalError": 0.3882507883462267,
+              "renderedY": 100,
+              "renderedError": -1
+            },
+            {
+              "frame": 17293,
+              "cell": 12,
+              "observed": 66,
+              "predicted": 67.89343301060269,
+              "intervalError": 0.893433010602692,
+              "renderedY": 67,
+              "renderedError": 1
+            },
+            {
+              "frame": 17300,
+              "cell": 13,
+              "observed": 55,
+              "predicted": 56.91471664520449,
+              "intervalError": 0.9147166452044928,
+              "renderedY": 56,
+              "renderedError": 1
+            },
+            {
+              "frame": 17308,
+              "cell": 12,
+              "observed": 47,
+              "predicted": 47.75542756210868,
+              "intervalError": 0,
+              "renderedY": 47,
+              "renderedError": 0
+            },
+            {
+              "frame": 17315,
+              "cell": 13,
+              "observed": 43,
+              "predicted": 42.7053880320892,
+              "intervalError": 0.2946119679107966,
+              "renderedY": 42,
+              "renderedError": -1
+            },
+            {
+              "frame": 17323,
+              "cell": 12,
+              "observed": 41,
+              "predicted": 40.32172961799764,
+              "intervalError": 0.6782703820023599,
+              "renderedY": 40,
+              "renderedError": -1
+            },
+            {
+              "frame": 17330,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 41.20036692335688,
+              "intervalError": 0.7996330766431186,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17338,
+              "cell": 12,
+              "observed": 46,
+              "predicted": 45.59233917826957,
+              "intervalError": 0.40766082173043117,
+              "renderedY": 45,
+              "renderedError": -1
+            },
+            {
+              "frame": 17345,
+              "cell": 13,
+              "observed": 52,
+              "predicted": 52.399653319007534,
+              "intervalError": 0,
+              "renderedY": 52,
+              "renderedError": 0
+            },
+            {
+              "frame": 17353,
+              "cell": 12,
+              "observed": 63,
+              "predicted": 63.567256242924465,
+              "intervalError": 0,
+              "renderedY": 63,
+              "renderedError": 0
+            }
+          ]
+        },
+        {
+          "name": "held-jump-second",
+          "initialization": {
+            "frame": 17037,
+            "y": 229.5061322611795,
+            "vy": -4.534278419667297,
+            "vyBounds": [
+              -4.815,
+              -4.355
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.435480735474144,
+          "maxDescriptorError": 2.435480735474144,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17037,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 229.5061322611795,
+              "intervalError": 0,
+              "renderedY": 229,
+              "renderedError": 0
+            },
+            {
+              "frame": 17045,
+              "cell": 13,
+              "observed": 194,
+              "predicted": 194.76028071068268,
+              "intervalError": 0,
+              "renderedY": 194,
+              "renderedError": 0
+            },
+            {
+              "frame": 17052,
+              "cell": 12,
+              "observed": 167,
+              "predicted": 167.22336524182577,
+              "intervalError": 0,
+              "renderedY": 167,
+              "renderedError": 0
+            },
+            {
+              "frame": 17060,
+              "cell": 13,
+              "observed": 139,
+              "predicted": 139.02769572064972,
+              "intervalError": 0,
+              "renderedY": 139,
+              "renderedError": 0
+            },
+            {
+              "frame": 17067,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 117.22218952744862,
+              "intervalError": 0.7778104725513799,
+              "renderedY": 117,
+              "renderedError": -1
+            },
+            {
+              "frame": 17075,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 95.57670203559344,
+              "intervalError": 0.423297964406558,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17090,
+              "cell": 13,
+              "observed": 62,
+              "predicted": 64.43548073547414,
+              "intervalError": 1.435480735474144,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17097,
+              "cell": 12,
+              "observed": 53,
+              "predicted": 54.21115362941827,
+              "intervalError": 0.21115362941826987,
+              "renderedY": 54,
+              "renderedError": 1
+            },
+            {
+              "frame": 17105,
+              "cell": 13,
+              "observed": 45,
+              "predicted": 45.914023699856536,
+              "intervalError": 0,
+              "renderedY": 45,
+              "renderedError": 0
+            },
+            {
+              "frame": 17112,
+              "cell": 12,
+              "observed": 42,
+              "predicted": 41.61837342917938,
+              "intervalError": 0.3816265708206217,
+              "renderedY": 41,
+              "renderedError": -1
+            },
+            {
+              "frame": 17120,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 40.096874168621895,
+              "intervalError": 0.9031258313781052,
+              "renderedY": 40,
+              "renderedError": -1
+            }
+          ]
+        },
+        {
+          "name": "held-delay-first",
+          "initialization": {
+            "frame": 17202,
+            "y": 167.49080304550608,
+            "vy": -3.7237822025480316,
+            "vyBounds": [
+              -3.94,
+              -3.48
+            ]
+          },
+          "initializationQualification": "Both initialY fraction and initial velocity are numerically optimized using FUTURE whole-arc calibration poses within first-pair bounds. This is not prospective initialization or a production fitted per-actor state.",
+          "maxIntervalError": 1.435510130135441,
+          "maxDescriptorError": 2.435510130135441,
+          "maxRenderedError": 2,
+          "errors": [
+            {
+              "frame": 17202,
+              "cell": 13,
+              "observed": 167,
+              "predicted": 167.49080304550608,
+              "intervalError": 0,
+              "renderedY": 167,
+              "renderedError": 0
+            },
+            {
+              "frame": 17210,
+              "cell": 12,
+              "observed": 139,
+              "predicted": 139.2289212319634,
+              "intervalError": 0,
+              "renderedY": 139,
+              "renderedError": 0
+            },
+            {
+              "frame": 17218,
+              "cell": 13,
+              "observed": 115,
+              "predicted": 114.46046983405846,
+              "intervalError": 0.5395301659415424,
+              "renderedY": 114,
+              "renderedError": -1
+            },
+            {
+              "frame": 17225,
+              "cell": 12,
+              "observed": 96,
+              "predicted": 95.6537794987195,
+              "intervalError": 0.34622050128049864,
+              "renderedY": 95,
+              "renderedError": -1
+            },
+            {
+              "frame": 17233,
+              "cell": 13,
+              "observed": 75,
+              "predicted": 77.43551013013544,
+              "intervalError": 1.435510130135441,
+              "renderedY": 77,
+              "renderedError": 2
+            },
+            {
+              "frame": 17240,
+              "cell": 12,
+              "observed": 62,
+              "predicted": 64.38841015041265,
+              "intervalError": 1.3884101504126534,
+              "renderedY": 64,
+              "renderedError": 2
+            },
+            {
+              "frame": 17248,
+              "cell": 13,
+              "observed": 52,
+              "predicted": 52.86310694961557,
+              "intervalError": 0,
+              "renderedY": 52,
+              "renderedError": 0
+            },
+            {
+              "frame": 17255,
+              "cell": 12,
+              "observed": 45,
+              "predicted": 45.74280506660748,
+              "intervalError": 0,
+              "renderedY": 45,
+              "renderedError": 0
+            },
+            {
+              "frame": 17263,
+              "cell": 13,
+              "observed": 42,
+              "predicted": 40.99313253481465,
+              "intervalError": 1.0068674651853513,
+              "renderedY": 40,
+              "renderedError": -2
+            },
+            {
+              "frame": 17270,
+              "cell": 13,
+              "observed": 41,
+              "predicted": 39.80150748718528,
+              "intervalError": 1.1984925128147168,
+              "renderedY": 39,
+              "renderedError": -2
+            },
+            {
+              "frame": 17278,
+              "cell": 12,
+              "observed": 43,
+              "predicted": 41.8274656243967,
+              "intervalError": 1.1725343756032984,
+              "renderedY": 41,
+              "renderedError": -2
+            },
+            {
+              "frame": 17285,
+              "cell": 13,
+              "observed": 48,
+              "predicted": 46.56451741214605,
+              "intervalError": 1.4354825878539472,
+              "renderedY": 46,
+              "renderedError": -2
+            },
+            {
+              "frame": 17293,
+              "cell": 12,
+              "observed": 56,
+              "predicted": 55.36610621836172,
+              "intervalError": 0.6338937816382781,
+              "renderedY": 55,
+              "renderedError": -1
+            },
+            {
+              "frame": 17300,
+              "cell": 13,
+              "observed": 67,
+              "predicted": 66.03183484148978,
+              "intervalError": 0.9681651585102173,
+              "renderedY": 66,
+              "renderedError": -1
+            },
+            {
+              "frame": 17315,
+              "cell": 13,
+              "observed": 96,
+              "predicted": 97.96907635293496,
+              "intervalError": 0.9690763529349624,
+              "renderedY": 97,
+              "renderedError": 1
+            },
+            {
+              "frame": 17323,
+              "cell": 12,
+              "observed": 118,
+              "predicted": 119.75940628368346,
+              "intervalError": 0.759406283683461,
+              "renderedY": 119,
+              "renderedError": 1
+            },
+            {
+              "frame": 17330,
+              "cell": 13,
+              "observed": 140,
+              "predicted": 141.51683606478264,
+              "intervalError": 0.5168360647826375,
+              "renderedY": 141,
+              "renderedError": 1
+            },
+            {
+              "frame": 17338,
+              "cell": 12,
+              "observed": 168,
+              "predicted": 169.45777420511803,
+              "intervalError": 0.457774205118028,
+              "renderedY": 169,
+              "renderedError": 1
+            },
+            {
+              "frame": 17345,
+              "cell": 13,
+              "observed": 195,
+              "predicted": 196.5969861696057,
+              "intervalError": 0.5969861696057137,
+              "renderedY": 196,
+              "renderedError": 1
+            },
+            {
+              "frame": 17353,
+              "cell": 12,
+              "observed": 229,
+              "predicted": 230.68853251952794,
+              "intervalError": 0.6885325195279393,
+              "renderedY": 230,
+              "renderedError": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

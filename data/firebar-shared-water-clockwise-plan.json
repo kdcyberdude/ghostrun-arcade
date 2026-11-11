@@ -1,0 +1,162 @@
+{
+  "schema": "firebar-shared-water-clockwise-plan-v1",
+  "declaredUtc": "2026-11-06T01:34:51.660011+00:00",
+  "scope": "Fresh referencecontrols/images only; no runtime edits. Frozenmotorunchanged; newCWobjectinitialphase selectedfromcalibrationonlybefore openingreserved13.",
+  "level": "8-4",
+  "area": "area-4",
+  "pivot": [
+    328,
+    120
+  ],
+  "direction": 1,
+  "anchorCamera": 0,
+  "prefix": {
+    "winningDecisions": 10424,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-8-4-water-cw-0",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-8-4-water-cw-20",
+      "extraNeutralTicks": 20,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "reserved-8-4-water-cw-13",
+      "extraNeutralTicks": 13,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 90,
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Keepreserved13images/geometryunopeneduntilnewobjectinitialphaseandcameramethodfrozen. Motor/rules/source remainoriginalsharedlock.",
+  "limits": [
+    "Safecontrols are inferredfromactualsourcewaterpipe/terrainimages; calibrationwillassessroute viability. No forcedsuccess.",
+    "Importedentity-campaignwronglyassignswaterbarstocastlearea-3; actualwater isarea-4. No area metadatawrittenyet."
+  ]
+}

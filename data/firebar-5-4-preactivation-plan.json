@@ -1,0 +1,145 @@
+{
+  "schema": "chain5-4-firebar-fresh-reference-plan-v1",
+  "declaredUtc": "2026-11-06T03:19:24.301430+00:00",
+  "scope": "Corrected preactivation wait experiment after independently observed original5964 stop crossed entry. No inferred success from proposed position; camera-chain proof must verify prewaitcamera<437.",
+  "level": "5-4",
+  "pivot": [
+    696,
+    216
+  ],
+  "direction": 1,
+  "prefix": {
+    "winningDecisions": 5962,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "capturePrefixTicksFrom": 5936,
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 3
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-5-4-chain-prewait0",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-5-4-chain-prewait20",
+      "extraNeutralTicks": 20,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "reserved-5-4-chain-prewait13",
+      "extraNeutralTicks": 13,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 6,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 68,
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "hypotheses": [
+    "Shared clockwise+5-unit motor with per-object initial units; current native-latest/presented-row activation alternatives remain explicit.",
+    "Preactivation waiting should not consume local motor phase if activation-gated.",
+    "Single physical motor state may appear as old/new adjacent states across an interstitial reference framebuffer; preserve3px coherent-state failures."
+  ],
+  "reservation": "Fresh reserved13 images remain unopened until calibration candidate/source-camera rule frozen. Failure or death is retained without skipping.",
+  "priorFailedPreparation": {
+    "plan": "data/firebar-5-4-fresh-plan.json",
+    "denseCaptures": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-14-51Z",
+    "observedPreparedPresentedCamera": 441,
+    "classification": "Postactivation delays; retained as such, not initial-phase history proof."
+  }
+}

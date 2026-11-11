@@ -1,0 +1,5207 @@
+{
+  "schema": "image-only-optional-route-search-v1",
+  "level": "6-2",
+  "status": "vine-entry-destination-map-and-ordinary-return-observed",
+  "sourceTrace": "evidence/local/six-two-vine/trace.jsonl",
+  "method": "Documented public controller operations and actual reference PNGs only. No ROM contents, emulator memory, executable internals, sibling implementation, or remembered map. Prefix6614 is exact recorded masks/native durations, followed by the verified49-decision recorded controller continuation to6663.",
+  "observations": [
+    {
+      "inferredMainColumn": 140,
+      "row": 5,
+      "inferredWorldX": 2240,
+      "worldY": 80,
+      "outcome": "star-emission-no-vine-observed",
+      "activation": {
+        "sequence": 2241,
+        "tick": 6644,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/02241-tick-06644.png"
+      },
+      "laterObservation": {
+        "sequence": 2243,
+        "tick": 6652,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/six-two-vine/02243-tick-06652.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          103,
+          75
+        ]
+      ],
+      "starArtworkEvidence": {
+        "sprite": "sprite-powerups-2.png",
+        "screenOrigin": [
+          13,
+          64
+        ],
+        "opaquePixelCount": 122,
+        "whole16pxCropMatchesAfterObservedPaletteMapping": true,
+        "paletteMapping": [
+          [
+            [
+              252,
+              160,
+              68
+            ],
+            [
+              228,
+              92,
+              16
+            ]
+          ],
+          [
+            [
+              248,
+              56,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ]
+        ]
+      },
+      "coordinateNote": "World column140 is inferred from the observed adjacent upper140/141 strip and canonical lower138/139,row8 anchor; the raised used block and emitted star are directly observed."
+    },
+    {
+      "inferredMainColumn": 145,
+      "row": 5,
+      "inferredWorldX": 2320,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-vine-observed",
+      "activation": {
+        "sequence": 4498,
+        "tick": 6696,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/04498-tick-06696.png"
+      },
+      "laterObservation": {
+        "sequence": 4499,
+        "tick": 6699,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/six-two-vine/04499-tick-06699.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          36,
+          74
+        ]
+      ],
+      "coordinateNote": "World columns use the canonical ordinary lower row9 platform as the independent alignment anchor; upper/lower raster phases can differ by a few pixels."
+    },
+    {
+      "inferredMainColumn": 146,
+      "row": 5,
+      "inferredWorldX": 2336,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-vine-observed",
+      "activation": {
+        "sequence": 4494,
+        "tick": 6684,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/04494-tick-06684.png"
+      },
+      "laterObservation": {
+        "sequence": 4495,
+        "tick": 6687,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/six-two-vine/04495-tick-06687.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          52,
+          74
+        ]
+      ],
+      "coordinateNote": "World columns use the canonical ordinary lower row9 platform as the independent alignment anchor; upper/lower raster phases can differ by a few pixels."
+    },
+    {
+      "inferredMainColumn": 160,
+      "row": 5,
+      "inferredWorldX": 2560,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-vine-observed",
+      "activation": {
+        "sequence": 1127,
+        "tick": 6686,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/01127-tick-06686.png"
+      },
+      "laterObservation": {
+        "sequence": 1128,
+        "tick": 6689,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/six-two-vine/01128-tick-06689.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          72,
+          75
+        ]
+      ],
+      "coordinateNote": "World columns use the canonical ordinary lower row9 platform as the independent alignment anchor; upper/lower raster phases can differ by a few pixels."
+    },
+    {
+      "inferredMainColumn": 161,
+      "row": 5,
+      "inferredWorldX": 2576,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-vine-observed",
+      "activation": {
+        "sequence": 1119,
+        "tick": 6665,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/01119-tick-06665.png"
+      },
+      "laterObservation": {
+        "sequence": 1120,
+        "tick": 6669,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left"
+          ],
+          "ticks": 4
+        },
+        "nativeFrames": 31,
+        "image": "evidence/local/six-two-vine/01120-tick-06669.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          110,
+          73
+        ]
+      ],
+      "coordinateNote": "World columns use the canonical ordinary lower row9 platform as the independent alignment anchor; upper/lower raster phases can differ by a few pixels."
+    },
+    {
+      "inferredMainColumn": 162,
+      "row": 5,
+      "inferredWorldX": 2592,
+      "worldY": 80,
+      "outcome": "ordinary-brick-bump-no-vine-observed",
+      "activation": {
+        "sequence": 1121,
+        "tick": 6671,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/01121-tick-06671.png"
+      },
+      "laterObservation": {
+        "sequence": 1122,
+        "tick": 6675,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/six-two-vine/01122-tick-06675.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          107,
+          74
+        ]
+      ],
+      "coordinateNote": "World columns use the canonical ordinary lower row9 platform as the independent alignment anchor; upper/lower raster phases can differ by a few pixels."
+    },
+    {
+      "inferredMainColumn": 81,
+      "row": 5,
+      "inferredWorldX": 1296,
+      "worldY": 80,
+      "outcome": "vine-activation",
+      "vineObserved": true,
+      "activation": {
+        "sequence": 5601,
+        "tick": 6595,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 23,
+        "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+      },
+      "laterObservation": {
+        "sequence": 5602,
+        "tick": 6597,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/05602-tick-06597.png"
+      },
+      "exactRaisedAtlasMatches": [
+        [
+          113,
+          73
+        ]
+      ],
+      "coordinateNote": "Exact observed pipe top16/17 atscreen97/113,y160 anchors its canonical columns80/81 and camera1183. Raised used block113,73 and settled113,80 are the last upper77..81 block, inferred world1296,80; vine center1304."
+    }
+  ],
+  "recordedContinuationCheck": {
+    "fromDecision": 6614,
+    "toDecision": 6663,
+    "sourceSequenceRange": [
+      1105,
+      1118
+    ],
+    "nativeDurationsAndMasksVerified": true
+  },
+  "routes": [
+    {
+      "id": "late-upper-three-brick-search",
+      "winningInputPrefixDecisions": 6614,
+      "sourceSequenceRange": [
+        1104,
+        1128
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 1105,
+          "tick": 6616,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01105-tick-06616.png"
+        },
+        {
+          "sequence": 1106,
+          "tick": 6619,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/01106-tick-06619.png"
+        },
+        {
+          "sequence": 1107,
+          "tick": 6624,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/six-two-vine/01107-tick-06624.png"
+        },
+        {
+          "sequence": 1108,
+          "tick": 6628,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/six-two-vine/01108-tick-06628.png"
+        },
+        {
+          "sequence": 1109,
+          "tick": 6631,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/01109-tick-06631.png"
+        },
+        {
+          "sequence": 1110,
+          "tick": 6633,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01110-tick-06633.png"
+        },
+        {
+          "sequence": 1111,
+          "tick": 6636,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/01111-tick-06636.png"
+        },
+        {
+          "sequence": 1112,
+          "tick": 6639,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/01112-tick-06639.png"
+        },
+        {
+          "sequence": 1113,
+          "tick": 6647,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/six-two-vine/01113-tick-06647.png"
+        },
+        {
+          "sequence": 1114,
+          "tick": 6651,
+          "request": {
+            "op": "step",
+            "mask": 8,
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/01114-tick-06651.png"
+        },
+        {
+          "sequence": 1115,
+          "tick": 6653,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01115-tick-06653.png"
+        },
+        {
+          "sequence": 1116,
+          "tick": 6656,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/01116-tick-06656.png"
+        },
+        {
+          "sequence": 1117,
+          "tick": 6660,
+          "request": {
+            "op": "step",
+            "mask": 56,
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/01117-tick-06660.png"
+        },
+        {
+          "sequence": 1118,
+          "tick": 6663,
+          "request": {
+            "op": "step",
+            "mask": 40,
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/01118-tick-06663.png"
+        },
+        {
+          "sequence": 1119,
+          "tick": 6665,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01119-tick-06665.png"
+        },
+        {
+          "sequence": 1120,
+          "tick": 6669,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/six-two-vine/01120-tick-06669.png"
+        },
+        {
+          "sequence": 1121,
+          "tick": 6671,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01121-tick-06671.png"
+        },
+        {
+          "sequence": 1122,
+          "tick": 6675,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/01122-tick-06675.png"
+        },
+        {
+          "sequence": 1123,
+          "tick": 6677,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01123-tick-06677.png"
+        },
+        {
+          "sequence": 1124,
+          "tick": 6680,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/01124-tick-06680.png"
+        },
+        {
+          "sequence": 1125,
+          "tick": 6682,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01125-tick-06682.png"
+        },
+        {
+          "sequence": 1126,
+          "tick": 6684,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01126-tick-06684.png"
+        },
+        {
+          "sequence": 1127,
+          "tick": 6686,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/01127-tick-06686.png"
+        },
+        {
+          "sequence": 1128,
+          "tick": 6689,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/01128-tick-06689.png"
+        }
+      ]
+    },
+    {
+      "id": "upper140-star",
+      "winningInputPrefixDecisions": 6642,
+      "sourceSequenceRange": [
+        2240,
+        2243
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 2241,
+          "tick": 6644,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/02241-tick-06644.png"
+        },
+        {
+          "sequence": 2242,
+          "tick": 6648,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/02242-tick-06648.png"
+        },
+        {
+          "sequence": 2243,
+          "tick": 6652,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/02243-tick-06652.png"
+        }
+      ]
+    },
+    {
+      "id": "upper145-146-search",
+      "winningInputPrefixDecisions": 6643,
+      "sourceSequenceRange": [
+        4482,
+        4499
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 4483,
+          "tick": 6645,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/04483-tick-06645.png"
+        },
+        {
+          "sequence": 4484,
+          "tick": 6649,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/04484-tick-06649.png"
+        },
+        {
+          "sequence": 4485,
+          "tick": 6654,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/six-two-vine/04485-tick-06654.png"
+        },
+        {
+          "sequence": 4486,
+          "tick": 6658,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/04486-tick-06658.png"
+        },
+        {
+          "sequence": 4487,
+          "tick": 6660,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/04487-tick-06660.png"
+        },
+        {
+          "sequence": 4488,
+          "tick": 6664,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a",
+              "b"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/04488-tick-06664.png"
+        },
+        {
+          "sequence": 4489,
+          "tick": 6667,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/04489-tick-06667.png"
+        },
+        {
+          "sequence": 4490,
+          "tick": 6671,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/04490-tick-06671.png"
+        },
+        {
+          "sequence": 4491,
+          "tick": 6674,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/04491-tick-06674.png"
+        },
+        {
+          "sequence": 4492,
+          "tick": 6679,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/six-two-vine/04492-tick-06679.png"
+        },
+        {
+          "sequence": 4493,
+          "tick": 6682,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/04493-tick-06682.png"
+        },
+        {
+          "sequence": 4494,
+          "tick": 6684,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/04494-tick-06684.png"
+        },
+        {
+          "sequence": 4495,
+          "tick": 6687,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/04495-tick-06687.png"
+        },
+        {
+          "sequence": 4496,
+          "tick": 6690,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/04496-tick-06690.png"
+        },
+        {
+          "sequence": 4497,
+          "tick": 6694,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/04497-tick-06694.png"
+        },
+        {
+          "sequence": 4498,
+          "tick": 6696,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/04498-tick-06696.png"
+        },
+        {
+          "sequence": 4499,
+          "tick": 6699,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/04499-tick-06699.png"
+        }
+      ]
+    },
+    {
+      "id": "vine-entry-map-and-ordinary-return",
+      "winningInputPrefixDecisions": 6575,
+      "prefixSource": "data/observed-winning-inputs.json",
+      "sourceSequenceRange": [
+        5594,
+        5649
+      ],
+      "inputsAfterPrefix": [
+        {
+          "sequence": 5595,
+          "tick": 6578,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "b"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05595-tick-06578.png"
+        },
+        {
+          "sequence": 5596,
+          "tick": 6579,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 1
+          },
+          "nativeFrames": 7,
+          "image": "evidence/local/six-two-vine/05596-tick-06579.png"
+        },
+        {
+          "sequence": 5597,
+          "tick": 6582,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05597-tick-06582.png"
+        },
+        {
+          "sequence": 5598,
+          "tick": 6585,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05598-tick-06585.png"
+        },
+        {
+          "sequence": 5599,
+          "tick": 6590,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 37,
+          "image": "evidence/local/six-two-vine/05599-tick-06590.png"
+        },
+        {
+          "sequence": 5600,
+          "tick": 6592,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05600-tick-06592.png"
+        },
+        {
+          "sequence": 5601,
+          "tick": 6595,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+        },
+        {
+          "sequence": 5602,
+          "tick": 6597,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05602-tick-06597.png"
+        },
+        {
+          "sequence": 5603,
+          "tick": 6601,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05603-tick-06601.png"
+        },
+        {
+          "sequence": 5604,
+          "tick": 6604,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/05604-tick-06604.png"
+        },
+        {
+          "sequence": 5605,
+          "tick": 6606,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05605-tick-06606.png"
+        },
+        {
+          "sequence": 5606,
+          "tick": 6609,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05606-tick-06609.png"
+        },
+        {
+          "sequence": 5607,
+          "tick": 6612,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/05607-tick-06612.png"
+        },
+        {
+          "sequence": 5608,
+          "tick": 6614,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05608-tick-06614.png"
+        },
+        {
+          "sequence": 5609,
+          "tick": 6619,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 5
+          },
+          "nativeFrames": 38,
+          "image": "evidence/local/six-two-vine/05609-tick-06619.png"
+        },
+        {
+          "sequence": 5610,
+          "tick": 6621,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05610-tick-06621.png"
+        },
+        {
+          "sequence": 5611,
+          "tick": 6624,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 22,
+          "image": "evidence/local/six-two-vine/05611-tick-06624.png"
+        },
+        {
+          "sequence": 5612,
+          "tick": 6626,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 16,
+          "image": "evidence/local/six-two-vine/05612-tick-06626.png"
+        },
+        {
+          "sequence": 5613,
+          "tick": 6642,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 16
+          },
+          "nativeFrames": 120,
+          "image": "evidence/local/six-two-vine/05613-tick-06642.png"
+        },
+        {
+          "sequence": 5614,
+          "tick": 6666,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/six-two-vine/05614-tick-06666.png"
+        },
+        {
+          "sequence": 5615,
+          "tick": 6690,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/six-two-vine/05615-tick-06690.png"
+        },
+        {
+          "sequence": 5616,
+          "tick": 6694,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05616-tick-06694.png"
+        },
+        {
+          "sequence": 5617,
+          "tick": 6698,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05617-tick-06698.png"
+        },
+        {
+          "sequence": 5618,
+          "tick": 6702,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05618-tick-06702.png"
+        },
+        {
+          "sequence": 5619,
+          "tick": 6706,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05619-tick-06706.png"
+        },
+        {
+          "sequence": 5620,
+          "tick": 6710,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/six-two-vine/05620-tick-06710.png"
+        },
+        {
+          "sequence": 5621,
+          "tick": 6714,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05621-tick-06714.png"
+        },
+        {
+          "sequence": 5622,
+          "tick": 6718,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05622-tick-06718.png"
+        },
+        {
+          "sequence": 5623,
+          "tick": 6722,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05623-tick-06722.png"
+        },
+        {
+          "sequence": 5624,
+          "tick": 6726,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05624-tick-06726.png"
+        },
+        {
+          "sequence": 5625,
+          "tick": 6730,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05625-tick-06730.png"
+        },
+        {
+          "sequence": 5626,
+          "tick": 6734,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05626-tick-06734.png"
+        },
+        {
+          "sequence": 5627,
+          "tick": 6738,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05627-tick-06738.png"
+        },
+        {
+          "sequence": 5628,
+          "tick": 6742,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05628-tick-06742.png"
+        },
+        {
+          "sequence": 5629,
+          "tick": 6746,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05629-tick-06746.png"
+        },
+        {
+          "sequence": 5630,
+          "tick": 6750,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05630-tick-06750.png"
+        },
+        {
+          "sequence": 5631,
+          "tick": 6754,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05631-tick-06754.png"
+        },
+        {
+          "sequence": 5632,
+          "tick": 6758,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05632-tick-06758.png"
+        },
+        {
+          "sequence": 5633,
+          "tick": 6762,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05633-tick-06762.png"
+        },
+        {
+          "sequence": 5634,
+          "tick": 6766,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05634-tick-06766.png"
+        },
+        {
+          "sequence": 5635,
+          "tick": 6770,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05635-tick-06770.png"
+        },
+        {
+          "sequence": 5636,
+          "tick": 6774,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05636-tick-06774.png"
+        },
+        {
+          "sequence": 5637,
+          "tick": 6778,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05637-tick-06778.png"
+        },
+        {
+          "sequence": 5638,
+          "tick": 6782,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05638-tick-06782.png"
+        },
+        {
+          "sequence": 5639,
+          "tick": 6786,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05639-tick-06786.png"
+        },
+        {
+          "sequence": 5640,
+          "tick": 6790,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 31,
+          "image": "evidence/local/six-two-vine/05640-tick-06790.png"
+        },
+        {
+          "sequence": 5641,
+          "tick": 6794,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05641-tick-06794.png"
+        },
+        {
+          "sequence": 5642,
+          "tick": 6798,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05642-tick-06798.png"
+        },
+        {
+          "sequence": 5643,
+          "tick": 6802,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05643-tick-06802.png"
+        },
+        {
+          "sequence": 5644,
+          "tick": 6806,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05644-tick-06806.png"
+        },
+        {
+          "sequence": 5645,
+          "tick": 6810,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05645-tick-06810.png"
+        },
+        {
+          "sequence": 5646,
+          "tick": 6818,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/six-two-vine/05646-tick-06818.png"
+        },
+        {
+          "sequence": 5647,
+          "tick": 6826,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/six-two-vine/05647-tick-06826.png"
+        },
+        {
+          "sequence": 5648,
+          "tick": 6834,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+        },
+        {
+          "sequence": 5649,
+          "tick": 6838,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05649-tick-06838.png"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "Upper candidate141, isolated115, middle67..71/77..80/119..127 and early23..25 have no confirmed head-hit in this work unit; failed jumps are not negative contents tests.",
+    "Canonical freeTiles were inspected; they contain low floor fragments, with no observed upper brick candidates. Tile-grid upper bricks remain the candidate source.",
+    "Known first/late coin rooms and water route are excluded from this work unit; their maps were not repeated."
+  ],
+  "connection": {
+    "id": "6-2-vine-sky",
+    "acceptedObservationStages": [
+      "activation",
+      "climb",
+      "destination-map-with-explicit-unknowns",
+      "ordinary-exit",
+      "main-return"
+    ],
+    "entrance": {
+      "level": "6-2",
+      "segment": "main",
+      "type": "vine",
+      "blockColumn": 81,
+      "blockRow": 5,
+      "inferredBlockX": 1296,
+      "blockY": 80,
+      "inferredVineX": 1304,
+      "activationEvidence": [
+        {
+          "sequence": 5601,
+          "tick": 6595,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "a"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+        },
+        {
+          "sequence": 5602,
+          "tick": 6597,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "right"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 15,
+          "image": "evidence/local/six-two-vine/05602-tick-06597.png"
+        }
+      ],
+      "climbEvidence": {
+        "sequence": 5612,
+        "tick": 6626,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "up",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/six-two-vine/05612-tick-06626.png"
+      },
+      "coordinateProvenance": {
+        "canonicalPipeColumns": [
+          80,
+          81
+        ],
+        "pipeWorldX": 1280,
+        "pipeTopY": 160,
+        "inferredCameraX": 1183,
+        "pipeTopMatches": [
+          {
+            "evidence": {
+              "sequence": 5601,
+              "tick": 6595,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "left",
+                  "a"
+                ],
+                "ticks": 3
+              },
+              "nativeFrames": 23,
+              "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+            },
+            "metatile": 16,
+            "screenOrigin": [
+              97,
+              160
+            ],
+            "matchedPixels": 256
+          },
+          {
+            "evidence": {
+              "sequence": 5601,
+              "tick": 6595,
+              "request": {
+                "op": "step",
+                "buttons": [
+                  "left",
+                  "a"
+                ],
+                "ticks": 3
+              },
+              "nativeFrames": 23,
+              "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+            },
+            "metatile": 17,
+            "screenOrigin": [
+              113,
+              160
+            ],
+            "matchedPixels": 256
+          }
+        ],
+        "raisedUsedMatch": {
+          "evidence": {
+            "sequence": 5601,
+            "tick": 6595,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "left",
+                "a"
+              ],
+              "ticks": 3
+            },
+            "nativeFrames": 23,
+            "image": "evidence/local/six-two-vine/05601-tick-06595.png"
+          },
+          "metatile": 196,
+          "screenOrigin": [
+            113,
+            73
+          ],
+          "matchedPixels": 256
+        },
+        "settledUsedMatch": {
+          "evidence": {
+            "sequence": 5602,
+            "tick": 6597,
+            "request": {
+              "op": "step",
+              "buttons": [
+                "right"
+              ],
+              "ticks": 2
+            },
+            "nativeFrames": 15,
+            "image": "evidence/local/six-two-vine/05602-tick-06597.png"
+          },
+          "metatile": 196,
+          "screenOrigin": [
+            113,
+            80
+          ],
+          "matchedPixels": 256
+        }
+      }
+    },
+    "destination": {
+      "id": "6-2-vine-sky",
+      "entryType": "vine-emergence",
+      "observedVineColumn": 4,
+      "observedVineX": 64,
+      "initialPlayerOriginX": null,
+      "initialPlayerFeetY": null,
+      "standingPlayerOriginX": 75,
+      "standingFeetY": 208,
+      "visibleVineArtworkBounds": {
+        "sequence": 5614,
+        "left": 64,
+        "top": 145,
+        "rightExclusive": 78,
+        "bottomExclusive": 240,
+        "note": "Green artwork is directly visible fromy145 through the viewport bottom. Unseen vine base and initial player coordinates are not measured."
+      },
+      "initialPoseNote": "Offscreen initial pose is unmeasured. Exact supplied Mario pixels establish the later automatic standing pose.",
+      "entryEvidence": [
+        {
+          "sequence": 5613,
+          "tick": 6642,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "up"
+            ],
+            "ticks": 16
+          },
+          "nativeFrames": 120,
+          "image": "evidence/local/six-two-vine/05613-tick-06642.png"
+        },
+        {
+          "sequence": 5614,
+          "tick": 6666,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/six-two-vine/05614-tick-06666.png"
+        },
+        {
+          "sequence": 5615,
+          "tick": 6690,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/six-two-vine/05615-tick-06690.png"
+        }
+      ]
+    },
+    "exit": {
+      "type": "ordinary-walk-off-cloud-floor-and-fall",
+      "inferredFloorEndX": 1328,
+      "lastRoomEvidence": {
+        "sequence": 5646,
+        "tick": 6818,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/six-two-vine/05646-tick-06818.png"
+      },
+      "transitionEvidence": {
+        "sequence": 5647,
+        "tick": 6826,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/six-two-vine/05647-tick-06826.png"
+      },
+      "firstMainEvidence": {
+        "sequence": 5648,
+        "tick": 6834,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 8
+        },
+        "nativeFrames": 60,
+        "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+      },
+      "standingMainEvidence": {
+        "sequence": 5649,
+        "tick": 6838,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 4
+        },
+        "nativeFrames": 30,
+        "image": "evidence/local/six-two-vine/05649-tick-06838.png"
+      },
+      "returnLevel": "6-2",
+      "returnSegment": "main",
+      "inferredCameraX": 2560,
+      "inferredPlayerOriginX": 2600,
+      "initialFeetY": null,
+      "firstVisibleFeetY": 80,
+      "standingFeetY": 80,
+      "returnAnchors": [
+        {
+          "canonicalPipeColumn": 167,
+          "worldX": 2672,
+          "topY": 96,
+          "matches": [
+            {
+              "evidence": {
+                "sequence": 5648,
+                "tick": 6834,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 8
+                },
+                "nativeFrames": 60,
+                "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+              },
+              "metatile": 16,
+              "screenOrigin": [
+                112,
+                96
+              ],
+              "matchedPixels": 256
+            },
+            {
+              "evidence": {
+                "sequence": 5648,
+                "tick": 6834,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 8
+                },
+                "nativeFrames": 60,
+                "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+              },
+              "metatile": 17,
+              "screenOrigin": [
+                128,
+                96
+              ],
+              "matchedPixels": 256
+            }
+          ]
+        },
+        {
+          "canonicalPipeColumn": 174,
+          "worldX": 2784,
+          "topY": 144,
+          "matches": [
+            {
+              "evidence": {
+                "sequence": 5648,
+                "tick": 6834,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 8
+                },
+                "nativeFrames": 60,
+                "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+              },
+              "metatile": 16,
+              "screenOrigin": [
+                224,
+                144
+              ],
+              "matchedPixels": 256
+            },
+            {
+              "evidence": {
+                "sequence": 5648,
+                "tick": 6834,
+                "request": {
+                  "op": "step",
+                  "buttons": [],
+                  "ticks": 8
+                },
+                "nativeFrames": 60,
+                "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+              },
+              "metatile": 17,
+              "screenOrigin": [
+                240,
+                144
+              ],
+              "matchedPixels": 256
+            }
+          ]
+        }
+      ],
+      "coordinateEvidence": "Two independent exact supplied pipe tops atscreen112/224 anchor camera2560. Exact Mario sprite origin40,49 gives worldorigin2600,feet80, already standing on canonical upper160..162,row5. The earlier offscreen return height is unmeasured; an adapter spawn2600,0 is an explicit inference that should fall onto this observed y80 platform."
+    },
+    "poseMeasurements": [
+      {
+        "evidence": {
+          "sequence": 5612,
+          "tick": 6626,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left",
+              "up",
+              "a"
+            ],
+            "ticks": 2
+          },
+          "nativeFrames": 16,
+          "image": "evidence/local/six-two-vine/05612-tick-06626.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 21,
+          "originX": 49,
+          "originY": 43,
+          "feetY": 74,
+          "spriteBottomExclusive": 75,
+          "matchedPixels": 146
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 5615,
+          "tick": 6690,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 24
+          },
+          "nativeFrames": 180,
+          "image": "evidence/local/six-two-vine/05615-tick-06690.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 75,
+          "originY": 177,
+          "feetY": 208,
+          "spriteBottomExclusive": 209,
+          "matchedPixels": 143
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 5648,
+          "tick": 6834,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 8
+          },
+          "nativeFrames": 60,
+          "image": "evidence/local/six-two-vine/05648-tick-06834.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 40,
+          "originY": 49,
+          "feetY": 80,
+          "spriteBottomExclusive": 81,
+          "matchedPixels": 143
+        }
+      },
+      {
+        "evidence": {
+          "sequence": 5649,
+          "tick": 6838,
+          "request": {
+            "op": "step",
+            "buttons": [],
+            "ticks": 4
+          },
+          "nativeFrames": 30,
+          "image": "evidence/local/six-two-vine/05649-tick-06838.png"
+        },
+        "player": {
+          "direction": "right",
+          "cell": 23,
+          "originX": 40,
+          "originY": 49,
+          "feetY": 80,
+          "spriteBottomExclusive": 81,
+          "matchedPixels": 143
+        }
+      }
+    ]
+  },
+  "hiddenSupportBlock": {
+    "inferredColumn": 82,
+    "row": 9,
+    "inferredWorldX": 1312,
+    "worldY": 144,
+    "outcome": "previously-invisible-single-coin-block-revealed-and-used-as-support",
+    "beforeEvidence": {
+      "sequence": 5606,
+      "tick": 6609,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 3
+      },
+      "nativeFrames": 23,
+      "image": "evidence/local/six-two-vine/05606-tick-06609.png"
+    },
+    "beforeRegion": {
+      "screenOrigin": [
+        84,
+        144
+      ],
+      "width": 16,
+      "height": 16,
+      "allPixelsBlack": true,
+      "pipeAnchor": {
+        "evidence": {
+          "sequence": 5606,
+          "tick": 6609,
+          "request": {
+            "op": "step",
+            "buttons": [
+              "left"
+            ],
+            "ticks": 3
+          },
+          "nativeFrames": 23,
+          "image": "evidence/local/six-two-vine/05606-tick-06609.png"
+        },
+        "metatile": 16,
+        "screenOrigin": [
+          52,
+          160
+        ],
+        "matchedPixels": 256
+      }
+    },
+    "raisedUsedMatch": {
+      "evidence": {
+        "sequence": 5607,
+        "tick": 6612,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/six-two-vine/05607-tick-06612.png"
+      },
+      "metatile": 196,
+      "screenOrigin": [
+        79,
+        142
+      ],
+      "matchedPixels": 256
+    },
+    "settledUsedMatch": {
+      "evidence": {
+        "sequence": 5608,
+        "tick": 6614,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/05608-tick-06614.png"
+      },
+      "metatile": 196,
+      "screenOrigin": [
+        75,
+        144
+      ],
+      "matchedPixels": 256
+    },
+    "settledPipeAnchor": {
+      "evidence": {
+        "sequence": 5608,
+        "tick": 6614,
+        "request": {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/05608-tick-06614.png"
+      },
+      "metatile": 16,
+      "screenOrigin": [
+        43,
+        160
+      ],
+      "matchedPixels": 256
+    },
+    "observedCoinCounterBefore": 75,
+    "observedCoinCounterAfter": 76,
+    "supportUseEvidence": [
+      {
+        "sequence": 5609,
+        "tick": 6619,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 5
+        },
+        "nativeFrames": 38,
+        "image": "evidence/local/six-two-vine/05609-tick-06619.png"
+      },
+      {
+        "sequence": 5610,
+        "tick": 6621,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 15,
+        "image": "evidence/local/six-two-vine/05610-tick-06621.png"
+      },
+      {
+        "sequence": 5611,
+        "tick": 6624,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "up",
+            "a"
+          ],
+          "ticks": 3
+        },
+        "nativeFrames": 22,
+        "image": "evidence/local/six-two-vine/05611-tick-06624.png"
+      },
+      {
+        "sequence": 5612,
+        "tick": 6626,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "up",
+            "a"
+          ],
+          "ticks": 2
+        },
+        "nativeFrames": 16,
+        "image": "evidence/local/six-two-vine/05612-tick-06626.png"
+      }
+    ],
+    "note": "Pipe80/81 atworld1280/top160 aligns the revealed block32px to its right and16px above its top. The successful source recipe explicitly reveals and jumps onto this block before attaching to the vine. No other invisible blocks are inferred."
+  },
+  "continuation": {
+    "liveDriverSessionId": null,
+    "lastObservation": {
+      "sequence": 5649,
+      "tick": 6838,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4
+      },
+      "nativeFrames": 30,
+      "image": "evidence/local/six-two-vine/05649-tick-06838.png"
+    },
+    "stateNote": "Small Mario after ordinary sky return, main6-2 camera2560,origin2600,feet80 on existing upper160..162,row5; score273450,coins76. No further gameplay is needed for the accepted route.",
+    "checkpointIsHistorical": true,
+    "processNote": "The completed public reference process closed normally after the accepted route, return, map and actor captures required no more gameplay. Reproduce prefix6575 and recorded route vine-entry-map-and-ordinary-return."
+  },
+  "destination": {
+    "schema": "image-only-sky-room-v1",
+    "id": "6-2-vine-sky",
+    "level": "6-2",
+    "width": 95,
+    "background": "#000000",
+    "atlas": "metatiles-palette-015.png",
+    "tiles": [
+      [
+        0,
+        13,
+        136
+      ],
+      [
+        1,
+        13,
+        136
+      ],
+      [
+        2,
+        13,
+        136
+      ],
+      [
+        3,
+        13,
+        136
+      ],
+      [
+        5,
+        13,
+        136
+      ],
+      [
+        6,
+        13,
+        136
+      ],
+      [
+        7,
+        13,
+        136
+      ],
+      [
+        8,
+        13,
+        136
+      ],
+      [
+        9,
+        13,
+        136
+      ],
+      [
+        10,
+        13,
+        136
+      ],
+      [
+        11,
+        13,
+        136
+      ],
+      [
+        12,
+        13,
+        136
+      ],
+      [
+        13,
+        13,
+        136
+      ],
+      [
+        14,
+        13,
+        136
+      ],
+      [
+        15,
+        6,
+        194
+      ],
+      [
+        15,
+        13,
+        136
+      ],
+      [
+        16,
+        6,
+        194
+      ],
+      [
+        16,
+        13,
+        136
+      ],
+      [
+        17,
+        6,
+        194
+      ],
+      [
+        17,
+        13,
+        136
+      ],
+      [
+        18,
+        6,
+        194
+      ],
+      [
+        18,
+        13,
+        136
+      ],
+      [
+        19,
+        6,
+        194
+      ],
+      [
+        19,
+        13,
+        136
+      ],
+      [
+        20,
+        6,
+        194
+      ],
+      [
+        20,
+        13,
+        136
+      ],
+      [
+        21,
+        6,
+        194
+      ],
+      [
+        21,
+        13,
+        136
+      ],
+      [
+        22,
+        6,
+        194
+      ],
+      [
+        22,
+        13,
+        136
+      ],
+      [
+        23,
+        6,
+        194
+      ],
+      [
+        23,
+        13,
+        136
+      ],
+      [
+        24,
+        6,
+        194
+      ],
+      [
+        24,
+        13,
+        136
+      ],
+      [
+        25,
+        6,
+        194
+      ],
+      [
+        25,
+        13,
+        136
+      ],
+      [
+        26,
+        6,
+        194
+      ],
+      [
+        26,
+        13,
+        136
+      ],
+      [
+        27,
+        6,
+        194
+      ],
+      [
+        27,
+        13,
+        136
+      ],
+      [
+        28,
+        6,
+        194
+      ],
+      [
+        28,
+        13,
+        136
+      ],
+      [
+        29,
+        6,
+        194
+      ],
+      [
+        29,
+        13,
+        136
+      ],
+      [
+        30,
+        6,
+        194
+      ],
+      [
+        30,
+        13,
+        136
+      ],
+      [
+        31,
+        13,
+        136
+      ],
+      [
+        32,
+        8,
+        136
+      ],
+      [
+        32,
+        13,
+        136
+      ],
+      [
+        33,
+        13,
+        136
+      ],
+      [
+        34,
+        6,
+        194
+      ],
+      [
+        34,
+        13,
+        136
+      ],
+      [
+        35,
+        6,
+        194
+      ],
+      [
+        35,
+        13,
+        136
+      ],
+      [
+        36,
+        6,
+        194
+      ],
+      [
+        36,
+        13,
+        136
+      ],
+      [
+        37,
+        6,
+        194
+      ],
+      [
+        37,
+        13,
+        136
+      ],
+      [
+        38,
+        6,
+        194
+      ],
+      [
+        38,
+        13,
+        136
+      ],
+      [
+        39,
+        6,
+        194
+      ],
+      [
+        39,
+        13,
+        136
+      ],
+      [
+        40,
+        6,
+        194
+      ],
+      [
+        40,
+        13,
+        136
+      ],
+      [
+        41,
+        6,
+        194
+      ],
+      [
+        41,
+        13,
+        136
+      ],
+      [
+        42,
+        6,
+        194
+      ],
+      [
+        42,
+        13,
+        136
+      ],
+      [
+        43,
+        6,
+        194
+      ],
+      [
+        43,
+        13,
+        136
+      ],
+      [
+        44,
+        6,
+        194
+      ],
+      [
+        44,
+        13,
+        136
+      ],
+      [
+        45,
+        6,
+        194
+      ],
+      [
+        45,
+        13,
+        136
+      ],
+      [
+        46,
+        6,
+        194
+      ],
+      [
+        46,
+        13,
+        136
+      ],
+      [
+        47,
+        6,
+        194
+      ],
+      [
+        47,
+        13,
+        136
+      ],
+      [
+        48,
+        6,
+        194
+      ],
+      [
+        48,
+        13,
+        136
+      ],
+      [
+        49,
+        6,
+        194
+      ],
+      [
+        49,
+        13,
+        136
+      ],
+      [
+        50,
+        13,
+        136
+      ],
+      [
+        51,
+        7,
+        136
+      ],
+      [
+        51,
+        8,
+        136
+      ],
+      [
+        51,
+        13,
+        136
+      ],
+      [
+        52,
+        13,
+        136
+      ],
+      [
+        53,
+        5,
+        194
+      ],
+      [
+        53,
+        13,
+        136
+      ],
+      [
+        54,
+        5,
+        194
+      ],
+      [
+        54,
+        13,
+        136
+      ],
+      [
+        55,
+        5,
+        194
+      ],
+      [
+        55,
+        13,
+        136
+      ],
+      [
+        56,
+        5,
+        194
+      ],
+      [
+        56,
+        13,
+        136
+      ],
+      [
+        57,
+        5,
+        194
+      ],
+      [
+        57,
+        13,
+        136
+      ],
+      [
+        58,
+        5,
+        194
+      ],
+      [
+        58,
+        13,
+        136
+      ],
+      [
+        59,
+        5,
+        194
+      ],
+      [
+        59,
+        13,
+        136
+      ],
+      [
+        60,
+        13,
+        136
+      ],
+      [
+        61,
+        7,
+        136
+      ],
+      [
+        61,
+        8,
+        136
+      ],
+      [
+        61,
+        13,
+        136
+      ],
+      [
+        62,
+        13,
+        136
+      ],
+      [
+        63,
+        13,
+        136
+      ],
+      [
+        64,
+        13,
+        136
+      ],
+      [
+        65,
+        13,
+        136
+      ],
+      [
+        66,
+        13,
+        136
+      ],
+      [
+        67,
+        6,
+        136
+      ],
+      [
+        67,
+        13,
+        136
+      ],
+      [
+        68,
+        6,
+        136
+      ],
+      [
+        68,
+        13,
+        136
+      ],
+      [
+        69,
+        13,
+        136
+      ],
+      [
+        70,
+        13,
+        136
+      ],
+      [
+        71,
+        5,
+        194
+      ],
+      [
+        71,
+        6,
+        136
+      ],
+      [
+        71,
+        13,
+        136
+      ],
+      [
+        72,
+        5,
+        194
+      ],
+      [
+        72,
+        13,
+        136
+      ],
+      [
+        73,
+        5,
+        194
+      ],
+      [
+        73,
+        6,
+        136
+      ],
+      [
+        73,
+        13,
+        136
+      ],
+      [
+        74,
+        5,
+        194
+      ],
+      [
+        74,
+        13,
+        136
+      ],
+      [
+        75,
+        5,
+        194
+      ],
+      [
+        75,
+        6,
+        136
+      ],
+      [
+        75,
+        13,
+        136
+      ],
+      [
+        76,
+        5,
+        194
+      ],
+      [
+        76,
+        13,
+        136
+      ],
+      [
+        77,
+        5,
+        194
+      ],
+      [
+        77,
+        6,
+        136
+      ],
+      [
+        77,
+        13,
+        136
+      ],
+      [
+        78,
+        5,
+        194
+      ],
+      [
+        78,
+        13,
+        136
+      ],
+      [
+        79,
+        5,
+        194
+      ],
+      [
+        79,
+        6,
+        136
+      ],
+      [
+        79,
+        13,
+        136
+      ],
+      [
+        80,
+        5,
+        194
+      ],
+      [
+        80,
+        13,
+        136
+      ],
+      [
+        81,
+        13,
+        136
+      ],
+      [
+        82,
+        13,
+        136
+      ],
+      [
+        85,
+        11,
+        194
+      ],
+      [
+        86,
+        11,
+        194
+      ],
+      [
+        87,
+        11,
+        194
+      ]
+    ],
+    "unknownCells": [
+      [
+        4,
+        9
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        4,
+        11
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        4,
+        13
+      ],
+      [
+        4,
+        14
+      ],
+      [
+        16,
+        10
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        94,
+        3
+      ],
+      [
+        94,
+        4
+      ],
+      [
+        94,
+        5
+      ],
+      [
+        94,
+        6
+      ],
+      [
+        94,
+        7
+      ],
+      [
+        94,
+        8
+      ],
+      [
+        94,
+        9
+      ],
+      [
+        94,
+        10
+      ],
+      [
+        94,
+        11
+      ],
+      [
+        94,
+        12
+      ],
+      [
+        94,
+        13
+      ],
+      [
+        94,
+        14
+      ]
+    ],
+    "cameraRegistration": [
+      {
+        "sequence": 5615,
+        "tick": 6690,
+        "nativeFrames": 180,
+        "delta": 0,
+        "cameraX": 0,
+        "binaryError": 0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactUpper12PixelFloorPhase": 0,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5616,
+        "tick": 6694,
+        "nativeFrames": 30,
+        "delta": 11,
+        "cameraX": 11,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          11
+        ],
+        "exactUpper12PixelFloorPhase": 5,
+        "exactUpper12PixelFloorMatchCount": 13
+      },
+      {
+        "sequence": 5617,
+        "tick": 6698,
+        "nativeFrames": 30,
+        "delta": 30,
+        "cameraX": 41,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          30
+        ],
+        "exactUpper12PixelFloorPhase": 7,
+        "exactUpper12PixelFloorMatchCount": 12
+      },
+      {
+        "sequence": 5618,
+        "tick": 6702,
+        "nativeFrames": 30,
+        "delta": 30,
+        "cameraX": 71,
+        "binaryError": 0.007966,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          30
+        ],
+        "exactUpper12PixelFloorPhase": 9,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5619,
+        "tick": 6706,
+        "nativeFrames": 30,
+        "delta": 41,
+        "cameraX": 112,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          41
+        ],
+        "exactUpper12PixelFloorPhase": 0,
+        "exactUpper12PixelFloorMatchCount": 15
+      },
+      {
+        "sequence": 5620,
+        "tick": 6710,
+        "nativeFrames": 31,
+        "delta": 46,
+        "cameraX": 158,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          46
+        ],
+        "exactUpper12PixelFloorPhase": 2,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5621,
+        "tick": 6714,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 203,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 5,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5622,
+        "tick": 6718,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 248,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45,
+          61,
+          77,
+          93
+        ],
+        "exactUpper12PixelFloorPhase": 8,
+        "exactUpper12PixelFloorMatchCount": 13
+      },
+      {
+        "sequence": 5623,
+        "tick": 6722,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 293,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 11,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5624,
+        "tick": 6726,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 338,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 14,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5625,
+        "tick": 6730,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 383,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 1,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5626,
+        "tick": 6734,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 428,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 4,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5627,
+        "tick": 6738,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 473,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 7,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5628,
+        "tick": 6742,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 518,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 10,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5629,
+        "tick": 6746,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 563,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          29,
+          45,
+          61,
+          77,
+          93
+        ],
+        "exactUpper12PixelFloorPhase": 13,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5630,
+        "tick": 6750,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 608,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 0,
+        "exactUpper12PixelFloorMatchCount": 15
+      },
+      {
+        "sequence": 5631,
+        "tick": 6754,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 653,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 3,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5632,
+        "tick": 6758,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 698,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 6,
+        "exactUpper12PixelFloorMatchCount": 13
+      },
+      {
+        "sequence": 5633,
+        "tick": 6762,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 743,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 9,
+        "exactUpper12PixelFloorMatchCount": 13
+      },
+      {
+        "sequence": 5634,
+        "tick": 6766,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 788,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 12,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5635,
+        "tick": 6770,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 833,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 15,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5636,
+        "tick": 6774,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 878,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 2,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5637,
+        "tick": 6778,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 923,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 5,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5638,
+        "tick": 6782,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 968,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 8,
+        "exactUpper12PixelFloorMatchCount": 13
+      },
+      {
+        "sequence": 5639,
+        "tick": 6786,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1013,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 11,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5640,
+        "tick": 6790,
+        "nativeFrames": 31,
+        "delta": 47,
+        "cameraX": 1060,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          47
+        ],
+        "exactUpper12PixelFloorPhase": 12,
+        "exactUpper12PixelFloorMatchCount": 14
+      },
+      {
+        "sequence": 5641,
+        "tick": 6794,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1105,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 15,
+        "exactUpper12PixelFloorMatchCount": 12
+      },
+      {
+        "sequence": 5642,
+        "tick": 6798,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1150,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 2,
+        "exactUpper12PixelFloorMatchCount": 10
+      },
+      {
+        "sequence": 5643,
+        "tick": 6802,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1195,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 5,
+        "exactUpper12PixelFloorMatchCount": 7
+      },
+      {
+        "sequence": 5644,
+        "tick": 6806,
+        "nativeFrames": 30,
+        "delta": 45,
+        "cameraX": 1240,
+        "binaryError": 0.011076,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          45
+        ],
+        "exactUpper12PixelFloorPhase": 8,
+        "exactUpper12PixelFloorMatchCount": 5
+      },
+      {
+        "sequence": 5645,
+        "tick": 6810,
+        "nativeFrames": 30,
+        "delta": 9,
+        "cameraX": 1249,
+        "binaryError": 0.012821,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          9
+        ],
+        "exactUpper12PixelFloorPhase": 15,
+        "exactUpper12PixelFloorMatchCount": 4
+      },
+      {
+        "sequence": 5646,
+        "tick": 6818,
+        "nativeFrames": 60,
+        "delta": 0,
+        "cameraX": 1249,
+        "binaryError": 0.0,
+        "binaryOnlyDeltasNoWorseThanSelected": [
+          0
+        ],
+        "exactUpper12PixelFloorPhase": 15,
+        "exactUpper12PixelFloorMatchCount": 4
+      }
+    ],
+    "coinPixelEvidence": [
+      {
+        "column": 15,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5615,
+            "cameraX": 0,
+            "screenBounds": [
+              243,
+              98,
+              251,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5616,
+            "cameraX": 11,
+            "screenBounds": [
+              232,
+              98,
+              240,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 16,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5616,
+            "cameraX": 11,
+            "screenBounds": [
+              248,
+              98,
+              256,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5617,
+            "cameraX": 41,
+            "screenBounds": [
+              218,
+              98,
+              226,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 17,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5617,
+            "cameraX": 41,
+            "screenBounds": [
+              234,
+              98,
+              242,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5618,
+            "cameraX": 71,
+            "screenBounds": [
+              204,
+              98,
+              212,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 18,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5618,
+            "cameraX": 71,
+            "screenBounds": [
+              220,
+              98,
+              228,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5619,
+            "cameraX": 112,
+            "screenBounds": [
+              179,
+              98,
+              187,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 19,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5618,
+            "cameraX": 71,
+            "screenBounds": [
+              236,
+              98,
+              244,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5619,
+            "cameraX": 112,
+            "screenBounds": [
+              195,
+              98,
+              203,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 20,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5619,
+            "cameraX": 112,
+            "screenBounds": [
+              211,
+              98,
+              219,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              165,
+              98,
+              173,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 21,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5619,
+            "cameraX": 112,
+            "screenBounds": [
+              227,
+              98,
+              235,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              181,
+              98,
+              189,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 22,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5619,
+            "cameraX": 112,
+            "screenBounds": [
+              243,
+              98,
+              251,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              197,
+              98,
+              205,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 23,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              213,
+              98,
+              221,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              168,
+              98,
+              176,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 24,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              229,
+              98,
+              237,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              184,
+              98,
+              192,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 25,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5620,
+            "cameraX": 158,
+            "screenBounds": [
+              245,
+              98,
+              253,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              200,
+              98,
+              208,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 26,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              216,
+              98,
+              224,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5622,
+            "cameraX": 248,
+            "screenBounds": [
+              171,
+              98,
+              179,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 27,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              232,
+              98,
+              240,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5622,
+            "cameraX": 248,
+            "screenBounds": [
+              187,
+              98,
+              195,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 28,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5621,
+            "cameraX": 203,
+            "screenBounds": [
+              248,
+              98,
+              256,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5622,
+            "cameraX": 248,
+            "screenBounds": [
+              203,
+              98,
+              211,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 29,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5622,
+            "cameraX": 248,
+            "screenBounds": [
+              219,
+              98,
+              227,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5623,
+            "cameraX": 293,
+            "screenBounds": [
+              174,
+              98,
+              182,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 30,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5622,
+            "cameraX": 248,
+            "screenBounds": [
+              235,
+              98,
+              243,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5623,
+            "cameraX": 293,
+            "screenBounds": [
+              190,
+              98,
+              198,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 34,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5624,
+            "cameraX": 338,
+            "screenBounds": [
+              209,
+              98,
+              217,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              164,
+              98,
+              172,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 35,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5624,
+            "cameraX": 338,
+            "screenBounds": [
+              225,
+              98,
+              233,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              180,
+              98,
+              188,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 36,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5624,
+            "cameraX": 338,
+            "screenBounds": [
+              241,
+              98,
+              249,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              196,
+              98,
+              204,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 37,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              212,
+              98,
+              220,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              167,
+              98,
+              175,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 38,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              228,
+              98,
+              236,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              183,
+              98,
+              191,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 39,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5625,
+            "cameraX": 383,
+            "screenBounds": [
+              244,
+              98,
+              252,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              199,
+              98,
+              207,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 40,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              215,
+              98,
+              223,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5627,
+            "cameraX": 473,
+            "screenBounds": [
+              170,
+              98,
+              178,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 41,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              231,
+              98,
+              239,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5627,
+            "cameraX": 473,
+            "screenBounds": [
+              186,
+              98,
+              194,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 42,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5626,
+            "cameraX": 428,
+            "screenBounds": [
+              247,
+              98,
+              255,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5627,
+            "cameraX": 473,
+            "screenBounds": [
+              202,
+              98,
+              210,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 43,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5627,
+            "cameraX": 473,
+            "screenBounds": [
+              218,
+              98,
+              226,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5628,
+            "cameraX": 518,
+            "screenBounds": [
+              173,
+              98,
+              181,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 44,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5627,
+            "cameraX": 473,
+            "screenBounds": [
+              234,
+              98,
+              242,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5628,
+            "cameraX": 518,
+            "screenBounds": [
+              189,
+              98,
+              197,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 45,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5628,
+            "cameraX": 518,
+            "screenBounds": [
+              205,
+              98,
+              213,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5629,
+            "cameraX": 563,
+            "screenBounds": [
+              160,
+              98,
+              168,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 46,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5628,
+            "cameraX": 518,
+            "screenBounds": [
+              221,
+              98,
+              229,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5629,
+            "cameraX": 563,
+            "screenBounds": [
+              176,
+              98,
+              184,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 47,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5628,
+            "cameraX": 518,
+            "screenBounds": [
+              237,
+              98,
+              245,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5629,
+            "cameraX": 563,
+            "screenBounds": [
+              192,
+              98,
+              200,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 48,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5629,
+            "cameraX": 563,
+            "screenBounds": [
+              208,
+              98,
+              216,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5630,
+            "cameraX": 608,
+            "screenBounds": [
+              163,
+              98,
+              171,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 49,
+        "row": 6,
+        "observations": [
+          {
+            "sequence": 5629,
+            "cameraX": 563,
+            "screenBounds": [
+              224,
+              98,
+              232,
+              112
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5630,
+            "cameraX": 608,
+            "screenBounds": [
+              179,
+              98,
+              187,
+              112
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 53,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5630,
+            "cameraX": 608,
+            "screenBounds": [
+              243,
+              82,
+              251,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5631,
+            "cameraX": 653,
+            "screenBounds": [
+              198,
+              82,
+              206,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 54,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5631,
+            "cameraX": 653,
+            "screenBounds": [
+              214,
+              82,
+              222,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5632,
+            "cameraX": 698,
+            "screenBounds": [
+              169,
+              82,
+              177,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 55,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5631,
+            "cameraX": 653,
+            "screenBounds": [
+              230,
+              82,
+              238,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5632,
+            "cameraX": 698,
+            "screenBounds": [
+              185,
+              82,
+              193,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 56,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5631,
+            "cameraX": 653,
+            "screenBounds": [
+              246,
+              82,
+              254,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5632,
+            "cameraX": 698,
+            "screenBounds": [
+              201,
+              82,
+              209,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 57,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5632,
+            "cameraX": 698,
+            "screenBounds": [
+              217,
+              82,
+              225,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5633,
+            "cameraX": 743,
+            "screenBounds": [
+              172,
+              82,
+              180,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 58,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5632,
+            "cameraX": 698,
+            "screenBounds": [
+              233,
+              82,
+              241,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5633,
+            "cameraX": 743,
+            "screenBounds": [
+              188,
+              82,
+              196,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 59,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5633,
+            "cameraX": 743,
+            "screenBounds": [
+              204,
+              82,
+              212,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5634,
+            "cameraX": 788,
+            "screenBounds": [
+              159,
+              82,
+              167,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 71,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5637,
+            "cameraX": 923,
+            "screenBounds": [
+              216,
+              82,
+              224,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5638,
+            "cameraX": 968,
+            "screenBounds": [
+              171,
+              82,
+              179,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 72,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5637,
+            "cameraX": 923,
+            "screenBounds": [
+              232,
+              82,
+              240,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5638,
+            "cameraX": 968,
+            "screenBounds": [
+              187,
+              82,
+              195,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 73,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5637,
+            "cameraX": 923,
+            "screenBounds": [
+              248,
+              82,
+              256,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5638,
+            "cameraX": 968,
+            "screenBounds": [
+              203,
+              82,
+              211,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 74,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5638,
+            "cameraX": 968,
+            "screenBounds": [
+              219,
+              82,
+              227,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5639,
+            "cameraX": 1013,
+            "screenBounds": [
+              174,
+              82,
+              182,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 75,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5638,
+            "cameraX": 968,
+            "screenBounds": [
+              235,
+              82,
+              243,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5639,
+            "cameraX": 1013,
+            "screenBounds": [
+              190,
+              82,
+              198,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 6
+      },
+      {
+        "column": 76,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5639,
+            "cameraX": 1013,
+            "screenBounds": [
+              206,
+              82,
+              214,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5640,
+            "cameraX": 1060,
+            "screenBounds": [
+              159,
+              82,
+              167,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 77,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5639,
+            "cameraX": 1013,
+            "screenBounds": [
+              222,
+              82,
+              230,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5640,
+            "cameraX": 1060,
+            "screenBounds": [
+              175,
+              82,
+              183,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 78,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5639,
+            "cameraX": 1013,
+            "screenBounds": [
+              238,
+              82,
+              246,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5640,
+            "cameraX": 1060,
+            "screenBounds": [
+              191,
+              82,
+              199,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 8
+      },
+      {
+        "column": 79,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5640,
+            "cameraX": 1060,
+            "screenBounds": [
+              207,
+              82,
+              215,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5641,
+            "cameraX": 1105,
+            "screenBounds": [
+              162,
+              82,
+              170,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 80,
+        "row": 5,
+        "observations": [
+          {
+            "sequence": 5640,
+            "cameraX": 1060,
+            "screenBounds": [
+              223,
+              82,
+              231,
+              96
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5641,
+            "cameraX": 1105,
+            "screenBounds": [
+              178,
+              82,
+              186,
+              96
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 7
+      },
+      {
+        "column": 85,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 5642,
+            "cameraX": 1150,
+            "screenBounds": [
+              213,
+              178,
+              221,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5643,
+            "cameraX": 1195,
+            "screenBounds": [
+              168,
+              178,
+              176,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 86,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 5642,
+            "cameraX": 1150,
+            "screenBounds": [
+              229,
+              178,
+              237,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5643,
+            "cameraX": 1195,
+            "screenBounds": [
+              184,
+              178,
+              192,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      },
+      {
+        "column": 87,
+        "row": 11,
+        "observations": [
+          {
+            "sequence": 5642,
+            "cameraX": 1150,
+            "screenBounds": [
+              245,
+              178,
+              253,
+              192
+            ],
+            "pixels": 86
+          },
+          {
+            "sequence": 5643,
+            "cameraX": 1195,
+            "screenBounds": [
+              200,
+              178,
+              208,
+              192
+            ],
+            "pixels": 86
+          }
+        ],
+        "observationCount": 5
+      }
+    ],
+    "sourceTrace": "evidence/local/six-two-vine/trace.jsonl",
+    "sourceSequenceRange": [
+      5615,
+      5646
+    ],
+    "method": "Binary nonblack static-pixel registration excludes HUD, Mario, vine and moving four-orb platform rows. The exact upper12pixel fragment of supplied cloud-floor tile136 fixes every horizontal phase; steady rightward walking is constrained to measured1.5px/native-frame\u00b12px per checkpoint. Supplied atlas RGB establishes static metatiles; tile136 also uses its exact upper12pixel fragment, with complete tile136 directly observed at the initial camera. Additional coin palette phases are measured as observed orange8/9-by-14 connected pixel components at rows5/6/11, snapped to their nearest16px grid cell with screenshot witnesses. No hidden cells are synthesized.",
+    "uncertainties": [
+      "Source rendering shifts the bottom3 floor raster rows by1\u20132px in several captures. Camera registration and floor136 assembly use the independently matching upper12pixel fragment; this is recorded rather than claiming full16pixel floor matches in every capture.",
+      "World camera coordinates are inferred from screenshot alignment and a measured walking-speed bound; repetitive rows can admit multiple equal binary alignments, recorded per checkpoint.",
+      "Coin artwork can differ by one horizontal pixel between scroll/animation phases. Coin grid positions use the nearest cell; component bounds and observation counts are retained.",
+      "Non-atlas floating cloud artwork remains explicit unknown cells rather than invented collision geometry.",
+      "Vine and moving four-orb platform are dynamic and are not encoded as static tiles.",
+      "Only the ordinary cloud-floor walking route was observed. Riding the platform and collecting the high coins remain unmeasured.",
+      "Width is the observed viewport extent, not an inferred unseen room boundary."
+    ],
+    "platforms": [
+      {
+        "id": "6-2-sky-four-orb-platform",
+        "kind": "cloud32",
+        "x": 256,
+        "y": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "coordinateConvention": "x is inferred world artwork origin; y is directly measured artwork top, not an inferred collision surface.",
+        "firstObservedSequence": 5616,
+        "firstObservedTick": 6694,
+        "firstCompleteObservedSequence": 5617,
+        "contactObserved": false,
+        "motionRule": null,
+        "observationNote": "Exact opaque supplied32-by-8 cloud32 pixels establish the four-orb platform and samples below. Worldx uses independent static screenshot camera registration. The ordinary floor-walking route never lands on or rides it; contact/activation rules and collision top are unmeasured."
+      }
+    ],
+    "platformObservations": [
+      {
+        "sequence": 5616,
+        "tick": 6694,
+        "nativeFramesSinceTick6690": 30,
+        "cameraX": 11,
+        "screenX": 245,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 70,
+        "clippedAtRightEdge": true,
+        "visibleWidth": 11,
+        "extentNote": "Earlier clipped pixels aligned to the complete32px sprite at sequence5617; the clipped crop alone does not establish total width."
+      },
+      {
+        "sequence": 5617,
+        "tick": 6698,
+        "nativeFramesSinceTick6690": 60,
+        "cameraX": 41,
+        "screenX": 215,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      },
+      {
+        "sequence": 5618,
+        "tick": 6702,
+        "nativeFramesSinceTick6690": 90,
+        "cameraX": 71,
+        "screenX": 185,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      },
+      {
+        "sequence": 5619,
+        "tick": 6706,
+        "nativeFramesSinceTick6690": 120,
+        "cameraX": 112,
+        "screenX": 144,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      },
+      {
+        "sequence": 5620,
+        "tick": 6710,
+        "nativeFramesSinceTick6690": 151,
+        "cameraX": 158,
+        "screenX": 98,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      },
+      {
+        "sequence": 5621,
+        "tick": 6714,
+        "nativeFramesSinceTick6690": 181,
+        "cameraX": 203,
+        "screenX": 53,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      },
+      {
+        "sequence": 5622,
+        "tick": 6718,
+        "nativeFramesSinceTick6690": 211,
+        "cameraX": 248,
+        "screenX": 8,
+        "worldX": 256,
+        "artworkY": 161,
+        "width": 32,
+        "height": 8,
+        "sprite": "sprite-large_platforms-3.png",
+        "kind": "cloud32",
+        "matchedOpaquePixels": 208
+      }
+    ],
+    "platformObservationEvidence": [
+      {
+        "id": "6-2-sky-four-orb-platform",
+        "firstObservedClippedArtwork": {
+          "sequence": 5616,
+          "tick": 6694,
+          "nativeFramesSinceTick6690": 30,
+          "cameraX": 11,
+          "screenX": 245,
+          "worldX": 256,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "kind": "cloud32",
+          "matchedOpaquePixels": 70,
+          "clippedAtRightEdge": true,
+          "visibleWidth": 11,
+          "extentNote": "Earlier clipped pixels aligned to the complete32px sprite at sequence5617; the clipped crop alone does not establish total width."
+        },
+        "firstCompleteObservation": {
+          "sequence": 5617,
+          "tick": 6698,
+          "nativeFramesSinceTick6690": 60,
+          "cameraX": 41,
+          "screenX": 215,
+          "worldX": 256,
+          "artworkY": 161,
+          "width": 32,
+          "height": 8,
+          "sprite": "sprite-large_platforms-3.png",
+          "kind": "cloud32",
+          "matchedOpaquePixels": 208
+        },
+        "observedWorldXRange": [
+          256,
+          256
+        ],
+        "observedArtworkYRange": [
+          161,
+          161
+        ],
+        "completeObservationCount": 6,
+        "earlierClippedObservationCount": 1,
+        "contactObserved": false,
+        "motionRule": null,
+        "inferenceNote": "No activation, launch-on-contact, speed, range, or return-period rule is inferred from these appearance samples. Stable coordinates only establish the sampled interval. Earlier clipped crops match the same observed anchor, while the later complete bitmap establishes32px width."
+      }
+    ],
+    "actorObservationMethod": "Exact opaque RGBA pixels from supplied special platform PNGs, rejecting smaller templates contained in a larger artwork match. The actual largest matched platform here is32px. No emulator memory, ROM contents, sibling data, or remembered behavior. Source is the completed public-controller destination capture."
+  }
+}

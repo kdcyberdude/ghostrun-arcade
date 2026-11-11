@@ -1,0 +1,3486 @@
+{
+  "schema": "flying-fish-source-observations-v1",
+  "measuredUtc": "2026-11-06T02:24:54.261Z",
+  "directory": "evidence/local/reference-campaign-dense",
+  "trace": "evidence/local/reference-campaign-dense/trace.jsonl",
+  "traceSha256": "cb6b19080ce17a2ddcded9ab81833b44a862ed53bef9c72648c9fd3cc728d351",
+  "artwork": {
+    "path": "assets/graphics/enemy-table-0f-16-30-27.png",
+    "sha256": "349cc90fad963d0f0ea5b08321074d9f8e08f5d97d03cd2758e0539383440738"
+  },
+  "method": "Each fish matches every opaque pixel of supplied16x16 lower body from cells12/13, preserving the24px descriptor origin. Camera starts from an independently measured authenticated prefix/static anchor, then compares real consecutive background pixels excluding matched player/fish boxes. Six delta alternatives retained. Dense anchors apply only to untouched original controls.",
+  "limits": [
+    "Descriptor feet are drawing anchors, not hidden physical feet.",
+    "Complete templates miss clipped/occluded poses; no pose is invented.",
+    "Pairwise camera ambiguities require independent static-image checks before world-motor claims.",
+    "First death/life image ends diagnostic trajectory fitting."
+  ],
+  "prefixVerifications": [],
+  "observations": [
+    {
+      "branch": 1,
+      "sequence": 2245,
+      "experiment": "original-dense",
+      "tick": 2244,
+      "nativeFrame": 16857,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02245-tick-02244.png",
+      "camera": 0,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 40,
+        "visibleTop": 193,
+        "visibleRight": 54,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 40,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2246,
+      "experiment": "original-dense",
+      "tick": 2245,
+      "nativeFrame": 16864,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02246-tick-02245.png",
+      "camera": 0,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 0,
+          "mismatch": 0,
+          "support": 3142,
+          "error": 0
+        },
+        {
+          "delta": 1,
+          "mismatch": 680,
+          "support": 3164,
+          "error": 0.21491782553729458
+        },
+        {
+          "delta": 2,
+          "mismatch": 770,
+          "support": 3092,
+          "error": 0.24902975420439843
+        },
+        {
+          "delta": 16,
+          "mismatch": 724,
+          "support": 2758,
+          "error": 0.2625090645395214
+        },
+        {
+          "delta": 3,
+          "mismatch": 1101,
+          "support": 3114,
+          "error": 0.3535645472061657
+        },
+        {
+          "delta": 4,
+          "mismatch": 1124,
+          "support": 3042,
+          "error": 0.3694937541091387
+        }
+      ],
+      "player": {
+        "originX": 44,
+        "originY": 177,
+        "visibleLeft": 47,
+        "visibleTop": 193,
+        "visibleRight": 57,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 44,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2247,
+      "experiment": "original-dense",
+      "tick": 2246,
+      "nativeFrame": 16872,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02247-tick-02246.png",
+      "camera": 0,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 0,
+          "mismatch": 0,
+          "support": 3106,
+          "error": 0
+        },
+        {
+          "delta": 1,
+          "mismatch": 662,
+          "support": 3128,
+          "error": 0.21163682864450128
+        },
+        {
+          "delta": 2,
+          "mismatch": 767,
+          "support": 3056,
+          "error": 0.25098167539267013
+        },
+        {
+          "delta": 16,
+          "mismatch": 770,
+          "support": 2806,
+          "error": 0.27441197434069853
+        },
+        {
+          "delta": 3,
+          "mismatch": 1086,
+          "support": 3078,
+          "error": 0.35282651072124754
+        },
+        {
+          "delta": 4,
+          "mismatch": 1124,
+          "support": 3006,
+          "error": 0.37391882900864937
+        }
+      ],
+      "player": {
+        "originX": 51,
+        "originY": 177,
+        "visibleLeft": 53,
+        "visibleTop": 194,
+        "visibleRight": 65,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 51,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2248,
+      "experiment": "original-dense",
+      "tick": 2247,
+      "nativeFrame": 16879,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02248-tick-02247.png",
+      "camera": 0,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 0,
+          "mismatch": 0,
+          "support": 3106,
+          "error": 0
+        },
+        {
+          "delta": 1,
+          "mismatch": 650,
+          "support": 3110,
+          "error": 0.2090032154340836
+        },
+        {
+          "delta": 2,
+          "mismatch": 785,
+          "support": 3056,
+          "error": 0.2568717277486911
+        },
+        {
+          "delta": 16,
+          "mismatch": 814,
+          "support": 2870,
+          "error": 0.28362369337979093
+        },
+        {
+          "delta": 3,
+          "mismatch": 1072,
+          "support": 3060,
+          "error": 0.3503267973856209
+        },
+        {
+          "delta": 4,
+          "mismatch": 1142,
+          "support": 3022,
+          "error": 0.37789543348775645
+        }
+      ],
+      "player": {
+        "originX": 60,
+        "originY": 177,
+        "visibleLeft": 63,
+        "visibleTop": 193,
+        "visibleRight": 73,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 60,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2249,
+      "experiment": "original-dense",
+      "tick": 2248,
+      "nativeFrame": 16887,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02249-tick-02248.png",
+      "camera": 0,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 74,
+        "originY": 177,
+        "visibleLeft": 74,
+        "visibleTop": 193,
+        "visibleRight": 88,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 74,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2250,
+      "experiment": "original-dense",
+      "tick": 2249,
+      "nativeFrame": 16894,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02250-tick-02249.png",
+      "camera": 5,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 5,
+          "mismatch": 69,
+          "support": 3218,
+          "error": 0.02144188937228092
+        },
+        {
+          "delta": 4,
+          "mismatch": 674,
+          "support": 3196,
+          "error": 0.21088861076345433
+        },
+        {
+          "delta": 6,
+          "mismatch": 759,
+          "support": 3166,
+          "error": 0.23973468098547063
+        },
+        {
+          "delta": 21,
+          "mismatch": 839,
+          "support": 2946,
+          "error": 0.2847929395790903
+        },
+        {
+          "delta": 7,
+          "mismatch": 1071,
+          "support": 3188,
+          "error": 0.33594730238393977
+        },
+        {
+          "delta": 2,
+          "mismatch": 1124,
+          "support": 3230,
+          "error": 0.3479876160990712
+        }
+      ],
+      "player": {
+        "originX": 84,
+        "originY": 177,
+        "visibleLeft": 84,
+        "visibleTop": 193,
+        "visibleRight": 98,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 89,
+        "descriptorFeet": 208
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2251,
+      "experiment": "original-dense",
+      "tick": 2250,
+      "nativeFrame": 16902,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02251-tick-02250.png",
+      "camera": 17,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 12,
+          "mismatch": 0,
+          "support": 3124,
+          "error": 0
+        },
+        {
+          "delta": 11,
+          "mismatch": 623,
+          "support": 3114,
+          "error": 0.20006422607578678
+        },
+        {
+          "delta": 13,
+          "mismatch": 714,
+          "support": 3066,
+          "error": 0.2328767123287671
+        },
+        {
+          "delta": 14,
+          "mismatch": 1073,
+          "support": 3076,
+          "error": 0.3488296488946684
+        },
+        {
+          "delta": 9,
+          "mismatch": 1098,
+          "support": 3146,
+          "error": 0.34901462174189446
+        },
+        {
+          "delta": 10,
+          "mismatch": 1132,
+          "support": 3156,
+          "error": 0.35868187579214195
+        }
+      ],
+      "player": {
+        "originX": 92,
+        "originY": 149,
+        "visibleLeft": 92,
+        "visibleTop": 165,
+        "visibleRight": 107,
+        "visibleBottom": 180,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 109,
+        "descriptorFeet": 180
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2252,
+      "experiment": "original-dense",
+      "tick": 2251,
+      "nativeFrame": 16910,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02252-tick-02251.png",
+      "camera": 29,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 12,
+          "mismatch": 0,
+          "support": 2900,
+          "error": 0
+        },
+        {
+          "delta": 11,
+          "mismatch": 576,
+          "support": 2896,
+          "error": 0.19889502762430938
+        },
+        {
+          "delta": 13,
+          "mismatch": 659,
+          "support": 2848,
+          "error": 0.23139044943820225
+        },
+        {
+          "delta": 14,
+          "mismatch": 969,
+          "support": 2852,
+          "error": 0.3397615708274895
+        },
+        {
+          "delta": 10,
+          "mismatch": 1032,
+          "support": 2948,
+          "error": 0.35006784260515605
+        },
+        {
+          "delta": 9,
+          "mismatch": 1043,
+          "support": 2940,
+          "error": 0.3547619047619048
+        }
+      ],
+      "player": {
+        "originX": 100,
+        "originY": 121,
+        "visibleLeft": 100,
+        "visibleTop": 137,
+        "visibleRight": 115,
+        "visibleBottom": 152,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 129,
+        "descriptorFeet": 152
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2253,
+      "experiment": "original-dense",
+      "tick": 2252,
+      "nativeFrame": 16917,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02253-tick-02252.png",
+      "camera": 40,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 107,
+        "originY": 104,
+        "visibleLeft": 107,
+        "visibleTop": 120,
+        "visibleRight": 122,
+        "visibleBottom": 135,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 147,
+        "descriptorFeet": 135
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2254,
+      "experiment": "original-dense",
+      "tick": 2253,
+      "nativeFrame": 16925,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02254-tick-02253.png",
+      "camera": 55,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 15,
+          "mismatch": 47,
+          "support": 2247,
+          "error": 0.02091677792612372
+        },
+        {
+          "delta": 14,
+          "mismatch": 478,
+          "support": 2252,
+          "error": 0.21225577264653642
+        },
+        {
+          "delta": 16,
+          "mismatch": 484,
+          "support": 2208,
+          "error": 0.21920289855072464
+        },
+        {
+          "delta": 17,
+          "mismatch": 702,
+          "support": 2210,
+          "error": 0.3176470588235294
+        },
+        {
+          "delta": 13,
+          "mismatch": 791,
+          "support": 2293,
+          "error": 0.34496293065852596
+        },
+        {
+          "delta": 12,
+          "mismatch": 871,
+          "support": 2298,
+          "error": 0.37902523933855525
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 95,
+        "visibleLeft": 112,
+        "visibleTop": 111,
+        "visibleRight": 127,
+        "visibleBottom": 126,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 167,
+        "descriptorFeet": 126
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2255,
+      "experiment": "original-dense",
+      "tick": 2254,
+      "nativeFrame": 16932,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02255-tick-02254.png",
+      "camera": 72,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 41,
+          "support": 1941,
+          "error": 0.0211231324059763
+        },
+        {
+          "delta": 18,
+          "mismatch": 327,
+          "support": 1918,
+          "error": 0.1704900938477581
+        },
+        {
+          "delta": 16,
+          "mismatch": 492,
+          "support": 1956,
+          "error": 0.25153374233128833
+        },
+        {
+          "delta": 1,
+          "mismatch": 706,
+          "support": 2296,
+          "error": 0.3074912891986063
+        },
+        {
+          "delta": 19,
+          "mismatch": 612,
+          "support": 1904,
+          "error": 0.32142857142857145
+        },
+        {
+          "delta": 15,
+          "mismatch": 670,
+          "support": 1979,
+          "error": 0.33855482566953005
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 99,
+        "visibleLeft": 112,
+        "visibleTop": 115,
+        "visibleRight": 127,
+        "visibleBottom": 130,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 184,
+        "descriptorFeet": 130
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2256,
+      "experiment": "original-dense",
+      "tick": 2255,
+      "nativeFrame": 16940,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02256-tick-02255.png",
+      "camera": 92,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 1773,
+          "error": 0
+        },
+        {
+          "delta": 21,
+          "mismatch": 324,
+          "support": 1759,
+          "error": 0.18419556566230813
+        },
+        {
+          "delta": 19,
+          "mismatch": 402,
+          "support": 1777,
+          "error": 0.22622397298818234
+        },
+        {
+          "delta": 4,
+          "mismatch": 567,
+          "support": 1975,
+          "error": 0.2870886075949367
+        },
+        {
+          "delta": 22,
+          "mismatch": 594,
+          "support": 1756,
+          "error": 0.33826879271070615
+        },
+        {
+          "delta": 18,
+          "mismatch": 614,
+          "support": 1791,
+          "error": 0.3428252372975991
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 204,
+        "descriptorFeet": 160
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2257,
+      "experiment": "original-dense",
+      "tick": 2256,
+      "nativeFrame": 16947,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02257-tick-02256.png",
+      "camera": 110,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 222,
+        "descriptorFeet": 160
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2258,
+      "experiment": "original-dense",
+      "tick": 2257,
+      "nativeFrame": 16955,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02258-tick-02257.png",
+      "camera": 130,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 10,
+          "support": 1757,
+          "error": 0.005691519635742743
+        },
+        {
+          "delta": 21,
+          "mismatch": 317,
+          "support": 1749,
+          "error": 0.1812464265294454
+        },
+        {
+          "delta": 4,
+          "mismatch": 387,
+          "support": 1755,
+          "error": 0.2205128205128205
+        },
+        {
+          "delta": 19,
+          "mismatch": 407,
+          "support": 1758,
+          "error": 0.23151308304891924
+        },
+        {
+          "delta": 22,
+          "mismatch": 598,
+          "support": 1753,
+          "error": 0.34112949229891615
+        },
+        {
+          "delta": 18,
+          "mismatch": 605,
+          "support": 1765,
+          "error": 0.34277620396600567
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 242,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 240,
+          "bodyOriginY": 156,
+          "rawCellOriginY": 148,
+          "descriptorFeet": 171,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 370
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2259,
+      "experiment": "original-dense",
+      "tick": 2258,
+      "nativeFrame": 16962,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02259-tick-02258.png",
+      "camera": 147,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 27,
+          "support": 1679,
+          "error": 0.016081000595592615
+        },
+        {
+          "delta": 16,
+          "mismatch": 322,
+          "support": 1683,
+          "error": 0.19132501485442663
+        },
+        {
+          "delta": 18,
+          "mismatch": 364,
+          "support": 1673,
+          "error": 0.2175732217573222
+        },
+        {
+          "delta": 1,
+          "mismatch": 404,
+          "support": 1765,
+          "error": 0.22889518413597734
+        },
+        {
+          "delta": 19,
+          "mismatch": 479,
+          "support": 1669,
+          "error": 0.28699820251647695
+        },
+        {
+          "delta": 15,
+          "mismatch": 512,
+          "support": 1689,
+          "error": 0.30313795145056244
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 259,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 232,
+          "bodyOriginY": 131,
+          "rawCellOriginY": 123,
+          "descriptorFeet": 146,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 379
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2260,
+      "experiment": "original-dense",
+      "tick": 2259,
+      "nativeFrame": 16970,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02260-tick-02259.png",
+      "camera": 167,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 1598,
+          "error": 0
+        },
+        {
+          "delta": 19,
+          "mismatch": 340,
+          "support": 1630,
+          "error": 0.2085889570552147
+        },
+        {
+          "delta": 4,
+          "mismatch": 394,
+          "support": 1761,
+          "error": 0.22373651334469052
+        },
+        {
+          "delta": 21,
+          "mismatch": 383,
+          "support": 1596,
+          "error": 0.2399749373433584
+        },
+        {
+          "delta": 22,
+          "mismatch": 489,
+          "support": 1571,
+          "error": 0.3112667091024825
+        },
+        {
+          "delta": 18,
+          "mismatch": 525,
+          "support": 1631,
+          "error": 0.3218884120171674
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 279,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 222,
+          "bodyOriginY": 106,
+          "rawCellOriginY": 98,
+          "descriptorFeet": 121,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 389
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2261,
+      "experiment": "original-dense",
+      "tick": 2260,
+      "nativeFrame": 16977,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02261-tick-02260.png",
+      "camera": 185,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 297,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 213,
+          "bodyOriginY": 86,
+          "rawCellOriginY": 78,
+          "descriptorFeet": 101,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 398
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2262,
+      "experiment": "original-dense",
+      "tick": 2261,
+      "nativeFrame": 16985,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02262-tick-02261.png",
+      "camera": 205,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 1155,
+          "error": 0
+        },
+        {
+          "delta": 4,
+          "mismatch": 292,
+          "support": 1419,
+          "error": 0.20577871740662437
+        },
+        {
+          "delta": 21,
+          "mismatch": 295,
+          "support": 1149,
+          "error": 0.25674499564838993
+        },
+        {
+          "delta": 19,
+          "mismatch": 316,
+          "support": 1184,
+          "error": 0.2668918918918919
+        },
+        {
+          "delta": 12,
+          "mismatch": 441,
+          "support": 1295,
+          "error": 0.34054054054054056
+        },
+        {
+          "delta": 22,
+          "mismatch": 425,
+          "support": 1119,
+          "error": 0.37980339588918677
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 317,
+        "descriptorFeet": 160
+      },
+      "fish": [],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2263,
+      "experiment": "original-dense",
+      "tick": 2262,
+      "nativeFrame": 16992,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02263-tick-02262.png",
+      "camera": 222,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 67,
+          "support": 1007,
+          "error": 0.06653426017874876
+        },
+        {
+          "delta": 1,
+          "mismatch": 345,
+          "support": 1291,
+          "error": 0.26723470178156467
+        },
+        {
+          "delta": 16,
+          "mismatch": 310,
+          "support": 1005,
+          "error": 0.30845771144278605
+        },
+        {
+          "delta": 18,
+          "mismatch": 307,
+          "support": 968,
+          "error": 0.31714876033057854
+        },
+        {
+          "delta": 9,
+          "mismatch": 376,
+          "support": 1146,
+          "error": 0.32809773123909247
+        },
+        {
+          "delta": 24,
+          "mismatch": 330,
+          "support": 879,
+          "error": 0.37542662116040953
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 334,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 193,
+          "bodyOriginY": 51,
+          "rawCellOriginY": 43,
+          "descriptorFeet": 66,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 415
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2264,
+      "experiment": "original-dense",
+      "tick": 2263,
+      "nativeFrame": 17000,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02264-tick-02263.png",
+      "camera": 242,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 770,
+          "error": 0
+        },
+        {
+          "delta": 12,
+          "mismatch": 179,
+          "support": 896,
+          "error": 0.19977678571428573
+        },
+        {
+          "delta": 19,
+          "mismatch": 190,
+          "support": 768,
+          "error": 0.24739583333333334
+        },
+        {
+          "delta": 4,
+          "mismatch": 329,
+          "support": 1038,
+          "error": 0.31695568400770713
+        },
+        {
+          "delta": 21,
+          "mismatch": 291,
+          "support": 754,
+          "error": 0.3859416445623342
+        },
+        {
+          "delta": 11,
+          "mismatch": 363,
+          "support": 908,
+          "error": 0.3997797356828194
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 354,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 183,
+          "bodyOriginY": 39,
+          "rawCellOriginY": 31,
+          "descriptorFeet": 54,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 425
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2265,
+      "experiment": "original-dense",
+      "tick": 2264,
+      "nativeFrame": 17007,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02265-tick-02264.png",
+      "camera": 260,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 372,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 175,
+          "bodyOriginY": 32,
+          "rawCellOriginY": 24,
+          "descriptorFeet": 47,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 435
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2266,
+      "experiment": "original-dense",
+      "tick": 2265,
+      "nativeFrame": 17015,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02266-tick-02265.png",
+      "camera": 280,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 969,
+          "error": 0
+        },
+        {
+          "delta": 19,
+          "mismatch": 267,
+          "support": 960,
+          "error": 0.278125
+        },
+        {
+          "delta": 21,
+          "mismatch": 303,
+          "support": 950,
+          "error": 0.31894736842105265
+        },
+        {
+          "delta": 12,
+          "mismatch": 341,
+          "support": 1004,
+          "error": 0.3396414342629482
+        },
+        {
+          "delta": 4,
+          "mismatch": 417,
+          "support": 1039,
+          "error": 0.4013474494706448
+        },
+        {
+          "delta": 11,
+          "mismatch": 495,
+          "support": 992,
+          "error": 0.49899193548387094
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 392,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 165,
+          "bodyOriginY": 27,
+          "rawCellOriginY": 19,
+          "descriptorFeet": 42,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 445
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2267,
+      "experiment": "original-dense",
+      "tick": 2266,
+      "nativeFrame": 17022,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02267-tick-02266.png",
+      "camera": 297,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 27,
+          "support": 966,
+          "error": 0.027950310559006212
+        },
+        {
+          "delta": 18,
+          "mismatch": 256,
+          "support": 970,
+          "error": 0.2639175257731959
+        },
+        {
+          "delta": 9,
+          "mismatch": 335,
+          "support": 998,
+          "error": 0.33567134268537074
+        },
+        {
+          "delta": 16,
+          "mismatch": 342,
+          "support": 982,
+          "error": 0.34826883910386963
+        },
+        {
+          "delta": 1,
+          "mismatch": 426,
+          "support": 1030,
+          "error": 0.41359223300970877
+        },
+        {
+          "delta": 10,
+          "mismatch": 451,
+          "support": 1006,
+          "error": 0.44831013916500995
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 409,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 155,
+          "bodyOriginY": 26,
+          "rawCellOriginY": 18,
+          "descriptorFeet": 41,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 452
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2268,
+      "experiment": "original-dense",
+      "tick": 2267,
+      "nativeFrame": 17030,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02268-tick-02267.png",
+      "camera": 317,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 917,
+          "error": 0
+        },
+        {
+          "delta": 21,
+          "mismatch": 263,
+          "support": 931,
+          "error": 0.2824919441460795
+        },
+        {
+          "delta": 12,
+          "mismatch": 319,
+          "support": 965,
+          "error": 0.3305699481865285
+        },
+        {
+          "delta": 19,
+          "mismatch": 318,
+          "support": 941,
+          "error": 0.3379383634431456
+        },
+        {
+          "delta": 4,
+          "mismatch": 412,
+          "support": 1012,
+          "error": 0.40711462450592883
+        },
+        {
+          "delta": 13,
+          "mismatch": 440,
+          "support": 982,
+          "error": 0.4480651731160896
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 429,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 145,
+          "bodyOriginY": 27,
+          "rawCellOriginY": 19,
+          "descriptorFeet": 42,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 462
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2269,
+      "experiment": "original-dense",
+      "tick": 2268,
+      "nativeFrame": 17037,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02269-tick-02268.png",
+      "camera": 335,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 447,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 137,
+          "bodyOriginY": 31,
+          "rawCellOriginY": 23,
+          "descriptorFeet": 46,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 472
+        },
+        {
+          "screenX": 71,
+          "bodyOriginY": 214,
+          "rawCellOriginY": 206,
+          "descriptorFeet": 229,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 406
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2270,
+      "experiment": "original-dense",
+      "tick": 2269,
+      "nativeFrame": 17045,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02270-tick-02269.png",
+      "camera": 355,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 19,
+          "support": 996,
+          "error": 0.019076305220883535
+        },
+        {
+          "delta": 21,
+          "mismatch": 302,
+          "support": 1014,
+          "error": 0.2978303747534517
+        },
+        {
+          "delta": 19,
+          "mismatch": 349,
+          "support": 1021,
+          "error": 0.3418217433888345
+        },
+        {
+          "delta": 12,
+          "mismatch": 361,
+          "support": 1028,
+          "error": 0.35116731517509725
+        },
+        {
+          "delta": 4,
+          "mismatch": 469,
+          "support": 1064,
+          "error": 0.4407894736842105
+        },
+        {
+          "delta": 13,
+          "mismatch": 482,
+          "support": 1049,
+          "error": 0.45948522402287895
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 467,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 127,
+          "bodyOriginY": 39,
+          "rawCellOriginY": 31,
+          "descriptorFeet": 54,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 482
+        },
+        {
+          "screenX": 66,
+          "bodyOriginY": 179,
+          "rawCellOriginY": 171,
+          "descriptorFeet": 194,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 421
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2271,
+      "experiment": "original-dense",
+      "tick": 2270,
+      "nativeFrame": 17052,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02271-tick-02270.png",
+      "camera": 372,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 38,
+          "support": 1046,
+          "error": 0.036328871892925434
+        },
+        {
+          "delta": 16,
+          "mismatch": 305,
+          "support": 1030,
+          "error": 0.2961165048543689
+        },
+        {
+          "delta": 18,
+          "mismatch": 361,
+          "support": 1024,
+          "error": 0.3525390625
+        },
+        {
+          "delta": 9,
+          "mismatch": 427,
+          "support": 1076,
+          "error": 0.39684014869888473
+        },
+        {
+          "delta": 1,
+          "mismatch": 503,
+          "support": 1111,
+          "error": 0.4527452745274527
+        },
+        {
+          "delta": 24,
+          "mismatch": 495,
+          "support": 1010,
+          "error": 0.4900990099009901
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 484,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 118,
+          "bodyOriginY": 48,
+          "rawCellOriginY": 40,
+          "descriptorFeet": 63,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 490
+        },
+        {
+          "screenX": 63,
+          "bodyOriginY": 152,
+          "rawCellOriginY": 144,
+          "descriptorFeet": 167,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 435
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2272,
+      "experiment": "original-dense",
+      "tick": 2271,
+      "nativeFrame": 17060,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02272-tick-02271.png",
+      "camera": 392,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 1100,
+          "error": 0
+        },
+        {
+          "delta": 19,
+          "mismatch": 303,
+          "support": 1103,
+          "error": 0.2747053490480508
+        },
+        {
+          "delta": 21,
+          "mismatch": 379,
+          "support": 1093,
+          "error": 0.3467520585544373
+        },
+        {
+          "delta": 4,
+          "mismatch": 460,
+          "support": 1168,
+          "error": 0.3938356164383562
+        },
+        {
+          "delta": 12,
+          "mismatch": 457,
+          "support": 1135,
+          "error": 0.4026431718061674
+        },
+        {
+          "delta": 18,
+          "mismatch": 571,
+          "support": 1111,
+          "error": 0.5139513951395139
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 504,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 58,
+          "bodyOriginY": 124,
+          "rawCellOriginY": 116,
+          "descriptorFeet": 139,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 450
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2273,
+      "experiment": "original-dense",
+      "tick": 2272,
+      "nativeFrame": 17067,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02273-tick-02272.png",
+      "camera": 410,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 522,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 100,
+          "bodyOriginY": 77,
+          "rawCellOriginY": 69,
+          "descriptorFeet": 92,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 510
+        },
+        {
+          "screenX": 53,
+          "bodyOriginY": 103,
+          "rawCellOriginY": 95,
+          "descriptorFeet": 118,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 463
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2274,
+      "experiment": "original-dense",
+      "tick": 2273,
+      "nativeFrame": 17075,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02274-tick-02273.png",
+      "camera": 430,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 76,
+          "support": 1259,
+          "error": 0.06036536934074663
+        },
+        {
+          "delta": 19,
+          "mismatch": 386,
+          "support": 1260,
+          "error": 0.30634920634920637
+        },
+        {
+          "delta": 21,
+          "mismatch": 452,
+          "support": 1250,
+          "error": 0.3616
+        },
+        {
+          "delta": 12,
+          "mismatch": 567,
+          "support": 1294,
+          "error": 0.4381761978361669
+        },
+        {
+          "delta": 4,
+          "mismatch": 659,
+          "support": 1329,
+          "error": 0.4958615500376223
+        },
+        {
+          "delta": 22,
+          "mismatch": 653,
+          "support": 1250,
+          "error": 0.5224
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 542,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 48,
+          "bodyOriginY": 81,
+          "rawCellOriginY": 73,
+          "descriptorFeet": 96,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 478
+        },
+        {
+          "screenX": 90,
+          "bodyOriginY": 97,
+          "rawCellOriginY": 89,
+          "descriptorFeet": 112,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 520
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2275,
+      "experiment": "original-dense",
+      "tick": 2274,
+      "nativeFrame": 17082,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02275-tick-02274.png",
+      "camera": 447,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 76,
+          "support": 1255,
+          "error": 0.06055776892430279
+        },
+        {
+          "delta": 18,
+          "mismatch": 391,
+          "support": 1256,
+          "error": 0.31130573248407645
+        },
+        {
+          "delta": 16,
+          "mismatch": 466,
+          "support": 1270,
+          "error": 0.3669291338582677
+        },
+        {
+          "delta": 9,
+          "mismatch": 556,
+          "support": 1294,
+          "error": 0.42967542503863987
+        },
+        {
+          "delta": 19,
+          "mismatch": 600,
+          "support": 1241,
+          "error": 0.48348106365834004
+        },
+        {
+          "delta": 15,
+          "mismatch": 621,
+          "support": 1268,
+          "error": 0.48974763406940064
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 559,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 82,
+          "bodyOriginY": 118,
+          "rawCellOriginY": 110,
+          "descriptorFeet": 133,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 529
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2276,
+      "experiment": "original-dense",
+      "tick": 2275,
+      "nativeFrame": 17090,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02276-tick-02275.png",
+      "camera": 467,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 55,
+          "support": 1199,
+          "error": 0.045871559633027525
+        },
+        {
+          "delta": 21,
+          "mismatch": 387,
+          "support": 1197,
+          "error": 0.3233082706766917
+        },
+        {
+          "delta": 19,
+          "mismatch": 451,
+          "support": 1211,
+          "error": 0.37241948802642444
+        },
+        {
+          "delta": 12,
+          "mismatch": 593,
+          "support": 1267,
+          "error": 0.468034727703236
+        },
+        {
+          "delta": 4,
+          "mismatch": 651,
+          "support": 1315,
+          "error": 0.4950570342205323
+        },
+        {
+          "delta": 22,
+          "mismatch": 589,
+          "support": 1187,
+          "error": 0.4962089300758214
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 579,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 38,
+          "bodyOriginY": 47,
+          "rawCellOriginY": 39,
+          "descriptorFeet": 62,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 505
+        },
+        {
+          "screenX": 72,
+          "bodyOriginY": 146,
+          "rawCellOriginY": 138,
+          "descriptorFeet": 161,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 539
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2277,
+      "experiment": "original-dense",
+      "tick": 2276,
+      "nativeFrame": 17097,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02277-tick-02276.png",
+      "camera": 485,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 597,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 34,
+          "bodyOriginY": 38,
+          "rawCellOriginY": 30,
+          "descriptorFeet": 53,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 519
+        },
+        {
+          "screenX": 63,
+          "bodyOriginY": 172,
+          "rawCellOriginY": 164,
+          "descriptorFeet": 187,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 548
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2278,
+      "experiment": "original-dense",
+      "tick": 2277,
+      "nativeFrame": 17105,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02278-tick-02277.png",
+      "camera": 505,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 76,
+          "support": 1005,
+          "error": 0.07562189054726368
+        },
+        {
+          "delta": 21,
+          "mismatch": 322,
+          "support": 995,
+          "error": 0.3236180904522613
+        },
+        {
+          "delta": 12,
+          "mismatch": 463,
+          "support": 1145,
+          "error": 0.4043668122270742
+        },
+        {
+          "delta": 19,
+          "mismatch": 421,
+          "support": 1030,
+          "error": 0.4087378640776699
+        },
+        {
+          "delta": 4,
+          "mismatch": 551,
+          "support": 1177,
+          "error": 0.46813933729821583
+        },
+        {
+          "delta": 13,
+          "mismatch": 561,
+          "support": 1137,
+          "error": 0.49340369393139843
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 617,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 29,
+          "bodyOriginY": 30,
+          "rawCellOriginY": 22,
+          "descriptorFeet": 45,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 534
+        },
+        {
+          "screenX": 53,
+          "bodyOriginY": 206,
+          "rawCellOriginY": 198,
+          "descriptorFeet": 221,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 558
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2279,
+      "experiment": "original-dense",
+      "tick": 2278,
+      "nativeFrame": 17112,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02279-tick-02278.png",
+      "camera": 522,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 0,
+          "support": 1082,
+          "error": 0
+        },
+        {
+          "delta": 16,
+          "mismatch": 288,
+          "support": 1048,
+          "error": 0.2748091603053435
+        },
+        {
+          "delta": 9,
+          "mismatch": 419,
+          "support": 1117,
+          "error": 0.37511190689346463
+        },
+        {
+          "delta": 18,
+          "mismatch": 399,
+          "support": 1042,
+          "error": 0.3829174664107486
+        },
+        {
+          "delta": 1,
+          "mismatch": 517,
+          "support": 1235,
+          "error": 0.41862348178137654
+        },
+        {
+          "delta": 8,
+          "mismatch": 555,
+          "support": 1080,
+          "error": 0.5138888888888888
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 634,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 24,
+          "bodyOriginY": 27,
+          "rawCellOriginY": 19,
+          "descriptorFeet": 42,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 546
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2280,
+      "experiment": "original-dense",
+      "tick": 2279,
+      "nativeFrame": 17120,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02280-tick-02279.png",
+      "camera": 542,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 76,
+          "support": 1176,
+          "error": 0.06462585034013606
+        },
+        {
+          "delta": 19,
+          "mismatch": 371,
+          "support": 1176,
+          "error": 0.31547619047619047
+        },
+        {
+          "delta": 21,
+          "mismatch": 436,
+          "support": 1166,
+          "error": 0.37392795883361923
+        },
+        {
+          "delta": 12,
+          "mismatch": 536,
+          "support": 1211,
+          "error": 0.4426094137076796
+        },
+        {
+          "delta": 4,
+          "mismatch": 598,
+          "support": 1246,
+          "error": 0.4799357945425361
+        },
+        {
+          "delta": 22,
+          "mismatch": 630,
+          "support": 1167,
+          "error": 0.5398457583547558
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 654,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 19,
+          "bodyOriginY": 26,
+          "rawCellOriginY": 18,
+          "descriptorFeet": 41,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 561
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2281,
+      "experiment": "original-dense",
+      "tick": 2280,
+      "nativeFrame": 17127,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02281-tick-02280.png",
+      "camera": 560,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 672,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 15,
+          "bodyOriginY": 28,
+          "rawCellOriginY": 20,
+          "descriptorFeet": 43,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 575
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2282,
+      "experiment": "original-dense",
+      "tick": 2281,
+      "nativeFrame": 17135,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02282-tick-02281.png",
+      "camera": 580,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 76,
+          "support": 1138,
+          "error": 0.06678383128295255
+        },
+        {
+          "delta": 19,
+          "mismatch": 382,
+          "support": 1143,
+          "error": 0.3342082239720035
+        },
+        {
+          "delta": 21,
+          "mismatch": 433,
+          "support": 1122,
+          "error": 0.3859180035650624
+        },
+        {
+          "delta": 12,
+          "mismatch": 533,
+          "support": 1202,
+          "error": 0.44342762063227953
+        },
+        {
+          "delta": 4,
+          "mismatch": 598,
+          "support": 1241,
+          "error": 0.48186946011281223
+        },
+        {
+          "delta": 22,
+          "mismatch": 603,
+          "support": 1118,
+          "error": 0.539355992844365
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 692,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 42,
+          "bodyOriginY": 206,
+          "rawCellOriginY": 198,
+          "descriptorFeet": 221,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 622
+        },
+        {
+          "screenX": 10,
+          "bodyOriginY": 33,
+          "rawCellOriginY": 25,
+          "descriptorFeet": 48,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 590
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2283,
+      "experiment": "original-dense",
+      "tick": 2282,
+      "nativeFrame": 17142,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02283-tick-02282.png",
+      "camera": 597,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 62,
+          "support": 1080,
+          "error": 0.05740740740740741
+        },
+        {
+          "delta": 18,
+          "mismatch": 340,
+          "support": 1075,
+          "error": 0.31627906976744186
+        },
+        {
+          "delta": 16,
+          "mismatch": 435,
+          "support": 1093,
+          "error": 0.3979871912168344
+        },
+        {
+          "delta": 9,
+          "mismatch": 480,
+          "support": 1149,
+          "error": 0.4177545691906005
+        },
+        {
+          "delta": 1,
+          "mismatch": 594,
+          "support": 1253,
+          "error": 0.47406225059856344
+        },
+        {
+          "delta": 19,
+          "mismatch": 533,
+          "support": 1058,
+          "error": 0.503780718336484
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 709,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 5,
+          "bodyOriginY": 40,
+          "rawCellOriginY": 32,
+          "descriptorFeet": 55,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 602
+        },
+        {
+          "screenX": 40,
+          "bodyOriginY": 176,
+          "rawCellOriginY": 168,
+          "descriptorFeet": 191,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 637
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2284,
+      "experiment": "original-dense",
+      "tick": 2283,
+      "nativeFrame": 17150,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02284-tick-02283.png",
+      "camera": 617,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 25,
+          "support": 1063,
+          "error": 0.023518344308560677
+        },
+        {
+          "delta": 21,
+          "mismatch": 318,
+          "support": 1074,
+          "error": 0.29608938547486036
+        },
+        {
+          "delta": 19,
+          "mismatch": 370,
+          "support": 1097,
+          "error": 0.33728350045578853
+        },
+        {
+          "delta": 12,
+          "mismatch": 432,
+          "support": 1113,
+          "error": 0.3881401617250674
+        },
+        {
+          "delta": 4,
+          "mismatch": 499,
+          "support": 1158,
+          "error": 0.4309153713298791
+        },
+        {
+          "delta": 18,
+          "mismatch": 509,
+          "support": 1084,
+          "error": 0.46955719557195574
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 729,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 37,
+          "bodyOriginY": 146,
+          "rawCellOriginY": 138,
+          "descriptorFeet": 161,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 654
+        },
+        {
+          "screenX": 42,
+          "bodyOriginY": 209,
+          "rawCellOriginY": 201,
+          "descriptorFeet": 224,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 659
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2285,
+      "experiment": "original-dense",
+      "tick": 2284,
+      "nativeFrame": 17157,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02285-tick-02284.png",
+      "camera": 635,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 747,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 33,
+          "bodyOriginY": 122,
+          "rawCellOriginY": 114,
+          "descriptorFeet": 137,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 668
+        },
+        {
+          "screenX": 39,
+          "bodyOriginY": 179,
+          "rawCellOriginY": 171,
+          "descriptorFeet": 194,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 674
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2286,
+      "experiment": "original-dense",
+      "tick": 2285,
+      "nativeFrame": 17165,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02286-tick-02285.png",
+      "camera": 655,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 985,
+          "error": 0
+        },
+        {
+          "delta": 21,
+          "mismatch": 285,
+          "support": 1001,
+          "error": 0.28471528471528473
+        },
+        {
+          "delta": 19,
+          "mismatch": 339,
+          "support": 1007,
+          "error": 0.33664349553128103
+        },
+        {
+          "delta": 12,
+          "mismatch": 358,
+          "support": 1020,
+          "error": 0.3509803921568627
+        },
+        {
+          "delta": 4,
+          "mismatch": 471,
+          "support": 1104,
+          "error": 0.4266304347826087
+        },
+        {
+          "delta": 13,
+          "mismatch": 480,
+          "support": 1036,
+          "error": 0.46332046332046334
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 767,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 30,
+          "bodyOriginY": 98,
+          "rawCellOriginY": 90,
+          "descriptorFeet": 113,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 685
+        },
+        {
+          "screenX": 36,
+          "bodyOriginY": 149,
+          "rawCellOriginY": 141,
+          "descriptorFeet": 164,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 691
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2287,
+      "experiment": "original-dense",
+      "tick": 2286,
+      "nativeFrame": 17172,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02287-tick-02286.png",
+      "camera": 672,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 85,
+          "support": 1038,
+          "error": 0.08188824662813102
+        },
+        {
+          "delta": 18,
+          "mismatch": 299,
+          "support": 1020,
+          "error": 0.2931372549019608
+        },
+        {
+          "delta": 16,
+          "mismatch": 325,
+          "support": 1030,
+          "error": 0.3155339805825243
+        },
+        {
+          "delta": 9,
+          "mismatch": 431,
+          "support": 1073,
+          "error": 0.4016775396085741
+        },
+        {
+          "delta": 1,
+          "mismatch": 493,
+          "support": 1108,
+          "error": 0.44494584837545126
+        },
+        {
+          "delta": 24,
+          "mismatch": 493,
+          "support": 1002,
+          "error": 0.49201596806387227
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 784,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 28,
+          "bodyOriginY": 79,
+          "rawCellOriginY": 71,
+          "descriptorFeet": 94,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 700
+        },
+        {
+          "screenX": 34,
+          "bodyOriginY": 124,
+          "rawCellOriginY": 116,
+          "descriptorFeet": 139,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 706
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2288,
+      "experiment": "original-dense",
+      "tick": 2287,
+      "nativeFrame": 17180,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02288-tick-02287.png",
+      "camera": 692,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 57,
+          "support": 1120,
+          "error": 0.05089285714285714
+        },
+        {
+          "delta": 19,
+          "mismatch": 351,
+          "support": 1115,
+          "error": 0.3147982062780269
+        },
+        {
+          "delta": 21,
+          "mismatch": 411,
+          "support": 1109,
+          "error": 0.37060414788097384
+        },
+        {
+          "delta": 12,
+          "mismatch": 467,
+          "support": 1155,
+          "error": 0.4043290043290043
+        },
+        {
+          "delta": 4,
+          "mismatch": 517,
+          "support": 1190,
+          "error": 0.43445378151260505
+        },
+        {
+          "delta": 18,
+          "mismatch": 596,
+          "support": 1127,
+          "error": 0.5288376220053239
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 804,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 24,
+          "bodyOriginY": 59,
+          "rawCellOriginY": 51,
+          "descriptorFeet": 74,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 716
+        },
+        {
+          "screenX": 31,
+          "bodyOriginY": 100,
+          "rawCellOriginY": 92,
+          "descriptorFeet": 115,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 723
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2289,
+      "experiment": "original-dense",
+      "tick": 2288,
+      "nativeFrame": 17187,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02289-tick-02288.png",
+      "camera": 710,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 822,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 22,
+          "bodyOriginY": 46,
+          "rawCellOriginY": 38,
+          "descriptorFeet": 61,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 732
+        },
+        {
+          "screenX": 27,
+          "bodyOriginY": 81,
+          "rawCellOriginY": 73,
+          "descriptorFeet": 96,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 737
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2290,
+      "experiment": "original-dense",
+      "tick": 2289,
+      "nativeFrame": 17195,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02290-tick-02289.png",
+      "camera": 730,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 95,
+          "support": 1285,
+          "error": 0.07392996108949416
+        },
+        {
+          "delta": 19,
+          "mismatch": 432,
+          "support": 1283,
+          "error": 0.3367108339828527
+        },
+        {
+          "delta": 21,
+          "mismatch": 493,
+          "support": 1277,
+          "error": 0.3860610806577917
+        },
+        {
+          "delta": 12,
+          "mismatch": 592,
+          "support": 1320,
+          "error": 0.4484848484848485
+        },
+        {
+          "delta": 4,
+          "mismatch": 665,
+          "support": 1355,
+          "error": 0.4907749077490775
+        },
+        {
+          "delta": 22,
+          "mismatch": 687,
+          "support": 1284,
+          "error": 0.5350467289719626
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 842,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 19,
+          "bodyOriginY": 36,
+          "rawCellOriginY": 28,
+          "descriptorFeet": 51,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 749
+        },
+        {
+          "screenX": 25,
+          "bodyOriginY": 60,
+          "rawCellOriginY": 52,
+          "descriptorFeet": 75,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 755
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2291,
+      "experiment": "original-dense",
+      "tick": 2290,
+      "nativeFrame": 17202,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02291-tick-02290.png",
+      "camera": 747,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 17,
+          "mismatch": 50,
+          "support": 1295,
+          "error": 0.03861003861003861
+        },
+        {
+          "delta": 18,
+          "mismatch": 337,
+          "support": 1292,
+          "error": 0.2608359133126935
+        },
+        {
+          "delta": 16,
+          "mismatch": 479,
+          "support": 1302,
+          "error": 0.36789554531490015
+        },
+        {
+          "delta": 9,
+          "mismatch": 587,
+          "support": 1329,
+          "error": 0.44168547780285927
+        },
+        {
+          "delta": 19,
+          "mismatch": 610,
+          "support": 1285,
+          "error": 0.47470817120622566
+        },
+        {
+          "delta": 1,
+          "mismatch": 687,
+          "support": 1361,
+          "error": 0.5047759000734754
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 859,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 16,
+          "bodyOriginY": 30,
+          "rawCellOriginY": 22,
+          "descriptorFeet": 45,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 763
+        },
+        {
+          "screenX": 21,
+          "bodyOriginY": 47,
+          "rawCellOriginY": 39,
+          "descriptorFeet": 62,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 768
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2292,
+      "experiment": "original-dense",
+      "tick": 2291,
+      "nativeFrame": 17210,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02292-tick-02291.png",
+      "camera": 767,
+      "cameraMethod": "pairwise-background-registration",
+      "cameraDeltaCandidates": [
+        {
+          "delta": 20,
+          "mismatch": 0,
+          "support": 1065,
+          "error": 0
+        },
+        {
+          "delta": 21,
+          "mismatch": 322,
+          "support": 1064,
+          "error": 0.3026315789473684
+        },
+        {
+          "delta": 12,
+          "mismatch": 486,
+          "support": 1205,
+          "error": 0.4033195020746888
+        },
+        {
+          "delta": 19,
+          "mismatch": 452,
+          "support": 1102,
+          "error": 0.4101633393829401
+        },
+        {
+          "delta": 4,
+          "mismatch": 643,
+          "support": 1328,
+          "error": 0.48418674698795183
+        },
+        {
+          "delta": 13,
+          "mismatch": 606,
+          "support": 1206,
+          "error": 0.5024875621890548
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 879,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 13,
+          "bodyOriginY": 27,
+          "rawCellOriginY": 19,
+          "descriptorFeet": 42,
+          "cell": 12,
+          "flipX": false,
+          "opaquePixels": 180,
+          "worldX": 780
+        }
+      ],
+      "ended": false
+    },
+    {
+      "branch": 1,
+      "sequence": 2293,
+      "experiment": "original-dense",
+      "tick": 2292,
+      "nativeFrame": 17218,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/02293-tick-02292.png",
+      "camera": 787,
+      "cameraMethod": "authentic-standard-static-anchor",
+      "cameraDeltaCandidates": [],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 899,
+        "descriptorFeet": 160
+      },
+      "fish": [
+        {
+          "screenX": 10,
+          "bodyOriginY": 27,
+          "rawCellOriginY": 19,
+          "descriptorFeet": 42,
+          "cell": 13,
+          "flipX": false,
+          "opaquePixels": 177,
+          "worldX": 797
+        }
+      ],
+      "ended": false
+    }
+  ]
+}

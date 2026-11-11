@@ -1,0 +1,77 @@
+{
+  "schema": "chain-aligned5-4-firebar-partition-v1",
+  "declaredUtc": "2026-11-06T03:06:48.223852+00:00",
+  "scope": "Read-only missing5-4 main hazard at independently established inner visible center696/217. No quarantined crossing measurements or camera-from-flame fitting.",
+  "knownUpstreamPoses": [
+    "early training5972/5973 six complete nodes",
+    "early heldout5972 six complete nodes, already disclosed by assembly export; not a motor-unseen reservation"
+  ],
+  "calibration": [
+    {
+      "source": "data/lower-row-chain-early-footprints.json",
+      "role": "training",
+      "ticksInclusive": [
+        5972,
+        6034
+      ]
+    },
+    {
+      "source": "data/lower-row-chain-remainder-footprints.json",
+      "role": "training",
+      "ticksInclusive": [
+        5974,
+        6038
+      ]
+    }
+  ],
+  "reserved": [
+    {
+      "source": "data/lower-row-chain-early-footprints.json",
+      "role": "heldout",
+      "ticksInclusive": [
+        5973,
+        6039
+      ],
+      "status": "Image flame geometry not opened/extracted by this agent before this declaration; cartography used these images independently for static proof."
+    },
+    {
+      "source": "data/lower-row-chain-remainder-footprints.json",
+      "role": "heldout",
+      "ticksInclusive": [
+        5973,
+        6040
+      ],
+      "status": "Image flame geometry not opened/extracted by this agent before declaration."
+    }
+  ],
+  "geometry": {
+    "observedInnerCenter": [
+      696,
+      217
+    ],
+    "logicalPivotCandidate": [
+      696,
+      216
+    ],
+    "logicalPivotStatus": "Inferred same +1Y supplied-base convention, not native-state observation",
+    "visibleNodes": 6,
+    "lengthQualification": "All six complete nodes observed; hidden additional nodes not assumed"
+  },
+  "measurements": [
+    "Exact opaque supplied8x8 flame artwork in source pixels; use only admitted single per-row origins from sourceWitnesses.",
+    "Fit signed native-frame motor increments against frozen32bin six-orb lookup. Preserve any shape/raw/epoch disagreement.",
+    "Derive activation only from independently admitted camera states and actual7/8-native durations; explicitly separate latest native-camera hypotheses from presented row camera.",
+    "Current branches share standard prefix through initial activation; a new preactivation-wait experiment is needed before history-general initialization is claimed."
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "sourceHashes": {
+    "data/lower-row-chain-early-footprints.json": "4e70c812865cfe13e79aed207dbdec524c0ee2517d4661bce2f80168646a7678",
+    "data/lower-row-chain-remainder-footprints.json": "80a7e4e4b1d6b56a04ac3c3554d6cae6076bffcd6965307266c5fb900710d6ba",
+    "data/lower-row-chain-base-assembly.json": "be906aeab59541a6635593766f9b97a97d6b389f161e17a7b06d5ca211022465",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695"
+  }
+}

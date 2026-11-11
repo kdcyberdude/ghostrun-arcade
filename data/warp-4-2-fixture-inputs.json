@@ -1,0 +1,15 @@
+{
+  "scope": "Declared roof fixture based on actual source2174/t4419: initial4-2 area-3 placement2658/32,camera2546. Initial velocity is set to rest for this independent controller route, unlike the already-running reference pose. All later movement, falling, pipe jumps and warp entry use ordinary controls and production collision. Not a fresh campaign run or matched-timing replay.",
+  "initial": {"level":"4-2","area":"area-3","spawn":[2658,32],"camera":2546},
+  "targetLevel": "5-1",
+  "actions": [
+    {"name":"before-activation","buttons":["right","b"],"frames":320},
+    {"name":"warp-chamber","buttons":["right","b"],"frames":110},
+    {"name":"approach-pipe","buttons":["left"],"frames":40},
+    {"name":"jump-pipe","buttons":["left","a"],"frames":35},
+    {"name":"brake-pipe","buttons":["right"],"frames":25},
+    {"name":"stand-pipe","buttons":[],"frames":40},
+    {"name":"five-intro","buttons":["down"],"frames":150},
+    {"name":"five-play","buttons":[],"frames":240}
+  ]
+}

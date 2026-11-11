@@ -1,0 +1,153 @@
+{
+  "plan": "evidence/eight-four-early-flame-air-reversal-plan.json",
+  "planSha256": "6755c2952d4d25983b24c44f3f4ef3e8b2a1965bfe7557f86b81bf9440298671",
+  "trace": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/trace.jsonl",
+  "traceSha256": "17ee8169afffc36f9334b3302aa82a92386d2613723075f6c6311ae833822e6c",
+  "thresholdPixels": 2,
+  "heldoutCandidateVelocity": -1.375,
+  "candidateMaxAbsoluteResidual": 0.625,
+  "priorVelocity": -1.25,
+  "priorMaxAbsoluteResidual": 9.25,
+  "cameraAssumingBridge512": 380,
+  "samples": [
+    {
+      "tick": 10598,
+      "nativeFrame": 79614,
+      "x": 602,
+      "y": 112,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01961-tick-10598-frame-079614.png",
+      "sha256": "c371089f705b4a876874d1c519af59a5c2657592227adb6ab876272c151c497d",
+      "elapsedNativeFrames": 0,
+      "candidateResidual": 0.0,
+      "prior125Residual": 0.0
+    },
+    {
+      "tick": 10599,
+      "nativeFrame": 79622,
+      "x": 591,
+      "y": 120,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01962-tick-10599-frame-079622.png",
+      "sha256": "eaf700636c8b37dbd5857816f7f3094aa6a0f9844ddc0177f9a43455bb66c17a",
+      "elapsedNativeFrames": 8,
+      "candidateResidual": 0.0,
+      "prior125Residual": -1.0
+    },
+    {
+      "tick": 10600,
+      "nativeFrame": 79629,
+      "x": 582,
+      "y": 127,
+      "phase": 1,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01963-tick-10600-frame-079629.png",
+      "sha256": "106fb50752f78947d49ef48b4a520739251b4db1d919d610175dd46006c40b23",
+      "elapsedNativeFrames": 15,
+      "candidateResidual": 0.625,
+      "prior125Residual": -1.25
+    },
+    {
+      "tick": 10601,
+      "nativeFrame": 79637,
+      "x": 571,
+      "y": 135,
+      "phase": 1,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01964-tick-10601-frame-079637.png",
+      "sha256": "475aa6e016763ac473e6cbfd92f28663f6e95fc1010c3828f0ffe9351e0fa167",
+      "elapsedNativeFrames": 23,
+      "candidateResidual": 0.625,
+      "prior125Residual": -2.25
+    },
+    {
+      "tick": 10602,
+      "nativeFrame": 79644,
+      "x": 561,
+      "y": 142,
+      "phase": 1,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01965-tick-10602-frame-079644.png",
+      "sha256": "bbb76431b75de0468f5ba8ec484b510a792e7625b29af8955fcdfa0227c24be7",
+      "elapsedNativeFrames": 30,
+      "candidateResidual": 0.25,
+      "prior125Residual": -3.5
+    },
+    {
+      "tick": 10603,
+      "nativeFrame": 79652,
+      "x": 550,
+      "y": 145,
+      "phase": 1,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01966-tick-10603-frame-079652.png",
+      "sha256": "f0776d70866f48d0adfe27ddb1ebc863925302825349ed0c00e9255dced62c29",
+      "elapsedNativeFrames": 38,
+      "candidateResidual": 0.25,
+      "prior125Residual": -4.5
+    },
+    {
+      "tick": 10604,
+      "nativeFrame": 79659,
+      "x": 540,
+      "y": 145,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01967-tick-10604-frame-079659.png",
+      "sha256": "42abc0ba3410b45f9e85de49438c8f4fc343bac4a48d47ca788453918bf8da3e",
+      "elapsedNativeFrames": 45,
+      "candidateResidual": -0.125,
+      "prior125Residual": -5.75
+    },
+    {
+      "tick": 10605,
+      "nativeFrame": 79667,
+      "x": 529,
+      "y": 145,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01968-tick-10605-frame-079667.png",
+      "sha256": "5dbff9bb67c6222a249633f142fc12d15c86d76ea85ffaa6018e5a43573571ce",
+      "elapsedNativeFrames": 53,
+      "candidateResidual": -0.125,
+      "prior125Residual": -6.75
+    },
+    {
+      "tick": 10606,
+      "nativeFrame": 79674,
+      "x": 520,
+      "y": 145,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01969-tick-10606-frame-079674.png",
+      "sha256": "83c698a9a648fb30f936098532cf3840b5f79e8d730efc04bea6ab5af11a57b6",
+      "elapsedNativeFrames": 60,
+      "candidateResidual": 0.5,
+      "prior125Residual": -7.0
+    },
+    {
+      "tick": 10607,
+      "nativeFrame": 79682,
+      "x": 509,
+      "y": 145,
+      "phase": 0,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01970-tick-10607-frame-079682.png",
+      "sha256": "32ff6081990e925f0ac26b8a7e2797a17a089227771db6a258a68a46b0375bb7",
+      "elapsedNativeFrames": 68,
+      "candidateResidual": 0.5,
+      "prior125Residual": -8.0
+    },
+    {
+      "tick": 10608,
+      "nativeFrame": 79689,
+      "x": 499,
+      "y": 145,
+      "phase": 1,
+      "image": "evidence/local/eight-four-early-flame-air-reversal-2026-11-07T05-22-37-234076Z/01971-tick-10608-frame-079689.png",
+      "sha256": "f3da2d8720576d3f71ae28d2ac97de5fe9c3e90e1f9397b71b8f554e79357d3f",
+      "elapsedNativeFrames": 75,
+      "candidateResidual": 0.125,
+      "prior125Residual": -9.25
+    }
+  ],
+  "limitations": [
+    "Same standard-start prefix and one new controlled branch; samples are a likely distinct projectile, not native object IDs.",
+    "Absolute camera/world x is conditional on compiled bridge x512.",
+    "Visible near Bowser; firing actor, launch instant and source remain unobserved.",
+    "Fixed-color exact matches exclude partial or occluded sprites.",
+    "No 32-level run or production gameplay is represented."
+  ]
+}

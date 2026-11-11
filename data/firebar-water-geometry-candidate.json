@@ -1,0 +1,3263 @@
+{
+  "schema": "8-4-water-firebar-geometry-candidate-v1",
+  "frozenUtc": "2026-11-06T02:02:14.654566+00:00",
+  "scope": "Guarded five-object identity/geometry proposal only; no source/compiler/runtime edits. Root currently retains all seven survey candidates pending review.",
+  "sourceArea": "area-3",
+  "actualArea": "area-4",
+  "expectedOriginalSpecs": [
+    {
+      "x": 328,
+      "y": 120,
+      "length": 6,
+      "speed": 0.03244
+    },
+    {
+      "x": 504,
+      "y": 168,
+      "length": 6,
+      "speed": -0.03106
+    },
+    {
+      "x": 648,
+      "y": 104,
+      "length": 6,
+      "speed": 0.03106
+    },
+    {
+      "x": 840,
+      "y": 136,
+      "length": 6,
+      "speed": 0.03276
+    },
+    {
+      "x": 920,
+      "y": 136,
+      "length": 6,
+      "speed": 0.03276
+    },
+    {
+      "x": 952,
+      "y": 136,
+      "length": 6,
+      "speed": 0.032
+    },
+    {
+      "x": 968,
+      "y": 120,
+      "length": 6,
+      "speed": -0.0321
+    }
+  ],
+  "expectedOriginalSpecsSHA256": "1c0eb8fc877d4145f18065c2a26b5c3837e81317eaa07a50ffaca6e9e1bccbf4",
+  "objects": [
+    {
+      "x": 328,
+      "y": 120,
+      "length": 6,
+      "direction": 1,
+      "geometryStatus": "independently anchored source position",
+      "sourcePoseCount": 21,
+      "maxMatchingOrbsInOneImage": 6,
+      "sourceTicks": [
+        10437,
+        10438,
+        10439,
+        10440,
+        10441,
+        10442,
+        10443,
+        10444,
+        10445,
+        10446,
+        10447,
+        10448,
+        10449,
+        10450,
+        10451,
+        10452,
+        10453,
+        10454,
+        10455,
+        10456,
+        10457
+      ],
+      "motorStatus": "full fresh heldout clock qualification",
+      "angularReadings": [
+        {
+          "tick": 10437,
+          "nativeFrame": 78405,
+          "phase": 25,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10438,
+          "nativeFrame": 78412,
+          "phase": 26,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10439,
+          "nativeFrame": 78420,
+          "phase": 28,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10440,
+          "nativeFrame": 78427,
+          "phase": 29,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10441,
+          "nativeFrame": 78435,
+          "phase": 30,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10442,
+          "nativeFrame": 78442,
+          "phase": 31,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10443,
+          "nativeFrame": 78450,
+          "phase": 0,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10444,
+          "nativeFrame": 78457,
+          "phase": 1,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10445,
+          "nativeFrame": 78465,
+          "phase": 3,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10446,
+          "nativeFrame": 78472,
+          "phase": 4,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10447,
+          "nativeFrame": 78480,
+          "phase": 5,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10448,
+          "nativeFrame": 78487,
+          "phase": 6,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10449,
+          "nativeFrame": 78495,
+          "phase": 7,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10450,
+          "nativeFrame": 78502,
+          "phase": 8,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10451,
+          "nativeFrame": 78510,
+          "phase": 10,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10452,
+          "nativeFrame": 78517,
+          "phase": 11,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10453,
+          "nativeFrame": 78525,
+          "phase": 12,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10454,
+          "nativeFrame": 78532,
+          "phase": 13,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10455,
+          "nativeFrame": 78540,
+          "phase": 14,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10456,
+          "nativeFrame": 78547,
+          "phase": 15,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10457,
+          "nativeFrame": 78555,
+          "phase": 17,
+          "matchingOrbs": 3
+        }
+      ]
+    },
+    {
+      "x": 504,
+      "y": 168,
+      "length": 6,
+      "direction": -1,
+      "geometryStatus": "independently anchored source position",
+      "sourcePoseCount": 22,
+      "maxMatchingOrbsInOneImage": 6,
+      "sourceTicks": [
+        10452,
+        10453,
+        10454,
+        10455,
+        10456,
+        10457,
+        10458,
+        10459,
+        10460,
+        10461,
+        10462,
+        10463,
+        10464,
+        10465,
+        10466,
+        10467,
+        10468,
+        10469,
+        10470,
+        10471,
+        10472,
+        10473
+      ],
+      "motorStatus": "initial phase unqualified; direction/length observed, shared motor class inferred",
+      "angularReadings": [
+        {
+          "tick": 10452,
+          "nativeFrame": 78517,
+          "phase": 23,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10453,
+          "nativeFrame": 78525,
+          "phase": 21,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10454,
+          "nativeFrame": 78532,
+          "phase": 20,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10455,
+          "nativeFrame": 78540,
+          "phase": 19,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10456,
+          "nativeFrame": 78547,
+          "phase": 18,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10457,
+          "nativeFrame": 78555,
+          "phase": 17,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10458,
+          "nativeFrame": 78562,
+          "phase": 16,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10459,
+          "nativeFrame": 78570,
+          "phase": 14,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10460,
+          "nativeFrame": 78577,
+          "phase": 13,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10461,
+          "nativeFrame": 78585,
+          "phase": 12,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10462,
+          "nativeFrame": 78592,
+          "phase": 11,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10463,
+          "nativeFrame": 78600,
+          "phase": 10,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10464,
+          "nativeFrame": 78607,
+          "phase": 9,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10465,
+          "nativeFrame": 78615,
+          "phase": 7,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10466,
+          "nativeFrame": 78622,
+          "phase": 6,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10467,
+          "nativeFrame": 78630,
+          "phase": 5,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10468,
+          "nativeFrame": 78637,
+          "phase": 4,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10469,
+          "nativeFrame": 78645,
+          "phase": 3,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10470,
+          "nativeFrame": 78653,
+          "phase": 1,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10471,
+          "nativeFrame": 78660,
+          "phase": 0,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10472,
+          "nativeFrame": 78668,
+          "phase": 31,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10473,
+          "nativeFrame": 78675,
+          "phase": 30,
+          "matchingOrbs": 6
+        }
+      ]
+    },
+    {
+      "x": 648,
+      "y": 104,
+      "length": 6,
+      "direction": 1,
+      "geometryStatus": "independently anchored source position",
+      "sourcePoseCount": 22,
+      "maxMatchingOrbsInOneImage": 6,
+      "sourceTicks": [
+        10465,
+        10466,
+        10467,
+        10468,
+        10469,
+        10470,
+        10471,
+        10472,
+        10473,
+        10474,
+        10475,
+        10476,
+        10477,
+        10478,
+        10479,
+        10480,
+        10481,
+        10482,
+        10483,
+        10484,
+        10485,
+        10486
+      ],
+      "motorStatus": "initial phase unqualified; direction/length observed, shared motor class inferred",
+      "angularReadings": [
+        {
+          "tick": 10465,
+          "nativeFrame": 78615,
+          "phase": 25,
+          "matchingOrbs": 3
+        },
+        {
+          "tick": 10466,
+          "nativeFrame": 78622,
+          "phase": 26,
+          "matchingOrbs": 3
+        },
+        {
+          "tick": 10467,
+          "nativeFrame": 78630,
+          "phase": 27,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10468,
+          "nativeFrame": 78637,
+          "phase": 28,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10469,
+          "nativeFrame": 78645,
+          "phase": 29,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10470,
+          "nativeFrame": 78653,
+          "phase": 31,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10471,
+          "nativeFrame": 78660,
+          "phase": 0,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10472,
+          "nativeFrame": 78668,
+          "phase": 1,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10473,
+          "nativeFrame": 78675,
+          "phase": 2,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10474,
+          "nativeFrame": 78683,
+          "phase": 3,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10475,
+          "nativeFrame": 78690,
+          "phase": 4,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10476,
+          "nativeFrame": 78698,
+          "phase": 6,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10477,
+          "nativeFrame": 78705,
+          "phase": 7,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10478,
+          "nativeFrame": 78713,
+          "phase": 8,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10479,
+          "nativeFrame": 78720,
+          "phase": 9,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10480,
+          "nativeFrame": 78728,
+          "phase": 10,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10481,
+          "nativeFrame": 78735,
+          "phase": 11,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10482,
+          "nativeFrame": 78743,
+          "phase": 13,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10483,
+          "nativeFrame": 78750,
+          "phase": 14,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10484,
+          "nativeFrame": 78758,
+          "phase": 15,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10485,
+          "nativeFrame": 78765,
+          "phase": 16,
+          "matchingOrbs": 3
+        },
+        {
+          "tick": 10486,
+          "nativeFrame": 78773,
+          "phase": 17,
+          "matchingOrbs": 2
+        }
+      ]
+    },
+    {
+      "x": 904,
+      "y": 136,
+      "length": 6,
+      "direction": 1,
+      "geometryStatus": "late X inferred from16-pixel center grid and exact floor texture residue; relative128 separation independently observed",
+      "sourcePoseCount": 28,
+      "maxMatchingOrbsInOneImage": 6,
+      "sourceTicks": [
+        10488,
+        10489,
+        10490,
+        10491,
+        10492,
+        10493,
+        10494,
+        10495,
+        10496,
+        10497,
+        10498,
+        10499,
+        10500,
+        10501,
+        10502,
+        10503,
+        10504,
+        10505,
+        10506,
+        10507,
+        10508,
+        10509,
+        10511,
+        10512,
+        10513,
+        10514,
+        10515,
+        10516
+      ],
+      "motorStatus": "initial phase unqualified; direction/length observed, shared motor class inferred",
+      "angularReadings": [
+        {
+          "tick": 10488,
+          "nativeFrame": 78788,
+          "phase": 27,
+          "matchingOrbs": 2
+        },
+        {
+          "tick": 10489,
+          "nativeFrame": 78795,
+          "phase": 28,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10490,
+          "nativeFrame": 78803,
+          "phase": 29,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10491,
+          "nativeFrame": 78810,
+          "phase": 31,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10492,
+          "nativeFrame": 78818,
+          "phase": 0,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10493,
+          "nativeFrame": 78825,
+          "phase": 1,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10494,
+          "nativeFrame": 78833,
+          "phase": 2,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10495,
+          "nativeFrame": 78840,
+          "phase": 3,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10496,
+          "nativeFrame": 78848,
+          "phase": 4,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10497,
+          "nativeFrame": 78855,
+          "phase": 6,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10498,
+          "nativeFrame": 78863,
+          "phase": 7,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10499,
+          "nativeFrame": 78870,
+          "phase": 8,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10500,
+          "nativeFrame": 78878,
+          "phase": 9,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10501,
+          "nativeFrame": 78885,
+          "phase": 10,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10502,
+          "nativeFrame": 78893,
+          "phase": 11,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10503,
+          "nativeFrame": 78900,
+          "phase": 13,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10504,
+          "nativeFrame": 78908,
+          "phase": 14,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10505,
+          "nativeFrame": 78915,
+          "phase": 15,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10506,
+          "nativeFrame": 78923,
+          "phase": 16,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10507,
+          "nativeFrame": 78930,
+          "phase": 17,
+          "matchingOrbs": 4
+        },
+        {
+          "tick": 10508,
+          "nativeFrame": 78938,
+          "phase": 19,
+          "matchingOrbs": 3
+        },
+        {
+          "tick": 10509,
+          "nativeFrame": 78945,
+          "phase": 20,
+          "matchingOrbs": 2
+        },
+        {
+          "tick": 10511,
+          "nativeFrame": 78961,
+          "phase": 22,
+          "matchingOrbs": 2
+        },
+        {
+          "tick": 10512,
+          "nativeFrame": 78968,
+          "phase": 23,
+          "matchingOrbs": 3
+        },
+        {
+          "tick": 10513,
+          "nativeFrame": 78976,
+          "phase": 24,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10514,
+          "nativeFrame": 78983,
+          "phase": 26,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10515,
+          "nativeFrame": 78991,
+          "phase": 27,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10516,
+          "nativeFrame": 78998,
+          "phase": 28,
+          "matchingOrbs": 6
+        }
+      ]
+    },
+    {
+      "x": 1032,
+      "y": 120,
+      "length": 6,
+      "direction": -1,
+      "geometryStatus": "late X inferred from16-pixel center grid and exact floor texture residue; relative128 separation independently observed",
+      "sourcePoseCount": 17,
+      "maxMatchingOrbsInOneImage": 6,
+      "sourceTicks": [
+        10500,
+        10501,
+        10502,
+        10503,
+        10504,
+        10505,
+        10506,
+        10507,
+        10508,
+        10509,
+        10510,
+        10511,
+        10512,
+        10513,
+        10514,
+        10515,
+        10516
+      ],
+      "motorStatus": "initial phase unqualified; direction/length observed, shared motor class inferred",
+      "angularReadings": [
+        {
+          "tick": 10500,
+          "nativeFrame": 78878,
+          "phase": 26,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10501,
+          "nativeFrame": 78885,
+          "phase": 25,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10502,
+          "nativeFrame": 78893,
+          "phase": 24,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10503,
+          "nativeFrame": 78900,
+          "phase": 23,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10504,
+          "nativeFrame": 78908,
+          "phase": 22,
+          "matchingOrbs": 5
+        },
+        {
+          "tick": 10505,
+          "nativeFrame": 78915,
+          "phase": 21,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10506,
+          "nativeFrame": 78923,
+          "phase": 19,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10507,
+          "nativeFrame": 78930,
+          "phase": 18,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10508,
+          "nativeFrame": 78938,
+          "phase": 17,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10509,
+          "nativeFrame": 78945,
+          "phase": 16,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10510,
+          "nativeFrame": 78953,
+          "phase": 15,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10511,
+          "nativeFrame": 78961,
+          "phase": 13,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10512,
+          "nativeFrame": 78968,
+          "phase": 12,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10513,
+          "nativeFrame": 78976,
+          "phase": 11,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10514,
+          "nativeFrame": 78983,
+          "phase": 10,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10515,
+          "nativeFrame": 78991,
+          "phase": 9,
+          "matchingOrbs": 6
+        },
+        {
+          "tick": 10516,
+          "nativeFrame": 78998,
+          "phase": 8,
+          "matchingOrbs": 6
+        }
+      ]
+    }
+  ],
+  "originalToObserved": [
+    {
+      "original": {
+        "x": 328,
+        "y": 120,
+        "length": 6,
+        "speed": 0.03244
+      },
+      "observedUniqueIndex": 0,
+      "relationship": "same directly observed pivot"
+    },
+    {
+      "original": {
+        "x": 504,
+        "y": 168,
+        "length": 6,
+        "speed": -0.03106
+      },
+      "observedUniqueIndex": 1,
+      "relationship": "same directly observed pivot"
+    },
+    {
+      "original": {
+        "x": 648,
+        "y": 104,
+        "length": 6,
+        "speed": 0.03106
+      },
+      "observedUniqueIndex": 2,
+      "relationship": "same directly observed pivot"
+    },
+    {
+      "original": {
+        "x": 840,
+        "y": 136,
+        "length": 6,
+        "speed": 0.03276
+      },
+      "observedUniqueIndex": 3,
+      "relationship": "alias fragment of same late y136 bar"
+    },
+    {
+      "original": {
+        "x": 920,
+        "y": 136,
+        "length": 6,
+        "speed": 0.03276
+      },
+      "observedUniqueIndex": 3,
+      "relationship": "alias fragment of same late y136 bar"
+    },
+    {
+      "original": {
+        "x": 952,
+        "y": 136,
+        "length": 6,
+        "speed": 0.032
+      },
+      "observedUniqueIndex": 3,
+      "relationship": "alias fragment of same late y136 bar"
+    },
+    {
+      "original": {
+        "x": 968,
+        "y": 120,
+        "length": 6,
+        "speed": -0.0321
+      },
+      "observedUniqueIndex": 4,
+      "relationship": "late y120 bar; coordinate remains inferred"
+    }
+  ],
+  "lateAbsoluteXSelection": {
+    "beforeTick": 10488,
+    "beforeCamera": 658,
+    "nextTick": 10489,
+    "sourceCoreCenter": [
+      235,
+      137
+    ],
+    "exactFloorRGBResidueDeltas": [
+      3,
+      11,
+      19
+    ],
+    "candidateCoordinates": [
+      {
+        "delta": 3,
+        "camera": 661,
+        "pivot": [
+          896,
+          136
+        ]
+      },
+      {
+        "delta": 11,
+        "camera": 669,
+        "pivot": [
+          904,
+          136
+        ]
+      },
+      {
+        "delta": 19,
+        "camera": 677,
+        "pivot": [
+          912,
+          136
+        ]
+      }
+    ],
+    "selected": {
+      "delta": 11,
+      "camera": 669,
+      "pivot": [
+        904,
+        136
+      ]
+    },
+    "inference": "Pivots lie at16-pixel cell centers(x=8mod16), as independently observed for first three. This grid rule selects one camera residue within native motion bound; it is an inference, not an emulator position API.",
+    "conservativeAbsoluteUncertaintyPixels": 16,
+    "relativeLastTwoSeparation": [
+      128,
+      -16
+    ]
+  },
+  "lateCameraChain": [
+    {
+      "tick": 10490,
+      "camera": 681,
+      "stationaryPivotVotes": {
+        "681": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10491,
+      "camera": 691,
+      "stationaryPivotVotes": {
+        "691": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10492,
+      "camera": 703,
+      "stationaryPivotVotes": {
+        "703": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10493,
+      "camera": 714,
+      "stationaryPivotVotes": {
+        "714": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10494,
+      "camera": 726,
+      "stationaryPivotVotes": {
+        "726": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10495,
+      "camera": 736,
+      "stationaryPivotVotes": {
+        "736": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10496,
+      "camera": 748,
+      "stationaryPivotVotes": {
+        "748": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10497,
+      "camera": 759,
+      "stationaryPivotVotes": {
+        "759": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10498,
+      "camera": 771,
+      "stationaryPivotVotes": {
+        "771": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10499,
+      "camera": 781,
+      "stationaryPivotVotes": {
+        "781": [
+          [
+            904,
+            137
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10500,
+      "camera": 793,
+      "stationaryPivotVotes": {
+        "793": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10501,
+      "camera": 804,
+      "stationaryPivotVotes": {
+        "804": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10502,
+      "camera": 816,
+      "stationaryPivotVotes": {
+        "816": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10503,
+      "camera": 826,
+      "stationaryPivotVotes": {
+        "826": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10504,
+      "camera": 838,
+      "stationaryPivotVotes": {
+        "838": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10505,
+      "camera": 849,
+      "stationaryPivotVotes": {
+        "849": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10506,
+      "camera": 861,
+      "stationaryPivotVotes": {
+        "861": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10507,
+      "camera": 871,
+      "stationaryPivotVotes": {
+        "871": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10508,
+      "camera": 883,
+      "stationaryPivotVotes": {
+        "883": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10509,
+      "camera": 894,
+      "stationaryPivotVotes": {
+        "894": [
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10510,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10511,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10512,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10513,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10514,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10515,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 10516,
+      "camera": 897,
+      "stationaryPivotVotes": {
+        "897": [
+          [
+            904,
+            137
+          ],
+          [
+            1032,
+            121
+          ]
+        ]
+      }
+    }
+  ],
+  "explainedSourceOrbs": 600,
+  "sourceOrbDetections": 607,
+  "unexplained": [
+    {
+      "tick": 10458,
+      "points": [
+        [
+          9,
+          121
+        ]
+      ]
+    },
+    {
+      "tick": 10466,
+      "points": [
+        [
+          249,
+          76
+        ],
+        [
+          252,
+          68
+        ]
+      ]
+    },
+    {
+      "tick": 10467,
+      "points": [
+        [
+          247,
+          72
+        ]
+      ]
+    },
+    {
+      "tick": 10468,
+      "points": [
+        [
+          243,
+          77
+        ]
+      ]
+    },
+    {
+      "tick": 10499,
+      "points": [
+        [
+          251,
+          121
+        ]
+      ]
+    },
+    {
+      "tick": 10510,
+      "points": [
+        [
+          7,
+          137
+        ]
+      ]
+    }
+  ],
+  "evidence": {
+    "source": "evidence/local/reference-campaign-dense/trace.jsonl",
+    "cameraChain": "data/firebar-water-pivot-chain.json",
+    "terrainPatches": "data/firebar-water-boundary-registration.json",
+    "firstMotorHeldout": "evidence/firebar-water-heldout-validation.json"
+  },
+  "limits": [
+    "The original seven list was a set of inferred fragments, not a verified count. Its three late y136 fragments form one continuous observed source ray; no three simultaneous y136 pivots are present.",
+    "First three absolute centers are directly chained from room camera0. Late absolute904/1032 use a grid inference across a featureless region; do not mark them quantitatively exact until independently reanchored.",
+    "The source ray identities, opposite late rotation directions and128-pixel co-occurrence separation are stronger than late absolute X.",
+    "No claim of pixel-perfect fullscene, collision dimensions, all initial phases or successful fullcampaign replay."
+  ],
+  "rows": [
+    {
+      "tick": 10425,
+      "nativeFrame": 78314,
+      "camera": 0,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10426-tick-10425.png",
+      "imageSHA256": "ff10fe35e833e9dfb0d1e2048ecf22e9b0076ff427e1f62a1a63f52a536681d0"
+    },
+    {
+      "tick": 10426,
+      "nativeFrame": 78322,
+      "camera": 0,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10427-tick-10426.png",
+      "imageSHA256": "67aa77493349788a727a8d2dff0373fe617f764a758b7f89c7a61ca665593cfc"
+    },
+    {
+      "tick": 10427,
+      "nativeFrame": 78329,
+      "camera": 1,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10428-tick-10427.png",
+      "imageSHA256": "0061eaacd9cf8573b5987b0a73c4ef254da9f1647b65a11ba3afa1b445e21c93"
+    },
+    {
+      "tick": 10428,
+      "nativeFrame": 78337,
+      "camera": 9,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10429-tick-10428.png",
+      "imageSHA256": "4d1dea9551b33902656d30c0e8f1f317a480683ffc542044c8bdef0549f6cb04"
+    },
+    {
+      "tick": 10429,
+      "nativeFrame": 78345,
+      "camera": 17,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10430-tick-10429.png",
+      "imageSHA256": "e151f6e19a803fb6ce1464f89c925cc1f9345fb335a6c3abc158a99605814a72"
+    },
+    {
+      "tick": 10430,
+      "nativeFrame": 78352,
+      "camera": 24,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10431-tick-10430.png",
+      "imageSHA256": "7e3646564cc0f7ba98ec13ea6e30765d49f2dbd5ec7814957d4eb36a8798a299"
+    },
+    {
+      "tick": 10431,
+      "nativeFrame": 78360,
+      "camera": 32,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10432-tick-10431.png",
+      "imageSHA256": "05e4d63d6115e8e4d7c23484e39cc962b1042ee7ffdceda3d631ab8d8542f285"
+    },
+    {
+      "tick": 10432,
+      "nativeFrame": 78367,
+      "camera": 39,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10433-tick-10432.png",
+      "imageSHA256": "fef4cb4cf6d572982773055306bd54bbd7d44f2b25e00f3a5556bc18e27de157"
+    },
+    {
+      "tick": 10433,
+      "nativeFrame": 78375,
+      "camera": 47,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10434-tick-10433.png",
+      "imageSHA256": "cf77e8d048720787abef75e6ea192dcf79a11ff7813a5c02d301814adadb4319"
+    },
+    {
+      "tick": 10434,
+      "nativeFrame": 78382,
+      "camera": 54,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10435-tick-10434.png",
+      "imageSHA256": "6af938b79a6f657f8346e81b8aceddda996159affc7e8e1682b610f03933e4e9"
+    },
+    {
+      "tick": 10435,
+      "nativeFrame": 78390,
+      "camera": 62,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10436-tick-10435.png",
+      "imageSHA256": "4719ebeaf0c138bbc0f841dd14a13e593b96c3600c667e3518126e92202a7102"
+    },
+    {
+      "tick": 10436,
+      "nativeFrame": 78397,
+      "camera": 72,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10437-tick-10436.png",
+      "imageSHA256": "ec786bf05b85b362bbba4b5fb8a3118c5f3f60793ac207aa24bcd0c8d1f1645e"
+    },
+    {
+      "tick": 10437,
+      "nativeFrame": 78405,
+      "camera": 84,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 5,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 25,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10438-tick-10437.png",
+      "imageSHA256": "5b50d63ac00f0860d94c0b19cde57244f2ec3dde931e6a9313c0f6a920d29ccd"
+    },
+    {
+      "tick": 10438,
+      "nativeFrame": 78412,
+      "camera": 94,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 5,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 26,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10439-tick-10438.png",
+      "imageSHA256": "ea28b4057a1c5092aac94b6552a7a46d644a64f0e223195b32b27c8e2a663359"
+    },
+    {
+      "tick": 10439,
+      "nativeFrame": 78420,
+      "camera": 106,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 28,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10440-tick-10439.png",
+      "imageSHA256": "102273b8344cb21ee2e3abf6dd46b09c5408d86342c0ddf1826673e7ed64bbed"
+    },
+    {
+      "tick": 10440,
+      "nativeFrame": 78427,
+      "camera": 117,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 29,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10441-tick-10440.png",
+      "imageSHA256": "7bd470a7223bd1865203cca8501c438a2ebcb947160ed18237cf5a06c7f72d3e"
+    },
+    {
+      "tick": 10441,
+      "nativeFrame": 78435,
+      "camera": 129,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 30,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10442-tick-10441.png",
+      "imageSHA256": "820d3e7e4bb1c11371c576641b8373aec502e32e1af960b4cf07122893dd4317"
+    },
+    {
+      "tick": 10442,
+      "nativeFrame": 78442,
+      "camera": 139,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 31,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10443-tick-10442.png",
+      "imageSHA256": "7142255da12ef03ee823faeef294f1358230fa477a8dd9f9f7d5c265e1fe3b17"
+    },
+    {
+      "tick": 10443,
+      "nativeFrame": 78450,
+      "camera": 151,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 0,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10444-tick-10443.png",
+      "imageSHA256": "673249a8482fe60fb9f745130275c08db6a1130499b6577ed11d0e7a905ffb62"
+    },
+    {
+      "tick": 10444,
+      "nativeFrame": 78457,
+      "camera": 162,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 1,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10445-tick-10444.png",
+      "imageSHA256": "c260f177419d105ffacd5bb49f8787b1b32f71b6df4fc12acf55ec0add20dbd7"
+    },
+    {
+      "tick": 10445,
+      "nativeFrame": 78465,
+      "camera": 174,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 3,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10446-tick-10445.png",
+      "imageSHA256": "f4714530d513192b06f3afca6dfca4e3beb0c834d2aff9d57ad4ca8f1df495c6"
+    },
+    {
+      "tick": 10446,
+      "nativeFrame": 78472,
+      "camera": 184,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 4,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10447-tick-10446.png",
+      "imageSHA256": "cca91a61fed015dd4d9045bf330a91605dc5adbb7c1944a5131953ed24defd1f"
+    },
+    {
+      "tick": 10447,
+      "nativeFrame": 78480,
+      "camera": 196,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 5,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10448-tick-10447.png",
+      "imageSHA256": "500edb4a4c999f3cc89864d086f5cc62fce923bfce79eeefc15d5ef40694042a"
+    },
+    {
+      "tick": 10448,
+      "nativeFrame": 78487,
+      "camera": 207,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 6,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10449-tick-10448.png",
+      "imageSHA256": "629c054f469a40cfcc859aa0cbc6ee37b2135e8e16966bd2bed4dde3be75fd63"
+    },
+    {
+      "tick": 10449,
+      "nativeFrame": 78495,
+      "camera": 219,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 7,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10450-tick-10449.png",
+      "imageSHA256": "c36f90881cba6cf17ccbc2aaceb86b0ab96c0c9ad49d0bd61f58aa2f76d43d98"
+    },
+    {
+      "tick": 10450,
+      "nativeFrame": 78502,
+      "camera": 229,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 8,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10451-tick-10450.png",
+      "imageSHA256": "a699865083b57d7abd29bc37a1088074025f098ea7154e335592a82b0e0abe19"
+    },
+    {
+      "tick": 10451,
+      "nativeFrame": 78510,
+      "camera": 241,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 10,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10452-tick-10451.png",
+      "imageSHA256": "7e909414edf921babdda87c3c826d4dc82862593a4af88678a240f8322e89bbb"
+    },
+    {
+      "tick": 10452,
+      "nativeFrame": 78517,
+      "camera": 252,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 11,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 23,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10453-tick-10452.png",
+      "imageSHA256": "dd543bca066ec7680a4f2c4b0ae86ad748efc7c6938e9e2c92f9cdbc6ce4dec2"
+    },
+    {
+      "tick": 10453,
+      "nativeFrame": 78525,
+      "camera": 264,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 12,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 21,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10454-tick-10453.png",
+      "imageSHA256": "74c0f4727ab7398dc2b57764c4c9c32bda97faed3a7529893fe9ab0b82513231"
+    },
+    {
+      "tick": 10454,
+      "nativeFrame": 78532,
+      "camera": 274,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 13,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 20,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10455-tick-10454.png",
+      "imageSHA256": "fd0f05f8fefe82078e8ecfd61b1bd52999311a9e7e06f89f50bc967a63b36dc6"
+    },
+    {
+      "tick": 10455,
+      "nativeFrame": 78540,
+      "camera": 286,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 14,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 19,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10456-tick-10455.png",
+      "imageSHA256": "2189a94ebd50997108362ab68471ea68e25bd88c228233bc50edd5219f1f57dc"
+    },
+    {
+      "tick": 10456,
+      "nativeFrame": 78547,
+      "camera": 297,
+      "sourceDetectionCount": 10,
+      "explainedDetectionCount": 10,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 15,
+          "matchingOrbs": 4,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 18,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10457-tick-10456.png",
+      "imageSHA256": "28a7adc5d6d03284cad328c9d079c25c73544e8bfddf08374a0fc6dc9ada8f37"
+    },
+    {
+      "tick": 10457,
+      "nativeFrame": 78555,
+      "camera": 309,
+      "sourceDetectionCount": 7,
+      "explainedDetectionCount": 7,
+      "bars": [
+        {
+          "bar": 0,
+          "phase": 17,
+          "matchingOrbs": 3,
+          "corePresent": true
+        },
+        {
+          "bar": 1,
+          "phase": 17,
+          "matchingOrbs": 4,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10458-tick-10457.png",
+      "imageSHA256": "24608460d554c4b17d73ab847793435abfff5fbb64f498082d514cf2d3df6229"
+    },
+    {
+      "tick": 10458,
+      "nativeFrame": 78562,
+      "camera": 319,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 4,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 16,
+          "matchingOrbs": 4,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          9,
+          121
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10459-tick-10458.png",
+      "imageSHA256": "c94391b850dccdd3afae57d3a44a5d539f1831061ec2040aca41be6051b02037"
+    },
+    {
+      "tick": 10459,
+      "nativeFrame": 78570,
+      "camera": 331,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 14,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10460-tick-10459.png",
+      "imageSHA256": "b712fbaee82b205bdcfb17f8efcc61d21789c8c694dfd387db9a546e6e6f8559"
+    },
+    {
+      "tick": 10460,
+      "nativeFrame": 78577,
+      "camera": 342,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 13,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10461-tick-10460.png",
+      "imageSHA256": "eca2fa55fea461ee9eb3502ec549c9d39333b8530d4aabfc362de52efae0f419"
+    },
+    {
+      "tick": 10461,
+      "nativeFrame": 78585,
+      "camera": 354,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 12,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10462-tick-10461.png",
+      "imageSHA256": "1752237bdb1cb1aa98f80e3a7650e114ece4d10466943a88c61563d51fab334d"
+    },
+    {
+      "tick": 10462,
+      "nativeFrame": 78592,
+      "camera": 364,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 11,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10463-tick-10462.png",
+      "imageSHA256": "bd1cf9db1e2a73eb6d8ee725aea8f34bd63647547acd78959e1a09f8ab2491ef"
+    },
+    {
+      "tick": 10463,
+      "nativeFrame": 78600,
+      "camera": 376,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 10,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10464-tick-10463.png",
+      "imageSHA256": "3377e9ae7af990a882f6f1d379638b38c7fb56b37f4017e7bcb305eb7c6c4b24"
+    },
+    {
+      "tick": 10464,
+      "nativeFrame": 78607,
+      "camera": 387,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 9,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10465-tick-10464.png",
+      "imageSHA256": "36820c75b1fa36a099b722be60e24c078c537ad5f75d53f0c6dac05364b190d4"
+    },
+    {
+      "tick": 10465,
+      "nativeFrame": 78615,
+      "camera": 399,
+      "sourceDetectionCount": 9,
+      "explainedDetectionCount": 9,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 7,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 25,
+          "matchingOrbs": 3,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10466-tick-10465.png",
+      "imageSHA256": "a8a9d1561882c47d90df7686adf2573c8002e1606afcf85b7c104c2517a6f745"
+    },
+    {
+      "tick": 10466,
+      "nativeFrame": 78622,
+      "camera": 409,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 9,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 6,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 26,
+          "matchingOrbs": 3,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          249,
+          76
+        ],
+        [
+          252,
+          68
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10467-tick-10466.png",
+      "imageSHA256": "44d5c66df87e15c85c7cd5d16bf2a96aaead2d64eab08fe2b21788ac3f4b4b93"
+    },
+    {
+      "tick": 10467,
+      "nativeFrame": 78630,
+      "camera": 421,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 10,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 5,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 27,
+          "matchingOrbs": 4,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          247,
+          72
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10468-tick-10467.png",
+      "imageSHA256": "1bd297106a4b95ca51e98af71b969e15e0784d892a53c3f8583ca0dcf04586e2"
+    },
+    {
+      "tick": 10468,
+      "nativeFrame": 78637,
+      "camera": 432,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 10,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 4,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 28,
+          "matchingOrbs": 4,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          243,
+          77
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10469-tick-10468.png",
+      "imageSHA256": "19f68c7e85298d574544c759a12fb0bb788e7035705a0ff92d928f4d6b40ef1b"
+    },
+    {
+      "tick": 10469,
+      "nativeFrame": 78645,
+      "camera": 444,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 3,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 29,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10470-tick-10469.png",
+      "imageSHA256": "d7b2b1b841ad926ba75768b400557169dc7ea6c69fb604ed96388320d59fec1a"
+    },
+    {
+      "tick": 10470,
+      "nativeFrame": 78653,
+      "camera": 456,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 1,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 31,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10471-tick-10470.png",
+      "imageSHA256": "6ba9873171bc125b613436469e569a0f586ecd06ed19a19c2f59b6a85b859bba"
+    },
+    {
+      "tick": 10471,
+      "nativeFrame": 78660,
+      "camera": 466,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 0,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 0,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10472-tick-10471.png",
+      "imageSHA256": "6bad9b6150eef741cece4c2613adc210977b6590482f8bf3e320635a15969cbe"
+    },
+    {
+      "tick": 10472,
+      "nativeFrame": 78668,
+      "camera": 478,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 31,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 1,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10473-tick-10472.png",
+      "imageSHA256": "5d2029dfe49e6f517dfb9ffee3e7a2662a8e88a020f6386ef1006a4220a69f60"
+    },
+    {
+      "tick": 10473,
+      "nativeFrame": 78675,
+      "camera": 489,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 1,
+          "phase": 30,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 2,
+          "phase": 2,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10474-tick-10473.png",
+      "imageSHA256": "590e0c2cbb9a2bc6fe88f40e975c33dd5c846747c8336eee2fd9fe877e4afb3b"
+    },
+    {
+      "tick": 10474,
+      "nativeFrame": 78683,
+      "camera": 501,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 3,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10475-tick-10474.png",
+      "imageSHA256": "a2ec00c16d7c3fe82db2b3a13c33e78f993cf0db8dfd47b3a60444da4a6a1202"
+    },
+    {
+      "tick": 10475,
+      "nativeFrame": 78690,
+      "camera": 511,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 4,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10476-tick-10475.png",
+      "imageSHA256": "6ac36f41e4260d6e69493e2df1d4bc86bbe00e1198ace22fa56e3d8440f2a312"
+    },
+    {
+      "tick": 10476,
+      "nativeFrame": 78698,
+      "camera": 523,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 6,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10477-tick-10476.png",
+      "imageSHA256": "e11f6c8af2d2887b61aa3c7962ad26fa4d2cb77fd61e09bb14e010b0b64b67ec"
+    },
+    {
+      "tick": 10477,
+      "nativeFrame": 78705,
+      "camera": 534,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 5,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 7,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10478-tick-10477.png",
+      "imageSHA256": "804e48d859218ebcebb52675bb58d15ce29ef8f771d84529e254098638d7a958"
+    },
+    {
+      "tick": 10478,
+      "nativeFrame": 78713,
+      "camera": 546,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 8,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10479-tick-10478.png",
+      "imageSHA256": "28f0e9def27ee1b652001dc251168b4379f16a6e3f659c1640317b995084de58"
+    },
+    {
+      "tick": 10479,
+      "nativeFrame": 78720,
+      "camera": 556,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 9,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10480-tick-10479.png",
+      "imageSHA256": "624a4e28b93a84805b89c08d04c970e07b2fcd8a575382ca48115e9f0a94727d"
+    },
+    {
+      "tick": 10480,
+      "nativeFrame": 78728,
+      "camera": 568,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 10,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10481-tick-10480.png",
+      "imageSHA256": "48c67c379bcca8070b442f6777745f9b86e80d0f3455190bbc2e56009a4a2bdf"
+    },
+    {
+      "tick": 10481,
+      "nativeFrame": 78735,
+      "camera": 579,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 11,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10482-tick-10481.png",
+      "imageSHA256": "8b1f008946223e5bace472bebecccffdac41deb7509ee0f02d6ff8fb16e7a138"
+    },
+    {
+      "tick": 10482,
+      "nativeFrame": 78743,
+      "camera": 591,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 13,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10483-tick-10482.png",
+      "imageSHA256": "5e3fee291e759a6027bc01eb8ce70a2ee6a55a5aacc681982913a39bea8e72f1"
+    },
+    {
+      "tick": 10483,
+      "nativeFrame": 78750,
+      "camera": 601,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 14,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10484-tick-10483.png",
+      "imageSHA256": "b16f2522c0136119335e120b9882405c8c13a86a3567c205d37ac2b8e1382eea"
+    },
+    {
+      "tick": 10484,
+      "nativeFrame": 78758,
+      "camera": 613,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 5,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 15,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10485-tick-10484.png",
+      "imageSHA256": "27a901f6a6bc6e2807a39fb8402e441378c38a187e8d2d5dd3bb17567c2b4e2a"
+    },
+    {
+      "tick": 10485,
+      "nativeFrame": 78765,
+      "camera": 624,
+      "sourceDetectionCount": 3,
+      "explainedDetectionCount": 3,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 16,
+          "matchingOrbs": 3,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10486-tick-10485.png",
+      "imageSHA256": "80adb34423d28874dfc7150a28cf00ed297fe28d5d69711bc6886889647b9697"
+    },
+    {
+      "tick": 10486,
+      "nativeFrame": 78773,
+      "camera": 636,
+      "sourceDetectionCount": 2,
+      "explainedDetectionCount": 2,
+      "bars": [
+        {
+          "bar": 2,
+          "phase": 17,
+          "matchingOrbs": 2,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10487-tick-10486.png",
+      "imageSHA256": "141379cb11982a6d16fddb70eefeabe25247b8bf3341be04236a28eb36bf25ba"
+    },
+    {
+      "tick": 10487,
+      "nativeFrame": 78780,
+      "camera": 646,
+      "sourceDetectionCount": 0,
+      "explainedDetectionCount": 0,
+      "bars": [],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10488-tick-10487.png",
+      "imageSHA256": "93fbe5f606302aca968324b0d68670ccdf1a112b4e1f51f7666a485754007948"
+    },
+    {
+      "tick": 10488,
+      "nativeFrame": 78788,
+      "camera": 658,
+      "sourceDetectionCount": 2,
+      "explainedDetectionCount": 2,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 27,
+          "matchingOrbs": 2,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10489-tick-10488.png",
+      "imageSHA256": "f8042e8666105dc2b57e47a35eda485b89981d5fd6f92830f7d298c2fda9add1"
+    },
+    {
+      "tick": 10489,
+      "nativeFrame": 78795,
+      "camera": 669,
+      "sourceDetectionCount": 4,
+      "explainedDetectionCount": 4,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 28,
+          "matchingOrbs": 4,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10490-tick-10489.png",
+      "imageSHA256": "8648d049c0911e5657341de94f65a87edaf27888c9ec1b47645cce4f5b4b1773"
+    },
+    {
+      "tick": 10490,
+      "nativeFrame": 78803,
+      "camera": 681,
+      "sourceDetectionCount": 5,
+      "explainedDetectionCount": 5,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 29,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10491-tick-10490.png",
+      "imageSHA256": "762358845e32047b47407ed39afdf7ddf020894e0dc8fbea5a165a2c717b0e9c"
+    },
+    {
+      "tick": 10491,
+      "nativeFrame": 78810,
+      "camera": 691,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 31,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10492-tick-10491.png",
+      "imageSHA256": "0828137a422b81842cfa403d0d0f0d4f9edc29b2e7239d3af136f529cc5d9bc9"
+    },
+    {
+      "tick": 10492,
+      "nativeFrame": 78818,
+      "camera": 703,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 0,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10493-tick-10492.png",
+      "imageSHA256": "0f642ef19848fed149928e9d947dda5e7fa2bdfda947f9df4707f2b516539956"
+    },
+    {
+      "tick": 10493,
+      "nativeFrame": 78825,
+      "camera": 714,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 1,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10494-tick-10493.png",
+      "imageSHA256": "1385b0cf1662382ba776a9f42a13ebcd2cee7ca57d242b1654fe013a59b10b60"
+    },
+    {
+      "tick": 10494,
+      "nativeFrame": 78833,
+      "camera": 726,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 2,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10495-tick-10494.png",
+      "imageSHA256": "adb93936ee335e646ddade8e7838657db5bcfb0e76c7f9df13c8753e356cb665"
+    },
+    {
+      "tick": 10495,
+      "nativeFrame": 78840,
+      "camera": 736,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 3,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10496-tick-10495.png",
+      "imageSHA256": "e659e85c783f8322e05517b550e5a0d26d4d76d08d071251b9b5947c8e90d4a0"
+    },
+    {
+      "tick": 10496,
+      "nativeFrame": 78848,
+      "camera": 748,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 4,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10497-tick-10496.png",
+      "imageSHA256": "8284b2ccc40f44df4eee806da3d0fe3df130946d88ca4cb8ae9084afdcfbab03"
+    },
+    {
+      "tick": 10497,
+      "nativeFrame": 78855,
+      "camera": 759,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 6,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10498-tick-10497.png",
+      "imageSHA256": "4684f651bc75fc33952ef9a2143ccf544846cbc44a41d1cecb48022cfc712779"
+    },
+    {
+      "tick": 10498,
+      "nativeFrame": 78863,
+      "camera": 771,
+      "sourceDetectionCount": 6,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 7,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10499-tick-10498.png",
+      "imageSHA256": "cbf850e112791101b5abe34e34b211d2a0b9e444be7a6dc44d69f64f48e4ebd9"
+    },
+    {
+      "tick": 10499,
+      "nativeFrame": 78870,
+      "camera": 781,
+      "sourceDetectionCount": 7,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 8,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          251,
+          121
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10500-tick-10499.png",
+      "imageSHA256": "e14a601465ebdf1f2e4e8e86c70cfd8987a7892673f55968fa334078e6f94a5f"
+    },
+    {
+      "tick": 10500,
+      "nativeFrame": 78878,
+      "camera": 793,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 9,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 26,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10501-tick-10500.png",
+      "imageSHA256": "de8b5f27aa405b6cf1c15731a4b56f84dea7ff140a7655b8dec37703d782e8d9"
+    },
+    {
+      "tick": 10501,
+      "nativeFrame": 78885,
+      "camera": 804,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 10,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 25,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10502-tick-10501.png",
+      "imageSHA256": "b42151cc0e91df73418ec9f08391ab5f4575377efcd5d4f885ad532f6e8af99e"
+    },
+    {
+      "tick": 10502,
+      "nativeFrame": 78893,
+      "camera": 816,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 11,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 24,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10503-tick-10502.png",
+      "imageSHA256": "17b7f7741f048af2fde996957597f98d26b33ed1a2334ddd6854909d85c9c4ff"
+    },
+    {
+      "tick": 10503,
+      "nativeFrame": 78900,
+      "camera": 826,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 13,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 23,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10504-tick-10503.png",
+      "imageSHA256": "3d8cdb6635c39fa2cb3604e0906443aaeb2a0c1360d30d7905359f1226f38f3e"
+    },
+    {
+      "tick": 10504,
+      "nativeFrame": 78908,
+      "camera": 838,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 14,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 22,
+          "matchingOrbs": 5,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10505-tick-10504.png",
+      "imageSHA256": "5d4421ca3cc06661707102856eac96604ec69a90f2e7c6033bbb5314c45a0ffd"
+    },
+    {
+      "tick": 10505,
+      "nativeFrame": 78915,
+      "camera": 849,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 15,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 21,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10506-tick-10505.png",
+      "imageSHA256": "4c9ec07f21160b3648ef38a2d627486b06db321e0e3925c00e45e1253579f09e"
+    },
+    {
+      "tick": 10506,
+      "nativeFrame": 78923,
+      "camera": 861,
+      "sourceDetectionCount": 11,
+      "explainedDetectionCount": 11,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 16,
+          "matchingOrbs": 5,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 19,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10507-tick-10506.png",
+      "imageSHA256": "9df09812149c176a039b851bffae74597a2d4f9e5d890854e491fde2602c28d7"
+    },
+    {
+      "tick": 10507,
+      "nativeFrame": 78930,
+      "camera": 871,
+      "sourceDetectionCount": 10,
+      "explainedDetectionCount": 10,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 17,
+          "matchingOrbs": 4,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 18,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10508-tick-10507.png",
+      "imageSHA256": "780e973f665615b41cc625cca401246b84a5a3baf453503884813495d18aacb6"
+    },
+    {
+      "tick": 10508,
+      "nativeFrame": 78938,
+      "camera": 883,
+      "sourceDetectionCount": 9,
+      "explainedDetectionCount": 9,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 19,
+          "matchingOrbs": 3,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 17,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10509-tick-10508.png",
+      "imageSHA256": "c889d4a4230516788ae174e733b840c802a93a1f794b8740910d9454e2e03362"
+    },
+    {
+      "tick": 10509,
+      "nativeFrame": 78945,
+      "camera": 894,
+      "sourceDetectionCount": 8,
+      "explainedDetectionCount": 8,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 20,
+          "matchingOrbs": 2,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 16,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10510-tick-10509.png",
+      "imageSHA256": "f8afc930c7d17dcdf458aeb3ee2fba256f1a834a10a2e2ba341003795edb9c36"
+    },
+    {
+      "tick": 10510,
+      "nativeFrame": 78953,
+      "camera": 897,
+      "sourceDetectionCount": 7,
+      "explainedDetectionCount": 6,
+      "bars": [
+        {
+          "bar": 4,
+          "phase": 15,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [
+        [
+          7,
+          137
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10511-tick-10510.png",
+      "imageSHA256": "f47e9abf012a7b4387a194eb17c2a3bd26ddb34778ac11ac89351fc94734f079"
+    },
+    {
+      "tick": 10511,
+      "nativeFrame": 78961,
+      "camera": 897,
+      "sourceDetectionCount": 8,
+      "explainedDetectionCount": 8,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 22,
+          "matchingOrbs": 2,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 13,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10512-tick-10511.png",
+      "imageSHA256": "03e104dc79f4fd621da091c8589cc7baf7690f1aa8cefc82f13e86a960bff202"
+    },
+    {
+      "tick": 10512,
+      "nativeFrame": 78968,
+      "camera": 897,
+      "sourceDetectionCount": 9,
+      "explainedDetectionCount": 9,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 23,
+          "matchingOrbs": 3,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 12,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10513-tick-10512.png",
+      "imageSHA256": "d70893da7b3174c1fc18aab20c0f56dc89919dc516d17b8ed8f8231b6c5aa33b"
+    },
+    {
+      "tick": 10513,
+      "nativeFrame": 78976,
+      "camera": 897,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 24,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 11,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10514-tick-10513.png",
+      "imageSHA256": "0c88c823a3c77eb4b8a22e5263b76bdd755207b3dddf8dcb260aae0fb3c311bf"
+    },
+    {
+      "tick": 10514,
+      "nativeFrame": 78983,
+      "camera": 897,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 26,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 10,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10515-tick-10514.png",
+      "imageSHA256": "0a8b5a1532142ef34eab3a7c2a390a5d4cf55b180ba716145dda31af9a8e4d2f"
+    },
+    {
+      "tick": 10515,
+      "nativeFrame": 78991,
+      "camera": 897,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 27,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 9,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10516-tick-10515.png",
+      "imageSHA256": "791ad270ad2e9ec1435553f889afcc915ed454d18f57ffe02a44e315a6fb0dbc"
+    },
+    {
+      "tick": 10516,
+      "nativeFrame": 78998,
+      "camera": 897,
+      "sourceDetectionCount": 12,
+      "explainedDetectionCount": 12,
+      "bars": [
+        {
+          "bar": 3,
+          "phase": 28,
+          "matchingOrbs": 6,
+          "corePresent": true
+        },
+        {
+          "bar": 4,
+          "phase": 8,
+          "matchingOrbs": 6,
+          "corePresent": true
+        }
+      ],
+      "unexplained": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10517-tick-10516.png",
+      "imageSHA256": "04333765d27b0b65a8945c34cc2651ebfd3c21e471d86c6e9ed1c838bcb7330f"
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "schema": "ground-actor-corrections-v1",
+  "method": "Explicit original screenshot evidence only. Preserve existing measured1-1/1-2 origins. A falling first sighting is not a measured spawn height. No global actor snapping or floor-height change.",
+  "corrections": [
+    {
+      "level": "8-1",
+      "area": "main",
+      "match": { "kind": "goomba", "x": 368, "y": 208 },
+      "replace": { "x": 378 },
+      "classification": "Inferred initial position fitted to three moving Goombas; native spawn and activation remain unmeasured",
+      "provenance": { "report": "evidence/eight-one-goomba-alt-heldout.json" }
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "match": { "kind": "goomba", "x": 400, "y": 208 },
+      "replace": { "x": 398 },
+      "classification": "Inferred initial position fitted to three moving Goombas; native spawn and activation remain unmeasured",
+      "provenance": { "report": "evidence/eight-one-goomba-alt-heldout.json" }
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "match": {
+        "kind": "goomba",
+        "x": 1648,
+        "y": 160
+      },
+      "replace": {
+        "y": 144
+      },
+      "classification": "Pipe-top initial-height inference supported by actual observed feet144 before falling; exact spawn timing remains unmeasured.",
+      "provenance": {
+        "sourceTrace": "evidence/local/reference-campaign-dense/trace.jsonl",
+        "report": "evidence/ground-actor-2-1-pipe-measure.json",
+        "observed": [
+          {
+            "tick": 1270,
+            "nativeFrame": 9540,
+            "camera": 1389,
+            "x": 1640,
+            "feet": 144,
+            "opaqueHeadPixelsExact": 19
+          },
+          {
+            "tick": 1271,
+            "nativeFrame": 9548,
+            "camera": 1409,
+            "x": 1636,
+            "feet": 148,
+            "opaqueHeadPixelsExact": 84
+          },
+          {
+            "tick": 1272,
+            "nativeFrame": 9555,
+            "camera": 1427,
+            "x": 1633,
+            "feet": 163,
+            "opaqueHeadPixelsExact": 84
+          },
+          {
+            "tick": 1273,
+            "nativeFrame": 9563,
+            "camera": 1447,
+            "x": 1629,
+            "feet": 189,
+            "opaqueHeadPixelsExact": 84
+          },
+          {
+            "tick": 1274,
+            "nativeFrame": 9570,
+            "camera": 1464,
+            "x": 1625,
+            "feet": 208,
+            "opaqueHeadPixelsExact": 84
+          }
+        ],
+        "terrain": {
+          "pipeTopY": 144,
+          "pipeLeftX": 1648,
+          "pipeRightX": 1680,
+          "leftTopTile": [
+            103,
+            9,
+            16
+          ],
+          "rightTopTile": [
+            104,
+            9,
+            17
+          ]
+        },
+        "reproduction": "evidence/ground-actor-ghost-replay.json: exact immutable5178 ordinary public-control replay reproduces4reported PNGs byte-for-byte; live Goomba remains x1648/y160 at ages45,73,227,275 inside pipe, with horizontal speed sign flipping. No static art piece or pattern override exists there."
+      },
+      "uncertainty": "Original x1648 is retained as the existing inferred spawn. Visible motion is left0.5px/native; extrapolating from first visible x1640 assumes16updates, suggesting camera threshold approximately1348 with several pixels uncertainty. This file does not change activation or claim exact pipe-edge fall timing."
+    }
+  ],
+  "unresolved": [
+    "5-2area-2HammerBro1296/y160 intersects question platform. Actual dense5457feet124,5458feet126,5459feet143,5460feet166,5462..5464feet208 prove a falling jump pose was mistaken for spawn. The initial standing level and platform-pass mechanics are not established; changing y to208 or144 would be an inference, retained unresolved.",
+    "The measured1-2openingGoomba272/y208 overlaps a static tile in the current compiled map; preserve its measured spawn and investigate map/entry semantics separately."
+  ],
+  "removals": [
+    {
+      "level": "8-2",
+      "area": "main",
+      "match": { "kind": "koopa", "x": 2208, "y": 192 },
+      "reason": "The wingless sighting follows a visible 400-point stomp on the nearby winged Koopa and is inferred to be its transformed pose; the separate arrival cannot exclude an unseen actor.",
+      "provenance": { "report": "evidence/eight-two-late-koopa-duplicate-findings.md" }
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "match": { "kind": "bullet", "x": 256, "y": 192 },
+      "reason": "This moving shot was inferred from a later screenshot; earlier native opening images show no projectile at this position. The first cannon produces the observed shot later.",
+      "provenance": { "report": "evidence/eight-three-opening-bullet-findings.md" }
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "match": {
+        "kind": "redKoopa",
+        "x": 1200,
+        "y": 128
+      },
+      "reason": "This is the existing redParatroopa1184 after Mario contact at741..742(+400), observed as a moving falling pose at744x1192/nativeopaqueBottom135. It is not an additional spawn.",
+      "provenance": {
+        "sourceTrace": "evidence/local/reference-campaign-dense/trace.jsonl",
+        "ticks": [
+          736,
+          737,
+          738,
+          739,
+          740,
+          741,
+          742,
+          743,
+          744,
+          745,
+          746,
+          747,
+          748,
+          749,
+          750
+        ],
+        "thinSequence": 187,
+        "thinTick": 744,
+        "contactImage": "evidence/local/ground-actor-survey/1-3-paratroopa-transform-contact.png",
+        "existingActor": {
+          "kind": "paratroopa",
+          "x": 1184,
+          "y": 80
+        },
+        "uncertainty": "Identity continuity is observed through adjacent images. Exact contact outcome and transformed pose semantics require a separate mechanic measurement; no new enemy is introduced during this fall."
+      }
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "match": {
+        "kind": "redKoopa",
+        "x": 1216,
+        "y": 224
+      },
+      "reason": "Second derivative of the same post-contact actor tracked through744..750, thin748x1207/nativeopaqueBottom232. The y224 value rounded a visible fall near the bottom edge; it is not a spawn belowground.",
+      "provenance": {
+        "sourceTrace": "evidence/local/reference-campaign-dense/trace.jsonl",
+        "ticks": [
+          736,
+          737,
+          738,
+          739,
+          740,
+          741,
+          742,
+          743,
+          744,
+          745,
+          746,
+          747,
+          748,
+          749,
+          750
+        ],
+        "thinSequence": 188,
+        "thinTick": 748,
+        "contactImage": "evidence/local/ground-actor-survey/1-3-paratroopa-transform-contact.png",
+        "existingActor": {
+          "kind": "paratroopa",
+          "x": 1184,
+          "y": 80
+        },
+        "uncertainty": "Do not create an additional redKoopa or snap this derivative sighting to208."
+      }
+    }
+  ],
+  "additions": [
+    {
+      "level": "8-1",
+      "area": "main",
+      "spec": {
+        "kind": "goomba",
+        "x": 418,
+        "y": 208,
+        "direction": -1,
+        "palette": "0f-0f-36-17",
+        "evidence": "Third Goomba visible in native 8-1 tick 8796 and independent alternate branch; initial position and activation inferred from a camera-conditioned fit. See evidence/eight-one-goomba-alt-heldout.json."
+      },
+      "classification": "Observed third actor; inferred initial position",
+      "provenance": { "report": "evidence/eight-one-goomba-alt-heldout.json" }
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "spec": {
+        "kind": "piranha",
+        "x": 2024,
+        "y": 184,
+        "direction": -1,
+        "palette": "0f-1a-30-27",
+        "evidence": "Actual original2-1bonusreturn255/t1397 shows emerged green plant on pipeleft2016/top160; freshforward285/t1427 andindependentstationaryreturn1430/1436also show it. Hiddenorigin top160+24=184 follows measured commonPiranha anchor; initialphase inferred."
+      },
+      "classification": "Accepted missing real actor from multiple actual reference PNGs, not a static fragment or ordinaryGoomba replacement.",
+      "provenance": {
+        "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+        "sequence": 255,
+        "tick": 1397,
+        "image": "evidence/local/two-one-pipe-late/00255-tick-01397.png",
+        "independentFreshSourceTrace": "evidence/local/ground-actor-return-2026-11-05T22-21-31.350Z/trace.jsonl",
+        "freshSequence": 285,
+        "freshTick": 1427,
+        "freshImage": "evidence/local/ground-actor-return-2026-11-05T22-21-31.350Z/0285-forward-probe-t1427.png",
+        "independentWaitSourceTrace": "evidence/local/ground-actor-return-2026-11-05T22-26-40.071Z/trace.jsonl",
+        "waitSequences": [
+          288,
+          294
+        ],
+        "waitTicks": [
+          1430,
+          1436
+        ],
+        "terrain": {
+          "pipeLeftX": 2016,
+          "pipeRightX": 2048,
+          "pipeTopY": 160,
+          "leftTopTile": [
+            126,
+            10,
+            16
+          ],
+          "rightTopTile": [
+            127,
+            10,
+            17
+          ]
+        },
+        "coordinateConvention": "EnemySpecx2024 is16pxspriteleft, centered2032over32pxpipe2016..2048. It is not the plant center coordinate."
+      },
+      "uncertainty": "Native initial load phase and cycleage remain inferred from commonPiranha rules. Species/pipepresence is directly visible in independentcontrollerbranches. Exactpalette supported by suppliedgreenplantart and matchingneighborplants; no arbitraryphase offset fitted."
+    }
+  ]
+}

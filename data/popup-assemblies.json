@@ -1,0 +1,403 @@
+{
+  "schema": "image-score-popup-assemblies-v1",
+  "source": "Supplied tables.special_composites.score_pairs and FloateyNumTileData, semantic values read from supplied artwork and separately observed100/1UP images. No executable/ROM read.",
+  "tableSha256": "667e160f606d172caf3f1f45d473384b50e307e95245af3e91e64c6207ce2d9f",
+  "sheet": "assets/graphics/sprite-tiles-0f-16-30-27.png",
+  "sheetSha256": "d62801b7a5b2e7726010afdc71fa6374a995d962e10f4e5e550e1d668287d570",
+  "width": 16,
+  "height": 8,
+  "patternTable": 0,
+  "palette": 2,
+  "transparent": true,
+  "skipDummyPair": [
+    255,
+    255
+  ],
+  "records": [
+    {
+      "value": 100,
+      "tiles": [
+        246,
+        251
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 246,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 251,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 43,
+      "opaqueBounds": {
+        "left": 1,
+        "top": 0,
+        "right": 11,
+        "bottom": 7
+      },
+      "status": "Semantic artwork plus exact native image matches measured separately"
+    },
+    {
+      "value": 200,
+      "tiles": [
+        247,
+        251
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 247,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 251,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 46,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 11,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 400,
+      "tiles": [
+        248,
+        251
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 248,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 251,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 48,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 11,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 500,
+      "tiles": [
+        249,
+        251
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 249,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 251,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 48,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 11,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 800,
+      "tiles": [
+        250,
+        251
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 250,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 251,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 47,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 11,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 1000,
+      "tiles": [
+        246,
+        80
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 246,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 80,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 58,
+      "opaqueBounds": {
+        "left": 1,
+        "top": 0,
+        "right": 15,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 2000,
+      "tiles": [
+        247,
+        80
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 247,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 80,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 61,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 15,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 4000,
+      "tiles": [
+        248,
+        80
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 248,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 80,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 63,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 15,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 5000,
+      "tiles": [
+        249,
+        80
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 249,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 80,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 63,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 15,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": 8000,
+      "tiles": [
+        250,
+        80
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 250,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 80,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 62,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 15,
+        "bottom": 7
+      },
+      "status": "Supplied artwork semantic inventory; runtime event/timing not established here"
+    },
+    {
+      "value": "1up",
+      "tiles": [
+        253,
+        254
+      ],
+      "pieces": [
+        {
+          "x": 0,
+          "y": 0,
+          "tile": 253,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "x": 8,
+          "y": 0,
+          "tile": 254,
+          "patternTable": 0,
+          "palette": 2,
+          "flipX": false,
+          "flipY": false
+        }
+      ],
+      "opaquePixels": 61,
+      "opaqueBounds": {
+        "left": 0,
+        "top": 0,
+        "right": 15,
+        "bottom": 6
+      },
+      "status": "Semantic artwork plus exact native image matches measured separately"
+    }
+  ]
+}

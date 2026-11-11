@@ -1,0 +1,114 @@
+[
+  {
+    "level": "3-1",
+    "branch": "original",
+    "frame": 2966,
+    "marioY": 110,
+    "plantPriorY": 130,
+    "playerBox": [
+      94,
+      130,
+      104,
+      142
+    ],
+    "plantBox": [
+      102,
+      144,
+      112,
+      150
+    ],
+    "touch": false,
+    "hurtTimer": 0,
+    "starTimer": 0,
+    "size": 0
+  },
+  {
+    "level": "3-1",
+    "branch": "original",
+    "frame": 2968,
+    "marioY": 112,
+    "plantPriorY": 131,
+    "playerBox": [
+      95,
+      132,
+      105,
+      144
+    ],
+    "plantBox": [
+      100,
+      145,
+      110,
+      151
+    ],
+    "touch": false,
+    "hurtTimer": 0,
+    "starTimer": 0,
+    "size": 0
+  },
+  {
+    "level": "3-1",
+    "branch": "right-b",
+    "frame": 2964,
+    "marioY": 112,
+    "plantPriorY": 129,
+    "playerBox": [
+      94,
+      132,
+      104,
+      144
+    ],
+    "plantBox": [
+      104,
+      143,
+      114,
+      149
+    ],
+    "touch": true,
+    "hurtTimer": 0,
+    "starTimer": 0,
+    "size": 0
+  },
+  {
+    "level": "3-1",
+    "branch": "neutral",
+    "frame": 2966,
+    "marioY": 112,
+    "plantPriorY": 130,
+    "playerBox": [
+      93,
+      132,
+      103,
+      144
+    ],
+    "plantBox": [
+      102,
+      144,
+      112,
+      150
+    ],
+    "touch": true,
+    "hurtTimer": 0,
+    "starTimer": 0,
+    "size": 0
+  },
+  {
+    "level": "5-1",
+    "branch": "original",
+    "frame": 489,
+    "marioY": 128,
+    "plantPriorY": 147,
+    "playerBox": [
+      117,
+      149,
+      127,
+      161
+    ],
+    "plantBox": [
+      116,
+      161,
+      126,
+      167
+    ],
+    "touch": true
+  }
+]

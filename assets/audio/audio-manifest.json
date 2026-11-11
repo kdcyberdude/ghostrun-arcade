@@ -1,0 +1,2986 @@
+{
+  "schema": "mario-rom-audio-extraction-v1",
+  "tracks": [
+    {
+      "id": "music_ground",
+      "name": "Ground music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_ground.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "1badadd0423f1a4ab5bc5955b1132249548b20c33303040106074e458770d425",
+      "wav_sha256": "913186c47623d96c71eedc05f8ba942f451f2315a31161b9c28b7ec1f3c2fc5c",
+      "peak_abs_pcm": 18921,
+      "sample_min": -14730,
+      "sample_max": 18921,
+      "rms_pcm": 2965.5206747121433,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "e92f46ebeabfc909ada5f6193a72c43d4c48245e1afcf2f363c3779b79ca4ce5",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_water",
+      "name": "Water music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_water.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "2abc2dac87d275fa0b2c306884114419d654245a99d0be2a2cb2005cbb75e117",
+      "wav_sha256": "89e3abbab8246f731de93c2c690fe69c84e7f523b403a77986e558cf64fe73af",
+      "peak_abs_pcm": 15635,
+      "sample_min": -14253,
+      "sample_max": 15635,
+      "rms_pcm": 3300.522696883306,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "fdcb2549f2c99d642246bae792888b676125d33b98341f6de675184cf7ab0d79",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9028dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_underground",
+      "name": "Underground music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 4,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_underground.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "3706cdc15ce328c0e6d05a2b9cb70deed7444ac27dfc9d81b0df83537accbdff",
+      "wav_sha256": "05529fc7598fa507d77c7f3324a45d7335232e7cbb0ea05846323c0d8309f3f9",
+      "peak_abs_pcm": 11633,
+      "sample_min": -9399,
+      "sample_max": 11633,
+      "rms_pcm": 2525.1475696251446,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "691e8bb94659931ac39f09bc5099249c093ef28839115487039aeb7c632c445f",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9048dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_castle",
+      "name": "Castle music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 8,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_castle.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "9d2561588cc7efbbdb1bc0fe798412dca66f990640b553f029eaaf1ac7c02b13",
+      "wav_sha256": "d8b879f99ff45876d11679c713dece2aa70f63eb97b7a8c971b2ca6e55dce214",
+      "peak_abs_pcm": 17032,
+      "sample_min": -12428,
+      "sample_max": 17032,
+      "rms_pcm": 4338.055630033193,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "d14b4fa253b0ac5b6e7e7c8226e14fe09cd703c69641180b142d99e6c95fe54c",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_cloud",
+      "name": "Cloud music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 16,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_cloud.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "a24cfa184d2ccead5d48ad9d92f35d9b848f4171f9c187abf866f3fd7ef20ddd",
+      "wav_sha256": "74aadab2e1f0b280f630ea93765ba88f39755b0a5a75b307eb9f1d07ff6bedeb",
+      "peak_abs_pcm": 19293,
+      "sample_min": -15024,
+      "sample_max": 19293,
+      "rms_pcm": 3235.236409941425,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "06b922b98f57e1cbda533863bac06b3c38ce803b4ee204aac1d6c8baa8cb60f9",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9108dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_pipe_intro",
+      "name": "Pipe intro music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 32,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_pipe_intro.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 117394,
+      "seconds": 2.445708333333333,
+      "captured_seconds_before_tail_trim": 12,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 110193,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "807ea23d070ca355c8f4be736506c87e8a89b2b22c2fdd69e5377a56c5a5ceba",
+      "wav_sha256": "e222e5a14ab196f439268ecfdef0b4d31283ca14c6a512837f66cf6713904027",
+      "peak_abs_pcm": 15986,
+      "sample_min": -14035,
+      "sample_max": 15986,
+      "rms_pcm": 2741.774424488322,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "47cfa514f76bbb2e79b74c0fdf4644b0c03c9b0181c6874a0dd5e8d3f1149039",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9208dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_star",
+      "name": "Star power music",
+      "kind": "area_music",
+      "queue_address": "0xfb",
+      "queue_value": 64,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "music_star.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "7a74c167fa6e5392d6a21ff1fdbd2793381f6d75396f8c5342b2f4ff67e37532",
+      "wav_sha256": "bc70f6c055ec1d9add2789ec996865783e5e6d1a0a5f25c65e6c9b60cf713f57",
+      "peak_abs_pcm": 19181,
+      "sample_min": -14961,
+      "sample_max": 19181,
+      "rms_pcm": 3238.5780266508086,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "db04d4bee2e11403f958b3ab6b680986c8a27329cf10fc3e6258b8cc16f5c14d",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9408dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_ground_hurry",
+      "name": "Ground music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_ground_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "9ed98f481b1cea5493070439adc75fc3a00227f70c869c3a30841602e3089692",
+      "wav_sha256": "e5280f7c116624348d2a6c5e569189ad91ec3e61f024f53e88d21aab383db575",
+      "peak_abs_pcm": 19632,
+      "sample_min": -15057,
+      "sample_max": 19632,
+      "rms_pcm": 3536.126581642334,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "3dcb5d75f1f23a837ebe51cecdb91804a049374593067330633144edea7078aa",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9018dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_water_hurry",
+      "name": "Water music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_water_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "4789d01d30700a4deb64054968677249745b584f5077ece34bc79bf1dcd44679",
+      "wav_sha256": "7d2d0b5f04438dc4acf94b6ae1294988a8ab375147ed639f5c377916641f12ae",
+      "peak_abs_pcm": 15968,
+      "sample_min": -15026,
+      "sample_max": 15968,
+      "rms_pcm": 3652.375149128234,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "e48e4789465a0add0741f292169d42a2b1014305b6587064e28d732fed420e58",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9028dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_underground_hurry",
+      "name": "Underground music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 4,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_underground_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "3f66cb4ae5c6a6096ba23c5a5ca0413b8df819ec57695fc431412aace1ca383a",
+      "wav_sha256": "455fba557ec0656bfd764cda8855bd79834f3161dceb4a862c76848bb937c315",
+      "peak_abs_pcm": 11502,
+      "sample_min": -9425,
+      "sample_max": 11502,
+      "rms_pcm": 2844.4251227351665,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "e9b2300db37824347fecf25bcc081a15ad55c0c3e56e688adf3dd608db381604",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9048dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_castle_hurry",
+      "name": "Castle music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 8,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_castle_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "f60d4bf4bc946b5e528ec8025d6a61348ac1e5ee81335620f5650cdb0385281d",
+      "wav_sha256": "64a01fc6d106c896b5da24f47e8be274ef14a2738816781329ce99f21c3aeb7a",
+      "peak_abs_pcm": 16992,
+      "sample_min": -12530,
+      "sample_max": 16992,
+      "rms_pcm": 4467.08347455774,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "911f0d84d55f827b3d515400a33fad67cafd259bf939f81c48bdd99ff0a0a876",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9088dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_cloud_hurry",
+      "name": "Cloud music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 16,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_cloud_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "dbaa9b0b40438be9cec1fadab04352b976eecb4cc5c623d318a7942ff1929757",
+      "wav_sha256": "9e012d53a4c0f778f07b71e731ad6c6f2e9ff7fc14148e6f02fd20f023257374",
+      "peak_abs_pcm": 18941,
+      "sample_min": -15065,
+      "sample_max": 18941,
+      "rms_pcm": 4239.504104782358,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "b8884b650a0e2ae322b164d7e99eebc6fe177f979858449cfd267b2005c05e1a",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9108dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "music_star_hurry",
+      "name": "Star power music \u2014 accelerated",
+      "kind": "area_music_variant",
+      "queue_address": "0xfb",
+      "queue_value": 64,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c4",
+          "value": 8
+        }
+      ],
+      "file": "music_star_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 8640000,
+      "seconds": 180.0,
+      "captured_seconds_before_tail_trim": 180,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "48fb84f8a365a76b61018f6c0a2976afc3e604b52473ccfb3292a597b92a4300",
+      "wav_sha256": "c8b61c41d6c0f7e52b5943686dc30382c7db36fa4913c46f6128146dae96bcf6",
+      "peak_abs_pcm": 18750,
+      "sample_min": -15243,
+      "sample_max": 18750,
+      "rms_pcm": 4239.012786998782,
+      "rms_measurement_stride_samples": 43,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "0144711ab1a52e5a5bdc653b93a6c85e06547d6a39a945aa879bedd43ba9df7b",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dc407a9408dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_death",
+      "name": "Death music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_death.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 132705,
+      "seconds": 2.7646875,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 125504,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "85dd9069336bc0f9aa864bba206c71fd5c491aaec8cace3ffafda835df40c0cb",
+      "wav_sha256": "9900fb6ba0e88cd7fd84127da8c7ceef2f1cbf128be96e13faeb7959cb592e3a",
+      "peak_abs_pcm": 22907,
+      "sample_min": -17720,
+      "sample_max": 22907,
+      "rms_pcm": 4130.184693995925,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "05e1cb4f70a0fa8e15ba703ae0449a999af36848c63aa1fb003a316d3aa7e713",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_game_over",
+      "name": "Game over music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_game_over.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 181594,
+      "seconds": 3.7832083333333335,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 174393,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "f2bfea00d626a2390fee9ceb6ea6ba64a024bc698b7ef318fb03859c4b3e8087",
+      "wav_sha256": "bfed4c4cb12f5a983bf76ff6c3c9cd76030ae287a9b7dafd11ad1f6e52d4440f",
+      "peak_abs_pcm": 11906,
+      "sample_min": -10610,
+      "sample_max": 11906,
+      "rms_pcm": 3663.06182556867,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "1e8d5a82f2b8006b42b2c86f21742ca60033f59a3bf6b58a5813bb9e64ea8df3",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9028dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_victory",
+      "name": "Victory music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 4,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_victory.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 1440000,
+      "seconds": 30.0,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": true,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "5144430ce1ed085dfbe34c6d58f687d038606eb6108d7b3f2479594e56bf7edf",
+      "wav_sha256": "4c20197e4b793e81ae1704d7f9f014f134815e5295d14d91ecc9701b007154ea",
+      "peak_abs_pcm": 11944,
+      "sample_min": -11344,
+      "sample_max": 11944,
+      "rms_pcm": 4138.265892622292,
+      "rms_measurement_stride_samples": 7,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "bb508565977032c00e2e4304a097f2fb4f88ff00b8ef0cd41803b35349bfcfb3",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9048dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_castle_clear",
+      "name": "Castle clear music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 8,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_castle_clear.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 299528,
+      "seconds": 6.240166666666667,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 292327,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "0e58834659b5af2fd21ff2e51216e5e23fd25acdf3d1bcc0cf18998eb2b83dc2",
+      "wav_sha256": "3eeb1e74f4aa20d3b8dccfc13b895e059e2732453d59b09f790abdf64fbe7044",
+      "peak_abs_pcm": 20955,
+      "sample_min": -14660,
+      "sample_max": 20955,
+      "rms_pcm": 4893.030125491372,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "6bb8fbd6e5311c70546bee30ca0a02532fbe56369bce50fd6bd19739aa8792c0",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_alt_game_over",
+      "name": "Alternate game over music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 16,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_alt_game_over.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 161456,
+      "seconds": 3.3636666666666666,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 154255,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "f05bb374cb7f3b8dd50037548ad627078ebea1ca6102a3080283485097bf2a0e",
+      "wav_sha256": "12dffebecdda8c9f9ec6fab6ff393a3b2257e959585e13984dd30ed583770154",
+      "peak_abs_pcm": 21962,
+      "sample_min": -17783,
+      "sample_max": 21962,
+      "rms_pcm": 3533.090634857571,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "fa90eed54a9097e7482a4812836ea761ee4022eb0e0b9b545d4a9ec9cc8582c2",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9108dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_level_clear",
+      "name": "Level clear music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 32,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_level_clear.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 267801,
+      "seconds": 5.5791875,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 260600,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "dcbe97254cb5e64df00d2df3c9df51ef387b3cde963634b5e80ba1db901d6fbd",
+      "wav_sha256": "47304fb142554cb36622b301f1e3c1e28c49b044df0cd31dd8578b1211ec61c3",
+      "peak_abs_pcm": 11892,
+      "sample_min": -10693,
+      "sample_max": 11892,
+      "rms_pcm": 3728.231137169045,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "3656322cf4a288b24cd54075ae2e07196a4bf8e3f17ac9e5a4794011c43b3bf6",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9208dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "event_hurry",
+      "name": "Time running out music",
+      "kind": "event_music",
+      "queue_address": "0xfc",
+      "queue_value": 64,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "event_hurry.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 143145,
+      "seconds": 2.9821875,
+      "captured_seconds_before_tail_trim": 30,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 135944,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "c703f60ea8c785fa5a785b264b6f90c85a2c254830d0f51d772afddbb8f5a0c4",
+      "wav_sha256": "fde7c2a64b1579f62a0a3987e32d21733d9ef1f64c8acdc46b1a3256666333c5",
+      "peak_abs_pcm": 14240,
+      "sample_min": -10818,
+      "sample_max": 14240,
+      "rms_pcm": 3736.721491215212,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "f1855112f775e4c8dd8853948f97ffb93186426f8b71c24a191778ae227c4ef1",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9408dfc0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_big_jump",
+      "name": "Big jump",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_big_jump.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 33534,
+      "seconds": 0.698625,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 26333,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "39676543a9cd3ffa3c69bf0be890268a7f7c30e0c61e8635a0e6de584ef4d040",
+      "wav_sha256": "e3fcf1e2612fa9fb65c538e388e1e74b6932ad2a9957fb66aef52a9a88b6e40f",
+      "peak_abs_pcm": 9481,
+      "sample_min": -7365,
+      "sample_max": 9481,
+      "rms_pcm": 2431.3652914695913,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "3c3d3934da41b090303aafaf34135a910aa0fccb36a27f0b2acd59f64f3d0952",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_bump",
+      "name": "Bump",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_bump.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 15947,
+      "seconds": 0.3322291666666667,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 8746,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "89d7578e76694afa80e158e6847a194426c69f547178346dac742a01d8915fe9",
+      "wav_sha256": "6da5ef302e4ace122821511083051c78617e2b86f2223e124f5b01749e9823ba",
+      "peak_abs_pcm": 10145,
+      "sample_min": -8428,
+      "sample_max": 10145,
+      "rms_pcm": 3083.7010090392696,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "5c2f7758b621958674f99a0aef1fa156c02b2bfedeffa3351340d6b177337a1a",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9028dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_swim_stomp",
+      "name": "Swim stomp",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 4,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_swim_stomp.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 19192,
+      "seconds": 0.3998333333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 11991,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "019feba66cda25468e585c6c9e7c615177d789c77f2793029efbe579d42c7098",
+      "wav_sha256": "0ec224b964760e698dc3706cd6f05997c950b5f026eb58f0a2a1ce5d99b7295f",
+      "peak_abs_pcm": 5477,
+      "sample_min": -4564,
+      "sample_max": 5477,
+      "rms_pcm": 1516.509198084243,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "d8d37653eb690f3d86d8401c6d5cbfc4286d5e4cd0789b93cdca317dc808b4b7",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9048dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_enemy_smack",
+      "name": "Enemy smack",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 8,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_enemy_smack.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 14431,
+      "seconds": 0.30064583333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 7230,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "736a15d79171c19a6edde0cf9c3dcbd07e361cc12a38665809529e1cf46f3383",
+      "wav_sha256": "3851c2269119dd08a7b501ba344d1ef6072e0673531bcc0ed7d38a8442cd3ebf",
+      "peak_abs_pcm": 10834,
+      "sample_min": -6559,
+      "sample_max": 10834,
+      "rms_pcm": 1847.1537161868964,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "f118b116292778af5f43a21625f55bd1beb9e41cbc777ebf295554596df4a99e",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_pipe_down_injury",
+      "name": "Pipe down injury",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 16,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_pipe_down_injury.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 45115,
+      "seconds": 0.9398958333333334,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 37914,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "778d419c156ec0dfb53b79cf0181fe3f267d03d90bf1960fd1930a04c8dd6bf9",
+      "wav_sha256": "db3743f49ee20100d21b2d358de91863078c3ce9d5229aad6bd9c156498ffbb4",
+      "peak_abs_pcm": 7131,
+      "sample_min": -6190,
+      "sample_max": 7131,
+      "rms_pcm": 2523.356157421313,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "fa2d4d2829ed84c700b6a1c40831e010eb920e13b48f285de7f9fd3872649604",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9108dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_fireball",
+      "name": "Fireball",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 32,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_fireball.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 12019,
+      "seconds": 0.2503958333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 4818,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "c6ade2b8a90b34ea28ad163e2ede1b4907ae748eb194506465f1f6b068c45463",
+      "wav_sha256": "cc36a156a962328f73d1a6f5b89422d2bd67b084368a6a46b7ecc55716ed53d8",
+      "peak_abs_pcm": 10219,
+      "sample_min": -7173,
+      "sample_max": 10219,
+      "rms_pcm": 2503.8282934781223,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "6e7213631475b733d1a14b325a4414f27038f1704e4a5b61fa33c845f3d186bf",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9208dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_flagpole",
+      "name": "Flagpole",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 64,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_flagpole.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 59093,
+      "seconds": 1.2311041666666667,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 51892,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "b9ea2cef1dc8528d2baf74d4fe071f19f7217587e717d03b9af8057e1a4be350",
+      "wav_sha256": "8b0577b45c1264d167a9a15532194f6930ff62930342896b086e648b39a9f345",
+      "peak_abs_pcm": 6532,
+      "sample_min": -4658,
+      "sample_max": 6532,
+      "rms_pcm": 2828.08341648908,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "ccdc0b0d7733d66de75a5b73b371916c631269ab5b3e3f8179310f6d9b743caf",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9408dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_small_jump",
+      "name": "Small jump",
+      "kind": "sound_effect",
+      "sound_channel": "square1",
+      "queue_address": "0xff",
+      "queue_value": 128,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_small_jump.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 33579,
+      "seconds": 0.6995625,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 26378,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "e20cbcf592f6455e0f49c6cde101fb2adbfc97916c613fd75f53a98b18915713",
+      "wav_sha256": "ef2239a41441bdf4d96386e70a51032e4ba54c0a55eab9d275a544125095ed71",
+      "peak_abs_pcm": 9152,
+      "sample_min": -6824,
+      "sample_max": 9152,
+      "rms_pcm": 2435.028947310453,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "3424649a52dea5d6733c1dbd80e0becb9262f3d554787d60e7542dd61350ba1b",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9808dff0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_coin",
+      "name": "Coin",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_coin.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 50034,
+      "seconds": 1.042375,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 42833,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "7bf7b232d69d856b131562044fc882ed5eb923ad56e3d4385e99bb1e7cf66173",
+      "wav_sha256": "1113d666e81f85d196298310f6f2c0db647171cae1ac0094340f9f3ced029e34",
+      "peak_abs_pcm": 8726,
+      "sample_min": -6299,
+      "sample_max": 8726,
+      "rms_pcm": 2842.8570205153505,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "1e7ce0df960fd4ee31c5372e05829b89d80d2a3177d679e7f07fcc8b98e5a1db",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_powerup_appears",
+      "name": "Powerup appears",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_powerup_appears.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 33574,
+      "seconds": 0.6994583333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 26373,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "e5328f60d0ed9d04135ff98369cf3f85fe72566d3918a24c553b402a2b2b54f3",
+      "wav_sha256": "b36481d2b1b5a8a939834e61d79693924894ac9a1cb13767ed8c8d772c155713",
+      "peak_abs_pcm": 9240,
+      "sample_min": -7461,
+      "sample_max": 9240,
+      "rms_pcm": 3802.299042744339,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "3455a9ef6291820056eccb61cf91f2ddc82c04996a1948985631d5aeffaaad05",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9028dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_vine_grows",
+      "name": "Vine grows",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 4,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_vine_grows.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 59148,
+      "seconds": 1.23225,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 51947,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "91a93fc0891e517c65bf9dd91a6685b68c47a92e7ef8b992ee037b9b1a5372cf",
+      "wav_sha256": "df83e2727b30d654501da77d741fbb8b54466e0417294a1f9103293704e33db3",
+      "peak_abs_pcm": 9349,
+      "sample_min": -7499,
+      "sample_max": 9349,
+      "rms_pcm": 4084.373045492795,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "27380981b2e4fefd4494376d1c1dbfdd19f0533e06af3b4397eeb0ca5600cfbb",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9048dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_blast_fireworks",
+      "name": "Blast fireworks",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 8,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_blast_fireworks.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 25766,
+      "seconds": 0.5367916666666667,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 18565,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "cd3e4aef6ed4382cb34b74be444914269a9bb15f4798df0e8619d579c487fa71",
+      "wav_sha256": "cc4dbec3583ec6719908ed738a511983cb4160d2f202b6d0d59ead11733b5f90",
+      "peak_abs_pcm": 10946,
+      "sample_min": -10433,
+      "sample_max": 10946,
+      "rms_pcm": 3853.7696804230177,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "c9ced97ee6f34249bae296613f63a40a0fbcaeeefed0772ac22103644e43d183",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9088dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_timer_tick",
+      "name": "Timer tick",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 16,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_timer_tick.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 12762,
+      "seconds": 0.265875,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 5561,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "d277dea325ce1ac71317579112e768588465c3867b331369e18bfc7807f3a520",
+      "wav_sha256": "7541d1c021af31904f8422c387eaeab6628272de3c3dece3c341d03fed5cdde4",
+      "peak_abs_pcm": 5644,
+      "sample_min": -3359,
+      "sample_max": 5644,
+      "rms_pcm": 1552.615344081099,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "73ca0ce9741e22ab8de8e8150c29e42182b1ceaaa848c7b9b377c18af64264e7",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9108dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_powerup_collected",
+      "name": "Powerup collected",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 32,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_powerup_collected.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 51058,
+      "seconds": 1.0637083333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 43857,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "5d178d9b869d3013b60b4c8af7e6615c6e2dcd6ffec61f74125cccbb4e898540",
+      "wav_sha256": "1f96f841e04ac550959d423c05d7984129c16aa31f41fb224906d6bde66c614a",
+      "peak_abs_pcm": 9032,
+      "sample_min": -4536,
+      "sample_max": 9032,
+      "rms_pcm": 3494.409983324262,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "458590f702804d4ed4cd4e094848149667fc1180c1fedce32c3d30d938aa537a",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9208dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_extra_life",
+      "name": "Extra life",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 64,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_extra_life.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 46286,
+      "seconds": 0.9642916666666667,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 39085,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "e2941af5f0e4bfca80672791011e3a1611bb7ea2648388ce2a92e4ac602407d6",
+      "wav_sha256": "cc0fe8bb2a23fa866c113da6707b30237723fa9a511caaf083a7670269f91f06",
+      "peak_abs_pcm": 9518,
+      "sample_min": -6121,
+      "sample_max": 9518,
+      "rms_pcm": 3252.005764837139,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "aa6b243a44eedc4eaea02d63007fd6e599452a786479e262ad53c3cdf3ef8d28",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9408dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_bowser_falls",
+      "name": "Bowser falls",
+      "kind": "sound_effect",
+      "sound_channel": "square2",
+      "queue_address": "0xfe",
+      "queue_value": 128,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_bowser_falls.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 52842,
+      "seconds": 1.100875,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 45641,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "6b9199be868d3b658df3f50086682d18dda8c195060979da9c15adb3db88a6d5",
+      "wav_sha256": "b90114d40cff7483af9e75a7fd22db193385fe5e1761ee695f7a8740a55f31fd",
+      "peak_abs_pcm": 10583,
+      "sample_min": -10004,
+      "sample_max": 10583,
+      "rms_pcm": 4415.811974774238,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "ec6f7cd7471d69948b7aa5afcdaa6140ffac8fd924720e4b9f2fefafe1e06d17",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9808dfe0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_brick_shatter",
+      "name": "Brick shatter",
+      "kind": "sound_effect",
+      "sound_channel": "noise",
+      "queue_address": "0xfd",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_brick_shatter.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 32779,
+      "seconds": 0.6828958333333334,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 25578,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "760f45ec40c690b43b084b090036f9b273b85d0db93b4546ee20b290b9b67c8f",
+      "wav_sha256": "68279fdab2a54e5f3b3b3d2338361abcc321c168b36c4fa67a026659473216ba",
+      "peak_abs_pcm": 6848,
+      "sample_min": -4500,
+      "sample_max": 6848,
+      "rms_pcm": 1328.6663527329165,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "7e968b1e0ca50094cdeae9643d74c872a136b8f5b30a4e87069c20387a58c6d5",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dfd0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_bowser_flame",
+      "name": "Bowser flame",
+      "kind": "sound_effect",
+      "sound_channel": "noise",
+      "queue_address": "0xfd",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_bowser_flame.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 59056,
+      "seconds": 1.2303333333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 51855,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "cb2f62b9fe737e8e5882185fcda10a3af81937651af9955dc25fdcb5a6abf8d6",
+      "wav_sha256": "ed8aa733d1330610206792e606a3afcd13f5b285fb6c58a7c9dff73cc128d14d",
+      "peak_abs_pcm": 7171,
+      "sample_min": -7171,
+      "sample_max": 7027,
+      "rms_pcm": 1744.5463106178274,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "ceba97591fd6e4630bb662cafc1484b9cfeb909f92250886168dbe314d8dabc2",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9028dfd0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    },
+    {
+      "id": "sfx_pause",
+      "name": "Pause command",
+      "kind": "pause_command",
+      "queue_address": "0xfa",
+      "queue_value": 1,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "sfx_pause.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 38055,
+      "seconds": 0.7928125,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 30854,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "cbbe317a09b2a2113fec5b52e9e4678d664ebd71570c11bea80d37629c7fffdd",
+      "wav_sha256": "b3884d0afe6d5ce4f20714a9c6595a60d6dbf39573511b0320d2b935becc89ba",
+      "peak_abs_pcm": 8667,
+      "sample_min": -6246,
+      "sample_max": 8667,
+      "rms_pcm": 3382.4157465892526,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "8907240c240f6dc4ad41ef5cbab5b43511666e72f211515d8821851c42503398",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dfa0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null,
+      "native_tone_pattern_shared_with": "sfx_unpause",
+      "shared_pattern_note": "Same native pause-tone routine; queue1 enters pause and queue2 exits it. PCM hashes may differ with initial state/timing."
+    },
+    {
+      "id": "sfx_unpause",
+      "name": "Unpause command",
+      "kind": "pause_command",
+      "queue_address": "0xfa",
+      "queue_value": 2,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        },
+        {
+          "address": "0x7c6",
+          "value": 1
+        }
+      ],
+      "file": "sfx_unpause.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 38050,
+      "seconds": 0.7927083333333333,
+      "captured_seconds_before_tail_trim": 8,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": true,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": 30849,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "62d8c79e985b7f6c38a997ac30aaecd80f19ea09fd1c1d4f66396df64c4972ae",
+      "wav_sha256": "29a3929c295328de74a2b6d9ddbe6aba8135539588f73a2383a26575db70463d",
+      "peak_abs_pcm": 8514,
+      "sample_min": -6269,
+      "sample_max": 8514,
+      "rms_pcm": 3382.9579980441495,
+      "rms_measurement_stride_samples": 1,
+      "status": "rendered",
+      "harness": {
+        "nsf_sha256": "2b3876e9864dc2d556d941c96461760cd41b849aa410825d6c9ededcd2efd76a",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9018dc607a9028dfa0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x803c"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null,
+      "native_tone_pattern_shared_with": "sfx_pause",
+      "shared_pattern_note": "Same native pause-tone routine; queue1 enters pause and queue2 exits it. PCM hashes may differ with initial state/timing."
+    },
+    {
+      "id": "command_silence",
+      "name": "Silence command (intentionally silent)",
+      "kind": "silence_command",
+      "queue_address": "0xfb",
+      "queue_value": 128,
+      "ram_setup": [
+        {
+          "address": "0x770",
+          "value": 1
+        }
+      ],
+      "file": "command_silence.wav",
+      "sample_rate": 48000,
+      "channels": 1,
+      "sample_width_bytes": 2,
+      "frames": 48000,
+      "seconds": 1.0,
+      "captured_seconds_before_tail_trim": 1,
+      "loop_metadata": {
+        "status": "unmeasured",
+        "driver_expected_recurrence": false,
+        "intro_end_frame": null,
+        "loop_start_frame": null,
+        "loop_end_frame": null,
+        "seamless_wav_loop_verified": false
+      },
+      "tail_trim": {
+        "applied": false,
+        "threshold_pcm_abs": 8,
+        "retained_tail_seconds": 0.15,
+        "last_above_threshold_frame": null,
+        "capture_cutoff_risk": false
+      },
+      "pcm_sha256": "55873fecc61a79e87ca550c7072e38ccdd7ecb600ace286fe4717952a97c42b0",
+      "wav_sha256": "0a8f76d89c709043814cb74f331a4578d17ff61256303bd0019a263d053f86e8",
+      "peak_abs_pcm": 0,
+      "sample_min": 0,
+      "sample_max": 0,
+      "rms_pcm": 0.0,
+      "rms_measurement_stride_samples": 1,
+      "status": "intentional_silence",
+      "harness": {
+        "nsf_sha256": "aea22553df42d69c961fbc59b74703bfd6326d488f391f4312ba61218c450cb1",
+        "init_address": "0x8000",
+        "play_address": "0x8100",
+        "load_address": "0x8000",
+        "ntsc_speed_header": 0,
+        "init_code_hex": "78d8a900a2009d00009d00029d00039d00049d00059d00069d0007e8d0e8a9018d7007a9008d1040a9008d1140a90f8d1540a9808dfb0060",
+        "play_code_hex": "20d0f260",
+        "original_prg_modified_ranges": [
+          [
+            "0x8000",
+            "0x8037"
+          ],
+          [
+            "0x8100",
+            "0x8103"
+          ]
+        ],
+        "rom_or_nsf_written": false
+      },
+      "renderer_checks": {
+        "channels": 1,
+        "all_stereo_sample_pairs_identical": true,
+        "warnings": []
+      },
+      "exact_pcm_duplicate_of": null
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "Sound-driver-only extraction: RAM setup selects individual queues; no gameplay or learned-policy claim.",
+    "WAVs are libgme's digital APU rendering, not an analog NES recording or a bit-perfect hardware claim.",
+    "Long recurring scores are 180-second captures. Exact intro/loop endpoints and seamless WAV looping are unmeasured.",
+    "One-shot tails use an explicit amplitude threshold; their exact native score termination frame is unmeasured.",
+    "Queue labels follow the cited disassembly symbols, bound to this exact ROM and engine signature; contextual combinations are not exhaustively enumerated.",
+    "Accelerated area variants initialize the driver's native note-length selector; their separate hurry jingle is exported as event_hurry.",
+    "FFT and sample checks do not establish subjective or analog perceptual identity; no human listening claim is made."
+  ],
+  "symbol_reference_urls": {
+    "sound_driver_symbols": "https://raw.githubusercontent.com/Xkeeper0/smb1/main/src/music-engine.asm",
+    "queue_addresses": "https://raw.githubusercontent.com/Xkeeper0/smb1/main/src/ram.asm",
+    "queue_bit_names": "https://raw.githubusercontent.com/Xkeeper0/smb1/main/src/defs.asm",
+    "renderer_api": "https://github.com/libgme/game-music-emu/blob/master/gme/gme.h"
+  },
+  "source": {
+    "rom_sha256": "0b3d9e1f01ed1668205bab34d6c82b0e281456e137352e4f36a9b2cfa3b66dea",
+    "rom_bytes": 40976,
+    "prg_sha256": "5374abb64cfb9b5d961856c60166cedc55859164cf2b8867730e144fa2bdd594",
+    "prg_bytes": 32768,
+    "sound_engine_cpu_address": "0xf2d0",
+    "sound_engine_rom_file_offset": "0x72e0",
+    "engine_signature_hex": "ad7007d0048d154060a9ff8d1740a90f8d1540",
+    "original_sound_region_cpu": [
+      "0xf2d0",
+      "0xffff"
+    ],
+    "original_sound_region_sha256": "8ce9fc05c7700fa087ad775f7f1010200bdcbfd1e3222d2109428624f396bace",
+    "extractor_sha256": "e3f290bacb393e8b9f5a61988e943b4392f47535b17c07f3430c7baa250a7c2b"
+  },
+  "renderer": {
+    "name": "Game_Music_Emu",
+    "library": "libgme.so.0.6.3",
+    "library_sha256": "70f3bc0133a2c991bd89ba85cfd248e4facf2276a9c6205957f15ecb16e5276c",
+    "sample_rate": 48000,
+    "sample_format": "signed PCM 16-bit little-endian",
+    "tempo": 1.0,
+    "stereo_depth": 0.0,
+    "accuracy_enabled": true,
+    "silence_skipping": false,
+    "automatic_playback_limit": false,
+    "timing": "NSF NTSC default (speed header zero); one sound-driver call per renderer NTSC tick",
+    "gain_equalizer": "libgme installed NES defaults; no post-normalization, fades or dither"
+  },
+  "coverage": {
+    "declared_area_bits": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "declared_event_bits": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "square1_bits": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "square2_bits": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "noise_bits": [
+      1,
+      2
+    ],
+    "pause_commands": [
+      1,
+      2
+    ],
+    "silence_command": 128,
+    "additional_accelerated_area_variants": 6,
+    "claim": "individual declared queue categories and six native speed-selector variants; no exhaustive contextual combination claim"
+  },
+  "counts": {
+    "requested": 41,
+    "written": 41,
+    "unexpected_failures": 0,
+    "exact_pcm_duplicates": 0
+  }
+}

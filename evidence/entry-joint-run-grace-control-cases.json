@@ -1,0 +1,3293 @@
+{
+  "date": "2026-11-05T23:49:39.643Z",
+  "method": "Actual independently captured fresh-reset reference controls. Every decision has exact opaque supplied-sprite match, applied mask, native-duration sum and PNG hash. Previous rejected hypotheses/heldout failures are documented separately; these observations do not assert literal reference internals.",
+  "tolerancePixels": 2,
+  "baselineSourceSha256": "4ea9eee8d9f7260bff95dd6fc516c530d10a5da9ee56e9c405de461063112d4b",
+  "sources": [
+    {
+      "file": "evidence/entry-joint-cap-measurements.json",
+      "sha256": "fbcf67ef5398d2f187f328a690dd3e681348a18c077549d860746d623da4f9b7",
+      "planPath": "evidence/entry-joint-cap-plan.json",
+      "planSha256": "929bf34ed7fa213f83e8eae1201615269d307d0e0fccc22d244e231209dc2b85"
+    },
+    {
+      "file": "evidence/entry-joint-grace-heldout-measurements.json",
+      "sha256": "c329e06d4041ecddf7e897df4e06c53dcfcb50048340ccd3b4bd3568b88ece2d",
+      "planPath": "evidence/entry-joint-grace-heldout-plan.json",
+      "planSha256": "5f12116acd38aa653be18e4bd3cdb0a42578fcbc10bbb3f4155e06b0dc72444e"
+    },
+    {
+      "file": "evidence/entry-joint-grace-direction-measurements.json",
+      "sha256": "6e295702199fd951a29af4bad11dfa3500c3f7d968387a4a24609cfcf0e42d92",
+      "planPath": "evidence/entry-joint-grace-direction-plan.json",
+      "planSha256": "5cb1f6eecc7055b4eff41d5c533e31b24f15244636bbc910508a6126efd81e6f"
+    },
+    {
+      "file": "evidence/entry-joint-grace-expiry-measurements.json",
+      "sha256": "ce03f335b8d21e20407786e62bfd641c3918fcb30664fda643c0efa51b644c14",
+      "planPath": "evidence/entry-joint-grace-expiry-plan.json",
+      "planSha256": "6281c102d39829b147421fdf5c5b4f1161a2935e878480bf39e4157f849d5a2d"
+    },
+    {
+      "file": "evidence/entry-joint-grace-active-measurements.json",
+      "sha256": "2e6536e4ffa8be2abf8a5fab4ca4f68ec09257ddcd715c8d9e60e9107003bff4",
+      "planPath": "evidence/entry-joint-grace-active-plan.json",
+      "planSha256": "4896f1d30936bdfa23fdc63b9b94868da73be42fb5c449f36372e954d584b74f"
+    }
+  ],
+  "cases": [
+    {
+      "name": "cap-heldout-full-run-release",
+      "source": "evidence/entry-joint-cap-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 40
+          },
+          "imageSha256": "6a76a80f557f192dfdd396a65979bedb6eecd480dd50fb78e3b435341ddceb75"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 163,
+            "y": 208,
+            "camera": 51
+          },
+          "imageSha256": "858c82dd1b6e59c63c50fb758ad23218db27970b9001b92e0f0a7f22c88162b4"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 173,
+            "y": 208,
+            "camera": 61
+          },
+          "imageSha256": "840531dce16c5499772ed5ff3e1f30a557900846bfd633230540f70826e68687"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 185,
+            "y": 208,
+            "camera": 73
+          },
+          "imageSha256": "5b5cf423e6770e8b2bd91d4566063da19b7aaf5c5d966fc443019ced83c3e293"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 97,
+          "reference": {
+            "x": 196,
+            "y": 208,
+            "camera": 84
+          },
+          "imageSha256": "42fa41a08bcd9111faf7c11cf8997680aa82978f11e76ad80506741f8264d554"
+        }
+      ]
+    },
+    {
+      "name": "cap-heldout-partial-run-release",
+      "source": "evidence/entry-joint-cap-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 105,
+            "y": 208,
+            "camera": 15
+          },
+          "imageSha256": "07e10ce50985792112092fcad7eabe8ddba0558d26bd5aa8a78364eab0ab5226"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 117,
+            "y": 208,
+            "camera": 23
+          },
+          "imageSha256": "237a39e18249254c0207902d66f9660a3d91af225b8808d0edfd994fb66a9c00"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 30
+          },
+          "imageSha256": "50055589327a5c952a716d63d3275ae60d7809f6239670c2520cea999258e20d"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 140,
+            "y": 208,
+            "camera": 38
+          },
+          "imageSha256": "12185a2295b85b281310c815010802d1ebce0e5a4c436ece9ed9da60ba230c35"
+        }
+      ]
+    },
+    {
+      "name": "cap-heldout-release-then-jump",
+      "source": "evidence/entry-joint-cap-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 40
+          },
+          "imageSha256": "6a76a80f557f192dfdd396a65979bedb6eecd480dd50fb78e3b435341ddceb75"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 167,
+            "y": 180,
+            "camera": 55
+          },
+          "imageSha256": "deb454dc6acb0e481b896cf0cc7b208618ccbcec0d376cb8ae57fd168ae179ec"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 184,
+            "y": 155,
+            "camera": 72
+          },
+          "imageSha256": "a88c61550d01d8cc8575e7813c972f02c622a8e215acd2ea32a15acb71fdd95e"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 204,
+            "y": 135,
+            "camera": 92
+          },
+          "imageSha256": "7412f8d614bad4a2e1025214c826d3df646c0cc2dcc30b9d72e82d31378ca0d7"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 97,
+          "reference": {
+            "x": 222,
+            "y": 127,
+            "camera": 110
+          },
+          "imageSha256": "07787e575f4db4c8d44db758f22dd41b0dc0bfbb16368f9863533706079e9ade"
+        }
+      ]
+    },
+    {
+      "name": "cap-heldout-b-toggle",
+      "source": "evidence/entry-joint-cap-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 143,
+            "y": 208,
+            "camera": 38
+          },
+          "imageSha256": "a4a631c7df110aa6a6c791b2c44c3afab6f0fb9b2647d33924ea88adbf540f23"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 156,
+            "y": 208,
+            "camera": 46
+          },
+          "imageSha256": "b0a8e2efcf9970cea310c8c3c4283632441a1ea3449437a4efd0623465797c40"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 170,
+            "y": 208,
+            "camera": 58
+          },
+          "imageSha256": "3d4f1d263a751cda0428075dabd7977d844f8270f7908e3cc1f614aeacd0aade"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 190,
+            "y": 208,
+            "camera": 78
+          },
+          "imageSha256": "e94064757f8e01faf8b5df165a080e17f58c5984db4e4fdc29d1fe7a5a516537"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 97,
+          "reference": {
+            "x": 203,
+            "y": 208,
+            "camera": 91
+          },
+          "imageSha256": "5fda09e610fb67bc14af1466218d4de12bf785afd897806e63a7ede41081b8b5"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-short-walk",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 125,
+            "y": 208,
+            "camera": 27
+          },
+          "imageSha256": "1006b1e39ee34f86bfdb9c79b83a949400c8b7e8ac43121a1af6ccff8440148f"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 136,
+            "y": 208,
+            "camera": 34
+          },
+          "imageSha256": "a1e6f5c1e0d5c4dbd96b90bac9babf6e814d194b628d0dca015a1a6d7c0ee095"
+        },
+        {
+          "buttons": [],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 42
+          },
+          "imageSha256": "c580f8c280c5cace528a771e16e21f20e24f08fc9c1352830b1acb7988880f04"
+        },
+        {
+          "buttons": [],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 155,
+            "y": 208,
+            "camera": 49
+          },
+          "imageSha256": "f133b955d0893c5fe5a2f2b2300d7bdc47b521e83dc7504d8fb9bd30775a647c"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-late-jump",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 143,
+            "y": 208,
+            "camera": 38
+          },
+          "imageSha256": "a4a631c7df110aa6a6c791b2c44c3afab6f0fb9b2647d33924ea88adbf540f23"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 155,
+            "y": 185,
+            "camera": 46
+          },
+          "imageSha256": "634e4639b83f7a943c5ce7d34a3456bc03c4d125a718114bbe8169110b84adef"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 165,
+            "y": 165,
+            "camera": 53
+          },
+          "imageSha256": "79a4bf0d1670da32024418729ecb37840bf39f0fb7316c1ac0f5b58a0e6972ec"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 177,
+            "y": 148,
+            "camera": 65
+          },
+          "imageSha256": "3c49adecd62eb0d9da2d4c90d48ca46178b1ccde246c53d4104f75b54ba001df"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 97,
+          "reference": {
+            "x": 188,
+            "y": 140,
+            "camera": 76
+          },
+          "imageSha256": "1b1f77203c8fadd249d6e73a360ded8eead44039bfb4d4a1ad120dd4efbd4ef1"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-refresh",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 40
+          },
+          "imageSha256": "6a76a80f557f192dfdd396a65979bedb6eecd480dd50fb78e3b435341ddceb75"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 163,
+            "y": 208,
+            "camera": 51
+          },
+          "imageSha256": "858c82dd1b6e59c63c50fb758ad23218db27970b9001b92e0f0a7f22c88162b4"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 173,
+            "y": 208,
+            "camera": 61
+          },
+          "imageSha256": "840531dce16c5499772ed5ff3e1f30a557900846bfd633230540f70826e68687"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-neutral",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 142,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "2dd929682a74f9b196b6435cd96aa53741f6f589d01b25d21135f746e114005f"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 155,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "44a7cd465f04543c047c22b7cb013f13d2cae8b28da48fe7878a354e01e71df1"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 165,
+            "y": 208,
+            "camera": 53
+          },
+          "imageSha256": "755e3eae7b0180f529663bdef6f1c0b7c7eb5afddff6f7655d6a08555a162e27"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 177,
+            "y": 208,
+            "camera": 65
+          },
+          "imageSha256": "8ac9c5c4106743bf35066d783458be700f80c05c693273e3f3bb49f8e7e861c1"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-b-neutral",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 142,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "2dd929682a74f9b196b6435cd96aa53741f6f589d01b25d21135f746e114005f"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 155,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "44a7cd465f04543c047c22b7cb013f13d2cae8b28da48fe7878a354e01e71df1"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 165,
+            "y": 208,
+            "camera": 53
+          },
+          "imageSha256": "755e3eae7b0180f529663bdef6f1c0b7c7eb5afddff6f7655d6a08555a162e27"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 177,
+            "y": 208,
+            "camera": 65
+          },
+          "imageSha256": "8ac9c5c4106743bf35066d783458be700f80c05c693273e3f3bb49f8e7e861c1"
+        }
+      ]
+    },
+    {
+      "name": "grace-reserved-reverse",
+      "source": "evidence/entry-joint-grace-heldout-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 108,
+            "y": 208,
+            "camera": 16
+          },
+          "imageSha256": "23479975985ae963c22256babd8c076e61c40e2d0ac5074141d3a61ae15b47fc"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 120,
+            "y": 208,
+            "camera": 24
+          },
+          "imageSha256": "610d4b0df351dbf5677971e29323917112f28e44c7bd8696a0894bfee2e1d38d"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 125,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "d996c9394f00ce3ed20f567d792cee2fae9f8ef1d320ee3f9ebd0260198fabb8"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 122,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "710aed0cbb41688421cb919e33eb5a5c3aff4cb4f2268e031fb58e2e2ae4949f"
+        }
+      ]
+    },
+    {
+      "name": "grace-direction-short-neutral",
+      "source": "evidence/entry-joint-grace-direction-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 140,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "a75b65092edd5c5e11b99c784db7de1ec2ff126499dce71bec94f3f8d277ceca"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 152,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "09355a98de921ce812f969dc80d68a826120f98e29a3a5756d0c04cd10830d5b"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 163,
+            "y": 208,
+            "camera": 51
+          },
+          "imageSha256": "f5f8cf011d3307f18d0fa162d3a6d4dd2f08ccf31a0ff5a891944fa9b6dd5bb0"
+        }
+      ]
+    },
+    {
+      "name": "grace-direction-long-neutral",
+      "source": "evidence/entry-joint-grace-direction-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 142,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "2dd929682a74f9b196b6435cd96aa53741f6f589d01b25d21135f746e114005f"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 155,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "44a7cd465f04543c047c22b7cb013f13d2cae8b28da48fe7878a354e01e71df1"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 165,
+            "y": 208,
+            "camera": 53
+          },
+          "imageSha256": "755e3eae7b0180f529663bdef6f1c0b7c7eb5afddff6f7655d6a08555a162e27"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 177,
+            "y": 208,
+            "camera": 65
+          },
+          "imageSha256": "8ac9c5c4106743bf35066d783458be700f80c05c693273e3f3bb49f8e7e861c1"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 97,
+          "reference": {
+            "x": 187,
+            "y": 208,
+            "camera": 75
+          },
+          "imageSha256": "01387978da96ec22513eb6e105114550a732ad3d72507d0ef771f9d670cf455f"
+        }
+      ]
+    },
+    {
+      "name": "grace-direction-partial-neutral",
+      "source": "evidence/entry-joint-grace-direction-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 73,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "b3be0cebe24a60a3e1cdd29065a484bee2f99569a0ccc81f1352ff8e96c837b6"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 85,
+            "y": 208,
+            "camera": 3
+          },
+          "imageSha256": "fb589f4a399c6785e93bef623d68502ed2854e366ba1f5a45a673ce73fad8d77"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 95,
+            "y": 208,
+            "camera": 10
+          },
+          "imageSha256": "b54c99d8fb89efd96a9fb2bcb16e37db44921f12815c0025b19e5d5b001866b2"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 107,
+            "y": 208,
+            "camera": 18
+          },
+          "imageSha256": "695cb2df01fd8936861e96b12a2f66349e3affe336d8ffa892f47bd18e8636e8"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 118,
+            "y": 208,
+            "camera": 25
+          },
+          "imageSha256": "291f5ec234cb6d466759d1253246460d9e59a03374b2d428c0900b99503d4aee"
+        }
+      ]
+    },
+    {
+      "name": "grace-direction-neutral-reverse",
+      "source": "evidence/entry-joint-grace-direction-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 142,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "2dd929682a74f9b196b6435cd96aa53741f6f589d01b25d21135f746e114005f"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 154,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "056512667c9f99de4ff1a5ef1352337e01443a2aa36333fecb23975439cac5cb"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 159,
+            "y": 208,
+            "camera": 48
+          },
+          "imageSha256": "fbe0b750269030cde4bfabdb52e4ee3ba9b2974dae8b615926126c3ba393c8aa"
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 156,
+            "y": 208,
+            "camera": 48
+          },
+          "imageSha256": "04d984e33a4d17881d105649d323e91a01ca47bd9e6e1d4b857ef6247d84baa1"
+        }
+      ]
+    },
+    {
+      "name": "grace-direction-mixed-pulse",
+      "source": "evidence/entry-joint-grace-direction-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 128,
+            "y": 208,
+            "camera": 28
+          },
+          "imageSha256": "1c80147a78b50bc6693e9b2ffbf7784ff53bc6b110e87629f0d8fdcb77a95b57"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 140,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "0041d27259aba2787c531fc15a3d55bf4ed7902fd8b5cc5a45e65f237d87d80d"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 152,
+            "y": 208,
+            "camera": 43
+          },
+          "imageSha256": "b2059ff455ddbbccf179f29cd8b45534d532d4006d00febd3d8740d384dede49"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 162,
+            "y": 208,
+            "camera": 50
+          },
+          "imageSha256": "d67bbff69bd6c21f3b8a672685c9e40c701c51fdd5701efebf0b87d4ecafb176"
+        }
+      ]
+    },
+    {
+      "name": "grace-expiry-full-neutral-two",
+      "source": "evidence/entry-joint-grace-expiry-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 146,
+            "y": 208,
+            "camera": 39
+          },
+          "imageSha256": "5d4b04f442a3d4e50374928be29c081d006e3b1c5321531b2dcdcccf5c36c301"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 162,
+            "y": 208,
+            "camera": 50
+          },
+          "imageSha256": "cb0c3fe7008294afad4312de4ee7e093131cb99e989213c0d494003a3f89b24c"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 173,
+            "y": 208,
+            "camera": 61
+          },
+          "imageSha256": "c72df99dee487d852d8597042e57a60828d53772b7d411381517b951b593f39a"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 185,
+            "y": 208,
+            "camera": 73
+          },
+          "imageSha256": "c17306f391b7eb67ba6855c80368c807e41ec6466470160f65c54918f5fe51a5"
+        }
+      ]
+    },
+    {
+      "name": "grace-expiry-partial-neutral-two",
+      "source": "evidence/entry-joint-grace-expiry-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 89,
+            "y": 208,
+            "camera": 5
+          },
+          "imageSha256": "eed88614cfdd4a1c715db35c3bda4e4ab9675f87103282fe7a9934635c7a1cd6"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 100,
+            "y": 208,
+            "camera": 12
+          },
+          "imageSha256": "d6e84e6cf2bda60365c758f156b679b8950046c17f1bb1713d1053c31869d908"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 111,
+            "y": 208,
+            "camera": 20
+          },
+          "imageSha256": "8cb7b22deab9fd718e2b6be0bed07d8dec642e2f66d4b3b3b7450c98d989bf22"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 122,
+            "y": 208,
+            "camera": 27
+          },
+          "imageSha256": "5182da21ff606940cc91761617862be61695e91542eb72b41513191680fcf214"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 134,
+            "y": 208,
+            "camera": 35
+          },
+          "imageSha256": "f6551575be5ff9ab3101ed9a963420364f733d5a02e882c6659231d0dec8519b"
+        }
+      ]
+    },
+    {
+      "name": "grace-expiry-mixed-neutral",
+      "source": "evidence/entry-joint-grace-expiry-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 108,
+            "y": 208,
+            "camera": 16
+          },
+          "imageSha256": "ab33a936b5f7115ef7c5cf4eb0295175e96ecffa457a5bf1f0fab1249bd32701"
+        },
+        {
+          "buttons": [],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 124,
+            "y": 208,
+            "camera": 25
+          },
+          "imageSha256": "e279295f07a2f8cfb92a80e9438aab9cb89efeefc636a532bcabc1ca82e50904"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 135,
+            "y": 208,
+            "camera": 32
+          },
+          "imageSha256": "86b477a36a2bdbec9d0334c431dc424503d27b811687910783e0b3d89dceeb73"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 40
+          },
+          "imageSha256": "debf6d2c385f5679850c410382cf520db7e8bc210f9c3eb143e4c6086ea81dd9"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 158,
+            "y": 208,
+            "camera": 47
+          },
+          "imageSha256": "2817763a6a7ba6283556cdd1be1b7a844710aff506ea1b13fb7540b8faab7b1e"
+        }
+      ]
+    },
+    {
+      "name": "grace-active-long-run-release",
+      "source": "evidence/entry-joint-grace-active-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 208,
+            "camera": 29
+          },
+          "imageSha256": "ccbf3f08efe4caf926248a3464e875e5c8927871b88acaefc2d33ee00323b2fb"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 147,
+            "y": 208,
+            "camera": 40
+          },
+          "imageSha256": "6a76a80f557f192dfdd396a65979bedb6eecd480dd50fb78e3b435341ddceb75"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 167,
+            "y": 208,
+            "camera": 55
+          },
+          "imageSha256": "07b0e8d7a39063c1e7acf5e49662fab6f37582e6704b415d61c47aac1ecdc839"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 180,
+            "y": 208,
+            "camera": 68
+          },
+          "imageSha256": "1acf952b8fd6ada259e7f1c3e0bf39221ca3213856457345b793ffa76a48fef7"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 8,
+          "nativeFrame": 90,
+          "reference": {
+            "x": 192,
+            "y": 208,
+            "camera": 80
+          },
+          "imageSha256": "5b84c7c35c3c0cbf5179593ad095f39b5e382b2ea1dd334843fa96b7fb363bed"
+        }
+      ]
+    },
+    {
+      "name": "grace-active-partial-release-jump",
+      "source": "evidence/entry-joint-grace-active-measurements.json",
+      "steps": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 7,
+          "reference": {
+            "x": 40,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "5bd932744b1401515da08cc5f0e88666f85f671b3f247177906f9fb52e51b105"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 15,
+          "reference": {
+            "x": 44,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "61694d1baaa93ea838fae0eed0ba2a089b859208fcaed6d35832fb35f35defb3"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 22,
+          "reference": {
+            "x": 51,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "26f379571c11e075476f4b931dae7626d0c5d79e28155617205337e31b4dd845"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 30,
+          "reference": {
+            "x": 62,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "f49452220f926a4d868534862000ce544c2bb9c41a1703ab6dd16e745dced895"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 7,
+          "nativeFrame": 37,
+          "reference": {
+            "x": 74,
+            "y": 208,
+            "camera": 0
+          },
+          "imageSha256": "099a92447c68e1b433883931d66bd25e775d0d9b342a834f5214b70f43a94949"
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "frames": 8,
+          "nativeFrame": 45,
+          "reference": {
+            "x": 92,
+            "y": 208,
+            "camera": 7
+          },
+          "imageSha256": "2bebe1b826fe7c85826929bff13adda0c6995276cd24c5a14d10b06627716896"
+        },
+        {
+          "buttons": [
+            "right"
+          ],
+          "frames": 7,
+          "nativeFrame": 52,
+          "reference": {
+            "x": 109,
+            "y": 208,
+            "camera": 17
+          },
+          "imageSha256": "83c9249fb8ff5b7b5fdb5bc7bfc7f656ea9c2b43c3c7411d5bb4a730b5ceb7da"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 60,
+          "reference": {
+            "x": 129,
+            "y": 180,
+            "camera": 29
+          },
+          "imageSha256": "84f3a5f32df5be4769eea0b12a089539bd22850011d484e184c59cc0d1f79807"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 67,
+          "reference": {
+            "x": 147,
+            "y": 155,
+            "camera": 40
+          },
+          "imageSha256": "d1a84ca6325cfbc8a10eafdf4454c94e330cc39a4f35d362fabf3bd5f0cfe8b3"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 8,
+          "nativeFrame": 75,
+          "reference": {
+            "x": 167,
+            "y": 135,
+            "camera": 55
+          },
+          "imageSha256": "d04e040979014dd338606681f9ca042409c63cdb3b3aed08ffafda98a869b854"
+        },
+        {
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "frames": 7,
+          "nativeFrame": 82,
+          "reference": {
+            "x": 184,
+            "y": 127,
+            "camera": 72
+          },
+          "imageSha256": "58c7a2bab72e131ab6f6487e0447f36fe0857d48a6d348d2875615aed2b02609"
+        }
+      ]
+    }
+  ]
+}

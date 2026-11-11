@@ -1,0 +1,26 @@
+{
+  "schema": "goomba-first-frozen-candidate-v1",
+  "frozenUtc": "2026-11-06T01:21:32.708460+00:00",
+  "planSha256": "48c7bd70f8f4a0e25d6e1a0497619eba016a0f3cce207ed170db268cf63ff607",
+  "trainingTraceSha256": "cab9ddb15821c3f3336ce0eec238df391f5a1c9f816d4afc4143ff18c7f6fc8c",
+  "selectedGlobalPhase": {
+    "dwellNativeFrames": 8,
+    "offsetNativeFrames": 0,
+    "errors": 0,
+    "samples": 132
+  },
+  "equallyExactGlobalPhases": [
+    {
+      "dwellNativeFrames": 8,
+      "offsetNativeFrames": 0,
+      "errors": 0,
+      "samples": 132
+    }
+  ],
+  "head": "Supplied112/113 parts unchanged; whole mirrored head is pixel-identical, separate half mirroring is incorrect.",
+  "feet": "Supplied114/115 unchanged for phase0; swap halves and horizontally mirror both for phase1, equivalent to mirroring the whole16px lower row.",
+  "velocityPixelsPerNativeFrame": -0.5,
+  "activationQualification": "Conditional image-derived birth/camera brackets are retained in the observation report; do not replace them with an unmeasured exact threshold.",
+  "domain": "First1-1 ordinary grounded walking Goomba under fresh standard starts, waits, runs, walks, stops, reversal and jumping approaches. Pause/power changes/death animation clocks remain unmeasured.",
+  "heldoutStatus": "Declared controls have not been captured."
+}

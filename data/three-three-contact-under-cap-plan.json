@@ -1,0 +1,99 @@
+{
+  "schema": "three-three-contact-under-cap-prospective-v1",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3384,
+  "captureFromTick": 3364,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [
+      "cal-walk4-under-cap"
+    ],
+    "reserved": [
+      "reserved-walk4-short",
+      "reserved-walk3-run-held"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "cal-walk4-under-cap",
+      "segments": [
+        {
+          "stage": "walk-under",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        {
+          "stage": "vertical-jump",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    },
+    {
+      "name": "reserved-walk4-short",
+      "segments": [
+        {
+          "stage": "walk-under",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 4
+        },
+        {
+          "stage": "vertical-short",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "release-jump",
+          "buttons": [],
+          "ticks": 18
+        }
+      ]
+    },
+    {
+      "name": "reserved-walk3-run-held",
+      "segments": [
+        {
+          "stage": "walk-under",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "under-held",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    }
+  ],
+  "priorPlanSha256": "40e9deaf0b6cd9a191db6028862d100fe03f84708c43d08244c11f1863f93325",
+  "reason": "Release calibration rises beside left edge and cannot distinguish around-edge passage from an underside contact. Move beneath interior while still standing on lower cap, then jump."
+}

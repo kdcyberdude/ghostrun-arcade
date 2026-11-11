@@ -1,0 +1,13 @@
+{
+ "schema": "castle-exit-native-alignment-v1",
+ "method": "Native-only probes (tools/fidelity-lab/area-probe.mjs, branching from the recorded winning route) plus the per-frame route trace (evidence/local/native-trace-winning-route-ram-20261109.jsonl). No ROM inspection. Every ordinary castle (1-4, 2-4, 3-4, 5-4, 7-4) has its axe tile one tile column after the end of the 13-tile bridge and Mario ends the cutscene at exit.x + 166..168 (native final x 2432, 2429, 2430, 2432, 3454 against compiled stopX 2432, 2429, 2430, 2432, 3454). 4-4 and 6-4 end 32 px and 16 px further right natively than the compiled stopX (2942 against 2910, 2431 against 2415). The screenshot-verified 13-tile bridge is kept: the missing columns are inserted before the raised block that precedes the bridge, so the block, the bridge, the pedestal, the axe and the cutscene stop all move right together.",
+ "native": [
+  {"level": "4-4", "groundBlockedPlayerX": 2754, "wallLeftEdge": 2768, "contactPlayerX": [2772, 2779], "contactFeetY": 130, "finalX": 2942, "firstRaisedBlockClimbX": 2418, "evidence": "area-probe plan from row 37560: running right on the bridge stops at x 2754 (wall 14 px right of it = column 173), jumps from x 2772/2779 start the axe sequence (mode 2) when the feet cross the axe top; route row 37591 contact, cutscene final x 2942. Native Mario climbs onto the raised block with a jump at x 2418 (rows 37417-37430) where the compiled block would already stop him at x 2386. Native firebar and podoboo first appear 28 and 32 px right of the compiled positions (rows 37411, 37459)."},
+  {"level": "6-4", "groundBlockedPlayerX": 2242, "wallLeftEdge": 2256, "contactPlayerX": [2246, 2265], "contactFeetY": 129, "finalX": 2431, "evidence": "area-probe plan from row 54938: running right stops at x 2242 (wall = column 141), jumps start the axe sequence at x 2246-2265 when the feet cross the axe top; route row 54967 contact, cutscene final x 2431. The native podoboo first appears at x 2096 against the compiled 2080 (row 54805)."}
+ ],
+ "levels": [
+  {"level": "4-4", "area": "main", "insertAtColumn": 150, "insertColumns": 2, "expectExitX": 2744},
+  {"level": "6-4", "area": "main", "insertAtColumn": 122, "insertColumns": 1, "expectExitX": 2248}
+ ],
+ "note": "Enemies, firebars and platforms are not moved here (enemy placement belongs to the enemy-fidelity work); the native sightings above show the castle-end enemies share the same offset."
+}

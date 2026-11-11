@@ -1,0 +1,123 @@
+{
+  "level": "1-1",
+  "provenance": "Enemy kinds and first sightings are exact sprite matches in data/observed-entities-1-1.json. Initial coordinates below are inferred from those moving sightings on the 16px object grid; activation timing is still under calibration. Camera activation thresholds are inferred by reversing the observed linear motion to the editable initial coordinate; independent manual validation remains required.",
+  "enemies": [
+    {
+      "kind": "goomba",
+      "x": 352,
+      "y": 208,
+      "spawnCamera": 51,
+      "evidence": "Inferred spawn/activation from screenshot track1; initial x on16px grid, speed-0.5px/native frame, first sight x340 at reference tick13. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 640,
+      "y": 208,
+      "direction": 1,
+      "spawnCamera": 345,
+      "evidence": "Inferred spawn/activation from screenshot track2; initial x on16px grid, speed0.5px/native frame, first sight x657 at reference tick30. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 832,
+      "y": 208,
+      "spawnCamera": 503,
+      "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 848,
+      "y": 208,
+      "spawnCamera": 531,
+      "evidence": "Inferred spawn/activation from screenshot track4; initial x on16px grid, speed-0.5px/native frame, first sight x833 at reference tick43. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1280,
+      "y": 80,
+      "spawnCamera": 980,
+      "evidence": "Inferred spawn/activation from screenshot track5; initial x on16px grid, speed-0.5px/native frame, first sight x1269 at reference tick66. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1312,
+      "y": 80,
+      "spawnCamera": 1013,
+      "evidence": "Inferred spawn/activation from screenshot track6; initial x on16px grid, speed-0.5px/native frame, first sight x1300 at reference tick68. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1568,
+      "y": 208,
+      "spawnCamera": 1223,
+      "evidence": "Inferred spawn/activation from screenshot track7; initial x on16px grid, speed-0.5px/native frame, first sight x1549 at reference tick81. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1584,
+      "y": 208,
+      "spawnCamera": 1263,
+      "evidence": "Inferred spawn/activation from screenshot track8; initial x on16px grid, speed-0.5px/native frame, first sight x1569 at reference tick82. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "koopa",
+      "x": 1712,
+      "y": 208,
+      "spawnCamera": 1418,
+      "evidence": "Inferred spawn/activation from screenshot track9; initial x on16px grid, speed-0.5px/native frame, first sight x1702 at reference tick89. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1840,
+      "y": 208,
+      "spawnCamera": 1515,
+      "evidence": "Inferred spawn/activation from screenshot track10; initial x on16px grid, speed-0.5px/native frame, first sight x1823 at reference tick96. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 1856,
+      "y": 208,
+      "spawnCamera": 1553,
+      "evidence": "Inferred spawn/activation from screenshot track11; initial x on16px grid, speed-0.5px/native frame, first sight x1843 at reference tick97. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 2000,
+      "y": 208,
+      "spawnCamera": 1675,
+      "evidence": "Inferred spawn/activation from screenshot track12; initial x on16px grid, speed-0.5px/native frame, first sight x1985 at reference tick104. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 2016,
+      "y": 208,
+      "spawnCamera": 1711,
+      "evidence": "Inferred spawn/activation from screenshot track13; initial x on16px grid, speed-0.5px/native frame, first sight x1993 at reference tick108. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 2064,
+      "y": 208,
+      "spawnCamera": 1715,
+      "evidence": "Inferred spawn/activation from screenshot track14; initial x on16px grid, speed-0.5px/native frame, first sight x2042 at reference tick108. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 2800,
+      "y": 208,
+      "spawnCamera": 2473,
+      "evidence": "Inferred spawn/activation from screenshot track15; initial x on16px grid, speed-0.5px/native frame, first sight x2783 at reference tick147. Activation is camera-based, never tick-based."
+    },
+    {
+      "kind": "goomba",
+      "x": 2816,
+      "y": 208,
+      "spawnCamera": 2515,
+      "evidence": "Inferred spawn/activation from screenshot track16; initial x on16px grid, speed-0.5px/native frame, first sight x2804 at reference tick148. Activation is camera-based, never tick-based."
+    }
+  ],
+  "unresolved": [
+    "Exact initial enemy positions and activation thresholds are inferred; compare ordinary controls before accepting them.",
+    "Powerup/hidden block contents and optional pipe room remain unobserved."
+  ]
+}

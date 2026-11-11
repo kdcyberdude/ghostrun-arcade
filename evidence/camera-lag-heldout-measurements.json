@@ -1,0 +1,3066 @@
+{
+  "date": "2026-11-05T23:10:26.945Z",
+  "planPath": "evidence/camera-lag-heldout-plan.json",
+  "planSha256": "d5bf848b1c8781d3d00e4f57ae19377ee5918c689a3aaa0c97e131fc1d792dfe",
+  "directory": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z",
+  "prefixChecks": [
+    {
+      "name": "camera-reserved-wall-slow-jump",
+      "tick": 32,
+      "nativeFrame": 240,
+      "byteIdentical": true
+    },
+    {
+      "name": "camera-reserved-wall-reverse",
+      "tick": 32,
+      "nativeFrame": 240,
+      "byteIdentical": true
+    },
+    {
+      "name": "camera-reserved-half-full-neutral",
+      "tick": 0,
+      "nativeFrame": 0,
+      "byteIdentical": true
+    }
+  ],
+  "method": "Fresh resets and ordinary original applied prefix inputs with actual native durations. One persistent reference process; source camera from exact static-image prefix anchor plus contiguous image registration. Sprite coordinates from actual PNGs. No binary/ROM inspection, state access, save/load or gameplay skips.",
+  "records": [
+    {
+      "sequence": 0,
+      "experiment": "hello",
+      "sentUTC": "2026-11-05T23:10:23.958Z",
+      "request": {
+        "op": "hello"
+      },
+      "response": {
+        "ok": true,
+        "protocol": "pixel-player-v1",
+        "buttons": [
+          "up",
+          "down",
+          "left",
+          "right",
+          "a",
+          "b",
+          "x",
+          "y",
+          "start",
+          "select"
+        ],
+        "operations": [
+          "hello",
+          "reset",
+          "observe",
+          "suggest",
+          "step",
+          "auto"
+        ],
+        "ticks_per_emulated_second": 8,
+        "image_format": "PNG RGB 256x240"
+      },
+      "nativeFrame": 0,
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 1,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:24.696Z",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000001.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0001-camera-reserved-wall-slow-jump-t0.png"
+        }
+      },
+      "nativeFrame": 0,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0001-camera-reserved-wall-slow-jump-t0.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 2,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:24.925Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 17
+      },
+      "response": {
+        "ok": true,
+        "tick": 17,
+        "frames_advanced": 127,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000002.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0002-camera-reserved-wall-slow-jump-t17.png"
+        }
+      },
+      "nativeFrame": 127,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0002-camera-reserved-wall-slow-jump-t17.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 3,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.045Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 20,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000003.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0003-camera-reserved-wall-slow-jump-t20.png"
+        }
+      },
+      "nativeFrame": 150,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0003-camera-reserved-wall-slow-jump-t20.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 4,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.067Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 21,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000004.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0004-camera-reserved-wall-slow-jump-t21.png"
+        }
+      },
+      "nativeFrame": 157,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0004-camera-reserved-wall-slow-jump-t21.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 5,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.075Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 24,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000005.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0005-camera-reserved-wall-slow-jump-t24.png"
+        }
+      },
+      "nativeFrame": 180,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0005-camera-reserved-wall-slow-jump-t24.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 6,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.097Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 32,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000006.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0006-camera-reserved-wall-slow-jump-t32.png"
+        }
+      },
+      "nativeFrame": 240,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0006-camera-reserved-wall-slow-jump-t32.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 7,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.185Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 33,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000007.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0007-camera-reserved-wall-slow-jump-t33.png"
+        }
+      },
+      "nativeFrame": 247,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0007-camera-reserved-wall-slow-jump-t33.png",
+      "player": {
+        "originX": 111,
+        "originY": 177,
+        "visibleLeft": 114,
+        "visibleTop": 193,
+        "visibleRight": 124,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 596
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 1491
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 8,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.222Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 34,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000008.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0008-camera-reserved-wall-slow-jump-t34.png"
+        }
+      },
+      "nativeFrame": 255,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0008-camera-reserved-wall-slow-jump-t34.png",
+      "player": {
+        "originX": 109,
+        "originY": 154,
+        "visibleLeft": 109,
+        "visibleTop": 170,
+        "visibleRight": 124,
+        "visibleBottom": 185,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 594
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1567
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 9,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.260Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 35,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000009.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0009-camera-reserved-wall-slow-jump-t35.png"
+        }
+      },
+      "nativeFrame": 262,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0009-camera-reserved-wall-slow-jump-t35.png",
+      "player": {
+        "originX": 109,
+        "originY": 134,
+        "visibleLeft": 109,
+        "visibleTop": 150,
+        "visibleRight": 124,
+        "visibleBottom": 165,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 594
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1621
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 10,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.285Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 36,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000010.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0010-camera-reserved-wall-slow-jump-t36.png"
+        }
+      },
+      "nativeFrame": 270,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0010-camera-reserved-wall-slow-jump-t36.png",
+      "player": {
+        "originX": 112,
+        "originY": 119,
+        "visibleLeft": 112,
+        "visibleTop": 135,
+        "visibleRight": 127,
+        "visibleBottom": 150,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 597
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1719
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 11,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.306Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 37,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000011.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0011-camera-reserved-wall-slow-jump-t37.png"
+        }
+      },
+      "nativeFrame": 277,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0011-camera-reserved-wall-slow-jump-t37.png",
+      "player": {
+        "originX": 113,
+        "originY": 112,
+        "visibleLeft": 113,
+        "visibleTop": 128,
+        "visibleRight": 128,
+        "visibleBottom": 143,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 601
+      },
+      "camera": 488,
+      "registration": {
+        "delta": 3,
+        "score": 0,
+        "comparedPixels": 1687
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 12,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.327Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 38,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          24
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000012.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0012-camera-reserved-wall-slow-jump-t38.png"
+        }
+      },
+      "nativeFrame": 285,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0012-camera-reserved-wall-slow-jump-t38.png",
+      "player": {
+        "originX": 113,
+        "originY": 113,
+        "visibleLeft": 113,
+        "visibleTop": 129,
+        "visibleRight": 128,
+        "visibleBottom": 144,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 608
+      },
+      "camera": 495,
+      "registration": {
+        "delta": 7,
+        "score": 0,
+        "comparedPixels": 1680
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 13,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.350Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 39,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000013.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0013-camera-reserved-wall-slow-jump-t39.png"
+        }
+      },
+      "nativeFrame": 292,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0013-camera-reserved-wall-slow-jump-t39.png",
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "visibleLeft": 113,
+        "visibleTop": 145,
+        "visibleRight": 127,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 616
+      },
+      "camera": 503,
+      "registration": {
+        "delta": 8,
+        "score": 0,
+        "comparedPixels": 1889
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 14,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.371Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 40,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          8
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000014.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0014-camera-reserved-wall-slow-jump-t40.png"
+        }
+      },
+      "nativeFrame": 300,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0014-camera-reserved-wall-slow-jump-t40.png",
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "visibleLeft": 116,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 628
+      },
+      "camera": 515,
+      "registration": {
+        "delta": 12,
+        "score": 0,
+        "comparedPixels": 2265
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 15,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.392Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 41,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          4
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000015.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0015-camera-reserved-wall-slow-jump-t41.png"
+        }
+      },
+      "nativeFrame": 308,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0015-camera-reserved-wall-slow-jump-t41.png",
+      "player": {
+        "originX": 113,
+        "originY": 129,
+        "visibleLeft": 114,
+        "visibleTop": 146,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 638
+      },
+      "camera": 525,
+      "registration": {
+        "delta": 10,
+        "score": 0,
+        "comparedPixels": 2643
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 16,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.415Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 42,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          4
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000016.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0016-camera-reserved-wall-slow-jump-t42.png"
+        }
+      },
+      "nativeFrame": 315,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0016-camera-reserved-wall-slow-jump-t42.png",
+      "player": {
+        "originX": 113,
+        "originY": 141,
+        "visibleLeft": 114,
+        "visibleTop": 158,
+        "visibleRight": 126,
+        "visibleBottom": 172,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 644
+      },
+      "camera": 531,
+      "registration": {
+        "delta": 6,
+        "score": 0,
+        "comparedPixels": 2653
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 17,
+      "experiment": "camera-reserved-wall-slow-jump",
+      "sentUTC": "2026-11-05T23:10:25.435Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 43,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          4
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000017.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0017-camera-reserved-wall-slow-jump-t43.png"
+        }
+      },
+      "nativeFrame": 323,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0017-camera-reserved-wall-slow-jump-t43.png",
+      "player": {
+        "originX": 113,
+        "originY": 174,
+        "visibleLeft": 114,
+        "visibleTop": 191,
+        "visibleRight": 126,
+        "visibleBottom": 205,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 646
+      },
+      "camera": 533,
+      "registration": {
+        "delta": 2,
+        "score": 0,
+        "comparedPixels": 2664
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 18,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.457Z",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000018.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0018-camera-reserved-wall-reverse-t0.png"
+        }
+      },
+      "nativeFrame": 0,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0018-camera-reserved-wall-reverse-t0.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 19,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.679Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 17
+      },
+      "response": {
+        "ok": true,
+        "tick": 17,
+        "frames_advanced": 127,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000019.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0019-camera-reserved-wall-reverse-t17.png"
+        }
+      },
+      "nativeFrame": 127,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0019-camera-reserved-wall-reverse-t17.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 20,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.796Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 20,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000020.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0020-camera-reserved-wall-reverse-t20.png"
+        }
+      },
+      "nativeFrame": 150,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0020-camera-reserved-wall-reverse-t20.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 21,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.819Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 21,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000021.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0021-camera-reserved-wall-reverse-t21.png"
+        }
+      },
+      "nativeFrame": 157,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0021-camera-reserved-wall-reverse-t21.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 22,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.827Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "response": {
+        "ok": true,
+        "tick": 24,
+        "frames_advanced": 23,
+        "terminal": false,
+        "applied_masks": [
+          56,
+          56,
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000022.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0022-camera-reserved-wall-reverse-t24.png"
+        }
+      },
+      "nativeFrame": 180,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0022-camera-reserved-wall-reverse-t24.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 23,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.850Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 8
+      },
+      "response": {
+        "ok": true,
+        "tick": 32,
+        "frames_advanced": 60,
+        "terminal": false,
+        "applied_masks": [
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000023.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0023-camera-reserved-wall-reverse-t32.png"
+        }
+      },
+      "nativeFrame": 240,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0023-camera-reserved-wall-reverse-t32.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 24,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.914Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 33,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000024.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0024-camera-reserved-wall-reverse-t33.png"
+        }
+      },
+      "nativeFrame": 247,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0024-camera-reserved-wall-reverse-t33.png",
+      "player": {
+        "originX": 111,
+        "originY": 153,
+        "visibleLeft": 111,
+        "visibleTop": 169,
+        "visibleRight": 126,
+        "visibleBottom": 184,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 596
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 1401
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 25,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.935Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 34,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000025.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0025-camera-reserved-wall-reverse-t34.png"
+        }
+      },
+      "nativeFrame": 255,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0025-camera-reserved-wall-reverse-t34.png",
+      "player": {
+        "originX": 109,
+        "originY": 124,
+        "visibleLeft": 109,
+        "visibleTop": 140,
+        "visibleRight": 124,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 594
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1575
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 26,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.956Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 35,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000026.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0026-camera-reserved-wall-reverse-t35.png"
+        }
+      },
+      "nativeFrame": 262,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0026-camera-reserved-wall-reverse-t35.png",
+      "player": {
+        "originX": 111,
+        "originY": 110,
+        "visibleLeft": 111,
+        "visibleTop": 126,
+        "visibleRight": 126,
+        "visibleBottom": 141,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 596
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 27,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.977Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 36,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000027.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0027-camera-reserved-wall-reverse-t36.png"
+        }
+      },
+      "nativeFrame": 270,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0027-camera-reserved-wall-reverse-t36.png",
+      "player": {
+        "originX": 109,
+        "originY": 127,
+        "visibleLeft": 109,
+        "visibleTop": 143,
+        "visibleRight": 124,
+        "visibleBottom": 158,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 594
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 28,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:25.999Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 37,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000028.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0028-camera-reserved-wall-reverse-t37.png"
+        }
+      },
+      "nativeFrame": 277,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0028-camera-reserved-wall-reverse-t37.png",
+      "player": {
+        "originX": 103,
+        "originY": 155,
+        "visibleLeft": 103,
+        "visibleTop": 171,
+        "visibleRight": 118,
+        "visibleBottom": 186,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 588
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 29,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.019Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 38,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000029.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0029-camera-reserved-wall-reverse-t38.png"
+        }
+      },
+      "nativeFrame": 285,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0029-camera-reserved-wall-reverse-t38.png",
+      "player": {
+        "originX": 90,
+        "originY": 177,
+        "visibleLeft": 91,
+        "visibleTop": 193,
+        "visibleRight": 105,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 575
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 30,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.040Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 39,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          36
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000030.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0030-camera-reserved-wall-reverse-t39.png"
+        }
+      },
+      "nativeFrame": 292,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0030-camera-reserved-wall-reverse-t39.png",
+      "player": {
+        "originX": 77,
+        "originY": 177,
+        "visibleLeft": 78,
+        "visibleTop": 194,
+        "visibleRight": 90,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 562
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 31,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.060Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 40,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000031.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0031-camera-reserved-wall-reverse-t40.png"
+        }
+      },
+      "nativeFrame": 300,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0031-camera-reserved-wall-reverse-t40.png",
+      "player": {
+        "originX": 62,
+        "originY": 177,
+        "visibleLeft": 63,
+        "visibleTop": 193,
+        "visibleRight": 75,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "right",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 547
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 32,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.080Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 41,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000032.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0032-camera-reserved-wall-reverse-t41.png"
+        }
+      },
+      "nativeFrame": 308,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0032-camera-reserved-wall-reverse-t41.png",
+      "player": {
+        "originX": 52,
+        "originY": 177,
+        "visibleLeft": 53,
+        "visibleTop": 193,
+        "visibleRight": 65,
+        "visibleBottom": 208,
+        "cell": 15,
+        "direction": "right",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 537
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 33,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.101Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 42,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000033.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0033-camera-reserved-wall-reverse-t42.png"
+        }
+      },
+      "nativeFrame": 315,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0033-camera-reserved-wall-reverse-t42.png",
+      "player": {
+        "originX": 52,
+        "originY": 177,
+        "visibleLeft": 52,
+        "visibleTop": 193,
+        "visibleRight": 66,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 537
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 34,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.120Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 43,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000034.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0034-camera-reserved-wall-reverse-t43.png"
+        }
+      },
+      "nativeFrame": 323,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0034-camera-reserved-wall-reverse-t43.png",
+      "player": {
+        "originX": 56,
+        "originY": 177,
+        "visibleLeft": 59,
+        "visibleTop": 193,
+        "visibleRight": 69,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 541
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 35,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.141Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 44,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000035.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0035-camera-reserved-wall-reverse-t44.png"
+        }
+      },
+      "nativeFrame": 330,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0035-camera-reserved-wall-reverse-t44.png",
+      "player": {
+        "originX": 63,
+        "originY": 177,
+        "visibleLeft": 65,
+        "visibleTop": 194,
+        "visibleRight": 77,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 548
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 36,
+      "experiment": "camera-reserved-wall-reverse",
+      "sentUTC": "2026-11-05T23:10:26.161Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 45,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000036.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0036-camera-reserved-wall-reverse-t45.png"
+        }
+      },
+      "nativeFrame": 338,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0036-camera-reserved-wall-reverse-t45.png",
+      "player": {
+        "originX": 74,
+        "originY": 177,
+        "visibleLeft": 77,
+        "visibleTop": 193,
+        "visibleRight": 87,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 559
+      },
+      "camera": 485,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1755
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 37,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.181Z",
+      "request": {
+        "op": "reset"
+      },
+      "response": {
+        "ok": true,
+        "tick": 0,
+        "frames_advanced": 0,
+        "terminal": false,
+        "applied_masks": [],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000037.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0037-camera-reserved-half-full-neutral-t0.png"
+        }
+      },
+      "nativeFrame": 0,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0037-camera-reserved-half-full-neutral-t0.png",
+      "camera": 0,
+      "measurement": false
+    },
+    {
+      "sequence": 38,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.412Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 1,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000038.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0038-camera-reserved-half-full-neutral-t1.png"
+        }
+      },
+      "nativeFrame": 7,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0038-camera-reserved-half-full-neutral-t1.png",
+      "player": {
+        "originX": 40,
+        "originY": 177,
+        "visibleLeft": 40,
+        "visibleTop": 193,
+        "visibleRight": 54,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 40
+      },
+      "camera": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 764
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 39,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.432Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 2,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000039.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0039-camera-reserved-half-full-neutral-t2.png"
+        }
+      },
+      "nativeFrame": 15,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0039-camera-reserved-half-full-neutral-t2.png",
+      "player": {
+        "originX": 44,
+        "originY": 177,
+        "visibleLeft": 47,
+        "visibleTop": 193,
+        "visibleRight": 57,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 44
+      },
+      "camera": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 754
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 40,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.451Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 3,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000040.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0040-camera-reserved-half-full-neutral-t3.png"
+        }
+      },
+      "nativeFrame": 22,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0040-camera-reserved-half-full-neutral-t3.png",
+      "player": {
+        "originX": 51,
+        "originY": 177,
+        "visibleLeft": 53,
+        "visibleTop": 194,
+        "visibleRight": 65,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 51
+      },
+      "camera": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 814
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 41,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.471Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 4,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000041.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0041-camera-reserved-half-full-neutral-t4.png"
+        }
+      },
+      "nativeFrame": 30,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0041-camera-reserved-half-full-neutral-t4.png",
+      "player": {
+        "originX": 62,
+        "originY": 177,
+        "visibleLeft": 65,
+        "visibleTop": 193,
+        "visibleRight": 75,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 62
+      },
+      "camera": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 919
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 42,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.491Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 5,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000042.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0042-camera-reserved-half-full-neutral-t5.png"
+        }
+      },
+      "nativeFrame": 37,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0042-camera-reserved-half-full-neutral-t5.png",
+      "player": {
+        "originX": 74,
+        "originY": 177,
+        "visibleLeft": 74,
+        "visibleTop": 193,
+        "visibleRight": 88,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 74
+      },
+      "camera": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 1039
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 43,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.511Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 6,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000043.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0043-camera-reserved-half-full-neutral-t6.png"
+        }
+      },
+      "nativeFrame": 45,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0043-camera-reserved-half-full-neutral-t6.png",
+      "player": {
+        "originX": 85,
+        "originY": 177,
+        "visibleLeft": 88,
+        "visibleTop": 193,
+        "visibleRight": 98,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 92
+      },
+      "camera": 7,
+      "registration": {
+        "delta": 7,
+        "score": 0,
+        "comparedPixels": 1054
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 44,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.531Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 7,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000044.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0044-camera-reserved-half-full-neutral-t7.png"
+        }
+      },
+      "nativeFrame": 52,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0044-camera-reserved-half-full-neutral-t7.png",
+      "player": {
+        "originX": 92,
+        "originY": 177,
+        "visibleLeft": 95,
+        "visibleTop": 193,
+        "visibleRight": 105,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 109
+      },
+      "camera": 17,
+      "registration": {
+        "delta": 10,
+        "score": 0,
+        "comparedPixels": 1164
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 45,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.551Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 8,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000045.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0045-camera-reserved-half-full-neutral-t8.png"
+        }
+      },
+      "nativeFrame": 60,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0045-camera-reserved-half-full-neutral-t8.png",
+      "player": {
+        "originX": 100,
+        "originY": 177,
+        "visibleLeft": 102,
+        "visibleTop": 194,
+        "visibleRight": 114,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 129
+      },
+      "camera": 29,
+      "registration": {
+        "delta": 12,
+        "score": 0.11904761904761904,
+        "comparedPixels": 1218
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 46,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.571Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 9,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000046.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0046-camera-reserved-half-full-neutral-t9.png"
+        }
+      },
+      "nativeFrame": 67,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0046-camera-reserved-half-full-neutral-t9.png",
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 107,
+        "visibleTop": 193,
+        "visibleRight": 121,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 147
+      },
+      "camera": 40,
+      "registration": {
+        "delta": 11,
+        "score": 0.13718070009460737,
+        "comparedPixels": 1057
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 47,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.591Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 10,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000047.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0047-camera-reserved-half-full-neutral-t10.png"
+        }
+      },
+      "nativeFrame": 75,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0047-camera-reserved-half-full-neutral-t10.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 115,
+        "visibleTop": 193,
+        "visibleRight": 125,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 167
+      },
+      "camera": 55,
+      "registration": {
+        "delta": 15,
+        "score": 0.17575757575757575,
+        "comparedPixels": 825
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 48,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.611Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 11,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000048.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0048-camera-reserved-half-full-neutral-t11.png"
+        }
+      },
+      "nativeFrame": 82,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0048-camera-reserved-half-full-neutral-t11.png",
+      "player": {
+        "originX": 112,
+        "originY": 153,
+        "visibleLeft": 112,
+        "visibleTop": 169,
+        "visibleRight": 127,
+        "visibleBottom": 184,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 184
+      },
+      "camera": 72,
+      "registration": {
+        "delta": 17,
+        "score": 0.1858974358974359,
+        "comparedPixels": 780
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 49,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.632Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 12,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000049.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0049-camera-reserved-half-full-neutral-t12.png"
+        }
+      },
+      "nativeFrame": 90,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0049-camera-reserved-half-full-neutral-t12.png",
+      "player": {
+        "originX": 112,
+        "originY": 124,
+        "visibleLeft": 112,
+        "visibleTop": 140,
+        "visibleRight": 127,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 204
+      },
+      "camera": 92,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 987
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 50,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.652Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 13,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000050.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0050-camera-reserved-half-full-neutral-t13.png"
+        }
+      },
+      "nativeFrame": 97,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0050-camera-reserved-half-full-neutral-t13.png",
+      "player": {
+        "originX": 112,
+        "originY": 106,
+        "visibleLeft": 112,
+        "visibleTop": 122,
+        "visibleRight": 127,
+        "visibleBottom": 137,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 222
+      },
+      "camera": 110,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 1408
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 51,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.673Z",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 14,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000051.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0051-camera-reserved-half-full-neutral-t14.png"
+        }
+      },
+      "nativeFrame": 105,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0051-camera-reserved-half-full-neutral-t14.png",
+      "player": {
+        "originX": 112,
+        "originY": 102,
+        "visibleLeft": 112,
+        "visibleTop": 118,
+        "visibleRight": 127,
+        "visibleBottom": 133,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 242
+      },
+      "camera": 130,
+      "registration": {
+        "delta": 20,
+        "score": 0.21949947862356622,
+        "comparedPixels": 1918
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 52,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.694Z",
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 15,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          0
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000052.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0052-camera-reserved-half-full-neutral-t15.png"
+        }
+      },
+      "nativeFrame": 112,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0052-camera-reserved-half-full-neutral-t15.png",
+      "player": {
+        "originX": 112,
+        "originY": 113,
+        "visibleLeft": 112,
+        "visibleTop": 129,
+        "visibleRight": 126,
+        "visibleBottom": 144,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 259
+      },
+      "camera": 147,
+      "registration": {
+        "delta": 17,
+        "score": 0,
+        "comparedPixels": 2132
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 53,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.714Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 16,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000053.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0053-camera-reserved-half-full-neutral-t16.png"
+        }
+      },
+      "nativeFrame": 120,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0053-camera-reserved-half-full-neutral-t16.png",
+      "player": {
+        "originX": 112,
+        "originY": 115,
+        "visibleLeft": 112,
+        "visibleTop": 131,
+        "visibleRight": 126,
+        "visibleBottom": 146,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 278
+      },
+      "camera": 166,
+      "registration": {
+        "delta": 19,
+        "score": 0.2902902902902903,
+        "comparedPixels": 1998
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 54,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.735Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 17,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000054.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0054-camera-reserved-half-full-neutral-t17.png"
+        }
+      },
+      "nativeFrame": 127,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0054-camera-reserved-half-full-neutral-t17.png",
+      "player": {
+        "originX": 112,
+        "originY": 137,
+        "visibleLeft": 112,
+        "visibleTop": 153,
+        "visibleRight": 126,
+        "visibleBottom": 168,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 296
+      },
+      "camera": 184,
+      "registration": {
+        "delta": 18,
+        "score": 0.29014507253626814,
+        "comparedPixels": 1999
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 55,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.755Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 18,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000055.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0055-camera-reserved-half-full-neutral-t18.png"
+        }
+      },
+      "nativeFrame": 135,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0055-camera-reserved-half-full-neutral-t18.png",
+      "player": {
+        "originX": 112,
+        "originY": 169,
+        "visibleLeft": 112,
+        "visibleTop": 185,
+        "visibleRight": 126,
+        "visibleBottom": 200,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 316
+      },
+      "camera": 204,
+      "registration": {
+        "delta": 20,
+        "score": 0.29014507253626814,
+        "comparedPixels": 1999
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 56,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.776Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 19,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000056.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0056-camera-reserved-half-full-neutral-t19.png"
+        }
+      },
+      "nativeFrame": 142,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0056-camera-reserved-half-full-neutral-t19.png",
+      "player": {
+        "originX": 112,
+        "originY": 158,
+        "visibleLeft": 112,
+        "visibleTop": 174,
+        "visibleRight": 126,
+        "visibleBottom": 189,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 333
+      },
+      "camera": 221,
+      "registration": {
+        "delta": 17,
+        "score": 0,
+        "comparedPixels": 2467
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 57,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.798Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 20,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000057.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0057-camera-reserved-half-full-neutral-t20.png"
+        }
+      },
+      "nativeFrame": 150,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0057-camera-reserved-half-full-neutral-t20.png",
+      "player": {
+        "originX": 112,
+        "originY": 168,
+        "visibleLeft": 112,
+        "visibleTop": 184,
+        "visibleRight": 126,
+        "visibleBottom": 199,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 353
+      },
+      "camera": 241,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 3092
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 58,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.819Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 21,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000058.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0058-camera-reserved-half-full-neutral-t21.png"
+        }
+      },
+      "nativeFrame": 157,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0058-camera-reserved-half-full-neutral-t21.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 112,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 371
+      },
+      "camera": 259,
+      "registration": {
+        "delta": 18,
+        "score": 0.16802016241949033,
+        "comparedPixels": 3571
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 59,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.840Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 22,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          40
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000059.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0059-camera-reserved-half-full-neutral-t22.png"
+        }
+      },
+      "nativeFrame": 165,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0059-camera-reserved-half-full-neutral-t22.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 115,
+        "visibleTop": 193,
+        "visibleRight": 125,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 391
+      },
+      "camera": 279,
+      "registration": {
+        "delta": 20,
+        "score": 0.14344262295081966,
+        "comparedPixels": 3416
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 60,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.862Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 23,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000060.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0060-camera-reserved-half-full-neutral-t23.png"
+        }
+      },
+      "nativeFrame": 172,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0060-camera-reserved-half-full-neutral-t23.png",
+      "player": {
+        "originX": 112,
+        "originY": 153,
+        "visibleLeft": 112,
+        "visibleTop": 169,
+        "visibleRight": 127,
+        "visibleBottom": 184,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 408
+      },
+      "camera": 296,
+      "registration": {
+        "delta": 17,
+        "score": 0.14029411764705882,
+        "comparedPixels": 3400
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 61,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.882Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 24,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000061.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0061-camera-reserved-half-full-neutral-t24.png"
+        }
+      },
+      "nativeFrame": 180,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0061-camera-reserved-half-full-neutral-t24.png",
+      "player": {
+        "originX": 112,
+        "originY": 124,
+        "visibleLeft": 112,
+        "visibleTop": 140,
+        "visibleRight": 127,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 428
+      },
+      "camera": 316,
+      "registration": {
+        "delta": 20,
+        "score": 0.12892708950800238,
+        "comparedPixels": 3374
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 62,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.904Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 25,
+        "frames_advanced": 7,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000062.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0062-camera-reserved-half-full-neutral-t25.png"
+        }
+      },
+      "nativeFrame": 187,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0062-camera-reserved-half-full-neutral-t25.png",
+      "player": {
+        "originX": 112,
+        "originY": 106,
+        "visibleLeft": 112,
+        "visibleTop": 122,
+        "visibleRight": 127,
+        "visibleBottom": 137,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 446
+      },
+      "camera": 334,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 3028
+      },
+      "measurement": true
+    },
+    {
+      "sequence": 63,
+      "experiment": "camera-reserved-half-full-neutral",
+      "sentUTC": "2026-11-05T23:10:26.924Z",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "response": {
+        "ok": true,
+        "tick": 26,
+        "frames_advanced": 8,
+        "terminal": false,
+        "applied_masks": [
+          56
+        ],
+        "image": {
+          "width": 256,
+          "height": 240,
+          "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/screenshots/session-l_4jy7d1/frame-000063.png",
+          "capture_path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0063-camera-reserved-half-full-neutral-t26.png"
+        }
+      },
+      "nativeFrame": 195,
+      "file": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/camera-lag-reserved-2026-11-05T23-10-23.953Z/0063-camera-reserved-half-full-neutral-t26.png",
+      "player": {
+        "originX": 112,
+        "originY": 96,
+        "visibleLeft": 112,
+        "visibleTop": 112,
+        "visibleRight": 127,
+        "visibleBottom": 127,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 466
+      },
+      "camera": 354,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 2635
+      },
+      "measurement": true
+    }
+  ]
+}

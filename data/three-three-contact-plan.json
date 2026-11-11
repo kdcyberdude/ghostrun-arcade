@@ -1,0 +1,143 @@
+{
+  "schema": "three-three-contact-prospective-v1",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3384,
+  "captureFromTick": 3364,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [
+      "cal-opening-neutral",
+      "cal-lower-right-jump"
+    ],
+    "reserved": [
+      "reserved-delay-short-jump",
+      "reserved-delay-held-jump",
+      "reserved-left-edge-reversal"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "cal-opening-neutral",
+      "segments": [
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 10
+        }
+      ]
+    },
+    {
+      "name": "cal-lower-right-jump",
+      "segments": [
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 10
+        },
+        {
+          "stage": "cal-jump",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "cal-land",
+          "buttons": [],
+          "ticks": 15
+        }
+      ]
+    },
+    {
+      "name": "reserved-delay-short-jump",
+      "segments": [
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 23
+        },
+        {
+          "stage": "reserved-short-launch",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "reserved-short-release",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        {
+          "stage": "reserved-short-land",
+          "buttons": [],
+          "ticks": 15
+        }
+      ]
+    },
+    {
+      "name": "reserved-delay-held-jump",
+      "segments": [
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 37
+        },
+        {
+          "stage": "reserved-held-launch",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "reserved-held-land",
+          "buttons": [],
+          "ticks": 15
+        }
+      ]
+    },
+    {
+      "name": "reserved-left-edge-reversal",
+      "segments": [
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 19
+        },
+        {
+          "stage": "reserved-launch",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "reserved-reverse",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "reserved-land",
+          "buttons": [],
+          "ticks": 15
+        }
+      ]
+    }
+  ]
+}

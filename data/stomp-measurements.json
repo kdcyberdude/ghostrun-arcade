@@ -1,0 +1,5512 @@
+{
+  "schema": "public-reference-stomp-measurements-v1",
+  "updatedUtc": "2026-11-05T22:18:16.139Z",
+  "sourceTrace": "evidence/local/stomp-2026-11-05T22-15-00.444Z/trace.jsonl",
+  "sourceTraceSha256": "ac594a200f0ea5252cb2fdcca77f9448928dd7d3f69acc0df9607a340ad2c9a2",
+  "method": "Fresh unchanged public-reference process. Controller replay with actual native-frame accounting, supplied-font exact HUD digit matching and opaque player PNG matching. New left-hold experiment is explicitly separate from the clean two-Koopa route.",
+  "observedAirborneAwards": [
+    {
+      "score": 18050,
+      "award": 100,
+      "tick": 375,
+      "nativeFrame": 2817,
+      "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00216-air-chain-t375.png"
+    },
+    {
+      "score": 18250,
+      "award": 200,
+      "tick": 377,
+      "nativeFrame": 2832,
+      "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00218-air-chain-t377.png"
+    }
+  ],
+  "airborne": {
+    "samples": [
+      {
+        "sequence": 213,
+        "tick": 372,
+        "nativeFrame": 2794,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 153,
+          "visibleLeft": 112,
+          "visibleTop": 169,
+          "visibleRight": 127,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00213-air-chain-t372.png"
+      },
+      {
+        "sequence": 214,
+        "tick": 373,
+        "nativeFrame": 2802,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 148,
+          "visibleLeft": 112,
+          "visibleTop": 164,
+          "visibleRight": 127,
+          "visibleBottom": 179,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00214-air-chain-t373.png"
+      },
+      {
+        "sequence": 215,
+        "tick": 374,
+        "nativeFrame": 2809,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 152,
+          "visibleLeft": 112,
+          "visibleTop": 168,
+          "visibleRight": 127,
+          "visibleBottom": 183,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00215-air-chain-t374.png"
+      },
+      {
+        "sequence": 216,
+        "tick": 375,
+        "nativeFrame": 2817,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18050,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 150,
+          "visibleLeft": 112,
+          "visibleTop": 166,
+          "visibleRight": 127,
+          "visibleBottom": 181,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00216-air-chain-t375.png"
+      },
+      {
+        "sequence": 217,
+        "tick": 376,
+        "nativeFrame": 2824,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18050,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 159,
+          "visibleLeft": 112,
+          "visibleTop": 175,
+          "visibleRight": 127,
+          "visibleBottom": 190,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00217-air-chain-t376.png"
+      },
+      {
+        "sequence": 218,
+        "tick": 377,
+        "nativeFrame": 2832,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18250,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 151,
+          "visibleLeft": 112,
+          "visibleTop": 167,
+          "visibleRight": 127,
+          "visibleBottom": 182,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00218-air-chain-t377.png"
+      },
+      {
+        "sequence": 219,
+        "tick": 378,
+        "nativeFrame": 2839,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18250,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 175,
+          "visibleLeft": 112,
+          "visibleTop": 191,
+          "visibleRight": 127,
+          "visibleBottom": 206,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00219-air-chain-t378.png"
+      }
+    ],
+    "repeatability": [
+      {
+        "tick": 372,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0011-tick-00372.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00213-air-chain-t372.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 373,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0012-tick-00373.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00214-air-chain-t373.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 374,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0013-tick-00374.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00215-air-chain-t374.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 375,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0014-tick-00375.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00216-air-chain-t375.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 376,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0015-tick-00376.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00217-air-chain-t376.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 377,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0016-tick-00377.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00218-air-chain-t377.png",
+        "byteIdentical": true
+      },
+      {
+        "tick": 378,
+        "oldImage": "evidence/local/shell-2026-11-05T21-03-21.852Z/0017-tick-00378.png",
+        "newImage": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00219-air-chain-t378.png",
+        "byteIdentical": true
+      }
+    ],
+    "status": "Two originalKoopas become shells without an intervening floor landing. HUD17950→18050→18250 establishes100 then200. First visible score timing is not the exact collision frame; floating100/200 and actual shell changes were inspected."
+  },
+  "groundedReset": {
+    "awards": [
+      {
+        "score": 100,
+        "award": 100,
+        "tick": 95,
+        "nativeFrame": 713,
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00096-ground-reset-t95.png"
+      },
+      {
+        "score": 200,
+        "award": 100,
+        "tick": 113,
+        "nativeFrame": 848,
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00114-ground-reset-t113.png"
+      },
+      {
+        "score": 300,
+        "award": 100,
+        "tick": 153,
+        "nativeFrame": 1149,
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00154-ground-reset-t153.png"
+      }
+    ],
+    "groundedSamples": [
+      {
+        "sequence": 98,
+        "tick": 97,
+        "nativeFrame": 728,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00098-ground-reset-t97.png"
+      },
+      {
+        "sequence": 105,
+        "tick": 104,
+        "nativeFrame": 781,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00105-ground-reset-t104.png"
+      },
+      {
+        "sequence": 106,
+        "tick": 105,
+        "nativeFrame": 788,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00106-ground-reset-t105.png"
+      },
+      {
+        "sequence": 107,
+        "tick": 106,
+        "nativeFrame": 796,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00107-ground-reset-t106.png"
+      },
+      {
+        "sequence": 108,
+        "tick": 107,
+        "nativeFrame": 803,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00108-ground-reset-t107.png"
+      },
+      {
+        "sequence": 109,
+        "tick": 108,
+        "nativeFrame": 811,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00109-ground-reset-t108.png"
+      },
+      {
+        "sequence": 116,
+        "tick": 115,
+        "nativeFrame": 863,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00116-ground-reset-t115.png"
+      },
+      {
+        "sequence": 117,
+        "tick": 116,
+        "nativeFrame": 871,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00117-ground-reset-t116.png"
+      },
+      {
+        "sequence": 142,
+        "tick": 141,
+        "nativeFrame": 1059,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00142-ground-reset-t141.png"
+      },
+      {
+        "sequence": 149,
+        "tick": 148,
+        "nativeFrame": 1111,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00149-ground-reset-t148.png"
+      },
+      {
+        "sequence": 150,
+        "tick": 149,
+        "nativeFrame": 1119,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00150-ground-reset-t149.png"
+      }
+    ],
+    "samples": [
+      {
+        "sequence": 93,
+        "tick": 92,
+        "nativeFrame": 691,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 0,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 116,
+          "visibleLeft": 114,
+          "visibleTop": 132,
+          "visibleRight": 128,
+          "visibleBottom": 147,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00093-ground-reset-t92.png"
+      },
+      {
+        "sequence": 94,
+        "tick": 93,
+        "nativeFrame": 698,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 0,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 141,
+          "visibleLeft": 114,
+          "visibleTop": 157,
+          "visibleRight": 128,
+          "visibleBottom": 172,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00094-ground-reset-t93.png"
+      },
+      {
+        "sequence": 95,
+        "tick": 94,
+        "nativeFrame": 706,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 0,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 173,
+          "visibleLeft": 114,
+          "visibleTop": 189,
+          "visibleRight": 128,
+          "visibleBottom": 204,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00095-ground-reset-t94.png"
+      },
+      {
+        "sequence": 96,
+        "tick": 95,
+        "nativeFrame": 713,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 156,
+          "visibleLeft": 114,
+          "visibleTop": 172,
+          "visibleRight": 128,
+          "visibleBottom": 187,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00096-ground-reset-t95.png"
+      },
+      {
+        "sequence": 97,
+        "tick": 96,
+        "nativeFrame": 721,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 172,
+          "visibleLeft": 114,
+          "visibleTop": 188,
+          "visibleRight": 128,
+          "visibleBottom": 203,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00097-ground-reset-t96.png"
+      },
+      {
+        "sequence": 98,
+        "tick": 97,
+        "nativeFrame": 728,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00098-ground-reset-t97.png"
+      },
+      {
+        "sequence": 99,
+        "tick": 98,
+        "nativeFrame": 736,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 149,
+          "visibleLeft": 114,
+          "visibleTop": 165,
+          "visibleRight": 129,
+          "visibleBottom": 180,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00099-ground-reset-t98.png"
+      },
+      {
+        "sequence": 100,
+        "tick": 99,
+        "nativeFrame": 743,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 124,
+          "visibleLeft": 114,
+          "visibleTop": 140,
+          "visibleRight": 129,
+          "visibleBottom": 155,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00100-ground-reset-t99.png"
+      },
+      {
+        "sequence": 101,
+        "tick": 100,
+        "nativeFrame": 751,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 104,
+          "visibleLeft": 114,
+          "visibleTop": 120,
+          "visibleRight": 129,
+          "visibleBottom": 135,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00101-ground-reset-t100.png"
+      },
+      {
+        "sequence": 102,
+        "tick": 101,
+        "nativeFrame": 758,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 100,
+          "visibleLeft": 114,
+          "visibleTop": 116,
+          "visibleRight": 129,
+          "visibleBottom": 131,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00102-ground-reset-t101.png"
+      },
+      {
+        "sequence": 103,
+        "tick": 102,
+        "nativeFrame": 766,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 125,
+          "visibleLeft": 114,
+          "visibleTop": 141,
+          "visibleRight": 129,
+          "visibleBottom": 156,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00103-ground-reset-t102.png"
+      },
+      {
+        "sequence": 104,
+        "tick": 103,
+        "nativeFrame": 773,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 153,
+          "visibleLeft": 114,
+          "visibleTop": 169,
+          "visibleRight": 129,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00104-ground-reset-t103.png"
+      },
+      {
+        "sequence": 105,
+        "tick": 104,
+        "nativeFrame": 781,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00105-ground-reset-t104.png"
+      },
+      {
+        "sequence": 106,
+        "tick": 105,
+        "nativeFrame": 788,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00106-ground-reset-t105.png"
+      },
+      {
+        "sequence": 107,
+        "tick": 106,
+        "nativeFrame": 796,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00107-ground-reset-t106.png"
+      },
+      {
+        "sequence": 108,
+        "tick": 107,
+        "nativeFrame": 803,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00108-ground-reset-t107.png"
+      },
+      {
+        "sequence": 109,
+        "tick": 108,
+        "nativeFrame": 811,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00109-ground-reset-t108.png"
+      },
+      {
+        "sequence": 110,
+        "tick": 109,
+        "nativeFrame": 818,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 153,
+          "visibleLeft": 114,
+          "visibleTop": 169,
+          "visibleRight": 129,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00110-ground-reset-t109.png"
+      },
+      {
+        "sequence": 111,
+        "tick": 110,
+        "nativeFrame": 826,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 130,
+          "visibleLeft": 114,
+          "visibleTop": 146,
+          "visibleRight": 129,
+          "visibleBottom": 161,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00111-ground-reset-t110.png"
+      },
+      {
+        "sequence": 112,
+        "tick": 111,
+        "nativeFrame": 833,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 138,
+          "visibleLeft": 114,
+          "visibleTop": 154,
+          "visibleRight": 129,
+          "visibleBottom": 169,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00112-ground-reset-t111.png"
+      },
+      {
+        "sequence": 113,
+        "tick": 112,
+        "nativeFrame": 841,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 100,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 169,
+          "visibleLeft": 114,
+          "visibleTop": 185,
+          "visibleRight": 129,
+          "visibleBottom": 200,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00113-ground-reset-t112.png"
+      },
+      {
+        "sequence": 114,
+        "tick": 113,
+        "nativeFrame": 848,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 158,
+          "visibleLeft": 114,
+          "visibleTop": 174,
+          "visibleRight": 129,
+          "visibleBottom": 189,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00114-ground-reset-t113.png"
+      },
+      {
+        "sequence": 115,
+        "tick": 114,
+        "nativeFrame": 856,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 168,
+          "visibleLeft": 114,
+          "visibleTop": 184,
+          "visibleRight": 129,
+          "visibleBottom": 199,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00115-ground-reset-t114.png"
+      },
+      {
+        "sequence": 116,
+        "tick": 115,
+        "nativeFrame": 863,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 194,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00116-ground-reset-t115.png"
+      },
+      {
+        "sequence": 117,
+        "tick": 116,
+        "nativeFrame": 871,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00117-ground-reset-t116.png"
+      },
+      {
+        "sequence": 118,
+        "tick": 117,
+        "nativeFrame": 878,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 153,
+          "visibleLeft": 114,
+          "visibleTop": 169,
+          "visibleRight": 129,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00118-ground-reset-t117.png"
+      },
+      {
+        "sequence": 119,
+        "tick": 118,
+        "nativeFrame": 886,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 124,
+          "visibleLeft": 114,
+          "visibleTop": 140,
+          "visibleRight": 129,
+          "visibleBottom": 155,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00119-ground-reset-t118.png"
+      },
+      {
+        "sequence": 120,
+        "tick": 119,
+        "nativeFrame": 893,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 110,
+          "visibleLeft": 114,
+          "visibleTop": 126,
+          "visibleRight": 129,
+          "visibleBottom": 141,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00120-ground-reset-t119.png"
+      },
+      {
+        "sequence": 121,
+        "tick": 120,
+        "nativeFrame": 901,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 127,
+          "visibleLeft": 114,
+          "visibleTop": 143,
+          "visibleRight": 129,
+          "visibleBottom": 158,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00121-ground-reset-t120.png"
+      },
+      {
+        "sequence": 122,
+        "tick": 121,
+        "nativeFrame": 908,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 105,
+          "visibleLeft": 114,
+          "visibleTop": 121,
+          "visibleRight": 129,
+          "visibleBottom": 136,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00122-ground-reset-t121.png"
+      },
+      {
+        "sequence": 123,
+        "tick": 122,
+        "nativeFrame": 916,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 82,
+          "visibleLeft": 114,
+          "visibleTop": 98,
+          "visibleRight": 129,
+          "visibleBottom": 113,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00123-ground-reset-t122.png"
+      },
+      {
+        "sequence": 124,
+        "tick": 123,
+        "nativeFrame": 924,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 93,
+          "visibleLeft": 114,
+          "visibleTop": 109,
+          "visibleRight": 129,
+          "visibleBottom": 124,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00124-ground-reset-t123.png"
+      },
+      {
+        "sequence": 125,
+        "tick": 124,
+        "nativeFrame": 931,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 113,
+          "visibleLeft": 114,
+          "visibleTop": 129,
+          "visibleRight": 128,
+          "visibleBottom": 144,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00125-ground-reset-t124.png"
+      },
+      {
+        "sequence": 126,
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 114,
+          "visibleLeft": 114,
+          "visibleTop": 130,
+          "visibleRight": 128,
+          "visibleBottom": 145,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00126-ground-reset-t125.png"
+      },
+      {
+        "sequence": 127,
+        "tick": 126,
+        "nativeFrame": 946,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 133,
+          "visibleLeft": 114,
+          "visibleTop": 149,
+          "visibleRight": 128,
+          "visibleBottom": 164,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00127-ground-reset-t126.png"
+      },
+      {
+        "sequence": 128,
+        "tick": 127,
+        "nativeFrame": 954,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 148,
+          "visibleLeft": 117,
+          "visibleTop": 164,
+          "visibleRight": 127,
+          "visibleBottom": 179,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00128-ground-reset-t127.png"
+      },
+      {
+        "sequence": 129,
+        "tick": 128,
+        "nativeFrame": 961,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 173,
+          "visibleLeft": 117,
+          "visibleTop": 189,
+          "visibleRight": 127,
+          "visibleBottom": 204,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00129-ground-reset-t128.png"
+      },
+      {
+        "sequence": 130,
+        "tick": 129,
+        "nativeFrame": 969,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 149,
+          "visibleLeft": 114,
+          "visibleTop": 165,
+          "visibleRight": 129,
+          "visibleBottom": 180,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00130-ground-reset-t129.png"
+      },
+      {
+        "sequence": 131,
+        "tick": 130,
+        "nativeFrame": 976,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 124,
+          "visibleLeft": 114,
+          "visibleTop": 140,
+          "visibleRight": 129,
+          "visibleBottom": 155,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00131-ground-reset-t130.png"
+      },
+      {
+        "sequence": 132,
+        "tick": 131,
+        "nativeFrame": 984,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 104,
+          "visibleLeft": 114,
+          "visibleTop": 120,
+          "visibleRight": 129,
+          "visibleBottom": 135,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00132-ground-reset-t131.png"
+      },
+      {
+        "sequence": 133,
+        "tick": 132,
+        "nativeFrame": 991,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 96,
+          "visibleLeft": 114,
+          "visibleTop": 112,
+          "visibleRight": 129,
+          "visibleBottom": 127,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00133-ground-reset-t132.png"
+      },
+      {
+        "sequence": 134,
+        "tick": 133,
+        "nativeFrame": 999,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 97,
+          "visibleLeft": 114,
+          "visibleTop": 113,
+          "visibleRight": 129,
+          "visibleBottom": 128,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00134-ground-reset-t133.png"
+      },
+      {
+        "sequence": 135,
+        "tick": 134,
+        "nativeFrame": 1006,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 113,
+          "visibleLeft": 114,
+          "visibleTop": 129,
+          "visibleRight": 128,
+          "visibleBottom": 144,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00135-ground-reset-t134.png"
+      },
+      {
+        "sequence": 136,
+        "tick": 135,
+        "nativeFrame": 1014,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 85,
+          "visibleLeft": 114,
+          "visibleTop": 101,
+          "visibleRight": 129,
+          "visibleBottom": 116,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00136-ground-reset-t135.png"
+      },
+      {
+        "sequence": 137,
+        "tick": 136,
+        "nativeFrame": 1021,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 64,
+          "visibleLeft": 114,
+          "visibleTop": 80,
+          "visibleRight": 129,
+          "visibleBottom": 95,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00137-ground-reset-t136.png"
+      },
+      {
+        "sequence": 138,
+        "tick": 137,
+        "nativeFrame": 1029,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 72,
+          "visibleLeft": 114,
+          "visibleTop": 88,
+          "visibleRight": 129,
+          "visibleBottom": 103,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00138-ground-reset-t137.png"
+      },
+      {
+        "sequence": 139,
+        "tick": 138,
+        "nativeFrame": 1036,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 100,
+          "visibleLeft": 114,
+          "visibleTop": 116,
+          "visibleRight": 129,
+          "visibleBottom": 131,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00139-ground-reset-t138.png"
+      },
+      {
+        "sequence": 140,
+        "tick": 139,
+        "nativeFrame": 1044,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 132,
+          "visibleLeft": 114,
+          "visibleTop": 148,
+          "visibleRight": 129,
+          "visibleBottom": 163,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00140-ground-reset-t139.png"
+      },
+      {
+        "sequence": 141,
+        "tick": 140,
+        "nativeFrame": 1051,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 160,
+          "visibleLeft": 114,
+          "visibleTop": 176,
+          "visibleRight": 129,
+          "visibleBottom": 191,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00141-ground-reset-t140.png"
+      },
+      {
+        "sequence": 142,
+        "tick": 141,
+        "nativeFrame": 1059,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00142-ground-reset-t141.png"
+      },
+      {
+        "sequence": 143,
+        "tick": 142,
+        "nativeFrame": 1066,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 153,
+          "visibleLeft": 114,
+          "visibleTop": 169,
+          "visibleRight": 129,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00143-ground-reset-t142.png"
+      },
+      {
+        "sequence": 144,
+        "tick": 143,
+        "nativeFrame": 1074,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 124,
+          "visibleLeft": 114,
+          "visibleTop": 140,
+          "visibleRight": 129,
+          "visibleBottom": 155,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00144-ground-reset-t143.png"
+      },
+      {
+        "sequence": 145,
+        "tick": 144,
+        "nativeFrame": 1081,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 106,
+          "visibleLeft": 114,
+          "visibleTop": 122,
+          "visibleRight": 129,
+          "visibleBottom": 137,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00145-ground-reset-t144.png"
+      },
+      {
+        "sequence": 146,
+        "tick": 145,
+        "nativeFrame": 1089,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 102,
+          "visibleLeft": 114,
+          "visibleTop": 118,
+          "visibleRight": 129,
+          "visibleBottom": 133,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00146-ground-reset-t145.png"
+      },
+      {
+        "sequence": 147,
+        "tick": 146,
+        "nativeFrame": 1096,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 124,
+          "visibleLeft": 114,
+          "visibleTop": 140,
+          "visibleRight": 129,
+          "visibleBottom": 155,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00147-ground-reset-t146.png"
+      },
+      {
+        "sequence": 148,
+        "tick": 147,
+        "nativeFrame": 1104,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 156,
+          "visibleLeft": 114,
+          "visibleTop": 172,
+          "visibleRight": 129,
+          "visibleBottom": 187,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00148-ground-reset-t147.png"
+      },
+      {
+        "sequence": 149,
+        "tick": 148,
+        "nativeFrame": 1111,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 114,
+          "visibleTop": 193,
+          "visibleRight": 128,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00149-ground-reset-t148.png"
+      },
+      {
+        "sequence": 150,
+        "tick": 149,
+        "nativeFrame": 1119,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 177,
+          "visibleLeft": 117,
+          "visibleTop": 193,
+          "visibleRight": 127,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00150-ground-reset-t149.png"
+      },
+      {
+        "sequence": 151,
+        "tick": 150,
+        "nativeFrame": 1126,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 153,
+          "visibleLeft": 114,
+          "visibleTop": 169,
+          "visibleRight": 129,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00151-ground-reset-t150.png"
+      },
+      {
+        "sequence": 152,
+        "tick": 151,
+        "nativeFrame": 1134,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 148,
+          "visibleLeft": 114,
+          "visibleTop": 164,
+          "visibleRight": 129,
+          "visibleBottom": 179,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00152-ground-reset-t151.png"
+      },
+      {
+        "sequence": 153,
+        "tick": 152,
+        "nativeFrame": 1141,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 200,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 2,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 167,
+          "visibleLeft": 114,
+          "visibleTop": 183,
+          "visibleRight": 129,
+          "visibleBottom": 198,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00153-ground-reset-t152.png"
+      },
+      {
+        "sequence": 154,
+        "tick": 153,
+        "nativeFrame": 1149,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 300,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 3,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 155,
+          "visibleLeft": 114,
+          "visibleTop": 171,
+          "visibleRight": 129,
+          "visibleBottom": 186,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00154-ground-reset-t153.png"
+      },
+      {
+        "sequence": 155,
+        "tick": 154,
+        "nativeFrame": 1156,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 300,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 3,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 174,
+          "visibleLeft": 114,
+          "visibleTop": 190,
+          "visibleRight": 129,
+          "visibleBottom": 205,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00155-ground-reset-t154.png"
+      },
+      {
+        "sequence": 156,
+        "tick": 155,
+        "nativeFrame": 1164,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 300,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 3,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 114,
+          "originY": 149,
+          "visibleLeft": 114,
+          "visibleTop": 165,
+          "visibleRight": 129,
+          "visibleBottom": 180,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00156-ground-reset-t155.png"
+      }
+    ],
+    "status": "Fresh1-1 replay has100-point awards at95,113,153 with actual walking/standing floor contact between them. Landing resets the ordinary stomp award; exact same-frame reset ordering and transfer between enemy species remain inferred."
+  },
+  "higherChainAttempt": {
+    "samples": [
+      {
+        "sequence": 276,
+        "tick": 372,
+        "nativeFrame": 2794,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 153,
+          "visibleLeft": 112,
+          "visibleTop": 169,
+          "visibleRight": 127,
+          "visibleBottom": 184,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00276-long-left-chain-t372.png"
+      },
+      {
+        "sequence": 277,
+        "tick": 373,
+        "nativeFrame": 2802,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 148,
+          "visibleLeft": 112,
+          "visibleTop": 164,
+          "visibleRight": 127,
+          "visibleBottom": 179,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00277-long-left-chain-t373.png"
+      },
+      {
+        "sequence": 278,
+        "tick": 374,
+        "nativeFrame": 2809,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 17950,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 152,
+          "visibleLeft": 112,
+          "visibleTop": 168,
+          "visibleRight": 127,
+          "visibleBottom": 183,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00278-long-left-chain-t374.png"
+      },
+      {
+        "sequence": 279,
+        "tick": 375,
+        "nativeFrame": 2817,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18050,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 150,
+          "visibleLeft": 112,
+          "visibleTop": 166,
+          "visibleRight": 127,
+          "visibleBottom": 181,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00279-long-left-chain-t375.png"
+      },
+      {
+        "sequence": 280,
+        "tick": 376,
+        "nativeFrame": 2824,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18050,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 159,
+          "visibleLeft": 112,
+          "visibleTop": 175,
+          "visibleRight": 127,
+          "visibleBottom": 190,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00280-long-left-chain-t376.png"
+      },
+      {
+        "sequence": 281,
+        "tick": 377,
+        "nativeFrame": 2832,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18750,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 151,
+          "visibleLeft": 112,
+          "visibleTop": 167,
+          "visibleRight": 127,
+          "visibleBottom": 182,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00281-long-left-chain-t377.png"
+      },
+      {
+        "sequence": 282,
+        "tick": 378,
+        "nativeFrame": 2839,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 18750,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 8,
+              "error": 0
+            },
+            {
+              "digit": 7,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 112,
+          "originY": 175,
+          "visibleLeft": 112,
+          "visibleTop": 191,
+          "visibleRight": 127,
+          "visibleBottom": 206,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00282-long-left-chain-t378.png"
+      },
+      {
+        "sequence": 283,
+        "tick": 379,
+        "nativeFrame": 2847,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 19550,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 108,
+          "originY": 177,
+          "visibleLeft": 110,
+          "visibleTop": 193,
+          "visibleRight": 120,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "left",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00283-long-left-chain-t379.png"
+      },
+      {
+        "sequence": 284,
+        "tick": 380,
+        "nativeFrame": 2854,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 19550,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 102,
+          "originY": 177,
+          "visibleLeft": 103,
+          "visibleTop": 194,
+          "visibleRight": 115,
+          "visibleBottom": 208,
+          "cell": 12,
+          "direction": "left",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00284-long-left-chain-t380.png"
+      },
+      {
+        "sequence": 285,
+        "tick": 381,
+        "nativeFrame": 2862,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 19550,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 91,
+          "originY": 177,
+          "visibleLeft": 93,
+          "visibleTop": 193,
+          "visibleRight": 103,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "left",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00285-long-left-chain-t381.png"
+      },
+      {
+        "sequence": 286,
+        "tick": 382,
+        "nativeFrame": 2869,
+        "framesAdvanced": 7,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 19550,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 79,
+          "originY": 177,
+          "visibleLeft": 80,
+          "visibleTop": 193,
+          "visibleRight": 94,
+          "visibleBottom": 208,
+          "cell": 13,
+          "direction": "left",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 145
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00286-long-left-chain-t382.png"
+      },
+      {
+        "sequence": 287,
+        "tick": 383,
+        "nativeFrame": 2877,
+        "framesAdvanced": 8,
+        "request": {
+          "op": "step",
+          "buttons": [
+            "left",
+            "a",
+            "b"
+          ],
+          "ticks": 1
+        },
+        "score": {
+          "value": 19550,
+          "digits": [
+            {
+              "digit": 0,
+              "error": 0
+            },
+            {
+              "digit": 1,
+              "error": 0
+            },
+            {
+              "digit": 9,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 5,
+              "error": 0
+            },
+            {
+              "digit": 0,
+              "error": 0
+            }
+          ]
+        },
+        "player": {
+          "originX": 61,
+          "originY": 177,
+          "visibleLeft": 63,
+          "visibleTop": 193,
+          "visibleRight": 73,
+          "visibleBottom": 208,
+          "cell": 14,
+          "direction": "left",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "image": "evidence/local/stomp-2026-11-05T22-15-00.444Z/00287-long-left-chain-t383.png"
+      }
+    ],
+    "status": "HoldingLeft+A+B for12decisions afterthepair approach produced500/800floatingpopups and mixed shell movement. These are not assigned to a clean third/fourth original-enemy stomp; higher consecutive awards and extra-life thresholds remain unresolved."
+  },
+  "runtimeCandidate": {
+    "scores": [
+      100,
+      200
+    ],
+    "beyondObserved": "Provisionally retain200 after the second airborne stomp; this is an explicit fallback, not a measured higher award.",
+    "reset": "Actual terrain/platform grounded contact, area load, actual damage or death resets the airborne count. Damage/death/area reset conventions are inferred hygienic state boundaries; the floor reset is observed.",
+    "scope": "The same candidate is applied to existing stompable enemy kinds; only the two originalKoopas establish the airborne100→200 progression."
+  },
+  "limitations": [
+    "Awards beyond the second airborne stomp and any extra-life threshold are unmeasured.",
+    "Still-shell kicks and stopped moving shells may use distinct score rules and are not calibrated by this clean two-Koopa comparison.",
+    "The existing genericstomp collision and rebound timing are unchanged.",
+    "These are local mechanic measurements, not complete campaign wins."
+  ]
+}

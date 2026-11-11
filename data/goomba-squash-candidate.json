@@ -1,0 +1,72 @@
+{
+  "schema": "image-qualified-goomba-squash-candidate-v1",
+  "lockedUTC": "2026-11-06T02:08:31.887Z",
+  "lockedBeforeReservedCapture": true,
+  "scope": "Ground Goomba stomps only. Preserve squash separately from launched, fireball, star, shell and block-hit deaths. No popup state change.",
+  "durationActiveNativeFrames": 40,
+  "durationStatus": "Inferred candidate within the declared2-frame tolerance. Independent live-to-flat position constraints permit shared source durations38or39;40 has worst-case error2. Do not call40 exact.",
+  "exactLifetimeEstablished": false,
+  "compatibleTrainingDurations": [
+    38,
+    39
+  ],
+  "trainingMaximumTimingError": 2,
+  "pose": {
+    "suppliedTiles": [
+      239,
+      239
+    ],
+    "patternTable": 0,
+    "palette": "0f-0f-36-17",
+    "width": 16,
+    "height": 8,
+    "flipX": [
+      false,
+      true
+    ],
+    "flipY": [
+      true,
+      true
+    ],
+    "opaquePixels": 88,
+    "renderOriginFromEnemyFeet": [
+      0,
+      -6
+    ],
+    "worldX": "Keep the actual collision position; source flat actor remains fixed until removal.",
+    "worldY": "Keep the actual collision feet height; no falling or gravity while squashed."
+  },
+  "lifecycle": {
+    "begin": "An ordinary falling-player stomp on a live Goomba enters a dedicated squashed state and retains collision position.",
+    "during": "Display the supplied flat assembly throughout the active squash interval. No launched flip or falling motion.",
+    "end": "Remove the squashed actor when the inferred40-frame interval ends. The exact first-frame inclusive/exclusive convention must be verified in the isolated engine regression."
+  },
+  "sourceConstraints": {
+    "livingPixels": "Exact180-opaque-pixel Goomba poses at registered world coordinates constrain X=floor(c−0.5*activeFrame). Retain c intervals and both birth movement orders.",
+    "flatPixels": "Exact88-opaque-pixel flat assembly, nativeY202 at feet208. Source worldX311 and2026 remain fixed across independent views.",
+    "birth": "Normal842..843 from a2-active-update Start trap; firstGoomba153..157 initially, narrowed independently by live-to-flat X.",
+    "expiry": "Normal late trap remains flat at880 and is absent by886. FirstGoomba remains flat189 and is absent by194.",
+    "pause": "Use measured2 active updates before Start freeze and actualNativeFrames−2 on resume. This is an observable pause normalization, not a claim of universal input latency."
+  },
+  "frozenEvidence": {
+    "plan": "evidence/goomba-squash-plan.json",
+    "planSha256": "2d30b69250f2d967546df050ede6eb53a24f59b505f90ad946d1182bfe49f70f",
+    "trainingCapture": "evidence/goomba-squash-training-measurements.json",
+    "trainingCaptureSha256": "6e6da3c3551423fea7e343038bdeb86f77dccd2360d70c980927c81a307fcd8e",
+    "imageAnalysis": "evidence/goomba-squash-training-image-analysis.json",
+    "imageAnalysisSha256": "65424f32133a73062180e1137b95946598aa9e654aca36d188afc9c3b3a5a41a",
+    "fit": "evidence/goomba-squash-training-fit.json",
+    "fitSha256": "9023e2a93ba05a36781daeaecceb4d2a5ca7f2b139224ca283600c2e71990bdc"
+  },
+  "heldoutRule": "Enumerate every shared duration, retained birth frame, subpixel interval and movement order independently from the reserved images. Reject if no assignments fit, if any compatible shared duration differs from40 by more than2, if flat position/pose diverges, or if expected removal is occluded/unobserved. Do not replace a missed stomp with a forced award.",
+  "tolerances": {
+    "eventActiveNativeFrames": 2,
+    "flatOriginPixels": 1,
+    "assembly": "Exact supplied opaque RGB."
+  },
+  "limitations": [
+    "A common event-relative duration is an inferred rule; the native implementation is not inspected.",
+    "Sprite/update order remains uncertain by a native frame. Preserve all compatible assignments.",
+    "The current source20-frame flat-to-falling behavior is contradicted by the visible flat snapshots; this candidate does not change launched deaths."
+  ]
+}

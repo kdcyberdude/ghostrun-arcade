@@ -1,0 +1,2007 @@
+{
+  "schema": "image-only-decision-entry-measurement-v1",
+  "level": "6-2",
+  "area": "optional-water",
+  "sourceTrace": "evidence/local/water-optional-entry/trace.jsonl",
+  "prefixSource": "data/observed-winning-inputs.json",
+  "prefixDecisions": 6560,
+  "measurementStartTick": 6593,
+  "sampleInterval": "One reference decision, actual frames_advanced retained.",
+  "method": "Opaque supplied Mario sprite template matching across the whole screen, requiring all opaque pixels visible; transparent portions of the 32px template may lie above screen. Exact supplied water-atlas pixels at camera0. No hidden state or executable inspection.",
+  "measurements": [
+    {
+      "sequence": 1098,
+      "tick": 6593,
+      "sentUtc": "2026-11-05T21:02:21.203137+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 0,
+      "image": "evidence/local/water-optional-entry/01098-tick-06593.png",
+      "player": {
+        "originX": 113,
+        "originY": 97,
+        "feetY": 128,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 114,
+        "visibleBottom": 128,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 113,
+            "originY": 97,
+            "feetY": 128,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 113,
+        "originY": 97,
+        "visibleLeft": 114,
+        "visibleTop": 114,
+        "visibleRight": 126,
+        "visibleBottom": 128,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06128771551724138,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06128771551724138,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1099,
+      "tick": 6594,
+      "sentUtc": "2026-11-05T21:02:21.213259+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 7,
+      "image": "evidence/local/water-optional-entry/01099-tick-06594.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06135506465517242,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06135506465517242,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1100,
+      "tick": 6595,
+      "sentUtc": "2026-11-05T21:02:21.222206+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 15,
+      "image": "evidence/local/water-optional-entry/01100-tick-06595.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06000808189655173,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06000808189655173,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1101,
+      "tick": 6596,
+      "sentUtc": "2026-11-05T21:02:21.232271+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 22,
+      "image": "evidence/local/water-optional-entry/01101-tick-06596.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.059873383620689655,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.059873383620689655,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1102,
+      "tick": 6597,
+      "sentUtc": "2026-11-05T21:02:21.241104+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 30,
+      "image": "evidence/local/water-optional-entry/01102-tick-06597.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06000808189655173,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06000808189655173,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1103,
+      "tick": 6598,
+      "sentUtc": "2026-11-05T21:02:21.250906+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 37,
+      "image": "evidence/local/water-optional-entry/01103-tick-06598.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06041217672413793,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06041217672413793,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1104,
+      "tick": 6599,
+      "sentUtc": "2026-11-05T21:02:21.259636+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 45,
+      "image": "evidence/local/water-optional-entry/01104-tick-06599.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.06041217672413793,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.06041217672413793,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1105,
+      "tick": 6600,
+      "sentUtc": "2026-11-05T21:02:21.269342+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 52,
+      "image": "evidence/local/water-optional-entry/01105-tick-06600.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.15948275862068967,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.15948275862068967,
+      "allBlackImage": true
+    },
+    {
+      "sequence": 1106,
+      "tick": 6601,
+      "sentUtc": "2026-11-05T21:02:21.275597+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 60,
+      "image": "evidence/local/water-optional-entry/01106-tick-06601.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.15948275862068967,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.15948275862068967,
+      "allBlackImage": true
+    },
+    {
+      "sequence": 1107,
+      "tick": 6602,
+      "sentUtc": "2026-11-05T21:02:21.279793+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 67,
+      "image": "evidence/local/water-optional-entry/01107-tick-06602.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 0,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.15948275862068967,
+      "exactUnoccludedWaterTilesAtCamera0": 0,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.15948275862068967,
+      "allBlackImage": true
+    },
+    {
+      "sequence": 1108,
+      "tick": 6603,
+      "sentUtc": "2026-11-05T21:02:21.283807+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 75,
+      "image": "evidence/local/water-optional-entry/01108-tick-06603.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 26,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.6138873922413793,
+      "exactUnoccludedWaterTilesAtCamera0": 26,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 0.6138873922413793,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1109,
+      "tick": 6604,
+      "sentUtc": "2026-11-05T21:02:21.288919+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 82,
+      "image": "evidence/local/water-optional-entry/01109-tick-06604.png",
+      "player": {
+        "originX": 24,
+        "originY": 1,
+        "feetY": 32,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 18,
+        "visibleBottom": 32,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 1,
+            "feetY": 32,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 57,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.999932650862069,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14847,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1110,
+      "tick": 6605,
+      "sentUtc": "2026-11-05T21:02:21.296814+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 90,
+      "image": "evidence/local/water-optional-entry/01110-tick-06605.png",
+      "player": {
+        "originX": 24,
+        "originY": 8,
+        "feetY": 39,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 25,
+        "visibleBottom": 39,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 8,
+            "feetY": 39,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9963631465517241,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14794,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1111,
+      "tick": 6606,
+      "sentUtc": "2026-11-05T21:02:21.305426+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 97,
+      "image": "evidence/local/water-optional-entry/01111-tick-06606.png",
+      "player": {
+        "originX": 24,
+        "originY": 18,
+        "feetY": 49,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 35,
+        "visibleBottom": 49,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 18,
+            "feetY": 49,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9926589439655172,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14739,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1112,
+      "tick": 6607,
+      "sentUtc": "2026-11-05T21:02:21.313170+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 105,
+      "image": "evidence/local/water-optional-entry/01112-tick-06607.png",
+      "player": {
+        "originX": 24,
+        "originY": 37,
+        "feetY": 68,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 54,
+        "visibleBottom": 68,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 37,
+            "feetY": 68,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 37,
+        "visibleLeft": 26,
+        "visibleTop": 54,
+        "visibleRight": 38,
+        "visibleBottom": 68,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113
+      },
+      "exactWaterTilesAtCamera0": 58,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 1,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1113,
+      "tick": 6608,
+      "sentUtc": "2026-11-05T21:02:21.322026+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 112,
+      "image": "evidence/local/water-optional-entry/01113-tick-06608.png",
+      "player": {
+        "originX": 24,
+        "originY": 57,
+        "feetY": 88,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 74,
+        "visibleBottom": 88,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 57,
+            "feetY": 88,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 57,
+        "visibleLeft": 26,
+        "visibleTop": 74,
+        "visibleRight": 38,
+        "visibleBottom": 88,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113
+      },
+      "exactWaterTilesAtCamera0": 58,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 1,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1114,
+      "tick": 6609,
+      "sentUtc": "2026-11-05T21:02:21.329975+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 120,
+      "image": "evidence/local/water-optional-entry/01114-tick-06609.png",
+      "player": {
+        "originX": 24,
+        "originY": 91,
+        "feetY": 122,
+        "visibleLeft": 26,
+        "visibleRight": 38,
+        "visibleTop": 108,
+        "visibleBottom": 122,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113,
+        "opaquePixels": 113,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 91,
+            "feetY": 122,
+            "cell": 17,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 91,
+        "visibleLeft": 26,
+        "visibleTop": 108,
+        "visibleRight": 38,
+        "visibleBottom": 122,
+        "cell": 17,
+        "direction": "right",
+        "annotation": "swimming frame 1",
+        "confidence": 1,
+        "matchedPixels": 113
+      },
+      "exactWaterTilesAtCamera0": 58,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 1,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1115,
+      "tick": 6610,
+      "sentUtc": "2026-11-05T21:02:21.338708+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 127,
+      "image": "evidence/local/water-optional-entry/01115-tick-06610.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 58,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 1,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1116,
+      "tick": 6611,
+      "sentUtc": "2026-11-05T21:02:21.346579+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 135,
+      "image": "evidence/local/water-optional-entry/01116-tick-06611.png",
+      "player": null,
+      "standardHelperPlayer": null,
+      "exactWaterTilesAtCamera0": 58,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 1,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14848,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1117,
+      "tick": 6612,
+      "sentUtc": "2026-11-05T21:02:21.355357+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 142,
+      "image": "evidence/local/water-optional-entry/01117-tick-06612.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1118,
+      "tick": 6613,
+      "sentUtc": "2026-11-05T21:02:21.363354+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 150,
+      "image": "evidence/local/water-optional-entry/01118-tick-06613.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1119,
+      "tick": 6614,
+      "sentUtc": "2026-11-05T21:02:21.372208+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 157,
+      "image": "evidence/local/water-optional-entry/01119-tick-06614.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1120,
+      "tick": 6615,
+      "sentUtc": "2026-11-05T21:02:21.380170+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 165,
+      "image": "evidence/local/water-optional-entry/01120-tick-06615.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1121,
+      "tick": 6616,
+      "sentUtc": "2026-11-05T21:02:21.388908+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 172,
+      "image": "evidence/local/water-optional-entry/01121-tick-06616.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1122,
+      "tick": 6617,
+      "sentUtc": "2026-11-05T21:02:21.396888+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 180,
+      "image": "evidence/local/water-optional-entry/01122-tick-06617.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1123,
+      "tick": 6618,
+      "sentUtc": "2026-11-05T21:02:21.405714+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 187,
+      "image": "evidence/local/water-optional-entry/01123-tick-06618.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1124,
+      "tick": 6619,
+      "sentUtc": "2026-11-05T21:02:21.413753+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 195,
+      "image": "evidence/local/water-optional-entry/01124-tick-06619.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1125,
+      "tick": 6620,
+      "sentUtc": "2026-11-05T21:02:21.422723+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 202,
+      "image": "evidence/local/water-optional-entry/01125-tick-06620.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1126,
+      "tick": 6621,
+      "sentUtc": "2026-11-05T21:02:21.430703+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 210,
+      "image": "evidence/local/water-optional-entry/01126-tick-06621.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1127,
+      "tick": 6622,
+      "sentUtc": "2026-11-05T21:02:21.439477+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 217,
+      "image": "evidence/local/water-optional-entry/01127-tick-06622.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1128,
+      "tick": 6623,
+      "sentUtc": "2026-11-05T21:02:21.447521+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 225,
+      "image": "evidence/local/water-optional-entry/01128-tick-06623.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1129,
+      "tick": 6624,
+      "sentUtc": "2026-11-05T21:02:21.456486+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 232,
+      "image": "evidence/local/water-optional-entry/01129-tick-06624.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1130,
+      "tick": 6625,
+      "sentUtc": "2026-11-05T21:02:21.464536+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 240,
+      "image": "evidence/local/water-optional-entry/01130-tick-06625.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1131,
+      "tick": 6626,
+      "sentUtc": "2026-11-05T21:02:21.473408+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 248,
+      "image": "evidence/local/water-optional-entry/01131-tick-06626.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1132,
+      "tick": 6627,
+      "sentUtc": "2026-11-05T21:02:21.482401+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 7,
+      "nativeFramesSince6593": 255,
+      "image": "evidence/local/water-optional-entry/01132-tick-06627.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    },
+    {
+      "sequence": 1133,
+      "tick": 6628,
+      "sentUtc": "2026-11-05T21:02:21.490472+00:00",
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8,
+      "nativeFramesSince6593": 263,
+      "image": "evidence/local/water-optional-entry/01133-tick-06628.png",
+      "player": {
+        "originX": 24,
+        "originY": 177,
+        "feetY": 208,
+        "visibleLeft": 26,
+        "visibleRight": 37,
+        "visibleTop": 193,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 24,
+            "originY": 177,
+            "feetY": 208,
+            "cell": 23,
+            "direction": "right"
+          }
+        ]
+      },
+      "standardHelperPlayer": {
+        "originX": 24,
+        "originY": 177,
+        "visibleLeft": 26,
+        "visibleTop": 193,
+        "visibleRight": 37,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "right",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143
+      },
+      "exactWaterTilesAtCamera0": 56,
+      "expectedNonemptyWaterTilesAtCamera0": 58,
+      "waterAtlasPixelAgreementAtCamera0": 0.9994612068965517,
+      "exactUnoccludedWaterTilesAtCamera0": 58,
+      "unoccludedWaterPixels": 14840,
+      "unoccludedWaterAtlasAgreementAtCamera0": 1,
+      "allBlackImage": false
+    }
+  ],
+  "summary": {
+    "lastMainPoseTick": 6593,
+    "firstWaterGeometryTick": 6603,
+    "firstWaterGeometryNativeFramesSince6593": 75,
+    "firstExactWaterPlayerTick": 6604,
+    "firstExactWaterPlayerNativeFramesSince6593": 82,
+    "firstExactWaterPlayer": {
+      "originX": 24,
+      "originY": 1,
+      "feetY": 32,
+      "visibleLeft": 26,
+      "visibleRight": 38,
+      "visibleTop": 18,
+      "visibleBottom": 32,
+      "cell": 17,
+      "direction": "right",
+      "annotation": "swimming frame 1",
+      "confidence": 1,
+      "matchedPixels": 113,
+      "opaquePixels": 113,
+      "fullyVisibleOpaquePose": true,
+      "poseCandidatesAbove98Percent": 1,
+      "exactOpaquePoseCandidates": 1,
+      "strongestPoseAmbiguityCount": 1,
+      "strongestPoseCandidates": [
+        {
+          "originX": 24,
+          "originY": 1,
+          "feetY": 32,
+          "cell": 17,
+          "direction": "right"
+        }
+      ]
+    },
+    "observedInitialCameraX": 0,
+    "firstStandingOnWaterFloorTick": 6612,
+    "firstStandingOnWaterFloorNativeFramesSince6593": 142,
+    "allBlackTicks": [
+      6600,
+      6601,
+      6602
+    ],
+    "initialPoseBefore6604": "Not observed at native-frame resolution; earliest complete screenshot pose is measured 24/32, not the later floor pose 24/208.",
+    "uncertainties": [
+      "Each request advances 7 or 8 native frames; exact transition/render activation within each decision window is unresolved.",
+      "No exact complete supplied template was found at ticks 6610–6611 despite visible player artwork; those poses remain unmeasured.",
+      "Camera0 is image registration against observed first-screen static geometry, not internal telemetry."
+    ]
+  },
+  "verticalFit": {
+    "gravity": 0.1015625,
+    "maxFall": 4.125,
+    "feetAtFirstPose": 31.867838541666668,
+    "velocityAtFirstPose": 0.35546875,
+    "meanSquaredError": 0.9643321567111549,
+    "maximumErrorPixels": 1.7584635416666714,
+    "samples": [
+      {
+        "tick": 6604,
+        "nativeFramesSinceFirstPose": 0,
+        "measuredFeetY": 32,
+        "predictedFeetY": 31.867838541666668,
+        "residual": 0.13216145833333215
+      },
+      {
+        "tick": 6605,
+        "nativeFramesSinceFirstPose": 8,
+        "measuredFeetY": 39,
+        "predictedFeetY": 38.36783854166667,
+        "residual": 0.6321614583333321
+      },
+      {
+        "tick": 6606,
+        "nativeFramesSinceFirstPose": 15,
+        "measuredFeetY": 49,
+        "predictedFeetY": 49.38736979166667,
+        "residual": -0.38736979166666785
+      },
+      {
+        "tick": 6607,
+        "nativeFramesSinceFirstPose": 23,
+        "measuredFeetY": 68,
+        "predictedFeetY": 68.07486979166667,
+        "residual": -0.0748697916666714
+      },
+      {
+        "tick": 6608,
+        "nativeFramesSinceFirstPose": 30,
+        "measuredFeetY": 88,
+        "predictedFeetY": 89.75846354166667,
+        "residual": -1.7584635416666714
+      },
+      {
+        "tick": 6609,
+        "nativeFramesSinceFirstPose": 38,
+        "measuredFeetY": 122,
+        "predictedFeetY": 120.54361979166667,
+        "residual": 1.4563802083333286
+      }
+    ],
+    "status": "Inferred first-pose-anchored fit with existing controlled water-entry constants. Does not identify unseen initial position or exact scene/physics epoch."
+  },
+  "runtimeCandidate": {
+    "status": "Coarse inferred implementation candidate, not measured exact transition timing or unseen initial spawn.",
+    "spawn": [
+      24,
+      32
+    ],
+    "spawnVelocity": [
+      0,
+      0
+    ],
+    "waterEntryFall": true,
+    "gravity": 0.1015625,
+    "maxFall": 4.125,
+    "sceneTransitionFramesCandidate": 72,
+    "visibleEntryDelayAfterSceneCandidate": 7,
+    "firstFallUpdateNativeFrameCandidateSince6593": 79,
+    "sceneGeometryAppearsNativeFrameWindowSince6593": [
+      68,
+      75
+    ],
+    "firstCompletePlayerAppearsNativeFrameWindowSince6593": [
+      76,
+      82
+    ],
+    "firstPoseAnchoredAlternative": {
+      "spawn": [
+        24,
+        32
+      ],
+      "spawnVelocity": [
+        0,
+        0.35546875
+      ],
+      "epochTick": 6604
+    },
+    "platformEpochAtTick6613": {
+      "nativeFramesSinceFirstPartialWaterGeometry": 75,
+      "nativeFramesSinceFirstCompletePlayer": 68,
+      "nativeFramesSinceCandidateSceneLoad": 78,
+      "status": "Platform initialization/activation epoch remains inferred; these are distinct scene/pose timing anchors."
+    }
+  },
+  "preEntryRecipe": [
+    {
+      "sequence": 1092,
+      "tick": 6562,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15
+    },
+    {
+      "sequence": 1093,
+      "tick": 6574,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12
+      },
+      "nativeFrames": 90
+    },
+    {
+      "sequence": 1094,
+      "tick": 6577,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3
+      },
+      "nativeFrames": 22
+    },
+    {
+      "sequence": 1095,
+      "tick": 6578,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8
+    },
+    {
+      "sequence": 1096,
+      "tick": 6590,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12
+      },
+      "nativeFrames": 90
+    },
+    {
+      "sequence": 1097,
+      "tick": 6592,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 2
+      },
+      "nativeFrames": 15
+    },
+    {
+      "sequence": 1098,
+      "tick": 6593,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1
+      },
+      "nativeFrames": 8
+    }
+  ]
+}

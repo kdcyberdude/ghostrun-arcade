@@ -1,0 +1,2216 @@
+{
+  "schema": "public-bowser-interaction-observations-v1",
+  "updatedUtc": "2026-11-06T00:35:30.218Z",
+  "level": "1-4",
+  "directory": "evidence/local/bowser-2026-11-06T00-34-28.158Z",
+  "trace": "evidence/local/bowser-2026-11-06T00-34-28.158Z/trace.jsonl",
+  "method": "Fresh standard recorded masks verified against dense source, then ordinary manual controls. Actual native-frame sums and exact opaque supplied-art matches only. Camera inferred by zero-tolerance RGB known-map registration constrained to0..24px per7/8-frame decision.",
+  "limits": [
+    "Enemy match requires complete front/rear supplied cells and may fail under occlusion or split sprite rows; missing poses are not invented.",
+    "Flame match requires all opaque supplied pixels; partially obscured flames can be missed.",
+    "Event times remain bounded by the actual7/8-frame screenshot spacing.",
+    "No fire-flower/Bowser hit-point or reward measurement yet."
+  ],
+  "prefixVerifications": [
+    {
+      "tick": 1064,
+      "nativeFrame": 7993,
+      "expectedNativeFrame": 7993,
+      "samePng": true
+    },
+    {
+      "tick": 1036,
+      "nativeFrame": 7782,
+      "expectedNativeFrame": 7782,
+      "samePng": true
+    }
+  ],
+  "observations": [
+    {
+      "branch": 1,
+      "sequence": 158,
+      "experiment": "contact-from-right-approach",
+      "tick": 1065,
+      "nativeFrame": 8000,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00158-contact-from-right-approach-t1065.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 243,
+          "support": 10240,
+          "error": 0.02373046875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 521,
+          "support": 10240,
+          "error": 0.05087890625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 770,
+          "support": 10240,
+          "error": 0.0751953125
+        }
+      ],
+      "player": {
+        "originX": 218,
+        "originY": 129,
+        "visibleLeft": 219,
+        "visibleTop": 146,
+        "visibleRight": 231,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 2241,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 178,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "right",
+          "rearX": 162,
+          "opaquePixels": 518,
+          "worldX": 2201
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 159,
+      "experiment": "contact-from-right-approach",
+      "tick": 1066,
+      "nativeFrame": 8008,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00159-contact-from-right-approach-t1066.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 251,
+          "support": 10240,
+          "error": 0.02451171875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 533,
+          "support": 10240,
+          "error": 0.05205078125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 778,
+          "support": 10240,
+          "error": 0.0759765625
+        }
+      ],
+      "player": {
+        "originX": 214,
+        "originY": 129,
+        "visibleLeft": 215,
+        "visibleTop": 145,
+        "visibleRight": 229,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "left",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 2237,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 182,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "right",
+          "rearX": 166,
+          "opaquePixels": 518,
+          "worldX": 2205
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 160,
+      "experiment": "contact-from-right-approach",
+      "tick": 1067,
+      "nativeFrame": 8015,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00160-contact-from-right-approach-t1067.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 248,
+          "support": 10240,
+          "error": 0.02421875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 537,
+          "support": 10240,
+          "error": 0.05244140625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 775,
+          "support": 10240,
+          "error": 0.07568359375
+        }
+      ],
+      "player": {
+        "originX": 208,
+        "originY": 129,
+        "visibleLeft": 210,
+        "visibleTop": 145,
+        "visibleRight": 220,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 2231,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 184,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "right",
+          "rearX": 168,
+          "opaquePixels": 518,
+          "worldX": 2207
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 161,
+      "experiment": "contact-from-right-approach",
+      "tick": 1068,
+      "nativeFrame": 8023,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00161-contact-from-right-approach-t1068.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 129,
+        "visibleLeft": 202,
+        "visibleTop": 145,
+        "visibleRight": 215,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 162,
+      "experiment": "contact-from-right-approach",
+      "tick": 1069,
+      "nativeFrame": 8030,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00162-contact-from-right-approach-t1069.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 129,
+        "visibleLeft": 202,
+        "visibleTop": 145,
+        "visibleRight": 215,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 163,
+      "experiment": "contact-from-right-approach",
+      "tick": 1070,
+      "nativeFrame": 8038,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00163-contact-from-right-approach-t1070.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 125,
+        "visibleLeft": 202,
+        "visibleTop": 141,
+        "visibleRight": 215,
+        "visibleBottom": 154,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 156
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 164,
+      "experiment": "contact-from-right-approach",
+      "tick": 1071,
+      "nativeFrame": 8045,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00164-contact-from-right-approach-t1071.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 101,
+        "visibleLeft": 202,
+        "visibleTop": 117,
+        "visibleRight": 215,
+        "visibleBottom": 130,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 132
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 165,
+      "experiment": "contact-from-right-approach",
+      "tick": 1072,
+      "nativeFrame": 8053,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00165-contact-from-right-approach-t1072.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 84,
+        "visibleLeft": 202,
+        "visibleTop": 100,
+        "visibleRight": 215,
+        "visibleBottom": 113,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 115
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 166,
+      "experiment": "contact-from-right-approach",
+      "tick": 1073,
+      "nativeFrame": 8060,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00166-contact-from-right-approach-t1073.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 76,
+        "visibleLeft": 202,
+        "visibleTop": 92,
+        "visibleRight": 215,
+        "visibleBottom": 105,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 107
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 167,
+      "experiment": "contact-from-right-approach",
+      "tick": 1074,
+      "nativeFrame": 8068,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00167-contact-from-right-approach-t1074.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 78,
+        "visibleLeft": 202,
+        "visibleTop": 94,
+        "visibleRight": 215,
+        "visibleBottom": 107,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 109
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 168,
+      "experiment": "contact-from-right-approach",
+      "tick": 1075,
+      "nativeFrame": 8075,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00168-contact-from-right-approach-t1075.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 87,
+        "visibleLeft": 202,
+        "visibleTop": 103,
+        "visibleRight": 215,
+        "visibleBottom": 116,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 118
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 169,
+      "experiment": "contact-from-right-approach",
+      "tick": 1076,
+      "nativeFrame": 8083,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        4
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00169-contact-from-right-approach-t1076.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 107,
+        "visibleLeft": 202,
+        "visibleTop": 123,
+        "visibleRight": 215,
+        "visibleBottom": 136,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 138
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 170,
+      "experiment": "contact-from-right-after",
+      "tick": 1077,
+      "nativeFrame": 8090,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00170-contact-from-right-after-t1077.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 132,
+        "visibleLeft": 202,
+        "visibleTop": 148,
+        "visibleRight": 215,
+        "visibleBottom": 161,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 163
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 171,
+      "experiment": "contact-from-right-after",
+      "tick": 1078,
+      "nativeFrame": 8098,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00171-contact-from-right-after-t1078.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 259,
+          "support": 10240,
+          "error": 0.02529296875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 548,
+          "support": 10240,
+          "error": 0.053515625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 786,
+          "support": 10240,
+          "error": 0.0767578125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 166,
+        "visibleLeft": 202,
+        "visibleTop": 182,
+        "visibleRight": 215,
+        "visibleBottom": 195,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 197
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 172,
+      "experiment": "contact-from-right-after",
+      "tick": 1079,
+      "nativeFrame": 8105,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00172-contact-from-right-after-t1079.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 222,
+          "support": 10240,
+          "error": 0.0216796875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 511,
+          "support": 10240,
+          "error": 0.04990234375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 749,
+          "support": 10240,
+          "error": 0.07314453125
+        }
+      ],
+      "player": {
+        "originX": 201,
+        "originY": 196,
+        "visibleLeft": 202,
+        "visibleTop": 212,
+        "visibleRight": 215,
+        "visibleBottom": 225,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2224,
+        "feetY": 227
+      },
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 173,
+      "experiment": "contact-from-right-after",
+      "tick": 1080,
+      "nativeFrame": 8113,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00173-contact-from-right-after-t1080.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 222,
+          "support": 10240,
+          "error": 0.0216796875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 511,
+          "support": 10240,
+          "error": 0.04990234375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 749,
+          "support": 10240,
+          "error": 0.07314453125
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 174,
+      "experiment": "contact-from-right-after",
+      "tick": 1081,
+      "nativeFrame": 8120,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00174-contact-from-right-after-t1081.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 222,
+          "support": 10240,
+          "error": 0.0216796875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 511,
+          "support": 10240,
+          "error": 0.04990234375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 749,
+          "support": 10240,
+          "error": 0.07314453125
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 175,
+      "experiment": "contact-from-right-after",
+      "tick": 1082,
+      "nativeFrame": 8128,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00175-contact-from-right-after-t1082.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 222,
+          "support": 10240,
+          "error": 0.0216796875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 511,
+          "support": 10240,
+          "error": 0.04990234375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 749,
+          "support": 10240,
+          "error": 0.07314453125
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 188,
+          "frontY": 130,
+          "feetY": 161,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "right",
+          "rearX": 172,
+          "opaquePixels": 520,
+          "worldX": 2211
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 327,
+      "experiment": "contact-from-left-approach",
+      "tick": 1037,
+      "nativeFrame": 7790,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00327-contact-from-left-approach-t1037.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 253,
+          "support": 10240,
+          "error": 0.02470703125
+        },
+        {
+          "camera": 2031,
+          "mismatch": 542,
+          "support": 10240,
+          "error": 0.0529296875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 780,
+          "support": 10240,
+          "error": 0.076171875
+        }
+      ],
+      "player": {
+        "originX": 121,
+        "originY": 129,
+        "visibleLeft": 123,
+        "visibleTop": 146,
+        "visibleRight": 135,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 2144,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 165,
+          "frontY": 116,
+          "feetY": 147,
+          "frontCell": 35,
+          "rearCell": 36,
+          "facing": "left",
+          "rearX": 181,
+          "opaquePixels": 520,
+          "worldX": 2188
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 328,
+      "experiment": "contact-from-left-approach",
+      "tick": 1038,
+      "nativeFrame": 7797,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00328-contact-from-left-approach-t1038.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 256,
+          "support": 10240,
+          "error": 0.025
+        },
+        {
+          "camera": 2031,
+          "mismatch": 545,
+          "support": 10240,
+          "error": 0.05322265625
+        },
+        {
+          "camera": 2025,
+          "mismatch": 783,
+          "support": 10240,
+          "error": 0.07646484375
+        }
+      ],
+      "player": {
+        "originX": 123,
+        "originY": 129,
+        "visibleLeft": 123,
+        "visibleTop": 145,
+        "visibleRight": 137,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 2146,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 163,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 179,
+          "opaquePixels": 518,
+          "worldX": 2186
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 329,
+      "experiment": "contact-from-left-approach",
+      "tick": 1039,
+      "nativeFrame": 7805,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00329-contact-from-left-approach-t1039.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 246,
+          "support": 10240,
+          "error": 0.0240234375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 535,
+          "support": 10240,
+          "error": 0.05224609375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 773,
+          "support": 10240,
+          "error": 0.07548828125
+        }
+      ],
+      "player": {
+        "originX": 128,
+        "originY": 129,
+        "visibleLeft": 131,
+        "visibleTop": 145,
+        "visibleRight": 141,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 2151,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 161,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 177,
+          "opaquePixels": 518,
+          "worldX": 2184
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 330,
+      "experiment": "contact-from-left-approach",
+      "tick": 1040,
+      "nativeFrame": 7812,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00330-contact-from-left-approach-t1040.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 251,
+          "support": 10240,
+          "error": 0.02451171875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 540,
+          "support": 10240,
+          "error": 0.052734375
+        },
+        {
+          "camera": 2025,
+          "mismatch": 778,
+          "support": 10240,
+          "error": 0.0759765625
+        }
+      ],
+      "player": {
+        "originX": 134,
+        "originY": 129,
+        "visibleLeft": 136,
+        "visibleTop": 146,
+        "visibleRight": 148,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 2157,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 159,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 175,
+          "opaquePixels": 518,
+          "worldX": 2182
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 331,
+      "experiment": "contact-from-left-approach",
+      "tick": 1041,
+      "nativeFrame": 7820,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00331-contact-from-left-approach-t1041.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 129,
+        "visibleLeft": 145,
+        "visibleTop": 145,
+        "visibleRight": 158,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 332,
+      "experiment": "contact-from-left-approach",
+      "tick": 1042,
+      "nativeFrame": 7827,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00332-contact-from-left-approach-t1042.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 129,
+        "visibleLeft": 145,
+        "visibleTop": 145,
+        "visibleRight": 158,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 333,
+      "experiment": "contact-from-left-approach",
+      "tick": 1043,
+      "nativeFrame": 7835,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00333-contact-from-left-approach-t1043.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 129,
+        "visibleLeft": 145,
+        "visibleTop": 145,
+        "visibleRight": 158,
+        "visibleBottom": 158,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 160
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 334,
+      "experiment": "contact-from-left-approach",
+      "tick": 1044,
+      "nativeFrame": 7842,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00334-contact-from-left-approach-t1044.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 105,
+        "visibleLeft": 145,
+        "visibleTop": 121,
+        "visibleRight": 158,
+        "visibleBottom": 134,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 136
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 335,
+      "experiment": "contact-from-left-approach",
+      "tick": 1045,
+      "nativeFrame": 7850,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00335-contact-from-left-approach-t1045.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 243,
+          "support": 10240,
+          "error": 0.02373046875
+        },
+        {
+          "camera": 2031,
+          "mismatch": 532,
+          "support": 10240,
+          "error": 0.051953125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 770,
+          "support": 10240,
+          "error": 0.0751953125
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 86,
+        "visibleLeft": 145,
+        "visibleTop": 102,
+        "visibleRight": 158,
+        "visibleBottom": 115,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 117
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 336,
+      "experiment": "contact-from-left-approach",
+      "tick": 1046,
+      "nativeFrame": 7857,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00336-contact-from-left-approach-t1046.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 234,
+          "support": 10240,
+          "error": 0.0228515625
+        },
+        {
+          "camera": 2031,
+          "mismatch": 523,
+          "support": 10240,
+          "error": 0.05107421875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 761,
+          "support": 10240,
+          "error": 0.07431640625
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 77,
+        "visibleLeft": 145,
+        "visibleTop": 93,
+        "visibleRight": 158,
+        "visibleBottom": 106,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 108
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 337,
+      "experiment": "contact-from-left-approach",
+      "tick": 1047,
+      "nativeFrame": 7865,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00337-contact-from-left-approach-t1047.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 234,
+          "support": 10240,
+          "error": 0.0228515625
+        },
+        {
+          "camera": 2031,
+          "mismatch": 523,
+          "support": 10240,
+          "error": 0.05107421875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 761,
+          "support": 10240,
+          "error": 0.07431640625
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 77,
+        "visibleLeft": 145,
+        "visibleTop": 93,
+        "visibleRight": 158,
+        "visibleBottom": 106,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 108
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 338,
+      "experiment": "contact-from-left-approach",
+      "tick": 1048,
+      "nativeFrame": 7872,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00338-contact-from-left-approach-t1048.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 241,
+          "support": 10240,
+          "error": 0.02353515625
+        },
+        {
+          "camera": 2031,
+          "mismatch": 530,
+          "support": 10240,
+          "error": 0.0517578125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 768,
+          "support": 10240,
+          "error": 0.075
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 85,
+        "visibleLeft": 145,
+        "visibleTop": 101,
+        "visibleRight": 158,
+        "visibleBottom": 114,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 116
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 339,
+      "experiment": "contact-from-left-after",
+      "tick": 1049,
+      "nativeFrame": 7880,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00339-contact-from-left-after-t1049.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 104,
+        "visibleLeft": 145,
+        "visibleTop": 120,
+        "visibleRight": 158,
+        "visibleBottom": 133,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 135
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 340,
+      "experiment": "contact-from-left-after",
+      "tick": 1050,
+      "nativeFrame": 7887,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00340-contact-from-left-after-t1050.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 128,
+        "visibleLeft": 145,
+        "visibleTop": 144,
+        "visibleRight": 158,
+        "visibleBottom": 157,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 159
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 341,
+      "experiment": "contact-from-left-after",
+      "tick": 1051,
+      "nativeFrame": 7895,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00341-contact-from-left-after-t1051.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 252,
+          "support": 10240,
+          "error": 0.024609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 541,
+          "support": 10240,
+          "error": 0.05283203125
+        },
+        {
+          "camera": 2025,
+          "mismatch": 779,
+          "support": 10240,
+          "error": 0.07607421875
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 162,
+        "visibleLeft": 145,
+        "visibleTop": 178,
+        "visibleRight": 158,
+        "visibleBottom": 191,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 193
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 342,
+      "experiment": "contact-from-left-after",
+      "tick": 1052,
+      "nativeFrame": 7902,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00342-contact-from-left-after-t1052.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 215,
+          "support": 10240,
+          "error": 0.02099609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 504,
+          "support": 10240,
+          "error": 0.04921875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 742,
+          "support": 10240,
+          "error": 0.0724609375
+        }
+      ],
+      "player": {
+        "originX": 144,
+        "originY": 192,
+        "visibleLeft": 145,
+        "visibleTop": 208,
+        "visibleRight": 158,
+        "visibleBottom": 221,
+        "cell": 22,
+        "direction": "right",
+        "annotation": "killed",
+        "confidence": 1,
+        "matchedPixels": 148,
+        "worldX": 2167,
+        "feetY": 223
+      },
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 343,
+      "experiment": "contact-from-left-after",
+      "tick": 1053,
+      "nativeFrame": 7910,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00343-contact-from-left-after-t1053.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 215,
+          "support": 10240,
+          "error": 0.02099609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 504,
+          "support": 10240,
+          "error": 0.04921875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 742,
+          "support": 10240,
+          "error": 0.0724609375
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 2,
+      "sequence": 344,
+      "experiment": "contact-from-left-after",
+      "tick": 1054,
+      "nativeFrame": 7917,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T00-34-28.158Z/00344-contact-from-left-after-t1054.png",
+      "camera": 2023,
+      "cameraCandidates": [
+        {
+          "camera": 2023,
+          "mismatch": 215,
+          "support": 10240,
+          "error": 0.02099609375
+        },
+        {
+          "camera": 2031,
+          "mismatch": 504,
+          "support": 10240,
+          "error": 0.04921875
+        },
+        {
+          "camera": 2025,
+          "mismatch": 742,
+          "support": 10240,
+          "error": 0.0724609375
+        }
+      ],
+      "player": null,
+      "bowser": [
+        {
+          "screenX": 157,
+          "frontY": 129,
+          "feetY": 160,
+          "frontCell": 35,
+          "rearCell": 38,
+          "facing": "left",
+          "rearX": 173,
+          "opaquePixels": 518,
+          "worldX": 2180
+        }
+      ],
+      "flames": [],
+      "lifeIntro": false
+    }
+  ]
+}

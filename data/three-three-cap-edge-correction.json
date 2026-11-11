@@ -1,0 +1,31 @@
+{
+  "level": "3-3",
+  "area": "main",
+  "tile": [
+    110,
+    7,
+    24
+  ],
+  "scope": "Observed right end of small canopy at112. Existing central23at109/7 anchors the conventional world grid; retained raw pieces cover3of4patterns, top-right80missing. Add provided24assembly and its ordinary solid class.",
+  "qualification": "Inferred assembly identity from native/source shape and existing24class. Native complete atlas-cell comparisons retain2–6corner-pixel mismatches; zero-RGB threshold not passed. No per-sample image edits. Existing fragments preserved.",
+  "heldoutPrediction": {
+    "prefix": 3464,
+    "controls": [
+      {
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 3
+      },
+      {
+        "buttons": [],
+        "ticks": 1
+      }
+    ],
+    "finalOpaqueFeetY": 112,
+    "positionTolerancePx": 2,
+    "exactCollisionTimingQualified": false
+  },
+  "evidence": "evidence/three-three-cap-edge-plan.json; local fresh-cap-edge trace; evidence/three-three-final-contact-audit.json"
+}

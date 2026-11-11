@@ -1,0 +1,132 @@
+{
+  "schema": "optional-pipe-candidate-survey-v1",
+  "level": "6-2",
+  "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+  "resetThenRecordedPrefixTicks": [
+    6538,
+    6632,
+    6654
+  ],
+  "candidates": [
+    {
+      "x": 592,
+      "top": 176,
+      "sequence": 1107,
+      "pipeScreenX": 65,
+      "downNativeFrames": 300,
+      "prefix": 6538,
+      "tick": 6680,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/01107-tick-06680.png",
+      "playerScreenOrigin": [
+        72,
+        176
+      ],
+      "relativePlayerX": 7,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 736,
+      "top": 144,
+      "sequence": 1119,
+      "pipeScreenX": 100,
+      "downNativeFrames": 150,
+      "prefix": 6538,
+      "tick": 6762,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/01119-tick-06762.png",
+      "playerScreenOrigin": [
+        107,
+        144
+      ],
+      "relativePlayerX": 7,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 2096,
+      "top": 176,
+      "sequence": 7868,
+      "pipeScreenX": 106,
+      "downNativeFrames": 150,
+      "prefix": 6632,
+      "tick": 6703,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/07868-tick-06703.png",
+      "playerScreenOrigin": [
+        112,
+        176
+      ],
+      "relativePlayerX": 6,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 2160,
+      "top": 176,
+      "sequence": 7874,
+      "pipeScreenX": 103,
+      "downNativeFrames": 150,
+      "prefix": 6632,
+      "tick": 6746,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/07874-tick-06746.png",
+      "playerScreenOrigin": [
+        110,
+        176
+      ],
+      "relativePlayerX": 7,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 2896,
+      "top": 160,
+      "sequence": 11247,
+      "pipeScreenX": 72,
+      "downNativeFrames": 150,
+      "prefix": 6654,
+      "tick": 6820,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11247-tick-06820.png",
+      "playerScreenOrigin": [
+        78,
+        160
+      ],
+      "relativePlayerX": 6,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 2928,
+      "top": 144,
+      "sequence": 11254,
+      "pipeScreenX": 74,
+      "downNativeFrames": 150,
+      "prefix": 6654,
+      "tick": 6864,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11254-tick-06864.png",
+      "playerScreenOrigin": [
+        80,
+        144
+      ],
+      "relativePlayerX": 6,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    },
+    {
+      "x": 3024,
+      "top": 160,
+      "sequence": 11263,
+      "pipeScreenX": 97,
+      "downNativeFrames": 150,
+      "prefix": 6654,
+      "tick": 6924,
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11263-tick-06924.png",
+      "playerScreenOrigin": [
+        105,
+        160
+      ],
+      "relativePlayerX": 8,
+      "roomConnectionAccepted": false,
+      "status": "The actual centered standing DOWN experiment showed main geometry afterwards. Alternate activation conditions remain untested."
+    }
+  ],
+  "status": "Candidate-specific nonentries only; no room, hidden block, or connection inferred from their absence."
+}

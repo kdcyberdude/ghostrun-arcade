@@ -1,0 +1,147 @@
+{
+  "schema": "three-three-contact-prospective-v2",
+  "created": "2026-11-06",
+  "method": "Fresh standard-start ordinary winning controls through 3-2 and opening 3-3 lower tree; images/public controls only. No source/executable/ROM inspection.",
+  "prefixDecisions": 3384,
+  "captureFromTick": 3364,
+  "tolerances": {
+    "positionPx": 2,
+    "eventNativeFrames": 2
+  },
+  "partitions": {
+    "calibration": [
+      "cal-immediate-right-held",
+      "cal-immediate-column-walk"
+    ],
+    "reserved": [
+      "reserved-delay1-held",
+      "reserved-delay2-short",
+      "reserved-delay3-reverse"
+    ]
+  },
+  "camera": "Independent supplied static cap/column/pattern matching and monotone native displacement; player/platform never selects camera. Opening cap landmark x288/y160, next cap x352/y112 are existing image/map candidates to verify, not fitted from contact.",
+  "cases": [
+    {
+      "name": "cal-immediate-right-held",
+      "segments": [
+        {
+          "stage": "launch",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    },
+    {
+      "name": "cal-immediate-column-walk",
+      "segments": [
+        {
+          "stage": "walk-column",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        {
+          "stage": "fall-observe",
+          "buttons": [],
+          "ticks": 10
+        }
+      ]
+    },
+    {
+      "name": "reserved-delay1-held",
+      "segments": [
+        {
+          "stage": "wait",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "stage": "launch",
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 7
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    },
+    {
+      "name": "reserved-delay2-short",
+      "segments": [
+        {
+          "stage": "wait",
+          "buttons": [],
+          "ticks": 2
+        },
+        {
+          "stage": "launch",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "stage": "release",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 5
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    },
+    {
+      "name": "reserved-delay3-reverse",
+      "segments": [
+        {
+          "stage": "wait",
+          "buttons": [],
+          "ticks": 3
+        },
+        {
+          "stage": "launch",
+          "buttons": [
+            "right",
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "reverse",
+          "buttons": [
+            "left",
+            "a"
+          ],
+          "ticks": 3
+        },
+        {
+          "stage": "settle",
+          "buttons": [],
+          "ticks": 12
+        }
+      ]
+    }
+  ],
+  "priorPlanSha256": "40e9deaf0b6cd9a191db6028862d100fe03f84708c43d08244c11f1863f93325",
+  "reason": "V1 first delayed calibration killed by visible Goomba; no cap rule fitted. New short waits precede enemy arrival."
+}

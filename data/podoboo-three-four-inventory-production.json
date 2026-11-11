@@ -1,0 +1,11 @@
+{
+  "schema": "three-four-opening-podoboo-limited-inventory-v1",
+  "level": "3-4",
+  "area": "main",
+  "proposal": "evidence/podoboo-three-four-proposal.json",
+  "proposalSha256": "f4b93e7603a6cbaa96c93696533926c18bea027f79a41617813d4dbca02e2393",
+  "rejectedMotorReport": "evidence/podoboo-three-four-v2-result.json",
+  "rejectedMotorReportSha256": "ae8b852302f80181efe960a41b6149a1c828018b37360e013f1749394f1504da",
+  "limitedCandidate": {"kind":"podoboo","x":256,"y":240,"direction":-1},
+  "qualification": "INVENTORY ONLY: kind and sprite-left256 observed in154 exact whole-art matches including55 fresh heldout. Hidden y240 and direction−1 reuse existing inferred class metadata. Legacy sine motor remains unqualified and cannot reproduce observed bodytop77 (at least48px peak error); rejected V2 motor is not installed. Native activation, launch/reset, collision timing/radius, and falling body flip remain unqualified."
+}

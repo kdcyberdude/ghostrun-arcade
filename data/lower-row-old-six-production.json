@@ -1,0 +1,413 @@
+{
+  "schema": "whole-free-tile-visual-corrections-v1",
+  "visualOnly": true,
+  "classification": "Observed complete supplied-art static rendering correction. The eight original simulation freeTiles and their unqualified collision behavior remain unchanged.",
+  "priorCorrection": {
+    "path": "data/lower-row-chain-fragment-corrections.json",
+    "sha256": "50acc900b46221f8a3b2c9acb28763d97d804638529dd9e1d0455a55ecb5d298"
+  },
+  "sourceHashes": {
+    "lower-row-exact-followup.json": "94a76cf0b56765bd0b0dc644c0c8cbb17d678b5b8c3a1d08a1773c96a65300ee",
+    "lower-row-exact-second.json": "6760badf1e2ce3c1c5c879ce61e8779be00db432c8cf751b06499901b1f7166c",
+    "lower-row-fresh-reference-delta.json": "d75dd50ec6208ce174b836f672d25a2436f80fba7185f70b38a30b526880af6b",
+    "lower-row-fresh-second-delta.json": "b1229bf92ece49d4f324eb2b96ad6984d663dac74028c26455fcb53e64e5373a",
+    "lower-row-edge-cells.json": "42da3abeb44de4d24210574524911d4d0a077ceb42d018d054842fba2bd3193e",
+    "lower-row-5163-delta.json": "0aca59992a3078ab795c4f89fb1ae6c1b8bf910c19281cfbd69a7514459ff834",
+    "lower-row-5163-followup-delta.json": "13f05cfa069a091bbf200f50494d9b06f66ab390b8f17b3e9422badb286797d7",
+    "observed-levels.json": "ba114cfd709356b945ee7e4d9d87a2a014ccf477d4e89f8f9270772538f3af87"
+  },
+  "proofFiles": {
+    "evidence/lower-row-old-six-proposal.json": "385f62d6cb99beed92a9e077469da9de72b31bacb85711c1eb81fc0b60e5f3b3",
+    "evidence/lower-row-old-six-cell-proof.json": "d97633aaace984ac2f600f5ee8a424bb03abf4a429db23d8e49558aed7c78de3",
+    "evidence/lower-row-old-six-candidate.json": "87ae0dab870e824fe85050ddcf3f957fc3e53cce627b36f45d990c8fee122621",
+    "evidence/lower-row-old-six-verification.json": "71da4197231e29978c920cd83f7158b8c7b9e7e1b07f0ef2f100720ba8f2e259",
+    "evidence/lower-row-old-six-browser.json": "e1fd616843a2641e3090d1232e133a5b52065802cd65eb90ee18872c1c331468",
+    "evidence/lower-row-old-six-regression-audit.json": "054aead51fd3c368ea7f9d90f6ade1d84260678b5b724f0fc81b2c100fae01aa",
+    "evidence/lower-row-old-six-regression-browser-before.json": "86112af094708ae9beb294b9f0574504a7fe982555248132e9ba1cbbb7d4ab2d",
+    "evidence/lower-row-old-six-regression-browser-after322.json": "46df5538914a5d48ffe707cc68a26b8dda92cfb89b43236560bfc24a9577264b",
+    "evidence/lower-row-old-six-legacy249-identities.json": "0c85f28e61b5ea6b8028bcfbf66da38773b1781932e2e4c6e625e77b050f248b"
+  },
+  "RGBTolerance": 0,
+  "minimumTrainingWitnessesPerPixel": 2,
+  "minimumIndependentHeldoutWitnessesPerPixel": 1,
+  "supersededFreeTiles": [
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "5-3",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 95,
+      "match": {
+        "x": 1091,
+        "y": 224,
+        "metatileId": 76,
+        "atlas": "metatiles-palette-000.png",
+        "observedFrames": 3,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        1091,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "5-3-69-14",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "5-3",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 126,
+      "match": {
+        "x": 1722,
+        "y": 208,
+        "metatileId": 76,
+        "atlas": "metatiles-palette-000.png",
+        "observedFrames": 3,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        1722,
+        208,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "5-3-108-13",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-1",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 69,
+      "match": {
+        "x": 2739,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        2739,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-1-172-14",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-2",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 10,
+      "match": {
+        "x": 626,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        626,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-2-40-14",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-2",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 14,
+      "match": {
+        "x": 675,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        675,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-2-42-14",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-2",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 16,
+      "match": {
+        "x": 707,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        707,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-2-45-14",
+        "oldFootprintIndex": 0
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-2",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 17,
+      "match": {
+        "x": 722,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        722,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-2-45-14",
+        "oldFootprintIndex": 1
+      }
+    },
+    {
+      "sourceFile": "data/observed-levels.json",
+      "level": "6-2",
+      "area": "main",
+      "sourceField": "freeTiles",
+      "sourceIndex": 18,
+      "match": {
+        "x": 723,
+        "y": 224,
+        "metatileId": 84,
+        "atlas": "metatiles-palette-018.png",
+        "observedFrames": 2,
+        "collision": "infer-from-descriptor"
+      },
+      "allFootprintPixelsIndependentlyWitnessed": true,
+      "footprint": [
+        723,
+        224,
+        16,
+        16
+      ],
+      "proof": {
+        "file": "evidence/lower-row-old-six-candidate.json",
+        "group": "6-2-45-14",
+        "oldFootprintIndex": 2
+      }
+    }
+  ],
+  "supersededPatternOverrides": [],
+  "supersededDecorations": [],
+  "additions": [
+    {
+      "level": "5-3",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 1088,
+          "y": 224,
+          "metatileId": 76,
+          "atlas": "metatiles-palette-000.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "5-3-69-14",
+            "newFootprintIndex": 0
+          }
+        }
+      ]
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 1720,
+          "y": 208,
+          "metatileId": 76,
+          "atlas": "metatiles-palette-000.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "5-3-108-13",
+            "newFootprintIndex": 0
+          }
+        }
+      ]
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 2736,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-1-172-14",
+            "newFootprintIndex": 0
+          }
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 624,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-40-14",
+            "newFootprintIndex": 0
+          }
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 672,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-42-14",
+            "newFootprintIndex": 0
+          }
+        },
+        {
+          "x": 688,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-42-14",
+            "newFootprintIndex": 1
+          }
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "decorations": [
+        {
+          "x": 704,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-45-14",
+            "newFootprintIndex": 0
+          }
+        },
+        {
+          "x": 720,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-45-14",
+            "newFootprintIndex": 1
+          }
+        },
+        {
+          "x": 736,
+          "y": 224,
+          "metatileId": 84,
+          "atlas": "metatiles-palette-018.png",
+          "aboveFreeTiles": true,
+          "allFootprintPixelsIndependentlyWitnessed": true,
+          "proof": {
+            "file": "evidence/lower-row-old-six-candidate.json",
+            "group": "6-2-45-14",
+            "newFootprintIndex": 2
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only complete named old pieces are suppressed while rendering; no clipping.",
+    "All old freeTiles and existing grid tiles remain in simulation unchanged.",
+    "Collision equivalence means preserving current behavior, not proving that behavior matches the reference."
+  ]
+}

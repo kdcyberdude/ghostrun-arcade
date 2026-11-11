@@ -1,0 +1,36 @@
+{
+  "lockedUTC": "2026-11-06T05:09:08.854Z",
+  "scope": "Star pickup1000 and Star contact with Goomba100 only. Other Star enemy types and every coin/shell event remain unqualified and unchanged.",
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "glyph": "Exact supplied opaque RGB; covered glyph is unobserved"
+  },
+  "pickup": {
+    "scoreAlreadyImplemented": 1000,
+    "itemTopYOffset": 16,
+    "pixelsUpPerActiveNativeFrame": 1,
+    "durationActiveNativeFrames": 48,
+    "status": "Inferred shared item48. Source before-item active1121 and first-label1126 bracket collection1122..1126. Two training traces share pickupX61 and intercept1261; last clear label1171 and first clear absence1172 constrain one common expiry1172, giving lifetime46..50, within2 of48. Cross-trace common-event assumption is explicit, supported by same label origin/intercept and measured item X advance1/native."
+  },
+  "goombaContact": {
+    "scoreAlreadyImplemented": 100,
+    "feetYOffset": 32,
+    "pixelsUpPerActiveNativeFrame": 1,
+    "durationActiveNativeFrames": 50,
+    "status": "Inferred launched-enemy50, independent of squash. Four training Goomba tracks intersect at50 conditional on visible groundfoot208/raworigin176; retaining±1 draw/birth phase yields49..51."
+  },
+  "coordinateSpace": "Labels capture committed camera at event and remain screen fixed while world scrolls.",
+  "updateScope": "Use existing unpaused popup clock. No player/item/enemy/projectile physics, freeze, score or Star duration changes.",
+  "evidence": {
+    "itemBefore": "evidence/popup-extension-training-analysis.json",
+    "starPattern": "tools/popup-star-pattern.mjs",
+    "freshStar": "evidence/popup-awards-training-analysis.json"
+  },
+  "bindings": {
+    "evidence/popup-extension-training-analysis.json": "fa5d63f97443ea375ba8e63416cc88badbf9ebd137bc8082a179888c60c88c5f",
+    "evidence/popup-awards-training-measurements.json": "125d7c6c636fdef331531bb2895c8df8da8374e85684b447d508031bb5614042",
+    "evidence/popup-awards-training-analysis.json": "f4e08b17396ccae34b4e7f1a0b0651c981acb125d1bdfff88307d576d7eaa024"
+  },
+  "reserved": "Existing declared forward-walk prefix150 plus fresh prefix149 walk withoutB, locked before capture. Retain misses, death and overlap."
+}

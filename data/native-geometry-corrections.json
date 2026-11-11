@@ -1,0 +1,1577 @@
+{
+ "schema": "native-geometry-corrections-v1",
+ "note": "Level structures of the screenshot-extracted maps that native rows place elsewhere (camera registration drift). Applied last by tools/compile-levels.mjs (shifts, then edits in final coordinates). Evidence per entry below and in tests/native-geometry-corrections.test.ts; audit tool tools/harness/geometry-audit.ts (GEOAUDIT=1|2 GEOLEVEL=4-2 npx tsx tools/campaign-compare.ts ... lists native rows that overlap a remake wall, cross a floor/ceiling cell or stand without support).",
+ "shifts": [
+  {
+   "name": "4-2 area-3 drift",
+   "level": "4-2",
+   "area": "area-3",
+   "from": 700,
+   "to": 3072,
+   "dx": -16,
+   "rows": [
+    0,
+    12
+   ],
+   "piranhas": true,
+   "evidence": "Every structure above the floor row 13 from the hanging brick mass (free tiles x 701-789, native Mario passes x 762-777 at feet 91-104) to the side pipe at x 3008 and its vertical pipe lies 16 px to the right of where native rows put it: seven native piranha plants (id 13, object x = pipe left + 8: 1160 1256 1352 1720 2216 2280 2888) sit 16 px left of the remake's pipes (1168 1264 1360 1728 2224 2288 2896, plant specs 1270 1368 1736 2296 2904), the native Buzzy Beetle turns at x 1279 (pipe right edge 1280, remake 1296), native Mario lands on the first pipe at x 1267 and loses support at x 1280, and the walk-offs at x 912, 1279 and 2306 happen 16/17/14 px before the remake's ledge edges. The brick mass from x 3072 touches the roof-route witnesses of data/vine-optional-farend-running.json (cols 199+) and stays. Rows at floor level (13-14) have no native evidence and stay."
+  },
+  {
+   "name": "1-2 area-2 drift",
+   "level": "1-2",
+   "area": "area-2",
+   "from": 1440,
+   "to": 2576,
+   "dx": -16,
+   "rows": [
+    0,
+    12
+   ],
+   "piranhas": true,
+   "evidence": "Everything above floor row 13 from x 1344 to 2575 lies 16 px right of native: native plants (id 13, object x = pipe left + 8) at 1656 and 1752 against remake pipes 1664 and 1760 (plant specs 1672/1768); native Mario lands on the second pipe top (feet 144) at x 1743 (support needs pipe x <= 1756, the remake pipe 1760 gave no support, 2 rows); native Mario lands on the brick ledge (feet 160) at x 1947 and walks off its right end at x 1987 (last supported x 1982-1984: edge 1984, remake 2000), and rows 1992-1997 (feet 164-169) pass through the remake cell (1984,160); the bricks at 2214-2219 (feet 146-150) and the right end of the 2336-2431 block (native walks off it at x 2422, edge 2416 = 2432 - 16; rows 2422-2429 feet 130-136 cross it) clear with the same shift (GEODRIFT=1 64 px windows 1728-1791, 1920-2047, 2176-2239, 2368-2431: violations s=0 2/3/2/3 -> s=+16 0/0/1/1). Seven anchors, none against. The left bound is the weakest part: structures at x <= 1263 do NOT move (a goomba falls off the brick row 1216-1263 at the same x natively and in the remake, landings/ledges at 804-1262 prefer s = 0) and native only jumps over the 1280-1327 pit (landing x 1342, consistent with both), so the boundary was put just after the pit; the only structure that depends on it is a 6x2 brick block at 1344-1423 (y 112-143) that native Mario passes under at feet 208. Rows at floor level (13-14: the pits at 1936-1967, 2000-2031, 2224-2319, 2464-2575) have no native evidence and stay. The right bound is the start of the warp-zone roof extension (cols 161+, x 2576), which is the separate entry '1-2 area-2 end block drift' below. Left bound moved 1344 -> 1440 (2026-11-11, native collision map RAM 0x500-0x69f of the full route, tools/harness/map-audit.mjs): the native map holds that 6x2 brick block and its coin row at cols 84-89 (rows 5, 7, 8; 83-84 route rows each), i.e. unshifted; the shifted copy at 83-88 disagreed in cols 83 and 89."
+  },
+  {
+   "name": "1-2 area-2 end block drift",
+   "level": "1-2",
+   "area": "area-2",
+   "from": 2576,
+   "to": 3088,
+   "dx": -16,
+   "rows": [
+    0,
+    12
+   ],
+   "evidence": "The end block (brick mass, side exit pipe and its vertical pipe, roof, the three warp pipes, right wall; cols 161-192) was registered against the same drifted exit pipe as the rest of 1-2 area-2 (data/observed-levels.json area-2 cols 161-174 and data/warp-1-2-observations.json, anchor pipe 2672, camera 2473) and lies 16 px right of native. Native rows: the side-pipe walk ends with Mario stopped at x 2656 for 30 rows (rows 3823-3852, engine 2) where the map's pipe mouth stood at 2672; the same walk ends at the pipe's left edge in 2-2 (3024), 4-2 (2992, shifted likewise), 7-2 (3024) and 8-4 (1088), each at trigger + 13 (1-2 trigger 2643 + 13 = 2656); the native plant (id 13, slot 3, rows 3790-3801) of the first warp pipe is at x 2856 = pipe left 2848 + 8 where the map had pipe 2864 and plant 2872. The camera values of the roof observations were derived from the same pipe anchor (camera = anchor world x - anchor screen x 199), so the camera stop, the warp activation camera, the area width and the sign/number positions follow by -16 with the screen positions unchanged (data/warp-1-2-runtime.json is already in the native frame, so no piranhas flag here: the plant specs it creates are final). Rows 13-14 (the continuous floor of the extension) stay as in the entry above; the leftmost brick column (x 2560) therefore stands over the pit tile column of rows 13-14 (not reachable). The observation tiles of data/warp-1-2-observations.json stay in the screenshot frame; tests/roof-warp.test.ts maps them through this shift."
+  },
+  {"name":"1-2 area-2 floor drift","level":"1-2","area":"area-2","from":1920,"to":2576,"dx":-16,"rows":[13,14],"evidence":"Native collision map (RAM 0x500-0x69f, full route trace evidence/local/mapaudit/route-map.jsonl, tools/harness/map-audit.mjs --dump): the floor pits of rows 13-14 lie one column left of the map from x 1920 on, like the structures above them (entry '1-2 area-2 drift'): native pits at cols 120-121, 124-125, 138-143, 153-159 against map 121-122, 125-126, 139-144, 154-160 (each cell stable over 83-84 route rows); native small Mario stands with a foot over native-empty col 120 (2 rows, edge straddle) and the floor before col 120 matches unshifted. The vacated col 160 is floor natively (edit '1-2 area-2 native floor/stair cells')."},
+  {"name":"4-2 area-3 floor drift","level":"4-2","area":"area-3","from":700,"to":2976,"dx":-16,"rows":[13,14],"evidence":"Native collision map (RAM 0x500-0x69f, full route trace, tools/harness/map-audit.mjs --dump): every floor pit of rows 13-14 from the shifted structures on lies one column left of the map, like the structures above them (entry '4-2 area-3 drift'): native pits 57-62, 105-106, 109-110, 113-118, 123-128, 144-145, 155-159, 183-184 against map 58-63, 106-107, 110-111, 114-119, 124-129, 145-146, 156-160, 184-185; the pits at cols 11-20 match unshifted. Native small Mario stands on col 119 (2 rows, map pit) and straddles native-empty col 123 (3 rows). The vacated col 185 is floor natively (edit '4-2 area-3 floor at col 185')."},
+  {"name":"6-4 wall drift","level":"6-4","area":"main","from":1136,"to":1904,"dx":16,"rows":[3,12],"evidence":"Native collision map (RAM 0x500-0x69f, full route trace, tools/harness/map-audit.mjs --dump): from col 71 to col 118 the castle walls lie one column RIGHT of the map: the ceiling block rows 3-5 ends at col 71 (map 70), the ceiling stubs at cols 80 and 88 (map 79, 87), the ceiling block rows 3-4 at 97-103 (map 96-102), the floor block rows 10-12 ends at 103 (map 102) and the block at 116-119 (map 115-118); cols 14-70 and 120+ match unshifted. The c4 platforms and hidden blocks of this stretch are already edits in native coordinates. The vacated col 71 is solid natively (edit '6-4 wall col 71')."}
+ ],
+ "edits": [
+  {"name":"1-4 hidden blocks from the native collision map","level":"1-4","area":"main","addTiles":[[106,9,95],[109,9,95],[112,9,95],[107,5,95],[110,5,95],[113,5,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"6-4 hidden blocks from the native collision map","level":"6-4","area":"main","addTiles":[[106,9,95],[109,9,95],[112,9,95],[107,5,95],[110,5,95],[113,5,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"2-1 hidden blocks from the native collision map","level":"2-1","area":"main","addTiles":[[28,9,95],[186,5,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"6-1 hidden blocks from the native collision map","level":"6-1","area":"main","addTiles":[[113,5,95],[113,9,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"6-2 hidden blocks from the native collision map","level":"6-2","area":"main","addTiles":[[24,9,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"8-1 hidden blocks from the native collision map","level":"8-1","area":"main","addTiles":[[158,9,95]],"evidence":"Native collision map (RAM 0x500-0x69f, route rows) holds metatile 0x5f (id 95, the hidden block the remake already handles: head bump only) in these cells, the screenshot extraction has no tile there. Model run 1-4 mood0 f761 / mood3 f771: native head bump (vy -4 -> 0, y stops at 136) under col 109 row 9 at x~1736, the remake rose to y 127."},
+  {"name":"3-1 stomp-derived koopa","level":"3-1","area":"main","removeEnemies":[{"kind":"koopa","x":416}],"evidence":"Route row 21011: slot 1 changes id 14 -> id 0 in place at x 419 (a stomped Paratroopa), no fresh object; none in the 3-1 model runs."},
+  {"name":"5-1 stomp-derived koopa","level":"5-1","area":"main","removeEnemies":[{"kind":"koopa","x":2912}],"evidence":"No fresh native id 0 near x 2897 (its former corrected x) in the route or model runs; the Paratroopa at 2912 walks there and is stomped."},
+  {
+   "name": "1-2 area-2 shifted pipe entries",
+   "level": "1-2",
+   "area": "area-2",
+   "movePipes": [
+    {
+     "x": 1680,
+     "y": 160,
+     "toX": 1664
+    },
+    {
+     "x": 2672,
+     "y": 160,
+     "toX": 2656
+    }
+   ],
+   "evidence": "Same -16 shift as the pipe tiles it belongs to (shift entries '1-2 area-2 drift' and '1-2 area-2 end block drift'; 1680 inferred, the recorded route does not use the bonus-coins pipe; the side exit pipe 2672 -> 2656 is measured: native rows hold Mario at x 2656 inside it, see the end block entry)."
+  },
+  {
+   "name": "4-2 tall pipe top",
+   "level": "4-2",
+   "area": "area-3",
+   "removeFreeTiles": [
+    {
+     "x": 1246,
+     "y": 96,
+     "id": 16
+    },
+    {
+     "x": 1262,
+     "y": 96,
+     "id": 17
+    }
+   ],
+   "addTiles": [
+    [
+     78,
+     6,
+     16
+    ]
+   ],
+   "moveEnemies": [
+    {
+     "kind": "piranha",
+     "x": 1254,
+     "toX": 1256
+    }
+   ],
+   "evidence": "The two free pipe-top pieces were registered 2 px off the grid (1262/1278); with the pipe body on the grid the top is the grid pair (78,6)/(79,6) (the right half already is the former stray tile (80,6)). The native plant stands at pipe left + 8 = 1256 like the other six."
+  },
+  {
+   "name": "4-2 area-3 shifted pipe/vine entries",
+   "level": "4-2",
+   "area": "area-3",
+   "moveBlockContents": [
+    {
+     "col": 65,
+     "row": 5,
+     "toCol": 64
+    }
+   ],
+   "moveVines": [
+    {
+     "id": "warp-vine",
+     "x": 1040,
+     "toX": 1024
+    }
+   ],
+   "movePipes": [
+    {
+     "x": 1376,
+     "y": 160,
+     "toX": 1360
+    }
+   ],
+   "evidence": "Same -16 shift as the tiles they belong to: the hidden vine block (65,5) and the pipe at x 1360-1391; neither is used by the recorded route (inferred, not measured)."
+  },
+  {
+   "name": "4-2 area-3 wall beside the side pipe",
+   "level": "4-2",
+   "area": "area-3",
+   "addTiles": [
+    [
+     191,
+     2,
+     82
+    ],
+    [
+     191,
+     3,
+     82
+    ],
+    [
+     191,
+     4,
+     82
+    ],
+    [
+     191,
+     5,
+     82
+    ],
+    [
+     191,
+     6,
+     82
+    ],
+    [
+     191,
+     7,
+     82
+    ],
+    [
+     191,
+     8,
+     82
+    ],
+    [
+     191,
+     9,
+     82
+    ],
+    [
+     191,
+     10,
+     82
+    ],
+    [
+     191,
+     11,
+     82
+    ],
+    [
+     191,
+     12,
+     82
+    ]
+   ],
+   "evidence": "The brick mass right of the vertical pipe (cols 192+) did not move; its left column follows the pipe so no 16 px shaft opens between them (rigid shift of the mass edge; inferred)."
+  },
+  {
+   "name": "4-2 plants of the pipes at 1152 and 2208",
+   "level": "4-2",
+   "area": "area-3",
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 1160,
+     "y": 184,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 1160 (rows 32041-32230, y 160 hidden to 136), pipe top 160 like the plants at 1352/1720/2280"
+    },
+    {
+     "kind": "piranha",
+     "x": 2216,
+     "y": 184,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 2216 (rows 32516-32640, y 160 hidden to 136), pipe top 160"
+    }
+   ],
+   "evidence": "The recorded route shows a native plant at both pipes; the screenshot-era specs had none."
+  },
+  {
+   "name": "4-2 side pipe mouth wall",
+   "level": "4-2",
+   "area": "area-3",
+   "addSolidRects": [
+    {
+     "x": 2992,
+     "y": 128,
+     "width": 32,
+     "height": 32,
+     "id": 28,
+     "evidence": "native Mario jumping at x 2977 is held at x 2978-2979 (flush with a wall at 2992) while his feet are below the pipe top 128 (rows 33106-33114), then clears the top"
+    }
+   ],
+   "evidence": "The remake's sideways-pipe tiles (ids 28-33) are not solid. Scoped to this mouth: making ids 28-33 solid everywhere regresses 2-2/7-2/4-1 (side-pipe entries)."
+  },
+  {
+   "name": "8-4 main pipe at 816",
+   "level": "8-4",
+   "area": "main",
+   "removeTiles": [
+    [
+     51,
+     10
+    ],
+    [
+     52,
+     10
+    ],
+    [
+     53,
+     10
+    ],
+    [
+     54,
+     10
+    ],
+    [
+     51,
+     11
+    ],
+    [
+     52,
+     11
+    ],
+    [
+     53,
+     11
+    ],
+    [
+     54,
+     11
+    ],
+    [
+     51,
+     12
+    ],
+    [
+     52,
+     12
+    ],
+    [
+     53,
+     12
+    ],
+    [
+     54,
+     12
+    ]
+   ],
+   "addTiles": [
+    [
+     51,
+     11,
+     16
+    ],
+    [
+     52,
+     11,
+     17
+    ],
+    [
+     51,
+     12,
+     20
+    ],
+    [
+     52,
+     12,
+     21
+    ]
+   ],
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 824,
+     "y": 200,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 824 (rows 75404-75600, hidden y 176 = pipe top), hidden foot pipe top + 24 like the 8-4 plant at 312"
+    }
+   ],
+   "evidence": "The screenshot-era map has a 4x3 castle-brick block (x 816-879, top y 160) where native rows show a 2-wide pipe with its top at y 176: the native plant (id 13, object x 824 = pipe left 816 + 8, hidden y 176 = pipe top) stands there in rows 75410-75600; native Mario lands on it at feet 176 (x 827, rows 75542-75575, 77 rows inside the old block), walks to x 846 and falls at x 847 (right edge 848); three Goombas walk left to x 848-851 over the floor beside it; native Mario then falls through the old block's cols 53-54 (x 848-879, feet 177-196)."
+  },
+  {
+   "name": "8-4 main pillar at 1024",
+   "level": "8-4",
+   "area": "main",
+   "removeTiles": [
+    [
+     64,
+     10
+    ],
+    [
+     65,
+     10
+    ],
+    [
+     66,
+     10
+    ],
+    [
+     64,
+     11
+    ],
+    [
+     65,
+     11
+    ],
+    [
+     66,
+     11
+    ],
+    [
+     64,
+     12
+    ],
+    [
+     65,
+     12
+    ],
+    [
+     66,
+     12
+    ]
+   ],
+   "addTiles": [
+    [
+     62,
+     10,
+     98
+    ],
+    [
+     63,
+     10,
+     98
+    ],
+    [
+     64,
+     10,
+     98
+    ],
+    [
+     65,
+     10,
+     98
+    ],
+    [
+     62,
+     11,
+     98
+    ],
+    [
+     63,
+     11,
+     98
+    ],
+    [
+     64,
+     11,
+     98
+    ],
+    [
+     65,
+     11,
+     98
+    ],
+    [
+     62,
+     12,
+     98
+    ],
+    [
+     63,
+     12,
+     98
+    ],
+    [
+     64,
+     12,
+     98
+    ],
+    [
+     65,
+     12,
+     98
+    ]
+   ],
+   "evidence": "Right end one tile left (the 4-2 drift direction), left end two tiles left: native Mario walks left on this pillar's top (feet 160) down to x 990 (rows 75719-75740, 34 rows where the old pillar from x 1024 gave no support; x+12 = 1002 needs an edge of 1000 or less, so 992) and falls off its right end at x 1058-1061 (rows 75785-75789, the old pillar reached x 1072); a right-moving walk-off lies 0-2 px over the edge (LEDGES histogram), which puts the right edge at 1056."
+  },
+  {
+   "name": "8-4 main beam at row 6",
+   "level": "8-4",
+   "area": "main",
+   "removeTiles": [
+    [
+     75,
+     6
+    ],
+    [
+     80,
+     6
+    ]
+   ],
+   "evidence": "The beam at y 96-111 (cols 75-80, x 1200-1295) is two tiles shorter: native Mario rises through y 106-122 at x 1198-1202 beside its left end (92 rows, 13 head rows, rows 75867-75921; flush with a wall would be x 1187) and clears it only on landing on the top at x 1206 (feet 96), and falls through its right end at x 1286-1292 feet 100-105 (rows 76014-76017)."
+  },
+  {
+   "name": "8-3 main pipe at 2688",
+   "level": "8-3",
+   "area": "main",
+   "removeTiles": [
+    [
+     169,
+     10
+    ],
+    [
+     170,
+     10
+    ],
+    [
+     169,
+     11
+    ],
+    [
+     170,
+     11
+    ],
+    [
+     169,
+     12
+    ],
+    [
+     170,
+     12
+    ]
+   ],
+   "addTiles": [
+    [
+     168,
+     10,
+     16
+    ],
+    [
+     169,
+     10,
+     17
+    ],
+    [
+     168,
+     11,
+     20
+    ],
+    [
+     169,
+     11,
+     21
+    ],
+    [
+     168,
+     12,
+     20
+    ],
+    [
+     169,
+     12,
+     21
+    ]
+   ],
+   "moveEnemies": [
+    {
+     "kind": "piranha",
+     "x": 2712,
+     "toX": 2696
+    }
+   ],
+   "evidence": "One tile left, this pipe only (the plants of the pipes at 848 and 2016 sit where the map has them): the native plant (id 13, rows 73873-74010) is at x 2696 = pipe left 2688 + 8, the remake's at 2712; native Mario falls through the old right half (x 2717-2732, feet 161-169, rows 73979-73985, speed byte unchanged). 1 passage plus the plant object."
+  },
+  {
+   "name": "8-4 main pipe at 624",
+   "level": "8-4",
+   "area": "main",
+   "removeTiles": [
+    [
+     40,
+     11
+    ],
+    [
+     41,
+     11
+    ],
+    [
+     40,
+     12
+    ],
+    [
+     41,
+     12
+    ],
+    [
+     40,
+     13
+    ],
+    [
+     41,
+     13
+    ],
+    [
+     40,
+     14
+    ],
+    [
+     41,
+     14
+    ]
+   ],
+   "addTiles": [
+    [
+     39,
+     11,
+     16
+    ],
+    [
+     40,
+     11,
+     17
+    ],
+    [
+     39,
+     12,
+     20
+    ],
+    [
+     40,
+     12,
+     21
+    ],
+    [
+     39,
+     13,
+     20
+    ],
+    [
+     40,
+     13,
+     21
+    ],
+    [
+     39,
+     14,
+     20
+    ],
+    [
+     40,
+     14,
+     21
+    ],
+    [
+     41,
+     13,
+     98
+    ],
+    [
+     41,
+     14,
+     98
+    ]
+   ],
+   "removeEnemies": [
+    {
+     "kind": "piranha",
+     "x": 648
+    }
+   ],
+   "evidence": "Single-passage inference, listed as such: native Mario falls through the old right half (x 662-669, feet 179-187, rows 75439-75442, 3 overlap and 3 floor-crossing rows, speed unchanged) so the pipe's right edge is at most 656; a pipe is 2 wide, so one tile left (the 4-2/8-3 drift direction). The floor under the old right column is restored. The screenshot-era plant on this pipe (spec x 648) has no native counterpart: the native id 13 slots of the whole 8-4 main passage (rows 75072-76022, the pipe on screen for 300+ rows) are only at x 312, 824, 1304 and 1448."
+  },
+  {
+   "name": "8-3 main brick at (191,9)",
+   "level": "8-3",
+   "area": "main",
+   "removeTiles": [
+    [
+     191,
+     9
+    ]
+   ],
+   "evidence": "Single-passage inference like the 8-4 (72,10) removal: native Mario rises through x 3057-3069 at feet 172-155 (rows 74115-74120) inside the brick's box (x 3056-3071, y 144-159) with vx 10464/10324 unchanged (no wall contact)."
+  },
+  {
+   "name": "8-4 main goomba trio at 897",
+   "level": "8-4",
+   "area": "main",
+   "moveEnemies": [
+    {
+     "kind": "goomba",
+     "x": 720,
+     "toX": 897,
+     "spawnCamera": 643
+    },
+    {
+     "kind": "goomba",
+     "x": 736,
+     "toX": 920,
+     "spawnCamera": 643
+    },
+    {
+     "kind": "goomba",
+     "x": 768,
+     "toX": 944,
+     "spawnCamera": 643
+    }
+   ],
+   "evidence": "The screenshot-era specs (720/736/768) are the positions the group was SEEN at after walking left about 190 px. Native slots 1-3 (id 6) are created together at f75479 (camera 643, Mario 756) at x 897, 920, 944 (y 184, spaced like every native group of three), walk left to the pipe edge at x 848-851 (rows 75560-75600) and stand beside the new pipe at 816; the remake activated them 92 rows early with Mario 224 px away from where the native trio meets him."
+  },
+  {
+   "name": "8-4 main floor x 880-943",
+   "level": "8-4",
+   "area": "main",
+   "addTiles": [
+    [
+     55,
+     13,
+     98
+    ],
+    [
+     56,
+     13,
+     98
+    ],
+    [
+     57,
+     13,
+     98
+    ],
+    [
+     58,
+     13,
+     98
+    ],
+    [
+     55,
+     14,
+     98
+    ],
+    [
+     56,
+     14,
+     98
+    ],
+    [
+     57,
+     14,
+     98
+    ],
+    [
+     58,
+     14,
+     98
+    ]
+   ],
+   "evidence": "The map has lava (ids 134/135, not solid) from x 880; native has floor at feet 208 there: the audit's noSupportNone rows at x 921-928 (rows 75627-75631, Mario stands at feet 208) and the three Goombas of the 897/920/944 group walking at y 184 over x 939-884 (rows 75490-75505) and on to the pipe edge 848-851 (rows 75580-75610). The floor ends before the pillar (native Mario jumps from x ~935 and lands on the pillar top at x 1019-1043); the right end of the floor (x 944-991) is not measured and stays lava."
+  },
+  {
+   "name": "8-4 main plants at 1304 and 1448",
+   "level": "8-4",
+   "area": "main",
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 1304,
+     "y": 152,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 1304 (rows 75689-76007, hidden y 128 = pipe top, emerges to 104), pipe top (1296,128) is in the map"
+    },
+    {
+     "kind": "piranha",
+     "x": 1448,
+     "y": 136,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 1448 (rows 75877-76007, hidden y 112, emerges to 88); the route leaves the area through the pipe at 1312 so the pipe at 1440 is not in the remake map and was never reached"
+    }
+   ],
+   "evidence": "Two native plant objects of the main passage had no remake spec (the 8-4 plant audit after the 648 removal): plant = pipe left + 8, hidden foot = pipe top + 24 like the plant at 824."
+  },
+  {
+   "name": "8-4 area-2 start-pipe plant",
+   "level": "8-4",
+   "area": "area-2",
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 56,
+     "y": 200,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 56 y 176 present in the first row of the area (f76192), the pipe Mario leaves the area from is at 48-79 top 176"
+    }
+   ],
+   "evidence": "Like the plants at the start pipe of 1-2 area-3, 2-2 area-3, 4-2 area-4 and 7-2 area-5 (all matched by native objects at x 56)."
+  },
+  {
+   "name": "8-4 area-4 start-pipe plant",
+   "level": "8-4",
+   "area": "area-4",
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 56,
+     "y": 200,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 56 y 176 present in the first row of the area (f78289)"
+    }
+   ],
+   "evidence": "Start-pipe plant, native object at x 56 as in the other levels."
+  },
+  {
+   "name": "8-4 area-5 start-pipe plant",
+   "level": "8-4",
+   "area": "area-5",
+   "addEnemies": [
+    {
+     "kind": "piranha",
+     "x": 56,
+     "y": 200,
+     "direction": -1,
+     "palette": "0f-1c-36-17",
+     "evidence": "native id 13 plant at x 56 y 176 present in the first row of the area (f79163)"
+    }
+   ],
+   "evidence": "Start-pipe plant, native object at x 56 as in the other levels."
+  },
+  {
+   "name": "8-4 area-2 beetle pair and paratroopa",
+   "level": "8-4",
+   "area": "area-2",
+   "moveEnemies": [
+    {
+     "kind": "beetle",
+     "x": 240,
+     "toX": 256
+    },
+    {
+     "kind": "paratroopa",
+     "x": 672,
+     "toX": 688
+    }
+   ],
+   "evidence": "Native first row of the area (f76192, 30 rows after the load): Buzzy Beetles (id 2) at x 209 and 241, 32 px apart; both walk left at 0.5 px/frame, the first turns at the pipe edge x 191 (pipe 160-191) and bounces off the second at x 213 (rows 76228-76252). Both are 15 px from a spawn pair 224/256 (30 rows at 0.5), the screenshot-era specs 224/240 are 16 px apart. The second paratroopa (id 14) is created at x 688 (f76406) where the spec says 672; the others (464, 720) match."
+  },
+  {
+   "name": "8-2 stomp-derived koopas",
+   "level": "8-2",
+   "area": "main",
+   "removeEnemies": [
+    {
+     "kind": "koopa",
+     "x": 1072
+    },
+    {
+     "kind": "koopa",
+     "x": 1552
+    },
+    {
+     "kind": "koopa",
+     "x": 2720
+    },
+    {
+     "kind": "koopa",
+     "x": 2752
+    }
+   ],
+   "evidence": "The four koopa specs are screenshot sightings of the wingless Koopa a stomped Paratroopa leaves (enemy-table cell 2, same as the koopa at 240 removed earlier from native-proved screenshots): native has no koopa (id 0/1) object that spawns at the normal distance anywhere in 8-2 main; the koopas that appear natively (x 1075, 1525, 2715, 2764; Mario 0-8 px away, rows 70095, 70279, 70797, 70819) are the stomped Paratroopas of 1056, 1520, 2720, 2752 and the remake's stomp rule already makes those."
+  },
+  {
+   "name": "4-3/5-3 stomp-derived red koopas",
+   "level": "4-3",
+   "area": "main",
+   "removeEnemies": [
+    {
+     "kind": "redKoopa",
+     "x": 592
+    }
+   ],
+   "evidence": "Same class: native 4-3 has id 3 only at x 624 (y 168, row 34768) next to the Paratroopa 576; the koopa object at 575 (Mario 8 px away, row 34827) is the stomped Paratroopa. The spec at 592 is the stomp sighting."
+  },
+  {
+   "name": "5-3 stomp-derived red koopa",
+   "level": "5-3",
+   "area": "main",
+   "removeEnemies": [
+    {
+     "kind": "redKoopa",
+     "x": 1200
+    }
+   ],
+   "evidence": "Native 5-3 has the Paratroopa (id 15) at 1184 and a koopa object at 1184 (Mario 10 px away, row 43181 = the stomped Paratroopa) but no object that spawns near 1200."
+  },
+  {
+   "name": "7-1 beetle sighting at 2656",
+   "level": "7-1",
+   "area": "main",
+   "removeEnemies": [
+    {
+     "kind": "beetle",
+     "x": 2656
+    }
+   ],
+   "evidence": "Native 7-1 has one Buzzy Beetle (id 2) at x 2704 (y 40, row 56929, the spec at 2704 with spawnCamera 2403); no native object spawns within 40 px of 2656 (the remake activates it at Mario 2469, 186 px before it) - a screenshot sighting of the same beetle in another phase."
+  },
+  {
+   "name": "8-2 goomba pair at 2944/2976",
+   "level": "8-2",
+   "area": "main",
+   "moveEnemies": [
+    {
+     "kind": "goomba",
+     "x": 2928,
+     "toX": 2944,
+     "toY": 160,
+     "spawnCamera": 2651
+    },
+    {
+     "kind": "goomba",
+     "x": 2960,
+     "toX": 2976,
+     "toY": 128,
+     "spawnCamera": 2684
+    }
+   ],
+   "evidence": "Native first rows: id 6 at x 2944 raw y 136 (f70820, Mario 2766) and x 2976 raw y 104 (f70833, Mario 2798), remake feet y = raw + 24 (160 and 128); the screenshot-era specs sit 16 px lower and 16-17 px left."
+  },
+  {
+   "name": "6-1 main floor from x 2176",
+   "level": "6-1",
+   "area": "main",
+   "addTiles": [
+    [
+     136,
+     13,
+     84
+    ],
+    [
+     137,
+     13,
+     84
+    ]
+   ],
+   "evidence": "The map has the floor (row 13) start at x 2208 after the pit 2000-2207; native Mario lands at x 2170 (feet 203 -> 208, rows 47664-47668, 1 passage) and walks on at feet 208 from x 2170 to 2215 (rows 47668-47686, 8 audit rows without remake support at x 2172-2195): the floor under x+3..x+12 reaches at least x 2173, so its start is at most 2182 (the old 2208 is >= 26 px too far right). Lower bound unmeasured (Mario is still above the floor line while he passes x 2100-2165), so only the two tiles 2176-2207 are added, the minimum that fits (a 2-tile step like the 16-32 px drifts of 4-2/8-4)."
+  },
+  {
+   "name": "8-3 main floor from x 3328",
+   "level": "8-3",
+   "area": "main",
+   "addTiles": [
+    [
+     208,
+     13,
+     84
+    ],
+    [
+     208,
+     14,
+     84
+    ]
+   ],
+   "evidence": "The map has the floor start at x 3344 after the pit 3168-3343; native Mario lands at x 3319 (feet 208) and stands/walks there to x 3329 (rows 74220-74224, 1 passage, 4 audit rows without remake support at x 3319-3329): the floor under x+3..x+12 reaches at least x 3322, so its start is at most 3331, one tile (3328) left of the map's. Only that one column is added (the minimum that fits; the 4-2/8-4 drifts were 16 px); the stair blocks right of it (3344+) have no native evidence and stay."
+  },
+  {
+   "name": "8-2 start paratroopa",
+   "level": "8-2",
+   "area": "main",
+   "moveEnemies": [
+    {
+     "kind": "paratroopa",
+     "x": 256,
+     "toX": 288
+    }
+   ],
+   "removeEnemies": [
+    {
+     "kind": "paratroopa",
+     "x": 352
+    }
+   ],
+   "evidence": "Native id 14 objects before x 900: x 288 (y 152, present in the first row f69630, walks left at 0.5 px/frame: 261 at f69684, 240 at f69726 until Mario stomps it at x 232, f69729: the koopa id 0 at x 239 y 143) and x 384 (f69715, the spec with spawnCamera 85); the screenshot-era map has the first one at 256 (32 px left of the native object) and a second sighting of it at 352,96 that no native object matches (no id 14 anywhere near x 352 in rows 69630-69900)."
+  },
+  {
+   "name": "1-2 area-2 staircase at 2112",
+   "level": "1-2",
+   "area": "area-2",
+   "removeTiles": [
+    [
+     132,
+     12
+    ],
+    [
+     133,
+     12
+    ],
+    [
+     134,
+     12
+    ],
+    [
+     135,
+     12
+    ],
+    [
+     136,
+     12
+    ],
+    [
+     137,
+     12
+    ],
+    [
+     133,
+     11
+    ],
+    [
+     134,
+     11
+    ],
+    [
+     135,
+     11
+    ],
+    [
+     136,
+     11
+    ],
+    [
+     137,
+     11
+    ],
+    [
+     134,
+     10
+    ],
+    [
+     135,
+     10
+    ],
+    [
+     136,
+     10
+    ],
+    [
+     137,
+     10
+    ],
+    [
+     135,
+     9
+    ],
+    [
+     136,
+     9
+    ],
+    [
+     137,
+     9
+    ]
+   ],
+   "addTiles": [
+    [
+     133,
+     12,
+     97
+    ],
+    [
+     134,
+     12,
+     97
+    ],
+    [
+     135,
+     12,
+     97
+    ],
+    [
+     136,
+     12,
+     97
+    ],
+    [
+     137,
+     12,
+     97
+    ],
+    [
+     138,
+     12,
+     97
+    ],
+    [
+     134,
+     11,
+     97
+    ],
+    [
+     135,
+     11,
+     97
+    ],
+    [
+     136,
+     11,
+     97
+    ],
+    [
+     137,
+     11,
+     97
+    ],
+    [
+     138,
+     11,
+     97
+    ],
+    [
+     135,
+     10,
+     97
+    ],
+    [
+     136,
+     10,
+     97
+    ],
+    [
+     137,
+     10,
+     97
+    ],
+    [
+     138,
+     10,
+     97
+    ],
+    [
+     136,
+     9,
+     97
+    ],
+    [
+     137,
+     9,
+     97
+    ],
+    [
+     138,
+     9,
+     97
+    ]
+   ],
+   "evidence": "Native rows 3583-3589 (jump from x 2099, run takeoff): x 2102 y171, 2104 y166, 2107 y161, 2109 y156, 2112 y152 pass x 2102-2112 with feet 203-193, i.e. through the remake's first stair column (2112-2127, top 192); the remake is held at x 2098.9 (wall 2112, flush x = wall-13) for 5 rows and the 26-row arc then differs (f3610: 5 events). The stair is one tile (16 px) right of the shifted map position, i.e. it is not part of the -16 drift of the entries above: native x 2112 y152 (feet 184) clears a first column at 2128, and the rest of the arc (x 2132 feet 155) clears the second step (top 176) at 2144. Single passage; the minimum that fits is a one-tile move of the whole 6-wide, 4-high stair."
+  },
+  {
+   "name": "6-4 ledge one tile longer",
+   "level": "6-4",
+   "area": "main",
+   "addTiles": [
+    [
+     71,
+     9,
+     98
+    ]
+   ],
+   "evidence": "Native stands at y 112 (feet 144) through x 1153 at run speed (branching probe from route row 54470, Right+B for 30 rows: first lower row at x 1155) and jumps from x 1148 on the route (f54486); the map ended this ledge at x 1136, so the remake fell 12 px before native and lost that jump (6-4 f54516 cluster). Row 9 only: the probe says nothing about rows 3-5 of this column."
+  },
+  {
+   "name": "2-2 area-2 coins taken on the recorded route",
+   "level": "2-2",
+   "area": "area-2",
+   "addTiles": [
+    [
+     101,
+     11,
+     195
+    ],
+    [
+     102,
+     11,
+     195
+    ],
+    [
+     103,
+     11,
+     195
+    ],
+    [
+     113,
+     6,
+     195
+    ],
+    [
+     114,
+     6,
+     195
+    ],
+    [
+     115,
+     7,
+     195
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 13501..13650 (6 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "2-3 main coins taken on the recorded route",
+   "level": "2-3",
+   "area": "main",
+   "addTiles": [
+    [
+     97,
+     5,
+     194
+    ],
+    [
+     108,
+     5,
+     194
+    ],
+    [
+     173,
+     6,
+     194
+    ],
+    [
+     176,
+     6,
+     194
+    ],
+    [
+     177,
+     6,
+     194
+    ],
+    [
+     178,
+     6,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 17479..17990 (6 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "2-4 main coins taken on the recorded route",
+   "level": "2-4",
+   "area": "main",
+   "addTiles": [
+    [
+     102,
+     12,
+     194
+    ],
+    [
+     103,
+     12,
+     194
+    ],
+    [
+     104,
+     12,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 19695..19708 (3 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "3-2 main coins taken on the recorded route",
+   "level": "3-2",
+   "area": "main",
+   "addTiles": [
+    [
+     171,
+     6,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 24270..24270 (1 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "3-3 main coins taken on the recorded route",
+   "level": "3-3",
+   "area": "main",
+   "addTiles": [
+    [
+     42,
+     6,
+     194
+    ],
+    [
+     43,
+     6,
+     194
+    ],
+    [
+     52,
+     9,
+     194
+    ],
+    [
+     53,
+     9,
+     194
+    ],
+    [
+     88,
+     5,
+     194
+    ],
+    [
+     105,
+     4,
+     194
+    ],
+    [
+     106,
+     4,
+     194
+    ],
+    [
+     109,
+     6,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 25599..26041 (8 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "4-3 main coins taken on the recorded route",
+   "level": "4-3",
+   "area": "main",
+   "addTiles": [
+    [
+     24,
+     8,
+     194
+    ],
+    [
+     27,
+     8,
+     194
+    ],
+    [
+     28,
+     8,
+     194
+    ],
+    [
+     67,
+     6,
+     194
+    ],
+    [
+     68,
+     6,
+     194
+    ],
+    [
+     70,
+     2,
+     194
+    ],
+    [
+     71,
+     2,
+     194
+    ],
+    [
+     72,
+     2,
+     194
+    ],
+    [
+     95,
+     7,
+     194
+    ],
+    [
+     104,
+     4,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 34742..35254 (10 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "5-2 area-2 coins taken on the recorded route",
+   "level": "5-2",
+   "area": "area-2",
+   "addTiles": [
+    [
+     23,
+     4,
+     194
+    ],
+    [
+     89,
+     12,
+     194
+    ],
+    [
+     90,
+     12,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 40662..41096 (3 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "5-3 main coins taken on the recorded route",
+   "level": "5-3",
+   "area": "main",
+   "addTiles": [
+    [
+     121,
+     5,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 43580..43580 (1 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "5-4 main coins taken on the recorded route",
+   "level": "5-4",
+   "area": "main",
+   "addTiles": [
+    [
+     102,
+     8,
+     194
+    ],
+    [
+     102,
+     12,
+     194
+    ],
+    [
+     103,
+     8,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 45320..45348 (3 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them. The map held the same three coins one column right ([[103, 12], [104, 8], [104, 12]]): native passes those cells without a pickup.",
+   "removeTiles": [
+    [
+     103,
+     12
+    ],
+    [
+     104,
+     8
+    ],
+    [
+     104,
+     12
+    ]
+   ]
+  },
+  {
+   "name": "6-1 main coins taken on the recorded route",
+   "level": "6-1",
+   "area": "main",
+   "addTiles": [
+    [
+     63,
+     9,
+     194
+    ],
+    [
+     64,
+     9,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 47185..47187 (2 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "6-3 main coins taken on the recorded route",
+   "level": "6-3",
+   "area": "main",
+   "addTiles": [
+    [
+     45,
+     4,
+     194
+    ],
+    [
+     46,
+     4,
+     194
+    ],
+    [
+     73,
+     5,
+     194
+    ],
+    [
+     86,
+     2,
+     194
+    ],
+    [
+     87,
+     2,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 51611..51941 (5 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "7-3 main coins taken on the recorded route",
+   "level": "7-3",
+   "area": "main",
+   "addTiles": [
+    [
+     97,
+     5,
+     194
+    ],
+    [
+     108,
+     5,
+     194
+    ],
+    [
+     173,
+     6,
+     194
+    ],
+    [
+     176,
+     6,
+     194
+    ],
+    [
+     177,
+     6,
+     194
+    ],
+    [
+     178,
+     6,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 62141..62659 (6 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "8-1 main coins taken on the recorded route",
+   "level": "8-1",
+   "area": "main",
+   "addTiles": [
+    [
+     65,
+     8,
+     194
+    ],
+    [
+     284,
+     8,
+     194
+    ],
+    [
+     316,
+     8,
+     194
+    ]
+   ],
+   "evidence": "Native coin count rises at route rows 66355..68120 (3 pickups) with Mario on these cells; the screenshot-extracted map was captured after the route had taken them."
+  },
+  {
+   "name": "2-1 main coin block used in the screenshot",
+   "level": "2-1",
+   "area": "main",
+   "addTiles": [
+    [
+     85,
+     9,
+     192
+    ]
+   ],
+   "evidence": "Native coin count rises at route row 9480 on a head bump at x 1363, feet 172 (head x+8 in column 85); the screenshot-extracted map holds the already used block 196."
+  },
+  {
+   "name": "5-2 area-2 coin brick",
+   "level": "5-2",
+   "area": "area-2",
+   "addBlockContents": [
+    {
+     "col": 31,
+     "row": 9,
+     "kind": "coin"
+    }
+   ],
+   "evidence": "Native coin count rises at route row 40715 on a head bump at x 500, feet 172 (brick column 31). One bump observed: whether it holds more coins is unmeasured."
+  },
+  {
+   "name": "1-2 area-2 first question block holds a power-up",
+   "level": "1-2",
+   "area": "area-2",
+   "addTiles": [
+    [
+     10,
+     9,
+     193
+    ]
+   ],
+   "evidence": "Model runs mood1 row 2963 and mood5 row 2867: head bump at x 164/163, no coin and no score change, used block with no coin above it at row 2975; column 11 pays a coin in the same runs."
+  },
+  {"name":"1-4 main tiles from the native collision map","level":"1-4","area":"main","addTiles":[[30,10,196],[49,6,196],[60,6,196],[67,6,196],[76,9,196],[84,9,196],[88,4,196],[126,2,98]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"2-2 area-2 tiles from the native collision map","level":"2-2","area":"area-2","evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md).","addSolidRects":[{"x":1248,"y":48,"width":16,"height":16,"id":105},{"x":1264,"y":48,"width":16,"height":16,"id":105},{"x":2096,"y":48,"width":16,"height":16,"id":105}]},
+  {"name":"2-4 main tiles from the native collision map","level":"2-4","area":"main","addTiles":[[34,5,98],[35,5,98],[36,5,98],[37,5,98],[38,5,98],[39,5,98],[40,5,98],[41,5,98],[42,5,98],[43,5,98],[44,5,98],[45,5,98],[46,5,98],[47,5,98],[48,5,98],[49,5,98],[50,5,98],[51,5,98],[52,5,98],[53,5,98],[54,5,98],[55,5,196],[56,5,98],[57,5,98],[58,5,98],[59,5,98],[60,5,98],[61,5,98],[62,5,98],[63,5,98],[64,5,98],[65,5,98],[66,5,98],[67,5,98],[68,5,98],[69,5,98],[70,5,98],[71,5,98],[72,5,98],[73,5,98],[74,5,98],[75,5,98],[76,5,98],[77,5,98],[78,5,98],[79,5,98],[80,5,98],[81,5,98],[82,5,98],[82,6,196]],"addSolidRects":[{"x":2048,"y":80,"width":16,"height":16,"id":82},{"x":2064,"y":80,"width":16,"height":16,"id":82},{"x":2080,"y":80,"width":16,"height":16,"id":82},{"x":2096,"y":80,"width":16,"height":16,"id":82},{"x":2112,"y":80,"width":16,"height":16,"id":82},{"x":2128,"y":80,"width":16,"height":16,"id":82},{"x":2272,"y":80,"width":16,"height":16,"id":98},{"x":2288,"y":80,"width":16,"height":16,"id":98}],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"3-1 main tiles from the native collision map","level":"3-1","area":"main","addTiles":[[90,5,81],[150,5,81],[151,5,192],[156,5,192]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"3-4 main tiles from the native collision map","level":"3-4","area":"main","addTiles":[[19,11,196],[24,11,196],[29,11,196],[54,5,196],[54,11,196],[64,5,196],[64,11,196],[80,5,196],[80,11,196],[83,2,98]],"addSolidRects":[{"x":2112,"y":48,"width":16,"height":16,"id":82},{"x":2112,"y":64,"width":16,"height":16,"id":82},{"x":2112,"y":80,"width":16,"height":16,"id":82},{"x":2128,"y":48,"width":16,"height":16,"id":82},{"x":2128,"y":64,"width":16,"height":16,"id":82},{"x":2128,"y":80,"width":16,"height":16,"id":82}],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"4-3 main tiles from the native collision map","level":"4-3","area":"main","evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md).","addSolidRects":[{"x":688,"y":32,"width":16,"height":16,"id":192},{"x":1152,"y":144,"width":16,"height":16,"id":25},{"x":1168,"y":144,"width":16,"height":16,"id":26},{"x":1184,"y":144,"width":16,"height":16,"id":27},{"x":1808,"y":144,"width":16,"height":16,"id":25}]},
+  {"name":"4-4 main tiles from the native collision map","level":"4-4","area":"main","removeTiles":[[143,3],[143,4],[144,3],[144,4]],"removeFreeTiles":[{"x":2278,"y":80,"id":98},{"x":2278,"y":112,"id":98},{"x":2278,"y":128,"id":98},{"x":2278,"y":144,"id":98}],"addTiles":[[115,6,98],[116,6,98],[141,10,98],[142,10,98],[143,6,98],[143,10,98],[144,5,98],[144,6,98],[144,7,98],[144,8,98],[144,9,98],[145,2,98],[145,3,98],[145,4,98],[146,2,98],[146,3,98],[146,4,98]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md).","addSolidRects":[{"x":2800,"y":160,"width":16,"height":16,"id":98}]},
+  {"name":"5-1 main tiles from the native collision map","level":"5-1","area":"main","addTiles":[[184,10,97]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md).","addSolidRects":[{"x":1856,"y":160,"width":16,"height":16,"id":97},{"x":2352,"y":160,"width":16,"height":16,"id":97}]},
+  {"name":"5-2 area-2 tiles from the native collision map","level":"5-2","area":"area-2","addTiles":[[184,11,97]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md).","addSolidRects":[{"x":784,"y":176,"width":16,"height":16,"id":97},{"x":1040,"y":176,"width":16,"height":16,"id":97},{"x":1120,"y":176,"width":16,"height":16,"id":97},{"x":1712,"y":176,"width":16,"height":16,"id":100},{"x":2064,"y":176,"width":16,"height":16,"id":97},{"x":2768,"y":176,"width":16,"height":16,"id":18},{"x":2784,"y":176,"width":16,"height":16,"id":19},{"x":2976,"y":176,"width":16,"height":16,"id":97}]},
+  {"name":"5-4 main tiles from the native collision map","level":"5-4","area":"main","addTiles":[[23,7,196],[49,9,196],[61,9,196],[73,9,196],[82,6,196],[92,10,196],[103,11,196]],"addSolidRects":[{"x":2048,"y":80,"width":16,"height":16,"id":82},{"x":2064,"y":80,"width":16,"height":16,"id":82},{"x":2080,"y":80,"width":16,"height":16,"id":82},{"x":2096,"y":80,"width":16,"height":16,"id":82},{"x":2112,"y":80,"width":16,"height":16,"id":82},{"x":2128,"y":80,"width":16,"height":16,"id":82},{"x":2272,"y":192,"width":16,"height":16,"id":98},{"x":2288,"y":192,"width":16,"height":16,"id":98}],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"7-4 main tiles from the native collision map","level":"7-4","area":"main","addTiles":[[103,7,196]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"8-3 main tiles from the native collision map","level":"8-3","area":"main","removeTiles":[[196,11],[196,12],[197,13],[197,14],[199,11],[201,9],[203,7],[206,5],[215,12]],"addTiles":[[195,11,97],[195,12,97],[198,11,97],[200,9,97],[202,7,97],[204,5,97]],"addSolidRects":[{"x":3040,"y":144,"width":16,"height":16,"id":81},{"x":3424,"y":192,"width":16,"height":16,"id":97},{"x":3568,"y":192,"width":16,"height":16,"id":82},{"x":3600,"y":192,"width":16,"height":16,"id":82}],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"6-4 main tiles from the native collision map (c4 platforms)","level":"6-4","area":"main","addTiles":[[23,6,196],[30,10,196],[37,6,196],[49,6,196],[60,6,196],[67,6,196],[76,9,196],[80,4,196],[84,9,196],[88,4,196],[92,9,196]],"evidence":"Native collision map (RAM 0x500-0x69f, route trace captured with --ram 1280-1695, tools/harness/map-audit.mjs): the cell value is stable over >=60 frames and its value class is verified (Mario stands on it elsewhere in the trace); kept after a per-entry gate and test run (see evidence/mapaudit-findings-20261111.md)."},
+  {"name":"1-2 area-2 native floor/stair cells","level":"1-2","area":"area-2","removeTiles":[[138,9],[138,10],[138,11],[138,12],[144,13],[144,14]],"evidence":"Native collision map (full route trace, tools/harness/map-audit.mjs --dump): col 160 rows 13-14 is floor natively (124 route rows; native pit 153-159) but is left empty (the column the floor drift vacates): tests/roof-warp.test.ts maps the screenshot-frame blank cells 155-160 of rows 13-14 unshifted, and no native row stands there; the pit under the staircase is 7 columns wide natively (138-144, map 139-144: its left edge moves with the drift, its right edge does not), so col 144 is removed after the shift; the staircase at 2112 is 5 columns wide natively (rows 12/11/10/9 from cols 133/134/135/136 to col 137, value 0x61) and col 138 is empty in rows 9-12 (84 route rows); native small Mario stands with a foot over col 138 only while the other is on col 137 (7 rows). The stair's left side (entry '1-2 area-2 staircase at 2112') is unchanged."},
+  {"name":"4-2 area-3 brick at col 87 row 8","level":"4-2","area":"area-3","addTiles":[[87,8,82]],"evidence":"Native collision map: col 87 row 8 holds 0x52 in all 88 route rows that saw it (map empty). Free play: native small Mario stands at feet 128 over it (explore-r2 4-2 mood0 rows 691-715, explore-r4 4-2 mood6 rows 722-743, 89 rows in r2-r4) and is stopped at x 1379 rising at y 104 (r4 mood6 row 709, speed 10296 -> 28); the remake fell through."},
+  {"name":"4-2 area-3 floor at col 185","level":"4-2","area":"area-3","addTiles":[[185,13,84],[185,14,84]],"evidence":"Native collision map: col 185 rows 13-14 is floor (native pit 183-184); the column the floor drift vacates."},
+  {"name":"6-4 wall col 71","level":"6-4","area":"main","addTiles":[[71,3,98],[71,4,98],[71,5,98],[71,10,98],[71,11,98],[71,12,98]],"evidence":"Native collision map: col 71 rows 3-5 and 9-12 hold wall value 0x62 (the ceiling and floor blocks end at col 71); the column the wall drift vacates (row 9 is entry '6-4 ledge one tile longer')."},
+  {"name":"6-1 main floor row 13 cells","level":"6-1","area":"main","addTiles":[[167,13,84],[176,13,84],[176,14,84]],"removeTiles":[[174,13]],"evidence":"Native collision map (full route trace, tools/harness/map-audit.mjs --dump): the top floor row 13 of the map is one column right of native from col 164 to 176 (native floor 167-173 and from 176, pits 164-166 and 174-175; map 168-174 and from 177) while row 14 already matches except col 176; native small Mario stands on col 167 (6 rows), which the map lacks in row 13. Not applied: cols 134-135 of row 13 are floor natively (87-88 rows, Mario stands on 135 for 2 rows) but tests/native-geometry-corrections.test.ts asserts no support at x 2150 (open). Col 136 stays solid although the native map holds 0 there: native Mario runs over it at feet 208 (rows 47668-47686, edge straddle, see entry '6-1 main floor from x 2176' and its test), which the remake's support needs a tile for."}
+ ]
+}

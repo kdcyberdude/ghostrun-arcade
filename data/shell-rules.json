@@ -1,0 +1,12 @@
+{
+  "source": "data/shell-measurements.json",
+  "speedPixelsPerNativeFrame": 3,
+  "speedStatus": "Measured:24px/8native and21px/7native in both travel directions.",
+  "wakeNativeFrames": 320,
+  "wakeStatus": "Inferred candidate within317–330 native frames between observed stomp and resumed Koopa walking.",
+  "sideKickScore": 400,
+  "victimScores": [500,800,1000,2000,4000,5000],
+  "scoreStatus": "Measured HUD plateaus after one isolated side kick and six successive genuine victims. Chain resets on each new kick.",
+  "laterVictims": "Unmeasured; provisionally repeat the last measured5000-point award. No inferred1UP or higher award is implemented.",
+  "unresolved": ["Exact wake frame within the observation bracket.","Scores after six victims and any eventual extra-life award.","Stationary-shell top-contact scoring and non-Koopa shell variants.","Exact offscreen despawn boundary; absence outside the image does not prove removal."]
+}

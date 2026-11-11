@@ -1,0 +1,1085 @@
+{
+  "schema": "observed-green-actor-correction-v1",
+  "generatedUtc": "2026-11-05T23:38:05.957Z",
+  "level": "2-1",
+  "area": "main",
+  "coordinateConvention": "Existing dense screenshot camera registration, anchored to supplied level-start imagery. WorldX=camera+PNG sprite origin. descriptorFeetY=raw24px origin+23, not a measured collision rectangle.",
+  "appliedToProduction": false,
+  "correction": {
+    "observedMinimumDistinctActors": 3,
+    "existingProvisionalActors": [
+      {
+        "x": 2416,
+        "y": 160,
+        "relationship": "First actor moving sighting was rounded; original birth coordinate remains unsupported."
+      },
+      {
+        "x": 2720,
+        "y": 160,
+        "relationship": "One provisional entry conflates two simultaneously visible late actors; these must be inventoried separately."
+      }
+    ],
+    "runtimeReplacement": null,
+    "note": "Export certifies population and observed positions only. A single screenshot state is not promoted to an initial spawn or fixed world-tick activation."
+  },
+  "actors": [
+    {
+      "id": "green-1",
+      "kind": "paratroopa",
+      "palette": "0f-1a-30-27",
+      "firstObserved": {
+        "tick": 1322,
+        "nativeFrame": 9931,
+        "camera": 2171,
+        "worldX": 2418,
+        "descriptorFeetY": 179,
+        "spriteCell": 5,
+        "direction": 1,
+        "visibleWidth": 9,
+        "opaquePixels": 130,
+        "image": "evidence/local/reference-campaign-dense/01323-tick-01322.png"
+      },
+      "firstFullObserved": {
+        "tick": 1323,
+        "nativeFrame": 9938,
+        "camera": 2188,
+        "worldX": 2422,
+        "descriptorFeetY": 170,
+        "spriteCell": 4,
+        "direction": 1,
+        "opaquePixels": 261,
+        "image": "evidence/local/reference-campaign-dense/01324-tick-01323.png"
+      },
+      "originalSpawn": null,
+      "originalSpawnVelocity": null,
+      "originalPhase": null,
+      "activation": {
+        "notLaterThanNativeFrame": 9931,
+        "lowerNativeFrameBound": null,
+        "cameraAtFirstMatch": 2171,
+        "note": "First visible actor only establishes existence by this frame. Prior absence is not evidence of inactivity; the actor may be outside the image."
+      },
+      "phaseSamples": [
+        {
+          "tick": 1323,
+          "nativeFrame": 9938,
+          "camera": 2188,
+          "worldX": 2422,
+          "descriptorFeetY": 170,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01324-tick-01323.png"
+        },
+        {
+          "tick": 1324,
+          "nativeFrame": 9946,
+          "camera": 2208,
+          "worldX": 2426,
+          "descriptorFeetY": 166,
+          "spriteCell": 5,
+          "direction": 1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01325-tick-01324.png"
+        },
+        {
+          "tick": 1325,
+          "nativeFrame": 9953,
+          "camera": 2226,
+          "worldX": 2429,
+          "descriptorFeetY": 168,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01326-tick-01325.png"
+        },
+        {
+          "tick": 1327,
+          "nativeFrame": 9968,
+          "camera": 2263,
+          "worldX": 2437,
+          "descriptorFeetY": 190,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01328-tick-01327.png"
+        },
+        {
+          "tick": 1329,
+          "nativeFrame": 9983,
+          "camera": 2301,
+          "worldX": 2444,
+          "descriptorFeetY": 234,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01330-tick-01329.png"
+        }
+      ]
+    },
+    {
+      "id": "green-2",
+      "kind": "paratroopa",
+      "palette": "0f-1a-30-27",
+      "firstObserved": {
+        "tick": 1337,
+        "nativeFrame": 10043,
+        "camera": 2451,
+        "worldX": 2704,
+        "descriptorFeetY": 185,
+        "spriteCell": 5,
+        "direction": 1,
+        "visibleWidth": 3,
+        "opaquePixels": 34,
+        "image": "evidence/local/reference-campaign-dense/01338-tick-01337.png"
+      },
+      "firstFullObserved": {
+        "tick": 1338,
+        "nativeFrame": 10051,
+        "camera": 2471,
+        "worldX": 2708,
+        "descriptorFeetY": 172,
+        "spriteCell": 4,
+        "direction": 1,
+        "opaquePixels": 261,
+        "image": "evidence/local/reference-campaign-dense/01339-tick-01338.png"
+      },
+      "originalSpawn": null,
+      "originalSpawnVelocity": null,
+      "originalPhase": null,
+      "activation": {
+        "notLaterThanNativeFrame": 10043,
+        "lowerNativeFrameBound": null,
+        "cameraAtFirstMatch": 2451,
+        "note": "First visible actor only establishes existence by this frame. Prior absence is not evidence of inactivity; the actor may be outside the image."
+      },
+      "phaseSamples": [
+        {
+          "tick": 1338,
+          "nativeFrame": 10051,
+          "camera": 2471,
+          "worldX": 2708,
+          "descriptorFeetY": 172,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01339-tick-01338.png"
+        },
+        {
+          "tick": 1339,
+          "nativeFrame": 10058,
+          "camera": 2488,
+          "worldX": 2712,
+          "descriptorFeetY": 166,
+          "spriteCell": 5,
+          "direction": 1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png"
+        },
+        {
+          "tick": 1340,
+          "nativeFrame": 10066,
+          "camera": 2508,
+          "worldX": 2712,
+          "descriptorFeetY": 166,
+          "spriteCell": 4,
+          "direction": -1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01341-tick-01340.png"
+        },
+        {
+          "tick": 1341,
+          "nativeFrame": 10073,
+          "camera": 2526,
+          "worldX": 2708,
+          "descriptorFeetY": 172,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01342-tick-01341.png"
+        },
+        {
+          "tick": 1343,
+          "nativeFrame": 10088,
+          "camera": 2563,
+          "worldX": 2701,
+          "descriptorFeetY": 203,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01344-tick-01343.png"
+        },
+        {
+          "tick": 1344,
+          "nativeFrame": 10096,
+          "camera": 2583,
+          "worldX": 2697,
+          "descriptorFeetY": 191,
+          "spriteCell": 4,
+          "direction": -1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01345-tick-01344.png"
+        },
+        {
+          "tick": 1347,
+          "nativeFrame": 10118,
+          "camera": 2638,
+          "worldX": 2686,
+          "descriptorFeetY": 165,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01348-tick-01347.png"
+        },
+        {
+          "tick": 1349,
+          "nativeFrame": 10133,
+          "camera": 2676,
+          "worldX": 2678,
+          "descriptorFeetY": 177,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01350-tick-01349.png"
+        }
+      ]
+    },
+    {
+      "id": "green-3",
+      "kind": "paratroopa",
+      "palette": "0f-1a-30-27",
+      "firstObserved": {
+        "tick": 1339,
+        "nativeFrame": 10058,
+        "camera": 2488,
+        "worldX": 2726,
+        "descriptorFeetY": 173,
+        "spriteCell": 5,
+        "direction": -1,
+        "visibleWidth": 16,
+        "opaquePixels": 229,
+        "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png"
+      },
+      "firstFullObserved": {
+        "tick": 1339,
+        "nativeFrame": 10058,
+        "camera": 2488,
+        "worldX": 2726,
+        "descriptorFeetY": 173,
+        "spriteCell": 5,
+        "direction": -1,
+        "opaquePixels": 229,
+        "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png"
+      },
+      "originalSpawn": null,
+      "originalSpawnVelocity": null,
+      "originalPhase": null,
+      "activation": {
+        "notLaterThanNativeFrame": 10058,
+        "lowerNativeFrameBound": null,
+        "cameraAtFirstMatch": 2488,
+        "note": "First visible actor only establishes existence by this frame. Prior absence is not evidence of inactivity; the actor may be outside the image."
+      },
+      "phaseSamples": [
+        {
+          "tick": 1339,
+          "nativeFrame": 10058,
+          "camera": 2488,
+          "worldX": 2726,
+          "descriptorFeetY": 173,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png"
+        },
+        {
+          "tick": 1340,
+          "nativeFrame": 10066,
+          "camera": 2508,
+          "worldX": 2727,
+          "descriptorFeetY": 166,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01341-tick-01340.png"
+        },
+        {
+          "tick": 1341,
+          "nativeFrame": 10073,
+          "camera": 2526,
+          "worldX": 2730,
+          "descriptorFeetY": 165,
+          "spriteCell": 5,
+          "direction": 1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01342-tick-01341.png"
+        },
+        {
+          "tick": 1343,
+          "nativeFrame": 10088,
+          "camera": 2563,
+          "worldX": 2738,
+          "descriptorFeetY": 183,
+          "spriteCell": 5,
+          "direction": 1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01344-tick-01343.png"
+        },
+        {
+          "tick": 1346,
+          "nativeFrame": 10111,
+          "camera": 2621,
+          "worldX": 2749,
+          "descriptorFeetY": 177,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01347-tick-01346.png"
+        },
+        {
+          "tick": 1349,
+          "nativeFrame": 10133,
+          "camera": 2676,
+          "worldX": 2760,
+          "descriptorFeetY": 168,
+          "spriteCell": 5,
+          "direction": 1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01350-tick-01349.png"
+        },
+        {
+          "tick": 1352,
+          "nativeFrame": 10156,
+          "camera": 2683,
+          "worldX": 2772,
+          "descriptorFeetY": 202,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01353-tick-01352.png"
+        },
+        {
+          "tick": 1355,
+          "nativeFrame": 10179,
+          "camera": 2710,
+          "worldX": 2783,
+          "descriptorFeetY": 166,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01356-tick-01355.png"
+        },
+        {
+          "tick": 1359,
+          "nativeFrame": 10209,
+          "camera": 2776,
+          "worldX": 2798,
+          "descriptorFeetY": 206,
+          "spriteCell": 4,
+          "direction": 1,
+          "opaquePixels": 261,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01360-tick-01359.png"
+        },
+        {
+          "tick": 1360,
+          "nativeFrame": 10216,
+          "camera": 2794,
+          "worldX": 2798,
+          "descriptorFeetY": 191,
+          "spriteCell": 5,
+          "direction": -1,
+          "opaquePixels": 229,
+          "cropHeight": 24,
+          "image": "evidence/local/reference-campaign-dense/01361-tick-01360.png"
+        }
+      ]
+    }
+  ],
+  "independentEvidence": {
+    "freshSeparateProcess": [
+      {
+        "tick": 1339,
+        "nativeFrame": 10058,
+        "camera": 2487,
+        "actors": [
+          {
+            "worldX": 2712,
+            "descriptorFeetY": 166,
+            "direction": 1,
+            "spriteCell": 5,
+            "opaquePixels": 229
+          },
+          {
+            "worldX": 2726,
+            "descriptorFeetY": 173,
+            "direction": -1,
+            "spriteCell": 5,
+            "opaquePixels": 229
+          }
+        ],
+        "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0008-tick-1339.png"
+      },
+      {
+        "tick": 1340,
+        "nativeFrame": 10066,
+        "camera": 2503,
+        "actors": [
+          {
+            "worldX": 2727,
+            "descriptorFeetY": 166,
+            "direction": 1,
+            "spriteCell": 4,
+            "opaquePixels": 261
+          },
+          {
+            "worldX": 2712,
+            "descriptorFeetY": 166,
+            "direction": -1,
+            "spriteCell": 4,
+            "opaquePixels": 261
+          }
+        ],
+        "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0009-tick-1340.png"
+      },
+      {
+        "tick": 1341,
+        "nativeFrame": 10073,
+        "camera": 2513,
+        "actors": [
+          {
+            "worldX": 2730,
+            "descriptorFeetY": 165,
+            "direction": 1,
+            "spriteCell": 5,
+            "opaquePixels": 229
+          },
+          {
+            "worldX": 2708,
+            "descriptorFeetY": 172,
+            "direction": -1,
+            "spriteCell": 5,
+            "opaquePixels": 229
+          }
+        ],
+        "image": "evidence/local/paratroopa-2026-11-05T22-30-13-243Z/0010-tick-1341.png"
+      }
+    ],
+    "fourFreshContactPrefixes": [
+      {
+        "name": "jump",
+        "prefix": 1343,
+        "pngExact": true
+      },
+      {
+        "name": "late-jump",
+        "prefix": 1343,
+        "pngExact": true
+      },
+      {
+        "name": "neutral",
+        "prefix": 1343,
+        "pngExact": true
+      },
+      {
+        "name": "left-jump",
+        "prefix": 1343,
+        "pngExact": true
+      }
+    ],
+    "successfulBlockHold": {
+      "prefixChecks": [
+        {
+          "name": "pair-block-hold",
+          "prefix": 1334,
+          "pngExact": true
+        }
+      ],
+      "firstClipped": {
+        "tick": 1348,
+        "nativeFrame": 10126,
+        "camera": 2464,
+        "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0224-pair-block-hold-t1348.png",
+        "actors": [
+          {
+            "kind": "paratroopa",
+            "cell": 4,
+            "flipX": true,
+            "x": 250,
+            "originY": 150,
+            "physicalFeetY": 173,
+            "visibleWidth": 6,
+            "matchedOpaque": 93,
+            "scope": "Exact visible opaque portion only; offscreen pixels unobserved.",
+            "worldX": 2714
+          }
+        ]
+      },
+      "stationaryCamera": 2464,
+      "stationarySamples": [
+        {
+          "tick": 1348,
+          "nativeFrame": 10126,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 12,
+          "actors": [],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0224-pair-block-hold-t1348.png"
+        },
+        {
+          "tick": 1349,
+          "nativeFrame": 10133,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 13,
+          "actors": [],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0225-pair-block-hold-t1349.png"
+        },
+        {
+          "tick": 1350,
+          "nativeFrame": 10141,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0226-pair-block-hold-t1350.png"
+        },
+        {
+          "tick": 1351,
+          "nativeFrame": 10149,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2702,
+              "descriptorFeetY": 189,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0227-pair-block-hold-t1351.png"
+        },
+        {
+          "tick": 1352,
+          "nativeFrame": 10156,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2699,
+              "descriptorFeetY": 176,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0228-pair-block-hold-t1352.png"
+        },
+        {
+          "tick": 1353,
+          "nativeFrame": 10164,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2695,
+              "descriptorFeetY": 167,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0229-pair-block-hold-t1353.png"
+        },
+        {
+          "tick": 1354,
+          "nativeFrame": 10171,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2691,
+              "descriptorFeetY": 165,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0230-pair-block-hold-t1354.png"
+        },
+        {
+          "tick": 1355,
+          "nativeFrame": 10179,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2687,
+              "descriptorFeetY": 170,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0231-pair-block-hold-t1355.png"
+        },
+        {
+          "tick": 1356,
+          "nativeFrame": 10186,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2684,
+              "descriptorFeetY": 179,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0232-pair-block-hold-t1356.png"
+        },
+        {
+          "tick": 1357,
+          "nativeFrame": 10194,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2680,
+              "descriptorFeetY": 197,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0233-pair-block-hold-t1357.png"
+        },
+        {
+          "tick": 1358,
+          "nativeFrame": 10201,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2676,
+              "descriptorFeetY": 200,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0234-pair-block-hold-t1358.png"
+        },
+        {
+          "tick": 1359,
+          "nativeFrame": 10209,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2672,
+              "descriptorFeetY": 181,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0235-pair-block-hold-t1359.png"
+        },
+        {
+          "tick": 1360,
+          "nativeFrame": 10216,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2669,
+              "descriptorFeetY": 171,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0236-pair-block-hold-t1360.png"
+        },
+        {
+          "tick": 1361,
+          "nativeFrame": 10224,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2665,
+              "descriptorFeetY": 166,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0237-pair-block-hold-t1361.png"
+        },
+        {
+          "tick": 1362,
+          "nativeFrame": 10231,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2661,
+              "descriptorFeetY": 167,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0238-pair-block-hold-t1362.png"
+        },
+        {
+          "tick": 1363,
+          "nativeFrame": 10239,
+          "camera": 2464,
+          "stage": "wait",
+          "playerFeet": 144,
+          "playerCell": 23,
+          "actors": [
+            {
+              "worldX": 2657,
+              "descriptorFeetY": 175,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ],
+          "image": "evidence/local/paratroopa-activation-2026-11-05T23-33-49.636Z/0239-pair-block-hold-t1363.png"
+        }
+      ],
+      "laterApproach": [
+        {
+          "tick": 1364,
+          "nativeFrame": 10246,
+          "camera": 2464,
+          "actors": [
+            {
+              "worldX": 2654,
+              "descriptorFeetY": 188,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ]
+        },
+        {
+          "tick": 1365,
+          "nativeFrame": 10254,
+          "camera": 2468,
+          "actors": [
+            {
+              "worldX": 2650,
+              "descriptorFeetY": 209,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1366,
+          "nativeFrame": 10261,
+          "camera": 2474,
+          "actors": [
+            {
+              "worldX": 2646,
+              "descriptorFeetY": 189,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ]
+        },
+        {
+          "tick": 1367,
+          "nativeFrame": 10269,
+          "camera": 2482,
+          "actors": [
+            {
+              "worldX": 2642,
+              "descriptorFeetY": 174,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1368,
+          "nativeFrame": 10276,
+          "camera": 2489,
+          "actors": [
+            {
+              "worldX": 2639,
+              "descriptorFeetY": 167,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ]
+        },
+        {
+          "tick": 1369,
+          "nativeFrame": 10284,
+          "camera": 2504,
+          "actors": [
+            {
+              "worldX": 2635,
+              "descriptorFeetY": 165,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1370,
+          "nativeFrame": 10291,
+          "camera": 2521,
+          "actors": [
+            {
+              "worldX": 2631,
+              "descriptorFeetY": 170,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1371,
+          "nativeFrame": 10299,
+          "camera": 2541,
+          "actors": [
+            {
+              "worldX": 2627,
+              "descriptorFeetY": 181,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ]
+        },
+        {
+          "tick": 1372,
+          "nativeFrame": 10306,
+          "camera": 2558,
+          "actors": [
+            {
+              "worldX": 2624,
+              "descriptorFeetY": 197,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1373,
+          "nativeFrame": 10314,
+          "camera": 2578,
+          "actors": [
+            {
+              "worldX": 2620,
+              "descriptorFeetY": 197,
+              "direction": -1,
+              "spriteCell": 5,
+              "opaquePixels": 229
+            }
+          ]
+        },
+        {
+          "tick": 1374,
+          "nativeFrame": 10321,
+          "camera": 2596,
+          "actors": [
+            {
+              "worldX": 2616,
+              "descriptorFeetY": 181,
+              "direction": -1,
+              "spriteCell": 4,
+              "opaquePixels": 261
+            }
+          ]
+        },
+        {
+          "tick": 1375,
+          "nativeFrame": 10329,
+          "camera": 2616,
+          "actors": []
+        },
+        {
+          "tick": 1376,
+          "nativeFrame": 10336,
+          "camera": 2633,
+          "actors": []
+        },
+        {
+          "tick": 1377,
+          "nativeFrame": 10344,
+          "camera": 2653,
+          "actors": []
+        },
+        {
+          "tick": 1378,
+          "nativeFrame": 10351,
+          "camera": 2671,
+          "actors": []
+        },
+        {
+          "tick": 1379,
+          "nativeFrame": 10359,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1380,
+          "nativeFrame": 10366,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1381,
+          "nativeFrame": 10374,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1382,
+          "nativeFrame": 10381,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1383,
+          "nativeFrame": 10389,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1384,
+          "nativeFrame": 10396,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1385,
+          "nativeFrame": 10404,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1386,
+          "nativeFrame": 10411,
+          "camera": 2691,
+          "actors": []
+        },
+        {
+          "tick": 1387,
+          "nativeFrame": 10419,
+          "camera": 2691,
+          "actors": []
+        }
+      ]
+    },
+    "earlierProbeChecks": [
+      {
+        "name": "first-before-hold",
+        "prefix": 1314,
+        "pngExact": true
+      },
+      {
+        "name": "first-after-hold",
+        "prefix": 1318,
+        "pngExact": true
+      },
+      {
+        "name": "pair-before-hold",
+        "prefix": 1330,
+        "pngExact": true
+      },
+      {
+        "name": "pair-after-hold",
+        "prefix": 1334,
+        "pngExact": true
+      }
+    ]
+  },
+  "observedDirectionChange": {
+    "pairNativeFrameBracket": [
+      10058,
+      10066
+    ],
+    "leftActorWorldPositions": [
+      2712,
+      2712
+    ],
+    "rightActorWorldPositions": [
+      2726,
+      2727
+    ],
+    "note": "Both facing and subsequent motion reverse in this bracket. Collision is a plausible cause; the exact event frame/body bounds are not observed."
+  },
+  "unresolved": [
+    "All three literal native birth X/Y, initial vertical velocity, initial age and spawn activation threshold remain unresolved.",
+    "The successful camera2464 hold shows only one late green actor; its identity cannot safely be assigned to standard track2 or3. Several ordinary Goombas remain alive nearby. Queue/population pressure is a hypothesis, not an established slot rule.",
+    "The first camera-hold probe falls into a gap; both initial late-pair ground holds die to ordinary Goombas before useful subsequent actor observations. These failures cannot bound green activation.",
+    "A separate alive first-actor hold atcamera2147 followed by approach sees no winged actor in its usual later region. Offscreen movement/removal is plausible; this alone does not determine birth or activation coordinates."
+  ]
+}

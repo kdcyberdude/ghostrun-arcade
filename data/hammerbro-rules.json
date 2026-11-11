@@ -1,0 +1,48 @@
+{
+  "schema": "hammerbro-rules-v1",
+  "motor": {
+    "gravity": 0.234375,
+    "maxFall": 3.125,
+    "strongImpulse": 6.125,
+    "weakImpulse": 3.125,
+    "status": "conditionally-fitted-not-unique",
+    "evidence": "evidence/hammerbro-drop-findings.md"
+  },
+  "patrol": {
+    "speed": 0.25,
+    "span": 16,
+    "observed": [
+      {
+        "level": "5-2",
+        "area": "area-2",
+        "originX": 752,
+        "originY": 96,
+        "minX": 730,
+        "maxX": 746
+      },
+      {
+        "level": "5-2",
+        "area": "area-2",
+        "originX": 1296,
+        "originY": 160,
+        "minX": 1292,
+        "maxX": 1308
+      }
+    ],
+    "genericBounds": "INFERRED origin-centered 16px span; 5-2 actor-specific bounds use observed paths and inferred extremes; see evidence/five-two-stair-bro-findings.md.",
+    "wallResponse": "INFERRED outside observed elevated rows; bounded patrol continues through observed Qrow crossings without generic walker side turnaround.",
+    "evidence": "evidence/hammerbro-patrol-calibration.json"
+  },
+  "choice": {
+    "status": "INFERRED_LOW_CONFIDENCE",
+    "timerMinimum": 192,
+    "timerVariants": 64,
+    "weakChanceDivisor": 4,
+    "qualification": "Local deterministic LCG seeded only from actororigin. Timerenvelope approximates broad observed launchintervals.1/4weak is a lowconfidence3high/1weak episode estimate, not nativeRNG/probability. Weakeligibleonlyon a supportband with an airgap and anotherlowerfloor; eligibility is inferred. No seed fitted to source choices.",
+    "evidence": "evidence/hammerbro-drop-findings.md"
+  },
+  "birth": {
+    "status": "UNRESOLVED",
+    "qualification": "Preserve all current observed-in-flight birthcoordinates and activationrules. No initialNPC teleport."
+  }
+}

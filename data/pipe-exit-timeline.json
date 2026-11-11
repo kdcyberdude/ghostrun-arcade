@@ -1,0 +1,19 @@
+{
+ "schema": "pipe-exit-timeline-v1",
+ "method": "Read-only per-frame native trace of the recorded winning route (evidence/local/native-trace-winning-route-ram-20261109.jsonl, decoded player position, engine, mode and task bytes; no ROM inspection). For every area-changing pipe in 1-2, 2-2, 4-2, 7-2 and 8-4 the last control row (engine 8) to the first load row (task 0) is the entering animation, task 0-2 is the load/black screen, and engine 7 after the load is the locked rise out of the destination pipe. Row counts are identical in all 8 observed pipes of each kind.",
+ "entryFrames": {"right": 52, "down": 48},
+ "loadFrames": 26,
+ "loadFramesNote": "25 load rows (task 0-2) plus the first playable row, which still shows engine 0 at the origin before the rise starts; control then returns 96 rows later (174 = 52+25+1+96 right, 170 = 48+25+1+96 down).",
+ "rise": {"frames": 96, "startsBelowSpawnFeetPx": 96, "note": "Native player y runs 240 -> 144 (sprite top) at one pixel per frame from the first playable row, i.e. feet 272 -> 176 = the spawn feet of these rooms; control (engine 8) starts on the row the spawn height is reached."},
+ "entryTrigger": "entryTriggerX (right pipes): player x at which the entering animation starts while holding right on the ground, bracketed by the last engine-8 and first engine-2 rows; in all five pipes it equals the pipe's left edge (his stopping position) minus 13: Mario walks 12-13 px to the edge (1-2 2656, 2-2 3024, 4-2 2992, 7-2 3024, 8-4 1088). The screenshot-era 1-2 and 4-2 maps had their pipes 16 px too far right, which read as 'wall - 29'. The remake's older window |x+14-pipe.x|<3 started it up to 46 px late.",
+ "pipes": [
+  {"level": "1-2", "from": "area-2", "to": "area-3", "entryTriggerX": 2643, "evidence": "trigger between x 2642 (row 3800, engine 8) and 2644 (row 3801, engine 2); Mario stopped at x 2656 in rows 3822-3852 = the pipe's left edge (the screenshot-era map put it at 2672); rows 3801-3852 engine 2, load 3853-3877, rise to row 3975"},
+  {"level": "2-2", "from": "area-2", "to": "area-3", "entryTriggerX": 3011, "evidence": "rows 15622-15673 engine 2, load 15674-15698, rise to row 15796"},
+  {"level": "4-2", "from": "area-3", "to": "area-4", "entryTriggerX": 2979, "evidence": "rows 33222-33273 engine 2, load 33274-33298, rise to row 33396"},
+  {"level": "7-2", "from": "area-4", "to": "area-5", "entryTriggerX": 3011, "evidence": "rows 60363-60414 engine 2, load 60415-60439, rise to row 60537"},
+  {"level": "8-4", "from": "main", "to": "area-2", "evidence": "rows 76022-76069 engine 3, load 76070-76094, rise to row 76192"},
+  {"level": "8-4", "from": "area-2", "to": "area-3", "evidence": "rows 76546-76593 engine 3, load 76594-76618, rise to row 76716"},
+  {"level": "8-4", "from": "area-3", "to": "area-4", "evidence": "rows 78119-78166 engine 3, load 78167-78191, rise to row 78289"},
+  {"level": "8-4", "from": "area-4", "to": "area-5", "entryTriggerX": 1075, "evidence": "trigger between x 1074 (row 78988, engine 8) and 1076 (row 78989, engine 2); wall at 1104; rows 78989-79040 engine 2, load 79041-79065, rise to row 79163"}
+ ]
+}

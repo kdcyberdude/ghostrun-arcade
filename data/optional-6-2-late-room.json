@@ -1,0 +1,726 @@
+{
+  "schema": "image-only-fixed-camera-room-v2",
+  "width": 16,
+  "atlas": "metatiles-palette-003.png",
+  "tiles": [
+    [
+      0,
+      2,
+      71
+    ],
+    [
+      0,
+      3,
+      71
+    ],
+    [
+      0,
+      4,
+      71
+    ],
+    [
+      0,
+      5,
+      71
+    ],
+    [
+      0,
+      6,
+      71
+    ],
+    [
+      0,
+      7,
+      71
+    ],
+    [
+      0,
+      8,
+      71
+    ],
+    [
+      0,
+      9,
+      71
+    ],
+    [
+      0,
+      10,
+      71
+    ],
+    [
+      0,
+      11,
+      71
+    ],
+    [
+      0,
+      12,
+      71
+    ],
+    [
+      0,
+      13,
+      84
+    ],
+    [
+      0,
+      14,
+      84
+    ],
+    [
+      1,
+      13,
+      84
+    ],
+    [
+      1,
+      14,
+      84
+    ],
+    [
+      2,
+      13,
+      84
+    ],
+    [
+      2,
+      14,
+      84
+    ],
+    [
+      3,
+      2,
+      71
+    ],
+    [
+      3,
+      8,
+      194
+    ],
+    [
+      3,
+      9,
+      71
+    ],
+    [
+      3,
+      10,
+      71
+    ],
+    [
+      3,
+      11,
+      71
+    ],
+    [
+      3,
+      12,
+      194
+    ],
+    [
+      3,
+      13,
+      84
+    ],
+    [
+      3,
+      14,
+      84
+    ],
+    [
+      4,
+      2,
+      71
+    ],
+    [
+      4,
+      8,
+      194
+    ],
+    [
+      4,
+      9,
+      71
+    ],
+    [
+      4,
+      12,
+      194
+    ],
+    [
+      4,
+      13,
+      84
+    ],
+    [
+      4,
+      14,
+      84
+    ],
+    [
+      5,
+      2,
+      71
+    ],
+    [
+      5,
+      8,
+      194
+    ],
+    [
+      5,
+      9,
+      71
+    ],
+    [
+      5,
+      12,
+      194
+    ],
+    [
+      5,
+      13,
+      84
+    ],
+    [
+      5,
+      14,
+      84
+    ],
+    [
+      6,
+      2,
+      71
+    ],
+    [
+      6,
+      8,
+      194
+    ],
+    [
+      6,
+      9,
+      71
+    ],
+    [
+      6,
+      12,
+      194
+    ],
+    [
+      6,
+      13,
+      84
+    ],
+    [
+      6,
+      14,
+      84
+    ],
+    [
+      7,
+      2,
+      71
+    ],
+    [
+      7,
+      8,
+      194
+    ],
+    [
+      7,
+      9,
+      71
+    ],
+    [
+      7,
+      12,
+      194
+    ],
+    [
+      7,
+      13,
+      84
+    ],
+    [
+      7,
+      14,
+      84
+    ],
+    [
+      8,
+      2,
+      71
+    ],
+    [
+      8,
+      8,
+      194
+    ],
+    [
+      8,
+      9,
+      71
+    ],
+    [
+      8,
+      12,
+      194
+    ],
+    [
+      8,
+      13,
+      84
+    ],
+    [
+      8,
+      14,
+      84
+    ],
+    [
+      9,
+      2,
+      71
+    ],
+    [
+      9,
+      8,
+      194
+    ],
+    [
+      9,
+      9,
+      71
+    ],
+    [
+      9,
+      12,
+      194
+    ],
+    [
+      9,
+      13,
+      84
+    ],
+    [
+      9,
+      14,
+      84
+    ],
+    [
+      10,
+      2,
+      71
+    ],
+    [
+      10,
+      8,
+      194
+    ],
+    [
+      10,
+      9,
+      71
+    ],
+    [
+      10,
+      10,
+      71
+    ],
+    [
+      10,
+      11,
+      71
+    ],
+    [
+      10,
+      12,
+      194
+    ],
+    [
+      10,
+      13,
+      84
+    ],
+    [
+      10,
+      14,
+      84
+    ],
+    [
+      11,
+      2,
+      71
+    ],
+    [
+      11,
+      12,
+      194
+    ],
+    [
+      11,
+      13,
+      84
+    ],
+    [
+      11,
+      14,
+      84
+    ],
+    [
+      12,
+      2,
+      71
+    ],
+    [
+      12,
+      12,
+      194
+    ],
+    [
+      12,
+      13,
+      84
+    ],
+    [
+      12,
+      14,
+      84
+    ],
+    [
+      13,
+      2,
+      71
+    ],
+    [
+      13,
+      9,
+      71
+    ],
+    [
+      13,
+      11,
+      28
+    ],
+    [
+      13,
+      12,
+      31
+    ],
+    [
+      13,
+      13,
+      84
+    ],
+    [
+      13,
+      14,
+      84
+    ],
+    [
+      14,
+      2,
+      71
+    ],
+    [
+      14,
+      11,
+      29
+    ],
+    [
+      14,
+      12,
+      32
+    ],
+    [
+      14,
+      13,
+      84
+    ],
+    [
+      14,
+      14,
+      84
+    ],
+    [
+      15,
+      2,
+      20
+    ],
+    [
+      15,
+      3,
+      20
+    ],
+    [
+      15,
+      4,
+      20
+    ],
+    [
+      15,
+      5,
+      20
+    ],
+    [
+      15,
+      6,
+      20
+    ],
+    [
+      15,
+      7,
+      20
+    ],
+    [
+      15,
+      8,
+      20
+    ],
+    [
+      15,
+      9,
+      20
+    ],
+    [
+      15,
+      10,
+      20
+    ],
+    [
+      15,
+      11,
+      30
+    ],
+    [
+      15,
+      12,
+      33
+    ],
+    [
+      15,
+      13,
+      84
+    ],
+    [
+      15,
+      14,
+      84
+    ]
+  ],
+  "unknownCells": [],
+  "evidence": [
+    {
+      "sequence": 11232,
+      "tick": 6710,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11232-tick-06710.png"
+    },
+    {
+      "sequence": 11233,
+      "tick": 6714,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11233-tick-06714.png"
+    },
+    {
+      "sequence": 11234,
+      "tick": 6719,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/optional-6-2-later/11234-tick-06719.png"
+    }
+  ],
+  "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+  "sourceSequenceRange": [
+    11232,
+    11234
+  ],
+  "method": "Exact supplied 16x16 atlas pixels, fixed camera0, explicit unique sequence bounds. Coin-presence union prevents collection from erasing initial coins. No hidden contents inferred.",
+  "id": "bonus-coins-late",
+  "level": "6-2",
+  "role": "optional-coin-room",
+  "background": "#000000",
+  "spawn": [
+    24,
+    0
+  ],
+  "coinsObserved": 18,
+  "spawnStatus": "Exact supplied-player template gives originX24 in the first room capture; initial offscreen feetY0 is inferred.",
+  "connections": [
+    {
+      "from": "main",
+      "to": "bonus-coins-late",
+      "kind": "pipe-down",
+      "entrance": {
+        "x": 2448,
+        "y": 160,
+        "width": 32
+      },
+      "target": {
+        "x": 24,
+        "feetY": 0,
+        "cameraX": 0
+      },
+      "status": "Entry and room observed through normal controller input; exact spawn height and transition frames inferred.",
+      "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+      "sourceTicks": [
+        6654,
+        6710
+      ],
+      "sourceSequences": [
+        11227,
+        11232
+      ],
+      "sourceRangeQualification": "Full actual entry recipe, including any failed earlier encounters; exact transition lies inside its final entering request."
+    },
+    {
+      "from": "bonus-coins-late",
+      "to": "main",
+      "kind": "pipe-right",
+      "entrance": {
+        "x": 208,
+        "y": 176,
+        "width": 32,
+        "height": 32
+      },
+      "target": {
+        "x": 2872,
+        "feetY": 176,
+        "cameraX": 2816
+      },
+      "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+      "sourceTicks": [
+        6710,
+        6763
+      ],
+      "sourceSequences": [
+        11233,
+        11238
+      ],
+      "status": "Side-pipe entry and return to actual main pipe x2864/top176 observed. Fixed camera2816 identified by main artwork; initial emergence position inferred."
+    }
+  ],
+  "entryRecipe": {
+    "resetThenRecordedPrefixTicks": 6654,
+    "sourceSequences": [
+      11227,
+      11232
+    ],
+    "requests": [
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 3,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 32,
+        "nativeFrames": 241
+      },
+      {
+        "op": "step",
+        "buttons": [],
+        "ticks": 4,
+        "nativeFrames": 30
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 3,
+        "nativeFrames": 22
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 2,
+        "nativeFrames": 15
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12,
+        "nativeFrames": 91
+      }
+    ]
+  },
+  "returnRecipe": [
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 4,
+      "nativeFrames": 30
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "a"
+      ],
+      "ticks": 5,
+      "nativeFrames": 37
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 8,
+      "nativeFrames": 60
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 16,
+      "nativeFrames": 120
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 12,
+      "nativeFrames": 91
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 8,
+      "nativeFrames": 60
+    }
+  ],
+  "uncertainties": [
+    "Hidden blocks/contents absent from screenshots are not established.",
+    "Exact transition frame counts not sampled every native frame.",
+    "Initial room spawn and main pipe emergence origins inferred from observed falling/emerging sprites."
+  ],
+  "returnPrecision": {
+    "sourceTrace": "evidence/local/optional-6-2-later/trace.jsonl",
+    "sourceSequence": 11238,
+    "sourceTick": 6763,
+    "observedScreenOrigin": [
+      56,
+      176
+    ],
+    "observedCamera": 2816,
+    "observedWorldOrigin": [
+      2872,
+      176
+    ],
+    "mainGeometryExactMatches": {
+      "sourceSequence": 11237,
+      "matching": 65,
+      "total": 65,
+      "pixelRatio": 1
+    },
+    "status": "Actual side-pipe exit. Sequence11237 is a partial emerging player pose; sequence11238 is an exact complete143-opaque-pixel standing match. All65 visible canonical main metatiles in11237 match exact supplied artwork at camera2816."
+  }
+}

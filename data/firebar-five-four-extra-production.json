@@ -1,0 +1,79 @@
+{
+  "schema": "accepted-five-four-extra-firebars-v1",
+  "level": "5-4",
+  "area": "main",
+  "expectedExistingFirebars": [
+    {
+      "x": 376,
+      "y": 120,
+      "length": 12,
+      "speed": 0.032
+    },
+    {
+      "x": 696,
+      "y": 216,
+      "length": 6,
+      "speed": 0.030679615757712823,
+      "motor": {
+        "direction": 1,
+        "initialUnits": 763,
+        "evidence": "Seven independent chain-registered histories; shared+5/32/native CW motor; freshpreactivation0/20/13 phase predictions confirmed. Raw reference mixed-frame center errors7..8px still fail2px; see evidence/firebar-5-4-shared-verification.json."
+      }
+    },
+    {
+      "x": 792,
+      "y": 152,
+      "length": 6,
+      "speed": -0.03236
+    },
+    {
+      "x": 888,
+      "y": 88,
+      "length": 6,
+      "speed": -0.02956
+    },
+    {
+      "x": 984,
+      "y": 152,
+      "length": 6,
+      "speed": -0.02964
+    },
+    {
+      "x": 1176,
+      "y": 152,
+      "length": 6,
+      "speed": -0.0321
+    },
+    {
+      "x": 1320,
+      "y": 104,
+      "length": 6,
+      "speed": -0.03244
+    },
+    {
+      "x": 1480,
+      "y": 168,
+      "length": 6,
+      "speed": 0.02971
+    },
+    {
+      "x": 1656,
+      "y": 184,
+      "length": 6,
+      "speed": 0.04373
+    }
+  ],
+  "objects": [
+    {
+      "proposal": "evidence/firebar-five-four-extra-888-proposal.json",
+      "proposalSha256": "87f67afb378ddf9655451a79d696d446bcd7b6dbdd01d472027b9034bbb6f425"
+    },
+    {
+      "proposal": "evidence/firebar-five-four-extra-1080-proposal.json",
+      "proposalSha256": "2e09d078af335c60480e5a85714fa9f74e0528f15ccf9a0d7012c3782254ca7c"
+    }
+  ],
+  "qualification": "Accept only the two independently observed additional floor bars and shared physical motors. Raw7..8px still fail2px; native first-update origin remains uncertain by about1frame. No recovered256pixel base, new collision-radius, traversal or99percent fullscene pass is claimed.",
+  "bases": "Already accepted semantic196 assemblies880/208 and1072/208 remain unchanged:182observed/74inferred pixels each.",
+  "existing696EvidenceUnchanged": true
+}

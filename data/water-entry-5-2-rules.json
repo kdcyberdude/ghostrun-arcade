@@ -1,0 +1,15 @@
+{
+  "level": "5-2",
+  "area": "optional-water",
+  "source": "data/optional-five-two-entry-measurements.json",
+  "classification": "Inferred transition/standing hold and initial velocity fit; measured first standing32 and seven later falling poses, not an observed offscreen spawn.",
+  "transitionFrames": 72,
+  "visibleDelay": 0,
+  "initialStandFrames": 7,
+  "controlFeetY": 80,
+  "spawn": [24,32],
+  "spawnVelocity": [0,0.375],
+  "platformLoadPhase": [125.1875,85.25],
+  "platformEvidence": "Independent5-2 exact48px platform samples in evidence/vine-optional-water-actors.json. Firststanding+76 phases126.125/86.1875 and firstswimming+83 phases132.6875/92.75 fit15/16px per nativeframe. Room load+75 is inferred, yielding separate phases125.1875/85.25; offscreen256px wrap remains inferred.",
+  "explanation": "Two controller-delay frames precede the trigger.72pipeframes load the room at75 after pre-down;7stationary entryframes retain observed standing32 at76; first gravity update at83 reaches32.4765625 withvy0.4765625. Existing independent entry gravity0.1015625/cap4.125 fits seven later samples within2px. TIME remains blank throughfeet71 and appears by92, supporting geometric80 release; early horizontal controls are inferred."
+}

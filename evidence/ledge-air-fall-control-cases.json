@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-05T21:00:52.282Z",
+  "tolerancePixels": 2,
+  "toleranceNativeFrames": 2,
+  "prefixDecisionCount": 56,
+  "cases": [
+    {
+      "name": "pipe-fall-reverse",
+      "actions": [
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 428,
+          "x": 981,
+          "y": 192,
+          "camera": 867,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-057.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 435,
+          "x": 995,
+          "y": 208,
+          "camera": 881,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-058.png"
+        },
+        {
+          "mask": 36,
+          "frames": 8,
+          "nativeFrame": 443,
+          "x": 1005,
+          "y": 208,
+          "camera": 891,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-059.png"
+        },
+        {
+          "mask": 36,
+          "frames": 7,
+          "nativeFrame": 450,
+          "x": 1006,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-060.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 458,
+          "x": 1004,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-061.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 465,
+          "x": 1003,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-062.png"
+        }
+      ]
+    },
+    {
+      "name": "pipe-fall-reverse-no-b",
+      "actions": [
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 428,
+          "x": 981,
+          "y": 192,
+          "camera": 867,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-057.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 435,
+          "x": 995,
+          "y": 208,
+          "camera": 881,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-058.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 443,
+          "x": 1005,
+          "y": 208,
+          "camera": 891,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-059.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 450,
+          "x": 1006,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-060.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 458,
+          "x": 1004,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-061.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 465,
+          "x": 1004,
+          "y": 208,
+          "camera": 893,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ledge-air-fall-2026-11-05T21-00-49.860Z/pipe-fall-reverse-no-b-062.png"
+        }
+      ]
+    }
+  ]
+}

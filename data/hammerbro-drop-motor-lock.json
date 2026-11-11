@@ -1,0 +1,19 @@
+{
+  "schema": "hammerbro-drop-motor-lock-v1",
+  "lockedUtc": "2026-11-06T04:24:42.727Z",
+  "planSha256": "e78c4ad9a29779e35aaeeb3f6615db097c85cd74825ee7ddf5e5573284e5a7dc",
+  "fitSha256": "c08f25c26a1248278245196b32c70e61e13389db905e6156a4cf00bc0868f360",
+  "candidateSha256": "6f67b657844c399e75135cfd977ac6c0738d73f449092d5c05dabe2efd2cdb6b",
+  "motor": {
+    "gravity": 0.234375,
+    "maxFall": 3.125,
+    "strongImpulse": 6.125,
+    "weakImpulse": 3.125
+  },
+  "choicePolicy": null,
+  "calibrationMaxPixelError": 1,
+  "calibrationTotalAbsoluteError": 19,
+  "positionConvention": "Inclusive visual bottom rawY+23; native collisionfoot unresolved.",
+  "onsetQualification": "Best fitted launch fractions/ticks are nuisance estimates.2frameevent tolerance cannot establish native onset when sampledbracket is7/8frames.",
+  "productionChanges": false
+}

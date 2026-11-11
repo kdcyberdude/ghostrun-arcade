@@ -1,0 +1,36 @@
+{
+  "schema": "locked-firebar-motion-v1",
+  "lockedUtc": "2026-11-06T00:52:08.432Z",
+  "hashes": {
+    "data/firebar-motion-candidate.json": "ba2e8404066b99a14c331e0b88e13e3b266039ad30811842e049249a5f4faac6",
+    "tools/firebar-motion-candidate.mjs": "5eac5d07cda69432b4e86f7fdc9fc2e5aa73b041f72785491ebc08b13f64d63d",
+    "tools/firebar-model-fit.py": "a4ed833f2da7e635e9c25338fd75aa498f92b9e6fe2280c6ab9793f05a408c6a"
+  },
+  "calibrationCases": [
+    "cal-prewait0",
+    "cal-prewait20",
+    "cal-hold-low-0",
+    "cal-hold-low-20",
+    "cal-hold-high-0",
+    "cal-hold-high-20",
+    "cal-fullview",
+    "cal-hold-upper-0",
+    "cal-hold-upper-20",
+    "cal-hold-visible-0",
+    "cal-hold-visible-20",
+    "cal-creep-activation"
+  ],
+  "reservation": {
+    "directory": "evidence/local/firebar-fresh-2026-11-06T00-29-14Z",
+    "case": "reserved-prewait13",
+    "status": "Captured but geometry/PNGs unopened and unextracted before this lock; controller metadata only inspected"
+  },
+  "selected": "First1-4 bar central8px quad becomes active when its origin enters viewport; advance32-bin accumulator by-5/32 orientation/native gameplay frame immediately; use measured six-orb lookup and pivot+(0,1).",
+  "limits": "Other initial phases/directions/lengths, death freeze and collision radius remain unqualified. Activation frame is estimated from actual camera PNG observations by a frozen nearest-interpolation rule, not from bar angles.",
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "next": "Open reserved13 once, evaluate without changing candidate or thresholds."
+}

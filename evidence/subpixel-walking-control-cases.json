@@ -1,0 +1,622 @@
+{
+  "tolerancePixels": 2,
+  "evidence": "evidence/subpixel-heldout3-measurements.json",
+  "planSha256": "a15ed8265c6860254a274c63750e2c86879757f8d0765cbcb091c8ec007f69ef",
+  "method": "Four fresh reference resets and ordinary controls, exact actual native-frame counts, screenshot template registration. Candidate was locked before capture; reference images were viewed. No hidden reference state.",
+  "cases": [
+    {
+      "name": "heldout3-partial-walk-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-002.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-003.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 43,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-004.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 47,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-005.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 55,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-006.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-007.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 62,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-008.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 59,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-009.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 53,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-010.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 46,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-011.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 37,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-012.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 32,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-013.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 27,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-partial-walk-turn-014.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout3-walk-double-reversal",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-001.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-002.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 43,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-003.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 48,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-004.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 55,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-005.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 64,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-006.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 75,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-007.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 85,
+          "y": 208,
+          "camera": 4,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-008.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 90,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-009.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 88,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-010.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 84,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-011.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 82,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-012.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 84,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-013.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 88,
+          "y": 208,
+          "camera": 9,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-014.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 95,
+          "y": 208,
+          "camera": 15,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-015.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 102,
+          "y": 208,
+          "camera": 22,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-016.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 107,
+          "y": 208,
+          "camera": 27,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-double-reversal-017.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout3-walk-pause-turn",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-002.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-003.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-004.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 43,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-005.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 48,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-006.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 55,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-007.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 64,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-008.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 75,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-009.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 87,
+          "y": 208,
+          "camera": 4,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-010.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 82,
+          "x": 97,
+          "y": 208,
+          "camera": 11,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-011.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 90,
+          "x": 109,
+          "y": 208,
+          "camera": 19,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-012.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 97,
+          "x": 120,
+          "y": 208,
+          "camera": 26,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-013.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 105,
+          "x": 130,
+          "y": 208,
+          "camera": 34,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-014.png"
+        },
+        {
+          "mask": 4,
+          "frames": 7,
+          "nativeFrame": 112,
+          "x": 135,
+          "y": 208,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-015.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 120,
+          "x": 134,
+          "y": 208,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-016.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 127,
+          "x": 134,
+          "y": 208,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-017.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 135,
+          "x": 134,
+          "y": 208,
+          "camera": 39,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-018.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 142,
+          "x": 135,
+          "y": 208,
+          "camera": 40,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-019.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 150,
+          "x": 137,
+          "y": 208,
+          "camera": 42,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-020.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 157,
+          "x": 141,
+          "y": 208,
+          "camera": 46,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-walk-pause-turn-021.png"
+        }
+      ]
+    },
+    {
+      "name": "heldout3-slow-walk-reverse-jump",
+      "actions": [
+        {
+          "mask": 0,
+          "frames": 0,
+          "nativeFrame": 0,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-000.png"
+        },
+        {
+          "mask": 0,
+          "frames": 7,
+          "nativeFrame": 7,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-001.png"
+        },
+        {
+          "mask": 0,
+          "frames": 8,
+          "nativeFrame": 15,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-002.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 22,
+          "x": 40,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-003.png"
+        },
+        {
+          "mask": 8,
+          "frames": 8,
+          "nativeFrame": 30,
+          "x": 43,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-004.png"
+        },
+        {
+          "mask": 8,
+          "frames": 7,
+          "nativeFrame": 37,
+          "x": 47,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-005.png"
+        },
+        {
+          "mask": 4,
+          "frames": 8,
+          "nativeFrame": 45,
+          "x": 51,
+          "y": 208,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-006.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 52,
+          "x": 49,
+          "y": 189,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-007.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 60,
+          "x": 47,
+          "y": 165,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-008.png"
+        },
+        {
+          "mask": 16,
+          "frames": 7,
+          "nativeFrame": 67,
+          "x": 45,
+          "y": 151,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-009.png"
+        },
+        {
+          "mask": 16,
+          "frames": 8,
+          "nativeFrame": 75,
+          "x": 43,
+          "y": 143,
+          "camera": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/subpixel-heldout-2026-11-05T22-06-17.443Z/heldout3-slow-walk-reverse-jump-010.png"
+        }
+      ]
+    }
+  ]
+}

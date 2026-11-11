@@ -1,0 +1,17 @@
+{
+  "evidence": "Native Lakitu (id 17) and Spiny egg (id 18) measured from the recorded route trace and a full-RAM branching probe from 4-1 (docs/NATIVE_ROLES.md, Lakitu section). Speeds are in 1/16 px per frame; distances d are Lakitu x minus Mario x on integer positions.",
+  "rules": {
+    "throwInterval": 128,
+    "leftSpeed": { "base": 5, "spread": 60, "divisor": 4 },
+    "chase": { "switchDistance": -57, "farFast": 60, "farSlow": 59, "farStopped": 58, "fastClass": 26, "fastBase": 48, "slowBase": 32, "stoppedBase": 5, "plateau": 15, "rightOffset": 64, "leftOffset": 60 },
+    "flee": { "speed": -16 },
+    "spawnFraction": 0.7,
+    "firstThrowAge": 2,
+    "egg": { "vy0": -3.125, "gravity": 0.125, "maxFall": 3.25, "aboveLakitu": 4.375 }
+  },
+  "levels": [
+    { "level": "4-1", "area": "main", "x": 480, "fleeX": 3318 },
+    { "level": "6-1", "area": "main", "x": 512, "fleeX": 2708 },
+    { "level": "8-2", "area": "main", "x": 336, "fleeX": 760 }
+  ]
+}

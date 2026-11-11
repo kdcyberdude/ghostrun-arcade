@@ -1,0 +1,22 @@
+{
+  "schema": "observed-death-rules-v1",
+  "source": "data/death-transition-measurements.json",
+  "classification": "Shared runtime candidates measured from two fresh ordinary side-contact deaths; clock and intro mismatches remain explicit.",
+  "freezeFrames": 15,
+  "launchVelocity": -4,
+  "gravity": 0.15625,
+  "maxFall": 4.25,
+  "oldSceneFrames": 208,
+  "updateOrder": "After the freeze, add current velocity to feetY, then add gravity and cap the following velocity.",
+  "evidence": {
+    "arc": "With first motion aligned, all20 observed frozen/arc feet positions are within1px across fresh running and walking side deaths.",
+    "freeze": "A shared14..19-frame freeze is compatible with collision-event brackets;15 is an explicit candidate. Current production collides one frame early/late across these cases, leaving4–5px global arc error.",
+    "oldSceneFrames": "Both source old-scene disappearance brackets admit204..217frames after collision;208 is a shared candidate, separate from the life-text visibility delay.",
+    "intro": "Normal intro169 and its existing visibility stages are retained. Fresh reference cases have different observed end windows; a universal death-specific intro duration is not established."
+  },
+  "remainingLimitations": [
+    "The original2px global position tolerance is not passed by the common freeze with the current collision clocks.",
+    "Fresh running respawn visibility remains later than its measured event window under the retained normal intro duration.",
+    "Neutral post-respawn controls do not measure exact input activation."
+  ]
+}

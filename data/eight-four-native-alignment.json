@@ -1,0 +1,53 @@
+{
+ "schema": "eight-four-native-alignment-v1",
+ "method": "Read-only per-frame native trace of the recorded winning route (evidence/local/native-trace-winning-route-ram-20261109.jsonl) plus a native-only RAM probe of the loop frames (tools/fidelity-lab/area-probe.mjs; evidence/area-transitions-findings-20261109.md). No ROM inspection. Native x is absolute inside the level: each pipe room starts on its own page (entry x 56 on page 7/12/0/16 reads 1848/3128/56/4152) and a wrong corridor subtracts exactly 1024 (four pages) from Mario and the camera. The remake keeps the repeated stream as one longer area, so native x is compared 'unrolled' (+1024 per wrap).",
+ "loop": {
+  "periodPx": 1024,
+  "observed": [
+   {"area": "main", "nativeRow": 76008, "xBefore": 1274, "xAfter": 251, "cameraBefore": "page 4 x 138", "cameraAfter": "page 0 x 139"},
+   {"area": "area-3", "nativeRow": 77049, "xBefore": 3843, "xAfter": 2822, "cameraBefore": "page 14 x 147", "cameraAfter": "page 10 x 150"},
+   {"area": "area-3", "nativeRow": 77571, "xBefore": 3821, "xAfter": 2798, "cameraBefore": "page 14 x 135", "cameraAfter": "page 10 x 136"}
+  ],
+  "note": "The player page byte and the camera page byte both drop by 4 and the enemy slots are cleared on the wrap frame; Mario's sub-page x and the camera's x continue unchanged (x -= 1024 plus that frame's movement)."
+ },
+ "area-3": {
+  "evidence": "The previous layout candidate repeated the corridor every 992 px (camera-registration alias of 80 px, see evidence/eight-four-loop-ambiguity.md). The native wraps are exactly 1024, so two plain floor columns pad the corridor to 1024 and the repeat distance becomes 1024: the third-pass pipe then sits at 576+2048, where the native entry is at x 2630+... (3654-3072+2048).",
+  "padColumns": 2,
+  "padFromColumn": 61,
+  "width": 1024,
+  "loopAt": 1024
+ },
+ "area-4": {
+  "evidence": "Native Mario starts the pipe animation at x 1076 and is stopped at x 1088 (engine 2, rows 78989-79040) with the pipe wall 16 px further, at 1104; he lands on the pipe ledge (feet 144) at x 1072. The compiled map has the mouth at 1136 and the wall at 1152, i.e. three columns (48 px) of camera-registration alias before the final ledge. The three columns 67-69 are removed and everything from column 70 moves left by 48 px.",
+  "removeColumns": {"from": 67, "to": 69},
+  "shiftFromColumn": 70,
+  "shiftColumns": -3,
+  "width": 1168,
+  "pipeX": 1088
+ },
+ "main": {
+  "evidence": "Native lap 1 passes x 1072-1151 on the floor and x 1125-1175 in one jump where the compiled map has a block and a pipe; its sprite never lands on a pipe top at 112 near x 1264-1295 but falls from the y=96 ledge (x 1282) onto a pipe top at feet 128 at unrolled x 1301 (page 0 x 277 after the first wrap) and enters it with Down. The compiled map's pipe at x 1136 and tall pipe at x 1264 are not solid natively; the native exit pipe is added at unrolled x 1296-1327 and the area is extended to hold it.",
+  "width": 1536,
+  "clearColumns": {"from": 67, "to": 71, "rows": [8, 9, 10, 11, 12], "floorRows": [13, 14]},
+  "clearColumns2": {"from": 79, "to": 80, "rows": [7, 8, 9, 10, 11, 12], "floorRows": [13, 14]},
+  "floorId": 98,
+  "ledge": {"fromColumn": 75, "toColumn": 80, "row": 6, "id": 98, "note": "native Mario stands at feet 96 for x 1207-1281 (unrolled)"},
+  "ceiling": {"fromColumn": 81, "toColumn": 90, "row": 2, "id": 98},
+  "floorExtension": {"fromColumn": 81, "toColumn": 90, "rows": [13, 14], "id": 98},
+  "pipe": {"topLeft": 16, "topRight": 17, "bodyLeft": 20, "bodyRight": 21, "leftColumn": 81, "topRow": 8, "bottomRow": 14, "specX": 1312, "specY": 128},
+  "removeEnemies": [{"kind": "piranha", "x": 1128}],
+  "nativeMap": {
+   "evidence": "Native collision map RAM 0x500-0x69f replayed along the recorded route from 8-4 frame 75000 (tools/fidelity-lab/area-probe.mjs, 1,200 rows, every on-screen column read on every row, no column changed value; remake row = native row + 2). Columns 66-74 are empty from the ceiling down to the bottom row: a pit crossed on the id 40 lift (x 1067..1120, y 208, slot 1 from row 633) on which the route stands at native y 176 (x 1123, row 812); the earlier 'floor at x 1072-1151' was that lift. Columns 59-63 are floor (no lava), 79-80 are solid from y 160 like 75-78, the y 96 ledge is columns 76-79 only, there is no pipe at columns 39-40 and column 22 has the ceiling.",
+   "clear": [{"from": 66, "to": 74, "rows": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]}, {"from": 65, "to": 68, "rows": [6]}, {"from": 39, "to": 40, "rows": [11, 12]}],
+   "solid": [{"from": 59, "to": 63, "rows": [13, 14]}, {"from": 79, "to": 80, "rows": [10, 11, 12]}, {"from": 39, "to": 40, "rows": [13, 14]}, {"from": 22, "to": 22, "rows": [2]}],
+   "id": 98
+  },
+  "continuation": {
+   "evidence": "Native collision map RAM 0x500-0x69f (row 0 = y 32) read on every on-screen column while replaying explore-r4 8-4/mood5 from the 8-4 checkpoint (2,560 rows, wraps at rows 616 and 1546) and the recorded route (1,100 rows, one wrap); both runs give the same map for columns 0-89. Unrolled columns 96-191 repeat columns 32-95 cell for cell, so after column 95 the stream is columns 32-95 again (period 1024; the wrap itself subtracts 1024 when Mario reaches x 1281). Enemy objects repeat with the same +1024: Piranhas 824/1304/1448 -> 1848/2328/2472 -> 2872, Goombas 900/923/947 -> 1921/1945/1969 -> 2944/2967/2992, lift id 40 1120 -> 2144. Columns 83-89 and 92-95 are solid from y 160, a non-enterable pipe at columns 90-91 has its top at y 112 (native 0x12/0x13 top, 0x14/0x15 body).",
+   "solidColumns": [{"from": 83, "to": 89, "rows": [10, 11, 12, 13, 14]}, {"from": 92, "to": 95, "rows": [10, 11, 12, 13, 14]}],
+   "ceiling": {"fromColumn": 91, "toColumn": 95, "row": 2},
+   "pipe": {"leftColumn": 90, "topRow": 7, "bottomRow": 14, "topLeft": 16, "topRight": 17, "bodyLeft": 20, "bodyRight": 21},
+   "id": 98, "loopAt": 1536, "loopTo": 512
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "classification": "Screenshot-fitted intermediate improvement; strict 2px acceptance remains FAIL in three explored cases.",
+  "parameters": {
+    "stroke": -1.51953125,
+    "freshStrokeYFraction": 0.3125,
+    "strokeSurfaceThreshold": 52,
+    "surfaceStroke": 0.4375,
+    "forceEntryThreshold": 51.5,
+    "forceExitThreshold": 53,
+    "surfaceGravity": 0.09375,
+    "heldGravity": 0.046875,
+    "gravity": 0.0390625,
+    "maxFall": 4.125
+  },
+  "stateRules": "A fresh stroke resets vertical fraction and chooses its impulse from pre-reset feet. Rising into the surface band enables stronger gravity; descending beyond the band disables it. After surface contact, neutral gravity applies until landing or area load. Entry falls retain their separately measured gravity.",
+  "provenance": {
+    "freeze": "data/water-geometric-candidate-freeze.json",
+    "candidateSourceSHA256": "ad3c40591c3cabddfb4b367f86f3ff500dd85e9b7efa7dccee2072ca331bde0a",
+    "frozenUTC": "2026-11-05T22:54:58.037Z",
+    "reservedEvaluatedUTC": "2026-11-05T22:58:41.708Z",
+    "report": "evidence/water-geometric-candidate-comparison.json",
+    "training": "24 explored cases, maximum error 97px to3px; all nine previously passing guards retained.",
+    "reserved": "Two cases evaluated once after freeze, both maximum2px; no subsequent tuning.",
+    "remaining": "water-surface-pulses first +3px at158; heldout-23frame-strokes first +3px at270; heldout-long-strokes first -3px at240. Frames are actual native frames after settled reset."
+  },
+  "limits": "Values and geometric state are inferred from small-player images. Big/fire-player strokes, currents, combat and 2-native-frame timing equivalence remain unmeasured. This is not a water acceptance pass or campaign win."
+}

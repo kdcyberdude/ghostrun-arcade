@@ -1,0 +1,5853 @@
+{
+  "schema": "public-bowser-interaction-observations-v1",
+  "updatedUtc": "2026-11-06T01:38:20.313Z",
+  "level": "2-4",
+  "directory": "evidence/local/bowser-2026-11-06T01-36-57.831Z",
+  "trace": "evidence/local/bowser-2026-11-06T01-36-57.831Z/trace.jsonl",
+  "method": "Fresh standard recorded masks verified against dense source, then ordinary manual controls. Actual native-frame sums and exact opaque supplied-art matches only. Camera inferred by zero-tolerance RGB known-map registration constrained to0..24px per7/8-frame decision.",
+  "limits": [
+    "Enemy match requires complete front/rear supplied cells and may fail under occlusion or split sprite rows; missing poses are not invented.",
+    "Flame match requires all opaque supplied pixels; partially obscured flames can be missed.",
+    "Event times remain bounded by the actual7/8-frame screenshot spacing.",
+    "No fire-flower/Bowser hit-point or reward measurement yet."
+  ],
+  "prefixVerifications": [
+    {
+      "tick": 2596,
+      "nativeFrame": 19501,
+      "expectedNativeFrame": 19501,
+      "samePng": true
+    }
+  ],
+  "observations": [
+    {
+      "branch": 1,
+      "sequence": 426,
+      "experiment": "generator-delay-heldout-brake",
+      "tick": 2597,
+      "nativeFrame": 19509,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00426-generator-delay-heldout-brake-t2597.png",
+      "camera": 1127,
+      "cameraCandidates": [
+        {
+          "camera": 1127,
+          "mismatch": 147,
+          "support": 7616,
+          "error": 0.019301470588235295
+        },
+        {
+          "camera": 1119,
+          "mismatch": 366,
+          "support": 7592,
+          "error": 0.0482086406743941
+        },
+        {
+          "camera": 1126,
+          "mismatch": 499,
+          "support": 7616,
+          "error": 0.06551995798319328
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 130,
+        "visibleLeft": 112,
+        "visibleTop": 146,
+        "visibleRight": 127,
+        "visibleBottom": 161,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1239,
+        "feetY": 161
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 427,
+      "experiment": "generator-delay-heldout-brake",
+      "tick": 2598,
+      "nativeFrame": 19516,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00427-generator-delay-heldout-brake-t2598.png",
+      "camera": 1140,
+      "cameraCandidates": [
+        {
+          "camera": 1140,
+          "mismatch": 171,
+          "support": 7664,
+          "error": 0.022312108559498955
+        },
+        {
+          "camera": 1132,
+          "mismatch": 546,
+          "support": 7616,
+          "error": 0.07169117647058823
+        },
+        {
+          "camera": 1139,
+          "mismatch": 593,
+          "support": 7640,
+          "error": 0.07761780104712042
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 138,
+        "visibleLeft": 112,
+        "visibleTop": 154,
+        "visibleRight": 127,
+        "visibleBottom": 169,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1252,
+        "feetY": 169
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 428,
+      "experiment": "generator-delay-heldout-brake",
+      "tick": 2599,
+      "nativeFrame": 19524,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00428-generator-delay-heldout-brake-t2599.png",
+      "camera": 1152,
+      "cameraCandidates": [
+        {
+          "camera": 1152,
+          "mismatch": 171,
+          "support": 7808,
+          "error": 0.02190061475409836
+        },
+        {
+          "camera": 1144,
+          "mismatch": 547,
+          "support": 7712,
+          "error": 0.07092842323651452
+        },
+        {
+          "camera": 1151,
+          "mismatch": 571,
+          "support": 7784,
+          "error": 0.07335560123329908
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 169,
+        "visibleLeft": 112,
+        "visibleTop": 185,
+        "visibleRight": 127,
+        "visibleBottom": 200,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1264,
+        "feetY": 200
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 429,
+      "experiment": "generator-delay-heldout-brake",
+      "tick": 2600,
+      "nativeFrame": 19531,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        36
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00429-generator-delay-heldout-brake-t2600.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 150,
+          "support": 7832,
+          "error": 0.019152196118488254
+        },
+        {
+          "camera": 1163,
+          "mismatch": 521,
+          "support": 7928,
+          "error": 0.06571644803229061
+        },
+        {
+          "camera": 1156,
+          "mismatch": 557,
+          "support": 7856,
+          "error": 0.07090122199592667
+        }
+      ],
+      "player": {
+        "originX": 110,
+        "originY": 177,
+        "visibleLeft": 112,
+        "visibleTop": 193,
+        "visibleRight": 122,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "left",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1265,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 430,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2601,
+      "nativeFrame": 19539,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00430-generator-delay-heldout-wait-t2601.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 144,
+          "support": 7832,
+          "error": 0.018386108273748723
+        },
+        {
+          "camera": 1163,
+          "mismatch": 525,
+          "support": 7928,
+          "error": 0.0662209889001009
+        },
+        {
+          "camera": 1156,
+          "mismatch": 551,
+          "support": 7856,
+          "error": 0.07013747454175152
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 431,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2602,
+      "nativeFrame": 19546,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00431-generator-delay-heldout-wait-t2602.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 149,
+          "support": 7832,
+          "error": 0.019024514811031665
+        },
+        {
+          "camera": 1163,
+          "mismatch": 524,
+          "support": 7928,
+          "error": 0.06609485368314834
+        },
+        {
+          "camera": 1156,
+          "mismatch": 556,
+          "support": 7856,
+          "error": 0.07077393075356415
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 432,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2603,
+      "nativeFrame": 19554,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00432-generator-delay-heldout-wait-t2603.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 147,
+          "support": 7832,
+          "error": 0.018769152196118487
+        },
+        {
+          "camera": 1163,
+          "mismatch": 528,
+          "support": 7928,
+          "error": 0.06659939455095863
+        },
+        {
+          "camera": 1156,
+          "mismatch": 554,
+          "support": 7856,
+          "error": 0.0705193482688391
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 433,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2604,
+      "nativeFrame": 19561,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00433-generator-delay-heldout-wait-t2604.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 113,
+          "support": 7832,
+          "error": 0.014427987742594484
+        },
+        {
+          "camera": 1163,
+          "mismatch": 501,
+          "support": 7928,
+          "error": 0.06319374369323916
+        },
+        {
+          "camera": 1156,
+          "mismatch": 520,
+          "support": 7856,
+          "error": 0.06619144602851323
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 434,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2605,
+      "nativeFrame": 19569,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00434-generator-delay-heldout-wait-t2605.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 104,
+          "support": 7832,
+          "error": 0.013278855975485188
+        },
+        {
+          "camera": 1163,
+          "mismatch": 485,
+          "support": 7928,
+          "error": 0.06117558022199798
+        },
+        {
+          "camera": 1156,
+          "mismatch": 506,
+          "support": 7856,
+          "error": 0.06440936863543788
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 435,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2606,
+      "nativeFrame": 19576,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00435-generator-delay-heldout-wait-t2606.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 129,
+          "support": 7832,
+          "error": 0.0164708886618999
+        },
+        {
+          "camera": 1163,
+          "mismatch": 501,
+          "support": 7928,
+          "error": 0.06319374369323916
+        },
+        {
+          "camera": 1156,
+          "mismatch": 530,
+          "support": 7856,
+          "error": 0.0674643584521385
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 436,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2607,
+      "nativeFrame": 19584,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00436-generator-delay-heldout-wait-t2607.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 122,
+          "support": 7832,
+          "error": 0.01557711950970378
+        },
+        {
+          "camera": 1163,
+          "mismatch": 498,
+          "support": 7928,
+          "error": 0.06281533804238143
+        },
+        {
+          "camera": 1156,
+          "mismatch": 523,
+          "support": 7856,
+          "error": 0.06657331975560081
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 437,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2608,
+      "nativeFrame": 19591,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00437-generator-delay-heldout-wait-t2608.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 105,
+          "support": 7832,
+          "error": 0.013406537282941777
+        },
+        {
+          "camera": 1163,
+          "mismatch": 482,
+          "support": 7928,
+          "error": 0.06079717457114026
+        },
+        {
+          "camera": 1156,
+          "mismatch": 501,
+          "support": 7856,
+          "error": 0.06377291242362526
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 438,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2609,
+      "nativeFrame": 19599,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00438-generator-delay-heldout-wait-t2609.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 93,
+          "support": 7832,
+          "error": 0.011874361593462716
+        },
+        {
+          "camera": 1163,
+          "mismatch": 470,
+          "support": 7928,
+          "error": 0.05928355196770938
+        },
+        {
+          "camera": 1156,
+          "mismatch": 493,
+          "support": 7856,
+          "error": 0.06275458248472505
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 439,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2610,
+      "nativeFrame": 19606,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00439-generator-delay-heldout-wait-t2610.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 90,
+          "support": 7832,
+          "error": 0.011491317671092951
+        },
+        {
+          "camera": 1163,
+          "mismatch": 461,
+          "support": 7928,
+          "error": 0.05814833501513623
+        },
+        {
+          "camera": 1156,
+          "mismatch": 494,
+          "support": 7856,
+          "error": 0.06288187372708758
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 440,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2611,
+      "nativeFrame": 19614,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00440-generator-delay-heldout-wait-t2611.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 88,
+          "support": 7832,
+          "error": 0.011235955056179775
+        },
+        {
+          "camera": 1163,
+          "mismatch": 463,
+          "support": 7928,
+          "error": 0.058400605449041375
+        },
+        {
+          "camera": 1156,
+          "mismatch": 493,
+          "support": 7856,
+          "error": 0.06275458248472505
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 441,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2612,
+      "nativeFrame": 19621,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00441-generator-delay-heldout-wait-t2612.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 98,
+          "support": 7832,
+          "error": 0.01251276813074566
+        },
+        {
+          "camera": 1163,
+          "mismatch": 473,
+          "support": 7928,
+          "error": 0.0596619576185671
+        },
+        {
+          "camera": 1156,
+          "mismatch": 505,
+          "support": 7856,
+          "error": 0.06428207739307536
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 442,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2613,
+      "nativeFrame": 19629,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00442-generator-delay-heldout-wait-t2613.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 118,
+          "support": 7832,
+          "error": 0.015066394279877425
+        },
+        {
+          "camera": 1163,
+          "mismatch": 489,
+          "support": 7928,
+          "error": 0.061680121089808276
+        },
+        {
+          "camera": 1156,
+          "mismatch": 522,
+          "support": 7856,
+          "error": 0.06644602851323829
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 443,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2614,
+      "nativeFrame": 19636,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00443-generator-delay-heldout-wait-t2614.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 143,
+          "support": 7832,
+          "error": 0.018258426966292134
+        },
+        {
+          "camera": 1163,
+          "mismatch": 507,
+          "support": 7928,
+          "error": 0.0639505549949546
+        },
+        {
+          "camera": 1156,
+          "mismatch": 548,
+          "support": 7856,
+          "error": 0.06975560081466395
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 444,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2615,
+      "nativeFrame": 19644,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00444-generator-delay-heldout-wait-t2615.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 160,
+          "support": 7832,
+          "error": 0.020429009193054137
+        },
+        {
+          "camera": 1163,
+          "mismatch": 527,
+          "support": 7928,
+          "error": 0.06647325933400605
+        },
+        {
+          "camera": 1156,
+          "mismatch": 563,
+          "support": 7856,
+          "error": 0.07166496945010184
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 445,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2616,
+      "nativeFrame": 19651,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00445-generator-delay-heldout-wait-t2616.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 166,
+          "support": 7832,
+          "error": 0.021195097037793667
+        },
+        {
+          "camera": 1163,
+          "mismatch": 531,
+          "support": 7928,
+          "error": 0.06697780020181635
+        },
+        {
+          "camera": 1156,
+          "mismatch": 570,
+          "support": 7856,
+          "error": 0.07255600814663951
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 446,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2617,
+      "nativeFrame": 19659,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00446-generator-delay-heldout-wait-t2617.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 160,
+          "support": 7832,
+          "error": 0.020429009193054137
+        },
+        {
+          "camera": 1163,
+          "mismatch": 527,
+          "support": 7928,
+          "error": 0.06647325933400605
+        },
+        {
+          "camera": 1156,
+          "mismatch": 563,
+          "support": 7856,
+          "error": 0.07166496945010184
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 447,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2618,
+      "nativeFrame": 19667,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00447-generator-delay-heldout-wait-t2618.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 152,
+          "support": 7832,
+          "error": 0.01940755873340143
+        },
+        {
+          "camera": 1163,
+          "mismatch": 527,
+          "support": 7928,
+          "error": 0.06647325933400605
+        },
+        {
+          "camera": 1156,
+          "mismatch": 558,
+          "support": 7856,
+          "error": 0.07102851323828921
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 448,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2619,
+      "nativeFrame": 19674,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00448-generator-delay-heldout-wait-t2619.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 166,
+          "support": 7832,
+          "error": 0.021195097037793667
+        },
+        {
+          "camera": 1163,
+          "mismatch": 539,
+          "support": 7928,
+          "error": 0.06798688193743693
+        },
+        {
+          "camera": 1156,
+          "mismatch": 571,
+          "support": 7856,
+          "error": 0.07268329938900203
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 449,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2620,
+      "nativeFrame": 19682,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00449-generator-delay-heldout-wait-t2620.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 156,
+          "support": 7832,
+          "error": 0.019918283963227784
+        },
+        {
+          "camera": 1163,
+          "mismatch": 533,
+          "support": 7928,
+          "error": 0.06723007063572149
+        },
+        {
+          "camera": 1156,
+          "mismatch": 563,
+          "support": 7856,
+          "error": 0.07166496945010184
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 450,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2621,
+      "nativeFrame": 19689,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00450-generator-delay-heldout-wait-t2621.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 165,
+          "support": 7832,
+          "error": 0.021067415730337078
+        },
+        {
+          "camera": 1163,
+          "mismatch": 540,
+          "support": 7928,
+          "error": 0.0681130171543895
+        },
+        {
+          "camera": 1156,
+          "mismatch": 572,
+          "support": 7856,
+          "error": 0.07281059063136457
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 451,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2622,
+      "nativeFrame": 19697,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00451-generator-delay-heldout-wait-t2622.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 137,
+          "support": 7832,
+          "error": 0.017492339121552604
+        },
+        {
+          "camera": 1163,
+          "mismatch": 524,
+          "support": 7928,
+          "error": 0.06609485368314834
+        },
+        {
+          "camera": 1156,
+          "mismatch": 544,
+          "support": 7856,
+          "error": 0.06924643584521385
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 452,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2623,
+      "nativeFrame": 19704,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00452-generator-delay-heldout-wait-t2623.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 145,
+          "support": 7832,
+          "error": 0.018513789581205312
+        },
+        {
+          "camera": 1163,
+          "mismatch": 534,
+          "support": 7928,
+          "error": 0.06735620585267407
+        },
+        {
+          "camera": 1156,
+          "mismatch": 552,
+          "support": 7856,
+          "error": 0.07026476578411406
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 453,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2624,
+      "nativeFrame": 19712,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00453-generator-delay-heldout-wait-t2624.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 158,
+          "support": 7832,
+          "error": 0.02017364657814096
+        },
+        {
+          "camera": 1163,
+          "mismatch": 544,
+          "support": 7928,
+          "error": 0.06861755802219979
+        },
+        {
+          "camera": 1156,
+          "mismatch": 565,
+          "support": 7856,
+          "error": 0.07191955193482688
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 454,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2625,
+      "nativeFrame": 19719,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00454-generator-delay-heldout-wait-t2625.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 175,
+          "support": 7832,
+          "error": 0.02234422880490296
+        },
+        {
+          "camera": 1163,
+          "mismatch": 556,
+          "support": 7928,
+          "error": 0.07013118062563067
+        },
+        {
+          "camera": 1156,
+          "mismatch": 582,
+          "support": 7856,
+          "error": 0.07408350305498981
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 455,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2626,
+      "nativeFrame": 19727,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00455-generator-delay-heldout-wait-t2626.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 166,
+          "support": 7832,
+          "error": 0.021195097037793667
+        },
+        {
+          "camera": 1163,
+          "mismatch": 550,
+          "support": 7928,
+          "error": 0.06937436932391523
+        },
+        {
+          "camera": 1156,
+          "mismatch": 573,
+          "support": 7856,
+          "error": 0.07293788187372709
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 456,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2627,
+      "nativeFrame": 19734,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00456-generator-delay-heldout-wait-t2627.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 171,
+          "support": 7832,
+          "error": 0.02183350357507661
+        },
+        {
+          "camera": 1163,
+          "mismatch": 552,
+          "support": 7928,
+          "error": 0.06962663975782038
+        },
+        {
+          "camera": 1156,
+          "mismatch": 578,
+          "support": 7856,
+          "error": 0.07357433808553972
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 457,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2628,
+      "nativeFrame": 19742,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00457-generator-delay-heldout-wait-t2628.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 161,
+          "support": 7832,
+          "error": 0.020556690500510726
+        },
+        {
+          "camera": 1163,
+          "mismatch": 543,
+          "support": 7928,
+          "error": 0.06849142280524723
+        },
+        {
+          "camera": 1156,
+          "mismatch": 568,
+          "support": 7856,
+          "error": 0.07230142566191446
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 458,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2629,
+      "nativeFrame": 19749,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00458-generator-delay-heldout-wait-t2629.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 162,
+          "support": 7832,
+          "error": 0.020684371807967315
+        },
+        {
+          "camera": 1163,
+          "mismatch": 537,
+          "support": 7928,
+          "error": 0.06773461150353179
+        },
+        {
+          "camera": 1156,
+          "mismatch": 569,
+          "support": 7856,
+          "error": 0.07242871690427699
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 459,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2630,
+      "nativeFrame": 19757,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00459-generator-delay-heldout-wait-t2630.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 155,
+          "support": 7832,
+          "error": 0.019790602655771195
+        },
+        {
+          "camera": 1163,
+          "mismatch": 532,
+          "support": 7928,
+          "error": 0.06710393541876893
+        },
+        {
+          "camera": 1156,
+          "mismatch": 562,
+          "support": 7856,
+          "error": 0.0715376782077393
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 460,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2631,
+      "nativeFrame": 19764,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00460-generator-delay-heldout-wait-t2631.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 138,
+          "support": 7832,
+          "error": 0.017620020429009193
+        },
+        {
+          "camera": 1163,
+          "mismatch": 513,
+          "support": 7928,
+          "error": 0.06470736629667002
+        },
+        {
+          "camera": 1156,
+          "mismatch": 545,
+          "support": 7856,
+          "error": 0.06937372708757637
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 461,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2632,
+      "nativeFrame": 19772,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00461-generator-delay-heldout-wait-t2632.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 129,
+          "support": 7832,
+          "error": 0.0164708886618999
+        },
+        {
+          "camera": 1163,
+          "mismatch": 503,
+          "support": 7928,
+          "error": 0.0634460141271443
+        },
+        {
+          "camera": 1156,
+          "mismatch": 533,
+          "support": 7856,
+          "error": 0.06784623217922607
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 462,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2633,
+      "nativeFrame": 19779,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00462-generator-delay-heldout-wait-t2633.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 122,
+          "support": 7832,
+          "error": 0.01557711950970378
+        },
+        {
+          "camera": 1163,
+          "mismatch": 491,
+          "support": 7928,
+          "error": 0.06193239152371342
+        },
+        {
+          "camera": 1156,
+          "mismatch": 525,
+          "support": 7856,
+          "error": 0.06682790224032586
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 463,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2634,
+      "nativeFrame": 19787,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00463-generator-delay-heldout-wait-t2634.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 116,
+          "support": 7832,
+          "error": 0.01481103166496425
+        },
+        {
+          "camera": 1163,
+          "mismatch": 487,
+          "support": 7928,
+          "error": 0.06142785065590313
+        },
+        {
+          "camera": 1156,
+          "mismatch": 518,
+          "support": 7856,
+          "error": 0.0659368635437882
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 464,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2635,
+      "nativeFrame": 19794,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00464-generator-delay-heldout-wait-t2635.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 95,
+          "support": 7832,
+          "error": 0.012129724208375894
+        },
+        {
+          "camera": 1163,
+          "mismatch": 472,
+          "support": 7928,
+          "error": 0.05953582240161453
+        },
+        {
+          "camera": 1156,
+          "mismatch": 500,
+          "support": 7856,
+          "error": 0.06364562118126273
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 465,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2636,
+      "nativeFrame": 19802,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00465-generator-delay-heldout-wait-t2636.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 88,
+          "support": 7832,
+          "error": 0.011235955056179775
+        },
+        {
+          "camera": 1163,
+          "mismatch": 454,
+          "support": 7928,
+          "error": 0.057265388496468214
+        },
+        {
+          "camera": 1156,
+          "mismatch": 484,
+          "support": 7856,
+          "error": 0.06160896130346232
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 466,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2637,
+      "nativeFrame": 19809,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00466-generator-delay-heldout-wait-t2637.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 86,
+          "support": 7832,
+          "error": 0.010980592441266599
+        },
+        {
+          "camera": 1163,
+          "mismatch": 453,
+          "support": 7928,
+          "error": 0.05713925327951564
+        },
+        {
+          "camera": 1156,
+          "mismatch": 488,
+          "support": 7856,
+          "error": 0.062118126272912425
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 467,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2638,
+      "nativeFrame": 19817,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00467-generator-delay-heldout-wait-t2638.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 88,
+          "support": 7832,
+          "error": 0.011235955056179775
+        },
+        {
+          "camera": 1163,
+          "mismatch": 460,
+          "support": 7928,
+          "error": 0.058022199798183655
+        },
+        {
+          "camera": 1156,
+          "mismatch": 492,
+          "support": 7856,
+          "error": 0.06262729124236252
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 468,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2639,
+      "nativeFrame": 19824,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00468-generator-delay-heldout-wait-t2639.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 97,
+          "support": 7832,
+          "error": 0.01238508682328907
+        },
+        {
+          "camera": 1163,
+          "mismatch": 471,
+          "support": 7928,
+          "error": 0.059409687184661955
+        },
+        {
+          "camera": 1156,
+          "mismatch": 503,
+          "support": 7856,
+          "error": 0.0640274949083503
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 469,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2640,
+      "nativeFrame": 19832,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00469-generator-delay-heldout-wait-t2640.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 107,
+          "support": 7832,
+          "error": 0.013661899897854953
+        },
+        {
+          "camera": 1163,
+          "mismatch": 486,
+          "support": 7928,
+          "error": 0.061301715438950556
+        },
+        {
+          "camera": 1156,
+          "mismatch": 511,
+          "support": 7856,
+          "error": 0.06504582484725051
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 470,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2641,
+      "nativeFrame": 19839,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00470-generator-delay-heldout-wait-t2641.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 105,
+          "support": 7832,
+          "error": 0.013406537282941777
+        },
+        {
+          "camera": 1163,
+          "mismatch": 487,
+          "support": 7928,
+          "error": 0.06142785065590313
+        },
+        {
+          "camera": 1156,
+          "mismatch": 509,
+          "support": 7856,
+          "error": 0.06479124236252545
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 471,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2642,
+      "nativeFrame": 19847,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00471-generator-delay-heldout-wait-t2642.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 158,
+          "support": 7832,
+          "error": 0.02017364657814096
+        },
+        {
+          "camera": 1163,
+          "mismatch": 532,
+          "support": 7928,
+          "error": 0.06710393541876893
+        },
+        {
+          "camera": 1156,
+          "mismatch": 562,
+          "support": 7856,
+          "error": 0.0715376782077393
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 472,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2643,
+      "nativeFrame": 19854,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00472-generator-delay-heldout-wait-t2643.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 176,
+          "support": 7832,
+          "error": 0.02247191011235955
+        },
+        {
+          "camera": 1163,
+          "mismatch": 547,
+          "support": 7928,
+          "error": 0.06899596367305752
+        },
+        {
+          "camera": 1156,
+          "mismatch": 579,
+          "support": 7856,
+          "error": 0.07370162932790224
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 473,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2644,
+      "nativeFrame": 19862,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00473-generator-delay-heldout-wait-t2644.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 176,
+          "support": 7832,
+          "error": 0.02247191011235955
+        },
+        {
+          "camera": 1163,
+          "mismatch": 547,
+          "support": 7928,
+          "error": 0.06899596367305752
+        },
+        {
+          "camera": 1156,
+          "mismatch": 581,
+          "support": 7856,
+          "error": 0.07395621181262729
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 474,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2645,
+      "nativeFrame": 19869,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00474-generator-delay-heldout-wait-t2645.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 177,
+          "support": 7832,
+          "error": 0.02259959141981614
+        },
+        {
+          "camera": 1163,
+          "mismatch": 548,
+          "support": 7928,
+          "error": 0.06912209889001009
+        },
+        {
+          "camera": 1156,
+          "mismatch": 580,
+          "support": 7856,
+          "error": 0.07382892057026477
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 475,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2646,
+      "nativeFrame": 19877,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00475-generator-delay-heldout-wait-t2646.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 167,
+          "support": 7832,
+          "error": 0.021322778345250256
+        },
+        {
+          "camera": 1163,
+          "mismatch": 544,
+          "support": 7928,
+          "error": 0.06861755802219979
+        },
+        {
+          "camera": 1156,
+          "mismatch": 573,
+          "support": 7856,
+          "error": 0.07293788187372709
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 476,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2647,
+      "nativeFrame": 19884,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00476-generator-delay-heldout-wait-t2647.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 159,
+          "support": 7832,
+          "error": 0.020301327885597548
+        },
+        {
+          "camera": 1163,
+          "mismatch": 532,
+          "support": 7928,
+          "error": 0.06710393541876893
+        },
+        {
+          "camera": 1156,
+          "mismatch": 564,
+          "support": 7856,
+          "error": 0.07179226069246436
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 477,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2648,
+      "nativeFrame": 19892,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00477-generator-delay-heldout-wait-t2648.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 165,
+          "support": 7832,
+          "error": 0.021067415730337078
+        },
+        {
+          "camera": 1163,
+          "mismatch": 540,
+          "support": 7928,
+          "error": 0.0681130171543895
+        },
+        {
+          "camera": 1156,
+          "mismatch": 572,
+          "support": 7856,
+          "error": 0.07281059063136457
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 478,
+      "experiment": "generator-delay-heldout-wait",
+      "tick": 2649,
+      "nativeFrame": 19899,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        0
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00478-generator-delay-heldout-wait-t2649.png",
+      "camera": 1155,
+      "cameraCandidates": [
+        {
+          "camera": 1155,
+          "mismatch": 157,
+          "support": 7832,
+          "error": 0.020045965270684373
+        },
+        {
+          "camera": 1163,
+          "mismatch": 532,
+          "support": 7928,
+          "error": 0.06710393541876893
+        },
+        {
+          "camera": 1156,
+          "mismatch": 564,
+          "support": 7856,
+          "error": 0.07179226069246436
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "worldX": 1262,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 479,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2650,
+      "nativeFrame": 19907,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00479-generator-delay-heldout-approach-t2650.png",
+      "camera": 1156,
+      "cameraCandidates": [
+        {
+          "camera": 1156,
+          "mismatch": 178,
+          "support": 7856,
+          "error": 0.02265784114052953
+        },
+        {
+          "camera": 1155,
+          "mismatch": 569,
+          "support": 7832,
+          "error": 0.07265066394279877
+        },
+        {
+          "camera": 1157,
+          "mismatch": 590,
+          "support": 7856,
+          "error": 0.07510183299389002
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 107,
+        "visibleTop": 193,
+        "visibleRight": 121,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1263,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 480,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2651,
+      "nativeFrame": 19914,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00480-generator-delay-heldout-approach-t2651.png",
+      "camera": 1158,
+      "cameraCandidates": [
+        {
+          "camera": 1158,
+          "mismatch": 156,
+          "support": 7880,
+          "error": 0.01979695431472081
+        },
+        {
+          "camera": 1157,
+          "mismatch": 546,
+          "support": 7856,
+          "error": 0.0695010183299389
+        },
+        {
+          "camera": 1159,
+          "mismatch": 568,
+          "support": 7880,
+          "error": 0.07208121827411168
+        }
+      ],
+      "player": {
+        "originX": 107,
+        "originY": 177,
+        "visibleLeft": 110,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1265,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 481,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2652,
+      "nativeFrame": 19922,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00481-generator-delay-heldout-approach-t2652.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 159,
+          "support": 7904,
+          "error": 0.020116396761133602
+        },
+        {
+          "camera": 1159,
+          "mismatch": 544,
+          "support": 7880,
+          "error": 0.06903553299492386
+        },
+        {
+          "camera": 1161,
+          "mismatch": 565,
+          "support": 7904,
+          "error": 0.0714827935222672
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 482,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2653,
+      "nativeFrame": 19929,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00482-generator-delay-heldout-approach-t2653.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 158,
+          "support": 7904,
+          "error": 0.019989878542510123
+        },
+        {
+          "camera": 1161,
+          "mismatch": 565,
+          "support": 7904,
+          "error": 0.0714827935222672
+        },
+        {
+          "camera": 1168,
+          "mismatch": 618,
+          "support": 8000,
+          "error": 0.07725
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 483,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2654,
+      "nativeFrame": 19937,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00483-generator-delay-heldout-approach-t2654.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 159,
+          "support": 7904,
+          "error": 0.020116396761133602
+        },
+        {
+          "camera": 1161,
+          "mismatch": 565,
+          "support": 7904,
+          "error": 0.0714827935222672
+        },
+        {
+          "camera": 1168,
+          "mismatch": 618,
+          "support": 8000,
+          "error": 0.07725
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 484,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2655,
+      "nativeFrame": 19944,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00484-generator-delay-heldout-approach-t2655.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 154,
+          "support": 7904,
+          "error": 0.019483805668016194
+        },
+        {
+          "camera": 1161,
+          "mismatch": 562,
+          "support": 7904,
+          "error": 0.07110323886639676
+        },
+        {
+          "camera": 1168,
+          "mismatch": 614,
+          "support": 8000,
+          "error": 0.07675
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 485,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2656,
+      "nativeFrame": 19952,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00485-generator-delay-heldout-approach-t2656.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 160,
+          "support": 7904,
+          "error": 0.020242914979757085
+        },
+        {
+          "camera": 1161,
+          "mismatch": 566,
+          "support": 7904,
+          "error": 0.07160931174089069
+        },
+        {
+          "camera": 1168,
+          "mismatch": 619,
+          "support": 8000,
+          "error": 0.077375
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 486,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2657,
+      "nativeFrame": 19959,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00486-generator-delay-heldout-approach-t2657.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 136,
+          "support": 7904,
+          "error": 0.01720647773279352
+        },
+        {
+          "camera": 1161,
+          "mismatch": 544,
+          "support": 7904,
+          "error": 0.06882591093117409
+        },
+        {
+          "camera": 1168,
+          "mismatch": 596,
+          "support": 8000,
+          "error": 0.0745
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 487,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2658,
+      "nativeFrame": 19967,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00487-generator-delay-heldout-approach-t2658.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 126,
+          "support": 7904,
+          "error": 0.015941295546558706
+        },
+        {
+          "camera": 1161,
+          "mismatch": 533,
+          "support": 7904,
+          "error": 0.06743421052631579
+        },
+        {
+          "camera": 1168,
+          "mismatch": 588,
+          "support": 8000,
+          "error": 0.0735
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 488,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2659,
+      "nativeFrame": 19975,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00488-generator-delay-heldout-approach-t2659.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 97,
+          "support": 7904,
+          "error": 0.012272267206477732
+        },
+        {
+          "camera": 1161,
+          "mismatch": 508,
+          "support": 7904,
+          "error": 0.06427125506072874
+        },
+        {
+          "camera": 1168,
+          "mismatch": 564,
+          "support": 8000,
+          "error": 0.0705
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 489,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2660,
+      "nativeFrame": 19982,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00489-generator-delay-heldout-approach-t2660.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 98,
+          "support": 7904,
+          "error": 0.012398785425101215
+        },
+        {
+          "camera": 1161,
+          "mismatch": 508,
+          "support": 7904,
+          "error": 0.06427125506072874
+        },
+        {
+          "camera": 1168,
+          "mismatch": 562,
+          "support": 8000,
+          "error": 0.07025
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 490,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2661,
+      "nativeFrame": 19990,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00490-generator-delay-heldout-approach-t2661.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 132,
+          "support": 7904,
+          "error": 0.016700404858299597
+        },
+        {
+          "camera": 1161,
+          "mismatch": 536,
+          "support": 7904,
+          "error": 0.06781376518218624
+        },
+        {
+          "camera": 1168,
+          "mismatch": 591,
+          "support": 8000,
+          "error": 0.073875
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 491,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2662,
+      "nativeFrame": 19997,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00491-generator-delay-heldout-approach-t2662.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 117,
+          "support": 7904,
+          "error": 0.014802631578947368
+        },
+        {
+          "camera": 1161,
+          "mismatch": 521,
+          "support": 7904,
+          "error": 0.06591599190283401
+        },
+        {
+          "camera": 1168,
+          "mismatch": 577,
+          "support": 8000,
+          "error": 0.072125
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 492,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2663,
+      "nativeFrame": 20005,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00492-generator-delay-heldout-approach-t2663.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 87,
+          "support": 7904,
+          "error": 0.011007085020242915
+        },
+        {
+          "camera": 1161,
+          "mismatch": 491,
+          "support": 7904,
+          "error": 0.062120445344129555
+        },
+        {
+          "camera": 1168,
+          "mismatch": 546,
+          "support": 8000,
+          "error": 0.06825
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 493,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2664,
+      "nativeFrame": 20012,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00493-generator-delay-heldout-approach-t2664.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 93,
+          "support": 7904,
+          "error": 0.011766194331983806
+        },
+        {
+          "camera": 1161,
+          "mismatch": 495,
+          "support": 7904,
+          "error": 0.06262651821862349
+        },
+        {
+          "camera": 1168,
+          "mismatch": 552,
+          "support": 8000,
+          "error": 0.069
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 494,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2665,
+      "nativeFrame": 20020,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00494-generator-delay-heldout-approach-t2665.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 73,
+          "support": 7904,
+          "error": 0.00923582995951417
+        },
+        {
+          "camera": 1161,
+          "mismatch": 479,
+          "support": 7904,
+          "error": 0.06060222672064777
+        },
+        {
+          "camera": 1168,
+          "mismatch": 532,
+          "support": 8000,
+          "error": 0.0665
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 495,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2666,
+      "nativeFrame": 20027,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00495-generator-delay-heldout-approach-t2666.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 86,
+          "support": 7904,
+          "error": 0.010880566801619434
+        },
+        {
+          "camera": 1161,
+          "mismatch": 492,
+          "support": 7904,
+          "error": 0.062246963562753034
+        },
+        {
+          "camera": 1168,
+          "mismatch": 544,
+          "support": 8000,
+          "error": 0.068
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 496,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2667,
+      "nativeFrame": 20035,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00496-generator-delay-heldout-approach-t2667.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 98,
+          "support": 7904,
+          "error": 0.012398785425101215
+        },
+        {
+          "camera": 1161,
+          "mismatch": 503,
+          "support": 7904,
+          "error": 0.06363866396761134
+        },
+        {
+          "camera": 1168,
+          "mismatch": 553,
+          "support": 8000,
+          "error": 0.069125
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 497,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2668,
+      "nativeFrame": 20042,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00497-generator-delay-heldout-approach-t2668.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 122,
+          "support": 7904,
+          "error": 0.015435222672064777
+        },
+        {
+          "camera": 1161,
+          "mismatch": 530,
+          "support": 7904,
+          "error": 0.06705465587044535
+        },
+        {
+          "camera": 1168,
+          "mismatch": 574,
+          "support": 8000,
+          "error": 0.07175
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 498,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2669,
+      "nativeFrame": 20050,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00498-generator-delay-heldout-approach-t2669.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 142,
+          "support": 7904,
+          "error": 0.017965587044534412
+        },
+        {
+          "camera": 1161,
+          "mismatch": 547,
+          "support": 7904,
+          "error": 0.06920546558704453
+        },
+        {
+          "camera": 1168,
+          "mismatch": 590,
+          "support": 8000,
+          "error": 0.07375
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 499,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2670,
+      "nativeFrame": 20057,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00499-generator-delay-heldout-approach-t2670.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 157,
+          "support": 7904,
+          "error": 0.01986336032388664
+        },
+        {
+          "camera": 1161,
+          "mismatch": 565,
+          "support": 7904,
+          "error": 0.0714827935222672
+        },
+        {
+          "camera": 1168,
+          "mismatch": 608,
+          "support": 8000,
+          "error": 0.076
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 500,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2671,
+      "nativeFrame": 20065,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00500-generator-delay-heldout-approach-t2671.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 161,
+          "support": 7904,
+          "error": 0.020369433198380568
+        },
+        {
+          "camera": 1161,
+          "mismatch": 567,
+          "support": 7904,
+          "error": 0.07173582995951416
+        },
+        {
+          "camera": 1168,
+          "mismatch": 609,
+          "support": 8000,
+          "error": 0.076125
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 501,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2672,
+      "nativeFrame": 20072,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00501-generator-delay-heldout-approach-t2672.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 162,
+          "support": 7904,
+          "error": 0.020495951417004048
+        },
+        {
+          "camera": 1161,
+          "mismatch": 569,
+          "support": 7904,
+          "error": 0.07198886639676114
+        },
+        {
+          "camera": 1168,
+          "mismatch": 616,
+          "support": 8000,
+          "error": 0.077
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 502,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2673,
+      "nativeFrame": 20080,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00502-generator-delay-heldout-approach-t2673.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 157,
+          "support": 7904,
+          "error": 0.01986336032388664
+        },
+        {
+          "camera": 1161,
+          "mismatch": 563,
+          "support": 7904,
+          "error": 0.07122975708502025
+        },
+        {
+          "camera": 1168,
+          "mismatch": 613,
+          "support": 8000,
+          "error": 0.076625
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 503,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2674,
+      "nativeFrame": 20087,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00503-generator-delay-heldout-approach-t2674.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 154,
+          "support": 7904,
+          "error": 0.019483805668016194
+        },
+        {
+          "camera": 1161,
+          "mismatch": 562,
+          "support": 7904,
+          "error": 0.07110323886639676
+        },
+        {
+          "camera": 1168,
+          "mismatch": 614,
+          "support": 8000,
+          "error": 0.07675
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 504,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2675,
+      "nativeFrame": 20095,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00504-generator-delay-heldout-approach-t2675.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 170,
+          "support": 7904,
+          "error": 0.0215080971659919
+        },
+        {
+          "camera": 1161,
+          "mismatch": 575,
+          "support": 7904,
+          "error": 0.07274797570850203
+        },
+        {
+          "camera": 1168,
+          "mismatch": 628,
+          "support": 8000,
+          "error": 0.0785
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 106,
+        "visibleTop": 193,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 505,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2676,
+      "nativeFrame": 20102,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00505-generator-delay-heldout-approach-t2676.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 155,
+          "support": 7904,
+          "error": 0.019610323886639677
+        },
+        {
+          "camera": 1161,
+          "mismatch": 565,
+          "support": 7904,
+          "error": 0.0714827935222672
+        },
+        {
+          "camera": 1168,
+          "mismatch": 620,
+          "support": 8000,
+          "error": 0.0775
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 109,
+        "visibleTop": 193,
+        "visibleRight": 119,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 506,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2677,
+      "nativeFrame": 20110,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00506-generator-delay-heldout-approach-t2677.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 149,
+          "support": 7904,
+          "error": 0.018851214574898786
+        },
+        {
+          "camera": 1161,
+          "mismatch": 561,
+          "support": 7904,
+          "error": 0.07097672064777327
+        },
+        {
+          "camera": 1168,
+          "mismatch": 618,
+          "support": 8000,
+          "error": 0.07725
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 177,
+        "visibleLeft": 108,
+        "visibleTop": 194,
+        "visibleRight": 120,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "worldX": 1266,
+        "feetY": 208
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 507,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2678,
+      "nativeFrame": 20117,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00507-generator-delay-heldout-approach-t2678.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 167,
+          "support": 7904,
+          "error": 0.02112854251012146
+        },
+        {
+          "camera": 1161,
+          "mismatch": 576,
+          "support": 7904,
+          "error": 0.0728744939271255
+        },
+        {
+          "camera": 1168,
+          "mismatch": 630,
+          "support": 8000,
+          "error": 0.07875
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 158,
+        "visibleLeft": 106,
+        "visibleTop": 174,
+        "visibleRight": 121,
+        "visibleBottom": 189,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1266,
+        "feetY": 189
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 508,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2679,
+      "nativeFrame": 20125,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00508-generator-delay-heldout-approach-t2679.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 192,
+          "support": 7904,
+          "error": 0.024291497975708502
+        },
+        {
+          "camera": 1161,
+          "mismatch": 598,
+          "support": 7904,
+          "error": 0.0756578947368421
+        },
+        {
+          "camera": 1168,
+          "mismatch": 667,
+          "support": 8000,
+          "error": 0.083375
+        }
+      ],
+      "player": {
+        "originX": 106,
+        "originY": 134,
+        "visibleLeft": 106,
+        "visibleTop": 150,
+        "visibleRight": 121,
+        "visibleBottom": 165,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1266,
+        "feetY": 165
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 509,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2680,
+      "nativeFrame": 20132,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00509-generator-delay-heldout-approach-t2680.png",
+      "camera": 1160,
+      "cameraCandidates": [
+        {
+          "camera": 1160,
+          "mismatch": 184,
+          "support": 7904,
+          "error": 0.02327935222672065
+        },
+        {
+          "camera": 1161,
+          "mismatch": 592,
+          "support": 7904,
+          "error": 0.07489878542510121
+        },
+        {
+          "camera": 1168,
+          "mismatch": 672,
+          "support": 8000,
+          "error": 0.084
+        }
+      ],
+      "player": {
+        "originX": 108,
+        "originY": 120,
+        "visibleLeft": 108,
+        "visibleTop": 136,
+        "visibleRight": 123,
+        "visibleBottom": 151,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1268,
+        "feetY": 151
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 510,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2681,
+      "nativeFrame": 20140,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00510-generator-delay-heldout-approach-t2681.png",
+      "camera": 1162,
+      "cameraCandidates": [
+        {
+          "camera": 1162,
+          "mismatch": 189,
+          "support": 7928,
+          "error": 0.023839556004036328
+        },
+        {
+          "camera": 1161,
+          "mismatch": 573,
+          "support": 7904,
+          "error": 0.07249493927125505
+        },
+        {
+          "camera": 1163,
+          "mismatch": 593,
+          "support": 7928,
+          "error": 0.07479818365287588
+        }
+      ],
+      "player": {
+        "originX": 110,
+        "originY": 112,
+        "visibleLeft": 110,
+        "visibleTop": 128,
+        "visibleRight": 125,
+        "visibleBottom": 143,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1272,
+        "feetY": 143
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 511,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2682,
+      "nativeFrame": 20147,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        32
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00511-generator-delay-heldout-approach-t2682.png",
+      "camera": 1167,
+      "cameraCandidates": [
+        {
+          "camera": 1167,
+          "mismatch": 182,
+          "support": 7976,
+          "error": 0.022818455366098295
+        },
+        {
+          "camera": 1168,
+          "mismatch": 556,
+          "support": 8000,
+          "error": 0.0695
+        },
+        {
+          "camera": 1175,
+          "mismatch": 572,
+          "support": 8024,
+          "error": 0.07128614157527417
+        }
+      ],
+      "player": {
+        "originX": 110,
+        "originY": 114,
+        "visibleLeft": 110,
+        "visibleTop": 130,
+        "visibleRight": 125,
+        "visibleBottom": 145,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "worldX": 1277,
+        "feetY": 145
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 512,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2683,
+      "nativeFrame": 20155,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00512-generator-delay-heldout-approach-t2683.png",
+      "camera": 1174,
+      "cameraCandidates": [
+        {
+          "camera": 1174,
+          "mismatch": 146,
+          "support": 8024,
+          "error": 0.018195413758723827
+        },
+        {
+          "camera": 1173,
+          "mismatch": 509,
+          "support": 8016,
+          "error": 0.06349800399201597
+        },
+        {
+          "camera": 1175,
+          "mismatch": 540,
+          "support": 8024,
+          "error": 0.06729810568295115
+        }
+      ],
+      "player": {
+        "originX": 110,
+        "originY": 129,
+        "visibleLeft": 110,
+        "visibleTop": 145,
+        "visibleRight": 124,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1284,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 513,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2684,
+      "nativeFrame": 20162,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00513-generator-delay-heldout-approach-t2684.png",
+      "camera": 1181,
+      "cameraCandidates": [
+        {
+          "camera": 1181,
+          "mismatch": 133,
+          "support": 8048,
+          "error": 0.016525844930417494
+        },
+        {
+          "camera": 1182,
+          "mismatch": 506,
+          "support": 8056,
+          "error": 0.0628103277060576
+        },
+        {
+          "camera": 1189,
+          "mismatch": 611,
+          "support": 8112,
+          "error": 0.07532051282051282
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1293,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 514,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2685,
+      "nativeFrame": 20170,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00514-generator-delay-heldout-approach-t2685.png",
+      "camera": 1194,
+      "cameraCandidates": [
+        {
+          "camera": 1194,
+          "mismatch": 154,
+          "support": 8184,
+          "error": 0.01881720430107527
+        },
+        {
+          "camera": 1193,
+          "mismatch": 517,
+          "support": 8160,
+          "error": 0.0633578431372549
+        },
+        {
+          "camera": 1186,
+          "mismatch": 624,
+          "support": 8088,
+          "error": 0.0771513353115727
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1306,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 515,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2686,
+      "nativeFrame": 20177,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00515-generator-delay-heldout-approach-t2686.png",
+      "camera": 1208,
+      "cameraCandidates": [
+        {
+          "camera": 1208,
+          "mismatch": 155,
+          "support": 8352,
+          "error": 0.018558429118773947
+        },
+        {
+          "camera": 1207,
+          "mismatch": 516,
+          "support": 8328,
+          "error": 0.06195965417867435
+        },
+        {
+          "camera": 1200,
+          "mismatch": 622,
+          "support": 8256,
+          "error": 0.0753391472868217
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 112,
+        "visibleTop": 145,
+        "visibleRight": 126,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "worldX": 1320,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 516,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2687,
+      "nativeFrame": 20185,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00516-generator-delay-heldout-approach-t2687.png",
+      "camera": 1228,
+      "cameraCandidates": [
+        {
+          "camera": 1228,
+          "mismatch": 188,
+          "support": 8448,
+          "error": 0.02225378787878788
+        },
+        {
+          "camera": 1227,
+          "mismatch": 611,
+          "support": 8448,
+          "error": 0.07232481060606061
+        },
+        {
+          "camera": 1229,
+          "mismatch": 728,
+          "support": 8448,
+          "error": 0.08617424242424243
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "visibleLeft": 115,
+        "visibleTop": 145,
+        "visibleRight": 125,
+        "visibleBottom": 160,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1340,
+        "feetY": 160
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 517,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2688,
+      "nativeFrame": 20192,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        8
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00517-generator-delay-heldout-approach-t2688.png",
+      "camera": 1245,
+      "cameraCandidates": [
+        {
+          "camera": 1245,
+          "mismatch": 177,
+          "support": 8496,
+          "error": 0.020833333333333332
+        },
+        {
+          "camera": 1237,
+          "mismatch": 676,
+          "support": 8464,
+          "error": 0.07986767485822306
+        },
+        {
+          "camera": 1246,
+          "mismatch": 688,
+          "support": 8504,
+          "error": 0.08090310442144873
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 136,
+        "visibleLeft": 115,
+        "visibleTop": 152,
+        "visibleRight": 125,
+        "visibleBottom": 167,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1357,
+        "feetY": 167
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 518,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2689,
+      "nativeFrame": 20200,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        2
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00518-generator-delay-heldout-approach-t2689.png",
+      "camera": 1265,
+      "cameraCandidates": [
+        {
+          "camera": 1265,
+          "mismatch": 168,
+          "support": 8576,
+          "error": 0.01958955223880597
+        },
+        {
+          "camera": 1257,
+          "mismatch": 672,
+          "support": 8544,
+          "error": 0.07865168539325842
+        },
+        {
+          "camera": 1266,
+          "mismatch": 788,
+          "support": 8584,
+          "error": 0.09179869524697111
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 166,
+        "visibleLeft": 115,
+        "visibleTop": 182,
+        "visibleRight": 125,
+        "visibleBottom": 197,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1377,
+        "feetY": 197
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 519,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2690,
+      "nativeFrame": 20207,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        42
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00519-generator-delay-heldout-approach-t2690.png",
+      "camera": 1283,
+      "cameraCandidates": [
+        {
+          "camera": 1283,
+          "mismatch": 119,
+          "support": 8648,
+          "error": 0.01376040703052729
+        },
+        {
+          "camera": 1275,
+          "mismatch": 621,
+          "support": 8616,
+          "error": 0.07207520891364902
+        },
+        {
+          "camera": 1284,
+          "mismatch": 797,
+          "support": 8656,
+          "error": 0.09207486136783734
+        }
+      ],
+      "player": {
+        "originX": 112,
+        "originY": 195,
+        "visibleLeft": 115,
+        "visibleTop": 211,
+        "visibleRight": 125,
+        "visibleBottom": 226,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "worldX": 1395,
+        "feetY": 226
+      },
+      "bowser": [],
+      "flames": [],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 520,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2691,
+      "nativeFrame": 20215,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00520-generator-delay-heldout-approach-t2691.png",
+      "camera": 1303,
+      "cameraCandidates": [
+        {
+          "camera": 1303,
+          "mismatch": 154,
+          "support": 8728,
+          "error": 0.01764436296975252
+        },
+        {
+          "camera": 1295,
+          "mismatch": 599,
+          "support": 8696,
+          "error": 0.0688822447102116
+        },
+        {
+          "camera": 1304,
+          "mismatch": 822,
+          "support": 8736,
+          "error": 0.09409340659340659
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 230,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1533
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 521,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2692,
+      "nativeFrame": 20222,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00521-generator-delay-heldout-approach-t2692.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 161,
+          "support": 8832,
+          "error": 0.018229166666666668
+        },
+        {
+          "camera": 1312,
+          "mismatch": 563,
+          "support": 8768,
+          "error": 0.06421076642335767
+        },
+        {
+          "camera": 1319,
+          "mismatch": 815,
+          "support": 8816,
+          "error": 0.09244555353901997
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 204,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1524
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 522,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2693,
+      "nativeFrame": 20230,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        56
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00522-generator-delay-heldout-approach-t2693.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 146,
+          "support": 8832,
+          "error": 0.016530797101449276
+        },
+        {
+          "camera": 1328,
+          "mismatch": 734,
+          "support": 8896,
+          "error": 0.0825089928057554
+        },
+        {
+          "camera": 1321,
+          "mismatch": 900,
+          "support": 8832,
+          "error": 0.10190217391304347
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 194,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1514
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 523,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2694,
+      "nativeFrame": 20237,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00523-generator-delay-heldout-approach-t2694.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 127,
+          "support": 8832,
+          "error": 0.014379528985507246
+        },
+        {
+          "camera": 1328,
+          "mismatch": 721,
+          "support": 8896,
+          "error": 0.08104766187050359
+        },
+        {
+          "camera": 1321,
+          "mismatch": 879,
+          "support": 8832,
+          "error": 0.09952445652173914
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 185,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1505
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 524,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2695,
+      "nativeFrame": 20245,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00524-generator-delay-heldout-approach-t2695.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 110,
+          "support": 8832,
+          "error": 0.012454710144927536
+        },
+        {
+          "camera": 1328,
+          "mismatch": 705,
+          "support": 8896,
+          "error": 0.07924910071942447
+        },
+        {
+          "camera": 1321,
+          "mismatch": 868,
+          "support": 8832,
+          "error": 0.09827898550724638
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 175,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1495
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 525,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2696,
+      "nativeFrame": 20252,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00525-generator-delay-heldout-approach-t2696.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 138,
+          "support": 8832,
+          "error": 0.015625
+        },
+        {
+          "camera": 1328,
+          "mismatch": 727,
+          "support": 8896,
+          "error": 0.08172212230215828
+        },
+        {
+          "camera": 1321,
+          "mismatch": 887,
+          "support": 8832,
+          "error": 0.1004302536231884
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 167,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1487
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 526,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2697,
+      "nativeFrame": 20260,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00526-generator-delay-heldout-approach-t2697.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 166,
+          "support": 8832,
+          "error": 0.018795289855072464
+        },
+        {
+          "camera": 1328,
+          "mismatch": 752,
+          "support": 8896,
+          "error": 0.08453237410071943
+        },
+        {
+          "camera": 1321,
+          "mismatch": 914,
+          "support": 8832,
+          "error": 0.10348731884057971
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 157,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1477
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 527,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2698,
+      "nativeFrame": 20267,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00527-generator-delay-heldout-approach-t2698.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 172,
+          "support": 8832,
+          "error": 0.01947463768115942
+        },
+        {
+          "camera": 1328,
+          "mismatch": 757,
+          "support": 8896,
+          "error": 0.08509442446043165
+        },
+        {
+          "camera": 1321,
+          "mismatch": 921,
+          "support": 8832,
+          "error": 0.10427989130434782
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 148,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1468
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 528,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2699,
+      "nativeFrame": 20275,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00528-generator-delay-heldout-approach-t2699.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 163,
+          "support": 8832,
+          "error": 0.018455615942028984
+        },
+        {
+          "camera": 1328,
+          "mismatch": 749,
+          "support": 8896,
+          "error": 0.08419514388489209
+        },
+        {
+          "camera": 1321,
+          "mismatch": 915,
+          "support": 8832,
+          "error": 0.10360054347826086
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 138,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1458
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 529,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2700,
+      "nativeFrame": 20283,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00529-generator-delay-heldout-approach-t2700.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 164,
+          "support": 8832,
+          "error": 0.018568840579710144
+        },
+        {
+          "camera": 1328,
+          "mismatch": 749,
+          "support": 8896,
+          "error": 0.08419514388489209
+        },
+        {
+          "camera": 1321,
+          "mismatch": 915,
+          "support": 8832,
+          "error": 0.10360054347826086
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 128,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1448
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 530,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2701,
+      "nativeFrame": 20290,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00530-generator-delay-heldout-approach-t2701.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 149,
+          "support": 8832,
+          "error": 0.016870471014492752
+        },
+        {
+          "camera": 1328,
+          "mismatch": 734,
+          "support": 8896,
+          "error": 0.0825089928057554
+        },
+        {
+          "camera": 1321,
+          "mismatch": 903,
+          "support": 8832,
+          "error": 0.10224184782608696
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 119,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1439
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 531,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2702,
+      "nativeFrame": 20298,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00531-generator-delay-heldout-approach-t2702.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 143,
+          "support": 8832,
+          "error": 0.016191123188405796
+        },
+        {
+          "camera": 1328,
+          "mismatch": 699,
+          "support": 8896,
+          "error": 0.07857464028776978
+        },
+        {
+          "camera": 1321,
+          "mismatch": 905,
+          "support": 8832,
+          "error": 0.10246829710144928
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 109,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1429
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 532,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2703,
+      "nativeFrame": 20305,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00532-generator-delay-heldout-approach-t2703.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 124,
+          "support": 8832,
+          "error": 0.014039855072463768
+        },
+        {
+          "camera": 1328,
+          "mismatch": 687,
+          "support": 8896,
+          "error": 0.07722571942446044
+        },
+        {
+          "camera": 1321,
+          "mismatch": 885,
+          "support": 8832,
+          "error": 0.10020380434782608
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 100,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1420
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 533,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2704,
+      "nativeFrame": 20313,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00533-generator-delay-heldout-approach-t2704.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 143,
+          "support": 8832,
+          "error": 0.016191123188405796
+        },
+        {
+          "camera": 1328,
+          "mismatch": 708,
+          "support": 8896,
+          "error": 0.0795863309352518
+        },
+        {
+          "camera": 1321,
+          "mismatch": 907,
+          "support": 8832,
+          "error": 0.1026947463768116
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 90,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1410
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 534,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2705,
+      "nativeFrame": 20320,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00534-generator-delay-heldout-approach-t2705.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 146,
+          "support": 8832,
+          "error": 0.016530797101449276
+        },
+        {
+          "camera": 1328,
+          "mismatch": 714,
+          "support": 8896,
+          "error": 0.08026079136690648
+        },
+        {
+          "camera": 1321,
+          "mismatch": 914,
+          "support": 8832,
+          "error": 0.10348731884057971
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 82,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1402
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 535,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2706,
+      "nativeFrame": 20328,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00535-generator-delay-heldout-approach-t2706.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 151,
+          "support": 8832,
+          "error": 0.017096920289855072
+        },
+        {
+          "camera": 1328,
+          "mismatch": 724,
+          "support": 8896,
+          "error": 0.08138489208633093
+        },
+        {
+          "camera": 1321,
+          "mismatch": 919,
+          "support": 8832,
+          "error": 0.1040534420289855
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 72,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1392
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 536,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2707,
+      "nativeFrame": 20335,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00536-generator-delay-heldout-approach-t2707.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 157,
+          "support": 8832,
+          "error": 0.017776268115942028
+        },
+        {
+          "camera": 1328,
+          "mismatch": 733,
+          "support": 8896,
+          "error": 0.08239658273381295
+        },
+        {
+          "camera": 1321,
+          "mismatch": 924,
+          "support": 8832,
+          "error": 0.10461956521739131
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 63,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1383
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 537,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2708,
+      "nativeFrame": 20343,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00537-generator-delay-heldout-approach-t2708.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 164,
+          "support": 8832,
+          "error": 0.018568840579710144
+        },
+        {
+          "camera": 1328,
+          "mismatch": 735,
+          "support": 8896,
+          "error": 0.08262140287769784
+        },
+        {
+          "camera": 1321,
+          "mismatch": 924,
+          "support": 8832,
+          "error": 0.10461956521739131
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 53,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1373
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 538,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2709,
+      "nativeFrame": 20350,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00538-generator-delay-heldout-approach-t2709.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 160,
+          "support": 8832,
+          "error": 0.018115942028985508
+        },
+        {
+          "camera": 1328,
+          "mismatch": 728,
+          "support": 8896,
+          "error": 0.08183453237410072
+        },
+        {
+          "camera": 1321,
+          "mismatch": 922,
+          "support": 8832,
+          "error": 0.10439311594202899
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 44,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1364
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 539,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2710,
+      "nativeFrame": 20358,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00539-generator-delay-heldout-approach-t2710.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 159,
+          "support": 8832,
+          "error": 0.018002717391304348
+        },
+        {
+          "camera": 1328,
+          "mismatch": 735,
+          "support": 8896,
+          "error": 0.08262140287769784
+        },
+        {
+          "camera": 1321,
+          "mismatch": 927,
+          "support": 8832,
+          "error": 0.10495923913043478
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 34,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1354
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 540,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2711,
+      "nativeFrame": 20365,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00540-generator-delay-heldout-approach-t2711.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 144,
+          "support": 8832,
+          "error": 0.016304347826086956
+        },
+        {
+          "camera": 1328,
+          "mismatch": 730,
+          "support": 8896,
+          "error": 0.08205935251798561
+        },
+        {
+          "camera": 1321,
+          "mismatch": 914,
+          "support": 8832,
+          "error": 0.10348731884057971
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 25,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1345
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 541,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2712,
+      "nativeFrame": 20373,
+      "framesAdvanced": 8,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00541-generator-delay-heldout-approach-t2712.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 113,
+          "support": 8832,
+          "error": 0.012794384057971014
+        },
+        {
+          "camera": 1328,
+          "mismatch": 705,
+          "support": 8896,
+          "error": 0.07924910071942447
+        },
+        {
+          "camera": 1321,
+          "mismatch": 887,
+          "support": 8832,
+          "error": 0.1004302536231884
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 15,
+          "y": 145,
+          "phase": 1,
+          "opaquePixels": 130,
+          "worldX": 1335
+        }
+      ],
+      "lifeIntro": false
+    },
+    {
+      "branch": 1,
+      "sequence": 542,
+      "experiment": "generator-delay-heldout-approach",
+      "tick": 2713,
+      "nativeFrame": 20380,
+      "framesAdvanced": 7,
+      "appliedMasks": [
+        40
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/bowser-2026-11-06T01-36-57.831Z/00542-generator-delay-heldout-approach-t2713.png",
+      "camera": 1320,
+      "cameraCandidates": [
+        {
+          "camera": 1320,
+          "mismatch": 113,
+          "support": 8832,
+          "error": 0.012794384057971014
+        },
+        {
+          "camera": 1328,
+          "mismatch": 709,
+          "support": 8896,
+          "error": 0.07969874100719425
+        },
+        {
+          "camera": 1321,
+          "mismatch": 887,
+          "support": 8832,
+          "error": 0.1004302536231884
+        }
+      ],
+      "player": null,
+      "bowser": [],
+      "flames": [
+        {
+          "screenX": 7,
+          "y": 145,
+          "phase": 0,
+          "opaquePixels": 130,
+          "worldX": 1327
+        }
+      ],
+      "lifeIntro": false
+    }
+  ]
+}

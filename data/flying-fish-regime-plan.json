@@ -1,0 +1,50 @@
+{
+  "schema": "flying-fish-regime-plan-v1",
+  "declaredUtc": "2026-11-06T02:37:17.540Z",
+  "previousCandidate": {
+    "path": "data/flying-fish-candidate-freeze.json",
+    "sha256": "742dcb6412405f59adff78b2e95f6cfb6e6f3c3dfb04efbc56fec7567ed6c5d3",
+    "status": "FAILED and immutable"
+  },
+  "calibrationPaths": [
+    "data/flying-fish-calibration-measurements.json",
+    "data/flying-fish-reserved-measurements.json"
+  ],
+  "qualification": "These previously reserved observations now form old calibration. Any newly selected family must freeze before genuinely fresh reserved collection.",
+  "families": [
+    {
+      "name": "ascent-descent",
+      "rules": "y+=vy; vy=min(cap,vy+(vy<0?ascendingGravity:descendingGravity))",
+      "gravityRange": [
+        0.03,
+        0.09
+      ],
+      "capRange": [
+        4,
+        6
+      ]
+    },
+    {
+      "name": "velocity-regimes",
+      "rules": "y+=vy; vy=min(cap,vy+(vy < -2 ? fastAscentGravity : vy > 2 ? fastDescentGravity : apexGravity))",
+      "thresholds": [
+        -2,
+        2
+      ],
+      "gravityRange": [
+        0.03,
+        0.09
+      ],
+      "capRange": [
+        4,
+        6
+      ]
+    }
+  ],
+  "initialization": {
+    "y": "Continuous initialY in [observed first descriptor feet, observed+1)",
+    "vy": "One initial velocity bounded by the first two raster intervals and the declared .03..09 acceleration range; no per-frame replacement or pose offsets."
+  },
+  "success": "One common rule/parameters must put all whole clear arcs inside their raster Y intervals with only permitted initial fractional uncertainty. The original 2px prospective tolerance is retained separately; do not substitute a calibration fit for fresh validation.",
+  "poseOrigins": "No pose-specific offsets. Both cells share identical body/right-column origins; fit same-cell arcs separately as a guard."
+}

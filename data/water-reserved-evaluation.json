@@ -1,0 +1,1536 @@
+{
+  "schema": "water-reserved-evaluation-v1",
+  "classification": "Evaluated once after the candidate freeze; no longer unseen for subsequent changes.",
+  "frozenUTC": "2026-11-05T22:54:58.037Z",
+  "evaluatedUTC": "2026-11-05T22:58:41.708Z",
+  "candidateSourceSHA256": "ad3c40591c3cabddfb4b367f86f3ff500dd85e9b7efa7dccee2072ca331bde0a",
+  "manifestSHA256": "b9c18004df52892780f204e92182da117a2d8d5f950c714f3c5d26c99b606e8a",
+  "comparisonSHA256": "8c41c185969df8ad1a025e9e53f60a1c7de0ab0719f2a21be6e9ede28f7977d2",
+  "tolerancePixels": 2,
+  "cases": [
+    {
+      "id": "reserved-surface-restroke-release",
+      "settled": {
+        "position": [
+          40,
+          208
+        ],
+        "nativeFrames": 180
+      },
+      "steps": [
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 8,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1677,
+          "position": {
+            "x": 40,
+            "y": 199,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00268-reserved-surface-restroke-release-tick-01677.png",
+          "imageSHA256": "a2a1c91c6f05570499a73d41ee9d75091cca8e97862c13379accb65bf3344bfc"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 15,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1678,
+          "position": {
+            "x": 40,
+            "y": 192,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00269-reserved-surface-restroke-release-tick-01678.png",
+          "imageSHA256": "c6b6fe159ccaf350d75b282eb414950d36f8cea500d6ce54aa416da5de933248"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 23,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1679,
+          "position": {
+            "x": 40,
+            "y": 181,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00270-reserved-surface-restroke-release-tick-01679.png",
+          "imageSHA256": "a6a2888c68475d6ec536cf9a8eaca3e4edb3d1997f89baea936ec00815dd2cb1"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 30,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1680,
+          "position": {
+            "x": 40,
+            "y": 174,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00271-reserved-surface-restroke-release-tick-01680.png",
+          "imageSHA256": "b08dd3cee9d61a246e703d1c4f9f8597d91fc7f5b30b294b89f04cc38d27ff9e"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 38,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1681,
+          "position": {
+            "x": 40,
+            "y": 163,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00272-reserved-surface-restroke-release-tick-01681.png",
+          "imageSHA256": "8866885af2b937d158fed9dd06308deb896b9a6318cee5638dc88907185c5359"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 45,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1682,
+          "position": {
+            "x": 40,
+            "y": 156,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00273-reserved-surface-restroke-release-tick-01682.png",
+          "imageSHA256": "bf35251ff549b09b9c2b4d24926064275072ae76ab305afabfa8f60ee8cba94d"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 53,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1683,
+          "position": {
+            "x": 40,
+            "y": 145,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00274-reserved-surface-restroke-release-tick-01683.png",
+          "imageSHA256": "c180b337789a0b6e0691a1f5b3ba23e65b0dbe00d07f72de16d504eae006a642"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 60,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1684,
+          "position": {
+            "x": 40,
+            "y": 138,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00275-reserved-surface-restroke-release-tick-01684.png",
+          "imageSHA256": "941072b1e885c43df5ef55c4dda6bde7f12263806a061004e407b658bbda2919"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 68,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1685,
+          "position": {
+            "x": 40,
+            "y": 127,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00276-reserved-surface-restroke-release-tick-01685.png",
+          "imageSHA256": "b3c50915359759541bed6c7599046f2371089d8efe017f7a8756baaf7c3df865"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 75,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1686,
+          "position": {
+            "x": 40,
+            "y": 120,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00277-reserved-surface-restroke-release-tick-01686.png",
+          "imageSHA256": "0cbcebd8a49eb1cc11fe471e1f8e26abb4220142261e97e5b55dd69e91fe4673"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 83,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1687,
+          "position": {
+            "x": 40,
+            "y": 109,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00278-reserved-surface-restroke-release-tick-01687.png",
+          "imageSHA256": "40ac2e4de257f5148b9b3ef61d8f30be92e39e31e79900edb0d4943ace2bdfcb"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 90,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1688,
+          "position": {
+            "x": 40,
+            "y": 102,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00279-reserved-surface-restroke-release-tick-01688.png",
+          "imageSHA256": "c990c50464c23ee79c0e4280b8f6dcaf14f6dd968e8c6b692a841395b439e3c0"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 98,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1689,
+          "position": {
+            "x": 40,
+            "y": 91,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00280-reserved-surface-restroke-release-tick-01689.png",
+          "imageSHA256": "dc3b3a7bcdc4b92cfe4a9fd650c575eb91316119645e134e95ea1550c6ded4ae"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 105,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1690,
+          "position": {
+            "x": 40,
+            "y": 84,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00281-reserved-surface-restroke-release-tick-01690.png",
+          "imageSHA256": "c4206ca60688d7e2d0e0c190dc881ca962844f9aa2ddeedcda72e5f0f2e78fcf"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 113,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1691,
+          "position": {
+            "x": 40,
+            "y": 73,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00282-reserved-surface-restroke-release-tick-01691.png",
+          "imageSHA256": "d36bdccac5cbbbee88f511b35fbd4df7f5e8e4e6e49e9fac1015d044ac9961b5"
+        },
+        {"nativeFrames":7,"elapsedNativeFrames":120,"mask":0,"buttons":[],"tick":1692,"position":null,"image":"evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00283-reserved-surface-restroke-release-tick-01692.png","imageSHA256":null},
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 128,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1693,
+          "position": {
+            "x": 40,
+            "y": 54,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00284-reserved-surface-restroke-release-tick-01693.png",
+          "imageSHA256": "03ea265a49b219bcb1017223c88cc0ccf30275ac7f554f5aca83a7c4b35cce3b"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 135,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1694,
+          "position": {
+            "x": 40,
+            "y": 47,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00285-reserved-surface-restroke-release-tick-01694.png",
+          "imageSHA256": "9ca5aacec97bd19875153ae9645c2a6625f7a238a1508a854c913ab6b40e1682"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 143,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1695,
+          "position": {
+            "x": 40,
+            "y": 52,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00286-reserved-surface-restroke-release-tick-01695.png",
+          "imageSHA256": "f7e7f0f93528b19dc58920f6d2e60683e45c870d6f951f7b37a0c8ed37a1f8e6"
+        },
+        {"nativeFrames":7,"elapsedNativeFrames":150,"mask":0,"buttons":[],"tick":1696,"position":null,"image":"evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00287-reserved-surface-restroke-release-tick-01696.png","imageSHA256":null},
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 158,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1697,
+          "position": {
+            "x": 40,
+            "y": 72,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00288-reserved-surface-restroke-release-tick-01697.png",
+          "imageSHA256": "ac4d1f8ee5a6b0a5b386e548e4fbc106c53b169e8a4e6213bc8e08295954e8c0"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 165,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1698,
+          "position": {
+            "x": 40,
+            "y": 84,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00289-reserved-surface-restroke-release-tick-01698.png",
+          "imageSHA256": "899351f0db1bd6f394ac104cfcb7719dc2beafa522708a4d0da5eae7f186fec1"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 173,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1699,
+          "position": {
+            "x": 40,
+            "y": 101,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00290-reserved-surface-restroke-release-tick-01699.png",
+          "imageSHA256": "e81c1f084927758c6c679ab3add4155dd259c3809b16b9f409d1526e959a7183"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 180,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1700,
+          "position": {
+            "x": 40,
+            "y": 118,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00291-reserved-surface-restroke-release-tick-01700.png",
+          "imageSHA256": "5471f0c38f8160a0dce1be23eee13c9176c6bd16cd6cab42c2b4a0172c5a4363"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 188,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1701,
+          "position": {
+            "x": 40,
+            "y": 140,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00292-reserved-surface-restroke-release-tick-01701.png",
+          "imageSHA256": "28d39ac9f79070305b7b741e2c66dbd980bc5677e350246b05f803d0f81e7adc"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 195,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1702,
+          "position": {
+            "x": 40,
+            "y": 161,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00293-reserved-surface-restroke-release-tick-01702.png",
+          "imageSHA256": "902a0ea1cd9e4530227c157e469510ef0447a71245c7657302b5a01206c428c4"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 203,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1703,
+          "position": {
+            "x": 40,
+            "y": 187,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00294-reserved-surface-restroke-release-tick-01703.png",
+          "imageSHA256": "33d449176d632273287f70fc1b42b963eb637c919eeb84904f606928e27d2cd4"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 210,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1704,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00295-reserved-surface-restroke-release-tick-01704.png",
+          "imageSHA256": "6f40af3da07a2031a36a21ab804d9f6501286dddca1c1d2faec591bc6065cf2f"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 218,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1705,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00296-reserved-surface-restroke-release-tick-01705.png",
+          "imageSHA256": "6e18767a5ff889e10b1991c6a981216c01937d0c3dc03c26e734506332719587"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 225,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1706,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00297-reserved-surface-restroke-release-tick-01706.png",
+          "imageSHA256": "74b0889ab0628a2dd1caf7b465e0a47e2e4b97130abee0af3e83ba9d5f43189d"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 233,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1707,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00298-reserved-surface-restroke-release-tick-01707.png",
+          "imageSHA256": "c1809cd99cd229327d28a7b330ffbb64eab84c7d59ff761d537584fd7e2077d1"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 240,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1708,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00299-reserved-surface-restroke-release-tick-01708.png",
+          "imageSHA256": "6937099356bd44e89eaaac53d13fe180927b3f2cd92eac50ce32504eae52c9b2"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 248,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1709,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00300-reserved-surface-restroke-release-tick-01709.png",
+          "imageSHA256": "ec6ec29c5a6e8f7e211e353b6c48729a8cb14dcc744ce97d8bdb7ef2ddd22df4"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 255,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1710,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00301-reserved-surface-restroke-release-tick-01710.png",
+          "imageSHA256": "d4ab8f181e6c170c5d911bb95088d25777141a6a4f067c7759dd1208a0586c2e"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 263,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1711,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00302-reserved-surface-restroke-release-tick-01711.png",
+          "imageSHA256": "55da28e53c60d8394212a4e5e06bde5bac73097b03025e0d54e98257bb37b365"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 270,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1712,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00303-reserved-surface-restroke-release-tick-01712.png",
+          "imageSHA256": "3f8ea5b5c3359ef47e6d981d3afc7a9aafe3e223bc2370b330289a4892a80b1f"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 278,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1713,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00304-reserved-surface-restroke-release-tick-01713.png",
+          "imageSHA256": "349cbcd939020a4541a690c38823453e7d732b555bc865eb2688cc9e933ff23b"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 285,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1714,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00305-reserved-surface-restroke-release-tick-01714.png",
+          "imageSHA256": "2994bfe9a582dc1f47f931b2a6f7b8d097680c4df17cac1547aa9387d0f6d3f9"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 293,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1715,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00306-reserved-surface-restroke-release-tick-01715.png",
+          "imageSHA256": "4334f30ae5df5c9c69335f7be52df3c01e46d39033bf311cdc55bfb88e595b79"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 300,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1716,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00307-reserved-surface-restroke-release-tick-01716.png",
+          "imageSHA256": "e22b577392301a3e6b9031ea72746c1d50e813366531486c44a23d125a09369a"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 308,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1717,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00308-reserved-surface-restroke-release-tick-01717.png",
+          "imageSHA256": "3ff54b65d8e47196e6fd9d00bc03a6d57d0f76703b252436a055a3fd67449b05"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 316,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1718,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00309-reserved-surface-restroke-release-tick-01718.png",
+          "imageSHA256": "bef170d5c4139183e6c107763cb216ce9bbfa81eacfda8e270816d9fa79cba36"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 323,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1719,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00310-reserved-surface-restroke-release-tick-01719.png",
+          "imageSHA256": "629e91aa9e1884f55d68d541972457e6a0f3f2c66dfb0eeddd0bec864a12deea"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 331,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1720,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00311-reserved-surface-restroke-release-tick-01720.png",
+          "imageSHA256": "e8c93ce689343b48a040edfc2212366c5e6a8805a0e1a42d52d498fb0f830f37"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 338,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1721,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00312-reserved-surface-restroke-release-tick-01721.png",
+          "imageSHA256": "a6e5a91398573ab37f91e918eb3dd9f877f1a940dfbb8bf0c975aa7ca4a2ff84"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 346,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1722,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00313-reserved-surface-restroke-release-tick-01722.png",
+          "imageSHA256": "68dacf015eec15a052395884503a3adf2b2b04ea283feece71a0e86eb48eaa65"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 353,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1723,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-23-52-888Z/00314-reserved-surface-restroke-release-tick-01723.png",
+          "imageSHA256": "95f2a1df69769df0b5d4e1a3b289d089e7213744cab889505d1ed69fb6d12077"
+        }
+      ]
+    },
+    {
+      "id": "reserved-surface-phase25-restroke-long",
+      "settled": {
+        "position": [
+          40,
+          208
+        ],
+        "nativeFrames": 188
+      },
+      "steps": [
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 7,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1678,
+          "position": {
+            "x": 40,
+            "y": 201,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00461-reserved-surface-phase25-restroke-long-tick-01678.png",
+          "imageSHA256": "ca3a1be49870e3568b8105904d5f2a0c5e3b6914588e649cf9f2c311ce84982e"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 15,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1679,
+          "position": {
+            "x": 40,
+            "y": 192,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00462-reserved-surface-phase25-restroke-long-tick-01679.png",
+          "imageSHA256": "be2cd8809c631c15f304d370272fe1e9b9048ebee35a18f49b9d83ebd6d42fee"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 22,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1680,
+          "position": {
+            "x": 40,
+            "y": 183,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00463-reserved-surface-phase25-restroke-long-tick-01680.png",
+          "imageSHA256": "0fa2d67f89253d9ebec792117b586b54ae382c471a3fd81e0c8f7c5deacd7443"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 30,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1681,
+          "position": {
+            "x": 40,
+            "y": 174,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00464-reserved-surface-phase25-restroke-long-tick-01681.png",
+          "imageSHA256": "d06b836adc26dca183e74fb560feaf6f65ba0c0233cb1b34f22644c198a29505"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 37,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1682,
+          "position": {
+            "x": 40,
+            "y": 165,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00465-reserved-surface-phase25-restroke-long-tick-01682.png",
+          "imageSHA256": "5e69f0bda0a69bc2ce795615937ac59cbabb12635643c2ee30b2d3803926593e"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 45,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1683,
+          "position": {
+            "x": 40,
+            "y": 156,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00466-reserved-surface-phase25-restroke-long-tick-01683.png",
+          "imageSHA256": "af1b03135e58edc38310271775809fb9b0096f0af30ac2f53b2c59d790952982"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 52,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1684,
+          "position": {
+            "x": 40,
+            "y": 147,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00467-reserved-surface-phase25-restroke-long-tick-01684.png",
+          "imageSHA256": "e6fc5f7483844e52d873ecab95ff8973b6fcfcc8ced294d2326211c63d53c8d0"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 60,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1685,
+          "position": {
+            "x": 40,
+            "y": 138,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00468-reserved-surface-phase25-restroke-long-tick-01685.png",
+          "imageSHA256": "a15b3b2df9a320782b6619ad34f7c7751fc8798d898856eaf7c0596a525b45da"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 67,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1686,
+          "position": {
+            "x": 40,
+            "y": 129,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00469-reserved-surface-phase25-restroke-long-tick-01686.png",
+          "imageSHA256": "302f4ab7f2c26c38d4c728f8afb4e62dd550697a6bb4dd45eedf9d6aa3a19075"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 75,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1687,
+          "position": {
+            "x": 40,
+            "y": 120,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00470-reserved-surface-phase25-restroke-long-tick-01687.png",
+          "imageSHA256": "7c9d7d082ae55fd6c67516f73b19c5a305613c6f4b0c4e172b6e7195d202137c"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 82,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1688,
+          "position": {
+            "x": 40,
+            "y": 111,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00471-reserved-surface-phase25-restroke-long-tick-01688.png",
+          "imageSHA256": "4a9a081385cf3ba0ca59bedd523d4a451832a3146bf134eddfe25aa92c90da01"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 90,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1689,
+          "position": {
+            "x": 40,
+            "y": 102,
+            "confidence": 0.9285714285714286,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00472-reserved-surface-phase25-restroke-long-tick-01689.png",
+          "imageSHA256": "71af8e4c045cc420b405da36b2d907408c74118a681307de413920592cad974e"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 97,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1690,
+          "position": {
+            "x": 40,
+            "y": 93,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00473-reserved-surface-phase25-restroke-long-tick-01690.png",
+          "imageSHA256": "97119a0a6b601b62608efdbfae6419816dc5bd41537b18845f95f50675674052"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 105,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1691,
+          "position": {
+            "x": 40,
+            "y": 84,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00474-reserved-surface-phase25-restroke-long-tick-01691.png",
+          "imageSHA256": "b1680597f85329f69bf658258f0a255032597a2e38c3bbd21b51acbf987ee4f5"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 112,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1692,
+          "position": {
+            "x": 40,
+            "y": 75,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00475-reserved-surface-phase25-restroke-long-tick-01692.png",
+          "imageSHA256": "0448956848775f70c6e0bbbaee53cc3fa6bad4b765bce8ad5a5b8f05d32cae6b"
+        },
+        {"nativeFrames":8,"elapsedNativeFrames":120,"mask":0,"buttons":[],"tick":1693,"position":null,"image":"evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00476-reserved-surface-phase25-restroke-long-tick-01693.png","imageSHA256":null},
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 127,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1694,
+          "position": {
+            "x": 40,
+            "y": 55,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00477-reserved-surface-phase25-restroke-long-tick-01694.png",
+          "imageSHA256": "d8785d618bcd35208aed7f537652675784f63bd3d50b750129568ab6d09f42d0"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 135,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1695,
+          "position": {
+            "x": 40,
+            "y": 47,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00478-reserved-surface-phase25-restroke-long-tick-01695.png",
+          "imageSHA256": "aabde1e605ea601ed6144841c805d4319212c067502dd7990a6c3398a7dfc905"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 142,
+          "mask": 16,
+          "buttons": [
+            "a"
+          ],
+          "tick": 1696,
+          "position": {
+            "x": 40,
+            "y": 51,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 19
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00479-reserved-surface-phase25-restroke-long-tick-01696.png",
+          "imageSHA256": "3871bcfc417f94615bc4bd12f3a864ecb9a5e41aa95b0696c6e77b2d46e6aa83"
+        },
+        {"nativeFrames":8,"elapsedNativeFrames":150,"mask":16,"buttons":["a"],"tick":1697,"position":null,"image":"evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00480-reserved-surface-phase25-restroke-long-tick-01697.png","imageSHA256":null},
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 157,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1698,
+          "position": {
+            "x": 40,
+            "y": 70,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 18
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00481-reserved-surface-phase25-restroke-long-tick-01698.png",
+          "imageSHA256": "6398f5f38f900074de388f504f89e21e62c8b8932c66deefe797f9d6ee9c31d8"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 165,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1699,
+          "position": {
+            "x": 40,
+            "y": 84,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00482-reserved-surface-phase25-restroke-long-tick-01699.png",
+          "imageSHA256": "a7afabdbf1c7b58c4e214a49986f38178e505cfb84d33fa20414d848ee771ef0"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 172,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1700,
+          "position": {
+            "x": 40,
+            "y": 99,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00483-reserved-surface-phase25-restroke-long-tick-01700.png",
+          "imageSHA256": "be5204a1d796cbfdea923c74edd2b1a05629ec7326d6098c9caf738aca6c19ec"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 180,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1701,
+          "position": {
+            "x": 40,
+            "y": 118,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00484-reserved-surface-phase25-restroke-long-tick-01701.png",
+          "imageSHA256": "bb44eba3e0778ac8157eafd7da9e3f6632d62b878c5d3801f116a6039c47c4b0"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 187,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1702,
+          "position": {
+            "x": 40,
+            "y": 137,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00485-reserved-surface-phase25-restroke-long-tick-01702.png",
+          "imageSHA256": "52102174572ecbaaf10a41df790b4879856b8fa6860ddd6f3ff1ba92252fc8c8"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 195,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1703,
+          "position": {
+            "x": 40,
+            "y": 161,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00486-reserved-surface-phase25-restroke-long-tick-01703.png",
+          "imageSHA256": "21024300e51b0c1079df1685fd7d0d12f004daf99b9143b4dbb20d7f74a1992b"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 202,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1704,
+          "position": {
+            "x": 40,
+            "y": 184,
+            "confidence": 0.9292035398230089,
+            "method": "partial supplied swimming template; eight changing pixels may differ",
+            "cell": 17
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00487-reserved-surface-phase25-restroke-long-tick-01704.png",
+          "imageSHA256": "f6b7300bd5163437751f6ab8aa882d18d31c7d487b2f4bbae2aa28f4acb841ab"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 210,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1705,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00488-reserved-surface-phase25-restroke-long-tick-01705.png",
+          "imageSHA256": "e275aa68e0faa83a558a4592af71cc4ac73ae3c39ef7bfeaa5842cf900d9277f"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 217,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1706,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00489-reserved-surface-phase25-restroke-long-tick-01706.png",
+          "imageSHA256": "e5211292a4c0c6cea018bdb9549d0d4cbad1480c0b3f6462dbd98a119cfbcc9f"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 225,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1707,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00490-reserved-surface-phase25-restroke-long-tick-01707.png",
+          "imageSHA256": "d61cbe7cb2572e252a5a74d5d1cda17d16bcc011b647f484b0827f7a5624c8b7"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 232,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1708,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00491-reserved-surface-phase25-restroke-long-tick-01708.png",
+          "imageSHA256": "7c2eb252912e39f88f63c53abe2d14dceaf4110286ea4722aea14849eed2b67b"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 240,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1709,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00492-reserved-surface-phase25-restroke-long-tick-01709.png",
+          "imageSHA256": "d38a34d1d628b6fee98e4f8e19d76b01a66661d594813ac65071080389751bbc"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 247,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1710,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00493-reserved-surface-phase25-restroke-long-tick-01710.png",
+          "imageSHA256": "3722fba16eef6951a641e35b9b34876aaab7ca5d4d61e41ea280e3bfe62e9b2c"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 255,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1711,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00494-reserved-surface-phase25-restroke-long-tick-01711.png",
+          "imageSHA256": "15462430783825c1371a71baed78959e9105ee8c67e82038f1956ace890446ef"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 262,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1712,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00495-reserved-surface-phase25-restroke-long-tick-01712.png",
+          "imageSHA256": "049cc408e4a4674cddb984cfa21c409cc303e747e72592c525a1c954a95f97c5"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 270,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1713,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00496-reserved-surface-phase25-restroke-long-tick-01713.png",
+          "imageSHA256": "1310e5c55a1ecef4f078f09b88d5065e9befffa53635d7690f2e35b90737bd3c"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 277,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1714,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00497-reserved-surface-phase25-restroke-long-tick-01714.png",
+          "imageSHA256": "6300570f296521ced89b25dd27685c888032574357b7cc4b74b483bc731dc94d"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 285,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1715,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00498-reserved-surface-phase25-restroke-long-tick-01715.png",
+          "imageSHA256": "ec5ce5cafbe78f952eb6b172123e2c516632b1444f1985555edc131ac5bc2486"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 292,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1716,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00499-reserved-surface-phase25-restroke-long-tick-01716.png",
+          "imageSHA256": "f0eca54a658e55ba1987d3bc589142c796441bea91f66ef3d52652eda0061b09"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 300,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1717,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00500-reserved-surface-phase25-restroke-long-tick-01717.png",
+          "imageSHA256": "915f5e93b0e2862ce534ec758a04556e41f3cd24d802b42b0cb89f3a259d665c"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 308,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1718,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00501-reserved-surface-phase25-restroke-long-tick-01718.png",
+          "imageSHA256": "bd163a385df8b52ceb68e6d9d7c9ed7bda0fba71a4314cf76fda8b42fc812d56"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 315,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1719,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00502-reserved-surface-phase25-restroke-long-tick-01719.png",
+          "imageSHA256": "f84e65827db575cf94bcfe413157546ab299e3737c2b0358f41881d7a508962f"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 323,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1720,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00503-reserved-surface-phase25-restroke-long-tick-01720.png",
+          "imageSHA256": "14f9b6c400d6bf06bd019551d854deca3151368f4ead2d2a66f49087d976a8eb"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 330,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1721,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00504-reserved-surface-phase25-restroke-long-tick-01721.png",
+          "imageSHA256": "dbbbdb404eb050220edb20279c91e8aba3eff70035c308b2242cd56fe47cb301"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 338,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1722,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00505-reserved-surface-phase25-restroke-long-tick-01722.png",
+          "imageSHA256": "bf9a89143b469f574bf1043c86b5c1f81872f0f31bd7554b6f76a46fc2e6b153"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 345,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1723,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00506-reserved-surface-phase25-restroke-long-tick-01723.png",
+          "imageSHA256": "6957b4ece15b9ee92b7d767cfec185addeb0a3fcf903ed094d5fb8400b22f3cc"
+        },
+        {
+          "nativeFrames": 8,
+          "elapsedNativeFrames": 353,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1724,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00507-reserved-surface-phase25-restroke-long-tick-01724.png",
+          "imageSHA256": "cd85e71c73f7798e5b66eeb97915539a206987607b39ce23c54dc4c7b76bacf4"
+        },
+        {
+          "nativeFrames": 7,
+          "elapsedNativeFrames": 360,
+          "mask": 0,
+          "buttons": [],
+          "tick": 1725,
+          "position": {
+            "x": 40,
+            "y": 208,
+            "confidence": 1,
+            "method": "exact supplied opaque template",
+            "cell": 23
+          },
+          "image": "evidence/local/water-calibration-2026-11-05T22-38-38-669Z/00508-reserved-surface-phase25-restroke-long-tick-01725.png",
+          "imageSHA256": "26185f43b445308ea45606f00f6487fbf84dbe54befb53ac4fc8c2e06022739c"
+        }
+      ]
+    }
+  ]
+}

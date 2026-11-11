@@ -1,0 +1,81 @@
+{
+  "schema": "firebar-hazard-corrections-candidate-v1",
+  "frozenUtc": "2026-11-06T01:18:49.855239+00:00",
+  "scope": "1-4staticfirebarpivotsanddirection only; no terrain/camera runtimechanges",
+  "anchorChain": "data/firebar-1-4-camera-anchor-chain.json",
+  "anchorChainSHA256": "b0d16cb5a2375d80affb4e22329ffc8aa3bb6d00111ad75d8a7082d27a7b6a22",
+  "cameraToolSHA256": "7e49919ec974fdb0f4be9ef696c36769d3aa92c838dc726b3aa35ded1cb5d69f",
+  "candidateCorrections": [
+    {
+      "existingPivot": [
+        776,
+        104
+      ],
+      "observedPivot": [
+        792,
+        104
+      ],
+      "sourceTicks": [
+        956,
+        960,
+        964
+      ],
+      "reason": "Stationaryflamequadcenters inferredfromoriginalPPUimages become792,105 under independentcamera. Existingcameraaliases are8/16px inthisinterval.",
+      "direction": -1,
+      "directionStatus": "ExistingCCWretained; sourcebinsdecrease."
+    },
+    {
+      "existingPivot": [
+        952,
+        104
+      ],
+      "observedPivot": [
+        968,
+        104
+      ],
+      "sourceTicks": [
+        964,
+        968,
+        972,
+        976
+      ],
+      "reason": "Stationaryflamequadcenter968,105 acrossfourimages, plusfreshcalibration0/20withentirecycleatcamera725.",
+      "direction": -1,
+      "existingDirection": 1,
+      "directionStatus": "Freshheldcalibrationprovesnegative5/32bin/native; importedsparseclockwisefitiswrong."
+    }
+  ],
+  "unchangedObservedPivots": [
+    [
+      488,
+      168
+    ],
+    [
+      1080,
+      104
+    ],
+    [
+      1224,
+      152
+    ],
+    [
+      1352,
+      152
+    ],
+    [
+      1416,
+      72
+    ]
+  ],
+  "unchangedScope": "No correctionproposedforother1-4pivots: repeatedstationarycenters match importedmetadata. No direction/motor claim forunqualifiedbars.",
+  "reservation": {
+    "directory": "evidence/local/firebar-fresh-2026-11-06T01-02-11Z",
+    "case": "reserved-1-4-cw-13",
+    "interpretation": "Despitehistoricalcasenamecw, candidateclassisnowCCWpivot968. ReservedPNGsremainunopenedatfreeze."
+  },
+  "limits": [
+    "Actualsourceupperceilingandlowerbandoccasionallyregister1pxapart; camera uses measuredlowerband96..208.",
+    "Raw99%completeframeequivalence notestablished; exactRGBproof pertains to staticregistrationpixels.",
+    "No camera correctionpropagatedtounrelatedterrain."
+  ]
+}

@@ -1,0 +1,3119 @@
+{
+  "schema": "reference-hidden-block-availability-v1",
+  "extends": {
+    "path": "data/reference-hidden-1-1.json",
+    "sha256": "fc1de1d0fccdee509e0bced877d421d138b0a0566b3086c52794458142237c5b"
+  },
+  "source": "Four fresh documented reference processes; timestamped controller requests/responses and actual PNGs only. No executable or ROM state inspected.",
+  "block": {
+    "level": "1-1",
+    "area": "main",
+    "col": 64,
+    "row": 8,
+    "x": 1024,
+    "y": 128,
+    "content": "1up"
+  },
+  "observed": {
+    "freshInitialActivationAllRuns": true,
+    "collectedThenDeathRuns": 2,
+    "uncollectedThenDeathRuns": 2,
+    "ordinaryRespawnAtStartAllRuns": true,
+    "returnUsedBlockActivationRuns": 0,
+    "returnMushroomOrPickupTextRuns": 0,
+    "cellClearAfterReturnJumpAllRuns": true,
+    "initialAfterDeathLives": {
+      "collected": [
+        3,
+        3
+      ],
+      "uncollected": [
+        2,
+        2
+      ]
+    }
+  },
+  "minimumBehaviorConsistentWithEvidence": {
+    "availabilityConsumedBy": "activation",
+    "unavailableAfterOrdinaryDeathAndRespawnInSameLevel": true,
+    "visibleUsedBlockRestoredAfterDeath": false,
+    "status": "Inferred lifecycle rule from two independently repeated collected and uncollected controlled branches."
+  },
+  "runs": [
+    {
+      "condition": "collected",
+      "repeat": "a",
+      "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+      "traceSha256": "aeffe9d4c3edbc3cc52201180b4011daa49c8fe18f2ce6276a034d316454ef30",
+      "recipe": "evidence/reference-hidden-availability-collected-requests.jsonl",
+      "recipeSha256": "8d8675a798c7d4b8a23ee2245052442dbbcf8e46830aa11d79c039f3b504f33d",
+      "initialActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 7,
+        "sentUTC": "2026-11-06T00:52:41.626784+00:00",
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492"
+      },
+      "initialRestingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 9,
+        "sentUTC": "2026-11-06T00:52:41.643729+00:00",
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9"
+      },
+      "initialPickupText": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:41.747205+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+          "positions": [
+            [
+              114,
+              167
+            ]
+          ]
+        }
+      ],
+      "afterRealPitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 68,
+        "sentUTC": "2026-11-06T00:52:42.134446+00:00",
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "3494b1cfc588e03c30213098e5b0cd4b3665819fa254ceb6f71dd0850023fce1",
+        "lives": 3
+      },
+      "firstVisibleOrdinaryRespawn": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 80,
+        "sentUTC": "2026-11-06T00:52:42.219654+00:00",
+        "tick": 137,
+        "nativeFrame": 1029,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "6ad3219c32b574b9d2e495038c9b0a637377947f155b28e6a4d9b5fbb69dded7",
+        "screenX": 40,
+        "top": 193,
+        "feet": 209
+      },
+      "returnRouteBegins": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 96,
+        "sentUTC": "2026-11-06T00:52:42.348154+00:00",
+        "tick": 153,
+        "nativeFrame": 1149,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "d0ebccf76d08bd44b282987fdc56ae3a225a79150ae208545c446abc23a1444c"
+      },
+      "returnPrefixAppliedMasks": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "returnPrefixNativeFrames": 428,
+      "returnNativeFramesByDecision": [
+        [
+          154,
+          7
+        ],
+        [
+          155,
+          8
+        ],
+        [
+          156,
+          7
+        ],
+        [
+          157,
+          8
+        ],
+        [
+          158,
+          7
+        ],
+        [
+          159,
+          8
+        ],
+        [
+          160,
+          7
+        ],
+        [
+          161,
+          8
+        ],
+        [
+          162,
+          7
+        ],
+        [
+          163,
+          8
+        ],
+        [
+          164,
+          8
+        ],
+        [
+          165,
+          7
+        ],
+        [
+          166,
+          8
+        ],
+        [
+          167,
+          7
+        ],
+        [
+          168,
+          8
+        ],
+        [
+          169,
+          7
+        ],
+        [
+          170,
+          8
+        ],
+        [
+          171,
+          7
+        ],
+        [
+          172,
+          8
+        ],
+        [
+          173,
+          7
+        ],
+        [
+          174,
+          8
+        ],
+        [
+          175,
+          7
+        ],
+        [
+          176,
+          8
+        ],
+        [
+          177,
+          7
+        ],
+        [
+          178,
+          8
+        ],
+        [
+          179,
+          7
+        ],
+        [
+          180,
+          8
+        ],
+        [
+          181,
+          7
+        ],
+        [
+          182,
+          8
+        ],
+        [
+          183,
+          7
+        ],
+        [
+          184,
+          8
+        ],
+        [
+          185,
+          7
+        ],
+        [
+          186,
+          8
+        ],
+        [
+          187,
+          7
+        ],
+        [
+          188,
+          8
+        ],
+        [
+          189,
+          7
+        ],
+        [
+          190,
+          8
+        ],
+        [
+          191,
+          7
+        ],
+        [
+          192,
+          8
+        ],
+        [
+          193,
+          7
+        ],
+        [
+          194,
+          8
+        ],
+        [
+          195,
+          7
+        ],
+        [
+          196,
+          8
+        ],
+        [
+          197,
+          7
+        ],
+        [
+          198,
+          8
+        ],
+        [
+          199,
+          7
+        ],
+        [
+          200,
+          8
+        ],
+        [
+          201,
+          7
+        ],
+        [
+          202,
+          8
+        ],
+        [
+          203,
+          7
+        ],
+        [
+          204,
+          8
+        ],
+        [
+          205,
+          8
+        ],
+        [
+          206,
+          7
+        ],
+        [
+          207,
+          8
+        ],
+        [
+          208,
+          7
+        ],
+        [
+          209,
+          8
+        ],
+        [
+          210,
+          7
+        ],
+        [
+          212,
+          15
+        ],
+        [
+          214,
+          15
+        ],
+        [
+          215,
+          8
+        ],
+        [
+          216,
+          7
+        ],
+        [
+          217,
+          8
+        ],
+        [
+          218,
+          7
+        ],
+        [
+          219,
+          8
+        ],
+        [
+          220,
+          7
+        ],
+        [
+          221,
+          8
+        ],
+        [
+          222,
+          7
+        ],
+        [
+          223,
+          8
+        ],
+        [
+          224,
+          7
+        ],
+        [
+          225,
+          8
+        ],
+        [
+          226,
+          7
+        ],
+        [
+          227,
+          8
+        ],
+        [
+          228,
+          7
+        ],
+        [
+          229,
+          8
+        ],
+        [
+          230,
+          7
+        ],
+        [
+          231,
+          8
+        ],
+        [
+          232,
+          7
+        ]
+      ],
+      "staticCameraWitnesses": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 4,
+          "sentUTC": "2026-11-06T00:52:41.594595+00:00",
+          "tick": 61,
+          "nativeFrame": 458,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.867031+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.942112+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        }
+      ],
+      "clearCellBeforeReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 155,
+        "sentUTC": "2026-11-06T00:52:42.867031+00:00",
+        "tick": 214,
+        "nativeFrame": 1607,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9"
+      },
+      "jumpThroughFormerBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 159,
+        "sentUTC": "2026-11-06T00:52:42.908138+00:00",
+        "tick": 218,
+        "nativeFrame": 1637,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "5781d09ee0af9621d994f4baec9cf41d1334db14d99acbd69990dec9fa8f2b1e",
+        "screenX": 114,
+        "top": 128,
+        "feet": 144,
+        "playerCell": 16,
+        "direction": "left"
+      },
+      "clearCellAfterReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+        "sequence": 163,
+        "sentUTC": "2026-11-06T00:52:42.942112+00:00",
+        "tick": 222,
+        "nativeFrame": 1667,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8"
+      },
+      "noUsedBlockAfterReturnJump": true,
+      "no1upSpriteOrPickupTextDuringReturnDecisions": [
+        215,
+        232
+      ],
+      "HUD": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:41.747205+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 96,
+          "sentUTC": "2026-11-06T00:52:42.348154+00:00",
+          "tick": 153,
+          "nativeFrame": 1149,
+          "framesAdvancedThisRequest": 8,
+          "imageSha256": "d0ebccf76d08bd44b282987fdc56ae3a225a79150ae208545c446abc23a1444c",
+          "score": "000000",
+          "coins": "00",
+          "time": "396"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 153,
+          "sentUTC": "2026-11-06T00:52:42.843521+00:00",
+          "tick": 210,
+          "nativeFrame": 1577,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "560df68f05c80a4178b0584a39c2f39a348ae00e26221ae27bf4d61566f8fe10",
+          "score": "000000",
+          "coins": "00",
+          "time": "378"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.867031+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9",
+          "score": "000000",
+          "coins": "00",
+          "time": "376"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 159,
+          "sentUTC": "2026-11-06T00:52:42.908138+00:00",
+          "tick": 218,
+          "nativeFrame": 1637,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "5781d09ee0af9621d994f4baec9cf41d1334db14d99acbd69990dec9fa8f2b1e",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.942112+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8",
+          "score": "000000",
+          "coins": "00",
+          "time": "374"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-a/trace.jsonl",
+          "sequence": 174,
+          "sentUTC": "2026-11-06T00:52:43.034419+00:00",
+          "tick": 232,
+          "nativeFrame": 1742,
+          "framesAdvancedThisRequest": 0,
+          "imageSha256": "2c3f637c67803ddd6bd7501d56bf615043f96f6a06e65b8bb4c487a2c25d971d",
+          "score": "000000",
+          "coins": "00",
+          "time": "371"
+        }
+      ]
+    },
+    {
+      "condition": "collected",
+      "repeat": "b",
+      "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+      "traceSha256": "f85608ec85e2db6c5ca0f9ca40de7f9298ebef1c9aa78e24666f1a42ddaa242a",
+      "recipe": "evidence/reference-hidden-availability-collected-requests.jsonl",
+      "recipeSha256": "8d8675a798c7d4b8a23ee2245052442dbbcf8e46830aa11d79c039f3b504f33d",
+      "initialActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 7,
+        "sentUTC": "2026-11-06T00:52:41.526947+00:00",
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492"
+      },
+      "initialRestingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 9,
+        "sentUTC": "2026-11-06T00:52:41.544085+00:00",
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9"
+      },
+      "initialPickupText": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:41.647311+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+          "positions": [
+            [
+              114,
+              167
+            ]
+          ]
+        }
+      ],
+      "afterRealPitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 68,
+        "sentUTC": "2026-11-06T00:52:42.034249+00:00",
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "3494b1cfc588e03c30213098e5b0cd4b3665819fa254ceb6f71dd0850023fce1",
+        "lives": 3
+      },
+      "firstVisibleOrdinaryRespawn": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 80,
+        "sentUTC": "2026-11-06T00:52:42.119550+00:00",
+        "tick": 137,
+        "nativeFrame": 1029,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "6ad3219c32b574b9d2e495038c9b0a637377947f155b28e6a4d9b5fbb69dded7",
+        "screenX": 40,
+        "top": 193,
+        "feet": 209
+      },
+      "returnRouteBegins": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 96,
+        "sentUTC": "2026-11-06T00:52:42.248309+00:00",
+        "tick": 153,
+        "nativeFrame": 1149,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "d0ebccf76d08bd44b282987fdc56ae3a225a79150ae208545c446abc23a1444c"
+      },
+      "returnPrefixAppliedMasks": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "returnPrefixNativeFrames": 428,
+      "returnNativeFramesByDecision": [
+        [
+          154,
+          7
+        ],
+        [
+          155,
+          8
+        ],
+        [
+          156,
+          7
+        ],
+        [
+          157,
+          8
+        ],
+        [
+          158,
+          7
+        ],
+        [
+          159,
+          8
+        ],
+        [
+          160,
+          7
+        ],
+        [
+          161,
+          8
+        ],
+        [
+          162,
+          7
+        ],
+        [
+          163,
+          8
+        ],
+        [
+          164,
+          8
+        ],
+        [
+          165,
+          7
+        ],
+        [
+          166,
+          8
+        ],
+        [
+          167,
+          7
+        ],
+        [
+          168,
+          8
+        ],
+        [
+          169,
+          7
+        ],
+        [
+          170,
+          8
+        ],
+        [
+          171,
+          7
+        ],
+        [
+          172,
+          8
+        ],
+        [
+          173,
+          7
+        ],
+        [
+          174,
+          8
+        ],
+        [
+          175,
+          7
+        ],
+        [
+          176,
+          8
+        ],
+        [
+          177,
+          7
+        ],
+        [
+          178,
+          8
+        ],
+        [
+          179,
+          7
+        ],
+        [
+          180,
+          8
+        ],
+        [
+          181,
+          7
+        ],
+        [
+          182,
+          8
+        ],
+        [
+          183,
+          7
+        ],
+        [
+          184,
+          8
+        ],
+        [
+          185,
+          7
+        ],
+        [
+          186,
+          8
+        ],
+        [
+          187,
+          7
+        ],
+        [
+          188,
+          8
+        ],
+        [
+          189,
+          7
+        ],
+        [
+          190,
+          8
+        ],
+        [
+          191,
+          7
+        ],
+        [
+          192,
+          8
+        ],
+        [
+          193,
+          7
+        ],
+        [
+          194,
+          8
+        ],
+        [
+          195,
+          7
+        ],
+        [
+          196,
+          8
+        ],
+        [
+          197,
+          7
+        ],
+        [
+          198,
+          8
+        ],
+        [
+          199,
+          7
+        ],
+        [
+          200,
+          8
+        ],
+        [
+          201,
+          7
+        ],
+        [
+          202,
+          8
+        ],
+        [
+          203,
+          7
+        ],
+        [
+          204,
+          8
+        ],
+        [
+          205,
+          8
+        ],
+        [
+          206,
+          7
+        ],
+        [
+          207,
+          8
+        ],
+        [
+          208,
+          7
+        ],
+        [
+          209,
+          8
+        ],
+        [
+          210,
+          7
+        ],
+        [
+          212,
+          15
+        ],
+        [
+          214,
+          15
+        ],
+        [
+          215,
+          8
+        ],
+        [
+          216,
+          7
+        ],
+        [
+          217,
+          8
+        ],
+        [
+          218,
+          7
+        ],
+        [
+          219,
+          8
+        ],
+        [
+          220,
+          7
+        ],
+        [
+          221,
+          8
+        ],
+        [
+          222,
+          7
+        ],
+        [
+          223,
+          8
+        ],
+        [
+          224,
+          7
+        ],
+        [
+          225,
+          8
+        ],
+        [
+          226,
+          7
+        ],
+        [
+          227,
+          8
+        ],
+        [
+          228,
+          7
+        ],
+        [
+          229,
+          8
+        ],
+        [
+          230,
+          7
+        ],
+        [
+          231,
+          8
+        ],
+        [
+          232,
+          7
+        ]
+      ],
+      "staticCameraWitnesses": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 4,
+          "sentUTC": "2026-11-06T00:52:41.494509+00:00",
+          "tick": 61,
+          "nativeFrame": 458,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.767087+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.841969+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        }
+      ],
+      "clearCellBeforeReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 155,
+        "sentUTC": "2026-11-06T00:52:42.767087+00:00",
+        "tick": 214,
+        "nativeFrame": 1607,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9"
+      },
+      "jumpThroughFormerBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 159,
+        "sentUTC": "2026-11-06T00:52:42.808235+00:00",
+        "tick": 218,
+        "nativeFrame": 1637,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "5781d09ee0af9621d994f4baec9cf41d1334db14d99acbd69990dec9fa8f2b1e",
+        "screenX": 114,
+        "top": 128,
+        "feet": 144,
+        "playerCell": 16,
+        "direction": "left"
+      },
+      "clearCellAfterReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+        "sequence": 163,
+        "sentUTC": "2026-11-06T00:52:42.841969+00:00",
+        "tick": 222,
+        "nativeFrame": 1667,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8"
+      },
+      "noUsedBlockAfterReturnJump": true,
+      "no1upSpriteOrPickupTextDuringReturnDecisions": [
+        215,
+        232
+      ],
+      "HUD": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:41.647311+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 96,
+          "sentUTC": "2026-11-06T00:52:42.248309+00:00",
+          "tick": 153,
+          "nativeFrame": 1149,
+          "framesAdvancedThisRequest": 8,
+          "imageSha256": "d0ebccf76d08bd44b282987fdc56ae3a225a79150ae208545c446abc23a1444c",
+          "score": "000000",
+          "coins": "00",
+          "time": "396"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 153,
+          "sentUTC": "2026-11-06T00:52:42.743628+00:00",
+          "tick": 210,
+          "nativeFrame": 1577,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "560df68f05c80a4178b0584a39c2f39a348ae00e26221ae27bf4d61566f8fe10",
+          "score": "000000",
+          "coins": "00",
+          "time": "378"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.767087+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "ae69c83cdd9cec8f3e11b389489c3714309c47d871cf0d535ababdd471b65db9",
+          "score": "000000",
+          "coins": "00",
+          "time": "376"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 159,
+          "sentUTC": "2026-11-06T00:52:42.808235+00:00",
+          "tick": 218,
+          "nativeFrame": 1637,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "5781d09ee0af9621d994f4baec9cf41d1334db14d99acbd69990dec9fa8f2b1e",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.841969+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "f2f935b55d4965a367152ed3f6265cda07f826c7dbd6811543530a68edb980f8",
+          "score": "000000",
+          "coins": "00",
+          "time": "374"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-collected-b/trace.jsonl",
+          "sequence": 174,
+          "sentUTC": "2026-11-06T00:52:42.933535+00:00",
+          "tick": 232,
+          "nativeFrame": 1742,
+          "framesAdvancedThisRequest": 0,
+          "imageSha256": "2c3f637c67803ddd6bd7501d56bf615043f96f6a06e65b8bb4c487a2c25d971d",
+          "score": "000000",
+          "coins": "00",
+          "time": "371"
+        }
+      ]
+    },
+    {
+      "condition": "uncollected",
+      "repeat": "a",
+      "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+      "traceSha256": "0aff88b42902b300ef950c6dc72961d2b04da1b9a453ee8edbc5ffb98923ce2a",
+      "recipe": "evidence/reference-hidden-availability-uncollected-requests.jsonl",
+      "recipeSha256": "9c6bd54f338cce6c8b0570adfac4beb3e2a02976bcedb8f5663a0b6727f1dc93",
+      "initialActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 7,
+        "sentUTC": "2026-11-06T00:52:41.365616+00:00",
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492"
+      },
+      "initialRestingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 9,
+        "sentUTC": "2026-11-06T00:52:41.382779+00:00",
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9"
+      },
+      "initialPickupText": [],
+      "afterRealPitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 68,
+        "sentUTC": "2026-11-06T00:52:41.877124+00:00",
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "5991e1133d692ca6a533b9337d70c8e1b750124fd56e1c387522e29195edc5ae",
+        "lives": 2
+      },
+      "firstVisibleOrdinaryRespawn": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 83,
+        "sentUTC": "2026-11-06T00:52:41.984299+00:00",
+        "tick": 140,
+        "nativeFrame": 1051,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "348d08b8f560f06f1bf5f8170fada47de7c1014e4e439b14212250d3fd76987c",
+        "screenX": 40,
+        "top": 193,
+        "feet": 209
+      },
+      "returnRouteBegins": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 96,
+        "sentUTC": "2026-11-06T00:52:42.088482+00:00",
+        "tick": 153,
+        "nativeFrame": 1149,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "d802a7c4a53b836d9776d4cdda957ad5c9232eb1af5254750bfd73b7f6a5ffbf"
+      },
+      "returnPrefixAppliedMasks": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "returnPrefixNativeFrames": 428,
+      "returnNativeFramesByDecision": [
+        [
+          154,
+          7
+        ],
+        [
+          155,
+          8
+        ],
+        [
+          156,
+          7
+        ],
+        [
+          157,
+          8
+        ],
+        [
+          158,
+          7
+        ],
+        [
+          159,
+          8
+        ],
+        [
+          160,
+          7
+        ],
+        [
+          161,
+          8
+        ],
+        [
+          162,
+          7
+        ],
+        [
+          163,
+          8
+        ],
+        [
+          164,
+          8
+        ],
+        [
+          165,
+          7
+        ],
+        [
+          166,
+          8
+        ],
+        [
+          167,
+          7
+        ],
+        [
+          168,
+          8
+        ],
+        [
+          169,
+          7
+        ],
+        [
+          170,
+          8
+        ],
+        [
+          171,
+          7
+        ],
+        [
+          172,
+          8
+        ],
+        [
+          173,
+          7
+        ],
+        [
+          174,
+          8
+        ],
+        [
+          175,
+          7
+        ],
+        [
+          176,
+          8
+        ],
+        [
+          177,
+          7
+        ],
+        [
+          178,
+          8
+        ],
+        [
+          179,
+          7
+        ],
+        [
+          180,
+          8
+        ],
+        [
+          181,
+          7
+        ],
+        [
+          182,
+          8
+        ],
+        [
+          183,
+          7
+        ],
+        [
+          184,
+          8
+        ],
+        [
+          185,
+          7
+        ],
+        [
+          186,
+          8
+        ],
+        [
+          187,
+          7
+        ],
+        [
+          188,
+          8
+        ],
+        [
+          189,
+          7
+        ],
+        [
+          190,
+          8
+        ],
+        [
+          191,
+          7
+        ],
+        [
+          192,
+          8
+        ],
+        [
+          193,
+          7
+        ],
+        [
+          194,
+          8
+        ],
+        [
+          195,
+          7
+        ],
+        [
+          196,
+          8
+        ],
+        [
+          197,
+          7
+        ],
+        [
+          198,
+          8
+        ],
+        [
+          199,
+          7
+        ],
+        [
+          200,
+          8
+        ],
+        [
+          201,
+          7
+        ],
+        [
+          202,
+          8
+        ],
+        [
+          203,
+          7
+        ],
+        [
+          204,
+          8
+        ],
+        [
+          205,
+          8
+        ],
+        [
+          206,
+          7
+        ],
+        [
+          207,
+          8
+        ],
+        [
+          208,
+          7
+        ],
+        [
+          209,
+          8
+        ],
+        [
+          210,
+          7
+        ],
+        [
+          212,
+          15
+        ],
+        [
+          214,
+          15
+        ],
+        [
+          215,
+          8
+        ],
+        [
+          216,
+          7
+        ],
+        [
+          217,
+          8
+        ],
+        [
+          218,
+          7
+        ],
+        [
+          219,
+          8
+        ],
+        [
+          220,
+          7
+        ],
+        [
+          221,
+          8
+        ],
+        [
+          222,
+          7
+        ],
+        [
+          223,
+          8
+        ],
+        [
+          224,
+          7
+        ],
+        [
+          225,
+          8
+        ],
+        [
+          226,
+          7
+        ],
+        [
+          227,
+          8
+        ],
+        [
+          228,
+          7
+        ],
+        [
+          229,
+          8
+        ],
+        [
+          230,
+          7
+        ],
+        [
+          231,
+          8
+        ],
+        [
+          232,
+          7
+        ]
+      ],
+      "staticCameraWitnesses": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 4,
+          "sentUTC": "2026-11-06T00:52:41.332951+00:00",
+          "tick": 61,
+          "nativeFrame": 458,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.608018+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.682966+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        }
+      ],
+      "clearCellBeforeReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 155,
+        "sentUTC": "2026-11-06T00:52:42.608018+00:00",
+        "tick": 214,
+        "nativeFrame": 1607,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f"
+      },
+      "jumpThroughFormerBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 159,
+        "sentUTC": "2026-11-06T00:52:42.649156+00:00",
+        "tick": 218,
+        "nativeFrame": 1637,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "a4941317ddf6ec79f028882958907e431dcf9932dbb404265c01802d0300b6e5",
+        "screenX": 114,
+        "top": 128,
+        "feet": 144,
+        "playerCell": 16,
+        "direction": "left"
+      },
+      "clearCellAfterReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+        "sequence": 163,
+        "sentUTC": "2026-11-06T00:52:42.682966+00:00",
+        "tick": 222,
+        "nativeFrame": 1667,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69"
+      },
+      "noUsedBlockAfterReturnJump": true,
+      "no1upSpriteOrPickupTextDuringReturnDecisions": [
+        215,
+        232
+      ],
+      "HUD": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:41.485587+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "79d43110b5c50f7c1dee3c46c145326c5f8851986e66138e47b5c2c1b00d454f",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 96,
+          "sentUTC": "2026-11-06T00:52:42.088482+00:00",
+          "tick": 153,
+          "nativeFrame": 1149,
+          "framesAdvancedThisRequest": 8,
+          "imageSha256": "d802a7c4a53b836d9776d4cdda957ad5c9232eb1af5254750bfd73b7f6a5ffbf",
+          "score": "000000",
+          "coins": "00",
+          "time": "396"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 153,
+          "sentUTC": "2026-11-06T00:52:42.584366+00:00",
+          "tick": 210,
+          "nativeFrame": 1577,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "347df3906b7468f251f78e6c2050fafeee96a1ab1da7f8b1bc8c708c43a237d7",
+          "score": "000000",
+          "coins": "00",
+          "time": "379"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:42.608018+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f",
+          "score": "000000",
+          "coins": "00",
+          "time": "377"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 159,
+          "sentUTC": "2026-11-06T00:52:42.649156+00:00",
+          "tick": 218,
+          "nativeFrame": 1637,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "a4941317ddf6ec79f028882958907e431dcf9932dbb404265c01802d0300b6e5",
+          "score": "000000",
+          "coins": "00",
+          "time": "376"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:42.682966+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-a/trace.jsonl",
+          "sequence": 174,
+          "sentUTC": "2026-11-06T00:52:42.775099+00:00",
+          "tick": 232,
+          "nativeFrame": 1742,
+          "framesAdvancedThisRequest": 0,
+          "imageSha256": "9e981f23f9a8cc2ee69f29e1eb68780a94b86eb7a1f552da51add25d877e49ef",
+          "score": "000000",
+          "coins": "00",
+          "time": "372"
+        }
+      ]
+    },
+    {
+      "condition": "uncollected",
+      "repeat": "b",
+      "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+      "traceSha256": "5e40cfdbb278ccb3437e13d8b4390d57005527a3b940d65155594e11bee0c582",
+      "recipe": "evidence/reference-hidden-availability-uncollected-requests.jsonl",
+      "recipeSha256": "9c6bd54f338cce6c8b0570adfac4beb3e2a02976bcedb8f5663a0b6727f1dc93",
+      "initialActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 7,
+        "sentUTC": "2026-11-06T00:52:40.194727+00:00",
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492"
+      },
+      "initialRestingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 9,
+        "sentUTC": "2026-11-06T00:52:40.211833+00:00",
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9"
+      },
+      "initialPickupText": [],
+      "afterRealPitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 68,
+        "sentUTC": "2026-11-06T00:52:40.768076+00:00",
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "5991e1133d692ca6a533b9337d70c8e1b750124fd56e1c387522e29195edc5ae",
+        "lives": 2
+      },
+      "firstVisibleOrdinaryRespawn": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 83,
+        "sentUTC": "2026-11-06T00:52:40.879043+00:00",
+        "tick": 140,
+        "nativeFrame": 1051,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "348d08b8f560f06f1bf5f8170fada47de7c1014e4e439b14212250d3fd76987c",
+        "screenX": 40,
+        "top": 193,
+        "feet": 209
+      },
+      "returnRouteBegins": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 96,
+        "sentUTC": "2026-11-06T00:52:40.993891+00:00",
+        "tick": 153,
+        "nativeFrame": 1149,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "d802a7c4a53b836d9776d4cdda957ad5c9232eb1af5254750bfd73b7f6a5ffbf"
+      },
+      "returnPrefixAppliedMasks": [
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        56,
+        40,
+        40,
+        40,
+        40,
+        40
+      ],
+      "returnPrefixNativeFrames": 428,
+      "returnNativeFramesByDecision": [
+        [
+          154,
+          7
+        ],
+        [
+          155,
+          8
+        ],
+        [
+          156,
+          7
+        ],
+        [
+          157,
+          8
+        ],
+        [
+          158,
+          7
+        ],
+        [
+          159,
+          8
+        ],
+        [
+          160,
+          7
+        ],
+        [
+          161,
+          8
+        ],
+        [
+          162,
+          7
+        ],
+        [
+          163,
+          8
+        ],
+        [
+          164,
+          8
+        ],
+        [
+          165,
+          7
+        ],
+        [
+          166,
+          8
+        ],
+        [
+          167,
+          7
+        ],
+        [
+          168,
+          8
+        ],
+        [
+          169,
+          7
+        ],
+        [
+          170,
+          8
+        ],
+        [
+          171,
+          7
+        ],
+        [
+          172,
+          8
+        ],
+        [
+          173,
+          7
+        ],
+        [
+          174,
+          8
+        ],
+        [
+          175,
+          7
+        ],
+        [
+          176,
+          8
+        ],
+        [
+          177,
+          7
+        ],
+        [
+          178,
+          8
+        ],
+        [
+          179,
+          7
+        ],
+        [
+          180,
+          8
+        ],
+        [
+          181,
+          7
+        ],
+        [
+          182,
+          8
+        ],
+        [
+          183,
+          7
+        ],
+        [
+          184,
+          8
+        ],
+        [
+          185,
+          7
+        ],
+        [
+          186,
+          8
+        ],
+        [
+          187,
+          7
+        ],
+        [
+          188,
+          8
+        ],
+        [
+          189,
+          7
+        ],
+        [
+          190,
+          8
+        ],
+        [
+          191,
+          7
+        ],
+        [
+          192,
+          8
+        ],
+        [
+          193,
+          7
+        ],
+        [
+          194,
+          8
+        ],
+        [
+          195,
+          7
+        ],
+        [
+          196,
+          8
+        ],
+        [
+          197,
+          7
+        ],
+        [
+          198,
+          8
+        ],
+        [
+          199,
+          7
+        ],
+        [
+          200,
+          8
+        ],
+        [
+          201,
+          7
+        ],
+        [
+          202,
+          8
+        ],
+        [
+          203,
+          7
+        ],
+        [
+          204,
+          8
+        ],
+        [
+          205,
+          8
+        ],
+        [
+          206,
+          7
+        ],
+        [
+          207,
+          8
+        ],
+        [
+          208,
+          7
+        ],
+        [
+          209,
+          8
+        ],
+        [
+          210,
+          7
+        ],
+        [
+          212,
+          15
+        ],
+        [
+          214,
+          15
+        ],
+        [
+          215,
+          8
+        ],
+        [
+          216,
+          7
+        ],
+        [
+          217,
+          8
+        ],
+        [
+          218,
+          7
+        ],
+        [
+          219,
+          8
+        ],
+        [
+          220,
+          7
+        ],
+        [
+          221,
+          8
+        ],
+        [
+          222,
+          7
+        ],
+        [
+          223,
+          8
+        ],
+        [
+          224,
+          7
+        ],
+        [
+          225,
+          8
+        ],
+        [
+          226,
+          7
+        ],
+        [
+          227,
+          8
+        ],
+        [
+          228,
+          7
+        ],
+        [
+          229,
+          8
+        ],
+        [
+          230,
+          7
+        ],
+        [
+          231,
+          8
+        ],
+        [
+          232,
+          7
+        ]
+      ],
+      "staticCameraWitnesses": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 4,
+          "sentUTC": "2026-11-06T00:52:40.162426+00:00",
+          "tick": 61,
+          "nativeFrame": 458,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:41.515189+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:41.590580+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69",
+          "cameraX": 905,
+          "anchors": [
+            {
+              "col": 57,
+              "row": 9,
+              "metatileId": 16,
+              "screenX": 7,
+              "screenY": 144
+            },
+            {
+              "col": 57,
+              "row": 10,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 160
+            },
+            {
+              "col": 57,
+              "row": 11,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 176
+            },
+            {
+              "col": 57,
+              "row": 12,
+              "metatileId": 20,
+              "screenX": 7,
+              "screenY": 192
+            },
+            {
+              "col": 58,
+              "row": 9,
+              "metatileId": 17,
+              "screenX": 23,
+              "screenY": 144
+            },
+            {
+              "col": 58,
+              "row": 10,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 160
+            },
+            {
+              "col": 58,
+              "row": 11,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 176
+            },
+            {
+              "col": 58,
+              "row": 12,
+              "metatileId": 21,
+              "screenX": 23,
+              "screenY": 192
+            }
+          ]
+        }
+      ],
+      "clearCellBeforeReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 155,
+        "sentUTC": "2026-11-06T00:52:41.515189+00:00",
+        "tick": 214,
+        "nativeFrame": 1607,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f"
+      },
+      "jumpThroughFormerBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 159,
+        "sentUTC": "2026-11-06T00:52:41.556813+00:00",
+        "tick": 218,
+        "nativeFrame": 1637,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "a4941317ddf6ec79f028882958907e431dcf9932dbb404265c01802d0300b6e5",
+        "screenX": 114,
+        "top": 128,
+        "feet": 144,
+        "playerCell": 16,
+        "direction": "left"
+      },
+      "clearCellAfterReturnJump": {
+        "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+        "sequence": 163,
+        "sentUTC": "2026-11-06T00:52:41.590580+00:00",
+        "tick": 222,
+        "nativeFrame": 1667,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69"
+      },
+      "noUsedBlockAfterReturnJump": true,
+      "no1upSpriteOrPickupTextDuringReturnDecisions": [
+        215,
+        232
+      ],
+      "HUD": [
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 21,
+          "sentUTC": "2026-11-06T00:52:40.337601+00:00",
+          "tick": 78,
+          "nativeFrame": 585,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "79d43110b5c50f7c1dee3c46c145326c5f8851986e66138e47b5c2c1b00d454f",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 96,
+          "sentUTC": "2026-11-06T00:52:40.993891+00:00",
+          "tick": 153,
+          "nativeFrame": 1149,
+          "framesAdvancedThisRequest": 8,
+          "imageSha256": "d802a7c4a53b836d9776d4cdda957ad5c9232eb1af5254750bfd73b7f6a5ffbf",
+          "score": "000000",
+          "coins": "00",
+          "time": "396"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 153,
+          "sentUTC": "2026-11-06T00:52:41.491608+00:00",
+          "tick": 210,
+          "nativeFrame": 1577,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "347df3906b7468f251f78e6c2050fafeee96a1ab1da7f8b1bc8c708c43a237d7",
+          "score": "000000",
+          "coins": "00",
+          "time": "379"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 155,
+          "sentUTC": "2026-11-06T00:52:41.515189+00:00",
+          "tick": 214,
+          "nativeFrame": 1607,
+          "framesAdvancedThisRequest": 15,
+          "imageSha256": "1a8f3625640b9853b3fca2f601c8527cc2a35601c4486dc81be159469bb3e11f",
+          "score": "000000",
+          "coins": "00",
+          "time": "377"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 159,
+          "sentUTC": "2026-11-06T00:52:41.556813+00:00",
+          "tick": 218,
+          "nativeFrame": 1637,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "a4941317ddf6ec79f028882958907e431dcf9932dbb404265c01802d0300b6e5",
+          "score": "000000",
+          "coins": "00",
+          "time": "376"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 163,
+          "sentUTC": "2026-11-06T00:52:41.590580+00:00",
+          "tick": 222,
+          "nativeFrame": 1667,
+          "framesAdvancedThisRequest": 7,
+          "imageSha256": "1fdfb476e2a45601c018a8647496886b25207757014ca0a467070463f04b7a69",
+          "score": "000000",
+          "coins": "00",
+          "time": "375"
+        },
+        {
+          "sourceTrace": "evidence/local/reference-hidden-availability-uncollected-b/trace.jsonl",
+          "sequence": 174,
+          "sentUTC": "2026-11-06T00:52:41.682551+00:00",
+          "tick": 232,
+          "nativeFrame": 1742,
+          "framesAdvancedThisRequest": 0,
+          "imageSha256": "9e981f23f9a8cc2ee69f29e1eb68780a94b86eb7a1f552da51add25d877e49ef",
+          "score": "000000",
+          "coins": "00",
+          "time": "372"
+        }
+      ]
+    }
+  ],
+  "fixedChecks": {
+    "RGBTolerance": 0,
+    "wholeCellPixels": 256,
+    "pipeAnchorRGBPixels": 24576,
+    "blankCellRGBPixels": 4096,
+    "usedBlockRGBPixels": 2048,
+    "playerOpaqueRGBPixels": 3656
+  },
+  "limits": [
+    "This establishes only the same 1-1 block after its activation and one before-checkpoint death; level reentry, checkpoint respawn, game-over restart and later-world eligibility are unmeasured.",
+    "The uncollected control had already activated the block; it isolates collection from activation, not death before any activation.",
+    "Return camera and standing sprite origin match initial conditions exactly; decision native-frame phase differs and is recorded rather than assumed.",
+    "No second-death life count was captured after the return probe; absence is established by actual clear cell, jump through it, and no mushroom/1UP text.",
+    "These are reference experiments, not recreation campaign wins."
+  ]
+}

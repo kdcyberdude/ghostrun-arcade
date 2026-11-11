@@ -1,0 +1,3233 @@
+{
+  "schema": "green-paratroopa-image-trajectories-v1",
+  "generatedUtc": "2026-11-05T22:43:04.424Z",
+  "method": "Exact opaque supplied green Paratroopa/Koopa bitmap match, full24px or explicitly labelled head16px crop. Camera registered between actual dense reference screenshots. Physical feet=raw origin+23; cropped opaque bottom is not silently called feet. No ROM/executable reads.",
+  "source": "evidence/local/reference-campaign-dense/trace.jsonl",
+  "level": "2-1",
+  "rows": [
+    {
+      "tick": 1308,
+      "nativeFrame": 9825,
+      "camera": 1906,
+      "knownCamera": 1906,
+      "cameraErrorAtKnown": 0,
+      "image": "evidence/local/reference-campaign-dense/01309-tick-01308.png",
+      "player": {
+        "originX": 121,
+        "originY": 49,
+        "visibleLeft": 124,
+        "visibleTop": 65,
+        "visibleRight": 134,
+        "visibleBottom": 80,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "tick": 1309,
+      "nativeFrame": 9833,
+      "camera": 1926,
+      "registration": {
+        "delta": 20,
+        "score": 0.02579745511591424,
+        "comparedPixels": 5737
+      },
+      "image": "evidence/local/reference-campaign-dense/01310-tick-01309.png",
+      "player": {
+        "originX": 121,
+        "originY": 49,
+        "visibleLeft": 123,
+        "visibleTop": 66,
+        "visibleRight": 135,
+        "visibleBottom": 80,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "tick": 1310,
+      "nativeFrame": 9841,
+      "camera": 1946,
+      "registration": {
+        "delta": 20,
+        "score": 0.014799865455768583,
+        "comparedPixels": 5946
+      },
+      "image": "evidence/local/reference-campaign-dense/01311-tick-01310.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 235,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2181
+        }
+      ]
+    },
+    {
+      "tick": 1311,
+      "nativeFrame": 9848,
+      "camera": 1963,
+      "registration": {
+        "delta": 17,
+        "score": 0.030744071954210958,
+        "comparedPixels": 6115
+      },
+      "image": "evidence/local/reference-campaign-dense/01312-tick-01311.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 215,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2178
+        }
+      ]
+    },
+    {
+      "tick": 1312,
+      "nativeFrame": 9856,
+      "camera": 1983,
+      "knownCamera": 1983,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.016811708860759493,
+        "comparedPixels": 5056
+      },
+      "image": "evidence/local/reference-campaign-dense/01313-tick-01312.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 191,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2174
+        }
+      ]
+    },
+    {
+      "tick": 1313,
+      "nativeFrame": 9863,
+      "camera": 2001,
+      "registration": {
+        "delta": 18,
+        "score": 0.010666666666666666,
+        "comparedPixels": 4875
+      },
+      "image": "evidence/local/reference-campaign-dense/01314-tick-01313.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 169,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2170
+        }
+      ]
+    },
+    {
+      "tick": 1314,
+      "nativeFrame": 9871,
+      "camera": 2021,
+      "registration": {
+        "delta": 20,
+        "score": 0.007069555302166477,
+        "comparedPixels": 4385
+      },
+      "image": "evidence/local/reference-campaign-dense/01315-tick-01314.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 145,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2166
+        }
+      ]
+    },
+    {
+      "tick": 1315,
+      "nativeFrame": 9878,
+      "camera": 2038,
+      "registration": {
+        "delta": 17,
+        "score": 0.007001166861143524,
+        "comparedPixels": 3428
+      },
+      "image": "evidence/local/reference-campaign-dense/01316-tick-01315.png",
+      "player": null,
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 125,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2163
+        }
+      ]
+    },
+    {
+      "tick": 1316,
+      "nativeFrame": 9886,
+      "camera": 2058,
+      "knownCamera": 2058,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.009916699722332408,
+        "comparedPixels": 2521
+      },
+      "image": "evidence/local/reference-campaign-dense/01317-tick-01316.png",
+      "player": {
+        "originX": 121,
+        "originY": 32,
+        "visibleLeft": 121,
+        "visibleTop": 48,
+        "visibleRight": 136,
+        "visibleBottom": 63,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 101,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2159
+        }
+      ]
+    },
+    {
+      "tick": 1317,
+      "nativeFrame": 9893,
+      "camera": 2076,
+      "registration": {
+        "delta": 18,
+        "score": 0.011722272317403066,
+        "comparedPixels": 2218
+      },
+      "image": "evidence/local/reference-campaign-dense/01318-tick-01317.png",
+      "player": {
+        "originX": 121,
+        "originY": 60,
+        "visibleLeft": 121,
+        "visibleTop": 76,
+        "visibleRight": 136,
+        "visibleBottom": 91,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 79,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2155
+        }
+      ]
+    },
+    {
+      "tick": 1318,
+      "nativeFrame": 9901,
+      "camera": 2096,
+      "registration": {
+        "delta": 20,
+        "score": 0.015479876160990712,
+        "comparedPixels": 1615
+      },
+      "image": "evidence/local/reference-campaign-dense/01319-tick-01318.png",
+      "player": {
+        "originX": 121,
+        "originY": 92,
+        "visibleLeft": 121,
+        "visibleTop": 108,
+        "visibleRight": 136,
+        "visibleBottom": 123,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 55,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2151
+        }
+      ]
+    },
+    {
+      "tick": 1319,
+      "nativeFrame": 9908,
+      "camera": 2113,
+      "registration": {
+        "delta": 17,
+        "score": 0.021917808219178082,
+        "comparedPixels": 1095
+      },
+      "image": "evidence/local/reference-campaign-dense/01320-tick-01319.png",
+      "player": {
+        "originX": 121,
+        "originY": 120,
+        "visibleLeft": 121,
+        "visibleTop": 136,
+        "visibleRight": 136,
+        "visibleBottom": 151,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 35,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2148
+        }
+      ]
+    },
+    {
+      "tick": 1320,
+      "nativeFrame": 9916,
+      "camera": 2133,
+      "knownCamera": 2133,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.02100840336134454,
+        "comparedPixels": 1190
+      },
+      "image": "evidence/local/reference-campaign-dense/01321-tick-01320.png",
+      "player": {
+        "originX": 121,
+        "originY": 152,
+        "visibleLeft": 121,
+        "visibleTop": 168,
+        "visibleRight": 136,
+        "visibleBottom": 183,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 11,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2144
+        }
+      ]
+    },
+    {
+      "tick": 1321,
+      "nativeFrame": 9923,
+      "camera": 2151,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 1159
+      },
+      "image": "evidence/local/reference-campaign-dense/01322-tick-01321.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "tick": 1322,
+      "nativeFrame": 9931,
+      "camera": 2171,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 1159
+      },
+      "image": "evidence/local/reference-campaign-dense/01323-tick-01322.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 121,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1323,
+      "nativeFrame": 9938,
+      "camera": 2188,
+      "registration": {
+        "delta": 17,
+        "score": 0.10612597066436583,
+        "comparedPixels": 1159
+      },
+      "image": "evidence/local/reference-campaign-dense/01324-tick-01323.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 124,
+        "visibleTop": 193,
+        "visibleRight": 134,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 234,
+          "originY": 147,
+          "physicalFeetY": 170,
+          "opaqueTop": 148,
+          "opaqueBottom": 170,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2422
+        }
+      ]
+    },
+    {
+      "tick": 1324,
+      "nativeFrame": 9946,
+      "camera": 2208,
+      "knownCamera": 2208,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.1712707182320442,
+        "comparedPixels": 1267
+      },
+      "image": "evidence/local/reference-campaign-dense/01325-tick-01324.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 218,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2426
+        }
+      ]
+    },
+    {
+      "tick": 1325,
+      "nativeFrame": 9953,
+      "camera": 2226,
+      "registration": {
+        "delta": 18,
+        "score": 0.13846153846153847,
+        "comparedPixels": 1235
+      },
+      "image": "evidence/local/reference-campaign-dense/01326-tick-01325.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 203,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2429
+        }
+      ]
+    },
+    {
+      "tick": 1326,
+      "nativeFrame": 9961,
+      "camera": 2246,
+      "registration": {
+        "delta": 20,
+        "score": 0.1384529147982063,
+        "comparedPixels": 1784
+      },
+      "image": "evidence/local/reference-campaign-dense/01327-tick-01326.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 121,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 187,
+          "originY": 153,
+          "physicalFeetY": 176,
+          "opaqueTop": 153,
+          "opaqueBottom": 176,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2433
+        }
+      ]
+    },
+    {
+      "tick": 1327,
+      "nativeFrame": 9968,
+      "camera": 2263,
+      "registration": {
+        "delta": 17,
+        "score": 0.11578947368421053,
+        "comparedPixels": 1900
+      },
+      "image": "evidence/local/reference-campaign-dense/01328-tick-01327.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 124,
+        "visibleTop": 193,
+        "visibleRight": 134,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 174,
+          "originY": 167,
+          "physicalFeetY": 190,
+          "opaqueTop": 168,
+          "opaqueBottom": 190,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2437
+        }
+      ]
+    },
+    {
+      "tick": 1328,
+      "nativeFrame": 9976,
+      "camera": 2283,
+      "knownCamera": 2283,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.13017456359102245,
+        "comparedPixels": 2005
+      },
+      "image": "evidence/local/reference-campaign-dense/01329-tick-01328.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 158,
+          "originY": 189,
+          "physicalFeetY": 212,
+          "opaqueTop": 189,
+          "opaqueBottom": 212,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2441
+        }
+      ]
+    },
+    {
+      "tick": 1329,
+      "nativeFrame": 9983,
+      "camera": 2301,
+      "registration": {
+        "delta": 18,
+        "score": 0.004195070791819612,
+        "comparedPixels": 1907
+      },
+      "image": "evidence/local/reference-campaign-dense/01330-tick-01329.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 143,
+          "originY": 211,
+          "physicalFeetY": 234,
+          "opaqueTop": 212,
+          "opaqueBottom": 234,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2444
+        }
+      ]
+    },
+    {
+      "tick": 1330,
+      "nativeFrame": 9991,
+      "camera": 2321,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 1815
+      },
+      "image": "evidence/local/reference-campaign-dense/01331-tick-01330.png",
+      "player": {
+        "originX": 121,
+        "originY": 149,
+        "visibleLeft": 121,
+        "visibleTop": 165,
+        "visibleRight": 136,
+        "visibleBottom": 180,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "tick": 1331,
+      "nativeFrame": 9998,
+      "camera": 2338,
+      "registration": {
+        "delta": 17,
+        "score": 0,
+        "comparedPixels": 1481
+      },
+      "image": "evidence/local/reference-campaign-dense/01332-tick-01331.png",
+      "player": {
+        "originX": 121,
+        "originY": 128,
+        "visibleLeft": 121,
+        "visibleTop": 144,
+        "visibleRight": 136,
+        "visibleBottom": 159,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "tick": 1332,
+      "nativeFrame": 10006,
+      "camera": 2358,
+      "knownCamera": 2358,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 1339
+      },
+      "image": "evidence/local/reference-campaign-dense/01333-tick-01332.png",
+      "player": {
+        "originX": 121,
+        "originY": 129,
+        "visibleLeft": 121,
+        "visibleTop": 145,
+        "visibleRight": 135,
+        "visibleBottom": 160,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1333,
+      "nativeFrame": 10013,
+      "camera": 2376,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 1460
+      },
+      "image": "evidence/local/reference-campaign-dense/01334-tick-01333.png",
+      "player": {
+        "originX": 121,
+        "originY": 144,
+        "visibleLeft": 121,
+        "visibleTop": 160,
+        "visibleRight": 135,
+        "visibleBottom": 175,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1334,
+      "nativeFrame": 10021,
+      "camera": 2396,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 1696
+      },
+      "image": "evidence/local/reference-campaign-dense/01335-tick-01334.png",
+      "player": {
+        "originX": 121,
+        "originY": 176,
+        "visibleLeft": 121,
+        "visibleTop": 192,
+        "visibleRight": 135,
+        "visibleBottom": 207,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1335,
+      "nativeFrame": 10028,
+      "camera": 2413,
+      "registration": {
+        "delta": 17,
+        "score": 0,
+        "comparedPixels": 2392
+      },
+      "image": "evidence/local/reference-campaign-dense/01336-tick-01335.png",
+      "player": {
+        "originX": 121,
+        "originY": 153,
+        "visibleLeft": 121,
+        "visibleTop": 169,
+        "visibleRight": 136,
+        "visibleBottom": 184,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "tick": 1336,
+      "nativeFrame": 10036,
+      "camera": 2433,
+      "knownCamera": 2433,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0,
+        "comparedPixels": 2951
+      },
+      "image": "evidence/local/reference-campaign-dense/01337-tick-01336.png",
+      "player": {
+        "originX": 121,
+        "originY": 124,
+        "visibleLeft": 121,
+        "visibleTop": 140,
+        "visibleRight": 136,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "tick": 1337,
+      "nativeFrame": 10043,
+      "camera": 2451,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 3424
+      },
+      "image": "evidence/local/reference-campaign-dense/01338-tick-01337.png",
+      "player": {
+        "originX": 121,
+        "originY": 106,
+        "visibleLeft": 121,
+        "visibleTop": 122,
+        "visibleRight": 136,
+        "visibleBottom": 137,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": []
+    },
+    {
+      "tick": 1338,
+      "nativeFrame": 10051,
+      "camera": 2471,
+      "registration": {
+        "delta": 20,
+        "score": 0.009374138406396471,
+        "comparedPixels": 3627
+      },
+      "image": "evidence/local/reference-campaign-dense/01339-tick-01338.png",
+      "player": {
+        "originX": 121,
+        "originY": 102,
+        "visibleLeft": 121,
+        "visibleTop": 118,
+        "visibleRight": 136,
+        "visibleBottom": 133,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 237,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2708
+        }
+      ]
+    },
+    {
+      "tick": 1339,
+      "nativeFrame": 10058,
+      "camera": 2488,
+      "registration": {
+        "delta": 17,
+        "score": 0.07222844344904815,
+        "comparedPixels": 3572
+      },
+      "image": "evidence/local/reference-campaign-dense/01340-tick-01339.png",
+      "player": {
+        "originX": 121,
+        "originY": 124,
+        "visibleLeft": 121,
+        "visibleTop": 140,
+        "visibleRight": 136,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 224,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2712
+        },
+        {
+          "kind": "paratroopa",
+          "x": 238,
+          "originY": 150,
+          "physicalFeetY": 173,
+          "opaqueTop": 150,
+          "opaqueBottom": 173,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2726
+        }
+      ]
+    },
+    {
+      "tick": 1340,
+      "nativeFrame": 10066,
+      "camera": 2508,
+      "knownCamera": 2508,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.11541749786263893,
+        "comparedPixels": 3509
+      },
+      "image": "evidence/local/reference-campaign-dense/01341-tick-01340.png",
+      "player": {
+        "originX": 121,
+        "originY": 156,
+        "visibleLeft": 121,
+        "visibleTop": 172,
+        "visibleRight": 136,
+        "visibleBottom": 187,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 219,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2727
+        },
+        {
+          "kind": "paratroopa",
+          "x": 204,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2712
+        }
+      ]
+    },
+    {
+      "tick": 1341,
+      "nativeFrame": 10073,
+      "camera": 2526,
+      "registration": {
+        "delta": 18,
+        "score": 0.13700269219264133,
+        "comparedPixels": 3343
+      },
+      "image": "evidence/local/reference-campaign-dense/01342-tick-01341.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 121,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 204,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2730
+        },
+        {
+          "kind": "paratroopa",
+          "x": 182,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 149,
+          "opaqueBottom": 172,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2708
+        }
+      ]
+    },
+    {
+      "tick": 1342,
+      "nativeFrame": 10081,
+      "camera": 2546,
+      "registration": {
+        "delta": 20,
+        "score": 0.14411199560801538,
+        "comparedPixels": 3643
+      },
+      "image": "evidence/local/reference-campaign-dense/01343-tick-01342.png",
+      "player": {
+        "originX": 121,
+        "originY": 149,
+        "visibleLeft": 121,
+        "visibleTop": 165,
+        "visibleRight": 136,
+        "visibleBottom": 180,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 188,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2734
+        },
+        {
+          "kind": "paratroopa",
+          "x": 158,
+          "originY": 162,
+          "physicalFeetY": 185,
+          "opaqueTop": 163,
+          "opaqueBottom": 185,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2704
+        }
+      ]
+    },
+    {
+      "tick": 1343,
+      "nativeFrame": 10088,
+      "camera": 2563,
+      "registration": {
+        "delta": 17,
+        "score": 0.16273291925465838,
+        "comparedPixels": 4025
+      },
+      "image": "evidence/local/reference-campaign-dense/01344-tick-01343.png",
+      "player": {
+        "originX": 121,
+        "originY": 128,
+        "visibleLeft": 121,
+        "visibleTop": 144,
+        "visibleRight": 136,
+        "visibleBottom": 159,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 175,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 160,
+          "opaqueBottom": 183,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2738
+        },
+        {
+          "kind": "paratroopa",
+          "x": 138,
+          "originY": 180,
+          "physicalFeetY": 203,
+          "opaqueTop": 180,
+          "opaqueBottom": 203,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2701
+        }
+      ]
+    },
+    {
+      "tick": 1344,
+      "nativeFrame": 10096,
+      "camera": 2583,
+      "knownCamera": 2583,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.10698583292623351,
+        "comparedPixels": 4094
+      },
+      "image": "evidence/local/reference-campaign-dense/01345-tick-01344.png",
+      "player": {
+        "originX": 121,
+        "originY": 136,
+        "visibleLeft": 121,
+        "visibleTop": 152,
+        "visibleRight": 136,
+        "visibleBottom": 167,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 159,
+          "originY": 179,
+          "physicalFeetY": 202,
+          "opaqueTop": 180,
+          "opaqueBottom": 202,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2742
+        },
+        {
+          "kind": "paratroopa",
+          "x": 114,
+          "originY": 168,
+          "physicalFeetY": 191,
+          "opaqueTop": 169,
+          "opaqueBottom": 191,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2697
+        }
+      ]
+    },
+    {
+      "tick": 1345,
+      "nativeFrame": 10103,
+      "camera": 2601,
+      "registration": {
+        "delta": 18,
+        "score": 0.08912415784408084,
+        "comparedPixels": 5195
+      },
+      "image": "evidence/local/reference-campaign-dense/01346-tick-01345.png",
+      "player": {
+        "originX": 121,
+        "originY": 164,
+        "visibleLeft": 121,
+        "visibleTop": 180,
+        "visibleRight": 136,
+        "visibleBottom": 195,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 144,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 171,
+          "opaqueBottom": 194,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2745
+        },
+        {
+          "kind": "paratroopa",
+          "x": 92,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2693
+        }
+      ]
+    },
+    {
+      "tick": 1346,
+      "nativeFrame": 10111,
+      "camera": 2621,
+      "registration": {
+        "delta": 20,
+        "score": 0.0579394898160965,
+        "comparedPixels": 5057
+      },
+      "image": "evidence/local/reference-campaign-dense/01347-tick-01346.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 124,
+        "visibleTop": 193,
+        "visibleRight": 134,
+        "visibleBottom": 208,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 128,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 155,
+          "opaqueBottom": 177,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2749
+        },
+        {
+          "kind": "paratroopa",
+          "x": 68,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2689
+        }
+      ]
+    },
+    {
+      "tick": 1347,
+      "nativeFrame": 10118,
+      "camera": 2638,
+      "registration": {
+        "delta": 17,
+        "score": 0.13384244372990353,
+        "comparedPixels": 4976
+      },
+      "image": "evidence/local/reference-campaign-dense/01348-tick-01347.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 123,
+        "visibleTop": 194,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 115,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 146,
+          "opaqueBottom": 169,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2753
+        },
+        {
+          "kind": "paratroopa",
+          "x": 48,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2686
+        }
+      ]
+    },
+    {
+      "tick": 1348,
+      "nativeFrame": 10126,
+      "camera": 2658,
+      "knownCamera": 2658,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 20,
+        "score": 0.14014423076923077,
+        "comparedPixels": 4160
+      },
+      "image": "evidence/local/reference-campaign-dense/01349-tick-01348.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 121,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 99,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 143,
+          "opaqueBottom": 165,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2757
+        },
+        {
+          "kind": "paratroopa",
+          "x": 24,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 147,
+          "opaqueBottom": 169,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2682
+        }
+      ]
+    },
+    {
+      "tick": 1349,
+      "nativeFrame": 10133,
+      "camera": 2676,
+      "registration": {
+        "delta": 18,
+        "score": 0.1820025348542459,
+        "comparedPixels": 3945
+      },
+      "image": "evidence/local/reference-campaign-dense/01350-tick-01349.png",
+      "player": {
+        "originX": 121,
+        "originY": 177,
+        "visibleLeft": 121,
+        "visibleTop": 193,
+        "visibleRight": 135,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 84,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 145,
+          "opaqueBottom": 168,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2760
+        },
+        {
+          "kind": "paratroopa",
+          "x": 2,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2678
+        }
+      ]
+    },
+    {
+      "tick": 1350,
+      "nativeFrame": 10141,
+      "camera": 2683,
+      "registration": {
+        "delta": 7,
+        "score": 0.17218543046357615,
+        "comparedPixels": 3473
+      },
+      "image": "evidence/local/reference-campaign-dense/01351-tick-01350.png",
+      "player": {
+        "originX": 119,
+        "originY": 149,
+        "visibleLeft": 119,
+        "visibleTop": 165,
+        "visibleRight": 134,
+        "visibleBottom": 180,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 81,
+          "originY": 155,
+          "physicalFeetY": 178,
+          "opaqueTop": 156,
+          "opaqueBottom": 178,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2764
+        }
+      ]
+    },
+    {
+      "tick": 1351,
+      "nativeFrame": 10149,
+      "camera": 2683,
+      "registration": {
+        "delta": 0,
+        "score": 0.10671819262782402,
+        "comparedPixels": 3364
+      },
+      "image": "evidence/local/reference-campaign-dense/01352-tick-01351.png",
+      "player": {
+        "originX": 120,
+        "originY": 121,
+        "visibleLeft": 120,
+        "visibleTop": 137,
+        "visibleRight": 135,
+        "visibleBottom": 152,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 85,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 171,
+          "opaqueBottom": 194,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2768
+        }
+      ]
+    },
+    {
+      "tick": 1352,
+      "nativeFrame": 10156,
+      "camera": 2683,
+      "knownCamera": 2683,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 0,
+        "score": 0.07342966676496608,
+        "comparedPixels": 3391
+      },
+      "image": "evidence/local/reference-campaign-dense/01353-tick-01352.png",
+      "player": {
+        "originX": 123,
+        "originY": 104,
+        "visibleLeft": 123,
+        "visibleTop": 120,
+        "visibleRight": 138,
+        "visibleBottom": 135,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 89,
+          "originY": 179,
+          "physicalFeetY": 202,
+          "opaqueTop": 180,
+          "opaqueBottom": 202,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2772
+        }
+      ]
+    },
+    {
+      "tick": 1353,
+      "nativeFrame": 10164,
+      "camera": 2689,
+      "registration": {
+        "delta": 6,
+        "score": 0.08525202240199128,
+        "comparedPixels": 3214
+      },
+      "image": "evidence/local/reference-campaign-dense/01354-tick-01353.png",
+      "player": {
+        "originX": 124,
+        "originY": 95,
+        "visibleLeft": 124,
+        "visibleTop": 111,
+        "visibleRight": 139,
+        "visibleBottom": 126,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 87,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 160,
+          "opaqueBottom": 183,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2776
+        }
+      ]
+    },
+    {
+      "tick": 1354,
+      "nativeFrame": 10171,
+      "camera": 2698,
+      "registration": {
+        "delta": 9,
+        "score": 0.15066225165562913,
+        "comparedPixels": 3020
+      },
+      "image": "evidence/local/reference-campaign-dense/01355-tick-01354.png",
+      "player": {
+        "originX": 124,
+        "originY": 99,
+        "visibleLeft": 124,
+        "visibleTop": 115,
+        "visibleRight": 139,
+        "visibleBottom": 130,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 81,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 149,
+          "opaqueBottom": 172,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2779
+        },
+        {
+          "kind": "koopa",
+          "x": 240,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2938
+        }
+      ]
+    },
+    {
+      "tick": 1355,
+      "nativeFrame": 10179,
+      "camera": 2710,
+      "registration": {
+        "delta": 12,
+        "score": 0.14251040221914008,
+        "comparedPixels": 2884
+      },
+      "image": "evidence/local/reference-campaign-dense/01356-tick-01355.png",
+      "player": {
+        "originX": 124,
+        "originY": 129,
+        "visibleLeft": 126,
+        "visibleTop": 146,
+        "visibleRight": 138,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 73,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2783
+        },
+        {
+          "kind": "koopa",
+          "x": 224,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2934
+        }
+      ]
+    },
+    {
+      "tick": 1356,
+      "nativeFrame": 10186,
+      "camera": 2722,
+      "knownCamera": 2722,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 12,
+        "score": 0.13577799801783944,
+        "comparedPixels": 3027
+      },
+      "image": "evidence/local/reference-campaign-dense/01357-tick-01356.png",
+      "player": {
+        "originX": 124,
+        "originY": 129,
+        "visibleLeft": 126,
+        "visibleTop": 146,
+        "visibleRight": 138,
+        "visibleBottom": 160,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 65,
+          "originY": 144,
+          "physicalFeetY": 167,
+          "opaqueTop": 144,
+          "opaqueBottom": 167,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2787
+        },
+        {
+          "kind": "koopa",
+          "x": 209,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2931
+        }
+      ]
+    },
+    {
+      "tick": 1357,
+      "nativeFrame": 10194,
+      "camera": 2739,
+      "registration": {
+        "delta": 17,
+        "score": 0.09605087014725569,
+        "comparedPixels": 2988
+      },
+      "image": "evidence/local/reference-campaign-dense/01358-tick-01357.png",
+      "player": {
+        "originX": 124,
+        "originY": 145,
+        "visibleLeft": 126,
+        "visibleTop": 162,
+        "visibleRight": 138,
+        "visibleBottom": 176,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 52,
+          "originY": 151,
+          "physicalFeetY": 174,
+          "opaqueTop": 152,
+          "opaqueBottom": 174,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2791
+        },
+        {
+          "kind": "koopa",
+          "x": 188,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2927
+        }
+      ]
+    },
+    {
+      "tick": 1358,
+      "nativeFrame": 10201,
+      "camera": 2756,
+      "registration": {
+        "delta": 17,
+        "score": 0.09705042816365367,
+        "comparedPixels": 3153
+      },
+      "image": "evidence/local/reference-campaign-dense/01359-tick-01358.png",
+      "player": {
+        "originX": 124,
+        "originY": 173,
+        "visibleLeft": 126,
+        "visibleTop": 190,
+        "visibleRight": 138,
+        "visibleBottom": 204,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 38,
+          "originY": 163,
+          "physicalFeetY": 186,
+          "opaqueTop": 163,
+          "opaqueBottom": 186,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2794
+        },
+        {
+          "kind": "koopa",
+          "x": 167,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2923
+        }
+      ]
+    },
+    {
+      "tick": 1359,
+      "nativeFrame": 10209,
+      "camera": 2776,
+      "registration": {
+        "delta": 20,
+        "score": 0.08394276629570747,
+        "comparedPixels": 3145
+      },
+      "image": "evidence/local/reference-campaign-dense/01360-tick-01359.png",
+      "player": {
+        "originX": 124,
+        "originY": 149,
+        "visibleLeft": 124,
+        "visibleTop": 165,
+        "visibleRight": 139,
+        "visibleBottom": 180,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 22,
+          "originY": 183,
+          "physicalFeetY": 206,
+          "opaqueTop": 184,
+          "opaqueBottom": 206,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2798
+        },
+        {
+          "kind": "koopa",
+          "x": 143,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2919
+        }
+      ]
+    },
+    {
+      "tick": 1360,
+      "nativeFrame": 10216,
+      "camera": 2794,
+      "knownCamera": 2794,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 18,
+        "score": 0.027777777777777776,
+        "comparedPixels": 3024
+      },
+      "image": "evidence/local/reference-campaign-dense/01361-tick-01360.png",
+      "player": {
+        "originX": 124,
+        "originY": 124,
+        "visibleLeft": 124,
+        "visibleTop": 140,
+        "visibleRight": 139,
+        "visibleBottom": 155,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "paratroopa",
+          "x": 4,
+          "originY": 168,
+          "physicalFeetY": 191,
+          "opaqueTop": 168,
+          "opaqueBottom": 191,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2798
+        },
+        {
+          "kind": "koopa",
+          "x": 122,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2916
+        }
+      ]
+    },
+    {
+      "tick": 1361,
+      "nativeFrame": 10224,
+      "camera": 2814,
+      "registration": {
+        "delta": 20,
+        "score": 0.00616827041697508,
+        "comparedPixels": 4053
+      },
+      "image": "evidence/local/reference-campaign-dense/01362-tick-01361.png",
+      "player": {
+        "originX": 124,
+        "originY": 104,
+        "visibleLeft": 124,
+        "visibleTop": 120,
+        "visibleRight": 139,
+        "visibleBottom": 135,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 98,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2912
+        }
+      ]
+    },
+    {
+      "tick": 1362,
+      "nativeFrame": 10231,
+      "camera": 2831,
+      "registration": {
+        "delta": 17,
+        "score": 0.004241435562805873,
+        "comparedPixels": 6130
+      },
+      "image": "evidence/local/reference-campaign-dense/01363-tick-01362.png",
+      "player": {
+        "originX": 124,
+        "originY": 96,
+        "visibleLeft": 124,
+        "visibleTop": 112,
+        "visibleRight": 139,
+        "visibleBottom": 127,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 77,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2908
+        }
+      ]
+    },
+    {
+      "tick": 1363,
+      "nativeFrame": 10239,
+      "camera": 2851,
+      "registration": {
+        "delta": 20,
+        "score": 0.0042654837058522434,
+        "comparedPixels": 5861
+      },
+      "image": "evidence/local/reference-campaign-dense/01364-tick-01363.png",
+      "player": {
+        "originX": 124,
+        "originY": 97,
+        "visibleLeft": 124,
+        "visibleTop": 113,
+        "visibleRight": 139,
+        "visibleBottom": 128,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 53,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2904
+        }
+      ]
+    },
+    {
+      "tick": 1364,
+      "nativeFrame": 10246,
+      "camera": 2869,
+      "knownCamera": 2869,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 18,
+        "score": 0.003838771593090211,
+        "comparedPixels": 6252
+      },
+      "image": "evidence/local/reference-campaign-dense/01365-tick-01364.png",
+      "player": {
+        "originX": 124,
+        "originY": 113,
+        "visibleLeft": 124,
+        "visibleTop": 129,
+        "visibleRight": 138,
+        "visibleBottom": 144,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 32,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 185,
+          "opaqueBottom": 208,
+          "cell": 3,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 208,
+          "worldX": 2901
+        }
+      ]
+    },
+    {
+      "tick": 1365,
+      "nativeFrame": 10254,
+      "camera": 2889,
+      "registration": {
+        "delta": 20,
+        "score": 0.0037844383893430216,
+        "comparedPixels": 6606
+      },
+      "image": "evidence/local/reference-campaign-dense/01366-tick-01365.png",
+      "player": {
+        "originX": 124,
+        "originY": 133,
+        "visibleLeft": 124,
+        "visibleTop": 149,
+        "visibleRight": 138,
+        "visibleBottom": 164,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": [
+        {
+          "kind": "koopa",
+          "x": 8,
+          "originY": 185,
+          "physicalFeetY": 208,
+          "opaqueTop": 186,
+          "opaqueBottom": 208,
+          "cell": 2,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 213,
+          "worldX": 2897
+        }
+      ]
+    },
+    {
+      "tick": 1366,
+      "nativeFrame": 10261,
+      "camera": 2901,
+      "registration": {
+        "delta": 12,
+        "score": 0.008805222407772886,
+        "comparedPixels": 6587
+      },
+      "image": "evidence/local/reference-campaign-dense/01367-tick-01366.png",
+      "player": {
+        "originX": 119,
+        "originY": 155,
+        "visibleLeft": 121,
+        "visibleTop": 172,
+        "visibleRight": 133,
+        "visibleBottom": 186,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120
+      },
+      "actors": []
+    },
+    {
+      "tick": 1367,
+      "nativeFrame": 10269,
+      "camera": 2919,
+      "registration": {
+        "delta": 18,
+        "score": 0,
+        "comparedPixels": 6529
+      },
+      "image": "evidence/local/reference-campaign-dense/01368-tick-01367.png",
+      "player": {
+        "originX": 101,
+        "originY": 151,
+        "visibleLeft": 101,
+        "visibleTop": 167,
+        "visibleRight": 115,
+        "visibleBottom": 182,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1368,
+      "nativeFrame": 10276,
+      "camera": 2924,
+      "knownCamera": 2924,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 5,
+        "score": 0,
+        "comparedPixels": 6387
+      },
+      "image": "evidence/local/reference-campaign-dense/01369-tick-01368.png",
+      "player": {
+        "originX": 102,
+        "originY": 87,
+        "visibleLeft": 105,
+        "visibleTop": 103,
+        "visibleRight": 115,
+        "visibleBottom": 118,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "tick": 1369,
+      "nativeFrame": 10284,
+      "camera": 2924,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 6277
+      },
+      "image": "evidence/local/reference-campaign-dense/01370-tick-01369.png",
+      "player": {
+        "originX": 102,
+        "originY": 34,
+        "visibleLeft": 105,
+        "visibleTop": 50,
+        "visibleRight": 115,
+        "visibleBottom": 65,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124
+      },
+      "actors": []
+    },
+    {
+      "tick": 1370,
+      "nativeFrame": 10291,
+      "camera": 2924,
+      "registration": {
+        "delta": 0,
+        "score": 0,
+        "comparedPixels": 6469
+      },
+      "image": "evidence/local/reference-campaign-dense/01371-tick-01370.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1371,
+      "nativeFrame": 10299,
+      "camera": 2927,
+      "registration": {
+        "delta": 3,
+        "score": 0.0007575757575757576,
+        "comparedPixels": 6600
+      },
+      "image": "evidence/local/reference-campaign-dense/01372-tick-01371.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1372,
+      "nativeFrame": 10306,
+      "camera": 2934,
+      "knownCamera": 2934,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 7,
+        "score": 0.0010607667828458857,
+        "comparedPixels": 6599
+      },
+      "image": "evidence/local/reference-campaign-dense/01373-tick-01372.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1373,
+      "nativeFrame": 10314,
+      "camera": 2943,
+      "registration": {
+        "delta": 9,
+        "score": 0.0010607667828458857,
+        "comparedPixels": 6599
+      },
+      "image": "evidence/local/reference-campaign-dense/01374-tick-01373.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1374,
+      "nativeFrame": 10321,
+      "camera": 2955,
+      "registration": {
+        "delta": 12,
+        "score": 0.0009256402344955261,
+        "comparedPixels": 6482
+      },
+      "image": "evidence/local/reference-campaign-dense/01375-tick-01374.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1375,
+      "nativeFrame": 10329,
+      "camera": 2967,
+      "registration": {
+        "delta": 12,
+        "score": 0.007861168792643133,
+        "comparedPixels": 6742
+      },
+      "image": "evidence/local/reference-campaign-dense/01376-tick-01375.png",
+      "player": null,
+      "actors": []
+    },
+    {
+      "tick": 1376,
+      "nativeFrame": 10336,
+      "camera": 2978,
+      "knownCamera": 2978,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 11,
+        "score": 0.017874090477696933,
+        "comparedPixels": 6322
+      },
+      "image": "evidence/local/reference-campaign-dense/01377-tick-01376.png",
+      "player": {
+        "originX": 112,
+        "originY": 57,
+        "visibleLeft": 112,
+        "visibleTop": 73,
+        "visibleRight": 126,
+        "visibleBottom": 88,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1377,
+      "nativeFrame": 10344,
+      "camera": 2991,
+      "registration": {
+        "delta": 13,
+        "score": 0,
+        "comparedPixels": 6031
+      },
+      "image": "evidence/local/reference-campaign-dense/01378-tick-01377.png",
+      "player": {
+        "originX": 112,
+        "originY": 89,
+        "visibleLeft": 112,
+        "visibleTop": 105,
+        "visibleRight": 126,
+        "visibleBottom": 120,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1378,
+      "nativeFrame": 10351,
+      "camera": 3001,
+      "registration": {
+        "delta": 10,
+        "score": 0,
+        "comparedPixels": 6108
+      },
+      "image": "evidence/local/reference-campaign-dense/01379-tick-01378.png",
+      "player": {
+        "originX": 112,
+        "originY": 117,
+        "visibleLeft": 112,
+        "visibleTop": 133,
+        "visibleRight": 126,
+        "visibleBottom": 148,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1379,
+      "nativeFrame": 10359,
+      "camera": 3010,
+      "registration": {
+        "delta": 9,
+        "score": 0.005150357202193055,
+        "comparedPixels": 6019
+      },
+      "image": "evidence/local/reference-campaign-dense/01380-tick-01379.png",
+      "player": {
+        "originX": 112,
+        "originY": 149,
+        "visibleLeft": 112,
+        "visibleTop": 165,
+        "visibleRight": 126,
+        "visibleBottom": 180,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    },
+    {
+      "tick": 1380,
+      "nativeFrame": 10366,
+      "camera": 3015,
+      "knownCamera": 3015,
+      "cameraErrorAtKnown": 0,
+      "registration": {
+        "delta": 5,
+        "score": 0,
+        "comparedPixels": 6115
+      },
+      "image": "evidence/local/reference-campaign-dense/01381-tick-01380.png",
+      "player": {
+        "originX": 112,
+        "originY": 177,
+        "visibleLeft": 112,
+        "visibleTop": 193,
+        "visibleRight": 126,
+        "visibleBottom": 208,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145
+      },
+      "actors": []
+    }
+  ],
+  "tracks": [
+    {
+      "id": 1,
+      "samples": [
+        {
+          "tick": 1323,
+          "nativeFrame": 9938,
+          "kind": "paratroopa",
+          "x": 234,
+          "originY": 147,
+          "physicalFeetY": 170,
+          "opaqueTop": 148,
+          "opaqueBottom": 170,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2422
+        },
+        {
+          "tick": 1324,
+          "nativeFrame": 9946,
+          "kind": "paratroopa",
+          "x": 218,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2426
+        },
+        {
+          "tick": 1325,
+          "nativeFrame": 9953,
+          "kind": "paratroopa",
+          "x": 203,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2429
+        },
+        {
+          "tick": 1326,
+          "nativeFrame": 9961,
+          "kind": "paratroopa",
+          "x": 187,
+          "originY": 153,
+          "physicalFeetY": 176,
+          "opaqueTop": 153,
+          "opaqueBottom": 176,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2433
+        },
+        {
+          "tick": 1327,
+          "nativeFrame": 9968,
+          "kind": "paratroopa",
+          "x": 174,
+          "originY": 167,
+          "physicalFeetY": 190,
+          "opaqueTop": 168,
+          "opaqueBottom": 190,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2437
+        },
+        {
+          "tick": 1328,
+          "nativeFrame": 9976,
+          "kind": "paratroopa",
+          "x": 158,
+          "originY": 189,
+          "physicalFeetY": 212,
+          "opaqueTop": 189,
+          "opaqueBottom": 212,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2441
+        },
+        {
+          "tick": 1329,
+          "nativeFrame": 9983,
+          "kind": "paratroopa",
+          "x": 143,
+          "originY": 211,
+          "physicalFeetY": 234,
+          "opaqueTop": 212,
+          "opaqueBottom": 234,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2444
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "samples": [
+        {
+          "tick": 1338,
+          "nativeFrame": 10051,
+          "kind": "paratroopa",
+          "x": 237,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2708
+        },
+        {
+          "tick": 1339,
+          "nativeFrame": 10058,
+          "kind": "paratroopa",
+          "x": 224,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 143,
+          "opaqueBottom": 166,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2712
+        },
+        {
+          "tick": 1340,
+          "nativeFrame": 10066,
+          "kind": "paratroopa",
+          "x": 204,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2712
+        },
+        {
+          "tick": 1341,
+          "nativeFrame": 10073,
+          "kind": "paratroopa",
+          "x": 182,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 149,
+          "opaqueBottom": 172,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2708
+        },
+        {
+          "tick": 1342,
+          "nativeFrame": 10081,
+          "kind": "paratroopa",
+          "x": 158,
+          "originY": 162,
+          "physicalFeetY": 185,
+          "opaqueTop": 163,
+          "opaqueBottom": 185,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2704
+        },
+        {
+          "tick": 1343,
+          "nativeFrame": 10088,
+          "kind": "paratroopa",
+          "x": 138,
+          "originY": 180,
+          "physicalFeetY": 203,
+          "opaqueTop": 180,
+          "opaqueBottom": 203,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2701
+        },
+        {
+          "tick": 1344,
+          "nativeFrame": 10096,
+          "kind": "paratroopa",
+          "x": 114,
+          "originY": 168,
+          "physicalFeetY": 191,
+          "opaqueTop": 169,
+          "opaqueBottom": 191,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2697
+        },
+        {
+          "tick": 1345,
+          "nativeFrame": 10103,
+          "kind": "paratroopa",
+          "x": 92,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2693
+        },
+        {
+          "tick": 1346,
+          "nativeFrame": 10111,
+          "kind": "paratroopa",
+          "x": 68,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 146,
+          "opaqueBottom": 168,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2689
+        },
+        {
+          "tick": 1347,
+          "nativeFrame": 10118,
+          "kind": "paratroopa",
+          "x": 48,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2686
+        },
+        {
+          "tick": 1348,
+          "nativeFrame": 10126,
+          "kind": "paratroopa",
+          "x": 24,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 147,
+          "opaqueBottom": 169,
+          "cell": 4,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2682
+        },
+        {
+          "tick": 1349,
+          "nativeFrame": 10133,
+          "kind": "paratroopa",
+          "x": 2,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 154,
+          "opaqueBottom": 177,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2678
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "samples": [
+        {
+          "tick": 1339,
+          "nativeFrame": 10058,
+          "kind": "paratroopa",
+          "x": 238,
+          "originY": 150,
+          "physicalFeetY": 173,
+          "opaqueTop": 150,
+          "opaqueBottom": 173,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2726
+        },
+        {
+          "tick": 1340,
+          "nativeFrame": 10066,
+          "kind": "paratroopa",
+          "x": 219,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2727
+        },
+        {
+          "tick": 1341,
+          "nativeFrame": 10073,
+          "kind": "paratroopa",
+          "x": 204,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 142,
+          "opaqueBottom": 165,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2730
+        },
+        {
+          "tick": 1342,
+          "nativeFrame": 10081,
+          "kind": "paratroopa",
+          "x": 188,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 150,
+          "opaqueBottom": 172,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2734
+        },
+        {
+          "tick": 1343,
+          "nativeFrame": 10088,
+          "kind": "paratroopa",
+          "x": 175,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 160,
+          "opaqueBottom": 183,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2738
+        },
+        {
+          "tick": 1344,
+          "nativeFrame": 10096,
+          "kind": "paratroopa",
+          "x": 159,
+          "originY": 179,
+          "physicalFeetY": 202,
+          "opaqueTop": 180,
+          "opaqueBottom": 202,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2742
+        },
+        {
+          "tick": 1345,
+          "nativeFrame": 10103,
+          "kind": "paratroopa",
+          "x": 144,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 171,
+          "opaqueBottom": 194,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2745
+        },
+        {
+          "tick": 1346,
+          "nativeFrame": 10111,
+          "kind": "paratroopa",
+          "x": 128,
+          "originY": 154,
+          "physicalFeetY": 177,
+          "opaqueTop": 155,
+          "opaqueBottom": 177,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2749
+        },
+        {
+          "tick": 1347,
+          "nativeFrame": 10118,
+          "kind": "paratroopa",
+          "x": 115,
+          "originY": 146,
+          "physicalFeetY": 169,
+          "opaqueTop": 146,
+          "opaqueBottom": 169,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2753
+        },
+        {
+          "tick": 1348,
+          "nativeFrame": 10126,
+          "kind": "paratroopa",
+          "x": 99,
+          "originY": 142,
+          "physicalFeetY": 165,
+          "opaqueTop": 143,
+          "opaqueBottom": 165,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2757
+        },
+        {
+          "tick": 1349,
+          "nativeFrame": 10133,
+          "kind": "paratroopa",
+          "x": 84,
+          "originY": 145,
+          "physicalFeetY": 168,
+          "opaqueTop": 145,
+          "opaqueBottom": 168,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2760
+        },
+        {
+          "tick": 1350,
+          "nativeFrame": 10141,
+          "kind": "paratroopa",
+          "x": 81,
+          "originY": 155,
+          "physicalFeetY": 178,
+          "opaqueTop": 156,
+          "opaqueBottom": 178,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2764
+        },
+        {
+          "tick": 1351,
+          "nativeFrame": 10149,
+          "kind": "paratroopa",
+          "x": 85,
+          "originY": 171,
+          "physicalFeetY": 194,
+          "opaqueTop": 171,
+          "opaqueBottom": 194,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2768
+        },
+        {
+          "tick": 1352,
+          "nativeFrame": 10156,
+          "kind": "paratroopa",
+          "x": 89,
+          "originY": 179,
+          "physicalFeetY": 202,
+          "opaqueTop": 180,
+          "opaqueBottom": 202,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2772
+        },
+        {
+          "tick": 1353,
+          "nativeFrame": 10164,
+          "kind": "paratroopa",
+          "x": 87,
+          "originY": 160,
+          "physicalFeetY": 183,
+          "opaqueTop": 160,
+          "opaqueBottom": 183,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2776
+        },
+        {
+          "tick": 1354,
+          "nativeFrame": 10171,
+          "kind": "paratroopa",
+          "x": 81,
+          "originY": 149,
+          "physicalFeetY": 172,
+          "opaqueTop": 149,
+          "opaqueBottom": 172,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2779
+        },
+        {
+          "tick": 1355,
+          "nativeFrame": 10179,
+          "kind": "paratroopa",
+          "x": 73,
+          "originY": 143,
+          "physicalFeetY": 166,
+          "opaqueTop": 144,
+          "opaqueBottom": 166,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2783
+        },
+        {
+          "tick": 1356,
+          "nativeFrame": 10186,
+          "kind": "paratroopa",
+          "x": 65,
+          "originY": 144,
+          "physicalFeetY": 167,
+          "opaqueTop": 144,
+          "opaqueBottom": 167,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2787
+        },
+        {
+          "tick": 1357,
+          "nativeFrame": 10194,
+          "kind": "paratroopa",
+          "x": 52,
+          "originY": 151,
+          "physicalFeetY": 174,
+          "opaqueTop": 152,
+          "opaqueBottom": 174,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2791
+        },
+        {
+          "tick": 1358,
+          "nativeFrame": 10201,
+          "kind": "paratroopa",
+          "x": 38,
+          "originY": 163,
+          "physicalFeetY": 186,
+          "opaqueTop": 163,
+          "opaqueBottom": 186,
+          "cell": 5,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2794
+        },
+        {
+          "tick": 1359,
+          "nativeFrame": 10209,
+          "kind": "paratroopa",
+          "x": 22,
+          "originY": 183,
+          "physicalFeetY": 206,
+          "opaqueTop": 184,
+          "opaqueBottom": 206,
+          "cell": 4,
+          "flipX": false,
+          "cropHeight": 24,
+          "matchedOpaque": 261,
+          "worldX": 2798
+        },
+        {
+          "tick": 1360,
+          "nativeFrame": 10216,
+          "kind": "paratroopa",
+          "x": 4,
+          "originY": 168,
+          "physicalFeetY": 191,
+          "opaqueTop": 168,
+          "opaqueBottom": 191,
+          "cell": 5,
+          "flipX": true,
+          "cropHeight": 24,
+          "matchedOpaque": 229,
+          "worldX": 2798
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1405 @@
+{
+  "schema": "reference-hidden-block-1-1-v1",
+  "source": "Documented reference controls, actual PNGs and supplied artwork only; no executable/ROM state inspection.",
+  "level": "1-1",
+  "area": "main",
+  "blocks": [
+    {
+      "col": 64,
+      "row": 8,
+      "x": 1024,
+      "y": 128,
+      "width": 16,
+      "height": 16,
+      "initiallyInvisible": true,
+      "content": "1up",
+      "visibleAfterActivationMetatileId": 196,
+      "suppliedHiddenDescriptorId": 96,
+      "descriptorAssociation": "Inferred association with supplied hidden-1up descriptor after observed green sprite, 1UP collection and +1 life.",
+      "observedActivationNativeFrameInterval": [
+        474,
+        480
+      ],
+      "firstObservedActivationFrame": 480,
+      "activationMechanism": "Ordinary jump head hit from below; exact sub-decision collision frame unmeasured.",
+      "availability": "Verified in fresh normal starts; reuse after death or level re-entry unmeasured."
+    }
+  ],
+  "successfulIndependentRuns": [
+    {
+      "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+      "traceSha256": "16bfbd924407604cfca69144f143f2212f67ae8b8f4f70183875120be6622adf",
+      "prefix": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 2,
+        "tick": 57,
+        "nativeFrame": 428,
+        "framesAdvancedThisRequest": 428,
+        "imageSha256": "e1fb0671efe091b3f1421e2c7d3742e38154eefc83383b54f23a1109b92ed8d8"
+      },
+      "preActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 4,
+        "tick": 61,
+        "nativeFrame": 458,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c"
+      },
+      "staticCamera": 905,
+      "staticCameraAnchors": [
+        {
+          "col": 57,
+          "row": 9,
+          "metatileId": 16,
+          "screenX": 7,
+          "screenY": 144
+        },
+        {
+          "col": 57,
+          "row": 10,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 160
+        },
+        {
+          "col": 57,
+          "row": 11,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 176
+        },
+        {
+          "col": 57,
+          "row": 12,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 192
+        },
+        {
+          "col": 58,
+          "row": 9,
+          "metatileId": 17,
+          "screenX": 23,
+          "screenY": 144
+        },
+        {
+          "col": 58,
+          "row": 10,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 160
+        },
+        {
+          "col": 58,
+          "row": 11,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 176
+        },
+        {
+          "col": 58,
+          "row": 12,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 192
+        }
+      ],
+      "firstVisibleUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 7,
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492",
+        "screenX": 119,
+        "screenY": 122
+      },
+      "restingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 9,
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9",
+        "screenX": 119,
+        "screenY": 128
+      },
+      "firstFull1upSprite": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 16,
+        "tick": 73,
+        "nativeFrame": 548,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "1811805f679fac5a21d8bbd20e1d4e78759d29d1a01c8bbfa2d4ea9905d16138",
+        "screenX": 119,
+        "screenY": 112
+      },
+      "firstPickupText": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 21,
+        "tick": 78,
+        "nativeFrame": 585,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+        "screenX": 114,
+        "screenY": 167
+      },
+      "pickupHUD": {
+        "score": "000000",
+        "coins": "00"
+      },
+      "afterOneDeliberatePitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-repeat/trace.jsonl",
+        "sequence": 68,
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "3494b1cfc588e03c30213098e5b0cd4b3665819fa254ceb6f71dd0850023fce1",
+        "lives": 3
+      },
+      "requests": [
+        {
+          "op": "auto",
+          "ticks": 57
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "observe"
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        }
+      ]
+    },
+    {
+      "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+      "traceSha256": "d95a1d9f426f2c1dd83f156994d7e6d67b6231651ee708b80f132ea46a91002e",
+      "prefix": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 2,
+        "tick": 57,
+        "nativeFrame": 428,
+        "framesAdvancedThisRequest": 428,
+        "imageSha256": "e1fb0671efe091b3f1421e2c7d3742e38154eefc83383b54f23a1109b92ed8d8"
+      },
+      "preActivation": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 4,
+        "tick": 61,
+        "nativeFrame": 458,
+        "framesAdvancedThisRequest": 15,
+        "imageSha256": "a7a72be258832d2e376843a37368be67a4c8067558f295c3f2154e1ed700a26c"
+      },
+      "staticCamera": 905,
+      "staticCameraAnchors": [
+        {
+          "col": 57,
+          "row": 9,
+          "metatileId": 16,
+          "screenX": 7,
+          "screenY": 144
+        },
+        {
+          "col": 57,
+          "row": 10,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 160
+        },
+        {
+          "col": 57,
+          "row": 11,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 176
+        },
+        {
+          "col": 57,
+          "row": 12,
+          "metatileId": 20,
+          "screenX": 7,
+          "screenY": 192
+        },
+        {
+          "col": 58,
+          "row": 9,
+          "metatileId": 17,
+          "screenX": 23,
+          "screenY": 144
+        },
+        {
+          "col": 58,
+          "row": 10,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 160
+        },
+        {
+          "col": 58,
+          "row": 11,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 176
+        },
+        {
+          "col": 58,
+          "row": 12,
+          "metatileId": 21,
+          "screenX": 23,
+          "screenY": 192
+        }
+      ],
+      "firstVisibleUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 7,
+        "tick": 64,
+        "nativeFrame": 480,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "0f5aa10039ba0e87c9ddd7c9a953ed1fc7de703355768859e8751e5559df8492",
+        "screenX": 119,
+        "screenY": 122
+      },
+      "restingUsedBlock": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 9,
+        "tick": 66,
+        "nativeFrame": 495,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "f35daf7cc7fde6c61b94085f2b5c0ede0332f456f1286521900b3f9eadef14c9",
+        "screenX": 119,
+        "screenY": 128
+      },
+      "firstFull1upSprite": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 16,
+        "tick": 73,
+        "nativeFrame": 548,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "1811805f679fac5a21d8bbd20e1d4e78759d29d1a01c8bbfa2d4ea9905d16138",
+        "screenX": 119,
+        "screenY": 112
+      },
+      "firstPickupText": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 21,
+        "tick": 78,
+        "nativeFrame": 585,
+        "framesAdvancedThisRequest": 7,
+        "imageSha256": "3cd9c06eb9fd38f310ec52adb8e929bb21dd4d89343ca06149f05f7c73fd8d12",
+        "screenX": 114,
+        "screenY": 167
+      },
+      "pickupHUD": {
+        "score": "000000",
+        "coins": "00"
+      },
+      "afterOneDeliberatePitDeath": {
+        "sourceTrace": "evidence/local/reference-hidden-1-1-confirm/trace.jsonl",
+        "sequence": 68,
+        "tick": 125,
+        "nativeFrame": 939,
+        "framesAdvancedThisRequest": 8,
+        "imageSha256": "3494b1cfc588e03c30213098e5b0cd4b3665819fa254ceb6f71dd0850023fce1",
+        "lives": 3
+      },
+      "requests": [
+        {
+          "op": "auto",
+          "ticks": 57
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "a"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "observe"
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "right"
+          ],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 2
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        },
+        {
+          "op": "step",
+          "buttons": [],
+          "ticks": 1
+        }
+      ]
+    }
+  ],
+  "uncollectedControl": {
+    "sourceTrace": "evidence/local/reference-hidden-1-1-probe/trace.jsonl",
+    "traceSha256": "040f555b85cb94bc4909df4bad19223636a56eb60c728a7d4c69bf3ecafe7658",
+    "epochResetSequence": 135,
+    "no1upPickupTextObserved": true,
+    "afterOnePitDeath": {
+      "sourceTrace": "evidence/local/reference-hidden-1-1-probe/trace.jsonl",
+      "sequence": 202,
+      "tick": 125,
+      "nativeFrame": 939,
+      "framesAdvancedThisRequest": 8,
+      "imageSha256": "5991e1133d692ca6a533b9337d70c8e1b750124fd56e1c387522e29195edc5ae",
+      "lives": 2
+    }
+  },
+  "repeatableFullRecipe": "evidence/reference-hidden-1-1-success-full-requests.jsonl",
+  "shortCollectionRecipe": [
+    {
+      "op": "auto",
+      "ticks": 57
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 2
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 2
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "a"
+      ],
+      "ticks": 1,
+      "repeat": 8
+    },
+    {
+      "op": "step",
+      "buttons": [],
+      "ticks": 1,
+      "repeat": 2
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "repeat": 8
+    }
+  ],
+  "earlyProbeSummary": {
+    "automaticFreshPrefixes": [
+      0,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+    ],
+    "hiddenActivationObserved": false,
+    "limits": "Coarse jump probes, not exhaustive hidden-block absence evidence; one ordinary visible question coin was activated and one probe was compromised by enemy proximity."
+  },
+  "limits": [
+    "Only this observed hidden block is exported; other hidden blocks remain unmeasured.",
+    "Hidden side/above collisions, reuse after death and exact native activation frame are unresolved.",
+    "The protocol has no audio stream, so sound equivalence is not measured.",
+    "Reference fresh repeats and replay evidence are not recreation campaign wins."
+  ]
+}

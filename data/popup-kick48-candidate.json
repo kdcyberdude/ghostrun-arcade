@@ -1,0 +1,20 @@
+{
+  "lockedUTC": "2026-11-06T05:35:03.077Z",
+  "scope": "Green Koopa stationary-shell sidekick400 label only; shell-victim scoring and every motor remain separate. No red Koopa or other shell-kind generalization.",
+  "tolerances": {
+    "originPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "glyph": "Exact supplied opaque RGB"
+  },
+  "scoreAlreadyImplemented": 400,
+  "durationActiveNativeFrames": 48,
+  "feetYOffset": 32,
+  "xOrigin": "Capture shell x before existing4px kick separation, then existing committed-camera adjustment; do not move or correct shell/player.",
+  "pixelsUpPerActiveNativeFrame": 1,
+  "coordinateSpace": "Screen fixed after event",
+  "status": "Inferred48, source conditional common lifetime48 from old and phase-shifted kick observations; retaining±1 birth/draw phase gives47..49, within1 of48. Not exact48 claim.",
+  "bindings": {
+    "evidence/popup-kick48-training.json": "654a08a3a024e324d5caca862e0a1a301cd5d1d344489735f147b926e201b9fd"
+  },
+  "reserved": "New last-visible pause trap and pre-kick pause with right+B preserved, declared after this class freeze. Prior left5 was reserved only for victim class and expressly excluded kicks."
+}

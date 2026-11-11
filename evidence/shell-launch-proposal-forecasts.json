@@ -1,0 +1,120 @@
+{
+  "source": "evidence/shell-launch-vertical-force-validation.json",
+  "sourceSha256": "f01e06579ef998020168557e19f5d779df57e81a1eb9aa98837d0152106df08c",
+  "cases": [
+    {
+      "name": "shell-launch-force-left9",
+      "sourceBirth": 968,
+      "points": [
+        {
+          "age": 8,
+          "visibleBodyTop": 176,
+          "imageSha256": "dc997dc858ad973e07daf0ba73ddcb3b3e55ab5aec7a6f3353e36e964b2f209c"
+        },
+        {
+          "age": 16,
+          "visibleBodyTop": 174,
+          "imageSha256": "ff85c8711f140cbdbd0a2dc61ecd560673a72bd368db7301e9c612830c956249"
+        },
+        {
+          "age": 23,
+          "visibleBodyTop": 184,
+          "imageSha256": "d8edd6f779f8b83e5c8908a12bfb4b333bce42ee81db3c9c1d5c63b999bcac6e"
+        },
+        {
+          "age": 31,
+          "visibleBodyTop": 209,
+          "imageSha256": "3f68f1d19c0349d9d2a93a8e73172a43cb0ca834f4ec8356c5c7a48dd873cda3"
+        }
+      ]
+    },
+    {
+      "name": "shell-launch-force-left9",
+      "sourceBirth": 973,
+      "points": [
+        {
+          "age": 11,
+          "visibleBodyTop": 173,
+          "imageSha256": "ff85c8711f140cbdbd0a2dc61ecd560673a72bd368db7301e9c612830c956249"
+        },
+        {
+          "age": 18,
+          "visibleBodyTop": 175,
+          "imageSha256": "d8edd6f779f8b83e5c8908a12bfb4b333bce42ee81db3c9c1d5c63b999bcac6e"
+        },
+        {
+          "age": 26,
+          "visibleBodyTop": 192,
+          "imageSha256": "3f68f1d19c0349d9d2a93a8e73172a43cb0ca834f4ec8356c5c7a48dd873cda3"
+        },
+        {
+          "age": 33,
+          "visibleBodyTop": 215,
+          "imageSha256": "172556f4e4c22ad65bb1c019a60e5d114c988073f7d09d6e25984acf404ddc2f"
+        }
+      ]
+    },
+    {
+      "name": "shell-launch-force-left8-wait1",
+      "sourceBirth": 974,
+      "points": [
+        {
+          "age": 2,
+          "visibleBodyTop": 187,
+          "imageSha256": "2361479884ca4a0225b68de3c5b944b64a1e9f0a08d1700addb0448c2fccf7b2"
+        },
+        {
+          "age": 10,
+          "visibleBodyTop": 174,
+          "imageSha256": "8abaa55d567bf92b0f00ed036119b5789c66c4c2ccfb69194863dd87a1a1490d"
+        },
+        {
+          "age": 17,
+          "visibleBodyTop": 174,
+          "imageSha256": "5867319f7e788eff01bc729f562e6ebf377fb453952d946815f9f2597b5ef1c3"
+        },
+        {
+          "age": 25,
+          "visibleBodyTop": 189,
+          "imageSha256": "30d125e8ebcdc288c6780410fcf014a4dc6f193c35499d7e69b22a8d179cdf9a"
+        },
+        {
+          "age": 32,
+          "visibleBodyTop": 212,
+          "imageSha256": "c781febb307aef78130cc955811a0e4af6bc56cf33daefb31f880858b786e8ef"
+        }
+      ]
+    },
+    {
+      "name": "shell-launch-force-left8-wait1",
+      "sourceBirth": 981,
+      "points": [
+        {
+          "age": 3,
+          "visibleBodyTop": 184,
+          "imageSha256": "8abaa55d567bf92b0f00ed036119b5789c66c4c2ccfb69194863dd87a1a1490d"
+        },
+        {
+          "age": 10,
+          "visibleBodyTop": 173,
+          "imageSha256": "5867319f7e788eff01bc729f562e6ebf377fb453952d946815f9f2597b5ef1c3"
+        },
+        {
+          "age": 18,
+          "visibleBodyTop": 175,
+          "imageSha256": "30d125e8ebcdc288c6780410fcf014a4dc6f193c35499d7e69b22a8d179cdf9a"
+        },
+        {
+          "age": 25,
+          "visibleBodyTop": 189,
+          "imageSha256": "c781febb307aef78130cc955811a0e4af6bc56cf33daefb31f880858b786e8ef"
+        },
+        {
+          "age": 33,
+          "visibleBodyTop": 215,
+          "imageSha256": "598a1a8a24272029138736f813b09d2e5006e23f09a58ae254f7535a6887ab77"
+        }
+      ]
+    }
+  ]
+}

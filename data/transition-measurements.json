@@ -1,0 +1,334 @@
+{
+  "schema": "screenshot-transition-measurements-v1",
+  "sourceTrace": "evidence/local/reference-campaign-dense/trace.jsonl",
+  "units": "Native simulation frames from actual frames_advanced sums; x and feetY in logical pixels.",
+  "measurementLimit": "Protocol observations are7/8nativeframes apart. Event intervals do not prove exact sub-frame constants. Runtime values below are explicit candidates to test against images and varied controls.",
+  "events": [
+    {
+      "label": "1-1 timer first decrements399",
+      "afterExclusive": 0,
+      "atOrBefore": 7,
+      "lastPriorTick": 0,
+      "firstObservedTick": 1,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00001-tick-00000.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00002-tick-00001.png"
+    },
+    {
+      "label": "1-1 scene disappears",
+      "afterExclusive": 1975,
+      "atOrBefore": 1983,
+      "lastPriorTick": 263,
+      "firstObservedTick": 264,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00264-tick-00263.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00265-tick-00264.png"
+    },
+    {
+      "label": "1-2 life intro appears",
+      "afterExclusive": 1983,
+      "atOrBefore": 1990,
+      "lastPriorTick": 264,
+      "firstObservedTick": 265,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00265-tick-00264.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00266-tick-00265.png"
+    },
+    {
+      "label": "life intro disappears",
+      "afterExclusive": 2118,
+      "atOrBefore": 2125,
+      "lastPriorTick": 282,
+      "firstObservedTick": 283,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00283-tick-00282.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00284-tick-00283.png"
+    },
+    {
+      "label": "sky clear appears",
+      "afterExclusive": 2133,
+      "atOrBefore": 2140,
+      "lastPriorTick": 284,
+      "firstObservedTick": 285,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00285-tick-00284.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00286-tick-00285.png"
+    },
+    {
+      "label": "outside geometry and Mario appear",
+      "afterExclusive": 2140,
+      "atOrBefore": 2148,
+      "lastPriorTick": 285,
+      "firstObservedTick": 286,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00286-tick-00285.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00287-tick-00286.png"
+    },
+    {
+      "label": "pipe first occludes Mario",
+      "afterExclusive": 2291,
+      "atOrBefore": 2298,
+      "lastPriorTick": 305,
+      "firstObservedTick": 306,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00306-tick-00305.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00307-tick-00306.png"
+    },
+    {
+      "label": "Mario fully hidden by pipe",
+      "afterExclusive": 2313,
+      "atOrBefore": 2321,
+      "lastPriorTick": 308,
+      "firstObservedTick": 309,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00309-tick-00308.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00310-tick-00309.png"
+    },
+    {
+      "label": "outside scene disappears",
+      "afterExclusive": 2471,
+      "atOrBefore": 2479,
+      "lastPriorTick": 329,
+      "firstObservedTick": 330,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00330-tick-00329.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00331-tick-00330.png"
+    },
+    {
+      "label": "underground geometry appears; no Mario yet",
+      "afterExclusive": 2494,
+      "atOrBefore": 2501,
+      "lastPriorTick": 332,
+      "firstObservedTick": 333,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00333-tick-00332.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00334-tick-00333.png"
+    },
+    {
+      "label": "first underground Mario appears",
+      "afterExclusive": 2501,
+      "atOrBefore": 2509,
+      "lastPriorTick": 333,
+      "firstObservedTick": 334,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00334-tick-00333.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00335-tick-00334.png"
+    },
+    {
+      "label": "underground TIME400 first appears",
+      "afterExclusive": 2516,
+      "atOrBefore": 2524,
+      "lastPriorTick": 335,
+      "firstObservedTick": 336,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00336-tick-00335.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00337-tick-00336.png"
+    },
+    {
+      "label": "underground TIME399 first appears",
+      "afterExclusive": 2539,
+      "atOrBefore": 2546,
+      "lastPriorTick": 338,
+      "firstObservedTick": 339,
+      "priorImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00339-tick-00338.png",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00340-tick-00339.png"
+    }
+  ],
+  "runtimeCandidates": {
+    "introFrames": 169,
+    "levelIntroFrames": 165,
+    "introHiddenBeforeFrame": 12,
+    "introHiddenFromFrame": 144,
+    "introUniformSkyFromFrame": 160,
+    "autoWalkSpeed": 0.75,
+    "autoWalkCapByte": 12,
+    "autoWalkDelayFrames": 0,
+    "pipeFrames": 207,
+    "pipeMotionFrames": 32,
+    "pipeMotionSpeed": 0.75,
+    "pipeBlackoutFinalFrames": 24,
+    "autoWalkPipe": {
+      "triggerOffset": 13,
+      "firstSpeed": 2312,
+      "pullByte": 9,
+      "pullDown": 104,
+      "pullUp": 152,
+      "hiddenFrame": 23,
+      "evidence": "Native rows 2293..2316 of the recorded route (also 2-2, 4-2, 7-2): the walk trigger is floor(x)+13>=pipe x; the next row sets speed 2312, then each frame subtracts 104 at speed byte >=9 and adds 152 below it until floor(x) reaches the pipe x (160), then x holds."
+    },
+    "sidePipeWalk": {
+      "defaultFirstSpeed": 2312,
+      "firstSpeed": {"1-2/area-2": 2484, "2-2/area-2": 2328, "4-2/area-3": 2416, "7-2/area-4": 2336, "8-4/area-4": 2336},
+      "runByte": 9,
+      "runUntilStep": 9,
+      "runDown": 28,
+      "runUp": 228,
+      "evidence": "Native engine-2 rows of the five ordinary side pipes (1-2 3801-3854, 2-2 15622-15675, 4-2 33222-33275, 7-2 60363-60416, 8-4 78989-79042): Mario walks 12-13 px from the trigger column to the pipe's left edge (22-25 rows, 0.55-0.6 px/row) and then stands still for the rest of the 52 rows. The first speed after the trigger row is 2328..2484 (per pipe, listed here); each later row adds 152 below speed byte 9 and subtracts 104 at byte >= 9 (the level-start pipe walk rule). A trigger at a running speed (B held, speed byte >= 9 at the trigger: 1-2 byte 40, 4-2 byte 18) first spends steps 2..9 on the run rule (-28 at byte >= 9, +228 below), then switches to the walk rule at step 10; 2-2/7-2 (B held at byte 4) and 8-4 (Down only) use the walk rule from step 2. Mario stops when floor(x) reaches the pipe x."
+    },
+    "undergroundEntry": {
+      "spawn": [
+        40,
+        64
+      ],
+      "playerAppearanceDelayFrames": 7,
+      "initialVy": 0,
+      "releaseFeet": 78,
+      "gravity": 0.15625,
+      "maxFall": 4,
+      "inputDelayFrames": 1,
+      "horizontalMode": "Walking acceleration and 1.5 cap until first ground landing, despite held B.",
+      "pose": "Small walking cell 12 while falling; normal walking animation on ground.",
+      "timerDelayAfterReleaseFrames": 4,
+      "timerStartDelayFromSceneApproxFrames": 24,
+      "enemyActivationDelayFrames": 2,
+      "native": {
+        "gravityStartAge": 2,
+        "resetAt": 4.5,
+        "resetTo": 4,
+        "skipAge": 17,
+        "inputAge": 19,
+        "timerAge": 17,
+        "evidence": "Native rows 2500..2551 (1-2) and 31642.. (4-2), full-RAM probes evidence/local/F-entry-probe-9/10: ages count steps after the first area row. Gravity 40/256 applies from age 2; each step adds the old speed to y first; a speed that reaches 4.5 after the increment becomes 4.0; the vertical update is skipped on the control-start row (age 17); the timer RAM goes 401 at age 0, 400 at age 17 and then ticks every 24 frames."
+      }
+    },
+    "freshReferenceResetTimerFrames": 21
+  },
+  "candidateEvidence": {
+    "introFrames": "With production nextLevel at 1978, outside geometry 2141..2148 implies 163..170 frames; 168 is a candidate within observed bounds. After correcting the pole contact to the visible shaft, production intro begins1976. A169-frame candidate remains within the observed geometry2141..2148 interval and corrects the1-native-frame falling-entry lead.",
+    "autoWalk": "Steady x48→144 over native 2163→2291 gives 96/128=.75 exactly. Starting after 6 frames from candidate outside start 2146 keeps all 20 observed x positions within 1px. Initial scene/task delay not otherwise identified.",
+    "pipeFrames": "First occlusion 2292..2298; underground geometry 2495..2501. Elapsed 197..209; 208 candidate. Last body pixels 2313, fully hidden 2320, old scene persists 2471, so substantial hidden load/wait follows physical entry.",
+    "undergroundEntry": "At 2501 scene exists but no Mario. First actor by 2509 x40 feet66. Slow 1.5 drop until feet78 then gravity .1875 cap4.25 reproduces six measured integer feet points exactly when anchored at 2509,feet66. A threshold79/gravity .21875 alternative also fits; parameters are not unique. Spawn64.5 and 7-frame appearance delay remain candidates, not exact measured start state. Integration owner selected 7-frame appearance and 4-frame timer delay after geometric release; these need production replay validation. Production replay calibration: room loads at native2500; an8-frame hold gives first movement2509, correcting the earlier7-frame candidate which produced4px falling error. Timing still lies within the observed appearance interval. Opening Goomba tracks fit first movement2504 after a scene load2500; enemy updates begin after3 hidden scene frames, before Mario appears. This is an inferred scene activation delay checked against25 integer actor positions. Entry control delay1 instead of2 is a candidate consistent with the9 sampled positions and the independently measured1.22..1.41px horizontal underpass lag. Global two-frame controller delay and12px head probe are retained. Subframe release is not uniquely identified.",
+    "timer": "Fresh reference reset starts already in 1-1 play: 400 at0,399 by7,398 by30,397 by52. The previous offset23 and candidate21 both fit those samples. Four fresh source control branches show TIME396 at frame97; offset21 also matches the idle frame217 and improves the 430-decision replay with no image regressions. Its exact native write frame, normal title-start timing and matched bonus-room timing remain unmeasured; see evidence/first-timer-offset-investigation-findings.md. New underground TIME blank through2516,400 first2524,399 first2546: delayed activation then 24-period."
+  },
+  "entryObservations": [
+    {
+      "tick": 333,
+      "frame": 2501,
+      "time": "???",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00334-tick-00333.png"
+    },
+    {
+      "tick": 334,
+      "frame": 2509,
+      "x": 40,
+      "feetY": 66,
+      "cell": 12,
+      "time": "???",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00335-tick-00334.png"
+    },
+    {
+      "tick": 335,
+      "frame": 2516,
+      "x": 40,
+      "feetY": 76,
+      "cell": 12,
+      "time": "???",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00336-tick-00335.png"
+    },
+    {
+      "tick": 336,
+      "frame": 2524,
+      "x": 40,
+      "feetY": 93,
+      "cell": 12,
+      "time": "400",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00337-tick-00336.png"
+    },
+    {
+      "tick": 337,
+      "frame": 2531,
+      "x": 42,
+      "feetY": 118,
+      "cell": 12,
+      "time": "400",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00338-tick-00337.png"
+    },
+    {
+      "tick": 338,
+      "frame": 2539,
+      "x": 47,
+      "feetY": 152,
+      "cell": 12,
+      "time": "400",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00339-tick-00338.png"
+    },
+    {
+      "tick": 339,
+      "frame": 2546,
+      "x": 54,
+      "feetY": 182,
+      "cell": 12,
+      "time": "399",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00340-tick-00339.png"
+    },
+    {
+      "tick": 340,
+      "frame": 2554,
+      "x": 63,
+      "feetY": 208,
+      "cell": 13,
+      "time": "399",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00341-tick-00340.png"
+    },
+    {
+      "tick": 341,
+      "frame": 2561,
+      "x": 74,
+      "feetY": 208,
+      "cell": 14,
+      "time": "399",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00342-tick-00341.png"
+    },
+    {
+      "tick": 342,
+      "frame": 2569,
+      "x": 85,
+      "feetY": 208,
+      "cell": 14,
+      "time": "398",
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/00343-tick-00342.png"
+    }
+  ],
+  "dropFits": [
+    {
+      "frame": 2509,
+      "referenceY": 66,
+      "modeledY": 66,
+      "error": 0
+    },
+    {
+      "frame": 2516,
+      "referenceY": 76,
+      "modeledY": 76,
+      "error": 0
+    },
+    {
+      "frame": 2524,
+      "referenceY": 93,
+      "modeledY": 93,
+      "error": 0
+    },
+    {
+      "frame": 2531,
+      "referenceY": 118,
+      "modeledY": 118,
+      "error": 0
+    },
+    {
+      "frame": 2539,
+      "referenceY": 152,
+      "modeledY": 152,
+      "error": 0
+    },
+    {
+      "frame": 2546,
+      "referenceY": 182,
+      "modeledY": 182,
+      "error": 0
+    }
+  ],
+  "flagScore": {
+    "referenceAt1307": {
+      "time": 345,
+      "score": 300
+    },
+    "referenceAt1374": {
+      "time": 345,
+      "score": 400
+    },
+    "final": {
+      "time": 0,
+      "score": 17650,
+      "frame": 1817
+    },
+    "explanation": "400+345*50=17650. Production final17700 came from346ratherthan345timer units; immediate fresh-start timer decrement accounts for50points."
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "schema": "accepted-observed-brick-geometry-v1",
+  "level": "5-2",
+  "area": "area-2",
+  "sourceData": "data/five-two-vine-remaining.json",
+  "sourceTrace": "evidence/local/five-two-vine-remaining/trace.jsonl",
+  "tileSize": 16,
+  "tiles": [
+    [
+      85,
+      5,
+      81
+    ],
+    [
+      86,
+      5,
+      81
+    ],
+    [
+      87,
+      5,
+      81
+    ],
+    [
+      89,
+      8,
+      81
+    ],
+    [
+      90,
+      8,
+      81
+    ],
+    [
+      91,
+      8,
+      81
+    ]
+  ],
+  "alreadyCanonicalCells": [],
+  "anchors": [
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "canonicalTile": [
+        91,
+        13,
+        84
+      ],
+      "artwork": {
+        "metatile": 84,
+        "atlas": "metatiles-palette-025.png",
+        "screenOrigin": [
+          161,
+          208
+        ],
+        "width": 16,
+        "height": 16,
+        "matchedPixels": 256
+      },
+      "worldGroundEnd": 1472,
+      "screenGroundEnd": 177,
+      "nextWorldGroundStart": 1536,
+      "nextScreenGroundStart": 241,
+      "visibleGapWidth": 64,
+      "inferredCameraX": 1295
+    }
+  ],
+  "geometryStatus": "Six complete256-pixel pre-hit supplied-art matches. A settled exact main-ground tile91,13 fixes camera1295 consistently for all three heights; the finite strips are48 pixels wide.",
+  "supersededFreeTiles": [
+    {
+      "x": 1357,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1365,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1373,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1381,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1389,
+      "y": 80,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1421,
+      "y": 128,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 4,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1429,
+      "y": 128,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1437,
+      "y": 128,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1445,
+      "y": 128,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    },
+    {
+      "x": 1453,
+      "y": 128,
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "observedFrames": 3,
+      "collision": "infer-from-descriptor"
+    }
+  ],
+  "removalQualification": "Remove only the exact listed id81 x/y/atlas fragment objects when adding the six grid cells. No other ids, cells, or structures are covered.",
+  "sourceWitnesses": [
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        85,
+        5,
+        81
+      ],
+      "screenOrigin": [
+        65,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        86,
+        5,
+        81
+      ],
+      "screenOrigin": [
+        81,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        87,
+        5,
+        81
+      ],
+      "screenOrigin": [
+        97,
+        80
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        89,
+        8,
+        81
+      ],
+      "screenOrigin": [
+        129,
+        128
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        90,
+        8,
+        81
+      ],
+      "screenOrigin": [
+        145,
+        128
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    },
+    {
+      "sourceSequence": 6491,
+      "sourceTick": 5476,
+      "sourceImage": "evidence/local/five-two-vine-remaining/06491-tick-05476.png",
+      "worldTile": [
+        91,
+        8,
+        81
+      ],
+      "screenOrigin": [
+        161,
+        128
+      ],
+      "metatileId": 81,
+      "atlas": "metatiles-palette-025.png",
+      "checkedPixels": 256,
+      "playerOccludedPixels": 0,
+      "mismatches": 0
+    }
+  ],
+  "tolerancePixels": 0,
+  "passed": true
+}

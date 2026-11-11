@@ -1,0 +1,136 @@
+{
+  "schema": "guarded5-4-missing-firebar-integration-proposal-v1",
+  "createdUtc": "2026-11-06T03:32:47.068063+00:00",
+  "status": "Read-only proposal for parent review; not integrated by this agent. Physical motor evidence separate from raw-image failure.",
+  "level": "5-4",
+  "area": "main",
+  "expectedOriginalFirebars": [
+    {
+      "x": 376,
+      "y": 120,
+      "length": 12,
+      "speed": 0.032
+    },
+    {
+      "x": 792,
+      "y": 152,
+      "length": 6,
+      "speed": -0.03236
+    },
+    {
+      "x": 888,
+      "y": 88,
+      "length": 6,
+      "speed": -0.02956
+    },
+    {
+      "x": 984,
+      "y": 152,
+      "length": 6,
+      "speed": -0.02964
+    },
+    {
+      "x": 1176,
+      "y": 152,
+      "length": 6,
+      "speed": -0.0321
+    },
+    {
+      "x": 1320,
+      "y": 104,
+      "length": 6,
+      "speed": -0.03244
+    },
+    {
+      "x": 1480,
+      "y": 168,
+      "length": 6,
+      "speed": 0.02971
+    },
+    {
+      "x": 1656,
+      "y": 184,
+      "length": 6,
+      "speed": 0.04373
+    }
+  ],
+  "addFirebar": {
+    "x": 696,
+    "y": 216,
+    "length": 6,
+    "speed": 0.030679615757712823,
+    "motor": {
+      "direction": 1,
+      "initialUnits": 763,
+      "evidence": "Seven independent chain-registered histories; shared+5/32/native CW motor; freshpreactivation0/20/13 phase predictions confirmed. Raw reference mixed-frame center errors7..8px still fail2px; see evidence/firebar-5-4-shared-verification.json."
+    }
+  },
+  "baseAssembly": {
+    "tile": [
+      43,
+      13,
+      196
+    ],
+    "pixelOrigin": [
+      688,
+      208
+    ],
+    "palette": 7,
+    "asset": "assets/graphics/metatiles-palette-007.png",
+    "assetTemplate": "Supplied16x16 metatile196; full asset completion is semantic inference",
+    "observedPixels": 182,
+    "unseenInferredPixels": 74,
+    "countAsRecovered256RGBCell": false,
+    "source": "data/lower-row-chain-base-assembly.json",
+    "artLayering": "Normal background metatile layer; supplied flame sprites on existing sprite layer. No special clipping or camera translation.",
+    "collision": "Existing solid(196) whole16x16 rule at688..704/208..224. This is descriptor/semantic inference; top208surface/outer182pixel appearance observed, hidden74pixels not measured. No new collision shape or hazard radius proposed."
+  },
+  "conditionalSource34Removal": {
+    "sourceFile": "data/observed-levels.json",
+    "sourceField": "freeTiles",
+    "sourceIndex": 34,
+    "match": {
+      "x": 674,
+      "y": 208,
+      "metatileId": 98,
+      "atlas": "metatiles-palette-007.png",
+      "observedFrames": 2,
+      "collision": "infer-from-descriptor"
+    },
+    "footprint": [
+      674,
+      208,
+      16,
+      16
+    ],
+    "proofSource": "data/lower-row-chain-early-footprints.json acceptedRemovals sourceIndex34 referenceProof",
+    "fullFootprintProvenPixels": 256,
+    "contradictions": 0,
+    "baseOverlap": [
+      688,
+      208,
+      2,
+      16
+    ],
+    "baseOverlapProvenPixels": 32,
+    "dependency": "Only remove this whole original98 fragment when intentionally adding semantic196 base; no partial crop or wholecell pixel-recovery claim."
+  },
+  "phaseRationale": {
+    "currentSharedConvention": "A motor activates at viewport entry and increments on that same native frame.",
+    "latestCameraMetadataInitialUnits": 763,
+    "presentedRowAlternativeInitialUnits": 768,
+    "explanation": "Same observed trajectory can be parameterized as initial763 at independently estimated latest-camera entry or initial768 one native later at presented-row entry. Current shared update convention uses the first. After its first+5increment, units768 (bin24) are exposed. Setting768 at that same earlier birth would add one increment to every later observation; this does not justify altering the four existing objects. Native initialization/CPU-order mechanism and exact within-bracket threshold frame remain unobserved.",
+    "avoidOverclaim": "763 is measured per-object phase metadata under fixed camera-birth estimator and shared update order, not a claimed native ROM constant or tick-based correction.",
+    "heldoutPrediction": "Freshprewait13 predicted counter893 before flame extraction; observed unique893 with79 coherent orientations. Absolute native counters are diagnostics only; runtime uses ordinary camera activation and local accumulator."
+  },
+  "verification": "npx tsx tools/firebar-5-4-shared-verify.ts; evidence/firebar-5-4-shared-verification.json",
+  "rawImageStatus": "FAIL unchanged2px: max8px original/calibration and7px freshreserved; best single-pose residual3px; every complete sprite center matches fixed F or F+1 at0px as separate framebuffer diagnostic. No99%fullscene pass.",
+  "canonicalWritesByThisAgent": false,
+  "sourceHashes": {
+    "data/entity-campaign.json": "a722d03a820ee4362a00b75288a4010d033c1814a78328a39c9caa817993097c",
+    "data/lower-row-chain-base-assembly.json": "be906aeab59541a6635593766f9b97a97d6b389f161e17a7b06d5ca211022465",
+    "data/lower-row-chain-early-footprints.json": "4e70c812865cfe13e79aed207dbdec524c0ee2517d4661bce2f80168646a7678",
+    "data/firebar-5-4-chain-candidate-v2.json": "2cf316464df46c4375608fde09f4c7e031868783fcc392124f625547103f7b5e",
+    "evidence/firebar-5-4-shared-verification.json": "0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f"
+  }
+}

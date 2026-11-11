@@ -1,0 +1,152 @@
+{
+  "schema": "firebar-shared-class-plan-v1",
+  "declaredUtc": "2026-11-06T01:19:42.126453+00:00",
+  "scope": "Fresh image/controller qualification of observed clockwise1-4finalsix-orb bar, following failed952classification. No runtime writes.",
+  "level": "1-4",
+  "pivot": [
+    1416,
+    72
+  ],
+  "direction": 1,
+  "prefix": {
+    "winningDecisions": 980,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [
+    {
+      "buttons": [
+        "left",
+        "b"
+      ],
+      "ticks": 4
+    },
+    {
+      "buttons": [],
+      "ticks": 12
+    }
+  ],
+  "cases": [
+    {
+      "name": "cal-1-4-lastcw-0",
+      "extraNeutralTicks": 0,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "cal-1-4-lastcw-20",
+      "extraNeutralTicks": 20,
+      "calibration": true,
+      "reserved": false,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    },
+    {
+      "name": "reserved-1-4-lastcw-13",
+      "extraNeutralTicks": 13,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 9,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "approach",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "approach",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 90,
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "reservation": "Do not inspect/extract reserved13 before a shared motor candidate and initialization/activation rule are frozen. First1-4lockedfiles remain immutable.",
+  "hypotheses": [
+    "Same5/32bin/native clock vscoarse perbar decimal speed",
+    "Same initialunits768andsign\u22121 vsnewinitialphase",
+    "Centralquadentryactivation vslevelwideclock"
+  ],
+  "cameraSearch": [
+    1000,
+    1300
+  ],
+  "anchorCamera": 1020,
+  "cameraMethod": "Actual consecutive reference-image registration, independently seeded from lava-anchored source chain; no firebar phase/pivot used to select camera.",
+  "limits": [
+    "Preparation4 andjump9 are physical adjustments from anobservedalivepreparation3/jump10pilot; calibrationimageswilltest safety. No phase/motor parameters selected yet.",
+    "ExistingCWbar1416,72hasfour independentlyobservedpositive-motion passiveframes.",
+    "Reserved13imagesmustremainunopeneduntilinitialphase/motorcandidatefrozen."
+  ]
+}

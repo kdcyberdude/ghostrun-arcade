@@ -1,0 +1,326 @@
+{
+  "schema": "flag-camera-event-measurements-v1",
+  "method": "Image-only timer OCR, exact flag sprites and player templates; actual native frame accounting. TIMEzero is extrapolated from measured1TIME/native frame conversion and all agreeing image checkpoints. No source/executable state used for reference.",
+  "tolerances": {
+    "positionPixels": 2,
+    "cameraPixels": 2,
+    "rawStaticRGB": 0.99
+  },
+  "cases": [
+    {
+      "case": "cal-standard",
+      "reserved": false,
+      "referenceFrozenTime": 345,
+      "referenceZeroNative": 1817,
+      "zeroExtrapolationVotes": 45,
+      "zeroExtrapolationCandidates": {
+        "1817": 45
+      },
+      "referenceNextScreenBoundary": [
+        1976,
+        1983
+      ],
+      "transitionMethod": "First black backdrop pixel(0,80) after TIMEzero, checked on actual source PNG; interval from preceding7/8-native-frame observation.",
+      "referenceSlideSamples": [
+        {
+          "nativeFrame": 1314,
+          "flagOriginY": 56,
+          "playerFeetY": 185
+        },
+        {
+          "nativeFrame": 1322,
+          "flagOriginY": 72,
+          "playerFeetY": 191
+        },
+        {
+          "nativeFrame": 1329,
+          "flagOriginY": 86,
+          "playerFeetY": 191
+        }
+      ],
+      "runtime": {
+        "firstFlag": 1311,
+        "grabCamera": 3046,
+        "grabTime": 345,
+        "firstInside": 1471,
+        "firstZero": 1816,
+        "nextIntro": 1976,
+        "maxCamera": 1,
+        "maxX": 1.875,
+        "maxY": 0.78125
+      },
+      "rendered": [
+        {
+          "variant": "ordinary-camera",
+          "allSamples": 92,
+          "allRaw99Passes": 2,
+          "sameVisibleLevelSamples": 88,
+          "sameVisibleLevelRaw99Passes": 2,
+          "minimumSameVisibleLevelRawExact": 0.8552804969879518,
+          "maximumCameraError": 2
+        },
+        {
+          "variant": "ordinary-relative-camera",
+          "allSamples": 92,
+          "allRaw99Passes": 4,
+          "sameVisibleLevelSamples": 88,
+          "sameVisibleLevelRaw99Passes": 4,
+          "minimumSameVisibleLevelRawExact": 0.8885558060338625,
+          "maximumCameraError": 1
+        }
+      ]
+    },
+    {
+      "case": "cal-six",
+      "reserved": false,
+      "referenceFrozenTime": 326,
+      "referenceZeroNative": 2263,
+      "zeroExtrapolationVotes": 44,
+      "zeroExtrapolationCandidates": {
+        "2263": 44
+      },
+      "referenceNextScreenBoundary": [
+        2562,
+        2569
+      ],
+      "transitionMethod": "First black backdrop pixel(0,80) after TIMEzero, checked on actual source PNG; interval from preceding7/8-native-frame observation.",
+      "referenceSlideSamples": [
+        {
+          "nativeFrame": 1780,
+          "flagOriginY": 62,
+          "playerFeetY": 173
+        },
+        {
+          "nativeFrame": 1787,
+          "flagOriginY": 76,
+          "playerFeetY": 187
+        },
+        {
+          "nativeFrame": 1795,
+          "flagOriginY": 92,
+          "playerFeetY": 191
+        }
+      ],
+      "runtime": {
+        "firstFlag": 1776,
+        "grabCamera": 3048,
+        "grabTime": 326,
+        "firstInside": 1936,
+        "firstZero": 2262,
+        "nextIntro": 2583,
+        "maxCamera": 2,
+        "maxX": 3.375,
+        "maxY": 8
+      },
+      "rendered": [
+        {
+          "variant": "ordinary-camera",
+          "allSamples": 110,
+          "allRaw99Passes": 2,
+          "sameVisibleLevelSamples": 104,
+          "sameVisibleLevelRaw99Passes": 2,
+          "minimumSameVisibleLevelRawExact": 0.8211831701807228,
+          "maximumCameraError": 5
+        },
+        {
+          "variant": "ordinary-relative-camera",
+          "allSamples": 110,
+          "allRaw99Passes": 5,
+          "sameVisibleLevelSamples": 104,
+          "sameVisibleLevelRaw99Passes": 5,
+          "minimumSameVisibleLevelRawExact": 0.8493505271084337,
+          "maximumCameraError": 2
+        }
+      ]
+    },
+    {
+      "case": "cal-zero",
+      "reserved": false,
+      "referenceFrozenTime": 320,
+      "referenceZeroNative": 2400,
+      "zeroExtrapolationVotes": 42,
+      "zeroExtrapolationCandidates": {
+        "2400": 42
+      },
+      "referenceNextScreenBoundary": [
+        2547,
+        2554
+      ],
+      "transitionMethod": "First black backdrop pixel(0,80) after TIMEzero, checked on actual source PNG; interval from preceding7/8-native-frame observation.",
+      "referenceSlideSamples": [
+        {
+          "nativeFrame": 1923,
+          "flagOriginY": 62,
+          "playerFeetY": 173
+        },
+        {
+          "nativeFrame": 1930,
+          "flagOriginY": 76,
+          "playerFeetY": 187
+        },
+        {
+          "nativeFrame": 1938,
+          "flagOriginY": 92,
+          "playerFeetY": 191
+        }
+      ],
+      "runtime": {
+        "firstFlag": 1919,
+        "grabCamera": 3048,
+        "grabTime": 320,
+        "firstInside": 2079,
+        "firstZero": 2399,
+        "nextIntro": 2559,
+        "maxCamera": 2,
+        "maxX": 4,
+        "maxY": 8
+      },
+      "rendered": [
+        {
+          "variant": "ordinary-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 2,
+          "sameVisibleLevelSamples": 82,
+          "sameVisibleLevelRaw99Passes": 2,
+          "minimumSameVisibleLevelRawExact": 0.8264542545180723,
+          "maximumCameraError": 5
+        },
+        {
+          "variant": "ordinary-relative-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 5,
+          "sameVisibleLevelSamples": 82,
+          "sameVisibleLevelRaw99Passes": 5,
+          "minimumSameVisibleLevelRawExact": 0.8540568524096386,
+          "maximumCameraError": 2
+        }
+      ]
+    },
+    {
+      "case": "cal-one",
+      "reserved": false,
+      "referenceFrozenTime": 321,
+      "referenceZeroNative": 2379,
+      "zeroExtrapolationVotes": 42,
+      "zeroExtrapolationCandidates": {
+        "2379": 42
+      },
+      "referenceNextScreenBoundary": [
+        2525,
+        2531
+      ],
+      "transitionMethod": "First black backdrop pixel(0,80) after TIMEzero, checked on actual source PNG; interval from preceding7/8-native-frame observation.",
+      "referenceSlideSamples": [
+        {
+          "nativeFrame": 1900,
+          "flagOriginY": 60,
+          "playerFeetY": 171
+        },
+        {
+          "nativeFrame": 1908,
+          "flagOriginY": 76,
+          "playerFeetY": 187
+        },
+        {
+          "nativeFrame": 1915,
+          "flagOriginY": 90,
+          "playerFeetY": 191
+        }
+      ],
+      "runtime": {
+        "firstFlag": 1897,
+        "grabCamera": 3048,
+        "grabTime": 320,
+        "firstInside": 2057,
+        "firstZero": 2377,
+        "nextIntro": 2537,
+        "maxCamera": 2,
+        "maxX": 4,
+        "maxY": 8
+      },
+      "rendered": [
+        {
+          "variant": "ordinary-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 2,
+          "sameVisibleLevelSamples": 82,
+          "sameVisibleLevelRaw99Passes": 2,
+          "minimumSameVisibleLevelRawExact": 0.8224068147590362,
+          "maximumCameraError": 5
+        },
+        {
+          "variant": "ordinary-relative-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 4,
+          "sameVisibleLevelSamples": 82,
+          "sameVisibleLevelRaw99Passes": 4,
+          "minimumSameVisibleLevelRawExact": 0.8500094126506024,
+          "maximumCameraError": 2
+        }
+      ]
+    },
+    {
+      "case": "reserved-three",
+      "reserved": true,
+      "referenceFrozenTime": 323,
+      "referenceZeroNative": 2335,
+      "zeroExtrapolationVotes": 43,
+      "zeroExtrapolationCandidates": {
+        "2335": 43
+      },
+      "referenceNextScreenBoundary": [
+        2547,
+        2554
+      ],
+      "transitionMethod": "First black backdrop pixel(0,80) after TIMEzero, checked on actual source PNG; interval from preceding7/8-native-frame observation.",
+      "referenceSlideSamples": [
+        {
+          "nativeFrame": 1855,
+          "flagOriginY": 62,
+          "playerFeetY": 173
+        },
+        {
+          "nativeFrame": 1863,
+          "flagOriginY": 78,
+          "playerFeetY": 189
+        },
+        {
+          "nativeFrame": 1870,
+          "flagOriginY": 92,
+          "playerFeetY": 191
+        }
+      ],
+      "runtime": {
+        "firstFlag": 1851,
+        "grabCamera": 3048,
+        "grabTime": 322,
+        "firstInside": 2011,
+        "firstZero": 2333,
+        "nextIntro": 2493,
+        "maxCamera": 2,
+        "maxX": 3.375,
+        "maxY": 8
+      },
+      "rendered": [
+        {
+          "variant": "ordinary-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 2,
+          "sameVisibleLevelSamples": 84,
+          "sameVisibleLevelRaw99Passes": 2,
+          "minimumSameVisibleLevelRawExact": 0.8217479292168675,
+          "maximumCameraError": 5
+        },
+        {
+          "variant": "ordinary-relative-camera",
+          "allSamples": 88,
+          "allRaw99Passes": 5,
+          "sameVisibleLevelSamples": 84,
+          "sameVisibleLevelRaw99Passes": 5,
+          "minimumSameVisibleLevelRawExact": 0.8493505271084337,
+          "maximumCameraError": 2
+        }
+      ]
+    }
+  ]
+}

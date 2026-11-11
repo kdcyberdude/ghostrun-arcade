@@ -1,0 +1,4763 @@
+{
+  "schema": "public-reference-later-checkpoint-inventory-v1",
+  "generatedUtc": "2026-11-05T22:42:40.895Z",
+  "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+  "registrationGeometryFingerprint": "ba114cfd709356b945ee7e4d9d87a2a014ccf477d4e89f8f9270772538f3af87b92ac9ee01a0d97bff2c5db36bb3df0720a7f02950a5c76586f33673a8fe245c",
+  "controller": "Each experiment uses a fresh standard reset, byte-verified recorded ordinary-controller prefix, Left+B braking, then neutral through a genuine collision/fall/timeout, life intro and first return geometry.16 further neutral decisions verify the returned actor. No hidden state, teleport, death API or policy recovery.",
+  "declaredTolerances": {
+    "exactOpaquePlayerPixels": 0,
+    "integerCameraPixels": 0,
+    "registration": "All observed segments tested; equal best static aliases remain unresolved. Dynamic enemy/animation residuals are retained."
+  },
+  "measurements": [
+    {
+      "level": "5-2",
+      "branch": "5-2-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 5520,
+      "prefixVerification": {
+        "branch": "5-2-late-inventory",
+        "actualNativeFrames": 41467,
+        "expectedNativeFrames": 41467,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/05521-tick-05520.png",
+        "groups": 931
+      },
+      "prefix": {
+        "sequence": 933,
+        "tick": 5520,
+        "nativeFrames": 41467,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00933-t05520.png",
+        "player": {
+          "originX": 112,
+          "originY": 151,
+          "visibleLeft": 112,
+          "visibleTop": 167,
+          "visibleRight": 127,
+          "visibleBottom": 182,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 0.9941520467836257,
+          "matchedPixels": 170
+        },
+        "registration": {
+          "level": "5-2",
+          "segment": "area-2",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 2194,
+              "mismatch": 136,
+              "support": 9848,
+              "error": 0.01380991064175467
+            },
+            {
+              "camera": 2193,
+              "mismatch": 236,
+              "support": 9856,
+              "error": 0.023944805194805196
+            },
+            {
+              "camera": 2195,
+              "mismatch": 270,
+              "support": 9848,
+              "error": 0.027416734362307068
+            },
+            {
+              "camera": 2192,
+              "mismatch": 273,
+              "support": 9856,
+              "error": 0.027698863636363636
+            },
+            {
+              "camera": 2196,
+              "mismatch": 316,
+              "support": 9840,
+              "error": 0.03211382113821138
+            },
+            {
+              "camera": 2190,
+              "mismatch": 356,
+              "support": 9840,
+              "error": 0.036178861788617886
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "5-2-late-inventory",
+        "level": "5-2",
+        "segment": "area-2",
+        "prefix": 5520,
+        "planningCameraOnly": 2193,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 57,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 987,
+        "tick": 5581,
+        "nativeFrames": 41925,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00987-t05581.png",
+        "followthroughSequence": 1003
+      },
+      "firstVisibleDeath": null,
+      "firstLifeIntro": {
+        "sequence": 970,
+        "tick": 5564,
+        "nativeFrames": 41798,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00970-t05564.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 987,
+        "tick": 5581,
+        "nativeFrames": 41925,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00987-t05581.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 987,
+        "tick": 5581,
+        "nativeFrames": 41925,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00987-t05581.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "5-2",
+            "segment": "area-2",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1536,
+                "mismatch": 33,
+                "support": 9344,
+                "error": 0.0035316780821917806
+              },
+              {
+                "camera": 1537,
+                "mismatch": 139,
+                "support": 9344,
+                "error": 0.014875856164383562
+              },
+              {
+                "camera": 1535,
+                "mismatch": 139,
+                "support": 9336,
+                "error": 0.014888603256212512
+              },
+              {
+                "camera": 1534,
+                "mismatch": 156,
+                "support": 9336,
+                "error": 0.016709511568123392
+              },
+              {
+                "camera": 1538,
+                "mismatch": 169,
+                "support": 9360,
+                "error": 0.018055555555555554
+              },
+              {
+                "camera": 1533,
+                "mismatch": 200,
+                "support": 9328,
+                "error": 0.02144082332761578
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 988,
+          "tick": 5582,
+          "nativeFrames": 41933,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00988-t05582.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 989,
+          "tick": 5583,
+          "nativeFrames": 41940,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00989-t05583.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 990,
+          "tick": 5584,
+          "nativeFrames": 41948,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00990-t05584.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 991,
+          "tick": 5585,
+          "nativeFrames": 41955,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00991-t05585.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 992,
+          "tick": 5586,
+          "nativeFrames": 41963,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00992-t05586.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 993,
+          "tick": 5587,
+          "nativeFrames": 41970,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00993-t05587.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 994,
+          "tick": 5588,
+          "nativeFrames": 41978,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00994-t05588.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 995,
+          "tick": 5589,
+          "nativeFrames": 41985,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00995-t05589.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 996,
+          "tick": 5590,
+          "nativeFrames": 41993,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00996-t05590.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 997,
+          "tick": 5591,
+          "nativeFrames": 42000,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00997-t05591.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 998,
+          "tick": 5592,
+          "nativeFrames": 42008,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00998-t05592.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 999,
+          "tick": 5593,
+          "nativeFrames": 42015,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/00999-t05593.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 1000,
+          "tick": 5594,
+          "nativeFrames": 42023,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01000-t05594.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 1001,
+          "tick": 5595,
+          "nativeFrames": 42030,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01001-t05595.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 1002,
+          "tick": 5596,
+          "nativeFrames": 42038,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01002-t05596.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 1003,
+          "tick": 5597,
+          "nativeFrames": 42045,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01003-t05597.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1536,
+          "mismatch": 33,
+          "support": 9344,
+          "error": 0.0035316780821917806,
+          "segment": "area-2"
+        },
+        {
+          "camera": 1537,
+          "mismatch": 139,
+          "support": 9344,
+          "error": 0.014875856164383562,
+          "segment": "area-2"
+        },
+        {
+          "camera": 1535,
+          "mismatch": 139,
+          "support": 9336,
+          "error": 0.014888603256212512,
+          "segment": "area-2"
+        },
+        {
+          "camera": 1534,
+          "mismatch": 156,
+          "support": 9336,
+          "error": 0.016709511568123392,
+          "segment": "area-2"
+        },
+        {
+          "camera": 1538,
+          "mismatch": 169,
+          "support": 9360,
+          "error": 0.018055555555555554,
+          "segment": "area-2"
+        },
+        {
+          "camera": 1533,
+          "mismatch": 200,
+          "support": 9328,
+          "error": 0.02144082332761578,
+          "segment": "area-2"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "area-2",
+        "camera": 1536,
+        "worldOriginX": 1576,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1536,
+            "mismatch": 33,
+            "support": 9344,
+            "error": 0.0035316780821917806,
+            "segment": "area-2"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "5-3",
+      "branch": "5-3-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 5796,
+      "prefixVerification": {
+        "branch": "5-3-late-inventory",
+        "actualNativeFrames": 43540,
+        "expectedNativeFrames": 43540,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/05797-tick-05796.png",
+        "groups": 983
+      },
+      "prefix": {
+        "sequence": 1987,
+        "tick": 5796,
+        "nativeFrames": 43540,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01987-t05796.png",
+        "player": {
+          "originX": 112,
+          "originY": 85,
+          "visibleLeft": 115,
+          "visibleTop": 101,
+          "visibleRight": 125,
+          "visibleBottom": 116,
+          "cell": 14,
+          "direction": "right",
+          "annotation": "frame 3",
+          "confidence": 1,
+          "matchedPixels": 124
+        },
+        "registration": {
+          "level": "5-3",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 1723,
+              "mismatch": 345,
+              "support": 9920,
+              "error": 0.03477822580645161
+            },
+            {
+              "camera": 1722,
+              "mismatch": 622,
+              "support": 9920,
+              "error": 0.0627016129032258
+            },
+            {
+              "camera": 1721,
+              "mismatch": 707,
+              "support": 9920,
+              "error": 0.07127016129032258
+            },
+            {
+              "camera": 1724,
+              "mismatch": 748,
+              "support": 9920,
+              "error": 0.07540322580645162
+            },
+            {
+              "camera": 1720,
+              "mismatch": 776,
+              "support": 9920,
+              "error": 0.07822580645161291
+            },
+            {
+              "camera": 1725,
+              "mismatch": 896,
+              "support": 9920,
+              "error": 0.09032258064516129
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "5-3-late-inventory",
+        "level": "5-3",
+        "segment": "main",
+        "prefix": 5796,
+        "planningCameraOnly": 1723,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 53,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 2037,
+        "tick": 5853,
+        "nativeFrames": 43969,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02037-t05853.png",
+        "followthroughSequence": 2053
+      },
+      "firstVisibleDeath": {
+        "sequence": 1994,
+        "tick": 5803,
+        "nativeFrames": 43593,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/01994-t05803.png",
+        "player": {
+          "originX": 107,
+          "originY": 113,
+          "visibleLeft": 108,
+          "visibleTop": 129,
+          "visibleRight": 121,
+          "visibleBottom": 142,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        }
+      },
+      "firstLifeIntro": {
+        "sequence": 2024,
+        "tick": 5840,
+        "nativeFrames": 43871,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02024-t05840.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 2037,
+        "tick": 5853,
+        "nativeFrames": 43969,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02037-t05853.png",
+        "player": null
+      },
+      "firstExactPlayer": {
+        "sequence": 2038,
+        "tick": 5854,
+        "nativeFrames": 43976,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02038-t05854.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "5-3",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1024,
+                "mismatch": 34,
+                "support": 10048,
+                "error": 0.0033837579617834396
+              },
+              {
+                "camera": 1025,
+                "mismatch": 356,
+                "support": 10048,
+                "error": 0.03542993630573248
+              },
+              {
+                "camera": 1026,
+                "mismatch": 381,
+                "support": 10048,
+                "error": 0.03791799363057325
+              },
+              {
+                "camera": 1022,
+                "mismatch": 404,
+                "support": 10032,
+                "error": 0.040271132376395534
+              },
+              {
+                "camera": 1023,
+                "mismatch": 451,
+                "support": 10032,
+                "error": 0.044956140350877194
+              },
+              {
+                "camera": 1027,
+                "mismatch": 492,
+                "support": 10048,
+                "error": 0.048964968152866245
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 2039,
+          "tick": 5855,
+          "nativeFrames": 43984,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02039-t05855.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2040,
+          "tick": 5856,
+          "nativeFrames": 43991,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02040-t05856.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2041,
+          "tick": 5857,
+          "nativeFrames": 43999,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02041-t05857.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2042,
+          "tick": 5858,
+          "nativeFrames": 44006,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02042-t05858.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2043,
+          "tick": 5859,
+          "nativeFrames": 44014,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02043-t05859.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2044,
+          "tick": 5860,
+          "nativeFrames": 44021,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02044-t05860.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2045,
+          "tick": 5861,
+          "nativeFrames": 44029,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02045-t05861.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2046,
+          "tick": 5862,
+          "nativeFrames": 44036,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02046-t05862.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2047,
+          "tick": 5863,
+          "nativeFrames": 44044,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02047-t05863.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2048,
+          "tick": 5864,
+          "nativeFrames": 44051,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02048-t05864.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2049,
+          "tick": 5865,
+          "nativeFrames": 44059,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02049-t05865.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2050,
+          "tick": 5866,
+          "nativeFrames": 44066,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02050-t05866.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2051,
+          "tick": 5867,
+          "nativeFrames": 44074,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02051-t05867.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2052,
+          "tick": 5868,
+          "nativeFrames": 44081,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02052-t05868.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 2053,
+          "tick": 5869,
+          "nativeFrames": 44089,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/02053-t05869.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1024,
+          "mismatch": 34,
+          "support": 10048,
+          "error": 0.0033837579617834396,
+          "segment": "main"
+        },
+        {
+          "camera": 1025,
+          "mismatch": 356,
+          "support": 10048,
+          "error": 0.03542993630573248,
+          "segment": "main"
+        },
+        {
+          "camera": 1026,
+          "mismatch": 381,
+          "support": 10048,
+          "error": 0.03791799363057325,
+          "segment": "main"
+        },
+        {
+          "camera": 1022,
+          "mismatch": 404,
+          "support": 10032,
+          "error": 0.040271132376395534,
+          "segment": "main"
+        },
+        {
+          "camera": 1023,
+          "mismatch": 451,
+          "support": 10032,
+          "error": 0.044956140350877194,
+          "segment": "main"
+        },
+        {
+          "camera": 1027,
+          "mismatch": 492,
+          "support": 10048,
+          "error": 0.048964968152866245,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 1024,
+        "worldOriginX": 1064,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1024,
+            "mismatch": 34,
+            "support": 10048,
+            "error": 0.0033837579617834396,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "6-2",
+      "branch": "6-2-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 6660,
+      "prefixVerification": {
+        "branch": "6-2-late-inventory",
+        "actualNativeFrames": 50031,
+        "expectedNativeFrames": 50031,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/06661-tick-06660.png",
+        "groups": 1115
+      },
+      "prefix": {
+        "sequence": 3169,
+        "tick": 6660,
+        "nativeFrames": 50031,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03169-t06660.png",
+        "player": {
+          "originX": 119,
+          "originY": 47,
+          "visibleLeft": 119,
+          "visibleTop": 63,
+          "visibleRight": 134,
+          "visibleBottom": 78,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "registration": {
+          "level": "6-2",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 2379,
+              "mismatch": 79,
+              "support": 10176,
+              "error": 0.007763364779874214
+            },
+            {
+              "camera": 2378,
+              "mismatch": 406,
+              "support": 10176,
+              "error": 0.03989779874213836
+            },
+            {
+              "camera": 2380,
+              "mismatch": 591,
+              "support": 10176,
+              "error": 0.05807783018867924
+            },
+            {
+              "camera": 2377,
+              "mismatch": 745,
+              "support": 10176,
+              "error": 0.07321147798742138
+            },
+            {
+              "camera": 2381,
+              "mismatch": 745,
+              "support": 10176,
+              "error": 0.07321147798742138
+            },
+            {
+              "camera": 2376,
+              "mismatch": 790,
+              "support": 10176,
+              "error": 0.07763364779874214
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "6-2-late-inventory",
+        "level": "6-2",
+        "segment": "main",
+        "prefix": 6660,
+        "planningCameraOnly": 2379,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 57,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 3223,
+        "tick": 6721,
+        "nativeFrames": 50489,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03223-t06721.png",
+        "followthroughSequence": 3239
+      },
+      "firstVisibleDeath": {
+        "sequence": 3180,
+        "tick": 6671,
+        "nativeFrames": 50114,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03180-t06671.png",
+        "player": {
+          "originX": 115,
+          "originY": 177,
+          "visibleLeft": 116,
+          "visibleTop": 193,
+          "visibleRight": 129,
+          "visibleBottom": 206,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        }
+      },
+      "firstLifeIntro": {
+        "sequence": 3206,
+        "tick": 6704,
+        "nativeFrames": 50361,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03206-t06704.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 3223,
+        "tick": 6721,
+        "nativeFrames": 50489,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03223-t06721.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 3223,
+        "tick": 6721,
+        "nativeFrames": 50489,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03223-t06721.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "6-2",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1536,
+                "mismatch": 33,
+                "support": 10176,
+                "error": 0.003242924528301887
+              },
+              {
+                "camera": 1537,
+                "mismatch": 360,
+                "support": 10176,
+                "error": 0.03537735849056604
+              },
+              {
+                "camera": 1535,
+                "mismatch": 461,
+                "support": 10184,
+                "error": 0.04526708562450903
+              },
+              {
+                "camera": 1534,
+                "mismatch": 552,
+                "support": 10184,
+                "error": 0.05420267085624509
+              },
+              {
+                "camera": 1538,
+                "mismatch": 575,
+                "support": 10168,
+                "error": 0.05654996066089693
+              },
+              {
+                "camera": 1539,
+                "mismatch": 710,
+                "support": 10168,
+                "error": 0.06982690794649882
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 3224,
+          "tick": 6722,
+          "nativeFrames": 50497,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03224-t06722.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3225,
+          "tick": 6723,
+          "nativeFrames": 50504,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03225-t06723.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3226,
+          "tick": 6724,
+          "nativeFrames": 50512,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03226-t06724.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3227,
+          "tick": 6725,
+          "nativeFrames": 50519,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03227-t06725.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3228,
+          "tick": 6726,
+          "nativeFrames": 50527,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03228-t06726.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3229,
+          "tick": 6727,
+          "nativeFrames": 50534,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03229-t06727.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3230,
+          "tick": 6728,
+          "nativeFrames": 50542,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03230-t06728.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3231,
+          "tick": 6729,
+          "nativeFrames": 50549,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03231-t06729.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3232,
+          "tick": 6730,
+          "nativeFrames": 50557,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03232-t06730.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3233,
+          "tick": 6731,
+          "nativeFrames": 50564,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03233-t06731.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3234,
+          "tick": 6732,
+          "nativeFrames": 50572,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03234-t06732.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3235,
+          "tick": 6733,
+          "nativeFrames": 50579,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03235-t06733.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3236,
+          "tick": 6734,
+          "nativeFrames": 50587,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03236-t06734.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3237,
+          "tick": 6735,
+          "nativeFrames": 50594,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03237-t06735.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3238,
+          "tick": 6736,
+          "nativeFrames": 50602,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03238-t06736.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 3239,
+          "tick": 6737,
+          "nativeFrames": 50609,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/03239-t06737.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1536,
+          "mismatch": 33,
+          "support": 10176,
+          "error": 0.003242924528301887,
+          "segment": "main"
+        },
+        {
+          "camera": 1537,
+          "mismatch": 360,
+          "support": 10176,
+          "error": 0.03537735849056604,
+          "segment": "main"
+        },
+        {
+          "camera": 1535,
+          "mismatch": 461,
+          "support": 10184,
+          "error": 0.04526708562450903,
+          "segment": "main"
+        },
+        {
+          "camera": 1534,
+          "mismatch": 552,
+          "support": 10184,
+          "error": 0.05420267085624509,
+          "segment": "main"
+        },
+        {
+          "camera": 1538,
+          "mismatch": 575,
+          "support": 10168,
+          "error": 0.05654996066089693,
+          "segment": "main"
+        },
+        {
+          "camera": 1539,
+          "mismatch": 710,
+          "support": 10168,
+          "error": 0.06982690794649882,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 1536,
+        "worldOriginX": 1576,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1536,
+            "mismatch": 33,
+            "support": 10176,
+            "error": 0.003242924528301887,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "6-3",
+      "branch": "6-3-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 6948,
+      "prefixVerification": {
+        "branch": "6-3-late-inventory",
+        "actualNativeFrames": 52194,
+        "expectedNativeFrames": 52194,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/06949-tick-06948.png",
+        "groups": 1174
+      },
+      "prefix": {
+        "sequence": 4414,
+        "tick": 6948,
+        "nativeFrames": 52194,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04414-t06948.png",
+        "player": {
+          "originX": 112,
+          "originY": 121,
+          "visibleLeft": 112,
+          "visibleTop": 137,
+          "visibleRight": 127,
+          "visibleBottom": 152,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "registration": {
+          "level": "6-3",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 1894,
+              "mismatch": 114,
+              "support": 9664,
+              "error": 0.01179635761589404
+            },
+            {
+              "camera": 1893,
+              "mismatch": 403,
+              "support": 9664,
+              "error": 0.04170115894039735
+            },
+            {
+              "camera": 1895,
+              "mismatch": 428,
+              "support": 9664,
+              "error": 0.04428807947019867
+            },
+            {
+              "camera": 1892,
+              "mismatch": 551,
+              "support": 9664,
+              "error": 0.057015728476821195
+            },
+            {
+              "camera": 1896,
+              "mismatch": 552,
+              "support": 9664,
+              "error": 0.057119205298013245
+            },
+            {
+              "camera": 1897,
+              "mismatch": 608,
+              "support": 9664,
+              "error": 0.06291390728476821
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "6-3-late-inventory",
+        "level": "6-3",
+        "segment": "main",
+        "prefix": 6948,
+        "planningCameraOnly": 1894,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 58,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 4469,
+        "tick": 7010,
+        "nativeFrames": 52660,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04469-t07010.png",
+        "followthroughSequence": 4485
+      },
+      "firstVisibleDeath": null,
+      "firstLifeIntro": {
+        "sequence": 4451,
+        "tick": 6992,
+        "nativeFrames": 52525,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04451-t06992.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 4469,
+        "tick": 7010,
+        "nativeFrames": 52660,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04469-t07010.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 4469,
+        "tick": 7010,
+        "nativeFrames": 52660,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04469-t07010.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "6-3",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1536,
+                "mismatch": 33,
+                "support": 10240,
+                "error": 0.00322265625
+              },
+              {
+                "camera": 1537,
+                "mismatch": 359,
+                "support": 10240,
+                "error": 0.03505859375
+              },
+              {
+                "camera": 1535,
+                "mismatch": 380,
+                "support": 10240,
+                "error": 0.037109375
+              },
+              {
+                "camera": 1534,
+                "mismatch": 441,
+                "support": 10240,
+                "error": 0.04306640625
+              },
+              {
+                "camera": 1538,
+                "mismatch": 443,
+                "support": 10240,
+                "error": 0.04326171875
+              },
+              {
+                "camera": 1539,
+                "mismatch": 521,
+                "support": 10240,
+                "error": 0.05087890625
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 4470,
+          "tick": 7011,
+          "nativeFrames": 52668,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04470-t07011.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4471,
+          "tick": 7012,
+          "nativeFrames": 52675,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04471-t07012.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4472,
+          "tick": 7013,
+          "nativeFrames": 52683,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04472-t07013.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4473,
+          "tick": 7014,
+          "nativeFrames": 52690,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04473-t07014.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4474,
+          "tick": 7015,
+          "nativeFrames": 52698,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04474-t07015.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4475,
+          "tick": 7016,
+          "nativeFrames": 52705,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04475-t07016.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4476,
+          "tick": 7017,
+          "nativeFrames": 52713,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04476-t07017.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4477,
+          "tick": 7018,
+          "nativeFrames": 52720,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04477-t07018.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4478,
+          "tick": 7019,
+          "nativeFrames": 52728,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04478-t07019.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4479,
+          "tick": 7020,
+          "nativeFrames": 52735,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04479-t07020.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4480,
+          "tick": 7021,
+          "nativeFrames": 52743,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04480-t07021.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4481,
+          "tick": 7022,
+          "nativeFrames": 52750,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04481-t07022.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4482,
+          "tick": 7023,
+          "nativeFrames": 52758,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04482-t07023.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4483,
+          "tick": 7024,
+          "nativeFrames": 52765,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04483-t07024.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4484,
+          "tick": 7025,
+          "nativeFrames": 52773,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04484-t07025.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 4485,
+          "tick": 7026,
+          "nativeFrames": 52780,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/04485-t07026.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1536,
+          "mismatch": 33,
+          "support": 10240,
+          "error": 0.00322265625,
+          "segment": "main"
+        },
+        {
+          "camera": 1537,
+          "mismatch": 359,
+          "support": 10240,
+          "error": 0.03505859375,
+          "segment": "main"
+        },
+        {
+          "camera": 1535,
+          "mismatch": 380,
+          "support": 10240,
+          "error": 0.037109375,
+          "segment": "main"
+        },
+        {
+          "camera": 1534,
+          "mismatch": 441,
+          "support": 10240,
+          "error": 0.04306640625,
+          "segment": "main"
+        },
+        {
+          "camera": 1538,
+          "mismatch": 443,
+          "support": 10240,
+          "error": 0.04326171875,
+          "segment": "main"
+        },
+        {
+          "camera": 1539,
+          "mismatch": 521,
+          "support": 10240,
+          "error": 0.05087890625,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 1536,
+        "worldOriginX": 1576,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1536,
+            "mismatch": 33,
+            "support": 10240,
+            "error": 0.00322265625,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "7-2",
+      "branch": "7-2-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 7948,
+      "prefixVerification": {
+        "branch": "7-2-late-inventory",
+        "actualNativeFrames": 59707,
+        "expectedNativeFrames": 59707,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/07949-tick-07948.png",
+        "groups": 1390
+      },
+      "prefix": {
+        "sequence": 5876,
+        "tick": 7948,
+        "nativeFrames": 59707,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05876-t07948.png",
+        "player": {
+          "originX": 121,
+          "originY": 96,
+          "visibleLeft": 123,
+          "visibleTop": 113,
+          "visibleRight": 135,
+          "visibleBottom": 127,
+          "cell": 18,
+          "direction": "right",
+          "annotation": "frame 2",
+          "confidence": 1,
+          "matchedPixels": 112
+        },
+        "registration": {
+          "level": "7-2",
+          "segment": "area-4",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 1995,
+              "mismatch": 228,
+              "support": 10240,
+              "error": 0.022265625
+            },
+            {
+              "camera": 1994,
+              "mismatch": 749,
+              "support": 10240,
+              "error": 0.07314453125
+            },
+            {
+              "camera": 1996,
+              "mismatch": 815,
+              "support": 10240,
+              "error": 0.07958984375
+            },
+            {
+              "camera": 1993,
+              "mismatch": 960,
+              "support": 10240,
+              "error": 0.09375
+            },
+            {
+              "camera": 1997,
+              "mismatch": 966,
+              "support": 10240,
+              "error": 0.0943359375
+            },
+            {
+              "camera": 1992,
+              "mismatch": 1037,
+              "support": 10240,
+              "error": 0.10126953125
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "7-2-late-inventory",
+        "level": "7-2",
+        "segment": "area-4",
+        "prefix": 7948,
+        "planningCameraOnly": 1995,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 73,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 5932,
+        "tick": 8025,
+        "nativeFrames": 60285,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05932-t08025.png",
+        "followthroughSequence": 5948
+      },
+      "firstVisibleDeath": null,
+      "firstLifeIntro": {
+        "sequence": 5915,
+        "tick": 8008,
+        "nativeFrames": 60157,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05915-t08008.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 5932,
+        "tick": 8025,
+        "nativeFrames": 60285,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05932-t08025.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 5932,
+        "tick": 8025,
+        "nativeFrames": 60285,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05932-t08025.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "7-2",
+            "segment": "area-2",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 0,
+                "mismatch": 10240,
+                "support": 10240,
+                "error": 1
+              }
+            ]
+          },
+          {
+            "level": "7-2",
+            "segment": "area-4",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1280,
+                "mismatch": 35,
+                "support": 10240,
+                "error": 0.00341796875
+              },
+              {
+                "camera": 1281,
+                "mismatch": 271,
+                "support": 10240,
+                "error": 0.02646484375
+              },
+              {
+                "camera": 1279,
+                "mismatch": 340,
+                "support": 10240,
+                "error": 0.033203125
+              },
+              {
+                "camera": 32,
+                "mismatch": 341,
+                "support": 10240,
+                "error": 0.03330078125
+              },
+              {
+                "camera": 1282,
+                "mismatch": 344,
+                "support": 10240,
+                "error": 0.03359375
+              },
+              {
+                "camera": 1284,
+                "mismatch": 362,
+                "support": 10240,
+                "error": 0.0353515625
+              }
+            ]
+          },
+          {
+            "level": "7-2",
+            "segment": "area-5",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 145,
+                "mismatch": 10224,
+                "support": 10240,
+                "error": 0.9984375
+              },
+              {
+                "camera": 147,
+                "mismatch": 10224,
+                "support": 10240,
+                "error": 0.9984375
+              },
+              {
+                "camera": 161,
+                "mismatch": 10224,
+                "support": 10240,
+                "error": 0.9984375
+              },
+              {
+                "camera": 163,
+                "mismatch": 10225,
+                "support": 10240,
+                "error": 0.99853515625
+              },
+              {
+                "camera": 149,
+                "mismatch": 10226,
+                "support": 10240,
+                "error": 0.9986328125
+              },
+              {
+                "camera": 144,
+                "mismatch": 10228,
+                "support": 10240,
+                "error": 0.998828125
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 5933,
+          "tick": 8026,
+          "nativeFrames": 60293,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05933-t08026.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5934,
+          "tick": 8027,
+          "nativeFrames": 60300,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05934-t08027.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5935,
+          "tick": 8028,
+          "nativeFrames": 60308,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05935-t08028.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5936,
+          "tick": 8029,
+          "nativeFrames": 60315,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05936-t08029.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5937,
+          "tick": 8030,
+          "nativeFrames": 60323,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05937-t08030.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5938,
+          "tick": 8031,
+          "nativeFrames": 60330,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05938-t08031.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5939,
+          "tick": 8032,
+          "nativeFrames": 60338,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05939-t08032.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5940,
+          "tick": 8033,
+          "nativeFrames": 60345,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05940-t08033.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5941,
+          "tick": 8034,
+          "nativeFrames": 60353,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05941-t08034.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5942,
+          "tick": 8035,
+          "nativeFrames": 60360,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05942-t08035.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5943,
+          "tick": 8036,
+          "nativeFrames": 60368,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05943-t08036.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5944,
+          "tick": 8037,
+          "nativeFrames": 60375,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05944-t08037.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5945,
+          "tick": 8038,
+          "nativeFrames": 60383,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05945-t08038.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5946,
+          "tick": 8039,
+          "nativeFrames": 60390,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05946-t08039.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5947,
+          "tick": 8040,
+          "nativeFrames": 60398,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05947-t08040.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 5948,
+          "tick": 8041,
+          "nativeFrames": 60405,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/05948-t08041.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1280,
+          "mismatch": 35,
+          "support": 10240,
+          "error": 0.00341796875,
+          "segment": "area-4"
+        },
+        {
+          "camera": 1281,
+          "mismatch": 271,
+          "support": 10240,
+          "error": 0.02646484375,
+          "segment": "area-4"
+        },
+        {
+          "camera": 1279,
+          "mismatch": 340,
+          "support": 10240,
+          "error": 0.033203125,
+          "segment": "area-4"
+        },
+        {
+          "camera": 32,
+          "mismatch": 341,
+          "support": 10240,
+          "error": 0.03330078125,
+          "segment": "area-4"
+        },
+        {
+          "camera": 1282,
+          "mismatch": 344,
+          "support": 10240,
+          "error": 0.03359375,
+          "segment": "area-4"
+        },
+        {
+          "camera": 1284,
+          "mismatch": 362,
+          "support": 10240,
+          "error": 0.0353515625,
+          "segment": "area-4"
+        },
+        {
+          "camera": 145,
+          "mismatch": 10224,
+          "support": 10240,
+          "error": 0.9984375,
+          "segment": "area-5"
+        },
+        {
+          "camera": 147,
+          "mismatch": 10224,
+          "support": 10240,
+          "error": 0.9984375,
+          "segment": "area-5"
+        },
+        {
+          "camera": 161,
+          "mismatch": 10224,
+          "support": 10240,
+          "error": 0.9984375,
+          "segment": "area-5"
+        },
+        {
+          "camera": 163,
+          "mismatch": 10225,
+          "support": 10240,
+          "error": 0.99853515625,
+          "segment": "area-5"
+        },
+        {
+          "camera": 149,
+          "mismatch": 10226,
+          "support": 10240,
+          "error": 0.9986328125,
+          "segment": "area-5"
+        },
+        {
+          "camera": 144,
+          "mismatch": 10228,
+          "support": 10240,
+          "error": 0.998828125,
+          "segment": "area-5"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "area-4",
+        "camera": 1280,
+        "worldOriginX": 1320,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1280,
+            "mismatch": 35,
+            "support": 10240,
+            "error": 0.00341796875,
+            "segment": "area-4"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "7-3",
+      "branch": "7-3-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 8328,
+      "prefixVerification": {
+        "branch": "7-3-late-inventory",
+        "actualNativeFrames": 62561,
+        "expectedNativeFrames": 62561,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/08329-tick-08328.png",
+        "groups": 1472
+      },
+      "prefix": {
+        "sequence": 7421,
+        "tick": 8328,
+        "nativeFrames": 62561,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07421-t08328.png",
+        "player": {
+          "originX": 112,
+          "originY": 129,
+          "visibleLeft": 114,
+          "visibleTop": 146,
+          "visibleRight": 126,
+          "visibleBottom": 160,
+          "cell": 12,
+          "direction": "right",
+          "annotation": "walking frame 1",
+          "confidence": 1,
+          "matchedPixels": 120
+        },
+        "registration": {
+          "level": "7-3",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 2474,
+              "mismatch": 35,
+              "support": 10240,
+              "error": 0.00341796875
+            },
+            {
+              "camera": 2475,
+              "mismatch": 375,
+              "support": 10240,
+              "error": 0.03662109375
+            },
+            {
+              "camera": 2473,
+              "mismatch": 414,
+              "support": 10240,
+              "error": 0.0404296875
+            },
+            {
+              "camera": 2476,
+              "mismatch": 641,
+              "support": 10240,
+              "error": 0.06259765625
+            },
+            {
+              "camera": 2472,
+              "mismatch": 653,
+              "support": 10240,
+              "error": 0.06376953125
+            },
+            {
+              "camera": 2477,
+              "mismatch": 703,
+              "support": 10240,
+              "error": 0.06865234375
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "7-3-late-inventory",
+        "level": "7-3",
+        "segment": "main",
+        "prefix": 8328,
+        "planningCameraOnly": 2474,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 83,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 7480,
+        "tick": 8415,
+        "nativeFrames": 63215,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07480-t08415.png",
+        "followthroughSequence": 7496
+      },
+      "firstVisibleDeath": {
+        "sequence": 7457,
+        "tick": 8364,
+        "nativeFrames": 62832,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07457-t08364.png",
+        "player": {
+          "originX": 102,
+          "originY": 129,
+          "visibleLeft": 103,
+          "visibleTop": 145,
+          "visibleRight": 116,
+          "visibleBottom": 158,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        }
+      },
+      "firstLifeIntro": {
+        "sequence": 7461,
+        "tick": 8396,
+        "nativeFrames": 63072,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07461-t08396.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 7480,
+        "tick": 8415,
+        "nativeFrames": 63215,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07480-t08415.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 7480,
+        "tick": 8415,
+        "nativeFrames": 63215,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07480-t08415.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "7-3",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 1792,
+                "mismatch": 33,
+                "support": 10240,
+                "error": 0.00322265625
+              },
+              {
+                "camera": 1793,
+                "mismatch": 213,
+                "support": 10240,
+                "error": 0.02080078125
+              },
+              {
+                "camera": 1791,
+                "mismatch": 222,
+                "support": 10240,
+                "error": 0.0216796875
+              },
+              {
+                "camera": 1790,
+                "mismatch": 333,
+                "support": 10240,
+                "error": 0.03251953125
+              },
+              {
+                "camera": 1794,
+                "mismatch": 361,
+                "support": 10240,
+                "error": 0.03525390625
+              },
+              {
+                "camera": 1795,
+                "mismatch": 394,
+                "support": 10240,
+                "error": 0.0384765625
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 7481,
+          "tick": 8416,
+          "nativeFrames": 63222,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07481-t08416.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7482,
+          "tick": 8417,
+          "nativeFrames": 63230,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07482-t08417.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7483,
+          "tick": 8418,
+          "nativeFrames": 63237,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07483-t08418.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7484,
+          "tick": 8419,
+          "nativeFrames": 63245,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07484-t08419.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7485,
+          "tick": 8420,
+          "nativeFrames": 63252,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07485-t08420.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7486,
+          "tick": 8421,
+          "nativeFrames": 63260,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07486-t08421.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7487,
+          "tick": 8422,
+          "nativeFrames": 63267,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07487-t08422.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7488,
+          "tick": 8423,
+          "nativeFrames": 63275,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07488-t08423.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7489,
+          "tick": 8424,
+          "nativeFrames": 63282,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07489-t08424.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7490,
+          "tick": 8425,
+          "nativeFrames": 63290,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07490-t08425.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7491,
+          "tick": 8426,
+          "nativeFrames": 63298,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07491-t08426.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7492,
+          "tick": 8427,
+          "nativeFrames": 63305,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07492-t08427.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7493,
+          "tick": 8428,
+          "nativeFrames": 63313,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07493-t08428.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7494,
+          "tick": 8429,
+          "nativeFrames": 63320,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07494-t08429.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7495,
+          "tick": 8430,
+          "nativeFrames": 63328,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07495-t08430.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 7496,
+          "tick": 8431,
+          "nativeFrames": 63335,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/07496-t08431.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 1792,
+          "mismatch": 33,
+          "support": 10240,
+          "error": 0.00322265625,
+          "segment": "main"
+        },
+        {
+          "camera": 1793,
+          "mismatch": 213,
+          "support": 10240,
+          "error": 0.02080078125,
+          "segment": "main"
+        },
+        {
+          "camera": 1791,
+          "mismatch": 222,
+          "support": 10240,
+          "error": 0.0216796875,
+          "segment": "main"
+        },
+        {
+          "camera": 1790,
+          "mismatch": 333,
+          "support": 10240,
+          "error": 0.03251953125,
+          "segment": "main"
+        },
+        {
+          "camera": 1794,
+          "mismatch": 361,
+          "support": 10240,
+          "error": 0.03525390625,
+          "segment": "main"
+        },
+        {
+          "camera": 1795,
+          "mismatch": 394,
+          "support": 10240,
+          "error": 0.0384765625,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 1792,
+        "worldOriginX": 1832,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 1792,
+            "mismatch": 33,
+            "support": 10240,
+            "error": 0.00322265625,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "8-2",
+      "branch": "8-2-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 9416,
+      "prefixVerification": {
+        "branch": "8-2-late-inventory",
+        "actualNativeFrames": 70735,
+        "expectedNativeFrames": 70735,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/09417-tick-09416.png",
+        "groups": 1677
+      },
+      "prefix": {
+        "sequence": 9174,
+        "tick": 9416,
+        "nativeFrames": 70735,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09174-t09416.png",
+        "player": {
+          "originX": 122,
+          "originY": 40,
+          "visibleLeft": 122,
+          "visibleTop": 56,
+          "visibleRight": 137,
+          "visibleBottom": 71,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "registration": {
+          "level": "8-2",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 2428,
+              "mismatch": 80,
+              "support": 10240,
+              "error": 0.0078125
+            },
+            {
+              "camera": 2429,
+              "mismatch": 503,
+              "support": 10240,
+              "error": 0.04912109375
+            },
+            {
+              "camera": 2427,
+              "mismatch": 684,
+              "support": 10240,
+              "error": 0.066796875
+            },
+            {
+              "camera": 2426,
+              "mismatch": 710,
+              "support": 10240,
+              "error": 0.0693359375
+            },
+            {
+              "camera": 2430,
+              "mismatch": 721,
+              "support": 10240,
+              "error": 0.07041015625
+            },
+            {
+              "camera": 2431,
+              "mismatch": 850,
+              "support": 10240,
+              "error": 0.0830078125
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "8-2-late-inventory",
+        "level": "8-2",
+        "segment": "main",
+        "prefix": 9416,
+        "planningCameraOnly": 2428,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 1201,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 9371,
+        "tick": 10621,
+        "nativeFrames": 79787,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09371-t10621.png",
+        "followthroughSequence": 9387
+      },
+      "firstVisibleDeath": {
+        "sequence": 9348,
+        "tick": 10556,
+        "nativeFrames": 79299,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09348-t10556.png",
+        "player": {
+          "originX": 122,
+          "originY": 91,
+          "visibleLeft": 123,
+          "visibleTop": 107,
+          "visibleRight": 136,
+          "visibleBottom": 120,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        }
+      },
+      "firstLifeIntro": {
+        "sequence": 9354,
+        "tick": 10604,
+        "nativeFrames": 79659,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09354-t10604.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 9371,
+        "tick": 10621,
+        "nativeFrames": 79787,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09371-t10621.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 9371,
+        "tick": 10621,
+        "nativeFrames": 79787,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09371-t10621.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "8-2",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 0,
+                "mismatch": 81,
+                "support": 10240,
+                "error": 0.00791015625
+              },
+              {
+                "camera": 2,
+                "mismatch": 472,
+                "support": 10240,
+                "error": 0.04609375
+              },
+              {
+                "camera": 1,
+                "mismatch": 531,
+                "support": 10240,
+                "error": 0.05185546875
+              },
+              {
+                "camera": 4,
+                "mismatch": 765,
+                "support": 10240,
+                "error": 0.07470703125
+              },
+              {
+                "camera": 3,
+                "mismatch": 826,
+                "support": 10240,
+                "error": 0.0806640625
+              },
+              {
+                "camera": 6,
+                "mismatch": 989,
+                "support": 10240,
+                "error": 0.09658203125
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 9372,
+          "tick": 10622,
+          "nativeFrames": 79794,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09372-t10622.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9373,
+          "tick": 10623,
+          "nativeFrames": 79802,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09373-t10623.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9374,
+          "tick": 10624,
+          "nativeFrames": 79809,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09374-t10624.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9375,
+          "tick": 10625,
+          "nativeFrames": 79817,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09375-t10625.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9376,
+          "tick": 10626,
+          "nativeFrames": 79824,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09376-t10626.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9377,
+          "tick": 10627,
+          "nativeFrames": 79832,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09377-t10627.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9378,
+          "tick": 10628,
+          "nativeFrames": 79839,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09378-t10628.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9379,
+          "tick": 10629,
+          "nativeFrames": 79847,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09379-t10629.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9380,
+          "tick": 10630,
+          "nativeFrames": 79854,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09380-t10630.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9381,
+          "tick": 10631,
+          "nativeFrames": 79862,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09381-t10631.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9382,
+          "tick": 10632,
+          "nativeFrames": 79869,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09382-t10632.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9383,
+          "tick": 10633,
+          "nativeFrames": 79877,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09383-t10633.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9384,
+          "tick": 10634,
+          "nativeFrames": 79885,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09384-t10634.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9385,
+          "tick": 10635,
+          "nativeFrames": 79892,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09385-t10635.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9386,
+          "tick": 10636,
+          "nativeFrames": 79900,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09386-t10636.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 9387,
+          "tick": 10637,
+          "nativeFrames": 79907,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/09387-t10637.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 0,
+          "mismatch": 81,
+          "support": 10240,
+          "error": 0.00791015625,
+          "segment": "main"
+        },
+        {
+          "camera": 2,
+          "mismatch": 472,
+          "support": 10240,
+          "error": 0.04609375,
+          "segment": "main"
+        },
+        {
+          "camera": 1,
+          "mismatch": 531,
+          "support": 10240,
+          "error": 0.05185546875,
+          "segment": "main"
+        },
+        {
+          "camera": 4,
+          "mismatch": 765,
+          "support": 10240,
+          "error": 0.07470703125,
+          "segment": "main"
+        },
+        {
+          "camera": 3,
+          "mismatch": 826,
+          "support": 10240,
+          "error": 0.0806640625,
+          "segment": "main"
+        },
+        {
+          "camera": 6,
+          "mismatch": 989,
+          "support": 10240,
+          "error": 0.09658203125,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 0,
+        "worldOriginX": 40,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 0,
+            "mismatch": 81,
+            "support": 10240,
+            "error": 0.00791015625,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    },
+    {
+      "level": "8-3",
+      "branch": "8-3-late-inventory",
+      "directory": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z",
+      "prefixTicks": 9836,
+      "prefixVerification": {
+        "branch": "8-3-late-inventory",
+        "actualNativeFrames": 73890,
+        "expectedNativeFrames": 73890,
+        "byteIdentical": true,
+        "sourceImage": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/09837-tick-09836.png",
+        "groups": 1744
+      },
+      "prefix": {
+        "sequence": 11132,
+        "tick": 9836,
+        "nativeFrames": 73890,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11132-t09836.png",
+        "player": {
+          "originX": 112,
+          "originY": 104,
+          "visibleLeft": 112,
+          "visibleTop": 120,
+          "visibleRight": 127,
+          "visibleBottom": 135,
+          "cell": 16,
+          "direction": "right",
+          "annotation": "jumping",
+          "confidence": 1,
+          "matchedPixels": 171
+        },
+        "registration": {
+          "level": "8-3",
+          "segment": "main",
+          "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+          "candidates": [
+            {
+              "camera": 2391,
+              "mismatch": 111,
+              "support": 10088,
+              "error": 0.011003172085646313
+            },
+            {
+              "camera": 2375,
+              "mismatch": 168,
+              "support": 10152,
+              "error": 0.016548463356973995
+            },
+            {
+              "camera": 2407,
+              "mismatch": 188,
+              "support": 10048,
+              "error": 0.018710191082802547
+            },
+            {
+              "camera": 2359,
+              "mismatch": 228,
+              "support": 10176,
+              "error": 0.02240566037735849
+            },
+            {
+              "camera": 2119,
+              "mismatch": 219,
+              "support": 9664,
+              "error": 0.022661423841059604
+            },
+            {
+              "camera": 2823,
+              "mismatch": 228,
+              "support": 9856,
+              "error": 0.023133116883116884
+            }
+          ]
+        }
+      },
+      "result": {
+        "branch": "8-3-late-inventory",
+        "level": "8-3",
+        "segment": "main",
+        "prefix": 9836,
+        "planningCameraOnly": 2391,
+        "stopButtons": [
+          "left",
+          "b"
+        ],
+        "stopTicks": 4,
+        "sceneReturn": true,
+        "postSceneTicks": 16,
+        "waitTicks": 49,
+        "phase": "respawn",
+        "firstRespawn": true,
+        "terminal": false,
+        "sequence": 11185,
+        "tick": 9889,
+        "nativeFrames": 74288,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11185-t09889.png",
+        "followthroughSequence": 11201
+      },
+      "firstVisibleDeath": {
+        "sequence": 11135,
+        "tick": 9839,
+        "nativeFrames": 73912,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11135-t09839.png",
+        "player": {
+          "originX": 112,
+          "originY": 137,
+          "visibleLeft": 113,
+          "visibleTop": 153,
+          "visibleRight": 126,
+          "visibleBottom": 166,
+          "cell": 22,
+          "direction": "right",
+          "annotation": "killed",
+          "confidence": 1,
+          "matchedPixels": 148
+        }
+      },
+      "firstLifeIntro": {
+        "sequence": 11165,
+        "tick": 9869,
+        "nativeFrames": 74138,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11165-t09869.png",
+        "player": {
+          "originX": 96,
+          "originY": 89,
+          "visibleLeft": 98,
+          "visibleTop": 105,
+          "visibleRight": 109,
+          "visibleBottom": 120,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstReturnGeometry": {
+        "sequence": 11185,
+        "tick": 9889,
+        "nativeFrames": 74288,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11185-t09889.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        }
+      },
+      "firstExactPlayer": {
+        "sequence": 11185,
+        "tick": 9889,
+        "nativeFrames": 74288,
+        "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11185-t09889.png",
+        "player": {
+          "originX": 40,
+          "originY": 177,
+          "visibleLeft": 42,
+          "visibleTop": 193,
+          "visibleRight": 53,
+          "visibleBottom": 208,
+          "cell": 23,
+          "direction": "right",
+          "annotation": "small player standing",
+          "confidence": 1,
+          "matchedPixels": 143
+        },
+        "registrations": [
+          {
+            "level": "8-3",
+            "segment": "main",
+            "method": "Inferred integer camera by registered screenshot RGB against supplied artwork at previously observed map cells; unknown cells excluded. Enemy/animation fragments may contribute residuals.",
+            "candidates": [
+              {
+                "camera": 0,
+                "mismatch": 81,
+                "support": 10240,
+                "error": 0.00791015625
+              },
+              {
+                "camera": 2,
+                "mismatch": 492,
+                "support": 10240,
+                "error": 0.048046875
+              },
+              {
+                "camera": 1,
+                "mismatch": 554,
+                "support": 10240,
+                "error": 0.0541015625
+              },
+              {
+                "camera": 4,
+                "mismatch": 793,
+                "support": 10240,
+                "error": 0.07744140625
+              },
+              {
+                "camera": 3,
+                "mismatch": 858,
+                "support": 10240,
+                "error": 0.0837890625
+              },
+              {
+                "camera": 6,
+                "mismatch": 1017,
+                "support": 10240,
+                "error": 0.09931640625
+              }
+            ]
+          }
+        ]
+      },
+      "followthrough": [
+        {
+          "sequence": 11186,
+          "tick": 9890,
+          "nativeFrames": 74295,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11186-t09890.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11187,
+          "tick": 9891,
+          "nativeFrames": 74303,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11187-t09891.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11188,
+          "tick": 9892,
+          "nativeFrames": 74310,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11188-t09892.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11189,
+          "tick": 9893,
+          "nativeFrames": 74318,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11189-t09893.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11190,
+          "tick": 9894,
+          "nativeFrames": 74325,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11190-t09894.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11191,
+          "tick": 9895,
+          "nativeFrames": 74333,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11191-t09895.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11192,
+          "tick": 9896,
+          "nativeFrames": 74340,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11192-t09896.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11193,
+          "tick": 9897,
+          "nativeFrames": 74348,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11193-t09897.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11194,
+          "tick": 9898,
+          "nativeFrames": 74356,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11194-t09898.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11195,
+          "tick": 9899,
+          "nativeFrames": 74363,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11195-t09899.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11196,
+          "tick": 9900,
+          "nativeFrames": 74371,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11196-t09900.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11197,
+          "tick": 9901,
+          "nativeFrames": 74378,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11197-t09901.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11198,
+          "tick": 9902,
+          "nativeFrames": 74386,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11198-t09902.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11199,
+          "tick": 9903,
+          "nativeFrames": 74393,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11199-t09903.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11200,
+          "tick": 9904,
+          "nativeFrames": 74401,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11200-t09904.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        },
+        {
+          "sequence": 11201,
+          "tick": 9905,
+          "nativeFrames": 74408,
+          "image": "evidence/local/checkpoint-brackets-2026-11-05T22-30-52.680Z/11201-t09905.png",
+          "player": {
+            "originX": 40,
+            "originY": 177,
+            "visibleLeft": 42,
+            "visibleTop": 193,
+            "visibleRight": 53,
+            "visibleBottom": 208,
+            "cell": 23,
+            "direction": "right",
+            "annotation": "small player standing",
+            "confidence": 1,
+            "matchedPixels": 143
+          }
+        }
+      ],
+      "rankedReturnCandidates": [
+        {
+          "camera": 0,
+          "mismatch": 81,
+          "support": 10240,
+          "error": 0.00791015625,
+          "segment": "main"
+        },
+        {
+          "camera": 2,
+          "mismatch": 492,
+          "support": 10240,
+          "error": 0.048046875,
+          "segment": "main"
+        },
+        {
+          "camera": 1,
+          "mismatch": 554,
+          "support": 10240,
+          "error": 0.0541015625,
+          "segment": "main"
+        },
+        {
+          "camera": 4,
+          "mismatch": 793,
+          "support": 10240,
+          "error": 0.07744140625,
+          "segment": "main"
+        },
+        {
+          "camera": 3,
+          "mismatch": 858,
+          "support": 10240,
+          "error": 0.0837890625,
+          "segment": "main"
+        },
+        {
+          "camera": 6,
+          "mismatch": 1017,
+          "support": 10240,
+          "error": 0.09931640625,
+          "segment": "main"
+        }
+      ],
+      "returnCandidate": {
+        "segment": "main",
+        "camera": 0,
+        "worldOriginX": 40,
+        "screenOrigin": [
+          40,
+          177
+        ],
+        "logicalFeetY": 208,
+        "uniqueIntegerRegistration": true,
+        "equalBestAliases": [
+          {
+            "camera": 0,
+            "mismatch": 81,
+            "support": 10240,
+            "error": 0.00791015625,
+            "segment": "main"
+          }
+        ],
+        "status": "Image-inferred position at the first exact supplied player match; no native state or activation threshold."
+      },
+      "activationStatus": "Not measured by this positive-only late-death inventory; no runtime checkpoint is added."
+    }
+  ]
+}

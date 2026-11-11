@@ -1,0 +1,17 @@
+{
+  "schema": "observed-roof-warp-runtime-v1",
+  "source": "data/vine-optional-farend-running.json",
+  "level": "4-2",
+  "area": "area-3",
+  "minimumObservedWidth": 3600,
+  "cameraEnd": 3344,
+  "activateAtCamera": 3344,
+  "removePiranhasAtX": [3448],
+  "overlays": [
+    {"text":"WELCOME TO WARP ZONE!","x":3376,"y":96},
+    {"text":"5","x":3448,"y":136}
+  ],
+  "pipes": [{"leftX":3440,"topY":160,"targetLevel":"5-1"}],
+  "evidence": "data/vine-optional-farend-running.json: ordinary continuous roof route,336 validated supplemental cell witnesses, actual plant before activation2184, first sign2185, real centered pipe2195, WORLD5-1 intro2196 and playable5-1 exact40/208 at2197. Existing normal exit and vine6/7/8 remain separate physical routes.",
+  "inferred": "Camera3344 and width3600 are image-registered candidates. Periodic brick aliases use a measured running-speed bound; source2184 upper/middle rows differ by2px and no global pixel equivalence is asserted there. Activation at the observed camera stop is inferred within a30-native-frame interval. The observed plant patch does not establish a complete opaque pose, initial phase or hidden spawn: artwork-left3448/hidden-feet184 use the common pipe top160 plus8/+24 candidate. Cross-level transition reuses the qualified40-frame rule. Unknown cells215/8 and221/6 remain unfilled."
+}

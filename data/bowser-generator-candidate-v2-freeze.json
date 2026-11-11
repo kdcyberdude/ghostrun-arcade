@@ -1,0 +1,140 @@
+{
+  "schema": "bowser-incoming-first-event-candidate-v2",
+  "frozenUtc": "2026-11-06T01:45:07.747Z",
+  "scope": "Partial causal candidate for incoming first-event activation/source motor, not a complete deterministic RNG/timer/Bowser model or campaign controller.",
+  "level": "2-4",
+  "rules": {
+    "activationCameraX": 1265,
+    "firstEmissionDelayNativeFrames": 0,
+    "postBirthOriginOffsetFromCamera": 287,
+    "horizontalMotor": -1.25,
+    "birthPositionRendering": "Effective post-birth origin is camera+287 (32px beyond the rightmost logical pixel). Do not add a per-case position or time offset.",
+    "cameraCrossingEstimate": "For screenshot-only evaluation use one common rule: linear interpolation of independently registered camera/native-frame samples, ceil first crossing of1265; camera at birth is floor of the same interpolation. No branch phase fitting.",
+    "ySelection": "Unresolved; observed image-origin lanes113/129/145. No exact-Y pass claimed.",
+    "laterIntervalSelection": "Unresolved; twenty calibration shots establish intervals96 or223 native frames. Prior-lane-based interval hypothesis fails. No fixed recorded sequence or per-tick schedule is a runtime candidate.",
+    "upperActivationBoundary": "Unresolved: incoming clock continues at fixed cameras1749/1776/1802; changes at1884 may be live Bowser activation/cancellation. Do not infer a universal upper cutoff."
+  },
+  "conditionalSharedPrefixDiagnostic": {
+    "qualification": "For held-out branches sharing the original input history through the activation event, compare only the next incoming shot using the independently frozen first event and measured first interval; this is a conditional comparison anchor, not an RNG implementation.",
+    "originalFirstBirthEstimate": 19588,
+    "initialMeasuredInterval": 223,
+    "nextBirthPrediction": 19811,
+    "initialLane": "145 observed, not a general selection rule"
+  },
+  "tolerances": {
+    "positionPixels": 2,
+    "activationOrBirthNativeFrames": 8,
+    "opaqueRGB": "exact"
+  },
+  "calibration": [
+    {
+      "path": "data/bowser-generator-calibration-measurements.json",
+      "sha256": "893177349f3ced0b99262774eae947b9e075738334915cd0730ee35c771e0c3c"
+    },
+    {
+      "path": "data/bowser-generator-approach-calibration-measurements.json",
+      "sha256": "a3099c3d04f6d80f7389f962a50b69954447104262ddf959b8a1730a387411b0"
+    },
+    {
+      "path": "data/bowser-generator-delay-calibration-measurements.json",
+      "sha256": "0c5780dad57b493d7b2914e63bb24104ca0e3bf49df373b3273fbc9502ff416f"
+    },
+    {
+      "path": "data/bowser-generator-long-calibration-measurements.json",
+      "sha256": "7e188fd4b8c9e1df4f3e3e82e10a17bc34f3c0c0fcedfe6e91866cbbb6660227"
+    },
+    {
+      "path": "data/bowser-generator-frontier-calibration-measurements.json",
+      "sha256": "6f1031e991d3b030dba57b1295a755f27f8f6794921d3543d84ec6506a9f14d1"
+    },
+    {
+      "path": "data/bowser-generator-original-prefix-measurements.json",
+      "sha256": "93141a6d1576b59609e782a0755891c3ae4d085ffcf928c73fa74ffe47d0394d"
+    },
+    {
+      "path": "data/bowser-generator-extra-prefix-camera-anchors.json",
+      "sha256": "2b4b70669ee8cf8f18140fdcd7e624b34e65c93770ce0d3ba53ce5e1f92494a0"
+    },
+    {
+      "path": "data/bowser-generator-heldout-measurements.json",
+      "sha256": "a17da349b2883a0ed59865570f99724c5057785d793b21bf587c0fb207ca4c53"
+    },
+    {
+      "path": "data/bowser-generator-approach-heldout-measurements.json",
+      "sha256": "25fa65e637daf1f355f0ac2090a9fe9517689dc923943781384390c19e452b3e"
+    },
+    {
+      "path": "data/bowser-generator-delay-heldout-measurements.json",
+      "sha256": "56823f8a9199ba23c5830267dac7db038cfda0969fc66613cd156e83df7cdc27"
+    },
+    {
+      "path": "data/bowser-generator-v2-prefix-camera-anchors.json",
+      "sha256": "72e0f6193f37e0fea36e057f256ebe45b333f26f5ffd5563d0f83d3c80e68980"
+    }
+  ],
+  "untouchedHeldout": [
+    {
+      "startupPrefix": 2604,
+      "path": "tools/bowser-generator-v2-manual-heldout-inputs.jsonl",
+      "sha256": "4e5c964877dea0d799ba076f7e912c1911a4a0599b88d2a10d0aa1e0e0680ccf"
+    },
+    {
+      "startupPrefix": 2596,
+      "path": "tools/bowser-generator-v2-delay-heldout-inputs.jsonl",
+      "sha256": "36a78facb4331889e8fbb7db448f8dc6005b27bdf36a4a588f9d24c1d9c454f6"
+    }
+  ],
+  "independentCameraChecks": [
+    {
+      "image": "evidence/local/bowser-2026-11-06T01-14-39.004Z/01500-generator-cal2624-wait-t2644.png",
+      "camera": 1577,
+      "features": [
+        {
+          "worldX": 1728,
+          "screenX": 151,
+          "kind": "16px column left edge at160high"
+        },
+        {
+          "worldX": 1648,
+          "screenX": 71,
+          "kind": "coin block left edge at176high"
+        }
+      ]
+    },
+    {
+      "image": "evidence/local/bowser-2026-11-06T01-16-51.485Z/00472-generator-cal2616-approach-t2656.png",
+      "camera": 1603,
+      "features": [
+        {
+          "worldX": 1728,
+          "screenX": 125,
+          "kind": "16px column left edge at160high"
+        },
+        {
+          "worldX": 1648,
+          "screenX": 45,
+          "kind": "coin block left edge at176high"
+        }
+      ]
+    }
+  ],
+  "failuresRetained": [
+    "Original dense unanchored camera tracker drifted; use the every4tick authentic static anchors. Failed data retained in data/bowser-generator-original-prefix-unanchored-failed.json.",
+    "2634 grouped endpoint lacked an every4tick anchor and initialized from an older image. Full-area static registration uniquely gives1730; corrected extraction uses explicit independently recorded anchor, failed data retained.",
+    "Automatic recovery after the pre-activation delay fell/died. Its first genuine flame remains measured; this is not a verified winning route.",
+    "Hypothesis incoming cancellation atcamera1792 fails: clock continues at1802.",
+    "Hypothesis next interval determined solely by preceding lane fails the20shot calibration."
+  ],
+  "remainingIdentifiability": [
+    "During ordinary forward play camera and Mario frontier are correlated; a latched player frontier shifted by112px remains observationally possible.",
+    "Effective source X and event phase have about1native-frame uncertainty; screenshot-only point predictions must retain failures.",
+    "Generator-to-live-Bowser switching, RNG and exact timer/lane selector remain unresolved."
+  ],
+  "priorCandidate": {
+    "path": "data/bowser-generator-candidate-freeze.json",
+    "sha256": "3eeb0d3c54f98e4b8e30847a4699a9851893d953a6db3e2e3cb98c8f455aebbe",
+    "heldoutResult": "V1 point first-event rule fails4px; two conditional source-origin cases and early negative pass. Never rewrite that result."
+  },
+  "reason": "Immediate spawn when source camera+287 first reaches1552. V1 delayed threshold crossing was not equivalent under a faster approach; preserve V1 failure.",
+  "newHeldoutPurpose": "Fresh manual braking just before the frontier at three earlier source points, plus a new17decision pre-activation delay followed by ordinary auto controls. Recovery remains unqualified; retain death or uncovered cases."
+}

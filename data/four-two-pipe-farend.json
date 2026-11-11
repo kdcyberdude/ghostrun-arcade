@@ -1,0 +1,2455 @@
+{
+  "schema": "image-only-alternate-ceiling-survey-v1",
+  "level": "4-2",
+  "area": "area-3",
+  "status": "unresolved-no-ceiling-traverse-observed",
+  "acceptedOptionalConnection": false,
+  "sourceTrace": "evidence/local/four-two-pipe-farend/trace.jsonl",
+  "attemptSequenceRanges": [
+    {
+      "first": 709,
+      "last": 710,
+      "resetThenRecordedPrefixTicks": 4364
+    },
+    {
+      "first": 1419,
+      "last": 1423,
+      "resetThenRecordedPrefixTicks": 4364
+    },
+    {
+      "first": 2132,
+      "last": 2139,
+      "resetThenRecordedPrefixTicks": 4360
+    },
+    {
+      "first": 2848,
+      "last": 2857,
+      "resetThenRecordedPrefixTicks": 4360
+    },
+    {
+      "first": 3566,
+      "last": 3575,
+      "resetThenRecordedPrefixTicks": 4360
+    },
+    {
+      "first": 4284,
+      "last": 4294,
+      "resetThenRecordedPrefixTicks": 4360
+    }
+  ],
+  "observations": [
+    {
+      "sequence": 709,
+      "tick": 4364,
+      "framesAdvanced": 53,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 7
+      },
+      "platforms": [
+        {
+          "x": 95,
+          "y": 168,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/00709-tick-04364.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2413,
+      "sampledFramesCumulative": 53,
+      "nativeFrame": 32783,
+      "player": {
+        "originX": 114,
+        "originY": 136,
+        "feetY": 167,
+        "visibleLeft": 114,
+        "visibleRight": 128,
+        "visibleTop": 152,
+        "visibleBottom": 167,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 136,
+            "feetY": 167,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 710,
+      "tick": 4368,
+      "framesAdvanced": 30,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 4
+      },
+      "platforms": [
+        {
+          "x": 60,
+          "y": 196,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/00710-tick-04368.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2448,
+      "sampledFramesCumulative": 83,
+      "nativeFrame": 32813,
+      "player": {
+        "originX": 114,
+        "originY": 196,
+        "feetY": 227,
+        "visibleLeft": 115,
+        "visibleRight": 127,
+        "visibleTop": 213,
+        "visibleBottom": 227,
+        "cell": 12,
+        "direction": "left",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 196,
+            "feetY": 227,
+            "cell": 12,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 1419,
+      "tick": 4364,
+      "framesAdvanced": 53,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 7
+      },
+      "platforms": [
+        {
+          "x": 95,
+          "y": 168,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/01419-tick-04364.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2413,
+      "sampledFramesCumulative": 136,
+      "nativeFrame": 32783,
+      "player": {
+        "originX": 114,
+        "originY": 136,
+        "feetY": 167,
+        "visibleLeft": 114,
+        "visibleRight": 128,
+        "visibleTop": 152,
+        "visibleBottom": 167,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 136,
+            "feetY": 167,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 1420,
+      "tick": 4365,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 79,
+          "y": 175,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/01420-tick-04365.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2429,
+      "sampledFramesCumulative": 143,
+      "nativeFrame": 32790,
+      "player": {
+        "originX": 114,
+        "originY": 143,
+        "feetY": 174,
+        "visibleLeft": 116,
+        "visibleRight": 128,
+        "visibleTop": 159,
+        "visibleBottom": 174,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 143,
+            "feetY": 174,
+            "cell": 15,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 1421,
+      "tick": 4372,
+      "framesAdvanced": 53,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b",
+          "a"
+        ],
+        "ticks": 7
+      },
+      "platforms": [
+        {
+          "x": 60,
+          "y": 65,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 60,
+          "y": 224,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/01421-tick-04372.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2448,
+      "sampledFramesCumulative": 196,
+      "nativeFrame": 32843,
+      "player": null
+    },
+    {
+      "sequence": 1422,
+      "tick": 4375,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 60,
+          "y": 86,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/01422-tick-04375.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2448,
+      "sampledFramesCumulative": 218,
+      "nativeFrame": 32865,
+      "player": null
+    },
+    {
+      "sequence": 1423,
+      "tick": 4381,
+      "framesAdvanced": 46,
+      "request": {
+        "op": "step",
+        "buttons": [],
+        "ticks": 6
+      },
+      "platforms": [
+        {
+          "x": 60,
+          "y": 129,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/01423-tick-04381.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2448,
+      "sampledFramesCumulative": 264,
+      "nativeFrame": 32911,
+      "player": null
+    },
+    {
+      "sequence": 2132,
+      "tick": 4360,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/02132-tick-04360.png",
+      "sampledFramesCumulative": 287,
+      "nativeFrame": 32753,
+      "player": {
+        "originX": 114,
+        "originY": 100,
+        "feetY": 131,
+        "visibleLeft": 114,
+        "visibleRight": 129,
+        "visibleTop": 116,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 100,
+            "feetY": 131,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2133,
+      "tick": 4363,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 130,
+          "y": 160,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02133-tick-04363.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2378,
+      "sampledFramesCumulative": 309,
+      "nativeFrame": 32775,
+      "player": {
+        "originX": 114,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 128,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 15,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2134,
+      "tick": 4371,
+      "framesAdvanced": 60,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 8
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 57,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 217,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02134-tick-04371.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 369,
+      "nativeFrame": 32835,
+      "player": {
+        "originX": 114,
+        "originY": 185,
+        "feetY": 216,
+        "visibleLeft": 116,
+        "visibleRight": 127,
+        "visibleTop": 201,
+        "visibleBottom": 216,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 185,
+            "feetY": 216,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2135,
+      "tick": 4374,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 79,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02135-tick-04374.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 392,
+      "nativeFrame": 32858,
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2136,
+      "tick": 4375,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 86,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02136-tick-04375.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 399,
+      "nativeFrame": 32865,
+      "player": null
+    },
+    {
+      "sequence": 2137,
+      "tick": 4385,
+      "framesAdvanced": 76,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 10
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 61,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 156,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02137-tick-04385.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 475,
+      "nativeFrame": 32941,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 111,
+        "visibleRight": 122,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2138,
+      "tick": 4389,
+      "framesAdvanced": 30,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 4
+      },
+      "platforms": [
+        {
+          "x": 98,
+          "y": 89,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 100,
+          "y": 184,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02138-tick-04389.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2410,
+      "sampledFramesCumulative": 505,
+      "nativeFrame": 32971,
+      "player": {
+        "originX": 112,
+        "originY": 100,
+        "feetY": 131,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 116,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 100,
+            "feetY": 131,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2139,
+      "tick": 4391,
+      "framesAdvanced": 15,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 2
+      },
+      "platforms": [
+        {
+          "x": 76,
+          "y": 103,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 77,
+          "y": 198,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02139-tick-04391.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2432,
+      "sampledFramesCumulative": 520,
+      "nativeFrame": 32986,
+      "player": {
+        "originX": 112,
+        "originY": 159,
+        "feetY": 190,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 175,
+        "visibleBottom": 190,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 159,
+            "feetY": 190,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2848,
+      "tick": 4360,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/02848-tick-04360.png",
+      "sampledFramesCumulative": 543,
+      "nativeFrame": 32753,
+      "player": {
+        "originX": 114,
+        "originY": 100,
+        "feetY": 131,
+        "visibleLeft": 114,
+        "visibleRight": 129,
+        "visibleTop": 116,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 100,
+            "feetY": 131,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2849,
+      "tick": 4363,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 130,
+          "y": 160,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02849-tick-04363.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2378,
+      "sampledFramesCumulative": 565,
+      "nativeFrame": 32775,
+      "player": {
+        "originX": 114,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 128,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 15,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2850,
+      "tick": 4371,
+      "framesAdvanced": 60,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 8
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 57,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 217,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02850-tick-04371.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 625,
+      "nativeFrame": 32835,
+      "player": {
+        "originX": 114,
+        "originY": 185,
+        "feetY": 216,
+        "visibleLeft": 116,
+        "visibleRight": 127,
+        "visibleTop": 201,
+        "visibleBottom": 216,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 185,
+            "feetY": 216,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2851,
+      "tick": 4374,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 79,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02851-tick-04374.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 648,
+      "nativeFrame": 32858,
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2852,
+      "tick": 4375,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 86,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02852-tick-04375.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 655,
+      "nativeFrame": 32865,
+      "player": null
+    },
+    {
+      "sequence": 2853,
+      "tick": 4385,
+      "framesAdvanced": 76,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 10
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 61,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 156,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02853-tick-04385.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 731,
+      "nativeFrame": 32941,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 111,
+        "visibleRight": 122,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2854,
+      "tick": 4388,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 82,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 176,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02854-tick-04388.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 753,
+      "nativeFrame": 32963,
+      "player": {
+        "originX": 109,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 109,
+        "visibleRight": 124,
+        "visibleTop": 87,
+        "visibleBottom": 102,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2855,
+      "tick": 4391,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 110,
+          "y": 103,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 111,
+          "y": 198,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02855-tick-04391.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2398,
+      "sampledFramesCumulative": 776,
+      "nativeFrame": 32986,
+      "player": {
+        "originX": 112,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 114,
+        "visibleRight": 126,
+        "visibleTop": 88,
+        "visibleBottom": 102,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2856,
+      "tick": 4392,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 99,
+          "y": 110,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 100,
+          "y": 205,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/02856-tick-04392.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2409,
+      "sampledFramesCumulative": 783,
+      "nativeFrame": 32993,
+      "player": {
+        "originX": 112,
+        "originY": 78,
+        "feetY": 109,
+        "visibleLeft": 115,
+        "visibleRight": 125,
+        "visibleTop": 94,
+        "visibleBottom": 109,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 78,
+            "feetY": 109,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 2857,
+      "tick": 4397,
+      "framesAdvanced": 38,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 5
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/02857-tick-04397.png",
+      "sampledFramesCumulative": 821,
+      "nativeFrame": 33031,
+      "player": {
+        "originX": 111,
+        "originY": 9,
+        "feetY": 40,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 25,
+        "visibleBottom": 40,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 9,
+            "feetY": 40,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3566,
+      "tick": 4360,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/03566-tick-04360.png",
+      "sampledFramesCumulative": 844,
+      "nativeFrame": 32753,
+      "player": {
+        "originX": 114,
+        "originY": 100,
+        "feetY": 131,
+        "visibleLeft": 114,
+        "visibleRight": 129,
+        "visibleTop": 116,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 100,
+            "feetY": 131,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3567,
+      "tick": 4363,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 130,
+          "y": 160,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03567-tick-04363.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2378,
+      "sampledFramesCumulative": 866,
+      "nativeFrame": 32775,
+      "player": {
+        "originX": 114,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 128,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 15,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3568,
+      "tick": 4371,
+      "framesAdvanced": 60,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 8
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 57,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 217,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03568-tick-04371.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 926,
+      "nativeFrame": 32835,
+      "player": {
+        "originX": 114,
+        "originY": 185,
+        "feetY": 216,
+        "visibleLeft": 116,
+        "visibleRight": 127,
+        "visibleTop": 201,
+        "visibleBottom": 216,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 185,
+            "feetY": 216,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3569,
+      "tick": 4374,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 79,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03569-tick-04374.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 949,
+      "nativeFrame": 32858,
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3570,
+      "tick": 4375,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 86,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03570-tick-04375.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 956,
+      "nativeFrame": 32865,
+      "player": null
+    },
+    {
+      "sequence": 3571,
+      "tick": 4385,
+      "framesAdvanced": 76,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 10
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 61,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 156,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03571-tick-04385.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1032,
+      "nativeFrame": 32941,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 111,
+        "visibleRight": 122,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3572,
+      "tick": 4388,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 82,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 176,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03572-tick-04388.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1054,
+      "nativeFrame": 32963,
+      "player": {
+        "originX": 109,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 109,
+        "visibleRight": 124,
+        "visibleTop": 87,
+        "visibleBottom": 102,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3573,
+      "tick": 4390,
+      "framesAdvanced": 15,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 2
+      },
+      "platforms": [
+        {
+          "x": 118,
+          "y": 96,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 119,
+          "y": 191,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03573-tick-04390.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2390,
+      "sampledFramesCumulative": 1069,
+      "nativeFrame": 32978,
+      "player": {
+        "originX": 109,
+        "originY": 64,
+        "feetY": 95,
+        "visibleLeft": 109,
+        "visibleRight": 123,
+        "visibleTop": 80,
+        "visibleBottom": 95,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 64,
+            "feetY": 95,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3574,
+      "tick": 4391,
+      "framesAdvanced": 8,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 110,
+          "y": 103,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 111,
+          "y": 198,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/03574-tick-04391.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2398,
+      "sampledFramesCumulative": 1077,
+      "nativeFrame": 32986,
+      "player": {
+        "originX": 110,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 112,
+        "visibleRight": 124,
+        "visibleTop": 88,
+        "visibleBottom": 102,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 110,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 3575,
+      "tick": 4396,
+      "framesAdvanced": 37,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 5
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/03575-tick-04396.png",
+      "sampledFramesCumulative": 1114,
+      "nativeFrame": 33023,
+      "player": {
+        "originX": 112,
+        "originY": 8,
+        "feetY": 39,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 24,
+        "visibleBottom": 39,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 8,
+            "feetY": 39,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4284,
+      "tick": 4360,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "mask": 56,
+        "ticks": 3
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/04284-tick-04360.png",
+      "sampledFramesCumulative": 1137,
+      "nativeFrame": 32753,
+      "player": {
+        "originX": 114,
+        "originY": 100,
+        "feetY": 131,
+        "visibleLeft": 114,
+        "visibleRight": 129,
+        "visibleTop": 116,
+        "visibleBottom": 131,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 100,
+            "feetY": 131,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4285,
+      "tick": 4363,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 130,
+          "y": 160,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04285-tick-04363.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2378,
+      "sampledFramesCumulative": 1159,
+      "nativeFrame": 32775,
+      "player": {
+        "originX": 114,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 116,
+        "visibleRight": 128,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 15,
+        "direction": "left",
+        "annotation": "skidding",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 15,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4286,
+      "tick": 4371,
+      "framesAdvanced": 60,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 8
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 57,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 217,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04286-tick-04371.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1219,
+      "nativeFrame": 32835,
+      "player": {
+        "originX": 114,
+        "originY": 185,
+        "feetY": 216,
+        "visibleLeft": 116,
+        "visibleRight": 127,
+        "visibleTop": 201,
+        "visibleBottom": 216,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 114,
+            "originY": 185,
+            "feetY": 216,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4287,
+      "tick": 4374,
+      "framesAdvanced": 23,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 79,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04287-tick-04374.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1242,
+      "nativeFrame": 32858,
+      "player": {
+        "originX": 112,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 112,
+        "visibleRight": 127,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 112,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4288,
+      "tick": 4375,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 86,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04288-tick-04375.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1249,
+      "nativeFrame": 32865,
+      "player": null
+    },
+    {
+      "sequence": 4289,
+      "tick": 4385,
+      "framesAdvanced": 76,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 10
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 61,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 156,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04289-tick-04385.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1325,
+      "nativeFrame": 32941,
+      "player": {
+        "originX": 109,
+        "originY": 129,
+        "feetY": 160,
+        "visibleLeft": 111,
+        "visibleRight": 122,
+        "visibleTop": 145,
+        "visibleBottom": 160,
+        "cell": 23,
+        "direction": "left",
+        "annotation": "small player standing",
+        "confidence": 1,
+        "matchedPixels": 143,
+        "opaquePixels": 143,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 129,
+            "feetY": 160,
+            "cell": 23,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4290,
+      "tick": 4388,
+      "framesAdvanced": 22,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "a",
+          "b"
+        ],
+        "ticks": 3
+      },
+      "platforms": [
+        {
+          "x": 127,
+          "y": 82,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 127,
+          "y": 176,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04290-tick-04388.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2381,
+      "sampledFramesCumulative": 1347,
+      "nativeFrame": 32963,
+      "player": {
+        "originX": 109,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 109,
+        "visibleRight": 124,
+        "visibleTop": 87,
+        "visibleBottom": 102,
+        "cell": 16,
+        "direction": "left",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 16,
+            "direction": "left"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4291,
+      "tick": 4390,
+      "framesAdvanced": 15,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 2
+      },
+      "platforms": [
+        {
+          "x": 118,
+          "y": 96,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 119,
+          "y": 191,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04291-tick-04390.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2390,
+      "sampledFramesCumulative": 1362,
+      "nativeFrame": 32978,
+      "player": {
+        "originX": 109,
+        "originY": 64,
+        "feetY": 95,
+        "visibleLeft": 109,
+        "visibleRight": 123,
+        "visibleTop": 80,
+        "visibleBottom": 95,
+        "cell": 13,
+        "direction": "right",
+        "annotation": "frame 2",
+        "confidence": 1,
+        "matchedPixels": 145,
+        "opaquePixels": 145,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 109,
+            "originY": 64,
+            "feetY": 95,
+            "cell": 13,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4292,
+      "tick": 4391,
+      "framesAdvanced": 8,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 110,
+          "y": 103,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 111,
+          "y": 198,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04292-tick-04391.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2398,
+      "sampledFramesCumulative": 1370,
+      "nativeFrame": 32986,
+      "player": {
+        "originX": 110,
+        "originY": 71,
+        "feetY": 102,
+        "visibleLeft": 112,
+        "visibleRight": 124,
+        "visibleTop": 88,
+        "visibleBottom": 102,
+        "cell": 12,
+        "direction": "right",
+        "annotation": "walking frame 1",
+        "confidence": 1,
+        "matchedPixels": 120,
+        "opaquePixels": 120,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 110,
+            "originY": 71,
+            "feetY": 102,
+            "cell": 12,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4293,
+      "tick": 4392,
+      "framesAdvanced": 7,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "b"
+        ],
+        "ticks": 1
+      },
+      "platforms": [
+        {
+          "x": 103,
+          "y": 110,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        },
+        {
+          "x": 104,
+          "y": 205,
+          "width": 48,
+          "height": 8,
+          "template": "sprite-large_platforms-0.png"
+        }
+      ],
+      "image": "evidence/local/four-two-pipe-farend/04293-tick-04392.png",
+      "fixedPlatformWorldX": 2508,
+      "cameraCandidateX": 2405,
+      "sampledFramesCumulative": 1377,
+      "nativeFrame": 32993,
+      "player": {
+        "originX": 110,
+        "originY": 78,
+        "feetY": 109,
+        "visibleLeft": 113,
+        "visibleRight": 123,
+        "visibleTop": 94,
+        "visibleBottom": 109,
+        "cell": 14,
+        "direction": "right",
+        "annotation": "frame 3",
+        "confidence": 1,
+        "matchedPixels": 124,
+        "opaquePixels": 124,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 110,
+            "originY": 78,
+            "feetY": 109,
+            "cell": 14,
+            "direction": "right"
+          }
+        ]
+      }
+    },
+    {
+      "sequence": 4294,
+      "tick": 4397,
+      "framesAdvanced": 38,
+      "request": {
+        "op": "step",
+        "buttons": [
+          "right",
+          "a",
+          "b"
+        ],
+        "ticks": 5
+      },
+      "platforms": [],
+      "image": "evidence/local/four-two-pipe-farend/04294-tick-04397.png",
+      "sampledFramesCumulative": 1415,
+      "nativeFrame": 33031,
+      "player": {
+        "originX": 111,
+        "originY": 9,
+        "feetY": 40,
+        "visibleLeft": 111,
+        "visibleRight": 126,
+        "visibleTop": 25,
+        "visibleBottom": 40,
+        "cell": 16,
+        "direction": "right",
+        "annotation": "jumping",
+        "confidence": 1,
+        "matchedPixels": 171,
+        "opaquePixels": 171,
+        "fullyVisibleOpaquePose": true,
+        "poseCandidatesAbove98Percent": 1,
+        "exactOpaquePoseCandidates": 1,
+        "strongestPoseAmbiguityCount": 1,
+        "strongestPoseCandidates": [
+          {
+            "originX": 111,
+            "originY": 9,
+            "feetY": 40,
+            "cell": 16,
+            "direction": "right"
+          }
+        ]
+      }
+    }
+  ],
+  "observedUpperPlatformContactSequences": [
+    2856,
+    3574,
+    4292
+  ],
+  "observedHighestCompletePose": {
+    "sequence": 3575,
+    "tick": 4396,
+    "feetY": 39,
+    "confidence": 1,
+    "exactPoseCandidates": 1,
+    "ceilingTopY": 32,
+    "status": "Exact player pose remains below adjacent ceiling top. No roof landing or new subarea observed."
+  },
+  "result": "A genuine two-stage jump reaches an upper descending platform near artworkY103/110, then reaches exact feetY39/40 beside the brick wall whose top is32. The attempted jumps do not establish a walk on the ceiling or access beyond the normal exit.",
+  "uncertainties": [
+    "No failed jump establishes that the alternate route is impossible. Platform phase, running-jump threshold and launch timing remain possible factors.",
+    "The earliest contact frame is bracketed by7/8-frame controller decisions. A Mario opaque foot is normally one pixel above supporting platform artwork.",
+    "World platform x2508 and camera candidates derive from earlier registered artwork, not internal telemetry.",
+    "All reference interaction used public controller input and PNGs. No collision bypass, ROM/executable inspection, memory map or hidden game state.",
+    "Reference process was closed after final attempt."
+  ]
+}

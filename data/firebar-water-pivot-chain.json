@@ -1,0 +1,2356 @@
+{
+  "schema": "water-stationary-pivot-anchor-chain-v1",
+  "createdUtc": "2026-11-06T01:56:24.835224+00:00",
+  "knownPivots": [
+    [
+      328,
+      121
+    ],
+    [
+      504,
+      169
+    ],
+    [
+      648,
+      105
+    ]
+  ],
+  "method": "Camerafromexactnonperiodicterrainwhereavailable; otherwiseknownfixedpivotquadcentersidentifiedbyfullmeasuredsixbeadrays andabsenceofoppositeextrabeads. Newpivotmustrepeatworldcenterin3resolvedimages. No initialphase/tickoffset selectsgeometry. Stopsatfirstunresolvedcamera.",
+  "rows": [
+    {
+      "tick": 10425,
+      "camera": 0,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10426-tick-10425.png"
+    },
+    {
+      "tick": 10426,
+      "camera": 0,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10427-tick-10426.png"
+    },
+    {
+      "tick": 10427,
+      "camera": 1,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10428-tick-10427.png"
+    },
+    {
+      "tick": 10428,
+      "camera": 9,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10429-tick-10428.png"
+    },
+    {
+      "tick": 10429,
+      "camera": 17,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10430-tick-10429.png"
+    },
+    {
+      "tick": 10430,
+      "camera": 24,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10431-tick-10430.png"
+    },
+    {
+      "tick": 10431,
+      "camera": 32,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10432-tick-10431.png"
+    },
+    {
+      "tick": 10432,
+      "camera": 39,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10433-tick-10432.png"
+    },
+    {
+      "tick": 10433,
+      "camera": 47,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10434-tick-10433.png"
+    },
+    {
+      "tick": 10434,
+      "camera": 54,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10435-tick-10434.png"
+    },
+    {
+      "tick": 10435,
+      "camera": 62,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10436-tick-10435.png"
+    },
+    {
+      "tick": 10436,
+      "camera": 72,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10437-tick-10436.png"
+    },
+    {
+      "tick": 10437,
+      "camera": 84,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            244,
+            121
+          ],
+          "phases": [
+            25
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "84": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10438-tick-10437.png"
+    },
+    {
+      "tick": 10438,
+      "camera": 94,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            234,
+            121
+          ],
+          "phases": [
+            26
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "94": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10439-tick-10438.png"
+    },
+    {
+      "tick": 10439,
+      "camera": 106,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            222,
+            121
+          ],
+          "phases": [
+            28
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "106": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10440-tick-10439.png"
+    },
+    {
+      "tick": 10440,
+      "camera": 117,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            211,
+            121
+          ],
+          "phases": [
+            29
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "117": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10441-tick-10440.png"
+    },
+    {
+      "tick": 10441,
+      "camera": 129,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            199,
+            121
+          ],
+          "phases": [
+            30
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "129": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10442-tick-10441.png"
+    },
+    {
+      "tick": 10442,
+      "camera": 139,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            189,
+            121
+          ],
+          "phases": [
+            31
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "139": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10443-tick-10442.png"
+    },
+    {
+      "tick": 10443,
+      "camera": 151,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            217,
+            121
+          ],
+          "phases": [
+            16
+          ]
+        },
+        {
+          "screenCenter": [
+            177,
+            121
+          ],
+          "phases": [
+            0
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "151": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10444-tick-10443.png"
+    },
+    {
+      "tick": 10444,
+      "camera": 162,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            166,
+            121
+          ],
+          "phases": [
+            1
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "162": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10445-tick-10444.png"
+    },
+    {
+      "tick": 10445,
+      "camera": 174,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            154,
+            121
+          ],
+          "phases": [
+            3
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "174": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10446-tick-10445.png"
+    },
+    {
+      "tick": 10446,
+      "camera": 184,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            144,
+            121
+          ],
+          "phases": [
+            4
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "184": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10447-tick-10446.png"
+    },
+    {
+      "tick": 10447,
+      "camera": 196,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            132,
+            121
+          ],
+          "phases": [
+            5
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "196": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10448-tick-10447.png"
+    },
+    {
+      "tick": 10448,
+      "camera": 207,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            121,
+            121
+          ],
+          "phases": [
+            6
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "207": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10449-tick-10448.png"
+    },
+    {
+      "tick": 10449,
+      "camera": 219,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            109,
+            121
+          ],
+          "phases": [
+            7
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "219": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10450-tick-10449.png"
+    },
+    {
+      "tick": 10450,
+      "camera": 229,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            99,
+            161
+          ],
+          "phases": [
+            24
+          ]
+        },
+        {
+          "screenCenter": [
+            99,
+            121
+          ],
+          "phases": [
+            8
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "229": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10451-tick-10450.png"
+    },
+    {
+      "tick": 10451,
+      "camera": 241,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            87,
+            121
+          ],
+          "phases": [
+            10
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "241": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10452-tick-10451.png"
+    },
+    {
+      "tick": 10452,
+      "camera": 252,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            76,
+            121
+          ],
+          "phases": [
+            11
+          ]
+        },
+        {
+          "screenCenter": [
+            252,
+            169
+          ],
+          "phases": [
+            23
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "252": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10453-tick-10452.png"
+    },
+    {
+      "tick": 10453,
+      "camera": 264,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            240,
+            169
+          ],
+          "phases": [
+            21
+          ]
+        },
+        {
+          "screenCenter": [
+            64,
+            121
+          ],
+          "phases": [
+            12
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "264": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10454-tick-10453.png"
+    },
+    {
+      "tick": 10454,
+      "camera": 274,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            54,
+            121
+          ],
+          "phases": [
+            13
+          ]
+        },
+        {
+          "screenCenter": [
+            230,
+            169
+          ],
+          "phases": [
+            20
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "274": [
+          [
+            328,
+            121
+          ]
+        ]
+      },
+      "newPivots": [
+        [
+          504,
+          169
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10455-tick-10454.png"
+    },
+    {
+      "tick": 10455,
+      "camera": 286,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            218,
+            169
+          ],
+          "phases": [
+            19
+          ]
+        },
+        {
+          "screenCenter": [
+            42,
+            121
+          ],
+          "phases": [
+            14
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "286": [
+          [
+            328,
+            121
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10456-tick-10455.png"
+    },
+    {
+      "tick": 10456,
+      "camera": 297,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            207,
+            169
+          ],
+          "phases": [
+            18
+          ]
+        },
+        {
+          "screenCenter": [
+            31,
+            121
+          ],
+          "phases": [
+            15
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "297": [
+          [
+            328,
+            121
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10457-tick-10456.png"
+    },
+    {
+      "tick": 10457,
+      "camera": 309,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            195,
+            169
+          ],
+          "phases": [
+            17
+          ]
+        },
+        {
+          "screenCenter": [
+            19,
+            121
+          ],
+          "phases": [
+            17
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "309": [
+          [
+            328,
+            121
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10458-tick-10457.png"
+    },
+    {
+      "tick": 10458,
+      "camera": 319,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            161,
+            169
+          ],
+          "phases": [
+            0
+          ]
+        },
+        {
+          "screenCenter": [
+            185,
+            169
+          ],
+          "phases": [
+            16
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "319": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10459-tick-10458.png"
+    },
+    {
+      "tick": 10459,
+      "camera": 331,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            173,
+            169
+          ],
+          "phases": [
+            14
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "331": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10460-tick-10459.png"
+    },
+    {
+      "tick": 10460,
+      "camera": 342,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            162,
+            169
+          ],
+          "phases": [
+            13
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "342": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10461-tick-10460.png"
+    },
+    {
+      "tick": 10461,
+      "camera": 354,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            150,
+            169
+          ],
+          "phases": [
+            12
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "354": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10462-tick-10461.png"
+    },
+    {
+      "tick": 10462,
+      "camera": 364,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            140,
+            169
+          ],
+          "phases": [
+            11
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "364": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10463-tick-10462.png"
+    },
+    {
+      "tick": 10463,
+      "camera": 376,
+      "method": "known-stationary-pivot",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            128,
+            169
+          ],
+          "phases": [
+            10
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "376": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10464-tick-10463.png"
+    },
+    {
+      "tick": 10464,
+      "camera": 387,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            117,
+            169
+          ],
+          "phases": [
+            9
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "387": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10465-tick-10464.png"
+    },
+    {
+      "tick": 10465,
+      "camera": 399,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            105,
+            169
+          ],
+          "phases": [
+            7
+          ]
+        },
+        {
+          "screenCenter": [
+            249,
+            105
+          ],
+          "phases": [
+            25
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "399": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10466-tick-10465.png"
+    },
+    {
+      "tick": 10466,
+      "camera": 409,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            95,
+            169
+          ],
+          "phases": [
+            6
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "409": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10467-tick-10466.png"
+    },
+    {
+      "tick": 10467,
+      "camera": 421,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            83,
+            169
+          ],
+          "phases": [
+            5
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "421": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10468-tick-10467.png"
+    },
+    {
+      "tick": 10468,
+      "camera": 432,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            72,
+            169
+          ],
+          "phases": [
+            4
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "432": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10469-tick-10468.png"
+    },
+    {
+      "tick": 10469,
+      "camera": 444,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            204,
+            105
+          ],
+          "phases": [
+            29
+          ]
+        },
+        {
+          "screenCenter": [
+            60,
+            169
+          ],
+          "phases": [
+            3
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "444": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10470-tick-10469.png"
+    },
+    {
+      "tick": 10470,
+      "camera": 456,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            192,
+            105
+          ],
+          "phases": [
+            31
+          ]
+        },
+        {
+          "screenCenter": [
+            48,
+            169
+          ],
+          "phases": [
+            1
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "456": [
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [
+        [
+          648,
+          105
+        ]
+      ],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10471-tick-10470.png"
+    },
+    {
+      "tick": 10471,
+      "camera": 466,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            182,
+            105
+          ],
+          "phases": [
+            0
+          ]
+        },
+        {
+          "screenCenter": [
+            38,
+            169
+          ],
+          "phases": [
+            0
+          ]
+        },
+        {
+          "screenCenter": [
+            222,
+            105
+          ],
+          "phases": [
+            16
+          ]
+        },
+        {
+          "screenCenter": [
+            78,
+            169
+          ],
+          "phases": [
+            16
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "466": [
+          [
+            648,
+            105
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10472-tick-10471.png"
+    },
+    {
+      "tick": 10472,
+      "camera": 478,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            26,
+            169
+          ],
+          "phases": [
+            31
+          ]
+        },
+        {
+          "screenCenter": [
+            170,
+            105
+          ],
+          "phases": [
+            1
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "478": [
+          [
+            648,
+            105
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10473-tick-10472.png"
+    },
+    {
+      "tick": 10473,
+      "camera": 489,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            15,
+            169
+          ],
+          "phases": [
+            30
+          ]
+        },
+        {
+          "screenCenter": [
+            159,
+            105
+          ],
+          "phases": [
+            2
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "489": [
+          [
+            648,
+            105
+          ],
+          [
+            504,
+            169
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10474-tick-10473.png"
+    },
+    {
+      "tick": 10474,
+      "camera": 501,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            147,
+            105
+          ],
+          "phases": [
+            3
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "501": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10475-tick-10474.png"
+    },
+    {
+      "tick": 10475,
+      "camera": 511,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            137,
+            105
+          ],
+          "phases": [
+            4
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "511": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10476-tick-10475.png"
+    },
+    {
+      "tick": 10476,
+      "camera": 523,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            125,
+            105
+          ],
+          "phases": [
+            6
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "523": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10477-tick-10476.png"
+    },
+    {
+      "tick": 10477,
+      "camera": 534,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            114,
+            105
+          ],
+          "phases": [
+            7
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "534": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10478-tick-10477.png"
+    },
+    {
+      "tick": 10478,
+      "camera": 546,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            102,
+            145
+          ],
+          "phases": [
+            24
+          ]
+        },
+        {
+          "screenCenter": [
+            102,
+            105
+          ],
+          "phases": [
+            8
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "546": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10479-tick-10478.png"
+    },
+    {
+      "tick": 10479,
+      "camera": 556,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            92,
+            105
+          ],
+          "phases": [
+            9
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "556": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10480-tick-10479.png"
+    },
+    {
+      "tick": 10480,
+      "camera": 568,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            80,
+            105
+          ],
+          "phases": [
+            10
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "568": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10481-tick-10480.png"
+    },
+    {
+      "tick": 10481,
+      "camera": 579,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            69,
+            105
+          ],
+          "phases": [
+            11
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "579": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10482-tick-10481.png"
+    },
+    {
+      "tick": 10482,
+      "camera": 591,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            57,
+            105
+          ],
+          "phases": [
+            13
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "591": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10483-tick-10482.png"
+    },
+    {
+      "tick": 10483,
+      "camera": 601,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            47,
+            105
+          ],
+          "phases": [
+            14
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "601": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10484-tick-10483.png"
+    },
+    {
+      "tick": 10484,
+      "camera": 613,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            35,
+            105
+          ],
+          "phases": [
+            15
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "613": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10485-tick-10484.png"
+    },
+    {
+      "tick": 10485,
+      "camera": 624,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            24,
+            105
+          ],
+          "phases": [
+            16
+          ]
+        }
+      ],
+      "knownPivotVotes": {
+        "624": [
+          [
+            648,
+            105
+          ]
+        ]
+      },
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10486-tick-10485.png"
+    },
+    {
+      "tick": 10486,
+      "camera": 636,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10487-tick-10486.png"
+    },
+    {
+      "tick": 10487,
+      "camera": 646,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10488-tick-10487.png"
+    },
+    {
+      "tick": 10488,
+      "camera": 658,
+      "method": "exact-nonperiodic-terrain",
+      "coreCandidates": [],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10489-tick-10488.png"
+    },
+    {
+      "tick": 10489,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            251,
+            121
+          ],
+          "phases": [
+            12
+          ]
+        },
+        {
+          "screenCenter": [
+            235,
+            137
+          ],
+          "phases": [
+            28
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10490-tick-10489.png"
+    },
+    {
+      "tick": 10490,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            223,
+            137
+          ],
+          "phases": [
+            29
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10491-tick-10490.png"
+    },
+    {
+      "tick": 10491,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            213,
+            137
+          ],
+          "phases": [
+            31
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10492-tick-10491.png"
+    },
+    {
+      "tick": 10492,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            241,
+            137
+          ],
+          "phases": [
+            16
+          ]
+        },
+        {
+          "screenCenter": [
+            201,
+            137
+          ],
+          "phases": [
+            0
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10493-tick-10492.png"
+    },
+    {
+      "tick": 10493,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            190,
+            137
+          ],
+          "phases": [
+            1
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10494-tick-10493.png"
+    },
+    {
+      "tick": 10494,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            178,
+            137
+          ],
+          "phases": [
+            2
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10495-tick-10494.png"
+    },
+    {
+      "tick": 10495,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            168,
+            137
+          ],
+          "phases": [
+            3
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10496-tick-10495.png"
+    },
+    {
+      "tick": 10496,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            156,
+            137
+          ],
+          "phases": [
+            4
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10497-tick-10496.png"
+    },
+    {
+      "tick": 10497,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            145,
+            137
+          ],
+          "phases": [
+            6
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10498-tick-10497.png"
+    },
+    {
+      "tick": 10498,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            133,
+            137
+          ],
+          "phases": [
+            7
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10499-tick-10498.png"
+    },
+    {
+      "tick": 10499,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            123,
+            177
+          ],
+          "phases": [
+            24
+          ]
+        },
+        {
+          "screenCenter": [
+            123,
+            137
+          ],
+          "phases": [
+            8
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10500-tick-10499.png"
+    },
+    {
+      "tick": 10500,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            111,
+            137
+          ],
+          "phases": [
+            9
+          ]
+        },
+        {
+          "screenCenter": [
+            239,
+            121
+          ],
+          "phases": [
+            26
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10501-tick-10500.png"
+    },
+    {
+      "tick": 10501,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            100,
+            137
+          ],
+          "phases": [
+            10
+          ]
+        },
+        {
+          "screenCenter": [
+            228,
+            121
+          ],
+          "phases": [
+            25
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10502-tick-10501.png"
+    },
+    {
+      "tick": 10502,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            88,
+            137
+          ],
+          "phases": [
+            11
+          ]
+        },
+        {
+          "screenCenter": [
+            216,
+            121
+          ],
+          "phases": [
+            24
+          ]
+        },
+        {
+          "screenCenter": [
+            216,
+            89
+          ],
+          "phases": [
+            8
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10503-tick-10502.png"
+    },
+    {
+      "tick": 10503,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            78,
+            137
+          ],
+          "phases": [
+            13
+          ]
+        },
+        {
+          "screenCenter": [
+            206,
+            121
+          ],
+          "phases": [
+            23
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10504-tick-10503.png"
+    },
+    {
+      "tick": 10504,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            66,
+            137
+          ],
+          "phases": [
+            14
+          ]
+        },
+        {
+          "screenCenter": [
+            194,
+            121
+          ],
+          "phases": [
+            22
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10505-tick-10504.png"
+    },
+    {
+      "tick": 10505,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            55,
+            137
+          ],
+          "phases": [
+            15
+          ]
+        },
+        {
+          "screenCenter": [
+            183,
+            121
+          ],
+          "phases": [
+            21
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10506-tick-10505.png"
+    },
+    {
+      "tick": 10506,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            11,
+            137
+          ],
+          "phases": [
+            0
+          ]
+        },
+        {
+          "screenCenter": [
+            171,
+            121
+          ],
+          "phases": [
+            19
+          ]
+        },
+        {
+          "screenCenter": [
+            43,
+            137
+          ],
+          "phases": [
+            16
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10507-tick-10506.png"
+    },
+    {
+      "tick": 10507,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            33,
+            137
+          ],
+          "phases": [
+            17
+          ]
+        },
+        {
+          "screenCenter": [
+            161,
+            121
+          ],
+          "phases": [
+            18
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10508-tick-10507.png"
+    },
+    {
+      "tick": 10508,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            21,
+            137
+          ],
+          "phases": [
+            19
+          ]
+        },
+        {
+          "screenCenter": [
+            149,
+            121
+          ],
+          "phases": [
+            17
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10509-tick-10508.png"
+    },
+    {
+      "tick": 10509,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            98,
+            121
+          ],
+          "phases": [
+            0
+          ]
+        },
+        {
+          "screenCenter": [
+            138,
+            121
+          ],
+          "phases": [
+            16
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10510-tick-10509.png"
+    },
+    {
+      "tick": 10510,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            15
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10511-tick-10510.png"
+    },
+    {
+      "tick": 10511,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            13
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10512-tick-10511.png"
+    },
+    {
+      "tick": 10512,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            7,
+            137
+          ],
+          "phases": [
+            23
+          ]
+        },
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            12
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10513-tick-10512.png"
+    },
+    {
+      "tick": 10513,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            7,
+            97
+          ],
+          "phases": [
+            8
+          ]
+        },
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            11
+          ]
+        },
+        {
+          "screenCenter": [
+            7,
+            137
+          ],
+          "phases": [
+            24
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10514-tick-10513.png"
+    },
+    {
+      "tick": 10514,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            10
+          ]
+        },
+        {
+          "screenCenter": [
+            7,
+            137
+          ],
+          "phases": [
+            26
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10515-tick-10514.png"
+    },
+    {
+      "tick": 10515,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            7,
+            137
+          ],
+          "phases": [
+            27
+          ]
+        },
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            9
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10516-tick-10515.png"
+    },
+    {
+      "tick": 10516,
+      "camera": null,
+      "method": "unresolved",
+      "coreCandidates": [
+        {
+          "screenCenter": [
+            135,
+            161
+          ],
+          "phases": [
+            24
+          ]
+        },
+        {
+          "screenCenter": [
+            7,
+            137
+          ],
+          "phases": [
+            28
+          ]
+        },
+        {
+          "screenCenter": [
+            135,
+            121
+          ],
+          "phases": [
+            8
+          ]
+        }
+      ],
+      "knownPivotVotes": {},
+      "newPivots": [],
+      "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign-dense/10517-tick-10516.png"
+    }
+  ]
+}

@@ -1,0 +1,1289 @@
+{
+  "schema": "image-only-fixed-camera-room-v2",
+  "width": 16,
+  "atlas": "metatiles-palette-004.png",
+  "tiles": [
+    [
+      0,
+      2,
+      71
+    ],
+    [
+      0,
+      3,
+      71
+    ],
+    [
+      0,
+      4,
+      71
+    ],
+    [
+      0,
+      5,
+      71
+    ],
+    [
+      0,
+      6,
+      71
+    ],
+    [
+      0,
+      7,
+      71
+    ],
+    [
+      0,
+      8,
+      71
+    ],
+    [
+      0,
+      9,
+      71
+    ],
+    [
+      0,
+      10,
+      71
+    ],
+    [
+      0,
+      11,
+      71
+    ],
+    [
+      0,
+      12,
+      71
+    ],
+    [
+      0,
+      13,
+      84
+    ],
+    [
+      0,
+      14,
+      84
+    ],
+    [
+      1,
+      13,
+      84
+    ],
+    [
+      1,
+      14,
+      84
+    ],
+    [
+      2,
+      13,
+      84
+    ],
+    [
+      2,
+      14,
+      84
+    ],
+    [
+      3,
+      13,
+      84
+    ],
+    [
+      3,
+      14,
+      84
+    ],
+    [
+      4,
+      2,
+      71
+    ],
+    [
+      4,
+      7,
+      194
+    ],
+    [
+      4,
+      9,
+      194
+    ],
+    [
+      4,
+      10,
+      71
+    ],
+    [
+      4,
+      11,
+      71
+    ],
+    [
+      4,
+      12,
+      71
+    ],
+    [
+      4,
+      13,
+      84
+    ],
+    [
+      4,
+      14,
+      84
+    ],
+    [
+      5,
+      2,
+      71
+    ],
+    [
+      5,
+      5,
+      194
+    ],
+    [
+      5,
+      7,
+      194
+    ],
+    [
+      5,
+      9,
+      194
+    ],
+    [
+      5,
+      10,
+      71
+    ],
+    [
+      5,
+      11,
+      71
+    ],
+    [
+      5,
+      12,
+      71
+    ],
+    [
+      5,
+      13,
+      84
+    ],
+    [
+      5,
+      14,
+      84
+    ],
+    [
+      6,
+      2,
+      71
+    ],
+    [
+      6,
+      5,
+      194
+    ],
+    [
+      6,
+      7,
+      194
+    ],
+    [
+      6,
+      9,
+      194
+    ],
+    [
+      6,
+      10,
+      71
+    ],
+    [
+      6,
+      11,
+      71
+    ],
+    [
+      6,
+      12,
+      71
+    ],
+    [
+      6,
+      13,
+      84
+    ],
+    [
+      6,
+      14,
+      84
+    ],
+    [
+      7,
+      2,
+      71
+    ],
+    [
+      7,
+      5,
+      194
+    ],
+    [
+      7,
+      7,
+      194
+    ],
+    [
+      7,
+      9,
+      194
+    ],
+    [
+      7,
+      10,
+      71
+    ],
+    [
+      7,
+      11,
+      71
+    ],
+    [
+      7,
+      12,
+      71
+    ],
+    [
+      7,
+      13,
+      84
+    ],
+    [
+      7,
+      14,
+      84
+    ],
+    [
+      8,
+      2,
+      71
+    ],
+    [
+      8,
+      5,
+      194
+    ],
+    [
+      8,
+      7,
+      194
+    ],
+    [
+      8,
+      9,
+      194
+    ],
+    [
+      8,
+      10,
+      71
+    ],
+    [
+      8,
+      11,
+      71
+    ],
+    [
+      8,
+      12,
+      71
+    ],
+    [
+      8,
+      13,
+      84
+    ],
+    [
+      8,
+      14,
+      84
+    ],
+    [
+      9,
+      2,
+      71
+    ],
+    [
+      9,
+      5,
+      194
+    ],
+    [
+      9,
+      7,
+      194
+    ],
+    [
+      9,
+      9,
+      194
+    ],
+    [
+      9,
+      10,
+      71
+    ],
+    [
+      9,
+      11,
+      71
+    ],
+    [
+      9,
+      12,
+      71
+    ],
+    [
+      9,
+      13,
+      84
+    ],
+    [
+      9,
+      14,
+      84
+    ],
+    [
+      10,
+      2,
+      71
+    ],
+    [
+      10,
+      7,
+      194
+    ],
+    [
+      10,
+      9,
+      194
+    ],
+    [
+      10,
+      10,
+      71
+    ],
+    [
+      10,
+      11,
+      71
+    ],
+    [
+      10,
+      12,
+      71
+    ],
+    [
+      10,
+      13,
+      84
+    ],
+    [
+      10,
+      14,
+      84
+    ],
+    [
+      11,
+      13,
+      84
+    ],
+    [
+      11,
+      14,
+      84
+    ],
+    [
+      12,
+      13,
+      84
+    ],
+    [
+      12,
+      14,
+      84
+    ],
+    [
+      13,
+      11,
+      28
+    ],
+    [
+      13,
+      12,
+      31
+    ],
+    [
+      13,
+      13,
+      84
+    ],
+    [
+      13,
+      14,
+      84
+    ],
+    [
+      14,
+      11,
+      29
+    ],
+    [
+      14,
+      12,
+      32
+    ],
+    [
+      14,
+      13,
+      84
+    ],
+    [
+      14,
+      14,
+      84
+    ],
+    [
+      15,
+      2,
+      20
+    ],
+    [
+      15,
+      3,
+      20
+    ],
+    [
+      15,
+      4,
+      20
+    ],
+    [
+      15,
+      5,
+      20
+    ],
+    [
+      15,
+      6,
+      20
+    ],
+    [
+      15,
+      7,
+      20
+    ],
+    [
+      15,
+      8,
+      20
+    ],
+    [
+      15,
+      9,
+      20
+    ],
+    [
+      15,
+      10,
+      20
+    ],
+    [
+      15,
+      11,
+      30
+    ],
+    [
+      15,
+      12,
+      33
+    ],
+    [
+      15,
+      13,
+      84
+    ],
+    [
+      15,
+      14,
+      84
+    ]
+  ],
+  "unknownCells": [],
+  "evidence": [
+    {
+      "sequence": 200,
+      "tick": 1316,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-one-pipe-late/00200-tick-01316.png"
+    },
+    {
+      "sequence": 201,
+      "tick": 1324,
+      "path": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/two-one-pipe-late/00201-tick-01324.png"
+    }
+  ],
+  "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+  "sourceSequenceRange": [
+    200,
+    201
+  ],
+  "method": "Exact supplied 16x16 atlas pixels, fixed camera0, explicit unique sequence bounds. Coin-presence union prevents collection from erasing initial coins. No hidden contents inferred.",
+  "id": "bonus-coins",
+  "level": "2-1",
+  "role": "optional-coin-room",
+  "background": "#000000",
+  "spawn": [
+    24,
+    208
+  ],
+  "spawnStatus": "Late first complete room capture at tick1316 shows origin24/feet208 on floor. Initial arrival not sampled in this run; parent independent fine entry capture will constrain spawn.",
+  "coinsObserved": 19,
+  "acceptedEntranceAndReturn": true,
+  "sourcePatches": [
+    {
+      "cameraX": 0,
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        200,
+        201
+      ],
+      "status": "Exact initial fixed-room artwork union; explicit unknownCells is empty."
+    }
+  ],
+  "entryRecipe": {
+    "resetThenRecordedPrefixTicks": 1274,
+    "prefixSource": "data/observed-winning-inputs.json",
+    "requests": [
+      {
+        "op": "step",
+        "buttons": [
+          "left",
+          "a",
+          "b"
+        ],
+        "ticks": 6,
+        "nativeFrames": 45,
+        "sequence": 196,
+        "endTick": 1280
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 12,
+        "nativeFrames": 90,
+        "sequence": 197,
+        "endTick": 1292
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "right"
+        ],
+        "ticks": 3,
+        "nativeFrames": 23,
+        "sequence": 198,
+        "endTick": 1295
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "left"
+        ],
+        "ticks": 1,
+        "nativeFrames": 7,
+        "sequence": 199,
+        "endTick": 1296
+      },
+      {
+        "op": "step",
+        "buttons": [
+          "down"
+        ],
+        "ticks": 20,
+        "nativeFrames": 151,
+        "sequence": 200,
+        "endTick": 1316
+      }
+    ]
+  },
+  "returnRecipe": [
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 8,
+      "nativeFrames": 60,
+      "sequence": 201,
+      "endTick": 1324
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "a",
+        "b"
+      ],
+      "ticks": 8,
+      "nativeFrames": 60,
+      "sequence": 202,
+      "endTick": 1332
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 203,
+      "endTick": 1333
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 204,
+      "endTick": 1334
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 205,
+      "endTick": 1335
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 206,
+      "endTick": 1336
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 207,
+      "endTick": 1337
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 208,
+      "endTick": 1338
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 209,
+      "endTick": 1339
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right",
+        "b"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 210,
+      "endTick": 1340
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "left"
+      ],
+      "ticks": 4,
+      "nativeFrames": 30,
+      "sequence": 211,
+      "endTick": 1344
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "down"
+      ],
+      "ticks": 10,
+      "nativeFrames": 75,
+      "sequence": 212,
+      "endTick": 1354
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 213,
+      "endTick": 1355
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 214,
+      "endTick": 1356
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 215,
+      "endTick": 1357
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 216,
+      "endTick": 1358
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 217,
+      "endTick": 1359
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 218,
+      "endTick": 1360
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 219,
+      "endTick": 1361
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 220,
+      "endTick": 1362
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 221,
+      "endTick": 1363
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 222,
+      "endTick": 1364
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 223,
+      "endTick": 1365
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 224,
+      "endTick": 1366
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 225,
+      "endTick": 1367
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 226,
+      "endTick": 1368
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 227,
+      "endTick": 1369
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 228,
+      "endTick": 1370
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 229,
+      "endTick": 1371
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 230,
+      "endTick": 1372
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 231,
+      "endTick": 1373
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 232,
+      "endTick": 1374
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 233,
+      "endTick": 1375
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 234,
+      "endTick": 1376
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 235,
+      "endTick": 1377
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 236,
+      "endTick": 1378
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 237,
+      "endTick": 1379
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 238,
+      "endTick": 1380
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 239,
+      "endTick": 1381
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 240,
+      "endTick": 1382
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 241,
+      "endTick": 1383
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 242,
+      "endTick": 1384
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 243,
+      "endTick": 1385
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 244,
+      "endTick": 1386
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 245,
+      "endTick": 1387
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 246,
+      "endTick": 1388
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 247,
+      "endTick": 1389
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 248,
+      "endTick": 1390
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 249,
+      "endTick": 1391
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 250,
+      "endTick": 1392
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 251,
+      "endTick": 1393
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 252,
+      "endTick": 1394
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 253,
+      "endTick": 1395
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 8,
+      "sequence": 254,
+      "endTick": 1396
+    },
+    {
+      "op": "step",
+      "buttons": [
+        "right"
+      ],
+      "ticks": 1,
+      "nativeFrames": 7,
+      "sequence": 255,
+      "endTick": 1397
+    }
+  ],
+  "connections": [
+    {
+      "from": "main",
+      "to": "bonus-coins",
+      "kind": "pipe-down",
+      "entrance": {
+        "x": 1648,
+        "y": 144,
+        "width": 32
+      },
+      "target": {
+        "x": 24,
+        "feetY": 208,
+        "cameraX": 0
+      },
+      "status": "Actual centered-down entry and destination room observed; this target is late floor position and initial arrival remains unresolved in this coarse run.",
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        199,
+        200
+      ],
+      "sourceTicks": [
+        1296,
+        1316
+      ]
+    },
+    {
+      "from": "bonus-coins",
+      "to": "main",
+      "kind": "pipe-right",
+      "entrance": {
+        "x": 208,
+        "y": 176,
+        "width": 32,
+        "height": 32
+      },
+      "target": {
+        "x": 1848,
+        "feetY": 176,
+        "cameraX": 1792
+      },
+      "status": "Actual side-pipe traversal returns to main short pipe1840/top176. Exact first complete full player origin56/feet176 at tick1397 and adjacent pipes independently identify destination.",
+      "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+      "sourceSequences": [
+        212,
+        255
+      ],
+      "sourceTicks": [
+        1354,
+        1397
+      ]
+    }
+  ],
+  "returnPrecision": {
+    "sourceTrace": "evidence/local/two-one-pipe-late/trace.jsonl",
+    "firstExactMainPipeGeometrySequence": 242,
+    "firstExactMainPipeGeometryTick": 1384,
+    "firstCompletePlayerSequence": 255,
+    "firstCompletePlayerTick": 1397,
+    "observedScreenOrigin": [
+      56,
+      176
+    ],
+    "observedCamera": 1792,
+    "observedWorldOrigin": [
+      1848,
+      176
+    ],
+    "pipeWorldX": 1840,
+    "pipeTopY": 176,
+    "neighborGeometry": [
+      [
+        1952,
+        144
+      ],
+      [
+        2016,
+        160
+      ]
+    ],
+    "exactPoseCandidates": 1,
+    "playerOpaquePixels": 145,
+    "playerConfidence": 1,
+    "nativeFramesSinceFloorApproach1354": {
+      "firstExactMainGeometry": 225,
+      "firstCompletePlayer": 323
+    },
+    "status": "Exit sampled every decision, retaining actual7/8native frames. Exact atlas pixels locate main pipe at screen48/top176; first complete sprite at screen56/feet176 fixes world1848."
+  },
+  "uncertainties": [
+    "No hidden blocks/contents inferred from screenshots.",
+    "Initial room arrival/entry trajectory is unresolved in this coarse capture; late floor24/208 is not asserted as initial spawn.",
+    "Exact scene/pipe transition frame within each7/8-frame controller interval remains unresolved.",
+    "Camera is static-art registration and not emulator telemetry."
+  ]
+}

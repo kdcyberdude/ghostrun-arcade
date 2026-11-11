@@ -1,0 +1,294 @@
+{
+  "schema": "image-only-flag-completion-rules-v1",
+  "measuredUTC": "2026-11-05T21:37:37.660141+00:00",
+  "source": "Public reference controller/images only; supplied PNG descriptors and WAV metadata. No ROM/executable inspection.",
+  "evidence": [
+    "evidence/local/reference-campaign-dense/trace.jsonl",
+    "evidence/local/flag-controlled/trace.jsonl",
+    "evidence/local/flag-analysis/detections.json",
+    "evidence/local/flag-analysis/controlled-detections.json"
+  ],
+  "observed": {
+    "timerBonus": {
+      "unitsPerNativeFrame": 1,
+      "pointsPerUnit": 50,
+      "first1_1": {
+        "before": {
+          "native": 1472,
+          "time": 345,
+          "score": 400
+        },
+        "during": {
+          "native": 1479,
+          "time": 338,
+          "score": 750
+        },
+        "zeroNative": 1817,
+        "finalScore": 17650,
+        "nextScreenBoundaryNative": [
+          1977,
+          1983
+        ]
+      }
+    },
+    "poleFlag": {
+      "initialArtworkY": 49,
+      "bottomArtworkY": 172,
+      "speedPerNativeFrame": 2,
+      "descendingSamples": [
+        [
+          1322,
+          72
+        ],
+        [
+          1329,
+          86
+        ],
+        [
+          1337,
+          102
+        ],
+        [
+          1344,
+          116
+        ],
+        [
+          1352,
+          132
+        ],
+        [
+          1359,
+          146
+        ],
+        [
+          1367,
+          162
+        ]
+      ],
+      "spriteGripSideChangePixels": 14,
+      "first1_1FlipObservedNative": [
+        1374,
+        1397
+      ],
+      "firstWalkingSampleNative": 1404,
+      "flipDurationPossibleNativeFrames": [
+        24,
+        36
+      ]
+    },
+    "castleFlag": {
+      "smallRoofY": 128,
+      "smallFinalOrigin": [
+        3264,
+        114
+      ],
+      "originYAtNative": [
+        [
+          1832,
+          131
+        ],
+        [
+          1840,
+          123
+        ],
+        [
+          1848,
+          115
+        ],
+        [
+          1855,
+          114
+        ]
+      ],
+      "raiseSpeedPerNativeFrame": 1,
+      "raiseDistance": 32,
+      "priority": "Behind non-universal background pixels; flag is initially hidden by castle bricks. Visible through blue crenellation gaps.",
+      "largeRoofFinalY": 18,
+      "largeRoofStatus": "Inferred from same32px raise and observed roof32, not fully visible above HUD."
+    },
+    "fireworks": {
+      "observedCounts": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "countComesFrom": "Frozen TIME last digit at pole contact;1,3,6 produce that count. Other observed digits produce0.",
+      "pointsPerCompletedBurst": 500,
+      "controlledFrozenTime": 326,
+      "controlledCount": 6,
+      "controlledScore": {
+        "beforeTimer": 700,
+        "afterTimer": 17000,
+        "afterSixBursts": 20000
+      },
+      "controlledArtworkOrigins": [
+        [
+          115,
+          45
+        ],
+        [
+          83,
+          93
+        ],
+        [
+          179,
+          61
+        ],
+        [
+          179,
+          109
+        ],
+        [
+          131,
+          61
+        ],
+        [
+          83,
+          93
+        ]
+      ],
+      "postFinalCompletionToNextScreenBoundsNative": {
+        "controlled1_1_six": [
+          82,
+          89
+        ],
+        "2_1_one": [
+          80,
+          87
+        ],
+        "3_2_one": [
+          89,
+          96
+        ],
+        "5_3_three": [
+          91,
+          98
+        ],
+        "6_2_one": [
+          101,
+          108
+        ],
+        "8_3_three": [
+          97,
+          104
+        ]
+      }
+    },
+    "bonusHeightExamples": [
+      {
+        "level": "1-1 standard",
+        "score": 100,
+        "lastAirFeetY": 164,
+        "firstClimbingFeetY": 185,
+        "contactFeetInferred": 179
+      },
+      {
+        "level": "1-1 controlled",
+        "score": 400,
+        "lastAirFeetY": 165,
+        "firstClimbingFeetY": 173,
+        "contactFeetInferred": 159
+      },
+      {
+        "level": "8-3 standard",
+        "score": 800,
+        "lastAirFeetY": 127,
+        "firstClimbingFeetY": 133,
+        "contactFeetInferred": 123
+      }
+    ],
+    "scorePopup": {
+      "xRelativeToPoleCenter": 4,
+      "originYPlusPoleFlagOriginY": 225,
+      "riseSpeedPerNativeFrame": 2,
+      "finalY": 53,
+      "status": "Exact supplied flag score-pair silhouettes matched in1-1,2-1,8-3 and controlled400-point case."
+    }
+  },
+  "runtimeCandidates": {
+    "flagTopY": 49,
+    "flagBottomY": 172,
+    "slideSpeed": 2,
+    "slideFrames": 62,
+    "flipFrames": 24,
+    "walkInitialSpeed": 0.625,
+    "walkAcceleration": 0.0625,
+    "walkMaxSpeed": 1.5,
+    "walkGravity": 0.2,
+    "walkSupportProbeX": 6,
+    "timerPoints": 50,
+    "castleRaiseFrames": 32,
+    "castleFlagFinalOffsetY": -14,
+    "castleFlagInitialOffsetY": 18,
+    "fireworkFirstFrame": 33,
+    "fireworkPeriod": 32,
+    "fireworkPhaseFrames": 8,
+    "fireworkLifeFrames": 24,
+    "fireworkPoints": 500,
+    "fireworkOffsetsFromCastleFlag": [
+      [
+        -20,
+        45
+      ],
+      [
+        -52,
+        93
+      ],
+      [
+        44,
+        61
+      ],
+      [
+        44,
+        109
+      ],
+      [
+        -4,
+        61
+      ],
+      [
+        -52,
+        93
+      ]
+    ],
+    "noFireworksEndWait": 140,
+    "fireworksEndPhase": 4,
+    "freshAreaFrame": 2,
+    "fireworksEndMinimumWait": 84,
+    "fireworksEndInterval": 21,
+    "scoreThresholds": [
+      {
+        "feetBelow": 80,
+        "score": 5000,
+        "status": "unmeasured retained candidate"
+      },
+      {
+        "feetBelow": 112,
+        "score": 2000,
+        "status": "unmeasured candidate"
+      },
+      {
+        "feetBelow": 144,
+        "score": 800,
+        "status": "inferred between observed contact feet123(800) and159(400)"
+      },
+      {
+        "feetBelow": 176,
+        "score": 400,
+        "status": "inferred between observed contact feet159(400) and179(100)"
+      }
+    ],
+    "lowestScore": 100,
+    "scorePopupXOffset": 4,
+    "scorePopupYPlusFlagY": 225
+  },
+  "limitations": [
+    "Exact high5000/2000 thresholds are unmeasured. Contact heights are inferred between7/8-frame image samples.",
+    "Flip24frames, automatic-walk constants and support probe are candidates calibrated to image positions, not source physics.",
+    "Firework33-frame delay,8-frame phases and32-frame cadence fit observed samples within about1native frame at phase boundaries; exact spawn-frame blanking is unresolved.",
+    "Positive-firework endwait uses an inferred21-frame interval phase. Its84..104-frame range overlaps all observed boundary windows;2-frame transition accuracy across worlds is not established.",
+    "Some changing HUD glyphs contain mixed old/new digit rows. OCR leaves those images unresolved rather than asserting false exact values.",
+    "Reference protocol has no audio stream. Supplied flagpole, level-clear, timer-tick and fireworks WAVs identify usable cues; precise cue timing/audio equivalence cannot be verified here."
+  ]
+}

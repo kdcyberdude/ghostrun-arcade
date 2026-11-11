@@ -1,0 +1,143 @@
+{
+  "schema": "firebar-cw-epoch-heldout-plan-v1",
+  "declaredUtc": "2026-11-06T02:27:14.927226+00:00",
+  "scope": "Read-only clockwise6-orb1416 activation diagnosis; no runtime/motor edits. Fresh captures remain unopened until an independent camera-only hypothesis is frozen.",
+  "level": "1-4",
+  "pivot": [
+    1416,
+    72
+  ],
+  "direction": 1,
+  "prefix": {
+    "winningDecisions": 980,
+    "source": "data/observed-winning-inputs.json"
+  },
+  "safePreparation": [],
+  "cases": [
+    {
+      "name": "reserved-cw-epoch-winning-prefix",
+      "extraNeutralTicks": 0,
+      "calibration": false,
+      "reserved": true,
+      "segments": [
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 2,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 1,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "a",
+            "b"
+          ],
+          "ticks": 1,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "right",
+            "b"
+          ],
+          "ticks": 4,
+          "stage": "ordinary-winning-approach",
+          "dense": true
+        },
+        {
+          "buttons": [
+            "left",
+            "b"
+          ],
+          "ticks": 3,
+          "stage": "stop",
+          "dense": true
+        },
+        {
+          "buttons": [],
+          "ticks": 12,
+          "stage": "settle",
+          "dense": true
+        }
+      ]
+    }
+  ],
+  "idleSamples": 40,
+  "anchorCamera": 1020,
+  "cameraSearch": [
+    1000,
+    1500
+  ],
+  "tolerances": {
+    "flameCenterPixels": 2,
+    "phaseTimingNativeFrames": 2,
+    "rawStaticExact": 0.99
+  },
+  "hypotheses": [
+    "Lower-band camera interpolation across a braking7/8-native-frame interval can differ from actual threshold crossing by one native frame.",
+    "Upper versus lower raster scroll may reveal presentation offsets independently of flame phase.",
+    "Distinct motor phase remains possible only if camera-only correction cannot fit both prior histories."
+  ],
+  "retainedFailedCase": "Original reserved-1-4-lastcw-13 died at a preceding bar; retain it unchanged. This fresh branch replays ordinary proven winning controls through the target instead of skipping."
+}

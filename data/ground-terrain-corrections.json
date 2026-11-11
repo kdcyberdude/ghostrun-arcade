@@ -1,0 +1,794 @@
+{
+  "method": "No continuity assumption or floor snapping. Candidate requires known row14 ground and absent row13. For each candidate, original screenshot pixels at the canonical registered integer camera are compared at zero tolerance to the supplied palette-specific tile. A correction requires every one of the256RGB pixels to have been observed in at least one aligned screenshot; enemy-foot occlusion may differ between captures. A single persistently unmatched pixel rejects the correction. Separate controlled fresh-prefix observations retained in evidence/ground-actor-floor-measure.json.",
+  "corrections": [
+    {
+      "level": "5-2", "area": "area-2", "tile": [117, 10, 13],
+      "confidence": "observed exact 16x16 RGB",
+      "provenance": { "source": "evidence/local/vine-optional-5-2-pipe/03805-tick-05628.png", "camera": 1792, "report": "evidence/five-two-return-scenery.json" },
+      "reason": "The white background tree top at screen x80/y160 matches palette025 tile13 on all 256 pixels."
+    },
+    {
+      "level": "5-2", "area": "area-2", "tile": [117, 11, 15],
+      "confidence": "observed exact 16x16 RGB",
+      "provenance": { "source": "evidence/local/vine-optional-5-2-pipe/03805-tick-05628.png", "camera": 1792, "report": "evidence/five-two-return-scenery.json" },
+      "reason": "The white background tree middle at screen x80/y176 matches palette025 tile15 on all 256 pixels."
+    },
+    {
+      "level": "5-2", "area": "area-2", "tile": [115, 11, 16],
+      "confidence": "observed return pipe cap",
+      "provenance": { "source": "evidence/local/vine-optional-5-2-pipe/03805-tick-05628.png", "camera": 1792 },
+      "reason": "The left half of the white pipe cap appears at screen x48/y176 on the water return; Mario stands on it in the next retained source capture."
+    },
+    {
+      "level": "5-2", "area": "area-2", "tile": [116, 11, 17],
+      "confidence": "observed return pipe cap",
+      "provenance": { "source": "evidence/local/vine-optional-5-2-pipe/03805-tick-05628.png", "camera": 1792 },
+      "reason": "The right half of the same white pipe cap appears at screen x64/y176 on the water return."
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "tile": [
+        99,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          111,
+          112,
+          113
+        ],
+        "ticks": [
+          440,
+          444,
+          448
+        ],
+        "cameras": [
+          1392,
+          1483,
+          1558
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "tile": [
+        101,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          111,
+          112,
+          113
+        ],
+        "ticks": [
+          440,
+          444,
+          448
+        ],
+        "cameras": [
+          1392,
+          1483,
+          1558
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "tile": [
+        146,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          122,
+          123,
+          124
+        ],
+        "ticks": [
+          484,
+          488,
+          492
+        ],
+        "cameras": [
+          2119,
+          2194,
+          2272
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "tile": [
+        58,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          310,
+          311,
+          312
+        ],
+        "ticks": [
+          1236,
+          1240,
+          1244
+        ],
+        "cameras": [
+          759,
+          830,
+          902
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0,
+        "controlledExactMatches": [
+          {
+            "prefixTick": 1236,
+            "tick": 1246,
+            "nativeFrame": 9360,
+            "camera": 912,
+            "registrationError": 0.06304,
+            "col": 58,
+            "row": 13,
+            "tile": 84,
+            "screenX": 16,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T22-02-05.044Z/0017-2-1-at-1236-t1246.png"
+          },
+          {
+            "prefixTick": 1236,
+            "tick": 1247,
+            "nativeFrame": 9367,
+            "camera": 923,
+            "registrationError": 0.02418,
+            "col": 58,
+            "row": 13,
+            "tile": 84,
+            "screenX": 5,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T22-02-05.044Z/0018-2-1-at-1236-t1247.png"
+          }
+        ]
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "tile": [
+        88,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          316,
+          317,
+          318
+        ],
+        "ticks": [
+          1260,
+          1264,
+          1268
+        ],
+        "cameras": [
+          1202,
+          1277,
+          1352
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0,
+        "controlledExactMatches": [
+          {
+            "prefixTick": 1264,
+            "tick": 1273,
+            "nativeFrame": 9563,
+            "camera": 1390,
+            "registrationError": 0.01896,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0043-2-1-at-1264-t1273.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1274,
+            "nativeFrame": 9570,
+            "camera": 1390,
+            "registrationError": 0.04635,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0044-2-1-at-1264-t1274.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1275,
+            "nativeFrame": 9578,
+            "camera": 1390,
+            "registrationError": 0.04407,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0045-2-1-at-1264-t1275.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1276,
+            "nativeFrame": 9585,
+            "camera": 1390,
+            "registrationError": 0.03739,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0046-2-1-at-1264-t1276.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1277,
+            "nativeFrame": 9593,
+            "camera": 1390,
+            "registrationError": 0.00334,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0047-2-1-at-1264-t1277.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1278,
+            "nativeFrame": 9600,
+            "camera": 1390,
+            "registrationError": 0.02844,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0048-2-1-at-1264-t1278.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1279,
+            "nativeFrame": 9608,
+            "camera": 1390,
+            "registrationError": 0.00685,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0049-2-1-at-1264-t1279.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1280,
+            "nativeFrame": 9615,
+            "camera": 1390,
+            "registrationError": 0.04249,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0050-2-1-at-1264-t1280.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1281,
+            "nativeFrame": 9623,
+            "camera": 1390,
+            "registrationError": 0.04898,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0051-2-1-at-1264-t1281.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1282,
+            "nativeFrame": 9630,
+            "camera": 1390,
+            "registrationError": 0.05232,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0052-2-1-at-1264-t1282.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1283,
+            "nativeFrame": 9638,
+            "camera": 1390,
+            "registrationError": 0.02265,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0053-2-1-at-1264-t1283.png"
+          },
+          {
+            "prefixTick": 1264,
+            "tick": 1284,
+            "nativeFrame": 9645,
+            "camera": 1390,
+            "registrationError": 0.04442,
+            "col": 88,
+            "row": 13,
+            "tile": 84,
+            "screenX": 18,
+            "differentPixels": 0,
+            "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/ground-actor-floor-2026-11-05T21-59-50.954Z/0054-2-1-at-1264-t1284.png"
+          }
+        ]
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "tile": [
+        24,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          774,
+          775,
+          776,
+          777
+        ],
+        "ticks": [
+          3092,
+          3096,
+          3100,
+          3104
+        ],
+        "cameras": [
+          157,
+          232,
+          307,
+          382
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "tile": [
+        71,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          784,
+          785,
+          786,
+          787
+        ],
+        "ticks": [
+          3132,
+          3136,
+          3140,
+          3144
+        ],
+        "cameras": [
+          901,
+          976,
+          1051,
+          1126
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "tile": [
+        162,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          806,
+          807,
+          808
+        ],
+        "ticks": [
+          3220,
+          3224,
+          3228
+        ],
+        "cameras": [
+          2416,
+          2491,
+          2566
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "tile": [
+        188,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          811,
+          812,
+          813
+        ],
+        "ticks": [
+          3240,
+          3244,
+          3248
+        ],
+        "cameras": [
+          2791,
+          2866,
+          2941
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "tile": [
+        100,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          1077,
+          1078,
+          1079
+        ],
+        "ticks": [
+          4304,
+          4308,
+          4312
+        ],
+        "cameras": [
+          1422,
+          1497,
+          1571
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "tile": [
+        101,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          1077,
+          1078,
+          1079
+        ],
+        "ticks": [
+          4304,
+          4308,
+          4312
+        ],
+        "cameras": [
+          1422,
+          1497,
+          1571
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "tile": [
+        65,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          1295,
+          1296,
+          1297
+        ],
+        "ticks": [
+          5176,
+          5180,
+          5184
+        ],
+        "cameras": [
+          865,
+          940,
+          1015
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "tile": [
+        23,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          2199,
+          2200,
+          2201
+        ],
+        "ticks": [
+          8792,
+          8796,
+          8800
+        ],
+        "cameras": [
+          150,
+          225,
+          300
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "tile": [
+        69,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          2209,
+          2210,
+          2211
+        ],
+        "ticks": [
+          8832,
+          8836,
+          8840
+        ],
+        "cameras": [
+          900,
+          977,
+          1052
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "tile": [
+        108,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          2218,
+          2219,
+          2220,
+          2221
+        ],
+        "ticks": [
+          8868,
+          8872,
+          8876,
+          8880
+        ],
+        "cameras": [
+          1498,
+          1573,
+          1648,
+          1723
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 5
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "tile": [
+        130,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          2223,
+          2224,
+          2225
+        ],
+        "ticks": [
+          8888,
+          8892,
+          8896
+        ],
+        "cameras": [
+          1873,
+          1948,
+          2023
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "tile": [
+        257,
+        13,
+        84
+      ],
+      "confidence": "observed RGB mosaic",
+      "provenance": {
+        "source": "evidence/local/reference-campaign/trace.jsonl",
+        "sequences": [
+          2254,
+          2255,
+          2256
+        ],
+        "ticks": [
+          9012,
+          9016,
+          9020
+        ],
+        "cameras": [
+          3933,
+          4008,
+          4083
+        ],
+        "all256ArtPixelsObserved": true,
+        "maxLower15DifferentPixels": 0
+      },
+      "reason": "Row13 ground tile was omitted when native enemy foot pixels occluded its first raster row. Full supplied ground-art RGB is visible across independent aligned source captures; row14 already exists."
+    }
+  ],
+  "unresolved": [
+    {
+      "level": "3-1",
+      "area": "main",
+      "col": 94,
+      "row": 13,
+      "candidateTile": 84,
+      "unobservedPixels": 2,
+      "observedPixels": 254,
+      "observations": [
+        {
+          "sequence": 716,
+          "tick": 2860,
+          "camera": 1302,
+          "registrationError": 0.0545,
+          "screenX": 202,
+          "differentPixels": 4,
+          "lower15DifferentPixels": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign/00716-tick-02860.png"
+        },
+        {
+          "sequence": 717,
+          "tick": 2864,
+          "camera": 1379,
+          "registrationError": 0.1234,
+          "screenX": 125,
+          "differentPixels": 7,
+          "lower15DifferentPixels": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign/00717-tick-02864.png"
+        },
+        {
+          "sequence": 718,
+          "tick": 2868,
+          "camera": 1454,
+          "registrationError": 0.1431,
+          "screenX": 50,
+          "differentPixels": 3,
+          "lower15DifferentPixels": 0,
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign/00718-tick-02868.png"
+        }
+      ]
+    }
+  ]
+}

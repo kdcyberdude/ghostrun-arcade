@@ -1,0 +1,52 @@
+{
+  "lockedUTC": "2026-11-06T05:11:03.147Z",
+  "scope": "Read-only jumping-coin flight and spin hypothesis, not a complete runtime patch. Popup birth/lifetime and flight cleanup remain unqualified.",
+  "tolerances": {
+    "positionPixels": 1,
+    "eventActiveNativeFrames": 2,
+    "pose": "Exact supplied opaque RGB"
+  },
+  "flight": {
+    "initialTopFromBlockTop": -16,
+    "initialVelocity": -5,
+    "gravity": 0.3125,
+    "order": "position before gravity",
+    "formula": "floor(blockTop-16 -5*n +(5/16)*n*(n-1)/2)",
+    "n": "Number of active position updates since event; zero-update baseline fitted at228 in original trace. Absolute frames are evidence registration only, never runtime logic."
+  },
+  "spin": {
+    "index": "floor(activeNativeFrame/2)%4",
+    "observedTrainingPhases": [
+      0,
+      1,
+      3
+    ],
+    "phase2Status": "Supplied art exists, source phase2 not observed yet."
+  },
+  "reservedPredictions": {
+    "popup-blockcoin-delay3": {
+      "baselineFrame": 251,
+      "derivation": "Original zero-update baseline228 plus actual23 extra neutral frames before A; no fitting to heldout images.",
+      "screenX": 96,
+      "blockTop": 144
+    },
+    "popup-blockcoin-spin-trap31": {
+      "baselineFrame": 228,
+      "activeFrameAtTrap": 234,
+      "expectedPhase": 1,
+      "screenX": 96,
+      "blockTop": 144
+    }
+  },
+  "unresolved": {
+    "handoff": "Last coin active257 and first200 active262 bracket transition258..262. No cleanup predicate or timer is qualified.",
+    "label": "Exact0.5px/up motion at fixed screen X; lifecycle still depends on unresolved birth and is not implemented by this candidate."
+  },
+  "bindings": {
+    "evidence/popup-coin-art-measurements.json": "1d6a279a504c77175767fae6d0cb8d4132f062d0c5184bdc1a4d6bc4333f2acd",
+    "evidence/popup-awards-followup-training-measurements.json": "1c297714a157105d329883540804a961fde11e1667f7c69fd8dea25dbbca9d08",
+    "evidence/popup-coin-followup-training-measurements.json": "d06b5b3678aab6319eb3dbd34bf5e60f6f27607e302f1b750a6791c6b5b5b835",
+    "evidence/popup-coin-spin-training-measurements.json": "666b1681163ce22167a639d2c7bef51381b61f5d67420767fcf74af0551b6d66",
+    "evidence/popup-coin-spin-plan.json": "9b29705c9b3d666c46a2719b06f517feb46516c969286f2211a76323658fcb94"
+  }
+}
