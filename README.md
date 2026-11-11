@@ -33,11 +33,11 @@ The production build is a static site. Relative asset paths support both a domai
 - Gameplay code that can be inspected, modified, and tested independently of the reference process.
 - A separation between gameplay and rendering. The latest physics lives in one simulation; an additional renderer should consume that same state.
 
-The 2D build is included here. The earlier 3D prototype is awaiting recovery from its separate development worktree; it is not included in this release. Its previously reported performance does not establish performance on your hardware.
+The public launch is **2D only**. The recovered 3D code and assets are preserved on [`codex/recovered-3d-preview`](https://github.com/kdcyberdude/ghostrun-arcade/tree/codex/recovered-3d-preview) for later work. Its first-level footage appears in the [70-second demo](https://github.com/kdcyberdude/ghostrun-arcade/releases/tag/v0.2.0-demo) as an experimental preview.
 
 ## Evidence and limits
 
-The research project reports recorded-input browser replays through all 32 levels. That is different from a policy completing this remake in a fresh, closed-loop run. Remaining contact, timing, and geometry discrepancies mean this is not a claim of exact equivalence.
+The research project reports recorded-input browser replays through all 32 levels. That is different from a policy completing this remake in a fresh, closed-loop run. A current replay of the fixed native action stream stops progressing after 1-2. Remaining contact, timing, and geometry discrepancies mean this is not a claim of exact equivalence.
 
 Unit fixtures capture measured mechanics. Full native campaign comparisons additionally require the retained reference traces, which are not bundled in this public source package. A passing build or unit suite does not replace that comparison. See [verification](docs/VERIFICATION.md).
 

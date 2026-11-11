@@ -9,7 +9,8 @@ This source package contains the independent gameplay simulation, browser render
 - Production UI under `/ghostrun-arcade/`: loading progress, retry, keyboard remapping, conflicts, fullscreen, pause, sound and mobile layout passed; no browser errors.
 - Production gameplay/audio: eight captures passed, including keyboard movement/jump, pause, audio decoding/playback, mute and restart. The production page exposed no development bridge and requested no ROM, model or policy files.
 - Full native campaign gate: unavailable because the original trace and stored baseline are missing from this backup.
-- 3D renderer: not present in the transferred worktree; no current parity or performance check claimed.
+- Public release is 2D only. Recovered 3D code/assets are retained on `codex/recovered-3d-preview`; its first-level video is an experimental preview, not a 3D launch.
+- Current full fixed-route replay reaches 1-2, then returns to the title after deaths. The first substantial sampled mismatch concerns stomp/bounce timing around source frames 3047–3072, followed by a missed pipe-top jump. No speculative gameplay fix or full native-equivalence claim was made.
 
 ## Different checks answer different questions
 
