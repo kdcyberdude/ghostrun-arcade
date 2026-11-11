@@ -1,0 +1,31 @@
+{
+ "date": "2026-11-11T17:20:39.312Z",
+ "frames": 900,
+ "route": "data/observed-winning-inputs.json from standard reset; requested prefix only",
+ "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+ "checks": {
+  "origStatesVsHeadless": -1,
+  "v25StatesVsHeadless": -1,
+  "origEventsVsHeadless": -1,
+  "v25EventsVsHeadless": -1
+ },
+ "counts": {
+  "states": 900,
+  "events": 15
+ },
+ "finalHash": "12161fff",
+ "msPerFrameInclRender": {
+  "orig": 5.26,
+  "v25": 26.87
+ },
+ "errors": {
+  "orig": [],
+  "v25": []
+ },
+ "coverage": {
+  "missingModels": [],
+  "unmappedTiles": [],
+  "standIns": []
+ },
+ "verdict": "PASS"
+}

@@ -4,12 +4,17 @@ This source package contains the independent gameplay simulation, browser render
 
 ## Release checks — 2026-11-11
 
-- Exported source: **1,131 tests passed**, zero failures or skips, with one worker.
-- Type checking and production build: passed on macOS.
-- Production UI under `/ghostrun-arcade/`: loading progress, retry, keyboard remapping, conflicts, fullscreen, pause, sound and mobile layout passed; no browser errors.
+- Combined 2D/3D source: **1,131 tests passed**, zero failures or skips, with one worker.
+- Type checking and combined production build: passed on macOS.
+- Both production views under `/ghostrun-arcade/`: loading progress, retry, keyboard remapping, conflicts, fullscreen, pause, sound and mobile layout passed; no browser errors. 3D download-failure recovery back to 2D and live 1K/2K/4K selection passed. [2D report](production-2d-check.json), [3D report](production-25d-check.json).
 - Production gameplay/audio: eight captures passed, including keyboard movement/jump, pause, audio decoding/playback, mute and restart. The production page exposed no development bridge and requested no ROM, model or policy files.
 - Full native campaign gate: unavailable because the original trace and stored baseline are missing from this backup.
-- 3D renderer: not present in the transferred worktree; no current parity or performance check claimed.
+- Recovered 3D renderer: **900/900 simulation snapshots and 15/15 audio events matched** the headless simulation and 2D view on the recorded route. No missing models, unmapped tiles, stand-ins or browser errors were reported on that interval. [Raw parity report](../visual25d/evidence/replay-equivalence.json).
+- The parity run used ANGLE Metal on an Apple M4. At low quality and 256 × 240, its measured 3D render-plus-step time was 26.87 ms/frame; this is a harness measurement, not a claim of 60 fps at 4K. Wider scene and device coverage remains separate.
+
+## Current long-route limitation
+
+A fresh headless replay of the entire retained v1 action stream from the standard reset reached 1-2, then returned to the title after deaths. That open-loop replay does **not** establish a current 32-level clear in this browser build. The precise cause has not been isolated; the native legacy clock and accumulated gameplay drift must be checked before attributing it to one mechanic. The 900-frame renderer parity result remains valid, but does not resolve this native/rebuild difference.
 
 ## Different checks answer different questions
 
