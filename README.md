@@ -4,7 +4,7 @@
 
 This first showcase contains an independent Three.js / TypeScript recreation of Super Mario Bros. with all 32 level definitions. The browser runs the simulation in `src/`; it does not load a ROM, an emulator, or a neural network.
 
-**[Play in your browser](https://kdcyberdude.github.io/ghostrun-arcade/)** · [Plugin](https://github.com/kdcyberdude/ghostrun) · [Training lab](https://github.com/kdcyberdude/ghostrun-lab) · [How the pipeline works](https://github.com/kdcyberdude/ghostrun/blob/main/docs/ARCHITECTURE.md)
+**[Watch the film](https://kdcyberdude.github.io/ghostrun-arcade/film/)** · **[Play in your browser](https://kdcyberdude.github.io/ghostrun-arcade/)** · [Plugin](https://github.com/kdcyberdude/ghostrun) · [Training lab](https://github.com/kdcyberdude/ghostrun-lab) · [How the pipeline works](https://github.com/kdcyberdude/ghostrun/blob/main/docs/ARCHITECTURE.md)
 
 ![GhostRun Arcade home screen](docs/images/home.png)
 
@@ -33,7 +33,7 @@ The production build is a static site. Relative asset paths support both a domai
 - Gameplay code that can be inspected, modified, and tested independently of the reference process.
 - A separation between gameplay and rendering. The latest physics lives in one simulation; an additional renderer should consume that same state.
 
-The public launch is **2D only**. The recovered 3D code and assets are preserved on [`codex/recovered-3d-preview`](https://github.com/kdcyberdude/ghostrun-arcade/tree/codex/recovered-3d-preview) for later work. Its first-level footage appears in the [70-second demo](https://github.com/kdcyberdude/ghostrun-arcade/releases/tag/v0.2.0-demo) as an experimental preview.
+The playable release is 2D. [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it and a first-level 3D preview.
 
 ## Evidence and limits
 

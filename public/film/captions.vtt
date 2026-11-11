@@ -1,0 +1,149 @@
+WEBVTT
+
+1
+00:00:00.030 --> 00:00:01.350
+You remember this jump,
+
+2
+00:00:01.350 --> 00:00:03.890
+the sound, the world waiting on the other
+
+3
+00:00:03.890 --> 00:00:06.150
+side. What if you could make that world
+
+4
+00:00:06.150 --> 00:00:06.870
+your own?
+
+5
+00:00:07.450 --> 00:00:10.290
+Meet GhostRun, an Hermes plugin that helps an
+
+6
+00:00:10.290 --> 00:00:13.690
+AI agent recreate NES games as editable browser
+
+7
+00:00:13.690 --> 00:00:16.610
+games. Every jump, every enemy,
+
+8
+00:00:16.610 --> 00:00:18.170
+across every level.
+
+9
+00:00:18.680 --> 00:00:20.500
+First, the agent works out how to make
+
+10
+00:00:20.500 --> 00:00:23.160
+progress and trains a player to explore the
+
+11
+00:00:23.160 --> 00:00:26.280
+game. Now it can discover what screenshots never
+
+12
+00:00:26.280 --> 00:00:26.840
+show.
+
+13
+00:00:27.160 --> 00:00:29.620
+The original becomes a playable reference.
+
+14
+00:00:29.760 --> 00:00:31.660
+Press a button, see what happens.
+
+15
+00:00:31.980 --> 00:00:33.960
+With matching sprites and sounds,
+
+16
+00:00:34.280 --> 00:00:36.880
+another agent builds a new game from that
+
+17
+00:00:36.880 --> 00:00:37.640
+behavior.
+
+18
+00:00:37.820 --> 00:00:38.560
+Every enemy.
+
+19
+00:00:39.480 --> 00:00:42.440
+Every interaction, across every level.
+
+20
+00:00:42.940 --> 00:00:44.640
+That takes days.
+
+21
+00:00:45.260 --> 00:00:47.460
+GhostRun keeps the agent building and checking
+
+22
+00:00:47.540 --> 00:00:50.060
+against the original with little human guidance.
+
+23
+00:00:50.520 --> 00:00:52.080
+Here's the research behind it.
+
+24
+00:00:52.400 --> 00:00:56.060
+Mario, recreated across all 32 levels.
+
+25
+00:00:56.340 --> 00:00:58.840
+Real Three.js code running in the browser
+
+26
+00:00:59.040 --> 00:00:59.840
+without an emulator.
+
+27
+00:01:00.300 --> 00:01:01.340
+Then comes the fun.
+
+28
+00:01:01.780 --> 00:01:04.180
+Keep the gameplay, change the world around it,
+
+29
+00:01:04.540 --> 00:01:06.440
+even bring it into three dimensions.
+
+30
+00:01:07.060 --> 00:01:08.380
+Bring back a favorite.
+
+31
+00:01:08.720 --> 00:01:10.800
+Make a gentler version for your kids.
+
+32
+00:01:11.080 --> 00:01:13.200
+Invent your own challenges.
+
+33
+00:01:13.200 --> 00:01:15.280
+You're starting with a game you can actually
+
+34
+00:01:15.280 --> 00:01:16.040
+change.
+
+35
+00:01:16.460 --> 00:01:19.820
+Recreate your favorite NES game with GhostRun.
+
+36
+00:01:20.100 --> 00:01:21.620
+Play our Mario Rebuilt.
+
+37
+00:01:21.860 --> 00:01:23.860
+Explore the code, then make it yours.
