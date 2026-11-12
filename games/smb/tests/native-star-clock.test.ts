@@ -59,3 +59,15 @@ test('Star pickup draws the prior own palette; late GameEngine attribute cycle a
  assert.equal(data.pickup[1][7]&3,0);assert.equal(data.pickup[1][6]&3,nativeStarPalette(35,data.pickup[1][3]));
  for(let f=1;f<data.lifecycle.length;f++){const b=data.lifecycle[f-1],a=data.lifecycle[f];assert.equal(a[7]&3,b[6]&3,`OAM delay row ${f}`);assert.equal(a[6]&3,nativeStarPalette(a[2],a[3]),`stored row ${f}`);}
 });
+
+import {GameRenderer} from '../src/renderer.js';
+test('2D consumes the captured native OAM Star palette on pickup and expiry, including timer zero',()=>{
+ const sim=fixture(),renderer=Object.create(GameRenderer.prototype) as any;sim.player.size=2;
+ let texture='';renderer.quad=(name:string)=>{texture=name;};
+ for(const row of data.lifecycle){
+  sim.player.star=row[2];sim.starDrawPalette=row[7]&3;renderer.player(sim);
+  const variant=['fire','star-green','star-white','star-dark'][row[7]&3];
+  assert.match(texture,new RegExp(`^player-${variant}-`));
+ }
+ sim.starDrawPalette=undefined;renderer.player(sim);assert.match(texture,/^player-fire-/);
+});

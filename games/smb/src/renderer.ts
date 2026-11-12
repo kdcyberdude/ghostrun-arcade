@@ -335,7 +335,7 @@ export class GameRenderer {
  private player(s:Simulation){
   const p=s.player,{cell,facing,throwing,swimKick}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
-  if(p.star)variant=starVariant(p.star,s.frame,variant);
+  if(s.starDrawPalette!==undefined)variant=starVariant(s.starDrawPalette,variant);
   let sheet=`player-${variant}-${facing<0?'left':'right'}.png`;if(swimKick!==undefined)sheet=this.swimKickSheet(sheet,facing);
   const z=s.phase==='pipe'||s.pipeRising?-0.1:3;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
