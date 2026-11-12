@@ -11,7 +11,7 @@ import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js'
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
-import type {Area,Enemy} from './types.js';
+import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
@@ -186,6 +186,25 @@ export class GameRenderer {
    this.spriteTile(data.tiles[i],x+(flipX?1-col:col)*8,y+(flipY?2-row:row)*8,palette,flipX!==(symmetric&&col===1),flipY!==bottomFlip,z);
   }
  }
+ private item(i:Item,s:Simulation){
+  if(!itemShown(i))return;const x=i.x-s.camera;
+  if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);
+  if(i.kind==='coin'){
+   if(i.nativeCoin){
+    const y=Math.floor(i.y),screenX=Math.floor(x)&255;
+    if(i.nativeCoin.state>=2){this.spriteTile(0xf7,screenX,(y&255)+1,'0f-16-30-27',false,false,2.5);this.spriteTile(0xfb,(screenX+8)&255,(y&255)+1,'0f-16-30-27',false,false,2.5);}
+    else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
+   }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
+  }
+  if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
+  if(i.kind==='hammer'){
+   const phase=i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4;
+   const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
+   for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y);
+  }
+  if(i.kind==='flame')this.special('bowser_flame-'+Math.floor(i.age/8)%2,x,i.y);
+  if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
+ }
  render(s:Simulation){
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorRotations));return r;};
   this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
@@ -235,14 +254,7 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
-   for(const i of s.items){if(!itemShown(i))continue;const x=i.x-s.camera;
-    if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y,i.emerging?-0.1:1.5);
-    if(i.kind==='coin')this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
-    if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
-    if(i.kind==='hammer'){const phase=Math.floor(i.age/4)%4,descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor;const palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');for(const piece of descriptor.sprites)this.spriteTile(piece.tile,x+piece.x,i.y+piece.y,palette,piece.flip_x,piece.flip_y);}
-    if(i.kind==='flame')this.special('bowser_flame-'+Math.floor(i.age/8)%2,x,i.y);
-    if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
-   }
+   for(const i of s.items)this.item(i,s);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
