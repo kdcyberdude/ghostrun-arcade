@@ -9,6 +9,7 @@ import {PlayerAnim} from './player-anim.js';
 import {nativeFlagStep} from './native-flagpole.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
+import {nativeBowserState,stepNativeBowser,nativeBowserHit} from './native-bowser.js';
 import {nativeFirebarHit} from './firebar-contact.js';
 import {PiranhaColumns} from './piranha-columns.js';
 import {advanceBowserX,bowserBodyX,bowserFaceMario,bowserFlameDue,bowserFlameSpeed,bowserHopPause,createBowserMotor,nativeBowserSpawnX,BOWSER_FLAME_OFFSET_X,BOWSER_HOP} from './bowser-motion.js';
@@ -1189,6 +1190,7 @@ export class Simulation {
  private objectSlots(enemySlots:Set<number|undefined>){
   const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
+  for(const e of this.enemies)if(e.active&&!e.dead&&e.nativeBowser?.rearSlot!==undefined)held.add(e.nativeBowser.rearSlot);
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
@@ -1296,13 +1298,13 @@ export class Simulation {
   if(this.items.some(i=>i.nativeHammer?.slot===slot&&i.life>0))return false;
   if(guard<5&&this.enemies.some(o=>o.active&&!o.dead&&o.enemySlot===guard))return false;
   if(guard===5&&this.items.some(i=>['mushroom','flower','star','1up'].includes(i.kind)&&i.life>0))return false;
-  this.items.push({kind:'hammer',x:e.x+2,y:e.y-34,vx:0,vy:0,age:0,life:900,owner:e,nativeHammer:{slot,state:0x90,speed:0,...this.miscHammerBytes[slot]}});return true;
+  this.items.push({kind:'hammer',x:(e.nativeBowser?.x??e.x)+2,y:(e.nativeBowser?e.nativeBowser.y+24:e.y)-34,vx:0,vy:0,age:0,life:900,owner:e,nativeHammer:{slot,state:0x90,speed:0,...this.miscHammerBytes[slot]}});return true;
  }
  private moveNativeHammer(i:Item){
   const n=i.nativeHammer!,owner=i.owner!;
   if((n.state&0x7f)>=2){
    if((n.state&0x7f)===2){n.speed=-2;i.vx=owner.nativeDir??-1;if(owner.hbro)owner.hbro.state&=~8;}
-   n.state--;i.x=Math.floor(owner.x)+2;i.y=Math.floor(owner.y)-34;
+   n.state--;i.x=Math.floor(owner.nativeBowser?.x??owner.x)+2;i.y=Math.floor(owner.nativeBowser?owner.nativeBowser.y+24:owner.y)-34;
   }else{
    const f=n.fraction+n.force;n.fraction=f&255;i.y+=n.speed+(f>>8);const force=n.force+0x10;n.force=force&255;n.speed+=force>>8;if(n.speed>=4&&n.force>=128){n.speed=4;n.force=0;}i.x+=i.vx;
   }
@@ -1639,7 +1641,28 @@ export class Simulation {
  private redKoopaLedgeAhead(e:Enemy){return !this.isSolid(e.x+8,e.y+3);}
  // Green Paratroopa floor contact (GREEN_PARATROOPA_LANDING): too slow a fall does not register yet; a registered sink of 5 px or more
  // that has a solid floor beside it turns the Paratroopa around before it bounces.
- // Native Bowser (src/bowser-motion.ts): the anchor steps every 4th frame, hops start on a timer, fire only while he faces left; he faces Mario on landing.
+ private advanceNativeBowser(e:Enemy){
+  if(e.enemySlot===undefined)this.freeNativeSlot();
+  const slot=e.enemySlot??0;
+  if(!e.nativeBowser){
+   const m=e.nativeBowser=nativeBowserState(e.originX,Math.floor(e.y)-32,this.slotYFraction[slot]);
+   m.fireCounter=this.flameTimerCounter;m.move.speed=(this.slotYSpeed[slot]<<24)>>24;m.move.force=this.slotVertical[slot].force;
+   m.rearSlot=this.freeNativeSlot();
+  }
+  const m=e.nativeBowser;m.fireCounter=this.flameTimerCounter;
+  const action=stepNativeBowser(m,{frame:this.random.frame,byte:this.random.bytes[slot],playerX:Math.floor(this.player.x),world:Number(this.level.id[0]),hard:this.secondaryHardMode});
+  this.flameTimerCounter=m.fireCounter;
+  e.x=m.x-(m.direction&1?16:0);e.y=m.y+32;e.nativeDir=m.direction&1?1:-1;e.vx=m.direction&1?1:-1;e.vy=m.move.speed+m.move.force/256;
+  // Keep the existing public motor pose fields synchronized; live motion comes from the native bytes above.
+  e.bowser={originX:e.originX,anchor:m.x,speed:m.speed,side:m.direction&1?1:-1,legs:0,rightLimit:m.range,frames:e.age,airborne:m.timer===0,pauseIndex:0,nextHop:e.age+m.timer,nextFlame:e.age+m.fireTimer};
+  if(action.flame){
+   const flameSlot=this.freeNativeSlot();
+   if(flameSlot<5&&this.flameTimer<=1){const target=this.random.bytes[flameSlot]&3,y=m.y+8;this.slotYFraction[flameSlot]=target;
+    this.items.push({kind:'flame',x:(m.x&~255)|((m.x-14)&255),y,vx:this.secondaryHardMode?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot:flameSlot,target,born:this.frame,force:[144,128,112,144][target]<y?-1:1}});this.emit('sfx_bowser_flame');}
+  }
+  if(action.hammer&&e.bowserHammers!==false)this.spawnNativeHammer(e);
+ }
+ // Archived explicitly seeded calibration motors retain their supplied event phases; live spawns use advanceNativeBowser.
  private advanceBowser(e:Enemy){
   const m=e.bowser??=createBowserMotor(e.originX,this.level.id);
   advanceBowserX(m);e.x=bowserBodyX(m);e.vx=0;
@@ -1839,6 +1862,7 @@ export class Simulation {
    else if(e.kind==='lakitu'){
     this.updateNativeLakitu(e);
    }
+   else if(e.kind==='bowser'&&(e.nativeBowser||!e.bowser)){this.advanceNativeBowser(e);}
    else if(e.kind==='hammerBro'){
     this.updateNativeHammerBro(e);
    }
@@ -1902,6 +1926,10 @@ export class Simulation {
    }
    if(p.dead||this.enemyContactOff||Math.floor(p.y)-32<0||Math.floor(p.y)-32>=0xd0)continue; // a pit fall keeps enemies moving, but a dead Mario touches nothing
    if(this.broClock%2!==0)continue; // PlayerEnemyCollision returns at once when FrameCounter $09 (broClock) is odd: no touch, stomp or star kill (25 of 25 native enemy-contact deaths are on even rows; 8-2 row 168)
+   if(e.nativeBowser){
+    if(nativeBowserHit(e.nativeBowser,p,this.random.frame)){if(p.star){e.dead=1;e.vy=-4;this.floateyScore(200);this.emit('sfx_kick');}else this.hurt();}
+    continue;
+   }
    const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
@@ -1986,6 +2014,7 @@ export class Simulation {
  private updateItems(){
   const p=this.player;
   for(const i of this.items){
+   if(i.nativeFlame?.born===this.frame)continue; // a mouth flame takes its first movement/collision step on the following native row
    i.age++;i.life--;
    if(i.nativeHammer){
     const flying=(i.nativeHammer.state&127)===1;this.moveNativeHammer(i);
