@@ -80,8 +80,8 @@ for(const [level,through] of [['2-2',6395],['7-2',2208]] as const)test(`${level}
  assert.ok(frames>500);
 });
 
-test('7-2 recorded decisions have no divergence in any legacy comparison field',()=>{
- const excerpt:Excerpt=JSON.parse(fs.readFileSync(new URL('../evidence/native-runs/7-2.v2.json',import.meta.url),'utf8'));
+for(const level of ['2-2','7-2'])test(`${level} recorded decisions have no divergence in any legacy comparison field`,()=>{
+ const excerpt:Excerpt=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
  assert.ok(Object.values(excerptReplay(excerpt).fields).every(value=>value===null));
 });
 
@@ -117,7 +117,7 @@ test('7-2 injury preserves the water position fraction and ends its second death
  }
 });
 
-for(const [level,end] of [['2-2',6395],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
+for(const [level,end] of [['2-2',Infinity],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
  const run=replay(level),expected=new Map<number,[number,number[][]]>();
  for(const [id,row,,,,,after] of waterEvents.bubbles as unknown as [string,number,unknown,unknown,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
  for(const [id,row,,,after] of waterEvents.bubbleEntrances as unknown as [string,number,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
