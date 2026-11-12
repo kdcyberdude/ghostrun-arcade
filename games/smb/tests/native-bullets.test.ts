@@ -15,23 +15,24 @@ function fixture(extra:Partial<Area>,spawn:[number,number]=[40,208]){
 const shots=(sim:Simulation)=>sim.enemies.filter(e=>e.kind==='bullet'&&e.nativeShot);
 // Random bytes that make slot 0 pick table entry 0 and leave slots 1 and 2 without an entry.
 const PICK_ENTRY_0=[0,0,7,7,0,0,0];
+// One cannon pass that makes the object (state 0, the cannon x) in slot 0; the next frame's pass keeps or erases it (BulletBillHandler).
 function attemptSim(cannon:CannonSpec,camera:number,mario:number,spawn?:[number,number]){
- const sim=fixture({cannons:[cannon]},spawn);
+ const sim=fixture({cannons:[cannon]},spawn),s=sim as any;
  sim.camera=camera;sim.player.x=mario;sim.random.bytes=[...PICK_ENTRY_0];
- (sim as any).updateGenerators();
+ s.updateGenerators();s.passNativeCannons();
  return sim;
 }
-const attempt=(cannon:CannonSpec,camera:number,mario:number)=>shots(attemptSim(cannon,camera,mario));
+const attempt=(cannon:CannonSpec,camera:number,mario:number)=>{const sim=attemptSim(cannon,camera,mario);sim.step([],1);return shots(sim).filter(e=>!e.dead);};
 
-// Native attempts of id 51 (7-1, 8-2, 8-3 rows): [cannon x - camera, cannon x - Mario, became a Bullet Bill?]. The object is on screen for 0 <= x - camera <= 255
-// and Mario at least 48 px away; every other attempt is the one-frame object.
+// Native attempts of id 51 (7-1, 8-2, 8-3 route rows): [cannon x - camera, cannon x - Mario, became a Bullet Bill?]. The object is kept on screen (0 <= x - camera <= 255)
+// with x - Mario outside -40..38 (BulletBillHandler; all 252 objects of the v2 traces in tests/native-enemy-rules.test.ts); every other attempt is the one-frame object.
 const NATIVE_ATTEMPTS:[number,number,boolean][]=[
  [127,15,false],[93,-21,false],[85,-27,false],[76,-37,false],        // Mario within 37 px: flash
  [66,-58,true],[54,-59,true],[51,-61,true],[176,64,true],[45,-67,true], // 58 px and more: shot
  [249,137,true],[240,129,true],[0,-112,true],                         // on screen up to 249, and exactly at the camera
  [-29,-141,false],[258,146,false],[267,162,false],[282,199,false],     // off screen: flash
 ];
-test('a cannon shot needs the cannon on screen and Mario 48 px away: all 16 native attempts of 7-1/8-2/8-3 classify',()=>{
+test('a cannon object is kept on screen with Mario outside -40..38 px: all 16 native route attempts of 7-1/8-2/8-3 classify',()=>{
  for(const [onScreen,distance,fired] of NATIVE_ATTEMPTS){
   const camera=1000,cannon:CannonSpec={x:camera+onScreen,y:176,native:true};
   assert.equal(attempt(cannon,camera,cannon.x-distance).length>0,fired,`x-camera ${onScreen}, x-Mario ${distance}`);
@@ -42,21 +43,21 @@ test('a cannon shot needs the cannon on screen and Mario 48 px away: all 16 nati
 const SHOT_7_1=[448,446,445,443,442,440,439,437,436,434];
 test('a native shot holds the cannon x on its first row, then moves 1.5 px per frame toward Mario (7-1 rows 55999-56008)',()=>{
  const sim=attemptSim({x:448,y:192,native:true},250,362,[362,208]);
- const xs:number[]=[];
- for(let f=1;f<=SHOT_7_1.length;f++){sim.step([],1);xs.push(Math.floor(shots(sim)[0].x));}
+ const xs:number[]=[Math.floor(shots(sim)[0].x)];
+ for(let f=2;f<=SHOT_7_1.length;f++){sim.step([],1);xs.push(Math.floor(shots(sim)[0].x));}
  assert.deepEqual(xs,SHOT_7_1);
  const shot=shots(sim)[0];assert.equal(shot.y,208);assert.ok(shot.vx<0);
 });
-test('a shot moves away from a Mario who is to the right of the cannon (7-1 row 56083: Mario 560, cannon 448, x 448 -> 555 right)',()=>{
+test('a shot flies toward a Mario who is to the right of the cannon (7-1 row 56083: Mario 560, cannon 448, x 448 -> 555 right)',()=>{
  const shot=attempt({x:448,y:192,native:true},448,560)[0];
- assert.ok(shot.vx>0);assert.equal(shot.x,448);
+ assert.ok(shot.vx>0);assert.equal(shot.x,449.5);
 });
 
 // Native table rows (8-3 mood0 rows 8-49, 7-1 and 5-2 alike): RAM 0x47D+entry restarts at 14 on an attempt and counts down once per free slot 0..2 whose random byte picks the entry.
 function table(level:string,bytes:number[],busy:number[]=[]){
  const sim=fixture({cannons:[{x:300,y:176,native:true}]},[250,208]),s=sim as any;sim.level.id=level;sim.camera=100;
  for(const slot of busy)sim.enemies.push({...s.makeEnemy({kind:'goomba',x:0,y:0}),active:true,enemySlot:slot});
- s.updateNativeCannons();s.cannonTable[0].timer=5;sim.random.bytes=bytes;s.updateNativeCannons();return s.cannonTable[0].timer;
+ s.updateNativeCannons();s.passNativeCannons();s.cannonTable[0].timer=5;sim.random.bytes=bytes;s.updateNativeCannons();s.passNativeCannons();return s.cannonTable[0].timer;
 }
 test('a cannon timer counts once per free slot 0..2 whose random byte picks it',()=>{
  assert.equal(table('5-2',[9,0,9,9,0,0,0]),4);assert.equal(table('5-2',[9,0,0,9,0,0,0]),3);
@@ -77,21 +78,23 @@ test('cannons take table entries in load order as their column loads (7-1 mood2 
  odd.camera=1417;o.updateNativeCannons();assert.equal(o.cannonTable.length,0);odd.camera=1418;o.updateNativeCannons();assert.equal(o.cannonTable.length,1);
 });
 // 8-3 mood1 rows 48-50 (RAM 0x47D, slots 0x0F-0x13, register 0x7A7): timer 1; row 49 bytes 02 54 50 f8: slots 2 and 1 both pick entry 0, slot 2 counts it to 0 and slot 1 attempts (14; the
-// one-row object, cannon off screen, sits in slot 1); row 50 bytes 81 2a 28 7c: slot 1 would pick entry 0 but still holds that object, so the timer stays 14 (rows 50-52: 14 14 14).
-test('slots pick from 2 down to 0, and a failed attempt holds its slot on the next frame (8-3 mood1 rows 48-50)',()=>{
+// object sits in slot 1); row 50 bytes 81 2a 28 7c: slot 1 would pick entry 0 but holds that object, so the timer stays 14, and at its turn the object (x - camera 285, off screen) is erased.
+const pass=(s:any)=>{s.updateNativeCannons();s.passNativeCannons();};
+test('slots pick from 2 down to 0, and the cannon object holds its slot on the next frame (8-3 mood1 rows 48-50)',()=>{
  const sim=fixture({cannons:[{x:288,y:176,native:true}]},[86,208]),s=sim as any;sim.level.id='8-3';sim.camera=3;
- sim.random.bytes=[0x04,0xa8,0xa1,0xf0,0xb3,0x52,0x34];s.updateNativeCannons();s.cannonTable[0].timer=1;s.cannonFlash.clear(); // native rows 47-48: no slot held
- sim.random.bytes=[0x02,0x54,0x50,0xf8,0x59,0xa9,0x1a];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,14);assert.equal(shots(sim).length,0,'x - camera 285: the one-row object');
- sim.random.bytes=[0x81,0x2a,0x28,0x7c,0x2c,0xd4,0x8d];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,14,'slot 1 is held');
- sim.random.bytes=[0xc0,0x95,0x14,0x3e,0x16,0x6a,0x46];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,14);
+ sim.random.bytes=[0x04,0xa8,0xa1,0xf0,0xb3,0x52,0x34];pass(s);s.cannonTable[0].timer=1;sim.enemies=[]; // native rows 47-48: no slot held
+ sim.random.bytes=[0x02,0x54,0x50,0xf8,0x59,0xa9,0x1a];pass(s);assert.equal(s.cannonTable[0].timer,14);
+ const object=shots(sim)[0];assert.equal(object.enemySlot,1);assert.equal(object.x,288);assert.equal(object.dead,0);
+ sim.random.bytes=[0x81,0x2a,0x28,0x7c,0x2c,0xd4,0x8d];pass(s);assert.equal(s.cannonTable[0].timer,14,'slot 1 is held');assert.ok(object.dead>0,'x - camera 285: erased');
+ sim.random.bytes=[0xc0,0x95,0x14,0x3e,0x16,0x6a,0x46];pass(s);assert.equal(s.cannonTable[0].timer,14);
 });
 // 7-1 mood2/mood5 row 6, the first native row (engine 7, register 23 bf f8 87 ..): slot 1 picks entry 0 (cannon 304, loaded during the load screen) and attempts; the remake's first frame is
 // row 7 (11 df fc 43 bb 3c 4a, no pick), where native shows timer 14, then 14, 13 (row 9).
 test('the first native row of a level already runs a cannon pass on the register one frame back (7-1 row 6)',()=>{
  const sim=fixture({cannons:[{x:304,y:176,native:true}]},[40,208]),s=sim as any;sim.level.id='7-1';sim.camera=0;
- sim.random.bytes=[0x11,0xdf,0xfc,0x43,0xbb,0x3c,0x4a];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,14);
- sim.random.bytes=[0x88,0xef,0xfe,0x21,0xdd,0x9e,0x25];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,14,'row 8: no pick');
- sim.random.bytes=[0xc4,0x77,0xff,0x10,0xee,0xcf,0x12];s.updateNativeCannons();assert.equal(s.cannonTable[0].timer,13,'row 9: slot 2 counts');
+ sim.random.bytes=[0x11,0xdf,0xfc,0x43,0xbb,0x3c,0x4a];pass(s);assert.equal(s.cannonTable[0].timer,14);
+ sim.random.bytes=[0x88,0xef,0xfe,0x21,0xdd,0x9e,0x25];pass(s);assert.equal(s.cannonTable[0].timer,14,'row 8: no pick');
+ sim.random.bytes=[0xc4,0x77,0xff,0x10,0xee,0xcf,0x12];pass(s);assert.equal(s.cannonTable[0].timer,13,'row 9: slot 2 counts');
 });
 test('the route comparison replays recorded cannon attempts, repeating the last gaps',()=>{
  const sim=fixture({cannons:[{x:200,y:176,native:true,fire:[5,12],loop:[3,4]}]},[40,208]);sim.recordedRoute=true;
@@ -100,9 +103,10 @@ test('the route comparison replays recorded cannon attempts, repeating the last 
  assert.deepEqual(frames,[5,12,15,19,22,26,29,33,36,40]);
 });
 
-// 5-3 generator (native id 8): one Bullet Bill at a time at camera + 287, recorded heights (native y 40 88 120 ...), the next one right after the previous one left the screen
-// (native spawn rows 42652, 42775, 42899: 123 and 124 frames apart at the start, then 91-92 while Mario runs; the camera then moves 2.5 px per frame).
-test('the 5-3 generator spawns a bullet at camera + 287 at the recorded heights as soon as the previous one is gone',()=>{
+// 5-3 generator (native id 8): one Bullet Bill at a time at camera + 287 (this frame's camera), at the frenzy height of its slot's random byte (all 18 native heights:
+// tests/native-enemy-rules.test.ts), the next one on the frame the previous one is erased (native spawn rows 42652, 42775, 42899: 123 and 124 frames apart at the start,
+// then 91-92 while Mario runs; the camera then moves 2.5 px per frame).
+test('the 5-3 generator spawns a bullet at camera + 287 at a frenzy height as soon as the previous one is gone',()=>{
  const generator:GeneratorSpec={kind:'bullet',from:0,to:99999,interval:1,heights:[40,88,120],fromCamera:0,toCamera:1e9};
  const sim=fixture({generators:[generator]});
  const spawns:{frame:number;x:number;camera:number;y:number}[]=[];let count=0;
@@ -112,8 +116,9 @@ test('the 5-3 generator spawns a bullet at camera + 287 at the recorded heights 
   if(shots(sim).length>count){count=shots(sim).length;const s=shots(sim)[count-1];spawns.push({frame:f,x:s.x,camera:sim.camera,y:s.y});}
  }
  assert.equal(spawns.length,4);
- assert.deepEqual(spawns.slice(0,3).map(s=>s.y),[64,112,144]); // native y + 24
- spawns.forEach(s=>assert.ok(Math.abs(s.x-(s.camera-2.5*(s.frame>1?1:0)+287))<=3,`x ${s.x} camera ${s.camera}`));
+ const heights=[72,56,152,88,40,104,168,120].map(y=>y+24); // Enemy17YPosData + 8 = native y; remake feet = native y + 24
+ assert.ok(spawns.every(s=>heights.includes(s.y)),`${spawns.map(s=>s.y)}`);assert.equal(new Set(spawns.map(s=>s.y)).size,spawns.length,'BitMFilter: no height twice before all eight are used');
+ spawns.forEach(s=>assert.equal(s.x,s.camera+287,`x ${s.x} camera ${s.camera}`));
  const gaps=spawns.slice(1).map((s,i)=>s.frame-spawns[i].frame);
  gaps.forEach(g=>assert.ok(g>=89&&g<=93,`gap ${g}`));
 });
@@ -129,7 +134,7 @@ test('the generator stops outside its camera range (5-3 recorded range 0 to 1802
 // Contact box: native Mario never touches a Bullet Bill that he only passes at its top edge (5-3 row 43124: rising feet 184 beside a bullet with feet 192, x 1032 / 1039)
 // and stomps one when his feet go from 167 to 171 over a bullet with feet 176 (7-1 rows 56844-56845, vy 4 then -3): the box is about 9 px tall (6 < height <= 10).
 function contact(bulletFeet:number,marioFeet:number,oldFeet:number,vy:number,dx:number){
- const sim=fixture({});sim.player.invincible=0;sim.camera=900;
+ const sim=fixture({});sim.player.invincible=0;sim.camera=900;sim.broClock=1; // PlayerEnemyCollision runs on even frame-counter rows
  (sim as any).spawnNativeBullet(1000,bulletFeet,-1);
  const bullet=shots(sim)[0];bullet.age=5;sim.player.x=1000-dx;sim.player.y=marioFeet;sim.player.vy=vy;
  (sim as any).updateEnemies(oldFeet);

@@ -31,7 +31,8 @@ test('ordinary pause leaves squash age unchanged and resume continues the same i
  sim.step(['start'],1);assert.equal(sim.paused,false);assert.equal(enemy.dead,age+1);
 });
 test('star contact retains launched velocity and never enters stomp squash',()=>{
- const sim=fixture(false);sim.player.star=100;sim.step([],1);const enemy=sim.enemies[0];
+ const sim=fixture(false);sim.player.star=100;(sim as any).broClock=1;sim.step([],1); // even frame-counter row
+ const enemy=sim.enemies[0];
  assert.equal(enemy.dead,1);assert.equal(enemy.squashed,undefined);assert.equal(enemy.vy,-4);
  const y=enemy.y;sim.step([],1);assert.ok(enemy.y<y);assert.equal(enemy.squashed,undefined);
 });

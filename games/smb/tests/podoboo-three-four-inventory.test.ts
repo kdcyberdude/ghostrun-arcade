@@ -41,7 +41,7 @@ test('opening3-4Podoboo freezes while paused and causes an ordinary collision de
 test('live Podoboo artwork direction follows displacement and freezes during pause',()=>{
  const s=fixture();
  const actor=s.enemies.find(e=>e.kind==='podoboo'&&e.originX===256)!;
- s.step([],20);assert.equal(actor.podobooFalling,false); // native jump: rising for about 60 frames after the launch
+ s.step([],30);assert.equal(actor.podobooFalling,false); // launched at the first interval tick (IntervalTimerControl starts at 20), then rising for about 60 frames
  s.step([],80);assert.equal(actor.podobooFalling,true);
  const before=actor.y;s.step([],1);assert.equal(actor.podobooFalling,actor.y>before);
  s.step(['start'],1);

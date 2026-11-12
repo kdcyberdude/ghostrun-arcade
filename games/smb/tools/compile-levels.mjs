@@ -440,7 +440,9 @@ for(const level of observations.levels){
   enemies=enemies.filter(e=>e.x>=0&&e.x<width);
   const mazeObservation=mazeObservations.find(m=>m.id===level.id&&m.area===segment.id);
   const mazes=[mazeObservation?.firstMaze?.runtimeCandidate,mazeObservation?.secondMaze?.runtimeCandidate].filter(Boolean);
-  const cannons=tiles.filter(t=>t[2]===100).map(([col,row])=>({x:col*16,y:row*16,evidence:'Cannon-top artwork observed; firing interval and activation range remain inferred.'}));
+  // A cannon top drawn as a grid-aligned decoration (5-2 area-2 x 272 y 112, in front of the staircase) is a cannon too: native cannon table RAM 0x46B/0x471/0x477 holds it from the level load.
+  const decorationCannons=(segment.decorations??[]).filter(t=>t.metatileId===100&&t.x%16===0&&t.y%16===0&&t.x<width&&!tiles.some(g=>g[2]===100&&g[0]*16===t.x&&g[1]*16===t.y)).map(t=>[t.x/16,t.y/16]);
+  const cannons=[...tiles.filter(t=>t[2]===100),...decorationCannons].map(([col,row])=>({x:col*16,y:row*16,evidence:'Cannon-top artwork observed; firing interval and activation range remain inferred.'})).sort((a,b)=>a.x-b.x||a.y-b.y);
   for(const correction of cannonCorrections.filter(c=>c.level===level.id&&c.area===segment.id)){
    const matches=cannons.filter(c=>c.x===correction.match.x&&c.y===correction.match.y);
    if(matches.length!==1)throw Error(`Expected one corrected cannon ${level.id}/${segment.id}/${JSON.stringify(correction.match)}`);
@@ -914,6 +916,8 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels
   if(!cannon)throw Error(`Missing cannon ${entry.level}/${entry.area}/${entry.x},${entry.y}`);
   cannon.native=true;cannon.fire=entry.fire;cannon.loop=entry.loop;
  }
+ // Every cannon follows the native table/random-register rule; recorded attempt times (fire/loop) only drive the route comparison.
+ for(const l of levels)for(const a of l.areas)for(const c of a.cannons??[])c.native=true;
  // The static Bullet Bill sightings of the screenshot inventory are shots of these cannons: the native trace has no such objects (no id 8 outside 5-3/6-3).
  for(const [level,area] of [...new Set(bullets.cannons.map(c=>`${c.level}/${c.area}`))].map(k=>k.split('/'))){
   const target=levels.find(l=>l.id===level).areas.find(a=>a.id===area);target.enemies=target.enemies.filter(e=>e.kind!=='bullet');

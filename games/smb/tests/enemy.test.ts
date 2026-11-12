@@ -67,8 +67,8 @@ test('each spawned Bowser flame emits its supplied sound cue once',()=>{
 
 test('red winged Koopas fly vertically while green winged Koopas bounce from the floor',()=>{
  const sim=fixture('test',[{kind:'paratroopa',x:170,y:80,palette:'0f-16-30-27'},{kind:'paratroopa',x:230,y:208,palette:'0f-1a-30-27'}]);
- sim.step([],10);assert.equal(sim.enemies[1].vy,GREEN_PARATROOPA_PHYSICS.bounce); // a Paratroopa at rest on the floor sinks and first bounces at age 10 (native-measured)
- sim.step([],35);assert.equal(sim.enemies[0].x,170);assert.ok(sim.enemies[0].y>80);assert.ok(sim.enemies[1].y<208);
+ sim.step([],11);assert.equal(sim.enemies[1].vy,GREEN_PARATROOPA_PHYSICS.bounce+GREEN_PARATROOPA_PHYSICS.gravity); // a Paratroopa at rest on the floor sinks and first bounces at age 11 (native 8-1 rows 1267-1278)
+ sim.step([],34);assert.equal(sim.enemies[0].x,170);assert.ok(sim.enemies[0].y>80);assert.ok(sim.enemies[1].y<208);
 });
 
 test('an idle shell revives, while a kicked shell continues moving',()=>{

@@ -16,40 +16,41 @@ function fixture(enemies:EnemySpec[],spawn:[number,number]=[40,208],floorEnd=102
 // Live from the first frame with a chosen direction, so the activation rule is not involved.
 function live(sim:Simulation,vx:number[]){sim.enemies.forEach((e,i)=>{e.active=true;e.vx=vx[i];});return sim;}
 
-test('a Paratroopa that starts at rest first bounces at age 10, after sinking 4.8 px into the floor',()=>{
+// Native jumping Paratroopa (id 14): integer y with a fraction byte, 8.8 speed, +28/256 per frame (cap 3); EnemyLanding when the speed byte is 1+ and the feet are in a block:
+// snap to the block top and speed -3, then that frame's move (8-2 slot 3 rows 83-94: y 56 at rest, speed byte 1 at row 93, row 94 y 53 = snap 56 - 3).
+const BOUNCE_ROW_VY=GREEN_PARATROOPA_PHYSICS.bounce+GREEN_PARATROOPA_PHYSICS.gravity;
+test('a Paratroopa that starts at rest sinks 4 px and first bounces at age 11 (native 8-1 rows 1267-1278)',()=>{
  const sim=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]),enemy=sim.enemies[0];
- sim.step([],1);assert.equal(enemy.vy,0,'age 1 starts the fall from rest');
- for(let age=2;age<=9;age++){sim.step([],1);assert.ok(enemy.vy>0&&enemy.y>208,`age ${age} is still sinking`);}
- assert.ok(enemy.y>211.9&&enemy.y<212,`sunk to ${enemy.y}`);
- sim.step([],1);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.bounce);assert.equal(enemy.y,208);
+ sim.step([],1);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.gravity,'age 1 starts the fall from rest');assert.equal(enemy.y,208);
+ for(let age=2;age<=10;age++){sim.step([],1);assert.ok(enemy.vy>0&&enemy.y>=208,`age ${age} is still sinking`);}
+ assert.equal(enemy.y,212,'native 8-1: y 184 -> 188 before the bounce');
+ sim.step([],1);assert.equal(enemy.vy,BOUNCE_ROW_VY);assert.equal(enemy.y,205);assert.equal(enemy.vx,0.5);
 });
 
-test('a fall slower than one pixel per frame does not register floor contact',()=>{
+test('a speed byte of 0 does not register floor contact, a speed byte of 1+ does at once',()=>{
  const sim=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]),enemy=sim.enemies[0];
- enemy.vy=0.6;sim.step([],1);
- assert.ok(enemy.vy<GREEN_PARATROOPA_LANDING.landingSpeed&&enemy.y>208);
- enemy.vy=GREEN_PARATROOPA_PHYSICS.maxFall;enemy.y=206;sim.step([],1);
- assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.bounce);
+ enemy.y=209;enemy.vy=0.6;sim.step([],1);assert.ok(enemy.vy>0&&enemy.y>=209,'speed byte 0: still falling');
+ const fast=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]),arriving=fast.enemies[0];
+ arriving.y=209;arriving.vy=GREEN_PARATROOPA_PHYSICS.maxFall;fast.step([],1);
+ assert.equal(arriving.vy,BOUNCE_ROW_VY);assert.equal(arriving.y,205);
 });
 
-test('registering contact 5 px or more below the floor turns the Paratroopa around, 4.9 px does not',()=>{
- const shallow=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN,spawnYFraction:0}]),[0.5]);shallow.step([],10);
- assert.equal(shallow.enemies[0].vy,GREEN_PARATROOPA_PHYSICS.bounce);assert.equal(shallow.enemies[0].vx,0.5);
- const deep=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN,spawnYFraction:0.2}]),[0.5]);deep.step([],10);
- assert.equal(deep.enemies[0].vy,GREEN_PARATROOPA_PHYSICS.bounce);assert.equal(deep.enemies[0].vx,-0.5);
+test('landing 5 px or more below the floor turns the Paratroopa around (side probe 5 px above the feet), 4 px does not',()=>{
+ const shallow=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]);shallow.step([],11);
+ assert.equal(shallow.enemies[0].vy,BOUNCE_ROW_VY);assert.equal(shallow.enemies[0].vx,0.5);
+ const deep=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]);deep.enemies[0].y=208.2;deep.step([],11); // fraction byte 51: feet 213 when contact registers
+ assert.equal(deep.enemies[0].vy,BOUNCE_ROW_VY);assert.equal(deep.enemies[0].vx,-0.5);
 });
 
 test('the sink turn needs solid ground at the side probe: a pit edge gives no turn',()=>{
- const sim=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN,spawnYFraction:0.5}],[40,208],220),[0.5]);
- sim.step([],10);
- assert.equal(sim.enemies[0].vy,GREEN_PARATROOPA_PHYSICS.bounce);assert.equal(sim.enemies[0].vx,0.5);
+ const sim=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}],[40,208],220),[0.5]);sim.enemies[0].y=208.5;
+ sim.step([],11);
+ assert.equal(sim.enemies[0].vy,BOUNCE_ROW_VY);assert.equal(sim.enemies[0].vx,0.5);
 });
 
-test('the spawn vertical state seeds the first fall: a measured initial velocity shortens it',()=>{
- // spawnVy is the native vertical speed of the first slot sample; a Paratroopa already falling at 0.53125 registers before age 10.
+test('a jumping Paratroopa is made at rest: the route-measured spawnVy and spawnYFraction are not used (native 8-1 row 1267, 8-2 row 83)',()=>{
  const sim=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN,spawnVy:0.53125,spawnYFraction:0.35}]),[0.5]),enemy=sim.enemies[0];
- let age=0;while(enemy.vy>0||age===0){sim.step([],1);age++;assert.ok(age<12);}
- assert.ok(age<10,`bounced at age ${age}`);
+ sim.step([],1);assert.equal(enemy.y,208);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.gravity);
 });
 
 test('Paratroopa and Beetle side probes sit at the edges of the sprite, 5 px above the feet',()=>{

@@ -32,6 +32,7 @@ function contact(kind:EnemySpec['kind'],dy:number,vy:number,setup?:(sim:Simulati
  const level:Level={id:'fixture',time:400,main:'main',evidence:'Synthetic hurt fixture at native offsets',areas:[{id:'main',width:1024,palette:0,theme:'ground',spawn:[100,208],tiles,enemies:[{kind,x:109,y:feet}],evidence:'Synthetic'}]};
  const sim=new Simulation([level]);sim.reset(true);
  sim.player.y=my+32;sim.player.vy=vy;sim.player.grounded=false;setup?.(sim);
+ (sim as any).broClock=1; // PlayerEnemyCollision runs on even frame-counter rows
  (sim as any).updateEnemies(sim.player.y);
  return sim.phase;
 }
