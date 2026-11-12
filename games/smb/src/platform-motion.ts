@@ -36,7 +36,9 @@ export function nativeWrapY(object:NativePlatformObject,age:number){
 /** Collision-surface position of a native object that has existed for `age` frames (balance: `age` is the pair offset). */
 export function nativeObjectPosition(object:NativePlatformObject,age:number):PlatformPosition {
  if(object.kind==='wrap')return {x:object.x,y:nativeWrapY(object,age)};
- if(object.kind==='balance'||object.kind==='drop')return {x:object.x,y:Math.round(object.y+object.side!*age)};
+ // balance: the partner keeps a sub-pixel y and shows its floor; the rider's side mirrors that integer, so both move by ceil(|offset|) (4-3 v2 row 383: partner 125.98 -> 125, rider 78 -> 79)
+ if(object.kind==='balance')return {x:object.x,y:object.y+object.side!*Math.sign(age)*Math.ceil(Math.abs(age)-1e-9)};
+ if(object.kind==='drop')return {x:object.x,y:Math.round(object.y+object.side!*age)};
  if(object.kind==='horizontal')return {x:object.x-tableAt(nativePlatformMotion.horizontal.drop,age-nativePlatformMotion.horizontal.phase),y:object.y};
  const cycle=nativePlatformMotion.lift.drop,drop=cycle[((age%cycle.length)+cycle.length)%cycle.length];
  return {x:object.x,y:object.direction==='up'?object.y-(drop+(age>0?1:0)):object.y+drop};

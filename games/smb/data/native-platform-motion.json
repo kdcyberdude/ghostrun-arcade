@@ -3,8 +3,8 @@
  "evidence": "evidence/moving-platform-phase-findings-20261109.md",
  "note": "Native platform objects are spawned when the scroll position reaches spawnCamera (x - 303 within camera steps) and run from that frame, not from the level timeline. horizontal: x = x - drop[(t - phase) mod period]; lift: y = y +/- drop[t mod period] (up: one pixel more after the first frame); balance: static until a rider stands on one of the pair, see pulley; drop: falls only while ridden, see drop. wrap: (38/43 up, 39/44 down) y = y0 -/+ floor((phase + 15 age) / 16) modulo 256, phase = hidden idle-step position of that object.",
  "pulley": {
-  "accel": 0.02,
-  "release": 0.02,
+  "accel": 0.01953125,
+  "release": 0.01953125,
   "speedCap": 2,
   "travelCap": 60
  },

@@ -3,7 +3,7 @@
  * ram.bin (2048 bytes of RAM after each pad), plus the entrance.json receipt of the matching recording.
  * Those traces come from ghostrun-lab scripts/recording/native_ram_trace.py (branch native-ram-trace).
  *   npx tsx tools/harness/native-divergence.ts --traces DIR --entrances media/recordings/threejs-2d [--levels 4-3,1-2] [--json out.json] [--detail 4-3]
- * Fields compared every frame: death, HUD timer, score, coins, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
+ * Fields compared every frame: death, HUD timer, score, coins, and (main area) camera, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
 import fs from 'node:fs';
 import path from 'node:path';
 import {parseArgs} from 'node:util';
@@ -17,7 +17,7 @@ const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).red
 export type Divergence={level:string,frames:number,first:number|null,fields:Record<string,number|null>,at?:{field:string,native:number,sim:number}[]};
 
 export function nativeRow(r:Uint8Array){
- return {time:digits(r,0x7f8,3),score:digits(r,0x7dd,6)*10,coins:r[0x75e],x:r[0x6d]*256+r[0x86],y:r[0xce],
+ return {time:digits(r,0x7f8,3),score:digits(r,0x7dd,6)*10,coins:r[0x75e],cam:r[0x71a]*256+r[0x71c],x:r[0x6d]*256+r[0x86],y:r[0xce],
   play:r[0x770]===1&&r[0x772]===3&&r[0x0e]===8,level:`${r[0x75f]+1}-${r[0x75c]+1}`,mode:r[0x770],dead:Number(r[0x0e]===6||r[0x0e]===11),engine:r[0x0e]};
 }
 
@@ -26,7 +26,7 @@ export function divergence(dir:string,receiptPath:string,level:string,detail=fal
  const receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
  const sim=new Simulation(observedLevels());sim.reset(true);
  initializeEntrance(sim,decodeEntrance(initial,receipt));sim.step([],0);sim.inputs=[];
- const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,x:null,y:null};const at:{field:string,native:number,sim:number}[]=[];
+ const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null};const at:{field:string,native:number,sim:number}[]=[];
  /* Native x is level-absolute: a bonus/pipe room can continue at a later page, so each later area visit is aligned on its first compared frame. */
  let area=sim.area.id,xOffset:number|undefined=0;
  for(let f=0;f<pads.length;f++){
@@ -35,8 +35,8 @@ export function divergence(dir:string,receiptPath:string,level:string,detail=fal
   if(n.mode!==1||n.level!==level||sim.level.id!==level)break;
   if(sim.area.id!==area){area=sim.area.id;xOffset=undefined;}
   const pos=n.play&&sim.phase==='play';if(pos&&xOffset===undefined)xOffset=n.x-Math.floor(sim.player.x);
-  const s={time:sim.time,score:sim.score,coins:sim.coins,x:Math.floor(sim.player.x)+(xOffset??0),y:(Math.floor(sim.player.y)-32)&255,dead:Number(['dying','gameover'].includes(sim.phase))};
-  const checks:[string,boolean][]=[['dead',true],['time',!(sim.area.autoWalk&&n.time===0)&&n.engine!==7],['score',true],['coins',true],['x',pos],['y',pos]];
+  const s={time:sim.time,score:sim.score,coins:sim.coins,cam:Math.floor(sim.camera),x:Math.floor(sim.player.x)+(xOffset??0),y:(Math.floor(sim.player.y)-32)&255,dead:Number(['dying','gameover'].includes(sim.phase))};
+  const checks:[string,boolean][]=[['dead',true],['time',!(sim.area.autoWalk&&n.time===0)&&n.engine!==7],['score',true],['coins',true],['cam',pos&&area===sim.level.main],['x',pos],['y',pos]];
   for(const [k,on] of checks){const nv=n[k as keyof typeof n] as number,sv=s[k as keyof typeof s];
    if(on&&fields[k]===null&&nv!==sv){fields[k]=f;if(detail)at.push({field:k,native:nv,sim:sv});}}
  }
