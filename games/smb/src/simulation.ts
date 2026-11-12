@@ -464,7 +464,7 @@ export class Simulation {
    }
    return;
   }
-  if(this.phase==='castle'){this.tickIntervalTimers();this.updateCastle();this.restoreStarMusic();return;}
+  if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
   if(this.phase==='flag'){this.tickIntervalTimers();this.updateFlag();this.restoreStarMusic();return;}
   if(this.powerChange){this.updateBubbles(false,false);this.lifeFrozen++;if(--this.powerChange.remaining===0){this.player.size=this.powerChange.to;this.powerChange=undefined;}return;}
   this.parserVramBusy=false;
