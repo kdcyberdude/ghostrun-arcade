@@ -10132,11 +10132,16 @@
           {
             "kind": "goomba",
             "x": 2161,
-            "y": 160,
+            "y": 144,
             "direction": -1,
             "evidence": "screenshot sequence 120 tick 476; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 1915
+            "spawnCamera": 1915,
+            "nativeGroup": {
+              "column": 2208,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -10149,7 +10154,7 @@
             "nativeSlot": "once",
             "nativeGroup": {
               "column": 2208,
-              "index": 0,
+              "index": 1,
               "count": 2
             }
           },
@@ -10195,20 +10200,6 @@
             "spawnCamera": 0,
             "palette": "0f-0c-3c-1c",
             "evidence": "Distinct second Goomba seen simultaneously16px to the right; clipped head x250@native2546 thenfull239@2569. Common first movement2504 with initial x272 fits within1px. Add actor; do not replace an existing later Goomba."
-          },
-          {
-            "kind": "goomba",
-            "x": 2184,
-            "y": 144,
-            "direction": -1,
-            "spawnCamera": 1905,
-            "palette": "0f-0c-3c-1c",
-            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
-            "nativeGroup": {
-              "column": 2208,
-              "index": 1,
-              "count": 2
-            }
           }
         ],
         "pipes": [

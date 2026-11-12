@@ -55,3 +55,14 @@ test('native group enrichment is repeatable without duplicate actors',()=>{
  applyNativeWalkerGroups(levels,layouts);
  assert.deepEqual(levels.map(l=>l.areas.map(a=>a.enemies.length)),before);
 });
+
+test('a later falling sighting belongs to its raw native group, without a duplicate generated actor',()=>{
+ const levels:any[]=[{id:'fixture',areas:[{id:'main',enemies:[
+  {kind:'goomba',x:2161,y:160,spawnCamera:1915},
+  {kind:'goomba',x:2185,y:144,spawnCamera:1915},
+  {kind:'goomba',x:2184,y:144,spawnCamera:1905,nativeGroup:{column:2208,index:1,count:2},evidence:'Native enemy-data group member; made only if a slot is free at the group parser pass.'},
+ ]}]}];
+ applyNativeWalkerGroups(levels,[{level:'fixture',area:'main',singles:[],groups:[{column:2208,count:2,kind:'goomba',y:144}]}]);
+ const enemies=levels[0].areas[0].enemies;
+ assert.deepEqual(enemies.map((e:any)=>({x:e.x,y:e.y,index:e.nativeGroup.index})),[{x:2161,y:144,index:0},{x:2185,y:144,index:1}]);
+});
