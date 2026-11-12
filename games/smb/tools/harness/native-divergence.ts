@@ -1,6 +1,7 @@
 /** First frame where the simulation, replayed headlessly from an observed level entrance, stops matching the native NES.
  * Input per level: a directory with initial.ram (RAM before the first pad), pads.bin (one NES pad byte per PPU frame) and
  * ram.bin (2048 bytes of RAM after each pad), plus the entrance.json receipt of the matching recording.
+ * Those traces come from ghostrun-lab scripts/recording/native_ram_trace.py (branch native-ram-trace).
  *   npx tsx tools/harness/native-divergence.ts --traces DIR --entrances media/recordings/threejs-2d [--levels 4-3,1-2] [--json out.json] [--detail 4-3]
  * Fields compared every frame: death, HUD timer, score, coins, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
 import fs from 'node:fs';
