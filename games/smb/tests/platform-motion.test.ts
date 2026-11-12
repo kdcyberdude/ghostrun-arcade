@@ -22,8 +22,8 @@ test('lift trajectory agrees with a later mounted cycle not used as trajectory k
 
 test('standing contact and rendering queries cannot change the autonomous lift phase',()=>{
  // Native 1-3 lift object (reference RAM, route rows 5351+age): y=226 at age 166. It runs on its own age from the spawn
- // camera (576 in the remake's scroll), not from a level timeline, so the former level-frame phase argument is gone.
- const motion=new PlatformMotion({levelId:'1-3',areaId:'main'});motion.advance(0,576);
+ // camera (native object x880−303=577), not from a level timeline.
+ const motion=new PlatformMotion({levelId:'1-3',areaId:'main'});motion.advance(0,577);
  const prior=motion.artworkPosition(firstLift,166);motion.contact(firstLift,140);
  assert.deepEqual(motion.artworkPosition(firstLift,166),prior);
  assert.deepEqual(motion.artworkPosition(firstLift,166),{x:880,y:227});

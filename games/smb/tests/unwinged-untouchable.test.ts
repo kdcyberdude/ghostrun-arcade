@@ -24,7 +24,7 @@ test('a stomped Paratroopa becomes a Koopa that Mario falls through until it lan
   const score=sim.awardedScore;sim.step([],1);airRows++;
   if(koopa.unwingedAir){assert.equal(sim.awardedScore,score);assert.ok(!sim.player.dead);assert.ok(!koopa.shell);}
  }
- assert.ok(airRows>=12&&airRows<=25,`air rows ${airRows}`);
+ assert.ok(airRows>=12&&airRows<=28,`air rows ${airRows}`); // the fall keeps the Paratroopa's 8.8 state under the native 0x3D walker gravity
  assert.equal(koopa.vy,0);
  Object.assign(sim.player,{x:koopa.x,y:koopa.y-5,vx:0,vy:2,grounded:false});
  sim.broClock|=1; // native stomp contact is tested only on even counter rows (route 51 of 51, stompedge probe); the step increments the counter

@@ -33,7 +33,7 @@ test('a Goomba walking left turns back when a squashed Goomba is 10 px ahead',()
  sim.step([],1);const corpse=sim.enemies[0],walker=sim.enemies[1];
  corpse.x=200;corpse.dead=1;corpse.squashed=true;corpse.vx=0;
  let min=Infinity;for(let i=0;i<60;i++){sim.step([],1);min=Math.min(min,walker.x);}
- assert.equal(min,210.5);assert.ok(walker.vx>0);assert.ok(walker.x>min);
+ assert.equal(min,210);assert.ok(walker.vx>0);assert.ok(walker.x>min);
 });
 
 test('a squashed Goomba does not turn walkers once its squash has finished',()=>{
@@ -49,10 +49,10 @@ test('a Koopa walking left turns back when a stationary shell is 12 px ahead',()
  sim.step([],1);const shell=sim.enemies[0],walker=sim.enemies[1];
  shell.x=200;shell.shell=true;shell.movingShell=false;shell.vx=0;
  let min=Infinity;for(let i=0;i<60;i++){sim.step([],1);shell.shellAge=0;min=Math.min(min,walker.x);}
- assert.equal(min,212.5);assert.ok(walker.vx>0);
+ assert.equal(min,212);assert.ok(walker.vx>0);
 });
 
-test('two live walkers still reverse at the existing 16 px contact distance',()=>{
+test('two live walkers reverse on an odd counter row when their native boxes touch',()=>{
  const sim=fixture([{kind:'goomba',x:100,y:208,direction:1},{kind:'goomba',x:140,y:208,direction:-1}],range(0,63));
  sim.step([],60);
  assert.ok(sim.enemies[0].vx<0&&sim.enemies[1].vx>0);

@@ -11,7 +11,7 @@ import {parseArgs} from 'node:util';
 const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string',default:'tests/fixtures/native-enemy-rule-events.json'}}});
 if(!a.traces)throw Error('--traces is required');
 const signed=v=>v<128?v:v-256;
-const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[]};
+const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const d=fs.readFileSync(file),n=d.length/2048,R=f=>d.subarray(f*2048,(f+1)*2048);
@@ -48,6 +48,23 @@ for(const level of fs.readdirSync(a.traces).sort()){
    // frenzy Bullet Bill (id 8) made this row
    if(id===8&&!(p[0xf+s]&&p[0x16+s]===8))out.frenzyBullets.push({level,row:f,slot:s,byte:r[0x7a7+s],bagBefore:p[0x6dd],bagAfter:r[0x6dd],y:r[0xcf+s]});
   }
+  // Stop_Frenzy queued by AreaFrenzy on a parser column; retained through task 7, consumed at the next available enemy pass.
+  if(r[0x6cd]===24&&p[0x6cd]!==24){
+   let end=f+1;while(end<n&&R(end)[0x6cd]===24)end++;
+   out.stopFrenzy.push({level,row:f,column:r[0x725]*256+r[0x726]*16,camera:r[0x71a]*256+r[0x71c],task:r[0x71f],consumed:end});
+  }
+  // Lakitu (id 17) normal-play rows: [pre-step x, Mario x, Player_X_Speed $57, ScrollAmount $0775, state before, dir $A0 and speed $58 before, then after] (MoveLakitu)
+  for(let s=0;s<5;s++)if(r[0x0e]===8&&r[0xf+s]&&r[0x16+s]===17&&p[0xf+s]&&p[0x16+s]===17&&!(p[0x1e+s]&0x20))
+   out.lakituRows.push([level,f,p[0x6e+s]*256+p[0x87+s],r[0x6d]*256+r[0x86],r[0x57],r[0x775],p[0x1e+s],p[0xa0+s],p[0x58+s],r[0xa0+s],r[0x58+s]]);
+  // Spiny eggs (id 18, state 5) made this row (CreateSpiny): slot, Lakitu slot and x before/after its step, egg x, y and vertical bytes, the y fraction the slot was left with
+  for(let s=0;s<5;s++)if(r[0xf+s]&&r[0x16+s]===18&&r[0x1e+s]===5&&!(p[0xf+s]&&p[0x16+s]===18&&p[0x1e+s]===5)){
+   const l=[0,1,2,3,4].find(k=>r[0xf+k]&&r[0x16+k]===17);if(l===undefined)continue;
+   out.spinyEggs.push({level,row:f,slot:s,lakituSlot:l,lakituBefore:p[0x6e+l]*256+p[0x87+l],lakituAfter:r[0x6e+l]*256+r[0x87+l],lakituY:r[0xcf+l],x:r[0x6e+s]*256+r[0x87+s],y:r[0xcf+s],
+    speed:signed(r[0xa0+s]),force:r[0x434+s],fraction:r[0x417+s],slotFraction:p[0x417+s],timerBefore:p[0x78f],timerAfter:r[0x78f],marioY:r[0xce]});
+  }
+  // Spiny landings (state 5 egg or 1 faller -> 0): FrameCounter, Mario x and the Spiny's pre-step x, the speed byte set
+  for(let s=0;s<5;s++)if(r[0xf+s]&&r[0x16+s]===18&&p[0xf+s]&&p[0x16+s]===18&&(p[0x1e+s]===5||p[0x1e+s]===1)&&r[0x1e+s]===0)
+   out.spinyLandings.push({level,row:f,from:p[0x1e+s],frame:r[0x09],mario:r[0x6d]*256+r[0x86],x:p[0x6e+s]*256+p[0x87+s],speed:r[0x58+s]});
   // interval timers: IntervalTimerControl wraps 0 -> 20 and every running EnemyIntervalTimer of a live Podoboo counts down
   if(play&&[0,1,2,3,4].some(s=>r[0xf+s]&&r[0x16+s]===12&&p[0xf+s]&&p[0x16+s]===12))
    out.intervalTicks.push({level,row:f,control:p[0x77f],controlNext:r[0x77f],timers:[0,1,2,3,4].map(s=>p[0xf+s]&&p[0x16+s]===12&&r[0x16+s]===12?[p[0x796+s],r[0x796+s]]:null)});
@@ -55,5 +72,5 @@ for(const level of fs.readdirSync(a.traces).sort()){
 }
 // keep the interval rows small: the wrap rows and every 210th other row
 out.intervalTicks=out.intervalTicks.filter((t,i)=>t.control===0||i%210===0);
-fs.writeFileSync(a.out,JSON.stringify(out).replace(/\{"level"/g,'\n{"level"')+'\n');
+fs.writeFileSync(a.out,JSON.stringify(out).replace(/\{"level"/g,'\n{"level"').replace(/\["(\d-\d)"/g,'\n["$1"')+'\n');
 console.log(Object.entries(out).filter(([,v])=>Array.isArray(v)).map(([k,v])=>`${k} ${v.length}`).join(', '));

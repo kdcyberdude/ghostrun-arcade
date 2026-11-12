@@ -1,0 +1,3396 @@
+{
+ "unwinged": [
+  {
+   "level": "2-1",
+   "row": 1290,
+   "slot": 0,
+   "before": {
+    "x": 2385,
+    "y": 190,
+    "speed": -3,
+    "force": 196,
+    "fraction": 36,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2384.5,
+    "y": 190,
+    "speed": 0,
+    "force": 0,
+    "fraction": 36,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "mario": 2388
+  },
+  {
+   "level": "3-2",
+   "row": 699,
+   "slot": 0,
+   "before": {
+    "x": 1436.5,
+    "y": 194,
+    "speed": -3,
+    "force": 140,
+    "fraction": 116,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 1437,
+    "y": 194,
+    "speed": 0,
+    "force": 0,
+    "fraction": 116,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 1436
+  },
+  {
+   "level": "5-1",
+   "row": 2266,
+   "slot": 0,
+   "before": {
+    "x": 2740.5,
+    "y": 202,
+    "speed": -3,
+    "force": 56,
+    "fraction": 200,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "after": {
+    "x": 2740,
+    "y": 202,
+    "speed": 0,
+    "force": 0,
+    "fraction": 200,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "mario": 2751
+  },
+  {
+   "level": "5-1",
+   "row": 3416,
+   "slot": 0,
+   "before": {
+    "x": 2808,
+    "y": 176,
+    "speed": -2,
+    "force": 136,
+    "fraction": 80,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2808.5,
+    "y": 176,
+    "speed": 0,
+    "force": 0,
+    "fraction": 80,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2800
+  },
+  {
+   "level": "5-1",
+   "row": 3464,
+   "slot": 1,
+   "before": {
+    "x": 2862,
+    "y": 187,
+    "speed": -3,
+    "force": 224,
+    "fraction": 104,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2862.5,
+    "y": 187,
+    "speed": 0,
+    "force": 0,
+    "fraction": 104,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2858
+  },
+  {
+   "level": "6-2",
+   "row": 356,
+   "slot": 0,
+   "before": {
+    "x": 656.5,
+    "y": 190,
+    "speed": -3,
+    "force": 196,
+    "fraction": 52,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 657,
+    "y": 190,
+    "speed": 0,
+    "force": 0,
+    "fraction": 52,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 647
+  },
+  {
+   "level": "7-1",
+   "row": 359,
+   "slot": 0,
+   "before": {
+    "x": 819,
+    "y": 185,
+    "speed": 2,
+    "force": 36,
+    "fraction": 224,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 819.5,
+    "y": 185,
+    "speed": 0,
+    "force": 0,
+    "fraction": 224,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 808
+  },
+  {
+   "level": "7-1",
+   "row": 437,
+   "slot": 2,
+   "before": {
+    "x": 1010.5,
+    "y": 190,
+    "speed": 2,
+    "force": 92,
+    "fraction": 140,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 1011,
+    "y": 190,
+    "speed": 0,
+    "force": 0,
+    "fraction": 140,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 1003
+  },
+  {
+   "level": "8-2",
+   "row": 779,
+   "slot": 3,
+   "before": {
+    "x": 349.5,
+    "y": 91,
+    "speed": 3,
+    "force": 116,
+    "fraction": 16,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 350,
+    "y": 91,
+    "speed": 0,
+    "force": 0,
+    "fraction": 16,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 341
+  },
+  {
+   "level": "8-2",
+   "row": 1315,
+   "slot": 2,
+   "before": {
+    "x": 1524,
+    "y": 171,
+    "speed": -2,
+    "force": 248,
+    "fraction": 172,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "after": {
+    "x": 1524.5,
+    "y": 171,
+    "speed": 0,
+    "force": 0,
+    "fraction": 172,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 1520
+  },
+  {
+   "level": "8-2",
+   "row": 1631,
+   "slot": 3,
+   "before": {
+    "x": 2186,
+    "y": 181,
+    "speed": -2,
+    "force": 52,
+    "fraction": 96,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2186.5,
+    "y": 181,
+    "speed": 0,
+    "force": 0,
+    "fraction": 96,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2175
+  },
+  {
+   "level": "8-2",
+   "row": 1973,
+   "slot": 3,
+   "before": {
+    "x": 2713.5,
+    "y": 167,
+    "speed": -1,
+    "force": 104,
+    "fraction": 177,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2714,
+    "y": 167,
+    "speed": 0,
+    "force": 0,
+    "fraction": 177,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2707
+  },
+  {
+   "level": "8-2",
+   "row": 2465,
+   "slot": 0,
+   "before": {
+    "x": 239,
+    "y": 167,
+    "speed": -1,
+    "force": 104,
+    "fraction": 224,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 239.5,
+    "y": 167,
+    "speed": 0,
+    "force": 0,
+    "fraction": 224,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 229
+  },
+  {
+   "level": "8-3",
+   "row": 182,
+   "slot": 0,
+   "before": {
+    "x": 450,
+    "y": 192,
+    "speed": 2,
+    "force": 120,
+    "fraction": 232,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 450.5,
+    "y": 192,
+    "speed": 0,
+    "force": 0,
+    "fraction": 232,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 442
+  },
+  {
+   "level": "8-3",
+   "row": 740,
+   "slot": 0,
+   "before": {
+    "x": 1466.75,
+    "y": 202,
+    "speed": -3,
+    "force": 56,
+    "fraction": 60,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 1466.25,
+    "y": 202,
+    "speed": 0,
+    "force": 0,
+    "fraction": 60,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "mario": 1476
+  },
+  {
+   "level": "8-3",
+   "row": 1728,
+   "slot": 0,
+   "before": {
+    "x": 450,
+    "y": 192,
+    "speed": 2,
+    "force": 120,
+    "fraction": 232,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 450.5,
+    "y": 192,
+    "speed": 0,
+    "force": 0,
+    "fraction": 232,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 442
+  },
+  {
+   "level": "8-3",
+   "row": 3076,
+   "slot": 1,
+   "before": {
+    "x": 450.5,
+    "y": 190,
+    "speed": 2,
+    "force": 92,
+    "fraction": 140,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 451,
+    "y": 190,
+    "speed": 0,
+    "force": 0,
+    "fraction": 140,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 439
+  },
+  {
+   "level": "8-4",
+   "row": 6797,
+   "slot": 0,
+   "before": {
+    "x": 2180.5,
+    "y": 165,
+    "speed": 0,
+    "force": 16,
+    "fraction": 196,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2181,
+    "y": 165,
+    "speed": 0,
+    "force": 0,
+    "fraction": 196,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2171
+  },
+  {
+   "level": "8-4",
+   "row": 6945,
+   "slot": 2,
+   "before": {
+    "x": 2446.5,
+    "y": 181,
+    "speed": -2,
+    "force": 52,
+    "fraction": 12,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2447,
+    "y": 181,
+    "speed": 0,
+    "force": 0,
+    "fraction": 12,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2438
+  },
+  {
+   "level": "8-4",
+   "row": 9255,
+   "slot": 1,
+   "before": {
+    "x": 2217.5,
+    "y": 172,
+    "speed": -2,
+    "force": 220,
+    "fraction": 0,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2218,
+    "y": 172,
+    "speed": 0,
+    "force": 0,
+    "fraction": 0,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2209
+  },
+  {
+   "level": "8-4",
+   "row": 9443,
+   "slot": 2,
+   "before": {
+    "x": 2414,
+    "y": 172,
+    "speed": -2,
+    "force": 220,
+    "fraction": 188,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2413.5,
+    "y": 172,
+    "speed": 0,
+    "force": 0,
+    "fraction": 188,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "mario": 2418
+  },
+  {
+   "level": "8-4",
+   "row": 10277,
+   "slot": 3,
+   "before": {
+    "x": 2419,
+    "y": 187,
+    "speed": -3,
+    "force": 224,
+    "fraction": 236,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2419.5,
+    "y": 187,
+    "speed": 0,
+    "force": 0,
+    "fraction": 236,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2419
+  },
+  {
+   "level": "8-4",
+   "row": 11097,
+   "slot": 3,
+   "before": {
+    "x": 2418.5,
+    "y": 187,
+    "speed": -3,
+    "force": 224,
+    "fraction": 236,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2419,
+    "y": 187,
+    "speed": 0,
+    "force": 0,
+    "fraction": 236,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2418
+  },
+  {
+   "level": "8-4",
+   "row": 11713,
+   "slot": 1,
+   "before": {
+    "x": 2219,
+    "y": 174,
+    "speed": -2,
+    "force": 164,
+    "fraction": 156,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2219.5,
+    "y": 174,
+    "speed": 0,
+    "force": 0,
+    "fraction": 156,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2214
+  },
+  {
+   "level": "8-4",
+   "row": 12415,
+   "slot": 1,
+   "before": {
+    "x": 2219.5,
+    "y": 176,
+    "speed": -2,
+    "force": 136,
+    "fraction": 20,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2220,
+    "y": 176,
+    "speed": 0,
+    "force": 0,
+    "fraction": 20,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2214
+  },
+  {
+   "level": "8-4",
+   "row": 13213,
+   "slot": 3,
+   "before": {
+    "x": 2448,
+    "y": 184,
+    "speed": -3,
+    "force": 252,
+    "fraction": 248,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2448.5,
+    "y": 184,
+    "speed": 0,
+    "force": 0,
+    "fraction": 248,
+    "vx": 0.5,
+    "direction": 1
+   },
+   "mario": 2438
+  },
+  {
+   "level": "8-4",
+   "row": 13787,
+   "slot": 1,
+   "before": {
+    "x": 2215,
+    "y": 167,
+    "speed": -1,
+    "force": 104,
+    "fraction": 100,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "after": {
+    "x": 2214.5,
+    "y": 167,
+    "speed": 0,
+    "force": 0,
+    "fraction": 100,
+    "vx": -0.5,
+    "direction": 2
+   },
+   "mario": 2221
+  }
+ ],
+ "contacts": [
+  {
+   "level": "2-1",
+   "row": 251,
+   "camera": 372,
+   "frame": 167,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 300,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 461,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 473,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "2-1",
+   "row": 253,
+   "camera": 375,
+   "frame": 169,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 461,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 474,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "2-1",
+   "row": 781,
+   "camera": 1325,
+   "frame": 185,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 1352,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1389,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 1399,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "2-1",
+   "row": 783,
+   "camera": 1329,
+   "frame": 187,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 1351,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1389,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 1400,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-1",
+   "row": 1477,
+   "camera": 2511,
+   "frame": 115,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2729,
+     "y": 168,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2667,
+     "y": 165,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2663,
+     "y": 155,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2703,
+     "y": 120,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-1",
+   "row": 1483,
+   "camera": 2526,
+   "frame": 121,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2726,
+     "y": 156,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2665,
+     "y": 153,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2666,
+     "y": 168,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2700,
+     "y": 120,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-1",
+   "row": 1533,
+   "camera": 2647,
+   "frame": 171,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2701,
+     "y": 167,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2640,
+     "y": 165,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2691,
+     "y": 156,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2675,
+     "y": 120,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    16,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-1",
+   "row": 1537,
+   "camera": 2657,
+   "frame": 175,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2702,
+     "y": 159,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2638,
+     "y": 157,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2689,
+     "y": 164,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2673,
+     "y": 120,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    16,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1056,
+   "camera": 2190,
+   "frame": 203,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2200,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2235,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2247,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2391,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1058,
+   "camera": 2195,
+   "frame": 205,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2199,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2235,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2248,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2390,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1186,
+   "camera": 2512,
+   "frame": 77,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2568,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2580,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2607,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2797,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1188,
+   "camera": 2517,
+   "frame": 79,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2568,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2581,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2607,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2796,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1216,
+   "camera": 2581,
+   "frame": 107,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2568,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2595,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2607,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2782,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "3-2",
+   "row": 1220,
+   "camera": 2590,
+   "frame": 111,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2568,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2594,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2607,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2780,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-2",
+   "row": 1463,
+   "camera": 639,
+   "frame": 59,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 648,
+     "y": 120,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 686,
+     "y": 120,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 696,
+     "y": 120,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-2",
+   "row": 1465,
+   "camera": 644,
+   "frame": 61,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 647,
+     "y": 120,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 686,
+     "y": 120,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 697,
+     "y": 120,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-2",
+   "row": 2551,
+   "camera": 2564,
+   "frame": 123,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2660,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2672,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2863,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-2",
+   "row": 2553,
+   "camera": 2567,
+   "frame": 125,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2660,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2673,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2862,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-3",
+   "row": 202,
+   "camera": 320,
+   "frame": 119,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 409,
+     "y": 120,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 421,
+     "y": 120,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "4-3",
+   "row": 204,
+   "camera": 321,
+   "frame": 121,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 409,
+     "y": 120,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 422,
+     "y": 120,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 624,
+     "y": 168,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "5-1",
+   "row": 3551,
+   "camera": 2833,
+   "frame": 13,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2875,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2886,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "5-1",
+   "row": 3555,
+   "camera": 2839,
+   "frame": 17,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2874,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2888,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-1",
+   "row": 957,
+   "camera": 1674,
+   "frame": 103,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 1890,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1700,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 1727,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 1737,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ]
+  },
+  {
+   "level": "8-1",
+   "row": 959,
+   "camera": 1679,
+   "frame": 105,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 1889,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1701,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 1727,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 1738,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 467,
+   "camera": 782,
+   "frame": 127,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 854,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 864,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 888,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 469,
+   "camera": 787,
+   "frame": 129,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 854,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 865,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 887,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 481,
+   "camera": 817,
+   "frame": 141,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 848,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 871,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 881,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 483,
+   "camera": 822,
+   "frame": 143,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 848,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 871,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 882,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 497,
+   "camera": 857,
+   "frame": 157,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 855,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 864,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 889,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6632,
+   "camera": 1808,
+   "frame": 177,
+   "bodies": [
+    {
+     "slot": 3,
+     "x": 1994,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2005,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6636,
+   "camera": 1812,
+   "frame": 181,
+   "bodies": [
+    {
+     "slot": 3,
+     "x": 1993,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2007,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6758,
+   "camera": 2001,
+   "frame": 47,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2200,
+     "y": 158,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2249,
+     "y": 152,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2035,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2047,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6762,
+   "camera": 2007,
+   "frame": 51,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2198,
+     "y": 166,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2247,
+     "y": 147,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2034,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2047,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6852,
+   "camera": 2139,
+   "frame": 141,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2208,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2202,
+     "y": 174,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 6862,
+   "camera": 2154,
+   "frame": 151,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2204,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2207,
+     "y": 168,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    64,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 8493,
+   "camera": 787,
+   "frame": 49,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 859,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 869,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 896,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 8495,
+   "camera": 789,
+   "frame": 51,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 859,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 870,
+     "y": 184,
+     "tall": false,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 896,
+     "y": 184,
+     "tall": false,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    32,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9036,
+   "camera": 1812,
+   "frame": 177,
+   "bodies": [
+    {
+     "slot": 3,
+     "x": 1994,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2005,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9040,
+   "camera": 1816,
+   "frame": 181,
+   "bodies": [
+    {
+     "slot": 3,
+     "x": 1993,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2007,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    8,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9506,
+   "camera": 2353,
+   "frame": 135,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2425,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2425,
+     "y": 173,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9516,
+   "camera": 2368,
+   "frame": 145,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2421,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2430,
+     "y": 167,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9974,
+   "camera": 1963,
+   "frame": 91,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2010,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 9978,
+   "camera": 1969,
+   "frame": 95,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1998,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 10796,
+   "camera": 1967,
+   "frame": 145,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2000,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2011,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 10800,
+   "camera": 1973,
+   "frame": 149,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2013,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 11612,
+   "camera": 1943,
+   "frame": 193,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2011,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 11614,
+   "camera": 1946,
+   "frame": 195,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 11854,
+   "camera": 2246,
+   "frame": 179,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 2222,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2493,
+     "y": 144,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2501,
+     "y": 146,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 11860,
+   "camera": 2255,
+   "frame": 185,
+   "bodies": [
+    {
+     "slot": 1,
+     "x": 2219,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2491,
+     "y": 150,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2504,
+     "y": 142,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 12324,
+   "camera": 1955,
+   "frame": 137,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2213,
+     "y": 143,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2011,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 12326,
+   "camera": 1958,
+   "frame": 139,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2212,
+     "y": 142,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 12556,
+   "camera": 2248,
+   "frame": 113,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2190,
+     "y": 141,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2222,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2493,
+     "y": 144,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2500,
+     "y": 144,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 12564,
+   "camera": 2260,
+   "frame": 121,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2194,
+     "y": 147,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 1,
+     "x": 2218,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2490,
+     "y": 154,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 3,
+     "x": 2504,
+     "y": 142,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    16,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 13026,
+   "camera": 1957,
+   "frame": 71,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2212,
+     "y": 143,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 2000,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2011,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 13030,
+   "camera": 1963,
+   "frame": 75,
+   "bodies": [
+    {
+     "slot": 0,
+     "x": 2210,
+     "y": 141,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2013,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 13686,
+   "camera": 1953,
+   "frame": 219,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2011,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 13688,
+   "camera": 1956,
+   "frame": 221,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 1999,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 14440,
+   "camera": 1974,
+   "frame": 205,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2013,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2025,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 14444,
+   "camera": 1980,
+   "frame": 209,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2025,
+     "y": 184,
+     "tall": true,
+     "turns": false,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 15168,
+   "camera": 1951,
+   "frame": 165,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2000,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2012,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ]
+  },
+  {
+   "level": "8-4",
+   "row": 15170,
+   "camera": 1954,
+   "frame": 167,
+   "bodies": [
+    {
+     "slot": 2,
+     "x": 2000,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    },
+    {
+     "slot": 4,
+     "x": 2013,
+     "y": 184,
+     "tall": true,
+     "turns": true,
+     "reacts": true
+    }
+   ],
+   "before": [
+    0,
+    0,
+    8,
+    0,
+    0
+   ],
+   "after": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  }
+ ]
+}

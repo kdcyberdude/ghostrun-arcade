@@ -3,8 +3,9 @@
 export class NativeRandom {
  bytes=[0x1d,0xcd,0xf6,0x6d,0x81,0x5a,0x58]; // the value at the first control row of the recorded route
  frame=0; // RAM 0x09: counts every frame, native strokes and other 8-frame events start when its low 3 bits are 0
+ prev=[...this.bytes]; // the register before the last tick
  tick(){
-  this.frame=(this.frame+1)&255;
+  this.frame=(this.frame+1)&255;this.prev=[...this.bytes];
   let carry=((this.bytes[0]>>1)^(this.bytes[1]>>1))&1;
   for(let i=0;i<7;i++){const next=this.bytes[i]&1;this.bytes[i]=(this.bytes[i]>>1)|(carry<<7);carry=next;}
  }

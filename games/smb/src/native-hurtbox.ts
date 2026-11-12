@@ -7,7 +7,8 @@ const aboveSmall=(kind:string)=>kind==='paratroopa'?-1:0;
 
 /** Widest integer |enemy x before its move - Mario x| that still touches: 11 for the Koopa-shaped kinds (native |dx| 11: 62 hurts, |dx| 12: none in 400 rows), 10 for the rest
  * (Goomba, Spiny, Piranha, Podoboo, Hammer Bro: no hurt at 11 in 280 rows). evidence/contact3-findings-20261111.md */
-export function nativeHurtReachX(kind:string){return ['koopa','redKoopa','beetle','paratroopa'].includes(kind)?11:10;}
+/** Lakitu: 9. All Lakitu rows of the 32 v2 traces with Mario beside it (not above): 8-2 rows 222-224 |dx| 12, 12, 10 no touch, row 225 |dx| 9 the only touch (dy 7). */
+export function nativeHurtReachX(kind:string){return ['koopa','redKoopa','beetle','paratroopa'].includes(kind)?11:kind==='lakitu'?9:10;}
 
 /** Is this enemy at touching height? Kinds without native deaths (Bowser, Lakitu) answer `unmeasured`. */
 export function nativeHurtHeight(kind:string,dy:number,big:boolean,unmeasured:boolean){

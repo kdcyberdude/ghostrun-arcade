@@ -56,7 +56,7 @@ test('falling through a declared sky-room boundary returns without losing a life
  const sky=area({id:'sky',tiles:[],spawn:[40,224],fallExit:{belowY:256,to:'main',spawn:[400,80],camera:320,evidence:'Synthetic fall return'}});
  const main=area();const sim=game([sky,main]);sim.step([],20);
  assert.equal(sim.area.id,'main');assert.equal(sim.camera,320);assert.equal(sim.player.x,400);assert.equal(sim.lives,3);assert.equal(sim.phase,'play');assert.ok(sim.time>=399);
- const noReturn=game([area({tiles:[],spawn:[40,224]})]);noReturn.step([],30);assert.equal(noReturn.phase,'dying');
+ const noReturn=game([area({tiles:[],spawn:[40,224]})]);noReturn.step([],30);assert.equal(noReturn.phase,'play');assert.equal(noReturn.player.dead,false);assert.ok(noReturn.player.y>272);noReturn.step([],300);assert.equal(noReturn.phase,'intro');
 });
 
 test('a grown vine and its used brick survive a geometric room return',()=>{
@@ -99,6 +99,6 @@ test('a zero-height sky vine grows before emergence, then climbs, passes right a
 
 test('the automatic sky landing requires actual cloud-floor collision',()=>{
  const sim=game([area({tiles:[],spawn:[56,240],vines:[{id:'entry',x:64,baseY:256,topY:144,initialHeight:112,evidence:'Synthetic missing-floor regression'}],entryVine:{vineId:'entry',untilFeetY:184,exitRightX:75,exitGroundFeetY:208,evidence:'No floor is supplied'}})]);
- for(let frame=0;frame<140&&sim.phase==='play';frame++)sim.step([],1);
+ for(let frame=0;frame<440&&sim.phase==='play';frame++)sim.step([],1);
  assert.equal(sim.phase,'dying');assert.ok(sim.player.y>272);assert.equal(sim.player.grounded,false);
 });
