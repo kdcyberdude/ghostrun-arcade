@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import {GameRenderer} from '../../src/renderer.js';
 import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
-import {platformMotionModel} from '../../src/platform-motion.js';
+import {platformMotionModel,nativeSmallPlatform} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
 import {titleBootColor} from '../../src/view-rules.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
@@ -40,9 +40,12 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>q.r.x===Math.floor(x)&&q.r.y===Math.floor(y)).map(q=>q.r));
  const pr=union(quads.filter(q=>q.tag==='player').map(q=>q.r));if(pr)out.push({id:'player',kind:'player',...pr});
- s.enemies.forEach((e,i)=>{const r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
+ s.enemies.forEach((e,i)=>{const r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
  s.items.forEach((it,i)=>{const r=near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,kind:it.kind,...r});});
- (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPosition(pl),r=near({x:p.x-cam,y:p.y,w:pl.width,h:8});if(r)out.push({id:'platform#'+i,kind:platformMotionModel(pl,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud'?'cloud':'lift',...r});});
+ (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=[p.y];
+  if(nativeSmallPlatform(pl,context))ys.push(((p.y-1+128)&255)+1);
+  ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>q.r.y===Math.floor(y)&&q.r.w===8&&q.r.h<=8&&q.r.x>=Math.floor(p.x-cam)&&q.r.x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
+ });
  (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=exact(x-4-cam,y-4+(bar.visualOffsetY??0));if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));
  (s.area.springs??[]).forEach((sp,i)=>{const r=near({x:sp.x-cam,y:sp.y-23,w:16,h:24});if(r)out.push({id:'spring#'+i,kind:'spring',...r});});
  const exit=s.area.exit;if(exit?.kind==='flag'){const r=near({x:exit.x-16-cam,y:s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,w:16,h:16});if(r)out.push({id:'flag',kind:'flag',...r});}
@@ -50,7 +53,7 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
   if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
- const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',...rt});
+ const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
 }
 /** Visible 3D gameplay objects, each with its projected NES-pixel rect. */
@@ -64,7 +67,7 @@ function objects3d(r3:Any):Obj[]{
   return {x:x0,y:y0,w:x1-x0,h:y1-y0};
  };
  const enemyModels=new Set(Object.values(ENEMY_MODEL));
- const state=(kind:string,o:THREE.Object3D)=>kind.endsWith('_shell')?'shell':kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
+ const state=(kind:string,o:THREE.Object3D)=>kind==='toad'||kind==='princess'?kind:kind.endsWith('_shell')?'shell':kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
  const add=(kind:string,o:THREE.Object3D|undefined,i:number)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),...r});};
  const e=r3.entities;
  if(e.mario)add('player',e.mario.root,0);

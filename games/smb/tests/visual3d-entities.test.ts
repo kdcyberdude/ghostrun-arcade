@@ -51,3 +51,43 @@ test('live enemies use the native picture coordinates and facing before movement
  const root=actor(entities,'goomba');assert.equal(root.position.x,107/16);assert.equal(root.position.y,32/16);assert.equal(root.rotation.y,Math.PI+0.5);
  sim.enemies[0].dead=32;sim.enemies[0].squashed=true;sim.frame++;entities.sync(sim,0);assert.equal(root.position.x,108/16);assert.equal(root.position.y,31/16);
 });
+test('shell-launched Goombas flip at full size immediately instead of showing a squash',()=>{
+ const {sim,entities}=scene({dead:1,greenShellLaunchFrame:0});entities.sync(sim,0);
+ const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.rotation.z,Math.PI);assert.equal(root.position.y,(239-208)/16+1);
+});
+test('Mario growth follows the native small/mid/big picture cells',()=>{
+ const {sim,entities}=scene();sim.player.size=0;
+ for(const [age,size] of [[1,0.6],[9,0.8],[29,1],[33,0.6],[46,1]]){
+  sim.powerChange={kind:'grow',from:0,to:1,remaining:59-age};sim.frame++;entities.sync(sim,0);assert.equal(actor(entities,'mario').scale.x,size);
+ }
+});
+test('big Mario uses the native small death picture',()=>{
+ const {sim,entities}=scene();sim.player.size=1;sim.player.dead=true;entities.sync(sim,0);assert.equal(actor(entities,'mario').scale.x,0.6);
+});
+test('star and fire-change palettes use the shared native phases',()=>{
+ const {sim}=scene();
+ const paletteKit={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial();material.name='M_Cloth_Primary';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(paletteKit,false),color=()=>{const model=actor(entities,'mario').getObjectByName('mario')!;return ((model.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial).color.getHexString();};
+ sim.player.star=200;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=0;sim.player.size=1;sim.powerChange={kind:'fire',from:1,to:2,remaining:61};sim.frame=4;entities.sync(sim,0);assert.equal(color(),'1a1a1a');
+ sim.powerChange.remaining=54;sim.frame=6;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+});
+test('moving fire Mario shows the native throw state',()=>{
+ const {sim}=scene();sim.player.size=2;sim.player.vx=1.5;sim.player.grounded=true;Object.defineProperty(sim,'fireballThrowAge',{value:1});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map(['idle','throw'].map((clip,i)=>[clip,new THREE.AnimationClip(clip,1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[i,i])])]))};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);assert.equal(actor(entities,'mario').getObjectByName('mario')!.position.x,1);
+});
+test('flipped small enemies retain the native transparent row above their body',()=>{
+ const {sim,entities}=scene({kind:'bullet',dead:30});entities.sync(sim,0);assert.equal(actor(entities,'bullet').position.y,(239-208)/16+1.5);
+});
+test('hammer holds each native rotation phase for four frames',()=>{
+ const {sim}=scene();sim.items=[{kind:'hammer',x:100,y:100,age:3,vx:0,vy:0,life:100}];
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);assert.equal(actor(entities,'hammer').getObjectByName('hammer')!.rotation.z,0);
+});
+test('the final castle shows the Princess and earlier castles show Toad',()=>{
+ for(const [level,model] of [['8-4','princess'],['7-4','toad']]){
+  const {sim,entities}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id===level);sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';entities.sync(sim,0);
+  const root=actor(entities,model);assert.ok(root?.visible);assert.equal(root.position.x,308/16);assert.equal(root.position.y,31/16);
+ }
+});
