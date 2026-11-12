@@ -861,7 +861,12 @@ fiveFourArea.unresolved.push(fiveFourVisual.qualification);
   area.exit.x+=px;area.exit.retainerX+=px;area.exit.stopX+=px;area.width+=px;
  }
 }
-// Native pivot quad coordinates independently confirm the late6-4 firebar inventory.
+// Native enemy-data object $15 starts the offscreen Bowser flame frenzy.
+for(const entry of JSON.parse(fs.readFileSync('data/native-castle-flames.json')).areas){
+ const area=levels.find(l=>l.id===entry.level).areas.find(a=>a.id===entry.area);
+ area.flameFrenzyX=entry.x;
+}
+// Native pivot quad coordinates independently confirm the castle firebar inventory.
 for(const entry of JSON.parse(fs.readFileSync('data/native-firebar-geometry.json')).areas){
  const area=levels.find(l=>l.id===entry.level).areas.find(a=>a.id===entry.area);
  for(const correction of entry.corrections){
@@ -870,7 +875,7 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-firebar-geometry.json
   bar.x=correction.x;
  }
  area.firebars.push(...entry.additions.map(bar=>({...bar})));
- area.firebars.sort((a,b)=>a.x-b.x);
+ area.firebars.sort((a,b)=>a.x-b.x||a.y-b.y);
 }
 // Native-measured Paratroopa/Beetle spawns are applied last, after the guards that locate protected actors by their exact earlier data.
 for(const addition of nativeParatroopaBeetleSpawns.additions??[]){

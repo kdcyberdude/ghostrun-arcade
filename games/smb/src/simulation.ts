@@ -93,7 +93,6 @@ export function nativeImposeGravity(n:NativeMoveState,down:number,max:number){
  if(n.speed>=max&&n.force>=128){n.speed=max;n.force=0;}
 }
 export const NATIVE_HZ=60.0988;
-const DEATH_ARC={down:40,max:4};
 // Native rows (RAM 0x500 collision map, 0x416 y sub-pixel, 0x70a fall class): feet this deep in a cell do not land; a fall before any jump of the area uses 40/256.
 const FOOT_LAND_DEPTH=5,FALL_GRAVITY_AFTER_LOAD=0.15625;
 export const PHYSICS={walkMax:1.5,runMax:2.5,walkAccel:0.037353515625,runAccel:0.0557861328125,brake:0.037109375,reverse:0.109375,jump:-4,runJump:-5,heldGravity:0.125,gravity:0.4375,maxFall:4.125};
@@ -128,7 +127,7 @@ export function solid(id:number):boolean {
  return (id>=16&&id<=21)||(id>=22&&id<=27)||id===34||(id>=81&&id<=94)||(id>=97&&id<=108)||id===136||id===137||id===192||id===193||id===196;
 }
 // Native lives-screen / death flow (PPU rows, remake step f = native row f-1); see evidence/lifeflow-findings-20261111.md.
-const LIFE_FLOW={clockPeriod:21,clockTickPhase:7,screenTail:19,screenBlackTail:3,ticksScreen:7,ticksTimeUp:14,controlPhase:5,pitEndFeetY:1312,setTitle:8,setDeath:10,deathArcEndFeetY:800,pitStartFeetY:240,gameoverSet:9,gameoverTicks:20,gameoverTail:2};
+const LIFE_FLOW={clockPeriod:21,clockTickPhase:7,screenTail:19,screenBlackTail:3,ticksScreen:7,ticksTimeUp:14,controlPhase:5,pitEndFeetY:1312,setTitle:8,setDeath:10,deathArcEndFeetY:802,pitStartFeetY:240,gameoverSet:9,gameoverTicks:20,gameoverTail:2};
 interface LifeIntro{set:number;ticks:number;seen:number;end:number;fromDeath:boolean;timeUp:boolean}
 const newLifeIntro=(timeUp:boolean,fromDeath:boolean):LifeIntro=>({set:fromDeath?LIFE_FLOW.setDeath:LIFE_FLOW.setTitle,ticks:timeUp?LIFE_FLOW.ticksTimeUp:LIFE_FLOW.ticksScreen,seen:0,end:0,fromDeath,timeUp});
 interface Slot {level:number;lives:number;score:number;coins:number;size:0|1|2;checkpoint:boolean;checkpointArea?:string}
@@ -194,7 +193,8 @@ export class Simulation {
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private pipeRise=0;broClock=0;random=new NativeRandom();recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
- private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private firebarMarioScreenX=0;private deathMove?:NativeMoveState;private deathYFraction=0;private timerTickRow=-1;private firebarSlots?:FirebarSlots;
+ private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;
+ private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
  private bridge:string[]=[];private springTimers=new Map<SpringSpec,number>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
@@ -247,9 +247,7 @@ export class Simulation {
   this.sideCollisionTimer=0;this.platformScroll=0;
   this.platformMotion.reset({levelId:this.level.id,areaId:id});this.platformFrame=0;
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
-  // 2-4: the first two slots retain Podoboo fall-speed byte3 as their angle.
-  // 2-4 first five / 6-4 first four bars have measured allocation; later mixed
-  // slots retain their existing motors. 3-4 bars2/3 use fresh slots; bar1 keeps its qualified motor.
+  // Firebars share the five native enemy slots and inherit each slot's vertical speed byte as their initial angle.
   this.firebarSlots=area.firebars?.length?new FirebarSlots(area.firebars):undefined;
   if(this.firebarSlots){this.firebarSlots.busy=slot=>{const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte)=>{this.slotYSpeed[slot]=byte;};}
   this.firebarMotors.clear();
@@ -273,7 +271,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=this.level.id==='5-1'?new PiranhaColumns(this.camera):undefined;
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -356,11 +354,7 @@ export class Simulation {
   if((this.random.frame&7)===0)this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
-    // Native death arc: ImposeGravity on Player_Y with the y sub-pixel $0416 and move force $0433, down 40/256, cap 4 (force cycles 0..120,
-    // so the fall is 4 + 240/1024 px a row). The row ends when Player_Y_HighPos reaches 4 (feet 800): 31 deaths on the v2 traces, tests/death-arc.test.ts.
-    const m=this.deathMove??={y:Math.floor(this.player.y),fraction:Math.floor(this.deathYFraction*256),speed:Math.floor(this.player.vy),force:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};
-    nativeImposeGravity(m,DEATH_ARC.down,DEATH_ARC.max);this.player.y=m.y+m.fraction/256;this.player.vy=m.speed+m.force/256;}
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){this.player.y+=this.player.vy;this.player.vy=Math.min(deathRules.maxFall,this.player.vy+deathRules.gravity);}
    if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:(this.deathFromBelow?this.phaseFrame>=deathRules.oldSceneFrames:this.player.y>=LIFE_FLOW.deathArcEndFeetY))this.loseLife=true;return;
   }
   if(this.phase==='pipe'){
@@ -422,7 +416,7 @@ export class Simulation {
   // Source TIME stays fixed during the automatic main climb and sky entry;
   // exact native-frame boundaries are inferred from decision-spaced images.
   const waterEntryHidden=this.waterEntryTimerHold>0;if(waterEntryHidden&&this.player.y-32>=48)this.waterEntryTimerHold--;
-  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;this.timerTickRow=this.frame;if(this.time===100)this.emit('event_hurry');}}
+  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;if(this.time===100)this.emit('event_hurry');}}
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
   const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
@@ -531,7 +525,7 @@ export class Simulation {
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.platformMotion.advance(this.platformFrame,this.camera);
-  this.passNativeCannons();this.passNativeFrenzy();
+  this.passNativeCannons();this.passNativeFrenzy();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
@@ -821,7 +815,7 @@ export class Simulation {
  }
  /** Rendering and collision read the same motor state without advancing it. */
  firebarCenters(bar:FirebarSpec):{x:number;y:number}[]{
-  if(this.firebarSlots?.tracks(bar))return this.firebarSlots.centers(bar);
+  if(this.firebarSlots?.tracks(bar))return bar.x-4-this.camera>0&&bar.x-4-this.camera<256?this.firebarSlots.centers(bar):[];
   const motor=this.firebarMotors.get(bar);
   if(motor)return motor.state.active?firebarFlameCenters(motor.state,motor.geometry):[];
   const angle=(this.phase==='dying'?this.firebarDeathFrame:this.areaFrame)*bar.speed;
@@ -1045,6 +1039,20 @@ export class Simulation {
  // 5-3 / 6-3 frenzy (BulletBillCheepCheep, after this frame's scroll like the native enemy loop): one Bullet Bill at a time. A frenzy Bullet Bill is removed at its own slot's turn
  // when its x before this frame's move is 72+ px left of this frame's camera (17 of 17 native removals: -72..-76 removed, -71.5 kept); the frenzy then runs at the next empty slot s
  // (a slot before it still saw the old one), places it at camera + 287 at the height of random byte s (nativeFrenzyHeight), so a removal and the next spawn share a frame (5-3 rows 119, 210).
+ /** InitBowserFlame: object $15 enables the frenzy; free enemy slots read $078F, $0367 and their random byte. */
+ private passNativeCastleFlames(){
+  if(this.flameTimer>0)this.flameTimer--;
+  const x=this.area.flameFrenzyX;if(x===undefined)return;
+  if(this.enemies.some(e=>e.active&&!e.dead&&e.kind==='bowser')){this.flameFrenzy=false;return;}
+  if(!this.flameFrenzy&&this.camera>=x-303&&this.scrollCrossFrame!==this.frame-1)this.flameFrenzy=true;
+  if(!this.flameFrenzy||this.flameTimer>0||this.scrollCrossFrame===this.frame-1)return;
+  const slot=this.freeNativeSlot();if(slot>=5)return;
+  const target=this.random.bytes[slot]&3;
+  this.flameTimer=[191,64,191,191,191,64,64,191][this.flameTimerCounter]+(Number(this.level.id[0])>=5?16:32);this.flameTimerCounter=(this.flameTimerCounter+1)&7;
+  this.slotSub[slot]=0;this.slotYFraction[slot]=target;
+  this.items.push({kind:'flame',x:this.camera+287,y:[144,128,112,144][target],vx:Number(this.level.id[0])>=5?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot,target,force:0}});
+  this.emit('sfx_bowser_flame');
+ }
  private frenzyDue?:GeneratorSpec;
  private passNativeFrenzy(){
   const generator=this.frenzyDue;this.frenzyDue=undefined;if(!generator)return;
@@ -1079,6 +1087,7 @@ export class Simulation {
  private platformSlots=new Map<object,number>();
  private objectSlots(enemySlots:Set<number|undefined>){
   const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
+  for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    let slot=0;while(held.has(slot)||enemySlots.has(slot))slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
@@ -1135,6 +1144,7 @@ export class Simulation {
  }
  private updateNativePodoboo(e:Enemy){
   const n=e.pod??={...nativeMoveState(514,1),fraction:this.slotYFraction[e.enemySlot??0]}; // InitPodoboo zeroes speed and force, the slot keeps its y fraction $0417+s (3-4 row 616)
+  if(e.waitedForNativeSlot&&e.age===1){e.y=n.y-256+24;return;}
   if(n.timer===0){const force=this.random.bytes[(e.enemySlot??0)+1]|0x80;Object.assign(n,{y:514,speed:-7,force,timer:(force&15)|6});}
   nativeImposeGravity(n,28,3);
   e.y=n.y-256+24;e.vy=n.speed+n.force/256;e.podobooFalling=e.vy>0;
@@ -1265,6 +1275,7 @@ export class Simulation {
   // KillAllEnemies, and the enemy data restarts from its first object: objects left of the screen's right edge are skipped, the rest load again as they come in range.
   const edge=this.camera+256;
   this.enemies=this.enemies.filter(e=>!e.active&&!e.dead&&e.originX>=edge);
+  this.flameFrenzy=false;this.items=this.items.filter(i=>!i.nativeFlame); // KillAllEnemies clears $06CB and every flame slot
   this.firebarSlots?.loopBack(edge); // firebars are enemy objects: killed, and loaded again from the enemy data
   for(const spec of this.area.enemies)if(spec.x>=edge&&!this.enemies.some(e=>e.originX===spec.x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy(spec));
  }
@@ -1602,7 +1613,7 @@ export class Simulation {
   for(const e of this.enemies){
    const priorY=e.y,priorX=e.x; // the native touch test reads the enemy before its own move
    if(!e.active&&this.nativeSlotDenied(e))continue;
-   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
+   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.kind==='podoboo'&&e.enemySlot===undefined){e.active=false;e.waitedForNativeSlot=true;continue;}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
@@ -1783,6 +1794,7 @@ export class Simulation {
    i.age++;i.life--;if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
    if(i.hold!==undefined){this.holdNativeHammer(i);continue;}
    i.x+=i.vx;
+   if(i.nativeFlame){const target=[144,128,112,144][i.nativeFlame.target];if(i.y!==target)i.y+=i.nativeFlame.force;}
    if(i.kind==='coin'||i.kind==='debris'||i.kind==='hammer'){i.vy+=i.kind==='coin'?0.3125:i.gravity??0.2;i.y+=i.vy;}
    else if(i.kind==='flame'){}
    else{
@@ -1803,7 +1815,7 @@ export class Simulation {
     this.collectItem(i);
    }
   }
-  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-32);
+  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-(i.nativeFlame?73:32));
  }
  // Native fireball (rows evidence/local/power/f1.jsonl; RAM 0x24+s state, 0x8d+s x, 0xd5+s y, 0xa6+s speed): position then speed, 4 px/row at launch, gravity 80/256, cap 812/256, bounce at speed -3 with the ball on the floor; gone past the screen edges.
  private moveFireball(i:Item){
@@ -1826,7 +1838,7 @@ export class Simulation {
     else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size)this.powerChange={from:p.size,to:size,remaining:i.kind==='flower'?POWERUPS.transformFreezeNativeFrames.fireValue:POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue,kind:i.kind==='flower'?'fire':'grow'};this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset,popupRules.itemDurationActiveNativeFrames);this.emit('sfx_powerup');}
  }
  hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:POWERUPS.transformFreezeNativeFrames.shrinkValue,kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
- die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.deathFromBelow=this.player.y>LIFE_FLOW.pitStartFeetY;this.firebarDeathFrame=this.areaFrame;this.deathMove=undefined;if(this.timerTickRow===this.frame&&!this.timeUpDeath)this.time++;/* RunGameTimer runs after the enemies: no digit tick on the row Mario dies (4-4 row 11398) */this.deathYFraction=this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y);/* $0416 keeps the last airborne fraction on the ground */this.phase='dying';this.phaseFrame=0;this.player.dead=true;this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));this.emit('event_death');}
+ die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.deathFromBelow=this.player.y>LIFE_FLOW.pitStartFeetY;this.firebarDeathFrame=this.areaFrame;this.phase='dying';this.phaseFrame=0;this.player.dead=true;this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
  private updateWorldInPitFall(){if(!this.offscreenPitDeath&&!this.offscreenLavaDeath)return;this.platformFrame++;this.updateGenerators();this.updateEnemies(this.player.y);this.updateItems();}

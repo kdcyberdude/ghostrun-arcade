@@ -44,6 +44,7 @@ export class FirebarSlots {
   if(slot.bar.length===12&&Math.floor(slot.units/32)%16===0)slot.units=(slot.units+32)%1024;
  }
  private stepped=new Set<Slot>();
+
  step(camera:number){
   this.stepped.clear();
   this.enter(camera);

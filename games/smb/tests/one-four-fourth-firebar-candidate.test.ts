@@ -28,7 +28,7 @@ test('1-4 fourth bar activates at inferred camera entry and advances once',()=>{
 
 test('production collision uses the 1-4 fourth bar centers',()=>{
  const sim=fixture(),bar=sim.area.firebars![0];sim.player.vx=1.5;sim.step([],1);
- sim.player.x=1024;sim.player.y=109;sim.player.vx=0;sim.player.vy=0;sim.step([],1);assert.equal(sim.phase,'play');
+ sim.camera=bar.x-128;sim.player.x=1024;sim.player.y=109;sim.player.vx=0;sim.player.vy=0;sim.step([],1);assert.equal(sim.phase,'play');
  sim.player.x=1072;sim.player.y=109;sim.player.vx=0;sim.player.vy=0;sim.step([],1);
  assert.equal(sim.phase,'dying');assert.equal(sim.events.filter(event=>event==='event_death').length,1);
  const centers=sim.firebarCenters(bar),units=motor(sim).units;sim.step([],10);
