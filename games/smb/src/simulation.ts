@@ -18,7 +18,7 @@ import enemyRules from '../data/enemy-rules.json';
 import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
 import {NativeRandom} from './native-random';
-import {lakituStep,SPINY_EGG} from './lakitu';
+import {lakituStep,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import waterActorData from '../data/native-water-actors.json';
 import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
@@ -1258,14 +1258,15 @@ export class Simulation {
   if(--i.hold!<=0){i.hold=undefined;i.vx=(this.player.x<e.x?-1:1)*N.throwSpeed;i.vy=-N.throwImpulse;}
  }
  // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll; it steps on its first remake row
- // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): from the row after the camera of the previous row reaches fleeCamera.
+ // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
  private updateNativeLakitu(e:Enemy){
   const p=this.player,lak=e.lak??={dir:0,speed:0};
   lak.preX=Math.floor(e.x);
   e.x+=lakituStep(lak,Math.floor(e.x),Math.floor(p.x),this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
   e.y=64;
   if(!lak.fleeing)this.spinyBuffer=true; // MoveLakitu in the normal state puts a Spiny in EnemyFrenzyBuffer
-  if(e.fleeCamera!==undefined&&this.camera>=e.fleeCamera&&!lak.fleeing){lak.fleeing=true;this.spinyBuffer=false;}
+  if(e.stopFrenzyX!==undefined&&stopFrenzyParsed(e.stopFrenzyX,this.scrollCrossCamera,this.frame-this.scrollCrossFrame))lak.stopQueued=true;
+  if(lak.stopQueued&&this.freeNativeSlot()<5){lak.fleeing=true;this.spinyBuffer=false;lak.stopQueued=false;}
  }
  /** Player_X_Speed $57 (the native motor's speed byte). */
  private marioSpeedByte(){return Math.floor(Math.round(this.player.vx*4096)/256)&255;}

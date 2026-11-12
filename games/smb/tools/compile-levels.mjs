@@ -902,11 +902,11 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-water-actors.json')).
  if(!area)throw Error(`Missing native water area ${entry.level}/${entry.area}`);
  area.enemies=[...area.enemies.filter(e=>!entry.replaceKinds.includes(e.kind)),...entry.enemies.map(e=>({...e}))];
 }
-// Native Lakitu appearance x and the camera from which it flees (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section).
+// Native Lakitu appearance x and the Stop_Frenzy area object column (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section).
 for(const entry of JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels){
  const lakitu=levels.find(l=>l.id===entry.level)?.areas.find(a=>a.id===entry.area)?.enemies.find(e=>e.kind==='lakitu');
  if(!lakitu)throw Error(`Missing Lakitu ${entry.level}/${entry.area}`);
- lakitu.x=entry.x;lakitu.fleeCamera=entry.fleeCamera;
+ lakitu.x=entry.x;lakitu.stopFrenzyX=entry.stopFrenzyX;
 }
 // Native Bullet Bill: the cannons that follow the native random-register rule, and the 5-3/6-3 generator heights and camera range (tools/derive-bullet-schedule.mjs).
 {

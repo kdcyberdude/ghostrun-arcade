@@ -31,3 +31,11 @@ export function lakituStep(n:LakituBytes,lakituX:number,marioX:number,marioSpeed
  return s8(n.speed);
 }
 export const SPINY_EGG={timer:0x80,minMarioY:0x2c,aboveLakitu:8,speed:-3,down:0x20,max:3,walk:0.5}; // CreateSpiny / MoveD_EnemyVertically (state 5) / ProcEnemyDirection
+
+/** AreaParserTaskHandler runs the two 16 px columns 352 px ahead of a 32 px scroll crossing.
+ * AreaFrenzy (row $0D, object $4A) queues Stop_Frenzy on task 7 or 3. The enemy pass can consume it two rows after the crossing
+ * (task 7 blocks the first following pass), or five rows after it for the second column. EndFrenzy requires a free enemy slot. */
+export function stopFrenzyParsed(objectX:number,crossCamera:number,rowsSinceCross:number){
+ const column=objectX-crossCamera-352;
+ return column===0&&rowsSinceCross>=2||column===16&&rowsSinceCross>=5;
+}

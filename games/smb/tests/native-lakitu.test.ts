@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
-import {lakituStep,SPINY_EGG} from '../src/lakitu.js';
+import {lakituStep,stopFrenzyParsed,SPINY_EGG} from '../src/lakitu.js';
 import lakituData from '../data/native-lakitu.json';
 import events from './fixtures/native-enemy-rule-events.json';
 import type {Area,EnemySpec,Level,Tile} from '../src/types.js';
@@ -53,7 +53,7 @@ test('a Lakitu throws its first egg on its first remake row, then every 128 fram
  assert.equal(ageAtFirst,1,'the first egg comes on the row Lakitu first steps (the row after its native creation)');
  assert.deepEqual([born[1]-born[0],born[2]-born[1]],[128,128]);
  const egg=sim.enemies.filter((e:any)=>e.egg)[0];assert.equal(egg.originY,lakitu.y-SPINY_EGG.aboveLakitu);
- lakitu.fleeCamera=0;const before=sim.enemies.filter((e:any)=>e.egg).length,x0=lakitu.x;sim.step([],200);
+ lakitu.lak.stopQueued=true;const before=sim.enemies.filter((e:any)=>e.egg).length,x0=lakitu.x;sim.step([],200);
  assert.equal(sim.enemies.filter((e:any)=>e.egg).length,before);assert.ok(lakitu.x<x0-150||lakitu.dead);
 });
 
@@ -65,10 +65,25 @@ test('an egg holds its creation row, rises at -3 with 0x20/256 gravity (cap 3), 
  assert.equal(egg.motion,undefined);assert.equal(egg.y,208);assert.equal(Math.abs(egg.vx),SPINY_EGG.walk);
 });
 
-test('native Lakitu appearance x and flee camera are applied to 4-1, 6-1 and 8-2',()=>{
+test('native Lakitu appearance x and Stop_Frenzy object column are applied to 4-1, 6-1 and 8-2',()=>{
  for(const entry of lakituData.levels){
   const area=observedLevels().find(l=>l.id===entry.level)!.areas.find(a=>a.id===entry.area)!;
   const lakitu=area.enemies.find(e=>e.kind==='lakitu')!;
-  assert.equal(lakitu.x,entry.x);assert.equal(lakitu.fleeCamera,entry.fleeCamera);
+  assert.equal(lakitu.x,entry.x);assert.equal(lakitu.stopFrenzyX,entry.stopFrenzyX);
  }
+});
+
+test('Stop_Frenzy follows the native area object column and parser tasks, independent of camera overshoot',()=>{
+ const skyEvents=events.stopFrenzy.filter(e=>lakituData.levels.some(l=>l.level===e.level));
+ assert.equal(skyEvents.length,3);
+ for(const event of skyEvents){
+  const spec=lakituData.levels.find(l=>l.level===event.level)!;
+  assert.equal(event.column,spec.stopFrenzyX,event.level);
+  assert.equal(event.task,7,event.level);
+  const cross=Math.floor(event.camera/32)*32;
+  assert.equal(stopFrenzyParsed(event.column,cross,1),false,event.level);
+  assert.equal(stopFrenzyParsed(event.column,cross,event.consumed-event.row),true,event.level);
+ }
+ // The second column is parsed on task 3, four frames after the first; the enemy pass follows it.
+ assert.equal(stopFrenzyParsed(368,0,4),false);assert.equal(stopFrenzyParsed(368,0,5),true);
 });

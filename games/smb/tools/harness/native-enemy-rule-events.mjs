@@ -11,7 +11,7 @@ import {parseArgs} from 'node:util';
 const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string',default:'tests/fixtures/native-enemy-rule-events.json'}}});
 if(!a.traces)throw Error('--traces is required');
 const signed=v=>v<128?v:v-256;
-const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[]};
+const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const d=fs.readFileSync(file),n=d.length/2048,R=f=>d.subarray(f*2048,(f+1)*2048);
@@ -47,6 +47,11 @@ for(const level of fs.readdirSync(a.traces).sort()){
    }
    // frenzy Bullet Bill (id 8) made this row
    if(id===8&&!(p[0xf+s]&&p[0x16+s]===8))out.frenzyBullets.push({level,row:f,slot:s,byte:r[0x7a7+s],bagBefore:p[0x6dd],bagAfter:r[0x6dd],y:r[0xcf+s]});
+  }
+  // Stop_Frenzy queued by AreaFrenzy on a parser column; retained through task 7, consumed at the next available enemy pass.
+  if(r[0x6cd]===24&&p[0x6cd]!==24){
+   let end=f+1;while(end<n&&R(end)[0x6cd]===24)end++;
+   out.stopFrenzy.push({level,row:f,column:r[0x725]*256+r[0x726]*16,camera:r[0x71a]*256+r[0x71c],task:r[0x71f],consumed:end});
   }
   // Lakitu (id 17) normal-play rows: [pre-step x, Mario x, Player_X_Speed $57, ScrollAmount $0775, state before, dir $A0 and speed $58 before, then after] (MoveLakitu)
   for(let s=0;s<5;s++)if(r[0x0e]===8&&r[0xf+s]&&r[0x16+s]===17&&p[0xf+s]&&p[0x16+s]===17&&!(p[0x1e+s]&0x20))
