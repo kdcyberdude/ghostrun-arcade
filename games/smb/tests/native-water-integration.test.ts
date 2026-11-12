@@ -1,4 +1,5 @@
 import {test} from 'node:test';
+import waterEvents from './fixtures/native-water-rule-events.json';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
@@ -6,6 +7,7 @@ import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import type {Excerpt} from '../tools/harness/native-excerpt.js';
+import {excerptReplay} from '../tools/harness/native-excerpt.js';
 import type {Button} from '../src/types.js';
 import {nativeEntities,simEntities,unmatchedEntity} from '../tools/harness/native-entities.js';
 
@@ -62,4 +64,67 @@ test('2-3 native stream fish and slot reuse preserve all enemy positions through
   frames++;
  }
  assert.ok(frames>1000);
+});
+
+for(const [level,through] of [['2-2',2809],['7-2',2208]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
+ const run=replay(level),sim=run.sim;let frames=0;
+ for(let f=0;f<=through;f++){
+  run.step(f);const r=run.row(f);
+  if(r[14]!==8||sim.phase!=='play')continue;
+  assert.equal(Math.floor(sim.player.x),r[0x6d]*256+r[0x86],`frame ${f} x`);
+  assert.equal((Math.floor(sim.player.y)-32)&255,r[0xce],`frame ${f} y`);
+  assert.equal(Math.floor(sim.camera),r[0x71a]*256+r[0x71c],`frame ${f} camera`);
+  assert.equal(sim.time,r[0x7f8]*100+r[0x7f9]*10+r[0x7fa],`frame ${f} timer`);
+  assert.equal(sim.player.dead,false,`frame ${f}`);frames++;
+ }
+ assert.ok(frames>500);
+});
+
+test('7-2 recorded decisions have no divergence in any legacy comparison field',()=>{
+ const excerpt:Excerpt=JSON.parse(fs.readFileSync(new URL('../evidence/native-runs/7-2.v2.json',import.meta.url),'utf8'));
+ assert.ok(Object.values(excerptReplay(excerpt).fields).every(value=>value===null));
+});
+
+test('2-2 Bloopers read Mario before the trailing whirlpool pass across his y-byte wrap',()=>{
+ const run=replay('2-2'),sim=run.sim;
+ for(let f=0;f<=1508;f++){
+  run.step(f);if(f<1488)continue;
+  const native=nativeEntities(run.row(f),run.row(f-1)).filter(e=>e.kind==='blooper');
+  assert.equal(unmatchedEntity(native,simEntities(sim)),undefined,`frame ${f}`);
+ }
+});
+
+test('7-2 placed Bloopers wait for slots and swimming frenzy respects erase and parser rows',()=>{
+ const run=replay('7-2'),sim=run.sim,checks=new Map([[482,0],[520,1],[2362,3],[2363,3],[2424,1],[2425,1],[2430,2],[2431,2],[2432,2]]);
+ for(let f=0;f<=2432;f++){
+  run.step(f);const slot=checks.get(f);if(slot===undefined)continue;
+  const r=run.row(f),enemy=sim.enemies.find(e=>e.active&&!e.dead&&e.enemySlot===slot);
+  assert.equal(Boolean(enemy),Boolean(r[15+slot]),`frame ${f} slot ${slot} active`);
+  if(enemy){
+   assert.equal(Math.floor(enemy.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
+   assert.equal(Math.floor(enemy.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
+  }
+ }
+});
+
+test('7-2 injury preserves the water position fraction and ends its second death on the native row',()=>{
+ const run=replay('7-2'),sim=run.sim;
+ for(let f=0;f<=2950;f++){
+  run.step(f);if(f<2713)continue;
+  const r=run.row(f);
+  assert.equal(sim.phase,r[14]===11||r[14]===6?'dying':'intro',`frame ${f}`);
+  if(r[14]===11||r[14]===6)assert.equal((Math.floor(sim.player.y)-32)&255,r[0xce],`frame ${f} y`);
+ }
+});
+
+for(const [level,end] of [['2-2',4275],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
+ const run=replay(level),expected=new Map<number,[number,number[][]]>();
+ for(const [id,row,,,,,after] of waterEvents.bubbles as unknown as [string,number,unknown,unknown,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
+ for(const [id,row,,,after] of waterEvents.bubbleEntrances as unknown as [string,number,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
+ let checked=0;
+ for(let f=0;f<run.pads.length&&f<=end;f++){
+  run.step(f);const after=expected.get(f);if(!after)continue;
+  assert.deepEqual([run.sim.bubbleState.timer,run.sim.bubbles.map(b=>[b.x,b.y,b.page,b.fraction])],after,`frame ${f}`);checked++;
+ }
+ assert.ok(checked>3000);
 });

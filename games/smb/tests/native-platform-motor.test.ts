@@ -1,7 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeBalanceStep,nativeDropStep,nativeWrapState} from '../src/native-platform-motor.js';
-import {nativeLiftState,PlatformMotion,nativePlatformObject} from '../src/platform-motion.js';
+import {nativeLiftState,PlatformMotion,nativePlatformObject,nativePlatformSpawnCamera} from '../src/platform-motion.js';
+import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import events from './fixtures/native-platform-rule-events.json';
 
@@ -38,4 +39,21 @@ test('native lift aliases its slot X fraction byte as YPlatformTopYPos',()=>{
   assert.equal(new PlatformMotion(context).slotXByte(platform,0),e.xByte,`${e.level} native slot ${e.slot}`);checked++;
  }
  assert.ok(checked>=5);
+});
+
+
+test('platform motor writes reach every native Y-byte alias used by later enemy types',()=>{
+ const row=events.find(e=>e.id===37&&e.level==='4-3'&&e.spawnY===96&&e.age===20)!;
+ const spawn=events.find(e=>e.id===37&&e.level===row.level&&e.slot===row.slot&&e.age===0)!;
+ const sim:any=new Simulation([observedLevels().find(l=>l.id===row.level)!]);sim.reset(true);
+ const context={levelId:row.level,areaId:'main'},p=sim.area.platforms.find((p:any)=>{const o=nativePlatformObject(p,context);return o?.kind==='lift'&&o.y===96;})!;
+ sim.platformMotion.slotFraction(p,spawn.after.fraction);
+ sim.camera=nativePlatformSpawnCamera(nativePlatformObject(p,context)!);
+ sim.platformMotion.advance(0,sim.camera,spawn.counter!);
+ sim.platformFrame=row.age;sim.platformMotion.advance(row.age,sim.camera,spawn.counter!+row.age!);
+ sim.platformSlots.set(p,row.slot);sim.platformSlotResidues();
+ assert.equal(sim.slotVertical[row.slot].fraction,row.after.fraction);
+ assert.equal(sim.slotYFraction[row.slot],row.after.fraction);
+ assert.equal(sim.slotYFrac[row.slot],row.after.fraction);
+ assert.equal(sim.slotYSpeed[row.slot],row.after.speed&255);
 });
