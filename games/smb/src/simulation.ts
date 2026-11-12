@@ -13,7 +13,7 @@ import {PiranhaColumns} from './piranha-columns.js';
 import {advanceBowserX,bowserBodyX,bowserFaceMario,bowserFlameDue,bowserFlameSpeed,bowserHopPause,createBowserMotor,nativeBowserSpawnX,BOWSER_FLAME_OFFSET_X,BOWSER_HOP} from './bowser-motion.js';
 import type {FirebarGeometry,FirebarMotor} from './firebar-motion.js';
 import {advanceWater,WATER_FORCES} from './water-physics.js';
-import {NativeWater,whirlpoolAt,whirlpoolPull,STROKE_TIMER,NO_INPUT_Y,SWIM_DEATH_Y,SWIM_WALL_DEPTH} from './native-water.js';
+import {NativeWater,whirlpoolAt,whirlpoolPull,STROKE_TIMER,NO_INPUT_Y,SWIM_DEATH_Y,SWIM_WALL_DEPTH,SURFACE_Y} from './native-water.js';
 import type {WhirlpoolZone} from './native-water.js';
 import whirlpoolData from '../data/water-whirlpools.json';
 import transitionMeasurements from '../data/transition-measurements.json';
@@ -250,7 +250,7 @@ export class Simulation {
   this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();
   if(this.player)this.player.size=0;this.loadArea(this.level.main);this.timerFrames=this.level.id==='1-1'?TRANSITIONS.freshReferenceResetTimerFrames:0;if(this.level.id==='1-1'){this.areaFrame=FLAG_COMPLETION.freshAreaFrame;this.broClock=HAMMER_NATIVE.freshClock;}/* the recorded 1-1 route's area clock phase: its level end falls on native row 1975 */if(!playing)this.events=['command_silence'];this.phase=playing?'play':'title';this.phaseFrame=0;this.titleFrame=0;
  }
- loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false){
+ loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false,lifeEntry=false){
   this.piranhaTouchFeetY=undefined;this.fallGravity=FALL_GRAVITY_AFTER_LOAD;this.landingFraction=0;this.walkingOff=false;
   this.fallingThroughCastleLava=false;this.pitMusic=false;
   this.spinyTimer=0;this.spinyBuffer=false;this.slotBroJump=[0,0,0,0,0];this.miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0})); // InitializeArea clears the timers ($0780-$07A1) and the frenzy buffer (8-2 row 684 after a death: $078F 0, $06CB 0)
@@ -280,7 +280,8 @@ export class Simulation {
   this.powerChange=undefined;
   const spawnAtEntry=!spawn||spawn[0]===area.spawn[0]&&spawn[1]===area.spawn[1];
   this.waterEntryFall=Boolean(area.waterEntryFall&&spawnAtEntry);this.waterEntryTimerHold=this.waterEntryFall?1:0;this.waterSurface={active:false,contacted:false};
-  this.startSwim(spawnAtEntry,preserveTimer);
+  this.startSwim(spawnAtEntry,preserveTimer||lifeEntry);
+  if(lifeEntry&&this.swimLock===3)this.swimLock=2; // respawn PlayerEntrance starts its first gravity pass on the next row; a pipe load has one intervening engine row
   this.entryFalling=Boolean(area.entryFall&&spawnAtEntry);this.entryFallAge=0;this.entryReadyAge=-1;this.entryInputLag=undefined;this.entryInputDelay=this.entryFalling?-1:0;this.entryTimerDelay=this.entryFalling?-1:0;
   this.entryFallFacing(area);
   this.entryVineActive=Boolean(area.entryVine);this.autoVineActive=false;this.entryVineStage='climb';
@@ -558,7 +559,8 @@ export class Simulation {
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
-  const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
+  // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
+  const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms-this.swimPull+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
   // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
   // attempted pixel move before wall ejection plus Platform_X_Scroll, the lift carry of the
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
@@ -813,10 +815,10 @@ export class Simulation {
  }
  private get whirlpools(){return (whirlpoolData.zones as Record<string,WhirlpoolZone[]>)[`${this.level.id}/${this.area.id}`];}
  /** A Down+A stroke from the water floor keeps the horizontal speed from speed byte 11 up, whatever direction is held (2-2/7-2 r5 floor strokes:
-  * 11 of 11, e.g. 7-2 mood0 row 797 4168 -> 4168; the remake braked 152 on 9). Below byte 11 the floor Down stop still applies; pillar tops (y < 176) keep braking (tests/water-pillar-top). */
+  * 11 of 11, e.g. 7-2 mood0 row 797 4168 -> 4168; the remake braked 152 on 9). Below byte 11 the floor Down stop still applies; at the native surface bound (y < 20) a stroke cannot rise and floor braking remains (tests/water-pillar-top). */
  private floorDownStrokeKeeps(held:boolean,heldBefore:boolean,noInput:boolean,b:Set<Button>):boolean{
   const p=this.player,w=this.water;
-  return p.grounded&&p.y-32>=176&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&Math.abs(w.motor.speed)>=11*256;
+  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&Math.abs(w.motor.speed)>=11*256;
  }
  /** One swimming frame: vertical pass, horizontal speed and whirlpool pull (the movement itself is applied by update()). */
  private swimStep(b:Set<Button>,pressedA:boolean,direction:number){
@@ -836,8 +838,8 @@ export class Simulation {
   const probe=Math.floor(w.whirlFirst?p.x:p.x+motionOf(Math.round(p.vx*4096)));
   const zone=whirlpoolAt(this.whirlpools,probe);
   const step=w.vertical(held,heldBefore,p.y-32,p.grounded,!!zone);
-  // The pull direction follows the same landing x (model rows crossing the zone centre).
-  const pull=whirlpoolPull(zone,w.whirlFirst||w.pullFromStart?Math.floor(p.x):probe,this.frame+(w.whirlFirst?1:0),w.whirlFirst||w.pullFromStart);
+  // ProcessWhirlpools pulls on odd native FrameCounter rows. The helper uses even sample indices; the counter can change parity across a life load.
+  const pull=whirlpoolPull(zone,w.whirlFirst||w.pullFromStart?Math.floor(p.x):probe,this.random.frame+1+(w.whirlFirst?1:0),w.whirlFirst||w.pullFromStart);
   // PPU rows show a trailing pull after tile contact; a zero-motion back-out skips it (native7-2 rows1429..1434).
   if(w.whirlFirst||w.pullFromStart)p.x+=pull;else this.swimPull=pull;
   this.swimDy=step.dy;
@@ -894,7 +896,7 @@ export class Simulation {
   * The left body points are BlockBuffer_X_Adder $02 (feet-8, and feet-24 for big Mario), as the right ones are $0D: 3-2 v2 row 369, small Mario at x 909.56 takes the coin at column 56 with x+2 = 911.
   * PlayerBGCollision probes head, left foot, right foot, then each side top to bottom, and a coin (HandleCoinMetatile) ends the routine: one coin per row
   * (2-2 v2 rows 1323/1324, two coins one row apart). */
- private collectTiles(){const p=this.player,big=this.height>16,points=[[p.x+8,p.y-this.height-2],[p.x+3,p.y],[p.x+12,p.y],...big?[[p.x+2,p.y-24]]:[],[p.x+2,p.y-8],...big?[[p.x+13,p.y-24]]:[],[p.x+13,p.y-8]];for(const [x,y] of points){
+ private collectTiles(){const p=this.player,big=this.height>16,px=p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0),py=p.y-(this.swimActive?this.water.whirlMoved:0),points=[[px+8,py-this.height-2],[px+3,py],[px+12,py],...big?[[px+2,py-24]]:[],[px+2,py-8],...big?[[px+13,py-24]]:[],[px+13,py-8]];for(const [x,y] of points){
   const col=Math.floor(x/16),row=Math.floor(y/16),key=`${col},${row}`,id=this.tiles.get(key);
   if(id===194||id===195){this.tiles.delete(key);this.coin();return;}
  }}
@@ -2014,13 +2016,13 @@ export class Simulation {
   }
   const target=this.level.areas.find(a=>a.id===(this.checkpoint?(this.activatedCheckpointArea??this.level.main):(this.level.respawnArea??this.level.main)))!,checkpoint=this.checkpoint?target.checkpoint:undefined;
   // Native PlayerLoseLife/ContinueGame keeps the HUD timer digits ($07F8) through the lives screen; the area's time is loaded with the level on the engine-7 row (1-1 v2: 368 until 1147, 400 from 1149).
-  const time=this.time;this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera);this.time=time;this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
+  const time=this.time;this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera,false,true);this.time=time;this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
  }
  private finishGameover(){
   if(!this.twoPlayer||this.slots[1-this.currentPlayer].lives<=0){this.restartToTitle();return;}
   this.currentPlayer=1-this.currentPlayer;const s=this.slots[this.currentPlayer];this.levelIndex=s.level;this.lives=s.lives;this.score=s.score;this.coins=s.coins;this.checkpoint=s.checkpoint;this.activatedCheckpointArea=s.checkpointArea;
   const target=this.level.areas.find(a=>a.id===(this.checkpoint?(this.activatedCheckpointArea??this.level.main):(this.level.respawnArea??this.level.main)))!,checkpoint=this.checkpoint?target.checkpoint:undefined;
-  this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera);this.phase='intro';this.phaseFrame=0;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=true;this.introLength=TRANSITIONS.introFrames;
+  this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera,false,true);this.phase='intro';this.phaseFrame=0;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=true;this.introLength=TRANSITIONS.introFrames;
  }
  private nextLevel(){
   if(this.levelIndex+1>=this.levels.length){
