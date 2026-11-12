@@ -1,6 +1,6 @@
 # 2.5D visual kit: asset contract
 
-Visual presentation contract. The simulation (`src/simulation.ts`), levels (`data/`), controls and audio are NOT changed. The new renderer
+Visual-only experiment. The simulation (`src/simulation.ts`), levels (`data/`), controls and audio are NOT changed. The new renderer
 (`src/render25d/`) reads the same `Simulation` state the 2D renderer reads, and draws genuine 3D models on the original 2D gameplay plane.
 
 ## Coordinates (shared by Blender, the glTF files and three.js)
@@ -25,13 +25,13 @@ Visual presentation contract. The simulation (`src/simulation.ts`), levels (`dat
 - Enemy clips are listed per asset in `visual25d/blender/out/MODELS.md` (at least `walk` for walkers, `idle` for stationary ones).
 
 ## Materials (so the renderer can recolour at run time)
-- glTF PBR metallic-roughness only (Principled BSDF, no exotic nodes). Textures are PNG or JPEG; the recovered Mario builder uses a 2048 atlas. Packed ORM is supported.
+- glTF PBR metallic-roughness only (Principled BSDF, no exotic nodes). Textures PNG or JPEG, at most 1024 x 1024 per asset; packed ORM is welcome.
 - Mario: material names `M_Cloth_Primary` (cap + shirt, red), `M_Cloth_Secondary` (overalls, blue), `M_Skin`, `M_Hair`, `M_Glove`, `M_Shoe`, `M_Button`, `M_Eye`, `M_Emblem` (cap emblem).
   The renderer recolours the two cloth materials for Luigi (green / dark blue) and Fire (white / red).
 - Koopas: `M_Shell` is recoloured for the red variant. Other enemies: keep one palette material per major body area, named `M_<Part>`.
 
 ## Budgets
-Original design targets were Mario <= 30 k triangles, an enemy <= 12 k, a block/pipe piece <= 3 k, and scenery <= 8 k. These are targets, not enforced release limits. The recovered runtime assets total about 142 MB, including character meshes, textures, skies and tree cards.
+Mario <= 30 k triangles, any enemy <= 12 k, any block/pipe piece <= 3 k, scenery piece <= 8 k. Whole level kit loaded at once <= 12 MB after optimisation.
 
 ## File layout
 ```
@@ -40,11 +40,13 @@ visual25d/blender/build_*.py      one script per asset family; each one is runna
 visual25d/blender/out/*.glb       raw exports (the renderer never reads these directly)
 visual25d/blender/out/MODELS.md   node names, clips, anchors, triangle counts for every asset
 visual25d/blender/previews/*.png  turntables / pose sheets for review
+visual25d/ai3d/                   image-to-3D experiments and report
 assets25d/models/*.glb            optimised runtime files (written by visual25d/tools/optimize.mjs only)
 visual25d/ASSET_MANIFEST.json     provenance + licence for every asset (tool, source, licence, attribution)
 ```
-Asset builders write raw exports under `visual25d/blender/out/`; the optimizer writes the runtime GLBs.
+Owners: the renderer (`src/render25d/`, `tools/visual25d/`, `assets25d/`) belongs to the lead. Asset helpers write only under `visual25d/blender/` and `visual25d/ai3d/`.
 
 ## Rules that never change
-- No ROM or executable inspection. Character modelling uses supplied visual references; original-game designs and 2D artwork retain the notices in THIRD_PARTY.md.
+- No ROM or executable inspection. The existing sprites (`visual25d/refs/*.png`, `assets/graphics/`) are DESIGN REFERENCES only; never ship them.
 - No paid or proprietary generation services; open-source models and tools only; record every licence in `ASSET_MANIFEST.json`.
+- Never use the main checkout `/home/kd/Desktop/proj/build_games_from_scratch_in_threejs` (read-only reference). Work only in this worktree.

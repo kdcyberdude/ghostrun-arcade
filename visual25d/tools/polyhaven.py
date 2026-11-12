@@ -10,7 +10,7 @@ OUT = 'assets25d/ph'; MANIFEST = 'visual25d/polyhaven-manifest.json'
 HDRIS = {'alps_field': 'ground', 'snowy_hillside': 'snow', 'narrow_moonlit_road': 'night', 'kloofendal_48d_partly_cloudy_puresky': 'sky'}
 TEXTURES = ['excavated_soil_wall', 'leafy_grass', 'grass_path_2', 'sparse_grass', 'castle_brick_02_red', 'metal_plate', 'rusty_metal_02', 'castle_wall_varriation', 'castle_brick_01',
             'dark_rock_02', 'green_metal_rust', 'brown_planks_05', 'coast_sand_rocks_02', 'bark_brown_02', 'forest_ground_04', 'aerial_grass_rock', 'snow_02', 'snow_field_aerial']
-MODELS = ['island_tree_01', 'island_tree_02', 'jacaranda_tree', 'tree_small_02', 'fir_tree_01', 'shrub_01', 'shrub_02', 'shrub_04', 'grass_medium_01', 'grass_medium_02', 'fern_02', 'rock_moss_set_01', 'boulder_01', 'flower_gazania', 'flower_ursinia', 'flower_empodium', 'periwinkle_plant', 'shrub_sorrel_01']
+MODELS = ['island_tree_01', 'island_tree_02', 'jacaranda_tree', 'tree_small_02', 'shrub_01', 'shrub_02', 'shrub_04', 'grass_medium_01', 'grass_medium_02', 'fern_02', 'rock_moss_set_01', 'boulder_01', 'flower_gazania', 'flower_ursinia', 'flower_empodium', 'periwinkle_plant', 'shrub_sorrel_01']
 
 def api(path): return json.load(urllib.request.urlopen(urllib.request.Request('https://api.polyhaven.com/' + path, headers=UA)))
 def fetch(url, dst):

@@ -120,8 +120,8 @@ def fireball():
         f.xf(geo.frame_from_z(d, up=(0, 1, 0)) @ rot_xyz(0, 0, 0), d * 0.17)
         f.V = f.V
         P.append(f)
-    specs = [MatSpec('M_FireCore', (1, 0.9, 0.5), rough=0.5, kind='smooth', emissive=(1, 0.85, 0.35), emissive_strength=3.0, flat=True, ao_albedo=0, ao_strength=0),
-             MatSpec('M_Flame', hexlin('#FF5A0A'), rough=0.5, kind='smooth', emissive=hexlin('#FF4A00'), emissive_strength=2.0, ao_albedo=0, ao_strength=0)]
+    specs = [MatSpec('M_FireCore', (1, 0.9, 0.5), rough=0.5, kind='smooth', emissive=(1, 0.85, 0.35), emissive_strength=1.8, flat=True, ao_albedo=0, ao_strength=0),
+             MatSpec('M_Flame', hexlin('#FF5A0A'), rough=0.5, kind='smooth', emissive=hexlin('#FF4A00'), emissive_strength=1.0, ao_albedo=0, ao_strength=0)]
     bones = [('Root', None, (0, 0, -0.3), (0, 0, -0.2)), ('Spin', 'Root', (0, 0, 0), (0, 0, 0.3))]
 
     def clips(arm):

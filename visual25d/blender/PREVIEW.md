@@ -1,4 +1,5 @@
 # Previews (Cycles CPU renders of the re-imported .glb files)
+- previews/mario_materials.png  close-ups: denim/twill, leather shoes, cotton glove
 - previews/mario_turntable.png  8 azimuths, rest pose
 - previews/mario_head.png  face close-ups (cap, M, eyes, moustache, ears, hair)
 - previews/mario_poses.png  idle, skid, jump, fall, duck, slide, death, throw (two angles each)

@@ -68,14 +68,22 @@
   "star",
   "toad",
   "trunk",
+  "veg_boulder_01",
   "veg_fern_02",
   "veg_flower_empodium",
   "veg_flower_gazania",
   "veg_flower_ursinia",
+  "veg_grass_medium_01",
   "veg_grass_medium_02",
+  "veg_island_tree_01",
+  "veg_island_tree_02",
+  "veg_jacaranda_tree",
   "veg_periwinkle_plant",
   "veg_rock_moss_set_01",
+  "veg_shrub_01",
   "veg_shrub_02",
-  "veg_shrub_sorrel_01"
+  "veg_shrub_04",
+  "veg_shrub_sorrel_01",
+  "veg_tree_small_02"
  ]
 }

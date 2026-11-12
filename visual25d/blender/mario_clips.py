@@ -279,7 +279,7 @@ def clip_slide(R):
         set_leg(R, 'L', 0.20, -0.57, -10)
         R.R('Spine', ry=8)
         R.R('Head', ry=10, rz=0)
-        set_arm(R, 'R', 66, 34, ab=-6, hand=10)              # near hand grips the pole at chest height
+        set_arm(R, 'R', 48, 22, ab=8, hand=10)               # near hand grips the pole at belly height
         set_arm(R, 'L', 132, 30, ab=-8, hand=10)             # far hand higher, behind the head
     return f
 
