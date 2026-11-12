@@ -190,3 +190,15 @@ test('pre-whirlpool cached scroll position preserves water parser timing and the
   }
  }
 });
+
+for(const level of ['2-2','7-2'])test(`${level} all native water slots match bidirectionally throughout engine 7, 8 and 11`,()=>{
+ const run=replay(level);let checked=0;
+ for(let f=0;f<run.pads.length;f++){
+  run.step(f);const r=run.row(f);if(![7,8,11].includes(r[14])||run.sim.area.theme!=='water')continue;
+  const expected=[];
+  for(let slot=0;slot<5;slot++)if(r[0xf+slot]&&[7,10,11].includes(r[0x16+slot]))expected.push([slot,r[0x16+slot],r[0x6e+slot]*256+r[0x87+slot],r[0xcf+slot]]);
+  const actual=run.sim.enemies.filter(e=>e.active&&!e.dead&&!e.slotFreed&&(e.bloop||e.nativeSwim)).map(e=>[e.enemySlot,e.kind==='blooper'?7:e.palette==='0f-16-30-27'?11:10,Math.floor(e.x),Math.floor(e.y)-24]).sort((a,b)=>a[0]!-b[0]!);
+  assert.deepEqual(actual,expected,`frame ${f}`);checked++;
+ }
+ assert.ok(checked>3000);
+});
