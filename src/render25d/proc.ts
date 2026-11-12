@@ -38,15 +38,33 @@ export function coinGeometry(){
  coinGeo=mergeGeometries(parts)!;return coinGeo;
 }
 const water=new THREE.MeshPhysicalMaterial({color:0x1a7fc0,roughness:0.04,metalness:0,clearcoat:1,clearcoatRoughness:0.02,transparent:true,opacity:0.62,depthWrite:false,envMapIntensity:1.6});
-const lava=new THREE.MeshStandardMaterial({color:0xff5a10,roughness:0.6,emissive:0xff3a00,emissiveIntensity:1.6});
+/** Tileable molten-rock texture: dark crust broken by glowing orange-yellow veins (periodic value noise, deterministic). */
+function lavaTexture(){
+ const N=128,c=document.createElement('canvas');c.width=c.height=N;const ctx=c.getContext('2d')!,img=ctx.createImageData(N,N);
+ const hash=(x:number,y:number,o:number)=>{const h=Math.sin(x*127.1+y*311.7+o*74.7)*43758.5453;return h-Math.floor(h);};
+ const noise=(x:number,y:number,p:number,o:number)=>{const xi=Math.floor(x),yi=Math.floor(y),fx=x-xi,fy=y-yi,sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy);
+  const v=(a:number,b:number)=>hash(((xi+a)%p+p)%p,((yi+b)%p+p)%p,o);
+  return (v(0,0)*(1-sx)+v(1,0)*sx)*(1-sy)+(v(0,1)*(1-sx)+v(1,1)*sx)*sy;};
+ for(let y=0;y<N;y++)for(let x=0;x<N;x++){
+  let n=0,amp=0.5;for(let k=0,p=4;k<4;k++,p*=2,amp/=2)n+=amp*noise(x/N*p,y/N*p,p,k);
+  const vein=Math.pow(1-Math.min(1,Math.abs(n-0.5)*5),3);           // bright where the fbm crosses its midline
+  const heat=Math.min(1,0.18+vein*0.95),i=(y*N+x)*4;
+  img.data[i]=Math.round(60+195*heat);img.data[i+1]=Math.round(8+180*Math.pow(heat,2.2));img.data[i+2]=Math.round(2+50*Math.pow(heat,5));img.data[i+3]=255;}
+ ctx.putImageData(img,0,0);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.colorSpace=THREE.SRGBColorSpace;return t;
+}
+const lavaMap=typeof document==='undefined'?null:lavaTexture();
+const lava=new THREE.MeshStandardMaterial({color:0xffffff,map:lavaMap,emissive:0xffffff,emissiveMap:lavaMap,emissiveIntensity:0.9,roughness:0.85});
 /** Liquids are shared materials so the renderer can animate them once per frame. */
 export const LIQUIDS={water,lava};
+const ROPE=std(0x7a5a32,0.9);  // hemp brown: reads against both snow and night skies
 export function procDeco(name:string,theme:string):Part[]|undefined{
  const liquid=theme==='castle'?lava:water;
  if(name==='liquid'){const g=new THREE.BoxGeometry(1,1,1.6);return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,8,1,1);g.translate(0,-0.15,0);return [{geometry:g,material:liquid,matrix:I()}];}
- if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.03,0.03,1,8);return [{geometry:g,material:std(0xd8c08a,0.9),matrix:I()}];}
- if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.03,0.03,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:std(0xd8c08a,0.9),matrix:I()}];}
+ if(name==='liquid_top'){const g=new THREE.BoxGeometry(1,0.7,1.6,8,1,4);g.translate(0,-0.15,0);
+  if(liquid===lava){const pos=g.attributes.position;for(let i=0;i<pos.count;i++)if(pos.getY(i)>0.19)pos.setY(i,0.2+0.05*Math.sin((pos.getX(i)+0.5)*Math.PI*2)*Math.cos(pos.getZ(i)*2.2));g.computeVertexNormals();}  // tile-periodic ripple, seamless across neighbours
+  return [{geometry:g,material:liquid,matrix:I()}];}
+ if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);return [{geometry:g,material:ROPE,matrix:I()}];}
+ if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:I()}];}
  if(name==='pulley'){const g=new THREE.TorusGeometry(0.28,0.07,10,24);return [{geometry:g,material:std(0x8a8f98,0.3,0.9),matrix:I()}];}
  if(name==='chain'){const g=new THREE.TorusGeometry(0.12,0.035,8,16);g.scale(1,1.6,1);g.rotateZ(Math.PI/4);return [{geometry:g,material:std(0x9aa0a8,0.3,0.9),matrix:I()}];}
  if(name==='deco_coral'){const g=new THREE.ConeGeometry(0.16,1,8);g.translate(0,0,0);const m=std(0x3ac06a,0.8);

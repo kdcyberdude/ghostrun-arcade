@@ -57,6 +57,10 @@ function vary(material:THREE.Material){
 }
 export const TILE_MODELS=['block_ground','block_ground_top','block_brick','block_question','block_used','block_hard','block_wall','pipe_top','pipe_body','castle_brick','castle_crenel','castle_dark'];
 const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe','castle']);
+/** Castle pipes are grey in the original palette: same pipe model, its green albedo turned to light steel grey. */
+function castlePipe(m:THREE.Material){const c=m.clone() as THREE.MeshStandardMaterial;
+ c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n diffuseColor.rgb=vec3(dot(diffuseColor.rgb,vec3(0.299,0.587,0.114)))*vec3(3.4,3.45,3.6);');};
+ c.customProgramCacheKey=()=>'castle-pipe';return c;}
 const VARIANT:Record<string,string>={underground:'_ug',castle:'_castle',water:'_water',snow:'_snow'};
 export class World{
  readonly group=new THREE.Group();private pools=new Map<string,Pool>();private area?:object;private statics?:THREE.Group;
@@ -73,8 +77,10 @@ export class World{
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
  private pool(name:string,theme:string){
-  const v=VARIANT[theme]??'',want=v&&this.kit.has(name+v)?name+v:name,key=name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):want;let p=this.pools.get(key);
-  if(!p){p=new Pool(this.kit.parts(want)??this.fallback(name,theme),want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
+  const v=VARIANT[theme]??'',want=v&&this.kit.has(name+v)?name+v:name,greyPipe=theme==='castle'&&name.startsWith('pipe_');
+  const key=name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want;let p=this.pools.get(key);
+  if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(greyPipe)parts=parts.map(q=>({...q,material:castlePipe(q.material)}));
+   p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
  }
  private light(camPx:number,frame:number){
@@ -114,13 +120,15 @@ export class World{
      break;
     case 'coin':this.pool('coin_tile',theme).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
     case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);break;}
+    // Tile 37 is also the pulley-lift rope: only a column topped by a flag ball is the flagpole (drawn by the flag prop).
+    case 'flagPole':{let ball=false;for(let r=0;r<15&&!ball;r++)ball=s.tiles.get(`${col},${r}`)===36;if(!ball)put('rope_v',col+0.5,14.5-row,-0.3);break;}
     case 'other':this.unmapped.add(id);break;
     default:break;
    }
   }
   for(const p of this.pools.values())p.end();
   this.light(camPx,s.frame);
-  LIQUIDS.lava.emissiveIntensity=1.4+0.35*Math.sin(s.frame*0.07);LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
+  LIQUIDS.lava.emissiveIntensity=0.85+0.2*Math.sin(s.frame*0.07);if(LIQUIDS.lava.map){LIQUIDS.lava.map.offset.set(s.frame*0.0011,s.frame*0.0004);}LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
   const exit=s.area.exit;this.flag.visible=exit?.kind==='flag';
   if(exit?.kind==='flag'){const top=s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY;this.flag.position.set((exit.x-8)/16,(232-top)/16,0.05);waveFlag(this.flag,s.frame);}
  }

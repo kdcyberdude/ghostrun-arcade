@@ -22,7 +22,8 @@ export function analyseArea(area:Area):Layout{
  for(const [c,r,id] of area.tiles)if(kindOf(id)==='castle'){castle=castle?{col0:Math.min(castle.col0,c),row0:Math.min(castle.row0,r),col1:Math.max(castle.col1,c),row1:Math.max(castle.row1,r)}:{col0:c,row0:r,col1:c,row1:r};}
  layout.castle=castle;
  let pole:Layout['pole'];
- for(const [c,r,id] of area.tiles){const k=kindOf(id);if(k==='flagBall'||k==='flagPole'){pole=pole?{col:c,rowTop:Math.min(pole.rowTop,r),rowBottom:Math.max(pole.rowBottom,r)}:{col:c,rowTop:r,rowBottom:r};}}
+ const ballCols=new Set(area.tiles.filter(t=>t[2]===36).map(t=>t[0]));
+ for(const [c,r,id] of area.tiles){const k=kindOf(id);if((k==='flagBall'||k==='flagPole')&&ballCols.has(c)){pole=pole?{col:c,rowTop:Math.min(pole.rowTop,r),rowBottom:Math.max(pole.rowBottom,r)}:{col:c,rowTop:r,rowBottom:r};}}
  layout.pole=pole;
  return layout;
 }
