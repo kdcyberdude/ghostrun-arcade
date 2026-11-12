@@ -11,7 +11,7 @@ function fixture(falling=true,enemyX=48){
 function stomp(){
  const sim=fixture(),enemy=sim.enemies[0];let tries=0;
  while(!enemy.dead&&sim.phase==='play'&&tries++<80)sim.step(['left'],1);
- assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);assert.equal(enemy.dead,1);assert.equal(sim.score,100);
+ assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);assert.equal(enemy.dead,1);assert.equal(sim.awardedScore,100);
  return {sim,enemy};
 }
 test('a real stomp stays flat and fixed through39 updates and is removed on update40',()=>{

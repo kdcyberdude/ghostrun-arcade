@@ -7,7 +7,7 @@ function fixture(kind:EnemyKind='goomba',x=40,falling=true){
  const level:Level={id:'popup-fixture',main:'main',time:400,evidence:'Declared real-collision fixture; not a campaign win',areas:[{id:'main',width:1280,palette:0,theme:'ground',camera:0,spawn:[x,falling?176:208],tiles,enemies:[{kind,x:x+8,y:208,direction:-1}],evidence:'Reset only; ordinary controls thereafter'}]};
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
-function stomp(kind:EnemyKind='goomba',x=40){const sim=fixture(kind,x);for(let i=0;i<80&&!sim.popups.length&&sim.phase==='play';i++)sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,100);assert.equal(sim.score,100);return sim;}
+function stomp(kind:EnemyKind='goomba',x=40){const sim=fixture(kind,x);for(let i=0;i<80&&!sim.popups.length&&sim.phase==='play';i++)sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,100);assert.equal(sim.awardedScore,100);return sim;}
 test('real Goomba stomp produces one label and removes it with the qualified squash',()=>{
  const sim=stomp(),popup=sim.popups[0],enemy=sim.enemies[0];assert.equal(popup.y,176);assert.equal(popup.age,0);assert.equal(enemy.squashed,true);
  sim.step(['left'],39);assert.equal(sim.popups.length,1);assert.equal(popup.y,137);assert.equal(enemy.dead,40);
@@ -20,7 +20,7 @@ test('Koopa label persists independently after40frames and expires at the inferr
 });
 test('real1UP collection emits its semantic label while preserving the score and life award',()=>{
  const sim=fixture('goomba',40,false);sim.enemies=[];sim.items.push({kind:'1up',x:40,y:190,vx:0,vy:0,age:0,life:100});sim.step([],1);
- assert.equal(sim.items.length,0);assert.equal(sim.lives,4);assert.equal(sim.score,0);assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,'1up');assert.equal(sim.popups[0].y,174);
+ assert.equal(sim.items.length,0);assert.equal(sim.lives,4);assert.equal(sim.awardedScore,0);assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,'1up');assert.equal(sim.popups[0].y,174);
  sim.step([],47);assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].y,127);sim.step([],1);assert.equal(sim.popups.length,0);
 });
 test('popup birth captures the committed camera and then stays at that screen X while scrolling',()=>{

@@ -21,8 +21,8 @@ test('a stomped Paratroopa becomes a Koopa that Mario falls through until it lan
  let airRows=0;
  while(koopa.unwingedAir&&airRows<60){
   Object.assign(sim.player,{x:koopa.x,y:koopa.y<190?koopa.y+2:100,vx:0,vy:2,grounded:false});
-  const score=sim.score;sim.step([],1);airRows++;
-  if(koopa.unwingedAir){assert.equal(sim.score,score);assert.ok(!sim.player.dead);assert.ok(!koopa.shell);}
+  const score=sim.awardedScore;sim.step([],1);airRows++;
+  if(koopa.unwingedAir){assert.equal(sim.awardedScore,score);assert.ok(!sim.player.dead);assert.ok(!koopa.shell);}
  }
  assert.ok(airRows>=12&&airRows<=25,`air rows ${airRows}`);
  assert.equal(koopa.vy,0);

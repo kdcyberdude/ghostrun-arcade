@@ -97,5 +97,5 @@ test('stomping a Bro scores 1000, as in the three native stomps (score digits of
  sim.step([],1);
  Object.assign(sim.player,{x:bro.x,y:bro.y-16,vx:0,vy:3,grounded:false});
  sim.step([],1);
- assert.ok(bro.dead>0);assert.equal(sim.score,1000);
+ assert.ok(bro.dead>0);assert.equal(sim.awardedScore,1000);
 });

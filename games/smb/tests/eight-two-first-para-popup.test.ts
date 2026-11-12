@@ -11,6 +11,6 @@ test('Paratroopa stomp displays the awarded score and moves the popup upward',()
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[288,188],128);
  sim.player.vy=1;sim.player.grounded=false;sim.broClock=1;sim.step([],1);
  assert.equal(sim.enemies[0].kind,'koopa');assert.equal(sim.popups.length,1);
- const popup=sim.popups[0],y=popup.y;assert.equal(popup.value,sim.score);
+ const popup=sim.popups[0],y=popup.y;assert.equal(popup.value,sim.awardedScore);
  sim.step([],1);assert.equal(popup.y,y-1);
 });

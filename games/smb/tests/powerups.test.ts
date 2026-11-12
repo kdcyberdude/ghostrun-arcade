@@ -12,7 +12,7 @@ function game(){
 
 test('mushroom growth freezes player, enemies and timer for the measured 59 native frames',()=>{
  const sim=game();sim.items.push({kind:'mushroom',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
- assert.equal(sim.powerChange?.kind,'grow');assert.equal(sim.score,1000);
+ assert.equal(sim.powerChange?.kind,'grow');assert.equal(sim.awardedScore,1000);
  const x=sim.player.x,enemyX=sim.enemies[0].x,time=sim.time,timer=sim.timerFrames;
  sim.step(['right'],27);sim.step(['a'],32);
  assert.equal(sim.powerChange,undefined);assert.equal(sim.player.size,1);assert.equal(sim.player.x,x);
@@ -30,12 +30,12 @@ test('Fire Mario damage loses both power stages after55 frozen frames then prote
 
 test('a flower changes Big Mario to Fire Mario through the measured freeze',()=>{
  const sim=game();sim.player.size=1;sim.items.push({kind:'flower',x:40,y:192,vx:0,vy:0,age:32,life:1000});
- sim.step([],1);assert.equal(sim.powerChange?.kind,'fire');sim.step([],62);assert.equal(sim.player.size,1);sim.step([],1);assert.equal(sim.player.size,2);assert.equal(sim.score,1000);
+ sim.step([],1);assert.equal(sim.powerChange?.kind,'fire');sim.step([],62);assert.equal(sim.player.size,1);sim.step([],1);assert.equal(sim.player.size,2);assert.equal(sim.awardedScore,1000);
 });
 
 test('Star pickup grants1000points without a growth freeze and expires after720play frames',()=>{
  const sim=game();sim.player.vx=1;sim.items.push({kind:'star',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
- assert.equal(sim.player.star,720);assert.equal(sim.score,1000);assert.equal(sim.powerChange,undefined);
+ assert.equal(sim.player.star,720);assert.equal(sim.awardedScore,1000);assert.equal(sim.powerChange,undefined);
  const x=sim.player.x;sim.step(['right'],4);assert.ok(sim.player.x>x);
  // Keep the ordinary fixture controller neutral; no state-based route or win.
  sim.step([],716);assert.equal(sim.player.star,0);assert.ok(sim.events.includes('music_ground'));
@@ -45,7 +45,7 @@ test('an8px fireball bounces from the floor and awards the observed100points for
  const sim=game();sim.items.push({kind:'fireball',x:100,y:199,vx:0,vy:3,age:20,life:300});sim.step([],1);
  assert.equal(sim.items[0].y,200);assert.equal(sim.items[0].vy,-3);
  const enemy=sim.enemies[0];sim.items.push({kind:'fireball',x:enemy.x,y:enemy.y-12,vx:0,vy:0,age:1,life:300});sim.step([],1);
- assert.ok(enemy.dead>0);assert.equal(sim.score,100);
+ assert.ok(enemy.dead>0);assert.equal(sim.awardedScore,100);
 });
 
 test('grounded Fire Mario throws from the observed position in both directions',()=>{

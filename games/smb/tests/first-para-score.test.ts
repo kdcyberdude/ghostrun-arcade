@@ -31,10 +31,10 @@ for (const [color,palette] of [['green','0f-1a-30-27'],['red','0f-16-30-27']] as
   test(`${color} zero-chain wing loss awards 400, then ${next} awards 100`,()=>{
    const sim=setup(palette);sim.broClock=1;sim.step([],1);
    assert.equal(sim.enemies[0].kind,color==='red'?'redKoopa':'koopa');
-   assert.equal(sim.score,400);
+   assert.equal(sim.awardedScore,400);
    assert.equal((sim as unknown as ChainAccess).stompChain,0);
-   const before=sim.score,target=hitNext(sim,next);
-   assert.equal(sim.score-before,100);
+   const before=sim.awardedScore,target=hitNext(sim,next);
+   assert.equal(sim.awardedScore-before,100);
    assert.equal((sim as unknown as ChainAccess).stompChain,1);
    if(next==='wingless')assert.equal(target.shell,true);else assert.ok(target.dead>0);
   });
@@ -42,7 +42,7 @@ for (const [color,palette] of [['green','0f-1a-30-27'],['red','0f-16-30-27']] as
  test(`${color} pre-existing nonzero chain retains the current 200-point fallback`,()=>{
   const sim=setup(palette,1);sim.broClock=1;sim.step([],1);
   assert.equal(sim.enemies[0].kind,color==='red'?'redKoopa':'koopa');
-  assert.equal(sim.score,200);
+  assert.equal(sim.awardedScore,200);
   assert.equal((sim as unknown as ChainAccess).stompChain,2);
  });
 }

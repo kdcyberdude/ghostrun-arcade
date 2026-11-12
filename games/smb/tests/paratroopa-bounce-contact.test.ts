@@ -12,7 +12,7 @@ test('a Paratroopa stomp does not immediately damage the bouncing player',()=>{
  const enemy=sim.enemies[0];enemy.active=true;enemy.x=1458.5;enemy.y=168.625;enemy.vx=-0.5;enemy.vy=0.734375;
  sim.player.grounded=false;sim.player.vx=2.5;sim.player.vy=4;
  sim.broClock=1;sim.step(['right','b'],1);
- assert.equal(enemy.kind,'koopa');assert.equal(sim.score,400);assert.equal(sim.phase,'play');
+ assert.equal(enemy.kind,'koopa');assert.equal(sim.awardedScore,400);assert.equal(sim.phase,'play');
  sim.step(['right','b'],4);
  assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);
 });

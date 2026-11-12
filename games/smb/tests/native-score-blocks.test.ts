@@ -15,8 +15,8 @@ const fall=(s:Simulation,done:()=>boolean)=>{for(let f=0;f<40&&!done()&&s.phase=
 
 test('two enemies stomped on one row pay 100 + 400 and leave the chain at 2 (native 8-4 rows 75586 +500, 75606 +400)',()=>{
  const s=fixture([{kind:'goomba',x:94,y:208,direction:-1},{kind:'goomba',x:110,y:208,direction:-1}]);
- drop(s,101,190);fall(s,()=>s.score>0);
- assert.equal(s.score,500);assert.equal((s as any).stompChain,2);assert.equal(s.phase,'play');assert.ok(s.enemies.every(e=>e.dead));
+ drop(s,101,190);fall(s,()=>s.awardedScore>0);
+ assert.equal(s.awardedScore,500);assert.equal((s as any).stompChain,2);assert.equal(s.phase,'play');assert.ok(s.enemies.every(e=>e.dead));
 });
 
 test('single stomps climb 100 200 400 500 800',()=>{
@@ -33,7 +33,7 @@ for(const [name,dx,dir] of [['native 688 on 689: right',-1,1],['native 1985 on 1
  test(`falling on a resting shell kicks it without a bounce (${name})`,()=>{
   const s=fixture([{kind:'koopa',x:100,y:208,direction:-1}]),e=s.enemies[0];e.active=true;e.shell=true;e.movingShell=false;e.vx=-0.5;
   drop(s,100+dx,192);fall(s,()=>!!e.movingShell);
-  assert.equal(Math.sign(e.vx),dir);assert.ok(s.player.vy>=0,'Mario keeps falling');assert.equal(s.score,400);
+  assert.equal(Math.sign(e.vx),dir);assert.ok(s.player.vy>=0,'Mario keeps falling');assert.equal(s.awardedScore,400);
   for(let f=0;f<8;f++)s.step([],1);assert.equal(e.movingShell,true,'the overlap right after the kick must not stop the shell');assert.equal(s.phase,'play');
  });
 

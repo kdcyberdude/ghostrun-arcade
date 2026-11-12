@@ -14,14 +14,14 @@ function stompAndMoveAside(sim:Simulation){
  const koopa=sim.enemies[0];let frames=0;
  while(!koopa.shell&&sim.phase==='play'&&frames++<100)sim.step(['left'],1);
  assert.equal(koopa.shell,true,'falling contact must stomp the approaching Koopa');
- assert.equal(sim.score,100);sim.step(['left'],45);
+ assert.equal(sim.awardedScore,100);sim.step(['left'],45);
  assert.equal(sim.phase,'play');assert.equal(koopa.movingShell,false,'moving left during the bounce must leave an idle shell');
  return koopa;
 }
 function kick(sim:Simulation){
  const shell=stompAndMoveAside(sim);let frames=0;
  while(!shell.movingShell&&sim.phase==='play'&&frames++<100)sim.step(['right','b'],1);
- assert.equal(shell.movingShell,true,'ordinary side contact must kick the idle shell');assert.equal(sim.score,500);
+ assert.equal(shell.movingShell,true,'ordinary side contact must kick the idle shell');assert.equal(sim.awardedScore,500);
  return shell;
 }
 
@@ -37,10 +37,10 @@ test('a stationary shell wakes at the320-frame candidate while Mario waits safel
 });
 
 test('a kicked shell awards the six observed successive victim scores without an invented extra life',()=>{
- const sim=fixture(6),shell=kick(sim),awards:number[]=[];let prior=sim.score,dead=0;
+ const sim=fixture(6),shell=kick(sim),awards:number[]=[];let prior=sim.awardedScore,dead=0;
  for(let frame=0;frame<240&&dead<6&&sim.phase==='play';frame++){
   sim.step(['right','b'],1);const next=sim.enemies.slice(1).filter(e=>e.dead>0).length;
-  if(next>dead){assert.equal(next,dead+1);awards.push(sim.score-prior);prior=sim.score;dead=next;}
+  if(next>dead){assert.equal(next,dead+1);awards.push(sim.awardedScore-prior);prior=sim.awardedScore;dead=next;}
  }
  assert.equal(dead,6);assert.deepEqual(awards,[500,800,1000,2000,4000,5000]);assert.equal(shell.shellChain,6);assert.equal(sim.lives,3);assert.equal(sim.phase,'play');
 });
@@ -57,7 +57,7 @@ test('stopping a returning shell and kicking it again starts a new victim chain'
  for(let frame=0;frame<130&&shell.movingShell&&sim.phase==='play';frame++){
   if(shell.shellChain===1)sawFirstVictim=true;sim.step(['right','b'],1);
  }
- assert.equal(sawFirstVictim,true);assert.equal(sim.phase,'play');assert.equal(shell.movingShell,false,'descending jump must stop the returning shell');assert.equal(sim.score,1100);assert.equal(shell.shellChain,0);
+ assert.equal(sawFirstVictim,true);assert.equal(sim.phase,'play');assert.equal(shell.movingShell,false,'descending jump must stop the returning shell');assert.equal(sim.awardedScore,1100);assert.equal(shell.shellChain,0);
  for(let frame=0;frame<45&&!shell.movingShell&&sim.phase==='play';frame++)sim.step(['left'],1);
- assert.equal(sim.phase,'play');assert.equal(shell.movingShell,true);assert.equal(shell.vx,-3);assert.equal(sim.score,1500,'the second side kick awards400');assert.equal(shell.shellChain,0);
+ assert.equal(sim.phase,'play');assert.equal(shell.movingShell,true);assert.equal(shell.vx,-3);assert.equal(sim.awardedScore,1500,'the second side kick awards400');assert.equal(shell.shellChain,0);
 });

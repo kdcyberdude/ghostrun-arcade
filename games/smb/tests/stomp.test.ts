@@ -16,8 +16,8 @@ function fixture(second=64){
 test('two distinct enemies stomped during one airborne bounce award100 then200',()=>{
  const sim=fixture(),awards:number[]=[];let prior=0,landed=false;
  for(let frame=0;frame<40&&awards.length<2;frame++){
-  sim.step([],1);if(sim.score>0&&sim.player.grounded)landed=true;
-  if(sim.score!==prior){awards.push(sim.score-prior);prior=sim.score;}
+  sim.step([],1);if(sim.awardedScore>0&&sim.player.grounded)landed=true;
+  if(sim.awardedScore!==prior){awards.push(sim.awardedScore-prior);prior=sim.awardedScore;}
  }
  assert.deepEqual(awards,[100,200]);assert.equal(landed,false);assert.ok(sim.enemies.every(e=>e.dead>0));assert.equal(sim.phase,'play');
 });
@@ -26,21 +26,21 @@ test('landing on actual floor between jumps restores the next stomp award to100'
  const sim=fixture(140),awards:number[]=[];let prior=0,sawFloor=false;
  for(let frame=0;frame<220&&awards.length<2;frame++){
   sim.step(frame>=135&&frame<165?['a']:[],1);
-  if(sim.score===100&&sim.player.grounded&&sim.player.y===208)sawFloor=true;
-  if(sim.score!==prior){awards.push(sim.score-prior);prior=sim.score;}
+  if(sim.awardedScore===100&&sim.player.grounded&&sim.player.y===208)sawFloor=true;
+  if(sim.awardedScore!==prior){awards.push(sim.awardedScore-prior);prior=sim.awardedScore;}
  }
  assert.equal(sawFloor,true);assert.deepEqual(awards,[100,100]);assert.ok(sim.enemies.every(e=>e.dead>0));assert.equal(sim.phase,'play');
 });
 
 test('an area load clears an airborne count while retaining the accumulated score',()=>{
- const sim=fixture();sim.step([],27);assert.equal(sim.score,300);assert.equal(sim.player.grounded,false);
+ const sim=fixture();sim.step([],27);assert.equal(sim.awardedScore,300);assert.equal(sim.player.grounded,false);
  // Direct area loading isolates this state boundary; it is not a game route.
- sim.loadArea('other');sim.broClock=1;sim.step([],11);assert.equal(sim.score,400);assert.equal(sim.enemies[0].dead,1);
+ sim.loadArea('other');sim.broClock=1;sim.step([],11);assert.equal(sim.awardedScore,400);assert.equal(sim.enemies[0].dead,1);
 });
 
 test('actual damage clears an airborne count before a second enemy contact',()=>{
- const sim=fixture();sim.player.size=1;sim.step([],11);assert.equal(sim.score,100);
+ const sim=fixture();sim.player.size=1;sim.step([],11);assert.equal(sim.awardedScore,100);
  sim.items.push({kind:'flame',x:40,y:180,vx:0,vy:0,age:0,life:1});sim.step([],1);assert.equal(sim.powerChange?.kind,'shrink');
- let landed=false;for(let frame=0;frame<100&&sim.score===100;frame++){sim.step([],1);if(sim.player.grounded)landed=true;}
- assert.equal(landed,false);assert.equal(sim.score,200);assert.equal(sim.enemies[1].dead,1);assert.equal(sim.phase,'play');
+ let landed=false;for(let frame=0;frame<100&&sim.awardedScore===100;frame++){sim.step([],1);if(sim.player.grounded)landed=true;}
+ assert.equal(landed,false);assert.equal(sim.awardedScore,200);assert.equal(sim.enemies[1].dead,1);assert.equal(sim.phase,'play');
 });
