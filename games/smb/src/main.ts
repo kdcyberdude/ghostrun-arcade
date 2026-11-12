@@ -18,8 +18,10 @@ const heights:Record<string,number>={'4K':2160,'2K':1440,'1K':960,'0.5K':480};
 const LADDER=['4K','2K','1K','0.5K'],TIERS=['ultra','high','low'] as const;type Tier=typeof TIERS[number];type Level={res:string;tier:Tier};
 const RES_OPTIONS='<option value="auto">Auto · adjusts to your device</option><option value="4K">4K · 2304 × 2160</option><option value="2K">2K · 1536 × 1440</option><option value="1K">1K · 1024 × 960</option><option value="0.5K">0.5K · 512 × 480</option>';
 const TIER_OPTIONS='<option value="auto">Auto · adjusts to your device</option><option value="ultra">Ultra · for strong graphics chips</option><option value="high">High · shadows and glow</option><option value="low">Low · fastest</option>';
-// Auto walks one ladder of resolution and graphics together, cheapest first. Ultra only at the top, where a strong GPU has room for it.
-const ALL_LEVELS:Level[]=[{res:'0.5K',tier:'low'},{res:'0.5K',tier:'high'},{res:'1K',tier:'low'},{res:'1K',tier:'high'},{res:'2K',tier:'high'},{res:'4K',tier:'high'},{res:'2K',tier:'ultra'},{res:'4K',tier:'ultra'}];
+// Auto walks one ladder of resolution and graphics together, ordered by how good it looks to play rather than by cost:
+// a sharp 2K picture at 30+ fps beats a soft one at 60, High graphics at 2K beat Low at 4K, and dropping to Low graphics
+// comes before dropping to 0.5K. Low-resolution Ultra is only for a hand-picked Ultra (Auto never trades resolution for it).
+const ALL_LEVELS:(Level&{manualOnly?:boolean})[]=[{res:'0.5K',tier:'low'},{res:'0.5K',tier:'high'},{res:'1K',tier:'low'},{res:'1K',tier:'high'},{res:'2K',tier:'low'},{res:'4K',tier:'low'},{res:'2K',tier:'high'},{res:'4K',tier:'high'},{res:'0.5K',tier:'ultra',manualOnly:true},{res:'1K',tier:'ultra',manualOnly:true},{res:'2K',tier:'ultra'},{res:'4K',tier:'ultra'}];
 /** Estimated frame time in ms on an Apple M4 laptop (measured): fixed scene cost plus a part per million pixels. Only ratios matter; a measured factor rescales it per device. */
 const COST={low:[5.8,1.5],high:[4,4.5],ultra:[4,15]} as const;
 const cost=(l:Level)=>{const h=heights[l.res],mp=h*h*256/240/1e6;return COST[l.tier][0]+COST[l.tier][1]*mp;};
@@ -30,7 +32,7 @@ function block(l:Level,now:number){const n=(failures.get(key(l))??0)+1;failures.
 /** The largest preset the screen can show in fullscreen, in physical pixels. */
 function screenPreset(){const physical=Math.min(screen.width*240/256,screen.height)*(devicePixelRatio||1);return LADDER.find(p=>heights[p]<=physical*1.1)??'0.5K';}
 /** Levels Auto may use: within the screen, and holding fixed whichever of resolution or graphics was chosen by hand. */
-function ladder(){const max=heights[screenPreset()];return ALL_LEVELS.filter(l=>heights[l.res]<=max&&(autoRes||l.res===current.res)&&(autoTier||l.tier===current.tier));}
+function ladder(){const max=heights[screenPreset()];return ALL_LEVELS.filter(l=>heights[l.res]<=max&&(autoRes||l.res===current.res)&&(autoTier||l.tier===current.tier)&&!(l.manualOnly&&autoRes&&autoTier)).map(({res,tier})=>({res,tier}));}
 // What Auto settled on last time in this browser, so the next visit starts there (cleared by choosing Auto again).
 const LEARNED='smb-auto-3d';
 function learned():Partial<Level>{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
@@ -50,7 +52,7 @@ if('setResolution' in view){
  const fixedScale=params.has('scale')&&!params.has('res');if(fixedScale)autoRes=autoTier=false;
  current={res:fixedScale?LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K':autoRes?'1K':askedRes,tier:autoTier?'high':askedTier as Tier};
  if(autoRes||autoTier){
-  const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=20)??levels[0];  // start where a typical laptop GPU holds 50+ fps
+  const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=28)??levels[0];  // start at the best level a typical laptop GPU holds at 35+ fps
   current=levels.find(l=>l.res===saved.res&&l.tier===saved.tier)??fitsDefault;
  }
  for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
@@ -66,20 +68,21 @@ function setResolution(choice:string,save=true){if(!('setResolution' in view))re
 function setQuality(choice:Tier|'auto'){if(!('setQuality' in view))return;autoTier=choice==='auto';if(autoTier){try{localStorage.removeItem(LEARNED);}catch{}blocked.clear();failures.clear();}else apply({...current,tier:choice as Tier});syncPickers();remember('quality',autoTier?null:choice);}
 /**
  * Auto, once per measured second. The loop already skips frames down to 30 drawn frames a second, so the game keeps full speed above 30 fps.
- * Down: two seconds under 30 fps jumps straight to the richest level estimated to hold 45 fps (estimates are rescaled by this device's measured cost).
- * Up: six seconds at a steady ~60 fps tries one level richer (a steady 60 says nothing about spare capacity, so it has to be tried); if that drops below 45 fps it goes back and leaves that level alone (2, 4, 8… minutes).
+ * 30 fps is the target, not 60: with frame skipping the game is at full speed from 30 up.
+ * Down: two seconds under 30 fps jumps straight to the best level estimated to hold 33 fps (estimates are rescaled by this device's measured cost).
+ * Up: six steady seconds with room to spare (near 60, or the next level estimated to hold 33 fps) tries one level better; if that drops under 30 fps
+ * it goes back and leaves that level alone (2, 4, 8… minutes). A steady 60 says nothing about spare capacity, so then it has to be tried.
  */
 function adapt(fps:number,slowWindows:number,now:number){
  if(!('setResolution' in view)||!(autoRes||autoTier))return false;
  if(fps<57)deviceFactor=(1000/fps)/cost(current);
  const levels=ladder(),i=levels.findIndex(l=>key(l)===key(current));
- if(probe){probe.windows--;if(fps<45){block(current,now);const back=probe.back;probe=undefined;apply(back);learn();return true;}if(probe.windows<=0)probe=undefined;}
+ if(probe){probe.windows--;if(fps<30){block(current,now);const back=probe.back;probe=undefined;apply(back);learn();return true;}if(probe.windows<=0)probe=undefined;}
  if(slowWindows>=2&&i>0){
   block(current,now);
-  const target=[...levels.slice(0,i)].reverse().find(l=>cost(l)*deviceFactor<=1000/45)??levels[0];apply(target);learn();return true;
+  const target=[...levels.slice(0,i)].reverse().find(l=>cost(l)*deviceFactor<=1000/33)??levels[0];apply(target);learn();return true;
  }
- fastWindows=fps>=57?fastWindows+1:0;
- const next=levels[i+1];
+ const next=levels[i+1],room=fps>=57||fps>=36&&next!==undefined&&cost(next)*deviceFactor<=1000/33;fastWindows=room?fastWindows+1:0;
  if(fastWindows>=6&&next&&(blocked.get(key(next))??0)<now){probe={back:current,windows:4};apply(next);learn();return true;}
  return false;
 }
