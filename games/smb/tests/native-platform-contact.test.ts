@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped} from '../src/native-platform-contact.js';
-import {PlatformMotion,nativePlatformHoldsSlot} from '../src/platform-motion.js';
+import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from '../src/native-platform-contact.js';
+import {PlatformMotion,nativePlatformHoldsSlot,nativeSmallPlatform} from '../src/platform-motion.js';
 import {observedLevels} from '../src/levels.js';
 
 test('native platform landing compares moved Mario feet against the platform before its move',()=>{
@@ -45,4 +45,24 @@ test('native platform slot release uses its left position rather than the width'
  const p=area.platforms!.find(p=>p.x===880)!,context={levelId:'1-3',areaId:'main'},motion=new PlatformMotion(context);
  assert.equal(nativePlatformHoldsSlot(motion,p,context,952,460),true);
  assert.equal(nativePlatformHoldsSlot(motion,p,context,953,460),false);
+});
+
+
+test('native platform sides eject a rising Mario beside a large platform',()=>{
+ // 4-3 v2 row672: attempted x1445, feet91; the platform at1456/78
+ // sees player right1458 inside its first8px, and ImpedePlayerMove ejects−1.
+ assert.equal(nativePlatformSide(91,-4,false,1445,{x:1456,y:78},48),1);
+ assert.equal(nativePlatformSide(95,-4,false,1442,{x:1456,y:78},48),0);
+ assert.equal(nativePlatformSide(78,1,false,1445,{x:1456,y:78},48),0,'top landing wins');
+ assert.equal(nativePlatformSide(77,-4,false,1445,{x:1456,y:78},48),0,'above the side');
+ assert.equal(nativePlatformSide(91,-4,false,1500,{x:1456,y:78},48),-1);
+});
+
+
+test('only native small lifts43/44 have a repeated collision surface',()=>{
+ const levels=observedLevels();
+ for(const [levelId,areaId,expected] of [['1-2','area-2',false],['2-4','main',true]] as const){
+  const area=levels.find(l=>l.id===levelId)!.areas.find(a=>a.id===areaId)!;
+  assert.equal(nativeSmallPlatform(area.platforms!.find(p=>p.x===(expected?1372:2236))!,{levelId,areaId}),expected);
+ }
 });

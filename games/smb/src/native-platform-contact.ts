@@ -38,3 +38,17 @@ export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:Pl
 /** Native PlayerBGCollision runs only while Player_Y_HighPos is 1 and Player_Y_Position ($CE) < $CF: a Mario lower on the screen (or above it)
  * has no head, foot or side contact with the background at all (4-2 v2 rows 632-636: native passes a wall at y 215 falling into a pit). `feet` is the remake p.y. */
 export function nativeBackgroundSkipped(feet:number):boolean{const y=Math.floor(feet)-32;return y<0||y>=0xcf;}
+
+/** ProcLPlatCollisions / PlatformSideCollisions after top/underside handling:
+ * inclusive native boxes, then a left penetration below8 or right penetration
+ * below9 (the latter SBC follows CLC, hence the extra pixel). */
+export function nativePlatformSide(feet:number,vy:number,big:boolean,x:number,prior:PlatformPosition,width:number):1|-1|0{
+ const y=feet-32;if(y<0||y>=0xd0)return 0;
+ const left=Math.floor(x)+(big?2:3),right=Math.floor(x)+(big?14:13),top=feet-32+(big?8:20);
+ const pl=Math.floor(prior.x),pr=pl+width,pt=Math.floor(prior.y);
+ if(right<pl||left>pr||feet<pt||top>pt+13)return 0;
+ if(vy>=0&&feet-pt>=0&&feet-pt<6)return 0;
+ if(right-pl<8)return 1;
+ if(pr-left-1>=0&&pr-left-1<9)return -1;
+ return 0;
+}

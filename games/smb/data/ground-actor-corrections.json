@@ -101,6 +101,13 @@
   ],
   "removals": [
     {
+      "level": "7-1",
+      "area": "main",
+      "match": { "kind": "koopa", "x": 1008, "y": 208 },
+      "reason": "Native v2 frame437 converts the existing slot2 jumping Paratroopa id14 to id0 in place; the later wingless screenshot is the same actor, not a new Koopa spawn.",
+      "provenance": { "report": "evidence/walkers2-findings-20261113.md" }
+    },
+    {
       "level": "8-2",
       "area": "main",
       "match": { "kind": "koopa", "x": 2208, "y": 192 },

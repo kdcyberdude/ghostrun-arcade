@@ -1,11 +1,12 @@
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
-import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel} from './platform-motion.js';
-import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped} from './native-platform-contact.js';
+import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
+import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
 import {PlayerAnim} from './player-anim.js';
+import {nativeFlagStep} from './native-flagpole.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {nativeFirebarHit} from './firebar-contact.js';
@@ -22,6 +23,7 @@ import enemyRules from '../data/enemy-rules.json';
 import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
 import {moveSwimmingCheep} from './swimming-cheep.js';
+import {nativeWaterEnemyHit} from './native-water-contact.js';
 import {NativeRandom,AREA_LOAD_FRAME_COUNTER} from './native-random';
 import {lakituStep,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import {flyingCheepLaunch,moveFlyingCheep} from './flying-cheep.js';
@@ -43,6 +45,7 @@ import flagRules from '../data/flag-completion-rules.json';
 import castleRules from '../data/castle-completion-rules.json';
 import multiCoinRules from '../data/multi-coin-rules.json';
 import {nativeEnemiesCollision,nativeUnwingedStomp} from './enemy-collision.js';
+import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
 const CONTROL_GRACE_ROWS=2; // native: an A held through the load jumps on the same row as an A first pressed on the first control row; the remake's 2-frame input queue makes that two grace rows (campaign-compare MODEL_LOCAL seeds its own constant); an empty queue (native RAM-trace replays: each pad on its native row) needs none
 export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
@@ -142,9 +145,9 @@ export function solid(id:number):boolean {
  return (id>=16&&id<=21)||(id>=22&&id<=27)||id===34||(id>=81&&id<=94)||(id>=97&&id<=108)||id===136||id===137||id===192||id===193||id===196;
 }
 // Native lives-screen / death flow (PPU rows, remake step f = native row f-1); see evidence/lifeflow-findings-20261111.md.
-const LIFE_FLOW={clockPeriod:21,clockTickPhase:7,screenTail:19,screenBlackTail:3,ticksScreen:7,ticksTimeUp:14,controlPhase:5,pitEndFeetY:1312,setTitle:8,setDeath:10,deathArcEndFeetY:802,pitStartFeetY:240,gameoverSet:9,gameoverTicks:20,gameoverTail:2};
+const LIFE_FLOW={clockPeriod:21,clockTickPhase:7,screenTail:19,screenBlackTail:3,ticksScreen:7,ticksTimeUp:14,controlPhase:5,pitEndFeetY:1312,setTitle:8,setDeath:9,deathArcEndFeetY:800,gameoverSet:9,gameoverTicks:20,gameoverTail:2};
 interface LifeIntro{set:number;ticks:number;seen:number;end:number;fromDeath:boolean;timeUp:boolean}
-const newLifeIntro=(timeUp:boolean,fromDeath:boolean):LifeIntro=>({set:fromDeath?LIFE_FLOW.setDeath:LIFE_FLOW.setTitle,ticks:timeUp?LIFE_FLOW.ticksTimeUp:LIFE_FLOW.ticksScreen,seen:0,end:0,fromDeath,timeUp});
+const newLifeIntro=(timeUp:boolean,fromDeath:boolean):LifeIntro=>({set:(fromDeath?LIFE_FLOW.setDeath:LIFE_FLOW.setTitle)-(timeUp?1:0),ticks:timeUp?LIFE_FLOW.ticksTimeUp:LIFE_FLOW.ticksScreen,seen:0,end:0,fromDeath,timeUp});
 interface Slot {level:number;lives:number;score:number;coins:number;size:0|1|2;checkpoint:boolean;checkpointArea?:string}
 interface MazeState {spec:MazeSpec;sourceFrom:number;sourceTo:number;gate:number;completed:boolean}
 /** Native loop commands (LoopCmdWorldNumber/LoopCmdPageNumber/LoopCmdYPosition, ProcLoopCommand): per world, the page whose column 0 carries a loop object and the
@@ -177,7 +180,7 @@ export class Simulation {
  private timeUpDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;private pitMusic=false;
- private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;
+ private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;private slotReleaseFrame=[-1,-1,-1,-1,-1];
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -204,13 +207,13 @@ export class Simulation {
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
- private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathFromBelow=false;private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
+ private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;
- private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
+ private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private deathMove?:NativeMoveState;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
  private bridge:string[]=[];private springTimers=new Map<SpringSpec,number>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
@@ -233,6 +236,8 @@ export class Simulation {
  get pipeHidden(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=(this.area.autoWalk?TRANSITIONS.autoWalkPipe.hiddenFrame:32));}
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
+ /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
+ get introHiddenEarly(){return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
  get introHiddenLate(){return this.lifeIntro?this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenBlackTail:this.phaseFrame>=TRANSITIONS.introHiddenFromFrame;}
  get gameoverClosing(){return this.phase==='gameover'&&this.gameoverClosingFrame>=0;}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
@@ -290,7 +295,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -354,7 +359,7 @@ export class Simulation {
   const p=this.player;if(!e.shell||e.movingShell||p.vy<=0||oldBottom>e.y+1)return false;
   e.movingShell=true;e.shellAge=0;e.shellChain=0;e.kickOverlap=true;e.vx=(p.x-e.x<3?1:-1)*shellRules.speedPixelsPerNativeFrame;this.floateyScore(this.shellKickAward());this.emit('sfx_kick');return true;
  }
- private makeEnemy(e:EnemySpec):Enemy{return {...e,autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(greenBounceSpec(e)?0:e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state 1, untouchable until it lands)
+ private makeEnemy(e:EnemySpec):Enemy{return {...e,nativeSlot:e.nativeSlot??(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim?'wait':undefined),autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(greenBounceSpec(e)?0:e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state 1, untouchable until it lands)
  step(buttons:Button[],frames=1,buttons2:Button[]=[]){
   if(!Number.isInteger(frames)||frames<0||frames>18000)throw new Error('frames must be an integer in 0..18000');
   const held=[new Set(buttons),new Set(buttons2)];
@@ -369,7 +374,11 @@ export class Simulation {
   // Native: the row that ends the death sets engine 6 (PlayerLoseLife) to run on the NEXT row, so that row is still a death row (1-1 v2: e11 786..992, e6 993, lives screen
   // from 994). The lives screen is timed from the e6 row, as before, so the deferred respawn runs first, on the clock of the row that ended the death.
   if(this.phase==='dying'&&this.loseLife){this.loseLife=false;this.respawn();}
-  this.lifeRow++;this.random.tick();
+  this.lifeRow++;
+  if(this.phase==='intro'&&this.lifeIntro?.fromDeath&&this.phaseFrame===2){
+   // InitializeArea clears FrameCounter and holds the LFSR on the third row after PlayerLoseLife (all native v2 respawns).
+   this.random.frame=0;this.random.prev=[...this.random.bytes];
+  }else this.random.tick();
   const pressed=(key:Button)=>b.has(key)&&(!this.previous.has(key)||(key==='a'&&this.freshA));
   if(this.phase==='title'){
    this.titleFrame++;
@@ -386,7 +395,7 @@ export class Simulation {
   this.firebarMarioScreenX=Math.floor(this.player.x)-Math.floor(this.camera); // Mario's OAM x as the previous frame drew it (src/firebar-contact.ts)
   this.lifeClockFreeze();
   if(this.phase==='intro'&&this.lifeIntro){if(this.lifeIntroDone())this.startPlayAfterIntro();return;}
-  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.emit(this.areaMusic());}return;}
+  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.primeEntryPodoboos();this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){
    if(this.gameoverClosingFrame>=0){if(++this.gameoverClosingFrame>=(this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0?6:26))this.finishGameover();}
    else if(this.gameoverSkipDelay>0){if(--this.gameoverSkipDelay===0)this.gameoverClosingFrame=0;}
@@ -399,8 +408,10 @@ export class Simulation {
   if((this.random.frame&7)===0)this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){this.player.y+=this.player.vy;this.player.vy=Math.min(deathRules.maxFall,this.player.vy+deathRules.gravity);}
-   if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:(this.deathFromBelow?this.phaseFrame>=deathRules.oldSceneFrames:this.player.y>=LIFE_FLOW.deathArcEndFeetY))this.loseLife=true;return;
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
+    const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
+   }
+   if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:this.player.y>=LIFE_FLOW.deathArcEndFeetY)this.loseLife=true;return;
   }
   if(this.phase==='pipe'){
    const automatic=this.destination&&this.destination.frames>64;
@@ -534,7 +545,7 @@ export class Simulation {
   }
   }
   const height=this.height;
-  let springJumped=false;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
+  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -571,10 +582,10 @@ export class Simulation {
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
   if(cameraContact||this.wallBackOut)this.sideCollisionTimer=16;
-  this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms);
+  this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms)-this.platformEjection;
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
-  this.eraseOffscreenEnemies();
+  this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);
@@ -764,7 +775,7 @@ export class Simulation {
    if(powerupContent)item=powerupContent==='powerup'?(p.size?'flower':'mushroom'):powerupContent;
    if(piece)piece.id=196;else this.tiles.set(key,196);
    if(item==='coin'){this.coin();this.items.push({kind:'coin',x:x*16+5,y:y*16-16,vx:0,vy:-5.3125,age:0,life:36});}
-   else {this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value});this.emit('sfx_powerup_appears');}
+   else {this.items=this.items.filter(i=>i.nativePowerState===undefined);this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value,nativePowerState:1});this.emit('sfx_powerup_appears');}
   }else if((id===81||id===82||id===83)&&p.size){
    this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
    for(let i=0;i<4;i++)this.items.push({kind:'debris',x:x*16+(i%2)*8,y:y*16+Math.floor(i/2)*8,vx:(i%2?1:-1)*1.5,vy:i<2?-4:-2,age:0,life:60});
@@ -1162,6 +1173,8 @@ export class Simulation {
   // OffscreenBoundsCheck erases the object after its last motion step. Keep
   // that final fraction before objectSlots releases and reuses its slot.
   for(const [platform,slot] of this.platformSlots){
+   const xByte=this.platformMotion.slotXByte(platform as any,this.platformFrame);
+   if(xByte!==undefined)this.slotSub[slot]=xByte;
    const state=this.platformMotion.verticalState(platform as any,this.platformFrame);
    if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }
@@ -1170,6 +1183,8 @@ export class Simulation {
    const p=platform as any;
    this.platformMotion.slotSub(p,this.slotSub[slot]);
    this.platformMotion.slotFraction(p,this.slotVertical[slot].fraction);
+   const xByte=this.platformMotion.slotXByte(p,this.platformFrame);
+   if(xByte!==undefined)this.slotSub[slot]=xByte;
    const state=this.platformMotion.verticalState(p,this.platformFrame);
    if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }
@@ -1179,15 +1194,16 @@ export class Simulation {
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
-   let slot=0;while(held.has(slot)||enemySlots.has(slot))slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
+   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
   }
   return held;
  }
  // Lowest native enemy slot not in use. Slots are not modelled elsewhere, so live enemies take theirs here, in the order they were activated.
- private freeNativeSlot(){
+ private freeNativeSlot(blockReleased=false){
   // A walker the remake already dropped still holds its slot until releaseNativeSlots frees it (7-3 row 302: a koopa at camera - 73 keeps slot 2 natively, no fish there).
   const live=this.enemies.filter(e=>e.active&&!e.dead),used=new Set(this.enemies.flatMap(e=>e.enemySlot===undefined||!e.active||e.slotFreed||e.dead&&!this.holdsNativeSlot(e)?[]:[e.enemySlot]));
   for(const slot of this.objectSlots(used))used.add(slot);
+  if(blockReleased)for(let slot=0;slot<5;slot++)if(this.slotReleaseFrame[slot]===this.frame)used.add(slot);
   const lowest=()=>{let slot=0;while(used.has(slot))slot++;return slot;};
   for(const e of live)if(e.enemySlot===undefined){e.enemySlot=lowest();used.add(e.enemySlot);}
   return lowest();
@@ -1222,7 +1238,8 @@ export class Simulation {
   if(!rule||this.recordedRoute||!this.area.enemies.some(e=>e.kind==='cheep'&&e.swim))return;
   this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // the route's list is replaced
   if(this.swimTimer>0&&--this.swimTimer>0||this.camera<rule.fromCamera||this.camera>rule.toCamera)return;
-  const slot=this.freeNativeSlot();if(slot>=SWIM_GEN.slots)return;
+  if(this.scrollCrossFrame===this.frame-1)return; // the enemy parser does not load a frenzy object on task 7
+  const slot=this.freeNativeSlot(true);if(slot>=SWIM_GEN.slots)return;
   const pick=nativeSwimCheepPick(this.random.bytes[slot],this.swimBag,this.level.id);this.swimBag=pick.bag;this.swimTimer=SWIM_GEN.timer;
   const fish=this.makeEnemy({kind:'cheep',x:this.camera+SWIM_GEN.spawnAhead,y:pick.y+SWIM_GEN.feetOffset,direction:-1,palette:(SWIM_GEN.palettes as Record<string,string>)[pick.id],swim:{},evidence:'Native swimming Cheep generator: random byte of its slot, eight-height bag, 32-frame timer.'});
   fish.enemySlot=slot;fish.active=true;fish.nativeSwim={y:pick.y,fraction:0,flag:this.random.bytes[slot]&16,originY:pick.y};this.enemies.push(fish);
@@ -1253,7 +1270,7 @@ export class Simulation {
   if(e.enemySlot===undefined)this.freeNativeSlot();
   const b=e.bloop??=newNativeBlooper(),p=this.player,mask=this.secondaryHardMode?3:63;
   const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0)),playerY:(Math.floor(p.y-(this.swimActive?this.water.whirlMoved:0))-32)&255,playerDir:this.marioMotion<0?2:1});
-  e.x=next.x;e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;
+  e.x=next.x+e.x-Math.floor(e.x);e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;
  }
  // Hammer Bro roster entries supply level object positions only. All decisions use native slot state (src/hammer-bro.ts).
  private slotBroJump=[0,0,0,0,0];private miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0}));
@@ -1447,10 +1464,14 @@ export class Simulation {
   // Renderer caches baseline tiles by area identity for partial pattern edits.
   this.area={...this.area};
  }
+ nativePowerSlot={speed:0,force:0,fraction:0};
+ private flagAwardFrame=-1;
  private flagScrollLocked=true;
+ private advanceFlag(){const next=nativeFlagStep(this.flagTop,this.nativePowerSlot.fraction);this.flagTop=next.y;this.nativePowerSlot.fraction=next.fraction;}
  private beginFlag(){
   this.flagScrollLocked=true;
-  this.flagTop=FLAG_COMPLETION.flagTopY;this.flagInside=false;this.flagWait=0;this.flagFireworksAwarded=0;
+  this.items=this.items.filter(i=>i.nativePowerState===undefined);
+  this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;this.flagWait=0;this.flagFireworksAwarded=0;
   const digit=this.time%10;this.flagFireworkCount=[1,3,6].includes(digit)?digit:0;
   const pole=this.area.exit!;
   const tops=[...this.tiles].filter(([key,id])=>id===69&&Number(key.split(',')[0])*16>pole.x&&Number(key.split(',')[0])*16<pole.x+256).map(([key])=>key.split(',').map(Number));
@@ -1473,12 +1494,14 @@ export class Simulation {
  }
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
-  this.flagTop=Math.min(rules.flagBottomY,rules.flagTopY+this.phaseFrame*rules.slideSpeed);
-  // Native FlagpoleRoutine adds the flag points on the last slide row, with the switch to engine 5 (score digits at row +62 on 18 of 19 v2 grabs; the flip follows a row later). 3-3 pays at +61: the flag moves 2 px on its first row when slot 5 kept the $041C fraction from an earlier PowerUpObject (not modelled).
-  if(this.phaseFrame===rules.slideFrames)this.score+=this.flagBonus;
-  if(this.phaseFrame<=rules.slideFrames){p.climbing=true;if(Math.floor(p.y)<190)p.y+=1+255/256;else p.vy=0;return;}
-  if(this.phaseFrame===rules.slideFrames+1)this.emit('event_level_clear');
-  const walkFrom=rules.slideFrames+rules.flipFrames+1;
+  if(this.flagAwardFrame<0){
+   p.climbing=true;if(Math.floor(p.y)<0x9e+32)p.y+=1+255/256;else p.vy=0;
+   if(this.flagTop>=0xaa||Math.floor(p.y)>=0xa2+32){this.score+=this.flagBonus;this.flagAwardFrame=this.phaseFrame;}
+   else this.advanceFlag();
+   return;
+  }
+  if(this.phaseFrame===this.flagAwardFrame+1)this.emit('event_level_clear');
+  const walkFrom=this.flagAwardFrame+rules.flipFrames+1;
   if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;return;}
   p.climbing=false;p.facing=1;
   const wasInside=this.flagInside;
@@ -1568,8 +1591,21 @@ export class Simulation {
   const p=this.player;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
-   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,platformMotionModel(platform,this.platformMotion.context)==='native-wrap');
-   if(box===undefined)continue;
+   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context));
+   if(box===undefined){
+    const small=nativeSmallPlatform(platform,this.platformMotion.context);
+    for(const offset of small?[0,128]:[0]){
+     const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};
+     if(small&&surface.y<32)continue;
+     const side=nativePlatformSide(Math.floor(p.y),p.vy,p.size>0&&!p.duck,p.x,surface,platform.width);
+     if(!side)continue;
+     const byte=Math.floor(p.vx*16),into=side>0?byte>=0:byte<1;
+     this.motor.contact(side,into);
+     if(into){this.wallSpeed=p.vx;p.vx=(Math.round(p.vx*4096)&255)/4096;p.x-=side;this.platformEjection-=side;this.wallBackOut=true;}
+     break;
+    }
+    continue;
+   }
    if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
    p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
@@ -1626,11 +1662,11 @@ export class Simulation {
   const context=this.platformMotion.context;
   for(const platform of this.area.platforms??[]){
    const o=nativePlatformObject(platform,context);
-   if(o?.kind!=='horizontal')continue;
-   const motion=this.platformMotion,crossed=previousCamera<o.spawnCamera&&this.camera>=o.spawnCamera;
+   if(o?.kind!=='horizontal'&&o?.kind!=='wrap')continue;
+   const threshold=nativePlatformSpawnCamera(o),motion=this.platformMotion,crossed=previousCamera<threshold&&this.camera>=threshold;
    if(!crossed&&!motion.waiting.has(platform))continue;
    if(!this.nativeSlotsFull(platform)){if(motion.waiting.has(platform))motion.create(platform,this.platformFrame);continue;}
-   if(o.x>=this.camera+256)motion.waiting.add(platform);else{motion.waiting.delete(platform);motion.lost.add(platform);} // like a lone list object: waits while off screen, else is never made
+   if(o.x-(o.kind==='wrap'?12:0)>=this.camera+256)motion.waiting.add(platform);else{motion.waiting.delete(platform);motion.lost.add(platform);} // like a lone list object: waits while off screen, else is never made
   }
  }
  private nativePlatformSlots(except?:object){
@@ -1642,6 +1678,7 @@ export class Simulation {
   let used=exceptPlatform?this.nativePlatformSlots(exceptPlatform):0; // enemy gating does not count platforms yet: counting them lost a 4-2 Piranha the route keeps (wrap-lift slot release unmeasured)
   for(const e of this.enemies)if((e.slotHeld&&!e.active||this.holdsNativeSlot(e)||exceptPlatform&&this.holdsPlatformCorpseSlot(e))&&!(exceptPlatform&&e.y>=256))used++; // for platforms: an object that fell below the screen has freed its slot (route row 43244: the falling id 1 at y 252 is gone)
   if(columnPass)for(const e of this.enemies)if(this.nativeLoadsThisFrame(e))used++; // the enemy loader runs before the area parser builds the pipe column: an enemy it made this frame already holds a slot (6-2 row 292: the x 688 Paratroopa takes the last slot, no Piranha at 744)
+  if(exceptPlatform)for(let slot=0;slot<5;slot++)if(this.slotReleaseFrame[slot]===this.frame&&!this.enemies.some(e=>e.active&&!e.slotFreed&&e.enemySlot===slot))used++;
   return used>=5;
  }
  // 5-3 native Goombas release their slot on the second 21-frame tick after a stomp; allocation sees the freed slot on the next row.
@@ -1663,7 +1700,7 @@ export class Simulation {
   if(e.motion==='flying'||e.dead)return;
   const left=Math.floor(this.camera);
   if(e.kind==='piranha'||e.kind==='hammerBro')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
-  if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))return left-73;
+  if(['goomba','koopa','redKoopa','beetle','blooper'].includes(e.kind)||e.kind==='cheep'&&e.swim)return left-73;
   if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
   if(e.kind==='spiny'||e.kind==='lakitu')return left-72; // erased when x < ScreenLeft - 72 on the post-scroll camera (v2 traces 4-1/6-1/8-2: 26 of 26 left removals at x - camera -73..-75, none at -72)
  }
@@ -1671,9 +1708,11 @@ export class Simulation {
   for(const e of this.enemies){
    if(!e.active)continue;const bound=this.nativeLeftBound(e);
    if(bound===undefined||Math.floor(e.x)>=bound)continue;
-   if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
-   e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;
-   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
+   if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
+   else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
+   e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
+   if(e.nativeSwim||e.bloop){this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.nativeSwim)this.slotYFrac[e.enemySlot]=e.nativeSwim.fraction;}
+   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((e.x-Math.floor(e.x))*256)&255);
   }
  }
  /** Enemy_Y_Speed $A0+s, Enemy_Y_MoveForce $0434+s and the y fraction $0417+s are not cleared when an object is made: a new jumping Paratroopa starts from what the slot's
@@ -1685,6 +1724,7 @@ export class Simulation {
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
    if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
    else if(e.fall&&!e.dead)Object.assign(m,e.fall);
+   else if(e.redFlight)Object.assign(m,{speed:e.redFlight.speed,force:e.redFlight.force,fraction:e.redFlight.fraction});
    else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'||e.egg))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
    else if(!e.dead&&['goomba','koopa','redKoopa','beetle','hammerBro'].includes(e.kind)&&e.vy===0){m.speed=0;m.force=0;}
   }
@@ -1704,20 +1744,22 @@ export class Simulation {
    e.slotFreed=true;
    // Enemy_Y_Speed $A0+s and YMF_Dummy $0417+s stay in the slot for its next object (src/firebar-slots.ts): a Podoboo's speed and fraction, a Piranha's
    // PiranhaPlant_MoveFlag (1 while it moves; 4-4 row 328 -> the bar born in slot 0 on row 712 starts at angle byte 1).
-   if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}
+   if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
+   else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}
    else if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}
    else if(e.kind==='piranha'){const phase=(e.age+e.phase!)%PIRANHA.periodNativeFrames;this.slotYSpeed[e.enemySlot]=Number(PIRANHA.stages.find(s=>phase>=s.fromPhaseInclusive&&phase<s.toPhaseExclusive)!.velocity!==0);}
    if(!walker&&e.kind!=='bullet')continue; // Bullet Bills also write the slot's horizontal fraction; stationary objects leave it intact
-   this.slotSub[e.enemySlot]=Math.round((x-Math.floor(x))*256)&255;
+   this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((x-Math.floor(x))*256)&255);
   }
  }
  private takeNativeSlot(e:Enemy){
   const used=new Set(this.enemies.flatMap(o=>o!==e&&o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[]));
+  if(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim)for(let slot=0;slot<5;slot++)if(this.slotReleaseFrame[slot]===this.frame)used.add(slot);
   for(const held of this.objectSlots(used))used.add(held); // a measured firebar or a platform holds its native slot (6-4: bars in slots 0, 2, 4, Podoboos in 1, 3)
   let slot=0;while(used.has(slot))slot++;
   if(slot>=5)return;
   e.enemySlot=slot;
-  if(e.kind==='cheep'&&e.swim){e.x+=this.slotSub[slot]/256;return;}
+  if(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim){e.x+=this.slotSub[slot]/256;return;}
   if(!Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.motion==='flying')return;
   const follower=Boolean(this.nativeGroupIndex(e)); // a group follower takes a later slot than the one being processed, so it already steps on its creation frame
   e.x+=this.slotSub[slot]/256+(follower?e.vx:0);
@@ -1726,7 +1768,7 @@ export class Simulation {
  private nativeSlotDenied(e:Enemy,columnPass=false){
   if(e.slotLost)return true;
   if(e.slotHeld||e.kind!=='piranha'&&!e.nativeSlot)return false;
-  const due=e.kind==='piranha'?(this.piranhaColumns?e.x<=this.piranhaColumns.through:e.x<this.camera+358)&&e.x>=this.camera:(e.spawnCamera!==undefined?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32; // behind the activation edge (a checkpoint respawn starts past it) the object is never made: it must not hold a slot
+  const due=e.kind==='piranha'?(this.piranhaColumns?e.x<=this.piranhaColumns.through:e.x<this.camera+358)&&e.x>=this.camera:(e.spawnCamera!==undefined&&!(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32; // behind the activation edge (a checkpoint respawn starts past it) the object is never made: it must not hold a slot
   if(!due)return false;
   if(!this.nativeSlotsFull(undefined,columnPass)){e.slotHeld=true;if(e.autoPhase)e.slotBorn=this.broClock;return false;}
   if(e.nativeSlot==='wait'&&e.x>=this.camera+256)return true;
@@ -1746,6 +1788,17 @@ export class Simulation {
  private nativeLoadsThisFrame(e:Enemy){
   return !e.active&&!e.slotLost&&e.kind!=='piranha'&&(e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&this.scrollCrossFrame!==this.frame-1&&(e.spawnFrame===undefined||this.areaFrame+1>=e.spawnFrame);
  }
+ /** Ordinary water objects are initialized in the enemy-slot pass after ScrollHandler, before the swimming frenzy sees free slots. Their first movement is next row. */
+ private birthNativeWaterEnemies(){
+  for(const e of this.enemies){
+   if(e.active||!(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim)||!this.nativeLoadsThisFrame(e)||e.spawnFrame!==undefined&&this.areaFrame<e.spawnFrame)continue;
+   if(this.nativeSlotDenied(e))continue;
+   e.active=true;this.takeNativeSlot(e);
+   if(e.enemySlot===undefined){e.active=false;if(e.x<this.camera+256)e.slotLost=true;continue;}
+   if(e.kind==='blooper')e.bloop=newNativeBlooper();
+   else e.nativeSwim={y:Math.floor(e.y)-24,fraction:this.slotYFrac[e.enemySlot],flag:this.random.bytes[e.enemySlot]&16,originY:(Math.floor(e.originY)-24)&255};
+  }
+ }
  private updateEnemies(oldBottom:number){
   this.broClock++;
   this.releaseNativeSlots();
@@ -1755,7 +1808,7 @@ export class Simulation {
   this.stompedThisStep=false;
   const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
   for(const e of this.enemies){
-   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??0; // the native touch test reads the enemy before its own move
+   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??0; // the native touch test reads the enemy before its own move
    if(e.kind==='goomba'){e.graphicsFacing=Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // EnemyGfxHandler runs before this slot's movement and enemy turns
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
@@ -1808,11 +1861,10 @@ export class Simulation {
     this.updateNativeHammerBro(e);
    }
    else if(e.kind==='paratroopa'&&(e.paratroopaMotion??(e.palette==='0f-16-30-27'?'vertical':'bounce'))!=='bounce'){
-    // Red flight is observed at a fixed world X. Bounds and phase are inferred
-    // from partial trajectories rather than copied screenshot coordinates.
-    const vertical=(e.paratroopaMotion??'vertical')==='vertical',offset=(1-Math.cos(e.age/(vertical?56:48)))*(e.range??48); // native id 15 (route 3-3 x 1824 rows 25995-26170): 98 px down in ~175 rows
-    if(vertical){e.x=e.originX;e.y=e.originY+offset;}else{e.x=e.originX+offset*(e.direction??-1);e.y=e.originY;}
-    e.vy=0;
+    if((e.paratroopaMotion??'vertical')==='vertical'){
+     const n=e.redFlight??=createNativeRedFlight(e.originY,e.enemySlot===undefined?0:this.slotVertical[e.enemySlot].fraction);
+     advanceNativeRedFlight(n,this.broClock);e.x=e.originX;e.y=n.y;e.vy=n.speed+n.force/256;
+    }else{const offset=(1-Math.cos(e.age/48))*(e.range??48);e.x=e.originX+offset*(e.direction??-1);e.y=e.originY;e.vy=0;}
    }
    else{
     if(e.kind==='bowser'){
@@ -1866,7 +1918,16 @@ export class Simulation {
     // the final measured value; an extra life has not been established.
     this.floateyScore(shellRules.victimScores[Math.min(e.shellChain??0,shellRules.victimScores.length-1)]);e.shellChain=(e.shellChain??0)+1;this.emit('sfx_kick');
    }
-   if(p.dead||this.enemyContactOff||Math.floor(p.y)-32<0||Math.floor(p.y)-32>=0xd0)continue; // a pit fall keeps enemies moving, but a dead Mario touches nothing
+   if(p.dead||this.enemyContactOff)continue;
+   if(this.area.theme==='water'&&isWater&&(e.nativeSwim||e.bloop)){
+    const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
+    if(this.random.frame&1||y<0||y>=0xd0)continue;
+    if(nativeWaterEnemyHit({x,y,big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24})){
+     if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);this.emit('sfx_kick');}else this.hurt();
+    }
+    continue; // HandlePECollisions branches directly to InjurePlayer in a water area: no stomp.
+   }
+   if(Math.floor(p.y)-32<0||Math.floor(p.y)-32>=0xd0)continue; // offscreen fall, with enemies still moving
    if(this.broClock%2!==0)continue; // PlayerEnemyCollision returns at once when FrameCounter $09 (broClock) is odd: no touch, stomp or star kill (25 of 25 native enemy-contact deaths are on even rows; 8-2 row 168)
    const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
@@ -1929,16 +1990,38 @@ export class Simulation {
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
   return gap<=(koopaKind?15:10);
  }
+ /** PowerUpObjHandler owns enemy slot 5: emergence uses FrameCounter & 3, and erasing/collecting keeps its vertical bytes for the flag. */
+ private updateNativePowerup(i:Item){
+  const state=i.nativePowerState!;
+  if(state<128){
+   if((this.random.frame&3)===0){i.y--;i.nativePowerState=state>=17?128:state+1;}
+   i.emerging=i.nativePowerState!<128?(18-i.nativePowerState!)*4-(this.random.frame&3):0;return;
+  }
+  if(i.kind==='flower')return;
+  const n={...this.nativePowerSlot,y:i.y-8,timer:0};
+  if(i.kind==='star'||(state&64))nativeImposeGravity(n,i.kind==='star'?28:61,3);
+  i.x+=i.vx;
+  if(((n.y+0x3e)&255)>=0x44){
+   const floor=this.collisionAt(i.x+8,n.y+24),depth=(Math.floor(n.y)&15)-8;
+   const landed=i.kind==='star'?((n.speed+2)&255)>=3:depth>=0&&depth<5;
+   if(floor&&landed){n.y=(Math.floor(n.y)&0xf0)|8;n.speed=i.kind==='star'?-3:0;n.force=0;i.nativePowerState=state&~64;}
+   else if(i.kind!=='star')i.nativePowerState=state|64;
+   if(n.y>=32&&this.isSolid(i.x+(i.vx>0?16:0),n.y+20))i.vx=-i.vx;
+  }
+  Object.assign(this.nativePowerSlot,{speed:n.speed,force:n.force,fraction:n.fraction});i.y=n.y+8;i.vy=n.speed+n.force/256;
+ }
  private updateItems(){
   const p=this.player;
   for(const i of this.items){
-   i.age++;i.life--;if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
+   i.age++;i.life--;
    if(i.nativeHammer){
     const flying=(i.nativeHammer.state&127)===1;this.moveNativeHammer(i);
     if(flying&&i.life>0){const horizontal=Math.floor(this.random.frame/4)%2===1,x=i.x+(horizontal?0:4),y=i.y+(horizontal?4:0);
      if(overlap(p.x+3,p.y-this.height+2,10,this.height-4,x,y,horizontal?16:8,horizontal?8:16))this.hurt();}
     continue;
    }
+   if(i.nativePowerState!==undefined){this.updateNativePowerup(i);if(i.nativePowerState<6)continue;}else{
+   if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
    i.x+=i.vx;
    if(i.nativeFlame){const target=[144,128,112,144][i.nativeFlame.target];if(i.y!==target)i.y+=i.nativeFlame.force;}
    if(i.kind==='coin'||i.kind==='debris'||i.kind==='hammer'){i.vy+=i.kind==='coin'?0.3125:i.gravity??0.2;i.y+=i.vy;}
@@ -1951,6 +2034,7 @@ export class Simulation {
     if(i.vy>=0&&floor){i.y=floor.y-size;i.vy=i.kind==='star'?-3:0;}
     if(this.isSolid(i.x+(i.vx>0?size-1:0),i.y+size/2))i.vx=-i.vx;
    }
+   }
    if(i.kind==='hammer'||i.kind==='flame'){
     // Supplied descriptors give a 24x8 flame and alternating 8x16/16x8
     // hammer assemblies inside the rotating 16px cell.
@@ -1961,7 +2045,7 @@ export class Simulation {
     this.collectItem(i);
    }
   }
-  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-(i.nativeFlame?73:32));
+  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-(i.nativeFlame?73:i.nativePowerState===undefined?32:72)&&(i.nativePowerState===undefined||i.x<this.camera+328));
  }
  // Native fireball (rows evidence/local/power/f1.jsonl; RAM 0x24+s state, 0x8d+s x, 0xd5+s y, 0xa6+s speed): position then speed, 4 px/row at launch, gravity 80/256, cap 812/256, bounce at speed -3 with the ball on the floor; gone past the screen edges.
  private moveFireball(i:Item){
@@ -1984,7 +2068,7 @@ export class Simulation {
     else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size)this.powerChange={from:p.size,to:size,remaining:i.kind==='flower'?POWERUPS.transformFreezeNativeFrames.fireValue:POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue,kind:i.kind==='flower'?'fire':'grow'};this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset,popupRules.itemDurationActiveNativeFrames);this.emit('sfx_powerup');}
  }
  hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:POWERUPS.transformFreezeNativeFrames.shrinkValue,kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
- die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.deathFromBelow=this.player.y>LIFE_FLOW.pitStartFeetY;this.firebarDeathFrame=this.areaFrame;this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
+ die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
  private updateWorldInPitFall(){if(!this.offscreenPitDeath&&!this.offscreenLavaDeath)return;this.platformFrame++;this.updateGenerators();this.updateEnemies(this.player.y);this.updateItems();}
@@ -1996,9 +2080,11 @@ export class Simulation {
  alignLifeClock(control:number){this.lifeFrozen=this.lifeRow-1-((LIFE_FLOW.clockTickPhase+20-control)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod;}
  // Native pit deaths keep falling, unseen and with no launch, down to page 6: 245-249 / 259-260 rows after passing native y 240, set by the last jump's fall force (run .5625 -> 4.0 px/row, walk .4375 -> 4.22, medium .375 -> 4.19; 94 samples). Water sinks at its own speed.
  private offscreenFallRows(){let y=this.player.y,v=this.player.vy,n=0;if(this.area.theme==='water')return Math.ceil((LIFE_FLOW.pitEndFeetY-y)/Math.max(1,v))-1;for(;y<LIFE_FLOW.pitEndFeetY;n++){y+=v;v+=this.lastJumpFallForce;if(v>=4.5)v=4;}return n-1;}
+ // ScreenRoutines loads ScreenTimer on row 9 after PlayerLoseLife (DisplayIntermediate), or row 8 for DisplayTimeUp.
+ // Engine 7 starts 18 rows after the final tick; a grounded entry reaches engine 8 one row later.
  private lifeIntroDone(){
   const li=this.lifeIntro!,p=this.phaseFrame;
-  if(!li.end&&p>li.set&&((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++li.seen>=li.ticks)li.end=p+LIFE_FLOW.screenTail;
+  if(!li.end&&p>li.set&&((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++li.seen>=li.ticks)li.end=p+LIFE_FLOW.screenTail-(this.entryFalling&&this.area.entryFall?.native?1:0);
   return li.end>0&&p>=li.end;
  }
  // Game over: 20 clock ticks after row 9 of the screen, title 2 rows after the last (7 of 7 native game overs; the game-over death's own freeze is not counted).
@@ -2006,7 +2092,14 @@ export class Simulation {
   let ticks=0;
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
- private startPlayAfterIntro(){this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeEntryPodoboos();this.emit(this.areaMusic());}
+ private primeEntryPodoboos(){
+  // InitializeGame already loads the in-range Podoboo on engine7. On the first engine8 row it takes its first MoveJ gravity step.
+  for(const e of this.enemies)if(e.kind==='podoboo'&&!e.active&&e.x>this.camera-32&&e.x<this.camera+304){
+   e.active=true;this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;continue;}
+   e.age=1;this.updateNativePodoboo(e);
+  }
+ }
  private respawn(){
   this.vineProgress.clear();this.climbingVine=undefined;
   this.lives--;this.slots[this.currentPlayer]={level:this.levelIndex,lives:this.lives,score:this.score,coins:this.coins,size:0,checkpoint:this.checkpoint,checkpointArea:this.activatedCheckpointArea};

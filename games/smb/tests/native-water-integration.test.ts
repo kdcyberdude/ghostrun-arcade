@@ -92,3 +92,26 @@ test('2-2 Bloopers read Mario before the trailing whirlpool pass across his y-by
   assert.equal(unmatchedEntity(native,simEntities(sim)),undefined,`frame ${f}`);
  }
 });
+
+test('7-2 placed Bloopers wait for slots and swimming frenzy respects erase and parser rows',()=>{
+ const run=replay('7-2'),sim=run.sim,checks=new Map([[482,0],[520,1],[2362,3],[2363,3],[2424,1],[2425,1],[2430,2],[2431,2],[2432,2]]);
+ for(let f=0;f<=2432;f++){
+  run.step(f);const slot=checks.get(f);if(slot===undefined)continue;
+  const r=run.row(f),enemy=sim.enemies.find(e=>e.active&&!e.dead&&e.enemySlot===slot);
+  assert.equal(Boolean(enemy),Boolean(r[15+slot]),`frame ${f} slot ${slot} active`);
+  if(enemy){
+   assert.equal(Math.floor(enemy.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
+   assert.equal(Math.floor(enemy.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
+  }
+ }
+});
+
+test('7-2 injury preserves the water position fraction and ends its second death on the native row',()=>{
+ const run=replay('7-2'),sim=run.sim;
+ for(let f=0;f<=2950;f++){
+  run.step(f);if(f<2713)continue;
+  const r=run.row(f);
+  assert.equal(sim.phase,r[14]===11||r[14]===6?'dying':'intro',`frame ${f}`);
+  if(r[14]===11||r[14]===6)assert.equal((Math.floor(sim.player.y)-32)&255,r[0xce],`frame ${f} y`);
+ }
+});
