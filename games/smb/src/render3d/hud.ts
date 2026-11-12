@@ -34,6 +34,8 @@ export class Hud{
   const exit=s.area.exit;let rescue='';
   if(exit?.kind==='axe'&&exit.retainerX!==undefined&&!['intro','gameover','title'].includes(s.phase)&&(s.castleStage==='message'||s.phase==='ending')){
    const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
+   if(s.castleText){for(const row of s.castleText)lines.push(`O|${row.text}|${row.x-s.camera}|${row.y}`);}
+   else
    if(!(s.phase==='ending'&&elapsed===0)&&elapsed>=0)rescue=`R|${player}|${elapsed>=CASTLE_COMPLETION.secondMessageFrames?(s.level.id==='8-4'?2:1):0}`;
   }
   if(rescue)lines.push(rescue);

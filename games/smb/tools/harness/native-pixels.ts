@@ -101,7 +101,8 @@ try{
   await page.close();
   const mean=(k:'all'|'hud'|'field'|'sprite'|'aligned',n:number)=>rows.length?rows.reduce((s,r)=>s+r[k],0)/rows.length/n*100:0;
   const r={level,first,end,compared:rows.length,pctAll:mean('all',W*H),pctHud:mean('hud',W*HUD),pctField:mean('field',W*(H-HUD)),pctSprite:mean('sprite',W*(H-HUD)),pctAligned:mean('aligned',W*(H-HUD)),offPalette:Object.fromEntries([...offPalette].map(([c,n])=>[c.toString(16).padStart(6,'0'),n])),errors,rows};report.push(r);
-  console.log(`${level.padEnd(4)} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${r.pctAligned.toFixed(2).padStart(6)}%)${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
+  const alignedPixels=rows.reduce((sum,row)=>sum+row.aligned,0),nonzeroFrames=rows.filter(row=>row.aligned!==0).length;
+  console.log(`${level.padEnd(4)} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${r.pctAligned.toFixed(2).padStart(6)}%)  aligned pixels ${alignedPixels}; nonzero frames ${nonzeroFrames}/${rows.length}${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
  }
 }finally{await browser.close();await server.close();}
 if(a.json)fs.writeFileSync(a.json,JSON.stringify(report)+'\n');
