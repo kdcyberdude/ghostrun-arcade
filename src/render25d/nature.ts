@@ -3,12 +3,13 @@
 import * as THREE from 'three';
 import type {Kit} from './kit.js';
 import type {Cluster} from './layout.js';
-const ROOT=import.meta.env.BASE_URL+'assets25d/';
-const TEX=ROOT+'ph/tex/';
+import {loadJson} from './loading.js';
+import {NATURE_TEXTURES} from './asset-policy.js';
+const BASE=import.meta.env.BASE_URL+'assets25d/';
+const TEX=BASE+'ph/tex/';
 const loader=new THREE.TextureLoader();const cache=new Map<string,THREE.MeshStandardMaterial>(),texCache=new Map<string,THREE.Texture>();
 /** Textures are fetched up front (Renderer25D.load) so no area ever shows a frame of untextured, black terrain. */
 const tex=(url:string)=>{let t=texCache.get(url);if(!t){t=loader.load(url);texCache.set(url,t);}return t;};
-const PRELOAD=['leafy_grass','aerial_grass_rock','excavated_soil_wall','snow_02','snow_field_aerial','dark_rock_02','castle_brick_01'];
 export const rand=(seed:number)=>()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
 /** Scanned PBR material, world-space tiled (`repeat` tiles per texture). ARM: R = AO, G = roughness, B = metalness. */
 export function photoMaterial(id:string,tint:number|[number,number,number]=0xffffff,key=id+tint){
@@ -62,8 +63,8 @@ export function plants(kit:Kit,name:string,mats:THREE.Matrix4[],shadows=false){
 /** Impostor cards (visual25d/blender/render_impostors.py): full-detail tree scans rendered from the front; the camera never rotates, so one quad per tree reads as 3D. */
 type Imp={views:number;width_m:number;height_m:number};let IMP:Record<string,Imp>={};const METRE=1.8;
 export async function loadImpostors(){
- try{const r=await fetch(ROOT+'impostors/index.json');if(r.ok&&r.headers.get('content-type')?.includes('json'))IMP=await r.json();}catch{/* no impostors: trees are skipped */}
- const urls=[...PRELOAD.flatMap(id=>['diff','nor','arm'].map(n=>`${TEX}${id}_${n}.jpg`)),...Object.entries(IMP).flatMap(([id,im])=>Array.from({length:im.views},(_,v)=>`${ROOT}impostors/${id}_${v}.webp`))];
+ try{IMP=await loadJson(BASE+'impostors/index.json');}catch(e){console.warn('25d: tree impostors unavailable',e);}
+ const urls=[...NATURE_TEXTURES.flatMap(id=>['diff','nor','arm'].map(n=>`${TEX}${id}_${n}.jpg`)),...Object.entries(IMP).flatMap(([id,im])=>Array.from({length:im.views},(_,v)=>`${BASE}impostors/${id}_${v}.webp`))];
  await Promise.all(urls.map(u=>loader.loadAsync(u).then(t=>{texCache.set(u,t);},()=>{/* missing file: falls back to lazy load */})));
 }
 export const hasImpostors=()=>Object.keys(IMP).length>0;
@@ -75,7 +76,7 @@ function impostors(spots:TreeSpot[],tint:number|THREE.Color,frost=0):THREE.Group
   (by.get(key)??by.set(key,[]).get(key)!).push(new THREE.Matrix4().compose(new THREE.Vector3(t.x,t.y,t.z),new THREE.Quaternion(),new THREE.Vector3(t.flip?-w:w,h,1)));}
  for(const [key,mats] of by){
   const mk=key+(typeof tint==='number'?tint:tint.toArray().join())+frost;let m=impMats.get(mk);
-  if(!m){const map=tex(`${ROOT}impostors/${key}.webp`);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=8;m=new THREE.MeshBasicMaterial({map,alphaTest:0.5,side:THREE.DoubleSide,color:tint});
+  if(!m){const map=tex(`${BASE}impostors/${key}.webp`);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=8;m=new THREE.MeshBasicMaterial({map,alphaTest:0.5,side:THREE.DoubleSide,color:tint});
    // frost (snow theme): leaves turn to rime: luminance lifted to cold white, the shape and shading of the scan kept
    if(frost)m.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>\n diffuseColor.rgb=mix(diffuseColor.rgb,(dot(diffuseColor.rgb,vec3(0.3,0.59,0.11))*1.5+0.28)*vec3(0.9,0.96,1.08),${frost.toFixed(2)});`);};
    m.customProgramCacheKey=()=>'frost'+frost;impMats.set(mk,m);}

@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import fontUrl from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
 import {Simulation,TRANSITIONS,CASTLE_COMPLETION} from '../simulation.js';
 import {NES_W,NES_H} from './coords.js';
+import {trackedLoad} from './loading.js';
 export class Hud{
  private canvas=document.createElement('canvas');private ctx:CanvasRenderingContext2D;private texture:THREE.CanvasTexture;private material:THREE.MeshBasicMaterial;
  readonly scene=new THREE.Scene();readonly camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);private last='';
@@ -13,7 +14,7 @@ export class Hud{
  private makeTexture(){this.canvas.width=NES_W*this.scale;this.canvas.height=NES_H*this.scale;const t=new THREE.CanvasTexture(this.canvas);t.colorSpace=THREE.SRGBColorSpace;t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;return t;}
  /** New text resolution (texture storage is immutable in WebGL2, so the texture is recreated). */
  resize(scale:number){this.scale=scale;this.texture.dispose();this.texture=this.makeTexture();this.material.map=this.texture;this.last='';}
- async load(){const f=new FontFace('PressStart2P',`url(${fontUrl})`);await f.load();document.fonts.add(f);}
+ async load(){const f=new FontFace('PressStart2P',`url(${fontUrl})`);await trackedLoad(fontUrl,()=>f.load());document.fonts.add(f);}
  private text(t:string,x:number,y:number,color='#ffffff',size=8){
   const c=this.ctx;c.font=`${size}px PressStart2P`;c.textBaseline='top';c.fillStyle='rgba(0,0,0,0.55)';c.fillText(t,x+1,y+1);c.fillStyle=color;c.fillText(t,x,y);
  }

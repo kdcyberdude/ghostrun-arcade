@@ -8,9 +8,10 @@ import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 import {RGBELoader} from 'three/examples/jsm/loaders/RGBELoader.js';
 import {GTAOPass} from 'three/examples/jsm/postprocessing/GTAOPass.js';
+import {SKY_IDS} from './asset-policy.js';
 /** Photoreal skies (CC0 Poly Haven, fetched by visual25d/tools/polyhaven.py): 2k HDR for light, 8k tonemapped panorama for the visible sky. */
 const PH=import.meta.env.BASE_URL+'assets25d/ph/hdri/';
-export const SKIES:Record<string,string>={ground:'kloofendal_48d_partly_cloudy_puresky',snow:'kloofendal_48d_partly_cloudy_puresky',night:'narrow_moonlit_road',sky:'kloofendal_48d_partly_cloudy_puresky'};
+export const SKIES:Record<string,string>=SKY_IDS;
 interface Sky{env:THREE.Texture;bg:THREE.Texture;rotation:number;sunDir:THREE.Vector3;horizon:THREE.Color}
 import {NES_W,NES_H} from './coords.js';
 import {GOLD} from './proc.js';
@@ -70,7 +71,7 @@ function cloudSky():THREE.Texture{
 export class Atmosphere{
  readonly scene=new THREE.Scene();readonly camera=new THREE.PerspectiveCamera(FOV,ASPECT,1,600);
  readonly sun=new THREE.DirectionalLight(0xffffff,3);readonly hemi=new THREE.HemisphereLight(0xffffff,0x444444,1);
- private composer:EffectComposer;private bloom:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
+ private composer:EffectComposer;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
  constructor(readonly renderer:THREE.WebGLRenderer,width:number,height:number,private quality:'high'|'low'){
   renderer.setPixelRatio(1);renderer.setSize(width,height,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.05;  // Khronos PBR Neutral keeps hue and saturation (AgX greys out bright colours)
@@ -83,37 +84,42 @@ export class Atmosphere{
   this.composer=new EffectComposer(renderer,target);this.composer.setPixelRatio(1);this.composer.setSize(width,height);
   this.composer.addPass(new RenderPass(this.scene,this.camera));
   if(quality==='high'){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
-  this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),0.22,0.6,0.92);if(quality==='high')this.composer.addPass(this.bloom);
+  if(quality==='high'){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),0.22,0.6,0.92);this.composer.addPass(this.bloom);}
   this.composer.addPass(new OutputPass());
   this.composer.addPass(new ShaderPass(GRADE));
  }
- /** Loads the photographic skies (missing files fall back to the painted gradient). */
- async loadSkies(){
-  const ids=new Map<string,Promise<Sky>>();  // one download/PMREM per photo even when several themes share it
-  const load=async(id:string):Promise<Sky>=>{
-   const [hdr,bg]=await Promise.all([new RGBELoader().setDataType(THREE.FloatType).loadAsync(PH+id+'_2k.hdr'),new THREE.TextureLoader().loadAsync(PH+id+'_bg.jpg')]);
+ /** Daylight is needed at startup; the moonlit HDR is loaded only on entering a night area. */
+ async loadSkies(key='ground'){
+  const id=SKIES[key];if(!id)return;
+  const existing=this.skyLoads.get(id);if(existing)return existing;
+  const load=async()=>{
+   const [hdr,bg]=await Promise.all([new RGBELoader().setDataType(THREE.FloatType).loadAsync(PH+id+'_2k.hdr'),id===SKIES.night?Promise.resolve(this.night??=nightSky()):new THREE.TextureLoader().loadAsync(PH+id+'_bg.jpg')]);
    // Sun = brightest texel of the HDR; rotate sky + light so the sun sits behind the camera's left shoulder (front light, no glare in view).
    const img=hdr.image as unknown as {data:Float32Array;width:number;height:number};let best=0,bi=0;for(let i=0;i<img.width*img.height;i++){const l=img.data[i*4]+img.data[i*4+1]+img.data[i*4+2];if(l>best){best=l;bi=i;}}
    const u=(bi%img.width+0.5)/img.width,v=(Math.floor(bi/img.width)+0.5)/img.height,lat=Math.max(0.35,Math.abs((0.5-v)*Math.PI)),lon=(u-0.5)*2*Math.PI;
    const rotation=Math.atan2(0.75,-0.55)-lon;const sunDir=new THREE.Vector3(Math.cos(lat)*Math.cos(lon+rotation),Math.sin(lat),Math.cos(lat)*Math.sin(lon+rotation)).normalize();
    hdr.mapping=THREE.EquirectangularReflectionMapping;const env=this.pmrem.fromEquirectangular(hdr).texture;hdr.dispose();
-   bg.mapping=THREE.EquirectangularReflectionMapping;bg.colorSpace=THREE.SRGBColorSpace;bg.anisotropy=8;
+   if(id!==SKIES.night)bg.mapping=THREE.EquirectangularReflectionMapping;bg.colorSpace=THREE.SRGBColorSpace;bg.anisotropy=8;
    // Horizon colour seen behind the level (view direction -Z) for the fog that blends 3D terrain into the photograph.
    const c=document.createElement('canvas');c.width=64;c.height=32;const g=c.getContext('2d')!;g.drawImage(bg.image as CanvasImageSource,0,0,64,32);
    const viewU=(((Math.atan2(-1,0)-rotation)/(2*Math.PI)+0.5)%1+1)%1,px=g.getImageData(Math.floor(viewU*64),15,1,2).data;
    const horizon=new THREE.Color().setRGB(px[0]/255,px[1]/255,px[2]/255,THREE.SRGBColorSpace);
-   return {env,bg,rotation,sunDir,horizon};};
-  await Promise.all(Object.entries(SKIES).map(async([key,id])=>{try{
-   if(!ids.has(id))ids.set(id,load(id));this.skies.set(key,await ids.get(id)!);
-  }catch(e){console.warn('25d: sky',id,'unavailable, using painted sky',e);}}));
+   const sky={env,bg,rotation,sunDir,horizon};
+   for(const [theme,photo] of Object.entries(SKIES))if(photo===id)this.skies.set(theme,sky);
+   // A deferred load must refresh the current theme, including above-cloud area overrides.
+   if(SKIES[this.theme]===id){const current=this.theme;this.theme='';this.setTheme(current,current==='sky'?'sky':'');}
+  };
+  const pending=load().catch(e=>{console.warn('25d: sky',id,'unavailable, using painted sky',e);});
+  this.skyLoads.set(id,pending);return pending;
  }
  setTheme(name:string,areaId=''){
   const key=areaId.includes('sky')?'sky':name;if(key===this.theme)return;this.theme=key;const t=THEMES[name]??THEMES.ground;
+  if(SKIES[key]&&!this.skies.has(key))void this.loadSkies(key);
   const c=document.createElement('canvas');c.width=4;c.height=256;const g=c.getContext('2d')!,grad=g.createLinearGradient(0,0,0,256);
   grad.addColorStop(0,t.skyTop);grad.addColorStop(0.55,t.skyMid);grad.addColorStop(1,t.skyBottom);g.fillStyle=grad;g.fillRect(0,0,4,256);
-  this.sky?.dispose();const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;this.sky=tex;this.fog=new THREE.Fog(t.fog,t.fogNear,t.fogFar);this.applyBlackout();
+  this.gradient?.dispose();const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;this.sky=this.gradient=tex;this.fog=new THREE.Fog(t.fog,t.fogNear,t.fogFar);this.applyBlackout();
   this.sun.color.setHex(t.sun);this.sun.intensity=t.sunI;
-  this.hemi.color.setHex(t.hemiSky);this.hemi.groundColor.setHex(t.hemiGround);this.hemi.intensity=t.hemiI;this.scene.environmentIntensity=t.env;this.bloom.strength=t.bloom;
+  this.hemi.color.setHex(t.hemiSky);this.hemi.groundColor.setHex(t.hemiGround);this.hemi.intensity=t.hemiI;this.scene.environmentIntensity=t.env;if(this.bloom)this.bloom.strength=t.bloom;
   const sky=this.skies.get(key)??(name==='underground'||name==='castle'||name==='water'?undefined:undefined);
   const lightSky=sky??this.skies.get('ground');
   this.scene.environment=lightSky?.env??this.fallbackEnv;this.scene.environmentRotation.set(0,lightSky?.rotation??0,0);
@@ -139,6 +145,6 @@ export class Atmosphere{
   this.sun.target.position.set(sx,4,0);this.sun.position.copy(this.sun.target.position).addScaledVector(this.sunDir,40);this.sun.target.updateMatrixWorld();
  }
  /** Changes the internal render resolution (all post passes follow the composer). */
- resize(width:number,height:number){this.renderer.setSize(width,height,false);this.composer.setSize(width,height);this.bloom.resolution.set(width/2,height/2);}
+ resize(width:number,height:number){this.renderer.setSize(width,height,false);this.composer.setSize(width,height);this.bloom?.resolution.set(width/2,height/2);}
  render(){this.composer.render();}
 }
