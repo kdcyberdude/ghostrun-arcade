@@ -567,7 +567,7 @@ export class Simulation {
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.eraseOffscreenEnemies();
-  this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.horizontalPlatformSubs();
+  this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeCannons();this.passNativeFrenzy();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
@@ -1121,14 +1121,16 @@ export class Simulation {
  // Slots that objects other than enemies hold natively: a measured firebar's (FirebarSlots) and a platform's while it holds one (5-3 lift id 37 in slot 0 at row 400).
  // A platform takes the lowest slot free when it is first seen holding one.
  private platformSlots=new Map<object,number>();
- // A native XMovingPlatform keeps the x sub-pixel byte its slot's previous object left (1-3 v2 row 508: slot 2 inherits 128 from a Goomba removed at
- // 705.128); its slot is the one it takes on its first frame.
- private horizontalPlatformSubs(){
-  const context=this.platformMotion.context;
-  for(const platform of this.area.platforms??[]){
-   if(platformMotionModel(platform,context)!=='native-horizontal'||!nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame))continue;
-   if(!this.platformSlots.has(platform))this.objectSlots(new Set(this.enemies.flatMap(o=>o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[])));
-   const slot=this.platformSlots.get(platform);if(slot!==undefined)this.platformMotion.slotSub(platform,this.slotSub[slot]);
+ // Platforms preserve their slot fractions: id40 inherits x sub-pixels; the
+ // balance/drop motors keep Y fractions (3-3 slot2: drop125 → balance125).
+ private platformSlotResidues(){
+  this.objectSlots(new Set(this.enemies.flatMap(o=>o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[])));
+  for(const [platform,slot] of this.platformSlots){
+   const p=platform as any;
+   this.platformMotion.slotSub(p,this.slotSub[slot]);
+   this.platformMotion.slotFraction(p,this.slotVertical[slot].fraction);
+   const state=this.platformMotion.verticalState(p);
+   if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }
  }
  private objectSlots(enemySlots:Set<number|undefined>){

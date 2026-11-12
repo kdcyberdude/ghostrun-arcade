@@ -27,7 +27,7 @@ for(let f=0;f<=to;f++){
  const s=`S ${sim.phase} ${sim.area.id} x${Math.floor(sim.player.x)}.${Math.floor((sim.player.x%1)*256)} vx${sim.player.vx.toFixed(4)} y${Math.floor(sim.player.y)-32} vy${sim.player.vy.toFixed(2)} t${sim.time} sc${sim.score} c${sim.coins} cam${Math.floor(sim.camera)}/${r[0x71a]*256+r[0x71c]}`;
  console.log(`${f} pad ${pads[f].toString(16).padStart(2,'0')} | ${n} | ${s}`);
  if(a.platforms)console.log('   P:'+(sim.area.platforms??[]).map((q:any)=>{const c=sim.platformMotion.collisionPosition(q,sim.platformFrame);return ` [${q.x},${q.y} slot${sim.platformSlots.get(q)??'-'} w${q.width} x${c.x.toFixed(2)} y${c.y.toFixed(2)}]`;}).join(''));
- if(a.platforms)console.log('   slot sub:'+sim.slotSub.join(','));
+ if(a.platforms)console.log('   slot sub:'+sim.slotSub.join(',')+' y frac:'+sim.slotVertical.map((v:any)=>v.fraction).join(','));
  if(a.enemies){
   console.log('   N:'+[0,1,2,3,4].filter(k=>r[0xf+k]).map(k=>` [${k} id${r[0x16+k]} st${r[0x1e+k]} x${r[0x6e+k]*256+r[0x87+k]}.${r[0x401+k]} y${r[0xcf+k]}]`).join(''));
   console.log('   S:'+sim.enemies.filter((e:any)=>e.active&&e.dead<90).map((e:any)=>` [${e.enemySlot??'-'} ${e.kind} x${e.x.toFixed(3)} y${Math.floor(e.y)-32}${e.shell?' shell':''}${e.dead?' dead'+e.dead:''}]`).join(''));
