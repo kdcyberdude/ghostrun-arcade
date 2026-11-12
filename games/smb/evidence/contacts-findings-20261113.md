@@ -67,8 +67,9 @@ Mario X and Mario Y. Its only remaining field is red-Koopa enemy204.
 
 Remaining examples are outside the corrected contact rule:
 
--1-2 y1667: a preceding falling Goomba leaves the wrong native fraction in
- slot0 (native76 versus remake146), inherited by the next upward lift.
+-The former1-2 y1667 was an initializer fraction-capture race, resolved in
+ the follow-up below. The initial hypothesis of a wrong preceding Goomba
+ fall motor was disproved by the atomic-initialization regression.
 -6-3 y1652: downstream of a frenzy Bullet with the wrong height (enemy1611).
  Native Bullet slot1 y168; remake is80px higher and is falsely stomped1651.
 -2-2 y1401 and7-2 y1522 remain underwater motion/entry issues.
@@ -77,3 +78,35 @@ Remaining examples are outside the corrected contact rule:
 The corresponding workers were sent these native rows. These are not claims
 that all32 levels or pixel fidelity have reached zero; the integration owner
 continues those remaining gates.
+
+
+## Independent transition follow-up (integration0874db6)
+
+- Down-pipe foot probes use integer X bytes.8-4 row6377 at x275.25 has
+  right foot287, still on the left metatile before seam288; the old floating
+  tolerance entered prematurely. Native entry occurs6405. Integer alignment
+  moves the first timer error6400→6575 without earlier fields anywhere.
+- GameTimerCtrlTimer ($0787) counts down through an already-active clock's
+  pipe entry and rise, even though engine3/7 suppresses digit decrements.
+  The final rise row switches to8 and consumes a pending zero immediately:
+  8-4 row6574 is engine7/time133/control0;6575 is engine8/time132/control24.
+  Initial automatic entry keeps FetchNewGameTimerFlag initialization, whose
+  clock is initialized from the destination header rather than carried.
+  This makes1-2 time entirely exact and moves8-4 time6575→6959.
+- ProcessEnemyData cannot initialize a platform on task7 ($071F).4-2's
+  x1980 up-lift threshold1665 is reached2015 after the previous32px scroll
+  crossing, but initialization waits until2016. This removes all previously
+  divergent4-2 fields, including Mario y2126 and later timer/score/death.
+- Inherited X/Y fractions must be captured atomically when objectSlots assigns
+  a platform slot. An extra slot-query caller (for example group allocation)
+  can reserve it before the normal residue pass. Previously that pass queried
+  an unseeded motor, overwrote the old fraction, then captured the already
+  advanced value as the seed. The native4-2 regression checks136 at creation
+  and152 after its first upward step. Atomic capture also removes1-2's final
+  y1667 error; both1-2 and4-2 now have all eight divergence fields null.
+
+The remaining8-4 first y6736 is a false stomp on a misplaced Beetle in area-2:
+remake local296.5 versus native local232 on6735. Native enemy-slot/stream work
+owns that issue; evidence was sent to the walker worker. Its timer error6959
+now follows that earlier physical divergence. The all-level survey for this
+follow-up is `/tmp/contacts-parser-platform3-divergence.json` during the session.
