@@ -17,3 +17,10 @@ export function nativeBalanceStep(n:PlatformVerticalState,load:number){
  const up=load?load<0:speed>=0;
  gravity(n,5,3,up);
 }
+
+/** MoveLiftPlatforms: constant native speed/force, inheriting the previous
+ * object's $0417+s fraction. InitSmallLift shifts object X by12 pixels. */
+export function nativeWrapState(y:number,age:number,fraction:number,up:boolean):PlatformVerticalState{
+ const force=up?16:240,speed=up?-1:0,total=fraction+force*Math.max(0,age);
+ return {y:(y+speed*Math.max(0,age)+Math.floor(total/256))&255,speed,force,fraction:total&255};
+}

@@ -17,7 +17,7 @@ export const BACKENDS:Record<string,string[]>={
 export interface Game{page:Page;browser:Browser;server:ViteDevServer;errors:string[];renderer:string;close():Promise<void>}
 export async function openGame(o:{view?:string;backend?:string;port?:number;viewport?:{width:number;height:number};query?:string}={}):Promise<Game>{
  const port=o.port??Number(process.env.V25_PORT??5473);
- const server=await createServer({server:{port,strictPort:true,host:'127.0.0.1'},logLevel:'error'});await server.listen();
+ const server=await createServer({server:{port,strictPort:true,host:'127.0.0.1',hmr:false},logLevel:'error'});await server.listen();
  const browser=await chromium.launch({executablePath:CHROME,headless:true,args:['--no-sandbox','--enable-webgl',...BACKENDS[o.backend??'gpu']]});
  const page=await browser.newPage({viewport:o.viewport??{width:1100,height:1000}});const errors:string[]=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});

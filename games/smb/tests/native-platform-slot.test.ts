@@ -22,3 +22,19 @@ test('5-3: the vertical Paratroopa at x 1184 starts at native feet 80 (route row
  const level=observedLevels().find(item=>item.id==='5-3')!;
  assert.equal(level.areas.find(a=>a.id==='main')!.enemies.find(e=>e.kind==='paratroopa'&&e.x===1184)!.y,80);
 });
+
+test('a platform waits until the allocation pass after its previous slot occupant is erased',()=>{
+ // 1-2 v2: slot0 Goomba is erased on frame1590; the pending id38 lift
+ // initializes on1591. The slot's pass cannot process a second object now.
+ const sim:any=new Simulation(observedLevels());sim.reset(true);
+ sim.levelIndex=sim.levels.findIndex((l:any)=>l.id==='3-3');sim.loadArea('main');
+ const platform=sim.area.platforms.find((p:any)=>p.x===452)!;
+ sim.area.platforms=[platform];sim.camera=177;sim.frame=100;
+ sim.enemies=[1,2,3,4].map(enemySlot=>({kind:'goomba',active:true,dead:0,x:300,y:208,enemySlot}));
+ sim.slotReleaseFrame[0]=sim.frame;
+ assert.equal(sim.nativeSlotsFull(platform),true);
+ assert.deepEqual([...sim.objectSlots(new Set([1,2,3,4]))],[]);
+ sim.frame++;
+ assert.equal(sim.nativeSlotsFull(platform),false);
+ assert.deepEqual([...sim.objectSlots(new Set([1,2,3,4]))],[0]);
+});

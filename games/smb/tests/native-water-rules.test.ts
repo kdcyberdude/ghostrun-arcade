@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import events from './fixtures/native-water-rule-events.json';
 import {stepNativeBlooper} from '../src/blooper-motion.js';
 import {moveFlyingCheep} from '../src/flying-cheep.js';
+import {moveSwimmingCheep} from '../src/swimming-cheep.js';
 
 test('MoveBloober predicts every live native slot transition, including wrapped vertical coordinates',()=>{
  assert.ok(events.blooper.length>8000);
@@ -36,4 +37,13 @@ test('new Bloopers initialize native direction, force, counter and timer; fish i
   assert.deepEqual(state.slice(2),[0,0,0,2],`${level} row ${row} slot ${slot}`);
  for(const [level,row,slot,before,after] of events.slotReuse as [string,number,number,number[],number[]][])
   assert.deepEqual(after,before,`${level} row ${row} slot ${slot}`);
+});
+
+test('MoveSwimmingCheepCheep predicts every live native slot transition',()=>{
+ assert.ok(events.swimming.length>8000);
+ for(const [level,row,slot,id,before,after] of events.swimming as [string,number,number,10|11,number[],number[]][]){
+  const [x,y,fraction,flag,originY]=before,n={y,fraction,flag,originY};
+  const nextX=moveSwimmingCheep(n,x,id,slot);
+  assert.deepEqual([nextX,n.y,n.fraction,n.flag,n.originY],after,`${level} row ${row} slot ${slot}`);
+ }
 });

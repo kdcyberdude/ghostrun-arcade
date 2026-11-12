@@ -11,6 +11,9 @@ export function captureEnemyPicture(enemy:Enemy){
  if(enemy.pir)picture.pir={...enemy.pir};
  if(enemy.pod)picture.pod={...enemy.pod};
  if(enemy.fall)picture.fall={...enemy.fall};
+ if(enemy.hbro)picture.hbro={...enemy.hbro};
+ if(enemy.redFlight)picture.redFlight={...enemy.redFlight};
+ if(enemy.nativeSwim)picture.nativeSwim={...enemy.nativeSwim};
  enemy.graphics=picture;
 }
 

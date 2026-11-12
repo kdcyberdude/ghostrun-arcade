@@ -7,6 +7,6 @@ test('5-2 first Hammer Bro can patrol left off the observed stair',()=>{
  const s=new Simulation([level]);s.reset(true);s.loadArea('area-2',[460,208],449);
  const bro=s.enemies.find(e=>e.kind==='hammerBro')!;
  // Source tick5432: x743 / feet144. Direction and subpixel are fixture assumptions.
- bro.active=true;bro.x=743.5;bro.y=144;bro.vx=-.25;bro.vy=0;bro.hammerRandom=1;bro.hammerJumpWait=10000;
+ bro.active=true;bro.x=743.5;bro.y=144;bro.vx=-.25;bro.vy=0;bro.enemySlot=0;bro.hbro={state:0,jumpTimer:200,throwTimer:200,frameTimer:0,interval:128,speed:0,force:0,fraction:0,y:120};s.random.frame=63;
  s.step([],22);assert.equal(s.phase,'play');assert.ok(Math.abs(bro.x-737)<=2);assert.ok(Math.abs(bro.y-160)<=2);
 });

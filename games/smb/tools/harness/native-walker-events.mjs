@@ -10,7 +10,7 @@ const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string'}}
 if(!a.traces||!a.out)throw Error('--traces and --out are required');
 const signed=v=>v<128?v:v-256;
 const state=(r,s)=>({x:r[0x6e+s]*256+r[0x87+s]+r[0x401+s]/256,y:r[0xcf+s]+24,speed:signed(r[0xa0+s]),force:r[0x434+s],fraction:r[0x417+s],vx:signed(r[0x58+s])/16,direction:r[0x46+s]});
-const out={unwinged:[],contacts:[]};
+const out={unwinged:[],contacts:[],redFlights:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const data=fs.readFileSync(file),row=f=>data.subarray(f*2048,(f+1)*2048);
@@ -19,6 +19,10 @@ for(const level of fs.readdirSync(a.traces).sort()){
   if(p[0xe]!==8||r[0xe]!==8||r[0x770]!==1)continue;
   for(let s=0;s<5;s++)if(p[0xf+s]&&r[0xf+s]&&p[0x16+s]===14&&r[0x16+s]===0)
    out.unwinged.push({level,row:f,slot:s,before:state(p,s),after:state(r,s),mario:r[0x6d]*256+r[0x86]});
+  for(let s=0;s<5;s++)if(p[0xf+s]===1&&r[0xf+s]===1&&p[0x16+s]===15&&r[0x16+s]===15){
+   const flight=q=>({y:q[0xcf+s]+24,speed:signed(q[0xa0+s]),force:q[0x434+s],fraction:q[0x417+s]});
+   out.redFlights.push({level,row:f,frame:r[9],before:{...flight(p),originalY:p[0x401+s],centerY:p[0x58+s]},after:flight(r)});
+  }
   if(r[0x74e]===0||r[9]%2===0)continue;
   const bodies=[];
   for(let s=0;s<5;s++)if(p[0xf+s]===1&&r[0xf+s]===1&&p[0x16+s]===r[0x16+s]&&[0,1,2,3,4,6,14,18].includes(r[0x16+s])&&(p[0x1e+s]&0xa0)===0){
@@ -29,5 +33,5 @@ for(const level of fs.readdirSync(a.traces).sort()){
   if(supported&&before.some((b,s)=>b!==after[s]))out.contacts.push({level,row:f,camera:r[0x71a]*256+r[0x71c],frame:r[9],bodies,before,after});
  }
 }
-fs.writeFileSync(a.out,JSON.stringify(out,null,1)+'\n');
-console.log(`unwinged ${out.unwinged.length}, contacts ${out.contacts.length}`);
+fs.writeFileSync(a.out,JSON.stringify(out).replace(/\{"level"/g,'\n{"level"')+'\n');
+console.log(`unwinged ${out.unwinged.length}, contacts ${out.contacts.length}, redFlights ${out.redFlights.length}`);

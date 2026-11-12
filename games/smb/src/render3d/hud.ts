@@ -37,6 +37,9 @@ export class Hud{
    if(!(s.phase==='ending'&&elapsed===0)&&elapsed>=0)rescue=`R|${player}|${elapsed>=CASTLE_COMPLETION.secondMessageFrames?(s.level.id==='8-4'?2:1):0}`;
   }
   if(rescue)lines.push(rescue);
+  // Level text that scrolls with the world (WELCOME TO WARP ZONE! and the world numbers over the warp pipes), as the 2D picture draws it.
+  const world=!['title','intro','gameover'].includes(s.phase)&&!s.pipeLoading&&!s.pipeClearing,cam=Math.floor(s.camera);
+  if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
   if(hudOn||s.phase==='flag')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);
@@ -45,6 +48,7 @@ export class Hud{
    if(t==='T'){this.centered('SUPER MARIO BROS.',64,'#ffd84a',10);this.centered('1 PLAYER GAME',144);this.centered('2 PLAYER GAME',160);this.text('▶',72,a[0]==='1'?160:144,'#ffd84a');this.centered('©1985 NINTENDO',120,'#ffffff');this.centered('TOP- 000000',184);}
    if(t==='I'){this.text('WORLD '+a[0],88,80);this.text('×  '+a[1],120,112);}
    if(t==='G'){if(a[0])this.text(a[0],104,112);this.text('GAME OVER',88,128);}
+   if(t==='O')this.text(a[0],Number(a[1]),Number(a[2]));
    if(t==='P')this.text(a[0]==='1up'?'1UP':a[0],Number(a[1]),Number(a[2]),'#ffffff',6);
    if(t==='R'){this.text('THANK YOU '+a[0]+'!',40,80);if(a[1]==='1'){this.text('BUT OUR PRINCESS IS IN',20,112);this.text('ANOTHER CASTLE!',20,128);}if(a[1]==='2')this.text('YOUR QUEST IS OVER.',28,112);}
   }
