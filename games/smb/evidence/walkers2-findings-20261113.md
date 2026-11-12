@@ -32,3 +32,11 @@ Open: red Paratroopa cosine movement and several red spawn heights are still inf
 4-3 x576 had an inferred screenshot spawn at feet80; native object initialization is sprite-top40/original-y40/centre88, so its static spawn is feet64. This is corrected in the existing native spawn data source, not in level-specific motion code.
 
 Compared with00442b1:1-3 enemy443->471;4-3 enemy162->204;5-3 enemy427->454, score492->573, y618->1260, death633->1292, timer641->1314. No earlier field on any level.1244 tests and TypeScript pass; excerpts regenerated. The newly exposed1-3/5-3 Goomba atx1280 has an inferred map height and platform-slot ownership to resolve; the3-3 earlier Red Koopa residue remains the first enemy divergence pending platform-slot integration.
+
+## Native static actor aliases
+
+7-1 v2 frame437 changes the existing slot2 Paratroopa fromid14 toid0 in place. The source data additionally spawned a screenshot-derived Koopa1009, so the remake later had two actors. Remove the old native-spawn correction, remove the derivative sighting through the existing ground-actor removal pipeline, and keep the real conversion. First enemy divergence439->443; every other field unchanged. A diagnostic unwinged-fall fixture remains synthetic and no longer asserts that a duplicate belongs in the level.
+
+The shared1-3/5-3 Goomba at1280 natively starts at sprite-top56 (feet80), not the later screenshot-derived feet96. Correct both source walker metadata and generated levels. Firstenemy remains471/454 because the remaining platform-slot/residue mismatch precedes matching the new Goomba's x; correcting static y does not introduce earlier fields.
+
+All32 levels compared againstc7fe7b9: only7-1 enemy439->443 changes.1244tests andTypeScript pass, excerpts regenerated. `node tools/compile-levels.mjs` cannot complete because the baseline checkout lacks `evidence/firebar-5-4-shared-verification.json` (ENOENT before output writing). The source edits use the existing correction/removal formats; this missing evidence must be restored before a full source regeneration can be verified.

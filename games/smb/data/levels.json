@@ -15634,7 +15634,7 @@
           {
             "kind": "goomba",
             "x": 1280,
-            "y": 96,
+            "y": 80,
             "direction": -1,
             "evidence": "screenshot sequence 187 tick 744; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
@@ -114542,7 +114542,7 @@
           {
             "kind": "goomba",
             "x": 1280,
-            "y": 96,
+            "y": 80,
             "direction": -1,
             "evidence": "screenshot sequence 1438 tick 5748; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-0f-36-17",
@@ -147429,16 +147429,6 @@
             "palette": "0f-1a-30-27",
             "spawnVy": -0.98046875,
             "spawnYFraction": 0.45
-          },
-          {
-            "kind": "koopa",
-            "x": 1009,
-            "y": 178,
-            "direction": 1,
-            "evidence": "screenshot sequence 1875 tick 7496; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; it is the just-stomped Paratroopa (slot 2 id 14 -> id 0 on row 56283 at y 154, feet 178, state byte 1 while it falls until row 56303): it appears falling and untouchable like an unwinged Koopa (evidence/stomp6-findings-20261111.md)",
-            "palette": "0f-1a-30-27",
-            "spawnCamera": 887,
-            "spawnUnwinged": true
           },
           {
             "kind": "piranha",
