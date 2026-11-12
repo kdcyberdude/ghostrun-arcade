@@ -1,0 +1,1125 @@
+{
+ "source": "Controlled native RAM branches from retained5-2 entrance: buffer18, varied frenzy/reappearance counters, ordinary slots filled with NoRunCode35 except listed free flags; no ROM writes; one neutral frame.",
+ "rows": [
+  {
+   "case": "first-attempt",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 0,
+    "buffer": 18,
+    "ids": [
+     0,
+     35,
+     35,
+     35,
+     35
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 1,
+    "buffer": 18,
+    "ids": [
+     18,
+     35,
+     35,
+     35,
+     35
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  },
+  {
+   "case": "sixth-attempt",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 5,
+    "buffer": 18,
+    "ids": [
+     0,
+     35,
+     35,
+     35,
+     0
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     18,
+     35,
+     35,
+     35,
+     18
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  },
+  {
+   "case": "seventh-two-free",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     0,
+     35,
+     35,
+     35,
+     0
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 0,
+    "buffer": 18,
+    "ids": [
+     18,
+     35,
+     35,
+     35,
+     17
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 286,
+      "fraction": 176,
+      "y": 32,
+      "speed": 251,
+      "direction": 0,
+      "bbox": 8
+     }
+    ]
+   }
+  },
+  {
+   "case": "seventh-one-free",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     35,
+     35,
+     35,
+     0,
+     35
+    ],
+    "flags": [
+     1,
+     1,
+     1,
+     0,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 0,
+    "buffer": 18,
+    "ids": [
+     35,
+     35,
+     35,
+     17,
+     35
+    ],
+    "flags": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 287,
+      "fraction": 0,
+      "y": 32,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 8
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  },
+  {
+   "case": "seventh-all-free",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "flags": [
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 0,
+    "buffer": 18,
+    "ids": [
+     18,
+     18,
+     18,
+     18,
+     17
+    ],
+    "flags": [
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 286,
+      "fraction": 176,
+      "y": 32,
+      "speed": 251,
+      "direction": 0,
+      "bbox": 8
+     }
+    ]
+   }
+  },
+  {
+   "case": "busy",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     35,
+     35,
+     35,
+     35,
+     35
+    ],
+    "flags": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 0,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     35,
+     35,
+     35,
+     35,
+     35
+    ],
+    "flags": [
+     1,
+     1,
+     1,
+     1,
+     1
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  },
+  {
+   "case": "timer-running",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 20,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     0,
+     35,
+     35,
+     35,
+     0
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 19,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     18,
+     35,
+     35,
+     35,
+     18
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  },
+  {
+   "case": "existing-lakitu-id",
+   "frame": 172,
+   "camera": 0,
+   "mario": 40,
+   "marioSpeed": 0,
+   "scroll": 0,
+   "before": {
+    "timer": 1,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     0,
+     35,
+     17,
+     35,
+     0
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   },
+   "after": {
+    "timer": 128,
+    "reappear": 6,
+    "buffer": 18,
+    "ids": [
+     18,
+     35,
+     17,
+     35,
+     18
+    ],
+    "flags": [
+     0,
+     1,
+     1,
+     1,
+     0
+    ],
+    "objects": [
+     {
+      "slot": 0,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 1,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 2,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 9
+     },
+     {
+      "slot": 3,
+      "x": 160,
+      "fraction": 0,
+      "y": 48,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     },
+     {
+      "slot": 4,
+      "x": 368,
+      "fraction": 0,
+      "y": 56,
+      "speed": 0,
+      "direction": 0,
+      "bbox": 0
+     }
+    ]
+   }
+  }
+ ]
+}
