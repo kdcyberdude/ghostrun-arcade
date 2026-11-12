@@ -1,5 +1,6 @@
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
-import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot} from './platform-motion.js';
+import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel} from './platform-motion.js';
+import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
@@ -106,6 +107,7 @@ export function nativePiranhaStep(n:NativePiranha,plantX:number,marioX:number,fr
  n.y+=n.speed;if(n.y===(n.speed>0?n.down:n.up)){n.flag=0;n.timer=0x40;}
 }
 export const NATIVE_HZ=60.0988;
+const STOMP_SPEED_THREE=['hammerBro','lakitu','blooper','cheep','bullet'];
 // Native rows (RAM 0x500 collision map, 0x416 y sub-pixel, 0x70a fall class): feet this deep in a cell do not land; a fall before any jump of the area uses 40/256.
 const FOOT_LAND_DEPTH=5,FALL_GRAVITY_AFTER_LOAD=0.15625;
 export const PHYSICS={walkMax:1.5,runMax:2.5,walkAccel:0.037353515625,runAccel:0.0557861328125,brake:0.037109375,reverse:0.109375,jump:-4,runJump:-5,heldGravity:0.125,gravity:0.4375,maxFall:4.125};
@@ -175,7 +177,7 @@ export class Simulation {
  private timeUpDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;
- private sideCollisionTimer=0;private platformScroll=0;
+ private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -294,7 +296,7 @@ export class Simulation {
   this.swimPoseFrame=0;
   this.springTimers.clear();this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;
   this.flagTop=48;this.flagInside=false;this.flagBonus=0;this.flagWait=0;
-  this.items=[];this.popups=[];this.bump.clear();this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
+  this.items=[];this.popups=[];this.bump.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
   this.emit(this.areaMusic());
  }
  private emit(id:string){this.events.push(id);}
@@ -462,7 +464,7 @@ export class Simulation {
   this.piranhaTouchFeetY=undefined;
   const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
   let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined;
-  p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
+  if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
@@ -503,10 +505,10 @@ export class Simulation {
    this.jumpHeld++;
   }
   const height=this.height;
-  const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b));
-  if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,oldBottom);
+  const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b),true);
+  if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
-  this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
+  this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
   // The jump class after a contact reads the stale Player_XSpeedAbsolute (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
   // ImpedePlayerMove: the contact zeroes the speed byte (the fraction stays) and masks that side's press on the next frame.
@@ -518,7 +520,7 @@ export class Simulation {
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==this.entryReadyAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
   else if(this.walkOffFall()){}
-  else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.jumpArc&&!this.runJump?this.nativeFallCap(p.vy+this.airGravity(b)):this.runJump?this.runJumpFallSpeed(p.vy+this.airGravity(b)):Math.min(PHYSICS.maxFall,p.vy+this.airGravity(b)); 
+  else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.nativeFallCap(p.vy+this.airGravity(b));
   if(p.x<this.camera){
    // Steering away from the left edge keeps braking momentum and the x fraction (native4-4 rows2597..2599).
    if(useMotor&&direction>0&&p.vx<0)p.x=this.camera+p.x-Math.floor(p.x);
@@ -568,7 +570,7 @@ export class Simulation {
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.eraseOffscreenEnemies();
-  this.platformMotion.advance(this.platformFrame,this.camera);
+  this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.horizontalPlatformSubs();
   this.passNativeCannons();this.passNativeFrenzy();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
@@ -668,12 +670,11 @@ export class Simulation {
  // Native head bump of a small Mario in the air (rows in tests/native-head-bump.test.ts): the head probe sits 14 px above the feet (the legacy snap bump probes 12) and only acts while the
  // speed after this frame's gravity is still upward (a jump that merely touches a ceiling at its apex is no bump); the position is NOT snapped, the speed becomes 1 (0 for a hit block: brick,
  // question, used) plus the fraction of the speed after this row's gravity (see bumpHead), the jump class (gravity 0.5625/0.375/0.4375, cap) is kept and that frame takes no gravity step.
- // Native run-jump fall cap: after the gravity step a speed of 4 or more whose fraction is 0.5 or more is set to exactly 4 (3.96875 -> 4.53125 moves 4: 17 of 17 route rows);
- // a step landing on 5.0-5.4375 (4.4375 + 0.5625) keeps it one row, so the fall bytes run 3 3 4 5 4 (free-play one-step score: 181 'vy4>5' spells on explore-r1/r2/w0, all fixed).
- private runJumpFallSpeed(next:number){return next>=4&&next%1>=0.5?4:next;}
- // Native fall cap of a jump arc (model-play one-step audit, 3238 jumps / 80,091 rows: 149 misses): a speed that reaches 4.5 px/frame is set to exactly 4.0 (a 4.125 cap made 4 -> 5 px steps appear every 8 rows).
- // Scoped to jump arcs: the same rule on walk-off falls broke the human-route campaign (their start state differs: first rows vy 0,1,1,2 dy 1,1,1,2 in model traces, not modelled).
- private nativeFallCap(v:number){return v>=4.5?4:v;}
+ // Native ImposeGravity cap (MovePlayerVertically, maximum speed 4): after the gravity step a speed byte of 4 or more whose move force is 128 or more
+ // becomes exactly 4.0 (force 0). One rule for every airborne frame, jump, walk-off and stomp bounce alike: 3.96875 -> 4.53125 moves 4 (17 of 17
+ // route rows); 4.4375 + 0.5625 = 5.0 keeps 5 one row (fall bytes 3 3 4 5 4); 4 + 0.4375 = 4.4375 stays (3-2 v2 row 475 after a stomp bounce:
+ // speed 4, force 80; the old 4.125 cap of non-jump falls moved 4 instead of 5).
+ private nativeFallCap(v:number){const speed=Math.floor(v);return speed>=4&&v-speed>=0.5?4:v;}
  // Native underground entry fall (1-2 area-2, 4-2 area-3): Mario keeps facing right through the load and cannot turn in the air, so a Left press during the fall steps the doubled
  // 304 per row once the speed has crossed zero (explore-r4 1-1/mood1 rows 2753-2766: 760 ... 0, -152, -456, ... -3800) instead of the plain 152 the motor's unknown-after-load facing gave.
  private entryFallFacing(area:Area){if(this.entryFalling&&area.entryFall?.native)this.motor.facing=this.player.facing<0?-1:1;}
@@ -692,9 +693,11 @@ export class Simulation {
  // Native stomp bounce (r5 model rows, 468 bounces): the gravity after the bounce is the fall gravity of the last takeoff's class, A held or not
  // (run 0.5625 x313, walk 0.4375 x166, medium 0.375 x18; walk/medium never fit 0.5625 except 2). Springs, and a bounce before any takeoff of the visit (unmeasured), keep 0.5625.
  private bounceGravity=0.5625;
- // Native stomp sets only the speed's whole part to -4 and keeps the falling speed's sub-pixel part (8-2 r6 row 106, all 8 moods:
- // y 128,125,122,120,119,118,117 = rise 11, not the flat -4's 16); at the fall cap (vy >= 4) the part is 0 (1-2 mood0 row 3740: -4,-4,-4).
- private stompBounceVy(vy:number){return vy>=4?-4:-4+(vy-Math.floor(vy));}
+ // Native stomp sets only the speed byte (Player_Y_Speed) and keeps the move force $433, i.e. the sub-pixel part of the speed after this frame's gravity
+ // (8-2 r6 row 106, all 8 moods: y 128,125,122,120,119,118,117 = rise 11; at the fall cap the force is already 0: 1-2 mood0 row 3740 -4,-4,-4;
+ // 3-2 v2 row 457: 4 + 112/256 -> -4 + 112/256). The byte is -3 for the EnemyStompedPts kinds (Hammer Bro, Lakitu, Bloober, Cheep Cheeps,
+ // Bullet Bills: SMB disassembly EnemyStomped, 3-1 v2 row 924 Hammer Bro 3 + 152/256 -> -3 + 152/256) and -4 for the rest (SBnce).
+ private stompBounceVy(vy:number,kind?:string){return (kind!==undefined&&STOMP_SPEED_THREE.includes(kind)?-3:-4)+(vy-Math.floor(vy));}
  private stompBounce(){this.bounceGravity=this.fallGravity===FALL_GRAVITY_AFTER_LOAD?0.5625:this.fallGravity;}
  private airGravity(b:Set<Button>){const p=this.player;return this.bouncing?this.bounceGravity:b.has('a')&&this.landJump!=='released'&&p.vy<0?(this.runJump?0.15625:this.mediumJump?0.1171875:PHYSICS.heldGravity):(this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity);}
  // Native big Mario (evidence/power-findings-20261111.md, 1-1 probes): the head probe is 28 px above the feet standing and 14 crouched (bump at feet - ceiling 24..26 / 13, none at 28 / 16). A used block gives speed 1 plus the fraction, a question block 0 plus the fraction;
@@ -710,8 +713,9 @@ export class Simulation {
  // Native apex landing (free-play rows, 35 of 35 in 256 model runs, remake one row late on all): on the row where the speed after gravity is no longer upward, a Mario still moving
  // up 1 px runs the foot probes, not the head probe, and lands on a floor top his feet are under 5 px into (feet 83 -> 80, 1-3 row 992).
  private apexFootProbe(dy:number,nativeHead:boolean,gravity:number){return dy<0&&gravity>0&&!nativeHead&&this.area.theme!=='water';}
- private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0){
+ private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0,cutoff=false){
   const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
+  if(cutoff&&nativeBackgroundSkipped(p.y))return;
   const down=dy>=0||this.apexFootProbe(dy,nativeHead,gravity);
   const edge=down?p.y:p.y-(nativeHead?this.nativeHeadProbe(h):h);
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
@@ -722,13 +726,16 @@ export class Simulation {
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
    if(down){if(dy!==0)this.landingFraction=p.y-Math.floor(p.y);p.y=tile?.y??pipeTop!;p.vy=0;p.grounded=true;}
    else{if(!tile)continue;
+    // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
+    // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
+    if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);break;}
     if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&(p.size===0||tile.id!==196&&!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
     if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
    }break;
   }
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
-  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id===196&&!piece)this.usedBlockRehits.add(key);
+  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196)this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
   // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
@@ -1126,6 +1133,16 @@ export class Simulation {
  // Slots that objects other than enemies hold natively: a measured firebar's (FirebarSlots) and a platform's while it holds one (5-3 lift id 37 in slot 0 at row 400).
  // A platform takes the lowest slot free when it is first seen holding one.
  private platformSlots=new Map<object,number>();
+ // A native XMovingPlatform keeps the x sub-pixel byte its slot's previous object left (1-3 v2 row 508: slot 2 inherits 128 from a Goomba removed at
+ // 705.128); its slot is the one it takes on its first frame.
+ private horizontalPlatformSubs(){
+  const context=this.platformMotion.context;
+  for(const platform of this.area.platforms??[]){
+   if(platformMotionModel(platform,context)!=='native-horizontal'||!nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame))continue;
+   if(!this.platformSlots.has(platform))this.objectSlots(new Set(this.enemies.flatMap(o=>o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[])));
+   const slot=this.platformSlots.get(platform);if(slot!==undefined)this.platformMotion.slotSub(platform,this.slotSub[slot]);
+  }
+ }
  private objectSlots(enemySlots:Set<number|undefined>){
   const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
@@ -1529,23 +1546,24 @@ export class Simulation {
   }
  }
  private updatePlatforms(oldBottom:number){
+  const p=this.player;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
-   const p=this.player;
-   const riding=Math.abs(oldBottom-prior.y)<0.01&&p.y>=oldBottom;
-   if(Math.abs(now.y-prior.y)<128&&p.vy>=0&&oldBottom<=prior.y+3&&(riding||p.y>=now.y)&&platformSupportsX(p.x,now.x,platform.width)){
-    p.y=now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
-    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
-   }
+   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,platformMotionModel(platform,this.platformMotion.context)==='native-wrap');
+   if(box===undefined)continue;
+   if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
+   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
+   // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
   }
  }
- // Native platforms have a solid underside: a rising Mario whose feet were 25..28 px below the platform top on the previous row stops as under a ceiling (next vy 1 plus the old fraction; 8 of 8 hits in
- // the route and model runs, 3-3 and 6-3, ids 36 and 40; 29 px never hits, 24 is unobserved inside the x window; only small Mario observed, big assumed 16 px taller). x window from the same rows: x-px in -13..width-7 (native hits reach width-5, no hit at width-4; the last 2 px are left out because the remake position can be 2 px off there and made false hits).
- private platformHeadBump(oldX:number,oldBottom:number){
-  const p=this.player,reach=p.size?41:25;
+ // Native platforms have a solid underside (ProcLPlatCollisions, see src/native-platform-contact.ts): tested after this frame's move and gravity against the
+ // platform before its own move; the speed becomes 1 plus the move force (the fraction of the speed after gravity) and that frame's gravity is already spent.
+ // From under the left corner the speed byte is lost as at a wall (6-3 f51775, one sample; native PlatformSideCollisions, not modelled further).
+ private platformHeadBump(oldX:number,gravity:number){
+  const p=this.player,v=p.vy+gravity;if(v>=0)return;
   for(const platform of this.area.platforms??[]){
-   const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),below=oldBottom-prior.y-reach;
-   if(below>=0&&below<4&&Math.floor(oldX)+14>Math.floor(prior.x)&&Math.floor(oldX)+6<Math.floor(prior.x)+platform.width){p.vy=p.vy-Math.floor(p.vy)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;} // from under the left corner the speed byte is lost as at a wall (6-3 f51775, one sample)
+   const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1);
+   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,platform.width)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
   }
  }
  platformPosition(platform:NonNullable<Area['platforms']>[number],frame=this.platformFrame){
@@ -1851,8 +1869,8 @@ export class Simulation {
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
    if(this.kickRestingShellFromAbove(e,oldBottom))continue;
    if(stompable&&((Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))||chkInj)){
-    if(chkInj&&!(Math.floor(p.vy)>0||this.stompedThisStep))p.vy=this.stompBounceVy(p.vy); // SBnce only stores speed byte -4: a rising Mario keeps his jump gravity (7-1 row 359, $0433 still +40 per row)
-    else{p.vy=this.stompBounceVy(p.vy);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;}
+    if(chkInj&&!(Math.floor(p.vy)>0||this.stompedThisStep))p.vy=this.stompBounceVy(p.vy,e.kind); // SBnce only stores the speed byte; a rising Mario keeps his jump gravity.
+    else{p.vy=this.stompBounceVy(p.vy,e.kind);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;}
     // First Paratroopa contacts award 400; subsequent ordinary +100 is observed.
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     const award=e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)

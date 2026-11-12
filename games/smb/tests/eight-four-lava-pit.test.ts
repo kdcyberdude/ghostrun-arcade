@@ -37,7 +37,7 @@ test('8-4 main: the id 40 lift over the pit follows the native rows, also one la
   let k=0;const xs:number[]=[];
   for(let f=rows[0][0]-40;f<=rows.at(-1)![0];f++){
    while(k+1<rows.length&&rows[k+1][0]<=f)k++;
-   motion.advance(f,(f<rows[0][0]?rows[0][1]-3-(rows[0][0]-f)*2:rows[k][1])+lap);
+   motion.advance(f,(f<rows[0][0]?rows[0][1]-3-(rows[0][0]-f)*2:rows[k][1])+lap,f&255); // FrameCounter of the probe rows is not logged: phase 0 (row & 3) fits, slot sub-pixel 0
    const r=rows.find(r=>r[0]===f);if(r){const p=motion.collisionPosition(platform,f);xs.push(Math.round(p.x)-lap);assert.equal(p.y,208);}
   }
   xs.forEach((x,i)=>assert.ok(Math.abs(x-rows[i][2])<=1,`lap ${lap/1024} row ${rows[i][0]}: remake ${x} native ${rows[i][2]}`));
