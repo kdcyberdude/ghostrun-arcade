@@ -108,7 +108,9 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23,phase=Math.floor(e.age/8)%2;
+  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23;
+  const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
+  const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
