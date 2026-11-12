@@ -86,7 +86,7 @@ export class Entities{
   if(p.dead)this.marioYaw=target;else if(advanced)this.marioYaw=turnToward(this.marioYaw,target);a.root.rotation.y=this.marioYaw;
   // Palette: Mario / Luigi / Fire, star flashing like the original's four palettes.
   let palette:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
-  if(p.star)palette=starVariant(p.star,s.frame,palette);
+  if(s.starDrawPalette!==undefined)palette=starVariant(s.starDrawPalette,palette);
   const colors=STAR[palette]??PALETTE[palette as keyof typeof PALETTE];
   const variant=colors.join();if(variant!==this.lastVariant){this.lastVariant=variant;a.recolor('M_Cloth_Primary',colors[0]);a.recolor('M_Cloth_Secondary',colors[1]);}
  }
