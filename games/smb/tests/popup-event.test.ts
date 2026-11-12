@@ -8,15 +8,15 @@ function fixture(kind:EnemyKind='goomba',x=40,falling=true){
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
 function stomp(kind:EnemyKind='goomba',x=40){const sim=fixture(kind,x);for(let i=0;i<80&&!sim.popups.length&&sim.phase==='play';i++)sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,100);assert.equal(sim.awardedScore,100);return sim;}
-test('real Goomba stomp produces one label that keeps its qualified 40-frame life; the flat Goomba goes after IntervalTimerControl + 22',()=>{
+test('a Goomba label has a native48-frame timer but erasure of its enemy slot clears it first',()=>{
  const sim=stomp(),popup=sim.popups[0],enemy=sim.enemies[0],n=(sim as any).intervalControl+22;assert.equal(popup.y,176);assert.equal(popup.age,0);assert.equal(enemy.squashed,true);
- for(let k=1;k<=40;k++){sim.step(['left'],1);assert.equal(enemy.dead,k<=n?k+1>n?100:k+1:100,`row ${k}`);if(k===39){assert.equal(sim.popups.length,1);assert.equal(popup.y,137);}}
+ assert.equal(popup.life,48);for(let k=1;k<=48;k++){sim.step(['left'],1);assert.equal(enemy.dead,k<=n?k+1>n?100:k+1:100,`row ${k}`);assert.equal(sim.popups.length,Number(k<48&&enemy.dead<90));}
  assert.equal(sim.popups.length,0);
 });
-test('Koopa label persists independently after40frames and expires at the inferred50frame bound',()=>{
+test('a living Koopa slot keeps its label for the native48-frame timer',()=>{
  const sim=stomp('koopa'),popup=sim.popups[0];assert.equal(popup.y,176);assert.equal(sim.enemies[0].shell,true);
  sim.step(['left'],40);assert.equal(sim.popups.length,1);assert.equal(popup.y,136);assert.equal(sim.enemies[0].dead,0);
- sim.step(['left'],10);assert.equal(sim.popups.length,0);assert.equal(sim.enemies[0].dead,0);
+ sim.step(['left'],7);assert.equal(sim.popups.length,1);sim.step(['left'],1);assert.equal(sim.popups.length,0);assert.equal(sim.enemies[0].dead,0);
 });
 test('real1UP collection emits its semantic label while preserving the score and life award',()=>{
  const sim=fixture('goomba',40,false);sim.enemies=[];sim.items.push({kind:'1up',x:40,y:190,vx:0,vy:0,age:0,life:100});sim.step([],1);
@@ -31,7 +31,7 @@ test('ordinary pause freezes labels, resume advances them, and area reset clears
  const sim=stomp(),popup=sim.popups[0],state=[popup.age,popup.y,sim.frame];sim.step(['start'],1);assert.equal(sim.paused,true);sim.step([],44);assert.deepEqual([popup.age,popup.y,sim.frame],state);
  sim.step(['start'],1);assert.equal(sim.paused,false);assert.equal(popup.age,1);assert.equal(popup.y,175);sim.reset(true);assert.equal(sim.popups.length,0);
 });
-test('Star and fireball Goomba contacts have independently qualified launched labels',()=>{
- const star=fixture('goomba',40,false);star.player.star=100;(star as any).broClock=1;star.step([],1);assert.equal(star.enemies[0].dead,1);assert.equal(star.popups.length,1);assert.equal(star.popups[0].victim,undefined);
- const fire=fixture('goomba',40,false);fire.items.push({kind:'fireball',x:48,y:188,vx:0,vy:0,age:0,life:10});fire.step([],1);assert.equal(fire.enemies[0].dead,1);assert.equal(fire.popups.length,1);assert.equal(fire.popups[0].victim,undefined);
+test('Star and fireball Goomba labels retain their owning enemy slot until native erase',()=>{
+ const star=fixture('goomba',40,false);star.player.star=100;(star as any).broClock=1;star.step([],1);assert.equal(star.enemies[0].dead,1);assert.equal(star.popups.length,1);assert.equal(star.popups[0].victim,star.enemies[0]);
+ const fire=fixture('goomba',40,false);fire.items.push({kind:'fireball',x:48,y:188,vx:0,vy:0,age:0,life:10});fire.step([],1);assert.equal(fire.enemies[0].dead,1);assert.equal(fire.popups.length,1);assert.equal(fire.popups[0].victim,fire.enemies[0]);
 });
