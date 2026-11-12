@@ -3,6 +3,7 @@
  * ram.bin (2048 bytes of RAM after each pad), plus the entrance.json receipt of the matching recording.
  * Those traces come from ghostrun-lab scripts/recording/native_ram_trace.py (branch native-ram-trace).
  *   npx tsx tools/harness/native-divergence.ts --traces DIR --entrances media/recordings/threejs-2d [--levels 4-3,1-2] [--json out.json] [--detail 4-3]
+ * --strict adds a separate audit of all areas, birth rows, six-slot actor cardinality, projectiles, and coverage gaps; legacy fields remain unchanged.
  * Fields compared every frame: death, HUD timer, score, coins, and (main area) camera, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,20 +13,22 @@ import {observedLevels} from '../../src/levels.js';
 import type {Button} from '../../src/types.js';
 import {decodeEntrance,initializeEntrance} from './native-entrance.mjs';
 import {nativeEntities,simEntities,unmatchedEntity} from './native-entities.js';
+import {strictCompare,type StrictAudit} from './native-strict.js';
 
 const nesButtons:Button[]=['a','b','select','start','up','down','left','right'];
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((s,v)=>s*10+v,0);
-export type Divergence={level:string,frames:number,first:number|null,fields:Record<string,number|null>,at?:{field:string,native:number,sim:number}[]};
+export type Divergence={strict?:StrictAudit,level:string,frames:number,first:number|null,fields:Record<string,number|null>,at?:{field:string,native:number,sim:number}[]};
 
 export function nativeRow(r:Uint8Array){
  return {time:digits(r,0x7f8,3),score:digits(r,0x7dd,6)*10,coins:r[0x75e],cam:r[0x71a]*256+r[0x71c],x:r[0x6d]*256+r[0x86],y:r[0xce],
   play:r[0x770]===1&&r[0x772]===3&&r[0x0e]===8,level:`${r[0x75f]+1}-${r[0x75c]+1}`,mode:r[0x770],dead:Number(r[0x0e]===6||r[0x0e]===11),engine:r[0x0e]};
 }
 
-export function divergence(dir:string,receiptPath:string,level:string,detail=false):Divergence{
+export function divergence(dir:string,receiptPath:string,level:string,detail=false,strict=false):Divergence{
  const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));
  const receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
- return compareRun(decodeEntrance(initial,receipt),pads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);
+ const entrance=decodeEntrance(initial,receipt),legacy=compareRun(entrance,pads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);
+ return strict?{...legacy,strict:strictCompare(entrance,pads,ram,level)}:legacy;
 }
 /** The comparison itself, over any source of per-frame native RAM (full traces, or the excerpts in evidence/native-runs). */
 export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:number)=>Uint8Array,level:string,detail=false):Divergence{
@@ -53,13 +56,14 @@ export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:n
 }
 
 if(import.meta.url===`file://${process.argv[1]}`){
- const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},levels:{type:'string'},json:{type:'string'},detail:{type:'boolean',default:false}}});
+ const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},levels:{type:'string'},json:{type:'string'},detail:{type:'boolean',default:false},strict:{type:'boolean',default:false}}});
  if(!a.traces||!a.entrances)throw Error('--traces and --entrances are required');
  const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
  const out:Divergence[]=[];
  for(const level of levels){
-  const r=divergence(path.join(a.traces,level),path.join(a.entrances,level,'entrance.json'),level,a.detail);out.push(r);
-  console.log([level.padEnd(4),String(r.first??'-').padStart(5),...Object.entries(r.fields).map(([k,v])=>`${k}=${v??'-'}`),r.at?JSON.stringify(r.at):''].join(' '));
+  const r=divergence(path.join(a.traces,level),path.join(a.entrances,level,'entrance.json'),level,a.detail,a.strict);out.push(r);
+  const line=[level.padEnd(4),String(r.first??'-').padStart(5),...Object.entries(r.fields).map(([k,v])=>`${k}=${v??'-'}`),r.at?JSON.stringify(r.at):''].join(' ');
+  console.log(line+(r.strict?` strict=${r.strict.status} first=${r.strict.first??'-'} coverage=${r.strict.coverage.alignedFrames}/${r.strict.coverage.frames} gaps=${r.strict.diagnostics.length}`:''));
  }
  if(a.json)fs.writeFileSync(a.json,JSON.stringify(out,null,1)+'\n');
 }
