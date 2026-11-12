@@ -1225,24 +1225,24 @@ export class Simulation {
    if(state){Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});this.slotYSpeed[slot]=state.speed&255;this.slotYFraction[slot]=this.slotYFrac[slot]=state.fraction;}
   }
  }
- private objectSlots(enemySlots:Set<number|undefined>){
+ private objectSlots(enemySlots:Set<number|undefined>,platformSlots=this.platformSlots){
   const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
-  for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
-  for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
+  for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else platformSlots.delete(platform);
+  for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    if(this.scrollCrossFrame===this.frame-1)continue; // task7 blocks initialization as well as the creation clock
-   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);held.add(slot);}
+   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);}held.add(slot);}
   }
   return held;
  }
  // Lowest native enemy slot not in use. Slots are not modelled elsewhere, so live enemies take theirs here, in the order they were activated.
- private freeNativeSlot(blockReleased=false){
+ private freeNativeSlot(blockReleased=false,readOnly=false){
   // A walker the remake already dropped still holds its slot until releaseNativeSlots frees it (7-3 row 302: a koopa at camera - 73 keeps slot 2 natively, no fish there).
   const live=this.enemies.filter(e=>e.active&&!e.dead),used=new Set(this.enemies.flatMap(e=>e.enemySlot===undefined||!e.active||e.slotFreed||e.dead&&!this.holdsNativeSlot(e)?[]:[e.enemySlot]));
-  for(const slot of this.objectSlots(used))used.add(slot);
+  for(const slot of this.objectSlots(used,readOnly?new Map(this.platformSlots):this.platformSlots))used.add(slot);
   if(blockReleased)for(let slot=0;slot<5;slot++)if(this.slotReleaseFrame[slot]===this.frame)used.add(slot);
   const lowest=()=>{let slot=0;while(used.has(slot))slot++;return slot;};
-  for(const e of live)if(e.enemySlot===undefined){e.enemySlot=lowest();used.add(e.enemySlot);}
+  for(const e of live)if(e.enemySlot===undefined){const slot=lowest();if(!readOnly)e.enemySlot=slot;used.add(slot);}
   return lowest();
  }
  // Native flying fish (docs/NATIVE_ROLES.md): when the timer runs out the lowest free slot s picks the next wait from random byte s+1, and a fish is launched if s is below the area's limit.
@@ -1379,6 +1379,9 @@ export class Simulation {
  // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll; it steps on its first remake row
  // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
  private updateNativeLakitu(e:Enemy){
+  let timer=this.spinyTimer;
+  if(timer===0&&this.spinyBuffer&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot(false,true);if(slot<5&&slot<(e.enemySlot??5))timer=SPINY_EGG.timer;}
+  e.graphicsFrenzyTimer=timer;if(e.graphics)e.graphics.graphicsFrenzyTimer=timer;
   const p=this.player,lak=e.lak??={dir:0,speed:0};
   lak.preX=Math.floor(e.x);
   e.x+=lakituStep(lak,Math.floor(e.x),Math.floor(p.x),this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
