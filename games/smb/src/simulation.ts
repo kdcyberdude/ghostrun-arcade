@@ -295,7 +295,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -322,6 +322,7 @@ export class Simulation {
  /** Native enemy group (HandleGroupEnemies, data ids $37-$3E): two or three Goombas/Beetles/Koopas made on one frame at ScreenRight_X_Pos (camera + 255), +24, +48. A list
   * entry belongs to such a group when entries of its kind recorded within 3 px of camera sit 20-28 px apart from a leader near spawnCamera + 255 (76 of 76 group followers of the v2 traces). */
  private nativeGroupMembers(e:Enemy):Enemy[]|undefined{
+  if(e.nativeGroup)return this.enemies.filter(m=>m.nativeGroup?.column===e.nativeGroup!.column).sort((a,b)=>a.nativeGroup!.index-b.nativeGroup!.index);
   if(e.spawnCamera===undefined||!['goomba','koopa','redKoopa','beetle'].includes(e.kind))return;
   const near=this.enemies.filter(o=>o.kind===e.kind&&o.spawnCamera!==undefined&&Math.abs(o.spawnCamera-e.spawnCamera!)<=3).sort((p,q)=>p.originX-q.originX);
   let chain:Enemy[]=[];
@@ -335,9 +336,9 @@ export class Simulation {
   * (8-1 Koopa pair: recorded camera 435, native made at 434). Other list objects keep their recorded spawnCamera. */
  private spawnCameraReached(e:Enemy){
   const g=this.nativeGroupMembers(e);
+  if(e.nativeGroup)return ((Math.floor(this.camera)+303)&~15)>=e.nativeGroup.column;
   // A single object on a 16 px column is made when the column reaches (ScreenRight + 48) & 0xF0, i.e. camera >= x - 303 (1-1 Goomba 352: made at camera 49, recorded 50).
-  // A recorded camera more than 8 px later means that route met something unmodelled (2-1 Goomba 1088, recorded 839, is never made in the v2 run): keep it.
-  if(g===undefined&&['goomba','koopa','redKoopa','beetle'].includes(e.kind)&&e.originX%16===0&&e.spawnCamera!-(e.originX-303)<=8)return e.originX<=Math.floor(this.camera)+303;
+  if(g===undefined&&['goomba','koopa','redKoopa','beetle'].includes(e.kind)&&e.originX%16===0)return e.originX<=Math.floor(this.camera)+303;
   return g===undefined?this.camera>=e.spawnCamera!:((Math.floor(this.camera)+303)&~15)>=((g[0].spawnCamera!+303)&~15);
  }
  /** HandleGroupEnemies fills the lowest free slots in x order on one frame; with all five slots busy a member is never made (2-1 x 1088 Goomba has no slot natively). */
@@ -587,7 +588,7 @@ export class Simulation {
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.eraseOffscreenEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
-  this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
+  this.passNativeGroups();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
@@ -1200,7 +1201,7 @@ export class Simulation {
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
-   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
+   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);held.add(slot);}
   }
   return held;
  }
@@ -1474,10 +1475,10 @@ export class Simulation {
   for(const vine of this.vines)vine.x=shift(vine.x);
   this.vines.push(...(source.vines??[]).filter(v=>inSource(v.x)).map(v=>({...structuredClone(v),x:v.x+offset,height:v.initialHeight??0,growing:false})));
   this.area.blockContents=this.area.blockContents?.map(b=>({...b,col:shift(b.col*16)/16})).concat((source.blockContents??[]).filter(b=>inSource(b.col*16)).map(b=>({...b,col:b.col+offset/16})));
-  this.area.enemies=this.area.enemies.map(e=>({...e,x:shift(e.x),spawnCamera:e.spawnCamera===undefined?undefined:e.x>=seam?e.spawnCamera+delta:e.spawnCamera}));
-  const repeatedEnemies=source.enemies.filter(e=>inSource(e.x)).map(e=>({...structuredClone(e),x:e.x+offset,spawnCamera:e.spawnCamera===undefined?undefined:e.spawnCamera+offset}));
+  this.area.enemies=this.area.enemies.map(e=>({...e,nativeGroup:e.nativeGroup?{...e.nativeGroup,column:shift(e.nativeGroup.column)}:undefined,x:shift(e.x),spawnCamera:e.spawnCamera===undefined?undefined:e.x>=seam?e.spawnCamera+delta:e.spawnCamera}));
+  const repeatedEnemies=source.enemies.filter(e=>inSource(e.x)).map(e=>({...structuredClone(e),nativeGroup:e.nativeGroup?{...e.nativeGroup,column:e.nativeGroup.column+offset}:undefined,x:e.x+offset,spawnCamera:e.spawnCamera===undefined?undefined:e.spawnCamera+offset}));
   this.area.enemies.push(...repeatedEnemies);
-  for(const enemy of this.enemies)if(enemy.originX>=seam){enemy.x+=delta;enemy.originX+=delta;if(enemy.spawnCamera!==undefined)enemy.spawnCamera+=delta;}
+  for(const enemy of this.enemies)if(enemy.originX>=seam){enemy.x+=delta;enemy.originX+=delta;if(enemy.nativeGroup)enemy.nativeGroup={...enemy.nativeGroup,column:shift(enemy.nativeGroup.column)};if(enemy.spawnCamera!==undefined)enemy.spawnCamera+=delta;}
   this.enemies.push(...repeatedEnemies.map(e=>this.makeEnemy(e)));
   if(this.area.exit){const exit=this.area.exit;for(const field of ['x','retainerX','stopX','doorX'] as const)if(exit[field]!==undefined)exit[field]=shift(exit[field]!);}
   if(this.area.checkpoint){const checkpoint=this.area.checkpoint;checkpoint.activationX=shift(checkpoint.activationX);checkpoint.spawn=[shift(checkpoint.spawn[0]),checkpoint.spawn[1]];checkpoint.camera=shift(checkpoint.camera);checkpoint.activationBracket=[shift(checkpoint.activationBracket[0]),shift(checkpoint.activationBracket[1])];}
@@ -1784,16 +1785,49 @@ export class Simulation {
    this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((x-Math.floor(x))*256)&255);
   }
  }
- private takeNativeSlot(e:Enemy){
-  const used=new Set(this.enemies.flatMap(o=>o!==e&&o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[]));
+ private groupParserSlot=5;
+ private groupSlotsBefore=[false,false,false,false,false];
+ private passNativeGroups(){
+  if(this.groupParserSlot>=5||this.scrollCrossFrame===this.frame-1)return;
+  const reserved=new Set(this.groupSlotsBefore.flatMap((busy,s)=>busy&&s>=this.groupParserSlot?[s]:[])),seen=new Set<number>();
+  for(const e of this.enemies){
+   const group=e.nativeGroup;if(!group||e.active||e.slotLost||seen.has(group.column))continue;
+   seen.add(group.column);
+   const members=this.nativeGroupMembers(e)!;
+   if(group.column<Math.floor(this.camera)+255){for(const m of members)if(!m.active)m.slotLost=true;continue;}
+   if(group.column>((Math.floor(this.camera)+303)&~15)||this.availableNativeSlot(undefined,reserved)>=5)continue;
+   for(const m of members){
+    if(m.active||m.slotLost)continue;
+    m.active=true;m.x=Math.floor(this.camera)+255+24*m.nativeGroup!.index;this.takeNativeSlot(m,reserved);
+    if(m.enemySlot===undefined){m.active=false;m.slotLost=true;continue;}
+    m.vx=-0.5;m.vy=0;m.graphicsVisible=m.enemySlot>this.groupParserSlot;m.graphicsFacing=-1;m.graphicsX=m.x;m.graphicsY=m.y;
+    if(m.graphicsVisible)captureEnemyPicture(m);
+    if(m.enemySlot>this.groupParserSlot){
+     m.age=1;m.x-=0.5;
+     if(!this.collisionAt(m.graphicsX+8,m.y)){
+      const n={...nativeMoveState(Math.floor(m.y)),fraction:this.slotVertical[m.enemySlot].fraction};nativeImposeGravity(n,0x3d,3);
+      m.fall={speed:n.speed,force:n.force,fraction:n.fraction};m.y=n.y;m.vy=n.speed+n.force/256;
+     }
+    }
+   }
+  }
+ }
+ private busyNativeSlots(except?:Enemy){
+  const used=new Set(this.enemies.flatMap(o=>o!==except&&o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[]));
   for(const held of this.objectSlots(used))used.add(held); // a measured firebar or a platform holds its native slot (6-4: bars in slots 0, 2, 4, Podoboos in 1, 3)
-  let slot=0;while(used.has(slot))slot++;
-  if(slot>=5)return;
+  return used;
+ }
+ private availableNativeSlot(except?:Enemy,reserved?:Set<number>){
+  const used=this.busyNativeSlots(except);for(const slot of reserved??[])used.add(slot);
+  let slot=0;while(used.has(slot))slot++;return slot;
+ }
+ private takeNativeSlot(e:Enemy,reserved?:Set<number>){
+  const slot=this.availableNativeSlot(e,reserved);if(slot>=5)return;
   e.enemySlot=slot;
   if(e.kind==='cheep'&&e.swim){e.x+=this.slotSub[slot]/256;return;}
   if(!Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.motion==='flying')return;
   const follower=Boolean(this.nativeGroupIndex(e)); // a group follower takes a later slot than the one being processed, so it already steps on its creation frame
-  e.x+=this.slotSub[slot]/256+(follower?e.vx:0);
+  e.x+=this.slotSub[slot]/256+(follower&&!e.nativeGroup?e.vx:0);
  }
  // A Piranha takes a slot when its pipe column is built (5-1 uses the measured task clock; other levels retain their qualified358px lead); a slot-gated list object when it triggers. Without a free slot a Piranha or group member is lost; a lone list object waits while still off screen.
  private nativeSlotDenied(e:Enemy,columnPass=false){
@@ -1822,6 +1856,8 @@ export class Simulation {
  private updateEnemies(oldBottom:number){
   this.broClock++;
   this.releaseNativeSlots();
+  const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,s)=>busy.has(s));
+  const firstFree=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=firstFree<0?5:firstFree;
   const p=this.player;
   const frenzy=this.spinyFrenzyBefore();
   if(p.vx)this.marioMotion=Math.sign(p.vx);
@@ -1829,11 +1865,14 @@ export class Simulation {
   const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
   for(const e of this.enemies){
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??0; // the native touch test reads the enemy before its own move
+   if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
+   if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
+   if(!e.active&&e.nativeGroup)continue; // native group loading runs after this frame's scroll
    if(e.kind!=='bullet'&&e.kind!=='bowser'){e.graphicsFacing=Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    captureEnemyPicture(e);
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
-   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
+   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else if(Math.floor(e.x)<Math.floor(this.camera)+255)e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
    stepFrom.set(e,{x:e.x,y:e.y});
    e.age++;
