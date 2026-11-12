@@ -46,3 +46,8 @@ test('hammer spin follows the native four phases, four frames each',()=>{
  const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
  const entities=new Entities(animated,false);entities.sync(sim,0);assert.ok(Math.abs(actor(entities,'hammer').getObjectByName('hammer')!.rotation.z-Math.PI/2)<1e-6);
 });
+test('live enemies use the native picture coordinates and facing before movement',()=>{
+ const {sim,entities}=scene({graphicsX:99,graphicsY:207,graphicsFacing:-1,vx:1});entities.sync(sim,0);
+ const root=actor(entities,'goomba');assert.equal(root.position.x,107/16);assert.equal(root.position.y,32/16);assert.equal(root.rotation.y,Math.PI+0.5);
+ sim.enemies[0].dead=32;sim.enemies[0].squashed=true;sim.frame++;entities.sync(sim,0);assert.equal(root.position.x,108/16);assert.equal(root.position.y,31/16);
+});

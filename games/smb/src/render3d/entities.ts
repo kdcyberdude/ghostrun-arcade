@@ -92,7 +92,8 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const [w,h]=DIMS[e.kind],cx=(e.x+(e.kind==='bowser'?16:8))/16,feet=(239-e.y)/16;this.box(e.x/16,feet,e.x/16+w,feet+h,0xff3030);
+  const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
+  const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(e.x/16,(239-e.y)/16,e.x/16+w,(239-e.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
    const egg=this.take('espinyEgg',()=>{const m=new THREE.Mesh(new THREE.SphereGeometry(0.34,20,12),std(0xd23a2a));m.name='spinyEgg';
     const material=std(0xf4ecd8),up=new THREE.Vector3(0,1,0);
@@ -103,7 +104,7 @@ export class Entities{
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
-  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(e):e.dead>20&&!e.squashed,facing=e.vx<0?-1:1;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(e):e.dead>20&&!e.squashed,facing=(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
   // Podoboo is authored around its glowing center; walkers are authored from the feet.
