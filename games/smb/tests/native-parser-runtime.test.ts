@@ -74,3 +74,12 @@ test('red Paratroopa wing removal retains the original-Y horizontal fraction and
   assert.deepEqual(e.fall,{speed:0,force:frame===487?0:61,fraction:31});
  });
 });
+
+test('a lives-screen respawn creates the first actor on engine7 and moves it on the engine8 readiness pass',()=>{
+ replay('8-2',625,(sim,frame)=>{
+  if(frame<624)return;
+  const e=sim.enemies.find((e:any)=>e.active&&e.nativeId===14&&e.enemySlot===0);
+  assert.ok(e);assert.equal(e.x,frame===624?288:287.5);assert.equal(e.y,176);assert.equal(e.graphicsVisible,frame===625);
+  if(frame===625){assert.equal(sim.broClock,166);assert.equal(e.pod.force,28);assert.equal(e.pod.fraction,0);}
+ });
+});
