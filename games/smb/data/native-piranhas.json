@@ -1,0 +1,1514 @@
+{
+  "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "source": "Native ROM VerticalPipe: x=column*16+8,y=row*16+32; InitPiranhaPlant down=y,up=y-24. Native1-1 suppresses pipe plants. Geometry offsets are source area mappings, not fitted motor constants.",
+  "areas": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "1-2",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 44087,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 1656,
+          "y": 160,
+          "offset": 106,
+          "bytes": [
+            120,
+            250
+          ],
+          "pointer": 44087
+        },
+        {
+          "x": 1752,
+          "y": 144,
+          "offset": 108,
+          "bytes": [
+            215,
+            115
+          ],
+          "pointer": 44087
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 110,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 44087
+        },
+        {
+          "x": 2856,
+          "y": 160,
+          "offset": 148,
+          "bytes": [
+            40,
+            122
+          ],
+          "pointer": 44087
+        },
+        {
+          "x": 2920,
+          "y": 160,
+          "offset": 150,
+          "bytes": [
+            104,
+            122
+          ],
+          "pointer": 44087
+        },
+        {
+          "x": 2984,
+          "y": 160,
+          "offset": 152,
+          "bytes": [
+            168,
+            122
+          ],
+          "pointer": 44087
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "area-3",
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 90,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42640
+        }
+      ]
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42959,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 744,
+          "y": 144,
+          "offset": 22,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 1192,
+          "y": 144,
+          "offset": 36,
+          "bytes": [
+            167,
+            115
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 1656,
+          "y": 144,
+          "offset": 52,
+          "bytes": [
+            119,
+            251
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 56,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 1960,
+          "y": 144,
+          "offset": 58,
+          "bytes": [
+            167,
+            115
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 2024,
+          "y": 160,
+          "offset": 62,
+          "bytes": [
+            232,
+            114
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 2088,
+          "y": 128,
+          "offset": 66,
+          "bytes": [
+            38,
+            244
+          ],
+          "pointer": 42959
+        },
+        {
+          "x": 2824,
+          "y": 160,
+          "offset": 82,
+          "bytes": [
+            8,
+            242
+          ],
+          "pointer": 42959
+        }
+      ]
+    },
+    {
+      "level": "2-2",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42523,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 520,
+          "y": 160,
+          "offset": 12,
+          "bytes": [
+            8,
+            242
+          ],
+          "pointer": 42523
+        },
+        {
+          "x": 616,
+          "y": 144,
+          "offset": 14,
+          "bytes": [
+            103,
+            123
+          ],
+          "pointer": 42523
+        },
+        {
+          "x": 920,
+          "y": 160,
+          "offset": 18,
+          "bytes": [
+            152,
+            242
+          ],
+          "pointer": 42523
+        },
+        {
+          "x": 1080,
+          "y": 176,
+          "offset": 22,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42523
+        },
+        {
+          "x": 1656,
+          "y": 144,
+          "offset": 44,
+          "bytes": [
+            119,
+            243
+          ],
+          "pointer": 42523
+        }
+      ]
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 44036,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 2712,
+          "y": 160,
+          "offset": 38,
+          "bytes": [
+            152,
+            114
+          ],
+          "pointer": 44036
+        }
+      ]
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42093,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41732,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42297,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 344,
+          "y": 160,
+          "offset": 4,
+          "bytes": [
+            88,
+            242
+          ],
+          "pointer": 42297
+        },
+        {
+          "x": 1864,
+          "y": 144,
+          "offset": 38,
+          "bytes": [
+            71,
+            243
+          ],
+          "pointer": 42297
+        },
+        {
+          "x": 2120,
+          "y": 144,
+          "offset": 42,
+          "bytes": [
+            71,
+            251
+          ],
+          "pointer": 42297
+        },
+        {
+          "x": 2616,
+          "y": 176,
+          "offset": 58,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42297
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "source": [
+        {
+          "pointer": 44250,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 1160,
+          "y": 160,
+          "offset": 58,
+          "bytes": [
+            136,
+            114
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 1256,
+          "y": 96,
+          "offset": 64,
+          "bytes": [
+            228,
+            118
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 1352,
+          "y": 160,
+          "offset": 70,
+          "bytes": [
+            72,
+            122
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 1432,
+          "y": 160,
+          "offset": 74,
+          "bytes": [
+            152,
+            114
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 1720,
+          "y": 144,
+          "offset": 82,
+          "bytes": [
+            183,
+            115
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 2104,
+          "y": 176,
+          "offset": 110,
+          "bytes": [
+            57,
+            113
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 2216,
+          "y": 160,
+          "offset": 112,
+          "bytes": [
+            168,
+            114
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 2280,
+          "y": 144,
+          "offset": 114,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 2888,
+          "y": 96,
+          "offset": 136,
+          "bytes": [
+            68,
+            246
+          ],
+          "pointer": 44250
+        },
+        {
+          "x": 3432,
+          "y": 160,
+          "offset": 150,
+          "bytes": [
+            104,
+            122
+          ],
+          "pointer": 44250
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-4",
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 90,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42640
+        }
+      ]
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43153,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41490,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 648,
+          "y": 160,
+          "offset": 40,
+          "bytes": [
+            136,
+            114
+          ],
+          "pointer": 41490
+        }
+      ]
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43069,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 712,
+          "y": 160,
+          "offset": 4,
+          "bytes": [
+            200,
+            114
+          ],
+          "pointer": 43069
+        },
+        {
+          "x": 824,
+          "y": 160,
+          "offset": 8,
+          "bytes": [
+            56,
+            114
+          ],
+          "pointer": 43069
+        },
+        {
+          "x": 2504,
+          "y": 112,
+          "offset": 40,
+          "bytes": [
+            197,
+            121
+          ],
+          "pointer": 43069
+        },
+        {
+          "x": 2616,
+          "y": 176,
+          "offset": 46,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43069
+        }
+      ]
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 43668,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 888,
+          "y": 160,
+          "offset": 28,
+          "bytes": [
+            120,
+            122
+          ],
+          "pointer": 43668
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 58,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43668
+        },
+        {
+          "x": 2776,
+          "y": 176,
+          "offset": 88,
+          "bytes": [
+            217,
+            113
+          ],
+          "pointer": 43668
+        }
+      ]
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43357,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 1640,
+          "y": 160,
+          "offset": 60,
+          "bytes": [
+            104,
+            242
+          ],
+          "pointer": 43357
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42380,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 312,
+          "y": 144,
+          "offset": 4,
+          "bytes": [
+            55,
+            251
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 456,
+          "y": 144,
+          "offset": 14,
+          "bytes": [
+            199,
+            115
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 520,
+          "y": 96,
+          "offset": 16,
+          "bytes": [
+            4,
+            241
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 568,
+          "y": 176,
+          "offset": 20,
+          "bytes": [
+            57,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 600,
+          "y": 176,
+          "offset": 22,
+          "bytes": [
+            89,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 744,
+          "y": 144,
+          "offset": 24,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 904,
+          "y": 128,
+          "offset": 30,
+          "bytes": [
+            134,
+            124
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1000,
+          "y": 112,
+          "offset": 32,
+          "bytes": [
+            229,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1080,
+          "y": 176,
+          "offset": 38,
+          "bytes": [
+            57,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1192,
+          "y": 176,
+          "offset": 40,
+          "bytes": [
+            169,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1288,
+          "y": 160,
+          "offset": 44,
+          "bytes": [
+            8,
+            242
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1352,
+          "y": 176,
+          "offset": 50,
+          "bytes": [
+            73,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1400,
+          "y": 112,
+          "offset": 52,
+          "bytes": [
+            117,
+            117
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1512,
+          "y": 160,
+          "offset": 54,
+          "bytes": [
+            232,
+            114
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1640,
+          "y": 144,
+          "offset": 56,
+          "bytes": [
+            103,
+            243
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1688,
+          "y": 176,
+          "offset": 58,
+          "bytes": [
+            153,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1784,
+          "y": 96,
+          "offset": 62,
+          "bytes": [
+            244,
+            114
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 70,
+          "bytes": [
+            57,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2104,
+          "y": 176,
+          "offset": 76,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2168,
+          "y": 176,
+          "offset": 78,
+          "bytes": [
+            121,
+            113
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2456,
+          "y": 160,
+          "offset": 98,
+          "bytes": [
+            152,
+            122
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2680,
+          "y": 96,
+          "offset": 108,
+          "bytes": [
+            116,
+            114
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2792,
+          "y": 144,
+          "offset": 112,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2872,
+          "y": 176,
+          "offset": 114,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2904,
+          "y": 160,
+          "offset": 116,
+          "bytes": [
+            88,
+            114
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 2936,
+          "y": 144,
+          "offset": 118,
+          "bytes": [
+            119,
+            115
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 3032,
+          "y": 160,
+          "offset": 120,
+          "bytes": [
+            216,
+            114
+          ],
+          "pointer": 42380
+        },
+        {
+          "x": 3224,
+          "y": 144,
+          "offset": 124,
+          "bytes": [
+            151,
+            115
+          ],
+          "pointer": 42380
+        }
+      ]
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43256,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "6-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43904,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 1224,
+          "y": 160,
+          "offset": 38,
+          "bytes": [
+            200,
+            114
+          ],
+          "pointer": 43904
+        },
+        {
+          "x": 1496,
+          "y": 160,
+          "offset": 46,
+          "bytes": [
+            216,
+            122
+          ],
+          "pointer": 43904
+        },
+        {
+          "x": 1752,
+          "y": 160,
+          "offset": 50,
+          "bytes": [
+            216,
+            114
+          ],
+          "pointer": 43904
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 52,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43904
+        },
+        {
+          "x": 2056,
+          "y": 176,
+          "offset": 56,
+          "bytes": [
+            9,
+            241
+          ],
+          "pointer": 43904
+        }
+      ]
+    },
+    {
+      "level": "7-2",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "7-2",
+      "area": "area-4",
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "7-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41841,
+          "offset": 0
+        }
+      ],
+      "plants": []
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43521,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 568,
+          "y": 144,
+          "offset": 6,
+          "bytes": [
+            55,
+            115
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 1224,
+          "y": 144,
+          "offset": 20,
+          "bytes": [
+            199,
+            115
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 1320,
+          "y": 160,
+          "offset": 24,
+          "bytes": [
+            40,
+            114
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 1512,
+          "y": 144,
+          "offset": 28,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 1672,
+          "y": 144,
+          "offset": 32,
+          "bytes": [
+            135,
+            123
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 1848,
+          "y": 176,
+          "offset": 36,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 2248,
+          "y": 160,
+          "offset": 38,
+          "bytes": [
+            200,
+            242
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 3816,
+          "y": 160,
+          "offset": 82,
+          "bytes": [
+            232,
+            114
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 3880,
+          "y": 144,
+          "offset": 86,
+          "bytes": [
+            39,
+            115
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 3944,
+          "y": 128,
+          "offset": 90,
+          "bytes": [
+            102,
+            116
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 5512,
+          "y": 160,
+          "offset": 118,
+          "bytes": [
+            136,
+            242
+          ],
+          "pointer": 43521
+        },
+        {
+          "x": 5688,
+          "y": 176,
+          "offset": 120,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43521
+        }
+      ]
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 43783,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 2104,
+          "y": 176,
+          "offset": 74,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43783
+        },
+        {
+          "x": 2280,
+          "y": 176,
+          "offset": 78,
+          "bytes": [
+            233,
+            113
+          ],
+          "pointer": 43783
+        },
+        {
+          "x": 2504,
+          "y": 144,
+          "offset": 86,
+          "bytes": [
+            199,
+            123
+          ],
+          "pointer": 43783
+        },
+        {
+          "x": 2616,
+          "y": 176,
+          "offset": 88,
+          "bytes": [
+            57,
+            241
+          ],
+          "pointer": 43783
+        }
+      ]
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 42192,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 856,
+          "y": 144,
+          "offset": 14,
+          "bytes": [
+            87,
+            115
+          ],
+          "pointer": 42192
+        },
+        {
+          "x": 2024,
+          "y": 144,
+          "offset": 64,
+          "bytes": [
+            231,
+            115
+          ],
+          "pointer": 42192
+        },
+        {
+          "x": 2696,
+          "y": 160,
+          "offset": 74,
+          "bytes": [
+            136,
+            114
+          ],
+          "pointer": 42192
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "main",
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": 0
+        }
+      ],
+      "plants": [
+        {
+          "x": 312,
+          "y": 176,
+          "offset": 12,
+          "bytes": [
+            57,
+            115
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 824,
+          "y": 176,
+          "offset": 16,
+          "bytes": [
+            57,
+            123
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 1304,
+          "y": 128,
+          "offset": 28,
+          "bytes": [
+            22,
+            254
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 1448,
+          "y": 112,
+          "offset": 30,
+          "bytes": [
+            165,
+            119
+          ],
+          "pointer": 41980
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": -112
+        }
+      ],
+      "plants": [
+        {
+          "x": 56,
+          "y": 176,
+          "offset": 38,
+          "bytes": [
+            57,
+            115
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 168,
+          "y": 160,
+          "offset": 40,
+          "bytes": [
+            168,
+            116
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 328,
+          "y": 176,
+          "offset": 44,
+          "bytes": [
+            73,
+            251
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 488,
+          "y": 160,
+          "offset": 46,
+          "bytes": [
+            232,
+            116
+          ],
+          "pointer": 41980
+        },
+        {
+          "x": 648,
+          "y": 96,
+          "offset": 54,
+          "bytes": [
+            132,
+            122
+          ],
+          "pointer": 41980
+        }
+      ]
+    }
+  ]
+}

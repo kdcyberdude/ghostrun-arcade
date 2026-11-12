@@ -1,5 +1,8 @@
 // Small pure rendering rules measured against native frames (tools/harness/shot-pairs.mjs + frame-diff.mjs, viewaudit 2026-11-11).
 import type {Item} from './types.js';
+import {nativeMiscOffscreen} from './native-misc.js';
+/** DrawBubble checks the player's vertical page and the bubble's horizontal offscreen bit. */
+export const nativeBubbleShown=(bubble:{x:number;y:number},playerFeetY:number,camera:number)=>Math.floor((playerFeetY-32)/256)===0&&!(nativeMiscOffscreen(Math.floor(bubble.x),bubble.y,Math.floor(camera))&8);
 /** PowerUpObjHandler skips drawing until the native emergence state reaches 6; the first five pixels remain hidden inside the block. */
 export const itemShown=(item:Item&{nativePowerState?:number})=>item.nativePowerState===undefined||item.nativePowerState>=6;
 /** Water areas keep sky colour in the top 32 rows (above the surface wave); only the playfield below is water blue. Native 2-2/7-2 rows 0..31 = #6888fc. */
@@ -23,9 +26,8 @@ export const fireFlashVariant=(frozen:number)=>frozen<1?undefined:frozen===1?'fi
 /** Fireball throw pose (native 1-1 fire Mario, every frame): shown on the rows 1..3 after the fireball appears when moving on the ground (3 of 3 throws, speed 1.5-1.7 px),
  * rows 1..6 when starting from a stand (1 throw, speed 0.06-0.4 px) and rows 1..2 in the air (1 throw). age = rows since the fireball was created. */
 export const throwPoseShown=(age:number,grounded:boolean,speed:number)=>age>=1&&age<=(!grounded?2:speed<0.875?6:3);
-/** Star palette cycle (native 1-1 star on fire Mario, every frame from the pickup row to the end, evidence/view5-findings-20261111.md): own palette, green, white, dark
- * in 2-row cells (713 rows), 8-row cells once the star timer 0x79F drops below 8 (the last 150 rows of the star). left = star rows remaining (1 on the last row). */
-export const starVariant=(left:number,frame:number,own:string)=>[own,'star-green','star-white','star-dark'][Math.floor(frame/(left<=150?8:2))%4];
+/** Player OAM palette bits are captured before EndGameEngine updates $03C4 for the next draw. Palette0 preserves Mario/Luigi/Fire. */
+export const starVariant=(palette:number,own:string)=>[own,'star-green','star-white','star-dark'][palette&3];
 /** ?-block / coin palette cycle (native ColorRotation, traces of all 32 levels: ColorRotateOffset $06D4 and FrameCounter $09 are cleared with the area and the
  * offset advances once on every game-engine frame with FrameCounter&7==0). Each run writes ColorRotatePalette[offset] = 27 27 27 17 07 17 to BG palette 3 colour 1
  * (palette entry 13), shown from the next picture. rotations = runs since the area was initialized (0: the loaded palette). Returns the palette observation
