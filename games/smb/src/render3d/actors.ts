@@ -18,9 +18,10 @@ export class Actor{
  has(clip:string){return this.actions.has(clip);}
  duration(clip:string){return this.actions.get(clip)?.getClip().duration??1;}
  node(name:string){return this.model.getObjectByName(name);}
+ resetBlend(){this.clip='';this.prev='';this.lastFrame=-1;}
  /** Show `clip` at `seconds` (wrapped when loop). `frame` is the simulation frame, used only for the short cross-fade. */
  pose(clip:string,seconds:number,frame:number,loop=true){
-  if(frame<this.lastFrame){this.clip='';this.prev='';}this.lastFrame=frame;
+  if(frame<this.lastFrame)this.resetBlend();this.lastFrame=frame;
   const name=this.actions.has(clip)?clip:this.actions.has('idle')?'idle':[...this.actions.keys()][0];if(name===undefined)return;
   if(name!==this.clip){this.prev=this.clip;this.prevTime=this.time;this.clip=name;this.changedAt=frame;}
   const d=this.duration(name);this.time=loop?((seconds%d)+d)%d:Math.min(Math.max(seconds,0),d-1e-4);
@@ -33,13 +34,14 @@ export class Actor{
 }
 /** Pool of instances of one model; `begin()` each frame, `take()` per visible entity, `end()` hides the rest. */
 export class ActorPool{
- private items:Actor[]=[];private used=0;
+ private items:Actor[]=[];private used=0;private owners=new WeakMap<Actor,object>();
  constructor(private kit:Kit,private name:string,private group:THREE.Group){}
  get available(){return this.kit.has(this.name);}
  begin(){this.used=0;}
- take():Actor|undefined{
+ take(owner?:object):Actor|undefined{
   let a=this.items[this.used];
   if(!a){const inst=this.kit.instance(this.name);if(!inst)return undefined;a=new Actor(inst.root,inst.clips);this.items.push(a);this.group.add(a.root);}
+  if(owner&&this.owners.get(a)!==owner){a.resetBlend();this.owners.set(a,owner);}
   this.used++;a.root.visible=true;return a;
  }
  end(){for(let i=this.used;i<this.items.length;i++)this.items[i].root.visible=false;}

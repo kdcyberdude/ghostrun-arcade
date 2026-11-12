@@ -107,3 +107,15 @@ test('native hammers stay held at pose zero and flying poses use FrameCounter',(
  const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'hammer').getObjectByName('hammer')!;assert.equal(model.rotation.z,0);
  hammer.nativeHammer.state=0x81;entities.sync(sim,0);assert.ok(Math.abs(model.rotation.z-Math.PI/2)<1e-6);
 });
+test('Bowser faces his native direction when his physical horizontal velocity is zero',()=>{
+ const {sim,entities}=scene({kind:'bowser',vx:0,bowser:{side:-1} as Enemy['bowser']});entities.sync(sim,0);assert.equal(actor(entities,'bowser').rotation.y,Math.PI+0.5);
+});
+test('native misc actors use OAM byte coordinates plus the one-row sprite offset',()=>{
+ const {sim,entities}=scene();sim.camera=100;sim.items=[{kind:'hammer',x:90,y:100,age:0,vx:0,vy:0,life:100,nativeHammer:{slot:3,state:0x90,speed:0,force:0,fraction:0}}];entities.sync(sim,0);
+ const root=actor(entities,'hammer');assert.equal(root.position.x,(100+246+8)/16);assert.equal(root.position.y,(232-101)/16);
+});
+test('Toad uses the native red vest rather than the modern blue asset palette',()=>{
+ const {sim}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id==='7-4');sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';
+ const colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0x2050c8});material.name='M_Vest';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'toad').getObjectByName('toad')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'d8241c');
+});

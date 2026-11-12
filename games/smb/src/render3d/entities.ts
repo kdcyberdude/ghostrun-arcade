@@ -102,10 +102,10 @@ export class Entities{
   }
   const shell=e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle');
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
-  const a=name?this.pool(name).take():undefined;
+  const a=name?this.pool(name).take(physical):undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined;
-  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
   // Flipping a native 24px enemy cell moves a 16px body above its transparent leading row.
@@ -120,21 +120,24 @@ export class Entities{
  }
  private retainer(s:Simulation){
   const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
-  const actor=this.pool(s.level.id==='8-4'?'princess':'toad').take();if(!actor)return;
+  const name=s.level.id==='8-4'?'princess':'toad',actor=this.pool(name).take();if(!actor)return;
+  if(name==='toad')actor.recolor('M_Vest',PALETTE.mario[0]);
   actor.root.position.set((exit.retainerX+8)/16,(240-209)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
  }
  private item(i:Item,s:Simulation){
-  const cx=(i.x+8)/16,cy=(232-i.y)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
+  const pictureX=i.nativeCoin||i.nativeHammer?Math.floor(s.camera)+(Math.floor(i.x-s.camera)&255):i.x;
+  const pictureY=i.nativeCoin||i.nativeHammer?(Math.floor(i.y)&255)+1:i.nativePowerState!==undefined?Math.floor(i.y)+1:i.y;
+  const cx=(pictureX+8)/16,cy=(232-pictureY)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
   if(i.kind==='debris'){const m=this.take('debris',()=>new THREE.Mesh(new THREE.BoxGeometry(0.42,0.42,0.42),std(0xb8521e)));m.position.set((i.x+4)/16,(236-i.y)/16,0.2);m.rotation.set(i.age*0.3,i.age*0.2,i.age*0.25);return;}
   if(i.kind==='coin'&&(i.nativeCoin?.state??0)>=2)return; // native misc slot now draws its floatey 200, in Hud
   if(i.kind==='coin'){  // block coin: the same minted gold coin as the tile coins, spinning fast while it pops
    let m=this.coins[this.coinsUsed++];if(!m){m=new THREE.Mesh(coinGeometry(),GOLD);m.castShadow=true;this.group.add(m);this.coins.push(m);}
-   m.visible=true;m.position.set((i.x+4)/16,(232-i.y)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
+   m.visible=true;m.position.set((pictureX+4)/16,(232-pictureY)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
   const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
-  a.root.position.set(cx,(240-i.y-16)/16,0);
+  a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
-  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
+  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
  }
 }
