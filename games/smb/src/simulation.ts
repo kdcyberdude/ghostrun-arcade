@@ -55,6 +55,7 @@ import popupRules from '../data/popup-rules.json';
 import hammerBroData from '../data/native-hammer-bros.json';
 import flagRules from '../data/flag-completion-rules.json';
 import {stepNativeVictory,nativeVictoryText,type NativeVictory} from './native-victory.js';
+import {nativeLevelLoad,stepNativeLevelLoad,type NativeLevelLoad} from './native-level-load.js';
 import multiCoinRules from '../data/multi-coin-rules.json';
 import {nativeEnemiesCollision,nativeUnwingedStomp} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
@@ -212,7 +213,7 @@ export class Simulation {
  private gameoverClosingFrame=-1;private gameoverSkipDelay=0;introFromGameover=false;
  slots:Slot[]=[]; events:string[]=[]; checkpoint=false; previous=new Set<Button>(); timerFrames=0;
  private activatedCheckpointArea?:string;
- castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;private victoryErase?:'axe'|'chain'|'bridge';
+ castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;levelLoad?:NativeLevelLoad;private victoryErase?:'axe'|'chain'|'bridge';
  flagTop=49;flagInside=false;flagBonus=0;private flagWait=0;
  private flagFireworkCount=0;private flagFireworksAwarded=0;private flagCastleGeometry?:{x:number;roofY:number};
  powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink'};
@@ -252,8 +253,8 @@ export class Simulation {
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
  /** DisplayIntermediate/DisplayTimeUp queues the text and enables PPU output; it appears on the following NMI. */
- get introHiddenEarly(){return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
- get introHiddenLate(){return this.lifeIntro?this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenBlackTail:this.phaseFrame>=TRANSITIONS.introHiddenFromFrame;}
+ get introHiddenEarly(){if(this.levelLoad)return this.levelLoad.task===0||this.levelLoad.screen<=6;return this.phaseFrame<(this.lifeIntro?.fromDeath?this.lifeIntro.set+1:TRANSITIONS.introHiddenBeforeFrame);}
+ get introHiddenLate(){if(this.levelLoad)return this.levelLoad.screen>=8;return this.lifeIntro?this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenBlackTail:this.phaseFrame>=TRANSITIONS.introHiddenFromFrame;}
  get gameoverClosing(){return this.phase==='gameover'&&this.gameoverClosingFrame>=0;}
  get pipePreviewArea(){const d=this.destination;if(this.phase!=='pipe'||this.player.size!==0||!d?.smallPlayerRoomPreviewFrames||d.frames-this.phaseFrame>d.smallPlayerRoomPreviewFrames)return undefined;return this.level.areas.find(a=>a.id===d.area);}
  get pipeLoading(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=this.destination.frames-TRANSITIONS.pipeBlackoutFinalFrames); }
@@ -263,7 +264,7 @@ export class Simulation {
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
  reset(playing=false){
-  this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=false;
+  this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.levelLoad=undefined;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
   this.destination=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
@@ -402,7 +403,7 @@ export class Simulation {
   // from 994). The lives screen is timed from the e6 row, as before, so the deferred respawn runs first, on the clock of the row that ended the death.
   if(this.phase==='dying'&&this.loseLife){this.loseLife=false;this.respawn();}
   this.lifeRow++;
-  if(this.phase==='intro'&&this.lifeIntro?.fromDeath&&this.phaseFrame===2){
+  if(this.levelLoad?.task===0&&this.levelLoad.screen===0||this.phase==='intro'&&this.lifeIntro?.fromDeath&&this.phaseFrame===2){
    // InitializeArea clears FrameCounter and holds the LFSR on the third row after PlayerLoseLife (all native v2 respawns).
    this.random.frame=0;this.random.prev=[...this.random.bytes];
   }else this.random.tick();
@@ -422,6 +423,7 @@ export class Simulation {
   this.frame++;this.phaseFrame++;this.areaFrame++;this.advancePopups();this.payFloateyScore();
   this.firebarMarioScreenX=Math.floor(this.player.x)-Math.floor(this.camera); // Mario's OAM x as the previous frame drew it (src/firebar-contact.ts)
   this.lifeClockFreeze();
+  if(this.levelLoad){this.updateLevelLoad();return;}
   if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine)this.primeNativeEntryObjects();if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
   if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();if(!this.entryFalling&&this.enemies.some(e=>e.active&&e.nativeId!==undefined)){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){
@@ -1730,7 +1732,7 @@ export class Simulation {
   if(result.message>=0){this.victoryPending=result.message;if(Number(this.level.id[0])===8&&result.message===3)this.emit('event_victory');}
   this.castleStage=n.task===0?(n.bossState&64?'fall':'bridge'):n.task<2?'fall':n.task===2?'walk':'message';
   if(oldTask!==3&&n.task===3)this.castleArrivalFrame=this.phaseFrame+1;
-  if(result.advance){this.nextLevel();return;}
+  if(result.advance){this.nextLevel(true);return;}
   if(Number(this.level.id[0])===8&&n.task===4&&n.endTimer===0)this.phase='ending';
  }
  private updatePlatforms(oldBottom:number,scroll=0){
@@ -2450,12 +2452,31 @@ export class Simulation {
   const target=this.level.areas.find(a=>a.id===(this.checkpoint?(this.activatedCheckpointArea??this.level.main):(this.level.respawnArea??this.level.main)))!,checkpoint=this.checkpoint?target.checkpoint:undefined;
   this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera,false,true);this.phase='intro';this.phaseFrame=0;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=true;this.introLength=TRANSITIONS.introFrames;
  }
- private nextLevel(){
+ private updateLevelLoad(){
+  const n=this.levelLoad!,hold=n.task===0&&n.screen===0;
+  if(!hold)this.tickIntervalTimers();else this.lifeFrozen++;
+  const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);
+  if(result.camera)this.camera=0;
+  if(result.clear){
+   const time=this.time;this.loadArea(this.level.main,undefined,undefined,true);this.time=time;
+   this.player.x=0;this.player.y=32;this.player.vx=0;this.player.vy=0;this.random.frame=0;
+  }
+  if(result.preload){
+   const [x,y]=this.area.spawn;this.player.x=x;this.player.y=y;this.player.grounded=this.isSolid(x+8,y);
+   this.time=this.level.time+1;this.timerFrames=23;this.phase='play';this.playerAnim.fresh=true;
+  }
+  if(result.ready){
+   this.time--;this.timerFrames=0;this.phase='play';this.phaseFrame=0;this.broClock=this.random.frame-2;
+   this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.levelLoad=undefined;
+   this.primeEntryPodoboos();this.emit(this.areaMusic());
+  }
+ }
+ private nextLevel(victory=false){
   if(this.levelIndex+1>=this.levels.length){
    if(this.level.id==='8-4'){this.phase='ending';this.phaseFrame=0;this.emit('event_victory');}
    else {this.phase='castle';this.phaseFrame=180;}
    return;
   }
-  this.levelIndex++;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.loadArea(this.level.main);this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.levelIntroFrames;
+  this.levelIndex++;if(victory){this.checkpoint=false;this.activatedCheckpointArea=undefined;this.phase='intro';this.phaseFrame=0;this.levelLoad=nativeLevelLoad();this.alignLifeClock(this.intervalControl);return;}this.checkpoint=false;this.activatedCheckpointArea=undefined;this.loadArea(this.level.main);this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.levelIntroFrames;
  }
 }
