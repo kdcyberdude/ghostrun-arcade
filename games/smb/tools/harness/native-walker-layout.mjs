@@ -31,7 +31,7 @@ function groupsAt(pointer){
   if(row===15&&!pageSelected){page=b&63;pageSelected=true;i+=2;continue;}
   if(row===14){i+=3;pageSelected=false;continue;}
   const id=b&63;
-  if(id<=6){const kind={0:'koopa',1:'redKoopa',2:'beetle',3:'redKoopa',4:'koopa',5:'hammerBro',6:'goomba'}[id];singles.push({kind,x:page*256+(a&240),y:row*16+32});}
+  if([0,1,2,3,4,6,14,15,16].includes(id)){const kind={0:'koopa',1:'redKoopa',2:'beetle',3:'redKoopa',4:'koopa',6:'goomba',14:'paratroopa',15:'paratroopa',16:'paratroopa'}[id];singles.push({id,offset:i,kind,x:page*256+(a&240),y:row*16+32});}
   if(id>=55&&id<=62){const code=id-55;groups.push({offset:i,column:page*256+(a&240),kind:code<4?'goomba':'koopa',count:2+(code&1),y:(code&2?112:176)+32});}
   i+=2;pageSelected=false;
  }
@@ -44,7 +44,7 @@ for(const level of levels){
  const pointers=[...row.matchAll(/\$([0-9a-f]{2})/gi)].map(m=>parseInt(m[1],16)),index=stage-1+(pointers.length===5&&stage>2?1:0),main=level.areas.find(a=>a.id===level.main),bindings=[[main.id,pointers[index]]];
  // Five-entry world tables include a pipe intro followed by its destination.
  if(pointers.length===5&&stage===2&&main.autoWalk)bindings.push([main.pipes[0].to,pointers[index+1]]);
- for(const [area,pointer] of bindings){const data=groupsAt(pointer);if(data.groups.length)layouts.push({level:level.id,area,...data});}
+ for(const [area,pointer] of bindings){const data=groupsAt(pointer);layouts.push({level:level.id,area,...data});}
 }
 fs.writeFileSync(a.out,JSON.stringify(layouts,null,1)+'\n');
 if(a.apply){applyNativeWalkerGroups(levels,layouts);const tmp=`data/.levels-${process.pid}.json`;fs.writeFileSync(tmp,JSON.stringify(levels,null,2)+'\n');fs.renameSync(tmp,'data/levels.json');}

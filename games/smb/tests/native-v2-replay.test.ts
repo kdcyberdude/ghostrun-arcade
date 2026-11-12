@@ -47,7 +47,7 @@ test('a pipe-intro entrance keeps the level clock: native shows blank 000 digits
 test('an enemy spawn waits one frame after the scroll crosses a 32 px boundary (4-3 slot 1: native spawn row 116, first step row 117)',()=>{
  // Camera 157 -> 160 on row 114 crosses 160: native AreaParserTaskNum is 7 on row 115, so the Koopa at 464 spawns on row 116 (camera 165), not 115.
  const xs:(number|undefined)[]=[];replay(fourThree,187,(sim,f)=>{if(f>=115)xs[f]=koopaSlot(sim,1)?.x;});
- assert.equal(xs[116],undefined);assert.equal(xs[117],463.5);assert.equal(xs[186],429); // native 463.128 (463.5) and 429.0
+ assert.equal(xs[115],undefined);assert.equal(xs[116],464);assert.equal(xs[117],463.5);assert.equal(xs[186],429); // native 463.128 (463.5) and 429.0
 });
 
 test('a stomped Koopa keeps its position and the floatey points are paid five frames later (4-3 row 187 -> 192)',()=>{

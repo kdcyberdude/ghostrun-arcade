@@ -148,6 +148,10 @@ Only buffer2 activity blocks this gate. RemoveCoin_Axe writes two horizontal len
 
 Native overrun evidence remains explicit: 5-2 row2178 captures task8/scroll2, FrameCounter161, Mario x2034, camera1922; row2179 has task7 with the same counter and positions. AreaParserTaskHandler sets8 before its heavy core and decrements afterward, so this one GameEngine pass spans two PPU samples. Fixtures retain both partial samples (133,410 PPU rows total); the pure helper advances once per completed GameEngine pass. No level/frame exception is added. Exact PPU replay still needs a source-derived execution-budget/overrun model; the helper does not claim to resolve that remaining issue.
 
+### Strict control-mode boundary coverage
+
+The legacy comparison boundary remains unchanged. In strict output, a same-level transition away from native gameplay mode1 (including castle victory mode2, game-over mode3, or title mode0) now records `unsupported-native-mode`, an explicit incomplete coverage flag, a contextual end reason, and `coverage.uncomparedSameLevelFrames`. Those remaining same-level input rows are not a zero-divergence result. A genuine native level-number change remains the natural scope boundary. Live castle-mode2 state/movement comparison requires the separate native victory adapter; mapping every retained mode1 frame does not establish coverage of the full input sequence.
+
 ### Star: shared NMI interval timer
 
 `Player.star` is now native `$079F`, rather than a fitted duration in play frames.

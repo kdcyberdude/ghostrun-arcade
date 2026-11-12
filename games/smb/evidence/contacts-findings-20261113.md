@@ -110,3 +110,27 @@ remake local296.5 versus native local232 on6735. Native enemy-slot/stream work
 owns that issue; evidence was sent to the walker worker. Its timer error6959
 now follows that earlier physical divergence. The all-level survey for this
 follow-up is `/tmp/contacts-parser-platform3-divergence.json` during the session.
+
+
+## Ordinary walker background phase (2026-11-13)
+
+Base: integration e9c874d. Native `EnemyToBGCollisionDet` checks its
+`(rawY+$3e)&255 >= $44` window, probes feet at x+8/rawY+24, and accepts
+landing only when rawY low nibble is8..12. State0 stays horizontal; state1
+runs native gravity61/256 with cap3. Landing snaps rawY to `(rawY&$f0)|8`,
+clears speed/force while retaining the slot fraction, and makes non-Goomba
+walkers face Mario. Spiny retains its FrameCounter-dependent direction rule.
+A landing returns immediately; otherwise the side probe reads x+0/16 and
+rawY+20 before movement. Native ID3 ledge avoidance remains distinct from
+unwinged red ID1. Explicit off-grid artwork keeps its existing support height.
+
+Reproducible fixture: `tools/harness/native-walker-landings.mjs`,113 native
+state1→0 events, plus replay regressions8-2 row790 and6-1 rows246/247.
+8-2 Koopa355→354.5 now matches its native pre-move wall reversal. The legacy
+8-2 firstenemy625 remains earlier because of respawn state (other worker).
+
+All32 comparison against e9c874d: only2-1 first fields change. Enemy517→791,
+death1522→null, timer1529→1745 improve. Earlier y1916→1601, x1916→1602,
+camera1916→1603, score2162→1800 all follow enemy791. Other levels and fields
+are unchanged. Excerpts regenerated; full field snapshots are
+`/tmp/contacts-walker-bg-baseline.json` and `/tmp/contacts-walker-bg-final.json`.
