@@ -314,6 +314,9 @@ export class Simulation {
   * (8-1 Koopa pair: recorded camera 435, native made at 434). Other list objects keep their recorded spawnCamera. */
  private spawnCameraReached(e:Enemy){
   const g=this.nativeGroupMembers(e);
+  // A single object on a 16 px column is made when the column reaches (ScreenRight + 48) & 0xF0, i.e. camera >= x - 303 (1-1 Goomba 352: made at camera 49, recorded 50).
+  // A recorded camera more than 8 px later means that route met something unmodelled (2-1 Goomba 1088, recorded 839, is never made in the v2 run): keep it.
+  if(g===undefined&&e.originX%16===0&&e.spawnCamera!-(e.originX-303)<=8)return e.originX<=Math.floor(this.camera)+303;
   return g===undefined?this.camera>=e.spawnCamera!:((Math.floor(this.camera)+303)&~15)>=((g[0].spawnCamera!+303)&~15);
  }
  /** HandleGroupEnemies fills the lowest free slots in x order on one frame; with all five slots busy a member is never made (2-1 x 1088 Goomba has no slot natively). */
@@ -1238,12 +1241,11 @@ export class Simulation {
  // 32 walking, 5 stopped; past 61 px ahead s drops 1 per frame and restarts at base+1), 'flee' (-1 px/frame, no more eggs) when Mario passes fleeX.
  private updateNativeLakitu(e:Enemy){
   const p=this.player,C=LAKITU.chase,lak=e.lak??(e.lak={mode:'left',s:-LAKITU.leftSpeed.base});
-  if(e.age===1)e.x+=LAKITU.spawnFraction;
   const d=Math.floor(e.x)-Math.floor(p.x),v=Math.max(0,p.vx*16);
   if(lak.mode!=='flee'&&e.fleeX!==undefined&&p.x>=e.fleeX)lak.mode='flee';
   if(lak.mode==='left'&&d<=C.switchDistance)lak.mode='chase';
   if(lak.mode==='flee')lak.s=LAKITU.flee.speed;
-  else if(lak.mode==='left'){const L=LAKITU.leftSpeed;lak.s=-Math.round(L.base+(L.spread-Math.min(Math.abs(d),L.spread))/L.divisor);}
+  else if(lak.mode==='left'){const L=LAKITU.leftSpeed;lak.s=-(L.base+Math.ceil((L.spread-Math.min(Math.abs(d),L.spread))/L.divisor));} // native PlayerLakituDiff: 0x15 - ((min(|d|, 0x3C) & 0x3C) / 4 + 1), i.e. a ceiling (8-2 row 110: |d| 59 -> speed 6)
   else{
    const base=v>=C.fastClass?C.fastBase:v>=10?C.slowBase:C.stoppedBase;
    if(d>=(base===C.fastBase?C.farFast:base===C.slowBase?C.farSlow:C.farStopped)){
@@ -1252,11 +1254,11 @@ export class Simulation {
    }else if(lak.s<base)lak.s=base+1;
    else lak.s=base+Math.max(0,Math.min(C.plateau,Math.floor(d<0?(C.leftOffset+d)/4:(C.rightOffset-d)/4)));
   }
-  if(e.age>1)e.x+=lak.s/16;
+  e.x+=lak.s/16; // native: made at its column x (sub-pixel 0) and stepping from the next frame, the remake's first (8-2 rows 61-63: 336.0, 335.69, 335.38)
   e.y=64;
   if(lak.mode!=='flee'&&e.age>=LAKITU.firstThrowAge&&(e.age-LAKITU.firstThrowAge)%LAKITU.throwInterval===0){
    const egg=this.makeEnemy({kind:'spiny',motion:'falling',x:e.x,y:e.y-LAKITU.egg.aboveLakitu,direction:p.x<e.x?-1:1,palette:'0f-16-30-27',evidence:'Native Lakitu egg: thrown every 128 frames at the Lakitu x.'});
-   egg.active=true;egg.egg=true;egg.vx=0;egg.vy=LAKITU.egg.vy0;this.enemies.push(egg);
+   egg.active=true;egg.egg=true;egg.vx=0;egg.x=Math.floor(e.x);egg.y=e.y-8;egg.pod={...nativeMoveState(egg.y),speed:LAKITU.egg.speed};egg.vy=LAKITU.egg.speed;this.takeNativeSlot(egg);if(egg.enemySlot!==undefined)this.enemies.push(egg); // the egg needs a free slot (4-1 row 122: slot 2)
   }
  }
  private updateMaze(oldX:number){
@@ -1722,10 +1724,11 @@ export class Simulation {
      const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
      if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
      nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
-    }else if(e.egg&&e.motion==='falling'){e.y+=e.vy;e.vy=Math.min(LAKITU.egg.maxFall,e.vy+LAKITU.egg.gravity);} // native egg arc: position first, then gravity
+    }else if(e.egg&&e.motion==='falling'){const landing=e.vy>=0&&this.collisionAt(e.x+8,e.y); /* the background test runs before the move: the egg lands the row after it sinks into the floor (6-1 rows 217-218: 137, then 136) */
+     if(landing){e.y=landing.y;e.vy=0;e.motion=undefined;e.vx=p.x<e.x?-0.5:0.5;e.x+=e.vx;} /* and walks on that row (6-1 row 218: 510.5) */else if(e.age>1){nativeImposeGravity(e.pod!,LAKITU.egg.down,LAKITU.egg.max);e.y=e.pod!.y;e.vy=e.pod!.speed+e.pod!.force/256;}} // native egg (state 5): MoveD_EnemyVertically, force 0x20 per frame, cap 3; it holds on its creation row
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:e.kind==='hammerBro'?HAMMER_BRO.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:e.kind==='hammerBro'?HAMMER_BRO.gravity:0.25));e.y+=e.vy;}
     const floor=this.collisionAt(e.x+8,e.y);
-    if(!greenBounce&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
+    if(!greenBounce&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='hammerBro'&&e.hammerDropRow!==undefined&&e.y>e.hammerDropRow+16)e.hammerDropRow=undefined;
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }
