@@ -67,12 +67,11 @@ const SWIMMING_CHEEP_SPEEDS:Record<string,number>=swimmingCheepRules.horizontalS
 const FLYING_FISH=flyingFishData.rules;
 const WATER_RULES=waterActorData.rules;
 const SWIM_GEN=waterActorData.rules.swimCheepGenerator;
-const SWIM_GEN_LEVELS:Record<string,{fromCamera:number;toCamera:number;highId:number;lowId:number}|undefined>=SWIM_GEN.levels;
-// Native swimming Cheep Cheep (docs/NATIVE_ROLES.md): random byte s gives the id (>= 170: the level's high id) and a height index, which moves up past the heights
-// already used since the bag of eight last emptied.
+// Native BulletBillCheepCheep: random byte s >= $aa selects SwimCC_IDData[1],
+// and WorldNumber != World2 inverts that index. BitMFilter cycles eight heights.
 export function nativeSwimCheepPick(byte:number,bag:number,level:string){
- const rule=SWIM_GEN_LEVELS[level]!,pick=nativeFrenzyHeight(byte,bag);
- return {id:byte>=SWIM_GEN.idThreshold?rule.highId:rule.lowId,...pick};
+ const index=(Number(byte>=SWIM_GEN.idThreshold)+Number(Number(level.split('-')[0])!==2))&1;
+ return {id:[10,11][index],...nativeFrenzyHeight(byte,bag)};
 }
 // BulletBillCheepCheep height (shared by the swimming Cheeps and the 5-3/6-3 Bullet Bills): q = random byte s & 7, moved up past the bits of BitMFilter ($06DD, all 8 set ->
 // emptied first), y = Enemy17YPosData[q] (+ 8 = native y). 18 of 18 frenzy Bullet Bills of the 5-3/6-3 traces.
@@ -1276,10 +1275,10 @@ export class Simulation {
  // Native swimming Cheep generator (2-2/7-2 water, free play; the recorded route replays its list): once the 32-frame timer is 0 the lowest free slot, if below 3, gets a fish at camera + 287.
  // It runs after this frame's scroll with this row's register (2-2 v2 row 1308: camera 929 -> 931, the fish at 1218 with the height of random byte 0 of that row).
  private updateSwimGenerator(){
-  const rule=SWIM_GEN_LEVELS[this.level.id];
-  if(!rule||this.recordedRoute||!this.area.enemies.some(e=>e.kind==='cheep'&&e.swim))return;
+  if(this.area.theme!=='water'||this.recordedRoute)return;
+  if(this.specialSlot5.frenzyBuffer!==23&&!this.specialAreaCommands().some(c=>c.id===23))return;
   this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // the route's list is replaced
-  if(this.swimTimer>0&&--this.swimTimer>0||this.camera<rule.fromCamera||this.camera>rule.toCamera)return;
+  if(this.swimTimer>0&&--this.swimTimer>0||this.specialSlot5.frenzyBuffer!==23)return;
   if(this.scrollCrossFrame===this.frame-1)return; // the enemy parser does not load a frenzy object on task 7
   const slot=this.freeNativeSlot(true);if(slot>=SWIM_GEN.slots)return;
   const pick=nativeSwimCheepPick(this.random.bytes[slot],this.swimBag,this.level.id);this.swimBag=pick.bag;this.swimTimer=SWIM_GEN.timer;

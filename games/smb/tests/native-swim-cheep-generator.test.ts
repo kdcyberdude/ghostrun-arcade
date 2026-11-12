@@ -1,7 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeSwimCheepPick,Simulation} from '../src/simulation.js';
-import waterActors from '../data/native-water-actors.json';
 import type {Area,Level,Tile} from '../src/types.js';
 
 // Native swimming Cheep Cheep spawns (ids 10/11) of two free-play model runs, first life: [random register RAM 0x7A7-0x7AD on the spawn row, slot, id, native y]
@@ -33,11 +32,11 @@ function fixture(){
  const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
 }
 
-test('native swimming Cheep generator: camera range, lowest free slot below 3, 32-frame timer, spawn at camera + 287',()=>{
- const sim=fixture(),s=sim as any,rule=waterActors.rules.swimCheepGenerator;
- s.camera=rule.levels['2-2'].fromCamera-1;s.updateSwimGenerator();
- assert.equal(sim.enemies.filter(e=>e.kind==='cheep').length,0,'the recorded route list is dropped in free play and nothing spawns before the start camera');
- s.camera=rule.levels['2-2'].fromCamera;sim.random.bytes=bytesOf(W0_2_2_MOOD3[0][0]);s.updateSwimGenerator();
+test('native swimming Cheep generator follows frenzy buffer, slots, timer, and right extent',()=>{
+ const sim=fixture(),s=sim as any;
+ s.camera=900;s.updateSwimGenerator();
+ assert.equal(sim.enemies.filter(e=>e.kind==='cheep').length,0,'the recorded route list is dropped in free play and nothing spawns without the native frenzy buffer');
+ s.specialSlot5.frenzyBuffer=23;sim.random.bytes=bytesOf(W0_2_2_MOOD3[0][0]);s.updateSwimGenerator();
  const first=sim.enemies.filter(e=>e.kind==='cheep');
  assert.equal(first.length,1);assert.equal(first[0].x,s.camera+287);assert.equal(first[0].y,120+24);assert.equal(first[0].enemySlot,0);assert.equal(first[0].palette,'0f-16-30-27');
  for(let k=1;k<32;k++)s.updateSwimGenerator();
@@ -45,8 +44,8 @@ test('native swimming Cheep generator: camera range, lowest free slot below 3, 3
  s.updateSwimGenerator();assert.equal(sim.enemies.length,2,'the next fish 32 frames after the last');assert.equal(sim.enemies[1].enemySlot,1);
  for(let k=0;k<32;k++)s.updateSwimGenerator();assert.equal(sim.enemies[2].enemySlot,2);
  for(let k=0;k<64;k++)s.updateSwimGenerator();assert.equal(sim.enemies.length,3,'slots 3 and 4 never take a swimming Cheep');
- s.camera=rule.levels['2-2'].toCamera+1;sim.enemies[0].dead=100;for(let k=0;k<64;k++)s.updateSwimGenerator();
- assert.equal(sim.enemies.filter(e=>!e.dead).length,2,'no spawn past the stop camera');
+ s.specialSlot5.frenzyBuffer=0;sim.enemies[0].dead=100;for(let k=0;k<64;k++)s.updateSwimGenerator();
+ assert.equal(sim.enemies.filter(e=>!e.dead).length,2,'EndFrenzy clears the buffer and stops spawning');
 });
 
 test('the recorded route keeps its replayed swimming Cheeps',()=>{
