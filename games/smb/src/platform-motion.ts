@@ -1,5 +1,5 @@
 import type {PlatformSpec} from './types.js';
-import {nativeBalanceStep,nativeDropStep,type PlatformVerticalState} from './native-platform-motor.js';
+import {nativeBalanceStep,nativeDropStep,nativeWrapState,type PlatformVerticalState} from './native-platform-motor.js';
 import waterEntryRules from '../data/water-entry-rules.json';
 import fiveTwoWaterEntryRules from '../data/water-entry-5-2-rules.json';
 import eightFourPlatformRules from '../data/eight-four-platform-rules.json';
@@ -7,7 +7,7 @@ import fiveThreeHorizontal from '../data/five-three-horizontal-platform.json';
 import nativePlatformMotion from '../data/native-platform-motion.json';
 
 export type PlatformMotionModel='native-horizontal'|'native-lift'|'native-wrap'|'native-balance'|'native-drop'|'observed-lift'|'camera-lift'|'camera-horizontal'|'camera-lava'|'contact-fall'|'contact-cloud'|'water-descender'|'unmeasured';
-export interface NativePlatformObject {kind:'horizontal'|'lift'|'wrap'|'balance'|'drop';spec:[number,number];x:number;y:number;direction?:'up'|'down';phase?:number;pair?:[number,number];side?:1|-1;spawnCamera:number}
+export interface NativePlatformObject {kind:'horizontal'|'lift'|'wrap'|'balance'|'drop';nativeId?:number;spec:[number,number];x:number;y:number;direction?:'up'|'down';phase?:number;pair?:[number,number];side?:1|-1;spawnCamera:number}
 
 /** Native platform objects (data/native-platform-motion.json, made from the reference RAM per frame; see
  * evidence/moving-platform-phase-findings-20261109.md) are created when the scroll position reaches spawnCamera and run
@@ -18,8 +18,18 @@ export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotio
  const list=(nativePlatformMotion.objects as unknown as Record<string,NativePlatformObject[]>)[`${context.levelId}/${context.areaId}`];
  return list?.find(o=>o.spec[0]===platform.x&&o.spec[1]===platform.y)??eightFourLapObject(list,platform,context);
 }
+/** Only native objects43/44 have two vertically repeated collision surfaces;
+ * objects38/39 are large lifts with one surface, even though both kinds wrap. */
+export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotionContext){
+ const id=nativePlatformObject(platform,context)?.nativeId;return id===43||id===44;
+}
+/** DrawSmallPlatform emits two surfaces 128 pixels apart, suppressing either whose raw OAM y is above the HUD boundary ($20).
+ * firstArtworkY is already the native OAM y + 1; small lifts draw before their movement step. */
+export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
+ return nativeSmallPlatform(platform,context)?[firstArtworkY,((firstArtworkY-1+128)&255)+1].filter(y=>y>=33):[firstArtworkY];
+}
 /** Native id37 is parsed at object X−303, before its first motion frame. */
-export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.spawnCamera;
+export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.kind==='wrap'?object.x-315:object.spawnCamera;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */
 function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:PlatformSpec,context:PlatformMotionContext):NativePlatformObject|undefined {
  if(context.levelId!=='8-4'||context.areaId!=='main'||platform.x<1024)return undefined;
@@ -28,7 +38,8 @@ function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:Platf
 }
 /** Wrapping lift (native ids 38/39 large, 43/44 castle): 15/16 px per frame, 15 pixel steps then one idle step in every 16 frames (`phase` is
  * the object's hidden position in that cycle), y wraps modulo 256, x is fixed. Up lifts subtract, down lifts add. */
-export function nativeWrapY(object:NativePlatformObject,age:number){
+export function nativeWrapY(object:NativePlatformObject,age:number,fraction?:number){
+ if(fraction!==undefined)return nativeWrapState(object.y,age,fraction,object.direction==='up').y;
  const rules=nativePlatformMotion.wrap,steps=Math.floor((object.phase!+rules.stepsPerPeriod*Math.max(0,age))/rules.period);
  return (((object.y+(object.direction==='up'?-steps:steps))%rules.span)+rules.span)%rules.span;
 }
@@ -86,8 +97,8 @@ export function nativeHorizontalX(x0:number,age:number,counter=0,sub=0){
 }
 /** Collision-surface position of a native object that has existed for `age` frames (balance: `age` is the pair offset; lift and horizontal: `counter` is
  * FrameCounter at its spawn; horizontal: `sub` the sub-pixel its slot held). */
-export function nativeObjectPosition(object:NativePlatformObject,age:number,counter=0,sub=0):PlatformPosition {
- if(object.kind==='wrap')return {x:object.x,y:nativeWrapY(object,age)};
+export function nativeObjectPosition(object:NativePlatformObject,age:number,counter=0,sub=0,fraction?:number):PlatformPosition {
+ if(object.kind==='wrap')return {x:object.x,y:nativeWrapY(object,age,fraction)};
  // balance: the partner keeps a sub-pixel y and shows its floor; the rider's side mirrors that integer, so both move by ceil(|offset|) (4-3 v2 row 383: partner 125.98 -> 125, rider 78 -> 79)
  if(object.kind==='balance')return {x:object.x,y:object.y+object.side!*Math.sign(age)*Math.ceil(Math.abs(age)-1e-9)};
  if(object.kind==='drop')return {x:object.x,y:Math.round(object.y+object.side!*age)};
@@ -183,8 +194,16 @@ export class PlatformMotion {
  private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState}>();
  private startFraction=new Map<PlatformSpec,number>();
  slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform))this.startFraction.set(platform,fraction);}
+ /** $0401+s is x fraction for id40 and YPlatformTopYPos for id37.
+  * The next slot occupant inherits the byte written on the final motion row. */
+ slotXByte(platform:PlatformSpec,frame:number){
+  const o=nativePlatformObject(platform,this.context);if(!o)return;
+  if(o.kind==='lift')return o.y<128?o.y:256-o.y;
+  if(o.kind==='horizontal'){const x=this.collisionPosition(platform,frame).x;return Math.round((x-Math.floor(x))*256)&255;}
+ }
  verticalState(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o)return;
+  if(o.kind==='wrap')return nativeWrapState(o.y,this.nativeAge(platform,o,frame),this.startFraction.get(platform)??0,o.direction==='up');
   if(o.kind==='lift')return nativeLiftState(o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startFraction.get(platform)??0);
   if(!o.pair)return;const p=this.pulleys.get(o.pair.join(','));return p?.driver===o?p.motor:undefined;
  }
@@ -250,7 +269,7 @@ export class PlatformMotion {
   if(this.lost.has(platform)||this.waiting.has(platform))return {x:-4096,y:4096};
   const model=platformMotionModel(platform,this.context);
   if(model==='native-horizontal'||model==='native-lift'||model==='native-wrap'){
-   const object=nativePlatformObject(platform,this.context)!,position=nativeObjectPosition(object,this.nativeAge(platform,object,frame),this.nativeCounter(platform),this.startSub.get(platform)??0);
+   const object=nativePlatformObject(platform,this.context)!,position=nativeObjectPosition(object,this.nativeAge(platform,object,frame),this.nativeCounter(platform),this.startSub.get(platform)??0,this.startFraction.get(platform)??0);
    return {x:position.x,y:position.y+1};
   }
   if(model==='native-balance'||model==='native-drop'){

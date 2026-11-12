@@ -46099,7 +46099,18 @@
             84
           ]
         ],
-        "enemies": [],
+        "enemies": [
+          {
+            "kind": "cheep",
+            "x": 2304,
+            "y": 272,
+            "direction": -1,
+            "palette": "0f-10-30-27",
+            "swim": {},
+            "nativeSlot": "wait",
+            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control."
+          }
+        ],
         "pipes": [],
         "spawn": [
           40,
@@ -168298,6 +168309,16 @@
             "direction": -1,
             "evidence": "screenshot sequence 2081 tick 8320; exact enemy-table-0f-1a-30-27.png cell 4; camera registration inferred",
             "palette": "0f-1a-30-27"
+          },
+          {
+            "kind": "cheep",
+            "x": 2304,
+            "y": 272,
+            "direction": -1,
+            "palette": "0f-10-30-27",
+            "swim": {},
+            "nativeSlot": "wait",
+            "evidence": "Native shared 2-3/7-3 enemy stream at CPU $9F3C, ROM PRG0; ProcessEnemyData/CheckPageCtrlRow. 0F 8A sets page-select before the row-$0F check and therefore creates a GreyCheep, not a page control."
           }
         ],
         "pipes": [],

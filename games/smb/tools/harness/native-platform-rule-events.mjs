@@ -17,12 +17,12 @@ for(const level of fs.readdirSync(root).filter(s=>/^\d-\d$/.test(s)).sort()){
    if(!next[0x0f+slot]||next[0x16+slot]!==37){lifts.delete(slot);continue;}
    if(!prev[0x0f+slot])lifts.set(slot,{frame,y:next[0xcf+slot],counter:next[0x09]});
    const spawn=lifts.get(slot);if(!spawn||next[0x0e]!==8||next[0x747])continue;
-   const row={level,frame,slot,id:37,load:0,before:state(prev,slot),after:state(next,slot),spawnY:spawn.y,counter:spawn.counter,age:frame-spawn.frame};
+   const row={level,frame,slot,id:37,load:0,before:state(prev,slot),after:state(next,slot),spawnY:spawn.y,counter:spawn.counter,age:frame-spawn.frame,xByte:next[0x401+slot]};
    const key=JSON.stringify([37,spawn.y,spawn.counter&7,row.age]);if(seen.has(key))continue;seen.add(key);rows.push(row);
   }
   if(next[0x0e]!==8||next[0x747]||prev[0x747])continue;
   for(let slot=0;slot<5;slot++){
-   const id=prev[0x16+slot];if(!prev[0x0f+slot]||!next[0x0f+slot]||next[0x16+slot]!==id||![36,41].includes(id))continue;
+   const id=prev[0x16+slot];if(!prev[0x0f+slot]||!next[0x0f+slot]||next[0x16+slot]!==id||![36,38,39,41,43,44].includes(id))continue;
    if(id===36&&(prev[0x1e+slot]>=128||next[0x46+slot]||prev[0xcf+slot]<=45||prev[0xcf+prev[0x1e+slot]]<=45))continue;
    const flag=next[0x3a2+slot],load=flag>=128?0:flag===slot?1:-1;
    const row={level,frame,slot,id,load,before:state(prev,slot),after:state(next,slot)};

@@ -7,6 +7,7 @@ import {observedLevels} from '../src/levels.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import type {Excerpt} from '../tools/harness/native-excerpt.js';
 import type {Button} from '../src/types.js';
+import {nativeEntities,simEntities,unmatchedEntity} from '../tools/harness/native-entities.js';
 
 function replay(level:string){
  const excerpt:Excerpt=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
@@ -45,4 +46,20 @@ test('7-3 native offscreen fall keeps engine 8, player motion, camera, and timer
   }
  }
  assert.equal(sim.lives,2,'native PlayerLoseLife decrements lives after the engine-6 row');
+});
+
+test('2-3 native stream fish and slot reuse preserve all enemy positions through the full recording',()=>{
+ const run=replay('2-3'),sim=run.sim;let frames=0;
+ for(let f=0;f<run.pads.length;f++){
+  run.step(f);const r=run.row(f);
+  if(r[0x770]!==1||r[0x75f]!==1||r[0x75c]!==2||sim.level.id!=='2-3')break;
+  if(r[14]!==8||sim.phase!=='play')continue;
+  assert.equal(unmatchedEntity(nativeEntities(r,f?run.row(f-1):undefined),simEntities(sim)),undefined,`frame ${f}`);
+  assert.equal(sim.player.dead,false,`frame ${f}`);
+  assert.equal(Math.floor(sim.player.x),r[0x6d]*256+r[0x86],`frame ${f} x`);
+  assert.equal((Math.floor(sim.player.y)-32)&255,r[0xce],`frame ${f} y`);
+  assert.equal(Math.floor(sim.camera),r[0x71a]*256+r[0x71c],`frame ${f} camera`);
+  frames++;
+ }
+ assert.ok(frames>1000);
 });

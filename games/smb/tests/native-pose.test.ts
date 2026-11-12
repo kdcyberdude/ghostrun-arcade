@@ -40,3 +40,11 @@ test('injury flicker follows native FrameCounter through a shrink freeze and acr
  sim.player.invincible=0;assert.equal(playerVisible(sim),true,'without InjuryTimer every counter phase draws');
  sim.flagInside=true;assert.equal(playerVisible(sim),false,'castle entry still hides Mario');
 });
+
+test('the big standing pose joins the measured shrinking size sequence before the freeze ends',()=>{
+ const sim=new Simulation(observedLevels());sim.reset(true);sim.player.size=1;sim.playerAnim.fresh=false;sim.hurt();
+ for(const [age,cell] of [[0,25],[1,25],[2,23],[15,25],[16,23],[54,23]]){
+  sim.powerChange!.remaining=55-age;assert.equal(playerCell(sim).cell,cell,`native shrink freeze row ${age}`);
+ }
+ assert.equal(sim.player.size,1,'the renderer selects a small cell while the physical size change still waits for the end of the freeze');
+});

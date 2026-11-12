@@ -23,7 +23,7 @@ export class Props{
   for(const bar of s.area.firebars??[])for(const {x,y} of s.firebarCenters(bar)){const o=this.take('fire',()=>new THREE.Mesh(new THREE.SphereGeometry(0.24,16,12),this.mats.fire));o.position.set(x/16,(240-y-(bar.visualOffsetY??0))/16,0.1);o.scale.setScalar(0.9+0.15*Math.sin(s.frame*0.4+x));}
   for(const sp of s.area.springs??[]){const c=s.springCompression(sp),h=(24-c*8)/16,o=this.take('spring',()=>{const g=new THREE.Group();
     const coil=new THREE.Mesh(new THREE.TorusGeometry(0.34,0.06,8,24),this.mats.spring);for(let i=0;i<4;i++){const k=coil.clone();k.rotation.x=Math.PI/2;k.position.y=0.2+i*0.3;k.name='coil';g.add(k);}
-    const top=new THREE.Mesh(new THREE.CylinderGeometry(0.46,0.46,0.12,24),this.mats.springCap);top.name='top';g.add(top);const bot=top.clone();bot.position.y=0.06;g.add(bot);return g;});
+    const top=new THREE.Mesh(new THREE.CylinderGeometry(0.46,0.46,0.12,24),this.mats.springCap);top.name='top';top.position.y=1.44;g.add(top);const bot=top.clone();bot.position.y=0.06;g.add(bot);return g;});
    o.position.set((sp.x+8)/16,(239-sp.y)/16,0);o.scale.y=h/1.5;}
   for(const v of s.vines)if(v.height>0){const h=v.height/16,o=this.take('vine',()=>{const g=new THREE.Group();const st=new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,1,8),this.mats.vine);st.position.y=0.5;g.add(st);
     for(let i=0;i<6;i++){const l=new THREE.Mesh(new THREE.SphereGeometry(0.16,10,8),this.mats.leaf);l.scale.set(1.4,0.5,0.8);l.position.set(i%2?0.14:-0.14,(i+0.5)/6,0);g.add(l);}return g;});

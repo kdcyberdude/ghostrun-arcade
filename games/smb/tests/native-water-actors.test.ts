@@ -20,14 +20,14 @@ function fixture(enemy:Partial<EnemySpec>){
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
  const area:Area={id:'main',width:1024,palette:12,theme:'water',tiles,enemies:[{kind:'cheep',x:400,y:100,palette:'0f-10-30-27',direction:-1,spawnCamera:0,...enemy}],spawn:[200,208],evidence:'Synthetic water fixture'};
  const level:Level={id:'fixture',time:400,main:'main',areas:[area],evidence:'Mechanic regression fixture'};
- const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
+ const sim=new Simulation([level]);sim.reset(true);sim.camera=100;sim.player.invincible=100000;return sim;
 }
 
-test('a measured swimmer keeps its height (no sine bobbing) and swims left at the palette speed; a bobber follows the native leg',()=>{
+test('native swimming slot 0 holds height; slot 2 bobs from its fraction and random direction',()=>{
  const flat=fixture({swim:{}});flat.step([],200);
  assert.equal(flat.enemies[0].y,100);assert.equal(flat.enemies[0].x,400-0.25*200);
- const bob=fixture({swim:{bob:{dir:-1,first:1}}});bob.step([],114); // 114 steps: the fish appeared on step 1, so this is k 113
- assert.equal(bob.enemies[0].y,100-15);bob.step([],1);assert.equal(bob.enemies[0].y,100-14);
+ const bob=fixture({swim:{bob:{dir:-1,first:1}}});bob.enemies[0].active=true;bob.enemies[0].enemySlot=2;bob.random.bytes=[0,0,0,0,0,0,0];
+ bob.step([],113);assert.equal(bob.enemies[0].y,100-15);bob.step([],1);assert.equal(bob.enemies[0].y,100-14);
  const legacy=fixture({});legacy.step([],16);assert.equal(legacy.enemies[0].y,100+Math.sin(16/40)*24); // unmeasured fish keep the old motion
 });
 

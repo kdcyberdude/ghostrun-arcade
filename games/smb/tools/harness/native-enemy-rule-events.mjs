@@ -11,7 +11,7 @@ import {parseArgs} from 'node:util';
 const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string',default:'tests/fixtures/native-enemy-rule-events.json'}}});
 if(!a.traces)throw Error('--traces is required');
 const signed=v=>v<128?v:v-256;
-const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[]};
+const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[],hammerRows:[],hammerLagRows:[],miscRows:[],hammerContacts:[],coinSpawns:[],miscOffscreenRows:[],blockAliasRows:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const d=fs.readFileSync(file),n=d.length/2048,R=f=>d.subarray(f*2048,(f+1)*2048);
@@ -52,6 +52,39 @@ for(const level of fs.readdirSync(a.traces).sort()){
   if(r[0x6cd]===24&&p[0x6cd]!==24){
    let end=f+1;while(end<n&&R(end)[0x6cd]===24)end++;
    out.stopFrenzy.push({level,row:f,column:r[0x725]*256+r[0x726]*16,camera:r[0x71a]*256+r[0x71c],task:r[0x71f],consumed:end});
+  }
+  if(play&&r[9]===p[9]&&[0,1,2,3,4].some(s=>r[15+s]&&r[22+s]===5)){
+   out.hammerLagRows.push({level,row:f,frame:r[9],changes:Array.from({length:2048},(_,address)=>address).filter(address=>p[address]!==r[address]).map(address=>[address,p[address],r[address]]),oamBefore:p.subarray(0x200,0x300).toString('hex'),oamAfter:r.subarray(0x200,0x300).toString('hex')});
+  }
+  // Shared misc objects: source byte-state motor and cached bounding boxes; normal game-engine rows only.
+  if(p[0xe]===8&&(r[0xe]===8||r[0xe]===11)&&r[9]===((p[9]+1)&255)&&p[0x747]===0&&r[0x747]===0){
+   if(f%4===0&&[0,1].some(s=>p[0x26+s])){
+    const blocks=z=>Array.from({length:4},(_,s)=>({slot:s,state:s<2?z[0x26+s]:0,x:z[0x76+s]*256+z[0x8f+s],y:(z[0xbe+s]-1)*256+z[0xd7+s],speed:signed(z[0xa8+s]),force:z[0x43c+s],fraction:z[0x41f+s]}));
+    out.blockAliasRows.push({level,row:f,before:blocks(p),after:blocks(r)});
+   }
+   const live=Array.from({length:9},(_,s)=>s).filter(s=>p[0x2a+s]||r[0x2a+s]);
+   for(const s of live){
+    const before={state:p[0x2a+s],speed:signed(p[0xac+s]),force:p[0x440+s],fraction:p[0x423+s],y:(p[0xc2+s]-1)*256+p[0xdb+s],x:p[0x7a+s]*256+p[0x93+s]},after={state:r[0x2a+s],speed:signed(r[0xac+s]),force:r[0x440+s],fraction:r[0x423+s],y:(r[0xc2+s]-1)*256+r[0xdb+s],x:r[0x7a+s]*256+r[0x93+s]};
+    const camera=r[0x71a]*256+r[0x71c],box=Array.from(r.subarray(0x4ac+36+s*4,0x4ac+40+s*4));
+    if((before.state===0x81||before.state>0&&before.state<48)&&(f%16===0||before.state!==after.state))out.miscRows.push({level,row:f,slot:s,frame:r[9],scroll:r[0x775],before,after,camera,box,checkX:r[0x76+s]*256+r[0x8f+s]});
+    if(after.state===1&&(before.state===0||before.state>=0x80))out.coinSpawns.push({level,row:f,slot:s,busy:Array.from({length:9},(_,k)=>k).filter(k=>p[0x2a+k])});
+    const prior=live.filter(k=>k>s&&!(p[0x2a+k]===47&&r[0x2a+k]===0)).at(0);
+    const priorMisc=prior===undefined?undefined:{x:r[0x7a+prior]*256+r[0x93+prior],y:(r[0xc2+prior]-1)*256+r[0xdb+prior],camera};
+    if(before.state===0x81)out.hammerContacts.push({priorMisc,level,row:f,slot:s,frame:r[9],offscreen:p[0x3d6],player:Array.from(r.subarray(0x4ac,0x4b0)),box:Array.from(p.subarray(0x4ac+36+s*4,0x4ac+40+s*4)),latch:Boolean(p[0x6be+s]),nextLatch:Boolean(r[0x6be+s]),speed:signed(p[0x64+s]),nextSpeed:signed(r[0x64+s])});
+   }
+   const last=live.filter(s=>!(p[0x2a+s]===47&&r[0x2a+s]===0)).at(0);
+   if(last!==undefined&&f%16===0)out.miscOffscreenRows.push({level,row:f,x:r[0x7a+last]*256+r[0x93+last],y:(r[0xc2+last]-1)*256+r[0xdb+last],camera:r[0x71a]*256+r[0x71c],bits:r[0x3d6]});
+  }
+  // Hammer Bros: pre-step slot bytes and native outputs, with the block-buffer support read by ChkUnderEnemy.
+  if(play&&r[9]===((p[9]+1)&255))for(let s=0;s<5;s++)if(r[0xf+s]&&r[0x16+s]===5&&p[0xf+s]&&p[0x16+s]===5&&!(p[0x1e+s]&0x20)&&!(r[0x1e+s]&0x20)&&r[0x747]===0&&p[0x747]===0){
+   const x=p[0x6e+s]*256+p[0x87+s],y=p[0xcf+s],col=Math.floor((x+8)/16),row=(((y+24)&240)-32)&255;
+   const supported=Boolean(r[0x500+((col>>4)&1)*0xd0+row+(col&15)]);
+   const before={state:p[0x1e+s],jumpTimer:p[0x3c+s],throwTimer:p[0x3a2+s],frameTimer:p[0x78a+s],interval:r[0x796+s],speed:signed(p[0xa0+s]),force:p[0x434+s],fraction:p[0x417+s],y};
+   const after={state:r[0x1e+s],jumpTimer:r[0x3c+s],throwTimer:r[0x3a2+s],frameTimer:r[0x78a+s],interval:r[0x796+s],speed:signed(r[0xa0+s]),force:r[0x434+s],fraction:r[0x417+s],y:r[0xcf+s]};
+   const byte=r[0x7a8],misc=(byte&7)||(byte&8),guard=[4,4,4,5,5,5,6,6,6][misc],made=p[0x2a+misc]===0&&!r[0xf+guard];
+   const sideCol=Math.floor((x+(p[0x46+s]===1?16:0))/16),sideRow=(((y+20)&240)-32)&255,sideTile=r[0x500+((sideCol>>4)&1)*0xd0+sideRow+(sideCol&15)];
+   const sideBlocked=y>=32&&Boolean(sideTile)&&![0x26,0xc2,0xc3,0x5f,0x60].includes(sideTile);
+   out.hammerRows.push({level,row:f,slot:s,before,after,x,mario:r[0x6d]*256+r[0x86],frame:r[9],random1:r[0x7a8+s],random2:r[0x7a9+s],hard:Boolean(r[0x6cc]),supported,sideBlocked,screenX:x-(r[0x71a]*256+r[0x71c]),made,xSpeed:signed(r[0x58+s])});
   }
   // Lakitu (id 17) normal-play rows: [pre-step x, Mario x, Player_X_Speed $57, ScrollAmount $0775, state before, dir $A0 and speed $58 before, then after] (MoveLakitu)
   for(let s=0;s<5;s++)if(r[0x0e]===8&&r[0xf+s]&&r[0x16+s]===17&&p[0xf+s]&&p[0x16+s]===17&&!(p[0x1e+s]&0x20))
