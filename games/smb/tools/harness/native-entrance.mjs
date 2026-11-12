@@ -30,6 +30,8 @@ export function initializeEntrance(sim,start){
   sim.cannonTable=start.cannons.map(c=>{if(!c.x&&!c.y)return undefined;const i=list.findIndex(k=>k.x===c.x&&k.y===c.y);if(i<0)throw Error(`Observed cannon ${c.x},${c.y} is not mapped`);loaded=Math.max(loaded,i+1);return {cannon:list[i],timer:c.timer};});
   sim.cannonsLoaded=loaded;sim.cannonStartTable=sim.cannonTable;}
  /* objects already live in enemy slots: a frenzy Bullet Bill (id 8) and lava Podoboos (id 12) take their native slot, position and vertical state */
+ /* Enemy_Y_Speed $A0+s (a firebar's angle) and the y fraction $0417+s stay in a slot between objects (src/firebar-slots.ts) */
+ if(start.slots){sim.slotYSpeed=start.slots.map(o=>o.speed&255);sim.slotYFraction=start.slots.map(o=>o.fraction);}
  for(const [s,o] of (start.slots??[]).entries()){
   if(!o.flag)continue;
   if(o.id===8){sim.spawnNativeBullet(o.x,o.y-256+24,-1);Object.assign(sim.enemies[sim.enemies.length-1],{enemySlot:s,age:2,frenzy:true});}
