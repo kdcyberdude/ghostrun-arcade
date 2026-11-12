@@ -1,4 +1,5 @@
 import {test} from 'node:test';
+import waterEvents from './fixtures/native-water-rule-events.json';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
@@ -114,4 +115,16 @@ test('7-2 injury preserves the water position fraction and ends its second death
   assert.equal(sim.phase,r[14]===11||r[14]===6?'dying':'intro',`frame ${f}`);
   if(r[14]===11||r[14]===6)assert.equal((Math.floor(sim.player.y)-32)&255,r[0xce],`frame ${f} y`);
  }
+});
+
+for(const [level,end] of [['2-2',4275],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
+ const run=replay(level),expected=new Map<number,[number,number[][]]>();
+ for(const [id,row,,,,,after] of waterEvents.bubbles as unknown as [string,number,unknown,unknown,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
+ for(const [id,row,,,after] of waterEvents.bubbleEntrances as unknown as [string,number,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
+ let checked=0;
+ for(let f=0;f<run.pads.length&&f<=end;f++){
+  run.step(f);const after=expected.get(f);if(!after)continue;
+  assert.deepEqual([run.sim.bubbleState.timer,run.sim.bubbles.map(b=>[b.x,b.y,b.page,b.fraction])],after,`frame ${f}`);checked++;
+ }
+ assert.ok(checked>3000);
 });
