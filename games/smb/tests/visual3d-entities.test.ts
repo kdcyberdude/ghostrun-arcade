@@ -129,3 +129,8 @@ test('native Hammer Bro lowers its arm and hides the duplicate authored hammer',
  assert.equal(arm.quaternion.z,0);assert.equal(((model.children[1] as THREE.Mesh).material as THREE.Material).visible,false);assert.equal(((model.children[2] as THREE.Mesh).material as THREE.Material).visible,true);
  sim.enemies[0].hbro!.state=8;sim.frame++;entities.sync(sim,0);assert.ok(arm.quaternion.z>0);
 });
+test('native birth slots wait for their first graphics pass while legacy actors remain visible',()=>{
+ const {sim,entities}=scene({graphicsVisible:false});entities.sync(sim,0);assert.equal(entities.group.getObjectByName('goomba'),undefined);
+ sim.enemies[0].graphicsVisible=true;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
+ sim.enemies[0].graphicsVisible=undefined;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
+});
