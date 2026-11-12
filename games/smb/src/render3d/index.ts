@@ -9,11 +9,13 @@ import {Hud} from './hud.js';
 import {Props} from './props.js';
 import {NES_W,NES_H} from './coords.js';
 import {loadImpostors} from './nature.js';
+import {IntroAvatar} from './avatar.js';
+import {TRANSITIONS} from '../simulation.js';
 const query=new URLSearchParams(location.search);
 /** Output heights offered in the page (16:15 game frame): 960p default, 1080p, 2K (1440p), 4K (2160p). `?res=` picks one at load, `?scale=` still works. */
 export const RESOLUTIONS:Record<string,number>={'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
 export class Renderer3D{
- private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props();scale:number;
+ private gl:THREE.WebGLRenderer;private atmosphere:Atmosphere;private kit=new Kit();private world!:World;private entities!:Entities;private hud:Hud;private props=new Props();private avatar?:IntroAvatar;scale:number;
  constructor(private canvas:HTMLCanvasElement){
   const res=RESOLUTIONS[query.get('res')??''];this.scale=res?res/NES_H:Number(query.get('scale')??4);
   this.gl=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
@@ -28,6 +30,7 @@ export class Renderer3D{
   await Promise.all([this.kit.load([...TILE_MODELS,...ACTOR_MODELS]),this.hud.load(),this.atmosphere.loadSkies(),loadImpostors()]);
   this.world=new World(this.kit);this.entities=new Entities(this.kit,query.has('debug'));
   this.atmosphere.scene.add(this.world.group,this.entities.group,this.props.group);
+  this.avatar=new IntroAvatar(this.kit);
  }
  render(s:Simulation){
   this.gl.info.reset();
@@ -38,6 +41,8 @@ export class Renderer3D{
   this.atmosphere.place(camPx);
   if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
   this.atmosphere.render();
+  // Same visibility rule as the HUD's lives screen.
+  if(s.phase==='intro'&&!(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
   if(this.hud.draw(s,true)){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}
  }
  /** What is still drawn by stand-ins (honest coverage reporting; read by tools/visual3d). */

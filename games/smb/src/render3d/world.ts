@@ -113,13 +113,19 @@ export class World{
     case 'pipe':
      // Per tile, so shafts without a cap (pipes reaching the ceiling) are drawn too.
      if(isPipeTop(id))put('pipe_top',col+1,14.5-row);else if(isPipeBody(id))put('pipe_body',col+1,14.5-row);
+     // A right-column tile whose left column is not this pipe (a side pipe joins there, as at the 1-2 entry) still carries the
+     // vertical pipe down to the ground, so the two pipes meet instead of the shaft stopping above the joint.
+     else{const left=s.tiles.get(`${col-1},${row}`);if(id===21&&left!==20&&left!==21)put('pipe_body',col,14.5-row);else if((id===17||id===19)&&left!==16&&left!==18)put('pipe_top',col,14.5-row);}
      break;
     case 'sidePipe':
      // Upper-row tiles carry the 2-tall horizontal piece; rotated so the lip faces left (-X).
      if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
      break;
     case 'coin':this.pool('coin_tile',theme).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
-    case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);break;}
+    case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
+     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
+     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
+     break;}
     // Tile 37 is also the pulley-lift rope: only a column topped by a flag ball is the flagpole (drawn by the flag prop).
     case 'flagPole':{let ball=false;for(let r=0;r<15&&!ball;r++)ball=s.tiles.get(`${col},${r}`)===36;if(!ball)put('rope_v',col+0.5,14.5-row,-0.3);break;}
     case 'other':this.unmapped.add(id);break;

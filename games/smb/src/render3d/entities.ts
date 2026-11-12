@@ -12,7 +12,8 @@ const COLORS:Record<EnemyKind,number>={goomba:0x8a4a1a,koopa:0x2fae3a,redKoopa:0
 export const ENEMY_MODEL:Partial<Record<EnemyKind,string>>={goomba:'goomba',koopa:'koopa',redKoopa:'koopa',paratroopa:'koopa',beetle:'beetle',spiny:'spiny',piranha:'piranha',blooper:'blooper',cheep:'cheep',bullet:'bullet',lakitu:'lakitu',hammerBro:'hammer_bro',podoboo:'podoboo',bowser:'bowser'};
 const ITEM_MODEL:Partial<Record<Item['kind'],string>>={mushroom:'mushroom',flower:'fire_flower',star:'star','1up':'one_up',fireball:'fireball',hammer:'hammer',flame:'bowser_flame'};
 export const ACTOR_MODELS=['mario',...new Set(Object.values(ENEMY_MODEL)),'koopa_shell','beetle_shell',...Object.values(ITEM_MODEL)] as string[];
-const PALETTE={mario:['#d8241c','#2a4fc8'],luigi:['#2fae3a','#1d2f7a'],fire:['#f4f0e6','#d8241c']};
+export const SMALL_SCALE=0.6,SMALL_CHIBI=0.5;const DEATH_FREEZE=15;  // death-rules.json freezeFrames
+export const PALETTE={mario:['#d8241c','#2a4fc8'],luigi:['#2fae3a','#1d2f7a'],fire:['#f4f0e6','#d8241c']};
 const STAR=[['#d8241c','#2a4fc8'],['#1a1a1a','#d86a1c'],['#f4f0e6','#d8241c'],['#2fae3a','#e8c020']];
 const std=(c:number)=>new THREE.MeshStandardMaterial({color:c,roughness:0.55});
 export class Entities{
@@ -55,7 +56,9 @@ export class Entities{
   this.box(p.x/16,feet,p.x/16+1,feet+(p.size===0?1:2));
   if(!this.mario){if(visible){const h=size>0.5?2:1,m=this.take('player'+h,()=>new THREE.Mesh(new THREE.CapsuleGeometry(0.34,h-0.68,8,16),std(0xd02020)));m.position.set(x,feet+h/2,0);}return;}
   const a=this.mario;a.root.visible=visible;if(!visible)return;
-  const scale=0.5+0.5*size;a.root.scale.setScalar(scale);a.morph('Chibi',1-size);a.root.position.set(x,feet,0);
+  // Small Mario: 0.6 of big Mario with half the Chibi morph (about 1.1 tiles tall). Full Chibi at 0.5 made the head dominate and the legs
+  // too short to read a run (tools/visual3d/tune-small.ts lineups); the stride below scales with the legs, so the run cadence slows too.
+  const scale=SMALL_SCALE+(1-SMALL_SCALE)*size;a.root.scale.setScalar(scale);a.morph('Chibi',(1-size)*SMALL_CHIBI);a.root.position.set(x,feet,0);
   // Pose (same decision tree as the 2D sprite cell).
   const pose=s.phase==='play'?(s.wallDisplayPose??s.locomotionPose):undefined,water=s.area.theme==='water',speed=Math.abs(p.vx);
   if(advanced){const dx=Number.isNaN(this.lastX)?0:Math.abs(p.x-this.lastX);this.walkPhase+=dx<8?dx:0;}this.lastX=p.x;
@@ -72,11 +75,18 @@ export class Entities{
   else if(speed>0.1)clip=p.vx*p.facing<0?'skid':speed>=2?'run':'walk';
   if(clip==='walk'||clip==='run'){t=this.walkPhase/cyclePx(clip)*a.duration(clip);}
   if(p.size===2&&s.fireballThrowAge>=0&&s.fireballThrowAge<8&&!p.duck&&!p.dead&&!p.climbing&&speed<=0.1){clip='throw';t=s.fireballThrowAge/60;loop=false;}
-  if(!loop&&clip==='death')t=a.duration('death');
+  // Death: play the clip over the original's 15-frame freeze instead of snapping to its last pose.
+  const dyingFrame=p.dead&&s.phase==='dying'?s.phaseFrame:p.dead?DEATH_FREEZE+60:0;
+  if(!loop&&clip==='death')t=Math.min(1,dyingFrame/DEATH_FREEZE)*a.duration('death');
   a.pose(clip,t,s.frame,loop);
   const facing=pose&&!water&&!p.climbing&&!p.duck&&!s.entryFallPose?pose.facing:p.facing;
   const target=p.dead?0:clip==='climb'||clip==='slide'?yawFor(facing)*0.4+(facing<0?Math.PI*0.6:0):yawFor(facing);
-  if(advanced)this.marioYaw=turnToward(this.marioYaw,target);a.root.rotation.y=this.marioYaw;
+  if(p.dead)this.marioYaw=target;else if(advanced)this.marioYaw=turnToward(this.marioYaw,target);a.root.rotation.y=this.marioYaw;
+  // Death in 3D (render-only; the arc itself is the simulation's): face the camera at once with a short pop during the freeze, then come
+  // forward out of the scene, leaning back, so the fall reads in front of the terrain instead of sinking behind the ground.
+  if(p.dead){const k=Math.max(0,dyingFrame-DEATH_FREEZE);a.root.position.z=Math.min(2.4,k*0.06);a.root.rotation.x=-Math.min(0.55,k*0.014);a.root.rotation.z=Math.sin(k*0.09)*0.12;
+   a.root.scale.setScalar(scale*(1+0.12*Math.sin(Math.min(1,dyingFrame/10)*Math.PI)));}
+  else{a.root.rotation.x=0;a.root.rotation.z=0;}
   // Palette: Mario / Luigi / Fire, star flashing like the original's four palettes.
   let colors=p.size===2||(change?.kind==='fire'&&Math.floor(age/4)%2===1)?PALETTE.fire:s.currentPlayer?PALETTE.luigi:PALETTE.mario;
   if(p.star)colors=STAR[Math.floor(s.frame/(p.star>128?8:2))%4];
