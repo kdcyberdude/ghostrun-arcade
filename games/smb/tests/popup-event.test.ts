@@ -8,10 +8,10 @@ function fixture(kind:EnemyKind='goomba',x=40,falling=true){
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
 function stomp(kind:EnemyKind='goomba',x=40){const sim=fixture(kind,x);for(let i=0;i<80&&!sim.popups.length&&sim.phase==='play';i++)sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(sim.popups.length,1);assert.equal(sim.popups[0].value,100);assert.equal(sim.awardedScore,100);return sim;}
-test('real Goomba stomp produces one label and removes it with the qualified squash',()=>{
- const sim=stomp(),popup=sim.popups[0],enemy=sim.enemies[0];assert.equal(popup.y,176);assert.equal(popup.age,0);assert.equal(enemy.squashed,true);
- sim.step(['left'],39);assert.equal(sim.popups.length,1);assert.equal(popup.y,137);assert.equal(enemy.dead,40);
- sim.step(['left'],1);assert.equal(sim.popups.length,0);assert.equal(enemy.dead,100);
+test('real Goomba stomp produces one label that keeps its qualified 40-frame life; the flat Goomba goes after IntervalTimerControl + 22',()=>{
+ const sim=stomp(),popup=sim.popups[0],enemy=sim.enemies[0],n=(sim as any).intervalControl+22;assert.equal(popup.y,176);assert.equal(popup.age,0);assert.equal(enemy.squashed,true);
+ for(let k=1;k<=40;k++){sim.step(['left'],1);assert.equal(enemy.dead,k<=n?k+1>n?100:k+1:100,`row ${k}`);if(k===39){assert.equal(sim.popups.length,1);assert.equal(popup.y,137);}}
+ assert.equal(sim.popups.length,0);
 });
 test('Koopa label persists independently after40frames and expires at the inferred50frame bound',()=>{
  const sim=stomp('koopa'),popup=sim.popups[0];assert.equal(popup.y,176);assert.equal(sim.enemies[0].shell,true);

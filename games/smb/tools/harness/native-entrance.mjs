@@ -45,6 +45,7 @@ export function initializeEntrance(sim,start){
   if(o.id===12){const e=sim.enemies.find(e=>e.kind==='podoboo'&&e.launch&&e.originX===Math.floor(o.x));if(!e)throw Error(`Observed Podoboo at ${o.x} is not mapped`);
    Object.assign(e,{active:true,enemySlot:s,age:2,pod:{y:o.y,speed:o.speed,force:o.force,fraction:o.fraction,timer:o.timer},y:o.y-256+24});}
  }
+ if(start.slots)sim.slotVertical=start.slots.map(o=>({speed:o.speed,force:o.force,fraction:o.fraction})); /* Enemy_Y_Speed / MoveForce / y fraction left in each slot */
  if(start.frenzyBag!==undefined)sim.swimBag=start.frenzyBag; /* BitMFilter $06DD: heights already used by the Cheep / Bullet Bill frenzy */
  if(start.intervalControl!==undefined)sim.intervalControl=start.intervalControl; /* IntervalTimerControl $077F: phase of the 21-frame interval timers */
  sim.random.bytes=[...start.random];sim.random.frame=start.counter;if(start.colorRotate!==undefined)sim.colorRotations=start.colorRotate;sim.broClock=start.counter;

@@ -91,6 +91,18 @@ export function nativeImposeGravity(n:NativeMoveState,down:number,max:number){
  const v=n.force+down;n.force=v&255;n.speed+=v>>8;
  if(n.speed>=max&&n.force>=128){n.speed=max;n.force=0;}
 }
+/** Native MovePiranhaPlant on one frame (state bytes: y $CF, speed $58, move flag $A0, up y $0417, down y $0434, EnemyFrameTimer $078A; frameCounter = FrameCounter $09). */
+export type NativePiranha={y:number;speed:number;flag:number;up:number;down:number;timer:number};
+export function nativePiranhaStep(n:NativePiranha,plantX:number,marioX:number,frameCounter:number){
+ if(n.timer>0)n.timer--;
+ if(n.timer!==0)return;
+ if(!n.flag){
+  if(n.speed>0){const d=plantX-marioX,lo=d<0?(256-(d&255))&255:d&255;if(lo<0x21)return;} // PlayerEnemyDiff low byte (negated when Mario is right of the plant)
+  n.speed=-n.speed;n.flag=1;
+ }
+ if(frameCounter%2!==1)return;
+ n.y+=n.speed;if(n.y===(n.speed>0?n.down:n.up)){n.flag=0;n.timer=0x40;}
+}
 export const NATIVE_HZ=60.0988;
 // Native rows (RAM 0x500 collision map, 0x416 y sub-pixel, 0x70a fall class): feet this deep in a cell do not land; a fall before any jump of the area uses 40/256.
 const FOOT_LAND_DEPTH=5,FALL_GRAVITY_AFTER_LOAD=0.15625;
@@ -181,7 +193,7 @@ export class Simulation {
  private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathFromBelow=false;private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
- private pipeRise=0;broClock=0;random=new NativeRandom();recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
+ private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private firebarSlots?:FirebarSlots;
  private bridge:string[]=[];private springTimers=new Map<SpringSpec,number>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
@@ -262,7 +274,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -283,27 +295,31 @@ export class Simulation {
  private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0)this.score+=s.value;this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
   for(const popup of this.popups){popup.age++;popup.y--;}
-  this.popups=this.popups.filter(popup=>popup.age<popup.life&&(!popup.victim||popup.victim.dead<90));
+  this.popups=this.popups.filter(popup=>popup.age<popup.life); // a score label runs its own timer: a flat Goomba can go first (its interval-timer erase)
  }
  /** Native walker groups are created from the screen, not the map (first rows over 25 runs: 704..708 at one group, x - Mario a constant 143), so a group whose trigger the camera passed by n px appears n px further right, followers included. Lone walkers keep a fixed x. */
  /** Native enemy group (HandleGroupEnemies, data ids $37-$3E): two or three Goombas/Beetles/Koopas made on one frame at ScreenRight_X_Pos (camera + 255), +24, +48. A list
-  * entry belongs to such a group when entries of its kind share its spawnCamera and sit 20-28 px apart from a leader near spawnCamera + 255 (76 of 76 group followers of the v2 traces). */
- private nativeGroupIndex(e:Enemy){
+  * entry belongs to such a group when entries of its kind recorded within 3 px of camera sit 20-28 px apart from a leader near spawnCamera + 255 (76 of 76 group followers of the v2 traces). */
+ private nativeGroupMembers(e:Enemy):Enemy[]|undefined{
   if(e.spawnCamera===undefined||!['goomba','koopa','redKoopa','beetle'].includes(e.kind))return;
-  const xs=this.enemies.filter(o=>o.kind===e.kind&&o.spawnCamera===e.spawnCamera).map(o=>o.originX).sort((a,b)=>a-b);
-  if(xs.length<2||Math.abs(xs[0]-e.spawnCamera-255)>10||xs.some((x,i)=>i>0&&(x-xs[i-1]<20||x-xs[i-1]>28)))return;
-  return xs.indexOf(e.originX);
+  const near=this.enemies.filter(o=>o.kind===e.kind&&o.spawnCamera!==undefined&&Math.abs(o.spawnCamera-e.spawnCamera!)<=3).sort((p,q)=>p.originX-q.originX);
+  let chain:Enemy[]=[];
+  for(const o of near){if(chain.length&&o.originX-chain[chain.length-1].originX>=20&&o.originX-chain[chain.length-1].originX<=28)chain.push(o);else{if(chain.includes(e))break;chain=[o];}}
+  if(chain.length<2||!chain.includes(e)||chain.length>3||Math.abs(chain[0].originX-chain[0].spawnCamera!-255)>10)return;
+  return chain;
  }
- /** A group is made when its enemy-data column reaches (ScreenRight + 48) & 0xF0; the recorded spawnCamera only bounds that column, (spawnCamera + 303) & ~15
+ /** Index of e in its native group (entries of one kind recorded within 3 px of camera, 20-28 px apart, the leader near spawnCamera + 255). */
+ private nativeGroupIndex(e:Enemy){const g=this.nativeGroupMembers(e);return g?g.indexOf(e):undefined;}
+ /** A group is made when its enemy-data column reaches (ScreenRight + 48) & 0xF0; the leader's recorded spawnCamera only bounds that column, (spawnCamera + 303) & ~15
   * (8-1 Koopa pair: recorded camera 435, native made at 434). Other list objects keep their recorded spawnCamera. */
- private nativeGroupMembers(e:Enemy){return this.enemies.filter(o=>o.kind===e.kind&&o.spawnCamera===e.spawnCamera).sort((a,b)=>a.originX-b.originX);}
+ private spawnCameraReached(e:Enemy){
+  const g=this.nativeGroupMembers(e);
+  return g===undefined?this.camera>=e.spawnCamera!:((Math.floor(this.camera)+303)&~15)>=((g[0].spawnCamera!+303)&~15);
+ }
  /** HandleGroupEnemies fills the lowest free slots in x order on one frame; with all five slots busy a member is never made (2-1 x 1088 Goomba has no slot natively). */
  private activateNativeGroupMember(m:Enemy){
   m.active=true;m.x=Math.floor(this.camera)+255+24*this.nativeGroupIndex(m)!;this.takeNativeSlot(m);
   if(m.enemySlot===undefined){m.active=false;m.slotLost=true;}
- }
- private spawnCameraReached(e:Enemy){
-  return this.nativeGroupIndex(e)===undefined?this.camera>=e.spawnCamera!:((Math.floor(this.camera)+303)&~15)>=((e.spawnCamera!+303)&~15);
  }
  private spawnGroupShift(e:Enemy){
   if(!e.spawnCamera||!['goomba','koopa','redKoopa','beetle'].includes(e.kind))return 0;
@@ -909,7 +925,7 @@ export class Simulation {
  // without control (engine 7), then control returns at the spawn position.
  private beginPipeRise(frames:number){this.pipeRise=frames;this.player.y+=frames;this.player.grounded=false;this.player.vx=0;this.player.vy=0;}
  private updatePipeRise(){
-  this.pipeRise--;this.player.y--;this.updateEnemies(this.player.y);
+  this.pipeRise--;this.player.y--;this.enemyContactOff=true;this.updateEnemies(this.player.y);this.enemyContactOff=false; // native engine 7 (pipe exit): enemies run, PlayerEnemyCollision does not (8-4 area 2: no touch from the hidden Piranha at the exit pipe)
   if(this.pipeRise===0)this.player.grounded=this.isSolid(this.player.x+8,this.player.y);
  }
  private enterArea(id:string,spawn:[number,number],camera?:number,ordinaryEnemyFrontier?:number){
@@ -1140,18 +1156,7 @@ export class Simulation {
   * Each frame EnemyFrameTimer ($078A+s) counts down; at 0, a still plant (flag 0) about to rise stays while |plant x - Mario x| (low byte) < 0x21, else its speed is negated
   * and the flag set; it moves 1 px on odd FrameCounter frames and, on reaching its end, clears the flag and waits 0x40 frames. Speed $58+s, flag $A0+s, up $0417+s, down $0434+s. */
  private startNativePiranha(e:Enemy){const down=e.originY-24;e.pir={y:down,speed:1,flag:0,up:down-24,down,timer:0};e.y=e.originY;}
- private updateNativePiranha(e:Enemy){
-  const n=e.pir!;if(n.timer>0)n.timer--;
-  if(n.timer===0){
-   let move=true;
-   if(!n.flag){
-    if(n.speed>0){const d=Math.floor(e.x)-Math.floor(this.player.x),lo=d<0?(256-(d&255))&255:d&255;if(lo<0x21)move=false;}
-    if(move){n.speed=-n.speed;n.flag=1;}
-   }
-   if(move&&this.broClock%2===1){n.y+=n.speed;if(n.y===(n.speed>0?n.down:n.up)){n.flag=0;n.timer=0x40;}}
-  }
-  e.y=n.y+24;
- }
+ private updateNativePiranha(e:Enemy){nativePiranhaStep(e.pir!,Math.floor(e.x),Math.floor(this.player.x),this.broClock);e.y=e.pir!.y+24;}
  private updateNativeBlooper(e:Enemy){
   const p=this.player,k=e.age-1;let b=e.bloop;
   this.nativeBlooperTurn(e);
@@ -1528,11 +1533,11 @@ export class Simulation {
   return e.active&&e.x>=this.camera-reach&&(e.squashed?e.dead<22:e.dead<100||e.x<this.camera-48&&e.x-(e.dead-100)/2>=this.camera-73); // a squashed Goomba frees its slot after 22-42 rows: the minimum, so a doubtful object still spawns; one the remake already dropped keeps walking left natively
  }
  /** Native OffscreenBoundsCheck (after the enemy's own step, against this frame's scrolled ScreenLeft): an object whose 16-bit x is below ScreenLeft - 72, minus the
-  * borrow left by the id compare (id < 13: one more), or ScreenLeft + 56 + carry - 72 for a Hammer Bro / Piranha Plant, is erased. Flying Cheeps and Bullet Bills have their own rules. */
+  * borrow left by the id compare (id < 13: one more), or ScreenLeft + 57 - 73 (= -16) for a Hammer Bro / Piranha Plant, is erased. Flying Cheeps and Bullet Bills have their own rules. */
  private nativeLeftBound(e:Enemy){
   if(e.motion==='flying'||e.dead)return;
   const left=Math.floor(this.camera);
-  if(e.kind==='hammerBro'||e.kind==='piranha')return left+57-72-((left&255)+57>255?0:1);
+  if(e.kind==='hammerBro'||e.kind==='piranha')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle','blooper','cheep'].includes(e.kind))return left-73;
   if(['paratroopa','lakitu','spiny'].includes(e.kind))return left-72;
  }
@@ -1542,6 +1547,18 @@ export class Simulation {
    if(bound===undefined||Math.floor(e.x)>=bound)continue;
    e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;
    if(Simulation.SUBPIXEL_WALKERS.includes(e.kind))this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
+  }
+ }
+ /** Enemy_Y_Speed $A0+s, Enemy_Y_MoveForce $0434+s and the y fraction $0417+s are not cleared when an object is made: a new jumping Paratroopa starts from what the slot's
+  * last occupant left (7-1 row 300: speed -1, force 216 left in slot 0; 61 of 61 zero-start spawns of the v2 traces fall their first pixel on the motion row the carried bytes give).
+  * Writers modelled: Paratroopa/Podoboo 8.8 state, Piranha (flag/down/up y share these bytes), ground walkers and Hammer Bros (speed and force 0). Area loads clear them. */
+ slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));
+ private rememberSlotVertical(){
+  for(const e of this.enemies){
+   if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
+   if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
+   else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
+   else if(!e.dead&&['goomba','koopa','redKoopa','beetle','hammerBro'].includes(e.kind)&&e.vy===0){m.speed=0;m.force=0;}
   }
  }
  private piranhaColumns?:PiranhaColumns;
@@ -1603,7 +1620,7 @@ export class Simulation {
    const priorY=e.y,priorX=e.x; // the native touch test reads the enemy before its own move
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
-   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e))if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
+   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
@@ -1701,7 +1718,7 @@ export class Simulation {
      // its feet, EnemyLanding zeroes the speed, snaps native y to (y & 0xF0) | 8 and sets speed -3; then MoveJ_EnemyVertically (28/256 per frame, cap 3). 8-2 slot 3 rows 83-164: every row.
      // A landing 5+ px deep is also a side collision: the ordinary side probe (5 px above the integer feet) meets the floor and turns it.
      // first motion row: the 8.8 speed is the stored vy plus one gravity step (vy holds the speed before this row's gravity; a spawned one is at rest unless a spawnVy was measured)
-     const n=e.pod??=(()=>{const v=Math.round((e.vy+GREEN_PARATROOPA_PHYSICS.gravity)*256);return {...nativeMoveState(Math.floor(e.y)),speed:v>>8,force:v&255,fraction:Math.round((e.y-Math.floor(e.y))*256)&255};})();
+     const n=e.pod??=(()=>{const left=e.enemySlot!==undefined&&!e.unwingedAir&&e.age<=1?this.slotVertical[e.enemySlot]:undefined;if(left)return {...nativeMoveState(Math.floor(e.y)),...left};const v=Math.round((e.vy+GREEN_PARATROOPA_PHYSICS.gravity)*256);return {...nativeMoveState(Math.floor(e.y)),speed:v>>8,force:v&255,fraction:Math.round((e.y-Math.floor(e.y))*256)&255};})(); // a new one starts from the vertical bytes its slot was left with (slotVertical)
      const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
      if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
      nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
@@ -1720,13 +1737,13 @@ export class Simulation {
     // the final measured value; an extra life has not been established.
     this.floateyScore(shellRules.victimScores[Math.min(e.shellChain??0,shellRules.victimScores.length-1)]);e.shellChain=(e.shellChain??0)+1;this.emit('sfx_kick');
    }
-   if(p.dead)continue; // a pit fall keeps enemies moving, but a dead Mario touches nothing
+   if(p.dead||this.enemyContactOff)continue; // a pit fall keeps enemies moving, but a dead Mario touches nothing
    if(this.broClock%2!==0)continue; // PlayerEnemyCollision returns at once when FrameCounter $09 (broClock) is odd: no touch, stomp or star kill (25 of 25 native enemy-contact deaths are on even rows; 8-2 row 168)
    const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
-   const stompWindow=this.nativeStompWindow(e,p,priorX,priorY);
-   if(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,e.x+2,e.y-eh,ew-4,eh)){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))this.hurt();continue;} // above the stomp box a rising or standing Mario is still hurt
+   const stompWindow=this.nativeStompWindow(e,p,priorX,priorY),chkInj=this.nativeChkInjStomp(e,p,priorX,priorY);
+   if(!chkInj&&(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,e.x+2,e.y-eh,ew-4,eh))){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))this.hurt();continue;} // above the stomp box a rising or standing Mario is still hurt
    if(e.kickOverlap)continue;
    // The newly unwinged Koopa and Mario can still overlap while the stomp
    // bounce separates them. Keep other enemies and later contacts dangerous.
@@ -1734,8 +1751,9 @@ export class Simulation {
    if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.awardPopup(100,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.koopaDurationActiveNativeFrames);this.emit('sfx_kick');continue;}
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
    if(this.kickRestingShellFromAbove(e,oldBottom))continue;
-   if(stompable&&(Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))){
-    p.vy=this.stompBounceVy(p.vy);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;
+   if(stompable&&((Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))||chkInj)){
+    if(chkInj&&!(Math.floor(p.vy)>0||this.stompedThisStep))p.vy=this.stompBounceVy(p.vy); // SBnce only stores speed byte -4: a rising Mario keeps his jump gravity (7-1 row 359, $0433 still +40 per row)
+    else{p.vy=this.stompBounceVy(p.vy);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;}
     // First Paratroopa contacts award 400; subsequent ordinary +100 is observed.
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     const award=e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)
@@ -1758,12 +1776,21 @@ export class Simulation {
    if(!first.shell)first.vx=-first.vx;if(!second.shell)second.vx=-second.vx;
   }
   this.turnWalkersAtCorpses();
+  this.rememberSlotVertical();
  }
  // Koopa-shaped enemies touch 1 px wider than the overlap box: native integer |enemy x before its move - Mario x| <= 11 (evidence/contact3-findings-20261111.md)
  private koopaSideReach(kind:string,x:number){return nativeHurtReachX(kind)>10&&Math.abs(Math.floor(x)-Math.floor(this.player.x))<=nativeHurtReachX(kind);}
  // Piranha rectangles read Mario before a floor snap (controlled 5-1 landing: native y129 box bottom161, final y128). Other enemies retain their measured contact pose.
  private nativeTouch(e:{kind:string},y:number,unmeasured:boolean){const p=this.player,feet=e.kind==='piranha'&&p.size===0?this.piranhaTouchFeetY??p.y:p.y;return nativeHurtHeight(e.kind,Math.floor(y)-24-(Math.floor(feet)-32),p.size>0,unmeasured);}
  // Native stomp reaches down to 8 px below the feet of a (rising) Paratroopa for a falling Mario with speed byte >= 1 (3-1 row 21010: Mario feet 183, Paratroopa feet 175).
+ /** Native ChkForPlayerInjury/ChkInj: with Player_Y_Speed <= 0 an object of id >= 7 (Bloober) is still stomped when Mario's y + 12 is above its y (7-1 row 359: Mario rising at y 140, Paratroopa at 161).
+  * Contact is the native box test (inclusive edges, enemy box before its move): Mario x+3..x+13, y+20..y+32 small or x+2..x+14, y+8..y+32 big; a winged Koopa x+2..x+14, y+9..y+21 (RAM $04AC/$04B0). */
+ private nativeChkInjStomp(e:Enemy,p:Player,priorX:number,priorY:number){
+  if(Math.floor(p.vy)>0||e.kind!=='paratroopa'||e.shell)return false;
+  const my=Math.floor(p.y)-32,ny=Math.floor(priorY)-24,mx=Math.floor(p.x),ex=Math.floor(priorX),small=p.size===0||p.duck;
+  if(my+12>=ny)return false;
+  return mx+(small?3:2)<=ex+14&&ex+2<=mx+(small?13:14)&&my+(small?20:8)<=ny+21&&ny+9<=my+32;
+ }
  private risingParatroopaStomp(e:any,p:any){return e.kind==='paratroopa'&&!e.shell&&p.vy>=1&&p.y-e.y<=8;}
  // Native stomp window for Goombas (areas `stomp`, `stomp2`, `stomp4`, `stompedge`; docs/NATIVE_ROLES.md): a falling Mario (speed byte >= 1) touches a Goomba only when the native frame counter
  // (broClock) is even (51 of 51 route stomps, 167 of 167 model stomps), and stomps it when his feet are at most 10 px above its feet (down to 8 px below them) with |dx| <= 10: Mario's integer x after

@@ -1,5 +1,5 @@
 /** Native enemy slots vs the remake's enemies, for native-divergence.ts and the multi-run excerpt tests.
- * Native: 5 slots, active flag $0F+k, id $16+k, x = $6E+k page * 256 + $87+k, y = $CF+k (sprite top). The remake keeps feet y (+32 offset), so a
+ * Native: 5 slots, active flag $0F+k (a flag with d7 set, $80 | owner slot, is a part of another object, e.g. the second slot of a 5-4 long firebar: skipped), id $16+k, x = $6E+k page * 256 + $87+k, y = $CF+k (sprite top). The remake keeps feet y (+32 offset), so a
  * native y equals remake (y - 32 + 8) & 255 for every walker measured on the 32 v2 traces. Only ids with a remake counterpart in sim.enemies are
  * compared (platforms, firebars, springs, cannons and items live elsewhere); a slot's first active frame is skipped because the remake activates
  * one frame after the native spawn. Read-only measurement code; never used by the browser game. */
@@ -8,7 +8,7 @@ export const NATIVE_ENEMY_KIND:Record<number,EnemyKind>={0:'koopa',1:'redKoopa',
 export type Entity={kind:EnemyKind,x:number,y:number};
 export function nativeEntities(r:Uint8Array,prev?:Uint8Array):Entity[]{
  const out:Entity[]=[];
- for(let k=0;k<5;k++){const kind=NATIVE_ENEMY_KIND[r[0x16+k]];if(!r[0xf+k]||!kind||(prev&&!prev[0xf+k]))continue;out.push({kind,x:r[0x6e+k]*256+r[0x87+k],y:r[0xcf+k]});}
+ for(let k=0;k<5;k++){const kind=NATIVE_ENEMY_KIND[r[0x16+k]];if(!r[0xf+k]||r[0xf+k]&0x80||!kind||(prev&&!prev[0xf+k]))continue;out.push({kind,x:r[0x6e+k]*256+r[0x87+k],y:r[0xcf+k]});}
  return out;
 }
 export function simEntities(sim:any):Entity[]{
