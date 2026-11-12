@@ -36,3 +36,8 @@ export function nativeHammerContact(n:NativeMisc,player:NativeBox,frame:number,o
  if(!nativeBoxesOverlap(n.box,player)){n.collision=false;return false;}
  if(n.collision)return false;n.collision=true;return true;
 }
+
+/** SetupJumpCoin retains the carry from ASL $06 four times: bit4 of the native block-buffer low address. */
+export function nativeAboveCoinStart(bufferRow:number,bufferLow:number,blockPage:number){
+ return {x:blockPage*256+((bufferLow<<4)&255)+5,y:(bufferRow+32+((bufferLow>>4)&1))&255};
+}

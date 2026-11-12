@@ -17,7 +17,7 @@ for(const level of fs.readdirSync(a.traces).sort()){
  for(let f=1;f<data.length/2048;f++){
   const p=row(f-1),r=row(f);
   if(p[0xe]!==8||r[0xe]!==8||r[0x770]!==1)continue;
-  for(let s=0;s<5;s++)if(p[0xf+s]&&r[0xf+s]&&p[0x16+s]===14&&r[0x16+s]===0)
+  for(let s=0;s<5;s++)if(p[0xf+s]&&r[0xf+s]&&[14,15,16].includes(p[0x16+s])&&r[0x16+s]===(p[0x16+s]&1))
    out.unwinged.push({level,row:f,slot:s,before:state(p,s),after:state(r,s),mario:r[0x6d]*256+r[0x86]});
   for(let s=0;s<5;s++)if(p[0xf+s]===1&&r[0xf+s]===1&&p[0x16+s]===15&&r[0x16+s]===15){
    const flight=q=>({y:q[0xcf+s]+24,speed:signed(q[0xa0+s]),force:q[0x434+s],fraction:q[0x417+s]});

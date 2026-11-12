@@ -18,12 +18,15 @@ function bridge(levelId:string,marioX:number){
  area.firebars=[];
  const sim=new Simulation([level]);sim.reset(true);
  const boss=sim.enemies.find(e=>e.kind==='bowser')!;assert.ok(boss);
+ // These archived calibration cases omit native RAM/random seeds and explicitly exercise their supplied legacy motor.
+ // Live spawns use native-bowser.ts, checked against complete slot-byte transitions in native-bowser-events.test.ts.
+ boss.bowser=createBowserMotor(boss.x,levelId);
  Object.assign(sim.player,{x:marioX,y:160,vx:0,vy:0,grounded:true,invincible:99999});sim.camera=boss.x-250;boss.active=true;
  return {sim,boss};
 }
 const crossOver=(sim:Simulation,x:number)=>{sim.player.x=x;sim.camera=Math.max(sim.camera,x-200);}; // the camera must follow or the screen edge clamps Mario
 
-for(const c of excerpts.cases)test(`${c.level}: Bowser anchor, hops, turn and chase follow the native trace rows`,()=>{
+for(const c of excerpts.cases)test(`legacy calibration ${c.level}: Bowser anchor, hops, turn and chase follow the native trace rows`,()=>{
  const {sim,boss}=bridge(c.level,c.mario.before);
  assert.equal(boss.x,c.rows[0][0],'spawn anchor is the native one');
  const nativeTurn=c.rows.findIndex((r,k)=>k>=30&&r[2]<0);assert.ok(nativeTurn>0);
@@ -48,7 +51,7 @@ test('the compiled spawn is replaced by the native anchor only while the spec ho
  assert.equal(observedLevels().find(l=>l.id==='1-4')!.areas.find(a=>a.id==='main')!.enemies.find(e=>e.kind==='bowser')!.x,2192);
 });
 
-test('native hop: first hop 30 frames after he appears, 35-frame rise of about 37 px, no hops or fire after he turns right',()=>{
+test('legacy calibration hop: first hop 30 frames after he appears, 35-frame rise of about 37 px, no hops or fire after he turns right',()=>{
  const {sim,boss}=bridge('1-4',1990);
  const ys:number[]=[];for(let k=0;k<110;k++){sim.step([],1);ys.push(boss.y);}
  assert.equal(ys[28],160);assert.ok(ys[30]<160,'rising from step 30');
@@ -60,7 +63,7 @@ test('native hop: first hop 30 frames after he appears, 35-frame rise of about 3
  assert.equal(sim.items.some(i=>i.kind==='flame'),false,'no fire while he faces right');
 });
 
-test('native fire: only while he faces left, 255 frames after he appears and every 207, flames 1.25 px/frame before 5-4 and 11/8 from 5-4',()=>{
+test('legacy calibration fire: only while he faces left, 255 frames after he appears and every 207, flames 1.25 px/frame before 5-4 and 11/8 from 5-4',()=>{
  const {sim}=bridge('1-4',1990);
  const flames:number[]=[];
  for(let k=1;k<=700;k++){const before=sim.items.filter(i=>i.kind==='flame').length;sim.step([],1);if(sim.items.filter(i=>i.kind==='flame').length>before)flames.push(k);sim.player.invincible=999;}

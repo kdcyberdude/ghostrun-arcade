@@ -20,7 +20,8 @@ test('native Blooper and Lakitu pictures use interval/frenzy timers and pre-move
 test('querying the lowest slot for graphics never allocates enemy or platform slots',()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);
  sim.enemies=sim.enemies.slice(0,2);for(const e of sim.enemies){e.active=true;delete e.enemySlot;}
+ const motor=structuredClone(sim.platformMotion);
  const platforms=[...sim.platformSlots],query=sim.freeNativeSlot(false,true);
- assert.ok(sim.enemies.every((e:any)=>e.enemySlot===undefined));assert.deepEqual([...sim.platformSlots],platforms);
+ assert.ok(sim.enemies.every((e:any)=>e.enemySlot===undefined));assert.deepEqual([...sim.platformSlots],platforms);assert.deepEqual(structuredClone(sim.platformMotion),motor);
  assert.equal(sim.freeNativeSlot(),query,'the read-only query predicts the actual allocator');
 });
