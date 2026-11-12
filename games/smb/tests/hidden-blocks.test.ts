@@ -11,7 +11,8 @@ test('the observed1-1 invisible block reveals a1up that ordinary movement can co
  assert.equal(sim.tiles.get('64,8'),96);
  sim.step(['a'],80);assert.equal(sim.tiles.get('64,8'),196);
  assert.ok(sim.items.some(item=>item.kind==='1up'));
- sim.step(['right','b'],40);assert.equal(sim.lives,4);assert.equal(sim.coins,0);assert.equal(sim.score,0);
+ // Native emergence is 17 FrameCounter&3 ticks; wait for the falling 1-up before following.
+ sim.step([],4);sim.step(['right','b'],40);assert.equal(sim.lives,4);assert.equal(sim.coins,0);assert.equal(sim.score,0);
 });
 
 test('the observed5-2 invisible foothold reveals one coin and remains a used block',()=>{
@@ -27,7 +28,7 @@ for(const collect of [false,true])test(`the1-1 hidden1up stays consumed after de
  main.spawn=[1024,208];main.camera=912;main.enemies=[];
  const sim=new Simulation([level]);sim.reset(true);sim.step(['a'],80);
  assert.equal(sim.tiles.get('64,8'),196);
- if(collect)sim.step(['right','b'],40);else sim.step(['left','b'],40);
+ if(collect){sim.step([],4);sim.step(['right','b'],40);}else sim.step(['left','b'],40);
  assert.equal(sim.lives,collect?4:3);
  // Walk into the actual first pit, then allow ordinary death and intro to finish.
  sim.step(['right','b'],collect?80:160);sim.step([],456);

@@ -11,7 +11,7 @@ import {parseArgs} from 'node:util';
 const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string',default:'tests/fixtures/native-enemy-rule-events.json'}}});
 if(!a.traces)throw Error('--traces is required');
 const signed=v=>v<128?v:v-256;
-const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[],hammerRows:[],hammerLagRows:[]};
+const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[],hammerRows:[],hammerLagRows:[],miscRows:[],hammerContacts:[],coinSpawns:[],miscOffscreenRows:[],blockAliasRows:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const d=fs.readFileSync(file),n=d.length/2048,R=f=>d.subarray(f*2048,(f+1)*2048);
@@ -55,6 +55,25 @@ for(const level of fs.readdirSync(a.traces).sort()){
   }
   if(play&&r[9]===p[9]&&[0,1,2,3,4].some(s=>r[15+s]&&r[22+s]===5)){
    out.hammerLagRows.push({level,row:f,frame:r[9],changes:Array.from({length:2048},(_,address)=>address).filter(address=>p[address]!==r[address]).map(address=>[address,p[address],r[address]]),oamBefore:p.subarray(0x200,0x300).toString('hex'),oamAfter:r.subarray(0x200,0x300).toString('hex')});
+  }
+  // Shared misc objects: source byte-state motor and cached bounding boxes; normal game-engine rows only.
+  if(p[0xe]===8&&(r[0xe]===8||r[0xe]===11)&&r[9]===((p[9]+1)&255)&&p[0x747]===0&&r[0x747]===0){
+   if(f%4===0&&[0,1].some(s=>p[0x26+s])){
+    const blocks=z=>Array.from({length:4},(_,s)=>({slot:s,state:s<2?z[0x26+s]:0,x:z[0x76+s]*256+z[0x8f+s],y:(z[0xbe+s]-1)*256+z[0xd7+s],speed:signed(z[0xa8+s]),force:z[0x43c+s],fraction:z[0x41f+s]}));
+    out.blockAliasRows.push({level,row:f,before:blocks(p),after:blocks(r)});
+   }
+   const live=Array.from({length:9},(_,s)=>s).filter(s=>p[0x2a+s]||r[0x2a+s]);
+   for(const s of live){
+    const before={state:p[0x2a+s],speed:signed(p[0xac+s]),force:p[0x440+s],fraction:p[0x423+s],y:(p[0xc2+s]-1)*256+p[0xdb+s],x:p[0x7a+s]*256+p[0x93+s]},after={state:r[0x2a+s],speed:signed(r[0xac+s]),force:r[0x440+s],fraction:r[0x423+s],y:(r[0xc2+s]-1)*256+r[0xdb+s],x:r[0x7a+s]*256+r[0x93+s]};
+    const camera=r[0x71a]*256+r[0x71c],box=Array.from(r.subarray(0x4ac+36+s*4,0x4ac+40+s*4));
+    if((before.state===0x81||before.state>0&&before.state<48)&&(f%16===0||before.state!==after.state))out.miscRows.push({level,row:f,slot:s,frame:r[9],scroll:r[0x775],before,after,camera,box,checkX:r[0x76+s]*256+r[0x8f+s]});
+    if(after.state===1&&(before.state===0||before.state>=0x80))out.coinSpawns.push({level,row:f,slot:s,busy:Array.from({length:9},(_,k)=>k).filter(k=>p[0x2a+k])});
+    const prior=live.filter(k=>k>s&&!(p[0x2a+k]===47&&r[0x2a+k]===0)).at(0);
+    const priorMisc=prior===undefined?undefined:{x:r[0x7a+prior]*256+r[0x93+prior],y:(r[0xc2+prior]-1)*256+r[0xdb+prior],camera};
+    if(before.state===0x81)out.hammerContacts.push({priorMisc,level,row:f,slot:s,frame:r[9],offscreen:p[0x3d6],player:Array.from(r.subarray(0x4ac,0x4b0)),box:Array.from(p.subarray(0x4ac+36+s*4,0x4ac+40+s*4)),latch:Boolean(p[0x6be+s]),nextLatch:Boolean(r[0x6be+s]),speed:signed(p[0x64+s]),nextSpeed:signed(r[0x64+s])});
+   }
+   const last=live.filter(s=>!(p[0x2a+s]===47&&r[0x2a+s]===0)).at(0);
+   if(last!==undefined&&f%16===0)out.miscOffscreenRows.push({level,row:f,x:r[0x7a+last]*256+r[0x93+last],y:(r[0xc2+last]-1)*256+r[0xdb+last],camera:r[0x71a]*256+r[0x71c],bits:r[0x3d6]});
   }
   // Hammer Bros: pre-step slot bytes and native outputs, with the block-buffer support read by ChkUnderEnemy.
   if(play&&r[9]===((p[9]+1)&255))for(let s=0;s<5;s++)if(r[0xf+s]&&r[0x16+s]===5&&p[0xf+s]&&p[0x16+s]===5&&!(p[0x1e+s]&0x20)&&!(r[0x1e+s]&0x20)&&r[0x747]===0&&p[0x747]===0){

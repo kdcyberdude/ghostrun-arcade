@@ -46,7 +46,7 @@ export class Renderer3D{
   if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
   this.atmosphere.render();
   // Same visibility rule as the HUD's lives screen.
-  if(s.phase==='intro'&&!(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
+  if(s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
   if(this.hud.draw(s,true)){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}
  }
  /** What is still drawn by stand-ins (honest coverage reporting; read by tools/visual3d). */
