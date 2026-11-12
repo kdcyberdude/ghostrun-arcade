@@ -44,7 +44,7 @@ export class Entities{
   if(s.frame<this.lastFrame){this.walkPhase=0;this.lastX=NaN;this.marioYaw=yawFor(s.player.facing);this.enemyYaw=new WeakMap();}
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
-  for(const e of s.enemies)if(e.active&&enemyPicture(e).dead<90)this.enemy(e,s);
+  for(const e of s.enemies)if(e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
   for(const i of s.items)if(itemShown(i))this.item(i,s);
   this.retainer(s);
   for(const p of this.pools.values())p.end();
