@@ -69,12 +69,15 @@ test('the 8-4 camera-lava platform is the native horizontal object (x 1120 at th
  assert.equal(motion.collisionPosition(platform,40).y,208);
 });
 
-test('a player stands on a platform from 13 px before its left edge to 2 px past its right edge (native walk-offs and landings)',()=>{
- // native: landings from dx -13/-14, last supported rows at dx width+1..+3, first unsupported rows at width+3..+5 (3-3, 4-2, 5-4, 6-3)
+test('platform support uses the native inclusive player and platform boxes',()=>{
+ // 4-3 v2 row713: x1501 on platform1456..1504 remains supported.
+ // Row714: x1504 has left edge1507, no support, and native enters falling.
  for(const width of [24,32,48]){
-  assert.ok(platformSupportsX(100-13,100,width),'dx -13 lands');
-  assert.ok(!platformSupportsX(100-14,100,width),'dx -14 does not');
-  assert.ok(platformSupportsX(100+width+1,100,width),'dx width+1 still stands');
-  assert.ok(!platformSupportsX(100+width+2,100,width),'dx width+2 has walked off');
+  assert.ok(platformSupportsX(100-13,100,width),'small right edge touches platform left');
+  assert.ok(!platformSupportsX(100-14,100,width),'small Mario is one pixel short');
+  assert.ok(platformSupportsX(100+width-3,100,width),'small left edge touches platform right');
+  assert.ok(!platformSupportsX(100+width-2,100,width),'small Mario has walked off');
+  assert.ok(platformSupportsX(100-14,100,width,true),'big Mario has a wider box');
+  assert.ok(platformSupportsX(100+width-2,100,width,true));
  }
 });
