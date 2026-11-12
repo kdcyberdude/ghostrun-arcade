@@ -1,6 +1,8 @@
+import {nativeEnemyStream} from './native-enemy-stream.mjs';
 import fs from'node:fs';import{PNG}from'pngjs';
 import{createHash}from'node:crypto';
 import{applyObservedOpeningPodoboo}from'./podoboo-three-four-inventory-adapter.mjs';
+const nativeSwimmerStreams=JSON.parse(fs.readFileSync('data/native-stream-swimmers.json'));
 const observations=JSON.parse(fs.readFileSync('data/observed-levels.json')),entities=JSON.parse(fs.readFileSync('data/entity-campaign.json')),first=JSON.parse(fs.readFileSync('data/gameplay-1-1.json'));
 const pipeRoomPreview=JSON.parse(fs.readFileSync('data/pipe-room-preview.json'));
 const pipeEntryCalibrations=JSON.parse(fs.readFileSync('data/pipe-entry-calibrations.json')).calibrations;
@@ -417,6 +419,10 @@ for(const level of observations.levels){
   const generatedFish=['2-3','7-3'].includes(level.id),generatedBills=['5-3','6-3'].includes(level.id);
   const generators=structuredClone(correctedEntity?.generators??[]);
   if(generatedFish&&enemies.some(e=>e.kind==='cheep')){const xs=enemies.filter(e=>e.kind==='cheep').map(e=>e.x);generators.push({kind:'flyingFish',from:Math.max(0,Math.min(...xs)-256),to:Math.max(...xs),interval:80});enemies=enemies.filter(e=>e.kind!=='cheep');}
+  for(const stream of nativeSwimmerStreams.streams)if(stream.areas.some(a=>a.level===level.id&&a.area===segment.id)){
+   const [world,course]=level.id.split('-').map(Number),hard=world>5||world===5&&course>=3;
+   for(const object of nativeEnemyStream(stream.bytes,hard).filter(o=>o.id===10||o.id===11))enemies.push({kind:'cheep',x:object.x,y:object.y+24,direction:-1,palette:object.id===10?'0f-10-30-27':'0f-16-30-27',swim:{},nativeSlot:'wait',evidence:nativeSwimmerStreams.source});
+  }
   if(generatedBills&&enemies.some(e=>e.kind==='bullet')){const xs=enemies.filter(e=>e.kind==='bullet').map(e=>e.x);generators.push({kind:'bullet',from:Math.max(0,Math.min(...xs)-256),to:Math.max(...xs),interval:150});enemies=enemies.filter(e=>e.kind!=='bullet');}
   enemies=enemies.filter(e=>e.kind!=='spiny'||!enemies.some(e=>e.kind==='lakitu'));
   const castle=castles.find(c=>c.id===level.id&&c.segment===segment.id);
