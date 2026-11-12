@@ -58,6 +58,7 @@ const bases=replays.map(headless),orig=await browser('orig'),v25=await browser('
 const firstDiff=(a:string[],b:string[])=>{for(let i=0;i<Math.max(a.length,b.length);i++)if(a[i]!==b[i])return i;return -1;};
 const levels=replays.map((replay,i)=>({level:replay.level,frames:bases[i].hashes.length,checks:{
  origStatesVsHeadless:firstDiff(bases[i].hashes,orig.runs[i].hashes),v25StatesVsHeadless:firstDiff(bases[i].hashes,v25.runs[i].hashes),
+ states3dVsOrig:firstDiff(orig.runs[i].hashes,v25.runs[i].hashes),events3dVsOrig:firstDiff(orig.runs[i].events,v25.runs[i].events),
  origEventsVsHeadless:firstDiff(bases[i].events,orig.runs[i].events),v25EventsVsHeadless:firstDiff(bases[i].events,v25.runs[i].events)},
  events:bases[i].events.length,finalHash:bases[i].hashes.at(-1),msPerFrameInclRender:{orig:+orig.runs[i].ms.toFixed(2),v25:+v25.runs[i].ms.toFixed(2)},coverage:v25.runs[i].coverage}));
 const report={date:new Date().toISOString(),route:traces?'native entrance decisions':'data/observed-winning-inputs.json from standard reset; requested prefix only',renderer:v25.renderer,levels,errors:{orig:orig.errors,v25:v25.errors}};

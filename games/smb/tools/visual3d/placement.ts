@@ -23,14 +23,19 @@ const audit=()=>p.evaluate(()=>{const w=window as any,s=w.marioDebug.simulation;
 if(native){
  const keys=['a','b','select','start','up','down','left','right'];
  for(const l of observedLevels()){if(only.length&&!only.includes(l.id))continue;
-  const dir=path.join(native,l.id);let pads:Buffer,entrance:unknown;
+  const before=rows.length,dir=path.join(native,l.id);let pads:Buffer,entrance:unknown;
   try{pads=await readFile(path.join(dir,'pads.bin'));entrance=decodeEntrance(new Uint8Array(await readFile(path.join(dir,'initial.ram'))),JSON.parse(await readFile(path.join(arg('entrances',''),l.id,'entrance.json'),'utf8')));}catch(e){await g.close();throw e;}
   await p.evaluate(async e=>{const w=window as any,s=w.marioDebug.simulation,m=await import('/tools/harness/native-entrance.mjs');w.mario.reset({playing:true});m.initializeEntrance(s,e);s.step([],0);s.inputs=[];},entrance);
-  for(let f=0;f<Math.min(pads.length,limit);f+=every){
-   const chunk=[...pads.subarray(f,Math.min(f+every,limit))].map(b=>keys.filter((_,i)=>b&(1<<i)));
-   await p.evaluate(c=>{const s=(window as any).marioDebug.simulation;for(const b of c)s.step(b,1,[]);},chunk);
-   const a=await audit();rows.push({frame:f+chunk.length,level:a.level,area:a.area,phase:a.phase,camera:a.camera,issues:a.r.issues});
+  // Batch browser round trips, while drawing and comparing every requested sample inside each batch.
+  for(let f=0;f<Math.min(pads.length,limit);f+=every*128){
+   const chunk=[...pads.subarray(f,Math.min(f+every*128,limit))].map(b=>keys.filter((_,i)=>b&(1<<i)));
+   const batch=await p.evaluate(({chunk,every,from})=>{const w=window as any,s=w.marioDebug.simulation,out:Row[]=[];
+    for(let i=0;i<chunk.length;i+=every){const count=Math.min(every,chunk.length-i);for(let j=0;j<count;j++)s.step(chunk[i+j],1,[]);
+     s.events.length=0;w.render3d.render(s);const r:FrameReport=w.placement.audit();out.push({frame:from+i+count,level:s.level.id,area:s.area.id,phase:s.phase,camera:Math.floor(s.camera),issues:r.issues});}
+    return out;
+   },{chunk,every,from:f});rows.push(...batch);
   }
+  console.log(`native ${l.id}: ${rows.length-before} frames audited`);
  }
 }else if(!staged){
  await p.evaluate(()=>(window as any).mario.reset({playing:true}));
