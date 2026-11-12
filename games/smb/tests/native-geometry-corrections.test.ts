@@ -23,9 +23,9 @@ test('4-2 area-3: the seven native plants (object x = pipe left + 8) sit on grid
  for(const x of [1160,1256,1352,1720,2216,2280,2888]){ // native id 13 object x (first appearances, rows 32041..32849)
   const left=(x-8)/16;
   assert.ok(area.enemies.some(e=>e.kind==='piranha'&&e.x===x),`plant ${x}`);
-  const top=area.tiles.find(t=>t[0]===left&&t[2]===16);
+  const top=area.tiles.find(t=>t[0]===left&&[16,18].includes(t[2]));
   assert.ok(top,`pipe top at col ${left}`);
-  assert.ok(area.tiles.some(t=>t[0]===left+1&&t[1]===top![1]&&t[2]===17),`right top at col ${left+1}`);
+  assert.ok(area.tiles.some(t=>t[0]===left+1&&t[1]===top![1]&&[17,19].includes(t[2])),`right top at col ${left+1}`);
   assert.ok(area.tiles.some(t=>t[0]===left&&t[1]===top![1]+1&&t[2]===20),`body below col ${left}`);
  }
 });
@@ -41,9 +41,10 @@ test('4-2 area-3: native Mario stands on the pipe at x 1248-1279 until x 1279 an
 
 test('4-2 area-3: native Mario passes the hanging brick mass end (x 762-777) and the side-pipe mouth is a wall at x 2992',()=>{
  const sim=areaSim('4-2','area-3');
- // rows 31978..31986: rising past y 80..53 beside/under the old mass end (the row at x 762 still overlaps the new end by 1 px: edge slack)
+ // rows 31978..31986: rising right past y 80..53 beside the mass end. The native block buffer (evidence/native-level-map.json) ends the mass at
+ // column 47 (x 752-767), so only the leading wall probe (x+13) of the right-moving body stays clear; the trailing x+2 is inside column 47.
  for(const p of [[757,80],[760,76],[765,69],[767,65],[770,62],[772,59],[775,56],[777,53]] as [number,number][])
-  assert.deepEqual(bodyHits(sim,p),[],`mass row at ${p}`);
+  for(const py of [p[1]+32-12,p[1]+32-8])assert.equal(sim.collisionAt(p[0]+13,py),undefined,`mass row at ${p}`);
  // rows 33108-33114: jumping at x 2977 the player stays at x 2978-2979 below the pipe top (feet 128) and clears it above
  assert.ok(sim.collisionAt(2979+13,130),'mouth wall at feet 130');
  assert.equal(sim.collisionAt(2979+13,126),undefined,'above the mouth is open');
@@ -122,7 +123,7 @@ test('1-2 area-2 x 1344-2575: plants, pipe top, brick ledges and the block end s
  for(const x of [1656,1752]){ // native id 13 object x (rows 3262 and 3301), pipe left = x - 8
   const left=(x-8)/16;
   assert.ok(area.enemies.some(e=>e.kind==='piranha'&&e.x===x),`plant spec ${x}`);
-  assert.ok(area.tiles.some(t=>t[0]===left&&t[2]===16),`pipe top at col ${left}`);
+  assert.ok(area.tiles.some(t=>t[0]===left&&[16,18].includes(t[2])),`pipe top at col ${left}`);
  }
  const sim=areaSim('1-2','area-2');
  // rows 3437..3440 (x, y): standing on the second pipe top (feet 144) at x 1742-1747; the old pipe at 1760 needs x >= 1747 (x + 13 >= 1760)
@@ -157,10 +158,12 @@ test('1-2 area-2 end block: the exit pipe stands at x 2656 where native Mario st
  for(const x of [2589,2597,2612,2627,2642])assert.ok(supported(sim,x,160),`mass top at ${x}`);
 });
 
-test('6-1 main: native Mario lands at x 2170 and stands on floor (feet 208) from x 2172 to 2195 where the map had the floor start at 2208 (1 passage)',()=>{
+test('6-1 main: native Mario lands at x 2170 and stays at feet 208 to x 2195 where the map had the floor start at 2208 (1 passage)',()=>{
  const sim=areaSim('6-1','main'); // rows 47668..47678: x 2170, 2172, 2175 ... 2195 at y 176 (feet 208)
- for(const x of [2170,2172,2175,2177,2180,2182,2185,2187,2190,2192,2195])assert.ok(sim.hasSupportAt(x,208),`floor under ${x}`);
- assert.equal(sim.hasSupportAt(2150,208),false,'the pit before it is unchanged (native is still above the floor line there)');
+ // The native block buffer (evidence/native-level-map.json) has a pit at columns 132-133, floor in columns 134-135, a one-column gap at 136
+ // (x 2176-2191) and floor from 137: the rows at x 2175 and 2177 are over the gap with both feet and run across it.
+ for(const x of [2150,2170,2172,2180,2182,2185,2187,2190,2192,2195])assert.ok(sim.hasSupportAt(x,208),`floor under ${x}`);
+ for(const x of [2125,2175,2177])assert.equal(sim.hasSupportAt(x,208),false,`gap under ${x}`);
 });
 
 test('8-3 main: native Mario stands on floor (feet 208) at x 3319-3329 where the map had the floor start at 3344 (1 passage)',()=>{

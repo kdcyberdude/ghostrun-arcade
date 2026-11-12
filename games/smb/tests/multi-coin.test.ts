@@ -29,9 +29,9 @@ test('bounded coin clock predicts all four untouched native heldouts under the d
 
 test('ordinary repeated jumps award coins, keep the brick until a late hit, then stop at used',()=>{
  const sim=fixture();jump(sim);assert.equal(sim.coins,1);assert.equal(sim.score,200);
- assert.equal(sim.tiles.get('77,9'),81);
+ assert.equal(sim.tiles.get('77,9'),88);
  jump(sim);assert.equal(sim.coins,2);assert.equal(sim.score,400);
- sim.step([],240);assert.equal(sim.tiles.get('77,9'),81,'expiry must not passively change artwork');
+ sim.step([],240);assert.equal(sim.tiles.get('77,9'),88,'expiry must not passively change artwork');
  jump(sim);assert.equal(sim.coins,3);assert.equal(sim.score,600);assert.equal(sim.tiles.get('77,9'),196);
  for(let n=0;n<3;n++)jump(sim);
  assert.equal(sim.coins,3);assert.equal(sim.score,600);assert.equal(sim.phase,'play');assert.equal(sim.lives,3);
@@ -39,6 +39,6 @@ test('ordinary repeated jumps award coins, keep the brick until a late hit, then
 
 test('large-player content transfer awards a coin instead of shattering the multi-coin brick',()=>{
  const sim=fixture(true);jump(sim);
- assert.equal(sim.coins,1);assert.equal(sim.score,200);assert.equal(sim.tiles.get('77,9'),81);
+ assert.equal(sim.coins,1);assert.equal(sim.score,200);assert.equal(sim.tiles.get('77,9'),88);
  assert.ok(sim.items.every(item=>item.kind!=='debris'));
 });

@@ -58,7 +58,7 @@ test('a walker group created late appears further right, followers included (nat
 test('coins and blocks the screenshot maps lost are back where native collects them',()=>{
  const levels=observedLevels(),cell=(l:string,a:string,c:number,r:number)=>levels.find(x=>x.id===l)!.areas.find(x=>x.id===a)!.tiles.find(t=>t[0]===c&&t[1]===r)?.[2];
  assert.equal(cell('2-3','main',97,5),194,'route row 17479');assert.equal(cell('4-3','main',70,2),194,'route row 35037');assert.equal(cell('2-2','area-2',102,11),195,'route row 13517');
- assert.equal(cell('5-4','main',102,12),194,'route row 45320');assert.equal(cell('5-4','main',103,12),undefined,'native passes this cell without a pickup');
+ assert.equal(cell('5-4','main',102,12),194,'route row 45320');assert.equal(cell('5-4','main',103,12),194,'native block buffer: a coin (the route passes beside it)');
  assert.equal(cell('2-1','main',85,9),192,'route row 9480 pays a coin here');assert.equal(cell('1-2','area-2',10,9),193,'mood1 row 2963: no coin');assert.equal(cell('1-2','area-2',11,9),192);
  assert.ok(levels.find(x=>x.id==='5-2')!.areas.find(x=>x.id==='area-2')!.blockContents!.some(b=>b.col===31&&b.row===9&&(b.kind as string)==='coin'),'route row 40715');
 });

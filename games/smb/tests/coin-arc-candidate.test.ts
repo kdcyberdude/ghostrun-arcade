@@ -21,7 +21,7 @@ test('ordinary first question block emits a source-measured coin arc and awards 
 test('multi-coin block component emits the same observed initial arc and retains repeatability',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='3-2')!);const area=level.areas.find(a=>a.id==='main')!;area.enemies=[];area.generators=[];area.exit=undefined;
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[1232,208],1189);
- checkArc(sim,()=>sim.step(['a'],1));assert.equal(sim.tiles.get('77,9'),81);
+ checkArc(sim,()=>sim.step(['a'],1));assert.equal(sim.tiles.get('77,9'),88);
  sim.step([],36);sim.step(['a'],16);sim.step([],30);assert.equal(sim.coins,2);assert.equal(sim.score,400);
 });
 

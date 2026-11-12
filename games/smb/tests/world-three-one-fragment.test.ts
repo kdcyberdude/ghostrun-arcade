@@ -8,7 +8,7 @@ test('3-1 elevated question awards one coin per area visit',()=>{
  const area=level.areas.find(a=>a.id==='main')!;
  area.enemies=[];area.generators=[];area.exit=undefined;
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[1805,144],1693);
- const piece=()=>sim.freeTiles.find(t=>t.x===1805&&t.y===80)!;
+ const piece=()=>({id:sim.tiles.get('113,5')}); // native block buffer: a coin ?-block in column 113 (x 1808), once a free piece at x 1805
  sim.step(['a'],20);
  assert.equal(sim.coins,1);assert.equal(sim.score,200);assert.equal(piece().id,196);
  sim.step([],60);assert.equal(sim.player.grounded,true);

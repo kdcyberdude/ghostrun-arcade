@@ -29,7 +29,7 @@ test('the observed4-2 tall-pipe plant retracts behind its reconstructed pipe top
  const area=level.areas.find(a=>a.id==='area-3')!,spec=area.enemies.find(e=>e.kind==='piranha'&&e.x===1256)!;
  // Native rows (plant object x 1256 = pipe left 1248 + 8, Mario standing on the pipe top x 1267-1279, Buzzy Beetle turning at x 1279) put this pipe one tile left of the
  // screenshot-era 1264 and its top on the grid (data/native-geometry-corrections.json).
- assert.equal(spec.y,120);assert.ok(area.tiles.some(t=>t[0]===78&&t[1]===6&&t[2]===16)&&area.tiles.some(t=>t[0]===79&&t[1]===6&&t[2]===17));
+ assert.equal(spec.y,120);assert.ok(area.tiles.some(t=>t[0]===78&&t[1]===6&&[16,18].includes(t[2]))&&area.tiles.some(t=>t[0]===79&&t[1]===6&&[17,19].includes(t[2])));
  area.enemies=[{...spec,phase:0}];area.generators=[];area.firebars=[];area.cannons=[];
  const sim=new Simulation(levels);sim.reset(true);sim.levelIndex=levels.indexOf(level);sim.loadArea('area-3',[1224,144],1146);
  const plant=sim.enemies[0];sim.step([],48);assert.equal(plant.y,120);

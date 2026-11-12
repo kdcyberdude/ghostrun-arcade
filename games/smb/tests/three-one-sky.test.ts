@@ -6,7 +6,7 @@ import {Simulation} from '../src/simulation.js';
 test('observed3-1 upper vine brick replaces the misregistered overlapping fragments and grows under an ordinary head hit',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='3-1')!);
  const main=level.areas.find(a=>a.id==='main')!;
- for(const col of [129,130,131])assert.equal(main.tiles.find(t=>t[0]===col&&t[1]===5)?.[2],81);
+ for(const [col,id] of [[129,81],[130,81],[131,86]])assert.equal(main.tiles.find(t=>t[0]===col&&t[1]===5)?.[2],id); // 86: native $56 brick with vine
  assert.ok(!main.freeTiles?.some(t=>t.y===80&&t.x>=2060&&t.x<2112));
  main.spawn=[2096,128];main.enemies=[];
  const sim=new Simulation([level]);sim.reset(true);sim.step(['a'],24);
