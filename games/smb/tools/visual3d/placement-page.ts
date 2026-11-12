@@ -7,6 +7,8 @@ import {GameRenderer} from '../../src/renderer.js';
 import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
 import {platformMotionModel} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
+import {titleBootColor} from '../../src/view-rules.js';
+import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
 interface Rect{x:number;y:number;w:number;h:number}
@@ -36,13 +38,18 @@ function draw2d(s:Simulation){
 function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
  const cam=Math.floor(s.camera),out:Obj[]=[],misc=quads.filter(q=>q.tag==='misc'&&q.z!==2.5);  // z 2.5 = score popups (HUD text in 3D)
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
+ const exact=(x:number,y:number)=>union(misc.filter(q=>q.r.x===Math.floor(x)&&q.r.y===Math.floor(y)).map(q=>q.r));
  const pr=union(quads.filter(q=>q.tag==='player').map(q=>q.r));if(pr)out.push({id:'player',kind:'player',...pr});
- s.enemies.forEach((e,i)=>{const r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,...r});});
+ s.enemies.forEach((e,i)=>{const r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
  s.items.forEach((it,i)=>{const r=near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,kind:it.kind,...r});});
  (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPosition(pl),r=near({x:p.x-cam,y:p.y,w:pl.width,h:8});if(r)out.push({id:'platform#'+i,kind:platformMotionModel(pl,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud'?'cloud':'lift',...r});});
- (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=near({x:x-4-cam,y:y-4+(bar.visualOffsetY??0),w:8,h:8});if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));
+ (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=exact(x-4-cam,y-4+(bar.visualOffsetY??0));if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));
  (s.area.springs??[]).forEach((sp,i)=>{const r=near({x:sp.x-cam,y:sp.y-23,w:16,h:24});if(r)out.push({id:'spring#'+i,kind:'spring',...r});});
  const exit=s.area.exit;if(exit?.kind==='flag'){const r=near({x:exit.x-16-cam,y:s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,w:16,h:16});if(r)out.push({id:'flag',kind:'flag',...r});}
+ if(s.phase==='flag'){
+  if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
+  s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
+ }
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',...rt});
  return out;
 }
@@ -56,7 +63,9 @@ function objects3d(r3:Any):Obj[]{
   for(let i=0;i<8;i++){v.set(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z).project(cam);const x=(v.x+1)/2*256,y=(1-v.y)/2*240;x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}
   return {x:x0,y:y0,w:x1-x0,h:y1-y0};
  };
- const add=(kind:string,o:THREE.Object3D|undefined,i:number)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,...r});};
+ const enemyModels=new Set(Object.values(ENEMY_MODEL));
+ const state=(kind:string,o:THREE.Object3D)=>kind.endsWith('_shell')?'shell':kind==='espinyEgg'?'egg':kind==='podoboo'?(o.rotation.z?'falling':'rising'):enemyModels.has(kind)?(kind==='goomba'&&o.scale.y<1?'squashed':o.rotation.z?'flipped':'normal'):undefined;
+ const add=(kind:string,o:THREE.Object3D|undefined,i:number)=>{if(!o?.visible)return;const r=project(o);if(r)out.push({id:`${kind}@${i}`,kind,state:state(kind,o),...r});};
  const e=r3.entities;
  if(e.mario)add('player',e.mario.root,0);
  for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>add(name,a.root,i));
@@ -81,7 +90,7 @@ export function audit():FrameReport{
  // Debris is a tile-sheet sprite in 2D (z 2): it is an object, not terrain.
  const debris=tiles.filter(t=>t.z===2);
  const o2=objects2d(s,quads.concat(debris.map(t=>({tag:'misc',r:{x:t.x,y:t.y,w:8,h:8},z:2}))));
- const black=['intro','gameover'].includes(s.phase)||s.pipeLoading;
+ const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing||(s.phase==='title'&&!!titleBootColor(s.titleFrame));
  const t3=black?[]:cells3d(r3,s),o3=black?[]:objects3d(r3);
  return compareFrame({theme:s.area.theme,camera:cam,tiles2d:t2,tiles3d:t3,objects2d:o2,objects3d:o3,pieceModel:pieceModels(PIECES)});
 }

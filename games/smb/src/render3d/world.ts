@@ -138,7 +138,7 @@ export class World{
   // Off-grid pieces (castle stone in 4-4 / 8-4, seabed, trunks, mushroom stems, ...) are drawn over the grid like the 2D picture: a piece covers the
   // grid tile of its cell. Interactive pieces bump with their cell.
   const free=s.freeTiles.filter(p=>p.x>=(c0-1)*16&&p.x<(c1+1)*16&&!s.area.hiddenFreeTiles?.some(h=>h.x===p.x&&h.y===p.y&&h.id===p.id&&h.palette===p.palette));
-  const pieces=[...free,...(s.area.decorations??[]).filter(d=>d.x>=(c0-1)*16&&d.x<(c1+1)*16&&!SCENERY.has(kindIn(d.id,theme)))];
+  const pieces=[...(s.area.decorations??[]).filter(d=>d.x>=(c0-1)*16&&d.x<(c1+1)*16&&!SCENERY.has(kindIn(d.id,theme))),...free];
   const covered=new Set(pieces.filter(p=>p.x%16===0&&p.y%16===0).map(p=>`${p.x/16},${p.y/16}`));
   for(let col=c0;col<=c1;col++)for(let row=2;row<15;row++){
    const key=`${col},${row}`,id=s.tiles.get(key);if(id===undefined||covered.has(key))continue;

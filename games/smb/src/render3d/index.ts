@@ -11,6 +11,7 @@ import {NES_W,NES_H} from './coords.js';
 import {loadImpostors} from './nature.js';
 import {IntroAvatar} from './avatar.js';
 import {TRANSITIONS} from '../simulation.js';
+import {titleBootColor} from '../view-rules.js';
 const query=new URLSearchParams(location.search);
 /** Output heights offered in the page (16:15 game frame): 960p default, 1080p, 2K (1440p), 4K (2160p). `?res=` picks one at load, `?scale=` still works. */
 export const RESOLUTIONS:Record<string,number>={'1K':960,'960p':960,'1080p':1080,'2K':1440,'4K':2160};
@@ -35,7 +36,9 @@ export class Renderer3D{
  }
  render(s:Simulation){
   this.gl.info.reset();
-  const camPx=Math.floor(s.camera);const black=['intro','gameover'].includes(s.phase)||s.pipeLoading;
+  const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;
+  if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
+  const camPx=Math.floor(s.camera);const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   this.atmosphere.setTheme(s.area.theme,s.area.id);
   this.world.group.visible=this.entities.group.visible=this.props.group.visible=!black;
   this.atmosphere.setBlackout(black);

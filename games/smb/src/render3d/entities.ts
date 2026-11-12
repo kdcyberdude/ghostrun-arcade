@@ -20,7 +20,7 @@ export class Entities{
  readonly group=new THREE.Group();private debug=new THREE.Group();private cache=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();
  private hitboxes:THREE.LineSegments[]=[];private hbUsed=0;private pools=new Map<string,ActorPool>();
  private mario?:Actor;private marioYaw=yawFor(1);private walkPhase=0;private lastX=NaN;private lastFrame=-1;private lastVariant='';
- private enemyYaw=new WeakMap<Enemy,number>();private coins:THREE.Mesh[]=[];private coinsUsed=0;readonly standIns=new Set<string>();
+ private enemyYaw=new WeakMap<Enemy,{frame:number;yaw:number}>();private coins:THREE.Mesh[]=[];private coinsUsed=0;readonly standIns=new Set<string>();
  constructor(private kit:Kit,private debugBoxes:boolean){
   this.group.add(this.debug);
   const inst=kit.instance('mario');if(inst){this.mario=new Actor(inst.root,inst.clips);this.group.add(this.mario.root);}
@@ -38,6 +38,7 @@ export class Entities{
  sync(s:Simulation,_camPx:number){
   for(const list of this.cache.values())for(const m of list)m.visible=false;this.used.clear();this.hbUsed=0;for(const l of this.hitboxes)l.visible=false;
   for(const p of this.pools.values())p.begin();for(const c of this.coins)c.visible=false;this.coinsUsed=0;
+  if(s.frame<this.lastFrame){this.walkPhase=0;this.lastX=NaN;this.marioYaw=yawFor(s.player.facing);this.enemyYaw=new WeakMap();}
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
   for(const e of s.enemies)if(e.active&&e.dead<90)this.enemy(e,s);
@@ -82,30 +83,33 @@ export class Entities{
   const facing=pose&&!water&&!p.climbing&&!p.duck&&!s.entryFallPose?pose.facing:p.facing;
   const target=p.dead?0:clip==='climb'||clip==='slide'?yawFor(facing)*0.4+(facing<0?Math.PI*0.6:0):yawFor(facing);
   if(p.dead)this.marioYaw=target;else if(advanced)this.marioYaw=turnToward(this.marioYaw,target);a.root.rotation.y=this.marioYaw;
-  // Death in 3D (render-only; the arc itself is the simulation's): face the camera at once with a short pop during the freeze, then come
-  // forward out of the scene, leaning back, so the fall reads in front of the terrain instead of sinking behind the ground.
-  if(p.dead){const k=Math.max(0,dyingFrame-DEATH_FREEZE);a.root.position.z=Math.min(2.4,k*0.06);a.root.rotation.x=-Math.min(0.55,k*0.014);a.root.rotation.z=Math.sin(k*0.09)*0.12;
-   a.root.scale.setScalar(scale*(1+0.12*Math.sin(Math.min(1,dyingFrame/10)*Math.PI)));}
-  else{a.root.rotation.x=0;a.root.rotation.z=0;}
   // Palette: Mario / Luigi / Fire, star flashing like the original's four palettes.
   let colors=p.size===2||(change?.kind==='fire'&&Math.floor(age/4)%2===1)?PALETTE.fire:s.currentPlayer?PALETTE.luigi:PALETTE.mario;
   if(p.star)colors=STAR[Math.floor(s.frame/(p.star>128?8:2))%4];
   const variant=colors.join();if(variant!==this.lastVariant){this.lastVariant=variant;a.recolor('M_Cloth_Primary',colors[0]);a.recolor('M_Cloth_Secondary',colors[1]);}
  }
- private yaw(e:Enemy,target:number){const y=turnToward(this.enemyYaw.get(e)??target,target);this.enemyYaw.set(e,y);return y;}
+ private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const [w,h]=DIMS[e.kind],cx=(e.x+8)/16,feet=(239-e.y)/16;this.box(e.x/16,feet,e.x/16+w,feet+h,0xff3030);
+  const [w,h]=DIMS[e.kind],cx=(e.x+(e.kind==='bowser'?16:8))/16,feet=(239-e.y)/16;this.box(e.x/16,feet,e.x/16+w,feet+h,0xff3030);
+  if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
+   const egg=this.take('espinyEgg',()=>{const m=new THREE.Mesh(new THREE.SphereGeometry(0.34,20,12),std(0xd23a2a));m.name='spinyEgg';
+    const material=std(0xf4ecd8),up=new THREE.Vector3(0,1,0);
+    for(const d of [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]]){const v=new THREE.Vector3(...d),spike=new THREE.Mesh(new THREE.ConeGeometry(0.09,0.2,8),material);spike.position.copy(v).multiplyScalar(0.4);spike.quaternion.setFromUnitVectors(up,v);m.add(spike);}return m;});
+   egg.position.set(cx,feet+0.5,0);egg.rotation.z=e.age*Math.PI/8;return;
+  }
   const shell=e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle');
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
-  const flipped=e.dead>20,facing=e.vx<0?-1:1;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(e):e.dead>20&&!e.squashed,facing=e.vx<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
+  // Podoboo is authored around its glowing center; walkers are authored from the feet.
+  if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
   if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
-  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(e,yawFor(e.kind==='hammerBro'?(s.player.x<e.x?-1:1):facing));
+  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(e,yawFor(e.kind==='hammerBro'?(s.player.x<e.x?-1:1):facing),s.frame);
   a.pose(e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk',e.age/60,s.frame);
  }
  private item(i:Item,s:Simulation){
@@ -117,7 +121,8 @@ export class Entities{
   const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
   a.root.position.set(cx,(240-i.y-16)/16,0);
+  if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
-  a.pose(i.kind==='star'||i.kind==='fireball'?'spin':i.kind==='flower'?'sway':'idle',i.age/60,s.frame);
+  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?i.age/16*a.duration('spin'):i.age/60,s.frame);
  }
 }
