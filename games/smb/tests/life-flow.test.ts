@@ -24,9 +24,9 @@ const near=(a:number,b:number,tol:number,label:string)=>assert.ok(Math.abs(a-b)<
 
 test('native mood0 live run: control rows after deaths 1013, 2083 and the game-over title row 2843 (within 1 row)',()=>{
  const {out,titleRow}=replay([642,1711,2215]);
- near(out[0].dyingRows,208,1,'dying rows (native 208)');near(out[0].playRow,1013,1,'control after death 1');
+ assert.equal(out[0].dyingRows,209,'zero-fraction fixture: 208 engine11 rows plus engine6');near(out[0].playRow,1013,1,'control after death 1');
  assert.equal(out[0].lives,2);assert.equal(out[0].time,400);assert.equal(out[0].x,40);
- near(out[1].dyingRows,207,1,'dying rows (native 207)');near(out[1].playRow,2083,1,'control after death 2');assert.equal(out[1].lives,1);
+ assert.equal(out[1].dyingRows,209,'this fixture starts with fraction0; native fraction32 ground arcs last one row less');near(out[1].playRow,2083,1,'control after death 2');assert.equal(out[1].lives,1);
  near(titleRow,2843,1,'title row after game over');
 });
 test('native mood1 and mood7 live runs: control rows 1013/1726 and 1894/2419',()=>{
@@ -37,12 +37,12 @@ test('lives screen end depends on the interval clock: native 1-1 control rows af
  const a=replay([642]).out[0].playRow,b=replay([646]).out[0].playRow;
  assert.equal(a,b);
 });
-test('a death from the ground ends when Mario has fallen out of the native death arc: 207/208 rows from y 176, 219 from y 128 (1-4 native)',()=>{
- for(const [startFeet,native] of [[208,207.5],[160,219]]){
+test('a zero-fraction ground death includes its native engine6 exit row',()=>{
+ for(const [startFeet,native] of [[208,209],[160,220]]){
   const level=structuredClone(observedLevels().find(l=>l.id==='1-1')!);
   const sim=new Simulation([level]);sim.reset(true);sim.step([],5);sim.player.y=startFeet;sim.die();
   let n=0;while(sim.phase==='dying'&&n<400){sim.step([],1);n++;}
-  near(n,native,1,`dying rows from feet ${startFeet}`);
+  assert.equal(n,native,`dying rows including engine6 from feet ${startFeet}`);
  }
 });
 test('1-2 respawn after the checkpoint is at native x 1576 (page 6 + 40), time 400',()=>{
