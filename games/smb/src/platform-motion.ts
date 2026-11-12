@@ -1,4 +1,5 @@
 import type {PlatformSpec} from './types.js';
+import {nativeBalanceStep,nativeDropStep,type PlatformVerticalState} from './native-platform-motor.js';
 import waterEntryRules from '../data/water-entry-rules.json';
 import fiveTwoWaterEntryRules from '../data/water-entry-5-2-rules.json';
 import eightFourPlatformRules from '../data/eight-four-platform-rules.json';
@@ -17,6 +18,8 @@ export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotio
  const list=(nativePlatformMotion.objects as unknown as Record<string,NativePlatformObject[]>)[`${context.levelId}/${context.areaId}`];
  return list?.find(o=>o.spec[0]===platform.x&&o.spec[1]===platform.y)??eightFourLapObject(list,platform,context);
 }
+/** Native id37 is parsed at object X−303, before its first motion frame. */
+export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.spawnCamera;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */
 function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:PlatformSpec,context:PlatformMotionContext):NativePlatformObject|undefined {
  if(context.levelId!=='8-4'||context.areaId!=='main'||platform.x<1024)return undefined;
@@ -36,22 +39,28 @@ export function nativeWrapY(object:NativePlatformObject,age:number){
  * of fraction + force, adds 5/256 (cap 3 once the force reaches 128) and, at or below the centre (y >= centre), takes 10/256 back (cap -3 below 128).
  * `counter` is FrameCounter ($09) on the spawn frame. Returns y at `age` frames after the spawn (age 0: y0). */
 const liftTracks=new Map<string,number[]>();
+const liftStates=new Map<string,PlatformVerticalState[]>();
 export function nativeLiftY(y0:number,age:number,counter=0){
  const key=`${y0},${counter&7}`;let track=liftTracks.get(key);
- if(!track){track=[y0];liftTracks.set(key,track);}
+ if(!track){track=[y0];liftTracks.set(key,track);liftStates.set(key,[{y:y0,speed:0,force:0,fraction:0}]);}
  const state=(track as number[]&{s?:{y:number;speed:number;force:number;fraction:number}}).s??={y:y0,speed:0,force:0,fraction:0};
  const top=y0<128?y0:256-y0,centre=(y0+(y0<128?64:192))&255;
  while(track.length<=age){
   const n=state,a=track.length;
-  if(n.speed===0&&n.force===0){n.fraction=0;if(n.y<top){if(((counter+a)&7)===0)n.y++;track.push(n.y);continue;}}
+  if(n.speed===0&&n.force===0){n.fraction=0;if(n.y<top){if(((counter+a)&7)===0)n.y++;track.push(n.y);liftStates.get(key)!.push({...n});continue;}}
   const up=n.y>=centre;
   const f=n.fraction+n.force;n.fraction=f&255;n.y=(n.y+n.speed+(f>>8))&255;
   const v=n.force+5;n.force=v&255;n.speed+=v>>8;
   if(n.speed>=3&&n.force>=128){n.speed=3;n.force=0;}
   if(up){const w=n.force-10;n.force=w&255;if(w<0)n.speed--;if(n.speed<-3&&n.force<128){n.speed=-3;n.force=255;}}
-  track.push(n.y);
+  track.push(n.y);liftStates.get(key)!.push({...n});
  }
  return track[Math.max(0,age)];
+}
+/** The native lift writes these bytes back into its enemy slot; its successor
+ * keeps the fraction (4-3: lift slot1 leaves206 for the next balance pair). */
+export function nativeLiftState(y0:number,age:number,counter=0,fraction=0):PlatformVerticalState{
+ nativeLiftY(y0,age,counter);const state=liftStates.get(`${y0},${counter&7}`)![Math.max(0,age)];return age===0?{...state,fraction}:state;
 }
 /** Native XMovingPlatform (object id 40, the 'horizontal' kind; SMB disassembly XMoveCntr_Platform/MoveWithXMCntrs/MoveObjectHorizontally, checked on
  * every row of every id-40 object in the 32 v2 traces): a primary counter ($A0+x) and a secondary counter ($58+x, maximum 14) both start at 0. On frames
@@ -156,7 +165,7 @@ export function platformMotionModel(platform:PlatformSpec,context:PlatformMotion
 /** Native OffscreenBoundsCheck erases platform ids >= 13 when their integer x is below ScreenLeft - 72, regardless of platform width (all v2 removal events). */
 export function nativePlatformHoldsSlot(motion:PlatformMotion,platform:PlatformSpec,context:PlatformMotionContext,camera:number,frame:number){
  const o=nativePlatformObject(platform,context);
- return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&camera>=o.spawnCamera&&Math.floor(motion.collisionPosition(platform,frame).x)>=camera-72;
+ return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&camera>=nativePlatformSpawnCamera(o)&&Math.floor(motion.collisionPosition(platform,frame).x)>=camera-72;
 }
 /** Querying positions never advances simulation. */
 export class PlatformMotion {
@@ -171,14 +180,21 @@ export class PlatformMotion {
  /** Spawn point passed with all slots busy while the object was still off screen: made on the first frame a slot is free (`create`). */
  waiting=new Set<PlatformSpec>();
  create(platform:PlatformSpec,frame:number){this.waiting.delete(platform);this.nativeStart.set(platform,frame);}
- private pulleys=new Map<string,{start:number;d:number[];v:number;load:Record<string,number>;rules:typeof nativePlatformMotion.pulley}>();
+ private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState}>();
+ private startFraction=new Map<PlatformSpec,number>();
+ slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform))this.startFraction.set(platform,fraction);}
+ verticalState(platform:PlatformSpec,frame:number){
+  const o=nativePlatformObject(platform,this.context);if(!o)return;
+  if(o.kind==='lift')return nativeLiftState(o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startFraction.get(platform)??0);
+  if(!o.pair)return;const p=this.pulleys.get(o.pair.join(','));return p?.driver===o?p.motor:undefined;
+ }
  constructor(public context:PlatformMotionContext){}
- reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.startCounter.clear();this.startSub.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();}
+ reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.startCounter.clear();this.startSub.clear();this.startFraction.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();}
  // Frames since the native object was created: the first logged frame whose camera had reached its spawn camera.
  private nativeAge(platform:PlatformSpec,object:NativePlatformObject,frame:number){
   let start=this.nativeStart.get(platform);
   const last=this.cameraLog[this.cameraLog.length-1];
-  if(start===undefined&&!this.waiting.has(platform)&&last&&last[1]>=object.spawnCamera){start=this.cameraLog.find(([,camera])=>camera>=object.spawnCamera)![0];this.nativeStart.set(platform,start);}
+  if(start===undefined&&!this.waiting.has(platform)&&last&&last[1]>=nativePlatformSpawnCamera(object)){start=this.cameraLog.find(([,camera])=>camera>=nativePlatformSpawnCamera(object))![0];this.nativeStart.set(platform,start);}
   return start===undefined?0:Math.max(0,frame-start);
  }
  /** FrameCounter ($09) on the frame the native object was created (0 when not logged). */
@@ -201,22 +217,31 @@ export class PlatformMotion {
   if(this.context.levelId==='8-4'&&this.context.areaId==='main'&&this.eightFourLavaStart===undefined&&camera>=eightFourPlatformRules.cameraThreshold)this.eightFourLavaStart=frame;
   if(this.context.levelId==='5-3'&&this.context.areaId==='main'&&this.fiveThreeLiftStart===undefined&&camera>=624)this.fiveThreeLiftStart=frame;
  }
- // A rider on one side of a balance pair accelerates that side down and its partner up (0.02 px/frame^2, fitted to every ride of
- // the recorded route within 1 px); with nobody on either side the pair slows to a stop. The effect shows on the next frame.
+ // The second balance object owns ImposeGravity; its partner mirrors integer
+ // movement. Drop platforms apply 127/256 gravity only while ridden. Both keep
+ // the slot's fraction and integrate position before changing speed.
  private advancePulleys(frame:number){
   for(const pulley of this.pulleys.values()){
-   const rules=pulley.rules,load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
-   pulley.v=load!==0?Math.max(-rules.speedCap,Math.min(rules.speedCap,pulley.v+load*rules.accel)):pulley.v>0?Math.max(0,pulley.v-rules.release):Math.min(0,pulley.v+rules.release);
-   let d=pulley.d[pulley.d.length-1]+pulley.v;
-   if(Math.abs(d)>=rules.travelCap){d=Math.sign(d)*rules.travelCap;pulley.v=0;}
-   pulley.d.push(d);
+   const {driver,motor}=pulley;
+   const load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
+   if(driver.kind==='drop')nativeDropStep(motor,load!==0);
+   else nativeBalanceStep(motor,-load);
+   pulley.d.push((motor.y-driver.y)*driver.side!);
   }
  }
  contact(platform:PlatformSpec,frame:number){
   const model=platformMotionModel(platform,this.context);
   if(model==='native-balance'||model==='native-drop'){
    const object=nativePlatformObject(platform,this.context)!,key=object.pair!.join(',');
-   let pulley=this.pulleys.get(key);if(!pulley){pulley={start:frame,d:[0],v:0,load:{},rules:model==='native-drop'?nativePlatformMotion.drop:nativePlatformMotion.pulley};this.pulleys.set(key,pulley);}
+   let pulley=this.pulleys.get(key);
+   if(!pulley){
+    const partners=(this.context.levelId+'/'+this.context.areaId),list=(nativePlatformMotion.objects as unknown as Record<string,NativePlatformObject[]>)[partners];
+    const driver=model==='native-drop'?object:list?.find(o=>o.kind==='balance'&&o.pair?.join(',')===key&&o.side===-1);
+    if(!driver)return;
+    const spec=[...this.startFraction.keys()].find(p=>p.x===driver.spec[0]&&p.y===driver.spec[1]);
+    pulley={start:frame,d:[0],load:{},driver,motor:{y:driver.y,speed:0,force:0,fraction:spec?this.startFraction.get(spec)!:0}};
+    this.pulleys.set(key,pulley);
+   }
    pulley.load[String(object.side)]=frame;
   }
   if((model==='contact-fall'||model==='contact-cloud')&&!this.activated.has(platform))this.activated.set(platform,frame);
@@ -230,7 +255,19 @@ export class PlatformMotion {
   }
   if(model==='native-balance'||model==='native-drop'){
    const object=nativePlatformObject(platform,this.context)!,pulley=this.pulleys.get(object.pair!.join(','));
-   const offset=!pulley||frame<=pulley.start?0:pulley.d[Math.min(frame-pulley.start,pulley.d.length-1)];
+   let offset=0;
+   if(pulley&&frame>=pulley.start){
+    const index=frame-pulley.start+1;
+    if(index<pulley.d.length)offset=pulley.d[index];
+    else{
+     // Collision asks for this frame's surface before advance stores it. The
+     // position step uses the previous speed/force; acceleration follows it.
+     const next={...pulley.motor};
+     const load=(pulley.load['1']===frame-1?1:0)-(pulley.load['-1']===frame-1?1:0);
+     if(pulley.driver.kind==='drop')nativeDropStep(next,load!==0);else nativeBalanceStep(next,-load);
+     offset=(next.y-pulley.driver.y)*pulley.driver.side!;
+    }
+   }
    return {x:object.x,y:nativeObjectPosition(object,offset).y+1};
   }
   if(model==='water-descender'){
