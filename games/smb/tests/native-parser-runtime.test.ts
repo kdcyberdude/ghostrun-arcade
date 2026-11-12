@@ -83,3 +83,21 @@ test('a lives-screen respawn creates the first actor on engine7 and moves it on 
   if(frame===625){assert.equal(sim.broClock,166);assert.equal(e.pod.force,28);assert.equal(e.pod.fraction,0);}
  });
 });
+
+test('ordinary Koopa side collision reads rawY+20 before moving at the 8-2 wall',()=>{
+ replay('8-2',791,(sim,frame)=>{
+  if(frame<789)return;
+  const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===3&&e.kind==='koopa');assert.ok(e);
+  assert.equal(e.x,frame===789?355:frame===790?354.5:354,`row${frame}`);
+ });
+});
+
+test('a Spiny landing returns before checking the wall in its new direction',()=>{
+ // Native 6-1: row246 lands at x497.5 moving right; row247 then sees
+ // the wall at x+16, reverses, and moves left to497.
+ replay('6-1',247,(sim,frame)=>{
+  if(frame<245)return;
+  const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===1&&e.kind==='spiny');assert.ok(e);
+  assert.equal(e.x,frame===246?497.5:497,`row${frame}`);
+ });
+});
