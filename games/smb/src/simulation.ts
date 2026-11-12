@@ -1936,7 +1936,7 @@ export class Simulation {
   const koopaKind=['koopa','redKoopa','beetle','paratroopa'].includes(e.kind);
   if(!koopaKind&&e.kind!=='goomba'||e.shell||p.vy<1)return undefined;
   if(this.broClock%2!==0)return false;
-  const gap=(e.kind==='paratroopa'?priorY:e.y)-p.y;if(gap<-8)return undefined;
+  const gap=priorY-p.y;if(gap<-8)return undefined;
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
   return gap<=(koopaKind?15:10);
  }
