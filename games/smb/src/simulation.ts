@@ -19,6 +19,7 @@ import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
 import {flyingCheepLaunch,moveFlyingCheep} from './flying-cheep.js';
 import {newNativeBlooper,stepNativeBlooper} from './blooper-motion.js';
+import {nativeAutoWalkAreaLoad} from './area-load-clock.js';
 import {NativeRandom} from './native-random';
 import waterActorData from '../data/native-water-actors.json';
 import lakituData from '../data/native-lakitu.json';
@@ -528,7 +529,7 @@ export class Simulation {
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.platformMotion.advance(this.platformFrame,this.camera);
-  this.passNativeCannons();this.passNativeFrenzy();
+  this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
@@ -916,7 +917,9 @@ export class Simulation {
   if(this.pipeRise===0)this.player.grounded=this.isSolid(this.player.x+8,this.player.y);
  }
  private enterArea(id:string,spawn:[number,number],camera?:number,ordinaryEnemyFrontier?:number){
+  const autoWalkLoad=this.area.autoWalk&&this.phase==='pipe'?this.phaseFrame:undefined;
   this.loadArea(id,spawn,camera,true);this.broClock=HAMMER_NATIVE.pipeClock;this.lifeFrozen++;
+  if(autoWalkLoad!==undefined)this.intervalControl=nativeAutoWalkAreaLoad(this.random,this.intervalControl,autoWalkLoad);
   // A measured return may resume the ordinary NPC stream beyond its viewport.
   // Pipe plants are terrain actors; generators retain their normal lifecycle.
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
@@ -956,7 +959,6 @@ export class Simulation {
   // inhibition are inferred rules; phases are deterministic across resets.
   this.areaPlayFrame++;this.tickIntervalTimers();
   this.updateNativeCannons();
-  this.updateSwimGenerator();
   for(const [index,cannon]of(this.area.cannons??[]).entries()){
    if(cannon.native){if(this.recordedRoute&&cannon.fire)this.updateNativeCannon(cannon);continue;}
    const interval=cannon.interval??160,phase=cannon.phase??index*37%interval;
@@ -1115,6 +1117,7 @@ export class Simulation {
   enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotYFrac[slot]};enemy.active=true;this.enemies.push(enemy);
  }
  // Native swimming Cheep generator (2-2/7-2 water, free play; the recorded route replays its list): once the 32-frame timer is 0 the lowest free slot, if below 3, gets a fish at camera + 287.
+ // It runs after this frame's scroll with this row's register (2-2 v2 row 1308: camera 929 -> 931, the fish at 1218 with the height of random byte 0 of that row).
  private updateSwimGenerator(){
   const rule=SWIM_GEN_LEVELS[this.level.id];
   if(!rule||this.recordedRoute||!this.area.enemies.some(e=>e.kind==='cheep'&&e.swim))return;
@@ -1570,7 +1573,9 @@ export class Simulation {
  private get enemyLoadBlocked(){return this.scrollCrossFrame===this.frame-2;}
  // Podoboos and jumping Paratroopas load on the frame whose camera reaches x - 303 (native loader; 5-4 Podoboo x 320 at camera 17, x 480 at 177, 8-2 Paratroopa x 384 at 82):
  // their recorded spawnCamera (the first camera of the measured route past that point) is not used.
- private nativeLoadRule(e:Enemy){return e.kind==='podoboo'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce';}
+ // Kinds the native loader makes by the generic column rule rather than a recorded spawn camera. A Blooper: 25 of 25 native spawns of the 2-2/7-2 v2 traces
+ // load when x - camera <= 303 (the recorded spawnCamera of 2-2's first Blooper is one row late).
+ private nativeLoadRule(e:Enemy){return e.kind==='podoboo'||e.kind==='blooper'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce';}
  /** An inactive enemy that the remake activates on the next frame, i.e. one the native loader makes on this frame (after this frame's scroll). */
  private nativeLoadsThisFrame(e:Enemy){
   return !e.active&&!e.slotLost&&e.kind!=='piranha'&&(e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&this.scrollCrossFrame!==this.frame-1&&(e.spawnFrame===undefined||this.areaFrame+1>=e.spawnFrame);
@@ -1613,10 +1618,12 @@ export class Simulation {
     e.podobooFalling=next>e.y;e.y=next;}
    }
    else if(isWater){
-    if(e.kind==='blooper'&&e.stroke){this.updateNativeBlooper(e);continue;}
+    if(e.kind==='blooper'&&e.stroke)this.updateNativeBlooper(e); // then the touch test like any enemy (native 7-2 row 1118: Mario dies on a Blooper at dx 5, dy 0)
+    else{
     const speed=e.kind==='cheep'?SWIMMING_CHEEP_SPEEDS[e.palette??'']:undefined;
     e.x+=speed===undefined?e.vx*(e.kind==='blooper'?0.8:1.5):Math.sign(e.vx)*speed;e.y=e.swim?e.originY+swimBobOffset(e.swim.bob,e.age-1):e.originY+Math.sin(e.age/40)*24;
     if(e.kind==='blooper'&&e.age%120<40){e.x+=Math.sign(p.x-e.x)*0.5;e.y-=0.4;}
+    }
    }else if(e.kind==='bullet'){if(!e.nativeShot||e.age>1)e.x+=Math.sign(e.vx)*BULLETS.speed;} // a native shot holds its spawn row
    else if(e.kind==='lakitu'){
     this.updateNativeLakitu(e);
