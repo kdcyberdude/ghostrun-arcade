@@ -11,14 +11,14 @@ import {strictNativeEntities,strictSimEntities,strictEntityDifferences,strictSim
 export type StrictAreaVisit=NativeAreaLoad;
 export function strictAreaVisits(level:Level,ram:Uint8Array):StrictAreaVisit[]{return nativeAreaLoads(level,ram).loads;}
 export type StrictAudit={schema:'native-strict-audit-v1',status:'pass'|'diverged'|'incomplete',first:number|null,firstCoverageGap:number|null,
- fields:Record<string,number|null>,identity:{bindings:AreaBinding[],diagnostics:string[]},coverage:{nativeMappedFrames:number,inputFrames:number,endReason:string,frames:number,alignedFrames:number,nativeEntityRows:number,comparedEntityRows:number,nativeBirthRows:number,areaFrames:Record<string,number>,complete:boolean},
+ fields:Record<string,number|null>,identity:{bindings:AreaBinding[],diagnostics:string[]},coverage:{uncomparedSameLevelFrames:number,nativeMappedFrames:number,inputFrames:number,endReason:string,frames:number,alignedFrames:number,nativeEntityRows:number,comparedEntityRows:number,nativeBirthRows:number,areaFrames:Record<string,number>,complete:boolean},
  diagnostics:{code:string,area:string,first:number,count:number,detail:string,slot?:number,id?:number}[],mismatches:{code:string,area:string,slot?:number,kind:string,first:number,count:number}[],samples:({frame:number,area:string}&EntityMismatch)[],visits:StrictAreaVisit[]};
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((sum,v)=>sum*10+v,0);
 export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string):StrictAudit{
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
  const nativeLevel=sim.level as Level,areaIdentity=nativeAreaLoads(nativeLevel,ram),visits=areaIdentity.loads;
  const fields:Record<string,number|null>={level:null,area:null,dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,missing:null,extra:null,kind:null,position:null,state:null};
- const coverage={nativeMappedFrames:0,inputFrames:pads.length,endReason:'end of trace',frames:0,alignedFrames:0,nativeEntityRows:0,comparedEntityRows:0,nativeBirthRows:0,areaFrames:{} as Record<string,number>,complete:true};
+ const coverage={uncomparedSameLevelFrames:0,nativeMappedFrames:0,inputFrames:pads.length,endReason:'end of trace',frames:0,alignedFrames:0,nativeEntityRows:0,comparedEntityRows:0,nativeBirthRows:0,areaFrames:{} as Record<string,number>,complete:true};
  const diagnosticMap=new Map<string,StrictAudit['diagnostics'][number]>(),mismatchMap=new Map<string,StrictAudit['mismatches'][number]>(),samples:StrictAudit['samples']=[];let firstCoverageGap:number|null=null,index=-1;
  const gap=(f:number,area:string,g:CoverageGap)=>{coverage.complete=false;firstCoverageGap??=f;const key=`${g.code}:${area}:${g.id??''}:${g.slot??''}:${g.detail}`;
   const found=diagnosticMap.get(key);if(found)found.count++;else diagnosticMap.set(key,{...g,area,first:f,count:1});};
@@ -26,7 +26,16 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
  const buttons:Button[]=['a','b','select','start','up','down','left','right'];
  let prev:Uint8Array|undefined;
  for(let f=0;f<Math.min(pads.length,ram.length/2048);f++){
-  const raw=ram.subarray(f*2048,(f+1)*2048),nativeId=`${raw[0x75f]+1}-${raw[0x75c]+1}`;if(raw[0x770]!==1||nativeId!==level){coverage.endReason=raw[0x770]!==1?`native mode changed to ${raw[0x770]}`:`native level changed to ${nativeId}`;break;}
+  const raw=ram.subarray(f*2048,(f+1)*2048),nativeId=`${raw[0x75f]+1}-${raw[0x75c]+1}`;
+  if(nativeId!==level){coverage.endReason=`native level changed to ${nativeId}`;break;}
+  if(raw[0x770]!==1){
+   for(let tail=f;tail<Math.min(pads.length,ram.length/2048);tail++){
+    const r=ram.subarray(tail*2048,(tail+1)*2048);if(`${r[0x75f]+1}-${r[0x75c]+1}`!==level)break;coverage.uncomparedSameLevelFrames++;
+   }
+   coverage.endReason=`unsupported same-level native mode ${raw[0x770]} at frame ${f}`;
+   gap(f,visits[index]?.area??'unresolved',{code:'unsupported-native-mode',detail:`mode=${raw[0x770]}, task=${raw[0x772]}, engine=${raw[0x0e]}; ${coverage.uncomparedSameLevelFrames} remaining same-level frames are not compared`});
+   break;
+  }
   sim.step(buttons.filter((_,bit)=>pads[f]&(1<<bit)),1);coverage.frames++;
   while(index+1<visits.length&&visits[index+1].frame<=f)index++;
   const visit=visits[index],ptr=raw[0xe7]+raw[0xe8]*256,area=visit?.area??'unresolved';
