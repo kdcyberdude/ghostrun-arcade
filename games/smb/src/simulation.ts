@@ -1,5 +1,5 @@
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
-import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform} from './platform-motion.js';
+import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
 import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
@@ -176,7 +176,7 @@ export class Simulation {
  private timeUpDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;private pitMusic=false;
- private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;
+ private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;private slotReleaseFrame=[-1,-1,-1,-1,-1];
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -1164,7 +1164,7 @@ export class Simulation {
   const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
   for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
-   let slot=0;while(held.has(slot)||enemySlots.has(slot))slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
+   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
   }
   return held;
  }
@@ -1637,11 +1637,11 @@ export class Simulation {
   const context=this.platformMotion.context;
   for(const platform of this.area.platforms??[]){
    const o=nativePlatformObject(platform,context);
-   if(o?.kind!=='horizontal')continue;
-   const motion=this.platformMotion,crossed=previousCamera<o.spawnCamera&&this.camera>=o.spawnCamera;
+   if(o?.kind!=='horizontal'&&o?.kind!=='wrap')continue;
+   const threshold=nativePlatformSpawnCamera(o),motion=this.platformMotion,crossed=previousCamera<threshold&&this.camera>=threshold;
    if(!crossed&&!motion.waiting.has(platform))continue;
    if(!this.nativeSlotsFull(platform)){if(motion.waiting.has(platform))motion.create(platform,this.platformFrame);continue;}
-   if(o.x>=this.camera+256)motion.waiting.add(platform);else{motion.waiting.delete(platform);motion.lost.add(platform);} // like a lone list object: waits while off screen, else is never made
+   if(o.x-(o.kind==='wrap'?12:0)>=this.camera+256)motion.waiting.add(platform);else{motion.waiting.delete(platform);motion.lost.add(platform);} // like a lone list object: waits while off screen, else is never made
   }
  }
  private nativePlatformSlots(except?:object){
@@ -1653,6 +1653,7 @@ export class Simulation {
   let used=exceptPlatform?this.nativePlatformSlots(exceptPlatform):0; // enemy gating does not count platforms yet: counting them lost a 4-2 Piranha the route keeps (wrap-lift slot release unmeasured)
   for(const e of this.enemies)if((e.slotHeld&&!e.active||this.holdsNativeSlot(e)||exceptPlatform&&this.holdsPlatformCorpseSlot(e))&&!(exceptPlatform&&e.y>=256))used++; // for platforms: an object that fell below the screen has freed its slot (route row 43244: the falling id 1 at y 252 is gone)
   if(columnPass)for(const e of this.enemies)if(this.nativeLoadsThisFrame(e))used++; // the enemy loader runs before the area parser builds the pipe column: an enemy it made this frame already holds a slot (6-2 row 292: the x 688 Paratroopa takes the last slot, no Piranha at 744)
+  if(exceptPlatform)for(let slot=0;slot<5;slot++)if(this.slotReleaseFrame[slot]===this.frame&&!this.enemies.some(e=>e.active&&!e.slotFreed&&e.enemySlot===slot))used++;
   return used>=5;
  }
  // 5-3 native Goombas release their slot on the second 21-frame tick after a stomp; allocation sees the freed slot on the next row.
@@ -1682,7 +1683,7 @@ export class Simulation {
   for(const e of this.enemies){
    if(!e.active)continue;const bound=this.nativeLeftBound(e);
    if(bound===undefined||Math.floor(e.x)>=bound)continue;
-   e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;
+   e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
    if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
   }
  }
