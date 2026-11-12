@@ -23,7 +23,7 @@ export class Hud{
  /** Returns true when anything is drawn (so the caller can skip the overlay pass for an empty HUD). */
  draw(s:Simulation,showHud:boolean){
   const player=s.currentPlayer?'LUIGI':'MARIO';
-  const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame);
+  const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame);
   const lines:string[]=[];
   const hudOn=showHud&&!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing;
   const timeOn=s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;

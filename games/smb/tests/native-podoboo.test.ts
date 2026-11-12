@@ -53,3 +53,9 @@ test('a Podoboo waiting for a full buffer initializes on the freed-slot row befo
  }
  assert.deepEqual(rows,[[514,128,0,0],[514,128,0,28],[514,156,0,56],[514,212,0,84],[515,40,0,112]]);
 });
+
+test('native Podoboo body touches at dy18, including the edge at 6-4 row841',async()=>{
+ const {nativeHurtHeight}=await import('../src/native-hurtbox.js');
+ assert.equal(nativeHurtHeight('podoboo',18,false,false),true); // native Mario y72, Podoboo y90, inclusive bottom104 meets top104
+ assert.equal(nativeHurtHeight('podoboo',19,false,false),false);
+});

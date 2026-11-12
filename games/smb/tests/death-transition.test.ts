@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {Simulation,TRANSITIONS} from '../src/simulation.js';
+import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import measurements from '../data/death-transition-measurements.json';
 import type {Button} from '../src/types.js';
@@ -27,7 +27,7 @@ for(const source of measurements.experiments){
   let clear:number|undefined,text:number|undefined;
   for(let frame=1;frame<=600;frame++){
    sim.step(frame<=prefixFrames?buttons:[],1);
-   if(sim.phase==='intro'){clear??=sim.frame;if(sim.phaseFrame>=TRANSITIONS.introHiddenBeforeFrame)text??=sim.frame;}
+   if(sim.phase==='intro'){clear??=sim.frame;if(!sim.introHiddenEarly)text??=sim.frame;}
   }
   for(const [label,actual,bounds]of [['scene',clear,source.firstDeathSceneClear],['lives text',text,source.firstLifeInterstitial]] as const){
    assert.ok(actual!==undefined&&actual>bounds.afterExclusive&&actual<=bounds.atOrBefore,`${label} ${actual} outside(${bounds.afterExclusive},${bounds.atOrBefore}]`);
