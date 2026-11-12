@@ -26,7 +26,7 @@ export function strictNativeEntities(r:Uint8Array,offset=0):EntityReadout{
  return {entities,gaps,live,reserved};
 }
 export function strictSimEntities(sim:any):StrictEntity[]{
- const entities:StrictEntity[]=sim.enemies.filter((e:any)=>e.active&&e.dead<90).map((e:any)=>({bank:'enemy',slot:e.enemySlot,kind:e.kind,x:Math.floor(e.x),y:Math.floor(e.y)-24,source:'enemy'}));
+ const entities:StrictEntity[]=sim.enemies.filter((e:any)=>e.active&&e.dead<90).map((e:any)=>({bank:'enemy',slot:e.enemySlot,kind:e.kind,x:Math.floor(e.kind==='bowser'?(e.nativeBowser?.x??e.bowser?.anchor??e.x):e.x),y:Math.floor(e.y)-(e.kind==='bowser'?32:24),source:'enemy'}));
  for(const item of sim.items){
   if(item.life<=0)continue;
   if(item.kind==='flame')entities.push({bank:'enemy',slot:item.nativeFlame?.slot,kind:'flame',x:Math.floor(item.x),y:Math.floor(item.y),source:'flame'});

@@ -11,7 +11,7 @@ import {parseArgs} from 'node:util';
 const {values:a}=parseArgs({options:{traces:{type:'string'},out:{type:'string',default:'tests/fixtures/native-enemy-rule-events.json'}}});
 if(!a.traces)throw Error('--traces is required');
 const signed=v=>v<128?v:v-256;
-const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[],hammerRows:[],hammerLagRows:[],miscRows:[],hammerContacts:[],coinSpawns:[],miscOffscreenRows:[],blockAliasRows:[]};
+const out={source:'per-frame RAM traces of the 32 v2 level recordings (ram.bin); rows are frame indices of each trace',cannonObjects:[],cannonTimerRows:[],podobooLaunches:[],intervalTicks:[],gravityRows:[],frenzyBullets:[],lakituRows:[],spinyEggs:[],spinyLandings:[],stopFrenzy:[],hammerRows:[],hammerLagRows:[],miscRows:[],hammerContacts:[],coinSpawns:[],miscOffscreenRows:[],blockAliasRows:[],specialFlagBirths:[],specialQueueRows:[],aboveBlockCoins:[]};
 for(const level of fs.readdirSync(a.traces).sort()){
  const file=path.join(a.traces,level,'ram.bin');if(!fs.existsSync(file))continue;
  const d=fs.readFileSync(file),n=d.length/2048,R=f=>d.subarray(f*2048,(f+1)*2048);
@@ -55,6 +55,19 @@ for(const level of fs.readdirSync(a.traces).sort()){
   }
   if(play&&r[9]===p[9]&&[0,1,2,3,4].some(s=>r[15+s]&&r[22+s]===5)){
    out.hammerLagRows.push({level,row:f,frame:r[9],changes:Array.from({length:2048},(_,address)=>address).filter(address=>p[address]!==r[address]).map(address=>[address,p[address],r[address]]),oamBefore:p.subarray(0x200,0x300).toString('hex'),oamAfter:r.subarray(0x200,0x300).toString('hex')});
+  }
+  if(p[0x3ee]!==r[0x3ee]){
+   const block=p[0x3ee],bufferLow=r[0x3e6+block],hitRow=r[0x3e4+block],page=r[0x3ea+block];
+   if(hitRow>=16&&p[0x500+bufferLow+hitRow-16]===0xc2){
+    const slot=Array.from({length:9},(_,s)=>s).reverse().find(s=>r[0x2a+s]===1&&p[0x2a+s]!==1);
+    if(slot!==undefined)out.aboveBlockCoins.push({level,row:f,slot,bufferRow:hitRow-16,bufferLow,blockPage:page,before:{force:p[0x440+slot],fraction:p[0x423+slot]},after:{y:r[0xdb+slot],x:r[0x7a+slot]*256+r[0x93+slot],speed:signed(r[0xac+slot]),force:r[0x440+slot],fraction:r[0x423+slot]}});
+   }
+  }
+  // Slot5 ownership: native FlagpoleObject creation and queued frenzy consumption, including the reserved-slot water generator.
+  if(r[0x14]&&r[0x1b]===48&&(p[0x1b]!==48||p[0x14]!==r[0x14]))out.specialFlagBirths.push({level,row:f,beforeFlag:p[0x14],column:r[0x73]*256+r[0x8c]+8,flag:r[0x14],id:r[0x1b],x:r[0x73]*256+r[0x8c],y:r[0xd4],task:r[0x71f]});
+  if(p[0x6cd]&&r[0x6cd]===0&&r[0xe]===8){
+   const slot=Array.from({length:6},(_,s)=>s).find(s=>r[0xf+s]&&(!p[0xf+s]||p[0x16+s]!==r[0x16+s]));
+   if(slot!==undefined)out.specialQueueRows.push({level,row:f,queue:p[0x6cd],slot,flag:r[0x14],id:r[0x1b],buffer:r[0x6cb],taskBefore:p[0x71f]});
   }
   // Shared misc objects: source byte-state motor and cached bounding boxes; normal game-engine rows only.
   if(p[0xe]===8&&(r[0xe]===8||r[0xe]===11)&&r[9]===((p[9]+1)&255)&&p[0x747]===0&&r[0x747]===0){

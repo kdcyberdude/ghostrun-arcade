@@ -5,22 +5,32 @@ import type {Kit} from './kit.js';
 const BLEND_FRAMES=5;
 export class Actor{
  readonly root=new THREE.Group();readonly model:THREE.Object3D;private mixer:THREE.AnimationMixer;private actions=new Map<string,THREE.AnimationAction>();
+ private restRotations=new Map<string,THREE.Quaternion>();private rotationTracks=new Map<string,THREE.Interpolant>();
  private clip='';private prev='';private prevTime=0;private changedAt=-1;private time=0;private lastFrame=-1;readonly materials=new Map<string,THREE.MeshStandardMaterial[]>();
  private morphMeshes:THREE.Mesh[]=[];private chibi?:Chibi;private chibiValue=0;
  constructor(model:THREE.Object3D,clips:Map<string,THREE.AnimationClip>){
   this.model=model;this.root.add(model);this.mixer=new THREE.AnimationMixer(model);
   for(const [name,clip] of clips){const a=this.mixer.clipAction(clip);a.enabled=true;a.setEffectiveWeight(0);a.play();a.paused=true;this.actions.set(name,a);}
   const skinned:THREE.SkinnedMesh[]=[];
-  model.traverse(o=>{const m=o as THREE.Mesh;if(!m.isMesh)return;if(m.morphTargetDictionary)this.morphMeshes.push(m);if((m as THREE.SkinnedMesh).isSkinnedMesh&&m.morphTargetDictionary?.Chibi!==undefined)skinned.push(m as THREE.SkinnedMesh);
+  model.traverse(o=>{if((o as THREE.Bone).isBone)this.restRotations.set(o.name,o.quaternion.clone());const m=o as THREE.Mesh;if(!m.isMesh)return;if(m.morphTargetDictionary)this.morphMeshes.push(m);if((m as THREE.SkinnedMesh).isSkinnedMesh&&m.morphTargetDictionary?.Chibi!==undefined)skinned.push(m as THREE.SkinnedMesh);
    for(const mat of (Array.isArray(m.material)?m.material:[m.material]) as THREE.MeshStandardMaterial[]){const list=this.materials.get(mat.name)??[];list.push(mat);this.materials.set(mat.name,list);}});
   if(skinned.length)this.chibi=new Chibi(skinned,[...clips.values()]);
  }
  has(clip:string){return this.actions.has(clip);}
  duration(clip:string){return this.actions.get(clip)?.getClip().duration??1;}
  node(name:string){return this.model.getObjectByName(name);}
+ /** Sample one joint independently of the body's clip; omitting the clip restores its authored bind rotation. */
+ poseRotation(bone:string,clip?:string,seconds=0){
+  const node=this.node(bone);if(!node)return;
+  if(!clip){const rest=this.restRotations.get(bone);if(rest)node.quaternion.copy(rest);return;}
+  const key=clip+'/'+bone;let sample=this.rotationTracks.get(key);
+  if(!sample){const track=this.actions.get(clip)?.getClip().tracks.find(t=>t.name===bone+'.quaternion');if(!track)return;sample=track.createInterpolant();this.rotationTracks.set(key,sample);}
+  node.quaternion.fromArray(sample.evaluate(seconds));
+ }
+ resetBlend(){this.clip='';this.prev='';this.lastFrame=-1;}
  /** Show `clip` at `seconds` (wrapped when loop). `frame` is the simulation frame, used only for the short cross-fade. */
  pose(clip:string,seconds:number,frame:number,loop=true){
-  if(frame<this.lastFrame){this.clip='';this.prev='';}this.lastFrame=frame;
+  if(frame<this.lastFrame)this.resetBlend();this.lastFrame=frame;
   const name=this.actions.has(clip)?clip:this.actions.has('idle')?'idle':[...this.actions.keys()][0];if(name===undefined)return;
   if(name!==this.clip){this.prev=this.clip;this.prevTime=this.time;this.clip=name;this.changedAt=frame;}
   const d=this.duration(name);this.time=loop?((seconds%d)+d)%d:Math.min(Math.max(seconds,0),d-1e-4);
@@ -33,13 +43,14 @@ export class Actor{
 }
 /** Pool of instances of one model; `begin()` each frame, `take()` per visible entity, `end()` hides the rest. */
 export class ActorPool{
- private items:Actor[]=[];private used=0;
+ private items:Actor[]=[];private used=0;private owners=new WeakMap<Actor,object>();
  constructor(private kit:Kit,private name:string,private group:THREE.Group){}
  get available(){return this.kit.has(this.name);}
  begin(){this.used=0;}
- take():Actor|undefined{
+ take(owner?:object):Actor|undefined{
   let a=this.items[this.used];
   if(!a){const inst=this.kit.instance(this.name);if(!inst)return undefined;a=new Actor(inst.root,inst.clips);this.items.push(a);this.group.add(a.root);}
+  if(owner&&this.owners.get(a)!==owner){a.resetBlend();this.owners.set(a,owner);}
   this.used++;a.root.visible=true;return a;
  }
  end(){for(let i=this.used;i<this.items.length;i++)this.items[i].root.visible=false;}

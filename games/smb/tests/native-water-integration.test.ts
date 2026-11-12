@@ -66,7 +66,7 @@ test('2-3 native stream fish and slot reuse preserve all enemy positions through
  assert.ok(frames>1000);
 });
 
-for(const [level,through] of [['2-2',2809],['7-2',2208]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
+for(const [level,through] of [['2-2',6395],['7-2',2208]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
  const run=replay(level),sim=run.sim;let frames=0;
  for(let f=0;f<=through;f++){
   run.step(f);const r=run.row(f);
@@ -117,7 +117,7 @@ test('7-2 injury preserves the water position fraction and ends its second death
  }
 });
 
-for(const [level,end] of [['2-2',4275],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
+for(const [level,end] of [['2-2',6395],['7-2',Infinity]] as const)test(`${level} bubble lifecycle matches native slots through every otherwise exact replay row`,()=>{
  const run=replay(level),expected=new Map<number,[number,number[][]]>();
  for(const [id,row,,,,,after] of waterEvents.bubbles as unknown as [string,number,unknown,unknown,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
  for(const [id,row,,,after] of waterEvents.bubbleEntrances as unknown as [string,number,unknown,unknown,[number,number[][]]][])if(id===level)expected.set(row,after);
@@ -127,4 +127,28 @@ for(const [level,end] of [['2-2',4275],['7-2',Infinity]] as const)test(`${level}
   assert.deepEqual([run.sim.bubbleState.timer,run.sim.bubbles.map(b=>[b.x,b.y,b.page,b.fraction])],after,`frame ${f}`);checked++;
  }
  assert.ok(checked>3000);
+});
+
+// Native 2-2 rows 4126–4131: right wall hit while Down preserves the
+// fractional speed, the next floor row restores collision bits, and releasing
+// Down accelerates with the old facing left / moving right friction multiplier.
+test('water floor Down consumes a wall mask before steering resumes',()=>{
+ const run=replay('2-2'),expected=[[208,128],[208,128],[512,160],[664,192],[816,240],[200,32]];
+ for(let f=0;f<=4131;f++){
+  run.step(f);if(f<4126)continue;
+  const [speed,fraction]=expected[f-4126];
+  assert.equal(Math.round(run.sim.player.vx*4096),speed,`frame ${f} speed`);
+  assert.equal(Math.round((run.sim.player.x%1)*256),fraction,`frame ${f} position fraction`);
+ }
+});
+
+// These two wall reversals differ in the stale Player_XSpeedAbsolute: 3
+// versus14. GetPlayerAnimSpeed clears the force only below11.
+test('swimming wall reversal uses the last friction absolute byte for skid stopping',()=>{
+ const run=replay('2-2'),expected=new Map([[4276,[-152,240]],[6232,[-88,0]],[6233,[-240,240]],[6234,[-392,208]],[6235,[-544,160]]]);
+ for(let f=0;f<=6235;f++){
+  run.step(f);const pair=expected.get(f);if(!pair)continue;
+  assert.equal(Math.round(run.sim.player.vx*4096),pair[0],`frame ${f} speed`);
+  assert.equal(Math.round((run.sim.player.x%1)*256),pair[1],`frame ${f} fraction`);
+ }
 });
