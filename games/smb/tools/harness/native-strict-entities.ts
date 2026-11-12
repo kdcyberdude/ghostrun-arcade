@@ -15,11 +15,12 @@ export function strictNativeEntities(r:Uint8Array,offset=0):EntityReadout{
   if(!kind){gaps.push({code:'unsupported-native-object',detail:OBJECTS[id]??`native object id ${id}`,slot,id});continue;}
   entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
  }
- // Misc slots are a separate bank: held/flying hammers have state bit 7 set; other active misc objects need a readout.
+ // Misc slots are a separate bank: bit 7 selects held/flying hammers; low states 1..47 are jumping/spinning coins.
  for(let slot=0;slot<9;slot++){
   const state=r[0x2a+slot];if(!state)continue;live++;reserved.add(`misc:${slot}`);
-  if(!(state&128)){gaps.push({code:'unsupported-native-misc',detail:`misc slot ${slot} state ${state} (jumping coin/other object)`,slot});continue;}
-  entities.push({bank:'misc',slot,kind:'hammer',x:r[0x7a+slot]*256+r[0x93+slot]+offset,y:(r[0xc2+slot]-1)*256+r[0xdb+slot],source:'hammer',state});
+  const kind=state&128?'hammer':state<0x30?'coin':undefined;
+  if(!kind){gaps.push({code:'unsupported-native-misc',detail:`misc slot ${slot} state ${state}`,slot});continue;}
+  entities.push({bank:'misc',slot,kind,x:r[0x7a+slot]*256+r[0x93+slot]+offset,y:(r[0xc2+slot]-1)*256+r[0xdb+slot],source:kind,state});
  }
  for(let slot=0;slot<2;slot++)if(r[0x24+slot])gaps.push({code:'unsupported-native-fireball',detail:`player fireball state ${r[0x24+slot]}`,slot});
  return {entities,gaps,live,reserved};
@@ -29,7 +30,7 @@ export function strictSimEntities(sim:any):StrictEntity[]{
  for(const item of sim.items){
   if(item.life<=0)continue;
   if(item.kind==='flame')entities.push({bank:'enemy',slot:item.nativeFlame?.slot,kind:'flame',x:Math.floor(item.x),y:Math.floor(item.y),source:'flame'});
-  if(item.kind==='hammer')entities.push({bank:'misc',slot:item.nativeHammer?.slot,kind:'hammer',x:Math.floor(item.x),y:Math.floor(item.y),source:'hammer',state:item.nativeHammer?.state});
+  if(item.kind==='hammer'||item.kind==='coin'){const misc=item.nativeHammer??item.nativeCoin;entities.push({bank:'misc',slot:misc?.slot,kind:item.kind,x:Math.floor(item.x),y:Math.floor(item.y),source:item.kind,state:misc?.state});}
   if(['mushroom','flower','star','1up'].includes(item.kind))entities.push({bank:'enemy',slot:5,kind:item.kind,x:Math.floor(item.x),y:Math.floor(item.y)-8,source:'powerup',state:item.nativePowerState});
  }
  return entities;
