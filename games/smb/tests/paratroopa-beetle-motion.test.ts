@@ -58,12 +58,12 @@ test('Paratroopa and Beetle side probes sit at the edges of the sprite, 5 px abo
  for(const kind of ['paratroopa','beetle'] as const){
   const sim=live(fixture([{kind,x:190,y:208,direction:1,palette:kind==='paratroopa'?GREEN:undefined}],[40,208],1024,[wall]),[0.5]),enemy=sim.enemies[0];
   let maxX=0;for(let i=0;i<40&&enemy.vx>0;i++){sim.step([],1);maxX=Math.max(maxX,enemy.x);}
-  assert.equal(enemy.vx,-0.5,`${kind} turned at the wall`);assert.equal(maxX,199.5,`${kind}: x+16 reaches the wall at 216`);
+  assert.equal(enemy.vx,-0.5,`${kind} turned at the wall`);assert.equal(maxX,kind==='beetle'?200:199.5,`${kind}: x+16 reaches the wall at 216; the native walker keeps its completed step`);
  }
  const leftWall:CollisionRect={x:184,y:160,width:16,height:48,id:84};
  const left=live(fixture([{kind:'beetle',x:230,y:208,direction:-1}],[300,208],1024,[leftWall]),[-0.5]),beetle=left.enemies[0];
  let minX=999;for(let i=0;i<80&&beetle.vx<0;i++){left.step([],1);minX=Math.min(minX,beetle.x);}
- assert.equal(beetle.vx,0.5);assert.equal(minX,200,'x+0 reaches the wall face at 200');
+ assert.equal(beetle.vx,0.5);assert.equal(minX,199.5,'the native walker keeps the half-pixel step into the wall before turning');
 });
 
 test('a floating block above the head height does not turn a Paratroopa or Beetle',()=>{
@@ -82,23 +82,23 @@ test('Paratroopas and Beetles start walking toward Mario when they activate; Goo
  assert.ok(right.enemies[0].vx>0&&right.enemies[1].vx>0,'toward Mario on the right');
 });
 
-test('a Beetle pair turns around once when their boxes first overlap (|dx| < 12), then walks apart',()=>{
+test('a Beetle pair turns once at inclusive native box contact on an odd frame, then walks apart',()=>{
  const sim=live(fixture([{kind:'beetle',x:100,y:208,direction:1},{kind:'beetle',x:130,y:208,direction:-1}]),[0.5,-0.5]),[first,second]=sim.enemies;
- let flipped=-1;for(let i=0;i<40;i++){sim.step([],1);if(flipped<0&&first.vx<0){flipped=i;assert.equal(second.vx,0.5);assert.ok(Math.abs(first.x-second.x)<12&&Math.abs(first.x-second.x)>=11);}}
+ let flipped=-1;for(let i=0;i<40;i++){sim.step([],1);if(flipped<0&&first.vx<0){flipped=i;assert.equal(second.vx,0.5);assert.ok(Math.abs(first.x-second.x)<=13&&Math.abs(first.x-second.x)>=11);}}
  assert.ok(flipped>0);assert.equal(first.vx,-0.5);assert.equal(second.vx,0.5);
  assert.ok(second.x-first.x>12,'separated after turning, no repeated reversals');
 });
 
-test('a Beetle pair that first appears already overlapping is not turned, it walks through',()=>{
+test('a Beetle pair that first appears overlapping turns on its first eligible native pass',()=>{
  const sim=live(fixture([{kind:'beetle',x:100,y:208,direction:1},{kind:'beetle',x:104,y:208,direction:-1}]),[0.5,-0.5]),[first,second]=sim.enemies;
  sim.step([],30);
- assert.equal(first.vx,0.5);assert.equal(second.vx,-0.5);assert.ok(first.x>second.x,'crossed without a bump');
+ assert.equal(first.vx,-0.5);assert.equal(second.vx,0.5);assert.ok(first.x<second.x,'separated after the first native contact');
 });
 
 test('a pair bump survives a structured clone of the simulation state',()=>{
  const sim=live(fixture([{kind:'beetle',x:100,y:208,direction:1},{kind:'beetle',x:130,y:208,direction:-1}]),[0.5,-0.5]);
  sim.step([],5);const copy=structuredClone(sim);
- assert.deepEqual(copy.enemies.map(e=>e.bumpTouch),sim.enemies.map(e=>e.bumpTouch));
+ assert.deepEqual((copy as any).collisionBits,(sim as any).collisionBits);
 });
 
 test('a stomped Paratroopa becomes a Koopa walking away from Mario',()=>{

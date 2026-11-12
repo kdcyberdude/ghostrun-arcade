@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import type {EnemySpec,Level,Tile} from '../src/types.js';
 
-function fixture(victims=0,wall?:number,victimStart=160){
+function fixture(victims=0,wall?:number,victimStart=160,spacing=48){
  const tiles:Tile[]=Array.from({length:80},(_,x)=>[x,13,84]);
  if(wall!==undefined)for(let row=10;row<13;row++)tiles.push([wall,row,97]);
- const enemies:EnemySpec[]=[{kind:'koopa',x:48,y:208,direction:-1},...Array.from({length:victims},(_,i)=>({kind:'goomba' as const,x:victimStart+i*48,y:208,direction:-1}))];
+ const enemies:EnemySpec[]=[{kind:'koopa',x:48,y:208,direction:-1},...Array.from({length:victims},(_,i)=>({kind:'goomba' as const,x:victimStart+i*spacing,y:208,direction:-1}))];
  const level:Level={id:'shell-fixture',time:400,main:'main',evidence:'Synthetic isolated collision terrain; Mario begins falling above an approaching Koopa, with no state changes after reset',areas:[{id:'main',width:1280,palette:0,theme:'ground',tiles,enemies,spawn:[40,176],evidence:'test'}]};
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
@@ -36,9 +36,10 @@ test('a stationary shell wakes at the320-frame candidate while Mario waits safel
  sim.step([],1);assert.equal(shell.shell,false);assert.equal(shell.kind,'koopa');assert.equal(shell.vx,-0.5);
 });
 
+// victims spaced so the five native slots never run out (with all slots busy a list object is never made)
 test('a kicked shell awards the six observed successive victim scores without an invented extra life',()=>{
- const sim=fixture(6),shell=kick(sim),awards:number[]=[];let prior=sim.awardedScore,dead=0;
- for(let frame=0;frame<240&&dead<6&&sim.phase==='play';frame++){
+ const sim=fixture(6,undefined,160,128),shell=kick(sim),awards:number[]=[]; let prior=sim.awardedScore,dead=0;
+ for(let frame=0;frame<600&&dead<6&&sim.phase==='play';frame++){
   sim.step(['right','b'],1);const next=sim.enemies.slice(1).filter(e=>e.dead>0).length;
   if(next>dead){assert.equal(next,dead+1);awards.push(sim.awardedScore-prior);prior=sim.awardedScore;dead=next;}
  }

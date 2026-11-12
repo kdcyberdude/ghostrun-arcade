@@ -31,7 +31,8 @@
    },
    "replace": {
     "x": 640,
-    "spawnCamera": 337
+    "spawnCamera": 337,
+    "direction": -1
    },
    "classification": "native first appearance (read-only enemy slot): spawn x and camera",
    "provenance": {

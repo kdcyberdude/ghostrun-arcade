@@ -40,9 +40,9 @@ test('6-4 late firebar geometry agrees with both native object-birth inventories
  const native=(await import('../data/native-firebar-geometry.json')).default;
  const bars=observedLevels().find(l=>l.id==='6-4')!.areas[0].firebars!;
  assert.equal(bars.length,11);
- for(const run of native.areas[0].nativeBirths)for(const [frame,slot,id,x,y] of run.rows){
+ for(const run of native.areas.find(a=>a.level==='6-4')!.nativeBirths??[])for(const [frame,slot,id,x,y] of run.rows){
   const matches=bars.filter(b=>b.x===x+4&&b.y===y+4);
-  assert.equal(matches.length,1,`native mood${run.mood}, row${frame}, slot${slot}`);
+  assert.equal(matches.length,1,`native ${'mood' in run?run.mood:run.run}, row${frame}, slot${slot}`);
   assert.equal(Math.sign(matches[0].speed),id===29?-1:1);
  }
 });

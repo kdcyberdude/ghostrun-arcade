@@ -10,18 +10,21 @@ function game(playerX=40){
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
 
-test('Piranha retracts and rises at0.5px/frame with the measured220-frame cycle',()=>{
+// Native MovePiranhaPlant (tests/native-piranha.test.ts replays it on every recorded frame): the plant is made hidden, rises 1 px on odd FrameCounter rows
+// to 24 px above, waits 0x40 frames, sinks back, waits 0x40 frames; a hidden plant does not start rising while Mario is within 0x20 px.
+test('Piranha rises 24 px at 1 px per odd frame, waits 64 frames, sinks back and waits again',()=>{
  const sim=game(),plant=sim.enemies[0];
- for(const [frame,foot]of [[8,164],[15,167.5],[48,184],[110,184],[111,184],[119,180],[159,160],[219,160],[220,160],[228,164]]){
-  sim.step([],frame-sim.frame);assert.equal(plant.y,foot);
- }
+ const ys:number[]=[];for(let f=0;f<260;f++){sim.step([],1);ys.push(plant.y);}
+ const top=ys.indexOf(160),bottom=ys.indexOf(184,top);
+ assert.ok(plant.active&&top>0&&bottom>top);
+ assert.equal(Math.min(...ys),160);assert.equal(ys.slice(top,top+64).every(y=>y===160),true);
+ assert.equal(bottom-top,64+46,'the arrival row and 63 waiting rows (0x40), then 24 one-pixel steps on odd rows');
 });
 
-test('a nearby player lets an exposed plant retract, inhibits its next rise at32px, and allows33px',()=>{
+test('a nearby player keeps a hidden plant in its pipe while |dx| < 0x21 and lets it rise at 0x21',()=>{
  const sim=game(208),plant=sim.enemies[0];
- sim.step([],48);assert.equal(plant.y,184);
- sim.step([],600);assert.equal(plant.y,184);
- sim.player.x=207;sim.step([],2);assert.ok(plant.y<184);
+ sim.step([],300);assert.equal(plant.y,184);
+ sim.player.x=207;sim.step([],3);assert.ok(plant.y<184);
 });
 
 test('the observed4-2 tall-pipe plant retracts behind its reconstructed pipe top',()=>{
