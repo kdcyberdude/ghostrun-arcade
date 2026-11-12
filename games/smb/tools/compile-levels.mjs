@@ -1,3 +1,4 @@
+import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
 import fs from'node:fs';import{PNG}from'pngjs';
 import{createHash}from'node:crypto';
 import{applyObservedOpeningPodoboo}from'./podoboo-three-four-inventory-adapter.mjs';
@@ -972,6 +973,7 @@ for(const c of geometryCorrections.edits){
 {const room=levels.find(l=>l.id==='4-2').areas.find(a=>a.id==='bonus-coins'),pipe=room.pipes.find(p=>p.to==='area-3');
  if(pipe.spawn[0]!==2120||pipe.camera!==2064)throw Error('4-2 coin room return changed');pipe.spawn[0]=2104;pipe.camera=2048;}
 // Browser builds must never read a partially written multi-megabyte map.
+applyNativeWalkerGroups(levels,JSON.parse(fs.readFileSync('data/native-walker-groups.json')));
 const output=`data/.levels-${process.pid}.json`;
 fs.writeFileSync(output,JSON.stringify(levels,null,2)+'\n');
 fs.renameSync(output,'data/levels.json');

@@ -4204,7 +4204,8 @@
             "x": 352,
             "y": 208,
             "spawnCamera": 50,
-            "evidence": "Inferred spawn/activation from screenshot track1; initial x on16px grid, speed-0.5px/native frame, first sight x340 at reference tick13. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track1; initial x on16px grid, speed-0.5px/native frame, first sight x340 at reference tick13. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeColumn": 352
           },
           {
             "kind": "goomba",
@@ -4212,14 +4213,20 @@
             "y": 208,
             "direction": -1,
             "spawnCamera": 337,
-            "evidence": "Inferred spawn/activation from screenshot track2; initial x on16px grid, speed0.5px/native frame, first sight x657 at reference tick30. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track2; initial x on16px grid, speed0.5px/native frame, first sight x657 at reference tick30. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeColumn": 640
           },
           {
             "kind": "goomba",
             "x": 818,
             "y": 208,
             "spawnCamera": 563,
-            "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 864,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -4227,28 +4234,40 @@
             "y": 208,
             "spawnCamera": 563,
             "evidence": "Inferred spawn/activation from screenshot track4; initial x on16px grid, speed-0.5px/native frame, first sight x833 at reference tick43. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 864,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
             "x": 1280,
             "y": 80,
             "spawnCamera": 978,
-            "evidence": "Inferred spawn/activation from screenshot track5; initial x on16px grid, speed-0.5px/native frame, first sight x1269 at reference tick66. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track5; initial x on16px grid, speed-0.5px/native frame, first sight x1269 at reference tick66. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeColumn": 1280
           },
           {
             "kind": "goomba",
             "x": 1312,
             "y": 80,
             "spawnCamera": 1010,
-            "evidence": "Inferred spawn/activation from screenshot track6; initial x on16px grid, speed-0.5px/native frame, first sight x1300 at reference tick68. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track6; initial x on16px grid, speed-0.5px/native frame, first sight x1300 at reference tick68. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeColumn": 1312
           },
           {
             "kind": "goomba",
             "x": 1553,
             "y": 208,
             "spawnCamera": 1298,
-            "evidence": "Inferred spawn/activation from screenshot track7; initial x on16px grid, speed-0.5px/native frame, first sight x1549 at reference tick81. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track7; initial x on16px grid, speed-0.5px/native frame, first sight x1549 at reference tick81. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 1600,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -4256,35 +4275,56 @@
             "y": 208,
             "spawnCamera": 1298,
             "evidence": "Inferred spawn/activation from screenshot track8; initial x on16px grid, speed-0.5px/native frame, first sight x1569 at reference tick82. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1600,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
             "x": 1712,
             "y": 208,
             "spawnCamera": 1413,
-            "evidence": "Inferred spawn/activation from screenshot track9; initial x on16px grid, speed-0.5px/native frame, first sight x1702 at reference tick89. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track9; initial x on16px grid, speed-0.5px/native frame, first sight x1702 at reference tick89. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeColumn": 1712
           },
           {
             "kind": "goomba",
             "x": 1828,
             "y": 208,
             "spawnCamera": 1573,
-            "evidence": "Inferred spawn/activation from screenshot track10; initial x on16px grid, speed-0.5px/native frame, first sight x1823 at reference tick96. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track10; initial x on16px grid, speed-0.5px/native frame, first sight x1823 at reference tick96. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 1872,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
             "x": 1852,
             "y": 208,
             "spawnCamera": 1573,
-            "evidence": "Inferred spawn/activation from screenshot track11; initial x on16px grid, speed-0.5px/native frame, first sight x1843 at reference tick97. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track11; initial x on16px grid, speed-0.5px/native frame, first sight x1843 at reference tick97. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 1872,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
             "x": 1988,
             "y": 208,
             "spawnCamera": 1733,
-            "evidence": "Inferred spawn/activation from screenshot track12; initial x on16px grid, speed-0.5px/native frame, first sight x1985 at reference tick104. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track12; initial x on16px grid, speed-0.5px/native frame, first sight x1985 at reference tick104. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 2032,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -4292,21 +4332,36 @@
             "y": 208,
             "spawnCamera": 1733,
             "evidence": "Inferred spawn/activation from screenshot track13; initial x on16px grid, speed-0.5px/native frame, first sight x1993 at reference tick108. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2032,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
             "x": 2048,
             "y": 208,
             "spawnCamera": 1793,
-            "evidence": "Inferred spawn/activation from screenshot track14; initial x on16px grid, speed-0.5px/native frame, first sight x2042 at reference tick108. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track14; initial x on16px grid, speed-0.5px/native frame, first sight x2042 at reference tick108. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 2096,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
             "x": 2788,
             "y": 208,
             "spawnCamera": 2533,
-            "evidence": "Inferred spawn/activation from screenshot track15; initial x on16px grid, speed-0.5px/native frame, first sight x2783 at reference tick147. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
+            "evidence": "Inferred spawn/activation from screenshot track15; initial x on16px grid, speed-0.5px/native frame, first sight x2783 at reference tick147. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+            "nativeGroup": {
+              "column": 2832,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -4314,7 +4369,12 @@
             "y": 208,
             "spawnCamera": 2533,
             "evidence": "Inferred spawn/activation from screenshot track16; initial x on16px grid, speed-0.5px/native frame, first sight x2804 at reference tick148. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2832,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -4323,7 +4383,12 @@
             "direction": -1,
             "spawnCamera": 1793,
             "nativeSlot": "once",
-            "evidence": "second member of the native group at 2048: worlds 1-1 moods 0/3/5 rows 811/820/824; the route had one free slot"
+            "evidence": "second member of the native group at 2048: worlds 1-1 moods 0/3/5 rows 811/820/824; the route had one free slot",
+            "nativeGroup": {
+              "column": 2096,
+              "index": 1,
+              "count": 2
+            }
           }
         ],
         "pipes": [
@@ -9893,7 +9958,8 @@
             "direction": -1,
             "evidence": "Dense clipped-head matches x253@native2509,249@2516,245@2524,238@2539. Initial x256 with first movement2504 (area appearance/scene activation) fits within1px. Camera0 activation follows ordinary entry scene update rules.",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 0
+            "spawnCamera": 0,
+            "nativeColumn": 256
           },
           {
             "kind": "goomba",
@@ -9902,7 +9968,8 @@
             "direction": -1,
             "evidence": "Dense exact screenshot head matches 355..368; initial coordinate/camera trigger inferred jointly, retained free-motion fit error0px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 162
+            "spawnCamera": 162,
+            "nativeColumn": 464
           },
           {
             "kind": "koopa",
@@ -9911,7 +9978,12 @@
             "direction": -1,
             "evidence": "Dense1-2 screenshot track: 368..378; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 449
+            "spawnCamera": 449,
+            "nativeGroup": {
+              "column": 752,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -9921,7 +9993,12 @@
             "evidence": "Dense1-2 screenshot track: 369..379; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1c-36-17",
             "spawnCamera": 449,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 752,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -9930,7 +10007,8 @@
             "direction": -1,
             "evidence": "Dense exact screenshot head matches 383..405; initial coordinate/camera trigger inferred jointly, retained free-motion fit error0px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 689
+            "spawnCamera": 689,
+            "nativeColumn": 992
           },
           {
             "kind": "koopa",
@@ -9939,7 +10017,8 @@
             "direction": -1,
             "evidence": "Dense1-2 screenshot track: 381..398; speed observed approximately-0.5px/nativeframe. Initial coordinate and camera trigger inferred jointly; position residual at retained samples<=1px. Camera activation uses ordinary simulation, never a recorded tick.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 642
+            "spawnCamera": 642,
+            "nativeColumn": 944
           },
           {
             "kind": "goomba",
@@ -9948,7 +10027,8 @@
             "direction": -1,
             "evidence": "Dense exact screenshot head matches 386..407; initial coordinate/camera trigger inferred jointly, retained free-motion fit error1px. Ordinary collisions must produce subsequent reversals; no tick-scripted turns.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 722
+            "spawnCamera": 722,
+            "nativeColumn": 1024
           },
           {
             "kind": "goomba",
@@ -9957,7 +10037,8 @@
             "direction": -1,
             "evidence": "Dense laterledge screenshots 415..419; horizontal fit error0px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty.; native first appearance (read-only enemy slot): spawn x and camera; native appearance happens when the camera advances past 867 (the camera stood at 867 for 120 frames before the native goomba appeared)",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 868
+            "spawnCamera": 868,
+            "nativeColumn": 1168
           },
           {
             "kind": "goomba",
@@ -9966,7 +10047,12 @@
             "direction": -1,
             "evidence": "Dense laterledge screenshots 418..422; horizontal fit error1px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty.; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 962
+            "spawnCamera": 962,
+            "nativeGroup": {
+              "column": 1264,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -9976,7 +10062,12 @@
             "evidence": "Dense laterledge screenshots 419..429; horizontal fit error0px. Independent camera940stop leaves only upperactor1086 atframe3245, rejecting earlier lower-pair activation. Spawn/camera coupled inference with~4px uncertainty.; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0c-3c-1c",
             "spawnCamera": 962,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1264,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -9985,7 +10076,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 111 tick 440; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 1330
+            "spawnCamera": 1330,
+            "nativeGroup": {
+              "column": 1632,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -9995,7 +10091,12 @@
             "evidence": "screenshot sequence 111 tick 440; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0c-3c-1c",
             "spawnCamera": 1330,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1632,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -10005,7 +10106,12 @@
             "evidence": "screenshot sequence 111 tick 440; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0c-3c-1c",
             "nativeSlot": "once",
-            "spawnCamera": 1330
+            "spawnCamera": 1330,
+            "nativeGroup": {
+              "column": 1632,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -10040,7 +10146,12 @@
             "evidence": "screenshot sequence 120 tick 476; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0c-3c-1c",
             "spawnCamera": 1915,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2208,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "redKoopa",
@@ -10049,7 +10160,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 123 tick 488; exact enemy-table-0f-16-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-16-30-27",
-            "spawnCamera": 2042
+            "spawnCamera": 2042,
+            "nativeColumn": 2336
           },
           {
             "kind": "piranha",
@@ -10083,6 +10195,20 @@
             "spawnCamera": 0,
             "palette": "0f-0c-3c-1c",
             "evidence": "Distinct second Goomba seen simultaneously16px to the right; clipped head x250@native2546 thenfull239@2569. Common first movement2504 with initial x272 fits within1px. Add actor; do not replace an existing later Goomba."
+          },
+          {
+            "kind": "goomba",
+            "x": 2184,
+            "y": 144,
+            "direction": -1,
+            "spawnCamera": 1905,
+            "palette": "0f-0c-3c-1c",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2208,
+              "index": 1,
+              "count": 2
+            }
           }
         ],
         "pipes": [
@@ -25757,7 +25883,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 301 tick 1200; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance row: the spec at y 144 sat inside a stair block and never moved; the native enemy appears at y 112 and falls",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 85
+            "spawnCamera": 85,
+            "nativeColumn": 384
           },
           {
             "kind": "koopa",
@@ -25766,7 +25893,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 303 tick 1208; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 227
+            "spawnCamera": 227,
+            "nativeColumn": 528
           },
           {
             "kind": "koopa",
@@ -25774,7 +25902,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 303 tick 1208; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 512
           },
           {
             "kind": "goomba",
@@ -25783,7 +25912,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 305 tick 1216; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 423
+            "spawnCamera": 423,
+            "nativeGroup": {
+              "column": 720,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -25793,7 +25927,12 @@
             "evidence": "screenshot sequence 305 tick 1216; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 423,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 720,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "piranha",
@@ -25810,7 +25949,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 308 tick 1228; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 584
+            "spawnCamera": 584,
+            "nativeColumn": 880
           },
           {
             "kind": "goomba",
@@ -25819,7 +25959,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 310 tick 1236; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 689
+            "spawnCamera": 689,
+            "nativeGroup": {
+              "column": 992,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -25829,7 +25974,12 @@
             "evidence": "screenshot sequence 310 tick 1236; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 689,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 992,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -25838,7 +25988,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 311 tick 1240; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 759
+            "spawnCamera": 759,
+            "nativeColumn": 1056
           },
           {
             "kind": "goomba",
@@ -25847,7 +25998,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 312 tick 1244; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 839
+            "spawnCamera": 839,
+            "nativeGroup": {
+              "column": 1136,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -25856,7 +26012,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 316 tick 1260; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1141
+            "spawnCamera": 1141,
+            "nativeGroup": {
+              "column": 1440,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -25866,7 +26027,12 @@
             "evidence": "screenshot sequence 316 tick 1260; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1141,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1440,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -25876,7 +26042,12 @@
             "evidence": "screenshot sequence 316 tick 1260; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "nativeSlot": "once",
-            "spawnCamera": 1141
+            "spawnCamera": 1141,
+            "nativeGroup": {
+              "column": 1440,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -25885,7 +26056,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 319 tick 1272; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; Pipe-top initial-height inference supported by actual observed feet144 before falling; exact spawn timing remains unmeasured.; evidence/ground-actor-2-1-pipe-measure.json; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1353
+            "spawnCamera": 1353,
+            "nativeColumn": 1648
           },
           {
             "kind": "piranha",
@@ -25902,7 +26074,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 322 tick 1284; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1558
+            "spawnCamera": 1558,
+            "nativeColumn": 1856
           },
           {
             "kind": "piranha",
@@ -25919,7 +26092,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 324 tick 1292; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1656
+            "spawnCamera": 1656,
+            "nativeColumn": 1920
           },
           {
             "kind": "piranha",
@@ -25944,7 +26118,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 329 tick 1312; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1901
+            "spawnCamera": 1901,
+            "nativeColumn": 2192
           },
           {
             "kind": "paratroopa",
@@ -25963,7 +26138,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 334 tick 1332; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2350
+            "spawnCamera": 2350,
+            "nativeGroup": {
+              "column": 2640,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "paratroopa",
@@ -25990,7 +26170,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 340 tick 1356; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2670
+            "spawnCamera": 2670,
+            "nativeColumn": 2960
           },
           {
             "kind": "piranha",
@@ -26016,7 +26197,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 2350,
             "evidence": "native first appearance (read-only enemy slot, area D): x 2620, camera 2350; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2640,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "paratroopa",
@@ -26028,6 +26214,34 @@
             "spawnVy": 0.53125,
             "spawnYFraction": 0.35,
             "evidence": "native first appearance (read-only enemy slot): paratroopa present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+          },
+          {
+            "kind": "goomba",
+            "x": 1112,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 833,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 1136,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 1136,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 833,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 1136,
+              "index": 2,
+              "count": 3
+            }
           }
         ],
         "pipes": [
@@ -55301,7 +55515,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 701 tick 2800; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred",
-            "palette": "0f-0f-36-17"
+            "palette": "0f-0f-36-17",
+            "nativeColumn": 592
           },
           {
             "kind": "piranha",
@@ -55326,7 +55541,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 707 tick 2824; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 595
+            "spawnCamera": 595,
+            "nativeGroup": {
+              "column": 896,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -55336,7 +55556,12 @@
             "evidence": "screenshot sequence 707 tick 2824; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 595,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 896,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -55352,7 +55577,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 709 tick 2832; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 1040
           },
           {
             "kind": "piranha",
@@ -55369,7 +55595,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 713 tick 2848; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1058
+            "spawnCamera": 1058,
+            "nativeGroup": {
+              "column": 1360,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -55379,7 +55610,12 @@
             "evidence": "screenshot sequence 714 tick 2852; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1058,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1360,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -55389,7 +55625,12 @@
             "evidence": "screenshot sequence 714 tick 2852; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1058,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1360,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -55398,7 +55639,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 716 tick 2860; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1253
+            "spawnCamera": 1253,
+            "nativeGroup": {
+              "column": 1552,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -55408,7 +55654,12 @@
             "evidence": "screenshot sequence 716 tick 2860; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1253,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1552,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -55417,7 +55668,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 717 tick 2864; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1335
+            "spawnCamera": 1335,
+            "nativeColumn": 1616
           },
           {
             "kind": "piranha",
@@ -55450,7 +55702,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 727 tick 2904; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance row: the spec at y 160 sat inside a stair block and never moved; the native enemy appears at y 128 and falls",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1938
+            "spawnCamera": 1938,
+            "nativeColumn": 2240
           },
           {
             "kind": "goomba",
@@ -55458,7 +55711,8 @@
             "y": 144,
             "direction": -1,
             "evidence": "screenshot sequence 727 tick 2904; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred",
-            "palette": "0f-0f-36-17"
+            "palette": "0f-0f-36-17",
+            "nativeColumn": 2224
           },
           {
             "kind": "koopa",
@@ -55467,7 +55721,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 729 tick 2912; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2085
+            "spawnCamera": 2085,
+            "nativeColumn": 2384
           },
           {
             "kind": "goomba",
@@ -55476,7 +55731,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 730 tick 2916; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2213
+            "spawnCamera": 2213,
+            "nativeGroup": {
+              "column": 2512,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -55485,7 +55745,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 730 tick 2916; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2128
+            "spawnCamera": 2128,
+            "nativeColumn": 2432
           },
           {
             "kind": "paratroopa",
@@ -55534,7 +55795,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 738 tick 2948; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance row: the spec at y 128 sat inside a stair block and never moved; the native enemy appears at y 112 and falls",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2701
+            "spawnCamera": 2701,
+            "nativeColumn": 3008
           },
           {
             "kind": "koopa",
@@ -55543,7 +55805,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 738 tick 2948; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2749
+            "spawnCamera": 2749,
+            "nativeColumn": 3056
           },
           {
             "kind": "goomba",
@@ -55553,7 +55816,40 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 595,
             "nativeSlot": "once",
-            "evidence": "third member of the native group at 849: r8 3-1 mood0 row393 slots1/2/4 at849/872/897, mood2 row397 at848/871/896; absent when the fifth slot is occupied"
+            "evidence": "third member of the native group at 849: r8 3-1 mood0 row393 slots1/2/4 at849/872/897, mood2 row397 at848/871/896; absent when the fifth slot is occupied",
+            "nativeGroup": {
+              "column": 896,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 2488,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 2209,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2512,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 2512,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 2209,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2512,
+              "index": 2,
+              "count": 3
+            }
           }
         ],
         "pipes": [
@@ -61463,7 +61759,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 772 tick 3084; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native enemy slot offset over the first co-existing frames (enemy present at level load)",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 272
           },
           {
             "kind": "goomba",
@@ -61472,7 +61769,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 774 tick 3092; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 130
+            "spawnCamera": 130,
+            "nativeGroup": {
+              "column": 432,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61482,7 +61784,12 @@
             "evidence": "screenshot sequence 775 tick 3096; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 130,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 432,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61491,7 +61798,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 776 tick 3100; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 275
+            "spawnCamera": 275,
+            "nativeGroup": {
+              "column": 576,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61501,7 +61813,12 @@
             "evidence": "screenshot sequence 776 tick 3100; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 275,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 576,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61510,7 +61827,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 778 tick 3108; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 435
+            "spawnCamera": 435,
+            "nativeGroup": {
+              "column": 736,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -61520,7 +61842,12 @@
             "evidence": "screenshot sequence 779 tick 3112; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 435,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 736,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -61528,7 +61855,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 783 tick 3128; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 1056
           },
           {
             "kind": "goomba",
@@ -61537,7 +61865,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 784 tick 3132; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 878
+            "spawnCamera": 878,
+            "nativeGroup": {
+              "column": 1184,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61547,7 +61880,12 @@
             "evidence": "screenshot sequence 785 tick 3136; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 878,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1184,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61556,7 +61894,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 786 tick 3140; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 946
+            "spawnCamera": 946,
+            "nativeColumn": 1248
           },
           {
             "kind": "paratroopa",
@@ -61575,7 +61914,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 793 tick 3168; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1472
+            "spawnCamera": 1472,
+            "nativeColumn": 1776
           },
           {
             "kind": "goomba",
@@ -61584,7 +61924,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 795 tick 3176; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1647
+            "spawnCamera": 1647,
+            "nativeGroup": {
+              "column": 1952,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61594,7 +61939,12 @@
             "evidence": "screenshot sequence 795 tick 3176; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1647,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1952,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61603,7 +61953,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 798 tick 3188; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1838
+            "spawnCamera": 1838,
+            "nativeColumn": 2144
           },
           {
             "kind": "koopa",
@@ -61612,7 +61963,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 801 tick 3200; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1988
+            "spawnCamera": 1988,
+            "nativeGroup": {
+              "column": 2288,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61622,7 +61978,12 @@
             "evidence": "screenshot sequence 801 tick 3200; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 1988,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2288,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61632,7 +61993,12 @@
             "evidence": "screenshot sequence 801 tick 3200; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 1988,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2288,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61641,7 +62007,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 803 tick 3208; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2150
+            "spawnCamera": 2150,
+            "nativeGroup": {
+              "column": 2448,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -61651,7 +62022,12 @@
             "evidence": "screenshot sequence 803 tick 3208; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 2150,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2448,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -61660,7 +62036,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 806 tick 3220; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2342
+            "spawnCamera": 2342,
+            "nativeGroup": {
+              "column": 2640,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61670,7 +62051,12 @@
             "evidence": "screenshot sequence 806 tick 3220; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 2342,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2640,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61680,7 +62066,12 @@
             "evidence": "screenshot sequence 806 tick 3220; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 2342,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2640,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -61688,7 +62079,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 808 tick 3228; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 2800
           },
           {
             "kind": "goomba",
@@ -61697,7 +62089,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 809 tick 3232; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2612
+            "spawnCamera": 2612,
+            "nativeGroup": {
+              "column": 2912,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61706,7 +62103,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 811 tick 3240; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2755
+            "spawnCamera": 2755,
+            "nativeGroup": {
+              "column": 3056,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61716,7 +62118,12 @@
             "evidence": "screenshot sequence 811 tick 3240; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 2755,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 3056,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -61734,7 +62141,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 130,
             "evidence": "native first appearance (read-only enemy slot, area D): x 433, camera 130; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 432,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61744,7 +62156,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 878,
             "evidence": "native first appearance (read-only enemy slot, area D): x 1184, camera 878; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1184,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61754,7 +62171,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 1647,
             "evidence": "native first appearance (read-only enemy slot, area D): x 1952, camera 1647; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1952,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -61764,7 +62186,54 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 2755,
             "evidence": "native first appearance (read-only enemy slot, area D): x 3057, camera 2755; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 3056,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "koopa",
+            "x": 576,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 273,
+            "palette": "0f-1a-30-27",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 576,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 2888,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 2609,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2912,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 2912,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 2609,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2912,
+              "index": 2,
+              "count": 3
+            }
           }
         ],
         "pipes": [],
@@ -83842,7 +84311,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1063 tick 4248; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 436
+            "spawnCamera": 436,
+            "nativeGroup": {
+              "column": 736,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -83852,7 +84326,12 @@
             "evidence": "screenshot sequence 1064 tick 4252; exact enemy-table-0f-0c-3c-1c.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0c-3c-1c",
             "spawnCamera": 436,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 736,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -83861,7 +84340,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1070 tick 4276; exact enemy-table-0f-1c-36-17.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 932
+            "spawnCamera": 932,
+            "nativeColumn": 1232
           },
           {
             "kind": "piranha",
@@ -83877,7 +84357,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 1072 tick 4284; exact enemy-table-0f-0c-3c-1c.png cell 1; camera registration inferred; native first appearance (read-only enemy slot): spawn height and vertical state",
-            "palette": "0f-0c-3c-1c"
+            "palette": "0f-0c-3c-1c",
+            "nativeColumn": 1328
           },
           {
             "kind": "piranha",
@@ -83894,7 +84375,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1077 tick 4304; exact enemy-table-0f-1c-36-17.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 1348
+            "spawnCamera": 1348,
+            "nativeGroup": {
+              "column": 1648,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -83904,7 +84390,12 @@
             "evidence": "screenshot sequence 1077 tick 4304; exact enemy-table-0f-1c-36-17.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1c-36-17",
             "spawnCamera": 1348,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1648,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "piranha",
@@ -83921,7 +84412,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1085 tick 4336; exact enemy-table-0f-1c-36-17.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 1912
+            "spawnCamera": 1912,
+            "nativeColumn": 2192
           },
           {
             "kind": "piranha",
@@ -83937,7 +84429,8 @@
             "y": 160,
             "direction": -1,
             "evidence": "screenshot sequence 1090 tick 4356; exact enemy-table-0f-0c-3c-1c.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn height and vertical state",
-            "palette": "0f-0c-3c-1c"
+            "palette": "0f-0c-3c-1c",
+            "nativeColumn": 2464
           },
           {
             "kind": "koopa",
@@ -83946,7 +84439,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1093 tick 4368; exact enemy-table-0f-1c-36-17.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1c-36-17",
-            "spawnCamera": 2436
+            "spawnCamera": 2436,
+            "nativeGroup": {
+              "column": 2736,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -83956,7 +84454,12 @@
             "evidence": "screenshot sequence 1093 tick 4368; exact enemy-table-0f-1c-36-17.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1c-36-17",
             "spawnCamera": 2436,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2736,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "beetle",
@@ -83965,7 +84468,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1095 tick 4376; exact enemy-table-0f-0c-3c-1c.png cell 1; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0c-3c-1c",
-            "spawnCamera": 2569
+            "spawnCamera": 2569,
+            "nativeColumn": 2864
           },
           {
             "kind": "piranha",
@@ -83991,7 +84495,12 @@
             "palette": "0f-0c-3c-1c",
             "spawnCamera": 436,
             "evidence": "native first appearance (read-only enemy slot, area D): x 736, camera 436; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 736,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -100530,7 +101039,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 1282 tick 5124; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native enemy slot offset over the first co-existing frames (enemy present at level load)",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 256
           },
           {
             "kind": "goomba",
@@ -100539,7 +101049,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1284 tick 5132; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 50
+            "spawnCamera": 50,
+            "nativeGroup": {
+              "column": 352,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100549,7 +101064,12 @@
             "evidence": "screenshot sequence 1284 tick 5132; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 50,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 352,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100559,7 +101079,12 @@
             "evidence": "screenshot sequence 1284 tick 5132; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "nativeSlot": "once",
-            "spawnCamera": 50
+            "spawnCamera": 50,
+            "nativeGroup": {
+              "column": 352,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100568,7 +101093,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1286 tick 5140; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 225
+            "spawnCamera": 225,
+            "nativeGroup": {
+              "column": 528,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -100577,7 +101107,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1288 tick 5148; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 402
+            "spawnCamera": 402,
+            "nativeGroup": {
+              "column": 704,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "piranha",
@@ -100613,7 +101148,12 @@
             "evidence": "screenshot sequence 1295 tick 5176; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; spec without a native counterpart moved to the native group slot (read-only enemy slot first appearance: x and camera); native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 784,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1088,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100622,7 +101162,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1295 tick 5176; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 785
+            "spawnCamera": 785,
+            "nativeGroup": {
+              "column": 1088,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100632,7 +101177,12 @@
             "evidence": "screenshot sequence 1295 tick 5176; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 785,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1088,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100641,7 +101191,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1297 tick 5184; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 965
+            "spawnCamera": 965,
+            "nativeGroup": {
+              "column": 1264,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "paratroopa",
@@ -100660,7 +101215,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1303 tick 5208; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1395
+            "spawnCamera": 1395,
+            "nativeGroup": {
+              "column": 1696,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100670,7 +101230,12 @@
             "evidence": "screenshot sequence 1303 tick 5208; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1395,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1696,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100680,7 +101245,12 @@
             "evidence": "screenshot sequence 1303 tick 5208; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "nativeSlot": "once",
-            "spawnCamera": 1395
+            "spawnCamera": 1395,
+            "nativeGroup": {
+              "column": 1696,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100689,7 +101259,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1307 tick 5224; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1682
+            "spawnCamera": 1682,
+            "nativeGroup": {
+              "column": 1984,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100699,7 +101274,12 @@
             "evidence": "screenshot sequence 1307 tick 5224; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1682,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1984,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -100708,7 +101288,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1308 tick 5228; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1730
+            "spawnCamera": 1730,
+            "nativeColumn": 2032
           },
           {
             "kind": "goomba",
@@ -100718,7 +101299,12 @@
             "evidence": "screenshot sequence 1310 tick 5236; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1904,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2208,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100727,7 +101313,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1310 tick 5236; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1904
+            "spawnCamera": 1904,
+            "nativeGroup": {
+              "column": 2208,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -100737,7 +101328,12 @@
             "evidence": "screenshot sequence 1312 tick 5244; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 2049,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2352,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -100746,7 +101342,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1312 tick 5244; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 2049
+            "spawnCamera": 2049,
+            "nativeGroup": {
+              "column": 2352,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "piranha",
@@ -100781,7 +101382,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 225,
             "nativeSlot": "once",
-            "evidence": "second member of the native group at 480: worlds 5-1 mood 0 rows 746/1726, mood 5 row 1791"
+            "evidence": "second member of the native group at 480: worlds 5-1 mood 0 rows 746/1726, mood 5 row 1791",
+            "nativeGroup": {
+              "column": 528,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -100791,7 +101397,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 225,
             "nativeSlot": "once",
-            "evidence": "third member of the native group at 480: worlds 5-1 mood 0 row 1726 (x 530 with the leader at 482)"
+            "evidence": "third member of the native group at 480: worlds 5-1 mood 0 row 1726 (x 530 with the leader at 482)",
+            "nativeGroup": {
+              "column": 528,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -100801,7 +101412,12 @@
             "palette": "0f-1a-30-27",
             "spawnCamera": 402,
             "evidence": "native first appearance (read-only enemy slot, area D): x 681, camera 402; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 704,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -100811,7 +101427,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 1682,
             "evidence": "native first appearance (read-only enemy slot, area D): x 1984, camera 1682; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1984,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "paratroopa",
@@ -100822,6 +101443,48 @@
             "spawnCamera": 2613,
             "spawnYFraction": 0.02,
             "evidence": "native first appearance (read-only enemy slot): paratroopa present natively but absent from the observed actor list; spawn x, camera, height and vertical state"
+          },
+          {
+            "kind": "goomba",
+            "x": 1240,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 961,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 1264,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 1264,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 961,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 1264,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 2208,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 1905,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2208,
+              "index": 2,
+              "count": 3
+            }
           }
         ],
         "pipes": [
@@ -130023,7 +130686,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1631 tick 6520; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 115
+            "spawnCamera": 115,
+            "nativeColumn": 416
           },
           {
             "kind": "piranha",
@@ -130064,7 +130728,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1638 tick 6548; exact enemy-table-0f-0f-36-17.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 558
+            "spawnCamera": 558,
+            "nativeColumn": 864
           },
           {
             "kind": "piranha",
@@ -130130,7 +130795,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1648 tick 6588; exact enemy-table-0f-0f-36-17.png cell 1; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1172
+            "spawnCamera": 1172,
+            "nativeColumn": 1472
           },
           {
             "kind": "piranha",
@@ -130170,7 +130836,8 @@
             "y": 80,
             "direction": -1,
             "evidence": "screenshot sequence 1655 tick 6616; exact enemy-table-0f-0f-36-17.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn height and vertical state",
-            "palette": "0f-0f-36-17"
+            "palette": "0f-0f-36-17",
+            "nativeColumn": 1920
           },
           {
             "kind": "piranha",
@@ -130203,7 +130870,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 1666 tick 6660; exact enemy-table-0f-0f-36-17.png cell 1; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2313
+            "spawnCamera": 2313,
+            "nativeColumn": 2608
           },
           {
             "kind": "piranha",
@@ -130220,7 +130888,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 1668 tick 6668; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2454
+            "spawnCamera": 2454,
+            "nativeGroup": {
+              "column": 2752,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "piranha",
@@ -130274,6 +130947,20 @@
             "spawnCamera": 387,
             "nativeSlot": "wait",
             "evidence": "native Paratroopa, y 184: worlds 6-2 moods 0/3/5 rows 312/604/354; on the route the plant at 744 took the last slot"
+          },
+          {
+            "kind": "goomba",
+            "x": 2728,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 2449,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2752,
+              "index": 1,
+              "count": 2
+            }
           }
         ],
         "pipes": [
@@ -181109,7 +181796,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2199 tick 8792; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; Inferred initial position fitted to three moving Goombas; native spawn and activation remain unmeasured; evidence/eight-one-goomba-alt-heldout.json; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 115
+            "spawnCamera": 115,
+            "nativeGroup": {
+              "column": 416,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181119,7 +181811,12 @@
             "evidence": "screenshot sequence 2199 tick 8792; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; Inferred initial position fitted to three moving Goombas; native spawn and activation remain unmeasured; evidence/eight-one-goomba-alt-heldout.json; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 115,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 416,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -181136,7 +181833,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2203 tick 8808; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 435
+            "spawnCamera": 435,
+            "nativeGroup": {
+              "column": 736,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -181146,7 +181848,12 @@
             "evidence": "screenshot sequence 2204 tick 8812; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 435,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 736,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -181154,7 +181861,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 2207 tick 8824; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 976
           },
           {
             "kind": "goomba",
@@ -181163,7 +181871,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2209 tick 8832; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 849
+            "spawnCamera": 849,
+            "nativeGroup": {
+              "column": 1152,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181173,7 +181886,12 @@
             "evidence": "screenshot sequence 2209 tick 8832; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 849,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1152,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181183,7 +181901,12 @@
             "evidence": "screenshot sequence 2210 tick 8836; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 849,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1152,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "beetle",
@@ -181191,7 +181914,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 2211 tick 8840; exact enemy-table-0f-0f-36-17.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn height and vertical state",
-            "palette": "0f-0f-36-17"
+            "palette": "0f-0f-36-17",
+            "nativeColumn": 1296
           },
           {
             "kind": "piranha",
@@ -181216,7 +181940,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2218 tick 8868; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 1475
+            "spawnCamera": 1475,
+            "nativeGroup": {
+              "column": 1776,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -181234,7 +181963,12 @@
             "evidence": "screenshot sequence 2219 tick 8872; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1475,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1776,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181244,7 +181978,12 @@
             "evidence": "screenshot sequence 2219 tick 8872; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 1475,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 1776,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -181253,7 +181992,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 2221 tick 8880; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1602
+            "spawnCamera": 1602,
+            "nativeColumn": 1904
           },
           {
             "kind": "koopa",
@@ -181262,7 +182002,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2222 tick 8884; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1735
+            "spawnCamera": 1735,
+            "nativeGroup": {
+              "column": 2032,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -181272,7 +182017,12 @@
             "evidence": "screenshot sequence 2222 tick 8884; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 1735,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2032,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -181281,7 +182031,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2223 tick 8888; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 1827
+            "spawnCamera": 1827,
+            "nativeGroup": {
+              "column": 2128,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181290,7 +182045,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2227 tick 8904; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 2115
+            "spawnCamera": 2115,
+            "nativeGroup": {
+              "column": 2416,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181300,7 +182060,12 @@
             "evidence": "screenshot sequence 2227 tick 8904; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 2115,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2416,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181310,7 +182075,12 @@
             "evidence": "screenshot sequence 2227 tick 8904; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "nativeSlot": "once",
-            "spawnCamera": 2115
+            "spawnCamera": 2115,
+            "nativeGroup": {
+              "column": 2416,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "paratroopa",
@@ -181349,7 +182119,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2240 tick 8956; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 3062
+            "spawnCamera": 3062,
+            "nativeGroup": {
+              "column": 3360,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "koopa",
@@ -181359,7 +182134,12 @@
             "evidence": "screenshot sequence 2241 tick 8960; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 3062,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 3360,
+              "index": 1,
+              "count": 2
+            }
           },
           {
             "kind": "goomba",
@@ -181368,7 +182148,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2246 tick 8980; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 3462
+            "spawnCamera": 3462,
+            "nativeGroup": {
+              "column": 3760,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181378,7 +182163,12 @@
             "evidence": "screenshot sequence 2246 tick 8980; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 3462,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 3760,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181388,7 +182178,12 @@
             "evidence": "screenshot sequence 2246 tick 8980; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "nativeSlot": "once",
-            "spawnCamera": 3462
+            "spawnCamera": 3462,
+            "nativeGroup": {
+              "column": 3760,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -181413,7 +182208,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 2253 tick 9008; exact enemy-table-0f-0f-36-17.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 3765
+            "spawnCamera": 3765,
+            "nativeColumn": 4064
           },
           {
             "kind": "goomba",
@@ -181422,7 +182218,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2254 tick 9012; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 3862
+            "spawnCamera": 3862,
+            "nativeGroup": {
+              "column": 4160,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181432,7 +182233,12 @@
             "evidence": "screenshot sequence 2254 tick 9012; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 3862,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 4160,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181442,7 +182248,12 @@
             "evidence": "screenshot sequence 2254 tick 9012; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots; native group member: created on the leader row only while a slot is free",
             "palette": "0f-0f-36-17",
             "spawnCamera": 3862,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 4160,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181451,7 +182262,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2257 tick 9024; exact enemy-table-0f-0f-36-17.png cell 14; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 4114
+            "spawnCamera": 4114,
+            "nativeGroup": {
+              "column": 4400,
+              "index": 0,
+              "count": 2
+            }
           },
           {
             "kind": "beetle",
@@ -181460,7 +182276,8 @@
             "direction": 1,
             "evidence": "screenshot sequence 2259 tick 9032; exact enemy-table-0f-0f-36-17.png cell 0; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native first appearance (read-only enemy slot): spawn height and vertical state",
             "palette": "0f-0f-36-17",
-            "spawnCamera": 4229
+            "spawnCamera": 4229,
+            "nativeColumn": 4528
           },
           {
             "kind": "koopa",
@@ -181469,7 +182286,8 @@
             "direction": -1,
             "evidence": "screenshot sequence 2265 tick 9056; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native walkers appear moving left (toward the player); the +1 was inferred from screenshots",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 4579
+            "spawnCamera": 4579,
+            "nativeColumn": 4880
           },
           {
             "kind": "koopa",
@@ -181477,7 +182295,8 @@
             "y": 208,
             "direction": -1,
             "evidence": "screenshot sequence 2270 tick 9076; exact enemy-table-0f-1a-30-27.png cell 2; camera registration inferred",
-            "palette": "0f-1a-30-27"
+            "palette": "0f-1a-30-27",
+            "nativeColumn": 5312
           },
           {
             "kind": "koopa",
@@ -181486,7 +182305,12 @@
             "direction": -1,
             "evidence": "screenshot sequence 2272 tick 9084; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera",
             "palette": "0f-1a-30-27",
-            "spawnCamera": 5172
+            "spawnCamera": 5172,
+            "nativeGroup": {
+              "column": 5472,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -181496,7 +182320,12 @@
             "evidence": "screenshot sequence 2272 tick 9084; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native first appearance (read-only enemy slot): spawn x and camera; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "spawnCamera": 5172,
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 5472,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "koopa",
@@ -181506,7 +182335,12 @@
             "evidence": "screenshot sequence 2272 tick 9084; exact enemy-table-0f-1a-30-27.png cell 3; camera registration inferred; native group member: created on the leader row only while a slot is free",
             "palette": "0f-1a-30-27",
             "nativeSlot": "once",
-            "spawnCamera": 5172
+            "spawnCamera": 5172,
+            "nativeGroup": {
+              "column": 5472,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -181532,7 +182366,12 @@
             "palette": "0f-0f-36-17",
             "evidence": "Third Goomba visible in native 8-1 tick 8796 and independent alternate branch; initial position and activation inferred from a camera-conditioned fit. See evidence/eight-one-goomba-alt-heldout.json.; native group member: created on the leader row only while a slot is free",
             "nativeSlot": "once",
-            "spawnCamera": 115
+            "spawnCamera": 115,
+            "nativeGroup": {
+              "column": 416,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181542,7 +182381,12 @@
             "palette": "0f-0f-36-17",
             "spawnCamera": 271,
             "nativeSlot": "wait",
-            "evidence": "native object seen once: worlds 8-1 mood 3 row 199; moods 0/5 and the route had no free slot"
+            "evidence": "native object seen once: worlds 8-1 mood 3 row 199; moods 0/5 and the route had no free slot",
+            "nativeGroup": {
+              "column": 528,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
@@ -181560,7 +182404,12 @@
             "palette": "0f-1a-30-27",
             "spawnCamera": 1827,
             "evidence": "native first appearance (read-only enemy slot, area D): x 2105, camera 1827; walks left from the right screen edge; native group member: created on the leader row only while a slot is free",
-            "nativeSlot": "once"
+            "nativeSlot": "once",
+            "nativeGroup": {
+              "column": 2128,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -181569,7 +182418,110 @@
             "direction": -1,
             "palette": "0f-0f-36-17",
             "spawnCamera": 3976,
-            "evidence": "native first appearance (read-only enemy slot, area D): x 4228, camera 3976; walks left from the right screen edge"
+            "evidence": "native first appearance (read-only enemy slot, area D): x 4228, camera 3976; walks left from the right screen edge",
+            "nativeGroup": {
+              "column": 4272,
+              "index": 0,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 504,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 225,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 528,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 528,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 225,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 528,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "koopa",
+            "x": 2032,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 1729,
+            "palette": "0f-1a-30-27",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2032,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "koopa",
+            "x": 2128,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 1825,
+            "palette": "0f-1a-30-27",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 2128,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 4248,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 3969,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 4272,
+              "index": 1,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 4272,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 3969,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 4272,
+              "index": 2,
+              "count": 3
+            }
+          },
+          {
+            "kind": "goomba",
+            "x": 4376,
+            "y": 208,
+            "direction": -1,
+            "spawnCamera": 4097,
+            "palette": "0f-0f-36-17",
+            "evidence": "Native enemy-data group member; made only if a slot is free at the group parser pass.",
+            "nativeGroup": {
+              "column": 4400,
+              "index": 1,
+              "count": 2
+            }
           }
         ],
         "pipes": [
@@ -198585,7 +199537,12 @@
             "direction": -1,
             "palette": "0f-00-30-10",
             "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention.",
-            "spawnCamera": 643
+            "spawnCamera": 643,
+            "nativeGroup": {
+              "column": 944,
+              "index": 0,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -198594,7 +199551,12 @@
             "direction": -1,
             "palette": "0f-00-30-10",
             "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention.",
-            "spawnCamera": 643
+            "spawnCamera": 643,
+            "nativeGroup": {
+              "column": 944,
+              "index": 1,
+              "count": 3
+            }
           },
           {
             "kind": "goomba",
@@ -198603,7 +199565,12 @@
             "direction": -1,
             "palette": "0f-00-30-10",
             "evidence": "Three simultaneous exact cell14 heads at sequence2514/world706,729,753 with unique camera515 from28 exact static cells. Initial previsibility grid is inferred using the existing ceil16 survey convention.",
-            "spawnCamera": 643
+            "spawnCamera": 643,
+            "nativeGroup": {
+              "column": 944,
+              "index": 2,
+              "count": 3
+            }
           },
           {
             "kind": "piranha",
