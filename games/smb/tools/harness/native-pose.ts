@@ -28,7 +28,7 @@ export function comparePose(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:
   const {cell,facing}=playerCell(sim),nc=raw[0x6d5]>>3,nf=raw[0x33]===2?-1:1;r.compared++;
   if(nc!==cell){r.cell++;r.first??=f;const k=`${nc}->${cell}`;r.pairs[k]=(r.pairs[k]??0)+1;}
   if(nf!==facing){r.facing++;r.firstFacing??=f;}
-  if(detail&&(nc!==cell||nf!==facing))r.rows!.push(`${f} native ${nc}${nf<0?'L':'R'} ctrl ${raw[0x70d]} tmr ${raw[0x781]} set ${raw[0x70c]} | remake ${cell}${facing<0?'L':'R'} ${JSON.stringify(sim.locomotionPose)}`);
+  if(detail&&(nc!==cell||nf!==facing))r.rows!.push(`${f} native ${nc}${nf<0?'L':'R'} ctrl ${raw[0x70d]} tmr ${raw[0x781]} set ${raw[0x70c]} | remake ${cell}${facing<0?'L':'R'} ctrl ${sim.playerAnim.ctrl} tmr ${sim.playerAnim.timer} set ${sim.playerAnim.timerSet} ${JSON.stringify(sim.locomotionPose)}`);
  }
  return r;
 }
