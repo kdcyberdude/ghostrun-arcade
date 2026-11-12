@@ -280,6 +280,7 @@ export class GameRenderer {
   const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
   this.enemyCell(s.level.id==='8-4'?26:27,exit.retainerX-s.camera,185,'0f-16-30-27');
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
+  if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
   // The terminal reference image precedes ending dialogue. Subsequent ending
   // text is an inferred presentation; its timing cannot be observed via the tool.

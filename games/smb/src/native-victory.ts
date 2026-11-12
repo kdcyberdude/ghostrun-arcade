@@ -45,3 +45,17 @@ export function stepNativeVictory(n:NativeVictory,i:VictoryInput){
  }
  return {camera,remove,kill,fall,message,music,advance};
 }
+
+/** VRAM text addresses $2548/$25c5/$2605 and $25a7/$25e3/$264a/$2688. */
+export function nativeVictoryText(n:NativeVictory,messages:readonly number[],player:number){
+ const rows:{text:string;x:number;y:number}[]=[];
+ for(const part of messages){
+  if(part===0)rows.push({text:'THANK YOU '+(player?'LUIGI':'MARIO')+'!',x:64,y:80});
+  if(part===2)rows.push({text:'BUT OUR PRINCESS IS IN',x:40,y:112},{text:'ANOTHER CASTLE!',x:40,y:128});
+  if(part===3)rows.push({text:'YOUR QUEST IS OVER.',x:56,y:104});
+  if(part===4)rows.push({text:'WE PRESENT YOU A NEW QUEST.',x:24,y:120});
+  if(part===5)rows.push({text:'PUSH BUTTON B',x:80,y:144});
+  if(part===6)rows.push({text:'TO SELECT A WORLD',x:64,y:160});
+ }
+ return rows.map(row=>({...row,x:row.x+n.destination*256}));
+}

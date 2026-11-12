@@ -44,7 +44,7 @@ import goombaSquashRules from '../data/goomba-squash-rules.json';
 import popupRules from '../data/popup-rules.json';
 import hammerBroData from '../data/native-hammer-bros.json';
 import flagRules from '../data/flag-completion-rules.json';
-import castleRules from '../data/castle-completion-rules.json';
+import {stepNativeVictory,nativeVictoryText,type NativeVictory} from './native-victory.js';
 import multiCoinRules from '../data/multi-coin-rules.json';
 import {nativeEnemiesCollision,nativeUnwingedStomp} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
@@ -53,8 +53,7 @@ export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
 export const FLAG_COMPLETION=flagRules.runtimeCandidates;
 // 6-4 native: the rescue walk starts 14 rows later (146 vs 132) and ends 16 rows later, and the load is one clock step later: native 716 rows control end -> load vs about 690; cause not found, scoped constant.
-const CASTLE_END_64_EXTRA=31,CASTLE_END_EARLY=15,CASTLE_END_PHASE=2; // remake areaFrame is 166 on the first play row, so frame % 21 == 2 puts the load on (load row - first play row) = 4 mod 21
-export const CASTLE_COMPLETION=castleRules.runtimeCandidates;
+export const CASTLE_COMPLETION={secondMessageFrames:128}; // PrimaryMsgCounter2: 2*256/4 message updates
 const PIRANHA=enemyRules.piranha;
 const NATIVE_FALLERS=['goomba','koopa','redKoopa','beetle','spiny'];
 const SWIMMING_CHEEP_SPEEDS:Record<string,number>=swimmingCheepRules.horizontalSpeedByPalette;
@@ -201,8 +200,7 @@ export class Simulation {
  private gameoverClosingFrame=-1;private gameoverSkipDelay=0;introFromGameover=false;
  slots:Slot[]=[]; events:string[]=[]; checkpoint=false; previous=new Set<Button>(); timerFrames=0;
  private activatedCheckpointArea?:string;
- castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;
- private castleFallingBosses:Enemy[]=[];private castleBraking=false;private castleScroll=0;
+ castleStage:'bridge'|'fall'|'walk'|'message'='bridge';castleArrivalFrame=0;nativeVictory?:NativeVictory;private victoryBoss?:Enemy;private victoryMessages:number[]=[];private victoryPending=-1;private victoryErase?:'axe'|'chain'|'bridge';
  flagTop=49;flagInside=false;flagBonus=0;private flagWait=0;
  private flagFireworkCount=0;private flagFireworksAwarded=0;private flagCastleGeometry?:{x:number;roofY:number};
  powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink'};
@@ -230,7 +228,7 @@ export class Simulation {
  get level(){return this.levels[this.levelIndex];}
  get height(){return this.player.size>0&&!this.player.duck?28:12;}
  get fireballThrowAge(){return this.lastFire<0?-1:this.frame-this.lastFire;}
- castleBowserFalls(e:Enemy){return this.castleFallingBosses.includes(e);}
+ castleBowserFalls(e:Enemy){return this.victoryBoss===e&&Boolean(this.nativeVictory!.bossState&64);}
  get vineEntryStage(){return this.entryVineActive?this.entryVineStage:undefined;}
  get pipeRising(){return this.pipeRise>0;}
  /** True while the native entry is still engine 7 (no control): the underground fall's first 17 rows, the water room's 34-row fall to native y 49. */
@@ -301,7 +299,7 @@ export class Simulation {
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
   this.swimPoseFrame=0;
-  this.springTimers.clear();this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;
+  this.springTimers.clear();this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
   this.flagTop=48;this.flagInside=false;this.flagBonus=0;this.flagWait=0;
   this.items=[];this.popups=[];this.bump.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
   this.emit(this.areaMusic());
@@ -406,7 +404,7 @@ export class Simulation {
    else if(this.gameoverEnd>0&&this.phaseFrame>=this.gameoverEnd-26)this.gameoverClosingFrame=0;
    return;
   }
-  if(this.phase==='ending'){if(pressed('start'))this.restartToTitle();return;}
+  if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
   if((this.random.frame&7)===0)this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
@@ -622,13 +620,12 @@ export class Simulation {
   // Native axe contact (tests/native-axe-contact.test.ts): a foot inside the cell while not rising; x+13 stands for the right foot, the left side is kept loose so a remake 1-3 px ahead still reaches it.
   const touchingExit=exit&&(exit.kind==='axe'?exit.y!==undefined&&p.vy>=0&&overlap(Math.floor(p.x),Math.floor(p.y)-1,13,2,exit.x-8,exit.y,16,16):exit.kind==='flag'&&flagPoleTouched(p.x,exit.x)&&p.y<193);
   if(exit&&touchingExit){
-   this.phase=exit.kind==='axe'?'castle':'flag';this.phaseFrame=0;p.vx=0;p.vy=0;
+   this.phase=exit.kind==='axe'?'castle':'flag';this.phaseFrame=0;if(exit.kind!=='axe'){p.vx=0;p.vy=0;}
    this.flagBonus=exit.kind==='flag'?(FLAG_COMPLETION.scoreThresholds.find(t=>p.y<t.feetBelow)?.score??FLAG_COMPLETION.lowestScore):0;
    if(exit.kind==='axe'){
     this.bridge=[...this.tiles].filter(([,id])=>id===137).sort((a,b)=>Number(b[0].split(',')[0])-Number(a[0].split(',')[0])).map(([key])=>key);
-    this.castleStage='bridge';this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;this.emit('command_silence');
-    for(const[key,id]of this.tiles)if(id===197)this.tiles.delete(key);
-    {const chain=`${Math.floor(exit.x/16)-1},9`;if(this.level.id==='6-4'&&this.area.id==='main'&&this.tiles.get(chain)===12)this.tiles.delete(chain);} // the 6-4 chain hangs in the column before the axe tile
+    this.castleStage='bridge';this.emit('command_silence');
+    this.beginNativeVictory();
    }else {if(this.timerTickFrame===this.frame)this.time++;/* native RunGameTimer runs after the pole touch and skips engine 4: a tick due on the touch row never happens (1-1 v2 row 2181: $0787 0, digits stay 358) */p.x=exit.x-15+(p.x-Math.floor(p.x));this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
   }
  }
@@ -1576,48 +1573,58 @@ export class Simulation {
    }else if(this.flagWait>=rules.noFireworksEndWait&&this.areaFrame%rules.fireworksEndInterval===rules.fireworksEndPhase)this.nextLevel(); // native no-firework levels end on the same 21-row area-clock phase, 140-160 rows after the timer reaches 0
   }
  }
- /** Native castle end (7 route castles): the level load comes on the same free-running 21-row area clock as the flag levels (6 of 7 loads at (load row - first play row) = 4 mod 21),
-  * at the first such row once the message has run `hold` - 15 rows (hold 368 was the mean; 5..15 early all fit). */
- private castleEndDue(hold:number){if(this.level.id==='6-4')hold+=CASTLE_END_64_EXTRA;return this.phaseFrame-this.castleArrivalFrame>=hold-CASTLE_END_EARLY&&this.areaFrame%FLAG_COMPLETION.fireworksEndInterval===CASTLE_END_PHASE;}
+ private beginNativeVictory(){
+  const boss=this.enemies.find(e=>e.kind==='bowser'&&e.active),body=boss?.nativeBowser;
+  this.victoryBoss=boss;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase='axe';
+  const task={bridge:0,fall:0,walk:2,message:3}[this.castleStage];
+  this.nativeVictory={task,destination:((Math.floor(this.camera)+255)>>8)+1,walk:0,scrollFraction:0,primary:0,secondary:0,endTimer:0,
+   feet:body?.feet??32,controls:body?.controls??0,bridge:0,bossState:boss?.dead?32:0,
+   boss:body?{...body.move,y:body.y}:{y:Math.floor(boss?.y??256)-32,speed:0,force:0,fraction:0,timer:0}};
+  if(task===0){this.motor.speed=24*256+(this.motor.speed&255);this.player.vx=this.motor.speed/4096;}
+ }
+ get castleText(){return this.nativeVictory?nativeVictoryText(this.nativeVictory,this.victoryMessages,this.currentPlayer):undefined;}
  private updateCastle(){
-  const p=this.player,exit=this.area.exit,rules=CASTLE_COMPLETION;
-  if(this.castleStage==='bridge'){
-   // The initial inherited phase is unmeasured; the four-frame removal cadence
-   // and direction are visible in all eight native castle traces.
-   if(this.phaseFrame>=rules.collapseInitialWaitFrames&&(this.phaseFrame-rules.collapseInitialWaitFrames)%rules.bridgeTileFrames===0){
-    const key=this.bridge.shift();if(key){this.tiles.delete(key);const x=Number(key.split(',')[0])*16;this.freeTiles=this.freeTiles.filter(t=>t.id!==137||t.x<x||t.x>=x+16);}
-   }
-   if(!this.bridge.length){
-    this.freeTiles=this.freeTiles.filter(t=>t.id!==137);this.castleFallingBosses=this.enemies.filter(e=>e.kind==='bowser'&&!e.dead);
-    for(const e of this.castleFallingBosses){e.dead=1;e.vy=0;}
-    this.castleStage='fall';if(this.castleFallingBosses.length)this.emit('sfx_bowser_falls');
-   }
-  }else if(this.castleStage==='fall'){
-   if(this.castleFallingBosses.every(e=>e.y>=rules.bowserReleaseFeetY)){
-    this.castleStage='walk';p.vx=rules.walkSpeed;p.vy=rules.releaseFallSpeed;p.grounded=false;p.facing=1; // native: the rescue walk runs at the full 1.5 px/frame from its first row, also while still falling
-   }
-  }else if(this.castleStage==='walk'){
-   if(exit?.retainerX!==undefined&&p.x>=exit.retainerX-rules.brakeAtActorSeparation)this.castleBraking=true;
-   if(this.castleBraking)p.vx=Math.max(0,p.vx-rules.walkDeceleration);
-   else p.vx=p.grounded?rules.walkSpeed:Math.min(rules.walkSpeed,p.vx+PHYSICS.walkAccel);
-   p.x+=p.vx;p.anim+=p.vx;p.grounded=false;this.movePlayerY(p.vy,this.height);
-   if(!p.grounded)p.vy=Math.min(PHYSICS.maxFall,p.vy+PHYSICS.gravity);
-   const observed=castleRules.geometry.find(g=>g.id===this.level.id&&g.actorX===exit?.retainerX),cameraEnd=observed?.cameraEnd??Math.max(this.camera,(exit?.retainerX??this.area.width)-rules.fallbackActorScreenX);
-   this.castleScroll=Math.min(cameraEnd,this.castleScroll+rules.cameraSpeed);this.camera=Math.floor(this.castleScroll);
-   if(this.castleScroll>=cameraEnd&&p.vx===0&&p.grounded){
-    if(this.level.id==='8-4'){this.nextLevel();return;}
-    // native: Mario stands 53-61 rows (mean 56) in front of the retainer before the message text (task 3) starts
-    if(!this.castleArrivalFrame)this.castleArrivalFrame=this.phaseFrame;
-    if(this.phaseFrame-this.castleArrivalFrame>=rules.arrivalHoldFrames){this.castleStage='message';this.castleArrivalFrame=this.phaseFrame;this.emit('event_castle_clear');}
-   }
-  }else if(this.castleEndDue(rules.messageHoldFrames)){
-   this.nextLevel();return;
+  if(!this.nativeVictory)this.beginNativeVictory();
+  const n=this.nativeVictory!,p=this.player,oldTask=n.task;
+  if(this.victoryPending>=0){this.victoryMessages.push(this.victoryPending);this.victoryPending=-1;}
+  if(this.victoryErase){
+   const exit=this.area.exit!,kind=this.victoryErase;this.victoryErase=undefined;
+   if(kind==='bridge'){const key=this.bridge.shift();if(key){this.tiles.delete(key);const x=Number(key.split(',')[0])*16;this.freeTiles=this.freeTiles.filter(t=>t.id!==137||t.x<x||t.x>=x+16);}}
+   else{const key=kind==='axe'?`${Math.floor(exit.x/16)},${Math.floor((exit.y??0)/16)}`:`${Math.floor(exit.x/16)-1},9`;if(this.tiles.get(key)===(kind==='axe'?197:12))this.tiles.delete(key);}
   }
-  for(const e of this.castleFallingBosses){e.dead++;e.y+=e.vy;e.vy=Math.min(rules.bowserMaxFall,e.vy+rules.bowserGravity);}
-  // A boss defeated before the axe retains its ordinary death trajectory.
-  for(const e of this.enemies)if(e.kind==='bowser'&&e.dead&&!this.castleFallingBosses.includes(e)){
-   e.dead++;e.y+=e.vy;e.vy+=0.25;
+  this.tickIntervalTimers();
+  let poseGround=p.grounded,poseAbsolute=this.motor.absolute,poseWalk=false;
+  const result=stepNativeVictory(n,{world:Number(this.level.id[0]),camera:Math.floor(this.camera),playerX:Math.floor(p.x),bossPresent:Boolean(this.victoryBoss),intervalTick:this.intervalControl===20,
+   autoControl:walk=>{
+    const oldX=p.x,wasGrounded=p.grounded;poseGround=wasGrounded;poseAbsolute=this.motor.absolute;poseWalk=walk;
+    if(wasGrounded)this.playerAnim.setSpeed(poseAbsolute);
+    this.motor.speed=Math.round(p.vx*4096);
+    p.vx=this.motor.step({direction:walk?1:0,ground:wasGrounded,jump:false,b:false,down:false,buttons:walk})/4096;
+    const motion=motionOf(this.motor.speed);p.x+=motion;p.anim+=p.vx;if(wasGrounded&&walk)p.facing=1;p.grounded=false;
+    // ScrollHandler/ChkPOffscr clamps the integer coordinate, preserving its fraction.
+    if(Math.floor(p.x)>Math.floor(this.camera)+239){p.x=Math.floor(this.camera)+239+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
+    if(Math.floor(p.x)<Math.floor(this.camera)){p.x=Math.floor(this.camera)+p.x-Math.floor(p.x);this.motor.speed&=255;p.vx=this.motor.speed/4096;}
+    this.wallSpeed=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
+    if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
+    this.motor.clearContacts();this.movePlayerX(p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
+    const exit=this.area.exit,axe=Boolean(exit?.y!==undefined&&p.vy>=0&&Math.floor(p.y)>=exit.y&&Math.floor(p.y)<exit.y+16&&[3,12].some(dx=>Math.floor(p.x)+dx>=exit.x-8&&Math.floor(p.x)+dx<exit.x+8));
+    if(axe){this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
+    return {playerX:Math.floor(p.x),axe};
+   }});
+  this.camera=result.camera;
+  this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
+  if(result.remove>=0)this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';
+  if(this.victoryBoss){const e=this.victoryBoss;e.y=n.boss.y+32;e.vy=n.boss.speed+n.boss.force/256;delete e.graphics;
+   if(e.nativeBowser){e.nativeBowser.y=n.boss.y;e.nativeBowser.move={...n.boss};e.nativeBowser.controls=n.controls;e.nativeBowser.feet=n.feet;}
+   if(result.fall){e.dead=1;this.emit('sfx_bowser_falls');}
   }
+  if(result.kill){n.bossState=0;this.enemies=[];this.items=this.items.filter(i=>i.kind!=='flame');this.victoryBoss=undefined;this.emit('command_silence');}
+  if(result.music)this.emit('event_castle_clear');
+  if(result.message>=0){this.victoryPending=result.message;if(Number(this.level.id[0])===8&&result.message===3)this.emit('event_victory');}
+  this.castleStage=n.task===0?(n.bossState&64?'fall':'bridge'):n.task<2?'fall':n.task===2?'walk':'message';
+  if(oldTask!==3&&n.task===3)this.castleArrivalFrame=this.phaseFrame+1;
+  if(result.advance){this.nextLevel();return;}
+  if(Number(this.level.id[0])===8&&n.task===4&&n.endTimer===0)this.phase='ending';
  }
  private updatePlatforms(oldBottom:number){
   const p=this.player;
