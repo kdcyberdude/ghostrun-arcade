@@ -1,7 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
-import {enemyPicture} from '../enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
@@ -80,6 +80,7 @@ export class Entities{
   const dyingFrame=p.dead&&s.phase==='dying'?s.phaseFrame:p.dead?DEATH_FREEZE+60:0;
   if(!loop&&clip==='death')t=Math.min(1,dyingFrame/DEATH_FREEZE)*a.duration('death');
   a.pose(clip,t,s.frame,loop);
+  if(clip==='swim'){const kick=(appearance.swimKick===undefined?0.75:0.25)*a.duration('swim');for(const bone of ['ThighL','ShinL','FootL','ThighR','ShinR','FootR'])a.poseRotation(bone,'swim',kick);}
   const facing=appearance.facing;
   const target=p.dead?0:clip==='climb'||clip==='slide'?yawFor(facing)*0.4+(facing<0?Math.PI*0.6:0):yawFor(facing);
   if(p.dead)this.marioYaw=target;else if(advanced)this.marioYaw=turnToward(this.marioYaw,target);a.root.rotation.y=this.marioYaw;
@@ -116,10 +117,14 @@ export class Entities{
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
   a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
-  a.pose(e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk',e.age/60,s.frame);
+  const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,Boolean(s.powerChange)):undefined;
+  const nativePhase=e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
+  const clip=nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
+  a.pose(clip,nativePhase===undefined?e.age/60:nativePhase*a.duration(clip),s.frame);
+  if(e.nativeBowser)a.poseRotation('Jaw','idle',(e.nativeBowser.controls&0x80)?a.duration('idle')/4:0);
   if(e.kind==='hammerBro'){
    for(const name of ['M_Handle','M_Metal'])for(const material of a.materials.get(name)??[])material.visible=!e.hbro;
-   if(e.hbro)a.poseRotation('ArmR',!e.dead&&(e.hbro.state&8)?'walk':undefined,a.duration('walk')/4);
+   if(broCell!==undefined)a.poseRotation('ArmR',broCell>=30?'walk':undefined,a.duration('walk')/4);
   }
  }
  private retainer(s:Simulation){
