@@ -33,6 +33,7 @@ import hammerBroData from '../data/native-hammer-bros.json';
 import flagRules from '../data/flag-completion-rules.json';
 import castleRules from '../data/castle-completion-rules.json';
 import multiCoinRules from '../data/multi-coin-rules.json';
+import {nativeEnemiesCollision} from './enemy-collision.js';
 const CONTROL_GRACE_ROWS=2; // native: an A held through the load jumps on the same row as an A first pressed on the first control row; the remake's 2-frame input queue makes that two grace rows (campaign-compare MODEL_LOCAL seeds its own constant); an empty queue (native RAM-trace replays: each pad on its native row) needs none
 export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
@@ -128,7 +129,7 @@ const isGreenParatroopa=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16
 // including two Paratroopas that had already passed each other); they are not turned again until they have separated.
 const bumpsOnOverlap=(a:{kind:string},b:{kind:string})=>['paratroopa','beetle'].some(k=>a.kind===k||b.kind===k);
 const wallReach=(e:{kind:string},dx:number)=>e.kind==='paratroopa'||e.kind==='beetle'?(dx>0?GREEN_PARATROOPA_LANDING.sideProbe.right-15:GREEN_PARATROOPA_LANDING.sideProbe.left-1):0;
-const nativeWalkerWallTurn=(kind:string)=>kind==='goomba'||kind==='koopa'||kind==='redKoopa';
+const nativeWalkerWallTurn=(kind:string)=>kind==='goomba'||kind==='koopa'||kind==='redKoopa'||kind==='beetle';
 const wallHeight=(e:{kind:string})=>e.kind==='paratroopa'||e.kind==='beetle'?GREEN_PARATROOPA_LANDING.sideProbe.heightAboveFeet:8;
 const clamp=(n:number,a:number,b:number)=>Math.max(a,Math.min(b,n));
 const overlap=(ax:number,ay:number,aw:number,ah:number,bx:number,by:number,bw:number,bh:number)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
@@ -1508,6 +1509,22 @@ export class Simulation {
  platformPosition(platform:NonNullable<Area['platforms']>[number],frame=this.platformFrame){
   return this.platformMotion.artworkPosition(platform,frame);
  }
+ /** Native EnemiesCollision (src/enemy-collision.ts): walkers, shells and Goomba corpses in native slots, boxes from the position before this frame's move. */
+ private collisionBits=new WeakMap<Enemy[],number[]>();
+ private nativeWalkerContacts(stepFrom:Map<Enemy,{x:number,y:number}>){
+  let bits=this.collisionBits.get(this.enemies);if(!bits)this.collisionBits.set(this.enemies,bits=[0,0,0,0,0]); // a new area's enemy list starts clear
+  const kinds=['goomba','koopa','redKoopa','beetle','paratroopa','spiny'],bodies=[],bySlot=new Map<number,Enemy>();
+  for(const e of this.enemies){
+   const from=stepFrom.get(e);
+   const corpse=e.squashed&&e.dead<90; // a flat Goomba still occupies its native slot until its erase (the remake's slot accounting may have let it go)
+   if(!from||!e.active||e.enemySlot===undefined||e.slotFreed&&!corpse||!kinds.includes(e.kind)||e.movingShell||e.dead&&!corpse||corpse&&bySlot.has(e.enemySlot))continue;
+   const turns=!e.dead&&!e.shell&&!(e.egg&&e.motion==='falling')&&(e.kind!=='paratroopa'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce');
+   bodies.push({slot:e.enemySlot,x:Math.floor(from.x),y:Math.floor(from.y)-24,tall:e.kind!=='goomba'&&e.kind!=='spiny',turns,reacts:true});bySlot.set(e.enemySlot,e);
+  }
+  const {before,after}=nativeEnemiesCollision(bodies,Math.floor(this.camera),this.broClock,this.area.theme==='water',bits);
+  for(const s of before){const e=bySlot.get(s)!,from=stepFrom.get(e)!;e.x=from.x-(e.x-from.x);e.vx=-e.vx;} // turned before its own step: the step goes the other way
+  for(const s of after){const e=bySlot.get(s)!;e.vx=-e.vx;}
+ }
  // Area D: a native walker reverses when a squashed Goomba corpse is 10 px ahead (11 px reach with the half-pixel step) and when a stationary shell is 12 px ahead (reach 13).
  private turnWalkersAtCorpses(){
   for(const corpse of this.enemies){
@@ -1664,12 +1681,14 @@ export class Simulation {
   const p=this.player;
   if(p.vx)this.marioMotion=Math.sign(p.vx);
   this.stompedThisStep=false;
+  const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
   for(const e of this.enemies){
    const priorY=e.y,priorX=e.x; // the native touch test reads the enemy before its own move
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
    if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
+   stepFrom.set(e,{x:e.x,y:e.y});
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
    if(e.dead){
@@ -1822,14 +1841,7 @@ export class Simulation {
    }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.awardPopup(kick,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.greenShellSideKickDurationActiveNativeFrames);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
-  const walkers=this.enemies.filter(e=>e.active&&!e.dead&&(isGreenParatroopa(e)||['goomba','koopa','redKoopa','beetle','spiny'].includes(e.kind)&&e.vy===0)&&!e.movingShell);
-  for(let a=0;a<walkers.length;a++)for(let b=a+1;b<walkers.length;b++){
-   const first=walkers[a],second=walkers[b];
-   if(bumpsOnOverlap(first,second)){this.bumpOnOverlap(first,second);continue;}
-   if(Math.abs(first.x-second.x)>=(first.shell||second.shell?SHELL_TURN_REACH:16)||Math.abs(first.y-second.y)>=8||(first.x-second.x)*((first.shell?0:first.vx)-(second.shell?0:second.vx))>=0)continue;
-   if(!first.shell)first.vx=-first.vx;if(!second.shell)second.vx=-second.vx;
-  }
-  this.turnWalkersAtCorpses();
+  this.nativeWalkerContacts(stepFrom);
   this.rememberSlotVertical();
  }
  // Koopa-shaped enemies touch 1 px wider than the overlap box: native integer |enemy x before its move - Mario x| <= 11 (evidence/contact3-findings-20261111.md)
