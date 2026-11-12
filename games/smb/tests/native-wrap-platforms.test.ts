@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
-import {PlatformMotion,nativePlatformObject,nativeWrapY,platformMotionModel,platformSupportsX} from '../src/platform-motion.js';
+import {PlatformMotion,nativePlatformObject,nativePlatformSpawnCamera,nativeWrapY,platformMotionModel,platformSupportsX} from '../src/platform-motion.js';
 import nativePlatformMotion from '../data/native-platform-motion.json';
 
 // Native excerpts [age in frames since the object appeared, y byte] of the recorded route's wrapping lifts (object ids 39 and 44 move down,
@@ -30,17 +30,18 @@ test('wrapping lifts follow the native y bytes of the recorded route (15/16 px p
 
 test('a wrapping lift starts at its own spawn camera and a restart re-arms it',()=>{
  const level='1-2',area='area-2',platform=specOf(level,area,[2236,112]),object=nativePlatformObject(platform,{levelId:level,areaId:area})!;
- const motion=new PlatformMotion({levelId:level,areaId:area});
- motion.advance(0,object.spawnCamera-3);
+ const motion=new PlatformMotion({levelId:level,areaId:area}),spawn=nativePlatformSpawnCamera(object);
+ motion.slotFraction(platform,104); // v2 slot2's actual fraction when the object is initialized
+ motion.advance(0,spawn-3);
  assert.equal(motion.collisionPosition(platform,0).y,112);
- for(let f=1;f<=40;f++)motion.advance(f,object.spawnCamera+f-1);
+ for(let f=1;f<=40;f++)motion.advance(f,spawn+f-1);
  // the clock started on frame 1 (the first frame whose scroll reached the spawn camera): age 36 at frame 37 is native y 146
  assert.equal(motion.collisionPosition(platform,37).y,146);
  assert.equal(motion.collisionPosition(platform,37).x,2236);
- motion.reset();motion.advance(0,object.spawnCamera);
+ motion.reset();motion.advance(0,spawn);
  assert.equal(motion.collisionPosition(platform,0).y,112);
- motion.advance(1,object.spawnCamera);
- assert.equal(motion.collisionPosition(platform,1).y,113);
+ motion.advance(1,spawn);
+ assert.equal(motion.collisionPosition(platform,1).y,112,'a freshly cleared fraction starts with an idle motion row');
 });
 
 test('every platform of the replaced lift areas has a native object, the 4-3 ghost specs are gone',()=>{
