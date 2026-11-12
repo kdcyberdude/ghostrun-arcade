@@ -8,8 +8,8 @@ const events=[];
 for(const level of fs.readdirSync(a.traces).sort()){
  const b=fs.readFileSync(path.join(a.traces,level,'ram.bin'));
  for(let f=1;f<b.length/2048;f++){
-  const r=b.subarray(f*2048,(f+1)*2048),p=b.subarray((f-1)*2048,f*2048);if(p[0x770]!==2||r[0x770]!==2||p[0x747]||r[0x747])continue;
-  const s=p[0x368];events.push({level,frame:f,before:state(p),after:state(r),input:{world:r[0x75f]+1,camera:p[0x71a]*256+p[0x71c],playerX:p[0x6d]*256+p[0x86],bossPresent:p[0x16+s]===45,intervalTick:r[0x77f]===20},auto:{playerX:r[0x6d]*256+r[0x86],axe:p[0x772]===2&&r[0x772]===0},camera:r[0x71a]*256+r[0x71c]});
+  const r=b.subarray(f*2048,(f+1)*2048),p=b.subarray((f-1)*2048,f*2048);if(p[0x770]!==2||(r[0x770]!==2&&!(r[0x770]===1&&p[0x772]===4))||p[0x747]||r[0x747])continue;
+  const s=p[0x368];events.push({level,frame:f,before:state(p),after:state(r),input:{world:p[0x75f]+1,camera:p[0x71a]*256+p[0x71c],playerX:p[0x6d]*256+p[0x86],bossPresent:p[0x16+s]===45,intervalTick:r[0x77f]===20},auto:{playerX:r[0x6d]*256+r[0x86],axe:p[0x772]===2&&r[0x772]===0},camera:r[0x71a]*256+r[0x71c],advance:r[0x770]===1});
  }
 }
 fs.writeFileSync(a.output,'{"method":"VictoryModeSubroutines source control only; AutoControlPlayer position is an input, not a tested output. See extraction tool.","events":[\n'+events.map(e=>JSON.stringify(e)).join(',\n')+'\n]}\n');console.log(events.length+' transitions');

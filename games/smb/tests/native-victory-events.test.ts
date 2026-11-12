@@ -1,6 +1,6 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
 import {stepNativeVictory,type NativeVictory,type VictoryInput} from '../src/native-victory.js';
-const fixture=JSON.parse(readFileSync(new URL('./fixtures/native-victory-events.json',import.meta.url),'utf8')) as {events:{level:string;frame:number;before:NativeVictory;after:NativeVictory;input:VictoryInput;auto:{playerX:number;axe:boolean};camera:number}[]};
+const fixture=JSON.parse(readFileSync(new URL('./fixtures/native-victory-events.json',import.meta.url),'utf8')) as {events:{level:string;frame:number;before:NativeVictory;after:NativeVictory;input:VictoryInput;auto:{playerX:number;axe:boolean};camera:number;advance:boolean}[]};
 for(const level of [...new Set(fixture.events.map(e=>e.level))])test(`${level}: native victory control, bridge gravity, scroll and message transitions`,()=>{
  let state:NativeVictory|undefined,last=-2;
  for(const e of fixture.events.filter(e=>e.level===level)){
@@ -14,7 +14,7 @@ for(const level of [...new Set(fixture.events.map(e=>e.level))])test(`${level}: 
   const {boss,bossState,...control}=state,{boss:expectedBoss,bossState:expectedBossState,...expectedControl}=e.after;
   assert.deepEqual(control,expectedControl,`control frame ${e.frame}`);
   if(e.before.task===0){assert.deepEqual(boss,expectedBoss,`bridge gravity ${e.frame}`);assert.equal(bossState,expectedBossState,`boss state ${e.frame}`);}
-  assert.equal(result.camera,e.camera,`camera ${e.frame}`);
+  assert.equal(result.camera,e.camera,`camera ${e.frame}`);assert.equal(result.advance,e.advance,`advance ${e.frame}`);
  }
 });
 

@@ -41,7 +41,7 @@ export function stepNativeVictory(n:NativeVictory,i:VictoryInput){
   n.secondary+=4;n.primary=(n.primary+(n.secondary>>8))&255;n.secondary&=255;
   if(n.primary>=7){n.endTimer=6;n.task++;}
   break;
- case 4:advance=n.endTimer===0&&i.world<8;break;
+ case 4:advance=n.endTimer===0&&i.world<8;if(advance)n.task=0;break;
  }
  return {camera,remove,kill,fall,message,music,advance};
 }
