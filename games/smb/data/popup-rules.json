@@ -1,11 +1,11 @@
 {
   "enemyFeetYOffset": 32,
   "itemTopYOffset": 16,
-  "koopaDurationActiveNativeFrames": 50,
+  "koopaDurationActiveNativeFrames": 48,
   "itemDurationActiveNativeFrames": 48,
-  "status": "Event-relative inference: Koopa first-draw-relative48..52; item training46..48 and reserved46..49, conditional on retained±1draw/birth phase. Inferred50/48 remain within2frames. Goomba follows separately qualified squash cleanup. Motion and100/1UPassembly are measured exact.",
-  "evidence": "data/popup-event-candidate.json",
-  "scope": "Goomba/Koopa stomp awards and1UP pickup only. Other award events, transformation freeze, and simultaneous-label source behavior remain unmeasured.",
+  "status": "Native SetupFloateyNumber initializes timer$30 (48 frames). EraseEnemyObject clears its slot control before expiry. Artwork rises one pixel per engine pass until visible y15.",
+  "evidence": "tools/harness/native-popup-lifecycle.mjs; tests/fixtures/native-popup-lifecycle.json; https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (SetupFloateyNumber/FloateyNumbersRoutine/EraseEnemyObject)",
+  "scope": "Enemy and power-up floatey-number labels. Deferred score payment remains independent.",
   "greenShellSideKickDurationActiveNativeFrames": 48,
-  "greenShellSideKickDurationStatus": "Inferred48, reserved event-relative lifetime47..50 after retained±1birth/draw phase, maximum2active-native-frame error. Pre-kick shellX is observed. Existing4px shell motor is unchanged and not qualified by this award hook; opposite direction is a symmetry inference."
+  "greenShellSideKickDurationStatus": "Native SetupFloateyNumber initializes timer$30."
 }

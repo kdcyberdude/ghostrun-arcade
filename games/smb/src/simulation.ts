@@ -7,7 +7,7 @@ import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
 import {PlayerAnim} from './player-anim.js';
 import {nativeFlagStep} from './native-flagpole.js';
-import {captureEnemyPicture} from './enemy-picture.js';
+import {captureEnemyPicture,enemyPicture} from './enemy-picture.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {nativeFirebarHit} from './firebar-contact.js';
@@ -307,16 +307,24 @@ export class Simulation {
  }
  private emit(id:string){this.events.push(id);}
  private areaMusic(){const area=this.area;return `music_${area.entryVine?'cloud':area.theme==='underground'?'underground':area.theme==='water'?'water':area.theme==='castle'?'castle':'ground'}${this.time<=100?'_hurry':''}`;}
- private awardPopup(value:number|'1up',x:number,y:number,life:number,victim?:Enemy){
-  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life,victim});
+ private awardPopup(value:number|'1up',x:number,y:number,victim?:Enemy){
+  // SetupFloateyNumber overwrites the label in this enemy slot (or the special power-up slot5).
+  this.popups=this.popups.filter(p=>victim?p.victim!==victim&&(victim.enemySlot===undefined||p.victim?.enemySlot!==victim.enemySlot):p.victim!==undefined);
+  this.popups.push({value,x:Math.floor(x-this.camera),y:Math.floor(y),age:0,life:0x30,victim});
+ }
+ private enemyPopup(value:number|'1up',enemy:Enemy){
+  const picture=enemyPicture(enemy);this.awardPopup(value,picture.x,picture.y-popupRules.enemyFeetYOffset,enemy);
+ }
+ private eraseEnemy(enemy:Enemy){
+  enemy.dead=100;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
  }
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
  get awardedScore(){return this.pendingScore.reduce((n,s)=>n+s.value,this.score);}
  private floateyScore(value:number){this.pendingScore.push({value,left:5});}
  private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0)this.score+=s.value;this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
-  for(const popup of this.popups){popup.age++;popup.y--;}
-  this.popups=this.popups.filter(popup=>popup.age<popup.life); // a score label runs its own timer: a flat Goomba can go first (its interval-timer erase)
+  for(const popup of this.popups){popup.age++;if(popup.y>=16)popup.y--;}
+  this.popups=this.popups.filter(popup=>popup.age<popup.life); // native raw Y stops at23; the SBC carry makes the visible artwork stop at15
  }
  /** Native walker groups are created from the screen, not the map (first rows over 25 runs: 704..708 at one group, x - Mario a constant 143), so a group whose trigger the camera passed by n px appears n px further right, followers included. Lone walkers keep a fixed x. */
  /** Native enemy group (HandleGroupEnemies, data ids $37-$3E): two or three Goombas/Beetles/Koopas made on one frame at ScreenRight_X_Pos (camera + 255), +24, +48. A list
@@ -1112,7 +1120,7 @@ export class Simulation {
  private nativeBulletBillCheck(e:Enemy){
   e.bbCheck=false;
   const d=Math.floor(e.x)-Math.floor(this.player.x);
-  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){e.dead=100;e.goneFrame=this.frame;return;}
+  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseEnemy(e);e.goneFrame=this.frame;return;}
   e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
  }
  // Route comparison only: the attempt times of the recorded route (frames since the visit start, then the last gaps repeat).
@@ -1146,7 +1154,7 @@ export class Simulation {
   const generator=this.frenzyDue;this.frenzyDue=undefined;if(!generator)return;
   const shots=this.enemies.filter(e=>e.frenzy&&(e.dead===0||e.dead<100&&e.y<=280));
   let going:Enemy|undefined;
-  for(const e of shots)if(e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){e.dead=100;going=e;}
+  for(const e of shots)if(e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);going=e;}
   if(shots.some(e=>e!==going)||this.camera<generator.fromCamera!||this.camera>generator.toCamera!)return;
   this.freeNativeSlot();
   const used=new Set(this.enemies.filter(e=>e.active&&!e.dead).map(e=>e.enemySlot));for(const held of this.objectSlots(used))used.add(held);
@@ -1746,7 +1754,7 @@ export class Simulation {
    if(bound===undefined||Math.floor(e.x)>=bound)continue;
    if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
    else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
-   e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
+   this.eraseEnemy(e);if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
    if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((e.x-Math.floor(e.x))*256)&255);
   }
  }
@@ -1842,7 +1850,7 @@ export class Simulation {
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
    if(e.dead){
-    if(e.squashed){if(e.dead<90&&++e.dead>(e.squashFrames??goombaSquashRules.durationActiveNativeFrames))e.dead=100;continue;}
+    if(e.squashed){if(e.dead<90&&++e.dead>(e.squashFrames??goombaSquashRules.durationActiveNativeFrames))this.eraseEnemy(e);continue;}
     e.dead++;
     if(e.greenShellLaunchFrame!==undefined){
      if(this.frame>e.greenShellLaunchFrame){e.x+=shellLaunchRules.velocityX;e.y+=e.vy;e.vy=Math.min(shellLaunchRules.maxFall,e.vy+shellLaunchRules.gravity);}
@@ -1850,7 +1858,7 @@ export class Simulation {
     }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
-   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'?e.y>=280:e.y>280)&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'||e.kind==='podoboo'?73:48)||(e.kind==='spiny'?e.y>=280:e.y>280)&&e.kind!=='podoboo'){this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if((e.nativeFlight||e.nativeSwim)&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    if(e.motion==='flying'){
     if(e.nativeFlight){if(e.age>1){const n=e.pod??=flyingCheepLaunch();e.x+=e.vx;moveFlyingCheep(n);e.y=n.y+24;e.vy=n.speed+n.force/256;}} // the spawn step holds the launch position (src/flying-cheep.ts)
@@ -1953,7 +1961,7 @@ export class Simulation {
    // The newly unwinged Koopa and Mario can still overlap while the stomp
    // bounce separates them. Keep other enemies and later contacts dangerous.
    if(e.unwingedBounce){if(p.vy<0&&oldBottom<=e.y+1)continue;delete e.unwingedBounce;}
-   if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.awardPopup(100,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.koopaDurationActiveNativeFrames);this.emit('sfx_kick');continue;}
+   if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.enemyPopup(100,e);this.emit('sfx_kick');continue;}
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
    if(this.kickRestingShellFromAbove(e,oldBottom))continue;
    if(stompable&&((Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))||chkInj)){
@@ -1963,14 +1971,14 @@ export class Simulation {
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     const award=e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
-    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='hammerBro')this.awardPopup(award,e.x,e.y-popupRules.enemyFeetYOffset,e.kind==='goomba'?goombaSquashRules.durationActiveNativeFrames:popupRules.koopaDurationActiveNativeFrames,e.kind==='goomba'?e:undefined);
+    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='hammerBro')this.enemyPopup(award,e);
     this.emit('sfx_stomp');
     if(['koopa','redKoopa','paratroopa','beetle'].includes(e.kind)){
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';const unwinged=nativeUnwingedStomp(priorX,priorY,priorFraction,p.x);e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
      else if(!e.shell){e.shell=true;e.movingShell=false;e.shellAge=0;e.shellChain=0;e.x=priorX;} // native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
      else{e.movingShell=!e.movingShell;e.shellAge=0;e.shellChain=0;}
     }else{e.dead=1;e.vy=0;if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.squashFrames=this.intervalControl+22;this.rememberPlatformCorpseSlot(e);}} // native: a stomped Goomba keeps its x from before this frame's step and is erased when its EnemyIntervalTimer runs out, IntervalTimerControl + 22 frames after the stomp (18 of 18 v2 squashes)
-   }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.awardPopup(kick,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.greenShellSideKickDurationActiveNativeFrames);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
+   }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.enemyPopup(kick,e);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
   this.nativeWalkerContacts(stepFrom);
@@ -2071,15 +2079,15 @@ export class Simulation {
  }
  private fireballHits(i:Item){
     for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='beetle'&&overlap(i.x,i.y,8,8,e.x,e.y-24,e.kind==='bowser'?32:16,24)){
-     i.life=0;if(e.kind==='bowser'&&--e.hp>0)break;e.dead=1;e.vy=-3;const award=e.kind==='bowser'?5000:e.kind==='koopa'?200:100;this.floateyScore(award);if(e.kind==='goomba'||e.kind==='koopa')this.awardPopup(award,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.koopaDurationActiveNativeFrames);this.emit('sfx_kick');break;
+     i.life=0;if(e.kind==='bowser'&&--e.hp>0)break;e.dead=1;e.vy=-3;const award=e.kind==='bowser'?5000:e.kind==='koopa'?200:100;this.floateyScore(award);if(e.kind==='goomba'||e.kind==='koopa')this.enemyPopup(award,e);this.emit('sfx_kick');break;
     }
  }
  private collectItem(i:Item){
   const p=this.player;
     i.life=0;
-    if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset,popupRules.itemDurationActiveNativeFrames);this.emit('sfx_1up');}
-    else if(i.kind==='star'){p.star=POWERUPS.starNativeFrames.value;this.score+=POWERUPS.starCollectionScore.value;this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset,popupRules.itemDurationActiveNativeFrames);this.emit(this.time<=100?'music_star_hurry':'music_star');}
-    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size)this.powerChange={from:p.size,to:size,remaining:i.kind==='flower'?POWERUPS.transformFreezeNativeFrames.fireValue:POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue,kind:i.kind==='flower'?'fire':'grow'};this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset,popupRules.itemDurationActiveNativeFrames);this.emit('sfx_powerup');}
+    if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
+    else if(i.kind==='star'){p.star=POWERUPS.starNativeFrames.value;this.score+=POWERUPS.starCollectionScore.value;this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
+    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size)this.powerChange={from:p.size,to:size,remaining:i.kind==='flower'?POWERUPS.transformFreezeNativeFrames.fireValue:POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue,kind:i.kind==='flower'?'fire':'grow'};this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
  }
  hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:POWERUPS.transformFreezeNativeFrames.shrinkValue,kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
  die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
