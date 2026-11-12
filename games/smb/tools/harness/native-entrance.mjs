@@ -37,7 +37,7 @@ export function initializeEntrance(sim,start){
    Object.assign(e,{active:true,enemySlot:s,age:2,pod:{y:o.y,speed:o.speed,force:o.force,fraction:o.fraction,timer:o.timer},y:o.y-256+24});}
  }
  if(start.frenzyBag!==undefined)sim.swimBag=start.frenzyBag; /* BitMFilter $06DD: heights already used by the Cheep / Bullet Bill frenzy */
- if(start.intervalControl!==undefined)sim.intervalControl=start.intervalControl; /* IntervalTimerControl $077F: phase of the 21-frame interval timers */
+ if(start.intervalControl!==undefined){sim.intervalControl=start.intervalControl;sim.alignLifeClock(start.intervalControl);} /* IntervalTimerControl $077F: phase of the 21-frame interval timers (also the lives-screen clock) */
  sim.random.bytes=[...start.random];sim.random.frame=start.counter;if(start.colorRotate!==undefined)sim.colorRotations=start.colorRotate;sim.broClock=start.counter;
  sim.inputs=[new Set(),new Set()];sim.previous=new Set();sim.recordedRoute=false;
  return {initialized:['level main area','observed pose, subpixels, velocity, takeoff force and motor','camera','power','HUD score/coins/lives/time','random register and counter','cannon table and timers','interval timer phase','frenzy height filter','live frenzy Bullet Bills and Podoboos','palette rotation offset','game timer subphase','neutral prior inputs'],notReconstructed:['full native emulator state','enemy slot allocation and hidden per-enemy state','other hidden engine clocks','pre-existing audio phase'],method:'One initialization before the first retained action. Existing simulation, collisions, damage and deaths remain active. Controller transport is declared separately. No future action is pre-applied and no later state correction occurs.'};

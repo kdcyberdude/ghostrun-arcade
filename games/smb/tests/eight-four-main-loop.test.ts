@@ -19,17 +19,20 @@ test('8-4 main continues past the exit pipe and repeats columns 32-95 every 1024
  assert.equal(main.width,1536);assert.deepEqual([main.maze!.loopTo,main.maze!.loopAt],[512,1536]);
 });
 
+// Native loop command (world 8, page 6): the corridor is not unrolled; every lap moves Mario and the screen back 1024 px (ExecGameLoopback), so a
+// lap-2/3 row at unrolled x u stands at u - 1024 k on the same columns (tests/native-transitions.test.ts).
+const rolled=(x:number)=>{while(x>=1536)x-=1024;return x;};
 test('8-4 main: native standing rows past the exit pipe and in laps 2 and 3 are supported',()=>{
  // [unrolled x, feet] of native rows with vy 0 and the same y for three rows (mood5 rows 688, 723, 1371, 1529, 2024, 2100, 2220, 2503).
  for(const [x,feet] of [[1363,160],[1440,112],[2048,160],[2273,160],[2466,112],[2534,160],[2753,208],[2872,176]] as [number,number][]){
-  const sim=standing([x,feet]);
+  const sim=standing([rolled(x),feet]);
   assert.equal(sim.player.y,feet,`feet at unrolled x ${x}`);assert.equal(sim.player.grounded,true,`grounded at unrolled x ${x}`);
  }
 });
 
-test('8-4 main: the Piranha pipes repeat with the corridor (native 824/1304/1448 -> +1024 -> +2048)',()=>{
- const sim=standing([2753,208],4);
+test('8-4 main: the Piranha pipes of the repeated columns (native 824/1304/1448, and 1848/2328/2472/2872 unrolled) stay in the one corridor',()=>{
+ const sim=standing([rolled(2753),208],4);
  const piranhas=(sim as unknown as {area:{enemies:{kind:string;x:number}[]}}).area.enemies.filter(e=>e.kind==='piranha').map(e=>e.x);
- for(const x of [1848,2328,2472,2872])assert.ok(piranhas.includes(x),`piranha at ${x}`);
- assert.ok(!piranhas.includes(312+1024),'the first pipe (x 312) is before the repeated columns');
+ for(const x of [1848,2328,2472,2872])assert.ok(piranhas.includes(rolled(x)),`piranha at ${x} (rolled ${rolled(x)})`);
+ assert.ok(piranhas.every(x=>x<1536),'no unrolled copies');
 });

@@ -10,7 +10,7 @@ test('ground pit fall stays offscreen until the life transition',()=>{
  assert.equal(sim.phase,'dying');const y=sim.player.y;assert.ok(y>272);
  // Native: 259-260 rows from passing y 240 to the engine change (57 pit deaths), not the older 264.
  sim.step([],257);assert.equal(sim.phase,'dying');assert.equal(sim.player.y,y);assert.equal(sim.lives,3);
- sim.step([],2);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2);
+ sim.step([],3);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
 });
 
 test('ground enemy-style death still uses its normal upward launch',()=>{

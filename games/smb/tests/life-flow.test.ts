@@ -75,7 +75,7 @@ test('time-out: native 1-4 digits reach 000 on row 15044, death row 15068 and a 
   if(sim.phase==='play')return false;
   near(zero,15044,1,'digits reach 000');near(row-1,15068,1,'time-out death row');
   assert.equal(sim.timeUpScreen,false);
-  const {dying,total}=controlAfter(sim);near(total-dying,318,1,'rows from last death row to control');return true;
+  const {dying,total}=controlAfter(sim);near(total-dying+1,318,1,'rows from last death row to control');return true; // +1: the engine-6 row now closes the dying phase
  });
 });
 test('title start: native timer shows 400 on control row 215, 399 on 239, 398 on 263',()=>{
@@ -92,7 +92,7 @@ test('pit fall rows follow the last jump force: native 259-260 run, 246 walk, 24
  for(const [force,native] of [[0.5625,259.5],[0.4375,246],[0.375,248]]){
   const sim=new Simulation(structuredClone([observedLevels()[0]]));sim.reset(true);
   (sim as unknown as {lastJumpFallForce:number}).lastJumpFallForce=force;sim.player.y=274;sim.player.vy=4;sim.die(false,true);
-  let n=0;while(sim.phase==='dying'&&n<400){sim.step([],1);n++;}near(n+1,native,1.5,`rows at force ${force}`);
+  let n=0;while(sim.phase==='dying'&&n<400){sim.step([],1);n++;}near(n,native,1.5,`rows at force ${force}`); // the dying phase now ends with the engine-6 row
  }
 });
 test('pause freezes the clock for exactly the paused rows (native 370-469, 0x77f held) and start does not skip a lives screen (native t1 150 rows with start at row 140)',()=>{

@@ -86,7 +86,7 @@ test('water surface is harmless and castle lava falls through to an offscreen li
    assert.equal(sim.phase,'dying');assert.ok(sim.player.y>272);const feet=sim.player.y;
    // Native castle pits and lava: 245-249 or 259-260 rows by the last jump's fall force; no jump here, the 259-260 class (the older 247 was one sample).
    sim.step([],257);assert.equal(sim.phase,'dying');assert.equal(sim.player.y,feet);assert.equal(sim.lives,3);
-   sim.step([],2);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2);
+   sim.step([],3);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
   }
  }
 });
