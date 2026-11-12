@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,metatileGridX,bumpShown,liftRopeColumns} from '../src/view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from '../src/view-rules.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import manifest from '../assets/graphics/graphics-manifest.json';
@@ -75,9 +75,12 @@ test('?-block palette cycle follows the native colour rotation',()=>{
 });
 // native-pixels.ts lag 1, scroll-aligned playfield: 2-4 7.62% -> 1.03% (ceiling free tiles at x%16 6/14 and duplicates 1 px apart), 3-4 2.47 -> 0.89,
 // 4-3 2.36 -> 0.90, 2-2 1.53 -> 0.45, 8-4 1.54 -> 0.36; no level worse.
-test('free tile pieces are drawn on the native 16-px metatile grid',()=>{
- assert.deepEqual([1102,1110,1189,1190,1197,1198,1309].map(metatileGridX),[1104,1104,1184,1184,1200,1200,1312]);
- const ceiling=[...new Set(area('2-4','main').freeTiles.filter((t:any)=>t.y===48&&t.id===98&&t.x>500&&t.x<1400).map((t:any)=>metatileGridX(t.x)))].sort((a:any,b:any)=>a-b) as number[];
+// Free pieces and decorations are data on the 16-px metatile grid (tools/harness/native-level-map.ts --apply), so they are drawn as stored; the 2-4
+// ceiling, once free pieces at x%16 6/14, is grid tiles read from the native block buffer.
+test('free tile pieces are stored on the native 16-px metatile grid',()=>{
+ for(const level of observedLevels())for(const a of level.areas)for(const t of [...a.freeTiles??[],...a.decorations??[],...a.hiddenFreeTiles??[]])
+  assert.ok(t.x%16===0&&t.y%16===0,`${level.id} ${a.id} ${t.x},${t.y}`);
+ const ceiling=area('2-4','main').tiles.filter((t:any)=>t[1]===3&&t[2]===98&&t[0]*16>500&&t[0]*16<1400).map((t:any)=>t[0]*16).sort((a:any,b:any)=>a-b) as number[];
  assert.equal(ceiling[0],544);assert.equal(ceiling.at(-1),1312);assert.ok(ceiling.every((x,i)=>i===0||x-ceiling[i-1]===16)); // one unbroken brick row, as natively
 });
 // Native 5-3 frame 420: the canopy cell over the trunk stays put when Mario's head hits it; bricks and ?-blocks still bounce.

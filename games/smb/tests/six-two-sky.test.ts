@@ -26,7 +26,7 @@ test('ordinary head hits reveal the 6-2 hidden coin step and grow the observed v
  step.step(['a'],24);assert.equal(step.tileAt(1312,144),196);assert.equal(step.coins,1);
  step.step([],80);assert.equal(step.player.y,208);
  const vine=mainFixture([1296,160]);
- for(const col of [77,78,79,80,81])assert.equal(vine.tileAt(col*16,80),81);
+ for(const [col,id] of [[77,81],[78,81],[79,81],[80,81],[81,86]])assert.equal(vine.tileAt(col*16,80),id); // 86: native $56 brick with vine
  vine.step(['a'],24);assert.equal(vine.tileAt(1296,80),196);
  assert.ok(vine.vines.find(v=>v.id==='6-2-sky-vine')!.height>0);
 });
