@@ -203,9 +203,7 @@ export class GameRenderer {
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
     }else{
-     const entryQuestion=s.level.id==='1-2'&&s.area.id==='area-2'&&row===9&&col>=10&&col<=14&&id===192;
-     const palette=entryQuestion?[3,3,3,4,5,4][Math.floor((Math.max(0,s.areaFrame-1+(s.paused?1:0))%48)/8)]:this.rotation(s.area.palette);
-     this.tile(id,x,y,palette);
+     this.tile(id,x,y,this.rotation(s.area.palette));
     }
    }
    for(const col of this.ropeColumns){const x=col*16-Math.floor(s.camera);if(x>-16&&x<256)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.tile(64,x,row*16,this.rotation(s.area.palette));}
