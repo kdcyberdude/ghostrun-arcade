@@ -62,7 +62,7 @@ function objects3d(r3:Any):Obj[]{
  const cam:THREE.Camera=r3.atmosphere.camera,box=new THREE.Box3(),v=new THREE.Vector3(),out:Obj[]=[];
  cam.updateMatrixWorld();r3.atmosphere.scene.updateMatrixWorld(true);
  const project=(o:THREE.Object3D):Rect|undefined=>{
-  box.makeEmpty();o.traverseVisible(c=>{const m=c as Any;if(!m.isMesh)return;if(m.isSkinnedMesh)m.boundingBox=null;box.expandByObject(m,false);});
+  box.makeEmpty();o.traverseVisible(c=>{const m=c as Any;if(!m.isMesh||(Array.isArray(m.material)?m.material:[m.material]).every((material:THREE.Material)=>!material.visible))return;if(m.isSkinnedMesh)m.boundingBox=null;box.expandByObject(m,false);});
   if(box.isEmpty())return undefined;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(let i=0;i<8;i++){v.set(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z).project(cam);const x=(v.x+1)/2*256,y=(1-v.y)/2*240;x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}
   return {x:x0,y:y0,w:x1-x0,h:y1-y0};

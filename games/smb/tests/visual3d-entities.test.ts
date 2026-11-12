@@ -119,3 +119,13 @@ test('Toad uses the native red vest rather than the modern blue asset palette',(
  const colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0x2050c8});material.name='M_Vest';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
  const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'toad').getObjectByName('toad')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'d8241c');
 });
+test('native Hammer Bro uses captured facing rather than the current Mario side',()=>{
+ const {sim,entities}=scene({kind:'hammerBro',nativeDir:1,vx:-1});entities.sync(sim,0);assert.equal(actor(entities,'hammer_bro').rotation.y,-0.5);
+});
+test('native Hammer Bro lowers its arm and hides the duplicate authored hammer',()=>{
+ const {sim}=scene({kind:'hammerBro',hbro:{state:0} as Enemy['hbro']});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const arm=new THREE.Bone();arm.name='ArmR';root.add(arm);for(const key of ['M_Handle','M_Skin']){const material=new THREE.MeshStandardMaterial();material.name=key;root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));}return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.QuaternionKeyframeTrack('ArmR.quaternion',[0,1],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'hammer_bro').getObjectByName('hammer_bro')!,arm=model.getObjectByName('ArmR')!;
+ assert.equal(arm.quaternion.z,0);assert.equal(((model.children[1] as THREE.Mesh).material as THREE.Material).visible,false);assert.equal(((model.children[2] as THREE.Mesh).material as THREE.Material).visible,true);
+ sim.enemies[0].hbro!.state=8;sim.frame++;entities.sync(sim,0);assert.ok(arm.quaternion.z>0);
+});

@@ -115,8 +115,12 @@ export class Entities{
   if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
-  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(s.player.x<e.x?-1:1):facing),s.frame);
+  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
   a.pose(e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk',e.age/60,s.frame);
+  if(e.kind==='hammerBro'){
+   for(const name of ['M_Handle','M_Metal'])for(const material of a.materials.get(name)??[])material.visible=!e.hbro;
+   if(e.hbro)a.poseRotation('ArmR',!e.dead&&(e.hbro.state&8)?'walk':undefined,a.duration('walk')/4);
+  }
  }
  private retainer(s:Simulation){
   const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
