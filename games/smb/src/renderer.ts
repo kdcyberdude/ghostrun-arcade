@@ -108,7 +108,7 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23;
+  const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
   const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
@@ -136,14 +136,14 @@ export class GameRenderer {
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
    const tiles=tables.enemy_cells[cell].tiles;
-   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,col===1);
+   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,col===1);
    return;
   }
   if(e.kind==='podoboo'&&!e.dead){
    // The observed body is16px tall; the table's leading8px row is transparent.
    const tiles=tables.enemy_cells[34].tiles,falling=e.podobooFalling===true;
    for(let row=0;row<2;row++)for(let col=0;col<2;col++)
-    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,falling);
+    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,falling);
    return;
   }
   if(e.greenShellLaunchFrame!==undefined){
