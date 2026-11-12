@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Choose the 2D or 3D version on the home screen (`?view=3d` opens 3D directly). For 3D, pick a resolution and graphics level, then choose Play. Home in the game bar returns to this screen. Arrow keys move, Z/Space jumps, X/Shift runs or fires, and Enter pauses. Touch controls, two-player keyboard mappings, sound, fullscreen, and remapping are available in the interface.
+Choose the 2D or 3D version on the home screen (`?view=3d` opens 3D directly). For 3D, resolution defaults to Auto and graphics to High; both can be changed before or during play. Home in the game bar returns to this screen. Arrow keys move, Z/Space jumps, X/Shift runs or fires, and Enter pauses. Touch controls, two-player keyboard mappings, sound, fullscreen, and remapping are available in the interface.
 
 Game-only commands run from this folder or with `-w games/smb` from the root:
 
@@ -31,7 +31,7 @@ The production build is a static site. Relative asset paths support a domain roo
 - Gameplay code that can be inspected, modified, and tested independently of the reference process.
 - Two presentations of the same current simulation: original-style 2D and a 3D world with rigged characters, lighting and scenery.
 
-Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options up to the 4K preset (2304 × 2160, preserving the original aspect ratio). The game plays every frame, so if a device draws fewer than 60 frames a second the whole game slows down in proportion rather than skipping ahead. The page then says how fast it is running and offers a lighter setting (Low graphics, then 1K, then the 2D version). See the [3D asset and renderer notes](visual3d/README.md).
+Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options up to the 4K preset (2304 × 2160, preserving the original aspect ratio). The game plays every frame, so if a device draws fewer than 60 frames a second the whole game slows down in proportion rather than skipping ahead. An optional frame-rate counter shows this. With Auto resolution the game lowers its own settings (Ultra to High, then the resolution the measured frame rate allows, down to 0.5K, then Low graphics); with a manual setting the counter offers the next lighter one. See the [3D asset and renderer notes](visual3d/README.md).
 
 ## Evidence and limits
 

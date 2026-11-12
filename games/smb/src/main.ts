@@ -14,28 +14,51 @@ const heldKeys=new Set<string>();const heldPointers=new Map<number,Button>();
 const tappedKeys=new Set<string>();const tappedPointers=new Set<Button>();let controlled=false;let muted=false;let loaded=false;
 const shell=new GameShell({pause:setPaused,isPaused:()=>sim.paused,clear:clearInput,restart:()=>{sim.reset();soundEvents();draw();},focus:()=>canvas.focus()});
 const keyMaps=shell.maps;
-const heights:Record<string,number>={'1K':960,'2K':1440,'4K':2160};
+const heights:Record<string,number>={'4K':2160,'2K':1440,'1K':960,'0.5K':480};
+const LADDER=['4K','2K','1K','0.5K'],TIERS=['ultra','high','low'] as const;type Tier=typeof TIERS[number];
+const RES_OPTIONS='<option value="auto">Auto · fits your screen and device</option><option value="4K">4K · 2304 × 2160</option><option value="2K">2K · 1536 × 1440</option><option value="1K">1K · 1024 × 960</option><option value="0.5K">0.5K · 512 × 480</option>';
+const TIER_OPTIONS='<option value="ultra">Ultra · for strong graphics chips</option><option value="high">High · shadows and glow</option><option value="low">Low · fastest</option>';
+let autoRes=false,currentRes='1K',autoSettle=0;
+/** Auto starts at the largest preset the screen can show in fullscreen (physical pixels); the speed watch then steps it down if frames drop. */
+function screenPreset(){const physical=Math.min(screen.width*240/256,screen.height)*(devicePixelRatio||1);return LADDER.find(p=>heights[p]<=physical*1.1)??'0.5K';}
+// What Auto settled on last time in this browser, so the next visit starts there instead of re-learning (cleared by choosing Auto again).
+const LEARNED='smb-auto-3d';
+function learned():{res?:string;quality?:Tier}{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
+function learn(){try{localStorage.setItem(LEARNED,JSON.stringify({res:currentRes,quality:tier()}));}catch{}}
+function autoStart(){const saved=learned().res,fits=screenPreset();return saved&&LADDER.indexOf(saved)>LADDER.indexOf(fits)?saved:fits;}
+const tier=():Tier=>(document.querySelector<HTMLSelectElement>('#quality')?.value??'high') as Tier;
 if('setResolution' in view){
  document.querySelector('.edition')!.textContent='3D VERSION';
  document.querySelector('.preview-edition')!.textContent='3D VERSION';
  const preview=document.querySelector<HTMLImageElement>('.preview-image img')!;preview.src=import.meta.env.BASE_URL+'assets3d/preview.png';preview.alt='Mario in the recreated 3D World 1-1, with trees, hills and flowers';
  document.querySelector('#launch-resolution')!.removeAttribute('hidden');
- document.querySelector('#graphics-settings')!.innerHTML='<div class="setting-row"><div><h3>3D resolution</h3><p>The original 16:15 frame, rendered in 3D.<br>Higher resolutions need a stronger graphics chip.</p></div><select id="res" aria-label="3D resolution"><option value="1K">1K · 1024 × 960</option><option value="2K">2K · 1536 × 1440</option><option value="4K">4K · 2304 × 2160</option></select></div><div class="setting-row"><div><h3>Graphics</h3><p>High adds soft shadows, glow and smoothing.<br>Low is several times faster on laptops.</p></div><select id="quality" aria-label="3D graphics quality"><option value="high">High</option><option value="low">Low</option></select></div>';
- const params=new URLSearchParams(location.search),selected=params.get('res')??'1K';
- const resPickers=[document.querySelector<HTMLSelectElement>('#launch-res')!,document.querySelector<HTMLSelectElement>('#res')!];
- for(const picker of resPickers){
-  picker.value=selected in heights?selected:'1K';
-  picker.addEventListener('change',()=>setResolution(picker.value));
- }
- const qualityPickers=[document.querySelector<HTMLSelectElement>('#launch-quality')!,document.querySelector<HTMLSelectElement>('#quality')!];
- for(const picker of qualityPickers){
-  picker.value=params.get('quality')==='low'?'low':'high';
-  picker.addEventListener('change',()=>setQuality(picker.value as 'high'|'low'));
- }
+ document.querySelector('#graphics-settings')!.innerHTML=`<div class="setting-row"><div><h3>3D resolution</h3><p>Auto picks the sharpest size your screen can show<br>and lowers it if your device can’t keep up.</p></div><select id="res" aria-label="3D resolution">${RES_OPTIONS}</select></div><div class="setting-row"><div><h3>Graphics</h3><p>Ultra adds soft ambient shading and extra smoothing.<br>Low is the fastest.</p></div><select id="quality" aria-label="3D graphics quality">${TIER_OPTIONS}</select></div>`;
+ document.querySelector('#launch-res')!.innerHTML=RES_OPTIONS;document.querySelector('#launch-quality')!.innerHTML=TIER_OPTIONS;
+ const params=new URLSearchParams(location.search),legacy:Record<string,string>={'960p':'1K','1080p':'1K'},asked=legacy[params.get('res')??'']??params.get('res')??'auto';
+ for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
+ const asked3=params.get('quality');
+ for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality')){picker.value=TIERS.includes(asked3 as Tier)?asked3!:!params.has('res')&&TIERS.includes(learned().quality as Tier)?learned().quality!:'high';picker.addEventListener('change',()=>setQuality(picker.value as Tier));}
+ view.setQuality(tier());
+ // An explicit ?scale= (tools, old links) keeps its exact size and leaves Auto off.
+ if(params.has('scale')&&!params.has('res')){currentRes=LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K';for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=currentRes;}
+ else setResolution(asked in heights?asked:'auto',false);
 }
-function remember(key:string,value:string){const url=new URL(location.href);url.searchParams.set(key,value);history.replaceState(null,'',url);}
-function setResolution(preset:string){if(!('setResolution' in view))return;view.setResolution(heights[preset]);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=preset;remember('res',preset);if(loaded)draw();}
-function setQuality(quality:'high'|'low'){if(!('setQuality' in view))return;view.setQuality(quality);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=quality;remember('quality',quality);if(loaded)draw();}
+function remember(key:string,value:string|null){const url=new URL(location.href);if(value===null)url.searchParams.delete(key);else url.searchParams.set(key,value);history.replaceState(null,'',url);}
+/** 'auto' or a preset. Manual choices switch Auto off until Auto is picked again. */
+function setResolution(choice:string,save=true){if(!('setResolution' in view))return;autoRes=choice==='auto';if(autoRes&&save)try{localStorage.removeItem(LEARNED);}catch{}currentRes=autoRes?autoStart():choice;view.setResolution(heights[currentRes]);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=choice;if(save)remember('res',autoRes?null:choice);autoSettle=2;if(loaded)draw();}
+function setQuality(quality:Tier){if(!('setQuality' in view))return;view.setQuality(quality);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=quality;remember('quality',quality);autoSettle=2;if(loaded)draw();}
+/** Auto: Ultra drops to High first. Otherwise jump straight to the largest preset whose estimated frame time fits 60 fps: a fixed ~4 ms
+ * (scene, shadows, game) plus a part that scales with pixel count (measured on an M4 laptop: 4K costs ~3.5x 1K, not 5x). Below 0.5K, use Low graphics. */
+function adaptResolution(fps:number){
+ if(!('setResolution' in view))return false;
+ const t=tier();if(t==='ultra'){setQuality('high');learn();return true;}
+ const fixed=4,budget=1000/60*0.85,now=1000/fps,h=heights[currentRes],i=LADDER.indexOf(currentRes);
+ const estimate=(p:string)=>fixed+Math.max(0,now-fixed)*(heights[p]/h)**2;
+ let next=LADDER.find(p=>heights[p]<h&&estimate(p)<=budget)??'0.5K';if(LADDER.indexOf(next)<=i)next=LADDER[Math.min(i+1,LADDER.length-1)];
+ if(next!==currentRes){currentRes=next;view.setResolution(heights[next]);autoSettle=2;learn();return true;}
+ if(t!=='low'){setQuality('low');learn();return true;}
+ return false;
+}
 function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();}
 function setPaused(paused:boolean){sim.paused=paused;audio.setPaused(paused);if(loaded)draw();}
 function heldButtons(player:number){
@@ -100,23 +123,32 @@ fpsToggle.value=showFps?'on':'off';
 fpsToggle.addEventListener('change',()=>{showFps=fpsToggle.value==='on';try{localStorage.setItem('smb-show-fps',fpsToggle.value);}catch{}if(!showFps)fpsBox.hidden=true;});
 function showRate(fps:number){
  if(!showFps)return;const slow=fps<50,speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=slow?lighterSetting():undefined;
- fpsText.textContent=slow?`${Math.round(fps)} FPS · ${speed}% speed`:`${Math.round(fps)} FPS`;fpsBox.classList.toggle('slow',slow);
+ const detail='setResolution' in view?` · ${currentRes}${autoRes?' auto':''}`:'';
+ fpsText.textContent=slow?`${Math.round(fps)} FPS · ${speed}% speed`:`${Math.round(fps)} FPS${detail}`;fpsBox.classList.toggle('slow',slow);
  fpsLower.hidden=!lighter;if(lighter){fpsLower.textContent=lighter.label;fpsLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
  fpsBox.hidden=false;
 }
+const playTwoD={label:'Switch to 2D',apply:()=>{const url=new URL(location.href);url.searchParams.delete('view');location.assign(url);}};
+/** The next lighter manual setting; with Auto on, only offered once Auto has nothing lighter left. */
 function lighterSetting():{label:string;apply:()=>void}|undefined{
  if(!('setResolution' in view))return undefined;
- if(document.querySelector<HTMLSelectElement>('#quality')!.value==='high')return {label:'Use Low graphics',apply:()=>setQuality('low')};
- if(document.querySelector<HTMLSelectElement>('#res')!.value!=='1K')return {label:'Use 1K resolution',apply:()=>setResolution('1K')};
- return {label:'Play the 2D version',apply:()=>{const url=new URL(location.href);url.searchParams.delete('view');location.assign(url);}};
+ const t=tier(),i=LADDER.indexOf(currentRes);
+ if(autoRes)return currentRes==='0.5K'&&t==='low'?playTwoD:undefined;
+ if(t!=='low')return {label:'Lower graphics',apply:()=>setQuality(TIERS[TIERS.indexOf(t)+1])};
+ if(i<LADDER.length-1)return {label:'Lower resolution',apply:()=>setResolution(LADDER[i+1])};
+ return playTwoD;
 }
 function watchSpeed(now:number){
  if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
  if(!perfStart){perfStart=now;perfFrames=0;return;}
  perfFrames++;const span=now-perfStart;if(span<1000)return;
- const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<50?perfSlow+1:0;showRate(fps);
- if(perfSlow<3||!perf.hidden||perfDismissed)return;
- const speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=lighterSetting();
+ const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<54?perfSlow+1:0;
+ // Two slow seconds in a row (one hiccup is ignored); the first two seconds after any change are skipped while shaders warm up.
+ if(autoSettle>0)autoSettle--;else if(autoRes&&perfSlow>=2&&adaptResolution(fps))perfSlow=0;
+ showRate(fps);
+ const lighter=lighterSetting();
+ if(perfSlow<3||!perf.hidden||perfDismissed||(autoRes&&!lighter))return;
+ const speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100);
  perfText.innerHTML=`<b>The game is running at ${speed}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second and the game needs 60. Every frame is still played, so the game slows down instead of skipping ahead. ${lighter?'A lighter setting should help.':'Closing other tabs or apps may help.'}`;
  perfLower.hidden=!lighter;if(lighter){perfLower.textContent=lighter.label;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
  perf.hidden=false;

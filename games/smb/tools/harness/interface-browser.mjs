@@ -40,10 +40,11 @@ try{
  await page.locator('[data-player="1"]').click();await page.locator('[data-action=a]').click();await page.keyboard.press('KeyV');assert.equal(await page.locator('[data-action=a]').innerText(),'V');
  await page.locator('#display-tab').click();await page.locator('#players').selectOption('2');
  if(view==='3d'){
-  assert.equal(await page.locator('#res').inputValue(),'1K');
-  for(const [preset,height] of [['2K',1440],['4K',2160],['1K',960]]){await page.locator('#res').selectOption(preset);assert.equal(await page.locator('#game').evaluate(c=>c.height),height);}
-  checks.push('1K default and live 2K/4K resolution changes');
-  assert.equal(await page.locator('#quality').inputValue(),'high');await page.locator('#quality').selectOption('low');assert.equal(await page.locator('#launch-quality').inputValue(),'low');assert.equal(new URL(page.url()).searchParams.get('quality'),'low');await page.locator('#quality').selectOption('high');
+  assert.equal(await page.locator('#res').inputValue(),'auto');
+  for(const [preset,height] of [['2K',1440],['4K',2160],['0.5K',480],['1K',960]]){await page.locator('#res').selectOption(preset);assert.equal(await page.locator('#game').evaluate(c=>c.height),height);}
+  await page.locator('#res').selectOption('auto');assert.ok([480,960,1440,2160].includes(await page.locator('#game').evaluate(c=>c.height)));assert.equal(new URL(page.url()).searchParams.has('res'),false);
+  checks.push('Auto default and live 4K/2K/1K/0.5K resolution changes');
+  assert.equal(await page.locator('#quality').inputValue(),'high');await page.locator('#quality').selectOption('low');assert.equal(await page.locator('#launch-quality').inputValue(),'low');assert.equal(new URL(page.url()).searchParams.get('quality'),'low');await page.locator('#quality').selectOption('ultra');await page.locator('#quality').selectOption('high');
   checks.push('live High/Low graphics changes');
  }
  await page.screenshot({path:`${out}/display-desktop.png`});

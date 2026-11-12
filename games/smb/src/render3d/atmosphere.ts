@@ -8,6 +8,7 @@ import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
 import {RGBELoader} from 'three/examples/jsm/loaders/RGBELoader.js';
 import {GTAOPass} from 'three/examples/jsm/postprocessing/GTAOPass.js';
+import {FXAAShader} from 'three/examples/jsm/shaders/FXAAShader.js';
 import {SKY_IDS} from './asset-policy.js';
 /** Photoreal skies (CC0 Poly Haven, fetched by visual3d/tools/polyhaven.py): 2k HDR for light, 8k tonemapped panorama for the visible sky. */
 const PH=import.meta.env.BASE_URL+'assets3d/ph/hdri/';
@@ -15,6 +16,7 @@ export const SKIES:Record<string,string>=SKY_IDS;
 interface Sky{env:THREE.Texture;bg:THREE.Texture;rotation:number;sunDir:THREE.Vector3;horizon:THREE.Color}
 import {NES_W,NES_H} from './coords.js';
 import {GOLD} from './proc.js';
+export type Quality='ultra'|'high'|'low';
 export interface Theme{skyTop:string;skyMid:string;skyBottom:string;fog:string;fogNear:number;fogFar:number;sun:number;sunI:number;hemiSky:number;hemiGround:number;hemiI:number;env:number;bloom:number}
 export const THEMES:Record<string,Theme>={
  ground:{skyTop:'#2f6fd6',skyMid:'#6aa6ee',skyBottom:'#cfe6fb',fog:'#b9d6f2',fogNear:45,fogFar:300,sun:0xffe6c0,sunI:4.2,hemiSky:0xa9ccff,hemiGround:0x5a4030,hemiI:0.55,env:0.4,bloom:0.22},
@@ -71,8 +73,8 @@ function cloudSky():THREE.Texture{
 export class Atmosphere{
  readonly scene=new THREE.Scene();readonly camera=new THREE.PerspectiveCamera(FOV,ASPECT,1,600);
  readonly sun=new THREE.DirectionalLight(0xffffff,3);readonly hemi=new THREE.HemisphereLight(0xffffff,0x444444,1);
- private composer!:EffectComposer;private bloomStrength=0.22;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
- constructor(readonly renderer:THREE.WebGLRenderer,width:number,height:number,private quality:'high'|'low'){
+ private composer!:EffectComposer;private bloomStrength=0.22;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private fxaa?:ShaderPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
+ constructor(readonly renderer:THREE.WebGLRenderer,width:number,height:number,private quality:Quality){
   renderer.setPixelRatio(1);renderer.setSize(width,height,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.05;  // Khronos PBR Neutral keeps hue and saturation (AgX greys out bright colours)
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -82,19 +84,20 @@ export class Atmosphere{
   this.scene.add(this.sun,this.sun.target,this.hemi);
   this.build(width,height);
  }
- /** High adds 4x MSAA, ambient occlusion, bloom and a 4096 shadow map; Low drops them (several times cheaper on laptop GPUs). */
- setQuality(quality:'high'|'low'){if(quality===this.quality)return;this.quality=quality;const size=this.renderer.getSize(new THREE.Vector2());this.build(size.x,size.y);}
+ /** Ultra: 4x MSAA, ambient occlusion, bloom, 4096 shadow map. High: FXAA edge smoothing and bloom, 2048 shadows (about 3x cheaper than Ultra on an M4 laptop). Low: no post effects. */
+ setQuality(quality:Quality){if(quality===this.quality)return;this.quality=quality;const size=this.renderer.getSize(new THREE.Vector2());this.build(size.x,size.y);}
  private build(width:number,height:number){
-  const high=this.quality==='high';
-  this.gtao?.dispose();this.bloom?.dispose();this.gtao=undefined;this.bloom=undefined;this.composer?.dispose();
-  this.sun.shadow.mapSize.set(high?4096:2048,high?4096:2048);this.sun.shadow.map?.dispose();this.sun.shadow.map=null;
-  const target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,samples:high?4:0});
+  const ultra=this.quality==='ultra',glow=this.quality!=='low';
+  this.gtao?.dispose();this.bloom?.dispose();this.fxaa?.dispose();this.gtao=this.bloom=this.fxaa=undefined;this.composer?.dispose();
+  this.sun.shadow.mapSize.set(ultra?4096:2048,ultra?4096:2048);this.sun.shadow.map?.dispose();this.sun.shadow.map=null;
+  const target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,samples:ultra?4:0});
   this.composer=new EffectComposer(this.renderer,target);this.composer.setPixelRatio(1);this.composer.setSize(width,height);
   this.composer.addPass(new RenderPass(this.scene,this.camera));
-  if(high){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
-  if(high){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),this.bloomStrength,0.6,0.92);this.composer.addPass(this.bloom);}
+  if(ultra){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
+  if(glow){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),this.bloomStrength,0.6,0.92);this.composer.addPass(this.bloom);}
   this.composer.addPass(new OutputPass());
   this.composer.addPass(new ShaderPass(GRADE));
+  if(this.quality==='high'){this.fxaa=new ShaderPass(FXAAShader);this.fxaa.material.uniforms.resolution.value.set(1/width,1/height);this.composer.addPass(this.fxaa);}
  }
  /** Daylight is needed at startup; the moonlit HDR is loaded only on entering a night area. */
  async loadSkies(key='ground'){
@@ -153,6 +156,6 @@ export class Atmosphere{
   this.sun.target.position.set(sx,4,0);this.sun.position.copy(this.sun.target.position).addScaledVector(this.sunDir,40);this.sun.target.updateMatrixWorld();
  }
  /** Changes the internal render resolution (all post passes follow the composer). */
- resize(width:number,height:number){this.renderer.setSize(width,height,false);this.composer.setSize(width,height);this.bloom?.resolution.set(width/2,height/2);}
+ resize(width:number,height:number){this.renderer.setSize(width,height,false);this.composer.setSize(width,height);this.bloom?.resolution.set(width/2,height/2);this.fxaa?.material.uniforms.resolution.value.set(1/width,1/height);}
  render(){this.composer.render();}
 }
