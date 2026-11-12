@@ -5,6 +5,8 @@ import {observedLevels} from '../src/levels.js';
 import type {Button} from '../src/types.js';
 import {initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import fourThree from '../evidence/native-v2-four-three-opening.json';
+import oneFour from '../evidence/native-v2-one-four-opening.json';
+import twoTwo from '../evidence/native-v2-two-two-opening.json';
 
 // 4-3 v2 model run: the same pad bytes replayed one per PPU frame on the native NES from the saved entrance (fixture source and
 // method in the JSON). Rows are the native state after each pad. Through row 382 every compared field now matches; the next
@@ -17,13 +19,19 @@ function replay(fixture:typeof fourThree,frames:number,each:(sim:any,row:number)
 }
 const koopaSlot=(sim:any,slot:number)=>sim.enemies.find((e:any)=>e.active&&e.kind==='redKoopa'&&e.enemySlot===slot&&e.originX<500);
 
-test('4-3 v2 replay matches the native timer, score, coins, death and Mario pixel through row 382',()=>{
- replay(fourThree,fourThree.rows.length,(sim,f)=>{
-  const [time,score,coins,x,y,play,dead]=fourThree.rows[f];
-  assert.deepEqual({time:sim.time,score:sim.score,coins:sim.coins,dead:Number(['dying','gameover'].includes(sim.phase))},{time,score,coins,dead},`row ${f}`);
+function matchesNative(fixture:typeof fourThree){
+ replay(fixture,fixture.rows.length,(sim,f)=>{
+  const [time,score,coins,x,y,play,dead]=fixture.rows[f];
+  // outside normal play the native digits show the pipe intro's blank 000 and the entrance walk's 401 preload
+  assert.deepEqual({time:play?sim.time:time,score:sim.score,coins:sim.coins,dead:Number(['dying','gameover'].includes(sim.phase))},{time,score,coins,dead},`row ${f}`);
   if(play)assert.deepEqual({x:Math.floor(sim.player.x),y:(Math.floor(sim.player.y)-32)&255},{x,y},`row ${f} position`);
  });
-});
+}
+test('4-3 v2 replay matches the native timer, score, coins, death and Mario pixel through row 382',()=>matchesNative(fourThree));
+// 1-4 starts at rest facing and moving left: the first Right press steps 152 and B does not run until the motion turns ($45). 2-2 drops in from a
+// pipe into water: the timer starts with control at y >= 48, not at the area load.
+test('1-4 v2 replay matches native through row 519 (turn from rest, run timer held until the moving direction turns)',()=>matchesNative(oneFour as typeof fourThree));
+test('2-2 v2 replay matches native through row 419 (water pipe drop-in: the timer starts with control)',()=>matchesNative(twoTwo as typeof fourThree));
 
 test('the entrance timer subphase comes from native GameTimerCtrl: $0787 = 16 ticks 300 -> 299 on row 15, not row 23',()=>{
  const times:number[]=[];replay(fourThree,24,sim=>times.push(sim.time));

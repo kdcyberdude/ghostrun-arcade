@@ -138,6 +138,9 @@ export class Simulation {
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
  private scrollCrossFrame=-Infinity;
+ /** Native Player_MovingDir ($45): the sign of the speed byte ($57) whenever that byte is non-zero, else unchanged (115,065 of 115,071 native play rows).
+  * The run timer is refreshed only while it equals the pressed direction (0 of 6,436 B presses refresh it otherwise). */
+ movingDir:-1|1=1;
  /** Floatey-number points: native FloateyNumbersRoutine adds them when FloateyNum_Timer, set to $30, reaches $2B, five frames after the award (4-3 v2: stomps at 187/203 pay at 192/208; coins and bricks pay at once). */
  private pendingScore:{value:number,left:number}[]=[];
  private stompedThisStep=false;
@@ -154,6 +157,8 @@ export class Simulation {
  flagTop=49;flagInside=false;flagBonus=0;private flagWait=0;
  private flagFireworkCount=0;private flagFireworksAwarded=0;private flagCastleGeometry?:{x:number;roofY:number};
  powerChange?:{from:0|1|2;to:0|1|2;remaining:number;kind:'grow'|'fire'|'shrink'};
+ /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
+ private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
  private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathFromBelow=false;private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryInputDelay=-1;private entryTimerDelay=-1;
@@ -239,7 +244,7 @@ export class Simulation {
   this.airRunning=false;this.mediumJump=false;this.runJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset(0,1);this.jumpHeld=0;this.landJump='inactive';
   this.powerChange=undefined;
   const spawnAtEntry=!spawn||spawn[0]===area.spawn[0]&&spawn[1]===area.spawn[1];
-  this.waterEntryFall=Boolean(area.waterEntryFall&&spawnAtEntry);this.waterSurface={active:false,contacted:false};
+  this.waterEntryFall=Boolean(area.waterEntryFall&&spawnAtEntry);this.waterEntryTimerHold=this.waterEntryFall?1:0;this.waterSurface={active:false,contacted:false};
   this.startSwim(spawnAtEntry,preserveTimer);
   this.entryFalling=Boolean(area.entryFall&&spawnAtEntry);this.entryFallAge=0;this.entryInputDelay=this.entryFalling?-1:0;this.entryTimerDelay=this.entryFalling?-1:0;
   this.entryFallFacing(area);
@@ -249,7 +254,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.scrollCrossFrame=-Infinity;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=this.level.id==='5-1'?new PiranhaColumns(this.camera):undefined;
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -383,7 +388,8 @@ export class Simulation {
   }
   // Source TIME stays fixed during the automatic main climb and sky entry;
   // exact native-frame boundaries are inferred from decision-spaced images.
-  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;if(this.time===100)this.emit('event_hurry');}}
+  const waterEntryHidden=this.waterEntryTimerHold>0;if(waterEntryHidden&&this.player.y-32>=48)this.waterEntryTimerHold--;
+  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;if(this.time===100)this.emit('event_hurry');}}
   if(nativeEntry&&this.entryFallAge>=nativeEntry.timerAge)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
   const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
@@ -397,9 +403,11 @@ export class Simulation {
   const runPressed=b.has('b')&&!water&&!this.entryFalling;
   // B refreshes the run grace on ground frames only: an airborne B does not carry the run speed into the landing (native free play r3+r4: a run-speed
   // landing without B clamps to the walk cap on 203 of 203 rows whose previous, airborne row held B).
-  const refreshRun=(p.grounded||this.springTimers.size>0)&&runPressed&&direction!==0&&p.vx*direction>=0&&!(b.has('down')&&p.grounded)&&!this.restTurnStart(direction);if(direction!==0&&p.vx*direction<0&&Math.abs(p.vx)>=11/16)this.motor.runGrace=0; // a grounded Down frame ignores the direction, so it does not refresh the run grace (native explore rows)
+  {const speedByte=Math.floor(Math.round(p.vx*4096)/256);if(speedByte!==0)this.movingDir=speedByte>0?1:-1;}
+  const refreshRun=(p.grounded||this.springTimers.size>0)&&runPressed&&direction!==0&&p.vx*direction>=0&&this.movingDir===direction&&!(b.has('down')&&p.grounded)&&!this.restTurnStart(direction);if(direction!==0&&p.vx*direction<0&&Math.abs(p.vx)>=11/16)this.motor.runGrace=0; // a grounded Down frame ignores the direction, so it does not refresh the run grace (native explore rows)
   if(refreshRun)this.motor.runGrace=9;
-  const running=(runPressed||this.motor.runGrace>0)&&!water&&!this.entryFalling;
+  const turnHold=p.grounded&&direction!==0&&this.movingDir!==direction; // native: B against the last motion neither refreshes nor applies the run step (1-4 v2 rows 1-2 step 152)
+  const running=(runPressed&&!turnHold||this.motor.runGrace>0)&&!water&&!this.entryFalling;
   if(!refreshRun&&this.motor.runGrace>0)this.motor.runGrace--;
   const max=water?(p.grounded?WATER_PHYSICS.groundMax:WATER_PHYSICS.swimMax):(p.grounded?(pressed('a')?Math.abs(p.vx)>PHYSICS.walkMax:running):this.airRunning)?PHYSICS.runMax:PHYSICS.walkMax;
   // Native horizontal motor (src/native-motor.ts): integer speed in 1/4096 px; down-on-ground, water, auto-walk and

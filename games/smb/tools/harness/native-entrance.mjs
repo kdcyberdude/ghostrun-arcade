@@ -7,7 +7,7 @@ export function decodeEntrance(ram,receipt){
  const grounded=ram[0x1d]===0;
  if(ram[0xb5]!==1||(!grounded&&(ram[0x1d]!==1||ram[14]!==8||![96,112,144].includes(ram[0x70a]))))throw Error('Unsupported observed entrance motion');
  if(grounded&&(signed(ram[0x9f])!==0||ram[0x433]!==0))throw Error('Ground state has vertical motion');
- return {level,engine:ram[14],grounded,vy:signed(ram[0x9f])+ram[0x433]/256,fallForce:ram[0x70a],x:signed(ram[0x6d])*256+ram[0x86]+ram[0x400]/256,y:ram[0xce]+32+ram[0x416]/256,speed:signed(ram[0x57])*256+ram[0x705],facing:ram[0x33]===2?-1:1,size:ram[0x756],camera:ram[0x71a]*256+ram[0x71c],time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:ram[0x75e],lives:(ram[0x75a]+1)&255,random:Array.from(ram.slice(0x7a7,0x7ae)),counter:ram[9],timerControl:ram[0x787]};
+ return {level,engine:ram[14],grounded,vy:signed(ram[0x9f])+ram[0x433]/256,fallForce:ram[0x70a],x:signed(ram[0x6d])*256+ram[0x86]+ram[0x400]/256,y:ram[0xce]+32+ram[0x416]/256,speed:signed(ram[0x57])*256+ram[0x705],facing:ram[0x33]===2?-1:1,size:ram[0x756],camera:ram[0x71a]*256+ram[0x71c],time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:ram[0x75e],lives:(ram[0x75a]+1)&255,random:Array.from(ram.slice(0x7a7,0x7ae)),counter:ram[9],timerControl:ram[0x787],movingDir:ram[0x45]===1?1:ram[0x45]===2?-1:0};
 }
 export function initializeEntrance(sim,start){
  const index=sim.levels.findIndex(level=>level.id===start.level);if(index<0)throw Error('Unmapped level');
@@ -17,6 +17,9 @@ export function initializeEntrance(sim,start){
  Object.assign(sim.player,{x:start.x,y:start.y,vx:start.speed/4096,vy:start.vy,grounded:start.grounded,facing:start.facing,size:start.size});
  if(!start.grounded){sim.fallGravity=start.fallForce/256;sim.lastJumpFallForce=start.fallForce/256;sim.jumpArc=true;sim.walkingOff=false;sim.bouncing=false;sim.runJump=start.fallForce===144;sim.mediumJump=start.fallForce===96;sim.landJump='held';}
  sim.motor.reset(start.speed,start.facing);sim.motor.airRun=start.fallForce===144;if(Math.floor(start.speed/256)!==0)sim.motor.moving=Math.sign(start.speed);
+ /* at rest the motor's first step depends on the last motion: native Player_MovingDir ($45) holds it (1-4 v2: facing and moving left, a Right press steps 152, not 304) */
+ else if(start.movingDir)sim.motor.moving=start.movingDir;
+ if(start.movingDir)sim.movingDir=start.movingDir;
  sim.camera=start.camera;
  /* A pipe intro (auto-walk area) shows blank 000 digits natively; the level clock (400) is loaded when the main area starts, so keep the remake's own intro clock there. */
  if(!(sim.area.autoWalk&&start.time===0)){sim.time=start.time;
