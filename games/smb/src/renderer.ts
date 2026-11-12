@@ -108,7 +108,7 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor(e.x-s.camera),y=Math.floor(e.y)-23,phase=Math.floor(e.age/8)%2;
+  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23,phase=Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -165,8 +165,10 @@ export class GameRenderer {
   const koopaFacing=!e.dead&&e.vx!==0&&(palette==='0f-1a-30-27'&&(e.kind==='koopa'&&!e.shell||e.kind==='paratroopa'&&(e.paratroopaMotion??'bounce')==='bounce')||palette==='0f-16-30-27'&&e.kind==='redKoopa'&&!e.shell);
   if(e.kind==='goomba'&&!e.dead){
    const tiles=tables.enemy_cells[cell].tiles;
+   // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
+   // The direction is captured before collision turns, as in native OAM.
+   const left=(e.graphicsFacing??e.vx)<0,flip=s.powerChange?left:left===Boolean(s.random.frame&8);
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
-    const flip=row===2&&phase===1;
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
   }else this.enemyCell(cell,x,y+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?s.player.x<e.x:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
