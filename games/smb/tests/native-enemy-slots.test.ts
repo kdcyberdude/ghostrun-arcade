@@ -44,11 +44,18 @@ function fixture(enemies:Level['areas'][number]['enemies'],spawnX=40){
  const level={id:'slot-fixture',time:400,main:'main',evidence:'Synthetic slot fixture',areas:[{id:'main',width:1920,palette:0,theme:'ground',tiles,enemies,spawn:[spawnX,208],evidence:'test'}]} as unknown as Level;
  const sim:any=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
 }
-test('with all five slots busy a list object is never made, even after a slot frees (2-1 x 1088 Goomba)',()=>{
+test('a lone list object waits offscreen for a free native slot',()=>{
  const sim=fixture([0,1,2,3,4,5].map(i=>({kind:'goomba',x:120+i*30,y:208,direction:-1})));
- sim.step([],1);
- assert.equal(sim.enemies.filter((e:any)=>e.active).length,5);const lost=sim.enemies.find((e:any)=>e.slotLost);assert.ok(lost);
- sim.enemies[0].active=false;sim.enemies[0].slotFreed=true;sim.step([],5);assert.equal(lost.active,false);
+ sim.step([],1);const pending=sim.enemies[5];
+ assert.equal(sim.enemies.filter((e:any)=>e.active).length,5);assert.equal(pending.active,false);assert.equal(pending.slotLost,undefined);
+ Object.assign(sim.enemies[0],{active:false,slotFreed:true,slotLost:true});sim.step([],1);
+ assert.equal(pending.active,true);assert.equal(pending.enemySlot,0);
+});
+test('a waiting lone object is skipped once its column has passed ScreenRight',()=>{
+ const sim=fixture([0,1,2,3,4,5].map(i=>({kind:'goomba',x:120+i*30,y:208,direction:-1})));
+ sim.step([],1);const pending=sim.enemies[5];sim.camera=20;sim.step([],1);
+ assert.equal(pending.active,false);assert.equal(pending.slotLost,true);
+ Object.assign(sim.enemies[0],{active:false,slotFreed:true,slotLost:true});sim.step([],2);assert.equal(pending.active,false);
 });
 test('a new jumping Paratroopa starts from the vertical bytes its slot was left with (7-1 row 300: speed -1, force 216)',()=>{
  const sim=fixture([{kind:'paratroopa',x:200,y:208,direction:-1,palette:'0f-1a-30-27'}]);

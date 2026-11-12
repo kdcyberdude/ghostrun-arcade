@@ -40,3 +40,29 @@ Compared with00442b1:1-3 enemy443->471;4-3 enemy162->204;5-3 enemy427->454, scor
 The shared1-3/5-3 Goomba at1280 natively starts at sprite-top56 (feet80), not the later screenshot-derived feet96. Correct both source walker metadata and generated levels. Firstenemy remains471/454 because the remaining platform-slot/residue mismatch precedes matching the new Goomba's x; correcting static y does not introduce earlier fields.
 
 All32 levels compared againstc7fe7b9: only7-1 enemy439->443 changes.1244tests andTypeScript pass, excerpts regenerated. `node tools/compile-levels.mjs` cannot complete because the baseline checkout lacks `evidence/firebar-5-4-shared-verification.json` (ENOENT before output writing). The source edits use the existing correction/removal formats; this missing evidence must be restored before a full source regeneration can be verified.
+
+## Native enemy-data groups and birth-frame slot order
+
+Baseline for this unit:664f750 (integration81a4632 plus preceding walker units). `data/native-walker-groups.json` contains57 raw group records from10 native areas, decoded from the original world/area tables and enemy-data bytes by `tools/harness/native-walker-layout.mjs --source /tmp/smb-native-sky.asm --apply`. Counts and object columns are static native level input. Build-time association enriches existing screenshot actors and adds missing potential members; the runtime reads no measured spawn-camera thresholds for these groups. The compiler imports the same enrichment helper. Native page-control commands retain EnemyObjectPageSel until the next actual object, so a following page bit does not increment the page twice.
+
+Runtime rules:
+
+- A group becomes eligible when its raw object column reaches `(ScreenRight+48)&0xF0`; it is skipped once that column is behind ScreenRight. While all five slots are busy the parser waits, rather than dropping the first object permanently. This removes the old fitted `spawnCamera-(x-303)<=8` fallback.
+- Birth occurs after the current scroll, on the actual native creation frame. The group fills the lowest available slots at camera+255,+279,+303 with their inherited horizontal fractions. A slot above the parser's own slot already executes movement on that birth frame; a slot at/below it starts moving next frame. A formerly occupied higher slot remains reserved until its own later pass even if it is empty at the frame end. This latter distinction is exercised by3-1 v2 row1342.
+- Exact raw placed-object columns behind ScreenRight are skipped on an area return. The old1-1 return incorrectly made Goombas1280/1312 behind the screen's right edge, stealing native slots0/1 and corrupting later group fractions.
+- The graphic-handler visibility flag distinguishes RAM birth from first drawing: `graphicsVisible=false` for a newly allocated slot at/below the parser slot, true for a slot stepped immediately. The animation worker owns the renderer consumption of this flag and full pre-contact snapshots.
+- The metadata's group columns shift with an inserted castle corridor, matching the existing coordinate transformation for actor positions.
+
+`native-walker-group-events.mjs` extracts all41 supported group births across the32 traces using EnemyDataOffset $0739/page $073A, native slot flags, inherited $0401, ScreenLeft and parser slot order. Every event reproduces exact slot/x/y, including lower-slot reuse and higher-slot same-frame movement. The fixture structurally excludes unrelated simultaneous creations or predecessor kinds whose fraction writer is not modelled; there are no level/frame exception lists. Potential group counts remain full when a recording had only one free slot, so future decisions can expose the missing members.
+
+All-field differences from664f750:
+
+-1-1 enemy741->null: every legacy field now null.
+-3-2 enemy454->null: every legacy field now null.
+-8-1 enemy2109->null, y2211/x2226/camera2227/score2215/coins2277/death2420/timer2422->null: every legacy field now null.
+-5-1 enemy504->566; death2300/timer2669/x2276/camera2276->null. y2267->2265 and score2271->2269 are earlier downstream differences after the newly exposed Paratroopa sink-turn mismatch at566.
+-8-4 camera/enemy8520->7594 are downstream of unchanged timer6400, y6718, score6722, x6749 and death6959; the subsequent respawn scene differs. All other fields of all levels are unchanged.
+
+1360 tests andTypeScript pass; excerpts regenerated. The stricter all-area/cardinality audit remains a separate root task; the null claims here refer to the existing native-divergence fields. Full compile-levels remains blocked by the pre-existing missing firebar verification evidence noted above. Subsequent placed-walker birth materialization and floor-contact direction will be separate units.
+
+Integration group enrichment correction (4f7ab29): source group initialization sets the encoded row before movement, so a pictured falling Y cannot identify membership. Rebuild only helper-owned generated placeholders, match source kind/column interval, and restore the native row. In1-2 the x2161/y160 and x2185/y144 sightings are the two column2208 members initialized at feet144; remove the generated2184 duplicate. Native source singles remain unchanged. Regression tests cover the stale placeholder and an extra parser slot query preserving the wrap lift's inherited fraction104 at native frame1485.

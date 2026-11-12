@@ -253,7 +253,7 @@ export class GameRenderer {
    }
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
-   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
    for(const i of s.items)this.item(i,s);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
