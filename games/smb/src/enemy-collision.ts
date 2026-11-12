@@ -13,7 +13,7 @@ export const ENEMY_BOX={tall:{left:2,top:9,right:14,bottom:21},small:{left:3,top
 function box(b:CollisionBody,camera:number){
  const rx=b.x-camera;if(rx<-7||rx>255)return undefined;
  const o=b.tall?ENEMY_BOX.tall:ENEMY_BOX.small;
- return {l:Math.max(0,rx+o.left),r:Math.min(255,rx+o.right),t:b.y+o.top,b:b.y+o.bottom};
+ return {l:Math.min(255,Math.max(0,rx+o.left)),r:Math.min(255,Math.max(0,rx+o.right)),t:b.y+o.top,b:b.y+o.bottom};
 }
 
 /** One EnemiesCollision pass. bits[slot] is the native collision byte of each slot (updated in place); returns the slots turned before
@@ -35,4 +35,11 @@ export function nativeEnemiesCollision(bodies:CollisionBody[],camera:number,fram
   }
  }
  return {before,after};
+}
+
+/** Stomped id 14 becomes id 0 before its normal move: reset vertical speed/force,
+ * retain the slot's fraction and pre-step y, and take one half-pixel step away
+ * from Mario. Equal integer x chooses right (8-4 v2 row 10277). */
+export function nativeUnwingedStomp(x:number,y:number,fraction:number,marioX:number){
+ return {x:x+(Math.floor(marioX)<=Math.floor(x)?0.5:-0.5),y,fraction,speed:0,force:0,vx:Math.floor(marioX)<=Math.floor(x)?0.5:-0.5};
 }

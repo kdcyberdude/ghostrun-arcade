@@ -4210,7 +4210,7 @@
             "kind": "goomba",
             "x": 640,
             "y": 208,
-            "direction": 1,
+            "direction": -1,
             "spawnCamera": 337,
             "evidence": "Inferred spawn/activation from screenshot track2; initial x on16px grid, speed0.5px/native frame, first sight x657 at reference tick30. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera"
           },
