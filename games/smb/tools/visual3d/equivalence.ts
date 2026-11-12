@@ -42,13 +42,15 @@ async function browser(view:string){
   if(index){await g.page.reload();await g.page.waitForFunction(()=>(window as any).mario?.ready,undefined,{timeout:90000});}
   const r=await g.page.evaluate(async([replay,SNAP,HASH])=>{
    const w=window as any,sim=w.marioDebug.simulation,snap=eval(SNAP),fnv=eval(HASH),events:string[]=[],hashes:string[]=[];
+   // The bridge draws every frame; its unused PNG return value need not be encoded for hash/audio equivalence.
+   const toDataURL=HTMLCanvasElement.prototype.toDataURL;HTMLCanvasElement.prototype.toDataURL=()=>'';
    const emit=sim.emit;sim.emit=function(id:string){events.push(`${sim.frame}:${id}`);return emit.call(this,id);};
    try{
     w.mario.reset({playing:true});
     if(replay.entrance){const {initializeEntrance}=await import('/tools/harness/native-entrance.mjs');initializeEntrance(sim,replay.entrance);sim.step([],0);sim.inputs=[];}
     const t0=performance.now();for(const b of replay.route){w.mario.step(b,1);hashes.push(fnv(snap(sim)));}
     return {hashes,events,ms:(performance.now()-t0)/replay.route.length,coverage:w.render3d?.coverage()};
-   }finally{sim.emit=emit;}
+   }finally{sim.emit=emit;HTMLCanvasElement.prototype.toDataURL=toDataURL;}
   },[replay,SNAPSHOT,FNV] as const);
   runs.push({...r,level:replay.level});console.log(`${view} ${replay.level}: ${r.hashes.length} frames`);
  }
