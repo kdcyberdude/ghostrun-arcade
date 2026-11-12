@@ -51,6 +51,7 @@ test('native inventory: objects the route never had room for exist; a Koopa born
   assert.ok(enemies(id).some(e=>e.kind===kind&&e.x===x&&e.y===y),`${id} ${kind} ${x}`);
  assert.equal(enemies('3-1').some(e=>e.kind==='koopa'&&e.x===419),false); // route row 21011: slot 1 turns id 14 -> id 0 in place
  assert.equal(enemies('5-1').some(e=>e.kind==='koopa'&&e.x===2897),false);
+ assert.equal(enemies('7-1').some(e=>e.kind==='koopa'&&e.x===1009),false); // v2 row437: slot2 turns id14 -> id0 in place
 });
 
 test('a respawn camera past a slot-gated walker (x <= camera - 32): it is never made, so it holds no slot and the plant ahead is built (native 3-1 f1298: 13@1656 alone at camera 1536)',()=>{
