@@ -24,3 +24,15 @@ Relative to c65a9b8, 2-3 first enemy divergence advances 79 ->852 (the newly exp
 Earlier fields introduced by continuing the previously hidden live fall: 4-2 timer1084 ->1060 follows the existing death640; 6-3 enemy1945 ->1611 follows y401/death518; 7-3 camera/x/y1919 ->1913 follows enemy297 and death1526. These are downstream of existing differences, not an earlier first divergence of those levels. Full native-divergence remains strict and unchanged.
 
 Open: native ordinary swimming Cheep slot motion, missing stream fish in2-3, later flying-fish contacts and generator/slot interactions, and later area-load/respawn clocks. The ordinary 8-4 pipe timing differs from automatic intros and is not changed by the intro-clock helper.
+
+## Second slice: swimming slot state and the missing stream fish
+
+MoveSwimmingCheepCheep now replays all 8,913 live native swimming-fish transitions exactly. Id10/id11 subtract $40/$80 from the x fraction; only slots2..4 change y fraction by $20, turning at a signed 15px displacement. InitCheepCheep reads random byte slot bit4. Ordinary stream fish inherit slot x/y fractions; frenzy-generated swimmers clear the y fraction. The generator test fixture and motion-state tests distinguish these rules from the old per-object bob timers.
+
+The shared2-3/7-3 enemy stream at CPU $9F3C contains `0F 8A`. Native CheckRightBounds first sees bit7, increments the page to9, and sets EnemyObjectPageSel. CheckPageCtrlRow therefore treats row$0F as an object, producing id$0A (GreyCheep) atx2304/y248. `tools/native-enemy-stream.mjs` decodes these page controls; `data/native-stream-swimmers.json` stores the native bytes, not fitted spawn coordinates. Compilation retains this ordinary swimmer after replacing the unrelated flying-frenzy sightings.
+
+That swimmer occupies slot2 and passes x/y fractions to the next flying fish. The native swimmer is erased after its step and the scroll; the remake encounters its removal at the next pre-step check, so its current fraction is already the native final fraction. Advancing it a second time previously made the next flying fish one pixel early (2-3 frame991).
+
+Result:2-3 enemy852 ->null, death1360 ->null, timer1382 ->null; Mario x/y/camera and coins remain exact through the full recording. The only remaining2-3 divergence is score1602 (native90200, remake89800), a completion award. The recorded-input integration test verifies all native enemy and player positions throughout2-3. Other levels have no earlier field from this slice.
+
+`tools/compile-levels.mjs` cannot complete in the inherited worktree because `evidence/firebar-5-4-shared-verification.json` is missing. The same new decoder logic was applied surgically to the two generated enemy rosters in `data/levels.json`; no tiles changed. Root integration owns restoring that unrelated compiler evidence.

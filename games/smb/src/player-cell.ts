@@ -4,6 +4,12 @@
 import {Simulation,POWERUPS} from './simulation.js';
 import {growCell,shrinkBig,throwPoseShown} from './view-rules.js';
 
+/** PlayerGfxHandler exits on odd FrameCounter rows while InjuryTimer is nonzero, including the shrink animation.
+ * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
+export function playerVisible(s:Simulation){
+ return s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
+}
+
 export function playerCell(s:Simulation){
  const p=s.player,pose=s.phase==='play'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
  if(p.dead)cell=22;else if(s.phase==='play'&&s.playerAnim.fresh)cell=p.size?25:23; // the area load row: Player_State 0 shows the standing pose (1-2 row 349, 2-2 row 352)
