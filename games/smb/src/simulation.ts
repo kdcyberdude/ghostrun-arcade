@@ -1571,13 +1571,13 @@ export class Simulation {
   const p=this.player;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
-   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context));
+   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context),p.size>0);
    if(box===undefined){
     const small=nativeSmallPlatform(platform,this.platformMotion.context);
     for(const offset of small?[0,128]:[0]){
      const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};
      if(small&&surface.y<32)continue;
-     const side=nativePlatformSide(Math.floor(p.y),p.vy,p.size>0&&!p.duck,p.x,surface,platform.width);
+     const side=nativePlatformSide(Math.floor(p.y),p.vy,p.size>0&&!p.duck,p.x,surface,platform.width,p.size>0);
      if(!side)continue;
      const byte=Math.floor(p.vx*16),into=side>0?byte>=0:byte<1;
      this.motor.contact(side,into);
@@ -1587,7 +1587,7 @@ export class Simulation {
     continue;
    }
    if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
-   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
+   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;this.jumpArc=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
   }
  }
@@ -1598,7 +1598,7 @@ export class Simulation {
   const p=this.player,v=p.vy+gravity;if(v>=0)return;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1);
-   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,platform.width)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
+   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,platform.width,p.size>0)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
   }
  }
  platformPosition(platform:NonNullable<Area['platforms']>[number],frame=this.platformFrame){

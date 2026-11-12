@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from '../src/native-platform-contact.js';
 import {PlatformMotion,nativePlatformHoldsSlot,nativeSmallPlatform} from '../src/platform-motion.js';
 import {observedLevels} from '../src/levels.js';
+import {Simulation} from '../src/simulation.js';
 
 test('native platform landing compares moved Mario feet against the platform before its move',()=>{
  // 4-3 v2 rows 473→474: Mario y86 + speed4 gives feet122; id37 is at
@@ -65,4 +66,18 @@ test('only native small lifts43/44 have a repeated collision surface',()=>{
   const area=levels.find(l=>l.id===levelId)!.areas.find(a=>a.id===areaId)!;
   assert.equal(nativeSmallPlatform(area.platforms!.find(p=>p.x===(expected?1372:2236))!,{levelId,areaId}),expected);
  }
+});
+
+test('landing on a platform ends the jump before a later zero-speed walk-off',()=>{
+ // 4-3 v2 rows713–716: the rider leaves a balance platform with speed0 and
+ // fraction240; gravity144/256 begins on the following airborne frame.
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='3-3')!]);sim.reset(true);
+ sim.area.platforms=[{x:100,y:81,width:32,axis:'x',range:0,speed:0}];
+ Object.assign(sim.player,{x:110,y:80,vy:0,grounded:false});
+ sim.jumpArc=true;sim.runJump=true;sim.landJump='held';sim.landingFraction=240/256;sim.fallGravity=144/256;
+ sim.updatePlatforms(80);
+ assert.equal(sim.player.grounded,true);assert.equal(sim.jumpArc,false);
+ sim.player.x=130;sim.player.grounded=false;sim.updatePlatforms(80);sim.walkOffStart(true);
+ assert.equal(sim.player.grounded,false);assert.equal(sim.player.vy,0);assert.equal(sim.player.y,80+240/256);
+ assert.equal(sim.walkOffFall(),true);assert.equal(sim.player.vy,144/256);
 });

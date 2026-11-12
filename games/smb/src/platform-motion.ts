@@ -100,10 +100,9 @@ export function nativeObjectPosition(object:NativePlatformObject,age:number,coun
  if(object.kind==='horizontal')return {x:nativeHorizontalX(object.x,age,counter,sub),y:object.y};
  return {x:object.x,y:nativeLiftY(object.y,age,counter)};
 }
-/** Horizontal support window of a platform for a player at x (collision x of the sprite): natively a player stands on it from 13 px before its
- * left edge to 2 px past its right edge (landings from dx -13/-14, last supported frames at dx width+1..+3 on 3-3, 4-2, 5-4 and 6-3 platforms
- * of both 32 and 48 px; tools/platform-compare.ts, docs/NATIVE_ROLES.md). The earlier window (x+12 > left, x+3 < right) ended 6 px early on the right. */
-export const platformSupportsX=(playerX:number,platformX:number,width:number)=>playerX+14>platformX&&playerX-2<platformX+width;
+/** Native inclusive horizontal bounding boxes (BoundBoxCtrlData): small Mario
+ * uses x+3..x+13; big and crouching Mario use x+2..x+14. */
+export const platformSupportsX=(playerX:number,platformX:number,width:number,wide=false)=>Math.floor(playerX)+(wide?14:13)>=Math.floor(platformX)&&Math.floor(playerX)+(wide?2:3)<=Math.floor(platformX)+width;
 export interface PlatformPosition {x:number;y:number}
 export interface PlatformMotionContext {levelId:string;areaId:string;liftPhaseAtFrameZero?:number}
 
