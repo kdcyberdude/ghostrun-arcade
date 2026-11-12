@@ -13,7 +13,7 @@ test('2-2 water room has the pillar top at columns 172-173 like the 7-2 copy (na
 test('a swimmer standing on a pillar top with Down+Right slows by 152 per frame even on frames that press A (native rows 2062..2078: 6344 -> 3912)',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='2-2')!);level.main='area-2';
  const sim=new Simulation([level]);sim.reset(true);
- for(let f=0;f<60;f++)sim.step([],1);sim.seedSwim({speed:0});(sim as any).swimActive=true;const p=sim.player;p.x=2759;p.y=16+32;p.vx=6344/4096;p.vy=0;p.grounded=true;
+ for(let f=0;f<60;f++)sim.step([],1);sim.seedSwim({speed:0});(sim as any).swimActive=true;const p=sim.player;p.x=2759;(sim as any).camera=2759-112;p.y=16+32;p.vx=6344/4096;p.vy=0;p.grounded=true;
  const vs:number[]=[];for(let f=0;f<8;f++){sim.step(f%2?['down','right','a']:['down','right'],1);vs.push(Math.round(sim.player.vx*4096));}
  assert.deepEqual(vs,[6192,6040,5888,5736,5584,5432,5280,5128]);
  assert.equal(Math.floor(sim.player.y)-32,16);

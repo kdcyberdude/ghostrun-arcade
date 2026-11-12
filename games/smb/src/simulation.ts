@@ -77,7 +77,6 @@ export function swimBobOffset(bob:{dir:number;first:number}|undefined,k:number){
 }
 const hammerRandom=(state:number)=>(Math.imul(state,1664525)+1013904223)>>>0;
 export const NATIVE_HZ=60.0988;
-const AIR_CONTACT_CAMERA_HOLD=18;
 // Native rows (RAM 0x500 collision map, 0x416 y sub-pixel, 0x70a fall class): feet this deep in a cell do not land; a fall before any jump of the area uses 40/256.
 const FOOT_LAND_DEPTH=5,FALL_GRAVITY_AFTER_LOAD=0.15625;
 export const PHYSICS={walkMax:1.5,runMax:2.5,walkAccel:0.037353515625,runAccel:0.0557861328125,brake:0.037109375,reverse:0.109375,jump:-4,runJump:-5,heldGravity:0.125,gravity:0.4375,maxFall:4.125};
@@ -133,7 +132,7 @@ export class Simulation {
  private timeUpDeath=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;
- private cameraAfterContact=false;private cameraHold=0;private cameraContactAir=false;
+ private sideCollisionTimer=0;
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -226,7 +225,7 @@ export class Simulation {
   // Stream inserts belong to this visit. Reset/death must reload the explicit
   // observed map rather than retain a previous failed route's extra sections.
   const area=structuredClone(source);this.mazeSource=source;
-  this.cameraAfterContact=false;
+  this.sideCollisionTimer=0;
   this.platformMotion.reset({levelId:this.level.id,areaId:id});this.platformFrame=0;
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
   // 2-4: the first two slots retain Podoboo fall-speed byte3 as their angle.
@@ -471,7 +470,7 @@ export class Simulation {
   }
   }
   const height=this.height;
-  let springJumped=false;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
+  let springJumped=false;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -497,23 +496,15 @@ export class Simulation {
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>p.x+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
-  if(oldX-previousCamera<80)this.cameraAfterContact=false;
-  // Native scrolling is gated by the side-collision timer (RAM 0x785, 0x10 at the contact frame, then counting down). After an
-  // airborne wall contact the camera resumed AIR_CONTACT_CAMERA_HOLD frames after the contact in the retained 1-1 native probe
-  // (evidence/entry-timeline-findings-20261109.md); ground contacts keep the fractional-lead proxy below. Scoped to 1-1, where it was
-  // measured: applied to every level it moved enemy activation away from native (2-1 Paratroopa 100% to 5%, 4-2 Koopa 80% to 42%).
-  if(cameraContact){this.cameraAfterContact=true;this.cameraContactAir=!poseGrounded&&this.level.id==='1-1';this.cameraHold=AIR_CONTACT_CAMERA_HOLD;}else if(this.cameraHold>0)this.cameraHold--;
-  // Contact-frame scrolling reads attempted movement. Subsequent scrolling
-  // waits for the previous fractional X to cross112; see camera-lag-diagnosis.md.
-  if(this.cameraAfterContact&&!cameraContact){
-   if(oldX-previousCamera>=80&&p.x>oldX&&(this.cameraContactAir?this.cameraHold===0:oldX-previousCamera>112))this.camera+=Math.max(0,Math.floor(p.x)-Math.floor(oldX));
-  }else if(cameraContact&&oldX-previousCamera>112&&p.x>oldX){
-   // Contact frame with Mario already ahead of screen x 112: native scrolls by the attempted movement, no catch-up to 112.
-   this.camera+=Math.max(0,Math.floor(attemptX)-Math.floor(oldX));
-  }else if(oldX-previousCamera>=80&&p.x>oldX){
-   this.camera+=Math.ceil(Math.max(0,Math.floor(p.x)-Math.floor(oldX))/2);
-   if(attemptX-this.camera>112)this.camera=Math.floor(attemptX)-112;
-  }
+  // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
+  // attempted pixel move before wall ejection plus the platform carry; screen position, and SideCollisionTimer ($0785, counted down once per frame)
+  // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
+  this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
+  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+Math.floor(p.x)-Math.floor(xBeforePlatforms),screenX=Math.floor(oldX)-previousCamera;
+   if(screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
+  // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
+  // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
+  if(cameraContact||this.wallBackOut)this.sideCollisionTimer=16;
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32))this.scrollCrossFrame=this.frame;
   this.platformMotion.advance(this.platformFrame,this.camera);
