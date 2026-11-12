@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import type {Kit} from './kit.js';
 import type {Simulation} from '../simulation.js';
-import {platformMotionModel,nativeSmallPlatform} from '../platform-motion.js';
+import {platformMotionModel,nativePlatformArtworkYs} from '../platform-motion.js';
 import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
@@ -16,8 +16,7 @@ export class Props{
   flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  sync(s:Simulation){
   for(const l of this.pools.values())for(const o of l)o.visible=false;this.used.clear();
-  for(const pl of s.area.platforms??[]){const pos=s.platformPosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=[pos.y];
-   if(nativeSmallPlatform(pl,context))ys.push(((pos.y-1+128)&255)+1);
+  for(const pl of s.area.platforms??[]){const pos=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,pos.y);
    for(const y of ys){const w=pl.width/16,cx=(pos.x+pl.width/2)/16,cy=(236-y)/16;
    if(platformMotionModel(pl,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud'){
     const o=this.take('cloud'+w,()=>{const g=new THREE.Group();for(let i=0;i<Math.round(w*1.6);i++){const m=new THREE.Mesh(new THREE.SphereGeometry(0.42,20,14),this.mats.cloud);m.position.set((i/(Math.round(w*1.6)-1)-0.5)*(w-0.7),0,0);g.add(m);}return g;});o.position.set(cx,cy,0);

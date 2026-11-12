@@ -19,8 +19,15 @@ test('spring top cap follows compression above its fixed bottom cap',()=>{
 test('only native small lift IDs draw the second surface 128 rows away',()=>{
  for(const [level,area,x,y,width,copies] of [['2-4','main',1372,160,24,2],['1-2','area-2',2236,112,48,1]] as const){
   const props=new Props(emptyKit),platform={x,y,width,axis:'y',range:0,speed:0.9375};
-  const s={level:{id:level},area:{id:area,platforms:[platform]},platformPosition:()=>({x,y:253}),vines:[],flagFireworks:[]} as unknown as Simulation;
+  const s={level:{id:level},area:{id:area,platforms:[platform]},platformPicturePosition:()=>({x,y:253}),vines:[],flagFireworks:[]} as unknown as Simulation;
   props.sync(s);assert.equal(props.group.children.length,copies);
   assert.deepEqual(props.group.children.map(o=>o.position.y),copies===2?[-17/16,111/16]:[-17/16]);
+ }
+});
+test('native small lift surfaces are suppressed above the playfield while large lifts remain visible',()=>{
+ for(const [level,area,x,y,width,expected] of [['2-4','main',1372,160,24,(236-144)/16],['1-2','area-2',2236,112,48,(236-16)/16]] as const){
+  const props=new Props(emptyKit),platform={x,y,width,axis:'y',range:0,speed:0.9375};
+  const s={level:{id:level},area:{id:area,platforms:[platform]},platformPicturePosition:()=>({x,y:16}),vines:[],flagFireworks:[]} as unknown as Simulation;
+  props.sync(s);assert.equal(props.group.children.length,1);assert.equal(props.group.children[0].position.y,expected);
  }
 });

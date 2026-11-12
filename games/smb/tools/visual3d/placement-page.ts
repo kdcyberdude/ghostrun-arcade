@@ -5,7 +5,8 @@
 import * as THREE from 'three';
 import {GameRenderer} from '../../src/renderer.js';
 import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
-import {platformMotionModel,nativeSmallPlatform} from '../../src/platform-motion.js';
+import {enemyPicture} from '../../src/enemy-picture.js';
+import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
 import {titleBootColor} from '../../src/view-rules.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
@@ -40,10 +41,9 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>q.r.x===Math.floor(x)&&q.r.y===Math.floor(y)).map(q=>q.r));
  const pr=union(quads.filter(q=>q.tag==='player').map(q=>q.r));if(pr)out.push({id:'player',kind:'player',...pr});
- s.enemies.forEach((e,i)=>{const r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
+ s.enemies.forEach((physical,i)=>{const e=enemyPicture(physical),r=union(quads.filter(q=>q.tag==='enemy#'+i).map(q=>q.r));if(r)out.push({id:'enemy#'+i,kind:e.kind,state:e.shell?'shell':e.kind==='spiny'&&e.motion==='falling'&&!e.dead?'egg':e.kind==='podoboo'?(e.podobooFalling?'falling':'rising'):e.greenShellLaunchFrame!==undefined?'flipped':e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20?'squashed':e.kind==='bowser'?(e.dead>0&&!s.castleBowserFalls(e)?'flipped':'normal'):e.dead>20?'flipped':'normal',...r});});
  s.items.forEach((it,i)=>{const r=near({x:it.x-cam,y:it.y,w:it.kind==='debris'?8:16,h:16});if(r)out.push({id:'item#'+i,kind:it.kind,...r});});
- (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=[p.y];
-  if(nativeSmallPlatform(pl,context))ys.push(((p.y-1+128)&255)+1);
+ (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,p.y);
   ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>q.r.y===Math.floor(y)&&q.r.w===8&&q.r.h<=8&&q.r.x>=Math.floor(p.x-cam)&&q.r.x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
  });
  (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=exact(x-4-cam,y-4+(bar.visualOffsetY??0));if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));

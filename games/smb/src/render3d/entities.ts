@@ -1,6 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
+import {enemyPicture} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
@@ -43,7 +44,7 @@ export class Entities{
   if(s.frame<this.lastFrame){this.walkPhase=0;this.lastX=NaN;this.marioYaw=yawFor(s.player.facing);this.enemyYaw=new WeakMap();}
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
-  for(const e of s.enemies)if(e.active&&e.dead<90)this.enemy(e,s);
+  for(const e of s.enemies)if(e.active&&enemyPicture(e).dead<90)this.enemy(e,s);
   for(const i of s.items)if(itemShown(i))this.item(i,s);
   this.retainer(s);
   for(const p of this.pools.values())p.end();
@@ -90,8 +91,9 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
+  const physical=e;e=enemyPicture(e);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
-  const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(e.x/16,(239-e.y)/16,e.x/16+w,(239-e.y)/16+h,0xff3030);
+  const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(physical.x/16,(239-physical.y)/16,physical.x/16+w,(239-physical.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
    const egg=this.take('espinyEgg',()=>{const m=new THREE.Mesh(new THREE.SphereGeometry(0.34,20,12),std(0xd23a2a));m.name='spinyEgg';
     const material=std(0xf4ecd8),up=new THREE.Vector3(0,1,0);
@@ -103,7 +105,7 @@ export class Entities{
   const a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined;
-  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(e):e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
   // Flipping a native 24px enemy cell moves a 16px body above its transparent leading row.
@@ -113,7 +115,7 @@ export class Entities{
   if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
-  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(e,yawFor(e.kind==='hammerBro'?(s.player.x<e.x?-1:1):facing),s.frame);
+  a.root.rotation.y=e.kind==='piranha'?-Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(s.player.x<e.x?-1:1):facing),s.frame);
   a.pose(e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk',e.age/60,s.frame);
  }
  private retainer(s:Simulation){
@@ -124,14 +126,15 @@ export class Entities{
  private item(i:Item,s:Simulation){
   const cx=(i.x+8)/16,cy=(232-i.y)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
   if(i.kind==='debris'){const m=this.take('debris',()=>new THREE.Mesh(new THREE.BoxGeometry(0.42,0.42,0.42),std(0xb8521e)));m.position.set((i.x+4)/16,(236-i.y)/16,0.2);m.rotation.set(i.age*0.3,i.age*0.2,i.age*0.25);return;}
+  if(i.kind==='coin'&&(i.nativeCoin?.state??0)>=2)return; // native misc slot now draws its floatey 200, in Hud
   if(i.kind==='coin'){  // block coin: the same minted gold coin as the tile coins, spinning fast while it pops
    let m=this.coins[this.coinsUsed++];if(!m){m=new THREE.Mesh(coinGeometry(),GOLD);m.castShadow=true;this.group.add(m);this.coins.push(m);}
-   m.visible=true;m.position.set((i.x+4)/16,(232-i.y)/16,0);m.rotation.y=i.age*0.35;return;}
+   m.visible=true;m.position.set((i.x+4)/16,(232-i.y)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
   const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
   a.root.position.set(cx,(240-i.y-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
-  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?Math.floor(i.age/4)/4*a.duration('spin'):i.age/60,s.frame);
+  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
  }
 }

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import * as THREE from 'three';
 import {Entities} from '../src/render3d/entities.js';
 import type {Kit} from '../src/render3d/kit.js';
+import {captureEnemyPicture} from '../src/enemy-picture.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import type {Enemy} from '../src/types.js';
@@ -90,4 +91,19 @@ test('the final castle shows the Princess and earlier castles show Toad',()=>{
   const {sim,entities}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id===level);sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';entities.sync(sim,0);
   const root=actor(entities,model);assert.ok(root?.visible);assert.equal(root.position.x,308/16);assert.equal(root.position.y,31/16);
  }
+});
+test('the pre-contact enemy picture survives a stomp until the next graphics pass',()=>{
+ const {sim,entities}=scene({});const enemy=sim.enemies[0];captureEnemyPicture(enemy);enemy.dead=1;enemy.squashed=true;enemy.x+=2;
+ entities.sync(sim,0);const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.position.x,108/16);
+ captureEnemyPicture(enemy);sim.frame++;entities.sync(sim,0);assert.equal(root.scale.y,0.28);assert.equal(root.position.x,110/16);
+});
+test('a native coin becomes score text instead of retaining coin geometry',()=>{
+ const {sim,entities}=scene();const coin={kind:'coin' as const,x:100,y:100,age:0,vx:0,vy:0,life:100,nativeCoin:{slot:8,state:1,speed:0,force:0,fraction:0}};sim.items=[coin];entities.sync(sim,0);
+ const mesh=entities.group.children.find(o=>(o as THREE.Mesh).isMesh)!;assert.equal(mesh.visible,true);coin.nativeCoin.state=2;entities.sync(sim,0);assert.equal(mesh.visible,false);
+});
+test('native hammers stay held at pose zero and flying poses use FrameCounter',()=>{
+ const {sim}=scene();const hammer={kind:'hammer' as const,x:100,y:100,age:12,vx:0,vy:0,life:100,nativeHammer:{slot:3,state:0x90,speed:0,force:0,fraction:0}};sim.items=[hammer];sim.random.frame=4;
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'hammer').getObjectByName('hammer')!;assert.equal(model.rotation.z,0);
+ hammer.nativeHammer.state=0x81;entities.sync(sim,0);assert.ok(Math.abs(model.rotation.z-Math.PI/2)<1e-6);
 });
