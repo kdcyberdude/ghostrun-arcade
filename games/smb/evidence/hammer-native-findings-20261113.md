@@ -117,3 +117,64 @@ this handoff. Native hammer hand pose is0; flying pose is(FrameCounter>>2)&3.
 Full special enemy slot5 ownership is still missing: powerup-only occupancy
 does not cover a pre-touch flag loaded by the area parser or a living vine.
 The flag worker confirmed this and it must remain an explicit open item.
+
+## Reserved enemy slot5 and source area controls
+
+`NativeSpecialSlot` tracks native flag/id/position, vine segment ownership,
+AreaFrenzy queue and frenzy buffer. Native ROM row-$0D FlagpoleObject and
+AreaFrenzy commands replace inferred late-slot guards: the parser claims a flag
+before Mario touches it, a vine/powerup replaces its owner, and queued frenzy
+objects can reach slot5 after ordinary slots fill. Flags increment the existing
+flag byte; Stop_Frenzy clears its consumed slot. ROM positions are generated
+level data, bound to existing area geometry through native-level-map offsets.
+They are not measured replay camera/frame thresholds.
+
+Native fixture coverage includes19 retained flag births,8 queue consumptions,
+controlled vine growth/limits/offscreen erasure and the CheckFrenzyBuffer
+second-vine allocation in ordinary slots. A duplicate vine reserves its ordinary
+slot even though the shared VineObjectHandler graphics run from slot5. Growth
+stops at48 pixels with one segment and96 with two. The legacy vine visual/climb
+representation remains separate; this unit supplies native allocation state,
+not complete vine picture equivalence. Existing water/flying generator actor
+creation still needs to consume the source-derived frenzy buffer instead of
+its legacy ranges. Ordinary queued actor motor creation is not replaced here.
+
+Above-block coins expose a native SetupJumpCoin carry quirk: four ASLs on the
+block-buffer low byte leave its original bit4 in carry, and ADC $20 has no CLC.
+Odd native buffer pages therefore start the coin one pixel lower. Native1-2
+row865 startsx949/y129, then gravity makes y124;4-2 row2517 starts at y128,
+then123. `spawnNativeAboveBlockCoin` derives this from native geometry/page
+parity. Integration must call this helper from its existing CheckTopOfBlock
+award path (that earlier path is absent from this branch's base), replacing the
+old x*16+5,y*16-32 visual coin push while preserving the score award.
+
+All1257 tests and TypeScript pass, native excerpts regenerated. Full32 survey
+compared with5fb43ff: no first-divergence field changes. Integration must retain
+its a885064 nativePowerState/powerup motor while combining the new parser-time
+slot claims; this branch's base contains only the prior generic item motor.
+
+## Unvisited8-3 late geometry evidence (no tile edits)
+
+`native-eight-three-late-map.json` records a controlled native ROM parser probe.
+The retained8-3 runs visit columns0..161/141/159; zero mismatch on their visited
+block buffers says nothing about the remaining map. Restore the recorded8-3
+entrance, set HalfwayPage $075B=8, OperMode_Task $0772=0, engine $0E=0, then
+run neutral inputs. When parser task $071F is idle, set ScrollThirtyTwo $073D=32
+to request normal parser pairs. Keep player vertical state and star timer fixed
+to prevent termination. Sample MetatileBuffer $06A1..$06AD after tasks7/3 and
+block buffers $0500/$05D0 after column advance. No ROM/metatile writes occur.
+`native-late-area-probe.py` and `native-special-slot-observer.cpp` reproduce
+this probe with explicit lab/ROM/boot/recording/library paths. This is controlled
+parser evidence with a stationary camera, not an ordinary gameplay recording.
+
+ROM L_GroundArea2 tail: A5 60 C3 31 FE31 6D C1 BE42 EF20 FD.
+The 6D C1 FlagpoleObject command is native column214: slot5x3416/y48,
+ball metatile36 at(col214,row2). Existing model ball is(col215,row2), exit
+x3448 and doorX3568. No native door coordinate is inferred from those values.
+Raw native columns152..239 are retained. Against model tiles within width3696,
+158 cells differ over42 columns spanning162..230; the artifact lists every
+cell. Native castle roof69 occurs at220/221 row7,222 row4,223..225 row2,
+226 row4,227 onward row7; model roof begins221/222 row7,223 row4,
+224..226 row2,227 row4,228/229 row7. The ROM source and controlled buffers
+must determine the eventual full geometry fix; no per-level runtime offset or
+manual tile shift was added. Parent owns the data/compiler correction.
