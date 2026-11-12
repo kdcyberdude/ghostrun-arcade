@@ -400,8 +400,8 @@ export class Simulation {
   this.frame++;this.phaseFrame++;this.areaFrame++;this.advancePopups();this.payFloateyScore();
   this.firebarMarioScreenX=Math.floor(this.player.x)-Math.floor(this.camera); // Mario's OAM x as the previous frame drew it (src/firebar-contact.ts)
   this.lifeClockFreeze();
-  if(this.phase==='intro'&&this.lifeIntro){if(this.lifeIntroDone())this.startPlayAfterIntro();return;}
-  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.primeEntryPodoboos();this.emit(this.areaMusic());}return;}
+  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine)this.primeNativeEntryObjects();if(ready)this.startPlayAfterIntro();return;}
+  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();if(!this.entryFalling&&this.enemies.some(e=>e.active&&e.nativeId!==undefined)){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){
    if(this.gameoverClosingFrame>=0){if(++this.gameoverClosingFrame>=(this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0?6:26))this.finishGameover();}
    else if(this.gameoverSkipDelay>0){if(--this.gameoverSkipDelay===0)this.gameoverClosingFrame=0;}
@@ -1014,7 +1014,7 @@ export class Simulation {
   // A measured return may resume the ordinary NPC stream beyond its viewport.
   // Pipe plants are terrain actors; generators retain their normal lifecycle.
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
-  if(this.area.entryFall?.native){const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();}
+  if(this.area.entryFall?.native)this.primeNativeEntryObjects();
  }
  private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
  // Native 2-1 spring rows 10254-10267: Mario sinks 2 px per row for 8 rows, rises 2 px per row for 5 more, launches on the 14th; x stays pinned.
@@ -1796,6 +1796,7 @@ export class Simulation {
  }
  private groupParserSlot=5;
  private groupSlotsBefore=[false,false,false,false,false];
+ private primeNativeEntryObjects(){const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();}
  private passNativeObjects(){
   if(this.parserClock.blocked)return;
   const entries=this.enemies.filter(e=>!e.active&&!e.slotLost&&(e.nativeId!==undefined||e.nativeGroup?.index===0)).sort((a,b)=>(a.nativeOffset??a.nativeGroup?.offset??0)-(b.nativeOffset??b.nativeGroup?.offset??0));
@@ -2180,7 +2181,7 @@ export class Simulation {
   let ticks=0;
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
- private startPlayAfterIntro(){if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;if((this.random.frame&7)===0)this.colorRotations++;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeEntryPodoboos();this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;if((this.random.frame&7)===0)this.colorRotations++;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;if(!this.entryFalling&&this.enemies.some(e=>e.active&&e.nativeId!==undefined)){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.emit(this.areaMusic());}
  private primeEntryPodoboos(){
   // InitializeGame already loads the in-range Podoboo on engine7. On the first engine8 row it takes its first MoveJ gravity step.
   for(const e of this.enemies)if(e.kind==='podoboo'&&!e.active&&e.x>this.camera-32&&e.x<this.camera+304){
