@@ -69,12 +69,12 @@ for(const c of cases){
   }
  });
 
- if(c.fall)test(`${c.id}: TIME appears at control start and ticks every 24 frames; the first Goomba starts moving on row +3`,()=>{
+ if(c.fall)test(`${c.id}: TIME appears at control start and ticks every 24 frames; the first Goomba moves on each following native engine row`,()=>{
   for(let row=area;row<area+17;row++)assert.equal(at(row).timerHidden,true,`row ${row}`);
   for(let row=area+17;row<area+41;row++){assert.equal(at(row).timerHidden,false,`row ${row}`);assert.equal(at(row).time,400,`row ${row}`);}
   assert.equal(at(area+41).time,399);assert.equal(at(area+64).time,399);assert.equal(at(area+65).time,398);
-  // 1-2 only: its first actor is a Goomba whose native slot starts moving on row +3 (RAM 0x87: 0xff->0xfe).
-  if(c.id==='1-2'){assert.equal(at(area+2).enemyX,at(area).enemyX);assert.notEqual(at(area+3).enemyX,at(area+2).enemyX);}
+  // 1-2 native first pass creates x256; subsequent passes step $F8/16 with the retained fraction.
+  if(c.id==='1-2')for(let step=0;step<=3;step++)assert.equal(at(area+step).enemyX,256-step/2);
  });
 }
 
