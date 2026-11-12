@@ -35,7 +35,7 @@ test('a speed byte of 0 does not register floor contact, a speed byte of 1+ does
  assert.equal(arriving.vy,BOUNCE_ROW_VY);assert.equal(arriving.y,205);
 });
 
-test('landing 5 px or more below the floor turns the Paratroopa around (side probe 5 px above the feet), 4 px does not',()=>{
+test('a deeper sink reaches the side block before the floor snap; the zero-fraction landing snaps first',()=>{
  const shallow=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]);shallow.step([],11);
  assert.equal(shallow.enemies[0].vy,BOUNCE_ROW_VY);assert.equal(shallow.enemies[0].vx,0.5);
  const deep=live(fixture([{kind:'paratroopa',x:200,y:208,direction:1,palette:GREEN}]),[0.5]);deep.enemies[0].y=208.2;deep.step([],11); // fraction byte 51: feet 213 when contact registers
@@ -53,12 +53,12 @@ test('a jumping Paratroopa is made at rest: the route-measured spawnVy and spawn
  sim.step([],1);assert.equal(enemy.y,208);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.gravity);
 });
 
-test('Paratroopa and Beetle side probes sit at the edges of the sprite, 5 px above the feet',()=>{
+test('Paratroopa and Beetle side probes use pre-move sprite edges and native top plus20',()=>{
  const wall:CollisionRect={x:216,y:160,width:16,height:48,id:84};
  for(const kind of ['paratroopa','beetle'] as const){
   const sim=live(fixture([{kind,x:190,y:208,direction:1,palette:kind==='paratroopa'?GREEN:undefined}],[40,208],1024,[wall]),[0.5]),enemy=sim.enemies[0];
   let maxX=0;for(let i=0;i<40&&enemy.vx>0;i++){sim.step([],1);maxX=Math.max(maxX,enemy.x);}
-  assert.equal(enemy.vx,-0.5,`${kind} turned at the wall`);assert.equal(maxX,kind==='beetle'?200:199.5,`${kind}: x+16 reaches the wall at 216; the native walker keeps its completed step`);
+  assert.equal(enemy.vx,-0.5,`${kind} turned at the wall`);assert.equal(maxX,200,`${kind}: x+16 reaches the wall at 216; the native walker keeps its completed step`);
  }
  const leftWall:CollisionRect={x:184,y:160,width:16,height:48,id:84};
  const left=live(fixture([{kind:'beetle',x:230,y:208,direction:-1}],[300,208],1024,[leftWall]),[-0.5]),beetle=left.enemies[0];
