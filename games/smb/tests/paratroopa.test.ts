@@ -42,7 +42,7 @@ test('ground-supported green bounce rises 43 px and repeats after 56 native fram
 });
 
 test('ordinary green walkers and red flight retain their prior vertical rules',()=>{
- const walker=fixture(-1,1024,'koopa'),ground=walker.enemies[0];ground.y=160;walker.step([],1);assert.equal(ground.vy,.25);assert.equal(ground.y,160.25);walker.step([],30);assert.equal(ground.y,208);assert.equal(ground.vy,0);
+ const walker=fixture(-1,1024,'koopa'),ground=walker.enemies[0];ground.y=160;walker.step([],1);assert.equal(ground.vy,61/256);assert.equal(ground.y,160);walker.step([],30); /* native walker fall: MoveD_EnemyVertically 0x3D per frame from rest, cap 3 (6-1 rows 233-246) */assert.equal(ground.y,208);assert.equal(ground.vy,0);
  const red=fixture(-1,1024,'paratroopa','0f-16-30-27'),flying=red.enemies[0];flying.originY=80;flying.y=80;red.step([],45);assert.equal(flying.x,200);assert.equal(flying.y,80+(1-Math.cos(45/56))*48); /* period changed by native data: route 3-3 x 1824 id 15 rows 25995-26170 (98 px in ~175 rows), evidence/platslot-findings-20261111.md */assert.equal(flying.vy,0);
 });
 

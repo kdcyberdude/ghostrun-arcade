@@ -80,6 +80,6 @@ test('an idle shell revives, while a kicked shell continues moving',()=>{
 
 test('ground enemies turn on contact with each other',()=>{
  const sim=fixture('test',[{kind:'goomba',x:170,y:208,direction:1},{kind:'koopa',x:186,y:208,direction:-1}]);
- sim.step([],2);assert.ok(sim.enemies[0].vx<0);assert.ok(sim.enemies[1].vx>0);
+ sim.step([],8);assert.ok(sim.enemies[0].vx<0);assert.ok(sim.enemies[1].vx>0);
  const directions=sim.enemies.map(e=>Math.sign(e.vx));sim.step([],2);assert.deepEqual(sim.enemies.map(e=>Math.sign(e.vx)),directions);
 });

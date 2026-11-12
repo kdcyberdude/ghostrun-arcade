@@ -5,11 +5,11 @@ import {observedLevels} from '../src/levels.js';
 
 test('ground pit fall stays offscreen until the life transition',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='1-1')!);
- const sim=new Simulation([level]);sim.reset(true);sim.camera=2313;sim.player.x=2460;sim.player.y=260;sim.player.vy=4;sim.player.grounded=false;sim.enemies=[];
- let elapsed=0;while(sim.phase==='play'&&elapsed++<20)sim.step([],1);
- assert.equal(sim.phase,'dying');const y=sim.player.y;assert.ok(y>272);
+ const sim=new Simulation([level]);sim.reset(true);sim.camera=2313;sim.player.x=2460;sim.player.y=260;sim.player.vy=4;sim.player.grounded=false;(sim as unknown as {runJump:boolean}).runJump=true;sim.enemies=[];
+ let elapsed=0;while(sim.phase==='play'&&sim.player.y<=272&&elapsed++<20)sim.step([],1);
+ assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);const y=sim.player.y;assert.ok(y>272);
  // Native: 259-260 rows from passing y 240 to the engine change (57 pit deaths), not the older 264.
- sim.step([],257);assert.equal(sim.phase,'dying');assert.equal(sim.player.y,y);assert.equal(sim.lives,3);
+ sim.step([],257);assert.equal(sim.phase,'play');assert.ok(sim.player.y>y);assert.equal(sim.lives,3);
  sim.step([],3);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
 });
 

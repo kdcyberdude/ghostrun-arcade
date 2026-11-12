@@ -2,6 +2,8 @@
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
 import {Simulation,POWERUPS} from '../simulation.js';
+import {playerVisible} from '../player-cell.js';
+import {itemShown} from '../view-rules.js';
 import type {Enemy,EnemyKind,Item} from '../types.js';
 import {Kit} from './kit.js';
 import {ActorPool,Actor,turnToward,yawFor} from './actors.js';
@@ -42,13 +44,13 @@ export class Entities{
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
   for(const e of s.enemies)if(e.active&&e.dead<90)this.enemy(e,s);
-  for(const i of s.items)this.item(i,s);
+  for(const i of s.items)if(itemShown(i))this.item(i,s);
   for(const p of this.pools.values())p.end();
   this.lastFrame=s.frame;
  }
  private player(s:Simulation,advanced:boolean){
   const p=s.player,feet=(239-p.y)/16,x=(p.x+8)/16;
-  const visible=s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(Boolean(s.powerChange)||!p.invincible||Math.floor(s.frame/4)%2===0);
+  const visible=playerVisible(s);
   // Size: small 0.5 (+Chibi), big 1.0; the three growth frames of the original map to 0.5 / 0.75 / 1.0.
   const change=s.powerChange,age=change?POWERUPS.transformFreezeNativeFrames.value-change.remaining:0;
   let size=p.size===0?0:1;

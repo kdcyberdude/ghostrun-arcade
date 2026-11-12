@@ -34,7 +34,7 @@ test('castle rescue walk runs at 1.5 px/frame from its first row and Mario stand
 // (digits 5,0,4,0,0,2,8,0); a level ends 140..160 rows after the timer reaches 0 on a 21-row area-clock phase, never on a flat 160.
 test('no-firework flag levels end 140-160 rows after the timer reaches 0, aligned to the 21-row area clock',()=>{
  assert.equal(FLAG_COMPLETION.fireworksEndInterval,21);assert.equal(FLAG_COMPLETION.noFireworksEndWait,140);
- const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69]);
+ const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69],[11,12,82]);
  const exits=new Set<number>();
  for(let offset=0;offset<21;offset++){
   const level:Level={id:'1-1',time:341,main:'main',evidence:'Synthetic flag fixture',areas:[{id:'main',width:640,palette:0,theme:'ground',tiles,enemies:[],spawn:[80,208],exit:{x:104,doorX:160,kind:'flag'},evidence:'Synthetic flag fixture'}]};

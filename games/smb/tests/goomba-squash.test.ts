@@ -14,15 +14,17 @@ function stomp(){
  assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);assert.equal(enemy.dead,1);assert.equal(sim.awardedScore,100);
  return {sim,enemy};
 }
-test('a real stomp stays flat and fixed through39 updates and is removed on update40',()=>{
- const {sim,enemy}=stomp(),position=[enemy.x,enemy.y],birth=sim.frame;
- for(let elapsed=1;elapsed<40;elapsed++){
+// Native: a stomped Goomba keeps its pre-step x and is erased IntervalTimerControl ($077F, read on the stomp row) + 22 rows later (18 of 18 squashes of the 32 v2 traces).
+test('a real stomp stays flat and fixed and is removed IntervalTimerControl + 22 updates later',()=>{
+ const {sim,enemy}=stomp(),position=[enemy.x,enemy.y],birth=sim.frame,n=(sim as any).intervalControl+22;
+ assert.ok(n>=22&&n<=42);
+ for(let elapsed=1;elapsed<n;elapsed++){
   sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);
   assert.ok(enemy.dead<90,`flat actor must remain visible at age${elapsed}`);
   assert.deepEqual([enemy.x,enemy.y],position);assert.equal(enemy.vy,0);
  }
- assert.equal(sim.frame-birth,39);assert.equal(enemy.dead,40);
- sim.step(['left'],1);assert.equal(sim.frame-birth,40);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
+ assert.equal(sim.frame-birth,n-1);assert.equal(enemy.dead,n);
+ sim.step(['left'],1);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
  sim.step([],20);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
 });
 test('ordinary pause leaves squash age unchanged and resume continues the same interval',()=>{
