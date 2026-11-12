@@ -20,6 +20,7 @@ import flyingFishData from '../data/native-flying-fish.json';
 import {NativeRandom} from './native-random';
 import {lakituStep,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import {hammerBroStep} from './hammer-bro';
+import {nativeCoinSlot,nativeMiscGravity,nativeMiscOffscreen,nativeHammerBox,nativePlayerBox,nativeHammerContact,type NativeBox} from './native-misc';
 import waterActorData from '../data/native-water-actors.json';
 import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
@@ -245,7 +246,7 @@ export class Simulation {
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false){
   this.piranhaTouchFeetY=undefined;this.fallGravity=FALL_GRAVITY_AFTER_LOAD;this.landingFraction=0;this.walkingOff=false;
   this.fallingThroughCastleLava=false;
-  this.spinyTimer=0;this.spinyBuffer=false;this.slotBroJump=[0,0,0,0,0];this.miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0}));this.secondaryHardMode=Number(this.level.id[0])>5||Number(this.level.id[0])===5&&Number(this.level.id[2])>=3; // InitializeArea clears the timers ($0780-$07A1) and the frenzy buffer (8-2 row 684 after a death: $078F 0, $06CB 0)
+  this.spinyTimer=0;this.spinyBuffer=false;this.slotBroJump=[0,0,0,0,0];this.miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0,collision:false}));this.miscOffscreen=0;this.hammerPlayerBox=undefined;this.miscPositions=Array.from({length:9},()=>({x:0,y:0}));this.blockControl=0;this.nativeBlockBounce=0;this.nativeBlocks=Array.from({length:4},(_,slot)=>({slot,x:0,y:0,state:0,speed:0,force:0,fraction:0}));this.secondaryHardMode=Number(this.level.id[0])>5||Number(this.level.id[0])===5&&Number(this.level.id[2])>=3; // InitializeArea clears the timers ($0780-$07A1) and the frenzy buffer (8-2 row 684 after a death: $078F 0, $06CB 0)
   this.corpsePlatformSlotEnd.clear();
   const source=this.level.areas.find(a=>a.id===id);if(!source)throw new Error(`Unmapped area ${this.level.id}/${id}`);
   this.stompChain=0;
@@ -361,7 +362,7 @@ export class Simulation {
   // Native: the row that ends the death sets engine 6 (PlayerLoseLife) to run on the NEXT row, so that row is still a death row (1-1 v2: e11 786..992, e6 993, lives screen
   // from 994). The lives screen is timed from the e6 row, as before, so the deferred respawn runs first, on the clock of the row that ended the death.
   if(this.phase==='dying'&&this.loseLife){this.loseLife=false;this.respawn();}
-  this.lifeRow++;this.random.tick();
+  this.lifeRow++;this.random.tick();if(this.nativeBlockBounce>0)this.nativeBlockBounce--;
   const pressed=(key:Button)=>b.has(key)&&(!this.previous.has(key)||(key==='a'&&this.freshA));
   if(this.phase==='title'){
    this.titleFrame++;
@@ -455,7 +456,7 @@ export class Simulation {
   if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;if(this.time===100)this.emit('event_hurry');}}
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
-  const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
+  const p=this.player;const oldBottom=p.y;const oldX=p.x;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
   let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined;
   p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(b);this.finishBrickBreak();
   if(this.area.autoWalk)b=new Set<Button>(['right']);
@@ -496,7 +497,7 @@ export class Simulation {
    this.jumpHeld++;
   }
   const height=this.height;
-  const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b));
+  const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,hammerBoxFeet=p.y+(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy);this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b));
   if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,oldBottom);
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
@@ -525,7 +526,7 @@ export class Simulation {
   const height=this.height;
   let springJumped=false;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
-  this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
+  this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   this.updateLocomotionPose(poseGrounded,poseVx,jumped,b);
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
@@ -724,6 +725,12 @@ export class Simulation {
   const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
+  if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6]){
+   const slot=this.blockControl,n=this.nativeBlocks[slot],shatter=Boolean(p.size&&[81,82,83].includes(id));
+   Object.assign(n,{x:Math.floor(p.x+8)&~15,y:y*16,state:shatter?0x12:0x11,speed:shatter?-6:-2,force:0});
+   if(shatter)Object.assign(this.nativeBlocks[slot+2],{x:n.x,y:n.y+8,speed:-4,force:0});
+   this.blockControl^=1;this.nativeBlockBounce=16;
+  }
   const content=this.area.blockContents?.find(block=>block.col===x&&block.row===y);
   const powerupContent=content&&content.kind!=='vine'&&content.kind!=='multiCoin'&&id!==196?content.kind:undefined;
   if(content?.kind==='vine'&&id!==196){
@@ -733,7 +740,7 @@ export class Simulation {
    const expiry=this.multiCoinExpiries.get(key)??multiCoinExpiry(this.frame);
    this.multiCoinExpiries.set(key,expiry);
    if(this.frame>=expiry)this.tiles.set(key,196);
-   this.coin();this.items.push({kind:'coin',x:x*16+5,y:y*16-16,vx:0,vy:-5.3125,age:0,life:36});
+   this.coin();this.spawnNativeCoin(x*16+5,y*16-16);
   }else if(powerupContent||id===192||id===193||id===95||id===96||id>=85&&id<=94){
    let item:Item['kind']='coin';
    if(id===193||id===85||id===90)item=p.size?'flower':'mushroom';
@@ -741,7 +748,7 @@ export class Simulation {
    if(id===87||id===92)item='star';
    if(powerupContent)item=powerupContent==='powerup'?(p.size?'flower':'mushroom'):powerupContent;
    if(piece)piece.id=196;else this.tiles.set(key,196);
-   if(item==='coin'){this.coin();this.items.push({kind:'coin',x:x*16+5,y:y*16-16,vx:0,vy:-5.3125,age:0,life:36});}
+   if(item==='coin'){this.coin();this.spawnNativeCoin(x*16+5,y*16-16);}
    else {this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value});this.emit('sfx_powerup_appears');}
   }else if((id===81||id===82||id===83)&&p.size){
    this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
@@ -1198,7 +1205,7 @@ export class Simulation {
   e.nativeDir=e.enemySlot!&1?this.marioMotion:this.player.x>=e.x?1:-1;
  }
  // Hammer Bro roster entries supply level object positions only. All decisions use native slot state (src/hammer-bro.ts).
- secondaryHardMode=false;private slotBroJump=[0,0,0,0,0];private miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0}));
+ secondaryHardMode=false;private slotBroJump=[0,0,0,0,0];private miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0,collision:false}));private miscOffscreen=0;private hammerPlayerBox?:NativeBox;private miscPositions=Array.from({length:9},()=>({x:0,y:0}));private blockControl=0;private nativeBlockBounce=0;private nativeBlocks=Array.from({length:4},(_,slot)=>({slot,x:0,y:0,state:0,speed:0,force:0,fraction:0}));
  private bindNativeHammerBros(){
   this.broClock=HAMMER_NATIVE.levelClock;
   const roster=(hammerBroData.bros as unknown as NativeHammerBro[]).filter(b=>b.level===this.level.id&&b.area===this.area.id),taken=new Set<NativeHammerBro>();
@@ -1223,10 +1230,32 @@ export class Simulation {
  }
  private spawnNativeHammer(e:Enemy){
   const byte=this.random.bytes[1],slot=(byte&7)||(byte&8),guard=[4,4,4,5,5,5,6,6,6][slot];
-  if(this.items.some(i=>i.nativeHammer?.slot===slot&&i.life>0))return false;
+  if(this.items.some(i=>(i.nativeHammer??i.nativeCoin)?.slot===slot&&i.life>0))return false;
   if(guard<5&&this.enemies.some(o=>o.active&&!o.dead&&o.enemySlot===guard))return false;
   if(guard===5&&this.items.some(i=>['mushroom','flower','star','1up'].includes(i.kind)&&i.life>0))return false;
+  this.miscPositions[slot]={x:Math.floor(e.x)+2,y:Math.floor(e.y)-34};
   this.items.push({kind:'hammer',x:e.x+2,y:e.y-34,vx:0,vy:0,age:0,life:900,owner:e,nativeHammer:{slot,state:0x90,speed:0,...this.miscHammerBytes[slot]}});return true;
+ }
+ private spawnNativeCoin(x:number,y:number){
+  const busy=new Set(this.items.filter(i=>i.life>0).flatMap(i=>{const n=i.nativeHammer??i.nativeCoin;return n?[n.slot]:[];})),slot=nativeCoinSlot(busy);
+  for(const item of this.items)if((item.nativeHammer??item.nativeCoin)?.slot===slot)item.life=0;
+  this.miscPositions[slot]={x:Math.floor(x),y:Math.floor(y)};
+  this.items.push({kind:'coin',x,y,vx:0,vy:-5,age:0,life:1000,nativeCoin:{slot,state:1,speed:-5,...this.miscHammerBytes[slot]}});
+ }
+ private advanceNativeBlocks(){
+  for(const slot of [1,0]){const n=this.nativeBlocks[slot];if(!n.state)continue;n.state&=15;n.y=nativeMiscGravity(n,n.y,0x50,8);
+   if(n.state===2){n.x--;const low=this.nativeBlocks[slot+2];low.y=nativeMiscGravity(low,low.y,0x50,8);low.x--;if(n.y>=0){low.y=Math.min(240,low.y);if(n.y>=240)n.state=0;}}
+   else if((n.y&15)<5)n.state=0;
+  }
+ }
+ private moveNativeCoin(i:Item){
+  const n=i.nativeCoin!;
+  if(n.state===1){i.y=nativeMiscGravity(n,i.y,0x50,6);if(n.speed===5)n.state++;}
+  else{n.state++;i.x+=this.lakituScroll;if(n.state===0x30){n.state=0;i.life=0;this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};return;}}
+  const offscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),this.camera+this.lakituScroll);
+  if(n.state>=2&&!(this.random.frame&1))i.y--;
+  i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction,collision:n.collision??false});
+  this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};this.miscOffscreen=offscreen;
  }
  private moveNativeHammer(i:Item){
   const n=i.nativeHammer!,owner=i.owner!;
@@ -1234,10 +1263,13 @@ export class Simulation {
    if((n.state&0x7f)===2){n.speed=-2;i.vx=owner.nativeDir??-1;if(owner.hbro)owner.hbro.state&=~8;}
    n.state--;i.x=Math.floor(owner.x)+2;i.y=Math.floor(owner.y)-34;
   }else{
-   const f=n.fraction+n.force;n.fraction=f&255;i.y+=n.speed+(f>>8);const force=n.force+0x10;n.force=force&255;n.speed+=force>>8;if(n.speed>=4&&n.force>=128){n.speed=4;n.force=0;}i.x+=i.vx;
+   i.y=nativeMiscGravity(n,i.y,0x10,4);i.x+=i.vx;
+   const box=this.hammerPlayerBox??nativePlayerBox(this.player.x,this.player.y,this.player.size,this.player.duck,this.camera+this.lakituScroll);
+   if(nativeHammerContact(n,box,this.random.frame,this.miscOffscreen)){i.vx=-i.vx;if(!this.player.star)this.hurt();}
   }
-  i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction});
-  const screenX=i.x-this.camera-this.lakituScroll;if(screenX<=0||screenX>247||i.y>=256)i.life=0;
+  i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction,collision:n.collision??false});
+  const camera=this.camera+this.lakituScroll;this.miscOffscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),camera);n.box=nativeHammerBox(Math.floor(i.x),Math.floor(i.y),camera,n.slot<4?this.nativeBlocks[n.slot].x:this.miscPositions[n.slot-4].x);this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};
+  if(this.miscOffscreen&0xfc)i.life=0;
  }
  // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll; it steps on its first remake row
  // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
@@ -1844,14 +1876,13 @@ export class Simulation {
  }
  private updateItems(){
   const p=this.player;
+  this.advanceNativeBlocks();
+  // Native MiscObjectsCore visits shared hammer/jumping-coin slots from 8 down to 0.
+  const misc=this.items.filter(i=>i.life>0&&(i.nativeHammer||i.nativeCoin)).sort((a,b)=>(b.nativeHammer??b.nativeCoin)!.slot-(a.nativeHammer??a.nativeCoin)!.slot);
+  for(const i of misc){i.age++;i.life--;if(i.nativeHammer)this.moveNativeHammer(i);else this.moveNativeCoin(i);}
   for(const i of this.items){
+   if(i.nativeHammer||i.nativeCoin)continue;
    i.age++;i.life--;if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
-   if(i.nativeHammer){
-    const flying=(i.nativeHammer.state&127)===1;this.moveNativeHammer(i);
-    if(flying&&i.life>0){const horizontal=Math.floor(this.random.frame/4)%2===1,x=i.x+(horizontal?0:4),y=i.y+(horizontal?4:0);
-     if(overlap(p.x+3,p.y-this.height+2,10,this.height-4,x,y,horizontal?16:8,horizontal?8:16))this.hurt();}
-    continue;
-   }
    i.x+=i.vx;
    if(i.kind==='coin'||i.kind==='debris'||i.kind==='hammer'){i.vy+=i.kind==='coin'?0.3125:i.gravity??0.2;i.y+=i.vy;}
    else if(i.kind==='flame'){}
