@@ -81,3 +81,19 @@ test('landing on a platform ends the jump before a later zero-speed walk-off',()
  assert.equal(sim.player.grounded,false);assert.equal(sim.player.vy,0);assert.equal(sim.player.y,80+240/256);
  assert.equal(sim.walkOffFall(),true);assert.equal(sim.player.vy,144/256);
 });
+
+
+test('a balance motor in an earlier slot reads its later partner box at the previous camera offset',()=>{
+ // 4-3 row784: motor slot0 reads first-platform slot4's previous DR_X134,
+ // which overlaps Mario UL_X133; slot4 rebuilds DR_X131 later in the frame.
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='4-3')!]);sim.reset(true);
+ const first=sim.area.platforms.find((p:any)=>p.x===1632)!,second=sim.area.platforms.find((p:any)=>p.x===1728)!;
+ sim.platformSlots.set(first,4);sim.platformSlots.set(second,0);
+ const cached=sim.platformContactPosition(first,0,3);
+ assert.equal(cached.x,1635);
+ assert.equal(nativePlatformLanding(cached.y,0,1679,cached,48,false),0);
+ const current={...cached,x:1632};
+ assert.equal(nativePlatformLanding(current.y,0,1679,current,48,false),undefined);
+ sim.platformSlots.set(first,0);sim.platformSlots.set(second,4);
+ assert.equal(sim.platformContactPosition(first,0,3).x,1632,'an earlier first slot has already refreshed its box');
+});

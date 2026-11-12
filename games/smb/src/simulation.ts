@@ -1,5 +1,5 @@
 import {nativeFlameHit} from './native-flame-contact.js';
-import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
+import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
 import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
 import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
@@ -508,7 +508,7 @@ export class Simulation {
   }
   const height=this.height;
   const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b),true);
-  if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b));
+  if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
@@ -534,7 +534,7 @@ export class Simulation {
   }
   }
   const height=this.height;
-  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
+  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -1567,10 +1567,10 @@ export class Simulation {
    e.dead++;e.y+=e.vy;e.vy+=0.25;
   }
  }
- private updatePlatforms(oldBottom:number){
+ private updatePlatforms(oldBottom:number,scroll=0){
   const p=this.player;
   for(const platform of this.area.platforms??[]){
-   const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
+   const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
    const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context),p.size>0);
    if(box===undefined){
     const small=nativeSmallPlatform(platform,this.platformMotion.context);
@@ -1587,17 +1587,29 @@ export class Simulation {
     continue;
    }
    if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
-   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;this.jumpArc=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
+   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;this.jumpArc=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';p.x+=Math.floor(now.x)-Math.floor(this.platformMotion.collisionPosition(platform,this.platformFrame-1).x);this.platformMotion.contact(platform,this.platformFrame);
    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
   }
+ }
+ // BalancePlatform's second object tests the first object's cached box. A
+ // later first slot has not rebuilt it against this frame's camera yet, so
+ // its box retains the previous scroll offset (4-3 v2 row784: right134 vs131).
+ private platformContactPosition(platform:PlatformSpec,frame:number,scroll:number){
+  const prior=this.platformMotion.collisionPosition(platform,frame),context=this.platformMotion.context,o=nativePlatformObject(platform,context);
+  if(o?.kind==='balance'&&o.side===1){
+   const partner=this.area.platforms?.find(p=>{const q=nativePlatformObject(p,context);return q?.kind==='balance'&&q.side===-1&&q.pair?.join(',')===o.pair?.join(',');});
+   const slot=this.platformSlots.get(platform),driver=partner&&this.platformSlots.get(partner);
+   if(slot!==undefined&&driver!==undefined&&slot>driver)return {x:prior.x+scroll,y:prior.y};
+  }
+  return prior;
  }
  // Native platforms have a solid underside (ProcLPlatCollisions, see src/native-platform-contact.ts): tested after this frame's move and gravity against the
  // platform before its own move; the speed becomes 1 plus the move force (the fraction of the speed after gravity) and that frame's gravity is already spent.
  // From under the left corner the speed byte is lost as at a wall (6-3 f51775, one sample; native PlatformSideCollisions, not modelled further).
- private platformHeadBump(oldX:number,gravity:number){
+ private platformHeadBump(oldX:number,gravity:number,scroll=0){
   const p=this.player,v=p.vy+gravity;if(v>=0)return;
   for(const platform of this.area.platforms??[]){
-   const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1);
+   const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll);
    if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,platform.width,p.size>0)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
   }
  }
