@@ -115,7 +115,12 @@ export class NativeWater{
  horizontal(direction:Direction,grounded:boolean,down=false,b=false):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
   const released=this.lastDirection!==0&&direction===0&&down;this.lastDirection=direction;
-  if(grounded&&down)return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  if(grounded&&down){
+   // PlayerBGCollision restores the collision bits every row even when Down
+   // suppresses steering. The wall pause cannot survive this floor frame.
+   if(m.freeze>0)m.turned=false;m.tickFreeze();
+   return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  }
   // Holding B stops a coasting player below speed byte 11, in the water as on the ground. Down does the same only on the frame the direction is released
   // (2-2/7-2 free-play rows: 32 of 35 release frames with Down below byte 11 stop; 0 of 6 later Down frames with no direction do).
   if(!direction){m.tickFreeze();return grounded?m.groundCoast(b):(b||released)&&m.speed!==0&&Math.abs(m.speed)<2816?m.speed=0:m.speed;}
