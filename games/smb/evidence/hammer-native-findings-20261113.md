@@ -241,3 +241,42 @@ counted down on enemy passes and incremented by ordinary Koopa/Goomba-class
 stomps (source HandleStompedShellE); it affects only the new respawn contact
 path. Normal actor contact/motors remain unchanged. All1263 tests and TypeScript
 pass; excerpts regenerated. CPU-overrun scheduling remains a separate open item.
+
+## Pipe actors behind the early8-3/5-2 enemy mismatches
+
+Read-only integration29b5de7 peeks identify Piranhas, not Hammer Bro motion:
+8-3 native row254 creates plant856 in slot2 on parser task3, but the old model
+only marks its slot held and exposes the actor on255.5-2 row776 creates plant888
+at nativey160; the screenshot-era spec calls160 its feet, so the old model
+initializes nativey136. At777 nativey159 compares with model135. Native source
+VerticalPipe supplies actor x=column*16+8,y=row*16+32; InitPiranhaPlant saves down=y,
+up=y-24, speed1, flag0. Its creation is after enemy movement and has no motor step.
+
+`native-pipes.ts` decodes vertical pipe records from the ROM, checks its SHA
+against source area pointer evidence, and applies existing source geometry
+normalizations. All140 retained native births match the ROM x/y exactly. The
+39 mapped areas contain106 source plants:90 existing specs agree, two5-2
+heights change,14 plants missing from screenshot rosters are included, and the
+old4-2 far-roof x3448 is replaced by native3432. Unmapped areas retain existing
+actors; this is not a claim that every unvisited compiled room has a ROM mapping.
+`observedLevels()` applies the source actor roster without modifying any tile.
+
+Exact records:5-2 pointer$AA94+$1C bytes78 7A ->x888/nativey160/feet184;
+$AA94+$58 bytesD9 71 ->x2776/nativey176/feet200.4-2 pointer$ACDA+$96 bytes68 7A
+->x3432/nativey160/feet184. Its source pipe left is3424, but the protected model
+map puts pipe-left metatile16 atcolumn215/x3440. This is another unvisited late
+geometry mismatch; no tile was edited. The obsolete roof test's plant3448
+assertion now uses source3432. Native ScrollLockObject_Warp calls KillEnemies
+for all live Piranhas; runtime erasure now follows that source rule instead of
+matching a screenshot-derived artwork x list. Warp activation/geometry timing
+itself is outside this unit and still has previously documented limitations.
+
+Parser births now make the hidden actor/slot visible immediately, preserving
+native initialization bytes and waiting until the next enemy pass to move it.
+Slots whose earlier enemy pass erased an object can be reused that same row.
+All140 births replay their native slot-flag allocation and initial plant state
+in component fixtures, including8-3's erased Bullet Bill slot. Full32 first-
+divergence fields vsf74dbe7 are all unchanged on this old branch (earlier foreign
+field divergences hide these later events). Target peeks nevertheless show the
+correct native Piranha y and birth row. All1267 tests and TypeScript pass;
+excerpts regenerated. Root must require the integration field ratchet after merge.
