@@ -1,5 +1,8 @@
 // Small pure rendering rules measured against native frames (tools/harness/shot-pairs.mjs + frame-diff.mjs, viewaudit 2026-11-11).
 import type {Item} from './types.js';
+import {nativeMiscOffscreen} from './native-misc.js';
+/** DrawBubble checks the player's vertical page and the bubble's horizontal offscreen bit. */
+export const nativeBubbleShown=(bubble:{x:number;y:number},playerFeetY:number,camera:number)=>Math.floor((playerFeetY-32)/256)===0&&!(nativeMiscOffscreen(Math.floor(bubble.x),bubble.y,Math.floor(camera))&8);
 /** PowerUpObjHandler skips drawing until the native emergence state reaches 6; the first five pixels remain hidden inside the block. */
 export const itemShown=(item:Item&{nativePowerState?:number})=>item.nativePowerState===undefined||item.nativePowerState>=6;
 /** Water areas keep sky colour in the top 32 rows (above the surface wave); only the playfield below is water blue. Native 2-2/7-2 rows 0..31 = #6888fc. */
