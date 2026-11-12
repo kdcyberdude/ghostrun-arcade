@@ -870,7 +870,7 @@ export class Simulation {
   const locked=this.swimLock===2,noInput=locked||p.y-32>=NO_INPUT_Y,held=!noInput&&b.has('a'),dir=(noInput?0:direction) as Direction;this.swimDirection=dir;
   const heldBefore=held&&!pressedA&&!this.swimFreshA;if(held&&!pressedA&&this.swimFreshA)this.emit('sfx_swim');if(!locked)this.swimFreshA=false;
   w.motor.speed=Math.round(p.vx*4096);
-  if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'))/4096;
+  if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'),this.swimAbsolute)/4096;
   if(dir||p.grounded)this.swimAbsolute=Math.abs(Math.floor(Math.round(p.vx*4096)/256)); // Player_XSpeedAbsolute: written by ImposeFriction (on the floor, or swimming with Left/Right), before any wall stop
   if(dir)p.facing=dir;
   // Whirlpool membership is tested where this frame's move lands (the other capture phase tests where it starts).
