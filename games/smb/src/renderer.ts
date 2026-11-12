@@ -5,7 +5,7 @@ import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from './view-rules.js';
-import {playerCell} from './player-cell.js';
+import {playerCell,playerVisible} from './player-cell.js';
 import {platformMotionModel} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -257,7 +257,7 @@ export class GameRenderer {
      for(const firework of s.flagFireworks)this.special('explosions-'+firework.phase,firework.x-s.camera,firework.y);
     }
    }
-   if(s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(s.powerChange||!s.player.invincible||Math.floor(s.frame/4)%2===0))this.player(s);
+   if(playerVisible(s))this.player(s);
    this.worldClip=false;
   }
   const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.introHiddenLate);

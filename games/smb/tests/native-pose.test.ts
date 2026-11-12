@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
-import {playerCell} from '../src/player-cell.js';
+import {playerCell,playerVisible} from '../src/player-cell.js';
 import {PlayerAnim} from '../src/player-anim.js';
 import {initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import fixture from './fixtures/native-player-pose.json';
@@ -28,4 +28,14 @@ test('native animation displays the current frame before advancing and preserves
  anim.setSpeed(0x1c);assert.equal(anim.timerSet,2);assert.equal(anim.timer,3);
  anim.tick();assert.equal(anim.hold(),0);assert.equal(anim.timer,2);
  anim.reset(1,0,7,false);assert.equal(anim.animate(2),1);assert.equal(anim.ctrl,0);
+});
+
+test('injury flicker follows native FrameCounter through a shrink freeze and across the global clock phase',()=>{
+ const sim=new Simulation(observedLevels());sim.reset(true);
+ sim.player.size=1;sim.hurt();assert.equal(sim.powerChange?.kind,'shrink');
+ sim.frame=0;sim.random.frame=255;assert.equal(playerVisible(sim),false,'odd native frame hides Mario during shrink');
+ sim.frame=4;sim.random.frame=0;assert.equal(playerVisible(sim),true,'native counter wrap draws even when global frame/4 is odd');
+ sim.powerChange=undefined;sim.frame=8;sim.random.frame=1;assert.equal(playerVisible(sim),false,'injury continues hiding odd rows after shrink');
+ sim.player.invincible=0;assert.equal(playerVisible(sim),true,'without InjuryTimer every counter phase draws');
+ sim.flagInside=true;assert.equal(playerVisible(sim),false,'castle entry still hides Mario');
 });
