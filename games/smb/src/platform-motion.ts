@@ -23,25 +23,67 @@ function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:Platf
  const lap=1024*Math.floor((platform.x-512)/1024),o=list?.find(o=>o.spec[0]===platform.x-lap&&o.spec[1]===platform.y);
  return o&&{...o,spec:[platform.x,platform.y],x:o.x+lap,spawnCamera:o.spawnCamera+lap};
 }
-const tableAt=(table:readonly number[],t:number)=>{
- const n=table.length,k=((t%n)+n)%n,a=Math.floor(k);
- return table[a]+(table[(a+1)%n]-table[a])*(k-a);
-};
 /** Wrapping lift (native ids 38/39 large, 43/44 castle): 15/16 px per frame, 15 pixel steps then one idle step in every 16 frames (`phase` is
  * the object's hidden position in that cycle), y wraps modulo 256, x is fixed. Up lifts subtract, down lifts add. */
 export function nativeWrapY(object:NativePlatformObject,age:number){
  const rules=nativePlatformMotion.wrap,steps=Math.floor((object.phase!+rules.stepsPerPeriod*Math.max(0,age))/rules.period);
  return (((object.y+(object.direction==='up'?-steps:steps))%rules.span)+rules.span)%rules.span;
 }
-/** Collision-surface position of a native object that has existed for `age` frames (balance: `age` is the pair offset). */
-export function nativeObjectPosition(object:NativePlatformObject,age:number):PlatformPosition {
+/** Native YMovingPlatform (object id 37, the 'lift' kind; SMB disassembly YMovingPlatform/MovePlatformDown/MovePlatformUp/ImposeGravity, checked on every
+ * row of every id-37 object in the 32 v2 traces): from the spawn y0 the platform keeps an 8.8 speed (byte $A0+x, force $434+x, fraction $417+x).
+ * Top = y0 (y0 < 128) or 256 - y0, centre = y0 + 64 or y0 - 64. Each frame after the spawn frame: at rest (speed and force 0) the fraction is cleared
+ * and, while y < top, y steps +1 on frames with FrameCounter & 7 == 0 and nothing else; otherwise ImposeGravity moves y by the speed plus the carry
+ * of fraction + force, adds 5/256 (cap 3 once the force reaches 128) and, at or below the centre (y >= centre), takes 10/256 back (cap -3 below 128).
+ * `counter` is FrameCounter ($09) on the spawn frame. Returns y at `age` frames after the spawn (age 0: y0). */
+const liftTracks=new Map<string,number[]>();
+export function nativeLiftY(y0:number,age:number,counter=0){
+ const key=`${y0},${counter&7}`;let track=liftTracks.get(key);
+ if(!track){track=[y0];liftTracks.set(key,track);}
+ const state=(track as number[]&{s?:{y:number;speed:number;force:number;fraction:number}}).s??={y:y0,speed:0,force:0,fraction:0};
+ const top=y0<128?y0:256-y0,centre=(y0+(y0<128?64:192))&255;
+ while(track.length<=age){
+  const n=state,a=track.length;
+  if(n.speed===0&&n.force===0){n.fraction=0;if(n.y<top){if(((counter+a)&7)===0)n.y++;track.push(n.y);continue;}}
+  const up=n.y>=centre;
+  const f=n.fraction+n.force;n.fraction=f&255;n.y=(n.y+n.speed+(f>>8))&255;
+  const v=n.force+5;n.force=v&255;n.speed+=v>>8;
+  if(n.speed>=3&&n.force>=128){n.speed=3;n.force=0;}
+  if(up){const w=n.force-10;n.force=w&255;if(w<0)n.speed--;if(n.speed<-3&&n.force<128){n.speed=-3;n.force=255;}}
+  track.push(n.y);
+ }
+ return track[Math.max(0,age)];
+}
+/** Native XMovingPlatform (object id 40, the 'horizontal' kind; SMB disassembly XMoveCntr_Platform/MoveWithXMCntrs/MoveObjectHorizontally, checked on
+ * every row of every id-40 object in the 32 v2 traces): a primary counter ($A0+x) and a secondary counter ($58+x, maximum 14) both start at 0. On frames
+ * with FrameCounter & 3 == 0 the secondary counts up to 14 (then the primary steps) while the primary is even, down to 0 (then the primary steps) while
+ * it is odd. Every frame the platform moves by the secondary counter as an x speed (x.4 fixed point: whole pixels = speed >> 4, sub-pixel $401+x += speed << 4),
+ * leftwards while primary bit 1 is clear. The sub-pixel starts at whatever the slot's previous object left there (`sub`); `counter` is FrameCounter on the
+ * spawn frame. Returns the 8.8 x at `age` frames after the spawn (age 0: x0 + sub/256). */
+const horizontalTracks=new Map<string,number[]>();
+export function nativeHorizontalX(x0:number,age:number,counter=0,sub=0){
+ const key=`${x0},${sub},${counter&3}`;let track=horizontalTracks.get(key);
+ if(!track){track=[x0*256+sub];horizontalTracks.set(key,track);}
+ const state=(track as number[]&{s?:{x:number;sub:number;primary:number;secondary:number}}).s??={x:x0,sub,primary:0,secondary:0};
+ while(track.length<=age){
+  const n=state;
+  if(((counter+track.length)&3)===0){
+   if(n.primary&1){if(n.secondary===0)n.primary=(n.primary+1)&255;else n.secondary--;}
+   else if(n.secondary===14)n.primary=(n.primary+1)&255;else n.secondary++;
+  }
+  const speed=n.primary&2?n.secondary:(-n.secondary)&255,whole=(speed>>4)>=8?(speed>>4)-16:speed>>4,f=n.sub+((speed<<4)&255);
+  n.sub=f&255;n.x+=whole+(f>>8);track.push(n.x*256+n.sub);
+ }
+ return track[Math.max(0,age)]/256;
+}
+/** Collision-surface position of a native object that has existed for `age` frames (balance: `age` is the pair offset; lift and horizontal: `counter` is
+ * FrameCounter at its spawn; horizontal: `sub` the sub-pixel its slot held). */
+export function nativeObjectPosition(object:NativePlatformObject,age:number,counter=0,sub=0):PlatformPosition {
  if(object.kind==='wrap')return {x:object.x,y:nativeWrapY(object,age)};
  // balance: the partner keeps a sub-pixel y and shows its floor; the rider's side mirrors that integer, so both move by ceil(|offset|) (4-3 v2 row 383: partner 125.98 -> 125, rider 78 -> 79)
  if(object.kind==='balance')return {x:object.x,y:object.y+object.side!*Math.sign(age)*Math.ceil(Math.abs(age)-1e-9)};
  if(object.kind==='drop')return {x:object.x,y:Math.round(object.y+object.side!*age)};
- if(object.kind==='horizontal')return {x:object.x-tableAt(nativePlatformMotion.horizontal.drop,age-nativePlatformMotion.horizontal.phase),y:object.y};
- const cycle=nativePlatformMotion.lift.drop,drop=cycle[((age%cycle.length)+cycle.length)%cycle.length];
- return {x:object.x,y:object.direction==='up'?object.y-(drop+(age>0?1:0)):object.y+drop};
+ if(object.kind==='horizontal')return {x:nativeHorizontalX(object.x,age,counter,sub),y:object.y};
+ return {x:object.x,y:nativeLiftY(object.y,age,counter)};
 }
 /** Horizontal support window of a platform for a player at x (collision x of the sprite): natively a player stands on it from 13 px before its
  * left edge to 2 px past its right edge (landings from dx -13/-14, last supported frames at dx width+1..+3 on 3-3, 4-2, 5-4 and 6-3 platforms
@@ -122,7 +164,7 @@ export class PlatformMotion {
  private fiveThreeLiftStart:number|undefined;
  private eightFourLavaStart:number|undefined;
  private fiveThreeHorizontalStart:number|undefined;
- private cameraLog:Array<[number,number]>=[];
+ private cameraLog:Array<[number,number,number]>=[];
  private nativeStart=new Map<PlatformSpec,number>();
  /** Native objects never created: their spawn point passed while all five object slots were busy (evidence/platslot-findings-20261111.md). */
  lost=new Set<PlatformSpec>();
@@ -131,7 +173,7 @@ export class PlatformMotion {
  create(platform:PlatformSpec,frame:number){this.waiting.delete(platform);this.nativeStart.set(platform,frame);}
  private pulleys=new Map<string,{start:number;d:number[];v:number;load:Record<string,number>;rules:typeof nativePlatformMotion.pulley}>();
  constructor(public context:PlatformMotionContext){}
- reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();}
+ reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.startCounter.clear();this.startSub.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();}
  // Frames since the native object was created: the first logged frame whose camera had reached its spawn camera.
  private nativeAge(platform:PlatformSpec,object:NativePlatformObject,frame:number){
   let start=this.nativeStart.get(platform);
@@ -139,10 +181,21 @@ export class PlatformMotion {
   if(start===undefined&&!this.waiting.has(platform)&&last&&last[1]>=object.spawnCamera){start=this.cameraLog.find(([,camera])=>camera>=object.spawnCamera)![0];this.nativeStart.set(platform,start);}
   return start===undefined?0:Math.max(0,frame-start);
  }
+ /** FrameCounter ($09) on the frame the native object was created (0 when not logged). */
+ private nativeCounter(platform:PlatformSpec){
+  const start=this.nativeStart.get(platform);if(start===undefined)return 0;
+  const known=this.startCounter.get(platform);if(known&&known[0]===start)return known[1];
+  const at=this.cameraLog.find(([frame])=>frame>=start);if(!at)return 0;
+  const counter=(at[2]-(at[0]-start))&255;this.startCounter.set(platform,[start,counter]);return counter;
+ }
+ private startCounter=new Map<PlatformSpec,[number,number]>();
+ /** Sub-pixel byte the native object found in its enemy slot when it was created (XMovingPlatform keeps it; the simulation reports it via `slotSub`). */
+ private startSub=new Map<PlatformSpec,number>();
+ slotSub(platform:PlatformSpec,sub:number){if(!this.startSub.has(platform))this.startSub.set(platform,sub);}
  // Fitted to two approaches and conditionally checked on a third; the exact
  // native activation frame is unknown and a one-frame shift can fail 2px.
- advance(frame:number,camera:number){
-  this.cameraLog.push([frame,camera]);
+ advance(frame:number,camera:number,counter=0){
+  this.cameraLog.push([frame,camera,counter]);
   this.advancePulleys(frame);
   if(this.context.levelId==='5-3'&&this.context.areaId==='main'&&this.fiveThreeHorizontalStart===undefined&&camera>=fiveThreeHorizontal.cameraThreshold)this.fiveThreeHorizontalStart=frame;
   if(this.context.levelId==='8-4'&&this.context.areaId==='main'&&this.eightFourLavaStart===undefined&&camera>=eightFourPlatformRules.cameraThreshold)this.eightFourLavaStart=frame;
@@ -172,7 +225,7 @@ export class PlatformMotion {
   if(this.lost.has(platform)||this.waiting.has(platform))return {x:-4096,y:4096};
   const model=platformMotionModel(platform,this.context);
   if(model==='native-horizontal'||model==='native-lift'||model==='native-wrap'){
-   const object=nativePlatformObject(platform,this.context)!,position=nativeObjectPosition(object,this.nativeAge(platform,object,frame));
+   const object=nativePlatformObject(platform,this.context)!,position=nativeObjectPosition(object,this.nativeAge(platform,object,frame),this.nativeCounter(platform),this.startSub.get(platform)??0);
    return {x:position.x,y:position.y+1};
   }
   if(model==='native-balance'||model==='native-drop'){

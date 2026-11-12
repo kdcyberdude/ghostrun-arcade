@@ -390,7 +390,7 @@
     "x": 960,
     "y": 192,
     "direction": "up",
-    "spawnCamera": 660
+    "spawnCamera": 657
    },
    {
     "kind": "horizontal",
