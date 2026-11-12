@@ -25,6 +25,7 @@ export class Renderer3D{
   if(import.meta.env.DEV)(window as unknown as {render3d:Renderer3D}).render3d=this;
  }
  /** Internal render resolution by output height; gameplay and timing are unaffected (the simulation never sees the renderer). */
+ setQuality(quality:'high'|'low'){this.atmosphere.setQuality(quality);}
  setResolution(height:number){this.scale=height/NES_H;this.atmosphere.resize(NES_W*this.scale,height);this.hud.resize(this.scale);}
  async load(){
   await Promise.all([this.kit.load([...TILE_MODELS,...ACTOR_MODELS]),this.hud.load(),this.atmosphere.loadSkies(),loadImpostors()]);

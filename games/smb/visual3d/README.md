@@ -11,7 +11,7 @@ npx vite --port 5473 --strictPort --host 127.0.0.1      # dev
 npm run build && npx vite preview --port 5474 --strictPort --host 127.0.0.1   # production build
 # open http://127.0.0.1:5474/?view=3d
 ```
-URL options: `res=960p|1080p|2K|4K` (render resolution 1024x960 default, 1152x1080, 1536x1440, 2304x2160; also a picker in the page's button row, switchable while playing), `scale=2|3|4|6` (256*scale x 240*scale), `quality=low` (no MSAA/bloom, 2048 shadow map: the fallback for weak GPUs),
+URL options: `res=1K|2K|4K` (render resolution 1024x960 default, 1536x1440, 2304x2160; also pickers on the home screen and in Display settings, switchable while playing), `scale=2|3|4|6` (256*scale x 240*scale), `quality=high|low` (Low drops MSAA, ambient occlusion and bloom and uses a 2048 shadow map; also switchable while playing),
 `debug=1` (simulation hit boxes drawn over the 3D scene). Controls are the game's own (arrows, Z/Space jump, X/Shift run/fire, Enter start, P pause, M mute).
 
 ## Rebuild the assets

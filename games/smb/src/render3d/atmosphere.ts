@@ -71,20 +71,28 @@ function cloudSky():THREE.Texture{
 export class Atmosphere{
  readonly scene=new THREE.Scene();readonly camera=new THREE.PerspectiveCamera(FOV,ASPECT,1,600);
  readonly sun=new THREE.DirectionalLight(0xffffff,3);readonly hemi=new THREE.HemisphereLight(0xffffff,0x444444,1);
- private composer:EffectComposer;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
+ private composer!:EffectComposer;private bloomStrength=0.22;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
  constructor(readonly renderer:THREE.WebGLRenderer,width:number,height:number,private quality:'high'|'low'){
   renderer.setPixelRatio(1);renderer.setSize(width,height,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.05;  // Khronos PBR Neutral keeps hue and saturation (AgX greys out bright colours)
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   this.pmrem=new THREE.PMREMGenerator(renderer);this.fallbackEnv=this.pmrem.fromScene(new RoomEnvironment(),0.04).texture;this.scene.environment=this.fallbackEnv;GOLD.envMap=this.fallbackEnv;
   this.sun.castShadow=true;const sc=this.sun.shadow.camera;sc.left=-13;sc.right=13;sc.top=12;sc.bottom=-8;sc.near=1;sc.far=90;
-  this.sun.shadow.mapSize.set(quality==='high'?4096:2048,quality==='high'?4096:2048);this.sun.shadow.bias=-0.0004;this.sun.shadow.normalBias=0.03;this.sun.shadow.radius=3;
+  this.sun.shadow.bias=-0.0004;this.sun.shadow.normalBias=0.03;this.sun.shadow.radius=3;
   this.scene.add(this.sun,this.sun.target,this.hemi);
-  const target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,samples:quality==='high'?4:0});
-  this.composer=new EffectComposer(renderer,target);this.composer.setPixelRatio(1);this.composer.setSize(width,height);
+  this.build(width,height);
+ }
+ /** High adds 4x MSAA, ambient occlusion, bloom and a 4096 shadow map; Low drops them (several times cheaper on laptop GPUs). */
+ setQuality(quality:'high'|'low'){if(quality===this.quality)return;this.quality=quality;const size=this.renderer.getSize(new THREE.Vector2());this.build(size.x,size.y);}
+ private build(width:number,height:number){
+  const high=this.quality==='high';
+  this.gtao?.dispose();this.bloom?.dispose();this.gtao=undefined;this.bloom=undefined;this.composer?.dispose();
+  this.sun.shadow.mapSize.set(high?4096:2048,high?4096:2048);this.sun.shadow.map?.dispose();this.sun.shadow.map=null;
+  const target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,samples:high?4:0});
+  this.composer=new EffectComposer(this.renderer,target);this.composer.setPixelRatio(1);this.composer.setSize(width,height);
   this.composer.addPass(new RenderPass(this.scene,this.camera));
-  if(quality==='high'){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
-  if(quality==='high'){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),0.22,0.6,0.92);this.composer.addPass(this.bloom);}
+  if(high){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
+  if(high){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),this.bloomStrength,0.6,0.92);this.composer.addPass(this.bloom);}
   this.composer.addPass(new OutputPass());
   this.composer.addPass(new ShaderPass(GRADE));
  }
@@ -119,7 +127,7 @@ export class Atmosphere{
   grad.addColorStop(0,t.skyTop);grad.addColorStop(0.55,t.skyMid);grad.addColorStop(1,t.skyBottom);g.fillStyle=grad;g.fillRect(0,0,4,256);
   this.gradient?.dispose();const tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace;this.sky=this.gradient=tex;this.fog=new THREE.Fog(t.fog,t.fogNear,t.fogFar);this.applyBlackout();
   this.sun.color.setHex(t.sun);this.sun.intensity=t.sunI;
-  this.hemi.color.setHex(t.hemiSky);this.hemi.groundColor.setHex(t.hemiGround);this.hemi.intensity=t.hemiI;this.scene.environmentIntensity=t.env;if(this.bloom)this.bloom.strength=t.bloom;
+  this.hemi.color.setHex(t.hemiSky);this.hemi.groundColor.setHex(t.hemiGround);this.hemi.intensity=t.hemiI;this.scene.environmentIntensity=t.env;this.bloomStrength=t.bloom;if(this.bloom)this.bloom.strength=t.bloom;
   const sky=this.skies.get(key)??(name==='underground'||name==='castle'||name==='water'?undefined:undefined);
   const lightSky=sky??this.skies.get('ground');
   this.scene.environment=lightSky?.env??this.fallbackEnv;this.scene.environmentRotation.set(0,lightSky?.rotation??0,0);

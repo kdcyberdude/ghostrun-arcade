@@ -14,20 +14,28 @@ const heldKeys=new Set<string>();const heldPointers=new Map<number,Button>();
 const tappedKeys=new Set<string>();const tappedPointers=new Set<Button>();let controlled=false;let muted=false;let loaded=false;
 const shell=new GameShell({pause:setPaused,isPaused:()=>sim.paused,clear:clearInput,restart:()=>{sim.reset();soundEvents();draw();},focus:()=>canvas.focus()});
 const keyMaps=shell.maps;
+const heights:Record<string,number>={'1K':960,'2K':1440,'4K':2160};
 if('setResolution' in view){
- document.querySelector('.edition')!.textContent='REMASTERED · 3D';
- document.querySelector('.preview-edition')!.textContent='THE SAME ADVENTURE, IN 3D';
+ document.querySelector('.edition')!.textContent='3D VERSION';
+ document.querySelector('.preview-edition')!.textContent='3D VERSION';
  const preview=document.querySelector<HTMLImageElement>('.preview-image img')!;preview.src=import.meta.env.BASE_URL+'assets3d/preview.png';preview.alt='Mario in the recreated 3D World 1-1, with trees, hills and flowers';
  document.querySelector('#launch-resolution')!.removeAttribute('hidden');
- document.querySelector('#graphics-settings')!.innerHTML='<div class="setting-row"><div><h3>3D resolution</h3><p>The original 16:15 frame, rendered in 3D.<br>Lower resolution uses less graphics power.</p></div><select id="res" aria-label="3D resolution"><option value="1K">1K · 1024 × 960</option><option value="1080p">1080p · 1152 × 1080</option><option value="2K">2K · 1536 × 1440</option><option value="4K">4K · 2304 × 2160</option></select></div>';
- const heights:Record<string,number>={'1K':960,'1080p':1080,'2K':1440,'4K':2160};
- const pickers=[document.querySelector<HTMLSelectElement>('#launch-res')!,document.querySelector<HTMLSelectElement>('#res')!];
- const selected=new URLSearchParams(location.search).get('res')??'1K';
- for(const picker of pickers){
+ document.querySelector('#graphics-settings')!.innerHTML='<div class="setting-row"><div><h3>3D resolution</h3><p>The original 16:15 frame, rendered in 3D.<br>Higher resolutions need a stronger graphics chip.</p></div><select id="res" aria-label="3D resolution"><option value="1K">1K · 1024 × 960</option><option value="2K">2K · 1536 × 1440</option><option value="4K">4K · 2304 × 2160</option></select></div><div class="setting-row"><div><h3>Graphics</h3><p>High adds soft shadows, glow and smoothing.<br>Low is several times faster on laptops.</p></div><select id="quality" aria-label="3D graphics quality"><option value="high">High</option><option value="low">Low</option></select></div>';
+ const params=new URLSearchParams(location.search),selected=params.get('res')??'1K';
+ const resPickers=[document.querySelector<HTMLSelectElement>('#launch-res')!,document.querySelector<HTMLSelectElement>('#res')!];
+ for(const picker of resPickers){
   picker.value=selected in heights?selected:'1K';
-  picker.addEventListener('change',()=>{view.setResolution(heights[picker.value]);for(const other of pickers)other.value=picker.value;const url=new URL(location.href);url.searchParams.set('res',picker.value);history.replaceState(null,'',url);if(loaded)draw();});
+  picker.addEventListener('change',()=>setResolution(picker.value));
+ }
+ const qualityPickers=[document.querySelector<HTMLSelectElement>('#launch-quality')!,document.querySelector<HTMLSelectElement>('#quality')!];
+ for(const picker of qualityPickers){
+  picker.value=params.get('quality')==='low'?'low':'high';
+  picker.addEventListener('change',()=>setQuality(picker.value as 'high'|'low'));
  }
 }
+function remember(key:string,value:string){const url=new URL(location.href);url.searchParams.set(key,value);history.replaceState(null,'',url);}
+function setResolution(preset:string){if(!('setResolution' in view))return;view.setResolution(heights[preset]);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=preset;remember('res',preset);if(loaded)draw();}
+function setQuality(quality:'high'|'low'){if(!('setQuality' in view))return;view.setQuality(quality);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=quality;remember('quality',quality);if(loaded)draw();}
 function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();}
 function setPaused(paused:boolean){sim.paused=paused;audio.setPaused(paused);if(loaded)draw();}
 function heldButtons(player:number){
@@ -82,7 +90,29 @@ if(import.meta.env.DEV){
   resume(){controlled=false;last=performance.now();accumulator=0;},pause(){controlled=true;},ready:true};
  Object.assign(window,{mario:bridge,marioDebug:{snapshot:()=>({frame:sim.frame,phase:sim.phase,level:sim.level.id,area:sim.area.id,player:{...sim.player},camera:sim.camera,lives:sim.lives,score:sim.score,time:sim.time,coins:sim.coins,enemies:sim.enemies.map(e=>({...e})),audioErrors:audio.errors}),simulation:sim}});
 }
+// Slow-device notice. The game shows every frame, so when the GPU draws fewer than 60 a second the whole game slows down; say why and offer a lighter setting.
+const perf=document.querySelector<HTMLElement>('#perf')!,perfText=document.querySelector<HTMLElement>('#perf-text')!,perfLower=document.querySelector<HTMLButtonElement>('#perf-lower')!;
+let perfFrames=0,perfStart=0,perfSlow=0,perfDismissed=false;
+function lighterSetting():{label:string;apply:()=>void}|undefined{
+ if(!('setResolution' in view))return undefined;
+ if(document.querySelector<HTMLSelectElement>('#quality')!.value==='high')return {label:'Use Low graphics',apply:()=>setQuality('low')};
+ if(document.querySelector<HTMLSelectElement>('#res')!.value!=='1K')return {label:'Use 1K resolution',apply:()=>setResolution('1K')};
+ return {label:'Play the 2D version',apply:()=>{const url=new URL(location.href);url.searchParams.delete('view');location.assign(url);}};
+}
+function watchSpeed(now:number){
+ if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
+ if(!perfStart){perfStart=now;perfFrames=0;return;}
+ perfFrames++;const span=now-perfStart;if(span<1000)return;
+ const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<50?perfSlow+1:0;
+ if(perfSlow<3||!perf.hidden||perfDismissed)return;
+ const speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=lighterSetting();
+ perfText.innerHTML=`<b>The game is running at ${speed}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second and the game needs 60. Every frame is still played, so the game slows down instead of skipping ahead. ${lighter?'A lighter setting should help.':'Closing other tabs or apps may help.'}`;
+ perfLower.hidden=!lighter;if(lighter){perfLower.textContent=lighter.label;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
+ perf.hidden=false;
+}
+document.querySelector('#perf-dismiss')!.addEventListener('click',()=>{perf.hidden=true;perfDismissed=true;canvas.focus();});
+document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput();sim.reset();soundEvents();draw();perf.hidden=true;shell.home();});
 let last=performance.now(),accumulator=0;
 // At most one game frame per drawn frame: if drawing falls below the native rate, the whole game (timer included) slows in proportion instead of skipping frames.
-function animate(now:number){if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;if(accumulator>=dt){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator=Math.min(accumulator-dt,dt);}soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
+function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;if(accumulator>=dt){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator=Math.min(accumulator-dt,dt);}soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
 requestAnimationFrame(animate);

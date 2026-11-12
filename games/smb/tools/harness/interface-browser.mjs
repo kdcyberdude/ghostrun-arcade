@@ -24,7 +24,7 @@ try{
  assert.equal(await failed.locator('#retry').isVisible(),true);await failed.unroute(modulePattern);await failed.locator('#retry').click();await failed.waitForFunction(()=>document.body.classList.contains('ready'),undefined,{timeout:90000});
  if(view==='3d'){
   await failed.route(modulePattern,r=>r.abort());await failed.reload();await failed.waitForFunction(()=>document.body.classList.contains('load-error'));await failed.unroute(modulePattern);
-  await failed.locator('#view').selectOption('2d');await failed.waitForURL(u=>!u.searchParams.has('view'));await failed.waitForFunction(()=>document.body.classList.contains('ready'),undefined,{timeout:90000});
+  await failed.locator('.version[data-view="2d"]').click();await failed.waitForURL(u=>!u.searchParams.has('view'));await failed.waitForFunction(()=>document.body.classList.contains('ready'),undefined,{timeout:90000});
   assert.equal(await failed.locator('body').getAttribute('data-view'),'2d');checks.push('2D remains reachable after a failed 3D download');
  }
  await failed.close();checks.push('failed download and retry recovery');
@@ -43,11 +43,14 @@ try{
   assert.equal(await page.locator('#res').inputValue(),'1K');
   for(const [preset,height] of [['2K',1440],['4K',2160],['1K',960]]){await page.locator('#res').selectOption(preset);assert.equal(await page.locator('#game').evaluate(c=>c.height),height);}
   checks.push('1K default and live 2K/4K resolution changes');
+  assert.equal(await page.locator('#quality').inputValue(),'high');await page.locator('#quality').selectOption('low');assert.equal(await page.locator('#launch-quality').inputValue(),'low');assert.equal(new URL(page.url()).searchParams.get('quality'),'low');await page.locator('#quality').selectOption('high');
+  checks.push('live High/Low graphics changes');
  }
  await page.screenshot({path:`${out}/display-desktop.png`});
  await page.locator('#controls-tab').click();await page.locator('#reset-controls').click();assert.equal(await page.locator('[data-action=a]').innerText(),'U');await page.locator('[data-player="0"]').click();
  await page.locator('#settings-close').click();await page.locator('#start').click();await page.waitForFunction(()=>document.body.classList.contains('playing'));
  const fullscreen=await page.evaluate(()=>Boolean(document.fullscreenElement));assert.equal(fullscreen,true,'Play requests fullscreen from the user gesture');checks.push('fullscreen launch');
+ await page.locator('#home-button').click();await page.waitForFunction(()=>!document.body.classList.contains('playing'));assert.equal(await page.locator('#lobby').isVisible(),true);await page.locator('#start').click();await page.waitForFunction(()=>document.body.classList.contains('playing'));checks.push('Home button returns to the home screen');
  const dev=await page.evaluate(()=>Boolean(window.marioDebug));
  if(process.env.PRODUCTION==='1'){assert.equal(dev,false);assert.equal(await page.evaluate(()=>Boolean(window.mario)),false);checks.push('production excludes development control bridge');}
  if(dev){
