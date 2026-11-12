@@ -93,6 +93,17 @@ if(import.meta.env.DEV){
 // Slow-device notice. The game shows every frame, so when the GPU draws fewer than 60 a second the whole game slows down; say why and offer a lighter setting.
 const perf=document.querySelector<HTMLElement>('#perf')!,perfText=document.querySelector<HTMLElement>('#perf-text')!,perfLower=document.querySelector<HTMLButtonElement>('#perf-lower')!;
 let perfFrames=0,perfStart=0,perfSlow=0,perfDismissed=false;
+// Frame-rate counter: on by default, saved per browser. When the game runs below full speed it turns amber and offers the next lighter setting.
+const fpsBox=document.querySelector<HTMLElement>('#fps')!,fpsText=document.querySelector<HTMLElement>('#fps-text')!,fpsLower=document.querySelector<HTMLButtonElement>('#fps-lower')!,fpsToggle=document.querySelector<HTMLSelectElement>('#fps-toggle')!;
+let showFps=true;try{showFps=localStorage.getItem('smb-show-fps')!=='off';}catch{}
+fpsToggle.value=showFps?'on':'off';
+fpsToggle.addEventListener('change',()=>{showFps=fpsToggle.value==='on';try{localStorage.setItem('smb-show-fps',fpsToggle.value);}catch{}if(!showFps)fpsBox.hidden=true;});
+function showRate(fps:number){
+ if(!showFps)return;const slow=fps<50,speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=slow?lighterSetting():undefined;
+ fpsText.textContent=slow?`${Math.round(fps)} FPS · ${speed}% speed`:`${Math.round(fps)} FPS`;fpsBox.classList.toggle('slow',slow);
+ fpsLower.hidden=!lighter;if(lighter){fpsLower.textContent=lighter.label;fpsLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
+ fpsBox.hidden=false;
+}
 function lighterSetting():{label:string;apply:()=>void}|undefined{
  if(!('setResolution' in view))return undefined;
  if(document.querySelector<HTMLSelectElement>('#quality')!.value==='high')return {label:'Use Low graphics',apply:()=>setQuality('low')};
@@ -103,7 +114,7 @@ function watchSpeed(now:number){
  if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
  if(!perfStart){perfStart=now;perfFrames=0;return;}
  perfFrames++;const span=now-perfStart;if(span<1000)return;
- const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<50?perfSlow+1:0;
+ const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<50?perfSlow+1:0;showRate(fps);
  if(perfSlow<3||!perf.hidden||perfDismissed)return;
  const speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=lighterSetting();
  perfText.innerHTML=`<b>The game is running at ${speed}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second and the game needs 60. Every frame is still played, so the game slows down instead of skipping ahead. ${lighter?'A lighter setting should help.':'Closing other tabs or apps may help.'}`;
@@ -111,7 +122,7 @@ function watchSpeed(now:number){
  perf.hidden=false;
 }
 document.querySelector('#perf-dismiss')!.addEventListener('click',()=>{perf.hidden=true;perfDismissed=true;canvas.focus();});
-document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput();sim.reset();soundEvents();draw();perf.hidden=true;shell.home();});
+document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput();sim.reset();soundEvents();draw();perf.hidden=true;fpsBox.hidden=true;shell.home();});
 let last=performance.now(),accumulator=0;
 // At most one game frame per drawn frame: if drawing falls below the native rate, the whole game (timer included) slows in proportion instead of skipping frames.
 function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;if(accumulator>=dt){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator=Math.min(accumulator-dt,dt);}soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
