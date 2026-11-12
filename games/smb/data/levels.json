@@ -75411,7 +75411,7 @@
             "direction": -1,
             "evidence": "screenshot sequence 971 tick 3880; exact enemy-table-0f-1a-30-27.png cell 24; camera registration inferred",
             "palette": "0f-1a-30-27",
-            "fleeX": 3318
+            "fleeCamera": 3203
           },
           {
             "kind": "piranha",
@@ -124096,7 +124096,7 @@
             "direction": -1,
             "evidence": "screenshot sequence 1563 tick 6248; exact enemy-table-0f-1a-30-27.png cell 24; camera registration inferred",
             "palette": "0f-1a-30-27",
-            "fleeX": 2708
+            "fleeCamera": 2594
           },
           {
             "kind": "piranha",
@@ -187347,7 +187347,7 @@
             "direction": -1,
             "evidence": "screenshot sequence 2324 tick 9292; exact enemy-table-0f-1a-30-27.png cell 24; camera registration inferred",
             "palette": "0f-1a-30-27",
-            "fleeX": 760
+            "fleeCamera": 643
           },
           {
             "kind": "paratroopa",
