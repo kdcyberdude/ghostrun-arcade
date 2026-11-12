@@ -12,7 +12,7 @@ export function nativeEntities(r:Uint8Array,prev?:Uint8Array):Entity[]{
  return out;
 }
 export function simEntities(sim:any):Entity[]{
- return sim.enemies.filter((e:any)=>e.active&&!e.dead).map((e:any)=>({kind:e.kind,x:Math.floor(e.x),y:(Math.floor(e.y)-32+8)&255}));
+ return sim.enemies.filter((e:any)=>e.active&&(!e.dead||e.squashed&&e.dead<90)).map((e:any)=>({kind:e.kind,x:Math.floor(e.x),y:(Math.floor(e.y)-32+8)&255}));
 }
 /** First native entity with no remake enemy of the same kind at the same pixel (undefined when all are matched). */
 export function unmatchedEntity(native:Entity[],sim:Entity[]):Entity|undefined{
