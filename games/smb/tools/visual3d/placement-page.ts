@@ -83,7 +83,7 @@ function objects3d(r3:Any):Obj[]{
 /** Tiles the 3D world drew this frame, by the pool model name, recorded by re-running World.sync with a logging pool(). */
 function cells3d(r3:Any,s:Simulation){
  const w=r3.world,orig=w.pool,log:{name:string;x:number;y:number}[]=[];
- w.pool=function(name:string,theme:string){const p=orig.call(this,name,theme);return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13]});return p.add(m);}};};
+ w.pool=function(name:string,theme:string,palette:number){const p=orig.call(this,name,theme,palette);return {add:(m:THREE.Matrix4)=>{log.push({name,x:m.elements[12],y:m.elements[13]});return p.add(m);}};};
  try{w.sync(s,Math.floor(s.camera));}finally{delete w.pool;}
  return log;
 }
