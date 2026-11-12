@@ -9,14 +9,15 @@ import fixture from './fixtures/native-player-pose.json';
 import type {Button} from '../src/types.js';
 
 const names:Button[]=['a','b','select','start','up','down','left','right'];
-for(const observed of fixture.cases)test(`native player graphics offset and facing on every retained v2 frame: ${observed.level}`,()=>{
+for(const observed of fixture.cases)test(`native player graphics offset, facing and palette phase on every retained v2 frame: ${observed.level}`,()=>{
  const sim=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,observed.entrance);sim.step([],0);(sim as any).inputs=[];
  const rows=new Map(observed.rows.map(row=>[row[0],row]));let compared=0;
  for(let f=0;f<observed.pads.length;f++){
   sim.step(names.filter((_,b)=>observed.pads[f]&(1<<b)),1);
   const row=rows.get(f);if(!row||sim.phase!=='play')continue;
   const {cell,facing}=playerCell(sim);
-  assert.deepEqual([cell,facing],row.slice(1),`${observed.level} native frame ${f}`);compared++;
+  assert.deepEqual([cell,facing],row.slice(1,3),`${observed.level} native frame ${f}`);
+  assert.equal(sim.colorRotations%6,row[3],`${observed.level} native frame ${f}: ColorRotateOffset`);compared++;
  }
  assert.ok(compared>0);
 });

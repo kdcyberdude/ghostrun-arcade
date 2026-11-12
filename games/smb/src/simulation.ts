@@ -924,8 +924,10 @@ export class Simulation {
   if(this.pipeRise===0)this.player.grounded=this.isSolid(this.player.x+8,this.player.y);
  }
  private enterArea(id:string,spawn:[number,number],camera?:number,ordinaryEnemyFrontier?:number){
+  const introPipe=this.area.autoWalk;
   this.loadArea(id,spawn,camera,true);this.broClock=HAMMER_NATIVE.pipeClock;this.lifeFrozen++;
   this.random.frame=AREA_LOAD_FRAME_COUNTER; // FrameCounter $09 restarts with the area (palette rotation, Blooper strokes and other 8-frame phases)
+  if(introPipe)this.colorRotations=1; // the first game-engine row has FrameCounter 24, so ColorRotation already ran once after the room load
   // A measured return may resume the ordinary NPC stream beyond its viewport.
   // Pipe plants are terrain actors; generators retain their normal lifecycle.
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
