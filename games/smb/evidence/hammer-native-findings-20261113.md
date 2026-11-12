@@ -77,3 +77,43 @@ hash795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6
 (excluding top-level date), and the proposal pins original raw hash
 0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f.
 The receipt cannot be reconstructed honestly from those hashes.
+
+## Shared misc/projectile follow-up
+
+`src/native-misc.ts` now implements the source misc slot, gravity, offscreen
+and byte-box rules. Jumping coins use slots8,7,6 (overwrite8 if all busy),
+share vertical force/fraction with hammers, and become floating200 numbers
+until state48 clears the slot. MiscObjectsCore runs slots8 down to0.
+
+PlayerHammerCollision runs on ODD FrameCounter rows. It reads the hammer's
+previous pass bounding box and the shared Misc_OffscreenBits scratch byte
+left by the preceding misc object. It reverses speed once, latches $06BE+s,
+and injures only without star invincibility. The fixed hammer box is
+[0,0,8,8], regardless of the rotating sprite cell. Native DrawHammer erases
+objects according to offscreen bits&$FC, rather than a fitted y limit.
+
+GetMiscBoundBox passes object index slot+9 to CheckRightScreenBBox, while
+actual misc positions live at sprite-object index slot+13. Clipping thus
+reads block positions for misc slots0..3, and four-earlier misc positions
+for slots4..8. Example:3-1 row864 hammerx1840/camera1641/y87 has native box
+[0,87,0,95] because the aliased reference object is atx0. Source block
+position/bounce/shatter slots and the persistent misc position bank supply
+these alias inputs; they are not reconstructed from a recorded row number.
+
+Native regressions cover529 misc gravity/box rows,2492 hammer contact rows,
+136 offscreen rows,7 coin allocations and100 block-alias motor rows. None
+of these recordings contains a true PlayerHammerCollision latch transition;
+separate boundary/parity/latch tests cover positive contact behavior. The
+simulation coin pass is also replayed against the recorded native rows.
+All1249 tests and TypeScript pass; excerpts regenerated.
+
+Relative to66a59e3 only8-3 changes: death488->624, timer496->640,
+score497->745 improve. Camera/x855->508 andy855->493 follow the unchanged
+enemy divergence182. Other32-level survey fields are unchanged.
+
+Integration notes: render Item.nativeCoin.state>=2 as the200 number, not a
+jumping coin; state1 coin pose is(FrameCounter>>1)&3. Animation worker has
+this handoff. Native hammer hand pose is0; flying pose is(FrameCounter>>2)&3.
+Full special enemy slot5 ownership is still missing: powerup-only occupancy
+does not cover a pre-touch flag loaded by the area parser or a living vine.
+The flag worker confirmed this and it must remain an explicit open item.

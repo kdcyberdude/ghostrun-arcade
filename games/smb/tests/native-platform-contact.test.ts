@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from '../src/native-platform-contact.js';
 import {PlatformMotion,nativePlatformHoldsSlot,nativeSmallPlatform} from '../src/platform-motion.js';
 import {observedLevels} from '../src/levels.js';
+import {Simulation} from '../src/simulation.js';
 
 test('native platform landing compares moved Mario feet against the platform before its move',()=>{
  // 4-3 v2 rows 473→474: Mario y86 + speed4 gives feet122; id37 is at
@@ -65,4 +66,34 @@ test('only native small lifts43/44 have a repeated collision surface',()=>{
   const area=levels.find(l=>l.id===levelId)!.areas.find(a=>a.id===areaId)!;
   assert.equal(nativeSmallPlatform(area.platforms!.find(p=>p.x===(expected?1372:2236))!,{levelId,areaId}),expected);
  }
+});
+
+test('landing on a platform ends the jump before a later zero-speed walk-off',()=>{
+ // 4-3 v2 rows713–716: the rider leaves a balance platform with speed0 and
+ // fraction240; gravity144/256 begins on the following airborne frame.
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='3-3')!]);sim.reset(true);
+ sim.area.platforms=[{x:100,y:81,width:32,axis:'x',range:0,speed:0}];
+ Object.assign(sim.player,{x:110,y:80,vy:0,grounded:false});
+ sim.jumpArc=true;sim.runJump=true;sim.landJump='held';sim.landingFraction=240/256;sim.fallGravity=144/256;
+ sim.updatePlatforms(80);
+ assert.equal(sim.player.grounded,true);assert.equal(sim.jumpArc,false);
+ sim.player.x=130;sim.player.grounded=false;sim.updatePlatforms(80);sim.walkOffStart(true);
+ assert.equal(sim.player.grounded,false);assert.equal(sim.player.vy,0);assert.equal(sim.player.y,80+240/256);
+ assert.equal(sim.walkOffFall(),true);assert.equal(sim.player.vy,144/256);
+});
+
+
+test('a balance motor in an earlier slot reads its later partner box at the previous camera offset',()=>{
+ // 4-3 row784: motor slot0 reads first-platform slot4's previous DR_X134,
+ // which overlaps Mario UL_X133; slot4 rebuilds DR_X131 later in the frame.
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='4-3')!]);sim.reset(true);
+ const first=sim.area.platforms.find((p:any)=>p.x===1632)!,second=sim.area.platforms.find((p:any)=>p.x===1728)!;
+ sim.platformSlots.set(first,4);sim.platformSlots.set(second,0);
+ const cached=sim.platformContactPosition(first,0,3);
+ assert.equal(cached.x,1635);
+ assert.equal(nativePlatformLanding(cached.y,0,1679,cached,48,false),0);
+ const current={...cached,x:1632};
+ assert.equal(nativePlatformLanding(current.y,0,1679,current,48,false),undefined);
+ sim.platformSlots.set(first,0);sim.platformSlots.set(second,4);
+ assert.equal(sim.platformContactPosition(first,0,3).x,1632,'an earlier first slot has already refreshed its box');
 });

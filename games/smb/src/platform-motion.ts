@@ -23,6 +23,11 @@ export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotio
 export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotionContext){
  const id=nativePlatformObject(platform,context)?.nativeId;return id===43||id===44;
 }
+/** DrawSmallPlatform emits two surfaces 128 pixels apart, suppressing either whose raw OAM y is above the HUD boundary ($20).
+ * firstArtworkY is already the native OAM y + 1; small lifts draw before their movement step. */
+export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
+ return nativeSmallPlatform(platform,context)?[firstArtworkY,((firstArtworkY-1+128)&255)+1].filter(y=>y>=33):[firstArtworkY];
+}
 /** Native id37 is parsed at object X−303, before its first motion frame. */
 export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.kind==='wrap'?object.x-315:object.spawnCamera;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */
@@ -100,10 +105,9 @@ export function nativeObjectPosition(object:NativePlatformObject,age:number,coun
  if(object.kind==='horizontal')return {x:nativeHorizontalX(object.x,age,counter,sub),y:object.y};
  return {x:object.x,y:nativeLiftY(object.y,age,counter)};
 }
-/** Horizontal support window of a platform for a player at x (collision x of the sprite): natively a player stands on it from 13 px before its
- * left edge to 2 px past its right edge (landings from dx -13/-14, last supported frames at dx width+1..+3 on 3-3, 4-2, 5-4 and 6-3 platforms
- * of both 32 and 48 px; tools/platform-compare.ts, docs/NATIVE_ROLES.md). The earlier window (x+12 > left, x+3 < right) ended 6 px early on the right. */
-export const platformSupportsX=(playerX:number,platformX:number,width:number)=>playerX+14>platformX&&playerX-2<platformX+width;
+/** Native inclusive horizontal bounding boxes (BoundBoxCtrlData): small Mario
+ * uses x+3..x+13; big and crouching Mario use x+2..x+14. */
+export const platformSupportsX=(playerX:number,platformX:number,width:number,wide=false)=>Math.floor(playerX)+(wide?14:13)>=Math.floor(platformX)&&Math.floor(playerX)+(wide?2:3)<=Math.floor(platformX)+width;
 export interface PlatformPosition {x:number;y:number}
 export interface PlatformMotionContext {levelId:string;areaId:string;liftPhaseAtFrameZero?:number}
 

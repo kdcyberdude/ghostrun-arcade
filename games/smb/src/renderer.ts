@@ -6,11 +6,12 @@ import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
-import {platformMotionModel} from './platform-motion.js';
+import {enemyPicture,nativeHammerBroCell} from './enemy-picture.js';
+import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
-import type {Area,Enemy} from './types.js';
+import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
@@ -108,7 +109,9 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23;
+  e=enemyPicture(e);
+  const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
+  const blooperTimer=e.bloop?.timer??0;
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
   const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
@@ -119,11 +122,11 @@ export class GameRenderer {
   if(e.kind==='beetle'){cell=e.shell?19+phase:phase;palette='0f-1a-30-27';}
   if(e.kind==='spiny'){cell=(e.motion==='falling'?8:6)+phase;palette='0f-16-30-27';}
   if(e.kind==='piranha'){cell=32+phase;palette='0f-1a-30-27';}
-  if(e.kind==='blooper'){cell=10+phase;palette='0f-00-30-10';}
+  if(e.kind==='blooper'){cell=blooperTimer===1||blooperTimer>=5||e.dead||s.powerChange?10:11;palette='0f-00-30-10';}
   if(e.kind==='cheep'){cell=12+phase;palette='0f-16-30-27';}
   if(e.kind==='bullet'){cell=39;palette=openingCannonShot||fiveThreeLeftShot?'0f-0f-36-17':'0f-00-30-10';}
-  if(e.kind==='lakitu'){cell=24+phase;palette='0f-1a-30-27';}
-  if(e.kind==='hammerBro'){cell=28+Math.floor(e.age/8)%4;palette='0f-1a-30-27';}
+  if(e.kind==='lakitu'){cell=e.dead?24:(e.graphicsFrenzyTimer??0)<16?25:24;palette='0f-1a-30-27';}
+  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,Boolean(s.powerChange));palette='0f-1a-30-27';}
   if(e.kind==='podoboo'){cell=34;palette='0f-16-30-27';}
   if(e.dead&&e.kind==='goomba'&&e.dead<20){cell=23;}
   if(e.kind==='bowser'){
@@ -136,14 +139,14 @@ export class GameRenderer {
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
    const tiles=tables.enemy_cells[cell].tiles;
-   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,col===1);
+   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,col===1);
    return;
   }
   if(e.kind==='podoboo'&&!e.dead){
    // The observed body is16px tall; the table's leading8px row is transparent.
    const tiles=tables.enemy_cells[34].tiles,falling=e.podobooFalling===true;
    for(let row=0;row<2;row++)for(let col=0;col<2;col++)
-    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,falling);
+    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,falling);
    return;
   }
   if(e.greenShellLaunchFrame!==undefined){
@@ -173,7 +176,7 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?s.player.x<e.x:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
+  }else this.enemyCell(cell,x,y+(e.kind==='blooper'&&blooperTimer!==1&&blooperTimer<5?3:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?(e.nativeDir??-1)<0:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=2){
   const data=tables.enemy_cells[cell];
@@ -182,6 +185,25 @@ export class GameRenderer {
    const bottomFlip=cell===40&&row===2||cell===41&&row===1||cell===23&&row===2;
    this.spriteTile(data.tiles[i],x+(flipX?1-col:col)*8,y+(flipY?2-row:row)*8,palette,flipX!==(symmetric&&col===1),flipY!==bottomFlip,z);
   }
+ }
+ private item(i:Item,s:Simulation){
+  if(!itemShown(i))return;const x=i.x-s.camera;
+  if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y+(i.nativePowerState===undefined?0:1),i.emerging?-0.1:1.5);
+  if(i.kind==='coin'){
+   if(i.nativeCoin){
+    const y=Math.floor(i.y),screenX=Math.floor(x)&255;
+    if(i.nativeCoin.state>=2){this.spriteTile(0xf7,screenX,(y&255)+1,'0f-16-30-27',false,false,2.5);this.spriteTile(0xfb,(screenX+8)&255,(y&255)+1,'0f-16-30-27',false,false,2.5);}
+    else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
+   }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
+  }
+  if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
+  if(i.kind==='hammer'){
+   const phase=i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4;
+   const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
+   for(const piece of descriptor.sprites)this.spriteTile(piece.tile,i.nativeHammer?(Math.floor(x)+piece.x)&255:x+piece.x,i.nativeHammer?((Math.floor(i.y)+piece.y)&255)+1:i.y+piece.y,palette,piece.flip_x,piece.flip_y);
+  }
+  if(i.kind==='flame')this.special('bowser_flame-'+Math.floor(i.age/8)%2,x,i.y);
+  if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorRotations));return r;};
@@ -201,9 +223,7 @@ export class GameRenderer {
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
     }else{
-     const entryQuestion=s.level.id==='1-2'&&s.area.id==='area-2'&&row===9&&col>=10&&col<=14&&id===192;
-     const palette=entryQuestion?[3,3,3,4,5,4][Math.floor((Math.max(0,s.areaFrame-1+(s.paused?1:0))%48)/8)]:this.rotation(s.area.palette);
-     this.tile(id,x,y,palette);
+     this.tile(id,x,y,this.rotation(s.area.palette));
     }
    }
    for(const col of this.ropeColumns){const x=col*16-Math.floor(s.camera);if(x>-16&&x<256)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.tile(64,x,row*16,this.rotation(s.area.palette));}
@@ -215,9 +235,12 @@ export class GameRenderer {
    }
    for(const overlay of s.area.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
    if(s.warpZoneActive)for(const overlay of s.area.warpZone?.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
-   for(const platform of s.area.platforms??[]){const pos=s.platformPosition(platform);
-    if(platformMotionModel(platform,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,pos.y);
-    else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,pos.y,'0f-16-30-27');
+   for(const platform of s.area.platforms??[]){
+    const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
+    for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
+     if(platformMotionModel(platform,context)==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
+     else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');
+    }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
    this.worldClip=false;
@@ -230,15 +253,8 @@ export class GameRenderer {
    }
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
-   for(const e of s.enemies)if(e.active&&e.x-s.camera>-40&&e.x-s.camera<272&&e.dead<90)this.enemy(e,s);
-   for(const i of s.items){if(!itemShown(i))continue;const x=i.x-s.camera;
-    if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y,i.emerging?-0.1:1.5);
-    if(i.kind==='coin')this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
-    if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
-    if(i.kind==='hammer'){const phase=Math.floor(i.age/4)%4,descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor;const palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');for(const piece of descriptor.sprites)this.spriteTile(piece.tile,x+piece.x,i.y+piece.y,palette,piece.flip_x,piece.flip_y);}
-    if(i.kind==='flame')this.special('bowser_flame-'+Math.floor(i.age/8)%2,x,i.y);
-    if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
-   }
+   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   for(const i of s.items)this.item(i,s);
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
@@ -289,11 +305,38 @@ export class GameRenderer {
    }else{this.text('BUT OUR PRINCESS IS IN',actorScreenX-104,112);this.text('ANOTHER CASTLE!',actorScreenX-104,128);}
   }
  }
+ private swimKickSheet(sheet:string,facing:number){
+  const name=sheet+'#swim-kick';if(this.textures.has(name))return name;
+  const source=this.textures.get(sheet)!,normal=this.textures.get(`player-mario-${facing<0?'left':'right'}.png`)!;
+  const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;const context=canvas.getContext('2d')!;context.drawImage(source.image,0,0);
+  const reference=document.createElement('canvas');reference.width=canvas.width;reference.height=canvas.height;const rc=reference.getContext('2d')!;rc.drawImage(normal.image,0,0);
+  const normalPixels=rc.getImageData(0,0,canvas.width,canvas.height).data,variantPixels=context.getImageData(0,0,canvas.width,canvas.height).data;
+  const colors=powerupRules.palettes.normal.map(rgb=>{
+   const at=normalPixels.findIndex((_,i)=>i%4===0&&normalPixels[i+3]!==0&&rgb.every((v,c)=>normalPixels[i+c]===v));
+   return variantPixels.slice(at,at+3);
+  });
+  const atlas=this.textures.get('sprite-tiles-00-16-27-18.png')!;
+  const kicks=[0x31,0x46].map(tile=>{
+   const part=document.createElement('canvas');part.width=part.height=8;const pc=part.getContext('2d')!;pc.drawImage(atlas.image,tile%16*8,Math.floor(tile/16)*8,8,8,0,0,8,8);
+   const pixels=pc.getImageData(0,0,8,8);
+   for(let at=0;at<pixels.data.length;at+=4)if(pixels.data[at+3]){
+    const role=powerupRules.palettes.normal.findIndex(rgb=>rgb.every((v,c)=>pixels.data[at+c]===v));
+    if(role>=0)for(let c=0;c<3;c++)pixels.data[at+c]=colors[role][c];
+   }
+   pc.putImageData(pixels,0,0);return part;
+  });
+  for(const cell of [5,6,7,17,18]){
+   const x=cell%13*16+(facing<0?8:0),y=Math.floor(cell/13)*32+24;context.clearRect(x,y,8,8);
+   context.save();context.translate(x+(facing<0?8:0),y);context.scale(facing<0?-1:1,1);context.drawImage(kicks[cell<8?0:1],0,0);context.restore();
+  }
+  const texture=new THREE.CanvasTexture(canvas);texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.colorSpace=THREE.SRGBColorSpace;this.textures.set(name,texture);return name;
+ }
  private player(s:Simulation){
-  const p=s.player,{cell,facing,throwing}=playerCell(s),change=s.powerChange;
+  const p=s.player,{cell,facing,throwing,swimKick}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
   if(p.star)variant=starVariant(p.star,s.frame,variant);
-  const sheet=`player-${variant}-${facing<0?'left':'right'}.png`,z=s.phase==='pipe'||s.pipeRising?-0.1:3;
+  let sheet=`player-${variant}-${facing<0?'left':'right'}.png`;if(swimKick!==undefined)sheet=this.swimKickSheet(sheet,facing);
+  const z=s.phase==='pipe'||s.pipeRising?-0.1:3;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],p.x-s.camera,p.y-31,z+0.1);
  }
