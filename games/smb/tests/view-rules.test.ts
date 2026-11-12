@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette} from '../src/view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,metatileGridX,bumpShown,liftRopeColumns} from '../src/view-rules.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import manifest from '../assets/graphics/graphics-manifest.json';
@@ -72,4 +72,21 @@ test('?-block palette cycle follows the native colour rotation',()=>{
  const seen:number[]=[];for(let f=158;f<=177;f++){sim.step([],1);assert.equal(sim.random.frame,f);seen.push(sim.colorRotations);}
  assert.deepEqual(seen,[1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,4,4]);
  sim.loadArea(sim.level.main);assert.equal(sim.colorRotations,0);
+});
+// native-pixels.ts lag 1, scroll-aligned playfield: 2-4 7.62% -> 1.03% (ceiling free tiles at x%16 6/14 and duplicates 1 px apart), 3-4 2.47 -> 0.89,
+// 4-3 2.36 -> 0.90, 2-2 1.53 -> 0.45, 8-4 1.54 -> 0.36; no level worse.
+test('free tile pieces are drawn on the native 16-px metatile grid',()=>{
+ assert.deepEqual([1102,1110,1189,1190,1197,1198,1309].map(metatileGridX),[1104,1104,1184,1184,1200,1200,1312]);
+ const ceiling=[...new Set(area('2-4','main').freeTiles.filter((t:any)=>t.y===48&&t.id===98&&t.x>500&&t.x<1400).map((t:any)=>metatileGridX(t.x)))].sort((a:any,b:any)=>a-b) as number[];
+ assert.equal(ceiling[0],544);assert.equal(ceiling.at(-1),1312);assert.ok(ceiling.every((x,i)=>i===0||x-ceiling[i-1]===16)); // one unbroken brick row, as natively
+});
+// Native 5-3 frame 420: the canopy cell over the trunk stays put when Mario's head hits it; bricks and ?-blocks still bounce.
+test('only hit blocks are drawn bumped',()=>{
+ for(const id of [81,85,94,95,96,192,193,196])assert.ok(bumpShown(id),String(id));
+ for(const id of [22,23,24,76,98,16,20])assert.ok(!bumpShown(id),String(id));
+});
+// Native 2-4/5-4 pictures: rope columns 86 and 89 are rope from row 2 to row 14; the extracted 2-4 map misses rows 3-5 (2-4 1.03% -> 0.99%).
+test('castle lift ropes span the playfield height',()=>{
+ assert.deepEqual(liftRopeColumns(area('2-4','main')).sort(),[86,89]);assert.deepEqual(liftRopeColumns(area('5-4','main')).sort(),[86,89]);
+ assert.deepEqual(liftRopeColumns(area('7-3','main')),[]); // not a castle
 });

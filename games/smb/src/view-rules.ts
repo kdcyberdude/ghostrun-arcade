@@ -32,3 +32,12 @@ export const rotatedPalette=(palettes:number[][],index:number,rotations:number)=
  const color=[0x27,0x27,0x27,0x17,0x07,0x17][(rotations-1)%6],base=palettes[index];
  const found=palettes.findIndex(p=>p[13]===color&&p.every((c,i)=>i===13||c===base[i]));return found<0?index:found;
 };
+/** Background metatiles sit on the native 16-px grid. Free tile pieces were placed by image registration and carry its error (2-4 ceiling at x%16 6/14,
+ * duplicated 1-2 px apart; most freeTiles/decorations of 30 areas are off-grid), so they are drawn at the nearest grid column. Collision is unchanged. */
+export const metatileGridX=(x:number)=>Math.round(x/16)*16;
+/** Only hit blocks (bricks, ?-blocks, hidden and used blocks, simulation isHitBlock) move when bumped from below; native canopy/ground/stair cells hit by the
+ * head stay put (5-3 frame 420: a bumped canopy cell drawn 4 px high, 128 px differed). */
+export const bumpShown=(id:number)=>(id>=81&&id<=96)||id===192||id===193||id===196;
+/** Castle lift ropes (metatile 37) run the full playfield height, rows 2-14, in every native picture (2-4 columns 86/89, 5-4 columns 86/89); the extracted
+ * maps lost the cells hidden behind the lifts (2-4 rows 3-5, 5-4 column 86 rows 12-14). Returns the columns to draw full height. Rope cells are not solid. */
+export const liftRopeColumns=(area:{theme:string;tiles:[number,number,number][]})=>area.theme==='castle'?[...new Set(area.tiles.filter(t=>t[2]===37).map(t=>t[0]))]:[];
