@@ -13,6 +13,7 @@ test('8-2 late Paratroopa has no inferred duplicate ordinary Koopa',()=>{
 
 test('8-2 late Paratroopa becomes a wingless Koopa on an ordinary stomp',()=>{
  const sim=new Simulation([level()]);sim.reset(true);sim.loadArea('main',[2216,202],2100);
+ const target=sim.enemies.find(e=>e.originX===2224&&e.originY===208)!;Object.assign(target,{active:true,enemySlot:0});
  sim.player.vy=2;sim.broClock=1;sim.step([],1);
  assert.equal(sim.enemies.find(e=>e.originX===2224&&e.originY===208)?.kind,'koopa');
  assert.equal(sim.phase,'play');
