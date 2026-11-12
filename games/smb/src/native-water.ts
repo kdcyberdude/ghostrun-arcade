@@ -112,7 +112,7 @@ export class NativeWater{
  lastDirection:Direction=0;
  /** Horizontal speed (1/4096 px) after this frame's input: floor frames use the floor cap and coast (B brakes below byte 11);
   * swimming frames keep their speed when no direction is held. */
- horizontal(direction:Direction,grounded:boolean,down=false,b=false):number{
+ horizontal(direction:Direction,grounded:boolean,down=false,b=false,absolute=0):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
   const released=this.lastDirection!==0&&direction===0&&down;this.lastDirection=direction;
   if(grounded&&down){
@@ -128,9 +128,11 @@ export class NativeWater{
   // From exact rest the first step ever is doubled, later ones plain whatever the last direction was; a press against a
   // sub-byte positive speed takes the doubled step.
   if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;return m.speed=direction*(first?304:152);}
-  // A wall restart drops a stationary residue on reversal; it survives neutral frames (native7-2 wall branches).
+  // GetPlayerAnimSpeed clears both speed bytes on a skid only when the
+  // last ImposeFriction absolute byte is below $0b. Neutral swimming keeps
+  // that byte: a wall hit at speed 14 must retain its sub-byte residue.
   if(!along&&m.speed>0&&m.speed<256&&direction<0){
-   if(m.turned){m.tickFreeze();m.speed=0;return m.groundPress(direction,false);}
+   if(m.turned){m.tickFreeze();if(absolute<11)m.speed=0;return m.groundPress(direction,false);}
    return m.speed-=304;
   }
   return m.groundPress(direction as 1|-1,false);
