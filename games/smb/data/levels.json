@@ -118273,7 +118273,14 @@
           ]
         ],
         "generators": [],
-        "cannons": [],
+        "cannons": [
+          {
+            "x": 272,
+            "y": 112,
+            "evidence": "Cannon-top artwork observed; firing interval and activation range remain inferred.",
+            "native": true
+          }
+        ],
         "solidRects": [
           {
             "x": 784,

@@ -50,11 +50,16 @@ const SWIM_GEN_LEVELS:Record<string,{fromCamera:number;toCamera:number;highId:nu
 // Native swimming Cheep Cheep (docs/NATIVE_ROLES.md): random byte s gives the id (>= 170: the level's high id) and a height index, which moves up past the heights
 // already used since the bag of eight last emptied.
 export function nativeSwimCheepPick(byte:number,bag:number,level:string){
- const rule=SWIM_GEN_LEVELS[level]!;if(bag===255)bag=0;
- let q=byte&7;while(bag>>q&1)q=(q+1)&7;
- return {id:byte>=SWIM_GEN.idThreshold?rule.highId:rule.lowId,y:SWIM_GEN.heights[q],bag:bag|1<<q};
+ const rule=SWIM_GEN_LEVELS[level]!,pick=nativeFrenzyHeight(byte,bag);
+ return {id:byte>=SWIM_GEN.idThreshold?rule.highId:rule.lowId,...pick};
 }
-const PODOBOO=waterActorData.rules.podoboo; // native lava Podoboo jump (tools/derive-water-actors.mjs)
+// BulletBillCheepCheep height (shared by the swimming Cheeps and the 5-3/6-3 Bullet Bills): q = random byte s & 7, moved up past the bits of BitMFilter ($06DD, all 8 set ->
+// emptied first), y = Enemy17YPosData[q] (+ 8 = native y). 18 of 18 frenzy Bullet Bills of the 5-3/6-3 traces.
+export function nativeFrenzyHeight(byte:number,bag:number){
+ if(bag===255)bag=0;
+ let q=byte&7;while(bag>>q&1)q=(q+1)&7;
+ return {y:SWIM_GEN.heights[q],bag:bag|1<<q};
+}
 const HAMMER_BRO=hammerBroRules.motor;
 const LAKITU=lakituData.rules; // native Lakitu pursuit and Spiny egg (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section)
 const BULLETS=bulletData.rules; // native Bullet Bill cannons and 5-3/6-3 generator (data/native-bullets.json, docs/NATIVE_ROLES.md, Bullet Bill section)
@@ -77,6 +82,15 @@ export function swimBobOffset(bob:{dir:number;first:number}|undefined,k:number){
  }
 }
 const hammerRandom=(state:number)=>(Math.imul(state,1664525)+1013904223)>>>0;
+// Native ImposeGravity on an object: y (with the page above 256) += speed byte + carry of fraction += move force; then the 8.8 speed grows by `down`/256, and a speed of
+// `max` or more with a move force of 128 or more becomes exactly `max` (SMB disassembly ImposeGravity; checked on every row of the 5-4/6-4/8-2 traces).
+export type NativeMoveState={y:number;speed:number;force:number;fraction:number;timer:number};
+export const nativeMoveState=(y:number,timer=0):NativeMoveState=>({y,speed:0,force:0,fraction:0,timer});
+export function nativeImposeGravity(n:NativeMoveState,down:number,max:number){
+ const f=n.fraction+n.force;n.fraction=f&255;n.y+=n.speed+(f>>8);
+ const v=n.force+down;n.force=v&255;n.speed+=v>>8;
+ if(n.speed>=max&&n.force>=128){n.speed=max;n.force=0;}
+}
 export const NATIVE_HZ=60.0988;
 // Native rows (RAM 0x500 collision map, 0x416 y sub-pixel, 0x70a fall class): feet this deep in a cell do not land; a fall before any jump of the area uses 40/256.
 const FOOT_LAND_DEPTH=5,FALL_GRAVITY_AFTER_LOAD=0.15625;
@@ -86,14 +100,16 @@ export const WATER_PHYSICS={groundMax:1,swimMax:1.5,accel:0.0390625,reverse:0.10
 // Image samples support growth≈0.5 and up≈0.875px/native frame. Downward speed
 // is inferred from a cap-limited sample; automatic-entry timing remains unmeasured.
 export const VINE_PHYSICS={growth:0.5,climbUp:0.875,climbDown:1.5};
-// Effective green-bounce fit; initial spawn phase remains unmeasured.
 // See data/paratroopa-physics-candidate.json for independent trajectory checks.
-export const GREEN_PARATROOPA_PHYSICS={gravity:7/64,bounce:-3.09375,maxFall:3.09375};
+export const GREEN_PARATROOPA_PHYSICS={gravity:7/64,bounce:-3,maxFall:3}; // native: MoveJ_EnemyVertically 28/256 per frame, cap 3; EnemyJump speed -3
 // Native-measured Paratroopa/Beetle rules, see evidence/paratroopa-beetle-findings-20261109.md. Contact with the floor only registers once the
 // downward speed has reached 1 px per native frame (a Paratroopa that starts at rest on the floor sinks about 5 px and hops at age 11), and a
 // sink of 5 px or more is a side collision that turns it around. The side probe of Paratroopas and Beetles sits at x (left) and x+16 (right), 5 px above the feet; the older 15/1 probe 8 px above the feet is kept for other walkers.
-export const GREEN_PARATROOPA_LANDING={landingSpeed:1,sinkTurnDepth:5,sideProbe:{right:16,left:0,heightAboveFeet:5}};
-const greenSpawnVy=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27'&&(e.paratroopaMotion??'bounce')==='bounce'?(e.spawnVy??0)-GREEN_PARATROOPA_PHYSICS.gravity:0;
+export const GREEN_PARATROOPA_LANDING={landingSpeed:1,sideProbe:{right:16,left:0,heightAboveFeet:5}};
+// A jumping Paratroopa is made at rest (speed and move force 0; 8-1 row 1267, 8-2 row 83, fraction byte 0 on both): the route's first-sample spawnVy / spawnYFraction are not used.
+const greenBounceSpec=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27'&&(e.paratroopaMotion??'bounce')==='bounce';
+const greenSpawnVy=(e:EnemySpec)=>greenBounceSpec(e)?-GREEN_PARATROOPA_PHYSICS.gravity:0;
+const REACH_MEASURED=['koopa','redKoopa','beetle','paratroopa','goomba','spiny','piranha','podoboo','hammerBro','lakitu']; // kinds whose horizontal touch reach is measured (src/native-hurtbox.ts; Lakitu: 8-2 rows 223 |dx| 12 no touch, 225 |dx| 9 touch)
 const isGreenParatroopa=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
 // Native Paratroopa and Beetle pairs turn each other around once when their boxes first overlap (|dx| < 12, |dy| < 8 over 14 measured bumps,
 // including two Paratroopas that had already passed each other); they are not turned again until they have separated.
@@ -224,6 +240,7 @@ export class Simulation {
   // 2-4 first five / 6-4 first four bars have measured allocation; later mixed
   // slots retain their existing motors. 3-4 bars2/3 use fresh slots; bar1 keeps its qualified motor.
   this.firebarSlots=this.level.id==='1-4'?new FirebarSlots(area.firebars??[]):this.level.id==='2-4'?new FirebarSlots((area.firebars??[]).slice(0,5),[864,864,768,768,768]):this.level.id==='6-4'?new FirebarSlots((area.firebars??[]).slice(0,4)):this.level.id==='3-4'?new FirebarSlots((area.firebars??[]).slice(1,3)):this.level.id==='5-4'?new FirebarSlots((area.firebars??[]).filter(b=>b.x===376&&b.length===12)):undefined;
+  if(this.firebarSlots)this.firebarSlots.busy=slot=>this.enemies.some(e=>e.active&&e.enemySlot===slot&&!e.slotFreed);
   this.firebarMotors.clear();
   for(const bar of area.firebars??[])if(bar.motor&&bar.length===6)this.firebarMotors.set(bar,{state:createFirebarMotor(bar.motor),geometry:{x:bar.x,y:bar.y,length:6}});
   // Activation consumes a hidden1up across ordinary deaths; its used block reloads blank.
@@ -245,7 +262,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=this.level.id==='5-1'?new PiranhaColumns(this.camera):undefined;
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -283,7 +300,7 @@ export class Simulation {
   const p=this.player;if(!e.shell||e.movingShell||p.vy<=0||oldBottom>e.y+1)return false;
   e.movingShell=true;e.shellAge=0;e.shellChain=0;e.kickOverlap=true;e.vx=(p.x-e.x<3?1:-1)*shellRules.speedPixelsPerNativeFrame;this.floateyScore(this.shellKickAward());this.emit('sfx_kick');return true;
  }
- private makeEnemy(e:EnemySpec):Enemy{return {...e,autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state 1, untouchable until it lands)
+ private makeEnemy(e:EnemySpec):Enemy{return {...e,autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(greenBounceSpec(e)?0:e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state 1, untouchable until it lands)
  step(buttons:Button[],frames=1,buttons2:Button[]=[]){
   if(!Number.isInteger(frames)||frames<0||frames>18000)throw new Error('frames must be an integer in 0..18000');
   const held=[new Set(buttons),new Set(buttons2)];
@@ -491,6 +508,7 @@ export class Simulation {
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32))this.scrollCrossFrame=this.frame;
   this.platformMotion.advance(this.platformFrame,this.camera);
+  this.passNativeCannons();this.passNativeFrenzy();
   this.gateNativePlatforms(previousCamera);
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
@@ -913,7 +931,7 @@ export class Simulation {
  private updateGenerators(){
   // The shot's 1.5px/frame travel is measured. Cannon cooldown and close-range
   // inhibition are inferred rules; phases are deterministic across resets.
-  this.areaPlayFrame++;
+  this.areaPlayFrame++;this.tickIntervalTimers();
   this.updateNativeCannons();
   this.updateSwimGenerator();
   for(const [index,cannon]of(this.area.cannons??[]).entries()){
@@ -927,7 +945,7 @@ export class Simulation {
   for(const generator of this.area.generators??[]){
    if(this.recordedRoute&&generator.schedule){this.launchScheduledFish(generator);continue;}
    if(generator.maxFish){this.updateFishFrenzy(generator);continue;}
-   if(generator.heights){this.updateNativeBulletGenerator(generator);continue;}
+   if(generator.heights){this.frenzyDue=generator;continue;} // runs after this frame's scroll (passNativeFrenzy)
    if(this.player.x<generator.from||this.player.x>generator.to||this.areaFrame%generator.interval!==0)continue;
    const sequence=Math.floor(this.areaFrame/generator.interval);
    if(generator.kind==='bullet'){
@@ -945,18 +963,31 @@ export class Simulation {
   bullet.nativeShot=true;bullet.active=true;this.enemies.push(bullet);
  }
  // Native cannons (docs/NATIVE_ROLES.md): a cannon takes the next of six table entries when its column loads. Each frame every free enemy slot s of 0..2 reads random byte s+1: a value below 6 picks an
- // entry, whose timer counts down; at 0 it restarts and the cannon shoots if it is on screen (0 <= x - camera <= 255) and Mario is at least 48 px away (any other attempt is the one-frame object).
+ // entry, whose timer counts down; at 0 it restarts and the cannon makes a Bullet Bill object (state 0) in slot s at the cannon. On the next frame's pass, at slot s's turn (so s does not
+// pick), BulletBillHandler keeps it only if it is on screen (0 <= x - camera <= 255) and d = x - Mario's pixel x is outside -40..38 (PlayerEnemyDiff + carry + 0x28 < 0x50 erases it),
+// with that frame's camera and Mario: 252 of 252 native creations in the 32 v2 traces (tests/native-enemy-rules.test.ts).
  // Native RAM of free play (evidence/hazards2-findings-20261111.md, 7 runs): (1) a cannon loads on the row its column comes in, x - camera <= 352 for x on a 32-px boundary, <= 358 between
- // (camera of the row before, as the remake reads it here), and is first picked on the next row; (2) a failed attempt's one-row object holds slot s on the next row, so s does not pick then;
+ // (camera of the row before, as the remake reads it here), and is first picked on the next row; (2) the object holds slot s on the next row, so s does not pick then;
  // (3) the level's first native row (engine 7, before the remake's first frame) already runs a pass on the register one frame back.
- private cannonFlash=new Set<number>();private cannonStartTable?:object;
+ private cannonStartTable?:object;
  private updateNativeCannons(){
   const cannons=(this.area.cannons??[]).filter(c=>c.native);if(!cannons.length||this.recordedRoute)return;
   while(this.cannonsLoaded<cannons.length&&cannons[this.cannonsLoaded].x-this.camera<=(cannons[this.cannonsLoaded].x%32?BULLETS.cannonLoadAheadOdd:BULLETS.cannonLoadAhead)){this.cannonTable[this.cannonsLoaded%6]={cannon:cannons[this.cannonsLoaded],timer:0};this.cannonsLoaded++;}
+  this.cannonPassDue=true;
+ }
+ // Native order (ProcessCannons runs after the enemy loop, both after the frame's scroll): the pass sees this frame's camera, and an enemy the
+ // native loader makes on this frame (the remake activates it on the next one, see enemyLoadBlocked) already holds the lowest free slot.
+ private cannonPassDue=false;
+ private passNativeCannons(){
+  if(!this.cannonPassDue)return;this.cannonPassDue=false;
   this.freeNativeSlot();
-  const used=new Set(this.enemies.filter(e=>e.active&&!e.dead).map(e=>e.enemySlot)),mask=Number(this.level.id[0])>=BULLETS.cannonHardWorld?7:15,b=this.random.bytes;
+  // Busy slots: the native slot model (releaseNativeSlots: a removed walker keeps its slot until native x - camera < -74); a cannon shot is removed inside the pass, after its own slot's turn.
+  const used=new Set<number|undefined>(this.enemies.filter(e=>e.active&&(e.nativeShot?!e.dead||e.goneFrame===this.frame:!e.slotFreed&&(!e.dead||e.enemySlot!==undefined))).map(e=>e.enemySlot));
+  for(const held of this.objectSlots(used))used.add(held);
+  for(const e of this.enemies)if(this.nativeLoadsThisFrame(e)){let slot=0;while(used.has(slot))slot++;used.add(slot);}
+  const mask=Number(this.level.id[0])>=BULLETS.cannonHardWorld?7:15,b=this.random.bytes;
+  for(const e of this.enemies)if(e.bbCheck&&e.active&&!e.dead)this.nativeBulletBillCheck(e); // objects made on an earlier frame (each at its slot's turn; its slot stays in `used`)
   if(this.cannonStartTable!==this.cannonTable){this.cannonStartTable=this.cannonTable;this.nativeCannonPass(used,mask,[0,1,2,3].map(k=>(b[k]<<1|b[k+1]>>7)&255));}
-  for(const slot of this.cannonFlash)used.add(slot);this.cannonFlash=new Set();
   this.nativeCannonPass(used,mask,b);
  }
  private nativeCannonPass(used:Set<number|undefined>,mask:number,bytes:number[]){
@@ -966,9 +997,15 @@ export class Simulation {
    if(entry.timer>0){entry.timer--;continue;}
    entry.timer=BULLETS.cannonRestart;
    const {x,y}=entry.cannon;
-   if(x<this.camera||x-this.camera>BULLETS.cannonScreenRight||Math.abs(this.player.x-x)<BULLETS.cannonMinDistance){this.cannonFlash.add(slot);continue;}
-   this.spawnNativeBullet(x,y+16,this.player.x<x?-1:1);this.enemies[this.enemies.length-1].enemySlot=slot;used.add(slot);
+   this.spawnNativeBullet(x,y+16,this.player.x<x?-1:1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,age:1,bbCheck:true});used.add(slot); // made after this frame's enemy step: its spawn row is done
   }
+ }
+ // BulletBillHandler, state 0 (the frame after the cannon made it): erased when off screen or Mario is close, else it starts flying away from him (and moves this frame).
+ private nativeBulletBillCheck(e:Enemy){
+  e.bbCheck=false;
+  const d=Math.floor(e.x)-Math.floor(this.player.x);
+  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){e.dead=100;e.goneFrame=this.frame;return;}
+  e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
  }
  // Route comparison only: the attempt times of the recorded route (frames since the visit start, then the last gaps repeat).
  private updateNativeCannon(cannon:CannonSpec){
@@ -979,17 +1016,26 @@ export class Simulation {
   if(!due||!onScreen||Math.abs(this.player.x-cannon.x)<BULLETS.cannonMinDistance)return;
   this.spawnNativeBullet(cannon.x,cannon.y+16,this.player.x<cannon.x?-1:1);
  }
- // 5-3 / 6-3: one Bullet Bill at a time, spawned at camera + 287 at a recorded (pseudo-random) height as soon as the previous one is gone.
- private updateNativeBulletGenerator(generator:GeneratorSpec){
-  if(this.camera<generator.fromCamera!||this.camera>generator.toCamera!)return;
-  const shots=this.enemies.filter(e=>e.nativeShot&&e.kind==='bullet');
-  if(shots.some(e=>e.dead===0||e.dead<100&&e.y<=280))return;
-  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,generator.heights![shots.length%generator.heights!.length]+BULLETS.generatorFeetOffset,-1);
+ // 5-3 / 6-3 frenzy (BulletBillCheepCheep, after this frame's scroll like the native enemy loop): one Bullet Bill at a time. A frenzy Bullet Bill is removed at its own slot's turn
+ // when its x before this frame's move is 72+ px left of this frame's camera (17 of 17 native removals: -72..-76 removed, -71.5 kept); the frenzy then runs at the next empty slot s
+ // (a slot before it still saw the old one), places it at camera + 287 at the height of random byte s (nativeFrenzyHeight), so a removal and the next spawn share a frame (5-3 rows 119, 210).
+ private frenzyDue?:GeneratorSpec;
+ private passNativeFrenzy(){
+  const generator=this.frenzyDue;this.frenzyDue=undefined;if(!generator)return;
+  const shots=this.enemies.filter(e=>e.frenzy&&(e.dead===0||e.dead<100&&e.y<=280));
+  let going:Enemy|undefined;
+  for(const e of shots)if(e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){e.dead=100;going=e;}
+  if(shots.some(e=>e!==going)||this.camera<generator.fromCamera!||this.camera>generator.toCamera!)return;
+  this.freeNativeSlot();
+  const used=new Set(this.enemies.filter(e=>e.active&&!e.dead).map(e=>e.enemySlot));for(const held of this.objectSlots(used))used.add(held);
+  let slot=going?going.enemySlot!+1:0;while(used.has(slot))slot++;if(slot>=5)return;
+  const pick=nativeFrenzyHeight(this.random.bytes[slot],this.swimBag);this.swimBag=pick.bag;
+  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1}); // made after this frame's enemy step
  }
  // A native shot is removed when its next position is left of the screen (native: x - camera < about -73 on the current camera; the enemy step sees the previous camera, so 70 here) or right of camera + 329.
  private nativeBulletGone(e:Enemy){
   const next=e.x+(!e.nativeShot||e.age>1?Math.sign(e.vx)*BULLETS.speed:0);
-  return next<this.camera-BULLETS.removeLeft||next>this.camera+BULLETS.removeRight||e.y>280;
+  return !e.frenzy&&next<this.camera-BULLETS.removeLeft||next>this.camera+BULLETS.removeRight||e.y>280;
  }
  // Route comparison only: the launches of the recorded route (the list repeats every `period` frames for a slower run), at Mario's x plus the class offset.
  private launchScheduledFish(generator:GeneratorSpec){
@@ -1002,9 +1048,21 @@ export class Simulation {
    enemy.nativeFlight=true;enemy.vx=kind.speed;enemy.vy=FLYING_FISH.launch.vy;enemy.active=true;this.enemies.push(enemy);
   }
  }
+ // Slots that objects other than enemies hold natively: a measured firebar's (FirebarSlots) and a platform's while it holds one (5-3 lift id 37 in slot 0 at row 400).
+ // A platform takes the lowest slot free when it is first seen holding one.
+ private platformSlots=new Map<object,number>();
+ private objectSlots(enemySlots:Set<number|undefined>){
+  const held=new Set<number>(this.firebarSlots?.held()??[]),context=this.platformMotion.context;
+  for(const [platform,slot] of this.platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else this.platformSlots.delete(platform);
+  for(const platform of this.area.platforms??[])if(!this.platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
+   let slot=0;while(held.has(slot)||enemySlots.has(slot))slot++;if(slot<5){this.platformSlots.set(platform,slot);held.add(slot);}
+  }
+  return held;
+ }
  // Lowest native enemy slot not in use. Slots are not modelled elsewhere, so live enemies take theirs here, in the order they were activated.
  private freeNativeSlot(){
   const live=this.enemies.filter(e=>e.active&&!e.dead),used=new Set(live.flatMap(e=>e.enemySlot===undefined?[]:[e.enemySlot]));
+  for(const slot of this.objectSlots(used))used.add(slot);
   const lowest=()=>{let slot=0;while(used.has(slot))slot++;return slot;};
   for(const e of live)if(e.enemySlot===undefined){e.enemySlot=lowest();used.add(e.enemySlot);}
   return lowest();
@@ -1040,13 +1098,20 @@ export class Simulation {
   const fish=this.makeEnemy({kind:'cheep',x:this.camera+SWIM_GEN.spawnAhead,y:pick.y+SWIM_GEN.feetOffset,direction:-1,palette:(SWIM_GEN.palettes as Record<string,string>)[pick.id],swim:{},evidence:'Native swimming Cheep generator: random byte of its slot, eight-height bag, 32-frame timer.'});
   fish.enemySlot=slot;fish.active=true;this.enemies.push(fish);
  }
- // Native Podoboo: appears below the screen (feet y 282), falls under gravity until its launch frame, jumps with the measured speed, falls with a cap and is
- // launched again with the mean speed as soon as it is back at the bottom.
+ // Native Podoboo (MovePodoboo, id 12): made with EnemyIntervalTimer ($0796+s) = 1 at native y 2 of page 2 (514, below the screen) at rest. Whenever that timer is 0 it starts
+ // again from 514 with speed byte -7, move force = random byte s+1 | 0x80 and timer = (that & 15) | 6. Every frame MoveJ_EnemyVertically adds the 8.8 speed (plus the carry of the
+ // fraction $0417+s) to y and 28/256 to the speed, capped at 3. Interval timers count down once every 21 frames (IntervalTimerControl $077F). 5-4/6-4 traces, tests/native-podoboo.test.ts.
+ intervalControl=20; // native $077F: counts 20..0 once per frame; at 0 the interval timers tick
+ private tickIntervalTimers(){
+  if(this.intervalControl>0){this.intervalControl--;return;}
+  this.intervalControl=20;
+  for(const e of this.enemies)if(e.pod&&e.pod.timer>0)e.pod.timer--;
+ }
  private updateNativePodoboo(e:Enemy){
-  const k=e.age-1,launch=e.launch!;
-  if(k===launch.delay)e.vy=-launch.v0;
-  else if(k>launch.delay&&e.vy>0&&e.y>=PODOBOO.relaunchFeetY)e.vy=-PODOBOO.v0;
-  e.y+=e.vy;e.vy=Math.min(PODOBOO.maxFall,e.vy+PODOBOO.gravity);e.podobooFalling=e.vy>0;
+  const n=e.pod??=nativeMoveState(514,1);
+  if(n.timer===0){const force=this.random.bytes[(e.enemySlot??0)+1]|0x80;Object.assign(n,{y:514,speed:-7,force,timer:(force&15)|6});}
+  nativeImposeGravity(n,28,3);
+  e.y=n.y-256+24;e.vy=n.speed+n.force/256;e.podobooFalling=e.vy>0;
  }
  // Native Blooper (docs/NATIVE_ROLES.md): a 24-frame stroke moves it 32 px up and 32 px sideways (1,2,1 px/frame in 8-frame thirds), between strokes it sinks 1 px every 2 frames.
  // Strokes start on the frame counter's 8-frame tick: the first one at the first tick after it appears, the next 32 frames (second) or 40 frames (later) after the last ended, once it is no more
@@ -1377,12 +1442,6 @@ export class Simulation {
  }
  // Green Paratroopa floor contact (GREEN_PARATROOPA_LANDING): too slow a fall does not register yet; a registered sink of 5 px or more
  // that has a solid floor beside it turns the Paratroopa around before it bounces.
- private greenParatroopaLands(e:Enemy,floorTop:number){
-  const rule=GREEN_PARATROOPA_LANDING;
-  if(e.vy+GREEN_PARATROOPA_PHYSICS.gravity<rule.landingSpeed)return false;
-  if(e.y-floorTop>=rule.sinkTurnDepth&&this.isSolid(e.x+(e.vx>0?rule.sideProbe.right:rule.sideProbe.left),e.y-rule.sideProbe.heightAboveFeet))e.vx=-e.vx;
-  return true;
- }
  // Native Bowser (src/bowser-motion.ts): the anchor steps every 4th frame, hops start on a timer, fire only while he faces left; he faces Mario on landing.
  private advanceBowser(e:Enemy){
   const m=e.bowser??=createBowserMotor(e.originX,this.level.id);
@@ -1450,6 +1509,7 @@ export class Simulation {
  }
  private takeNativeSlot(e:Enemy){
   const used=new Set(this.enemies.flatMap(o=>o!==e&&o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[]));
+  for(const held of this.objectSlots(used))used.add(held); // a measured firebar or a platform holds its native slot (6-4: bars in slots 0, 2, 4, Podoboos in 1, 3)
   let slot=0;while(used.has(slot))slot++;
   if(slot>=5)return;
   e.enemySlot=slot;
@@ -1472,6 +1532,13 @@ export class Simulation {
  /** Activation this frame mirrors the native spawn of the previous frame (it reads the camera before this frame's scroll), which the native skips when the
   * frame before that crossed a 32 px boundary. A measured spawnCamera is a native spawn frame, so it was never blocked on the route it came from. */
  private get enemyLoadBlocked(){return this.scrollCrossFrame===this.frame-2;}
+ // Podoboos and jumping Paratroopas load on the frame whose camera reaches x - 303 (native loader; 5-4 Podoboo x 320 at camera 17, x 480 at 177, 8-2 Paratroopa x 384 at 82):
+ // their recorded spawnCamera (the first camera of the measured route past that point) is not used.
+ private nativeLoadRule(e:Enemy){return e.kind==='podoboo'||isGreenParatroopa(e)&&(e.paratroopaMotion??'bounce')==='bounce';}
+ /** An inactive enemy that the remake activates on the next frame, i.e. one the native loader makes on this frame (after this frame's scroll). */
+ private nativeLoadsThisFrame(e:Enemy){
+  return !e.active&&!e.slotLost&&e.kind!=='piranha'&&(e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&this.scrollCrossFrame!==this.frame-1&&(e.spawnFrame===undefined||this.areaFrame+1>=e.spawnFrame);
+ }
  private updateEnemies(oldBottom:number){
   this.broClock++;
   this.releaseNativeSlots();
@@ -1481,9 +1548,10 @@ export class Simulation {
   for(const e of this.enemies){
    const priorY=e.y,priorX=e.x; // the native touch test reads the enemy before its own move
    if(!e.active&&this.nativeSlotDenied(e))continue;
-   if(!e.active){if((e.spawnCamera!==undefined?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
+   if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.camera>=e.spawnCamera:e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
    e.age++;
+   if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
    if(e.dead){
     if(e.squashed){if(e.dead<90&&++e.dead>goombaSquashRules.durationActiveNativeFrames)e.dead=100;continue;}
     e.dead++;
@@ -1493,7 +1561,7 @@ export class Simulation {
     }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
-   if(e.kind==='bullet'?this.nativeBulletGone(e):e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    if(e.motion==='flying'){
     if(e.nativeFlight){if(e.age>1){e.x+=e.vx;e.y+=e.vy;e.vy+=FLYING_FISH.launch.gravity;}} // the spawn step holds the launch position
@@ -1572,10 +1640,19 @@ export class Simulation {
      else if(this.isSolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;e.vx=-e.vx;}
     }
     const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
-    if(e.egg&&e.motion==='falling'){e.y+=e.vy;e.vy=Math.min(LAKITU.egg.maxFall,e.vy+LAKITU.egg.gravity);} // native egg arc: position first, then gravity
+    if(greenBounce){
+     // Native jumping Paratroopa (id 14, RunNormalEnemies: background collision before the move). EnemyJump: with speed byte + 2 >= 3 (falling at 1+ or rising at 3+) and a solid block under
+     // its feet, EnemyLanding zeroes the speed, snaps native y to (y & 0xF0) | 8 and sets speed -3; then MoveJ_EnemyVertically (28/256 per frame, cap 3). 8-2 slot 3 rows 83-164: every row.
+     // A landing 5+ px deep is also a side collision: the ordinary side probe (5 px above the integer feet) meets the floor and turns it.
+     // first motion row: the 8.8 speed is the stored vy plus one gravity step (vy holds the speed before this row's gravity; a spawned one is at rest unless a spawnVy was measured)
+     const n=e.pod??=(()=>{const v=Math.round((e.vy+GREEN_PARATROOPA_PHYSICS.gravity)*256);return {...nativeMoveState(Math.floor(e.y)),speed:v>>8,force:v&255,fraction:Math.round((e.y-Math.floor(e.y))*256)&255};})();
+     const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
+     if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
+     nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
+    }else if(e.egg&&e.motion==='falling'){e.y+=e.vy;e.vy=Math.min(LAKITU.egg.maxFall,e.vy+LAKITU.egg.gravity);} // native egg arc: position first, then gravity
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:e.kind==='hammerBro'?HAMMER_BRO.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:e.kind==='hammerBro'?HAMMER_BRO.gravity:0.25));e.y+=e.vy;}
     const floor=this.collisionAt(e.x+8,e.y);
-    if(e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)&&(!greenBounce||this.greenParatroopaLands(e,floor.y))){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
+    if(!greenBounce&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='hammerBro'&&e.hammerDropRow!==undefined&&e.y>e.hammerDropRow+16)e.hammerDropRow=undefined;
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }
@@ -1588,6 +1665,7 @@ export class Simulation {
     this.floateyScore(shellRules.victimScores[Math.min(e.shellChain??0,shellRules.victimScores.length-1)]);e.shellChain=(e.shellChain??0)+1;this.emit('sfx_kick');
    }
    if(p.dead)continue; // a pit fall keeps enemies moving, but a dead Mario touches nothing
+   if(this.broClock%2!==0)continue; // PlayerEnemyCollision returns at once when FrameCounter $09 (broClock) is odd: no touch, stomp or star kill (25 of 25 native enemy-contact deaths are on even rows; 8-2 row 168)
    const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
@@ -1600,7 +1678,7 @@ export class Simulation {
    if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.awardPopup(100,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.koopaDurationActiveNativeFrames);this.emit('sfx_kick');continue;}
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
    if(this.kickRestingShellFromAbove(e,oldBottom))continue;
-   if(stompable&&(p.vy>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))){
+   if(stompable&&(Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))){
     p.vy=this.stompBounceVy(p.vy);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;
     // First Paratroopa contacts award 400; subsequent ordinary +100 is observed.
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
@@ -1614,7 +1692,7 @@ export class Simulation {
      else{e.movingShell=!e.movingShell;e.shellAge=0;e.shellChain=0;}
     }else{e.dead=1;e.vy=0;if(e.kind==='goomba'){e.squashed=true;this.rememberPlatformCorpseSlot(e);}}
    }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.awardPopup(kick,e.x,e.y-popupRules.enemyFeetYOffset,popupRules.greenShellSideKickDurationActiveNativeFrames);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
-   else if(this.nativeTouch(e,priorY,true))this.hurt();
+   else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
   const walkers=this.enemies.filter(e=>e.active&&!e.dead&&(isGreenParatroopa(e)||['goomba','koopa','redKoopa','beetle','spiny'].includes(e.kind)&&e.vy===0)&&!e.movingShell);
   for(let a=0;a<walkers.length;a++)for(let b=a+1;b<walkers.length;b++){

@@ -5,9 +5,10 @@ import {observedLevels} from '../src/levels.js';
 import water from '../data/native-water-actors.json';
 import type {Area,EnemySpec,Level,Tile} from '../src/types.js';
 
-// Native lava Podoboo of 5-4 (read-only trace of the recorded route, slot 0 from row 44586, x 256): [frames since it appeared, native y].
-// It appears at y 258 (the byte reads 2), is launched at frame 2 and falls back to the bottom around frame 128, where it is launched again.
-const NATIVE_5_4_ROW_44586:[number,number][]=[[8,217],[16,176],[24,143],[32,117],[40,97],[48,85],[56,80],[64,81],[72,90],[80,106],[88,128],[96,154],[104,180],[112,206],[120,232]];
+// Native lava Podoboo of 5-4 (v2 trace, slot 1, x 320; RAM y page 0xB7/y 0xD0, speed 0xA1, move force 0x435, fraction 0x418, EnemyIntervalTimer 0x797, IntervalTimerControl 0x77F):
+// row 57 rests at y 514 (page 2, below the screen) with timer 1 and IntervalTimerControl 0; row 58 the control wraps, the timer reaches 0 and it relaunches with
+// random byte s+1 = 86 (force 214, timer 6, speed -7). Native y every 4th row from 58.
+const NATIVE_5_4_SLOT1_Y=[508,484,462,442,424,407,393,379,368,359,351,345,340,338,337,338,341,345,351,359];
 
 function fixture(enemy:Partial<EnemySpec>){
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
@@ -16,18 +17,19 @@ function fixture(enemy:Partial<EnemySpec>){
  const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
 }
 
-test('a measured Podoboo follows the native first jump (launch frame, speed, gravity 28/256) and is launched again at the bottom',()=>{
- const sim=fixture({launch:{delay:2,v0:6.18}});
- sim.step([],1);const podoboo=sim.enemies[0];assert.equal(podoboo.y,282); // frame 0: native y 258 + 24
- let k=0;
- for(const [at,y] of NATIVE_5_4_ROW_44586){
-  sim.step([],at-k);k=at;
-  assert.ok(Math.abs(podoboo.y-24-y)<=2,`k ${at}: y ${podoboo.y-24} vs ${y}`);
+test('a Podoboo relaunches when its interval timer runs out, from the random byte of its slot, and follows MoveJ_EnemyVertically (5-4 rows 57-134)',()=>{
+ const sim=fixture({launch:{delay:2,v0:6.18}}) as any,podoboo=sim.enemies[0];
+ Object.assign(podoboo,{active:true,enemySlot:1,pod:{y:514,speed:0,force:84,fraction:84,timer:1}});sim.intervalControl=0;
+ const ys:number[]=[];
+ for(let row=58;row<=134;row++){
+  sim.tickIntervalTimers();
+  if(row===58){sim.random.bytes=[0,0,86,0,0,0,0];assert.equal(podoboo.pod.timer,0,'the control wraps: timer 1 -> 0');}
+  sim.updateNativePodoboo(podoboo);
+  if(row===58){assert.equal(podoboo.pod.timer,6);assert.equal(podoboo.pod.speed,-7);assert.equal(podoboo.pod.force,(86|0x80)+28);}
+  if((row-58)%4===0)ys.push(podoboo.pod.y);
  }
- assert.ok(!podoboo.dead&&podoboo.x===256);
- sim.step([],16); // native: bottom (y 254) at frame 129, launched again, y 204 at frame 136
- assert.ok(podoboo.vy<0||podoboo.y-24<254,`relaunched: vy ${podoboo.vy} y ${podoboo.y-24}`);
- sim.step([],60);assert.ok(podoboo.y-24<120);
+ assert.deepEqual(ys,NATIVE_5_4_SLOT1_Y);
+ assert.equal(podoboo.y,359-256+24,'remake feet = native y + 24 on the visible page');
 });
 
 test('the compiled castle levels carry the native Podoboo populations',()=>{

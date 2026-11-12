@@ -11,6 +11,9 @@ export class FirebarSlots {
  private angles:number[];
  private born=new Set<Bar>();
  constructor(private bars:Bar[],initialAngles=Array(5).fill(768)){this.angles=[...initialAngles];}
+ /** Enemy slots are shared natively: a slot held by an enemy is not free for a bar, and a bar's slot is not free for an enemy. */
+ busy:(slot:number)=>boolean=()=>false;
+ held(){return new Set(this.slots.flatMap((slot,s)=>slot?[s]:[]));}
  tracks(bar:Bar){return this.bars.includes(bar);}
  private enter(camera:number){
   for(let s=0;s<5;s++){
@@ -18,7 +21,7 @@ export class FirebarSlots {
    if(slot&&slot.bar.x-4-camera< -73){this.angles[s]=Math.floor(slot.units/32)*32;this.slots[s]=undefined;}
   }
   for(const bar of this.bars)if(!this.born.has(bar)&&bar.x-4<camera+308){
-   const s=this.slots.findIndex(slot=>!slot);if(s<0)continue;
+   const s=this.slots.findIndex((slot,k)=>!slot&&!this.busy(k));if(s<0)continue;
    this.slots[s]={bar,units:this.angles[s],previousUnits:this.angles[s]};this.born.add(bar);
   }
  }

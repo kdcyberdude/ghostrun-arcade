@@ -29,15 +29,16 @@ test('the independent left-and-wait branch validates repeated green bounces with
 
 test('green Paratroopa falls into the actual gap without a scheduled aerial bounce',()=>{
  // Source starts at world2422; observed floor ends2432. Translate actor to200.
- const result=compareTrajectory(measured.gapFall.best,1,0,210);
- assert.equal(result.enemy.vy,GREEN_PARATROOPA_PHYSICS.maxFall);assert.ok(result.enemy.y>234);
+ const result=compareTrajectory(measured.gapFall.best,1,1,210); // native fall cap 3 (the screenshot fit capped at 3.09375): 1 px by the last reference row
+ assert.equal(Math.floor(result.enemy.vy),GREEN_PARATROOPA_PHYSICS.maxFall);assert.ok(result.enemy.y>234); // speed byte at the cap (the move force restarts at 0 when it reaches 128)
 });
 
-test('ground-supported green bounce rises about 42px and repeats after 56 native frames',()=>{
- const sim=fixture(),enemy=sim.enemies[0];enemy.vy=GREEN_PARATROOPA_PHYSICS.maxFall; // arriving at speed: contact registers at once (a Paratroopa starting at rest first bounces at age 10)
- sim.step([],1);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.bounce);
- let top=208;for(let i=0;i<55;i++){sim.step([],1);top=Math.min(top,enemy.y);assert.ok(enemy.y<208);}
- assert.equal(top,165.78125);sim.step([],1);assert.equal(enemy.y,208);assert.equal(enemy.vy,GREEN_PARATROOPA_PHYSICS.bounce);
+test('ground-supported green bounce rises 43 px and repeats after 56 native frames',()=>{
+ const sim=fixture(),enemy=sim.enemies[0];enemy.vy=GREEN_PARATROOPA_PHYSICS.maxFall; // arriving at speed: contact registers at once (a Paratroopa starting at rest first bounces at age 11)
+ const bounceRow=GREEN_PARATROOPA_PHYSICS.bounce+GREEN_PARATROOPA_PHYSICS.gravity; // native: snap, speed -3, then the frame's move and gravity
+ sim.step([],1);assert.equal(enemy.vy,bounceRow);assert.equal(enemy.y,205);
+ let top=208;for(let i=0;i<54;i++){sim.step([],1);top=Math.min(top,enemy.y);assert.ok(enemy.y<208);}
+ assert.equal(top,165);sim.step([],1);assert.equal(enemy.y,208);sim.step([],1);assert.equal(enemy.y,205);assert.equal(enemy.vy,bounceRow);
 });
 
 test('ordinary green walkers and red flight retain their prior vertical rules',()=>{

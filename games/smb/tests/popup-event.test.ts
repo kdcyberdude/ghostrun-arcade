@@ -32,6 +32,6 @@ test('ordinary pause freezes labels, resume advances them, and area reset clears
  sim.step(['start'],1);assert.equal(sim.paused,false);assert.equal(popup.age,1);assert.equal(popup.y,175);sim.reset(true);assert.equal(sim.popups.length,0);
 });
 test('Star and fireball Goomba contacts have independently qualified launched labels',()=>{
- const star=fixture('goomba',40,false);star.player.star=100;star.step([],1);assert.equal(star.enemies[0].dead,1);assert.equal(star.popups.length,1);assert.equal(star.popups[0].victim,undefined);
+ const star=fixture('goomba',40,false);star.player.star=100;(star as any).broClock=1;star.step([],1);assert.equal(star.enemies[0].dead,1);assert.equal(star.popups.length,1);assert.equal(star.popups[0].victim,undefined);
  const fire=fixture('goomba',40,false);fire.items.push({kind:'fireball',x:48,y:188,vx:0,vy:0,age:0,life:10});fire.step([],1);assert.equal(fire.enemies[0].dead,1);assert.equal(fire.popups.length,1);assert.equal(fire.popups[0].victim,undefined);
 });

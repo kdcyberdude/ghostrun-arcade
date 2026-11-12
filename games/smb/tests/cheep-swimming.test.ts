@@ -41,5 +41,5 @@ test('flying Cheep and Blooper horizontal motion and the existing vertical fallb
 
 test('a swimming fish still causes genuine contact death through ordinary production collision steps',()=>{
  const sim=fixture({x:60,y:184},40);sim.step([],36);assert.equal(sim.phase,'play');
- sim.step([],1);assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);
+ (sim as any).broClock=1;sim.step([],1);assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true); // contact on an even frame-counter row (PlayerEnemyCollision)
 });
