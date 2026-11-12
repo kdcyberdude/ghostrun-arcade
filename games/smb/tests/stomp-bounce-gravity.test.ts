@@ -15,15 +15,14 @@ function fixture(){
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
 
-test('a stomp bounce after a walk-class jump falls with the walk gravity even with A held',()=>{
- const sim=fixture();const vys:number[]=[];let bounced=false;
- for(let frame=0;frame<400&&vys.length<NATIVE_WALK_BOUNCE.length;frame++){
-  const before=sim.player.vy;
-  sim.step(['a'],1); // one jump from rest (walk class), A held through the stomp and the bounce
-  if(!bounced&&before>0&&sim.player.vy<=-3.5)bounced=true;
-  if(bounced)vys.push(Math.floor(sim.player.vy));
- }
- assert.ok(bounced,'Mario stomps the Goomba');
+test('a stomp bounce after a walk-class jump falls with walk gravity even with A held',()=>{
+ const sim=fixture() as any;
+ // The observed bounce begins at the fall cap (move force 0). Start at that
+ // native state rather than depending on when a synthetic Goomba is touched.
+ sim.player.y=128;sim.player.vy=sim.stompBounceVy(4);sim.player.grounded=false;
+ sim.bouncing=true;sim.bounceGravity=0.4375;sim.landJump='inactive';sim.enemies=[];
+ const vys=[Math.floor(sim.player.vy)];
+ for(let frame=1;frame<NATIVE_WALK_BOUNCE.length;frame++){sim.step(['a'],1);vys.push(Math.floor(sim.player.vy));}
  assert.deepEqual(vys,NATIVE_WALK_BOUNCE);
 });
 

@@ -4,7 +4,8 @@ import manifest from '../assets/graphics/graphics-manifest.json';
 import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from './view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown} from './view-rules.js';
+import {playerCell,playerVisible} from './player-cell.js';
 import {platformMotionModel} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -107,7 +108,9 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor(e.x-s.camera),y=Math.floor(e.y)-23,phase=Math.floor(e.age/8)%2;
+  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23;
+  const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
+  const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -164,8 +167,10 @@ export class GameRenderer {
   const koopaFacing=!e.dead&&e.vx!==0&&(palette==='0f-1a-30-27'&&(e.kind==='koopa'&&!e.shell||e.kind==='paratroopa'&&(e.paratroopaMotion??'bounce')==='bounce')||palette==='0f-16-30-27'&&e.kind==='redKoopa'&&!e.shell);
   if(e.kind==='goomba'&&!e.dead){
    const tiles=tables.enemy_cells[cell].tiles;
+   // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
+   // The direction is captured before collision turns, as in native OAM.
+   const left=(e.graphicsFacing??e.vx)<0,flip=s.powerChange?left:left===Boolean(s.random.frame&8);
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
-    const flip=row===2&&phase===1;
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
   }else this.enemyCell(cell,x,y+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?s.player.x<e.x:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
@@ -226,7 +231,7 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    for(const e of s.enemies)if(e.active&&e.x-s.camera>-40&&e.x-s.camera<272&&e.dead<90)this.enemy(e,s);
-   for(const i of s.items){const x=i.x-s.camera;
+   for(const i of s.items){if(!itemShown(i))continue;const x=i.x-s.camera;
     if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y,i.emerging?-0.1:1.5);
     if(i.kind==='coin')this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
     if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
@@ -254,7 +259,7 @@ export class GameRenderer {
      for(const firework of s.flagFireworks)this.special('explosions-'+firework.phase,firework.x-s.camera,firework.y);
     }
    }
-   if(s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(s.powerChange||!s.player.invincible||Math.floor(s.frame/4)%2===0))this.player(s);
+   if(playerVisible(s))this.player(s);
    this.worldClip=false;
   }
   const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.introHiddenLate);
@@ -285,24 +290,10 @@ export class GameRenderer {
   }
  }
  private player(s:Simulation){
-  const p=s.player,pose=s.phase==='play'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
-  if(p.dead)cell=22;else if(s.waterEntryStanding)cell=p.size?25:23;else if(s.entryFallPose)cell=p.size?0:12;else if(p.climbing)cell=(p.size?8:20)+(s.phase==='flag'?(p.y>=191?0:Math.floor(s.frame/8)%2):Math.floor(p.anim/12)%2);
-  else if(s.phase==='flag'&&!s.flagInside)cell=(p.size?0:12)+Math.floor(p.anim/5)%3;
-  else if(p.duck)cell=10;else if(s.area.theme==='water'&&!p.grounded)cell=(p.size?5:17)+s.swimPoseFrame;
-  else if(pose)cell=pose.kind==='jump'?(p.size?4:16):pose.kind==='skid'?(p.size?3:15):pose.kind==='walk'?(p.size?0:12)+pose.frame:cell;
-  else if(!p.grounded)cell=p.size?4:16;
-  else if(Math.abs(p.vx)>0.1)cell=p.vx*p.facing<0?(p.size?3:15):(p.size?0:12)+Math.floor(p.anim/5)%3;
-  const change=s.powerChange;
-  // Pose cadence between7/8-frame observations remains inferred. All three
-  // supplied growth sizes are used while the measured gameplay freeze runs.
-  if(change?.kind==='grow')cell=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining)??cell;
-  if(change?.kind==='shrink'&&!shrinkBig(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining)&&cell<13)cell=cell===25?23:cell===10?23:cell+12; // native: the big pose flickers against the small one every frame for 16 rows, then small
+  const p=s.player,{cell,facing,throwing}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
   if(p.star)variant=starVariant(p.star,s.frame,variant);
-  const facing=pose&&s.area.theme!=='water'&&!p.climbing&&!p.duck&&!s.entryFallPose?pose.facing:p.facing;
   const sheet=`player-${variant}-${facing<0?'left':'right'}.png`,z=s.phase==='pipe'||s.pipeRising?-0.1:3;
-  const throwing=p.size===2&&throwPoseShown(s.fireballThrowAge,p.grounded,Math.abs(p.vx))&&!p.duck&&!p.dead&&!p.climbing;
-  if(throwing&&Math.abs(p.vx)<=0.1)cell=11;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],p.x-s.camera,p.y-31,z+0.1);
  }

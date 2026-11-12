@@ -43,3 +43,13 @@ test('the compiled castle levels carry the native Podoboo populations',()=>{
  const four=observedLevels().find(l=>l.id==='4-4')!.areas[0].enemies.filter(e=>e.kind==='podoboo');
  assert.deepEqual(four.map(p=>p.x),[2640]); // the screenshot placement was at x 2608
 });
+
+test('a Podoboo waiting for a full buffer initializes on the freed-slot row before its first gravity step (3-4 rows669-673)',()=>{
+ const sim=fixture({}) as any,e=sim.enemies[0];
+ Object.assign(e,{active:true,enemySlot:0,waitedForNativeSlot:true,age:1});sim.slotYFraction[0]=128;
+ const rows:number[][]=[];
+ for(let frame=669;frame<=673;frame++){
+  sim.updateNativePodoboo(e);rows.push([e.pod.y,e.pod.fraction,e.pod.speed,e.pod.force]);e.age++;
+ }
+ assert.deepEqual(rows,[[514,128,0,0],[514,128,0,28],[514,156,0,56],[514,212,0,84],[515,40,0,112]]);
+});

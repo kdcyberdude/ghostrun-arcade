@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {PlatformMotion,platformMotionModel,nativePlatformObject} from '../src/platform-motion.js';
+import {PlatformMotion,platformMotionModel,nativePlatformObject,nativePlatformSpawnCamera} from '../src/platform-motion.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import type {PlatformSpec} from '../src/types.js';
@@ -10,52 +10,23 @@ import type {PlatformSpec} from '../src/types.js';
 // `age` is the number of frames since the first row in which the object exists. A native object is created when the scroll
 // position reaches its spawn position and then runs on its own clock, not on the level timeline.
 const spec=(level:string,area:string,x:number,y:number):PlatformSpec=>observedLevels().find(l=>l.id===level)!.areas.find(a=>a.id===area)!.platforms!.find(p=>p.x===x&&p.y===y)!;
-const spawn=(level:string,platform:PlatformSpec)=>nativePlatformObject(platform,{levelId:level,areaId:'main'})!.spawnCamera;
+const spawn=(level:string,platform:PlatformSpec)=>nativePlatformSpawnCamera(nativePlatformObject(platform,{levelId:level,areaId:'main'})!);
 const within=(actual:number,expected:number,tolerance:number,label:string)=>assert.ok(Math.abs(actual-expected)<=tolerance,`${label}: ${actual} vs native ${expected}`);
 
-test('horizontal platforms follow the native 240-frame cycle from their own spawn',()=>{
- const ages=[0,10,20,40,60,80,100,117,130,160,200,230];
- const cases:[string,number,number,(number|null)[]][]=[
-  ['3-3',452,65,[480,479,476,466,451,437,429,427,428,440,470,null]], // route rows 25375+age
-  ['5-3',1346,129,[1376,1375,1373,1364,1348,1334,1326,1324,1324,1336,1366,1376]], // route rows 43186+age
-  ['6-3',658,81,[688,686,684,674,658,644,637,635,636,null,null,null]], // route rows 51520+age (object leaves the screen at ~age 130)
- ];
- for(const [level,x,y,expected] of cases){
-  const platform=spec(level,'main',x,y),context={levelId:level,areaId:'main'};
-  assert.equal(platformMotionModel(platform,context),'native-horizontal');
-  const motion=new PlatformMotion(context);motion.advance(100,spawn(level,platform));
-  expected.forEach((nativeX,i)=>{
-   if(nativeX!==null)within(motion.collisionPosition(platform,100+ages[i]).x,nativeX,2,`${level}/${x} age ${ages[i]}`);
-  });
-  // collision y is the native object y; the artwork is drawn one line lower
-  assert.equal(motion.artworkPosition(platform,100).y-motion.collisionPosition(platform,100).y,1);
- }
+// Exact horizontal motion, including every recorded spawn counter and inherited slot
+// fraction, is checked over all native runs by native-platform-motion.test.ts.
+test('horizontal artwork sits one row below its native collision surface',()=>{
+ const platform=spec('3-3','main',452,65),motion=new PlatformMotion({levelId:'3-3',areaId:'main'});
+ motion.advance(100,spawn('3-3',platform),13);
+ assert.equal(motion.artworkPosition(platform,100).y-motion.collisionPosition(platform,100).y,1);
 });
 
-test('a platform created at the same scroll position runs the same age-relative path wherever it falls on the timeline',()=>{
- // Probes that insert 0, 100 and 237 idle frames before the 3-3 control phase make the 3-3 platform appear 288, 387 and 524
- // level frames after the level began; its x at ages [0,2,11,25,40,60,100,117,160,200] is the same each time (the 100-frame
- // probe differs by one frame of native phase jitter, at most 1px).
- const ages=[0,2,11,25,40,60,100,117,160,200];
- const runs:[number,number[]][]=[
-  [288,[480,479,478,474,466,451,429,427,440,470]],
-  [387,[480,480,479,475,467,452,429,427,440,469]],
-  [524,[480,479,478,474,466,451,429,427,440,470]],
- ];
+test('horizontal clocks depend on spawn FrameCounter phase, not the level timeline',()=>{
  const platform=spec('3-3','main',452,65),context={levelId:'3-3',areaId:'main'},camera=spawn('3-3',platform);
- for(const [arrival,expected] of runs){
-  const motion=new PlatformMotion(context);
-  for(let frame=1;frame<arrival;frame++)motion.advance(frame,camera-10);
-  assert.equal(motion.collisionPosition(platform,arrival-1).x,480,'it waits at its right end until the scroll arrives');
-  motion.advance(arrival,camera);
-  ages.forEach((age,i)=>within(motion.collisionPosition(platform,arrival+age).x,expected[i],2,`arrival ${arrival} age ${age}`));
- }
- // a level-timeline clock cannot reproduce all three arrivals: the three runs share one trajectory, so the model must not depend on it
  const early=new PlatformMotion(context),late=new PlatformMotion(context);
- early.advance(10,camera);late.advance(500,camera);
+ early.advance(10,camera,13);late.advance(500,camera,13);
  for(const age of [1,30,60,117,239,240,333])assert.deepEqual(early.collisionPosition(platform,10+age),late.collisionPosition(platform,500+age),`age ${age}`);
- // dying or restarting at a checkpoint clears the clock
- early.reset();assert.deepEqual(early.collisionPosition(platform,10+60),new PlatformMotion(context).collisionPosition(platform,0));
+ early.reset();assert.deepEqual(early.collisionPosition(platform,70),new PlatformMotion(context).collisionPosition(platform,0));
 });
 
 test('lifts follow the native 384-frame cycle in both directions',()=>{
@@ -124,9 +95,9 @@ test('the simulation starts platform clocks from the scroll and restarts them wi
  const x=()=>game.platformPosition(platform()).x;
  // before the scroll reaches the spawn the platform sits at its right end however long the player waits
  game.loadArea('main',undefined,camera-40);game.step([],60);assert.equal(x(),480);
- // the same scroll position, reached at any time, starts the cycle from the beginning
- game.loadArea('main',undefined,camera);game.step([],1);assert.equal(x(),480);
+ // the same scroll position and native FrameCounter phase start the same cycle
+ game.loadArea('main',undefined,camera);(game as any).random.frame=0;game.step([],1);assert.equal(x(),480);
  game.step([],80);const first=x();within(first,437,2,'age 80 after a fresh start');
- game.loadArea('main',undefined,camera);game.step([],1);assert.equal(x(),480);
+ game.loadArea('main',undefined,camera);(game as any).random.frame=0;game.step([],1);assert.equal(x(),480);
  game.step([],80);assert.equal(x(),first,'a restarted area replays the same cycle');
 });
