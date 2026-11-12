@@ -133,7 +133,7 @@ export class Simulation {
  private timeUpDeath=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;
- private sideCollisionTimer=0;
+ private sideCollisionTimer=0;private platformScroll=0;
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -215,7 +215,7 @@ export class Simulation {
   // Stream inserts belong to this visit. Reset/death must reload the explicit
   // observed map rather than retain a previous failed route's extra sections.
   const area=structuredClone(source);this.mazeSource=source;
-  this.sideCollisionTimer=0;
+  this.sideCollisionTimer=0;this.platformScroll=0;
   this.platformMotion.reset({levelId:this.level.id,areaId:id});this.platformFrame=0;
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
   // 2-4: the first two slots retain Podoboo fall-speed byte3 as their angle.
@@ -473,16 +473,18 @@ export class Simulation {
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
-  const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>p.x+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
+  const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
   // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
-  // attempted pixel move before wall ejection plus the platform carry; screen position, and SideCollisionTimer ($0785, counted down once per frame)
+  // attempted pixel move before wall ejection plus Platform_X_Scroll, the lift carry of the
+  // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+Math.floor(p.x)-Math.floor(xBeforePlatforms),screenX=Math.floor(oldX)-previousCamera;
+  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=Math.floor(oldX)-previousCamera;
    if(screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
   if(cameraContact||this.wallBackOut)this.sideCollisionTimer=16;
+  this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms);
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32))this.scrollCrossFrame=this.frame;
   this.platformMotion.advance(this.platformFrame,this.camera);

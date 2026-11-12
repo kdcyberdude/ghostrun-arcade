@@ -7,7 +7,7 @@ import {initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import fixture from '../evidence/native-v2-camera-openings.json';
 
 // Native ScrollHandler: scroll = attempted pixel move (before wall ejection, plus platform carry), none below screen x 80 or while the side-collision
-// timer runs, one pixel less below screen x 112. Native camera ($071A/$071C) per frame of the v2 model runs, up to each level's next x divergence.
+// timer runs, one pixel less below screen x 112; a lift's carry joins the next frame's scroll (1-3, 6-3). Native camera ($071A/$071C) per frame of the v2 model runs, up to each level's next x divergence.
 const nesButtons:Button[]=['a','b','select','start','up','down','left','right'];
 for(const run of fixture.levels)test(`${run.level} v2 replay keeps the native camera for ${run.camera.length} frames`,()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,run.entrance);sim.step([],0);sim.inputs=[];
