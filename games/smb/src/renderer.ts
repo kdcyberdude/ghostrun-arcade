@@ -233,7 +233,7 @@ export class GameRenderer {
    }
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
-   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
    for(const i of s.items){if(!itemShown(i))continue;const x=i.x-s.camera;
     if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y,i.emerging?-0.1:1.5);
     if(i.kind==='coin')this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);

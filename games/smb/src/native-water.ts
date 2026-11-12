@@ -83,7 +83,7 @@ export class NativeWater{
  vertical(a:boolean,aPrev:boolean,y:number,grounded:boolean,inZone:boolean):WaterStep{
   if(this.timer>0)this.timer--;
   this.beforeWhirl=undefined;
-  const stroke=a&&!aPrev&&(this.timer>0||this.speed>=0||grounded);
+  const stroke=a&&!aPrev&&(this.timer>0||this.speed>=0||grounded),lowY=y&255;
   let dy=0;
   // The whirlpool pass that runs first sees the state from before the stroke.
   if(inZone&&this.whirlFirst)dy+=this.pass(WHIRL_GRAVITY,WHIRL_CAP);
@@ -91,9 +91,9 @@ export class NativeWater{
   if(!grounded||stroke){
    if(stroke){
     const s=this.whirl?STROKE.b:STROKE.a;
-    this.speed=y<SURFACE_Y?0:s.speed;this.force=s.force;this.frac=0;this.rise=s.rise;this.fall=s.fall;this.timer=STROKE_TIMER;
+    this.speed=lowY<SURFACE_Y?0:s.speed;this.force=s.force;this.frac=0;this.rise=s.rise;this.fall=s.fall;this.timer=STROKE_TIMER;
    }else if(this.speed>=0||!a)this.rise=this.fall;
-   dy+=this.pass(y<SURFACE_Y?SURFACE_GRAVITY:this.rise,FALL_CAP);
+   dy+=this.pass(lowY<SURFACE_Y?SURFACE_GRAVITY:this.rise,FALL_CAP);
   }
   if(inZone&&!this.whirlFirst){const before={speed:this.speed,force:this.force,frac:this.frac,moved:0};before.moved=this.pass(WHIRL_GRAVITY,WHIRL_CAP);this.beforeWhirl=before;dy+=before.moved;}
   this.whirl=inZone;
