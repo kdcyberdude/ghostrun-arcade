@@ -3,17 +3,17 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "tsc --noEmit && vite build && node tools/copy-assets.mjs",
-    "preview": "vite preview --host 0.0.0.0",
-    "test": "tsx --test tests/*.test.ts",
-    "test:browser": "node tools/browser-test.mjs",
-    "audio": "node tools/harness/compress-audio.mjs --verify"
+  "workspaces": [
+    "games/*"
+  ],
+  "arcade": {
+    "rootGame": "smb"
   },
-  "dependencies": {
-    "@fontsource/press-start-2p": "5.1.0",
-    "three": "0.170.0"
+  "scripts": {
+    "dev": "npm run dev -w games/smb",
+    "test": "npm test --workspaces",
+    "build": "node tools/build-site.mjs",
+    "preview": "vite preview --outDir dist --host 0.0.0.0"
   },
   "devDependencies": {
     "@gltf-transform/core": "4.1.1",

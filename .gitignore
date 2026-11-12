@@ -1,6 +1,5 @@
-/node_modules
+node_modules/
 dist/
-evidence/local/
 playwright-report/
 test-results/
 *.log
@@ -14,11 +13,3 @@ model/
 roms/
 .env
 .env.*
-.cache3d/
-assets3d/ph/models/
-assets3d/ph/hdri/alps_field_*
-assets3d/ph/hdri/snowy_hillside_*
-visual3d/blender/out/
-visual3d/blender/previews/
-visual3d/evidence/*
-!visual3d/evidence/replay-equivalence.json

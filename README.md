@@ -2,11 +2,15 @@
 
 **Retro games rebuilt as browser games.** The playable showcase for [GhostRun](https://github.com/kdcyberdude/ghostrun), a Hermes Agent plugin that learns a game, trains a player, and supplies a black-box reference to a separate builder.
 
-This first showcase contains an independent Three.js / TypeScript recreation of Super Mario Bros. with all 32 level definitions. The browser runs the simulation in `src/`; it does not load a ROM, an emulator, or a neural network.
-
 **[Watch the film](https://kdcyberdude.github.io/ghostrun-arcade/film/)** · **[Play in your browser](https://kdcyberdude.github.io/ghostrun-arcade/)** · [Plugin](https://github.com/kdcyberdude/ghostrun) · [Training lab](https://github.com/kdcyberdude/ghostrun-lab) · [How the pipeline works](https://github.com/kdcyberdude/ghostrun/blob/main/docs/ARCHITECTURE.md)
 
-![Recovered 3D presentation with shared gameplay](docs/images/playing-3d.png)
+![Recovered 3D presentation with shared gameplay](games/smb/docs/images/playing-3d.png)
+
+## Games
+
+| Game | Folder | URL | Views |
+|---|---|---|---|
+| Super Mario Bros. | [`games/smb/`](games/smb/README.md) | site root | 2D and 3D on one shared simulation |
 
 ## Play locally
 
@@ -14,51 +18,30 @@ Use Node.js 20 or newer:
 
 ```sh
 npm ci
-npm run dev
-```
-
-Choose 2D or 3D on the home screen, select the 3D resolution, then choose Play. Arrow keys move, Z/Space jumps, X/Shift runs or fires, and Enter pauses. Touch controls, two-player keyboard mappings, sound, fullscreen, and remapping are available in the interface.
-
-```sh
-npm test
-npm run build
+npm run dev        # Super Mario Bros. dev server
+npm test           # every game's tests
+npm run build      # every game, assembled into dist/
 npm run preview
 ```
 
-The production build is a static site. Relative asset paths support both a domain root and GitHub Pages project paths. Compressed audio keeps the download small while retaining the supplied music and effects.
+## Layout
 
-## What this demonstrates
+```text
+games/<game>/      one self-contained game: index.html, src/, data/, assets/, tests/, tools/, docs/, package.json
+site/              site-wide pages (film/)
+tools/build-site.mjs
+```
 
-- A multi-level browser simulation built through observation and iterative comparison with a reference game.
-- Gameplay code that can be inspected, modified, and tested independently of the reference process.
-- Two presentations of the same current simulation: original-style 2D and a 3D world with rigged characters, lighting and scenery.
+The root is an npm workspace over `games/*`, so games share one `node_modules`. `npm run build` builds each game and assembles one static site. The game named in `package.json` → `arcade.rootGame` (`smb`) is served at the site root, so existing links keep working. Every other game is served at `/<game>/`.
 
-Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options through the 4K preset (2304 × 2160, preserving the original aspect ratio). Performance depends on your GPU and selected resolution. See the [3D asset and renderer notes](visual3d/README.md). [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it.
+## Adding a game
 
-## Evidence and limits
-
-The research project reports recorded-input browser replays through all 32 levels. That is different from a policy completing this remake in a fresh, closed-loop run. A current replay of the fixed native action stream stops progressing after 1-2. Remaining contact, timing, and geometry discrepancies mean this is not a claim of exact equivalence.
-
-Unit fixtures capture measured mechanics. Full native campaign comparisons additionally require the retained reference traces, which are not bundled in this public source package. A passing build or unit suite does not replace that comparison. See [verification](docs/VERIFICATION.md).
-
-The [older player](https://huggingface.co/kdcyberdude/ghostrun-smb-policy-v1) follows a successful fixed route in its original environment. The [newer explorer](https://huggingface.co/kdcyberdude/ghostrun-smb-policy-v2) has eight moods and is still being trained. Its model card records its failures and current coverage. Neither model runs in this browser page.
-
-## Where to look
-
-| Part | Location |
-|---|---|
-| Gameplay and physics | `src/simulation.ts`, `src/native-motor.ts`, other motion modules |
-| 2D renderer and sound | `src/renderer.ts`, `src/audio.ts` |
-| 3D renderer and asset builders | `src/render3d/`, `visual3d/` |
-| Recorded-input clips | [Recording guide](docs/RECORDINGS.md) |
-| Controls, loading and menus | `src/controls.ts`, `src/loading.ts`, `src/shell.ts` |
-| Compiled levels and observations | `data/` |
-| Regression fixtures | `tests/`, `evidence/` |
-| Plugin reliability and reward design | [GhostRun documentation index](https://github.com/kdcyberdude/ghostrun/blob/main/docs/INDEX.md) |
-| Training code and recording tools | [GhostRun Lab](https://github.com/kdcyberdude/ghostrun-lab) |
+1. Create `games/<id>/` with its own `package.json` (name `@ghostrun-arcade/<id>`) containing `dev`, `build` and `test` scripts. `build` must write a static site to `games/<id>/dist` using relative asset paths (Vite `base: './'`).
+2. Run `npm install` at the root to link the workspace.
+3. Add a row to the table above. The deploy workflow needs no change.
 
 This repository is the playable showcase; plugin installation does not download it. Future game recreations can join the same showcase without expanding the Hermes catalog submission.
 
 ## Attribution
 
-This is an unofficial research recreation, not a Nintendo product. Original game artwork, music, characters and trademarks belong to their respective owners. No ownership or open-source license for those assets is asserted here. See [third-party notices](THIRD_PARTY.md).
+Each game has its own third-party notice (for example [Super Mario Bros.](games/smb/THIRD_PARTY.md)). These are unofficial research recreations, not products of the original publishers.
