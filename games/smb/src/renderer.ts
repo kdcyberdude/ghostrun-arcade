@@ -133,8 +133,8 @@ export class GameRenderer {
    const flipY=e.dead>0&&!s.castleBowserFalls(e);
    // The head half is the native anchor: at the body's left edge when he faces left, 16 px in (the body's right half) when he faces right.
    const right=e.bowser?e.bowser.side>0:e.vx>0,headX=e.bowser&&right?x+16:x;
-   this.enemyCell(35+phase*2,headX,y-8,e.palette??'0f-1a-30-27',right,flipY);
-   this.enemyCell(36+phase*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',right,flipY);return;
+   this.enemyCell(35+(e.nativeBowser?e.nativeBowser.controls>>7&1:phase)*2,headX,y-8,e.palette??'0f-1a-30-27',right,flipY);
+   this.enemyCell(36+(e.nativeBowser?e.nativeBowser.controls&1:phase)*2,headX+(right?-16:16),y,e.palette??'0f-1a-30-27',right,flipY);return;
   }
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
@@ -293,6 +293,7 @@ export class GameRenderer {
   const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
   this.enemyCell(s.level.id==='8-4'?26:27,exit.retainerX-s.camera,185,'0f-16-30-27');
   if(s.castleStage!=='message'&&s.phase!=='ending')return;
+  if(s.castleText){for(const row of s.castleText)this.text(row.text,row.x-s.camera,row.y);return;}
   const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
   // The terminal reference image precedes ending dialogue. Subsequent ending
   // text is an inferred presentation; its timing cannot be observed via the tool.
