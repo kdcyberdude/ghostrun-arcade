@@ -1144,6 +1144,8 @@ export class Simulation {
   // OffscreenBoundsCheck erases the object after its last motion step. Keep
   // that final fraction before objectSlots releases and reuses its slot.
   for(const [platform,slot] of this.platformSlots){
+   const xByte=this.platformMotion.slotXByte(platform as any,this.platformFrame);
+   if(xByte!==undefined)this.slotSub[slot]=xByte;
    const state=this.platformMotion.verticalState(platform as any,this.platformFrame);
    if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }
@@ -1152,6 +1154,8 @@ export class Simulation {
    const p=platform as any;
    this.platformMotion.slotSub(p,this.slotSub[slot]);
    this.platformMotion.slotFraction(p,this.slotVertical[slot].fraction);
+   const xByte=this.platformMotion.slotXByte(p,this.platformFrame);
+   if(xByte!==undefined)this.slotSub[slot]=xByte;
    const state=this.platformMotion.verticalState(p,this.platformFrame);
    if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }

@@ -1,7 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeBalanceStep,nativeDropStep} from '../src/native-platform-motor.js';
-import {nativeLiftState} from '../src/platform-motion.js';
+import {nativeLiftState,PlatformMotion,nativePlatformObject} from '../src/platform-motion.js';
+import {observedLevels} from '../src/levels.js';
 import events from './fixtures/native-platform-rule-events.json';
 
 test('native drop and balance motors match every recorded live transition',()=>{
@@ -24,4 +25,16 @@ test('balance motion integrates before acceleration and retains the previous slo
  // same rule delays its first integer step for five contact frames.
  const next={y:126,speed:0,force:0,fraction:55};
  for(const y of [126,126,126,126,126,125]){nativeBalanceStep(next,-1);assert.equal(next.y,y);}
+});
+
+
+test('native lift aliases its slot X fraction byte as YPlatformTopYPos',()=>{
+ const levels=observedLevels();let checked=0;
+ for(const e of events){
+  if(e.id!==37||e.age!==0)continue;
+  const context={levelId:e.level,areaId:'main'},area=levels.find(l=>l.id===e.level)!.areas.find(a=>a.id==='main')!;
+  const platform=area.platforms!.find(p=>{const o=nativePlatformObject(p,context);return o?.kind==='lift'&&o.y===e.spawnY;})!;
+  assert.equal(new PlatformMotion(context).slotXByte(platform,0),e.xByte,`${e.level} native slot ${e.slot}`);checked++;
+ }
+ assert.ok(checked>=5);
 });

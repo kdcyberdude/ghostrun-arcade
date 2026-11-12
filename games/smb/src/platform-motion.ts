@@ -183,6 +183,13 @@ export class PlatformMotion {
  private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState}>();
  private startFraction=new Map<PlatformSpec,number>();
  slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform))this.startFraction.set(platform,fraction);}
+ /** $0401+s is x fraction for id40 and YPlatformTopYPos for id37.
+  * The next slot occupant inherits the byte written on the final motion row. */
+ slotXByte(platform:PlatformSpec,frame:number){
+  const o=nativePlatformObject(platform,this.context);if(!o)return;
+  if(o.kind==='lift')return o.y<128?o.y:256-o.y;
+  if(o.kind==='horizontal'){const x=this.collisionPosition(platform,frame).x;return Math.round((x-Math.floor(x))*256)&255;}
+ }
  verticalState(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o)return;
   if(o.kind==='lift')return nativeLiftState(o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startFraction.get(platform)??0);
