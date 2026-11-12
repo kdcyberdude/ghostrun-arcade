@@ -1605,6 +1605,10 @@ export class Simulation {
  platformPosition(platform:NonNullable<Area['platforms']>[number],frame=this.platformFrame){
   return this.platformMotion.artworkPosition(platform,frame);
  }
+ /** Small lifts draw before their motion; large platforms draw after it. Collision continues reading the current step. */
+ platformPicturePosition(platform:NonNullable<Area['platforms']>[number]){
+  return this.platformPosition(platform,this.platformFrame-(nativeSmallPlatform(platform,this.platformMotion.context)?1:0));
+ }
  /** Native EnemiesCollision (src/enemy-collision.ts): walkers, shells and Goomba corpses in native slots, boxes from the position before this frame's move. */
  private collisionBits=[0,0,0,0,0];
  private nativeWalkerContacts(stepFrom:Map<Enemy,{x:number,y:number}>){

@@ -7,7 +7,7 @@ import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from 
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
 import {enemyPicture} from './enemy-picture.js';
-import {platformMotionModel} from './platform-motion.js';
+import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
@@ -215,9 +215,12 @@ export class GameRenderer {
    }
    for(const overlay of s.area.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
    if(s.warpZoneActive)for(const overlay of s.area.warpZone?.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
-   for(const platform of s.area.platforms??[]){const pos=s.platformPosition(platform);
-    if(platformMotionModel(platform,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,pos.y);
-    else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,pos.y,'0f-16-30-27');
+   for(const platform of s.area.platforms??[]){
+    const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
+    for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
+     if(platformMotionModel(platform,context)==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
+     else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');
+    }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
    this.worldClip=false;
