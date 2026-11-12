@@ -134,3 +134,14 @@ death1522→null, timer1529→1745 improve. Earlier y1916→1601, x1916→1602,
 camera1916→1603, score2162→1800 all follow enemy791. Other levels and fields
 are unchanged. Excerpts regenerated; full field snapshots are
 `/tmp/contacts-walker-bg-baseline.json` and `/tmp/contacts-walker-bg-final.json`.
+
+## Final void frame screen clamp
+
+Mood0 SHA3d43b7b4… entry0007/1-3 row578 reaches native page6/rawY0.
+`ScrollHandler` still clamps screenX240 to239 and clears the integer horizontal
+speed byte before `PlayerHole` selects engine6. The previous early return
+at pitEndFeetY skipped this final clamp. Moving the existing clamp ahead of
+that return changes strict first578→579 (x578 is eliminated), with no change
+to any field of the32 v2 runs. Strict579+ is the separately owned death/intro
+RAM-retention gap: native engine0 retains the previous player/camera bytes
+until area initialization; the current intro model resets them immediately.
