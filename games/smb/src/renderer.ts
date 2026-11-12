@@ -4,7 +4,8 @@ import manifest from '../assets/graphics/graphics-manifest.json';
 import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from './view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns} from './view-rules.js';
+import {playerCell} from './player-cell.js';
 import {platformMotionModel} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -285,24 +286,10 @@ export class GameRenderer {
   }
  }
  private player(s:Simulation){
-  const p=s.player,pose=s.phase==='play'?(s.wallDisplayPose??s.locomotionPose):undefined;let cell=p.size?25:23;
-  if(p.dead)cell=22;else if(s.waterEntryStanding)cell=p.size?25:23;else if(s.entryFallPose)cell=p.size?0:12;else if(p.climbing)cell=(p.size?8:20)+(s.phase==='flag'?(p.y>=191?0:Math.floor(s.frame/8)%2):Math.floor(p.anim/12)%2);
-  else if(s.phase==='flag'&&!s.flagInside)cell=(p.size?0:12)+Math.floor(p.anim/5)%3;
-  else if(p.duck)cell=10;else if(s.area.theme==='water'&&!p.grounded)cell=(p.size?5:17)+s.swimPoseFrame;
-  else if(pose)cell=pose.kind==='jump'?(p.size?4:16):pose.kind==='skid'?(p.size?3:15):pose.kind==='walk'?(p.size?0:12)+pose.frame:cell;
-  else if(!p.grounded)cell=p.size?4:16;
-  else if(Math.abs(p.vx)>0.1)cell=p.vx*p.facing<0?(p.size?3:15):(p.size?0:12)+Math.floor(p.anim/5)%3;
-  const change=s.powerChange;
-  // Pose cadence between7/8-frame observations remains inferred. All three
-  // supplied growth sizes are used while the measured gameplay freeze runs.
-  if(change?.kind==='grow')cell=growCell(POWERUPS.transformFreezeNativeFrames.mushroomGrowthValue-change.remaining)??cell;
-  if(change?.kind==='shrink'&&!shrinkBig(POWERUPS.transformFreezeNativeFrames.shrinkValue-change.remaining)&&cell<13)cell=cell===25?23:cell===10?23:cell+12; // native: the big pose flickers against the small one every frame for 16 rows, then small
+  const p=s.player,{cell,facing,throwing}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
   if(p.star)variant=starVariant(p.star,s.frame,variant);
-  const facing=pose&&s.area.theme!=='water'&&!p.climbing&&!p.duck&&!s.entryFallPose?pose.facing:p.facing;
   const sheet=`player-${variant}-${facing<0?'left':'right'}.png`,z=s.phase==='pipe'||s.pipeRising?-0.1:3;
-  const throwing=p.size===2&&throwPoseShown(s.fireballThrowAge,p.grounded,Math.abs(p.vx))&&!p.duck&&!p.dead&&!p.climbing;
-  if(throwing&&Math.abs(p.vx)<=0.1)cell=11;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],p.x-s.camera,p.y-31,z+0.1);
  }
