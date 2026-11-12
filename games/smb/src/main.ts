@@ -15,48 +15,72 @@ const tappedKeys=new Set<string>();const tappedPointers=new Set<Button>();let co
 const shell=new GameShell({pause:setPaused,isPaused:()=>sim.paused,clear:clearInput,restart:()=>{sim.reset();soundEvents();draw();},focus:()=>canvas.focus()});
 const keyMaps=shell.maps;
 const heights:Record<string,number>={'4K':2160,'2K':1440,'1K':960,'0.5K':480};
-const LADDER=['4K','2K','1K','0.5K'],TIERS=['ultra','high','low'] as const;type Tier=typeof TIERS[number];
-const RES_OPTIONS='<option value="auto">Auto · fits your screen and device</option><option value="4K">4K · 2304 × 2160</option><option value="2K">2K · 1536 × 1440</option><option value="1K">1K · 1024 × 960</option><option value="0.5K">0.5K · 512 × 480</option>';
-const TIER_OPTIONS='<option value="ultra">Ultra · for strong graphics chips</option><option value="high">High · shadows and glow</option><option value="low">Low · fastest</option>';
-let autoRes=false,currentRes='1K',autoSettle=0;
-/** Auto starts at the largest preset the screen can show in fullscreen (physical pixels); the speed watch then steps it down if frames drop. */
+const LADDER=['4K','2K','1K','0.5K'],TIERS=['ultra','high','low'] as const;type Tier=typeof TIERS[number];type Level={res:string;tier:Tier};
+const RES_OPTIONS='<option value="auto">Auto · adjusts to your device</option><option value="4K">4K · 2304 × 2160</option><option value="2K">2K · 1536 × 1440</option><option value="1K">1K · 1024 × 960</option><option value="0.5K">0.5K · 512 × 480</option>';
+const TIER_OPTIONS='<option value="auto">Auto · adjusts to your device</option><option value="ultra">Ultra · for strong graphics chips</option><option value="high">High · shadows and glow</option><option value="low">Low · fastest</option>';
+// Auto walks one ladder of resolution and graphics together, cheapest first. Ultra only at the top, where a strong GPU has room for it.
+const ALL_LEVELS:Level[]=[{res:'0.5K',tier:'low'},{res:'0.5K',tier:'high'},{res:'1K',tier:'low'},{res:'1K',tier:'high'},{res:'2K',tier:'high'},{res:'4K',tier:'high'},{res:'2K',tier:'ultra'},{res:'4K',tier:'ultra'}];
+/** Estimated frame time in ms on an Apple M4 laptop (measured): fixed scene cost plus a part per million pixels. Only ratios matter; a measured factor rescales it per device. */
+const COST={low:[5.8,1.5],high:[4,4.5],ultra:[4,15]} as const;
+const cost=(l:Level)=>{const h=heights[l.res],mp=h*h*256/240/1e6;return COST[l.tier][0]+COST[l.tier][1]*mp;};
+let autoRes=false,autoTier=false,current:Level={res:'1K',tier:'high'},autoSettle=0,deviceFactor=1,fastWindows=0;
+let probe:{back:Level;windows:number}|undefined;const blocked=new Map<string,number>(),failures=new Map<string,number>();
+/** Leave a level alone after it fails: 2 minutes, then 4, 8… so a device at its limit is not retried often. */
+function block(l:Level,now:number){const n=(failures.get(key(l))??0)+1;failures.set(key(l),n);blocked.set(key(l),now+120000*2**(n-1));}const key=(l:Level)=>l.res+'/'+l.tier;
+/** The largest preset the screen can show in fullscreen, in physical pixels. */
 function screenPreset(){const physical=Math.min(screen.width*240/256,screen.height)*(devicePixelRatio||1);return LADDER.find(p=>heights[p]<=physical*1.1)??'0.5K';}
-// What Auto settled on last time in this browser, so the next visit starts there instead of re-learning (cleared by choosing Auto again).
+/** Levels Auto may use: within the screen, and holding fixed whichever of resolution or graphics was chosen by hand. */
+function ladder(){const max=heights[screenPreset()];return ALL_LEVELS.filter(l=>heights[l.res]<=max&&(autoRes||l.res===current.res)&&(autoTier||l.tier===current.tier));}
+// What Auto settled on last time in this browser, so the next visit starts there (cleared by choosing Auto again).
 const LEARNED='smb-auto-3d';
-function learned():{res?:string;quality?:Tier}{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
-function learn(){try{localStorage.setItem(LEARNED,JSON.stringify({res:currentRes,quality:tier()}));}catch{}}
-function autoStart(){const saved=learned().res,fits=screenPreset();return saved&&LADDER.indexOf(saved)>LADDER.indexOf(fits)?saved:fits;}
-const tier=():Tier=>(document.querySelector<HTMLSelectElement>('#quality')?.value??'high') as Tier;
+function learned():Partial<Level>{try{return JSON.parse(localStorage.getItem(LEARNED)??'{}');}catch{return {};}}
+function learn(){try{localStorage.setItem(LEARNED,JSON.stringify(current));}catch{}}
+const tier=():Tier=>current.tier;
 if('setResolution' in view){
  document.querySelector('.edition')!.textContent='3D VERSION';
  document.querySelector('.preview-edition')!.textContent='3D VERSION';
  const preview=document.querySelector<HTMLImageElement>('.preview-image img')!;preview.src=import.meta.env.BASE_URL+'assets3d/preview.png';preview.alt='Mario in the recreated 3D World 1-1, with trees, hills and flowers';
  document.querySelector('#launch-resolution')!.removeAttribute('hidden');
- document.querySelector('#graphics-settings')!.innerHTML=`<div class="setting-row"><div><h3>3D resolution</h3><p>Auto picks the sharpest size your screen can show<br>and lowers it if your device can’t keep up.</p></div><select id="res" aria-label="3D resolution">${RES_OPTIONS}</select></div><div class="setting-row"><div><h3>Graphics</h3><p>Ultra adds soft ambient shading and extra smoothing.<br>Low is the fastest.</p></div><select id="quality" aria-label="3D graphics quality">${TIER_OPTIONS}</select></div>`;
+ document.querySelector('#graphics-settings')!.innerHTML=`<div class="setting-row"><div><h3>3D resolution</h3><p>Auto raises or lowers resolution and graphics<br>to keep the game smooth on your device.</p></div><select id="res" aria-label="3D resolution">${RES_OPTIONS}</select></div><div class="setting-row"><div><h3>Graphics</h3><p>Ultra adds soft ambient shading and extra smoothing.<br>Low is the fastest.</p></div><select id="quality" aria-label="3D graphics quality">${TIER_OPTIONS}</select></div>`;
  document.querySelector('#launch-res')!.innerHTML=RES_OPTIONS;document.querySelector('#launch-quality')!.innerHTML=TIER_OPTIONS;
- const params=new URLSearchParams(location.search),legacy:Record<string,string>={'960p':'1K','1080p':'1K'},asked=legacy[params.get('res')??'']??params.get('res')??'auto';
- for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
- const asked3=params.get('quality');
- for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality')){picker.value=TIERS.includes(asked3 as Tier)?asked3!:!params.has('res')&&TIERS.includes(learned().quality as Tier)?learned().quality!:'high';picker.addEventListener('change',()=>setQuality(picker.value as Tier));}
- view.setQuality(tier());
+ const params=new URLSearchParams(location.search),legacy:Record<string,string>={'960p':'1K','1080p':'1K'};
+ const askedRes=legacy[params.get('res')??'']??params.get('res')??'',askedTier=params.get('quality')??'';
+ autoRes=!(askedRes in heights);autoTier=!TIERS.includes(askedTier as Tier);
  // An explicit ?scale= (tools, old links) keeps its exact size and leaves Auto off.
- if(params.has('scale')&&!params.has('res')){currentRes=LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K';for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=currentRes;}
- else setResolution(asked in heights?asked:'auto',false);
+ const fixedScale=params.has('scale')&&!params.has('res');if(fixedScale)autoRes=autoTier=false;
+ current={res:fixedScale?LADDER.find(p=>heights[p]<=view.scale*240)??'0.5K':autoRes?'1K':askedRes,tier:autoTier?'high':askedTier as Tier};
+ if(autoRes||autoTier){
+  const levels=ladder(),saved=learned(),fitsDefault=[...levels].reverse().find(l=>cost(l)<=20)??levels[0];  // start where a typical laptop GPU holds 50+ fps
+  current=levels.find(l=>l.res===saved.res&&l.tier===saved.tier)??fitsDefault;
+ }
+ for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))picker.addEventListener('change',()=>setResolution(picker.value));
+ for(const picker of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))picker.addEventListener('change',()=>setQuality(picker.value as Tier|'auto'));
+ if(!fixedScale)apply(current);else view.setQuality(current.tier);
+ syncPickers();
 }
 function remember(key:string,value:string|null){const url=new URL(location.href);if(value===null)url.searchParams.delete(key);else url.searchParams.set(key,value);history.replaceState(null,'',url);}
-/** 'auto' or a preset. Manual choices switch Auto off until Auto is picked again. */
-function setResolution(choice:string,save=true){if(!('setResolution' in view))return;autoRes=choice==='auto';if(autoRes&&save)try{localStorage.removeItem(LEARNED);}catch{}currentRes=autoRes?autoStart():choice;view.setResolution(heights[currentRes]);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=choice;if(save)remember('res',autoRes?null:choice);autoSettle=2;if(loaded)draw();}
-function setQuality(quality:Tier){if(!('setQuality' in view))return;view.setQuality(quality);for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=quality;remember('quality',quality);autoSettle=2;if(loaded)draw();}
-/** Auto: Ultra drops to High first. Otherwise jump straight to the largest preset whose estimated frame time fits 60 fps: a fixed ~4 ms
- * (scene, shadows, game) plus a part that scales with pixel count (measured on an M4 laptop: 4K costs ~3.5x 1K, not 5x). Below 0.5K, use Low graphics. */
-function adaptResolution(fps:number){
- if(!('setResolution' in view))return false;
- const t=tier();if(t==='ultra'){setQuality('high');learn();return true;}
- const fixed=4,budget=1000/60*0.85,now=1000/fps,h=heights[currentRes],i=LADDER.indexOf(currentRes);
- const estimate=(p:string)=>fixed+Math.max(0,now-fixed)*(heights[p]/h)**2;
- let next=LADDER.find(p=>heights[p]<h&&estimate(p)<=budget)??'0.5K';if(LADDER.indexOf(next)<=i)next=LADDER[Math.min(i+1,LADDER.length-1)];
- if(next!==currentRes){currentRes=next;view.setResolution(heights[next]);autoSettle=2;learn();return true;}
- if(t!=='low'){setQuality('low');learn();return true;}
+function syncPickers(){for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-res,#res'))p.value=autoRes?'auto':current.res;for(const p of document.querySelectorAll<HTMLSelectElement>('#launch-quality,#quality'))p.value=autoTier?'auto':current.tier;}
+function apply(level:Level){if(!('setResolution' in view))return;current=level;view.setResolution(heights[level.res]);view.setQuality(level.tier);autoSettle=2;fastWindows=0;if(loaded)draw();}
+/** 'auto' or a preset. Choosing Auto again forgets what Auto learned before. */
+function setResolution(choice:string,save=true){if(!('setResolution' in view))return;autoRes=choice==='auto';if(autoRes){try{localStorage.removeItem(LEARNED);}catch{}blocked.clear();failures.clear();}else apply({...current,res:choice});syncPickers();if(save)remember('res',autoRes?null:choice);}
+function setQuality(choice:Tier|'auto'){if(!('setQuality' in view))return;autoTier=choice==='auto';if(autoTier){try{localStorage.removeItem(LEARNED);}catch{}blocked.clear();failures.clear();}else apply({...current,tier:choice as Tier});syncPickers();remember('quality',autoTier?null:choice);}
+/**
+ * Auto, once per measured second. The loop already skips frames down to 30 drawn frames a second, so the game keeps full speed above 30 fps.
+ * Down: two seconds under 30 fps jumps straight to the richest level estimated to hold 45 fps (estimates are rescaled by this device's measured cost).
+ * Up: six seconds at a steady ~60 fps tries one level richer (a steady 60 says nothing about spare capacity, so it has to be tried); if that drops below 45 fps it goes back and leaves that level alone (2, 4, 8… minutes).
+ */
+function adapt(fps:number,slowWindows:number,now:number){
+ if(!('setResolution' in view)||!(autoRes||autoTier))return false;
+ if(fps<57)deviceFactor=(1000/fps)/cost(current);
+ const levels=ladder(),i=levels.findIndex(l=>key(l)===key(current));
+ if(probe){probe.windows--;if(fps<45){block(current,now);const back=probe.back;probe=undefined;apply(back);learn();return true;}if(probe.windows<=0)probe=undefined;}
+ if(slowWindows>=2&&i>0){
+  block(current,now);
+  const target=[...levels.slice(0,i)].reverse().find(l=>cost(l)*deviceFactor<=1000/45)??levels[0];apply(target);learn();return true;
+ }
+ fastWindows=fps>=57?fastWindows+1:0;
+ const next=levels[i+1];
+ if(fastWindows>=6&&next&&(blocked.get(key(next))??0)<now){probe={back:current,windows:4};apply(next);learn();return true;}
  return false;
 }
 function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();}
@@ -121,41 +145,42 @@ const fpsBox=document.querySelector<HTMLElement>('#fps')!,fpsText=document.query
 let showFps=true;try{showFps=localStorage.getItem('smb-show-fps')!=='off';}catch{}
 fpsToggle.value=showFps?'on':'off';
 fpsToggle.addEventListener('change',()=>{showFps=fpsToggle.value==='on';try{localStorage.setItem('smb-show-fps',fpsToggle.value);}catch{}if(!showFps)fpsBox.hidden=true;});
+/** With frame skipping the game keeps full speed down to 30 drawn frames a second. */
+const gameSpeed=(fps:number)=>Math.round(Math.min(fps*2,NATIVE_HZ)/NATIVE_HZ*100);
 function showRate(fps:number){
- if(!showFps)return;const slow=fps<50,speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100),lighter=slow?lighterSetting():undefined;
- const detail='setResolution' in view?` · ${currentRes}${autoRes?' auto':''}`:'';
- fpsText.textContent=slow?`${Math.round(fps)} FPS · ${speed}% speed`:`${Math.round(fps)} FPS${detail}`;fpsBox.classList.toggle('slow',slow);
+ if(!showFps)return;const slow=fps<30,lighter=slow?lighterSetting():undefined;
+ const detail='setResolution' in view?` · ${current.res} ${current.tier}${autoRes||autoTier?' · auto':''}`:'';
+ fpsText.textContent=slow?`${Math.round(fps)} FPS · ${gameSpeed(fps)}% speed`:`${Math.round(fps)} FPS${detail}`;fpsBox.classList.toggle('slow',slow);
  fpsLower.hidden=!lighter;if(lighter){fpsLower.textContent=lighter.label;fpsLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
  fpsBox.hidden=false;
 }
 const playTwoD={label:'Switch to 2D',apply:()=>{const url=new URL(location.href);url.searchParams.delete('view');location.assign(url);}};
-/** The next lighter manual setting; with Auto on, only offered once Auto has nothing lighter left. */
+/** A lighter setting to offer by hand: none while Auto still has a lower level; otherwise the next manual step, then 2D. */
 function lighterSetting():{label:string;apply:()=>void}|undefined{
  if(!('setResolution' in view))return undefined;
- const t=tier(),i=LADDER.indexOf(currentRes);
- if(autoRes)return currentRes==='0.5K'&&t==='low'?playTwoD:undefined;
- if(t!=='low')return {label:'Lower graphics',apply:()=>setQuality(TIERS[TIERS.indexOf(t)+1])};
- if(i<LADDER.length-1)return {label:'Lower resolution',apply:()=>setResolution(LADDER[i+1])};
+ if((autoRes||autoTier)&&ladder().findIndex(l=>key(l)===key(current))>0)return undefined;
+ if(!autoTier&&current.tier!=='low')return {label:'Lower graphics',apply:()=>setQuality(TIERS[TIERS.indexOf(current.tier)+1])};
+ const i=LADDER.indexOf(current.res);if(!autoRes&&i<LADDER.length-1)return {label:'Lower resolution',apply:()=>setResolution(LADDER[i+1])};
  return playTwoD;
 }
 function watchSpeed(now:number){
  if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
  if(!perfStart){perfStart=now;perfFrames=0;return;}
  perfFrames++;const span=now-perfStart;if(span<1000)return;
- const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<54?perfSlow+1:0;
- // Two slow seconds in a row (one hiccup is ignored); the first two seconds after any change are skipped while shaders warm up.
- if(autoSettle>0)autoSettle--;else if(autoRes&&perfSlow>=2&&adaptResolution(fps))perfSlow=0;
+ const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<30?perfSlow+1:0;
+ // The first two seconds after any change are skipped while shaders and buffers warm up.
+ if(autoSettle>0)autoSettle--;else if(adapt(fps,perfSlow,now))perfSlow=0;
  showRate(fps);
- const lighter=lighterSetting();
- if(perfSlow<3||!perf.hidden||perfDismissed||(autoRes&&!lighter))return;
- const speed=Math.round(Math.min(fps,NATIVE_HZ)/NATIVE_HZ*100);
- perfText.innerHTML=`<b>The game is running at ${speed}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second and the game needs 60. Every frame is still played, so the game slows down instead of skipping ahead. ${lighter?'A lighter setting should help.':'Closing other tabs or apps may help.'}`;
- perfLower.hidden=!lighter;if(lighter){perfLower.textContent=lighter.label;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
+ const lighter=perfSlow>=3?lighterSetting():undefined;
+ if(!lighter||!perf.hidden||perfDismissed)return;
+ perfText.innerHTML=`<b>The game is running at ${gameSpeed(fps)}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second; the game needs at least 30 to keep full speed. A lighter setting should help.`;
+ perfLower.textContent=lighter.label;perfLower.hidden=false;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};
  perf.hidden=false;
 }
 document.querySelector('#perf-dismiss')!.addEventListener('click',()=>{perf.hidden=true;perfDismissed=true;canvas.focus();});
 document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput();sim.reset();soundEvents();draw();perf.hidden=true;fpsBox.hidden=true;shell.home();});
 let last=performance.now(),accumulator=0;
-// At most one game frame per drawn frame: if drawing falls below the native rate, the whole game (timer included) slows in proportion instead of skipping frames.
-function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;if(accumulator>=dt){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator=Math.min(accumulator-dt,dt);}soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
+// Up to two game frames per drawn frame: full game speed down to 30 drawn frames a second; below that the whole game (timer included) slows in proportion rather than skipping more.
+const MAX_STEPS_PER_DRAW=2;
+function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;for(let steps=0;accumulator>=dt&&steps<MAX_STEPS_PER_DRAW;steps++){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator-=dt;}accumulator=Math.min(accumulator,dt);soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
 requestAnimationFrame(animate);

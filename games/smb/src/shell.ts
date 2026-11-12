@@ -11,7 +11,6 @@ export class GameShell{
   for(const id of ['controls-open','quick-controls','menu','settings-open'])document.getElementById(id)!.addEventListener('click',()=>this.open(id==='settings-open'?'display':'controls'));
   document.querySelector('.brand')!.addEventListener('click',e=>{e.preventDefault();this.open('controls');});
   document.querySelector('#settings-close')!.addEventListener('click',()=>this.close());
-  document.querySelector('#resume')!.addEventListener('click',()=>{this.beforeMenu=false;this.close();});
   this.dialog.addEventListener('cancel',e=>{e.preventDefault();this.close();});
   this.dialog.addEventListener('click',e=>{if(e.target===this.dialog){const r=this.dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)this.close();}});
   document.querySelector('#restart')!.addEventListener('click',()=>{this.beforeMenu=false;this.close();this.actions.restart();this.home();});
@@ -41,7 +40,7 @@ export class GameShell{
   document.querySelector('#quick-controls')!.textContent=`${keysFor(this.maps,0,'left')} ${keysFor(this.maps,0,'right')} Move · ${keysFor(this.maps,0,'a')} Jump · ${keysFor(this.maps,0,'b')} Run`;
  }
  private tab(name:string){this.pending=undefined;this.renderBindings();for(const section of ['controls','display']){document.getElementById(section+'-panel')!.hidden=section!==name;const tab=document.getElementById(section+'-tab')!;tab.setAttribute('aria-selected',String(section===name));tab.setAttribute('tabindex',section===name?'0':'-1');}}
- open(tab='controls'){if(this.dialog.open)return;this.beforeMenu=this.actions.isPaused();this.actions.clear();this.actions.pause(true);this.tab(tab);this.dialog.showModal();document.querySelector('#resume')!.textContent=this.playing?'Back to game →':'Back to home →';this.wake();}
+ open(tab='controls'){if(this.dialog.open)return;this.beforeMenu=this.actions.isPaused();this.actions.clear();this.actions.pause(true);this.tab(tab);this.dialog.showModal();this.wake();}
  close(){this.pending=undefined;this.dialog.close();this.actions.clear();this.actions.pause(this.beforeMenu);this.actions.focus();this.wake();}
  enterGame(){document.body.classList.add('playing');this.wake();}
  home(){document.body.classList.remove('playing','idle');document.querySelector<HTMLButtonElement>('#start')!.focus();}

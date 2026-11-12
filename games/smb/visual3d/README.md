@@ -11,7 +11,7 @@ npx vite --port 5473 --strictPort --host 127.0.0.1      # dev
 npm run build && npx vite preview --port 5474 --strictPort --host 127.0.0.1   # production build
 # open http://127.0.0.1:5474/?view=3d
 ```
-URL options: `res=4K|2K|1K|0.5K` (2304x2160, 1536x1440, 1024x960, 512x480; omitted = Auto: starts at the largest size the screen shows in fullscreen, steps down from the measured frame rate and remembers the result per browser; pickers on the home screen and in Display settings, switchable while playing), `scale=2|3|4|6` (exact 256*scale x 240*scale, Auto off), `quality=ultra|high|low` (Ultra: 4x MSAA, ambient occlusion, bloom, 4096 shadows; High, the default: FXAA and bloom, 2048 shadows, about 3x cheaper than Ultra on an M4 laptop; Low: no post effects),
+URL options: `res=4K|2K|1K|0.5K` (2304x2160, 1536x1440, 1024x960, 512x480; omitted = Auto, see `quality`; pickers on the home screen and in Display settings, switchable while playing), `scale=2|3|4|6` (exact 256*scale x 240*scale, Auto off), `quality=ultra|high|low` (Ultra: 4x MSAA, ambient occlusion, bloom, 4096 shadows; High: FXAA and bloom, 2048 shadows, about 3x cheaper than Ultra on an M4 laptop; Low: no post effects; omitted = Auto, which moves resolution and graphics together along one ladder, 0.5K Low to 4K Ultra, by measured frame rate),
 `debug=1` (simulation hit boxes drawn over the 3D scene). Controls are the game's own (arrows, Z/Space jump, X/Shift run/fire, Enter start, P pause, M mute).
 
 ## Rebuild the assets

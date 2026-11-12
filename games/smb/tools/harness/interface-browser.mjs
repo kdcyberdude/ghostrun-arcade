@@ -44,7 +44,7 @@ try{
   for(const [preset,height] of [['2K',1440],['4K',2160],['0.5K',480],['1K',960]]){await page.locator('#res').selectOption(preset);assert.equal(await page.locator('#game').evaluate(c=>c.height),height);}
   await page.locator('#res').selectOption('auto');assert.ok([480,960,1440,2160].includes(await page.locator('#game').evaluate(c=>c.height)));assert.equal(new URL(page.url()).searchParams.has('res'),false);
   checks.push('Auto default and live 4K/2K/1K/0.5K resolution changes');
-  assert.equal(await page.locator('#quality').inputValue(),'high');await page.locator('#quality').selectOption('low');assert.equal(await page.locator('#launch-quality').inputValue(),'low');assert.equal(new URL(page.url()).searchParams.get('quality'),'low');await page.locator('#quality').selectOption('ultra');await page.locator('#quality').selectOption('high');
+  assert.equal(await page.locator('#quality').inputValue(),'auto');await page.locator('#quality').selectOption('low');assert.equal(await page.locator('#launch-quality').inputValue(),'low');assert.equal(new URL(page.url()).searchParams.get('quality'),'low');await page.locator('#quality').selectOption('ultra');await page.locator('#quality').selectOption('auto');assert.equal(new URL(page.url()).searchParams.has('quality'),false);
   checks.push('live High/Low graphics changes');
  }
  await page.screenshot({path:`${out}/display-desktop.png`});
@@ -63,7 +63,7 @@ try{
  await page.waitForFunction(()=>{const a=window.interfaceAudio;if(a?.context.state!=='running')return false;const wave=new Float32Array(a.analyser.fftSize);a.analyser.getFloatTimeDomainData(wave);return wave.some(v=>Math.abs(v)>0.00001);});checks.push('actual game audio decodes and produces sound');
  await page.keyboard.press('Escape');assert.equal(await page.locator('#settings').isVisible(),true);
  if(dev){const frame=await page.evaluate(()=>window.marioDebug.snapshot().frame);await page.waitForTimeout(250);assert.equal(await page.evaluate(()=>window.marioDebug.snapshot().frame),frame);}
- await page.locator('#resume').click();assert.equal(await page.locator('#settings').isVisible(),false);checks.push('menu pauses and resumes');
+ await page.locator('#settings-close').click();assert.equal(await page.locator('#settings').isVisible(),false);checks.push('menu pauses and resumes');
  await page.keyboard.press('KeyP');assert.match(await page.locator('#pause').innerText(),/Resume/);await page.locator('#mute').click();assert.equal(await page.locator('#mute').getAttribute('aria-pressed'),'true');await page.locator('#pause').click();checks.push('pause and sound');
  await page.screenshot({path:`${out}/playing-desktop.png`});
  await page.keyboard.press('Escape');await page.locator('#restart').click();assert.equal(await page.locator('#lobby').isVisible(),true);
