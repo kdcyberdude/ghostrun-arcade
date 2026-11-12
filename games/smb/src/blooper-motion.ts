@@ -21,12 +21,12 @@ export function stepNativeBlooper(b:NativeBlooper,x:number,y:number,f:BlooperFra
  }
  if(b.counter&2){
   if(b.timer===0&&((y+16+carry)&255)>=f.playerY)b.counter=0;
-  else if(!(f.frameCounter&1))y++;
+  else if(!(f.frameCounter&1))y=(y+1)&255;
  }else if(!(f.frameCounter&7)){
   if(b.counter&1){b.force--;if(!b.force){b.counter++;b.timer=2;}}
   else{b.force++;if(b.force===2)b.counter++;}
  }
- const up=y-b.force;if(up>=32)y=up;
+ const up=(y-b.force)&255;if(up>=32)y=up;
  x+=b.dir===1?b.force:-b.force;
  return {x,y};
 }

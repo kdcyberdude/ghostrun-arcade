@@ -15,7 +15,7 @@ const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'str
 if(!a.traces||!a.entrances||!a.level)throw Error('--traces, --entrances and --level are required');
 const dir=path.join(a.traces,a.level),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
 const from=Number(a.from),to=Math.min(Number(a.to??from+20),pads.length-1);
-const lv=observedLevels();if(process.env.NOSPAWNCAM)for(const l of lv)for(const a of l.areas)for(const e of a.enemies)if(e.kind==='blooper')delete (e as any).spawnCamera;const sim:any=new Simulation(lv);sim.reset(true);
+const sim:any=new Simulation(observedLevels());sim.reset(true);
 initializeEntrance(sim,decodeEntrance(new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),JSON.parse(fs.readFileSync(path.join(a.entrances,a.level,'entrance.json'),'utf8'))));sim.step([],0);sim.inputs=[];
 const nes:Button[]=['a','b','select','start','up','down','left','right'],dig=(r:Uint8Array,s:number,n:number)=>Array.from(r.subarray(s,s+n)).reduce((t,v)=>t*10+v,0);
 const extra=a.ram.split(',').filter(Boolean).map(h=>parseInt(h,16));
