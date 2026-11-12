@@ -83,3 +83,12 @@ test('7-2 recorded decisions have no divergence in any legacy comparison field',
  const excerpt:Excerpt=JSON.parse(fs.readFileSync(new URL('../evidence/native-runs/7-2.v2.json',import.meta.url),'utf8'));
  assert.ok(Object.values(excerptReplay(excerpt).fields).every(value=>value===null));
 });
+
+test('2-2 Bloopers read Mario before the trailing whirlpool pass across his y-byte wrap',()=>{
+ const run=replay('2-2'),sim=run.sim;
+ for(let f=0;f<=1508;f++){
+  run.step(f);if(f<1488)continue;
+  const native=nativeEntities(run.row(f),run.row(f-1)).filter(e=>e.kind==='blooper');
+  assert.equal(unmatchedEntity(native,simEntities(sim)),undefined,`frame ${f}`);
+ }
+});

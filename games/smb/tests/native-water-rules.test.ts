@@ -13,8 +13,8 @@ test('MoveBloober predicts every live native slot transition, including wrapped 
   const inputs={slot,frameCounter,randomByte,mask,playerX,playerY,playerDir:playerDir as 1|2};
   const saved={...b},next=stepNativeBlooper(b,x,y,inputs);
   let got=[next.x,next.y,b.counter,b.force,b.timer,b.dir];
-  // A page-crossing capture may straddle the CPU's player-coordinate write. Bracket that input read;
-  // do not invent a frame correction in the runtime motor. Only one of 8,929 transitions is ambiguous.
+  // End-row player RAM follows ProcessWhirlpools, while the Blooper reads before it. At a page wrap
+  // bracket the earlier player input; the full recorded-input regression verifies the actual runtime phase.
   if(page!==previousPage&&JSON.stringify(got)!==JSON.stringify(after)){
    const alternate=stepNativeBlooper(saved,x,y,{...inputs,playerY:previousY});
    got=[alternate.x,alternate.y,saved.counter,saved.force,saved.timer,saved.dir];

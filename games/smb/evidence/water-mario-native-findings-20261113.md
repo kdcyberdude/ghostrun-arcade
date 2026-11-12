@@ -17,3 +17,9 @@ Result relative to1ba23a7:2-2 first divergence1401 ->2810 (death1770 ->2810, tim
 Strict coverage is deliberately reported separately: the independently authored strict audit still finds area identity at328 (native load versus the remake's later logical switch), missing first Blooper at482,2-2 slot-position mismatch1500, and7-2 slot-position mismatch1118. Legacy enemy=null skips secondary areas. This slice does not claim water enemy/area coverage is complete. The strict reports were saved to `/tmp/water-mario-strict.json` before the final parity/coin fixes; strict mode must be re-surveyed on integration.
 
 Open:2-2 death2810 follows a native Blooper touch that the remake misses; later differences follow that missed death. Slot birth/erase timing and engine-area phases need the strict audit. No runtime frame-specific correction or per-level movement offset was added.
+
+## Blooper input-phase follow-up
+
+The frame1500 Blooper discrepancy is explained by native engine order: GameRoutines performs ordinary Mario movement, GameEngine then processes enemy slots, and ProcessWhirlpools follows. Mario's end-row position is therefore the wrong input for MoveBloober while in a whirlpool. The runtime now subtracts the trailing whirlpool y movement and x pull before the Blooper's player-relative comparisons. This adds no per-frame correction.
+
+The real-input2-2 regression checks every native Blooper position on frames1488..1508 across Mario's byte wrap. With the independent strict audit, first2-2 slot-position divergence advances1500 ->2592; first missing482 and first extra902 remain unchanged. Every legacy field of all32 levels must remain unchanged or later;7-2 stays exact under that legacy comparison. The pure helper fixture's end-row input bracket is retained as a measurement limitation, while the runtime regression verifies the actual engine phase.
