@@ -1,6 +1,6 @@
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
-import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel} from './platform-motion.js';
-import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped} from './native-platform-contact.js';
+import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform} from './platform-motion.js';
+import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
@@ -176,7 +176,7 @@ export class Simulation {
  private timeUpDeath=false;private loseLife=false;
  private lastJumpFallForce=0.5625;
  private fallingThroughCastleLava=false;private pitMusic=false;
- private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;
+ private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;
  private stompChain=0;
  /** Frame whose scroll crossed a 32 px camera boundary. Native ScrollThirtyTwo ($073D) is the camera mod 32; a crossing sets AreaParserTaskNum ($071F) to 7, and
   * EnemiesAndLoopsCore skips ProcessEnemyData on the next frame (31 of 34 one-frame-late spawns over the 32 v2 model levels; no on-time spawn sees task 7). */
@@ -532,7 +532,7 @@ export class Simulation {
   }
   }
   const height=this.height;
-  let springJumped=false;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
+  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -569,7 +569,7 @@ export class Simulation {
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
   if(cameraContact||this.wallBackOut)this.sideCollisionTimer=16;
-  this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms);
+  this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms)-this.platformEjection;
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.eraseOffscreenEnemies();
@@ -1566,8 +1566,21 @@ export class Simulation {
   const p=this.player;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformMotion.collisionPosition(platform,this.platformFrame-1),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
-   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,platformMotionModel(platform,this.platformMotion.context)==='native-wrap');
-   if(box===undefined)continue;
+   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context));
+   if(box===undefined){
+    const small=nativeSmallPlatform(platform,this.platformMotion.context);
+    for(const offset of small?[0,128]:[0]){
+     const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};
+     if(small&&surface.y<32)continue;
+     const side=nativePlatformSide(Math.floor(p.y),p.vy,p.size>0&&!p.duck,p.x,surface,platform.width);
+     if(!side)continue;
+     const byte=Math.floor(p.vx*16),into=side>0?byte>=0:byte<1;
+     this.motor.contact(side,into);
+     if(into){this.wallSpeed=p.vx;p.vx=(Math.round(p.vx*4096)&255)/4096;p.x-=side;this.platformEjection-=side;this.wallBackOut=true;}
+     break;
+    }
+    continue;
+   }
    if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
    p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)

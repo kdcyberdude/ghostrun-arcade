@@ -7,7 +7,7 @@ import fiveThreeHorizontal from '../data/five-three-horizontal-platform.json';
 import nativePlatformMotion from '../data/native-platform-motion.json';
 
 export type PlatformMotionModel='native-horizontal'|'native-lift'|'native-wrap'|'native-balance'|'native-drop'|'observed-lift'|'camera-lift'|'camera-horizontal'|'camera-lava'|'contact-fall'|'contact-cloud'|'water-descender'|'unmeasured';
-export interface NativePlatformObject {kind:'horizontal'|'lift'|'wrap'|'balance'|'drop';spec:[number,number];x:number;y:number;direction?:'up'|'down';phase?:number;pair?:[number,number];side?:1|-1;spawnCamera:number}
+export interface NativePlatformObject {kind:'horizontal'|'lift'|'wrap'|'balance'|'drop';nativeId?:number;spec:[number,number];x:number;y:number;direction?:'up'|'down';phase?:number;pair?:[number,number];side?:1|-1;spawnCamera:number}
 
 /** Native platform objects (data/native-platform-motion.json, made from the reference RAM per frame; see
  * evidence/moving-platform-phase-findings-20261109.md) are created when the scroll position reaches spawnCamera and run
@@ -17,6 +17,11 @@ export interface NativePlatformObject {kind:'horizontal'|'lift'|'wrap'|'balance'
 export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotionContext):NativePlatformObject|undefined {
  const list=(nativePlatformMotion.objects as unknown as Record<string,NativePlatformObject[]>)[`${context.levelId}/${context.areaId}`];
  return list?.find(o=>o.spec[0]===platform.x&&o.spec[1]===platform.y)??eightFourLapObject(list,platform,context);
+}
+/** Only native objects43/44 have two vertically repeated collision surfaces;
+ * objects38/39 are large lifts with one surface, even though both kinds wrap. */
+export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotionContext){
+ const id=nativePlatformObject(platform,context)?.nativeId;return id===43||id===44;
 }
 /** Native id37 is parsed at object X−303, before its first motion frame. */
 export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.spawnCamera;
