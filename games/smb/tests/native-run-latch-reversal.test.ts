@@ -10,7 +10,7 @@ test('a low-speed turnaround keeps the run step for the 9 rows after B is releas
  level.areas.find(a=>a.id==='main')!.enemies=[];
  const s=new Simulation([level]) as any;s.reset(true);s.loadArea('main',[1286,96],1200);s.phase='play';s.phaseFrame=0;
  Object.assign(s.player,{x:1286.3125,y:96,vx:-1100/4096,vy:0,grounded:true,facing:-1});
- Object.assign(s.motor,{speed:-1100,facing:-1,moving:-1,runGrace:9});
+ Object.assign(s.motor,{speed:-1100,facing:-1,moving:-1,absolute:5,runningTimer:10}); // B + left along the motion set RunningTimer $0783 = 10
  s.inputs=[new Set(['right']),new Set(['right'])];s.previous=new Set(['left','b']);
  const speeds:number[]=[-1100];
  for(let i=0;i<12;i++){s.step(['right'],1);speeds.push(Math.round(s.player.vx*4096));}

@@ -11,7 +11,7 @@ const start=(moving:-1|0|1)=>{
  for(const a of level.areas)a.enemies=[];
  const s=new Simulation([level]) as any;s.reset(true);s.loadArea('main');s.phase='play';s.phaseFrame=0;
  Object.assign(s.player,{x:40,y:208,vx:0,vy:0,grounded:true,facing:1});
- s.motor.reset();s.motor.moving=moving;s.motor.facing=moving;
+ s.motor.reset(0,1,moving); // native $33 faces right after the load; $45 is 0 until the first motion
  return s;
 };
 const run=(s:any,pads:string[][])=>{s.inputs=[new Set(pads[0]),new Set(pads[1])];const out:number[]=[];for(let i=0;i<pads.length;i++){s.step(pads[i+2]??pads[pads.length-1],1);out.push(Math.round(s.player.vx*4096));}return out;};

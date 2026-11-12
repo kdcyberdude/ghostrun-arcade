@@ -11,7 +11,7 @@ test('an air wall contact with A held holds the kept fraction one row, then step
  const level=observedLevels().find(l=>l.id==='3-1')!;
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[337,144],200);
  const s=sim as any,p=sim.player;
- p.x=337+16/256;p.y=112+32;p.vx=10288/4096;s.motor.speed=10288;s.motor.airRun=true;s.motor.airDrop=true;p.vy=-2.5;p.grounded=false;
+ p.x=337+16/256;p.y=112+32;p.vx=10288/4096;s.motor.reset(10288);s.motor.runningSpeed=40; /* RunningSpeed $0703 keeps the byte of the ground run before the jump */p.vy=-2.5;p.grounded=false;
  s.runJump=true;s.jumpArc=true;s.landJump='held';s.fallGravity=0.5625;sim.camera=200;s.inputs=[new Set(['down','right','a']),new Set(['down','right','a'])]; // the row before was held the same (the remake applies a press one row late)
  const rows:number[]=[];
  for(const input of [['down','right','a'],['down','right','a'],['down','right','a'],['right','a'],['right','a']]){sim.step(input as any,1);rows.push(Math.round(p.vx*4096));}

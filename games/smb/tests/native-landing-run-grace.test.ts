@@ -12,7 +12,7 @@ test('an airborne B keeps no run grace for the landing; a B press after the walk
  const level=observedLevels().find(l=>l.id==='1-1')!;
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[3120,196],3000);
  const s=sim as any,p=sim.player;
- p.x=3120+3/16;p.y=164+32;p.vx=10264/4096;s.motor.speed=10264;s.motor.airRun=true;s.motor.airDrop=true;s.motor.runGrace=0;p.vy=4;p.grounded=false;
+ p.x=3120+3/16;p.y=164+32;p.vx=10264/4096;s.motor.reset(10264);s.motor.runningSpeed=40; /* RunningSpeed $0703 keeps the byte of the ground run before the jump */p.vy=4;p.grounded=false;
  s.runJump=true;s.jumpArc=true;s.landJump='released';s.fallGravity=0.5625;sim.camera=3000;s.inputs=[new Set(['right','b']),new Set(['right'])];
  const rows:number[]=[];
  for(const input of [['up','right','b'],['up','right'],['up','right','b'],['up','right'],['right','b'],['right']]){sim.step(input as any,1);rows.push(Math.round(p.vx*4096));}

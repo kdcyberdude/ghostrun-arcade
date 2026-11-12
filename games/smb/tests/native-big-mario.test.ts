@@ -43,7 +43,7 @@ test('a crouched jump keeps the crouched head probe up to the block and through 
 });
 
 test('a ducking big Mario stops dead once the speed byte is 10 or less (rows -2576, -2424, 0)',()=>{
- const s=big(434);s.player.vx=-2576/4096;s.motor.speed=-2576;
+ const s=big(434);s.player.vx=-2576/4096;s.motor.reset(-2576);
  s.inputs=[new Set(['down']),new Set(['down'])];
  s.step(['down'],1);assert.equal(Math.round(s.player.vx*4096),-2424);
  s.step(['down'],1);assert.equal(s.player.vx,0);

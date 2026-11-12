@@ -24,7 +24,7 @@ const seedRun=(x:number,y:number,vy:number,speed:number,landJump:string,frames:s
  level.main=area.id;area.spawn=[Math.floor(x),Math.floor(y)];area.camera=480;area.enemies=[];area.generators=[];
  const sim=new Simulation([level]) as any;sim.reset(true);sim.phase='play';sim.phaseFrame=0;
  Object.assign(sim.player,{x,y,vy,vx:speed/4096,grounded:false});
- Object.assign(sim,{jumpArc:true,runJump:true,landJump,airRunning:true});sim.motor.speed=speed;sim.motor.airRun=true;
+ Object.assign(sim,{jumpArc:true,runJump:true,landJump,airRunning:true});sim.motor.reset(speed);
  sim.inputs=[new Set(frames[0]),new Set(frames[0])];sim.previous=new Set(frames[0]);
  const rows:number[][]=[];for(const b of frames){sim.step(b,1);rows.push([Math.floor(sim.player.x),Math.floor(sim.player.y)]);}
  return {sim,rows};

@@ -21,7 +21,7 @@ test('small Mario holding Down stops at byte 10 in any area (explore-r6 6-2 mood
  assert.ok(!area.smallPlayerDownStop,'6-2 main is not one of the calibrated areas');
  const s=new Simulation([level]) as any;s.reset(true);s.phase='play';s.phaseFrame=0;
  Object.assign(s.player,{vx:3068/4096,vy:0,grounded:true,facing:1,size:0});
- Object.assign(s.motor,{speed:3068,facing:1,moving:1,runGrace:0,friction:152});
+ s.motor.reset(3068);
  s.inputs=[new Set(['down','b']),new Set(['down','b'])];s.previous=new Set(['down','b']);
  const speeds:number[]=[];
  for(let i=0;i<4;i++){s.step(['down','b'],1);speeds.push(Math.round(s.player.vx*4096));}

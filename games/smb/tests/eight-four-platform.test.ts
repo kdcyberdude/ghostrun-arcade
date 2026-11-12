@@ -26,7 +26,7 @@ test('the 8-4 platform carries a rider as it moves',()=>{
  let moved=0;
  for(let i=0;i<60;i++){
   const before=game.platformPosition(platform);game.step([],1);const after=game.platformPosition(platform);moved+=Math.abs(after.x-before.x);
-  assert.equal(game.phase,'play');assert.ok(Math.abs(game.player.x-(after.x+10))<1e-6,`rider offset at step ${i}`);
+  assert.equal(game.phase,'play');assert.equal(game.player.x,start.x+10+Math.floor(after.x)-Math.floor(start.x),`rider offset at step ${i}`); // carried by the platform's whole-pixel step, sub-pixel kept
   assert.equal(game.player.y,after.y-1);
  }
  assert.ok(moved>5,'the platform moved while ridden');

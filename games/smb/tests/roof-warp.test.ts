@@ -64,8 +64,8 @@ test('down on a warp pipe before activation cannot change worlds',()=>{
 // so the earlier 15-frame right segment (tuned to the fitted 1..3 frame pause) no longer lands on the pipe.
 const nativeMotorAlignment:Record<string,[number,string[],number][]>={
  '2':[[2,['right'],5],[4,['right'],20]],
- '3':[[2,['right'],0],[5,['left','a','b'],35],[6,['right'],8]],
- '4':[[2,['right'],0],[5,['left','a','b'],35],[6,['right'],10],[8,['left','a','b'],45]],
+ '3':[[2,['right'],0],[4,['left'],32],[5,['left','a','b'],35],[6,['right'],8]],
+ '4':[[2,['right'],0],[4,['left'],32],[5,['left','a','b'],35],[6,['right'],10],[8,['left','a','b'],37],[9,['right'],15]],
 };
 // Re-aligned again after the native takeoff-reversal rule (a jump out of a run-speed reversal keeps the doubled step; the roof bounce starts with
 // one: right,b 300 then left,a,b 30) and the run-class walk-off rule changed the bounce trajectory. Route 2: first right segment 0..20 with the
@@ -73,6 +73,8 @@ const nativeMotorAlignment:Record<string,[number,string[],number][]>={
 // (the only passing first-segment value); route 4 keeps its own 41-frame pair (passes for 41..45 with right 5..36 after route 3's prefix).
 // Re-aligned once more after the air step rule (doubles while facing and motion disagree): route 3 airborne pair 27..42 with right 0..28 (chosen 35/8), route 4 41 with right 0..30.
 // Route 4 re-aligned after the small-player Down stop applies in every area (hdrift6): pair 45 with right 10 (passing 43..48 / 2..16).
+// Routes 3 and 4 re-aligned for the byte-exact native motor (src/native-player-motor.ts): the left walk off the pipe top before the first airborne pair is
+// 32 frames (24 left Mario still in the air there; passing 31..34), route 4's second pair 37 with right 15 (passing 0..25 at 37).
 // Scan: evidence/local/warp-realign/scan.ts. The assertions below are unchanged: only the composed input durations moved.
 for(const route of fixtures.routes)test(`ordinary controls traverse the compiled roof/chamber and enter warp${route.label} to${route.targetLevel}`,()=>{
  const sim=roofFixture();let sawPipe=false,sawIntro=false;

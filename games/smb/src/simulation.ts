@@ -1,7 +1,8 @@
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
 import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot} from './platform-motion.js';
-import {NativeMotor,motionOf} from './native-motor.js';
+import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
+import {PlayerMotor} from './native-player-motor.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {PiranhaColumns} from './piranha-columns.js';
@@ -170,7 +171,7 @@ export class Simulation {
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
- private motor=new NativeMotor();private wallMediumJump=false;private wallSpeed?:number;private wallBackOut=false;
+ private motor=new PlayerMotor();private wallSpeed?:number;private wallBackOut=false;
  /** Native-exact swimming (src/native-water.ts): active in water areas once the legacy entry fall is over. */
  private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
@@ -197,16 +198,6 @@ export class Simulation {
  get waterEntryStanding(){return this.entryFalling&&this.area.theme==='water'&&this.entryFallAge<=(this.area.entryFall?.initialStandFrames??0);}
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
- private walkGroundFrames=0;
- // Area jumpoff: a Mario who stood for 2+ frames and loses support without a jump (ledge or platform edge) at a run-class speed byte (>= 25) keeps the run air class: native walk-offs at
- // byte 40 go on accelerating to 40 even after a walk-class jump (3-3 rows 25516-25518; the stale class capped the remake at byte 24 in one frame). The stand count excludes one-frame
- // landing flickers. Walk-class walk-offs keep the existing behaviour (forcing the walk class changed 4-4 only through a missed re-seed).
- private classifyWalkOff(wasGrounded:boolean,jumped:boolean){
-  const p=this.player,plain=this.area.theme!=='water'&&!this.entryFalling&&!p.climbing;
-  if(p.grounded&&plain){this.walkGroundFrames=wasGrounded?this.walkGroundFrames+1:1;return;}
-  if(plain&&wasGrounded&&!jumped&&this.walkGroundFrames>=2&&Math.abs(Math.floor(Math.round(p.vx*4096)/256))>=25)this.motor.airRun=true;
-  this.walkGroundFrames=0;
- }
  reset(playing=false){
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
@@ -216,10 +207,9 @@ export class Simulation {
   if(this.player)this.player.size=0;this.loadArea(this.level.main);this.timerFrames=this.level.id==='1-1'?TRANSITIONS.freshReferenceResetTimerFrames:0;if(this.level.id==='1-1'){this.areaFrame=FLAG_COMPLETION.freshAreaFrame;this.broClock=HAMMER_NATIVE.freshClock;}/* the recorded 1-1 route's area clock phase: its level end falls on native row 1975 */if(!playing)this.events=['command_silence'];this.phase=playing?'play':'title';this.phaseFrame=0;this.titleFrame=0;
  }
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false){
-  this.piranhaTouchFeetY=undefined;this.fallGravity=FALL_GRAVITY_AFTER_LOAD;this.landingFraction=0;this.walkingOff=false;this.wallMediumJump=false;
+  this.piranhaTouchFeetY=undefined;this.fallGravity=FALL_GRAVITY_AFTER_LOAD;this.landingFraction=0;this.walkingOff=false;
   this.fallingThroughCastleLava=false;
   this.corpsePlatformSlotEnd.clear();
-  this.motor.runGrace=0;
   const source=this.level.areas.find(a=>a.id===id);if(!source)throw new Error(`Unmapped area ${this.level.id}/${id}`);
   this.stompChain=0;
   this.multiCoinExpiries.clear();
@@ -241,7 +231,7 @@ export class Simulation {
   this.vines=(area.vines??[]).map(v=>{const height=this.vineProgress.get(this.vineKey(v.id))??v.initialHeight??0;return {...v,height,growing:height>0&&height<v.baseY-v.topY};});this.climbingVine=undefined;this.vineDetached=false;
   for(const block of area.blockContents??[])if(block.kind==='vine'&&this.vineProgress.has(this.vineKey(block.vineId)))this.tiles.set(`${block.col},${block.row}`,196);
   const [x,y]=spawn??area.spawn;this.player={x,y,vx:area.spawnVelocity?.[0]??0,vy:area.spawnVelocity?.[1]??0,grounded:true,facing:1,size,invincible:0,star:0,duck:false,anim:0,dead:false,climbing:false};
-  this.airRunning=false;this.mediumJump=false;this.runJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset(0,1);this.jumpHeld=0;this.landJump='inactive';
+  this.airRunning=false;this.mediumJump=false;this.runJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset(0,1,0);this.jumpHeld=0;this.landJump='inactive';
   this.powerChange=undefined;
   const spawnAtEntry=!spawn||spawn[0]===area.spawn[0]&&spawn[1]===area.spawn[1];
   this.waterEntryFall=Boolean(area.waterEntryFall&&spawnAtEntry);this.waterEntryTimerHold=this.waterEntryFall?1:0;this.waterSurface={active:false,contacted:false};
@@ -400,43 +390,34 @@ export class Simulation {
   if(!vineMovement){
   const direction=Number(b.has('right'))-Number(b.has('left'));
   const water=this.area.theme==='water';
-  const runPressed=b.has('b')&&!water&&!this.entryFalling;
-  // B refreshes the run grace on ground frames only: an airborne B does not carry the run speed into the landing (native free play r3+r4: a run-speed
-  // landing without B clamps to the walk cap on 203 of 203 rows whose previous, airborne row held B).
+  // The fitted float path below runs only in water and in non-native entry falls, where the run step never applies.
+  const running=false;
   {const speedByte=Math.floor(Math.round(p.vx*4096)/256);if(speedByte!==0)this.movingDir=speedByte>0?1:-1;}
-  const refreshRun=(p.grounded||this.springTimers.size>0)&&runPressed&&direction!==0&&p.vx*direction>=0&&this.movingDir===direction&&!(b.has('down')&&p.grounded)&&!this.restTurnStart(direction);if(direction!==0&&p.vx*direction<0&&Math.abs(p.vx)>=11/16)this.motor.runGrace=0; // a grounded Down frame ignores the direction, so it does not refresh the run grace (native explore rows)
-  if(refreshRun)this.motor.runGrace=9;
-  const turnHold=p.grounded&&direction!==0&&this.movingDir!==direction; // native: B against the last motion neither refreshes nor applies the run step (1-4 v2 rows 1-2 step 152)
-  const running=(runPressed&&!turnHold||this.motor.runGrace>0)&&!water&&!this.entryFalling;
-  if(!refreshRun&&this.motor.runGrace>0)this.motor.runGrace--;
   const max=water?(p.grounded?WATER_PHYSICS.groundMax:WATER_PHYSICS.swimMax):(p.grounded?(pressed('a')?Math.abs(p.vx)>PHYSICS.walkMax:running):this.airRunning)?PHYSICS.runMax:PHYSICS.walkMax;
-  // Native horizontal motor (src/native-motor.ts): integer speed in 1/4096 px; down-on-ground, water, auto-walk and
-  // entry falls keep the fitted float rules below. p.vx is always motor speed / 4096, so outside writes stay exact.
+  // Native horizontal motor (src/native-player-motor.ts): the native speed bytes in 1/4096 px, stepped every land frame; water and
+  // non-native entry falls keep the fitted float rules below. p.vx is always motor speed / 4096, so outside writes stay exact.
   const useMotor=!water&&(!this.entryFalling||Boolean(nativeEntry));
   const swim=water&&this.swimActive;
-  // The automatic pipe walk is a held-right walk press whose speed byte stops at 12 (native auto-walk rows).
-  this.motor.capByte=this.area.autoWalk?TRANSITIONS.autoWalkCapByte:undefined;
   this.wallSpeed=undefined;
   if(useMotor)this.motor.speed=Math.round(p.vx*4096);
-  const wallMediumJump=this.wallMediumJump;this.wallMediumJump=false;
-  const speedBeforeStep=Math.abs(Math.floor(Math.round(p.vx*4096)/256))/16; // the native jump class reads the speed this frame starts with (5 of 5 decelerating takeoffs across byte 25 are run jumps)
-  if(swim){this.swimStep(b,pressed('a'),direction);}else if(useMotor&&direction&&!(b.has('down')&&p.grounded)&&!(p.duck&&p.grounded)){
-   const opposite=p.vx*direction<0;
-   const motorDirection=direction as 1|-1;p.vx=((p.grounded||this.springTimers.size>0)&&!landingGrace?this.motor.groundPress(motorDirection,running,pressed('a')):this.motor.air(motorDirection,b.has('b')))/4096;p.facing=direction;this.braking=water?WATER_PHYSICS.brake:(!p.grounded||this.skidAccel===0.072265625)?(running||(!p.grounded&&this.airRunning)?0.04931640625:PHYSICS.brake):!opposite?(running?(Math.abs(p.vx)>1.75?0.04931640625:0.0380859375):PHYSICS.brake):running&&Math.abs(p.vx)>1.75?0.04931640625:this.braking;
-  }else if(useMotor){
-   this.motor.tickFreeze();
-   if(p.grounded&&!pressed('a'))p.vx=(b.has('down')?this.motor.groundDown(direction as Direction,true):this.motor.groundCoast(b.has('b')))/4096;
+  const jumpClassByte=this.motor.absolute; // native InitJS reads Player_XSpeedAbsolute, last written by the previous frame's ImposeFriction (a wall stop leaves it)
+  if(swim){this.swimStep(b,pressed('a'),direction);}else if(useMotor){
+   // The automatic pipe walk is a held-right press under GameEngineSubroutine 7, whose right cap is speed byte 12.
+   p.vx=this.motor.step({direction:direction as -1|0|1,ground:(p.grounded||this.springTimers.size>0)&&!landingGrace,jump:pressed('a')&&p.grounded,b:b.has('b'),down:b.has('down'),
+    buttons:(['b','select','start','up','down','left','right'] as Button[]).some(k=>b.has(k)),capRight:this.area.autoWalk?TRANSITIONS.autoWalkCapByte:undefined})/4096;
+   if(direction&&!(b.has('down')&&p.grounded)&&!(p.duck&&p.grounded))p.facing=direction;
   }else if(direction&&!(p.duck&&p.grounded)&&(!b.has('down')||!p.grounded)){
    const opposite=p.vx*direction<0;if(opposite)this.skidAccel=water?WATER_PHYSICS.accel*2:p.grounded&&!running&&(this.skidAccel===0.0390625||(!this.skidAccel&&this.braking===PHYSICS.brake))?0.0390625:(!p.grounded||this.skidAccel===0.072265625)?0.072265625:p.grounded&&this.braking<=0.0380859375?0.0546875:0.0625;const accel=opposite?(water?WATER_PHYSICS.reverse:p.grounded?(this.skidAccel===0.0390625?(Math.abs(p.vx)>1?0.0625:0.15625):this.skidAccel===0.072265625?PHYSICS.reverse:this.braking<=0.0380859375?(Math.abs(p.vx)>0.75?0.0703125:Math.abs(p.vx)+0.0625):(Math.abs(p.vx)>0.75?0.0947265625:Math.abs(p.vx)+0.0625)):this.airRunning?0.052734375:PHYSICS.walkAccel):(this.skidAccel===0.0625&&Math.abs(p.vx)>0.5?0.0537109375:this.skidAccel)|| (water?WATER_PHYSICS.accel:(p.grounded?running:this.airRunning)?PHYSICS.runAccel:PHYSICS.walkAccel);
    p.vx=direction>0?Math.min(max,p.vx+accel):Math.max(-max,p.vx-accel);p.facing=direction;this.braking=water?WATER_PHYSICS.brake:(!p.grounded||this.skidAccel===0.072265625)?(running||(!p.grounded&&this.airRunning)?0.04931640625:PHYSICS.brake):!opposite?(running?(Math.abs(p.vx)>1.75?0.04931640625:0.0380859375):PHYSICS.brake):running&&Math.abs(p.vx)>1.75?0.04931640625:this.braking;
   }else if(p.grounded&&(water||(!pressed('a')&&this.hasSupportAt(p.x+Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32,p.y)))){const downSpeedBeforeBrake=p.vx;const skidCoast=!water&&!b.has('down')&&this.skidAccel>0&&this.skidAccel!==0.072265625&&p.vx*p.facing<0;if(!skidCoast)this.skidAccel=0;if(!water&&b.has('down')&&Math.abs(p.vx)<=1.6875)this.braking=PHYSICS.brake;p.vx=Math.sign(p.vx)*Math.max(0,Math.abs(p.vx)-(skidCoast?0.07421875:water?WATER_PHYSICS.brake:b.has('down')?(Math.abs(p.vx)>1.6875?this.braking:PHYSICS.brake):this.braking));if(!water&&b.has('b')&&!b.has('down')&&Math.abs(p.vx)<0.625)p.vx=0;if(this.area.smallPlayerDownStop&&p.size===0&&b.has('down')&&direction*downSpeedBeforeBrake<=0&&Math.floor(downSpeedBeforeBrake*16)>=-10&&Math.floor(downSpeedBeforeBrake*16)<=10)p.vx=0;}
+  if(!useMotor&&!water)this.motor.reset(Math.round(p.vx*4096),p.facing<0?-1:1); // a fitted (non-native) entry fall hands the motor the steady-state bytes of its speed
   if(!water&&p.grounded)this.airRunning=Math.abs(p.vx)>PHYSICS.walkMax;
   if(water){
    if(pressed('a')){this.waterEntryFall=false;p.grounded=false;this.emit('sfx_swim');}
    if(this.waterEntryFall)p.vy=Math.min(PHYSICS.maxFall,p.vy+WATER_PHYSICS.entryGravity);
    else if(!swim){const next=advanceWater(p.y,p.vy,b.has('a'),pressed('a'),this.waterSurface);p.y=next.y;p.vy=next.vy;}
   }else{
-   if(pressed('a')&&p.grounded){const jumpSpeed=useMotor?Math.abs(Math.floor(Math.round(p.vx*4096)/256))/16:Math.abs(p.vx);this.runJump=useMotor?speedBeforeStep>1.5||this.motor.wallRunLatched:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?speedBeforeStep>=1||wallMediumJump:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;if(useMotor)this.motor.takeoff();this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
+   if(pressed('a')&&p.grounded){const jumpSpeed=Math.abs(p.vx);this.runJump=useMotor?jumpClassByte>=25:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?jumpClassByte>=16:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
    // Fresh no-contact release/repress pairs: A cannot restore held gravity.
    if(this.landJump==='held'&&!b.has('a')&&p.vy<0)this.landJump='released';
    this.jumpHeld++;
@@ -445,17 +426,15 @@ export class Simulation {
   const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===nativeEntry.skipAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b));
   if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,oldBottom);
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
-  this.wallBackOut=false;this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
-  // Native air wall contacts resume after one backed-out row, independent of held A/B and of the level (1-1 f585..587; free play r3: 1,189 of
-  // 1,203 air contacts below speed byte 9 hold exactly one row, A+B rising included; deep contacts re-arm the pause through wallBackOut below).
-  // The frame immediately after a ground-wall contact retains the medium vertical jump class too (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
-  if(useMotor&&this.wallSpeed!==undefined&&poseGrounded&&p.grounded&&!pressed('a')){const byte=Math.abs(Math.floor(Math.round(this.wallSpeed*4096)/256));if(byte>=16&&byte<=24)this.wallMediumJump=true;}
-  if(useMotor&&this.wallSpeed!==undefined)p.vx=this.motor.hitWall(Math.round(this.wallSpeed*4096),direction===0||direction*this.wallSpeed>0,0,(!poseGrounded&&!p.grounded)||pressed('a'))/4096; // a wall contact on the landing frame is a ground contact (native keeps the run class for the takeoff that follows)
-  if(useMotor&&this.wallBackOut)this.motor.freeze=Math.max(1,this.motor.freeze);
+  this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
+  // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
+  // The jump class after a contact reads the stale Player_XSpeedAbsolute (native 4-2 r8m0 row373, 5-2 r8m3 row1325, 7-1 r8m5 row1933).
+  // ImpedePlayerMove: the contact zeroes the speed byte (the fraction stays) and masks that side's press on the next frame.
+  if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
   if(swim){this.swimContact(this.swimDy,oldBottom,this.swimHeight(height));if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
-  if(p.grounded){if(!poseGrounded){if(!b.has('b'))this.motor.runGrace=0;if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
+  if(p.grounded){if(!poseGrounded){if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==nativeEntry.skipAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
   else if(this.walkOffFall()){}
@@ -475,7 +454,6 @@ export class Simulation {
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
-  this.classifyWalkOff(poseGrounded,jumped);
   this.updateLocomotionPose(poseGrounded,poseVx,jumped,b);
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
   if(wallDisplay){
@@ -595,8 +573,8 @@ export class Simulation {
   if(this.footPushed)return;
   if(dx===0){
    for(const y of[p.y-h+4,p.y-8]){
-    if(this.collisionAt(p.x+13,y)){p.x--;this.wallBackOut=true;return;}
-    if(this.collisionAt(p.x+2,y)){p.x++;this.wallBackOut=true;return;}
+    if(this.collisionAt(p.x+13,y)){p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
+    if(this.collisionAt(p.x+2,y)){p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
    }
    return;
   }
@@ -909,9 +887,6 @@ export class Simulation {
  private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
  // Native 2-1 spring rows 10254-10267: Mario sinks 2 px per row for 8 rows, rises 2 px per row for 5 more, launches on the 14th; x stays pinned.
  private springDrop(age:number){return age<=9?2*(age-1):16-2*(age-9);}
- /** A ground start from rest that is not along the last motion (the doubled 304 step after a load, or the 152 turn from rest) does not refresh the run latch:
-  * native model rows, B on the start row and not on the next: 304 start -> next step 152 in 124 of 134, 152 turn start -> 152 in 34 of 36; a 228 start (along the last motion) -> 228 in 119 of 119. */
- private restTurnStart(direction:number){return this.player.grounded&&this.player.vx===0&&this.motor.moving!==direction;}
  /* native: an A held through the load starts the first control row's jump (no release edge needed) */ private freshA=false;private controlGrace=0;private springPinX=0;private springPrevA=false;private springAEdge=0;
  springCompression(spring:SpringSpec){const age=this.springTimers.get(spring)??0;return age?Math.round(this.springDrop(age)/8):0;}
  private updateSprings(oldBottom:number,heldJump:boolean){
@@ -1367,7 +1342,8 @@ export class Simulation {
    const p=this.player;
    const riding=Math.abs(oldBottom-prior.y)<0.01&&p.y>=oldBottom;
    if(Math.abs(now.y-prior.y)<128&&p.vy>=0&&oldBottom<=prior.y+3&&(riding||p.y>=now.y)&&platformSupportsX(p.x,now.x,platform.width)){
-    p.y=now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=now.x-prior.x;this.platformMotion.contact(platform,this.platformFrame);
+    p.y=now.y;p.vy=0;p.grounded=true;this.bouncing=false;p.x+=Math.floor(now.x)-Math.floor(prior.x);this.platformMotion.contact(platform,this.platformFrame);
+    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
    }
   }
  }
