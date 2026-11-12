@@ -69,7 +69,10 @@ test('star and fire-change palettes use the shared native phases',()=>{
  const {sim}=scene();
  const paletteKit={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial();material.name='M_Cloth_Primary';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
  const entities=new Entities(paletteKit,false),color=()=>{const model=actor(entities,'mario').getObjectByName('mario')!;return ((model.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial).color.getHexString();};
- sim.player.star=200;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=35;sim.starDrawPalette=1;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=0;sim.frame=99;entities.sync(sim,0);assert.equal(color(),'2fae3a'); // Expiry draw retains its captured palette.
+ sim.starDrawPalette=0;entities.sync(sim,0);assert.equal(color(),'d8241c');
+ sim.starDrawPalette=undefined;
  sim.player.star=0;sim.player.size=1;sim.powerChange={kind:'fire',from:1,to:2,remaining:61};sim.frame=4;entities.sync(sim,0);assert.equal(color(),'1a1a1a');
  sim.powerChange.remaining=54;sim.frame=6;entities.sync(sim,0);assert.equal(color(),'2fae3a');
 });
