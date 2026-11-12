@@ -43,6 +43,7 @@ import castleRules from '../data/castle-completion-rules.json';
 import multiCoinRules from '../data/multi-coin-rules.json';
 import {nativeEnemiesCollision,nativeUnwingedStomp} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
+import {advanceNativeGreenParatroopa} from './native-paratroopa.js';
 const CONTROL_GRACE_ROWS=2; // native: an A held through the load jumps on the same row as an A first pressed on the first control row; the remake's 2-frame input queue makes that two grace rows (campaign-compare MODEL_LOCAL seeds its own constant); an empty queue (native RAM-trace replays: each pad on its native row) needs none
 export const TRANSITIONS=transitionMeasurements.runtimeCandidates;
 export const POWERUPS=powerupRules.timingAndScores;
@@ -125,8 +126,8 @@ export const VINE_PHYSICS={growth:0.5,climbUp:0.875,climbDown:1.5};
 export const GREEN_PARATROOPA_PHYSICS={gravity:7/64,bounce:-3,maxFall:3}; // native: MoveJ_EnemyVertically 28/256 per frame, cap 3; EnemyJump speed -3
 // Native-measured Paratroopa/Beetle rules, see evidence/paratroopa-beetle-findings-20261109.md. Contact with the floor only registers once the
 // downward speed has reached 1 px per native frame (a Paratroopa that starts at rest on the floor sinks about 5 px and hops at age 11), and a
-// sink of 5 px or more is a side collision that turns it around. The side probe of Paratroopas and Beetles sits at x (left) and x+16 (right), 5 px above the feet; the older 15/1 probe 8 px above the feet is kept for other walkers.
-export const GREEN_PARATROOPA_LANDING={landingSpeed:1,sideProbe:{right:16,left:0,heightAboveFeet:5}};
+// side collision is tested after any floor snap, at x (left) and x+16 (right), native sprite-top+20 (4 px above the feet). Other walkers retain their qualified probes.
+export const GREEN_PARATROOPA_LANDING={landingSpeed:1,sideProbe:{right:16,left:0,heightAboveFeet:4}};
 // A jumping Paratroopa is made at rest (speed and move force 0; 8-1 row 1267, 8-2 row 83, fraction byte 0 on both): the route's first-sample spawnVy / spawnYFraction are not used.
 const greenBounceSpec=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27'&&(e.paratroopaMotion??'bounce')==='bounce';
 const greenSpawnVy=(e:EnemySpec)=>greenBounceSpec(e)?-GREEN_PARATROOPA_PHYSICS.gravity:0;
@@ -1899,12 +1900,13 @@ export class Simulation {
      if(e.shellAge>=shellRules.wakeNativeFrames){e.shell=false;e.shellAge=0;e.shellChain=0;e.vx=(e.direction??-1)*0.5;}
     }
     if(e.kind==='redKoopa'&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
+    const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
     const dx=e.shell?(e.movingShell?Math.sign(e.vx)*shellRules.speedPixelsPerNativeFrame:0):e.vx;
     if(e.kind==='hammerBro'){
      const observed=hammerBroRules.patrol.observed.find(a=>a.level===this.level.id&&a.area===this.area.id&&a.originX===e.originX&&a.originY===e.originY);
      const minX=observed?.minX??e.originX-hammerBroRules.patrol.span/2,maxX=observed?.maxX??e.originX+hammerBroRules.patrol.span/2;
      e.x+=dx;if(e.x<minX){e.x=minX+(minX-e.x);e.vx=Math.abs(e.vx);}if(e.x>maxX){e.x=maxX-(e.x-maxX);e.vx=-Math.abs(e.vx);}
-    }else{
+    }else if(!greenBounce){
      if(e.kind==='beetle'){
       // Background collision precedes the move (8-1 Beetle rows 624-625).
       if(this.isSolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;
@@ -1915,16 +1917,16 @@ export class Simulation {
       else if(this.isSolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;e.vx=-e.vx;}
      }
     }
-    const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
     if(greenBounce){
      // Native jumping Paratroopa (id 14, RunNormalEnemies: background collision before the move). EnemyJump: with speed byte + 2 >= 3 (falling at 1+ or rising at 3+) and a solid block under
      // its feet, EnemyLanding zeroes the speed, snaps native y to (y & 0xF0) | 8 and sets speed -3; then MoveJ_EnemyVertically (28/256 per frame, cap 3). 8-2 slot 3 rows 83-164: every row.
-     // A landing 5+ px deep is also a side collision: the ordinary side probe (5 px above the integer feet) meets the floor and turns it.
+     // Side collision reads the snapped position before either horizontal or vertical movement.
      // first motion row: the 8.8 speed is the stored vy plus one gravity step (vy holds the speed before this row's gravity; a spawned one is at rest unless a spawnVy was measured)
      const n=e.pod??=(()=>{const left=e.enemySlot!==undefined&&!e.unwingedAir&&e.age<=1?this.slotVertical[e.enemySlot]:undefined;if(left)return {...nativeMoveState(Math.floor(e.y)),...left};const v=Math.round((e.vy+GREEN_PARATROOPA_PHYSICS.gravity)*256);return {...nativeMoveState(Math.floor(e.y)),speed:v>>8,force:v&255,fraction:Math.round((e.y-Math.floor(e.y))*256)&255};})(); // a new one starts from the vertical bytes its slot was left with (slotVertical)
-     const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
-     if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
-     nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
+     const step={x:e.x,vx:e.vx,y:n.y,speed:n.speed,force:n.force,fraction:n.fraction};
+     advanceNativeGreenParatroopa(step,(x,y)=>Boolean(this.collisionAt(x,y)));
+     Object.assign(n,{y:step.y,speed:step.speed,force:step.force,fraction:step.fraction});
+     e.x=step.x;e.vx=step.vx;e.y=n.y;e.vy=n.speed+n.force/256;
     }else if(e.egg&&e.motion==='falling')this.updateSpinyEgg(e);
     else if(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion){ // native walker fall: the background test runs before the move; airborne, MoveD_EnemyVertically imposes 0x3D per frame (cap 3) from rest, keeping the slot's y fraction (6-1 rows 233-246)
      const n=e.fall??=(e.pod?{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction}:{speed:0,force:0,fraction:e.enemySlot!==undefined?this.slotVertical[e.enemySlot].fraction:0}); // an unwinged Paratroopa keeps its 8.8 vertical state
