@@ -25,6 +25,7 @@ import deathRules from '../data/death-rules.json';
 import shellRules from '../data/shell-rules.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
 import stompRules from '../data/stomp-rules.json';
+import {COIN_TILE,flagPoleTouched} from './award-rules.js';
 import {nativeHurtHeight,nativeHurtReachX} from './native-hurtbox.js';
 import goombaSquashRules from '../data/goomba-squash-rules.json';
 import popupRules from '../data/popup-rules.json';
@@ -182,7 +183,7 @@ export class Simulation {
   * The run timer is refreshed only while it equals the pressed direction (0 of 6,436 B presses refresh it otherwise). */
  movingDir:-1|1=1;
  /** Floatey-number points: native FloateyNumbersRoutine adds them when FloateyNum_Timer, set to $30, reaches $2B, five frames after the award (4-3 v2: stomps at 187/203 pay at 192/208; coins and bricks pay at once). */
- private pendingScore:{value:number,left:number}[]=[];
+ private pendingScore:{value:number,left:number}[]=[]; private timerTickFrame=-1;
  private stompedThisStep=false;
  private corpsePlatformSlotEnd=new Map<Enemy,number>();
  private activatedHidden1ups=new Set<string>();
@@ -454,7 +455,7 @@ export class Simulation {
   // Source TIME stays fixed during the automatic main climb and sky entry;
   // exact native-frame boundaries are inferred from decision-spaced images.
   const waterEntryHidden=this.waterEntryTimerHold>0;if(waterEntryHidden&&this.player.y-32>=48)this.waterEntryTimerHold--;
-  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;if(this.time===100)this.emit('event_hurry');}}
+  if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;this.timerTickFrame=this.frame;if(this.time===100)this.emit('event_hurry');}}
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
   const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
@@ -596,7 +597,7 @@ export class Simulation {
   this.updateMaze(oldX);this.nativeLoopCommand();
   const exit=this.area.exit;
   // Native axe contact (tests/native-axe-contact.test.ts): a foot inside the cell while not rising; x+13 stands for the right foot, the left side is kept loose so a remake 1-3 px ahead still reaches it.
-  const touchingExit=exit&&(exit.kind==='axe'?exit.y!==undefined&&p.vy>=0&&overlap(Math.floor(p.x),Math.floor(p.y)-1,13,2,exit.x-8,exit.y,16,16):exit.kind==='flag'&&p.x+15>=exit.x-2&&p.y<193);
+  const touchingExit=exit&&(exit.kind==='axe'?exit.y!==undefined&&p.vy>=0&&overlap(Math.floor(p.x),Math.floor(p.y)-1,13,2,exit.x-8,exit.y,16,16):exit.kind==='flag'&&flagPoleTouched(p.x,exit.x)&&p.y<193);
   if(exit&&touchingExit){
    this.phase=exit.kind==='axe'?'castle':'flag';this.phaseFrame=0;p.vx=0;p.vy=0;
    this.flagBonus=exit.kind==='flag'?(FLAG_COMPLETION.scoreThresholds.find(t=>p.y<t.feetBelow)?.score??FLAG_COMPLETION.lowestScore):0;
@@ -605,7 +606,7 @@ export class Simulation {
     this.castleStage='bridge';this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;this.emit('command_silence');
     for(const[key,id]of this.tiles)if(id===197)this.tiles.delete(key);
     {const chain=`${Math.floor(exit.x/16)-1},9`;if(this.level.id==='6-4'&&this.area.id==='main'&&this.tiles.get(chain)===12)this.tiles.delete(chain);} // the 6-4 chain hangs in the column before the axe tile
-   }else {p.x=exit.x-15;this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
+   }else {if(this.timerTickFrame===this.frame)this.time++;/* native RunGameTimer runs after the pole touch and skips engine 4: a tick due on the touch row never happens (1-1 v2 row 2181: $0787 0, digits stay 358) */p.x=exit.x-15;this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
   }
  }
  tileAt(x:number,y:number){return this.tiles.get(`${Math.floor(x/16)},${Math.floor(y/16)}`)??this.freeTiles.find(t=>x>=t.x&&x<t.x+16&&y>=t.y&&y<t.y+16)?.id??0;}
@@ -726,6 +727,8 @@ export class Simulation {
   const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
+  // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
+  const above=`${x},${y-1}`;if(!piece&&isHitBlock(id)&&id!==196&&this.tiles.get(above)===COIN_TILE){this.tiles.delete(above);this.coin();this.items.push({kind:'coin',x:x*16+5,y:y*16-32,vx:0,vy:-5.3125,age:0,life:36});}
   const content=this.area.blockContents?.find(block=>block.col===x&&block.row===y);
   const powerupContent=content&&content.kind!=='vine'&&content.kind!=='multiCoin'&&id!==196?content.kind:undefined;
   if(content?.kind==='vine'&&id!==196){
@@ -1406,8 +1409,10 @@ export class Simulation {
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
   this.flagTop=Math.min(rules.flagBottomY,rules.flagTopY+this.phaseFrame*rules.slideSpeed);
+  // Native FlagpoleRoutine adds the flag points on the last slide row, with the switch to engine 5 (score digits at row +62 on 18 of 19 v2 grabs; the flip follows a row later). 3-3 pays at +61: the flag moves 2 px on its first row when slot 5 kept a nonzero $041C dummy from an earlier platform (not modelled).
+  if(this.phaseFrame===rules.slideFrames)this.score+=this.flagBonus;
   if(this.phaseFrame<=rules.slideFrames){p.climbing=true;p.y=Math.min(191,p.y+rules.slideSpeed);return;}
-  if(this.phaseFrame===rules.slideFrames+1){this.score+=this.flagBonus;this.emit('event_level_clear');}
+  if(this.phaseFrame===rules.slideFrames+1)this.emit('event_level_clear');
   const walkFrom=rules.slideFrames+rules.flipFrames+1;
   if(this.phaseFrame<walkFrom){p.x=exit.x-1;p.y=191;p.climbing=true;p.facing=-1;return;}
   p.climbing=false;p.facing=1;
