@@ -178,3 +178,31 @@ cell. Native castle roof69 occurs at220/221 row7,222 row4,223..225 row2,
 224..226 row2,227 row4,228/229 row7. The ROM source and controlled buffers
 must determine the eventual full geometry fix; no per-level runtime offset or
 manual tile shift was added. Parent owns the data/compiler correction.
+
+## Native Lakitu reappearance lifecycle
+
+LakituAndSpinyHandler's missing-Lakitu branch now reads the frenzy timer,
+$06D1 reappearance counter and ordinary slot flag/ID banks. An expired attempt
+sets $078F=128; if no Lakitu ID17 remains (including a defeated but unerased
+owner), it increments $06D1. At7 it chooses the highest free slot4..0, resets
+the counter, and SetupLakitu/PutAtRightExtent place the actor at screenRight+32,
+nativey32 with zero horizontal speed/fraction and vertical speed/force. A higher
+slot then moves during its remaining turn in the same pass; creation in the
+initiating slot waits for the next pass. MoveLakitu preserves that nativey32,
+rather than forcing every Lakitu to the original level object's nativey48.
+
+Eight controlled native engine branches cover first/sixth/seventh attempts,
+one/two/all free slots, a full bank, running timer and a defeated existing ID.
+`native-lakitu-reappear-probe.py` reproduces the fixture through the committed
+special-slot observer; the retained entrance hash is verified before RAM setup.
+The actor starts at x287/y32 on a still camera; when born in a later slot its
+first MoveLakitu producesx286+176/256, speed$FB/direction0. These are consequences
+of source slot order and byte arithmetic, not level/frame exceptions.
+
+All1259 tests and TypeScript pass; excerpts regenerated. Full32 field survey
+is unchanged from552c45b. Current recordings do not exercise this reappearance
+path, so this is native branch evidence rather than a claim of a corrected
+recorded first divergence. Native FinishFlame also leaves reappearing Lakitu
+with bounding-box control8 (original Lakitu uses3); contact/render equivalence
+of that smaller post-respawn box remains to be ported and separately verified.
+The source-derived lifecycle does not add a predictive CPU overrun scheduler.
