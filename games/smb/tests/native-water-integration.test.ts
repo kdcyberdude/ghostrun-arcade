@@ -153,13 +153,25 @@ test('swimming wall reversal uses the last friction absolute byte for skid stopp
  }
 });
 
-for(const [level,from,to,slots] of [['7-2',1118,1330,[0,2,3]],['2-2',2810,3021,[0,1]],['7-2',2713,2949,[0,1,2]],['2-2',6396,6596,[0,1,2]]] as const)test(`${level} native water injury holds the hitting slot and later slots through the death arc at ${from}`,()=>{
+for(const [level,from,to,slots] of [['7-2',1118,1330,[0,2,3]],['2-2',2810,3021,[0,1]],['7-2',2713,2949,[0,1,2,3]],['2-2',6396,6596,[0,1,2]]] as const)test(`${level} native water injury holds the hitting slot and later slots through the death arc at ${from}`,()=>{
  const run=replay(level);
  for(let f=0;f<=to&&f<run.pads.length;f++){
   run.step(f);if(f<from)continue;const r=run.row(f);
   for(const slot of slots){
    if(!r[0xf+slot])continue;
    const e=run.sim.enemies.find(e=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===slot);assert.ok(e,`frame ${f} slot ${slot}`);
+   assert.equal(Math.floor(e.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
+   assert.equal(Math.floor(e.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
+  }
+ }
+});
+
+test('odd-slot Bloopers use the retained native moving direction when Mario speed byte is zero',()=>{
+ const run=replay('7-2');
+ for(let f=0;f<=2558;f++){
+  run.step(f);if(f<2554)continue;const r=run.row(f);
+  for(const slot of [1,3]){
+   const e=run.sim.enemies.find(e=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===slot);assert.ok(e?.bloop,`frame ${f} slot ${slot}`);
    assert.equal(Math.floor(e.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
    assert.equal(Math.floor(e.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
   }
