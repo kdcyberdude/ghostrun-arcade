@@ -23,6 +23,11 @@ export function nativePlatformObject(platform:PlatformSpec,context:PlatformMotio
 export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotionContext){
  const id=nativePlatformObject(platform,context)?.nativeId;return id===43||id===44;
 }
+/** DrawSmallPlatform emits two surfaces 128 pixels apart, suppressing either whose raw OAM y is above the HUD boundary ($20).
+ * firstArtworkY is already the native OAM y + 1; small lifts draw before their movement step. */
+export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
+ return nativeSmallPlatform(platform,context)?[firstArtworkY,((firstArtworkY-1+128)&255)+1].filter(y=>y>=33):[firstArtworkY];
+}
 /** Native id37 is parsed at object X−303, before its first motion frame. */
 export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.kind==='wrap'?object.x-315:object.spawnCamera;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */

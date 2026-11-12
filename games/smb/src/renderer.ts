@@ -6,7 +6,8 @@ import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
-import {platformMotionModel} from './platform-motion.js';
+import {enemyPicture} from './enemy-picture.js';
+import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
 import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
@@ -108,7 +109,8 @@ export class GameRenderer {
   }
  }
  private enemy(e:Enemy,s:Simulation){
-  const x=Math.floor((e.kind==='goomba'&&!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(e.kind==='goomba'&&!e.dead?e.graphicsY??e.y:e.y)-23;
+  e=enemyPicture(e);
+  const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
   const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
@@ -136,14 +138,14 @@ export class GameRenderer {
   palette=e.palette??palette;
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead&&e.vx<=0&&palette==='0f-16-30-27'){
    const tiles=tables.enemy_cells[cell].tiles;
-   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,col===1);
+   for(let row=0;row<2;row++)for(let col=0;col<2;col++)this.spriteTile(tiles[(row+1)*2+1-col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,col===1);
    return;
   }
   if(e.kind==='podoboo'&&!e.dead){
    // The observed body is16px tall; the table's leading8px row is transparent.
    const tiles=tables.enemy_cells[34].tiles,falling=e.podobooFalling===true;
    for(let row=0;row<2;row++)for(let col=0;col<2;col++)
-    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(e.y)-15+row*8,palette,col===1,falling);
+    this.spriteTile(tiles[(falling?2-row:row+1)*2+col],x+col*8,Math.floor(feet)-15+row*8,palette,col===1,falling);
    return;
   }
   if(e.greenShellLaunchFrame!==undefined){
@@ -201,9 +203,7 @@ export class GameRenderer {
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
     }else{
-     const entryQuestion=s.level.id==='1-2'&&s.area.id==='area-2'&&row===9&&col>=10&&col<=14&&id===192;
-     const palette=entryQuestion?[3,3,3,4,5,4][Math.floor((Math.max(0,s.areaFrame-1+(s.paused?1:0))%48)/8)]:this.rotation(s.area.palette);
-     this.tile(id,x,y,palette);
+     this.tile(id,x,y,this.rotation(s.area.palette));
     }
    }
    for(const col of this.ropeColumns){const x=col*16-Math.floor(s.camera);if(x>-16&&x<256)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.tile(64,x,row*16,this.rotation(s.area.palette));}
@@ -215,9 +215,12 @@ export class GameRenderer {
    }
    for(const overlay of s.area.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
    if(s.warpZoneActive)for(const overlay of s.area.warpZone?.overlays??[])this.text(overlay.text,overlay.x-s.camera,overlay.y);
-   for(const platform of s.area.platforms??[]){const pos=s.platformPosition(platform);
-    if(platformMotionModel(platform,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,pos.y);
-    else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,pos.y,'0f-16-30-27');
+   for(const platform of s.area.platforms??[]){
+    const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
+    for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
+     if(platformMotionModel(platform,context)==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
+     else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');
+    }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.
    this.worldClip=false;
@@ -230,7 +233,7 @@ export class GameRenderer {
    }
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
-   for(const e of s.enemies)if(e.active&&e.x-s.camera>-40&&e.x-s.camera<272&&e.dead<90)this.enemy(e,s);
+   for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
    for(const i of s.items){if(!itemShown(i))continue;const x=i.x-s.camera;
     if(i.kind==='mushroom'||i.kind==='flower'||i.kind==='star'||i.kind==='1up')this.special(`powerups-${{mushroom:0,flower:1,star:2,'1up':3}[i.kind]}`,x,i.y,i.emerging?-0.1:1.5);
     if(i.kind==='coin')this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
