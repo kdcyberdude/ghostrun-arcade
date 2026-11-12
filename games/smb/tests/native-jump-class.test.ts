@@ -10,7 +10,7 @@ const run=(levelId:string,areaId:string,spawn:[number,number],camera:number,spee
  const level=observedLevels().find(l=>l.id===levelId)!;
  const s=new Simulation([level]);s.reset(true);s.loadArea(areaId,spawn,camera);
  s.phase='play';s.phaseFrame=0;
- const p=(s as any).player;p.vx=speed/4096;(s as any).motor.speed=speed;
+ const p=(s as any).player;p.vx=speed/4096;(s as any).motor.reset(speed);
  const ys:number[]=[];
  for(const buttons of frames){s.step(buttons as any,1);ys.push(Math.floor(p.y)-32);}
  return ys.slice(ys.findIndex(y=>y<spawn[1]-32));
@@ -35,8 +35,10 @@ test('6-2 jump from the pipe-top landing frame with a run-speed wall contact kee
  const level=observedLevels().find(l=>l.id==='6-2')!;
  // Seeded from native row 49806 (feet 172 + sub-pixel 128/256, vy 4, run-class fall): the old feet 176 / vy 3.5 reached the pipe 5 px deep, where native (4 px deep at x 2084) still lands.
  const s=new Simulation([level]);s.reset(true);s.loadArea('main',[2070,172.5],1950);s.phase='play';s.phaseFrame=0;
- const p=(s as any).player;p.vx=10360/4096;(s as any).motor.speed=10360;(s as any).motor.airRun=true;p.vy=4;p.grounded=false;(s as any).runJump=true;(s as any).jumpArc=true;
+ const p=(s as any).player;p.vx=10360/4096;(s as any).motor.reset(10360);p.vy=4;p.grounded=false;(s as any).runJump=true;(s as any).jumpArc=true;
  const ys:number[]=[];
- for(let i=0;i<30;i++){s.step((i<5?['right','b']:['right','a','b']) as any,1);ys.push(Math.floor(p.y)-32);}
+ // The takeoff is the row right after the landing/contact row (the sim applies a press two rows late): native InitJS reads Player_XSpeedAbsolute, which the
+ // contact row's ImposeFriction left at 40 before ImpedePlayerMove cleared the speed byte; one row later the masked press has set it to 0.
+ for(let i=0;i<30;i++){s.step((i<4?['right','b']:['right','a','b']) as any,1);ys.push(Math.floor(p.y)-32);}
  near(ys.slice(ys.findIndex((y,i)=>y===155&&ys[i-1]===160)),native);
 });

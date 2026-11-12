@@ -12,7 +12,7 @@ const names=(m:number)=>keys.filter((_,b)=>m&(1<<b));
 const X0=3136,FEET=208;
 function replay(vx:number,rows:Row[],lead:number){
  const sim:any=new Simulation(observedLevels());sim.reset(true);sim.loadArea(sim.level.main);sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;sim.enemies.length=0;
- const p=sim.player;p.x=X0;p.y=FEET;p.vy=0;p.grounded=true;p.vx=vx/4096;sim.camera=X0-112;sim.motor.reset();sim.motor.speed=vx;sim.motor.airRun=Math.abs(Math.floor(vx/256))>=25;
+ const p=sim.player;p.x=X0;p.y=FEET;p.vy=0;p.grounded=true;p.vx=vx/4096;sim.camera=X0-112;sim.motor.reset(vx);
  sim.runJump=false;sim.mediumJump=false;sim.landJump='inactive';
  const pad=(i:number)=>names(i<0?lead:(rows[i]??rows[rows.length-1])[0]);
  sim.inputs=[new Set(pad(0)),new Set(pad(1))];

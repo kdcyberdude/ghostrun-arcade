@@ -21,7 +21,7 @@ test('the 5-3 second platform carries a stationary rider without changing its pa
   const position=riding.platformPosition(platform),unloadedPosition=unloaded.platformPosition(other);
   assert.equal(riding.phase,'play');assert.equal(unloaded.phase,'play');
   assert.equal(riding.camera,unloaded.camera);
-  assert.ok(Math.abs(riding.player.x-position.x-16)<0.01);
+  assert.equal(riding.player.x,initial.x+16+Math.floor(position.x)-Math.floor(initial.x)); // carried by the platform's whole-pixel step, sub-pixel kept
   assert.ok(Math.abs(riding.player.y-position.y+1)<0.01);
   assert.deepEqual(position,unloadedPosition);
  }

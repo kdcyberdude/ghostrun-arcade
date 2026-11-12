@@ -38,16 +38,16 @@ test('6-2 neutral automatic sky entry reaches the observed standing pose',()=>{
 });
 
 test('ordinary controls reveal and stand on the hidden step, attach to the grown vine and enter the sky',()=>{
- // The jump script is 28 left / 14 right frames (was 32 / 14, then 28 / 12; the neutral coast against the facing now doubles its friction): the native-speed motor changes per-frame travel; this pair
- // reaches the vine for every approach of 17..21 frames, preserving the intended robustness.
+ // The jump script is 28 left / 10 right frames and a 28-frame vine jump (was 32 / 14, then 28 / 12, then 28 / 14 with a 24-frame vine jump; re-aligned for the
+ // byte-exact native motor of src/native-player-motor.ts): the motor changes per-frame travel; this script reaches the vine for every approach of 15..23 frames.
  for(const approachFrames of[18,19,20]){
  const sim=mainFixture([1296,160]);
  sim.step(['a'],24);sim.step([],240);assert.equal(sim.tileAt(1296,80),196);
  sim.step(['right'],20);sim.step([],90);sim.step(['a'],24);sim.step([],80);
  assert.equal(sim.tileAt(1312,144),196);assert.equal(sim.coins,1);
- sim.step(['right'],approachFrames);sim.step([],40);sim.step(['left','a'],28);sim.step(['right'],14);sim.step([],60);
+ sim.step(['right'],approachFrames);sim.step([],40);sim.step(['left','a'],28);sim.step(['right'],10);sim.step([],60);
  assert.equal(sim.player.y,144);assert.equal(sim.player.grounded,true);
- sim.step(['left','a'],24);sim.step(['up'],240);sim.step([],500);
+ sim.step(['left','a'],28);sim.step(['up'],240);sim.step([],500);
  assert.equal(sim.area.id,'6-2-vine-sky');assert.deepEqual([sim.player.x,sim.player.y],[75,208]);assert.equal(sim.lives,3);
  }
 });
