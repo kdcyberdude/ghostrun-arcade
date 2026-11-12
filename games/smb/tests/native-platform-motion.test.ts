@@ -14,14 +14,14 @@ const runs=fs.readdirSync(dir).filter(f=>f.endsWith('.json')).sort().map(f=>JSON
 
 function objects(x:Excerpt,id:number){
  const ram=unpack(x.ram),n=x.addrs.length,at=(f:number,a:number)=>ram[f*n+x.addrs.indexOf(a)];
- const out:{level:string,slot:number,spawn:number,rows:{x:number,y:number,counter:number}[]}[]=[];
+ const out:{level:string,slot:number,spawn:number,rows:{x:number,y:number,counter:number,frozen:boolean}[]}[]=[];
  for(let s=0;s<5;s++){
   let cur:(typeof out)[number]|undefined;
   for(let f=0;f<x.frames;f++){
    const live=at(f,0x0f+s)!==0&&at(f,0x16+s)===id;
    if(!live){cur=undefined;continue;}
    if(!cur){if(f===0||at(f-1,0x0f+s)!==0)continue;cur={level:x.level,slot:s,spawn:f,rows:[]};out.push(cur);}
-   cur.rows.push({x:(at(f,0x6e+s)*256+at(f,0x87+s))*256+at(f,0x401+s),y:at(f,0xcf+s),counter:at(f,0x09)});
+   cur.rows.push({x:(at(f,0x6e+s)*256+at(f,0x87+s))*256+at(f,0x401+s),y:at(f,0xcf+s),counter:at(f,0x09),frozen:at(f,0x0e)===11||at(f,0x0e)===6});
   }
  }
  return out;
@@ -37,15 +37,16 @@ test('id 37 lifts follow the native YMovingPlatform integration from their spawn
 });
 
 test('id 40 platforms follow the native XMovingPlatform integration from their spawn row, keeping the slot sub-pixel (all v2 runs)',()=>{
- let rows=0,stops=0;const subs=new Set<number>();
+ let rows=0;const subs=new Set<number>();
  for(const run of runs)for(const o of objects(run,40)){
   const first=o.rows[0],x0=Math.floor(first.x/256),sub=first.x&255;subs.add(sub);
   for(let age=0;age<o.rows.length;age++){
    const want=o.rows[age].x/256,got=nativeHorizontalX(x0,age,first.counter,sub);
-   if(got!==want){
-    // the only misses: two 5-3 objects at ages 141 and 83, where all objects freeze (TimerControl $0747, not in the excerpt); the check ends there
-    stops++;assert.ok(age>50&&stops<=2,`${o.level} slot ${o.slot} spawn ${o.spawn} age ${age}: ${got} vs ${want}`);break;
+   if(o.rows[age].frozen){
+    assert.ok(want===o.rows[age-1].x/256||want===got,`${o.level}: a death freezes slots that have not stepped yet`);
+    break; // Area/death processing no longer advances this object trajectory.
    }
+   assert.equal(got,want,`${o.level} slot ${o.slot} spawn ${o.spawn} age ${age}`);
    rows++;
   }
  }

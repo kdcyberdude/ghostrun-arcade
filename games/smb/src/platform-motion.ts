@@ -153,10 +153,10 @@ export function platformMotionModel(platform:PlatformSpec,context:PlatformMotion
  return 'unmeasured';
 }
 
-/** Native object slot a created native platform holds: its spawn was reached and it is still within 73 px left of the camera (walker removal edge, not measured for platforms). */
+/** Native OffscreenBoundsCheck erases platform ids >= 13 when their integer x is below ScreenLeft - 72, regardless of platform width (all v2 removal events). */
 export function nativePlatformHoldsSlot(motion:PlatformMotion,platform:PlatformSpec,context:PlatformMotionContext,camera:number,frame:number){
  const o=nativePlatformObject(platform,context);
- return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&camera>=o.spawnCamera&&motion.collisionPosition(platform,frame).x+platform.width>=camera-73;
+ return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&camera>=o.spawnCamera&&Math.floor(motion.collisionPosition(platform,frame).x)>=camera-72;
 }
 /** Querying positions never advances simulation. */
 export class PlatformMotion {
