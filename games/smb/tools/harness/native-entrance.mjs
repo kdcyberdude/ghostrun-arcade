@@ -7,7 +7,7 @@ export function decodeEntrance(ram,receipt){
  const grounded=ram[0x1d]===0;
  if(ram[0xb5]!==1||(!grounded&&(ram[0x1d]!==1||ram[14]!==8||![96,112,144].includes(ram[0x70a]))))throw Error('Unsupported observed entrance motion');
  if(grounded&&(signed(ram[0x9f])!==0||ram[0x433]!==0))throw Error('Ground state has vertical motion');
- return {level,engine:ram[14],grounded,vy:signed(ram[0x9f])+ram[0x433]/256,fallForce:ram[0x70a],x:signed(ram[0x6d])*256+ram[0x86]+ram[0x400]/256,y:ram[0xce]+32+ram[0x416]/256,speed:signed(ram[0x57])*256+ram[0x705],facing:ram[0x33]===2?-1:1,size:ram[0x756],camera:ram[0x71a]*256+ram[0x71c],time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:ram[0x75e],lives:(ram[0x75a]+1)&255,random:Array.from(ram.slice(0x7a7,0x7ae)),counter:ram[9],timerControl:ram[0x787],movingDir:ram[0x45]===1?1:ram[0x45]===2?-1:0,speedAbsolute:ram[0x700],runningTimer:ram[0x783],runningSpeed:ram[0x703]};
+ return {level,engine:ram[14],grounded,vy:signed(ram[0x9f])+ram[0x433]/256,fallForce:ram[0x70a],x:signed(ram[0x6d])*256+ram[0x86]+ram[0x400]/256,y:ram[0xce]+32+ram[0x416]/256,speed:signed(ram[0x57])*256+ram[0x705],facing:ram[0x33]===2?-1:1,size:ram[0x756],camera:ram[0x71a]*256+ram[0x71c],time:digits(0x7f8,3),score:digits(0x7dd,6)*10,coins:ram[0x75e],lives:(ram[0x75a]+1)&255,random:Array.from(ram.slice(0x7a7,0x7ae)),counter:ram[9],timerControl:ram[0x787],movingDir:ram[0x45]===1?1:ram[0x45]===2?-1:0,speedAbsolute:ram[0x700],runningTimer:ram[0x783],runningSpeed:ram[0x703],colorRotate:ram[0x6d4]};
 }
 export function initializeEntrance(sim,start){
  const index=sim.levels.findIndex(level=>level.id===start.level);if(index<0)throw Error('Unmapped level');
@@ -25,7 +25,7 @@ export function initializeEntrance(sim,start){
   /* native GameTimerCtrl ($0787) counts down to the next digit tick (24 frames); timerFrames counts up to 24 */
   if(start.timerControl!==undefined)sim.timerFrames=start.timerControl===0?23:(24-start.timerControl)%24;}
  sim.score=start.score;sim.coins=start.coins;sim.lives=start.lives;
- sim.random.bytes=[...start.random];sim.random.frame=start.counter;sim.broClock=start.counter;
+ sim.random.bytes=[...start.random];sim.random.frame=start.counter;if(start.colorRotate!==undefined)sim.colorRotations=start.colorRotate;sim.broClock=start.counter;
  sim.inputs=[new Set(),new Set()];sim.previous=new Set();sim.recordedRoute=false;
- return {initialized:['level main area','observed pose, subpixels, velocity, takeoff force and motor','camera','power','HUD score/coins/lives/time','random register and counter','game timer subphase','neutral prior inputs'],notReconstructed:['full native emulator state','enemy slot allocation and hidden per-enemy state','other hidden engine clocks','pre-existing audio phase'],method:'One initialization before the first retained action. Existing simulation, collisions, damage and deaths remain active. Controller transport is declared separately. No future action is pre-applied and no later state correction occurs.'};
+ return {initialized:['level main area','observed pose, subpixels, velocity, takeoff force and motor','camera','power','HUD score/coins/lives/time','random register and counter','palette rotation offset','game timer subphase','neutral prior inputs'],notReconstructed:['full native emulator state','enemy slot allocation and hidden per-enemy state','other hidden engine clocks','pre-existing audio phase'],method:'One initialization before the first retained action. Existing simulation, collisions, damage and deaths remain active. Controller transport is declared separately. No future action is pre-applied and no later state correction occurs.'};
 }
