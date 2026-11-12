@@ -17,6 +17,8 @@ import powerupRules from '../data/powerup-rules.json';
 import enemyRules from '../data/enemy-rules.json';
 import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
+import {flyingCheepLaunch,moveFlyingCheep} from './flying-cheep.js';
+import {newNativeBlooper,stepNativeBlooper} from './blooper-motion.js';
 import {NativeRandom} from './native-random';
 import waterActorData from '../data/native-water-actors.json';
 import lakituData from '../data/native-lakitu.json';
@@ -189,7 +191,8 @@ export class Simulation {
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
  private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathFromBelow=false;private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
- private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
+ private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // y fraction byte ($0417+s) a flying fish leaves in its slot (src/flying-cheep.ts)
+ // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private pipeRise=0;broClock=0;random=new NativeRandom();recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private firebarSlots?:FirebarSlots;
@@ -271,7 +274,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYFrac=[0,0,0,0,0];this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=this.level.id==='5-1'?new PiranhaColumns(this.camera):undefined;
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -1064,7 +1067,7 @@ export class Simulation {
   for(const [frame,index] of generator.schedule!){
    if(this.areaFrame<frame||(this.areaFrame-frame)%period!==0)continue;
    const kind=FLYING_FISH.classes[index];
-   const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:this.player.x+kind.offsetX,y:FLYING_FISH.launch.feetY,direction:1,evidence:'Native leaping Cheep Cheep: recorded launch schedule, constant-speed class and 187-frame arc.'});
+   const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:Math.floor(this.player.x)+kind.offsetX,y:FLYING_FISH.launch.feetY,direction:1,evidence:'Native leaping Cheep Cheep: recorded launch schedule, constant-speed class and 187-frame arc.'});
    enemy.nativeFlight=true;enemy.vx=kind.speed;enemy.vy=FLYING_FISH.launch.vy;enemy.active=true;this.enemies.push(enemy);
   }
  }
@@ -1081,7 +1084,8 @@ export class Simulation {
  }
  // Lowest native enemy slot not in use. Slots are not modelled elsewhere, so live enemies take theirs here, in the order they were activated.
  private freeNativeSlot(){
-  const live=this.enemies.filter(e=>e.active&&!e.dead),used=new Set(live.flatMap(e=>e.enemySlot===undefined?[]:[e.enemySlot]));
+  // A walker the remake already dropped still holds its slot until releaseNativeSlots frees it (7-3 row 302: a koopa at camera - 73 keeps slot 2 natively, no fish there).
+  const live=this.enemies.filter(e=>e.active&&!e.dead),used=new Set(this.enemies.flatMap(e=>e.enemySlot===undefined||!e.active||e.slotFreed||e.dead&&!this.holdsNativeSlot(e)?[]:[e.enemySlot]));
   for(const slot of this.objectSlots(used))used.add(slot);
   const lowest=()=>{let slot=0;while(used.has(slot))slot++;return slot;};
   for(const e of live)if(e.enemySlot===undefined){e.enemySlot=lowest();used.add(e.enemySlot);}
@@ -1093,6 +1097,9 @@ export class Simulation {
   * (15 of 15 expiries on that row launch one row late; rule replay on native RAM 510 of 556 launches vs 432 without it). Returns whether this row is that row. */
  private fishCameraCrossed(){const before=this.fishCamera;this.fishCamera=this.camera;return before!==undefined&&Math.floor(this.camera/32)>Math.floor(before/32);}
  private fishCamera?:number;
+ // A slot keeps the sub-pixel x ($0401+s) and y fraction ($0417+s) of its last occupant, and a new flying fish starts with them (32 v2 traces: 30 of 30 fish spawns in a used slot
+ // start with the bytes the slot held after its previous occupant was removed). A fish removed on a row still makes that row's horizontal step, not its vertical one.
+ private leaveFlyingCheepSlot(e:Enemy){const x=e.x+e.vx;this.slotSub[e.enemySlot!]=Math.round((x-Math.floor(x))*256)&255;this.slotYFrac[e.enemySlot!]=e.pod?.fraction??0;}
  private updateFishFrenzy(generator:GeneratorSpec){
   this.freeNativeSlot(); // an enemy takes its native slot on the frame it activates (not when the timer next reads the slots): a later fish then sees the real free slot
   const crossed=this.fishCameraCrossed();
@@ -1104,8 +1111,8 @@ export class Simulation {
   if(slot>=generator.maxFish!)return;
   const speedByte=Math.floor(this.player.vx*16)&255,table=speedByte===0?0:speedByte<F.walkSpeedLimit?1:2,entry=table*4+(bytes[slot]&3),place=table===0&&wait?bytes[slot+2]&15:entry;
   const offset=F.offsets[place],speed=F.speeds[entry]*(table===0&&offset>0?-1:1);
-  const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:this.player.x+offset,y:FLYING_FISH.launch.feetY,direction:Math.sign(speed),evidence:'Native leaping Cheep Cheep: random-register launch, 187-frame arc.'});
-  enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.active=true;this.enemies.push(enemy);
+  const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:Math.floor(this.player.x)+offset+this.slotSub[slot]/256,y:FLYING_FISH.launch.feetY,direction:Math.sign(speed),evidence:'Native leaping Cheep Cheep: random-register launch, 187-frame arc.'});
+  enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotYFrac[slot]};enemy.active=true;this.enemies.push(enemy);
  }
  // Native swimming Cheep generator (2-2/7-2 water, free play; the recorded route replays its list): once the 32-frame timer is 0 the lowest free slot, if below 3, gets a fish at camera + 287.
  private updateSwimGenerator(){
@@ -1125,7 +1132,7 @@ export class Simulation {
  private tickIntervalTimers(){
   if(this.intervalControl>0){this.intervalControl--;return;}
   this.intervalControl=20;
-  for(const e of this.enemies)if(e.pod&&e.pod.timer>0)e.pod.timer--;
+  for(const e of this.enemies){if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;}
  }
  private updateNativePodoboo(e:Enemy){
   const n=e.pod??=nativeMoveState(514,1);
@@ -1133,26 +1140,12 @@ export class Simulation {
   nativeImposeGravity(n,28,3);
   e.y=n.y-256+24;e.vy=n.speed+n.force/256;e.podobooFalling=e.vy>0;
  }
- // Native Blooper (docs/NATIVE_ROLES.md): a 24-frame stroke moves it 32 px up and 32 px sideways (1,2,1 px/frame in 8-frame thirds), between strokes it sinks 1 px every 2 frames.
- // Strokes start on the frame counter's 8-frame tick: the first one at the first tick after it appears, the next 32 frames (second) or 40 frames (later) after the last ended, once it is no more
- // than 16 px above Mario (native tops: Blooper y - player y + 8). The sideways direction can change on any frame, also mid-stroke.
+ // Native Blooper: the slot state machine of src/blooper-motion.ts, fed with this frame's counter, random byte slot+1 and Mario's pixel x, native y and moving direction.
  private updateNativeBlooper(e:Enemy){
-  const p=this.player,k=e.age-1;let b=e.bloop;
-  this.nativeBlooperTurn(e);
-  if(!b){if(k<1||this.random.frame&7)return;b=e.bloop={start:k,count:0};}
-  else if(k-b.start>=24){
-   const idle=k-b.start-24,gap=b.count===0?32:40;
-   if(idle>=gap&&(idle-gap)%8===0&&e.y-p.y+8>=-16)b=e.bloop={start:k,count:b.count+1};
-   else{if(idle>=2&&idle%2===0&&(idle<=gap-4||idle>=gap))e.y+=1;return;} // +1 px every 2 frames, the last 3 frames before a minimum-gap stroke stand still
-  }
-  const step=k-b.start<8||k-b.start>=16?1:2;e.x+=e.nativeDir!*step;e.y-=step;
- }
- // It starts going left. When the low bits of random byte slot+1 are all 0 it turns: an even slot toward Mario, an odd slot the way Mario last moved. Not while it rests on the bottom.
- private nativeBlooperTurn(e:Enemy){
-  e.nativeDir??=-1;if(e.enemySlot===undefined)this.freeNativeSlot();
-  const mask=(WATER_RULES.blooperTurnMask as Record<string,number>)[this.level.id]??WATER_RULES.blooperTurnMask['2-2'];
-  if(this.random.bytes[e.enemySlot!+1]&mask||e.y-24>=WATER_RULES.blooperRestY)return;
-  e.nativeDir=e.enemySlot!&1?this.marioMotion:this.player.x>=e.x?1:-1;
+  if(e.enemySlot===undefined)this.freeNativeSlot();
+  const b=e.bloop??=newNativeBlooper(),p=this.player,mask=(WATER_RULES.blooperTurnMask as Record<string,number>)[this.level.id]??WATER_RULES.blooperTurnMask['2-2'];
+  const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x),playerY:(Math.floor(p.y)-32)&255,playerDir:this.marioMotion<0?2:1});
+  e.x=next.x;e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;
  }
  // Native Hammer Bros (docs/NATIVE_ROLES.md, Hammer Bro section; data/native-hammer-bros.json). Bros of a level that has a roster take the recorded spawn x / feet of the nearest
  // roster entry. Once active, the patrol is the area clock (0.25 px/frame, right while the frames since the area load mod 128 < 64, no walls), jumps are the recorded strong/weak
@@ -1604,10 +1597,10 @@ export class Simulation {
     }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
-   if(e.kind==='bullet'?this.nativeBulletGone(e):e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;if(e.nativeFlight&&e.enemySlot!==undefined)this.leaveFlyingCheepSlot(e);continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    if(e.motion==='flying'){
-    if(e.nativeFlight){if(e.age>1){e.x+=e.vx;e.y+=e.vy;e.vy+=FLYING_FISH.launch.gravity;}} // the spawn step holds the launch position
+    if(e.nativeFlight){if(e.age>1){const n=e.pod??=flyingCheepLaunch();e.x+=e.vx;moveFlyingCheep(n);e.y=n.y+24;e.vy=n.speed+n.force/256;}} // the spawn step holds the launch position (src/flying-cheep.ts)
     else{e.x+=e.vx;e.y+=e.vy;e.vy=Math.min(4,e.vy+0.125);}
    }else if(e.kind==='piranha'){
     const phase=(e.age+e.phase!)%PIRANHA.periodNativeFrames;
