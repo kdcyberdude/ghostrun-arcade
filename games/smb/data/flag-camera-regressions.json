@@ -2,12 +2,11 @@
   "schema": "ordinary-flag-camera-regressions-v1",
   "sourceSnapshot": "5183 f5294e5ee17d06868647e01935db276705b8a6053753a36f0d578b2d5c4f1fdc",
   "provenance": "Actual reference controller requests/PNGs from first-level dense trace and fresh0/1/3/6 captures. Consecutive equal masks merged by summing actual native durations; no scripted events or state mutations.",
-  "tolerancePixels": 3,
+  "tolerancePixels": 2,
   "reservationPlan": "data/flag-camera-heldout-plan.json",
   "limitations": [
     "These are camera-only regressions. Initial slide pose, frozen321/323digits, waits and raw99% comparisons remain failed.",
-    "The ordinary controls reach1-2; this does not establish campaign completion.",
-    "Tolerance 3 since the native pole-touch rule (src/award-rules.ts, 19 of 19 v2 RAM grabs): the remake's end walk keeps the camera 2-3 px ahead of native with the touch on the same row (1-1 v2 rows 2285..2341, $071A/$071C), which the old one-to-two-rows-late touch used to cancel in these cases (all within 1 px then)."
+    "The ordinary controls reach1-2; this does not establish campaign completion."
   ],
   "cases": [
     {

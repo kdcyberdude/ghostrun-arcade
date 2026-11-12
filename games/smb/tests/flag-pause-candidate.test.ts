@@ -4,7 +4,7 @@ import {Simulation} from '../src/simulation.js';
 import type {Level,Tile} from '../src/types.js';
 
 function reach(stage:'tally'|'fireworks'){
- const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69]);
+ const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69],[11,12,82]);
  const level:Level={id:'1-1',time:307,main:'main',evidence:'Isolated flag pause fixture',areas:[{id:'main',width:640,palette:0,theme:'ground',tiles,enemies:[],spawn:[80,208],exit:{x:104,doorX:160,kind:'flag'},evidence:'Fixture'}]};
  const next:Level={...level,id:'1-2',time:400,areas:[{...level.areas[0],spawn:[40,208],exit:undefined}]};
  const sim=new Simulation([level,next]);sim.reset(true);

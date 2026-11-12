@@ -606,7 +606,7 @@ export class Simulation {
     this.castleStage='bridge';this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;this.emit('command_silence');
     for(const[key,id]of this.tiles)if(id===197)this.tiles.delete(key);
     {const chain=`${Math.floor(exit.x/16)-1},9`;if(this.level.id==='6-4'&&this.area.id==='main'&&this.tiles.get(chain)===12)this.tiles.delete(chain);} // the 6-4 chain hangs in the column before the axe tile
-   }else {if(this.timerTickFrame===this.frame)this.time++;/* native RunGameTimer runs after the pole touch and skips engine 4: a tick due on the touch row never happens (1-1 v2 row 2181: $0787 0, digits stay 358) */p.x=exit.x-15;this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
+   }else {if(this.timerTickFrame===this.frame)this.time++;/* native RunGameTimer runs after the pole touch and skips engine 4: a tick due on the touch row never happens (1-1 v2 row 2181: $0787 0, digits stay 358) */p.x=exit.x-15+(p.x-Math.floor(p.x));this.beginFlag();this.emit('command_silence');this.emit('sfx_flagpole');}
   }
  }
  tileAt(x:number,y:number){return this.tiles.get(`${Math.floor(x/16)},${Math.floor(y/16)}`)??this.freeTiles.find(t=>x>=t.x&&x<t.x+16&&y>=t.y&&y<t.y+16)?.id??0;}
@@ -1382,9 +1382,9 @@ export class Simulation {
   // Renderer caches baseline tiles by area identity for partial pattern edits.
   this.area={...this.area};
  }
- private flagCameraScreenX=141;
+ private flagScrollLocked=true;
  private beginFlag(){
-  this.flagCameraScreenX=this.player.x-this.camera+24;
+  this.flagScrollLocked=true;
   this.flagTop=FLAG_COMPLETION.flagTopY;this.flagInside=false;this.flagWait=0;this.flagFireworksAwarded=0;
   const digit=this.time%10;this.flagFireworkCount=[1,3,6].includes(digit)?digit:0;
   const pole=this.area.exit!;
@@ -1409,29 +1409,38 @@ export class Simulation {
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
   this.flagTop=Math.min(rules.flagBottomY,rules.flagTopY+this.phaseFrame*rules.slideSpeed);
-  // Native FlagpoleRoutine adds the flag points on the last slide row, with the switch to engine 5 (score digits at row +62 on 18 of 19 v2 grabs; the flip follows a row later). 3-3 pays at +61: the flag moves 2 px on its first row when slot 5 kept a nonzero $041C dummy from an earlier platform (not modelled).
+  // Native FlagpoleRoutine adds the flag points on the last slide row, with the switch to engine 5 (score digits at row +62 on 18 of 19 v2 grabs; the flip follows a row later). 3-3 pays at +61: the flag moves 2 px on its first row when slot 5 kept the $041C fraction from an earlier PowerUpObject (not modelled).
   if(this.phaseFrame===rules.slideFrames)this.score+=this.flagBonus;
-  if(this.phaseFrame<=rules.slideFrames){p.climbing=true;p.y=Math.min(191,p.y+rules.slideSpeed);return;}
+  if(this.phaseFrame<=rules.slideFrames){p.climbing=true;if(Math.floor(p.y)<190)p.y+=1+255/256;else p.vy=0;return;}
   if(this.phaseFrame===rules.slideFrames+1)this.emit('event_level_clear');
   const walkFrom=rules.slideFrames+rules.flipFrames+1;
-  if(this.phaseFrame<walkFrom){p.x=exit.x-1;p.y=191;p.climbing=true;p.facing=-1;return;}
+  if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;return;}
   p.climbing=false;p.facing=1;
-  if(!this.flagInside){
-   if(this.phaseFrame===walkFrom){p.vx=rules.walkInitialSpeed;p.vy=0;}
-   if(p.y>=208)p.vx=Math.min(rules.walkMaxSpeed,p.vx+rules.walkAcceleration);
-   p.x+=Math.floor(p.vx*32)/32;p.anim+=p.vx;
-   // Image-fitted cutscene support/acceleration, separate from manual jump rules.
-   p.grounded=p.y>=208;
-   if(p.y>191&&p.y<208&&this.isSolid(p.x+rules.walkSupportProbeX,p.y+1)){p.y=Math.ceil(p.y);p.vy=0;p.grounded=true;}
-   if(p.y<208&&!this.isSolid(p.x+rules.walkSupportProbeX,p.y+1)){
-    p.vy=Math.min(PHYSICS.maxFall,p.vy+rules.walkGravity);const next=p.y+p.vy;
-    let landed=false;
-    for(let y=Math.ceil(p.y);y<=next;y++)if(this.isSolid(p.x+rules.walkSupportProbeX,y)){p.y=y;p.vy=0;p.grounded=true;landed=true;break;}
-    if(!landed)p.y=next;
+  const wasInside=this.flagInside;
+  {
+   if(this.phaseFrame===walkFrom){
+    // PlayerEndLevel offsets Mario four pixels from the pole before the next frame's automatic Right press.
+    p.x+=4;p.vx=0;p.vy=0;p.grounded=false;const runningSpeed=this.motor.runningSpeed;this.motor.reset(0,-1,1,this.motor.absolute);this.motor.runningSpeed=runningSpeed;this.jumpArc=false;this.bouncing=false;this.walkingOff=false;return;
    }
-   this.camera=Math.max(this.camera,Math.min(Math.floor(p.x)-this.flagCameraScreenX,this.area.width-256));
-   if(exit.doorX!==undefined&&p.x>=exit.doorX){this.flagInside=true;p.vx=0;}
-  }else if(this.time>0){
+   const oldX=p.x,wasGrounded=p.grounded;
+   p.vx=this.motor.step({direction:1,ground:wasGrounded,jump:false,b:false,down:false,buttons:true})/4096;
+   p.x+=motionOf(this.motor.speed);p.anim+=p.vx;p.grounded=false;
+   this.wallSpeed=undefined;this.footPushed=false;this.movePlayerY(p.vy,this.height);
+   if(!p.grounded)p.vy=this.nativeFallCap(p.vy+this.fallGravity);
+   this.walkOffStart(wasGrounded);
+   // ScrollHandler sees the previous screen position and this frame's integer horizontal move.
+   const scroll=Math.floor(p.x)-Math.floor(oldX),screenX=Math.floor(oldX)-this.camera;
+   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
+   if(!this.flagScrollLocked&&this.sideCollisionTimer===0&&screenX>=80&&scroll>0)this.camera+=screenX>=112||scroll<2?scroll:scroll-1;
+   this.camera=Math.min(this.camera,this.area.width-256);
+   this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motionOf(this.motor.speed),this.height,false);this.footPushed=false;
+   if(this.wallSpeed!==undefined){this.motor.contact(1,true);p.vx=this.motor.speed/4096;this.flagInside=true;}
+   if(this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
+   // PlayerEndLevel clears ScrollLock after AutoControlPlayer, at native y >= $ae; this frame still used the lock.
+   if(Math.floor(p.y)>=0xae+32)this.flagScrollLocked=false;
+  }
+  if(!wasInside)return;
+  if(this.time>0){
    this.time--;this.score+=rules.timerPoints;if(this.time%4===0)this.emit('sfx_timer_tick');
   }else{
    this.flagWait++;
