@@ -241,18 +241,17 @@ const nativeCameraX=(index:number)=>nativeMaxX(rows,index);
 // A segment that starts inside a native underground entry fall (1-2 area-2, 4-2 area-3: the seed row is still an engine-7 hold row, the control row is the skip row) resumes the remake's own
 // entry timeline at the same age (age 0 = the first engine-7 row of the visit) instead of an ordinary air seed, which took the skip row as a fall step and the walk-off/jump gravity after it
 // (free play: one row ahead, then 1 px/row more; ENTRYSEED=0 disables).
-let entrySeeded=false;
 const ENTRY_HOLD_Y=32;
 const seedEntryFall=(r:Row,p:any)=>{
- entrySeeded=false;const entry=sim.area.entryFall,nat=entry?.native;if(!nat||r.engine!==7||p.grounded||process.env.ENTRYSEED==='0')return;
+ const entry=sim.area.entryFall,nat=entry?.native;if(!nat||r.engine!==7||p.grounded||process.env.ENTRYSEED==='0')return;
  let a=rows.indexOf(r);while(a>0&&rows[a-1].engine===7)a--;
- const fall=(age:number)=>{let vy=0,y=0;for(let k=1;k<=age;k++){if(k===nat.skipAge)continue;y+=vy;if(k>=nat.gravityStartAge){vy+=entry.gravity;if(vy>=nat.resetAt)vy=nat.resetTo;}}return {y,vy};};
+ const fall=(age:number)=>{let vy=0,y=0,ready=-1;for(let k=1;k<=age;k++){if(ready<0&&ENTRY_HOLD_Y+y>=48){ready=k;continue;}y+=vy;if(k>=nat.gravityStartAge){vy+=entry.gravity;if(vy>=nat.resetAt)vy=nat.resetTo;}}return {y,vy,ready};};
  // A level-checkpoint stream can begin mid-fall (1-2 / 4-2 model runs: first row y 36-37, the hold rows at y 32 already passed): its first row is not age 0;
  // take the first age whose timeline row matches it (native hold y 32).
  let start=0,base=rows[a].y;if(a===0&&rows[0].y>ENTRY_HOLD_Y){while(start<40&&Math.floor(ENTRY_HOLD_Y+fall(start).y)!==rows[0].y)start++;if(start<40)base=ENTRY_HOLD_Y;else start=0;}
  const age=rows.indexOf(r)-a+start;
- const {y,vy}=fall(age);
- sim.area={...sim.area,entryFall:{...entry,native:{...nat,inputAge:nat.inputAge-1}}};/* the remake's own input age (and landing grace, cleared after the landing step) carry its extra frame of input latency, which the seeded input queue already removes */sim.motor.reset(0);sim.motor.facing=1;/* the area load resets the motor (no press reaches it before the entry's input age); Mario enters facing right */entrySeeded=true;sim.entryFalling=true;sim.entryFallAge=age;sim.walkingOff=false;sim.jumpArc=false;p.vy=vy;
+ const {y,vy,ready}=fall(age);
+ sim.entryReadyAge=ready;sim.entryInputLag=0;/* PlayerRdy already passed (y>=$30) or still ahead; the seeded input queue already removes the remake's extra frame of input latency, so the pad drives Mario from the row after PlayerRdy and the landing row steps on the ground */sim.motor.reset(0);sim.motor.facing=1;/* the area load resets the motor (no press reaches it before the entry's input age); Mario enters facing right */sim.entryFalling=true;sim.entryFallAge=age;sim.walkingOff=false;sim.jumpArc=false;p.vy=vy;
  if(Math.floor(base+y)===r.y)p.y=base+y+32; // the model's sub-pixel when it agrees with the native row
 };
 const seed=(r:Row,prev:Row|undefined)=>{
@@ -418,7 +417,7 @@ for(let s=0;s<segments.length;s++){
   early=earlyAt(seg.level,f+1);if(sim.water)sim.water.whirlFirst=earlyAt(seg.level,f-1)===1&&!actionsPath;
   const evBefore=sim.events.length;
   const scoreBefore=sim.score,coinsBefore=sim.coins;
-  currentFrame=f-1;rowNow=f-1;sim.step(frameInputs[f+early]??[],1);if(entrySeeded&&sim.entryLanding){sim.entryLanding=false;entrySeeded=false;} /* its landing-row air step is the same latency offset: native steps +228 on the row after the landing */
+  currentFrame=f-1;rowNow=f-1;sim.step(frameInputs[f+early]??[],1);
   if(process.env.SCORELOG&&(sim.score!==scoreBefore||sim.coins!==coinsBefore))fs.appendFileSync(process.env.SCORELOG,JSON.stringify({f:f-1,level:sim.level.id,area:sim.area.id,x:Math.floor(sim.player.x),y:Math.floor(sim.player.y)-32,ds:sim.score-scoreBefore,dc:sim.coins-coinsBefore,coins:sim.coins})+'\n'); // SCORELOG=<file>: one line per remake score/coin change in control (compare per event with native score digits)
   const n=rows[f-1];if(!n||f-1>=seg.end)continue;
   if(scoreRows?.has(f-1))console.log('SR',f-1,seg.level,sim.area.id,n.x,n.y+32,rows[f-2].x,rows[f-2].y+32,n.vy); // SCOREROWS=<json array of rows>: area and area-local native position at those rows

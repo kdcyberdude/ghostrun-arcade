@@ -10209,10 +10209,7 @@
             "gravityStartAge": 2,
             "resetAt": 4.5,
             "resetTo": 4,
-            "skipAge": 17,
-            "inputAge": 19,
-            "timerAge": 17,
-            "evidence": "Native rows 2500..2551 (1-2) and 31642.. (4-2), full-RAM probes evidence/local/F-entry-probe-9/10: ages count steps after the first area row. Gravity 40/256 applies from age 2; each step adds the old speed to y first; a speed that reaches 4.5 after the increment becomes 4.0; the vertical update is skipped on the control-start row (age 17); the timer RAM goes 401 at age 0, 400 at age 17 and then ticks every 24 frames."
+            "evidence": "Native rows 2500..2551 (1-2) and 31642.. (4-2), full-RAM probes evidence/local/F-entry-probe-9/10: ages count steps after the first area row. Gravity 40/256 applies from age 2; each step adds the old speed to y first; a speed that reaches 4.5 after the increment becomes 4.0; the vertical update is skipped on the PlayerRdy row (the first step starting at native y>=$30, age 17 here); the timer RAM goes 401 at age 0, 400 on that row and then ticks every 24 frames; the pad drives Mario from the next row (simulation.ts reads these from the y threshold, not ages)."
           },
           "evidence": "Native-trace entry fall (rows 2500..2551 of the recorded route) with image-fitted appearance/enemy delays; see data/transition-measurements.json."
         },
@@ -84076,10 +84073,7 @@
             "gravityStartAge": 2,
             "resetAt": 4.5,
             "resetTo": 4,
-            "skipAge": 17,
-            "inputAge": 19,
-            "timerAge": 17,
-            "evidence": "Native rows 2500..2551 (1-2) and 31642.. (4-2), full-RAM probes evidence/local/F-entry-probe-9/10: ages count steps after the first area row. Gravity 40/256 applies from age 2; each step adds the old speed to y first; a speed that reaches 4.5 after the increment becomes 4.0; the vertical update is skipped on the control-start row (age 17); the timer RAM goes 401 at age 0, 400 at age 17 and then ticks every 24 frames."
+            "evidence": "Native rows 2500..2551 (1-2) and 31642.. (4-2), full-RAM probes evidence/local/F-entry-probe-9/10: ages count steps after the first area row. Gravity 40/256 applies from age 2; each step adds the old speed to y first; a speed that reaches 4.5 after the increment becomes 4.0; the vertical update is skipped on the PlayerRdy row (the first step starting at native y>=$30, age 17 here); the timer RAM goes 401 at age 0, 400 on that row and then ticks every 24 frames; the pad drives Mario from the next row (simulation.ts reads these from the y threshold, not ages)."
           },
           "evidence": "Native-trace entry fall (rows 2500..2551 of the recorded route) with image-fitted appearance/enemy delays; see data/transition-measurements.json."
         },
