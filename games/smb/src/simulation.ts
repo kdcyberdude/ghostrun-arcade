@@ -41,6 +41,7 @@ export const FLAG_COMPLETION=flagRules.runtimeCandidates;
 const CASTLE_END_64_EXTRA=31,CASTLE_END_EARLY=15,CASTLE_END_PHASE=2; // remake areaFrame is 166 on the first play row, so frame % 21 == 2 puts the load on (load row - first play row) = 4 mod 21
 export const CASTLE_COMPLETION=castleRules.runtimeCandidates;
 const PIRANHA=enemyRules.piranha;
+const NATIVE_FALLERS=['goomba','koopa','redKoopa','beetle'];
 const SWIMMING_CHEEP_SPEEDS:Record<string,number>=swimmingCheepRules.horizontalSpeedByPalette;
 // Native leaping Cheep Cheep (object id 20): one 187-frame parabola; launch times, start offset and speed come from the native random register and Mario's speed (docs/NATIVE_ROLES.md).
 const FLYING_FISH=flyingFishData.rules;
@@ -316,7 +317,7 @@ export class Simulation {
   const g=this.nativeGroupMembers(e);
   // A single object on a 16 px column is made when the column reaches (ScreenRight + 48) & 0xF0, i.e. camera >= x - 303 (1-1 Goomba 352: made at camera 49, recorded 50).
   // A recorded camera more than 8 px later means that route met something unmodelled (2-1 Goomba 1088, recorded 839, is never made in the v2 run): keep it.
-  if(g===undefined&&e.originX%16===0&&e.spawnCamera!-(e.originX-303)<=8)return e.originX<=Math.floor(this.camera)+303;
+  if(g===undefined&&['goomba','koopa','redKoopa','beetle'].includes(e.kind)&&e.originX%16===0&&e.spawnCamera!-(e.originX-303)<=8)return e.originX<=Math.floor(this.camera)+303;
   return g===undefined?this.camera>=e.spawnCamera!:((Math.floor(this.camera)+303)&~15)>=((g[0].spawnCamera!+303)&~15);
  }
  /** HandleGroupEnemies fills the lowest free slots in x order on one frame; with all five slots busy a member is never made (2-1 x 1088 Goomba has no slot natively). */
@@ -1241,11 +1242,12 @@ export class Simulation {
  // 32 walking, 5 stopped; past 61 px ahead s drops 1 per frame and restarts at base+1), 'flee' (-1 px/frame, no more eggs) when Mario passes fleeX.
  private updateNativeLakitu(e:Enemy){
   const p=this.player,C=LAKITU.chase,lak=e.lak??(e.lak={mode:'left',s:-LAKITU.leftSpeed.base});
+  if(e.age===1)e.x+=LAKITU.spawnFraction;
   const d=Math.floor(e.x)-Math.floor(p.x),v=Math.max(0,p.vx*16);
   if(lak.mode!=='flee'&&e.fleeX!==undefined&&p.x>=e.fleeX)lak.mode='flee';
   if(lak.mode==='left'&&d<=C.switchDistance)lak.mode='chase';
   if(lak.mode==='flee')lak.s=LAKITU.flee.speed;
-  else if(lak.mode==='left'){const L=LAKITU.leftSpeed;lak.s=-(L.base+Math.ceil((L.spread-Math.min(Math.abs(d),L.spread))/L.divisor));} // native PlayerLakituDiff: 0x15 - ((min(|d|, 0x3C) & 0x3C) / 4 + 1), i.e. a ceiling (8-2 row 110: |d| 59 -> speed 6)
+  else if(lak.mode==='left'){const L=LAKITU.leftSpeed;lak.s=-Math.round(L.base+(L.spread-Math.min(Math.abs(d),L.spread))/L.divisor);}
   else{
    const base=v>=C.fastClass?C.fastBase:v>=10?C.slowBase:C.stoppedBase;
    if(d>=(base===C.fastBase?C.farFast:base===C.slowBase?C.farSlow:C.farStopped)){
@@ -1254,11 +1256,11 @@ export class Simulation {
    }else if(lak.s<base)lak.s=base+1;
    else lak.s=base+Math.max(0,Math.min(C.plateau,Math.floor(d<0?(C.leftOffset+d)/4:(C.rightOffset-d)/4)));
   }
-  e.x+=lak.s/16; // native: made at its column x (sub-pixel 0) and stepping from the next frame, the remake's first (8-2 rows 61-63: 336.0, 335.69, 335.38)
+  if(e.age>1)e.x+=lak.s/16;
   e.y=64;
   if(lak.mode!=='flee'&&e.age>=LAKITU.firstThrowAge&&(e.age-LAKITU.firstThrowAge)%LAKITU.throwInterval===0){
    const egg=this.makeEnemy({kind:'spiny',motion:'falling',x:e.x,y:e.y-LAKITU.egg.aboveLakitu,direction:p.x<e.x?-1:1,palette:'0f-16-30-27',evidence:'Native Lakitu egg: thrown every 128 frames at the Lakitu x.'});
-   egg.active=true;egg.egg=true;egg.vx=0;egg.x=Math.floor(e.x);egg.y=e.y-8;egg.pod={...nativeMoveState(egg.y),speed:LAKITU.egg.speed};egg.vy=LAKITU.egg.speed;this.takeNativeSlot(egg);if(egg.enemySlot!==undefined)this.enemies.push(egg); // the egg needs a free slot (4-1 row 122: slot 2)
+   egg.active=true;egg.egg=true;egg.vx=0;egg.vy=LAKITU.egg.vy0;this.enemies.push(egg);
   }
  }
  private updateMaze(oldX:number){
@@ -1539,9 +1541,9 @@ export class Simulation {
  private nativeLeftBound(e:Enemy){
   if(e.motion==='flying'||e.dead)return;
   const left=Math.floor(this.camera);
-  if(e.kind==='hammerBro'||e.kind==='piranha')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
-  if(['goomba','koopa','redKoopa','beetle','blooper','cheep'].includes(e.kind))return left-73;
-  if(['paratroopa','lakitu','spiny'].includes(e.kind))return left-72;
+  if(e.kind==='piranha')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
+  if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))return left-73;
+  if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
  }
  private eraseOffscreenEnemies(){
   for(const e of this.enemies){
@@ -1553,12 +1555,13 @@ export class Simulation {
  }
  /** Enemy_Y_Speed $A0+s, Enemy_Y_MoveForce $0434+s and the y fraction $0417+s are not cleared when an object is made: a new jumping Paratroopa starts from what the slot's
   * last occupant left (7-1 row 300: speed -1, force 216 left in slot 0; 61 of 61 zero-start spawns of the v2 traces fall their first pixel on the motion row the carried bytes give).
-  * Writers modelled: Paratroopa/Podoboo 8.8 state, Piranha (flag/down/up y share these bytes), ground walkers and Hammer Bros (speed and force 0). Area loads clear them. */
+  * Writers modelled: Paratroopa/Podoboo 8.8 state, a walker's fall, Piranha (flag/down/up y share these bytes), ground walkers and Hammer Bros (speed and force 0). Area loads clear them. */
  slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));
  private rememberSlotVertical(){
   for(const e of this.enemies){
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
    if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
+   else if(e.fall&&!e.dead)Object.assign(m,e.fall);
    else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
    else if(!e.dead&&['goomba','koopa','redKoopa','beetle','hammerBro'].includes(e.kind)&&e.vy===0){m.speed=0;m.force=0;}
   }
@@ -1635,7 +1638,7 @@ export class Simulation {
     }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
-   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-48||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    if(e.motion==='flying'){
     if(e.nativeFlight){if(e.age>1){e.x+=e.vx;e.y+=e.vy;e.vy+=FLYING_FISH.launch.gravity;}} // the spawn step holds the launch position
@@ -1724,11 +1727,16 @@ export class Simulation {
      const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
      if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
      nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
-    }else if(e.egg&&e.motion==='falling'){const landing=e.vy>=0&&this.collisionAt(e.x+8,e.y); /* the background test runs before the move: the egg lands the row after it sinks into the floor (6-1 rows 217-218: 137, then 136) */
-     if(landing){e.y=landing.y;e.vy=0;e.motion=undefined;e.vx=p.x<e.x?-0.5:0.5;e.x+=e.vx;} /* and walks on that row (6-1 row 218: 510.5) */else if(e.age>1){nativeImposeGravity(e.pod!,LAKITU.egg.down,LAKITU.egg.max);e.y=e.pod!.y;e.vy=e.pod!.speed+e.pod!.force/256;}} // native egg (state 5): MoveD_EnemyVertically, force 0x20 per frame, cap 3; it holds on its creation row
+    }else if(e.egg&&e.motion==='falling'){e.y+=e.vy;e.vy=Math.min(LAKITU.egg.maxFall,e.vy+LAKITU.egg.gravity);} // native egg arc: position first, then gravity
+    else if(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion){ // native walker fall: the background test runs before the move; airborne, MoveD_EnemyVertically imposes 0x3D per frame (cap 3) from rest, keeping the slot's y fraction (6-1 rows 233-246)
+     const n=e.fall??=(e.pod?{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction}:{speed:0,force:0,fraction:e.enemySlot!==undefined?this.slotVertical[e.enemySlot].fraction:0}); // an unwinged Paratroopa keeps its 8.8 vertical state
+     const ground=this.collisionAt(priorX+8,e.y); // at the x before this frame's step
+     if(ground&&n.speed>=0){if(n.speed||n.force)e.y=ground.y;n.speed=0;n.force=0;e.vy=0;}
+     else{const m={y:Math.floor(e.y),speed:n.speed,force:n.force,fraction:n.fraction,timer:0};nativeImposeGravity(m,0x3d,3);Object.assign(n,{speed:m.speed,force:m.force,fraction:m.fraction});e.y=m.y;e.vy=m.speed+m.force/256;}
+    }
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:e.kind==='hammerBro'?HAMMER_BRO.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:e.kind==='hammerBro'?HAMMER_BRO.gravity:0.25));e.y+=e.vy;}
     const floor=this.collisionAt(e.x+8,e.y);
-    if(!greenBounce&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
+    if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion)&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='hammerBro'&&e.hammerDropRow!==undefined&&e.y>e.hammerDropRow+16)e.hammerDropRow=undefined;
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }

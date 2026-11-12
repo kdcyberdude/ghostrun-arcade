@@ -15,7 +15,7 @@ function game(areas:Area[],id='fixture') {
 test('off-grid overlapping artwork supports both player and enemies at its actual height',()=>{
  const sim=game([area({freeTiles:[{x:31,y:157,id:81,palette:0},{x:39,y:157,id:81,palette:0}],enemies:[{kind:'goomba',x:33,y:155}]})]);
  sim.player.x=32;sim.player.y=154;sim.player.vy=3;sim.player.grounded=false;sim.player.invincible=30;
- sim.step([],4);assert.equal(sim.player.y,157);assert.equal(sim.enemies[0].y,157);
+ sim.step([],4);assert.equal(sim.player.y,157);sim.step([],8);assert.equal(sim.enemies[0].y,157); // the Goomba falls from rest under native 0x3D gravity and lands the row after it sinks
  assert.equal(sim.tileAt(53,158),81);assert.equal(sim.tileAt(55,158),0);
 });
 

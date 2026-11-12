@@ -39,8 +39,8 @@ test('walkers specified inside a stair block appear above the step and walk away
   assert.ok(index>=0,`${level} ${kind} ${x} present`);
   const spec=area(level).enemies[index];assert.equal(spec.y,y);
   const sim=new Simulation(levels);sim.reset(true);sim.levelIndex=levels.findIndex(l=>l.id===level);
-  const camera=spec.spawnCamera??x-303;sim.loadArea('main',[camera+112,208],camera);sim.player.invincible=100000;
-  // Mario is held above the screen at a fixed x so that the camera stays put and a pit under his start cannot end the attempt.
+  const camera=Math.max(spec.spawnCamera??0,x-303);sim.loadArea('main',[camera+112,208],camera);sim.player.invincible=100000;
+  // (a list object on a 16 px column is made once camera >= x - 303, the native column rule.) Mario is held above the screen at a fixed x so that the camera stays put and a pit under his start cannot end the attempt.
   for(let i=0;i<120;i++){sim.player.x=camera+112;sim.player.y=40;sim.player.vy=0;sim.step([],1);}
   const enemy=sim.enemies[index];
   assert.ok(enemy.active,`${level} ${kind} ${x} active`);
