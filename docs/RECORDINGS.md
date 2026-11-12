@@ -5,7 +5,7 @@ The two renderers use the same simulation. `tools/harness/record-route.mjs` rese
 ```bash
 node tools/harness/record-route.mjs --self-test
 node tools/harness/record-route.mjs --view 2d --frames 900 --out /tmp/route-2d
-GHOSTRUN_NATIVE_GPU=1 node tools/harness/record-route.mjs --webcodecs --view 25d --frames 900 --out /tmp/route-3d
+GHOSTRUN_NATIVE_GPU=1 node tools/harness/record-route.mjs --webcodecs --view 3d --frames 900 --out /tmp/route-3d
 ```
 
 `--webcodecs` encodes actual canvas frames directly in Chrome, retaining explicit timestamps and checking that every frame is emitted. It avoids per-frame PNG transfer; unsupported H.264 configurations fail clearly, and omitting the option uses the PNG fallback. Its first 60-frame 2D smoke test decoded to exactly 60 frames and one second. Full-length and 3D encoding require their own verification.

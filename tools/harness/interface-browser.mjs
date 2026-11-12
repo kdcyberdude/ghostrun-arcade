@@ -1,9 +1,9 @@
-/** Interface regression checks. GAME_URL points at a running dev or production game; VIEW=25d selects 3D. */
+/** Interface regression checks. GAME_URL points at a running dev or production game; VIEW=3d selects 3D. */
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 const view=process.env.VIEW??'2d',base=process.env.GAME_URL??'http://127.0.0.1:53943/';
-const url=new URL(base);if(view==='25d')url.searchParams.set('view','25d');
+const url=new URL(base);if(view==='3d')url.searchParams.set('view','3d');
 const out=process.env.INTERFACE_OUTPUT??`evidence/local/interface-${view}`;await fs.mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH??(process.platform==='darwin'?'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome':'/usr/bin/google-chrome'),args:['--no-sandbox','--enable-webgl','--use-gl=angle',...(process.platform==='darwin'?['--use-angle=metal']:['--use-angle=gl-egl']),'--ignore-gpu-blocklist']});
 const page=await browser.newPage({viewport:{width:1440,height:960}}),errors=[],checks=[],requests=[];
@@ -14,7 +14,7 @@ async function ready(){await page.waitForFunction(()=>document.body.classList.co
 try{
  const loadingPage=await browser.newPage({viewport:{width:1440,height:960}});let release;
  const held=new Promise(resolve=>release=resolve);
- await loadingPage.route(view==='25d'?'**/assets25d/models/*.glb':'**/assets/graphics/player-mario-right.png',async route=>{await held;await route.continue();});
+ await loadingPage.route(view==='3d'?'**/assets3d/models/*.glb':'**/assets/graphics/player-mario-right.png',async route=>{await held;await route.continue();});
  await loadingPage.goto(url.href,{waitUntil:'domcontentloaded'});
  await loadingPage.waitForFunction(()=>{const p=document.querySelector('#load-progress');return p.value>0&&p.value<p.max;},undefined,{timeout:30000});
  assert.equal(await loadingPage.locator('#start').isDisabled(),true);await loadingPage.screenshot({path:out+'/loading-desktop.png'});release();
@@ -22,7 +22,7 @@ try{
  const failed=await browser.newPage();const modulePattern=/\/(src\/main\.ts|assets\/main-[^/]+\.js)/;
  await failed.route(modulePattern,r=>r.abort());await failed.goto(url.href);await failed.waitForFunction(()=>document.body.classList.contains('load-error'));
  assert.equal(await failed.locator('#retry').isVisible(),true);await failed.unroute(modulePattern);await failed.locator('#retry').click();await failed.waitForFunction(()=>document.body.classList.contains('ready'),undefined,{timeout:90000});
- if(view==='25d'){
+ if(view==='3d'){
   await failed.route(modulePattern,r=>r.abort());await failed.reload();await failed.waitForFunction(()=>document.body.classList.contains('load-error'));await failed.unroute(modulePattern);
   await failed.locator('#view').selectOption('2d');await failed.waitForURL(u=>!u.searchParams.has('view'));await failed.waitForFunction(()=>document.body.classList.contains('ready'),undefined,{timeout:90000});
   assert.equal(await failed.locator('body').getAttribute('data-view'),'2d');checks.push('2D remains reachable after a failed 3D download');
@@ -39,7 +39,7 @@ try{
  await page.locator('[data-action=a]').click();await page.keyboard.press('Escape');assert.equal(await page.locator('#settings').isVisible(),true);assert.equal(await page.locator('[data-action=a]').innerText(),'C');
  await page.locator('[data-player="1"]').click();await page.locator('[data-action=a]').click();await page.keyboard.press('KeyV');assert.equal(await page.locator('[data-action=a]').innerText(),'V');
  await page.locator('#display-tab').click();await page.locator('#players').selectOption('2');
- if(view==='25d'){
+ if(view==='3d'){
   assert.equal(await page.locator('#res').inputValue(),'1K');
   for(const [preset,height] of [['2K',1440],['4K',2160],['1K',960]]){await page.locator('#res').selectOption(preset);assert.equal(await page.locator('#game').evaluate(c=>c.height),height);}
   checks.push('1K default and live 2K/4K resolution changes');

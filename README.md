@@ -33,7 +33,7 @@ The production build is a static site. Relative asset paths support both a domai
 - Gameplay code that can be inspected, modified, and tested independently of the reference process.
 - Two presentations of the same current simulation: original-style 2D and a 3D world with rigged characters, lighting and scenery.
 
-Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options through the 4K preset (2304 × 2160, preserving the original aspect ratio). Performance depends on your GPU and selected resolution. See the [3D asset and renderer notes](visual25d/README.md). [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it.
+Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options through the 4K preset (2304 × 2160, preserving the original aspect ratio). Performance depends on your GPU and selected resolution. See the [3D asset and renderer notes](visual3d/README.md). [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it.
 
 ## Evidence and limits
 
@@ -49,7 +49,7 @@ The [older player](https://huggingface.co/kdcyberdude/ghostrun-smb-policy-v1) fo
 |---|---|
 | Gameplay and physics | `src/simulation.ts`, `src/native-motor.ts`, other motion modules |
 | 2D renderer and sound | `src/renderer.ts`, `src/audio.ts` |
-| 3D renderer and asset builders | `src/render25d/`, `visual25d/` |
+| 3D renderer and asset builders | `src/render3d/`, `visual3d/` |
 | Recorded-input clips | [Recording guide](docs/RECORDINGS.md) |
 | Controls, loading and menus | `src/controls.ts`, `src/loading.ts`, `src/shell.ts` |
 | Compiled levels and observations | `data/` |

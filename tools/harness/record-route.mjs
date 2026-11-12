@@ -27,7 +27,7 @@ if(a['self-test']){
  for(const log of [{start:'reference_lab_standard_reset',route_offset_frames:1983,actions:[[0,1]]},{start:'standard reset',level_index:1,actions:[[0,1]]},{start:'level_start',actions:[[0,1]]},{start:'power_on',actions:[[256,1]]},{start:'power_on',actions:[[0,0]]}])assert.throws(()=>validate(log));
  console.log('record-route input checks PASS');process.exit(0);
 }
-assert.ok(a.out,'--out is required and must not exist');assert.ok(['2d','25d'].includes(a.view));
+assert.ok(a.out,'--out is required and must not exist');assert.ok(['2d','3d'].includes(a.view));
 const bytes=await fs.readFile(path.resolve(root,a.actions)),log=JSON.parse(bytes),total=validate(log),from=Number(a.from),count=Number(a.frames);
 assert.ok(Number.isInteger(from)&&from>=0&&Number.isInteger(count)&&count>0&&from+count<=total,'Capture interval exceeds action stream');
 const out=path.resolve(a.out);await fs.mkdir(out,{recursive:false});
