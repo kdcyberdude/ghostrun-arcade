@@ -17,7 +17,7 @@ const SNAPSHOT=`(s)=>JSON.stringify({frame:s.frame,phase:s.phase,level:s.level.i
 const FNV=`(t)=>{let h=2166136261;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16);}`;
 const snap=eval(SNAPSHOT) as (s:Simulation)=>string,fnv=eval(FNV) as (t:string)=>string;
 type Replay={level:string;route:Button[][];entrance?:unknown};
-type Run={hashes:string[];events:string[]};
+type Run={hashes:string[];events:string[];finalSnapshot?:string};
 const replays:Replay[]=[];
 if(traces){
  const only=arg('levels','').split(',').filter(Boolean),keys:Button[]=['a','b','select','start','up','down','left','right'];
@@ -34,24 +34,25 @@ function headless(replay:Replay):Run{
  sim.reset(true);sim.events.length=0;
  if(replay.entrance){initializeEntrance(sim,replay.entrance);sim.step([],0);sim.inputs=[];}
  for(const b of replay.route){sim.step(b,1,[]);sim.events.length=0;out.hashes.push(fnv(snap(sim)));}
- return out;
+ out.finalSnapshot=snap(sim);return out;
 }
 async function browser(view:string){
  const g=await openGame({view,backend,query:arg('query','quality=low&scale=1')});const runs=[];
  for(const [index,replay] of replays.entries()){
   if(index){await g.page.reload();await g.page.waitForFunction(()=>(window as any).mario?.ready,undefined,{timeout:90000});}
-  const r=await g.page.evaluate(async([replay,SNAP,HASH])=>{
+  const r=await g.page.evaluate(async([replay,SNAP,HASH,expected])=>{
    const w=window as any,sim=w.marioDebug.simulation,snap=eval(SNAP),fnv=eval(HASH),events:string[]=[],hashes:string[]=[];
+   let firstMismatch:{frame:number;snapshot:string}|undefined;
    // The bridge draws every frame; its unused PNG return value need not be encoded for hash/audio equivalence.
    const toDataURL=HTMLCanvasElement.prototype.toDataURL;HTMLCanvasElement.prototype.toDataURL=()=>'';
    const emit=sim.emit;sim.emit=function(id:string){events.push(`${sim.frame}:${id}`);return emit.call(this,id);};
    try{
     w.mario.reset({playing:true});
     if(replay.entrance){const {initializeEntrance}=await import('/tools/harness/native-entrance.mjs');initializeEntrance(sim,replay.entrance);sim.step([],0);sim.inputs=[];}
-    const t0=performance.now();for(const b of replay.route){w.mario.step(b,1);hashes.push(fnv(snap(sim)));}
-    return {hashes,events,ms:(performance.now()-t0)/replay.route.length,coverage:w.render3d?.coverage()};
+    const t0=performance.now();for(const b of replay.route){w.mario.step(b,1);const state=snap(sim),hash=fnv(state);if(firstMismatch===undefined&&hash!==expected[hashes.length])firstMismatch={frame:hashes.length,snapshot:state};hashes.push(hash);}
+    return {hashes,events,firstMismatch,ms:(performance.now()-t0)/replay.route.length,coverage:w.render3d?.coverage()};
    }finally{sim.emit=emit;HTMLCanvasElement.prototype.toDataURL=toDataURL;}
-  },[replay,SNAPSHOT,FNV] as const);
+  },[replay,SNAPSHOT,FNV,bases[index].hashes] as const);
   runs.push({...r,level:replay.level});console.log(`${view} ${replay.level}: ${r.hashes.length} frames`);
  }
  const out={runs,renderer:g.renderer,errors:g.errors};await g.close();return out;
@@ -62,6 +63,9 @@ const levels=replays.map((replay,i)=>({level:replay.level,frames:bases[i].hashes
  origStatesVsHeadless:firstDiff(bases[i].hashes,orig.runs[i].hashes),v25StatesVsHeadless:firstDiff(bases[i].hashes,v25.runs[i].hashes),
  states3dVsOrig:firstDiff(orig.runs[i].hashes,v25.runs[i].hashes),events3dVsOrig:firstDiff(orig.runs[i].events,v25.runs[i].events),
  origEventsVsHeadless:firstDiff(bases[i].events,orig.runs[i].events),v25EventsVsHeadless:firstDiff(bases[i].events,v25.runs[i].events)},
+ ...(orig.runs[i].firstMismatch?{firstStateMismatch:{frame:orig.runs[i].firstMismatch!.frame,
+ headless:JSON.parse(headless({...replay,route:replay.route.slice(0,orig.runs[i].firstMismatch!.frame+1)}).finalSnapshot!),
+ original:JSON.parse(orig.runs[i].firstMismatch!.snapshot)}}:{}),
  events:bases[i].events.length,finalHash:bases[i].hashes.at(-1),msPerFrameInclRender:{orig:+orig.runs[i].ms.toFixed(2),v25:+v25.runs[i].ms.toFixed(2)},coverage:v25.runs[i].coverage}));
 const report={date:new Date().toISOString(),route:traces?'native entrance decisions':'data/observed-winning-inputs.json from standard reset; requested prefix only',renderer:v25.renderer,levels,errors:{orig:orig.errors,v25:v25.errors}};
 const pass=levels.length>0&&levels.every(l=>Object.values(l.checks).every(v=>v===-1))&&!orig.errors.length&&!v25.errors.length;
