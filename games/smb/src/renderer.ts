@@ -111,6 +111,7 @@ export class GameRenderer {
  private enemy(e:Enemy,s:Simulation){
   e=enemyPicture(e);
   const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
+  const blooperTimer=e.bloop?.timer??0;
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
   const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
@@ -121,10 +122,10 @@ export class GameRenderer {
   if(e.kind==='beetle'){cell=e.shell?19+phase:phase;palette='0f-1a-30-27';}
   if(e.kind==='spiny'){cell=(e.motion==='falling'?8:6)+phase;palette='0f-16-30-27';}
   if(e.kind==='piranha'){cell=32+phase;palette='0f-1a-30-27';}
-  if(e.kind==='blooper'){cell=10+phase;palette='0f-00-30-10';}
+  if(e.kind==='blooper'){cell=blooperTimer===1||blooperTimer>=5||e.dead||s.powerChange?10:11;palette='0f-00-30-10';}
   if(e.kind==='cheep'){cell=12+phase;palette='0f-16-30-27';}
   if(e.kind==='bullet'){cell=39;palette=openingCannonShot||fiveThreeLeftShot?'0f-0f-36-17':'0f-00-30-10';}
-  if(e.kind==='lakitu'){cell=24+phase;palette='0f-1a-30-27';}
+  if(e.kind==='lakitu'){cell=e.dead?24:(e.graphicsFrenzyTimer??0)<16?25:24;palette='0f-1a-30-27';}
   if(e.kind==='hammerBro'){cell=28+Math.floor(e.age/8)%4;palette='0f-1a-30-27';}
   if(e.kind==='podoboo'){cell=34;palette='0f-16-30-27';}
   if(e.dead&&e.kind==='goomba'&&e.dead<20){cell=23;}
@@ -175,7 +176,7 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?s.player.x<e.x:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
+  }else this.enemyCell(cell,x,y+(e.kind==='blooper'&&blooperTimer!==1&&blooperTimer<5?3:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?s.player.x<e.x:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=2){
   const data=tables.enemy_cells[cell];
