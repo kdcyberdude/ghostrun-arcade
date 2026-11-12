@@ -21380,7 +21380,8 @@
           "Initial spawns are16px-grid inferences from moving first sightings, not full enemy-object maps.",
           "Enemies hidden/occluded or already defeated between four-decision captures can be missed.",
           "Dynamic generators require behavior implementations: Lakitu eggs, bridge fish, Bullet Bills, Hammer Bro hammers, Bowser flames/hammers, Podoboo cycles."
-        ]
+        ],
+        "flameFrenzyX": 1664
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -51228,7 +51229,8 @@
           "Enemies hidden/occluded or already defeated between four-decision captures can be missed.",
           "Dynamic generators require behavior implementations: Lakitu eggs, bridge fish, Bullet Bills, Hammer Bro hammers, Bowser flames/hammers, Podoboo cycles.",
           "Unobserved center pixels inferred from supplied 196 assembly. Native collision bounds, support timing, independent reference starts, and full-scene fidelity remain unmeasured."
-        ]
+        ],
+        "flameFrenzyX": 1568
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -71335,15 +71337,33 @@
           },
           {
             "x": 872,
+            "y": 88,
+            "length": 6,
+            "speed": -0.03244
+          },
+          {
+            "x": 872,
             "y": 184,
             "length": 6,
             "speed": 0.03244
           },
           {
             "x": 1032,
+            "y": 88,
+            "length": 6,
+            "speed": -0.02914
+          },
+          {
+            "x": 1032,
             "y": 184,
             "length": 6,
             "speed": 0.02914
+          },
+          {
+            "x": 1288,
+            "y": 88,
+            "length": 6,
+            "speed": 0.02913
           },
           {
             "x": 1288,
@@ -71442,7 +71462,8 @@
           "Dynamic generators require behavior implementations: Lakitu eggs, bridge fish, Bullet Bills, Hammer Bro hammers, Bowser flames/hammers, Podoboo cycles.",
           "INVENTORY ONLY: kind and sprite-left256 observed in154 exact whole-art matches including55 fresh heldout. Hidden y240 and direction−1 reuse existing inferred class metadata. Legacy sine motor remains unqualified and cannot reproduce observed bodytop77 (at least48px peak error); rejected V2 motor is not installed. Native activation, launch/reset, collision timing/radius, and falling body flip remain unqualified.",
           "Small-player mushroom is directly observed in two histories; flower for an already-large player is unmeasured shared-rule inference. Map world origin uses independent lava location from existing level geometry."
-        ]
+        ],
+        "flameFrenzyX": 1648
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -96849,6 +96870,12 @@
             "speed": 0.03276
           },
           {
+            "x": 1848,
+            "y": 104,
+            "length": 6,
+            "speed": 0.0336
+          },
+          {
             "x": 1960,
             "y": 168,
             "length": 6,
@@ -97267,7 +97294,8 @@
           "Images do not uniquely prove collision for all three individual cells. Exact per-cell collision bounds, firebar overlap and coordinate registration remain inferred.",
           "Firebar overlaps the candidate region, and y160..175 grayscale texture phase has a systematic visible mismatch. Dynamic occlusion and scrolling registration remain unqualified.",
           "The native ±2-frame collision-event tolerance is not established from 7/8-frame image steps; 99% RGB fails for each candidate crop."
-        ]
+        ],
+        "flameFrenzyX": 2112
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -120335,7 +120363,8 @@
           "Enemies hidden/occluded or already defeated between four-decision captures can be missed.",
           "Dynamic generators require behavior implementations: Lakitu eggs, bridge fish, Bullet Bills, Hammer Bro hammers, Bowser flames/hammers, Podoboo cycles.",
           "Rendering-only offset from conditionally orientation-aligned source frames; detector selection, unscored frames, activation, motor phase and native collision remain qualified separately in evidence/five-four-longbar-offset-holdout-findings.md."
-        ]
+        ],
+        "flameFrenzyX": 1568
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -143201,7 +143230,8 @@
           "Enemies hidden/occluded or already defeated between four-decision captures can be missed.",
           "Dynamic generators require behavior implementations: Lakitu eggs, bridge fish, Bullet Bills, Hammer Bro hammers, Bowser flames/hammers, Podoboo cycles.",
           "Non-solid chain art. Remove this specific cell when the axe is touched; a permanently static tile contradicts the post-axe images. The exact removal frame is bracketed by source image cadence."
-        ]
+        ],
+        "flameFrenzyX": 1664
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
@@ -174019,7 +174049,8 @@
           "Native gate x and Y thresholds remain unmeasured.",
           "Independent wrong first-upper and second-middle alternatives have not been isolated for this second maze.",
           "Image-equivalent repeat boundary spans96px; do not label2560 exact."
-        ]
+        ],
+        "flameFrenzyX": 2912
       }
     ],
     "evidence": "Supplied level-start image + controller-image survey. All fields editable in data/levels.json; regenerate via tools/compile-levels.mjs only when desired."
