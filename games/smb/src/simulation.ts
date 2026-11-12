@@ -3,6 +3,7 @@ import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHold
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
+import {nativeFlagStep} from './native-flagpole.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {PiranhaColumns} from './piranha-columns.js';
@@ -285,7 +286,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
@@ -564,7 +565,7 @@ export class Simulation {
   this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms);
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
-  this.eraseOffscreenEnemies();
+  this.eraseOffscreenEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera);
   this.passNativeCannons();this.passNativeFrenzy();
   this.gateNativePlatforms(previousCamera);
@@ -747,7 +748,7 @@ export class Simulation {
    if(powerupContent)item=powerupContent==='powerup'?(p.size?'flower':'mushroom'):powerupContent;
    if(piece)piece.id=196;else this.tiles.set(key,196);
    if(item==='coin'){this.coin();this.items.push({kind:'coin',x:x*16+5,y:y*16-16,vx:0,vy:-5.3125,age:0,life:36});}
-   else {this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value});this.emit('sfx_powerup_appears');}
+   else {this.items=this.items.filter(i=>i.nativePowerState===undefined);this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value,nativePowerState:1});this.emit('sfx_powerup_appears');}
   }else if((id===81||id===82||id===83)&&p.size){
    this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
    for(let i=0;i<4;i++)this.items.push({kind:'debris',x:x*16+(i%2)*8,y:y*16+Math.floor(i/2)*8,vx:(i%2?1:-1)*1.5,vy:i<2?-4:-2,age:0,life:60});
@@ -1382,10 +1383,14 @@ export class Simulation {
   // Renderer caches baseline tiles by area identity for partial pattern edits.
   this.area={...this.area};
  }
+ nativePowerSlot={speed:0,force:0,fraction:0};
+ private flagAwardFrame=-1;
  private flagScrollLocked=true;
+ private advanceFlag(){const next=nativeFlagStep(this.flagTop,this.nativePowerSlot.fraction);this.flagTop=next.y;this.nativePowerSlot.fraction=next.fraction;}
  private beginFlag(){
   this.flagScrollLocked=true;
-  this.flagTop=FLAG_COMPLETION.flagTopY;this.flagInside=false;this.flagWait=0;this.flagFireworksAwarded=0;
+  this.items=this.items.filter(i=>i.nativePowerState===undefined);
+  this.flagAwardFrame=-1;this.flagTop=FLAG_COMPLETION.flagTopY-1;this.advanceFlag();this.flagInside=false;this.flagWait=0;this.flagFireworksAwarded=0;
   const digit=this.time%10;this.flagFireworkCount=[1,3,6].includes(digit)?digit:0;
   const pole=this.area.exit!;
   const tops=[...this.tiles].filter(([key,id])=>id===69&&Number(key.split(',')[0])*16>pole.x&&Number(key.split(',')[0])*16<pole.x+256).map(([key])=>key.split(',').map(Number));
@@ -1408,12 +1413,14 @@ export class Simulation {
  }
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
-  this.flagTop=Math.min(rules.flagBottomY,rules.flagTopY+this.phaseFrame*rules.slideSpeed);
-  // Native FlagpoleRoutine adds the flag points on the last slide row, with the switch to engine 5 (score digits at row +62 on 18 of 19 v2 grabs; the flip follows a row later). 3-3 pays at +61: the flag moves 2 px on its first row when slot 5 kept the $041C fraction from an earlier PowerUpObject (not modelled).
-  if(this.phaseFrame===rules.slideFrames)this.score+=this.flagBonus;
-  if(this.phaseFrame<=rules.slideFrames){p.climbing=true;if(Math.floor(p.y)<190)p.y+=1+255/256;else p.vy=0;return;}
-  if(this.phaseFrame===rules.slideFrames+1)this.emit('event_level_clear');
-  const walkFrom=rules.slideFrames+rules.flipFrames+1;
+  if(this.flagAwardFrame<0){
+   p.climbing=true;if(Math.floor(p.y)<0x9e+32)p.y+=1+255/256;else p.vy=0;
+   if(this.flagTop>=0xaa||Math.floor(p.y)>=0xa2+32){this.score+=this.flagBonus;this.flagAwardFrame=this.phaseFrame;}
+   else this.advanceFlag();
+   return;
+  }
+  if(this.phaseFrame===this.flagAwardFrame+1)this.emit('event_level_clear');
+  const walkFrom=this.flagAwardFrame+rules.flipFrames+1;
   if(this.phaseFrame<walkFrom){p.x=exit.x-1+(p.x-Math.floor(p.x));p.climbing=true;p.facing=-1;return;}
   p.climbing=false;p.facing=1;
   const wasInside=this.flagInside;
@@ -1874,10 +1881,32 @@ export class Simulation {
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
   return gap<=(koopaKind?15:10);
  }
+ /** PowerUpObjHandler owns enemy slot 5: emergence uses FrameCounter & 3, and erasing/collecting keeps its vertical bytes for the flag. */
+ private updateNativePowerup(i:Item){
+  const state=i.nativePowerState!;
+  if(state<128){
+   if((this.random.frame&3)===0){i.y--;i.nativePowerState=state>=17?128:state+1;}
+   i.emerging=i.nativePowerState!<128?(18-i.nativePowerState!)*4-(this.random.frame&3):0;return;
+  }
+  if(i.kind==='flower')return;
+  const n={...this.nativePowerSlot,y:i.y-8,timer:0};
+  if(i.kind==='star'||(state&64))nativeImposeGravity(n,i.kind==='star'?28:61,3);
+  i.x+=i.vx;
+  if(((n.y+0x3e)&255)>=0x44){
+   const floor=this.collisionAt(i.x+8,n.y+24),depth=(Math.floor(n.y)&15)-8;
+   const landed=i.kind==='star'?((n.speed+2)&255)>=3:depth>=0&&depth<5;
+   if(floor&&landed){n.y=(Math.floor(n.y)&0xf0)|8;n.speed=i.kind==='star'?-3:0;n.force=0;i.nativePowerState=state&~64;}
+   else if(i.kind!=='star')i.nativePowerState=state|64;
+   if(n.y>=32&&this.isSolid(i.x+(i.vx>0?16:0),n.y+20))i.vx=-i.vx;
+  }
+  Object.assign(this.nativePowerSlot,{speed:n.speed,force:n.force,fraction:n.fraction});i.y=n.y+8;i.vy=n.speed+n.force/256;
+ }
  private updateItems(){
   const p=this.player;
   for(const i of this.items){
-   i.age++;i.life--;if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
+   i.age++;i.life--;
+   if(i.nativePowerState!==undefined){this.updateNativePowerup(i);if(i.nativePowerState<6)continue;}else{
+   if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
    if(i.hold!==undefined){this.holdNativeHammer(i);continue;}
    i.x+=i.vx;
    if(i.kind==='coin'||i.kind==='debris'||i.kind==='hammer'){i.vy+=i.kind==='coin'?0.3125:i.gravity??0.2;i.y+=i.vy;}
@@ -1890,6 +1919,7 @@ export class Simulation {
     if(i.vy>=0&&floor){i.y=floor.y-size;i.vy=i.kind==='star'?-3:0;}
     if(this.isSolid(i.x+(i.vx>0?size-1:0),i.y+size/2))i.vx=-i.vx;
    }
+   }
    if(i.kind==='hammer'||i.kind==='flame'){
     // Supplied descriptors give a 24x8 flame and alternating 8x16/16x8
     // hammer assemblies inside the rotating 16px cell.
@@ -1900,7 +1930,7 @@ export class Simulation {
     this.collectItem(i);
    }
   }
-  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-32);
+  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-(i.nativePowerState===undefined?32:72)&&(i.nativePowerState===undefined||i.x<this.camera+328));
  }
  // Native fireball (rows evidence/local/power/f1.jsonl; RAM 0x24+s state, 0x8d+s x, 0xd5+s y, 0xa6+s speed): position then speed, 4 px/row at launch, gravity 80/256, cap 812/256, bounce at speed -3 with the ball on the floor; gone past the screen edges.
  private moveFireball(i:Item){
