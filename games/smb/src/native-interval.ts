@@ -12,3 +12,6 @@ export function nativeIntervalStep(interval:number,star:number,control=0,paused=
 /** GameEngine checks after actor collisions and RunGameTimer, before the palette cycle. */
 export function nativeStarMusic(star:number,interval:number,yHigh=1){return yHigh<2&&star===4&&interval===0;}
 export const NATIVE_STAR_PICKUP=0x23;
+
+/** GameEngine writes these attribute bits AFTER PlayerGfxHandler consumes the prior value. */
+export function nativeStarPalette(star:number,counter:number){return star?(counter>>(star<8?3:1))&3:0;}

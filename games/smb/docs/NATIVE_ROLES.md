@@ -133,3 +133,42 @@ The actor audit covers six native enemy slots including the first active row, bo
 The old water `enemy=null` results do not establish water parity: the legacy comparison limits enemies/camera to the main area, whereas 2-2/7-2 water is a secondary area. Strict output exposes those rows independently. `tests/native-strict.test.ts` guards first-frame inclusion, extra actors, cannon Bullet Bills, coordinate pages/origins, item slots/states, ambiguous areas, and explicit unsupported coverage.
 
 Audit baseline: the same frozen strict tool on commit a885064 and the audit-only branch produced identical full JSON for all 32 v2 recordings (139,402 retained native frames; 105,210 aligned; 259,633 live native object rows; 135,239 supported/aligned object comparisons). The remaining 34,192 frames have unresolved geometry or area ownership diagnostics. On this pre-integration baseline, strict first missing-enemy rows include 1-1 at 70 (legacy enemy first 217) and both water runs at 482 (legacy enemy null); water first position differences are 2-2 at 485 and 7-2 at 488. These are coverage findings, not newly introduced behavior regressions. Re-run on current integration after merging mechanics fixes.
+
+### Star: shared NMI interval timer
+
+`Player.star` is now native `$079F`, rather than a fitted duration in play frames.
+`HandlePowerUpCollision` initializes it to `$23`; NMI `DecTimers` decrements it
+when `$077F` underflows and reloads to20. Pause skips both the timer and `$09`
+(the pseudo-random shift still runs); a nonzero `$0747` freezes timers until its
+own decrement reaches zero. `nativeIntervalStep` exposes these source inputs.
+The runtime uses its existing shared interval/freeze lifecycle, also advancing
+that clock during pipe/flag/castle routines. Its existing growth/injury/death
+lifecycle remains responsible for the master-freeze boundary; this unit does
+not claim a complete reconstruction of `$0747` across those routines.
+Area initialization clears `$0780..$07A1`, including Star; retained entrance RAM
+can seed `$079F` without converting units. Native `GameEngine` restores area
+music at Star4/interval0 while the player is above vertical page2, before expiry.
+
+`tools/harness/native-star-capture.py` uses the lab's NeSLE host C API and a
+caller-supplied ROM, with no ROM bytes retained. It boots normal1-1, places an
+already emerged Star in native enemy slot5 over Mario, verifies the genuine
+native pickup, and captures an unmodified760-row neutral continuation. The
+independent boundary matrix restores that pickup snapshot1,008 times to test
+pause0/1, master control0/1/2/255, all21 interval phases, and six Star values.
+`data/native-star-clock.json` retains only RAM fields. All1,008 transitions and
+760 continuation transitions match the source helper; the actual runtime also
+matches every continuation row's Star/interval/counter/music. This pickup has
+interval10 and expires725rows later;725 is fixture evidence, never a runtime
+constant. Historic visual lifetime brackets in `powerup-rules.json` are unused.
+
+The capture also stores `$03C4` and the player OAM attribute selected through
+`$06E4`. `PlayerGfxHandler` consumes the stored bits before the late Star palette
+cycle. `Simulation.starDrawPalette` therefore exposes the prior palette bits
+(0..3), including own0 on the pickup row and the final Star palette on the
+expiry row; it becomes undefined once ordinary drawing resumes. `starPalette`
+is the persistent stored value for the next draw. Every one of the760 native
+continuation OAM rows matches; choosing a palette directly from the current
+Star timer/counter would be one draw early at each transition. Renderer callers
+must test whether the snapshot is defined, including when `player.star===0`.
+The automatic intro pipe still uses its existing aggregate native load clock;
+adding another interval step there would count the same pipe NMIs twice.
