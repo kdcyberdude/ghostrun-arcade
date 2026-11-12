@@ -1,0 +1,623 @@
+{
+  "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "source": "Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.",
+  "areas": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3168,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 44087,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "area-3",
+      "commands": [
+        {
+          "x": 352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ]
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2256,
+          "id": 24
+        },
+        {
+          "x": 2432,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42959,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-2",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "commands": [
+        {
+          "x": 1280,
+          "id": 23
+        },
+        {
+          "x": 1536,
+          "id": 23
+        },
+        {
+          "x": 3072,
+          "id": 24
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 416,
+          "id": 20
+        },
+        {
+          "x": 2192,
+          "id": 20
+        },
+        {
+          "x": 3152,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42523,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3344,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44036,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2416,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42093,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41732,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3552,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42297,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 44250,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-4",
+      "commands": [
+        {
+          "x": 352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ]
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43153,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41490,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3184,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43069,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43668,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2256,
+          "id": 24
+        },
+        {
+          "x": 2432,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2944,
+          "id": 24
+        },
+        {
+          "x": 2976,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43357,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3456,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42380,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 1664,
+          "id": 23
+        },
+        {
+          "x": 2192,
+          "id": 24
+        },
+        {
+          "x": 2672,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43256,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2864,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43904,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-2",
+      "area": "area-4",
+      "commands": [
+        {
+          "x": 1280,
+          "id": 23
+        },
+        {
+          "x": 1536,
+          "id": 23
+        },
+        {
+          "x": 3072,
+          "id": 24
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 416,
+          "id": 20
+        },
+        {
+          "x": 2192,
+          "id": 20
+        },
+        {
+          "x": 3152,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41841,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 6016,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43521,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 992,
+          "id": 24
+        },
+        {
+          "x": 3456,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43783,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3424,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42192,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": -112
+        }
+      ]
+    }
+  ]
+}

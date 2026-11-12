@@ -19,3 +19,9 @@ export function captureEnemyPicture(enemy:Enemy){
 }
 
 export const enemyPicture=(enemy:Enemy):Enemy=>enemy.graphics??enemy;
+
+/** CheckForHammerBro: state bit3 raises the throwing arm; an unarmed airborne state keeps the base cell. */
+export function nativeHammerBroCell(state:number,frameCounter:number,timersStopped=false){
+ const base=state&8?30:28;
+ return base+(!timersStopped&&!(state&0xa0)&&(state===0||Boolean(state&8))&&!(frameCounter&8)?1:0);
+}

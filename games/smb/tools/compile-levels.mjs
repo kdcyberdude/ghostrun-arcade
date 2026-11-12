@@ -1,5 +1,5 @@
-import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
 import {nativeEnemyStream} from './native-enemy-stream.mjs';
+import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
 import fs from'node:fs';import{PNG}from'pngjs';
 import{createHash}from'node:crypto';
 import{applyObservedOpeningPodoboo}from'./podoboo-three-four-inventory-adapter.mjs';

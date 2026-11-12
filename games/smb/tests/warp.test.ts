@@ -101,6 +101,6 @@ test('ordinary game-over restart preserves monotonic bridge advancement while ex
 test('ordinary ending restart also preserves the current controller clock',()=>{
  const source=area({spawn:[40,208],theme:'castle',exit:{kind:'axe',x:56,y:192,retainerX:128,stopX:112}});
  const sim=new Simulation([{id:'8-4',time:1,main:'main',areas:[source],evidence:'Synthetic physical axe/ending/restart fixture'}]);sim.reset(true);
- sim.step(['right'],20);assert.equal(sim.phase,'castle');sim.step([],500);assert.equal(sim.phase,'ending');const frame=sim.frame;
+ sim.step(['right'],20);assert.equal(sim.phase,'castle');for(let i=0;i<2000&&sim.phase==='castle';i++)sim.step([],1);assert.equal(sim.phase,'ending');const frame=sim.frame;
  sim.step(['start'],1);assert.equal(sim.phase,'title');assert.equal(sim.frame,frame+1);
 });

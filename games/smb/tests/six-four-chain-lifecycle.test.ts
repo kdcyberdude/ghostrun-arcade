@@ -11,12 +11,14 @@ test('World 6-4 has the observed non-solid castle chain',()=>{
  assert.equal(solid(12),false);
 });
 
-test('World 6-4 chain disappears on the normal axe transition',()=>{
+test('World 6-4 chain disappears on the NMI after native bridge offset1',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='6-4')!);
  const area=level.areas.find(a=>a.id==='main')!;
  if(!area.tiles.some(([x,y])=>x===140&&y===9))area.tiles.push([140,9,12]);
- area.enemies=[];area.firebars=[];
+ area.enemies=area.enemies.filter(e=>e.kind==='bowser');area.firebars=[];
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[2252,140],2026);
  assert.equal(sim.tiles.get('140,9'),12);sim.step([],1);
- assert.equal(sim.phase,'castle');assert.equal(sim.tiles.has('140,9'),false);
+ assert.equal(sim.phase,'castle');assert.equal(sim.tiles.get('140,9'),12);
+ sim.step([],sim.nativeVictory!.feet+4);assert.equal(sim.nativeVictory!.bridge,2);assert.equal(sim.tiles.get('140,9'),12);
+ sim.step([],1);assert.equal(sim.tiles.has('140,9'),false);
 });

@@ -56,13 +56,22 @@ test('native group enrichment is repeatable without duplicate actors',()=>{
  assert.deepEqual(levels.map(l=>l.areas.map(a=>a.enemies.length)),before);
 });
 
-test('a later falling sighting belongs to its raw native group, without a duplicate generated actor',()=>{
+test('a parser slot query preserves the native fraction inherited by the first1-2 wrap lift',()=>{
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='1-2')!]);sim.reset(true);sim.loadArea('area-2');
+ const platform=sim.area.platforms.find((p:any)=>p.x===2236);
+ assert.ok(platform,'native1-2 lift at x2236');sim.area.platforms=[platform];sim.enemies=[];
+ sim.camera=1922;sim.platformFrame=1485;sim.frame=1485;sim.platformMotion.advance(1485,1922,0);
+ sim.slotSub[2]=128;sim.slotVertical[2].fraction=104;
+ sim.objectSlots(new Set([0,1]));assert.equal(sim.platformSlots.get(platform),2);
+ sim.platformSlotResidues();assert.equal(sim.slotVertical[2].fraction,104);
+});
+
+test('a later falling sighting belongs to its raw native group without a duplicate generated actor',()=>{
  const levels:any[]=[{id:'fixture',areas:[{id:'main',enemies:[
   {kind:'goomba',x:2161,y:160,spawnCamera:1915},
   {kind:'goomba',x:2185,y:144,spawnCamera:1915},
   {kind:'goomba',x:2184,y:144,spawnCamera:1905,nativeGroup:{column:2208,index:1,count:2},evidence:'Native enemy-data group member; made only if a slot is free at the group parser pass.'},
  ]}]}];
  applyNativeWalkerGroups(levels,[{level:'fixture',area:'main',singles:[],groups:[{column:2208,count:2,kind:'goomba',y:144}]}]);
- const enemies=levels[0].areas[0].enemies;
- assert.deepEqual(enemies.map((e:any)=>({x:e.x,y:e.y,index:e.nativeGroup.index})),[{x:2161,y:144,index:0},{x:2185,y:144,index:1}]);
+ assert.deepEqual(levels[0].areas[0].enemies.map((e:any)=>({x:e.x,y:e.y,index:e.nativeGroup.index})),[{x:2161,y:144,index:0},{x:2185,y:144,index:1}]);
 });

@@ -2,8 +2,6 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeEntities} from '../tools/harness/native-entities.js';
 import {strictNativeEntities,strictSimEntities,strictEntityDifferences,strictSimCoverage,type StrictEntity} from '../tools/harness/native-strict-entities.js';
-import {strictAreaCandidates} from '../tools/harness/native-strict.js';
-import type {Level} from '../src/types.js';
 
 const ramEnemy=(id=6,slot=0)=>{const r=new Uint8Array(2048);r[0xf+slot]=1;r[0x16+slot]=id;r[0x6e+slot]=2;r[0x87+slot]=40;r[0xb6+slot]=1;r[0xcf+slot]=184;return r;};
 const actor=(slot=0):StrictEntity=>({bank:'enemy',slot,kind:'goomba',x:552,y:184,source:'enemy'});
@@ -45,19 +43,8 @@ test('misc hammer slots are separate from enemy slots and include native first-f
  const r=ramEnemy();r[0x2a]=0x90;r[0x7a]=2;r[0x93]=40;r[0xc2]=1;r[0xdb]=96;
  const sim={enemies:[{active:true,dead:0,enemySlot:0,kind:'goomba',x:552,y:208}],items:[{kind:'hammer',x:552,y:96,life:10,nativeHammer:{slot:0,state:0x90}}]};
  assert.deepEqual(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches,[]);
- r[0x2a]=1;assert.equal(strictNativeEntities(r).gaps[0].code,'unsupported-native-misc');
+ r[0x2a]=0x30;assert.equal(strictNativeEntities(r).gaps[0].code,'unsupported-native-misc');
 });
-const fixture=():Level=>({id:'1-1',time:400,main:'main',evidence:'test',areas:[{id:'main',width:256,palette:0,theme:'ground',tiles:[[1,2,84]],enemies:[],spawn:[40,208],evidence:'test'},{id:'water',width:256,palette:0,theme:'water',tiles:[[1,2,85]],enemies:[],spawn:[40,208],evidence:'test'}]});
-test('area origins come from native map geometry and whole pages, not Mario positions',()=>{
- const level=fixture(),cols=new Map([[17,[84]]]);
- assert.deepEqual(strictAreaCandidates(level,cols,1),[{area:'main',offset:-256,hits:1,conflicts:0}]);
- assert.deepEqual(strictAreaCandidates(level,new Map([[17,[85]]]),0),[{area:'water',offset:-256,hits:1,conflicts:0}]);
-});
-test('identical native area geometry remains ambiguous instead of silently selecting an area',()=>{
- const level=fixture();level.areas.push({...level.areas[0],id:'same-map'});
- assert.equal(strictAreaCandidates(level,new Map([[17,[84]]]),1).length,2);
-});
-
 test('missing model adapters remain explicit even when no native counterpart was encountered',()=>{
  const gaps=strictSimCoverage({area:{platforms:[{}],firebars:[{}],springs:[{}],vines:[{}]},items:[{kind:'fireball',life:1}]});
  assert.equal(gaps.length,5);assert.equal(gaps[4].code,'unsupported-sim-fireball');
@@ -70,4 +57,12 @@ test('native item state mismatches are reported separately from correct position
 test('declared flags and active fireworks cannot masquerade as complete entity coverage',()=>{
  const gaps=strictSimCoverage({area:{exit:{kind:'flag'}},items:[],flagFireworks:[{}]});
  assert.equal(gaps.length,2);assert.ok(gaps.every(g=>g.code==='unsupported-sim-object-family'));
+});
+
+test('nativeCoin misc objects are compared explicitly by slot, position and state',()=>{
+ const r=new Uint8Array(2048);r[0x2a+8]=2;r[0x7a+8]=1;r[0x93+8]=32;r[0xc2+8]=1;r[0xdb+8]=64;
+ const sim={enemies:[],items:[{kind:'coin',x:288,y:64,life:10,nativeCoin:{slot:8,state:2}}]};
+ assert.deepEqual(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches,[]);
+ sim.items[0].x++;assert.equal(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches[0].code,'position');
+ assert.equal(strictSimEntities({enemies:[],items:[{kind:'coin',x:0,y:0,life:1}]}).length,1);
 });

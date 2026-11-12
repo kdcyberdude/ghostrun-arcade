@@ -83,7 +83,7 @@ export class NativeWater{
  vertical(a:boolean,aPrev:boolean,y:number,grounded:boolean,inZone:boolean):WaterStep{
   if(this.timer>0)this.timer--;
   this.beforeWhirl=undefined;
-  const stroke=a&&!aPrev&&(this.timer>0||this.speed>=0||grounded);
+  const stroke=a&&!aPrev&&(this.timer>0||this.speed>=0||grounded),lowY=y&255;
   let dy=0;
   // The whirlpool pass that runs first sees the state from before the stroke.
   if(inZone&&this.whirlFirst)dy+=this.pass(WHIRL_GRAVITY,WHIRL_CAP);
@@ -91,9 +91,9 @@ export class NativeWater{
   if(!grounded||stroke){
    if(stroke){
     const s=this.whirl?STROKE.b:STROKE.a;
-    this.speed=y<SURFACE_Y?0:s.speed;this.force=s.force;this.frac=0;this.rise=s.rise;this.fall=s.fall;this.timer=STROKE_TIMER;
+    this.speed=lowY<SURFACE_Y?0:s.speed;this.force=s.force;this.frac=0;this.rise=s.rise;this.fall=s.fall;this.timer=STROKE_TIMER;
    }else if(this.speed>=0||!a)this.rise=this.fall;
-   dy+=this.pass(y<SURFACE_Y?SURFACE_GRAVITY:this.rise,FALL_CAP);
+   dy+=this.pass(lowY<SURFACE_Y?SURFACE_GRAVITY:this.rise,FALL_CAP);
   }
   if(inZone&&!this.whirlFirst){const before={speed:this.speed,force:this.force,frac:this.frac,moved:0};before.moved=this.pass(WHIRL_GRAVITY,WHIRL_CAP);this.beforeWhirl=before;dy+=before.moved;}
   this.whirl=inZone;
@@ -112,10 +112,15 @@ export class NativeWater{
  lastDirection:Direction=0;
  /** Horizontal speed (1/4096 px) after this frame's input: floor frames use the floor cap and coast (B brakes below byte 11);
   * swimming frames keep their speed when no direction is held. */
- horizontal(direction:Direction,grounded:boolean,down=false,b=false):number{
+ horizontal(direction:Direction,grounded:boolean,down=false,b=false,absolute=0):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
   const released=this.lastDirection!==0&&direction===0&&down;this.lastDirection=direction;
-  if(grounded&&down)return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  if(grounded&&down){
+   // PlayerBGCollision restores the collision bits every row even when Down
+   // suppresses steering. The wall pause cannot survive this floor frame.
+   if(m.freeze>0)m.turned=false;m.tickFreeze();
+   return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  }
   // Holding B stops a coasting player below speed byte 11, in the water as on the ground. Down does the same only on the frame the direction is released
   // (2-2/7-2 free-play rows: 32 of 35 release frames with Down below byte 11 stop; 0 of 6 later Down frames with no direction do).
   if(!direction){m.tickFreeze();return grounded?m.groundCoast(b):(b||released)&&m.speed!==0&&Math.abs(m.speed)<2816?m.speed=0:m.speed;}
@@ -123,9 +128,11 @@ export class NativeWater{
   // From exact rest the first step ever is doubled, later ones plain whatever the last direction was; a press against a
   // sub-byte positive speed takes the doubled step.
   if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;return m.speed=direction*(first?304:152);}
-  // A wall restart drops a stationary residue on reversal; it survives neutral frames (native7-2 wall branches).
+  // GetPlayerAnimSpeed clears both speed bytes on a skid only when the
+  // last ImposeFriction absolute byte is below $0b. Neutral swimming keeps
+  // that byte: a wall hit at speed 14 must retain its sub-byte residue.
   if(!along&&m.speed>0&&m.speed<256&&direction<0){
-   if(m.turned){m.tickFreeze();m.speed=0;return m.groundPress(direction,false);}
+   if(m.turned){m.tickFreeze();if(absolute<11)m.speed=0;return m.groundPress(direction,false);}
    return m.speed-=304;
   }
   return m.groundPress(direction as 1|-1,false);

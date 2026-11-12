@@ -34,12 +34,15 @@ export class Hud{
   const exit=s.area.exit;let rescue='';
   if(exit?.kind==='axe'&&exit.retainerX!==undefined&&!['intro','gameover','title'].includes(s.phase)&&(s.castleStage==='message'||s.phase==='ending')){
    const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
+   if(s.castleText){for(const row of s.castleText)lines.push(`O|${row.text}|${row.x-s.camera}|${row.y}`);}
+   else
    if(!(s.phase==='ending'&&elapsed===0)&&elapsed>=0)rescue=`R|${player}|${elapsed>=CASTLE_COMPLETION.secondMessageFrames?(s.level.id==='8-4'?2:1):0}`;
   }
   if(rescue)lines.push(rescue);
   // Level text that scrolls with the world (WELCOME TO WARP ZONE! and the world numbers over the warp pipes), as the 2D picture draws it.
   const world=!['title','intro','gameover'].includes(s.phase)&&!s.pipeLoading&&!s.pipeClearing,cam=Math.floor(s.camera);
   if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
+  if(world)for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
   if(hudOn||s.phase==='flag')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);

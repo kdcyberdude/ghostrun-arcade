@@ -6,17 +6,17 @@
  *  - Player_Y_Speed >= 0 (ChkForTopCollision),
  *  - feet (Player_Y_Position + 32) 0..5 px below the box top (BoundingBox_DR_YPos - platform UL_YPos < 6, unsigned),
  *  - Player_Y_Position < $D0 on screen page 1 (CheckPlayerVertical),
- *  - horizontal overlap (platformSupportsX, measured).
+ *  - inclusive horizontal overlap of the native player and platform boxes.
  * Small platforms (castle/sky elevators, ids 43/44: the 'wrap' kind) have a second box 128 px below the first (mod 256); a box whose top is
  * above y 32 is skipped. The rider is put on the box he landed on (PlayerPosSPlatData: +128 or +0).
  * `feet` is the integer feet row (remake p.y floor), `prior` the platform's collision position before this frame's move.
  * Returns the box offset (0 or 128) or undefined for no landing. */
 import {platformSupportsX,type PlatformPosition} from './platform-motion.js';
 
-export function nativePlatformLanding(feet:number,vy:number,x:number,prior:PlatformPosition,width:number,small:boolean):number|undefined{
+export function nativePlatformLanding(feet:number,vy:number,x:number,prior:PlatformPosition,width:number,small:boolean,wide=false):number|undefined{
  if(vy<0)return undefined;
  const y=feet-32;if(y<0||y>=0xd0)return undefined;
- if(!platformSupportsX(x,prior.x,width))return undefined;
+ if(!platformSupportsX(x,prior.x,width,wide))return undefined;
  for(const offset of small?[0,128]:[0]){
   const top=small?(Math.floor(prior.y)+offset)&255:Math.floor(prior.y);
   if(small&&top<32)continue;
@@ -29,8 +29,8 @@ export function nativePlatformLanding(feet:number,vy:number,x:number,prior:Platf
 /** Native head bump on a platform's underside (ProcLPlatCollisions): with the boxes overlapping and Player_Y_Speed < 0 after this frame's gravity,
  * platform bottom (top + 13, BoundBoxCtrlData rows 5/6) minus player box top (y + 8 big, y + 20 small or crouching) 0..3 sets the speed to 1
  * (the move force stays). In feet terms: feet - top 34..37 big, 22..25 small. */
-export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:PlatformPosition,width:number):boolean{
- if(!platformSupportsX(x,prior.x,width))return false;
+export function nativePlatformHeadBump(feet:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big):boolean{
+ if(!platformSupportsX(x,prior.x,width,wide))return false;
  const d=Math.floor(prior.y)+13-(feet-32+(big?8:20));
  return d>=0&&d<4;
 }
@@ -42,9 +42,9 @@ export function nativeBackgroundSkipped(feet:number):boolean{const y=Math.floor(
 /** ProcLPlatCollisions / PlatformSideCollisions after top/underside handling:
  * inclusive native boxes, then a left penetration below8 or right penetration
  * below9 (the latter SBC follows CLC, hence the extra pixel). */
-export function nativePlatformSide(feet:number,vy:number,big:boolean,x:number,prior:PlatformPosition,width:number):1|-1|0{
+export function nativePlatformSide(feet:number,vy:number,big:boolean,x:number,prior:PlatformPosition,width:number,wide=big):1|-1|0{
  const y=feet-32;if(y<0||y>=0xd0)return 0;
- const left=Math.floor(x)+(big?2:3),right=Math.floor(x)+(big?14:13),top=feet-32+(big?8:20);
+ const left=Math.floor(x)+(wide?2:3),right=Math.floor(x)+(wide?14:13),top=feet-32+(big?8:20);
  const pl=Math.floor(prior.x),pr=pl+width,pt=Math.floor(prior.y);
  if(right<pl||left>pr||feet<pt||top>pt+13)return 0;
  if(vy>=0&&feet-pt>=0&&feet-pt<6)return 0;
