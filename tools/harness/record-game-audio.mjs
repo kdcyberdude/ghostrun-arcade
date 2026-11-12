@@ -34,7 +34,7 @@ try{
  await server.listen();browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH??(process.platform==='darwin'?'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome':'/usr/bin/google-chrome'),args:['--no-sandbox',...(process.platform==='darwin'?['--use-gl=angle','--use-angle=metal','--ignore-gpu-blocklist']:a.view==='3d'?['--enable-webgl','--use-gl=angle','--use-angle=gl-egl','--ignore-gpu-blocklist']:['--use-angle=swiftshader','--enable-unsafe-swiftshader'])]});
  const page=await browser.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)errors.push(`${r.status()} ${r.url()}`);});
  await page.goto(`http://127.0.0.1:${a.port}/${a.view==='3d'?`?view=3d&res=${encodeURIComponent(a.resolution)}`:''}`);await page.waitForFunction(()=>window.mario?.ready,null,{timeout:90000});
- const codec=await page.evaluate(async({bitrate,actions,frames,fps,playing,entrance,transport,offset})=>{
+ const codec=await page.evaluate(async({acceleration,bitrate,actions,frames,fps,playing,entrance,transport,offset})=>{
   const {AudioEngine}=await import('/src/audio.ts');const commands=[],timestamps=[],states=[];let depth=0,frame=0,lastPaused=false;
   // Observe the existing game's public audio commands, including its exact alias routing.
   for(const name of ['playMusic','stopMusic','effect','setPaused','setMuted']){
@@ -48,7 +48,7 @@ try{
   if(entrance){const {initializeEntrance}=await import('/tools/harness/native-entrance.mjs');initialization=initializeEntrance(window.marioDebug.simulation,entrance);window.mario.step([],0);}
   const simulation=window.marioDebug.simulation;if(transport==='direct-ppu')simulation.inputs=[];
   const inputFrames=[];let effectiveMask=0;const update=simulation.update.bind(simulation),inputNames=['up','down','left','right','a','b','start','select'];simulation.update=buttons=>{effectiveMask=inputNames.reduce((mask,name,i)=>mask|(buttons.has(name)?1<<i:0),0);return update(buttons);};
-  const config={codec:'avc1.420033',width:canvas.width,height:canvas.height,bitrate:bitrate,framerate:fps,latencyMode:'realtime',hardwareAcceleration:'prefer-hardware',avc:{format:'annexb'}};
+  const config={codec:'avc1.420033',width:canvas.width,height:canvas.height,bitrate:bitrate,framerate:fps,latencyMode:'realtime',hardwareAcceleration:acceleration,avc:{format:'annexb'}};
   if(!(await VideoEncoder.isConfigSupported(config)).supported)throw Error('H264 unavailable');
   let chunks=[],encoded=0,failure,run=0,remaining=actions[0][1],limit=frames,terminal,seenPlay=playing;const names=['up','down','left','right','a','b','start','select'];
   const encoder=new VideoEncoder({output:c=>{const b=new Uint8Array(c.byteLength);c.copyTo(b);chunks.push(b);timestamps.push({timestamp:c.timestamp,duration:c.duration});encoded++;},error:e=>failure=e.message});encoder.configure(config);
@@ -75,7 +75,7 @@ try{
    if(frame===limit){encoder.close();canvas.toDataURL=png;}
    return {data:b64(data),first,frame,encoded,terminal,done:frame===limit};
   }};return config;
- },{bitrate:Number(a.bitrate??(a.view==='3d'?12000000:2000000)),actions,frames,fps,playing:Boolean(entrance)||log.start!=='power_on',entrance,transport:a.transport,offset});
+ },{acceleration:process.platform==='darwin'?'prefer-hardware':'no-preference',bitrate:Number(a.bitrate??(a.view==='3d'?12000000:2000000)),actions,frames,fps,playing:Boolean(entrance)||log.start!=='power_on',entrance,transport:a.transport,offset});
  for(;;){const b=await page.evaluate(()=>window.gameAudioCapture.batch());assert.equal(b.frame,b.encoded,'Video frames dropped');await video.write(Buffer.from(b.data,'base64'));if(b.first)await fs.writeFile(path.join(out,'first.png'),Buffer.from(b.first.split(',')[1],'base64'));if(b.done){capturedFrames=b.frame;outcome=b.terminal??{phase:await page.evaluate(()=>window.marioDebug.simulation.phase),reason:'requested prefix ended'};break;}}
  await video.close();
  const audio=await page.evaluate(async({frames,fps})=>{
