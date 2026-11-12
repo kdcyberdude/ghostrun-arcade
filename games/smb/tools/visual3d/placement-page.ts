@@ -8,7 +8,7 @@ import {FLAG_COMPLETION,type Simulation} from '../../src/simulation.js';
 import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
-import {titleBootColor} from '../../src/view-rules.js';
+import {titleBootColor,nativeBubbleShown} from '../../src/view-rules.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -54,6 +54,7 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number}[]):Obj[]{
   if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
+ if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const r=exact((Math.floor(b.x)-cam)&255,b.y+1);if(r)out.push({id:'bubble#'+i,kind:'bubble',...r});}});
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
 }

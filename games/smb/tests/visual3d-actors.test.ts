@@ -18,4 +18,5 @@ test('a native joint control samples an authored pose without changing the body'
  const turn=[0,0,Math.SQRT1_2,Math.SQRT1_2],clips=new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.QuaternionKeyframeTrack('ArmR.quaternion',[0,1],[0,0,0,1,...turn]),new THREE.QuaternionKeyframeTrack('LegL.quaternion',[0,1],[0,0,0,1,...turn])])]]);
  const actor=new Actor(model,clips);actor.pose('walk',0.5,1);const legPose=leg.quaternion.clone();actor.poseRotation('ArmR');assert.equal(arm.quaternion.w,1);assert.ok(leg.quaternion.equals(legPose));
  actor.poseRotation('ArmR','walk',1);assert.ok(Math.abs(arm.quaternion.z-Math.SQRT1_2)<1e-6);assert.ok(leg.quaternion.equals(legPose));
+ actor.pose('walk',0.5,2);assert.ok(Math.abs(arm.quaternion.z-Math.sin(Math.PI/8))<1e-6);
 });

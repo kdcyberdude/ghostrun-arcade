@@ -31,3 +31,14 @@ test('native small lift surfaces are suppressed above the playfield while large 
   props.sync(s);assert.equal(props.group.children.length,1);assert.equal(props.group.children[0].position.y,expected);
  }
 });
+
+test('native bubbles use the visible CHR ring center and native Mario-page gate',()=>{
+ const props=new Props(emptyKit),bubbles=[{x:300,y:100},{x:310,y:248}];
+ const s={area:{theme:'water'},camera:257,player:{y:208},bubbles,vines:[],flagFireworks:[]} as unknown as Simulation;
+ props.sync(s);assert.equal(props.group.children.length,2);
+ const bubble=props.group.children[0];assert.deepEqual(bubble.position.toArray(),[304/16,135/16,-0.15]);
+ assert.equal(bubble.castShadow,false);assert.equal(bubble.receiveShadow,false);
+ assert.equal(props.group.children[1].visible,true); // Native sentinel Y is hidden by the viewport, not by its own page.
+ s.area.theme='ground';props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
+ s.area.theme='water';s.player.y=464;props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
+});
