@@ -3,6 +3,7 @@ import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHold
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
+import {PlayerAnim} from './player-anim.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {PiranhaColumns} from './piranha-columns.js';
@@ -17,7 +18,7 @@ import powerupRules from '../data/powerup-rules.json';
 import enemyRules from '../data/enemy-rules.json';
 import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
-import {NativeRandom} from './native-random';
+import {NativeRandom,AREA_LOAD_FRAME_COUNTER} from './native-random';
 import {lakituStep,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import waterActorData from '../data/native-water-actors.json';
 import bulletData from '../data/native-bullets.json';
@@ -165,8 +166,9 @@ export class Simulation {
  colorRotations=0;
  player!:Player; enemies:Enemy[]=[]; items:Item[]=[]; popups:ScorePopup[]=[]; phase:Phase='title'; phaseFrame=0; titleFrame=0;
  locomotionPose:{kind:'stand'|'walk'|'skid'|'jump';frame:number;facing:number}={kind:'stand',frame:0,facing:1};
- private walkPoseTimer=0;private jumpPose=false;
  wallDisplayPose?:{kind:'walk';frame:number;facing:number};private wallDisplayTimer=0;
+ /** Native PlayerAnimCtrl/Timer/TimerSet (src/player-anim.ts). */
+ playerAnim=new PlayerAnim();private jumpPose=false;
  private offscreenLavaDeath=false;
  private offscreenPitDeath=false;
  private offscreenDeathRows=0;
@@ -187,7 +189,7 @@ export class Simulation {
  private corpsePlatformSlotEnd=new Map<Enemy,number>();
  private activatedHidden1ups=new Set<string>();
  private multiCoinExpiries=new Map<string,number>();
- swimPoseFrame=0;private swimAnimationFrame=0;private swimPoseTimer=0;private swimPoseWindow=0;
+ swimPoseFrame=0;
  lives=3; score=0; coins=0; time=400; paused=false; muted=false; twoPlayer=false; currentPlayer=0;
  private gameoverClosingFrame=-1;private gameoverSkipDelay=0;introFromGameover=false;
  slots:Slot[]=[]; events:string[]=[]; checkpoint=false; previous=new Set<Button>(); timerFrames=0;
@@ -212,7 +214,7 @@ export class Simulation {
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
  private motor=new PlayerMotor();private wallSpeed?:number;private wallBackOut=false;
  /** Native-exact swimming (src/native-water.ts): active in water areas once the legacy entry fall is over. */
- private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimDirection:Direction=0;
+ private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
  private swimFreshA=false;
  bump=new Map<string,number>(); readonly usedBlockRehits=new Set<string>(); private destination?:{area:string;level?:string;spawn:[number,number];camera?:number;direction:string;frames:number;smallPlayerRoomPreviewFrames?:number;smallPlayerRoomEntry?:{transitionFrames:number;spawnFeetY:number;initialVy:number;gravity:number};ordinaryEnemyFrontier?:number;returnCloudOffsetX?:number;riseFrames?:number}; private inputs:Set<Button>[]=[new Set(),new Set()]; private pauseCooldown=0;private airRunning=false;private mediumJump=false;private runJump=false;private headBumped=false;private brokenBrick?:{key:string;rows:number};private bouncing=false; private braking=PHYSICS.brake;private skidAccel=0; private jumpHeld=0;private jumpArc=false;private landJump:'inactive'|'held'|'released'='inactive'; private lastFire=-12;
@@ -288,8 +290,8 @@ export class Simulation {
   this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.scrollCrossFrame=-Infinity;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
-  this.locomotionPose={kind:'stand',frame:0,facing:1};this.walkPoseTimer=0;this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
-  this.swimPoseFrame=0;this.swimAnimationFrame=0;this.swimPoseTimer=0;this.swimPoseWindow=0;
+  this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
+  this.swimPoseFrame=0;
   this.springTimers.clear();this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;this.castleFallingBosses=[];this.castleBraking=false;this.castleScroll=this.camera;
   this.flagTop=48;this.flagInside=false;this.flagBonus=0;this.flagWait=0;
   this.items=[];this.popups=[];this.bump.clear();this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
@@ -458,9 +460,9 @@ export class Simulation {
   if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden){this.timerFrames++;if(this.timerFrames>=24){this.timerFrames=0;/* native: Mario dies one full tick after the digits reach 000 (1-4 row 15044 -> death 15068) */if(this.time<=0){this.timeUpDeath=true;this.die();return;}this.time--;this.timerTickFrame=this.frame;if(this.time===100)this.emit('event_hurry');}}
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
-  const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseVx=p.vx,poseEvents=this.events.length;
+  const p=this.player;const oldBottom=p.y;const oldX=p.x;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
   let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined;
-  p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(b);this.finishBrickBreak();
+  p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
@@ -479,7 +481,9 @@ export class Simulation {
   const jumpClassByte=this.motor.absolute; // native InitJS reads Player_XSpeedAbsolute, last written by the previous frame's ImposeFriction (a wall stop leaves it)
   if(swim){this.swimStep(b,pressed('a'),direction);}else if(useMotor){
    // The automatic pipe walk is a held-right press under GameEngineSubroutine 7, whose right cap is speed byte 12.
-   p.vx=this.motor.step({direction:direction as -1|0|1,ground:(p.grounded||this.springTimers.size>0)&&!landingGrace,jump:pressed('a')&&p.grounded,b:b.has('b'),down:b.has('down'),
+   const motorGround=(p.grounded||this.springTimers.size>0)&&!landingGrace,motorJump=pressed('a')&&p.grounded;
+   if(motorGround&&!motorJump)this.playerAnim.setSpeed(this.motor.absolute); // OnGroundStateSub: GetPlayerAnimSpeed reads the speed before this frame's friction
+   p.vx=this.motor.step({direction:direction as -1|0|1,ground:motorGround,jump:motorJump,b:b.has('b'),down:b.has('down'),
     buttons:(['b','select','start','up','down','left','right'] as Button[]).some(k=>b.has(k)),capRight:this.area.autoWalk?TRANSITIONS.autoWalkCapByte:undefined})/4096;
    if(direction&&!(b.has('down')&&p.grounded)&&!(p.duck&&p.grounded))p.facing=direction;
   }else if(direction&&!(p.duck&&p.grounded)&&(!b.has('down')||!p.grounded)){
@@ -530,13 +534,12 @@ export class Simulation {
   if(p.grounded)this.stompChain=0;
   this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
-  this.updateLocomotionPose(poseGrounded,poseVx,jumped,b);
+  this.updateLocomotionPose(poseGrounded,poseAbsolute,jumped,poseLocked?new Set():b); // the uncontrolled water entry (engine 7) and the water bottom (PlayerCtrlRoutine DisJoyp, y >= $d0) replace the controller: 2-2 rows 352..386 and 1393.. keep swim frame 0 with A down
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
   if(wallDisplay){
-   if(!this.wallDisplayPose){this.wallDisplayPose={kind:'walk',frame:this.locomotionPose.frame,facing:this.locomotionPose.facing};this.wallDisplayTimer=this.walkPoseTimer;}
+   if(!this.wallDisplayPose){this.wallDisplayPose={kind:'walk',frame:this.locomotionPose.frame,facing:this.locomotionPose.facing};this.wallDisplayTimer=this.playerAnim.timer;}
    else{this.wallDisplayTimer=Math.max(0,this.wallDisplayTimer-1);if(this.wallDisplayTimer===0){this.wallDisplayPose.frame=(this.wallDisplayPose.frame+1)%3;this.wallDisplayTimer=7;}this.wallDisplayPose.facing=this.locomotionPose.facing;}
   }else this.wallDisplayPose=undefined;
-  if(this.area.theme==='water')this.updateSwimPose(b.has('a'));
   for(const [key,age]of this.bump){if(age>=16){this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
   this.collectTiles();
   // Advance existing motors before collision. New viewport entries are handled
@@ -702,7 +705,8 @@ export class Simulation {
  // (free play 1-2 area-2 x189 used-block bump: rows 98-105 need 0.4375 = frac(-2.125 + 0.5625), the speed that hit gives 0.875; route 1-1 rows 128-148 exact for 18 rows).
  private bumpHead(dy:number,speed:number,gravity:number){const v=dy+gravity;this.player.vy=v-Math.floor(v)+speed;this.headBumped=true;}
  // Native crouch: read on the ground only and kept through the air (crouched jumps bump at the crouched head even after Down is released); never while swimming.
- private nextDuck(b:Set<Button>){const p=this.player;return p.size>0&&(p.grounded||this.area.theme==='water'?b.has('down')&&p.grounded:p.duck);}
+ /** CrouchingFlag: big Mario on the ground holding Down; SaveJoyp drops Up/Down (and Left/Right) when Left or Right is held with it (4-2 rows 403..407: Down+Right on the ground, $0714 stays 0). */
+ private nextDuck(b:Set<Button>){const p=this.player,down=b.has('down')&&!b.has('left')&&!b.has('right');return p.size>0&&(p.grounded||this.area.theme==='water'?down&&p.grounded:p.duck);}
  // Native apex landing (free-play rows, 35 of 35 in 256 model runs, remake one row late on all): on the row where the speed after gravity is no longer upward, a Mario still moving
  // up 1 px runs the foot probes, not the head probe, and lands on a floor top his feet are under 5 px into (feet 83 -> 80, 1-3 row 992).
  private apexFootProbe(dy:number,nativeHead:boolean,gravity:number){return dy<0&&gravity>0&&!nativeHead&&this.area.theme!=='water';}
@@ -754,23 +758,37 @@ export class Simulation {
   }else this.emit('sfx_bump');
   for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
- private updateLocomotionPose(wasGrounded:boolean,previousVx:number,jumped:boolean,buttons:Set<Button>){
-  const p=this.player,pose=this.locomotionPose;this.walkPoseTimer=Math.max(0,this.walkPoseTimer-1);
-  if(jumped){this.jumpPose=true;pose.kind='jump';pose.frame=0;}
+ /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
+  * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
+ private updateLocomotionPose(wasGrounded:boolean,absolute:number,jumped:boolean,buttons:Set<Button>){
+  const p=this.player,pose=this.locomotionPose,anim=this.playerAnim;anim.tick();
+  if(anim.fresh){anim.fresh=false;anim.setSpeed(absolute);}
+  const water=this.area.theme==='water';
+  pose.facing=water?p.facing:this.motor.facing; // the sprite flip is PlayerFacingDir, which on land only a ground press changes (1-2 row 484: Left pressed on the landing row, still drawn facing right)
+  if(jumped)this.jumpPose=true;
   if(p.climbing)return;
-  if(!jumped&&(wasGrounded||p.grounded)){
-   this.jumpPose=false;const speed=Math.abs(previousVx);
-   // Screenshot-fitted native-frame countdown; threshold crossings and the
-   // deceleration phase remain approximate (evidence/player-pose-animation-fit.json).
-   if(wasGrounded&&speed>0&&this.walkPoseTimer===0){pose.frame=(pose.frame+1)%3;this.walkPoseTimer=speed<0.875?7:speed<1.75?4:2;}
-   pose.kind=Math.abs(p.vx)<0.1&&!(p.size===0&&p.vx!==0&&!buttons.has('down')&&(buttons.has('right')!==buttons.has('left')))?'stand':p.vx*p.facing<0?'skid':'walk';pose.facing=p.facing;
-  }else if(this.jumpPose){pose.kind='jump';}
-  // A walk-off fall, including a subsequent enemy bounce, retains its last
-  // walking frame and facing until landing or a newly initiated jump.
+  if(p.invincible&&this.random.frame&1)return; // PlayerGfxHandler returns at once on odd FrameCounter rows while the injury timer runs
+  if(this.powerChange)return; // DoChangeSize replaces ProcessPlayerAction
+  if(p.grounded&&!jumped){
+   this.jumpPose=false;
+   const lr=buttons.has('down')&&wasGrounded?0:Number(buttons.has('right'))|Number(buttons.has('left'))<<1;
+   if(water)anim.setSpeed(absolute); // OnGroundStateSub on the water floor (the land motor sets it otherwise)
+   const m=water?{speed:Math.round(p.vx*4096),absolute:Math.abs(Math.floor(Math.round(p.vx*4096)/256)),moving:Math.sign(p.vx),facing:p.facing}:this.motor;
+   const byte=Math.floor(m.speed/256)&255;
+   if(p.duck||byte===0&&lr===0){pose.kind='stand';anim.still();}
+   else if(m.absolute>=9&&m.moving!==m.facing){pose.kind='skid';anim.still();}
+   else{pose.kind='walk';pose.frame=anim.animate(3);}
+  }else if(water&&this.swimActive){
+   // JumpSwimSub (ProcSwim) runs GetPlayerAnimSpeed every swimming frame; ActionSwimming animates while the swim timer runs, the frame is
+   // not 0 or A is held.
+   anim.setSpeed(absolute);
+   pose.kind='jump';this.swimPoseFrame=this.water.timer||anim.ctrl||buttons.has('a')?anim.animate(3):anim.hold();
+  }else if(this.jumpPose||p.duck){pose.kind='jump';anim.still();}
+  else{pose.kind='walk';pose.frame=anim.hold();} // a walk-off fall keeps its walking frame and facing
  }
  /** Native-exact swimming (src/native-water.ts) starts with the room unless the legacy entry fall still plays (5-2, 6-2). */
  private startSwim(spawnAtEntry:boolean,arrival=false){
-  const area=this.area,p=this.player,w=this.water;w.reset();this.swimActive=false;this.swimLock=0;this.swimDy=0;
+  const area=this.area,p=this.player,w=this.water;w.reset();this.swimActive=false;this.swimLock=0;this.swimDy=0;this.swimAbsolute=0;
   if(area.theme!=='water'||area.entryFall&&!(area.waterEntryFall&&spawnAtEntry))return;
   this.swimActive=true;this.waterEntryFall=false;this.swimFreshA=true;
   // The pipe rooms of 5-2/6-2 fall exactly like the 2-2 entry (measured with small and big Mario, 34 rows): from the room load the state is
@@ -801,6 +819,7 @@ export class Simulation {
   const heldBefore=held&&!pressedA&&!this.swimFreshA;if(held&&!pressedA&&this.swimFreshA)this.emit('sfx_swim');if(!locked)this.swimFreshA=false;
   w.motor.speed=Math.round(p.vx*4096);
   if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'))/4096;
+  if(dir||p.grounded)this.swimAbsolute=Math.abs(Math.floor(Math.round(p.vx*4096)/256)); // Player_XSpeedAbsolute: written by ImposeFriction (on the floor, or swimming with Left/Right), before any wall stop
   if(dir)p.facing=dir;
   // Whirlpool membership is tested where this frame's move lands (the other capture phase tests where it starts).
   const probe=Math.floor(w.whirlFirst?p.x:p.x+motionOf(Math.round(p.vx*4096)));
@@ -847,15 +866,7 @@ export class Simulation {
   const w=this.water;this.swimLock=s.hold?1:0;w.speed=s.speed;w.force=s.force??0;w.frac=s.frac??0;w.timer=s.timer??(s.speed<0?STROKE_TIMER:0);
   if(s.rise!==undefined)w.rise=s.rise;if(s.fall!==undefined)w.fall=s.fall;w.motor.speed=Math.round(this.player.vx*4096);
  }
- private updateSwimPose(heldA:boolean){
-  this.swimPoseFrame=this.swimAnimationFrame;
-  this.swimPoseTimer=Math.max(0,this.swimPoseTimer-1);this.swimPoseWindow=Math.max(0,this.swimPoseWindow-1);
-  // The observed rest window is28..34 native frames;32 is the fitted candidate.
-  // Repeated strokes refresh it while preserving the ongoing seven-frame cycle.
-  if(heldA)this.swimPoseWindow=32;
-  if(this.player.grounded||this.swimPoseWindow===0){this.swimAnimationFrame=0;this.swimPoseTimer=0;}
-  else if(this.swimPoseTimer===0){this.swimAnimationFrame=(this.swimAnimationFrame+1)%3;this.swimPoseTimer=7;}
- }
+
  /** Rendering and collision read the same motor state without advancing it. */
  firebarCenters(bar:FirebarSpec):{x:number;y:number}[]{
   if(this.firebarSlots?.tracks(bar))return this.firebarSlots.centers(bar);
@@ -957,6 +968,7 @@ export class Simulation {
  }
  private enterArea(id:string,spawn:[number,number],camera?:number,ordinaryEnemyFrontier?:number){
   this.loadArea(id,spawn,camera,true);this.broClock=HAMMER_NATIVE.pipeClock;this.lifeFrozen++;
+  this.random.frame=AREA_LOAD_FRAME_COUNTER; // FrameCounter $09 restarts with the area (palette rotation, Blooper strokes and other 8-frame phases)
   // A measured return may resume the ordinary NPC stream beyond its viewport.
   // Pipe plants are terrain actors; generators retain their normal lifecycle.
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
@@ -1965,7 +1977,7 @@ export class Simulation {
   let ticks=0;
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
- private startPlayAfterIntro(){if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;/* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.emit(this.areaMusic());}
  private respawn(){
   this.vineProgress.clear();this.climbingVine=undefined;
   this.lives--;this.slots[this.currentPlayer]={level:this.levelIndex,lives:this.lives,score:this.score,coins:this.coins,size:0,checkpoint:this.checkpoint,checkpointArea:this.activatedCheckpointArea};
