@@ -18,8 +18,8 @@ import enemyRules from '../data/enemy-rules.json';
 import swimmingCheepRules from '../data/cheep-swimming-rules.json';
 import flyingFishData from '../data/native-flying-fish.json';
 import {NativeRandom} from './native-random';
+import {lakituStep,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import waterActorData from '../data/native-water-actors.json';
-import lakituData from '../data/native-lakitu.json';
 import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
 import shellRules from '../data/shell-rules.json';
@@ -42,7 +42,7 @@ export const FLAG_COMPLETION=flagRules.runtimeCandidates;
 const CASTLE_END_64_EXTRA=31,CASTLE_END_EARLY=15,CASTLE_END_PHASE=2; // remake areaFrame is 166 on the first play row, so frame % 21 == 2 puts the load on (load row - first play row) = 4 mod 21
 export const CASTLE_COMPLETION=castleRules.runtimeCandidates;
 const PIRANHA=enemyRules.piranha;
-const NATIVE_FALLERS=['goomba','koopa','redKoopa','beetle'];
+const NATIVE_FALLERS=['goomba','koopa','redKoopa','beetle','spiny'];
 const SWIMMING_CHEEP_SPEEDS:Record<string,number>=swimmingCheepRules.horizontalSpeedByPalette;
 // Native leaping Cheep Cheep (object id 20): one 187-frame parabola; launch times, start offset and speed come from the native random register and Mario's speed (docs/NATIVE_ROLES.md).
 const FLYING_FISH=flyingFishData.rules;
@@ -63,7 +63,6 @@ export function nativeFrenzyHeight(byte:number,bag:number){
  return {y:SWIM_GEN.heights[q],bag:bag|1<<q};
 }
 const HAMMER_BRO=hammerBroRules.motor;
-const LAKITU=lakituData.rules; // native Lakitu pursuit and Spiny egg (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section)
 const BULLETS=bulletData.rules; // native Bullet Bill cannons and 5-3/6-3 generator (data/native-bullets.json, docs/NATIVE_ROLES.md, Bullet Bill section)
 const HAMMER_NATIVE=hammerBroData.rules; // native Hammer Bro roster, clock patrol, hammers and jumps (data/native-hammer-bros.json, docs/NATIVE_ROLES.md, Hammer Bro section)
 // Area D: measured native contact reach (x distance) at which a walking enemy turns away from a squashed Goomba / a stationary shell.
@@ -123,13 +122,13 @@ export const GREEN_PARATROOPA_LANDING={landingSpeed:1,sideProbe:{right:16,left:0
 // A jumping Paratroopa is made at rest (speed and move force 0; 8-1 row 1267, 8-2 row 83, fraction byte 0 on both): the route's first-sample spawnVy / spawnYFraction are not used.
 const greenBounceSpec=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27'&&(e.paratroopaMotion??'bounce')==='bounce';
 const greenSpawnVy=(e:EnemySpec)=>greenBounceSpec(e)?-GREEN_PARATROOPA_PHYSICS.gravity:0;
-const REACH_MEASURED=['koopa','redKoopa','beetle','paratroopa','goomba','spiny','piranha','podoboo','hammerBro','lakitu']; // kinds whose horizontal touch reach is measured (src/native-hurtbox.ts; Lakitu: 8-2 rows 223 |dx| 12 no touch, 225 |dx| 9 touch)
+const REACH_MEASURED=['koopa','redKoopa','beetle','paratroopa','goomba','spiny','piranha','podoboo','hammerBro','lakitu']; // kinds whose horizontal touch reach is measured (src/native-hurtbox.ts; Lakitu: the one native Lakitu touch, 8-2 row 225 |dx| 9, row 224 |dx| 10 none)
 const isGreenParatroopa=(e:EnemySpec)=>e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
 // Native Paratroopa and Beetle pairs turn each other around once when their boxes first overlap (|dx| < 12, |dy| < 8 over 14 measured bumps,
 // including two Paratroopas that had already passed each other); they are not turned again until they have separated.
 const bumpsOnOverlap=(a:{kind:string},b:{kind:string})=>['paratroopa','beetle'].some(k=>a.kind===k||b.kind===k);
 const wallReach=(e:{kind:string},dx:number)=>e.kind==='paratroopa'||e.kind==='beetle'?(dx>0?GREEN_PARATROOPA_LANDING.sideProbe.right-15:GREEN_PARATROOPA_LANDING.sideProbe.left-1):0;
-const nativeWalkerWallTurn=(kind:string)=>kind==='goomba'||kind==='koopa'||kind==='redKoopa';
+const nativeWalkerWallTurn=(kind:string)=>kind==='goomba'||kind==='koopa'||kind==='redKoopa'||kind==='spiny';
 const wallHeight=(e:{kind:string})=>e.kind==='paratroopa'||e.kind==='beetle'?GREEN_PARATROOPA_LANDING.sideProbe.heightAboveFeet:8;
 const clamp=(n:number,a:number,b:number)=>Math.max(a,Math.min(b,n));
 const overlap=(ax:number,ay:number,aw:number,ah:number,bx:number,by:number,bw:number,bh:number)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
@@ -249,6 +248,7 @@ export class Simulation {
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false){
   this.piranhaTouchFeetY=undefined;this.fallGravity=FALL_GRAVITY_AFTER_LOAD;this.landingFraction=0;this.walkingOff=false;
   this.fallingThroughCastleLava=false;
+  this.spinyTimer=0;this.spinyBuffer=false; // InitializeArea clears the timers ($0780-$07A1) and the frenzy buffer (8-2 row 684 after a death: $078F 0, $06CB 0)
   this.corpsePlatformSlotEnd.clear();
   const source=this.level.areas.find(a=>a.id===id);if(!source)throw new Error(`Unmapped area ${this.level.id}/${id}`);
   this.stompChain=0;
@@ -528,7 +528,7 @@ export class Simulation {
   const height=this.height;
   let springJumped=false;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom);springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
-  this.updateGenerators();if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
+  this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);if(!(nativeEntry&&this.entryFallAge<=entry!.enemyDelay))this.updateEnemies(oldBottom);this.updateItems();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   this.updateLocomotionPose(poseGrounded,poseVx,jumped,b);
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
@@ -1260,31 +1260,57 @@ export class Simulation {
   i.x=e.x+N.handDx;i.y=e.y-24+N.handDy;
   if(--i.hold!<=0){i.hold=undefined;i.vx=(this.player.x<e.x?-1:1)*N.throwSpeed;i.vy=-N.throwImpulse;}
  }
- // Native Lakitu (docs/NATIVE_ROLES.md, Lakitu section). Speed s in 1/16 px per frame from d = integer Lakitu x - Mario x of the previous frame, three modes:
- // 'left' (appears 190 px ahead, s = -(5 + (60-|d|)/4)), 'chase' once Lakitu is 57 px behind Mario (s = base + a tent of d; base 48 for a running Mario,
- // 32 walking, 5 stopped; past 61 px ahead s drops 1 per frame and restarts at base+1), 'flee' (-1 px/frame, no more eggs) when Mario passes fleeX.
+ // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll; it steps on its first remake row
+ // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
  private updateNativeLakitu(e:Enemy){
-  const p=this.player,C=LAKITU.chase,lak=e.lak??(e.lak={mode:'left',s:-LAKITU.leftSpeed.base});
-  if(e.age===1)e.x+=LAKITU.spawnFraction;
-  const d=Math.floor(e.x)-Math.floor(p.x),v=Math.max(0,p.vx*16);
-  if(lak.mode!=='flee'&&e.fleeX!==undefined&&p.x>=e.fleeX)lak.mode='flee';
-  if(lak.mode==='left'&&d<=C.switchDistance)lak.mode='chase';
-  if(lak.mode==='flee')lak.s=LAKITU.flee.speed;
-  else if(lak.mode==='left'){const L=LAKITU.leftSpeed;lak.s=-Math.round(L.base+(L.spread-Math.min(Math.abs(d),L.spread))/L.divisor);}
-  else{
-   const base=v>=C.fastClass?C.fastBase:v>=10?C.slowBase:C.stoppedBase;
-   if(d>=(base===C.fastBase?C.farFast:base===C.slowBase?C.farSlow:C.farStopped)){
-    if(lak.s-1<=0){lak.mode='left';lak.s=-LAKITU.leftSpeed.base;}
-    else lak.s--;
-   }else if(lak.s<base)lak.s=base+1;
-   else lak.s=base+Math.max(0,Math.min(C.plateau,Math.floor(d<0?(C.leftOffset+d)/4:(C.rightOffset-d)/4)));
-  }
-  if(e.age>1)e.x+=lak.s/16;
+  const p=this.player,lak=e.lak??={dir:0,speed:0};
+  lak.preX=Math.floor(e.x);
+  e.x+=lakituStep(lak,Math.floor(e.x),Math.floor(p.x),this.marioSpeedByte(),this.lakituScroll,Boolean(lak.fleeing))/16;
   e.y=64;
-  if(lak.mode!=='flee'&&e.age>=LAKITU.firstThrowAge&&(e.age-LAKITU.firstThrowAge)%LAKITU.throwInterval===0){
-   const egg=this.makeEnemy({kind:'spiny',motion:'falling',x:e.x,y:e.y-LAKITU.egg.aboveLakitu,direction:p.x<e.x?-1:1,palette:'0f-16-30-27',evidence:'Native Lakitu egg: thrown every 128 frames at the Lakitu x.'});
-   egg.active=true;egg.egg=true;egg.vx=0;egg.vy=LAKITU.egg.vy0;this.enemies.push(egg);
-  }
+  if(!lak.fleeing)this.spinyBuffer=true; // MoveLakitu in the normal state puts a Spiny in EnemyFrenzyBuffer
+  if(e.stopFrenzyX!==undefined&&stopFrenzyParsed(e.stopFrenzyX,this.scrollCrossCamera,this.frame-this.scrollCrossFrame))lak.stopQueued=true;
+  if(lak.stopQueued&&this.freeNativeSlot()<5){lak.fleeing=true;this.spinyBuffer=false;lak.stopQueued=false;}
+ }
+ /** Player_X_Speed $57 (the native motor's speed byte). */
+ private marioSpeedByte(){return Math.floor(Math.round(this.player.vx*4096)/256)&255;}
+ /** ScrollAmount $0775 of this row, computed before the enemies run as the native ScrollHandler does (same rule as the camera commit in update()). */
+ private nativeScrollPreview(oldX:number,attemptX:number){
+  const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=Math.floor(oldX)-this.camera;
+  let camera=this.camera;
+  if(screenX>=80&&Math.max(0,this.sideCollisionTimer-1)===0&&scrollMove>0)camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;
+  return Math.max(0,Math.min(camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256))-this.camera);
+ }
+ private spinyTimer=0;private spinyBuffer=false;private lakituScroll=0; // FrenzyEnemyTimer $078F, EnemyFrenzyBuffer $06CB holds a Spiny, ScrollAmount $0775
+ /** Start of the enemy pass: FrenzyEnemyTimer counts down once per frame; Lakitu's slot and pre-step x decide which egg x a lower free slot sees. */
+ private spinyFrenzyBefore(){
+  if(this.spinyTimer>0)this.spinyTimer--;
+  return this.spinyBuffer;
+ }
+ /** LakituAndSpinyHandler in the first free slot (CheckFrenzyBuffer): a slot below Lakitu's runs before Lakitu steps (pre-step x, last row's buffer), a higher one after.
+  * The handler is not reached on the row after the camera crosses a 32 px boundary (AreaParserTaskNum, as for list objects: 6-1 row 775 holds the egg one row). */
+ private spinyFrenzyAfter(bufferBefore:boolean){
+  if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1)return;
+  const slot=this.freeNativeSlot(),lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
+  const low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
+  if(!(low?bufferBefore:this.spinyBuffer))return;
+  this.spinyTimer=SPINY_EGG.timer;
+  if(!lakitu||lakitu.lak?.fleeing||((Math.floor(this.player.y)-32)&255)<SPINY_EGG.minMarioY)return; // no Lakitu: LakituReappearTimer (not modelled)
+  const x=low?lakitu.lak!.preX!:Math.floor(lakitu.x),y=lakitu.y-SPINY_EGG.aboveLakitu,left=this.slotVertical[slot];
+  const egg=this.makeEnemy({kind:'spiny',motion:'falling',x:x+this.slotSub[slot]/256,y,palette:'0f-16-30-27',evidence:'Native CreateSpiny (src/lakitu.ts).'});
+  egg.active=true;egg.egg=true;egg.vx=0;egg.vy=SPINY_EGG.speed;egg.enemySlot=slot;egg.age=0;
+  egg.pod={...nativeMoveState(y),speed:SPINY_EGG.speed,force:0,fraction:left.fraction}; // speed $FD, MoveForce 0; the y fraction $0417 is what the slot was left with (26 of 26 v2 eggs)
+  this.enemies.push(egg);
+ }
+ /** ProcEnemyDirection for a landing Spiny (egg or a walker that fell): 8/16 px right, turned toward Mario (PlayerEnemyDiff on the pre-step x) unless FrameCounter & 7 is 0.
+  * v2 traces: 17 of 17 landings face Mario (none on a FrameCounter multiple of 8); the turn one row later at 4-1 row 733 and 6-1 row 247 is the ordinary wall turn. */
+ private spinyLandingVx(x:number){return (this.random.frame&7)===0||Math.floor(this.player.x)-Math.floor(x)>=0?SPINY_EGG.walk:-SPINY_EGG.walk;}
+ /** The walker side probe after the landing step (as the walker pass does after its own step: nativeWalkerWallTurn). */
+ private spinyWallTurn(e:Enemy){if(this.isSolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
+ /** A falling egg (state 5): the background test runs before the move; landed, it turns into a Spiny walking toward Mario and steps on that row. */
+ private updateSpinyEgg(e:Enemy){
+  const n=e.pod!,floor=n.speed>=0?this.collisionAt(e.x+8,e.y):undefined;
+  if(floor){e.y=floor.y;e.vy=0;n.speed=0;n.force=0;e.motion=undefined;e.vx=this.spinyLandingVx(e.x);e.x+=e.vx;this.spinyWallTurn(e);return;}
+  nativeImposeGravity(n,SPINY_EGG.down,SPINY_EGG.max);e.y=n.y;e.vy=n.speed+n.force/256;
  }
  /** Castle areas whose loop objects follow the native loop-command table (a remake maze spec on such a page is replaced by it). */
  private nativeLoopPage(x:number){const loops=CASTLE_LOOPS[Number(this.level.id[0])];return this.area.theme==='castle'&&Boolean(loops?.some(l=>l.page*256===x));}
@@ -1592,13 +1618,14 @@ export class Simulation {
   if(e.kind==='piranha')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))return left-73;
   if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
+  if(e.kind==='spiny'||e.kind==='lakitu')return left-72; // erased when x < ScreenLeft - 72 on the post-scroll camera (v2 traces 4-1/6-1/8-2: 26 of 26 left removals at x - camera -73..-75, none at -72)
  }
  private eraseOffscreenEnemies(){
   for(const e of this.enemies){
    if(!e.active)continue;const bound=this.nativeLeftBound(e);
    if(bound===undefined||Math.floor(e.x)>=bound)continue;
    e.dead=100;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;
-   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind))this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
+   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;
   }
  }
  /** Enemy_Y_Speed $A0+s, Enemy_Y_MoveForce $0434+s and the y fraction $0417+s are not cleared when an object is made: a new jumping Paratroopa starts from what the slot's
@@ -1610,7 +1637,7 @@ export class Simulation {
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
    if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
    else if(e.fall&&!e.dead)Object.assign(m,e.fall);
-   else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
+   else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'||e.egg))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
    else if(!e.dead&&['goomba','koopa','redKoopa','beetle','hammerBro'].includes(e.kind)&&e.vy===0){m.speed=0;m.force=0;}
   }
  }
@@ -1667,6 +1694,7 @@ export class Simulation {
   this.broClock++;
   this.releaseNativeSlots();
   const p=this.player;
+  const frenzy=this.spinyFrenzyBefore();
   if(p.vx)this.marioMotion=Math.sign(p.vx);
   this.stompedThisStep=false;
   for(const e of this.enemies){
@@ -1686,7 +1714,7 @@ export class Simulation {
     }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
-   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||e.y>280&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
+   if(e.kind==='bullet'?this.nativeBulletGone(e):this.nativeLeftBound(e)===undefined&&e.x<this.camera-(e.kind==='lakitu'||e.kind==='spiny'||e.kind==='blooper'||e.kind==='cheep'?73:48)||(e.kind==='spiny'?e.y>=280:e.y>280)&&e.kind!=='podoboo'){e.dead=100;if(e.kind==='bullet')e.goneFrame=this.frame;continue;}
    const isWater=e.kind==='blooper'||e.kind==='cheep';
    if(e.motion==='flying'){
     if(e.nativeFlight){if(e.age>1){e.x+=e.vx;e.y+=e.vy;e.vy+=FLYING_FISH.launch.gravity;}} // the spawn step holds the launch position
@@ -1775,16 +1803,16 @@ export class Simulation {
      const floor=(n.speed+2&255)>=3?this.collisionAt(e.x+8,n.y):undefined;
      if(floor){n.y=((n.y-24)&~15|8)+24;n.speed=-3;n.force=0;}
      nativeImposeGravity(n,28,3);e.y=n.y;e.vy=n.speed+n.force/256;
-    }else if(e.egg&&e.motion==='falling'){e.y+=e.vy;e.vy=Math.min(LAKITU.egg.maxFall,e.vy+LAKITU.egg.gravity);} // native egg arc: position first, then gravity
+    }else if(e.egg&&e.motion==='falling')this.updateSpinyEgg(e);
     else if(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion){ // native walker fall: the background test runs before the move; airborne, MoveD_EnemyVertically imposes 0x3D per frame (cap 3) from rest, keeping the slot's y fraction (6-1 rows 233-246)
      const n=e.fall??=(e.pod?{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction}:{speed:0,force:0,fraction:e.enemySlot!==undefined?this.slotVertical[e.enemySlot].fraction:0}); // an unwinged Paratroopa keeps its 8.8 vertical state
      const ground=this.collisionAt(priorX+8,e.y); // at the x before this frame's step
-     if(ground&&n.speed>=0){if(n.speed||n.force)e.y=ground.y;n.speed=0;n.force=0;e.vy=0;}
+     if(ground&&n.speed>=0){const landed=Boolean(n.speed||n.force);if(landed)e.y=ground.y;n.speed=0;n.force=0;e.vy=0;if(landed&&e.kind==='spiny'){const vx=this.spinyLandingVx(priorX);e.x+=vx-dx;e.vx=vx;this.spinyWallTurn(e);}}
      else{const m={y:Math.floor(e.y),speed:n.speed,force:n.force,fraction:n.fraction,timer:0};nativeImposeGravity(m,0x3d,3);Object.assign(n,{speed:m.speed,force:m.force,fraction:m.fraction});e.y=m.y;e.vy=m.speed+m.force/256;}
     }
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:e.kind==='hammerBro'?HAMMER_BRO.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:e.kind==='hammerBro'?HAMMER_BRO.gravity:0.25));e.y+=e.vy;}
     const floor=this.collisionAt(e.x+8,e.y);
-    if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion)&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
+    if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion)&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor&&!(e.kind==='hammerBro'&&floor.y===e.hammerDropRow)){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='hammerBro'&&e.hammerDropRow!==undefined&&e.y>e.hammerDropRow+16)e.hammerDropRow=undefined;
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }
@@ -1835,6 +1863,7 @@ export class Simulation {
    if(!first.shell)first.vx=-first.vx;if(!second.shell)second.vx=-second.vx;
   }
   this.turnWalkersAtCorpses();
+  this.spinyFrenzyAfter(frenzy);
   this.rememberSlotVertical();
  }
  // Koopa-shaped enemies touch 1 px wider than the overlap box: native integer |enemy x before its move - Mario x| <= 11 (evidence/contact3-findings-20261111.md)
