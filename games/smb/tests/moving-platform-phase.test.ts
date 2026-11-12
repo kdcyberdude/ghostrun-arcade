@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {PlatformMotion,platformMotionModel,nativePlatformObject} from '../src/platform-motion.js';
+import {PlatformMotion,platformMotionModel,nativePlatformObject,nativePlatformSpawnCamera} from '../src/platform-motion.js';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 import type {PlatformSpec} from '../src/types.js';
@@ -10,7 +10,7 @@ import type {PlatformSpec} from '../src/types.js';
 // `age` is the number of frames since the first row in which the object exists. A native object is created when the scroll
 // position reaches its spawn position and then runs on its own clock, not on the level timeline.
 const spec=(level:string,area:string,x:number,y:number):PlatformSpec=>observedLevels().find(l=>l.id===level)!.areas.find(a=>a.id===area)!.platforms!.find(p=>p.x===x&&p.y===y)!;
-const spawn=(level:string,platform:PlatformSpec)=>nativePlatformObject(platform,{levelId:level,areaId:'main'})!.spawnCamera;
+const spawn=(level:string,platform:PlatformSpec)=>nativePlatformSpawnCamera(nativePlatformObject(platform,{levelId:level,areaId:'main'})!);
 const within=(actual:number,expected:number,tolerance:number,label:string)=>assert.ok(Math.abs(actual-expected)<=tolerance,`${label}: ${actual} vs native ${expected}`);
 
 // Exact horizontal motion, including every recorded spawn counter and inherited slot

@@ -1124,12 +1124,18 @@ export class Simulation {
  // Platforms preserve their slot fractions: id40 inherits x sub-pixels; the
  // balance/drop motors keep Y fractions (3-3 slot2: drop125 → balance125).
  private platformSlotResidues(){
+  // OffscreenBoundsCheck erases the object after its last motion step. Keep
+  // that final fraction before objectSlots releases and reuses its slot.
+  for(const [platform,slot] of this.platformSlots){
+   const state=this.platformMotion.verticalState(platform as any,this.platformFrame);
+   if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
+  }
   this.objectSlots(new Set(this.enemies.flatMap(o=>o.enemySlot!==undefined&&!o.slotFreed&&o.active?[o.enemySlot]:[])));
   for(const [platform,slot] of this.platformSlots){
    const p=platform as any;
    this.platformMotion.slotSub(p,this.slotSub[slot]);
    this.platformMotion.slotFraction(p,this.slotVertical[slot].fraction);
-   const state=this.platformMotion.verticalState(p);
+   const state=this.platformMotion.verticalState(p,this.platformFrame);
    if(state)Object.assign(this.slotVertical[slot],{speed:state.speed,force:state.force,fraction:state.fraction});
   }
  }

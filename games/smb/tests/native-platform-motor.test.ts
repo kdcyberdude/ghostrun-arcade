@@ -1,11 +1,13 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeBalanceStep,nativeDropStep} from '../src/native-platform-motor.js';
+import {nativeLiftState} from '../src/platform-motion.js';
 import events from './fixtures/native-platform-rule-events.json';
 
 test('native drop and balance motors match every recorded live transition',()=>{
  assert.ok(events.length>200);
  for(const e of events){
+  if(e.id===37){assert.deepEqual(nativeLiftState(e.spawnY!,e.age!,e.counter!,e.after.fraction),e.after,`${e.level} lift ${e.slot} age ${e.age}`);continue;}
   const state={...e.before};
   if(e.id===41)nativeDropStep(state,e.load!==0);else nativeBalanceStep(state,e.load);
   assert.deepEqual(state,e.after,`${e.level} frame ${e.frame} slot ${e.slot} id ${e.id} load ${e.load}`);
