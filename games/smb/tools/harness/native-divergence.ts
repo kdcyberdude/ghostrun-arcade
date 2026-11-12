@@ -11,6 +11,7 @@ import {Simulation} from '../../src/simulation.js';
 import {observedLevels} from '../../src/levels.js';
 import type {Button} from '../../src/types.js';
 import {decodeEntrance,initializeEntrance} from './native-entrance.mjs';
+import {nativeEntities,simEntities,unmatchedEntity} from './native-entities.js';
 
 const nesButtons:Button[]=['a','b','select','start','up','down','left','right'];
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((s,v)=>s*10+v,0);
@@ -24,14 +25,18 @@ export function nativeRow(r:Uint8Array){
 export function divergence(dir:string,receiptPath:string,level:string,detail=false):Divergence{
  const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));
  const receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
- const sim=new Simulation(observedLevels());sim.reset(true);
- initializeEntrance(sim,decodeEntrance(initial,receipt));sim.step([],0);sim.inputs=[];
- const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null};const at:{field:string,native:number,sim:number}[]=[];
+ return compareRun(decodeEntrance(initial,receipt),pads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);
+}
+/** The comparison itself, over any source of per-frame native RAM (full traces, or the excerpts in evidence/native-runs). */
+export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:number)=>Uint8Array,level:string,detail=false):Divergence{
+ const sim:any=new Simulation(observedLevels());sim.reset(true);
+ initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
+ const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,enemy:null};const at:{field:string,native:number,sim:number}[]=[];
  /* Native x is level-absolute: a bonus/pipe room can continue at a later page, so each later area visit is aligned on its first compared frame. */
  let area=sim.area.id,xOffset:number|undefined=0;
  for(let f=0;f<pads.length;f++){
   sim.step(nesButtons.filter((_,b)=>pads[f]&(1<<b)),1);
-  const n=nativeRow(new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048));
+  const raw=frameRam(f),n=nativeRow(raw);
   if(n.mode!==1||n.level!==level||sim.level.id!==level)break;
   if(sim.area.id!==area){area=sim.area.id;xOffset=undefined;}
   const pos=n.play&&sim.phase==='play';if(pos&&xOffset===undefined)xOffset=n.x-Math.floor(sim.player.x);
@@ -39,6 +44,9 @@ export function divergence(dir:string,receiptPath:string,level:string,detail=fal
   const checks:[string,boolean][]=[['dead',true],['time',!(sim.area.autoWalk&&n.time===0)&&n.engine!==7],['score',true],['coins',true],['cam',pos&&area===sim.level.main],['x',pos],['y',pos]];
   for(const [k,on] of checks){const nv=n[k as keyof typeof n] as number,sv=s[k as keyof typeof s];
    if(on&&fields[k]===null&&nv!==sv){fields[k]=f;if(detail)at.push({field:k,native:nv,sim:sv});}}
+  // Enemies (native-entities.ts): every native walker/flyer with a remake counterpart must sit on the same pixel.
+  if(pos&&area===sim.level.main&&fields.enemy===null){const u=unmatchedEntity(nativeEntities(raw,f>0?frameRam(f-1):undefined),simEntities(sim));
+   if(u){fields.enemy=f;if(detail)at.push({field:`enemy ${u.kind} y${u.y}`,native:u.x,sim:-1});}}
  }
  const hits=Object.values(fields).filter((v):v is number=>v!==null);
  return {level,frames:pads.length,first:hits.length?Math.min(...hits):null,fields,...(detail?{at}:{})};
