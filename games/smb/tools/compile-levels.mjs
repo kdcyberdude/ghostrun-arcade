@@ -1,5 +1,9 @@
 import fs from'node:fs';import{PNG}from'pngjs';
-import{createHash}from'node:crypto';
+import{createHash}from'node:crypto';import path from'node:path';import{parseArgs}from'node:util';
+// --out previews a complete build without replacing the protected native-aligned production map.
+const{values:{out:outputPath}}=parseArgs({options:{out:{type:'string',default:'data/levels.json'}}});
+import{restoreCompilerEvidence}from'./restore-compiler-evidence.mjs';
+restoreCompilerEvidence();
 import{applyObservedOpeningPodoboo}from'./podoboo-three-four-inventory-adapter.mjs';
 const observations=JSON.parse(fs.readFileSync('data/observed-levels.json')),entities=JSON.parse(fs.readFileSync('data/entity-campaign.json')),first=JSON.parse(fs.readFileSync('data/gameplay-1-1.json'));
 const pipeRoomPreview=JSON.parse(fs.readFileSync('data/pipe-room-preview.json'));
@@ -967,7 +971,7 @@ for(const c of geometryCorrections.edits){
 {const room=levels.find(l=>l.id==='4-2').areas.find(a=>a.id==='bonus-coins'),pipe=room.pipes.find(p=>p.to==='area-3');
  if(pipe.spawn[0]!==2120||pipe.camera!==2064)throw Error('4-2 coin room return changed');pipe.spawn[0]=2104;pipe.camera=2048;}
 // Browser builds must never read a partially written multi-megabyte map.
-const output=`data/.levels-${process.pid}.json`;
+const output=path.join(path.dirname(outputPath),`.levels-${process.pid}.json`);
 fs.writeFileSync(output,JSON.stringify(levels,null,2)+'\n');
-fs.renameSync(output,'data/levels.json');
+fs.renameSync(output,outputPath);
 console.log(JSON.stringify(levels.map(l=>({id:l.id,time:l.time,areas:l.areas.length,spawn:l.areas[0].spawn,enemies:l.areas.reduce((n,a)=>n+a.enemies.length,0),exit:l.areas.at(-1).exit?.kind})),null,2));
