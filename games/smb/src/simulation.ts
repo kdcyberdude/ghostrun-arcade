@@ -228,7 +228,7 @@ export class Simulation {
  private motor=new PlayerMotor();private wallSpeed?:number;private wallBackOut=false;
  readonly bubbleState=new NativeBubbles();
  get bubbles(){return this.bubbleState.slots;}
- private bubblesInitialized=false;
+ private bubblesInitialized=false;private waterScrollX=0;
  /** Native-exact swimming (src/native-water.ts): active in water areas once the legacy entry fall is over. */
  private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
@@ -306,6 +306,7 @@ export class Simulation {
    this.player.climbing=this.entryVineStage==='climb';
   }
   this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   for(const command of this.specialAreaCommands())if(command.x>=Math.floor(this.camera/256)*256&&command.x<Math.floor(this.camera/256)*256+384)this.applySpecialAreaCommand(command);
@@ -597,7 +598,7 @@ export class Simulation {
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=Math.floor(oldX)-previousCamera;
+  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;
    if(oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
@@ -621,6 +622,9 @@ export class Simulation {
    for(const [bar,motor]of inactiveFirebars)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
    for(const bar of this.area.firebars??[])this.collideFirebar(bar); // after the scroll: native flames are placed against this frame's screen left
   }
+  // RenderPlayerSub caches $0755 before ProcessWhirlpools. Injury's odd
+  // FrameCounter rows return before that write, as in PlayerGfxHandler.
+  if(this.area.theme==='water'&&(!p.invincible||!(this.random.frame&1)))this.waterScrollX=(Math.floor(p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0))-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;
   this.parserClock.advance(this.camera-previousCamera,this.parserVramBusy);
   if(this.player.dead)return;

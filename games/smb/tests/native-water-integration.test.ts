@@ -66,7 +66,7 @@ test('2-3 native stream fish and slot reuse preserve all enemy positions through
  assert.ok(frames>1000);
 });
 
-for(const [level,through] of [['2-2',6395],['7-2',2208]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
+for(const [level,through] of [['2-2',6596],['7-2',4564]] as const)test(`${level} swimming entry, whirlpool scroll and offscreen page wraps match native through frame ${through}`,()=>{
  const run=replay(level),sim=run.sim;let frames=0;
  for(let f=0;f<=through;f++){
   run.step(f);const r=run.row(f);
@@ -174,6 +174,19 @@ test('odd-slot Bloopers use the retained native moving direction when Mario spee
    const e=run.sim.enemies.find(e=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===slot);assert.ok(e?.bloop,`frame ${f} slot ${slot}`);
    assert.equal(Math.floor(e.x),r[0x6e+slot]*256+r[0x87+slot],`frame ${f} slot ${slot} x`);
    assert.equal(Math.floor(e.y)-24,r[0xcf+slot],`frame ${f} slot ${slot} y`);
+  }
+ }
+});
+
+test('pre-whirlpool cached scroll position preserves water parser timing and the slot4 Blooper birth',()=>{
+ const run=replay('7-2');
+ for(let f=0;f<=2282;f++){
+  run.step(f);if(f<2258)continue;const r=run.row(f);
+  assert.equal(Math.floor(run.sim.camera),r[0x71a]*256+r[0x71c],`frame ${f} camera`);
+  if(f>=2280){
+   const e=run.sim.enemies.find(e=>e.active&&!e.dead&&e.enemySlot===4);
+   assert.equal(Boolean(e),f>=2281,`frame ${f} slot4 ownership`);
+   if(e){assert.equal(e.x,1328);assert.equal(e.y,160);}
   }
  }
 });
