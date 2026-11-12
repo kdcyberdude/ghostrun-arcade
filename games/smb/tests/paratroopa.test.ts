@@ -41,9 +41,9 @@ test('ground-supported green bounce rises 43 px and repeats after 56 native fram
  assert.equal(top,165);sim.step([],1);assert.equal(enemy.y,208);sim.step([],1);assert.equal(enemy.y,205);assert.equal(enemy.vy,bounceRow);
 });
 
-test('ordinary green walkers and red flight retain their prior vertical rules',()=>{
+test('ordinary green walkers retain native falling while red flight uses byte gravity',()=>{
  const walker=fixture(-1,1024,'koopa'),ground=walker.enemies[0];ground.y=160;walker.step([],1);assert.equal(ground.vy,61/256);assert.equal(ground.y,160);walker.step([],30); /* native walker fall: MoveD_EnemyVertically 0x3D per frame from rest, cap 3 (6-1 rows 233-246) */assert.equal(ground.y,208);assert.equal(ground.vy,0);
- const red=fixture(-1,1024,'paratroopa','0f-16-30-27'),flying=red.enemies[0];flying.originY=80;flying.y=80;red.step([],45);assert.equal(flying.x,200);assert.equal(flying.y,80+(1-Math.cos(45/56))*48); /* period changed by native data: route 3-3 x 1824 id 15 rows 25995-26170 (98 px in ~175 rows), evidence/platslot-findings-20261111.md */assert.equal(flying.vy,0);
+ const red=fixture(-1,1024,'paratroopa','0f-16-30-27'),flying=red.enemies[0];flying.originY=80;flying.y=80;red.step([],45);assert.equal(flying.x,200);assert.equal(flying.y,91);assert.equal(flying.redFlight?.speed,0);assert.equal(flying.redFlight?.force,135);assert.equal(flying.redFlight?.fraction,154); // native 1-3 row476:45 motion rows after the initial y56
 });
 
 test('stomping a green Paratroopa still removes its wings through ordinary collision',()=>{

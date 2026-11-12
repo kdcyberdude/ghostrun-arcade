@@ -24,3 +24,11 @@ Before/after first divergence from 96c96ce (all other fields unchanged):
 No earlier field in any of the 32 levels. Excerpts regenerated with --run v2. Synthetic tests formerly asserting 16px arbitrary overlap, strict edges, or no reaction on first overlap now assert native inclusive contacts. The pause-label fixture uses separated actors so its four actors do not collide before testing pause.
 
 Open: red Paratroopa cosine movement and several red spawn heights are still inferred; normal Goomba/Koopa background-probe velocity phase remains unqualified (switching the shared path to a simple pre-step probe regresses 1-2 at row 468 and was not kept); late spawnCamera fallback and platform slot residues still need native loader modelling; other first-divergence positions remain in the full survey.
+
+## Red vertical Paratroopa follow-up
+
+`src/red-paratroopa.ts` replaces the vertical cosine with the native byte motor: move by signed speed plus fraction carry, add force 3, subtract 6 again when pre-step y is at/below the centre, cap to signed2 using the native fractional thresholds. At zero speed/force reset the fraction; if above the original position, return and move down only when FrameCounter &7 is zero. Original-y $0401 and centre $58 are initialized from the static native object row (centre +48 below sprite-top128, -32 above). All894 captured movement rows across all6 vertical flyers match y, speed, force and fraction exactly. The motor retains its state in `redFlight`; removal writes original-y to the slot's horizontal alias and speed/force/fraction to its vertical residue. This is required for the3-3 subsequent balance platform.
+
+4-3 x576 had an inferred screenshot spawn at feet80; native object initialization is sprite-top40/original-y40/centre88, so its static spawn is feet64. This is corrected in the existing native spawn data source, not in level-specific motion code.
+
+Compared with00442b1:1-3 enemy443->471;4-3 enemy162->204;5-3 enemy427->454, score492->573, y618->1260, death633->1292, timer641->1314. No earlier field on any level.1244 tests and TypeScript pass; excerpts regenerated. The newly exposed1-3/5-3 Goomba atx1280 has an inferred map height and platform-slot ownership to resolve; the3-3 earlier Red Koopa residue remains the first enemy divergence pending platform-slot integration.

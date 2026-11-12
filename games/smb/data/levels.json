@@ -90539,7 +90539,7 @@
           {
             "kind": "paratroopa",
             "x": 576,
-            "y": 80,
+            "y": 64,
             "direction": -1,
             "evidence": "screenshot sequence 1159 tick 4632; exact enemy-table-0f-16-30-27.png cell 5; camera registration inferred",
             "palette": "0f-16-30-27"
