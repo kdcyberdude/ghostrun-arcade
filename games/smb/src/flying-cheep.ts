@@ -1,8 +1,9 @@
 /** Native leaping Cheep Cheep (object id 20) vertical motion, checked on every flying frame of the 32 v2 traces (tests/flying-cheep.test.ts).
  * State: native y (RAM $CF+s, page $B6+s above 256), speed byte $A0+s, move force $0434+s, fraction $0417+s. The launch is y 248, speed -5, force 0.
  * Each frame after the spawn row: ImposeGravity with 13/256 and cap 5; then, with q = the new force >> 4, the force grows by 16 (no carry into the speed)
- * when the low y byte is within 7 px of FLY_CHEEP_BUMP_Y[q] (signed byte distance). The 16 targets are the only ones consistent with all 6940 native
- * flying-fish frames (448 bumps); they are the bytes the native code reads there (PRandomSubtracter and the bytes after it). */
+ * when the low y byte is within 7 px of FLY_CHEEP_BUMP_Y[q] (signed byte distance). The 16 targets are the native PRandomSubtracter bytes,
+ * the five FlyCCBPriority bytes, and the first six MoveFlyingCheepCheep opcode bytes. The index reaches code bytes natively.
+ * All 6940 native flying-fish transitions (448 bumps) independently verify this ROM table. */
 import {nativeImposeGravity,type NativeMoveState} from './simulation.js';
 
 export const FLY_CHEEP_GRAVITY=13,FLY_CHEEP_MAX=5,FLY_CHEEP_BUMP=16;
