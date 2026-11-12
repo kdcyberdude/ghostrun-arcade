@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant} from '../src/view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette} from '../src/view-rules.js';
+import {Simulation} from '../src/simulation.js';
+import {observedLevels} from '../src/levels.js';
+import manifest from '../assets/graphics/graphics-manifest.json';
 const raw=JSON.parse(readFileSync(new URL('../data/levels.json',import.meta.url),'utf8'));
 const all=(raw.levels??raw) as any[];
 const area=(level:string,id:string)=>{const a=all.find(l=>l.id===level).areas;return Array.isArray(a)?a.find((x:any)=>x.id===id):a[id];};
@@ -56,4 +59,17 @@ test('star palette cycle follows the native order and cell lengths',()=>{
  const run=(left0:number,n:number,frame0:number)=>Array.from({length:n},(_,i)=>code[starVariant(left0-i,frame0+i,'fire')]).join('');
  assert.equal(run(600,16,0),'FFGGWWDDFFGGWWDD');
  assert.equal(run(150,34,0),'FFFFFFFFGGGGGGGGWWWWWWWWDDDDDDDDFF');
+});
+// Native traces (all 32 levels): the ?-block colour is 27 27 27 17 07 17, one step per FrameCounter&7==0 engine frame; 1-1 entrance FC 157 offset 1, offset 2 from FC 160,
+// 3 from 168, 4 from 176. Before: the remake never cycled (native-pixels.ts lag 1: 1-1 playfield 0.42% -> 0.00%, 1-3 HUD 0.33% -> 0.11%).
+test('?-block palette cycle follows the native colour rotation',()=>{
+ const palettes=manifest.palette_observations.map(o=>o.palette),entry=(i:number)=>palettes[i][13].toString(16).padStart(2,'0');
+ assert.deepEqual(Array.from({length:9},(_,n)=>entry(rotatedPalette(palettes,0,n))),['27','27','27','27','17','07','17','27','27']);
+ assert.deepEqual([0,4,5,6].map(n=>rotatedPalette(palettes,3,n)),[3,4,5,4]); // 1-2 underground triplet
+ assert.equal(rotatedPalette(palettes,11,5),10); // castle atlas with the green-koopa sprite palette keeps its other entries
+ const sim=new Simulation(observedLevels());sim.reset(true);sim.loadArea(sim.level.main);sim.phase='play';
+ assert.equal(sim.colorRotations,0);sim.random.frame=157;sim.colorRotations=1;
+ const seen:number[]=[];for(let f=158;f<=177;f++){sim.step([],1);assert.equal(sim.random.frame,f);seen.push(sim.colorRotations);}
+ assert.deepEqual(seen,[1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,4,4]);
+ sim.loadArea(sim.level.main);assert.equal(sim.colorRotations,0);
 });

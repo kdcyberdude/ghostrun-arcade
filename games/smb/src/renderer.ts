@@ -4,7 +4,7 @@ import manifest from '../assets/graphics/graphics-manifest.json';
 import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant} from './view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,titleBootColor,growCell,shrinkBig,fireFlashVariant,throwPoseShown,starVariant,rotatedPalette} from './view-rules.js';
 import {platformMotionModel} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -17,6 +17,7 @@ export class GameRenderer {
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();
  private hudCoinTextures:string[]=[];private skyBand?:THREE.Mesh;
+ private palettes=manifest.palette_observations.map(o=>o.palette);private rotation=(index:number)=>index;
  constructor(canvas:HTMLCanvasElement){
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true});this.renderer.setPixelRatio(1);this.renderer.setSize(256,240,false);
   // Preserve depth priority; only equal-depth transparent quads follow this frame's submission order.
@@ -178,6 +179,7 @@ export class GameRenderer {
   }
  }
  render(s:Simulation){
+  const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorRotations));return r;};
   this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
@@ -188,19 +190,19 @@ export class GameRenderer {
    this.worldClip=true;
    for(const[key,id]of s.tiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
-    const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,s.area.palette);
+    const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
     const age=s.bump.get(key);if(age!==undefined&&!s.usedBlockRehits.has(key))y-=Math.round(Math.sin(age/16*Math.PI)*4);
     if(s.level.id==='8-4'&&s.area.id==='area-2'&&col===38&&row===9&&id===196){
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
     }else{
      const entryQuestion=s.level.id==='1-2'&&s.area.id==='area-2'&&row===9&&col>=10&&col<=14&&id===192;
-     const palette=entryQuestion?[3,3,3,4,5,4][Math.floor((Math.max(0,s.areaFrame-1+(s.paused?1:0))%48)/8)]:s.area.palette;
+     const palette=entryQuestion?[3,3,3,4,5,4][Math.floor((Math.max(0,s.areaFrame-1+(s.paused?1:0))%48)/8)]:this.rotation(s.area.palette);
      this.tile(id,x,y,palette);
     }
    }
    const freeTiles=s.freeTiles.filter(piece=>!s.area.hiddenFreeTiles?.some(hidden=>hidden.x===piece.x&&hidden.y===piece.y&&hidden.id===piece.id&&hidden.palette===piece.palette));
-   for(const piece of [...s.area.decorations??[],...freeTiles])if(piece.x-s.camera>-16&&piece.x-s.camera<256){const age=piece.interactive?s.bump.get(`${piece.x/16},${piece.y/16}`):undefined;const y=piece.y-(age===undefined?0:Math.round(Math.sin(age/16*Math.PI)*4));this.tile(piece.id,piece.x-s.camera,y,piece.palette,'aboveFreeTiles'in piece&&piece.aboveFreeTiles===true?0.15:0.1);}
+   for(const piece of [...s.area.decorations??[],...freeTiles])if(piece.x-s.camera>-16&&piece.x-s.camera<256){const age=piece.interactive?s.bump.get(`${piece.x/16},${piece.y/16}`):undefined;const y=piece.y-(age===undefined?0:Math.round(Math.sin(age/16*Math.PI)*4));this.tile(piece.id,piece.x-s.camera,y,this.rotation(piece.palette),'aboveFreeTiles'in piece&&piece.aboveFreeTiles===true?0.15:0.1);}
    for(const [col,row,id,file]of s.area.patternOverrides??[]){
     const key=`${Math.floor(col/2)},${Math.floor(row/2)}`;if(this.originalTiles.has(key)&&this.originalTiles.get(key)!==s.tiles.get(key))continue;
     const x=col*8-s.camera;if(x>-8&&x<256&&row>=4)this.quad(file,[id%16*8,Math.floor(id/16)*8,8,8],x,row*8,0.2,false,false,false);
@@ -311,7 +313,7 @@ export class GameRenderer {
    // Supplied OAM [24,255,0x23,88]: palette3, behind the HUD background.
    const palette=manifest.palette_observations[paletteIndex].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
    this.spriteTile(255,88,25,palette,false,false,0.9);
-   this.quad(this.hudCoinTextures[paletteIndex],[0,0,8,8],88,24,1);
+   this.quad(this.hudCoinTextures[this.rotation(paletteIndex)],[0,0,8,8],88,24,1);
   }
   this.text('×'+String(s.coins).padStart(2,'0'),96,24);
   this.text('WORLD',144,16);this.text(s.level.id,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(String(Math.max(0,s.time)).padStart(3,'0'),208,24);

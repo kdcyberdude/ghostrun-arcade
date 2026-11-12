@@ -23,3 +23,12 @@ export const throwPoseShown=(age:number,grounded:boolean,speed:number)=>age>=1&&
 /** Star palette cycle (native 1-1 star on fire Mario, every frame from the pickup row to the end, evidence/view5-findings-20261111.md): own palette, green, white, dark
  * in 2-row cells (713 rows), 8-row cells once the star timer 0x79F drops below 8 (the last 150 rows of the star). left = star rows remaining (1 on the last row). */
 export const starVariant=(left:number,frame:number,own:string)=>[own,'star-green','star-white','star-dark'][Math.floor(frame/(left<=150?8:2))%4];
+/** ?-block / coin palette cycle (native ColorRotation, traces of all 32 levels: ColorRotateOffset $06D4 and FrameCounter $09 are cleared with the area and the
+ * offset advances once on every game-engine frame with FrameCounter&7==0). Each run writes ColorRotatePalette[offset] = 27 27 27 17 07 17 to BG palette 3 colour 1
+ * (palette entry 13), shown from the next picture. rotations = runs since the area was initialized (0: the loaded palette). Returns the palette observation
+ * index equal to `index` except for entry 13, or `index` when there is none. */
+export const rotatedPalette=(palettes:number[][],index:number,rotations:number)=>{
+ if(rotations<1)return index;
+ const color=[0x27,0x27,0x27,0x17,0x07,0x17][(rotations-1)%6],base=palettes[index];
+ const found=palettes.findIndex(p=>p[13]===color&&p.every((c,i)=>i===13||c===base[i]));return found<0?index:found;
+};
