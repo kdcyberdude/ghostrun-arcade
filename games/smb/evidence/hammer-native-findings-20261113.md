@@ -48,3 +48,32 @@ must keep the animation/water branches' native area clock fixes. Native misc
 jumping coins share hammer slots 6..8 and their vertical residue; the existing
 coin item system does not yet expose those misc slots. Native hammer collision
 and rendering still need complete per-frame native audits.
+
+## CPU observer confirmation
+
+A read-only extension of the native recorder (tools/harness/native-timing-observer.cpp)
+replayed the same entrance/pads and confirmed a real CPU/NMI overrun, rather than
+a phase inferred from positions. Exact observations: evidence/native-engine-overrun.json.
+
+At row2178 the CPU is at $94FA (CLC in RendBBuf/StrBlock, after writing
+a metatile), SP=$F5, parser task8, FrameCounter161, PPU frame38855/dot82186.
+At row2179 it is back at idle $8057, SP=$FF, parser task7, FrameCounter161,
+PPU frame38856/dot82185. Normally the CPU is already idle at each PPU sample.
+The NMI increments FrameCounter before GameEngine, runs AreaParserTaskHandler
+at the end of GameEngine, and reenables NMI only after it completes. The parser
+work straddles the PPU boundary and misses one game update. There is exactly one
+normal-play held-counter event in these 32 traces.
+
+A predictive fix needs CPU instruction/work timing, including graphics and parser
+work, rather than a per-frame/per-level skip. No runtime exception was added.
+The apparent first-Bro clock offset at5-2 row761 actually follows a respawn:
+native clears $09 atrow312 (engine0, area task1), not a cloud return. Keep the
+animation/castle branches' respawn FrameCounter reset when integrating.
+
+The missing compiler receipt evidence/firebar-5-4-shared-verification.json and
+its generator tools/firebar-5-4-shared-verify.ts do not exist in any reachable
+git history or the searched project/tmp backups. Production pins its semantic
+hash795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6
+(excluding top-level date), and the proposal pins original raw hash
+0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f.
+The receipt cannot be reconstructed honestly from those hashes.
