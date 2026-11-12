@@ -206,3 +206,38 @@ recorded first divergence. Native FinishFlame also leaves reappearing Lakitu
 with bounding-box control8 (original Lakitu uses3); contact/render equivalence
 of that smaller post-respawn box remains to be ported and separately verified.
 The source-derived lifecycle does not add a predictive CPU overrun scheduler.
+
+## Respawn Lakitu bounding-box contact follow-up
+
+Reappearing Lakitu now keeps source bounding-box control8 as actor state;
+normal Lakitu defaults to control3. BoundBoxCtrlData gives respective offsets
+[6,4,10,8] and[2,9,14,21]. `lakitu-contact.ts` ports those byte rectangles,
+native mask/clipping and PlayerEnemyCollision's even-frame test, overlap latch,
+star bypass and stomp/injury precedence. Only reappearing actors use this new
+runtime path, preserving the already-exact recorded normal Lakitu interactions.
+The player rectangle is the pre-background-snap capture already used by native
+misc collisions. An enemy rectangle uses its pre-movement position.
+
+A native overlap is not always injury: positive player vertical speed, player
+nativey+12 above enemy nativey, or StompTimer triggers a Lakitu stomp. This
+awards800, sets player speed$FD while retaining player force, moves the enemy
+up2 and zeros its vertical speed/force. Star contact awards200 and applies
+SetStun's up2/speed$FD. MoveLakitu then runs only native downward gravity for
+both defeated states, with retained slot fraction. Injury freezes that row's
+horizontal step. The defeated motor is followed until EnemyGfxHandler sees
+vertical high byte2 and clears the slot before its next movement. Erased
+replacement actors cannot reactivate as static list objects.
+
+`native-lakitu-contact-probe.py` generates847 controlled native branches with
+bbox3/8, small/big Mario, boundary dx/dy, rising/still/falling velocity, latch,
+star, injury, frame parity and StompTimer. Every measured rectangle, action and
+latch matches. Runtime tests replay every control8 response and score/speed/
+vertical byte output. Separate native star/stomp trajectories retain78/59 rows
+through slot erasure. These are controlled native evidence, not claimed new
+recorded first divergences. Full32 survey vs813918c is unchanged in every field.
+
+StompTimer $0791 is now retained as native state, initialized from entrance RAM,
+counted down on enemy passes and incremented by ordinary Koopa/Goomba-class
+stomps (source HandleStompedShellE); it affects only the new respawn contact
+path. Normal actor contact/motors remain unchanged. All1263 tests and TypeScript
+pass; excerpts regenerated. CPU-overrun scheduling remains a separate open item.
