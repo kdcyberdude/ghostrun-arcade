@@ -6,7 +6,7 @@ This first showcase contains an independent Three.js / TypeScript recreation of 
 
 **[Watch the film](https://kdcyberdude.github.io/ghostrun-arcade/film/)** · **[Play in your browser](https://kdcyberdude.github.io/ghostrun-arcade/)** · [Plugin](https://github.com/kdcyberdude/ghostrun) · [Training lab](https://github.com/kdcyberdude/ghostrun-lab) · [How the pipeline works](https://github.com/kdcyberdude/ghostrun/blob/main/docs/ARCHITECTURE.md)
 
-![GhostRun Arcade home screen](docs/images/home.png)
+![Recovered 3D presentation with shared gameplay](docs/images/playing-3d.png)
 
 ## Play locally
 
@@ -17,7 +17,7 @@ npm ci
 npm run dev
 ```
 
-Choose Play on the home screen. Arrow keys move, Z/Space jumps, X/Shift runs or fires, and Enter pauses. Touch controls, two-player keyboard mappings, sound, fullscreen, and remapping are available in the interface.
+Choose 2D or 3D on the home screen, select the 3D resolution, then choose Play. Arrow keys move, Z/Space jumps, X/Shift runs or fires, and Enter pauses. Touch controls, two-player keyboard mappings, sound, fullscreen, and remapping are available in the interface.
 
 ```sh
 npm test
@@ -31,9 +31,9 @@ The production build is a static site. Relative asset paths support both a domai
 
 - A multi-level browser simulation built through observation and iterative comparison with a reference game.
 - Gameplay code that can be inspected, modified, and tested independently of the reference process.
-- A separation between gameplay and rendering. The latest physics lives in one simulation; an additional renderer should consume that same state.
+- Two presentations of the same current simulation: original-style 2D and a 3D world with rigged characters, lighting and scenery.
 
-The playable release is 2D. [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it and a first-level 3D preview.
+Both views share the updated physics, interactions, controls and original audio. The 3D renderer changes presentation only, with resolution options through the 4K preset (2304 × 2160, preserving the original aspect ratio). Performance depends on your GPU and selected resolution. See the [3D asset and renderer notes](visual25d/README.md). [Watch the GhostRun film](https://kdcyberdude.github.io/ghostrun-arcade/film/) for the story behind it.
 
 ## Evidence and limits
 
@@ -49,6 +49,8 @@ The [older player](https://huggingface.co/kdcyberdude/ghostrun-smb-policy-v1) fo
 |---|---|
 | Gameplay and physics | `src/simulation.ts`, `src/native-motor.ts`, other motion modules |
 | 2D renderer and sound | `src/renderer.ts`, `src/audio.ts` |
+| 3D renderer and asset builders | `src/render25d/`, `visual25d/` |
+| Recorded-input clips | [Recording guide](docs/RECORDINGS.md) |
 | Controls, loading and menus | `src/controls.ts`, `src/loading.ts`, `src/shell.ts` |
 | Compiled levels and observations | `data/` |
 | Regression fixtures | `tests/`, `evidence/` |

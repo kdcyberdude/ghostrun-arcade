@@ -14,3 +14,11 @@ model/
 roms/
 .env
 .env.*
+.cache25d/
+assets25d/ph/models/
+assets25d/ph/hdri/alps_field_*
+assets25d/ph/hdri/snowy_hillside_*
+visual25d/blender/out/
+visual25d/blender/previews/
+visual25d/evidence/*
+!visual25d/evidence/replay-equivalence.json
