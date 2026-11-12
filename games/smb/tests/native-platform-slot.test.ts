@@ -37,4 +37,6 @@ test('a platform waits until the allocation pass after its previous slot occupan
  sim.frame++;
  assert.equal(sim.nativeSlotsFull(platform),false);
  assert.deepEqual([...sim.objectSlots(new Set([1,2,3,4]))],[0]);
+ sim.slotReleaseFrame[0]=sim.frame;sim.loadArea('main');
+ assert.deepEqual(sim.slotReleaseFrame,[-1,-1,-1,-1,-1],'area load clears slot-pass history');
 });
