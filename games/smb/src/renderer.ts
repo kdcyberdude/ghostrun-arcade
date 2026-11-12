@@ -305,11 +305,38 @@ export class GameRenderer {
    }else{this.text('BUT OUR PRINCESS IS IN',actorScreenX-104,112);this.text('ANOTHER CASTLE!',actorScreenX-104,128);}
   }
  }
+ private swimKickSheet(sheet:string,facing:number){
+  const name=sheet+'#swim-kick';if(this.textures.has(name))return name;
+  const source=this.textures.get(sheet)!,normal=this.textures.get(`player-mario-${facing<0?'left':'right'}.png`)!;
+  const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;const context=canvas.getContext('2d')!;context.drawImage(source.image,0,0);
+  const reference=document.createElement('canvas');reference.width=canvas.width;reference.height=canvas.height;const rc=reference.getContext('2d')!;rc.drawImage(normal.image,0,0);
+  const normalPixels=rc.getImageData(0,0,canvas.width,canvas.height).data,variantPixels=context.getImageData(0,0,canvas.width,canvas.height).data;
+  const colors=powerupRules.palettes.normal.map(rgb=>{
+   const at=normalPixels.findIndex((_,i)=>i%4===0&&normalPixels[i+3]!==0&&rgb.every((v,c)=>normalPixels[i+c]===v));
+   return variantPixels.slice(at,at+3);
+  });
+  const atlas=this.textures.get('sprite-tiles-00-16-27-18.png')!;
+  const kicks=[0x31,0x46].map(tile=>{
+   const part=document.createElement('canvas');part.width=part.height=8;const pc=part.getContext('2d')!;pc.drawImage(atlas.image,tile%16*8,Math.floor(tile/16)*8,8,8,0,0,8,8);
+   const pixels=pc.getImageData(0,0,8,8);
+   for(let at=0;at<pixels.data.length;at+=4)if(pixels.data[at+3]){
+    const role=powerupRules.palettes.normal.findIndex(rgb=>rgb.every((v,c)=>pixels.data[at+c]===v));
+    if(role>=0)for(let c=0;c<3;c++)pixels.data[at+c]=colors[role][c];
+   }
+   pc.putImageData(pixels,0,0);return part;
+  });
+  for(const cell of [5,6,7,17,18]){
+   const x=cell%13*16+(facing<0?8:0),y=Math.floor(cell/13)*32+24;context.clearRect(x,y,8,8);
+   context.save();context.translate(x+(facing<0?8:0),y);context.scale(facing<0?-1:1,1);context.drawImage(kicks[cell<8?0:1],0,0);context.restore();
+  }
+  const texture=new THREE.CanvasTexture(canvas);texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.colorSpace=THREE.SRGBColorSpace;this.textures.set(name,texture);return name;
+ }
  private player(s:Simulation){
-  const p=s.player,{cell,facing,throwing}=playerCell(s),change=s.powerChange;
+  const p=s.player,{cell,facing,throwing,swimKick}=playerCell(s),change=s.powerChange;
   let variant:string=(change?.kind==='fire'?fireFlashVariant(POWERUPS.transformFreezeNativeFrames.fireValue-change.remaining):undefined)??(p.size===2?'fire':s.currentPlayer?'luigi':'mario');
   if(p.star)variant=starVariant(p.star,s.frame,variant);
-  const sheet=`player-${variant}-${facing<0?'left':'right'}.png`,z=s.phase==='pipe'||s.pipeRising?-0.1:3;
+  let sheet=`player-${variant}-${facing<0?'left':'right'}.png`;if(swimKick!==undefined)sheet=this.swimKickSheet(sheet,facing);
+  const z=s.phase==='pipe'||s.pipeRising?-0.1:3;
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],p.x-s.camera,p.y-31,z+0.1);
  }
