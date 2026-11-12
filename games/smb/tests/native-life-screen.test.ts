@@ -23,3 +23,17 @@ for(const event of [
  }
  assert.equal(firstReady,event.ready);
 });
+
+test('respawn InitializeArea holds the LFSR and clears FrameCounter for exactly one row (2-4 rows892-894)',()=>{
+ const sim:any=new Simulation([observedLevels()[0]]);sim.reset(true);sim.die();sim.loseLife=true;sim.step([],1);
+ sim.phaseFrame=2;sim.random.frame=42;sim.random.bytes=[212,77,229,126,180,73,33];
+ sim.step([],1);assert.equal(sim.random.frame,0);assert.deepEqual(sim.random.bytes,[212,77,229,126,180,73,33]);
+ sim.step([],1);assert.equal(sim.random.frame,1);assert.deepEqual(sim.random.bytes,[106,38,242,191,90,36,144]);
+});
+
+test('the first engine8 row already contains the in-range Podoboo initialized on engine7 (2-4 row1052)',()=>{
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='2-4')!]);sim.reset(true);sim.die();sim.loseLife=true;sim.step([],1);
+ sim.phaseFrame=162;sim.startPlayAfterIntro();
+ const enemy=sim.enemies.find((e:any)=>e.kind==='podoboo'&&e.x===256);
+ assert.equal(enemy.active,true);assert.deepEqual(enemy.pod,{y:514,speed:0,force:28,fraction:0,timer:1});
+});

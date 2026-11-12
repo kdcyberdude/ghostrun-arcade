@@ -258,7 +258,7 @@ export class GameRenderer {
    if(s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(s.powerChange||!s.player.invincible||Math.floor(s.frame/4)%2===0))this.player(s);
    this.worldClip=false;
   }
-  const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.phaseFrame<TRANSITIONS.introHiddenBeforeFrame||s.introHiddenLate);
+  const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
   if(!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s);
   if(s.phase==='title')this.title(s);
   if(s.timeUpScreen&&!introLoading)this.text('TIME UP',96,128);
