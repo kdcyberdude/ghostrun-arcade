@@ -1,5 +1,6 @@
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
+import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
 import {landNativeWalker} from './native-walker-motion.js';
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
@@ -227,7 +228,7 @@ export class Simulation {
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;
  private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private deathMove?:NativeMoveState;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
- private bridge:string[]=[];private springTimers=new Map<SpringSpec,number>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
+ private bridge:string[]=[];private springTimers=new Map<SpringSpec,NativeSpring>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
  warpZoneActive=false;
  private footPushed=false;private piranhaTouchFeetY?:number;private landingFraction=0;private fallGravity=FALL_GRAVITY_AFTER_LOAD;private walkingOff=false;
@@ -319,7 +320,7 @@ export class Simulation {
   if(area.entryVine)this.specialSlot5.claimVine(Math.floor(this.player.x+8)&~15,240);
   this.locomotionPose={kind:'stand',frame:0,facing:1};this.playerAnim.reset();this.jumpPose=false;this.wallDisplayPose=undefined;this.wallDisplayTimer=0;
   this.swimPoseFrame=0;
-  this.springTimers.clear();this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
+  this.springTimers.clear();this.springRelease=false;this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
   this.flagTop=48;this.flagInside=false;this.flagBonus=0;this.flagWait=0;
   this.items=[];this.popups=[];this.bump.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
   this.emit(this.areaMusic());
@@ -514,7 +515,7 @@ export class Simulation {
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
   const p=this.player;const oldBottom=p.y;const oldX=p.x;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
-  let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined;
+  let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined;
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
@@ -534,7 +535,7 @@ export class Simulation {
   const jumpClassByte=this.motor.absolute; // native InitJS reads Player_XSpeedAbsolute, last written by the previous frame's ImposeFriction (a wall stop leaves it)
   if(swim){this.swimStep(b,pressed('a'),direction);}else if(useMotor){
    // The automatic pipe walk is a held-right press under GameEngineSubroutine 7, whose right cap is speed byte 12.
-   const motorGround=(p.grounded||this.springTimers.size>0)&&!landingGrace,motorJump=pressed('a')&&p.grounded;
+   const motorGround=(p.grounded||this.springTimers.size>0)&&!landingGrace,motorJump=pressed('a')&&p.grounded&&!this.springTimers.size;
    if(motorGround&&!motorJump)this.playerAnim.setSpeed(this.motor.absolute); // OnGroundStateSub: GetPlayerAnimSpeed reads the speed before this frame's friction
    p.vx=this.motor.step({direction:direction as -1|0|1,ground:motorGround,jump:motorJump,b:b.has('b'),down:b.has('down'),
     buttons:(['b','select','start','up','down','left','right'] as Button[]).some(k=>b.has(k)),capRight:this.area.autoWalk?TRANSITIONS.autoWalkCapByte:undefined})/4096;
@@ -550,13 +551,16 @@ export class Simulation {
    if(this.waterEntryFall)p.vy=Math.min(PHYSICS.maxFall,p.vy+WATER_PHYSICS.entryGravity);
    else if(!swim){const next=advanceWater(p.y,p.vy,b.has('a'),pressed('a'),this.waterSurface);p.y=next.y;p.vy=next.vy;}
   }else{
-   if(pressed('a')&&p.grounded){const jumpSpeed=Math.abs(p.vx);this.runJump=useMotor?jumpClassByte>=25:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?jumpClassByte>=16:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
+   if(pressed('a')&&p.grounded&&!this.springTimers.size){const jumpSpeed=Math.abs(p.vx);this.runJump=useMotor?jumpClassByte>=25:jumpSpeed>1.5;this.mediumJump=!this.runJump&&(useMotor?jumpClassByte>=16:jumpSpeed>1&&jumpSpeed<=1.5);this.lastJumpFallForce=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;this.fallGravity=this.runJump?0.5625:this.mediumJump?0.375:PHYSICS.gravity;p.vy=this.runJump?PHYSICS.runJump:PHYSICS.jump;p.grounded=false;this.jumpArc=true;this.jumpHeld=0;this.landJump='held';if(!b.has('b'))this.braking=PHYSICS.brake;this.emit(p.size?'sfx_jump_big':'sfx_jump_small');}
    // Fresh no-contact release/repress pairs: A cannot restore held gravity.
    if(this.landJump==='held'&&!b.has('a')&&p.vy<0)this.landJump='released';
    this.jumpHeld++;
   }
   const height=this.height;
-  const motion=useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+motion;cameraAttemptVx=p.vx;cameraMotion=motion;p.x+=motion;p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,hammerBoxFeet=p.y+(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy);this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b),true);
+  // MovePlayerHorizontally returns the nonzero spring control in A without
+  // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
+  springScroll=this.springTimers.values().next().value?.control;
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,hammerBoxFeet=p.y+(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy);this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,swim?this.swimHeight(height):height,!water&&p.vy+this.airGravity(b)<0,this.airGravity(b),true);
   if(!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
@@ -610,7 +614,7 @@ export class Simulation {
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
-  const cameraContact=(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms-this.swimPull+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
+  const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms-this.swimPull+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
   // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
   // attempted pixel move before wall ejection plus Platform_X_Scroll, the lift carry of the
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
@@ -1064,34 +1068,36 @@ export class Simulation {
   if(this.area.entryFall?.native)this.primeNativeEntryObjects();
  }
  private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
- // Native 2-1 spring rows 10254-10267: Mario sinks 2 px per row for 8 rows, rises 2 px per row for 5 more, launches on the 14th; x stays pinned.
- private springDrop(age:number){return age<=9?2*(age-1):16-2*(age-9);}
- /* native: an A held through the load starts the first control row's jump (no release edge needed) */ private freshA=false;private controlGrace=0;private springPinX=0;private springPrevA=false;private springAEdge=0;
- springCompression(spring:SpringSpec){const age=this.springTimers.get(spring)??0;return age?Math.round(this.springDrop(age)/8):0;}
+ /* native: an A held through the load starts the first control row's jump (no release edge needed) */ private freshA=false;private controlGrace=0;
+ private springPinX=0;private springPinY=0;private springPrevA=false;private springRelease=false;private springLaunchSpeed=0;
+ springCompression(spring:SpringSpec){return this.springTimers.get(spring)?.compression??0;}
  private updateSprings(oldBottom:number,heldJump:boolean){
-  // Compression and launch values are inferred; the observed spring.y is its base.
-  const p=this.player;let launched=false;
-  const edgeA=heldJump&&!this.springPrevA;this.springPrevA=heldJump;
-  for(const spring of this.area.springs??[]){
-   let age=this.springTimers.get(spring)??0;
-   const aligned=p.x+14>spring.x&&p.x+2<spring.x+16,top=spring.y-24;
-   if(!age&&aligned&&p.vy>=0&&oldBottom<=top+3&&p.y>=top)age=1;
-   if(!age)continue;
-   {
-    if(age===1){this.springPinX=p.x;this.springAEdge=0;}p.x=this.springPinX;
-    p.y=top+this.springDrop(age);p.vy=0;p.grounded=false;
-    if(age>=14){
-     // Native probe (2-1 spring, 23 branches): vy -12 when A was pressed (an edge, not a held button) on compression rows 5..13, else -7; gravity is the stomp-bounce 0.5625 whatever A does;
-     // an A press on the launch row itself is an ordinary jump instead (vy -5, held-A gravity).
-     if(edgeA){p.vy=PHYSICS.runJump;p.y+=PHYSICS.runJump;this.runJump=true;this.bouncing=false;this.landJump='held';this.jumpHeld=0;}
-     else{p.vy=this.springAEdge===1?-12:-7;this.runJump=true;this.bouncing=true;this.bounceGravity=0.5625;this.landJump='inactive';}
-     this.springAEdge=0;launched=true;if(p.size)this.emit('sfx_jump_big');
-    }
-    else if(edgeA&&age>=5)this.springAEdge=1;
-   }
-   if(age>=14)this.springTimers.delete(spring);else this.springTimers.set(spring,age+1);
+  const p=this.player,edgeA=heldJump&&!this.springPrevA;this.springPrevA=heldJump;
+  if(this.springRelease){
+   this.springRelease=false;
+   // Launch writes only Y speed. The next OnGroundStateSub has no vertical
+   // move, then background collision changes Player_State to falling.
+   if(!edgeA){p.y=this.springPinY;p.vy=this.springLaunchSpeed;p.grounded=false;return true;}
   }
-  return launched;
+  for(const spring of this.area.springs??[]){
+   let n=this.springTimers.get(spring);const born=!n;
+   const top=spring.y-24,aligned=p.x+14>spring.x&&p.x+2<spring.x+16;
+   if(!n&&aligned&&p.vy>=0&&oldBottom<=top+3&&p.y>=top){
+    n=nativeSpring();this.springTimers.set(spring,n);this.springPinX=p.x;
+    // LandPlyr clears raw Player_Y_Position's low nibble, retaining $0416.
+    this.springPinY=((Math.floor(p.y)-32)&~15)+32+p.y-Math.floor(p.y);
+    this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';
+   }
+   if(!n)continue;
+   const step=advanceNativeSpring(n,edgeA,!born);
+   this.springPinY+=step.dy;p.x=this.springPinX;p.y=this.springPinY;p.vy=0;p.grounded=true;
+   if(step.launch){
+    p.vy=n.force;this.springLaunchSpeed=n.force;this.springRelease=true;this.springTimers.delete(spring);
+    this.bouncing=true;this.bounceGravity=this.lastJumpFallForce;this.landJump='inactive';
+    if(p.size)this.emit('sfx_jump_big');return true;
+   }
+  }
+  return false;
  }
  private updateGenerators(){
   // The shot's 1.5px/frame travel is measured. Cannon cooldown and close-range

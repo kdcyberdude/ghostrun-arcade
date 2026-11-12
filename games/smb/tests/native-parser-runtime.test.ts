@@ -7,6 +7,7 @@ import {observedLevels} from '../src/levels.js';
 import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
+import springEvents from './fixtures/native-spring-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
@@ -99,5 +100,14 @@ test('a Spiny landing returns before checking the wall in its new direction',()=
   if(frame<245)return;
   const e=sim.enemies.find((e:any)=>e.active&&e.enemySlot===1&&e.kind==='spiny');assert.ok(e);
   assert.equal(e.x,frame===246?497.5:497,`row${frame}`);
+ });
+});
+
+
+test('6-3 spring landing, compression and grounded launch hold match native RAM',()=>{
+ replay('6-3',1959,(sim,frame)=>{
+  const event=springEvents.find(e=>e.level==='6-3'&&e.frame===frame);
+  if(event){assert.equal(Math.floor(sim.player.y)-32,event.yAfter,`row${frame} y`);assert.equal(Math.floor(sim.player.vy),event.speedAfter,`row${frame} speed`);assert.equal(sim.player.x,1846+240/256,`row${frame} pinned x`);assert.equal(sim.camera,[1751,1752,1753,1754,1755,1756,1757,1758,1760,1762,1764,1766,1769][frame-1944],`row${frame} camera`);}
+  if(frame>=1957)assert.equal(Math.floor(sim.player.y)-32,[150,138,127][frame-1957],`row${frame} release`);
  });
 });
