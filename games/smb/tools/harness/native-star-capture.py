@@ -13,7 +13,7 @@ l.nh_save.argtypes=[c.c_void_p,c.c_void_p];l.nh_load.argtypes=[c.c_void_p,c.c_vo
 rom=a.rom.read_bytes();h=l.nh_create(c.create_string_buffer(rom),len(rom));assert h
 r=l.nh_ram(h)
 def step():assert not l.nh_step(h,0,1)
-def state():return [r[x] for x in [0x747,0x77f,0x79f,9,0x776,0xfb]]
+def state():return [r[x] for x in [0x747,0x77f,0x79f,9,0x776,0xfb,0x3c4,0x202+r[0x6e4]]]
 for f in range(500):assert not l.nh_step(h,8 if 80<=f<100 else 0,1)
 assert (r[0x770],r[0x772],r[14])==(1,3,8)
 # Slot five: power-up id46, state128, type2 (Star), at Mario's native coordinates.
@@ -31,5 +31,5 @@ for paused in [0,1]:
     for at,v in {0x776:paused,0x747:control,0x77f:interval,0x79f:star,0xfb:0}.items():r[at]=v
     before=state();step();rows.append([before,state()])
 l.nh_destroy(h)
-a.out.write_text(json.dumps(dict(schema='native-star-clock-v1',romSha256=hashlib.sha256(rom).hexdigest(),columns=['timerControl0747','interval077f','star079f','counter09','pause0776','musicQueue00fb'],method='NeSLE CPU host, 500 boot frames (Start held80..99); native slot5 Star collision, unmodified760-frame neutral continuation; independent snapshot restores for NMI boundary matrix',pickup=[pickup_before,pickup_after],lifecycle=lifecycle,transitions=rows),separators=(',',':'))+'\n')
+a.out.write_text(json.dumps(dict(schema='native-star-clock-v1',romSha256=hashlib.sha256(rom).hexdigest(),columns=['timerControl0747','interval077f','star079f','counter09','pause0776','musicQueue00fb','playerAttrib03c4','playerOamAttrib'],method='NeSLE CPU host, 500 boot frames (Start held80..99); native slot5 Star collision, unmodified760-frame neutral continuation; independent snapshot restores for NMI boundary matrix',pickup=[pickup_before,pickup_after],lifecycle=lifecycle,transitions=rows),separators=(',',':'))+'\n')
 print(len(rows),'boundary transitions;',len(lifecycle),'lifecycle rows')
