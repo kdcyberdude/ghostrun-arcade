@@ -10,7 +10,7 @@ import type {Button} from '../src/types.js';
 // exit pipe 2656, first warp plant 2856, registration anchor 2672). Map coordinates of this file therefore moved -16 against the screenshot-era values
 // (spawn 2594/camera 2473 -> 2578/2457, camera stop and activation 2834 -> 2818, pipes 2864/2928/2992 -> 2848/2912/2976, side pipe 2672 -> 2656,
 // width 3090 -> 3074); screen positions are unchanged. data/warp-1-2-observations.json keeps the screenshot-frame cells: nativeCell() maps them.
-const nativeCell=([col,row,...rest]:number[])=>[row<=12?col-1:col,row,...rest]; // rows 0-12 follow the drift, the floor rows 13-14 stay
+const nativeCell=([col,row,...rest]:number[])=>[col-1,row,...rest]; // every row follows the drift, the floor too (native block buffer, evidence/native-level-map.json)
 function roofFixture(){
  const all=observedLevels(),source=structuredClone(all.find(l=>l.id==='1-2')!);
  source.main='area-2';const area=source.areas.find(a=>a.id===source.main)!;

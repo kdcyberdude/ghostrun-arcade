@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
 import {PlatformMotion} from '../src/platform-motion.js';
+import {solid as isSolid} from '../src/simulation.js';
 
 // 8-4 main lap 1 from the native collision map (RAM 0x500-0x69f, column c: byte ((c>>4)&1)*0xd0 + row*16 + (c&15), row 0 = y 32 = remake row 2)
 // read on every on-screen column while replaying the recorded route from frame 75000 (tools/fidelity-lab/area-probe.mjs, 1,200 rows;
@@ -22,7 +23,7 @@ const native:Record<number,string>={
 
 test('8-4 main lap 1 solid cells match the native collision map (pit 66-74, floor 59-63, wall 79-80, no pipe at 39-40)',()=>{
  const main=observedLevels().find(l=>l.id==='8-4')!.areas.find(a=>a.id==='main')!;
- const solid=new Set(main.tiles.map(([c,r])=>`${c},${r}`));
+ const solid=new Set(main.tiles.filter(([,,id])=>isSolid(id)).map(([c,r])=>`${c},${r}`)); // the pit's lava (134/135) is drawn, not solid
  for(const [col,cells] of Object.entries(native))cells.split(' ').forEach((v,row)=>assert.equal(solid.has(`${col},${row+2}`),v!=='00',`column ${col} remake row ${row+2}`));
  for(let col=66;col<=74;col++)for(let row=3;row<=14;row++)assert.ok(!solid.has(`${col},${row}`),`pit ${col},${row}`);
 });
