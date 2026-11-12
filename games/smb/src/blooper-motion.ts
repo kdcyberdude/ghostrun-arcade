@@ -1,5 +1,5 @@
 /** Native Blooper (object id 7) state machine, predicted from the previous row's slot bytes on 8928 of 8929 Blooper rows of the 32 v2 traces
- * (2-2, 7-2, 8-4; the miss is a row where Mario's y wraps above the screen). tests/blooper-motion.test.ts replays every row.
+ * (2-2, 7-2, 8-4; the remaining end-row input differs at a page wrap because ProcessWhirlpools runs after enemy movement). tests/blooper-motion.test.ts replays every row.
  * Slot bytes: moving direction $46+s (1 right, 2 left), move counter $A0+s, move force $0434+s (= speed $58+s), interval timer $0796+s. A new Blooper
  * has them 2, 0, 0, 0 (25 of 25 spawns). Each frame, in this order:
  *  1. Turn: when random byte s+1 ($07A8+s) AND mask is 0 (mask 3 in secondary hard mode, else 63) the direction is reset: an odd slot takes Mario's

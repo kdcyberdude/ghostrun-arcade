@@ -160,3 +160,11 @@ test('Down stops a swimmer below speed byte 11 on the frame the direction is rel
  // Without Down the coasting speed is kept.
  const coast=new NativeWater();coast.horizontal(1,false);coast.motor.speed=1672;assert.equal(coast.horizontal(0,false,false),1672);
 });
+
+test('surface gravity reads only the native y byte even after an offscreen page wrap (2-2 v2 frames 1400..1401)',()=>{
+ const w=new NativeWater();Object.assign(w,{speed:1,force:75,frac:109,rise:9,fall:9,timer:0,whirl:true});
+ assert.equal(w.vertical(false,false,257,false,true).dy,3);
+ assert.deepEqual([w.speed,w.force,w.frac],[1,115,27]);
+ assert.equal(w.vertical(false,false,260,false,true).dy,3);
+ assert.deepEqual([w.speed,w.force,w.frac],[1,0,25]);
+});
