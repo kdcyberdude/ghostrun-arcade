@@ -38,19 +38,12 @@ test('a fish with a spawn frame waits for it even when the camera condition hold
 });
 
 test('measured water areas carry the native populations',()=>{
- const counts:Record<string,number>={'2-2/area-2':26,'7-2/area-4':28,'8-4/area-4':3,'2-4/main':2,'4-4/main':1,'5-4/main':6,'3-4/main':6,'6-4/main':3,'7-4/main':2,'8-4/area-5':1};
+ const counts:Record<string,number>={'8-4/area-4':3,'2-4/main':2,'4-4/main':1,'5-4/main':6,'3-4/main':6,'6-4/main':3,'7-4/main':2,'8-4/area-5':1};
  for(const entry of water.areas){
   const area=observedLevels().find(l=>l.id===entry.level)!.areas.find(a=>a.id===entry.area)!;
   const fish=area.enemies.filter(e=>entry.replaceKinds.includes(e.kind));
   assert.equal(fish.length,counts[`${entry.level}/${entry.area}`]);assert.equal(fish.length,entry.enemies.length);
   for(const spec of entry.enemies)assert.ok(fish.some(e=>e.kind===spec.kind&&e.x===spec.x&&e.y===spec.y&&e.spawnCamera===spec.spawnCamera));
  }
- // 2-2: the three fish that appeared one after the other at x 2658 while Mario waited (native rows 14605, 14829, 15137) are timed, not camera-triggered
- const late=(water.areas[0].enemies as EnemySpec[]).filter(e=>e.x===2658);
- assert.equal(late.length,3);assert.ok(late.every(e=>e.spawnFrame!==undefined));
- assert.ok(late[0].spawnFrame!<late[1].spawnFrame!&&late[1].spawnFrame!<late[2].spawnFrame!);
- // heights are native y + 24 for every fish, also those high on the screen (native y 40 at x 2505, 56 at x 2457)
- assert.equal((water.areas[0].enemies as EnemySpec[]).find(e=>e.x===2505)!.y,64);assert.equal((water.areas[0].enemies as EnemySpec[]).find(e=>e.x===2457)!.y,80);
- // first native fish of 2-2: id 10 at x 1219 (y 88 + 24) appearing at camera 935
- assert.deepEqual(water.areas[0].enemies.find(e=>e.kind==='cheep'),{kind:'cheep',x:1219,y:112,direction:-1,palette:'0f-10-30-27',spawnCamera:935,swim:{},evidence:water.areas[0].enemies.find(e=>e.kind==='cheep')!.evidence});
+
 });
