@@ -1356,7 +1356,7 @@ export class Simulation {
   const mask=this.secondaryHardMode?7:15,b=this.random.bytes;
   // ProcessCannons checks bounds before this slot's BulletBillHandler. Its
   // already-occupied slot cannot pick a cannon until a subsequent pass.
-  for(const [e,x]of this.cannonStartX)if(e.active&&!e.dead&&nativeCannonOutside(x,this.camera,this.nativeAreaOffset)){e.x=x;this.eraseEnemy(e);e.goneFrame=this.frame;}
+  for(const [e,x]of this.cannonStartX)if(e.active&&!e.dead&&nativeCannonOutside(x,this.camera,this.nativeAreaOffset)){e.x=x;this.eraseBulletObject(e);}
   for(const e of this.enemies)if(e.bbCheck&&e.active&&!e.dead)this.nativeBulletBillCheck(e); // objects made on an earlier frame (each at its slot's turn; its slot stays in `used`)
   for(const e of this.enemies.filter(e=>e.nativeShot&&!e.frenzy&&e.active&&!e.slotFreed&&e.dead<100).sort((a,b)=>(b.enemySlot??0)-(a.enemySlot??0)))this.graphicsScratch.enemy(51,{frameTimer:e.cannonFrameTimer}); // surviving BulletBillHandler reaches EnemyGfxHandler; fresh births below do not.
   this.nativeCannonPass(used,mask,b);
@@ -1375,7 +1375,7 @@ export class Simulation {
  private nativeBulletBillCheck(e:Enemy){
   e.bbCheck=false;
   const d=Math.floor(e.x)-Math.floor(this.player.x);
-  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseEnemy(e);e.goneFrame=this.frame;return;}
+  if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseBulletObject(e);return;}
   e.cannonFrameTimer=10;if(e.enemySlot!==undefined)this.slotFrameTimers[e.enemySlot]=10;e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
 
  }
@@ -1424,8 +1424,9 @@ export class Simulation {
   this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1,graphicsVisible:false});this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0; // made after this frame's enemy step
   this.spinyTimer=this.nativeFrenzyTimer=32;
  }
- // A native shot is removed when its next position is left of the screen (native: x - camera < about -73 on the current camera; the enemy step sees the previous camera, so 70 here) or right of camera + 329.
- private eraseDefeatedBullet(e:Enemy){
+ // EraseEnemyObject releases the actual bank flag immediately. Its cannon pass
+ // still owns this turn's reservation; movement residues survive for the next owner.
+ private eraseBulletObject(e:Enemy){
   this.eraseEnemy(e);e.goneFrame=this.frame;
   if(e.enemySlot===undefined)return;const slot=e.enemySlot;
   this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
@@ -2736,7 +2737,7 @@ export class Simulation {
     if(e.kind==='hammerBro'&&e.hbro){this.moveDefeatedHammerBro(e);continue;}
     if(e.kind==='lakitu'&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
 
-    if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
+    if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseBulletObject(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseBulletObject(e);continue;}
     e.dead++;
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }

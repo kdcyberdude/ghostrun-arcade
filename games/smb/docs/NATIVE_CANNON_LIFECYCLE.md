@@ -59,3 +59,37 @@ playerY444 and wrong level/counter3651. Old readyfalse matches accidentally.
 The exact null→3651 gate requires those unchanged witnesses and the historical
 baseline fingerprint. Ten gate selftests reject alternate was/now, baseline
 and upstream contexts. No runtime edits or full gates accompany this evidence.
+
+
+## Source flag release after Cannon rejection
+
+The remaining8-2 allocation error was a fresh state-zero rejection, not a
+defeated Cannon. Native slot2 is51/state0 at1448; BulletBillHandler takes KillBB
+at1449 and EraseEnemyObject clears its flag/id/state. Native retains058=8,
+0401=128 andA0/0434/0417=0/0/104. Piranha13 owns2 on1450. The remake called
+its generic erase routine, leaving dead100 without the explicit bank-release
+marker; the old dead-walker linger rule therefore reserved2 until−74.
+
+Cannon bounds and KillBB now use the existing bullet bank-release operation,
+renamed eraseBulletObject to include live rejections. This sets the actual
+slot-free marker and preserves the source movement residue. The cannon pass's
+already-captured used-set still prevents same-pass refiring; its release-frame
+marker also remains. The following turn may reuse the slot. No holdsNativeSlot
+filter, Piranha factory, generic allocator, defeated motor or contact order was
+changed. Source erased-Cannon graphics still skip EnemyGfxHandler/$EF writes.
+
+Read-only native BulletBillHandler and nested EraseEnemyObject entry/return
+observation authenticates14,336PPUrows from8-2,8-3,7-1 and5-2.3,887handler
+calls contain26 actual erasures, including one state32 case. The portable
+fixture records all26 exact erasure entry/exit byte vectors, input hashes and
+an authentic8-2 prefix. Tests check retained058/0401/0417/vertical state,
+FrameTimer clear, unchangedEF, same-pass reservation, following-pass reuse
+and the actual1448→1450 ownership sequence.14 focused tests pass.
+
+In the four-level focused comparison, all eight8-2 legacy fields become exact.
+Strict missing1450/extra1450/kind1453 also become exact; strict position moves
+1553→2003. Native and remake both die on2003, but Bullet0/Para4 positions now
+expose a later ordered-contact/freeze gap. That remains open. Every first field
+of nearby8-3,7-1 and5-2 is unchanged. The portable before/after coverage and
+fields are in evidence/native-cannon-terminal-release.json. No all32/full
+suite/TypeScript/corpus/pixel audit was repeated; integration owns those gates.
