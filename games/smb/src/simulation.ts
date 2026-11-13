@@ -797,6 +797,15 @@ export class Simulation {
   const p=this.player;
   if(this.footPushed||this.axeFootContact())return;
   if(this.swimActive&&this.swimFootWall(dx))return;
+  if(this.swimActive){
+   // DoPlayerSideCheck tests left before right even when moving away; the
+   // collision bit still inhibits next row's ImposeFriction in that direction.
+   const feet=p.y-this.water.whirlMoved,lowY=(Math.floor(feet)-32)&255;
+   for(const side of [-1,1]){
+    const x=p.x+(side<0?2:13);
+    if((lowY>=32&&this.sideTileAt(x,feet-h+4))||(lowY>=8&&this.sideTileAt(x,feet-8))){this.water.blockSide(side);break;}
+   }
+  }
   if(dx===0){
    for(const y of[p.y-h+4,p.y-8]){
     if(this.sideTileAt(p.x+13,y)){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
