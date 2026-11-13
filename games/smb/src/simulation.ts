@@ -2809,7 +2809,7 @@ export class Simulation {
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
    if((this.placedCastle||this.placedActorStream)&&e.slotBorn===this.frame&&(!e.nativeGroup||!e.graphicsVisible))continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
-   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;
+   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;const stompRed=e.redFlight?{...e.redFlight}:undefined;
    const hurtBeforeMove=()=>{
     if(!p.invincible&&!p.star&&!this.powerChange&&this.phase==='play'){
      const id=e.nativeId??({goomba:6,koopa:0,redKoopa:3,beetle:2,paratroopa:14,spiny:18} as Record<string,number>)[e.kind]??255,camera=this.camera+this.lakituScroll;
@@ -2817,7 +2817,7 @@ export class Simulation {
      const playerRelative=this.hammerPlayerBox?((this.hammerPlayerBox[0]-(p.size===0?3:2))&255):(Math.floor(p.x)-Math.floor(camera))&255;
      if(nativeEnemyInjuryTurn(n,{id,playerRelative,enemyRelative:(Math.floor(priorX)-Math.floor(camera))&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer,injuryTimer:p.invincible,water:this.area.theme==='water'})){e.vx=((n.speed<<24)>>24)/16;e.direction=n.direction===1?1:-1;}
     }
-    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.nativeFlight&&stompPod){e.x=priorX;e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.nativeFlight&&stompPod){e.x=priorX;e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&stompRed){e.y=priorY;e.redFlight=stompRed;e.vy=stompRed.speed+stompRed.force/256;} /* 1-3 rows 7989/8034: the red flyer that injures Mario holds its row */if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
