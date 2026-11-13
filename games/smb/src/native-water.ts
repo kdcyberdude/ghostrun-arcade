@@ -58,6 +58,8 @@ export class NativeWater{
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */
  get whirlMoved(){return this.beforeWhirl?.moved??0;}
+ /** PlayerBGCollision runs before the late whirlpool gravity pass. */
+ get contactSpeed(){return this.beforeWhirl?.speed??this.speed;}
  /** A landing or any support under the feet clears the vertical speed and force; the fraction is kept. */
  land(){this.contact(()=>{this.speed=0;this.force=0;});}
  /** A head bump turns the player around at speed 1 (the force is kept). Returns how many more pixels the whirlpool pass moves after it. */
@@ -127,7 +129,7 @@ export class NativeWater{
   const along=direction===this.moving,first=this.moving===0;this.moving=direction;
   // From exact rest the first step ever is doubled, later ones plain whatever the last direction was; a press against a
   // sub-byte positive speed takes the doubled step.
-  if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;return m.speed=direction*(first?304:152);}
+  if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;m.facing=direction;m.moving=direction;return m.speed=direction*(first?304:152);}
   // GetPlayerAnimSpeed clears both speed bytes on a skid only when the
   // last ImposeFriction absolute byte is below $0b. Neutral swimming keeps
   // that byte: a wall hit at speed 14 must retain its sub-byte residue.

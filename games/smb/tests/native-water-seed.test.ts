@@ -7,7 +7,7 @@ import type {Button} from '../src/types.js';
 import {decodeNativeWater,initializeNativeWater} from '../tools/harness/native-water-seed.mjs';
 import cases from './fixtures/native-water-seed-cases.json';
 
-for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row} predicts the following 200 frames`,()=>{
+for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row} predicts the following ${c.pads.length} frames`,()=>{
  const r=zlib.gunzipSync(Buffer.from(c.initial,'base64')),sim:any=new Simulation(observedLevels());sim.reset(true);sim.levelIndex=sim.levels.findIndex((l:any)=>l.id===c.level);sim.loadArea(c.area);sim.phase='play';sim.phaseFrame=0;
  // The general source profile owns these common fields; this test exercises
  // only the independent water hook without changing that shared adapter.
@@ -19,7 +19,7 @@ for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row
  const names:Button[]=['a','b','select','start','up','down','left','right'];
  for(let i=0;i<c.pads.length;i++){
   sim.step(names.filter((_,bit)=>c.pads[i]&(1<<bit)),1);
-  const got=[Math.floor(sim.player.x),(Math.floor(sim.player.y)-32)&255,Math.floor(sim.camera),sim.water.speed&255,sim.water.force,sim.water.frac,sim.bubbleState.timer,sim.bubbles.map((b:any)=>[b.x,b.y,b.page,b.fraction])];
+  const got=[Math.floor(sim.player.x),(Math.floor(sim.player.y)-32)&255,Math.floor(sim.camera),sim.water.speed&255,sim.water.force,sim.water.frac,Math.round(sim.player.vx*4096),sim.bubbleState.timer,sim.bubbles.map((b:any)=>[b.x,b.y,b.page,b.fraction])];
   assert.deepEqual(got,c.expected[i],`source row ${c.row+i+1}`);
  }
 });
