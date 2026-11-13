@@ -5,10 +5,11 @@ import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
 import {loadPixelTexture,pixelCamera,pixelQuad} from '../assets/three-assets.mjs';
 import manifest from '../assets/graphics/graphics-manifest.json';
+import nesPalette from '../assets/nes-rgb-palette.json';
 import tables from '../assets/graphics/tables.json';
 import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
-import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
+import {waterSurfaceSky,doorwayBottomTile,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
 import {nativeScreenPicture} from './native-screen-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
@@ -235,7 +236,7 @@ export class GameRenderer {
  render(s:Simulation){
   const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
-  this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
+  this.scene.clear();this.used.clear();const startup=s.phase==='title'?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined,black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
@@ -310,7 +311,7 @@ export class GameRenderer {
     }
    }
    }
-   if(playerVisible(s)){this.oamContext=this.oamRows?{base:4,x:Math.floor(s.player.x-s.camera),y:Math.floor(s.player.y)-31}:undefined;this.player(s);this.oamContext=undefined;}
+   if(playerVisible(s)&&(!startup||startup.player)){this.oamContext=this.oamRows?{base:4,x:Math.floor(s.player.x-s.camera),y:Math.floor(s.player.y)-31}:undefined;this.player(s);this.oamContext=undefined;}
    this.worldClip=false;
   }
   const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
