@@ -6,7 +6,7 @@ import {decodeEntrance} from '../tools/harness/native-entrance.mjs';
 import run from '../evidence/native-runs/1-1.v2.json';
 
 const initial=()=>new Uint8Array(zlib.gunzipSync(Buffer.from(run.initialRam,'base64')));
-for(const mode of [0,3])test(`strict audit cannot pass after dropping same-level native mode ${mode}`,()=>{
+for(const mode of [0])test(`strict audit cannot pass after dropping same-level native mode ${mode}`,()=>{
  const start=initial(),ram=new Uint8Array(3*2048);
  for(let f=0;f<3;f++){ram.set(start,f*2048);ram[f*2048+0x770]=mode;}
  const result=strictCompare(decodeEntrance(start,{level:'1-1'}),[0,0,0],ram,'1-1');
@@ -36,4 +36,10 @@ test('strict coverage cannot pass a truncated RAM/input pair or empty retained i
 test('native retained-scene provenance is recognized while an unowned following UI load remains explicit',()=>{
  const start=initial(),ram=new Uint8Array(4096);ram.set(start);ram.set(start,2048);ram[2048+0x75c]=1;ram[2048+0x772]=1;
  const audit=strictCompare(decodeEntrance(start,{level:'1-1'}),[0,0],ram,'1-1');assert.equal(audit.coverage.frames,2);assert.equal(audit.fields.level,1);assert.ok(audit.diagnostics.some(d=>d.code==='native-load-control-not-owned'));assert.ok(!audit.diagnostics.some(d=>d.code==='post-level-scene-transition'),'matching original compiled ROM source is not a permanently unsupported native behavior');assert.notEqual(audit.status,'pass');
+});
+
+test('same-level mode3 is stepped and reports missing GameOver ownership instead of silently dropping rows',()=>{
+ const start=initial(),ram=new Uint8Array(3*2048);for(let f=0;f<3;f++){ram.set(start,f*2048);ram[f*2048+0x770]=3;}
+ const audit=strictCompare(decodeEntrance(start,{level:'1-1'}),[0,0,0],ram,'1-1');
+ assert.equal(audit.coverage.frames,3);assert.equal(audit.coverage.unsteppedFrames,0);assert.equal(audit.coverage.uncomparedSameLevelFrames,0);assert.equal(audit.coverage.completeInputSequence,false);assert.equal(audit.fields['gameover.mode'],0);assert.equal(audit.status,'diverged');assert.ok(audit.diagnostics.some(d=>d.code==='native-gameover-not-owned'));assert.ok(!audit.diagnostics.some(d=>d.code==='unsupported-native-mode'));
 });
