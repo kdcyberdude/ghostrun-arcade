@@ -19,6 +19,10 @@ test('native ROM catalog identifies all 34 physical areas and four stages in eve
  assert.deepEqual(nativeWorldStages(0),[[0x25],[0x29,0x40],[0x26],[0x60]]);
  assert.equal(catalog.source.sha256,'f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de');
 });
+test('unmapped native worlds return no route and synthetic levels report the missing binding',()=>{
+ for(const world of [NaN,-1,8])assert.deepEqual(nativeWorldStages(world),[]);
+ for(const id of ['water','fixture','9-1'])assert.deepEqual(nativeAreaBindings({...level('1-1'),id}),{bindings:[],diagnostics:['level has no native world-route entry']});
+});
 test('all static remake scenes bind to native world routes or ROM portal destinations',()=>{
  for(const l of observedLevels()){
   const result=nativeAreaBindings(l);assert.deepEqual(result.diagnostics,[],l.id);

@@ -8,7 +8,7 @@ export type AreaBinding={area:string;code:number;data:number;offset:number;entry
 const typeOf=(a:Area)=>a.theme==='water'?0:a.theme==='underground'?2:a.theme==='castle'?3:1;
 export function nativeWorldStages(world:number):number[][]{
  const stages:number[][]=[];let pending:number[]=[];
- for(const code of catalog.worlds[world]){pending.push(code);if(((physical[code].header[0]>>3)&7)!==7){stages.push(pending);pending=[];}}
+ for(const code of catalog.worlds[world]??[]){pending.push(code);if(((physical[code].header[0]>>3)&7)!==7){stages.push(pending);pending=[];}}
  if(pending.length)stages.push(pending);return stages;
 }
 /** A binding's offset is a ROM EntrancePage origin, not a fitted Mario/camera correction. */
