@@ -61,10 +61,10 @@ test('firebar collision includes its center and excludes a nonexistent extra ter
  const touching=game([area({firebars:[bar]})]);touching.player.x=92;touching.step([],1);assert.equal(touching.phase,'dying');
 });
 
-test('a lethal firebar contact cannot also trigger an overlapping exit or pipe',()=>{
+test('axe contact skips the enemy loop; lethal firebars still block ordinary pipes',()=>{
  const bar={x:100,y:202,length:2,speed:0};
  for(const destination of [
-  {exit:{kind:'axe' as const,x:100,y:192,retainerX:240}},
+  {exit:{kind:'axe' as const,x:100,y:208,retainerX:240}},
  {pipes:[{x:100,y:208,direction:'down' as const,to:'room',spawn:[40,208] as [number,number]}]},
  ]){
   const setup=(lethal:boolean)=>{
@@ -73,8 +73,8 @@ test('a lethal firebar contact cannot also trigger an overlapping exit or pipe',
   };
   const control=setup(false);assert.ok(control.phase==='castle'||control.phase==='pipe');
   const sim=setup(true);
-  assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);
-  assert.ok(sim.events.includes('event_death'));assert.ok(!sim.events.includes('sfx_pipe'));
+  if(destination.exit?.kind==='axe'){assert.equal(sim.phase,'castle');assert.equal(sim.player.dead,false);}
+  else{assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);assert.ok(sim.events.includes('event_death'));assert.ok(!sim.events.includes('sfx_pipe'));}
  }
 });
 
@@ -82,7 +82,7 @@ test('crossing beneath an axe cannot clear a castle; touching it starts sequenti
  const room=area({theme:'castle',camera:58,exit:{kind:'axe',x:296,y:144,retainerX:656},enemies:[{kind:'bowser',x:200,y:160}]});
  room.tiles.push([12,10,137],[13,10,137],[14,10,137],[6,9,197]);
  const below=game([room]);below.player.x=296;below.step(['right'],10);assert.equal(below.phase,'play');
- const touching=game([room]);touching.player.x=282;touching.player.y=152;touching.player.vy=0;touching.step([],1);
+ const touching=game([room]);touching.step([],1);touching.player.x=282;touching.player.y=152;touching.player.vy=0;touching.step([],1);
  assert.equal(touching.phase,'castle');assert.equal(touching.tiles.get('14,10'),137);assert.equal(touching.enemies[0].dead,0);
  const inheritedFeet=touching.nativeVictory!.feet;touching.step([],inheritedFeet+9);assert.equal(touching.tiles.has('14,10'),false);assert.equal(touching.tiles.get('12,10'),137);
  touching.step([],47);assert.equal(touching.castleStage,'fall');assert.ok(touching.enemies[0].dead>0);
