@@ -1,0 +1,122 @@
+{
+  "level": "1-1",
+  "ramSha256": "c23dafaa7222862a82883a8e45f6f6c49b3c39fe799b377aac789c967ca9ee1b",
+  "rows": [
+    {
+      "frame": 1146,
+      "task": 2,
+      "engine": 0,
+      "screen": 12,
+      "oam": [
+        248,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "frame": 1147,
+      "task": 3,
+      "engine": 0,
+      "screen": 12,
+      "oam": [
+        24,
+        255,
+        35,
+        88
+      ]
+    },
+    {
+      "frame": 1148,
+      "task": 3,
+      "engine": 7,
+      "screen": 12,
+      "oam": [
+        24,
+        255,
+        35,
+        88
+      ]
+    },
+    {
+      "frame": 1149,
+      "task": 3,
+      "engine": 8,
+      "screen": 12,
+      "oam": [
+        24,
+        255,
+        35,
+        88
+      ]
+    },
+    {
+      "frame": 3016,
+      "task": 2,
+      "engine": 0,
+      "screen": 12,
+      "oam": [
+        248,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "frame": 3017,
+      "task": 3,
+      "engine": 0,
+      "screen": 12,
+      "oam": [
+        24,
+        255,
+        35,
+        88
+      ]
+    },
+    {
+      "frame": 3018,
+      "task": 3,
+      "engine": 7,
+      "screen": 12,
+      "oam": [
+        24,
+        255,
+        35,
+        88
+      ]
+    }
+  ],
+  "pictureProof": {
+    "runtimeRef": "1f3a544",
+    "comparison": [
+      {
+        "window": "respawn",
+        "frames": 9,
+        "beforeWholePixels": 74,
+        "beforeHudPixels": 74,
+        "afterWholePixels": 0,
+        "afterHudPixels": 0,
+        "afterAlignedPixels": 0,
+        "playfieldAndAlignmentUnchanged": true
+      },
+      {
+        "window": "-tail",
+        "frames": 6,
+        "beforeWholePixels": 37,
+        "beforeHudPixels": 37,
+        "afterWholePixels": 0,
+        "afterHudPixels": 0,
+        "afterAlignedPixels": 0,
+        "playfieldAndAlignmentUnchanged": true
+      }
+    ],
+    "artifacts": {
+      "after-tail.json": "27aef7ec7b1a8fb902369f32a62e56bfb0e5fb3549a0c391cdfaba5ddf26d428",
+      "before.json": "8b31de744758e5d5da7fd77b6a845a2f777661f254735c4f53efa935a44bad0a",
+      "after.json": "1f320abec14ccba5be0452c7578a83e5cbe36a4e95ea21b7fc598b866d5f25c2",
+      "before-tail.json": "0ddef5fe1420848cf237b58224f5d3584b6d3cc3a322771a70d61bb512bd5b38",
+      "comparison.json": "65942846cdb6695771f0eb2ad82ca9cffad0004f6dbda08c5a8859a3b717af37"
+    }
+  }
+}

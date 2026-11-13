@@ -379,7 +379,8 @@ export class GameRenderer {
  private hud(s:Simulation,paletteIndex=s.area.palette,hideTime=false){
   this.textZ=1;
   this.text(s.currentPlayer?'LUIGI':'MARIO',24,16);this.text(s.hud.draw.score,24,24);
-  if(s.phase==='intro'||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
+  // InitializeGame installs sprite zero before the first GameEngine row; intro still owns control.
+  if(s.phase==='intro'&&s.nativeScreen?.task!==3||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
   else{
    // Supplied OAM [24,255,0x23,88]: palette3, behind the HUD background.
    const palette=manifest.palette_observations[paletteIndex].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
