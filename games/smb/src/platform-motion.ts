@@ -191,7 +191,7 @@ export class PlatformMotion {
  private fiveThreeHorizontalStart:number|undefined;
  private cameraLog:Array<[number,number,number]>=[];
  private nativeStart=new Map<PlatformSpec,number>();
- /** Native objects never created: their spawn point passed while all five object slots were busy (evidence/platslot-findings-20261111.md). */
+ /** Native objects that cannot run again: missed at creation with full slots, or erased offscreen. */
  lost=new Set<PlatformSpec>();
  /** Spawn point passed with all slots busy while the object was still off screen: made on the first frame a slot is free (`create`). */
  waiting=new Set<PlatformSpec>();
