@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
+import {nativeBowserState} from '../src/native-bowser.js';
 import {Simulation,solid} from '../src/simulation.js';
 
 // The 6-4 castle end sits one column further right than first compiled (native wall at 2256, cutscene stop x 2431; data/castle-exit-native-alignment.json):
@@ -17,6 +18,7 @@ test('World 6-4 chain disappears on the NMI after native bridge offset1',()=>{
  if(!area.tiles.some(([x,y])=>x===140&&y===9))area.tiles.push([140,9,12]);
  area.enemies=area.enemies.filter(e=>e.kind==='bowser');area.firebars=[];
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[2252,140],2026);
+ const boss=sim.enemies.find(e=>e.kind==='bowser')!;boss.active=true;boss.nativeBowser=nativeBowserState(boss.x,boss.y-32);
  assert.equal(sim.tiles.get('140,9'),12);sim.step([],1);
  assert.equal(sim.phase,'castle');assert.equal(sim.tiles.get('140,9'),12);
  sim.step([],sim.nativeVictory!.feet+4);assert.equal(sim.nativeVictory!.bridge,2);assert.equal(sim.tiles.get('140,9'),12);
