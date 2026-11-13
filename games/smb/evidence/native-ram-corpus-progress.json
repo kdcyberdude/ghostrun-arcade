@@ -1,14 +1,14 @@
 {
   "schema": "smb-ram-corpus-fix-progress-v1",
-  "generatedAt": "2026-11-13T21:45:42.371Z",
+  "generatedAt": "2026-11-13T22:06:38.620Z",
   "status": "incomplete",
   "baselineCommit": "795ec985f1cc72d10263860a272366a7e2c33e5c",
   "runtimeSources": {
-    "games/smb/src/simulation.ts": "cdb8a5a758dff2c30e3fcdb6ed1439f57425cb81e51121c5f443ea8a793bf36b",
+    "games/smb/src/simulation.ts": "645cc2985d763c8f46171f6ba2262b55ba6ddc498d3b8732e3e99dece9c4408f",
     "games/smb/src/native-player-enemy-latch.ts": "9685b9b8d4dcb74bde5040d81336d7e2257454bc424abfee42fd8526234d29f3",
     "games/smb/data/levels.json": "9aba89d77a2a589ff15291b54d905ff810c34fe989f824a40a4ccbc8342b1e9d",
     "games/smb/data/native-geometry-corrections.json": "680503eb7ba7fcedc51e34f49b79e03023449ef7f028ecaa345b1037d15221c7",
-    "games/smb/tools/harness/native-strict.ts": "57e46aeec1232960339ab3f85195e472f0aa0a491e95941725a0a3b25a606829"
+    "games/smb/tools/harness/native-strict.ts": "a610c9f7d8c6de167a5f99fc914869cba04c7281f5974eaf44e48a6c1aa0a3ef"
   },
   "recordings": 368,
   "inputFrames": 5178452,
@@ -50,61 +50,33 @@
     "Left screen boundary preserves fractional position/speed and the facing/steering exception.",
     "Exit castles in 2-2 and 7-2 use the native solid door cell at column29,row12."
   ],
-  "remainingEvaluationSegments": 133,
+  "remainingEvaluationSegments": 108,
   "remainingByLevel": [
     {
       "level": "1-2",
-      "segments": 25,
-      "recordings": 24,
+      "segments": 17,
+      "recordings": 16,
       "examples": [
-        {
-          "id": "536bc848fe22400826d4d5a8f513e7590756694044c309cc3755146bb9b58f9c",
-          "entry": 4,
-          "area": "area-2",
-          "sourceFrame": 2968,
-          "evidence": "current-worlds-patch"
-        },
         {
           "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
           "entry": 4,
           "area": "area-2",
           "sourceFrame": 3198,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
           "entry": 4,
           "area": "area-2",
           "sourceFrame": 4061,
-          "evidence": "current-worlds-patch"
-        }
-      ]
-    },
-    {
-      "level": "1-3",
-      "segments": 20,
-      "recordings": 20,
-      "examples": [
-        {
-          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 6739,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
-          "id": "0d12a2e4ff35f7c3a2a6596c00224d46bb28168962b987b169ce365270f5bbad",
-          "entry": 6,
-          "area": "main",
-          "sourceFrame": 8028,
-          "evidence": "current-worlds-patch"
-        },
-        {
-          "id": "b47452ef2d5e4ecc55d0f90aa829fab00f30a1a1f07ae8a7d06059396dc1a5e4",
-          "entry": 5,
-          "area": "main",
-          "sourceFrame": 6674,
-          "evidence": "current-worlds-patch"
+          "id": "a561a80e9b03653e53b7fa409f399cd5d995c3ce9d6b19cd997437180d442569",
+          "entry": 2,
+          "area": "area-2",
+          "sourceFrame": 3420,
+          "evidence": "ordered-level-pass"
         }
       ]
     },
@@ -118,21 +90,21 @@
           "entry": 8,
           "area": "main",
           "sourceFrame": 13393,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "cc17bab5a6f1c9a13ba304166ca198ca15814e51593e37f4fd0258ab81eafa25",
           "entry": 7,
           "area": "main",
           "sourceFrame": 9819,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
           "entry": 7,
           "area": "main",
           "sourceFrame": 15445,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         }
       ]
     },
@@ -146,21 +118,21 @@
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         }
       ]
     },
@@ -202,21 +174,49 @@
           "entry": 8,
           "area": "main",
           "sourceFrame": 12056,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
           "entry": 7,
           "area": "main",
           "sourceFrame": 11753,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
         },
         {
           "id": "ff38f6f5ab48d512a04712f738589111f0dbe3a455ce60939a56cf70fb2d2796",
           "entry": 7,
           "area": "main",
           "sourceFrame": 10572,
-          "evidence": "current-worlds-patch"
+          "evidence": "ordered-level-pass"
+        }
+      ]
+    },
+    {
+      "level": "1-3",
+      "segments": 3,
+      "recordings": 3,
+      "examples": [
+        {
+          "id": "0fa92d68710fdb07903f924ae8e20293972267fa2c8dbe4bbf8c59380a7e4b74",
+          "entry": 6,
+          "area": "main",
+          "sourceFrame": 8034,
+          "evidence": "ordered-level-pass"
+        },
+        {
+          "id": "be6bee4201de75b3a7cfe0aeaddaa94b0637f422b9cd1277ded420749ed87337",
+          "entry": 5,
+          "area": "main",
+          "sourceFrame": 7989,
+          "evidence": "ordered-level-pass"
+        },
+        {
+          "id": "a14e9c25f82bbe8b8caf82002bb9f61a0caf4a87bcc98b257d5c29774e767110",
+          "entry": 5,
+          "area": "main",
+          "sourceFrame": 7502,
+          "evidence": "ordered-level-pass"
         }
       ]
     },
@@ -459,7 +459,7 @@
       }
     }
   ],
-  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated. Latest worlds batch replays all 176 previously queued evaluation segments and the seven previously failing originals; unchanged passing segments were not rerun.",
+  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated. Latest worlds batch replays all 176 previously queued evaluation segments and the seven previously failing originals; unchanged passing segments were not rerun. Ordered pass integrates current main, rechecks levels individually and visits all32 originals sequentially. Remaining cases stay open; no full Three.js visual equivalence is claimed.",
   "latestBatch": {
     "recheckedSegments": 176,
     "recheckedRecordings": 120,
@@ -480,5 +480,262 @@
       "Strict camera comparison normalizes 16-bit native wrap without changing gameplay.",
       "Zero-horizontal-motion side probes include springs, keeping the native back-out/contact pause."
     ]
-  }
+  },
+  "orderedLevelPass": [
+    {
+      "level": "1-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 3,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "1-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 17,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "1-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 3,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "1-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 4,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "2-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 31,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "2-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "2-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 20,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "2-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 12,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "3-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 14,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "3-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "3-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "3-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 2,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "4-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "4-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 1,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "4-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "4-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 1,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "5-1",
+      "originalStatus": "diverged",
+      "originalFirst": 3238,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "5-2",
+      "originalStatus": "diverged",
+      "originalFirst": 1328,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "5-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "5-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "6-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "6-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "6-3",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "6-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "7-1",
+      "originalStatus": "diverged",
+      "originalFirst": 646,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "7-2",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "7-3",
+      "originalStatus": "diverged",
+      "originalFirst": 692,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "7-4",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "8-1",
+      "originalStatus": "pass",
+      "originalFirst": null,
+      "remainingEvaluationSegments": 0,
+      "scope": "No remaining mismatch in the retained checked fields; unsupported state is not certified."
+    },
+    {
+      "level": "8-2",
+      "originalStatus": "diverged",
+      "originalFirst": 2003,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "8-3",
+      "originalStatus": "diverged",
+      "originalFirst": 987,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    },
+    {
+      "level": "8-4",
+      "originalStatus": "diverged",
+      "originalFirst": 9517,
+      "remainingEvaluationSegments": 0,
+      "unresolvedReason": "Remaining native slot lifecycle, motion/contact, or timing differences need a verified rule; no recording-specific corrections applied."
+    }
+  ],
+  "latestOrderedBatch": {
+    "levelOneTwo": {
+      "rechecked": 25,
+      "cleared": 8
+    },
+    "levelOneThree": {
+      "rechecked": 20,
+      "cleared": 17
+    },
+    "originalLevelsVisited": 32,
+    "originalStrictPasses": 25,
+    "focusedTestsPassed": 102,
+    "typescript": "pass",
+    "ui": {
+      "levels": 32,
+      "framesPerLevel": 8,
+      "totalFrames": 256,
+      "allSampledPixelDiffZero": true,
+      "pairedViewsInspected": [
+        "1-1",
+        "1-2",
+        "1-3",
+        "1-4"
+      ],
+      "threejsVisualIdentity": "not established; model/textures/lighting differ",
+      "extendedPresentationReplay": "stopped after partial progress; no full PASS claimed"
+    },
+    "branchNaming": "descriptive names without a prefix; preference saved in global AGENTS.md",
+    "mergeTarget": "main"
+  },
+  "evidenceArchivePath": "/home/kd/Desktop/proj/ghostrun/ghostrun-arcade/games/smb/evidence/local/ram-corpus-ordered-GIBleo"
 }
