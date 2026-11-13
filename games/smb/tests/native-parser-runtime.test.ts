@@ -161,3 +161,12 @@ test('native engine3 retains X speed and saved scroll while Y and enemies contin
   if(frame===414){const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0);assert.ok(e);assert.equal(e.x,769.5,'enemy world continues during pipe entry');}
  },'mood0-3d43-entry0000');
 });
+
+test('a solid tree underside stops Mario without creating a native bump marker or killing the Koopa above',()=>{
+ replay('1-3',202,(sim,frame)=>{
+  if(frame<196)return;
+  const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0&&e.kind==='redKoopa');assert.ok(e,`row${frame} live Koopa`);
+  assert.equal(e.x,447-(frame-195)/2);assert.equal(e.y,80);assert.equal(sim.score,43400);
+  if(frame===196){assert.equal(Math.floor(sim.player.y)-32,76);assert.equal(sim.blockBounceTimer,0);assert.equal(sim.nativeBlockBounce,0);}
+ },'mood0-6a33-entry0006');
+});

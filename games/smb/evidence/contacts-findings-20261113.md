@@ -241,3 +241,29 @@ while retaining the old Mario/enemy RAM, then clears the rest on463. The
 source boundary table is /tmp/contacts-pipe-boundary.txt; castle worker owns
 that pipeline. The existing sidepipe engine2 fitted first-speed path remains
 open for a separate source EnterSidePipe/AutoControlPlayer unit.
+
+## Solid head contact does not create an enemy-stun marker
+
+NativeInitRedKoopa writes Enemy_State1; the placed ID3 initializer now retains
+that initial falling state, and only state0 uses red ledge avoidance. Unwinged
+ID1 stays distinct. A regression starts ID3 falling and verifies its first
+landing faces Mario before state0 ledge behavior. This alone leaves all32
+recorded firsts unchanged.
+
+The new mood1-3 case6a33d619… entry0006 exposed the actual local196 error:
+Mario hits a solid tree underside, receives native speed1, but the old generic
+hitBlock path also killed the Koopa above it and paid an extra100 on201.
+Native CheckForSolidMTiles uses thresholds[$10,$61,$88,$c4] by metatile high
+bits. Solid head contact skips PlayerHeadCollision, so it never creates the
+$23 marker consumed by EnemyToBGCollisionDet or starts BlockBounceTimer.
+Enemy-above-block effects now require actual native block-object creation,
+and only eligible block hits start the timer. The used-block regression is
+corrected: the collision/bump sound remains, but no enemy is stunned.
+
+Case6a33…/0006 enemy196 and score201 become null; all8 legacy fields are now
+null and strict first196→946 (end transition). The native tree head bounce
+itself remains unchanged. A persistent additional decision excerpt and runtime
+196..202 check cover the live Koopa, unchanged score, and zero native timers.
+All32 v2 fields remain unchanged versus74b1013. Full delayed $23 marker
+lifetime and type-specific shell/stun conversion remain separate unverified
+work; this unit removes effects from head contacts with no native marker.

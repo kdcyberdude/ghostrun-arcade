@@ -831,12 +831,14 @@ export class Simulation {
   }
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
-  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196)this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
+  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
   // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
   const above=`${x},${y-1}`;if(!piece&&isHitBlock(id)&&id!==196&&this.tiles.get(above)===COIN_TILE){this.tiles.delete(above);this.parserVramBusy=true;this.paletteRemove=true;this.coin();this.spawnNativeAboveBlockCoin(x,y);}
+  let bumpedNativeBlock=false;
   if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6]){
+   bumpedNativeBlock=true;
    const slot=this.blockControl,n=this.nativeBlocks[slot],shatter=Boolean(p.size&&[81,82,83].includes(id));
    Object.assign(n,{x:Math.floor(p.x+8)&~15,y:y*16,state:shatter?0x12:0x11,speed:shatter?-6:-2,force:0});
    if(shatter)Object.assign(this.nativeBlocks[slot+2],{x:n.x,y:n.y+8,speed:-4,force:0});
@@ -865,7 +867,9 @@ export class Simulation {
    this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
    for(let i=0;i<4;i++)this.items.push({kind:'debris',x:x*16+(i%2)*8,y:y*16+Math.floor(i/2)*8,vx:(i%2?1:-1)*1.5,vy:i<2?-4:-2,age:0,life:60});
   }else this.emit('sfx_bump');
-  for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
+  // EnemyToBGCollisionDet only stuns a walker when BumpBlock wrote $23.
+  // Solid tree/stone head contact does not create that native marker.
+  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
@@ -2062,6 +2066,7 @@ export class Simulation {
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
     else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0};
     else e.fall={speed:0,force:0,fraction:left.fraction};
+    if(e.nativeId===3)e.walkerState=1; // InitRedKoopa starts falling; only state0 avoids ledges.
     if(e.nativeId!==14){left.speed=0;left.force=0;this.slotYSpeed[cursor]=0;}
     if(e.redFlight)this.slotSub[cursor]=e.redFlight.originalY;
    }
@@ -2252,7 +2257,7 @@ export class Simulation {
      e.shellAge=e.movingShell?0:(e.shellAge??0)+1;
      if(e.shellAge>=shellRules.wakeNativeFrames){e.shell=false;e.shellAge=0;e.shellChain=0;e.vx=(e.direction??-1)*0.5;}
     }
-    if(!eraseWalkerAfterMove&&e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
+    if(!eraseWalkerAfterMove&&e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&(e.walkerState??0)===0&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
     const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
     const normalWalker=NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion;
     const dx=e.shell?(e.movingShell?Math.sign(e.vx)*shellRules.speedPixelsPerNativeFrame:0):e.vx;
