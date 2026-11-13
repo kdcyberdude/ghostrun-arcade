@@ -20,6 +20,15 @@ export function captureEnemyPicture(enemy:Enemy){
 
 export const enemyPicture=(enemy:Enemy):Enemy=>enemy.graphics??enemy;
 
+/** TimerControl holds movement, but EnemyGfxHandler still redraws each slot.
+ * After the injury row, use the retained post-move RAM rather than that row's pre-contact picture. */
+export function enemyRenderPicture(enemy:Enemy,frame:number,timersStopped:boolean):Enemy{
+ if(!timersStopped||!enemy.graphics||enemy.graphicsFrame===frame)return enemyPicture(enemy);
+ const graphicsFacing=enemy.kind==='bullet'?(enemy.direction??-1):enemy.kind==='paratroopa'&&enemy.nativeId===16?((enemy.horizontalFlight?.primary??0)&2?1:-1):Math.sign(enemy.vx);
+ return {...enemy,graphics:undefined,graphicsX:enemy.x,graphicsY:enemy.y,graphicsFacing};
+}
+
+
 /** CheckForHammerBro: state bit3 raises the throwing arm; an unarmed airborne state keeps the base cell. */
 export function nativeHammerBroCell(state:number,frameCounter:number,timersStopped=false){
  const base=state&8?30:28;

@@ -4,7 +4,7 @@ import {nativeMiscOffscreen} from './native-misc.js';
 /** DrawBubble checks the player's vertical page and the bubble's horizontal offscreen bit. */
 export const nativeBubbleShown=(bubble:{x:number;y:number},playerFeetY:number,camera:number)=>Math.floor((playerFeetY-32)/256)===0&&!(nativeMiscOffscreen(Math.floor(bubble.x),bubble.y,Math.floor(camera))&8);
 /** PowerUpObjHandler skips drawing until the native emergence state reaches 6; the first five pixels remain hidden inside the block. */
-export const itemShown=(item:Item&{nativePowerState?:number})=>item.nativePowerState===undefined||item.nativePowerState>=6;
+export const itemShown=(item:Item&{nativePowerState?:number})=>(item.nativePowerState===undefined||item.nativePowerState>=6)&&item.nativeCoin?.state!==0&&item.nativeHammer?.state!==0;
 /** Water areas keep sky colour in the top 32 rows (above the surface wave); only the playfield below is water blue. Native 2-2/7-2 rows 0..31 = #6888fc. */
 export const waterSurfaceSky=(area:{theme?:string;background?:string})=>area.theme==='water'&&area.background==='#0058f8';
 /** Castle doorway (metatile 74): where the level data has no tile below it, native draws the black lower half (metatile 75). */

@@ -1,0 +1,537 @@
+{
+  "role": "Authentic native OAM/Misc_State and independent continuous model snapshots; primitive picture tests only, not reseeded gameplay proof",
+  "events": [
+    {
+      "source": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+      "frame": 527,
+      "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+      "camera": 576,
+      "globalFrame": 466,
+      "counter": 208,
+      "stopped": true,
+      "kind": "enemy",
+      "enemy": {
+        "kind": "goomba",
+        "x": 811.5,
+        "y": 208,
+        "spawnCamera": 563,
+        "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+        "nativeGroup": {
+          "offset": 7,
+          "column": 864,
+          "index": 0,
+          "count": 2
+        },
+        "vx": -0.5,
+        "vy": 0,
+        "active": true,
+        "dead": 0,
+        "shell": false,
+        "movingShell": false,
+        "age": 9,
+        "originX": 818,
+        "originY": 208,
+        "hp": 5,
+        "enemySlot": 0,
+        "graphicsVisible": true,
+        "graphicsFacing": -1,
+        "graphicsX": 812,
+        "graphicsY": 208,
+        "graphicsFrame": 466,
+        "graphicsTimersStopped": false,
+        "graphics": {
+          "kind": "goomba",
+          "x": 812,
+          "y": 208,
+          "spawnCamera": 563,
+          "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+          "nativeGroup": {
+            "offset": 7,
+            "column": 864,
+            "index": 0,
+            "count": 2
+          },
+          "vx": -0.5,
+          "vy": 0,
+          "active": true,
+          "dead": 0,
+          "shell": false,
+          "movingShell": false,
+          "age": 8,
+          "originX": 818,
+          "originY": 208,
+          "hp": 5,
+          "enemySlot": 0,
+          "graphicsVisible": true,
+          "graphicsFacing": -1,
+          "graphicsX": 812,
+          "graphicsY": 208,
+          "graphicsFrame": 466,
+          "graphicsTimersStopped": false,
+          "fall": {
+            "speed": 0,
+            "force": 0,
+            "fraction": 0
+          },
+          "walkerState": 0
+        },
+        "fall": {
+          "speed": 0,
+          "force": 0,
+          "fraction": 0
+        },
+        "walkerState": 0
+      },
+      "oam": [
+        {
+          "tile": 112,
+          "x": 236,
+          "y": 193,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "tile": 113,
+          "x": 244,
+          "y": 193,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "tile": 114,
+          "x": 236,
+          "y": 201,
+          "flipX": false,
+          "flipY": false
+        },
+        {
+          "tile": 115,
+          "x": 244,
+          "y": 201,
+          "flipX": false,
+          "flipY": false
+        }
+      ]
+    },
+    {
+      "source": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+      "frame": 528,
+      "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+      "camera": 576,
+      "globalFrame": 467,
+      "counter": 209,
+      "stopped": true,
+      "kind": "enemy",
+      "enemy": {
+        "kind": "goomba",
+        "x": 811.5,
+        "y": 208,
+        "spawnCamera": 563,
+        "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+        "nativeGroup": {
+          "offset": 7,
+          "column": 864,
+          "index": 0,
+          "count": 2
+        },
+        "vx": -0.5,
+        "vy": 0,
+        "active": true,
+        "dead": 0,
+        "shell": false,
+        "movingShell": false,
+        "age": 9,
+        "originX": 818,
+        "originY": 208,
+        "hp": 5,
+        "enemySlot": 0,
+        "graphicsVisible": true,
+        "graphicsFacing": -1,
+        "graphicsX": 812,
+        "graphicsY": 208,
+        "graphicsFrame": 466,
+        "graphicsTimersStopped": false,
+        "graphics": {
+          "kind": "goomba",
+          "x": 812,
+          "y": 208,
+          "spawnCamera": 563,
+          "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+          "nativeGroup": {
+            "offset": 7,
+            "column": 864,
+            "index": 0,
+            "count": 2
+          },
+          "vx": -0.5,
+          "vy": 0,
+          "active": true,
+          "dead": 0,
+          "shell": false,
+          "movingShell": false,
+          "age": 8,
+          "originX": 818,
+          "originY": 208,
+          "hp": 5,
+          "enemySlot": 0,
+          "graphicsVisible": true,
+          "graphicsFacing": -1,
+          "graphicsX": 812,
+          "graphicsY": 208,
+          "graphicsFrame": 466,
+          "graphicsTimersStopped": false,
+          "fall": {
+            "speed": 0,
+            "force": 0,
+            "fraction": 0
+          },
+          "walkerState": 0
+        },
+        "fall": {
+          "speed": 0,
+          "force": 0,
+          "fraction": 0
+        },
+        "walkerState": 0
+      },
+      "oam": [
+        {
+          "tile": 113,
+          "x": 235,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 112,
+          "x": 243,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 115,
+          "x": 235,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 114,
+          "x": 243,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        }
+      ]
+    },
+    {
+      "source": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+      "frame": 600,
+      "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+      "camera": 576,
+      "globalFrame": 539,
+      "counter": 25,
+      "stopped": true,
+      "kind": "enemy",
+      "enemy": {
+        "kind": "goomba",
+        "x": 811.5,
+        "y": 208,
+        "spawnCamera": 563,
+        "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+        "nativeGroup": {
+          "offset": 7,
+          "column": 864,
+          "index": 0,
+          "count": 2
+        },
+        "vx": -0.5,
+        "vy": 0,
+        "active": true,
+        "dead": 0,
+        "shell": false,
+        "movingShell": false,
+        "age": 9,
+        "originX": 818,
+        "originY": 208,
+        "hp": 5,
+        "enemySlot": 0,
+        "graphicsVisible": true,
+        "graphicsFacing": -1,
+        "graphicsX": 812,
+        "graphicsY": 208,
+        "graphicsFrame": 466,
+        "graphicsTimersStopped": false,
+        "graphics": {
+          "kind": "goomba",
+          "x": 812,
+          "y": 208,
+          "spawnCamera": 563,
+          "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+          "nativeGroup": {
+            "offset": 7,
+            "column": 864,
+            "index": 0,
+            "count": 2
+          },
+          "vx": -0.5,
+          "vy": 0,
+          "active": true,
+          "dead": 0,
+          "shell": false,
+          "movingShell": false,
+          "age": 8,
+          "originX": 818,
+          "originY": 208,
+          "hp": 5,
+          "enemySlot": 0,
+          "graphicsVisible": true,
+          "graphicsFacing": -1,
+          "graphicsX": 812,
+          "graphicsY": 208,
+          "graphicsFrame": 466,
+          "graphicsTimersStopped": false,
+          "fall": {
+            "speed": 0,
+            "force": 0,
+            "fraction": 0
+          },
+          "walkerState": 0
+        },
+        "fall": {
+          "speed": 0,
+          "force": 0,
+          "fraction": 0
+        },
+        "walkerState": 0
+      },
+      "oam": [
+        {
+          "tile": 113,
+          "x": 235,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 112,
+          "x": 243,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 115,
+          "x": 235,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 114,
+          "x": 243,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        }
+      ]
+    },
+    {
+      "source": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+      "frame": 733,
+      "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+      "camera": 576,
+      "globalFrame": 672,
+      "counter": 158,
+      "stopped": true,
+      "kind": "enemy",
+      "enemy": {
+        "kind": "goomba",
+        "x": 811.5,
+        "y": 208,
+        "spawnCamera": 563,
+        "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+        "nativeGroup": {
+          "offset": 7,
+          "column": 864,
+          "index": 0,
+          "count": 2
+        },
+        "vx": -0.5,
+        "vy": 0,
+        "active": true,
+        "dead": 0,
+        "shell": false,
+        "movingShell": false,
+        "age": 9,
+        "originX": 818,
+        "originY": 208,
+        "hp": 5,
+        "enemySlot": 0,
+        "graphicsVisible": true,
+        "graphicsFacing": -1,
+        "graphicsX": 812,
+        "graphicsY": 208,
+        "graphicsFrame": 466,
+        "graphicsTimersStopped": false,
+        "graphics": {
+          "kind": "goomba",
+          "x": 812,
+          "y": 208,
+          "spawnCamera": 563,
+          "evidence": "Inferred spawn/activation from screenshot track3; initial x on16px grid, speed-0.5px/native frame, first sight x814 at reference tick42. Activation is camera-based, never tick-based.; native first appearance (read-only enemy slot): spawn x and camera",
+          "nativeGroup": {
+            "offset": 7,
+            "column": 864,
+            "index": 0,
+            "count": 2
+          },
+          "vx": -0.5,
+          "vy": 0,
+          "active": true,
+          "dead": 0,
+          "shell": false,
+          "movingShell": false,
+          "age": 8,
+          "originX": 818,
+          "originY": 208,
+          "hp": 5,
+          "enemySlot": 0,
+          "graphicsVisible": true,
+          "graphicsFacing": -1,
+          "graphicsX": 812,
+          "graphicsY": 208,
+          "graphicsFrame": 466,
+          "graphicsTimersStopped": false,
+          "fall": {
+            "speed": 0,
+            "force": 0,
+            "fraction": 0
+          },
+          "walkerState": 0
+        },
+        "fall": {
+          "speed": 0,
+          "force": 0,
+          "fraction": 0
+        },
+        "walkerState": 0
+      },
+      "oam": [
+        {
+          "tile": 113,
+          "x": 235,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 112,
+          "x": 243,
+          "y": 193,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 115,
+          "x": 235,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        },
+        {
+          "tile": 114,
+          "x": 243,
+          "y": 201,
+          "flipX": true,
+          "flipY": false
+        }
+      ]
+    },
+    {
+      "source": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+      "frame": 1071,
+      "ramSha256": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+      "camera": 1669,
+      "globalFrame": 1010,
+      "counter": 240,
+      "stopped": true,
+      "kind": "coin",
+      "item": {
+        "kind": "coin",
+        "x": 1797,
+        "y": 99,
+        "vx": 0,
+        "vy": 5,
+        "age": 78,
+        "life": 0,
+        "nativeCoin": {
+          "slot": 8,
+          "state": 0,
+          "speed": 5,
+          "force": 0,
+          "fraction": 0,
+          "collision": false
+        }
+      },
+      "nativeState": 0
+    },
+    {
+      "source": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+      "frame": 1077,
+      "ramSha256": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+      "camera": 1669,
+      "globalFrame": 1016,
+      "counter": 246,
+      "stopped": true,
+      "kind": "coin",
+      "item": {
+        "kind": "coin",
+        "x": 1797,
+        "y": 99,
+        "vx": 0,
+        "vy": 5,
+        "age": 78,
+        "life": 0,
+        "nativeCoin": {
+          "slot": 8,
+          "state": 0,
+          "speed": 5,
+          "force": 0,
+          "fraction": 0,
+          "collision": false
+        }
+      },
+      "nativeState": 0
+    },
+    {
+      "source": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+      "frame": 1085,
+      "ramSha256": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+      "camera": 1669,
+      "globalFrame": 1024,
+      "counter": 254,
+      "stopped": true,
+      "kind": "coin",
+      "item": {
+        "kind": "coin",
+        "x": 1797,
+        "y": 99,
+        "vx": 0,
+        "vy": 5,
+        "age": 78,
+        "life": 0,
+        "nativeCoin": {
+          "slot": 8,
+          "state": 0,
+          "speed": 5,
+          "force": 0,
+          "fraction": 0,
+          "collision": false
+        }
+      },
+      "nativeState": 0
+    }
+  ]
+}
