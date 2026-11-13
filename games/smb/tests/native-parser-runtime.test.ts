@@ -111,3 +111,15 @@ test('6-3 spring landing, compression and grounded launch hold match native RAM'
   if(frame>=1957)assert.equal(Math.floor(sim.player.y)-32,[150,138,127][frame-1957],`row${frame} release`);
  });
 });
+
+test('5-3 retained frenzy controller delays id40 until the native Koopa final movement and next slot pass',()=>{
+ replay('5-3',620,(sim,frame)=>{
+  if(frame===466){assert.equal(sim.frenzyControllers.find((c:any)=>c.column===1312).slot,3);}
+  if(frame<547)return;
+  const platform=sim.area.platforms.find((p:any)=>p.x===1466)!;
+  if(frame<550)assert.equal(sim.platformSlots.has(platform),false,`row${frame} waits`);
+  if(frame===549){assert.equal(sim.slotSub[2],184,'erased Koopa completes its horizontal movement');assert.deepEqual(sim.slotVertical[2],{speed:3,force:61,fraction:221},'erasure clears state, preserving vertical bytes');}
+  if(frame===550){assert.equal(sim.platformSlots.get(platform),2);assert.equal(sim.platformMotion.collisionPosition(platform,sim.platformFrame).x,1504+184/256);}
+  if(frame>=617)assert.equal(Math.floor(sim.player.x),[1470,1472,1473,1475][frame-617],`row${frame} Mario carry`);
+ });
+});

@@ -14,11 +14,15 @@ for(const level of fs.readdirSync(root).filter(s=>/^\d-\d$/.test(s)).sort()){
  for(let frame=1;frame<raw.length/2048;frame++){
   const prev=raw.subarray((frame-1)*2048,frame*2048),next=raw.subarray(frame*2048,(frame+1)*2048);
   for(let slot=0;slot<5;slot++){
-   if(!next[0x0f+slot]||next[0x16+slot]!==37){lifts.delete(slot);continue;}
-   if(!prev[0x0f+slot])lifts.set(slot,{frame,y:next[0xcf+slot],counter:next[0x09]});
-   const spawn=lifts.get(slot);if(!spawn||next[0x0e]!==8||next[0x747])continue;
-   const row={level,frame,slot,id:37,load:0,before:state(prev,slot),after:state(next,slot),spawnY:spawn.y,counter:spawn.counter,age:frame-spawn.frame,xByte:next[0x401+slot]};
-   const key=JSON.stringify([37,spawn.y,spawn.counter&7,row.age]);if(seen.has(key))continue;seen.add(key);rows.push(row);
+   if(!next[0x0f+slot]||![37,40].includes(next[0x16+slot])){lifts.delete(slot);continue;}
+   if(!prev[0x0f+slot]||prev[0x16+slot]!==next[0x16+slot])lifts.set(slot,{frame,y:next[0xcf+slot],counter:next[0x09],x:next[0x6e+slot]*256+next[0x87+slot],sub:next[0x401+slot],fraction:next[0x417+slot]});
+   const spawn=lifts.get(slot);
+   // An elapsed-age trajectory ends at the first source timer/engine hold.
+   // Resuming after a hold needs the then-current FrameCounter, not spawn+age.
+   if(spawn&&next[0x16+slot]===40&&(next[0x770]!==1||next[0x747]||prev[0x0e]===8&&next[0x0e]!==8))spawn.stopped=true;
+   if(!spawn||spawn.stopped||next[0x0e]!==8||next[0x747])continue;
+   const row={level,frame,slot,id:next[0x16+slot],load:0,before:state(prev,slot),after:state(next,slot),spawnY:spawn.y,counter:spawn.counter,age:frame-spawn.frame,xByte:next[0x401+slot],spawnX:spawn.x,spawnSub:spawn.sub,spawnFraction:spawn.fraction};
+   const key=JSON.stringify([row.id,spawn.y,spawn.counter&(row.id===37?7:3),row.age,spawn.fraction]);if(seen.has(key))continue;seen.add(key);rows.push(row);
   }
   if(next[0x0e]!==8||next[0x747]||prev[0x747])continue;
   for(let slot=0;slot<5;slot++){
