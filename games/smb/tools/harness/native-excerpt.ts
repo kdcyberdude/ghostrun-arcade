@@ -24,7 +24,7 @@ const pack=(b:Uint8Array)=>zlib.gzipSync(b,{level:9}).toString('base64'),unpack=
 export function excerptReplay(x:Excerpt):Divergence{
  const pads=unpack(x.pads),ram=unpack(x.ram),n=x.addrs.length;
  const frameRam=(f:number)=>{const r=new Uint8Array(2048);if(f<x.frames)x.addrs.forEach((a,i)=>{r[a]=ram[f*n+i];});return r;};
- return compareRun(decodeEntrance(unpack(x.initialRam),{level:x.level}),pads,frameRam,x.level);
+ return compareRun(decodeEntrance(unpack(x.initialRam),{level:x.level},x.source.nativeAreaBinding),pads,frameRam,x.level);
 }
 
 if(import.meta.url===`file://${process.argv[1]}`){
@@ -36,7 +36,7 @@ if(import.meta.url===`file://${process.argv[1]}`){
   const raw=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin')),total=Math.min(pads.length,raw.length/2048);
   let frames=0;while(frames<total){const n=nativeRow(new Uint8Array(raw.buffer,raw.byteOffset+frames*2048,2048));if(n.mode!==1||n.level!==level)break;frames++;}
   const ram=new Uint8Array(frames*ADDRS.length);for(let f=0;f<frames;f++)ADDRS.forEach((ad,i)=>{ram[f*ADDRS.length+i]=raw[f*2048+ad];});
-  const x:Excerpt={schema:'native-run-excerpt-v2',level,run:a.run,source:{actionsSha256:receipt.actionsSha256,initialRamSha256:receipt.initialRamSha256,sourceFrameOffset:receipt.sourceFrameOffset,
+  const x:Excerpt={schema:'native-run-excerpt-v2',level,run:a.run,source:{...(receipt.areaBinding?{nativeAreaBinding:receipt.areaBinding}:{}),actionsSha256:receipt.actionsSha256,initialRamSha256:receipt.initialRamSha256,sourceFrameOffset:receipt.sourceFrameOffset,
    method:'pad bytes replayed one per PPU frame on the NeSLE CPU build from the saved level entrance (ghostrun-lab native_ram_trace.py)'},
    initialRam:pack(new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram')))),frames,addrs:ADDRS,pads:pack(pads.subarray(0,frames+1)),ram:pack(ram),firsts:{}};
   x.firsts=excerptReplay(x).fields;
