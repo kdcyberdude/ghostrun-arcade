@@ -5,7 +5,7 @@
 #include <optional>
 #include <string>
 using namespace nesle::cuda;
-struct Init {int slot,id,flag,x,y;};
+struct Init {int slot,id,flag,x,y,sp,ret;std::vector<int> before,after;};
 struct FirebarAttempt {std::size_t frame;int slot,id,x,y,camera,master,speed,direction,high,low,sp,ret;};
 struct Attempt {std::size_t frame;int slot,offset,page,selected,camera,hard,primary,frenzy,vine,queue,sp,ret,pointer;std::vector<Init> init;};
 class NativeEnemyCursorObserver {
@@ -21,19 +21,21 @@ public:
  }
  template<class Cpu> void observe(const Cpu& cpu){
   const auto* r=b.cpu.ram;
+  const auto initBytes=[&](int slot){std::vector<int> bytes;for(const int address:{0x0f,0x16,0x1e,0x46,0x49a,0x6e,0x87,0xb6,0xcf,0xa0,0x58,0x401,0x434,0x417,0x796,0x78a,0x3c5})bytes.push_back(r[address+slot]);return bytes;};
+  if(active)for(auto& init:active->init)if(init.after.empty()&&cpu.pc==init.ret&&cpu.sp==((init.sp+2)&255))init.after=initBytes(init.slot);
   if(firebar&&cpu.pc==firebar->ret&&cpu.sp==((firebar->sp+2)&255)){
    const auto& a=*firebar;firebars<<"{\"frame\":"<<a.frame<<",\"endFrame\":"<<frame<<",\"slot\":"<<a.slot<<",\"id\":"<<a.id<<",\"x\":"<<a.x<<",\"y\":"<<a.y<<",\"camera\":"<<a.camera<<",\"master\":"<<a.master<<",\"speed\":"<<a.speed<<",\"direction\":"<<a.direction<<",\"before\":["<<a.high<<','<<a.low<<"],\"after\":["<<int(r[0xa0+a.slot])<<','<<int(r[0x58+a.slot])<<"],\"offscreen\":"<<int(r[0x3d1])<<"}\n";firebar.reset();
   }
   if(cpu.pc==firebarPC){if(firebar)throw std::runtime_error("Nested firebar");const int slot=cpu.x,sp=cpu.sp,ret=(r[0x100+((sp+1)&255)]+r[0x100+((sp+2)&255)]*256+1)&65535;firebar=FirebarAttempt{frame,slot,int(r[0x16+slot]),r[0x6e + slot]*256+r[0x87+slot],(int(r[0xb6+slot])-1)*256+r[0xcf+slot],r[0x71a]*256+r[0x71c],int(r[0x747]),int(r[0x388+slot]),int(r[0x34+slot]),int(r[0xa0+slot]),int(r[0x58+slot]),sp,ret};}
   if(active&&cpu.pc==active->ret&&cpu.sp==((active->sp+2)&255)){
    const auto& a=*active;out<<"{\"frame\":"<<a.frame<<",\"endFrame\":"<<frame<<",\"pointer\":"<<a.pointer<<",\"slot\":"<<a.slot<<",\"camera\":"<<a.camera<<",\"hard\":"<<a.hard<<",\"primaryHard\":"<<a.primary<<",\"frenzy\":"<<a.frenzy<<",\"vine\":"<<a.vine<<",\"queue\":"<<a.queue<<",\"before\":["<<a.offset<<','<<a.page<<','<<a.selected<<"],\"after\":["<<int(r[0x739])<<','<<int(r[0x73a])<<','<<int(r[0x73b])<<"],\"flag\":"<<int(r[15+a.slot])<<",\"init\":[";
-   bool comma=false;for(const auto& i:a.init){if(comma)out<<',';comma=true;out<<'['<<i.slot<<','<<i.id<<','<<i.flag<<','<<i.x<<','<<i.y<<']';}out<<"]}\n";calls++;active.reset();
+   bool comma=false;for(const auto& i:a.init){if(comma)out<<',';comma=true;out<<'['<<i.slot<<','<<i.id<<','<<i.flag<<','<<i.x<<','<<i.y<<']';}out<<"],\"initBytes\":[";comma=false;for(const auto& i:a.init){if(i.after.empty())throw std::runtime_error("Initializer return missing");if(comma)out<<',';comma=true;out<<"{\"slot\":"<<i.slot<<",\"id\":"<<i.id<<",\"before\":[";bool c=false;for(int byte:i.before){if(c)out<<',';c=true;out<<byte;}out<<"],\"after\":[";c=false;for(int byte:i.after){if(c)out<<',';c=true;out<<byte;}out<<"]}";}out<<"]}\n";calls++;active.reset();
   }
   if(cpu.pc==check){
    if(active){if(cpu.sp==active->sp&&cpu.x==active->slot)return;throw std::runtime_error("Nested enemy parser attempt");}const int sp=cpu.sp,ret=(r[0x100+((sp+1)&255)]+r[0x100+((sp+2)&255)]*256+1)&65535;
    active=Attempt{frame,int(cpu.x),int(r[0x739]),int(r[0x73a]),int(r[0x73b]),r[0x71a]*256+r[0x71c],int(r[0x6cc]),int(r[0x76a]),int(r[0x6cb]),int(r[0x398]),int(r[0x6cd]),sp,ret,r[0xe9]+r[0xea]*256,{}};
   }
-  if(active&&cpu.pc==initPC){const int slot=cpu.x;active->init.push_back({slot,int(r[0x16+slot]),int(r[15+slot]),r[0x6e + slot]*256+r[0x87+slot],(int(r[0xb6+slot])-1)*256+r[0xcf+slot]});initialized++;}
+  if(active&&cpu.pc==initPC){const int slot=cpu.x;const int sp=cpu.sp,ret=(r[0x100+((sp+1)&255)]+r[0x100+((sp+2)&255)]*256+1)&65535;active->init.push_back({slot,int(r[0x16+slot]),int(r[15+slot]),r[0x6e + slot]*256+r[0x87+slot],(int(r[0xb6+slot])-1)*256+r[0xcf+slot],sp,ret,initBytes(slot),{}});initialized++;}
  }
  void step(std::uint8_t pad,std::uint64_t target){
   b.action_masks[0]=pad;auto state=load_cpu_state(b,0);auto hot=load_ppu_hot_state(b,0);std::uint32_t pending=0,toEvent=batch_ppu_cycles_until_next_event_hot<kBankModeNrom>(b,0,hot);bool done=false;

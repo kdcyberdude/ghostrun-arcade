@@ -128,6 +128,8 @@ export function swimBobOffset(bob:{dir:number;first:number}|undefined,k:number){
 // `max` or more with a move force of 128 or more becomes exactly `max` (SMB disassembly ImposeGravity; checked on every row of the 5-4/6-4/8-2 traces).
 export type NativeMoveState={y:number;speed:number;force:number;fraction:number;timer:number};
 export const nativeMoveState=(y:number,timer=0):NativeMoveState=>({y,speed:0,force:0,fraction:0,timer});
+/** InitPodoboo/SmallBBox clear speed and force, retaining the slot $0417 fraction. */
+export const nativePodobooState=(fraction:number):NativeMoveState=>({...nativeMoveState(514,1),fraction});
 export function nativeImposeGravity(n:NativeMoveState,down:number,max:number){
  const f=n.fraction+n.force;n.fraction=f&255;n.y+=n.speed+(f>>8);
  const v=n.force+down;n.force=v&255;n.speed+=v>>8;
@@ -1569,7 +1571,7 @@ export class Simulation {
  }
  private restoreStarMusic(){if(nativeStarMusic(this.player.star,this.intervalControl,Math.floor((this.player.y-32)/256)+1)){this.emit(this.areaMusic());this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];}}
  private updateNativePodoboo(e:Enemy){
-  const n=e.pod??={...nativeMoveState(514,1),fraction:this.slotYFraction[e.enemySlot??0]}; // InitPodoboo zeroes speed and force, the slot keeps its y fraction $0417+s (3-4 row 616)
+  const n=e.pod??=nativePodobooState(this.slotYFraction[e.enemySlot??0]); // InitPodoboo zeroes speed and force, the slot keeps its y fraction $0417+s (3-4 row 616)
   if(e.waitedForNativeSlot&&e.age===1){e.y=n.y-256+24;return;}
   if(n.timer===0){const force=this.random.bytes[(e.enemySlot??0)+1]|0x80;Object.assign(n,{y:514,speed:-7,force,timer:(force&15)|6});}
   nativeImposeGravity(n,28,3);
@@ -2283,7 +2285,7 @@ export class Simulation {
  private createNativeSpring(spring:SpringSpec){
   if(this.springSlots.has(spring))return;const used=this.busyNativeSlots();let slot=0;while(slot<5&&used.has(slot))slot++;
   this.springSlots.set(spring,slot);
-  if(slot===5){Object.assign(this.specialSlot5,{flag:(this.specialSlot5.flag+1)&255,id:50,x:spring.x,y:spring.y-24});this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));}
+  if(slot===5){Object.assign(this.specialSlot5,{flag:(this.specialSlot5.flag+1)&255,id:50,x:spring.x,y:spring.y-24,yHigh:1});this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));}
  }
  private releaseNativeSprings(onlySlot?:number){
   for(const [spring,slot]of this.springSlots)if((onlySlot===undefined||slot===onlySlot)&&spring.x<Math.floor(this.camera)-72){this.springSlots.delete(spring);if(slot<5)this.slotReleaseFrame[slot]=this.frame;else if(this.specialSlot5.id===50)this.specialSlot5.erase();}
@@ -2293,7 +2295,7 @@ export class Simulation {
   if(!stream?.objects.some(o=>o.column===this.parserColumnX))return;
   const slot=Math.min(5,this.freeNativeSlot());
   this.nativeCastleFlag={slot,x:this.parserColumnX,y:144,task:0,state:0,interval:0,draw:false};
-  if(slot===5){this.items=this.items.filter(i=>i.nativePowerState===undefined);this.specialSlot5.flag=1;this.specialSlot5.id=49;this.specialSlot5.x=this.parserColumnX;this.specialSlot5.y=144;}
+  if(slot===5){this.items=this.items.filter(i=>i.nativePowerState===undefined);this.specialSlot5.flag=1;this.specialSlot5.id=49;this.specialSlot5.x=this.parserColumnX;this.specialSlot5.y=144;this.specialSlot5.yHigh=1;}
  }
  private advanceNativeAreaParser(scroll:number){
   const task=this.parserClock.advance(scroll,this.parserVramBusy);

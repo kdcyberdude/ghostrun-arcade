@@ -45,7 +45,8 @@ export function strictSimEntities(sim:any):StrictEntity[]{
  if(typeof sim.springCompression==='function')for(const [spring,slot]of sim.springSlots??[])entities.push({bank:'enemy',slot,kind:'spring',x:Math.floor(spring.x),y:spring.y-24+sim.springCompression(spring)*8,source:'spring'});
  for(const controller of sim.frenzyControllers??[])if(controller.id===52&&controller.slot!==undefined&&!controller.lost)entities.push({bank:'enemy',slot:controller.slot,kind:'warp-zone-control',x:Math.floor(controller.x??controller.column),y:controller.y,source:'controller',state:0});
  for(const c of sim.frenzyControllers??[])if(c.id===23&&c.slot!==undefined)entities.push({bank:'enemy',slot:c.slot,kind:OBJECTS[23],x:Math.floor(c.x??c.column),y:c.y,source:'controller',state:0});
- const pole=sim.specialSlot5;if(pole?.flag&&pole.id===48)entities.push({bank:'enemy',slot:5,kind:'flagpole-flag',x:Math.floor(pole.x),y:Math.floor(sim.phase==='flag'?sim.flagTop:pole.y),source:'flagpole-flag'});
+
+ const pole=sim.specialSlot5;if(pole?.flag&&pole.id===23)entities.push({bank:'enemy',slot:5,kind:OBJECTS[23],x:Math.floor(pole.x),y:(pole.yHigh-1)*256+pole.y,source:'controller',state:0});if(pole?.flag&&pole.id===48)entities.push({bank:'enemy',slot:5,kind:'flagpole-flag',x:Math.floor(pole.x),y:Math.floor(sim.phase==='flag'?sim.flagTop:pole.y),source:'flagpole-flag'});
  const flag=sim.nativeCastleFlag;if(flag)entities.push({bank:'enemy',slot:flag.slot,kind:'castle-flag',x:Math.floor(flag.x),y:flag.y,source:'castle-flag',state:flag.task>=2?flag.state:undefined});
  for(const f of sim.nativeFireworks??[])if(f.active)entities.push({bank:'enemy',slot:f.slot,kind:'firework',x:Math.floor(f.x),y:f.y,source:'firework',state:0});
  for(const item of sim.items){

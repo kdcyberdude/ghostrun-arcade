@@ -3,8 +3,8 @@
 import {nativeMiscOffscreen} from './native-misc';
 export type AreaControl={x:number;id:number};
 export class NativeSpecialSlot {
- vineSlots:number[]=[];flag=0;id=0;x=0;y=0;vineHeight=0;vineCount=0;vineStartY=0;frenzyQueue=0;frenzyBuffer=0;
- claimPowerup(x:number,y:number){this.flag=1;this.id=46;this.x=x;this.y=y;}
+ vineSlots:number[]=[];flag=0;id=0;x=0;y=0;yHigh=0;vineHeight=0;vineCount=0;vineStartY=0;frenzyQueue=0;frenzyBuffer=0;
+ claimPowerup(x:number,y:number){this.yHigh=1;this.flag=1;this.id=46;this.x=x;this.y=y;}
  claimVine(x:number,y:number){this.flag=1;this.id=47;this.x=x;this.y=y;if(!this.vineCount)this.vineStartY=y;this.vineCount++;this.vineSlots.push(5);}
  addVineSegment(slot:number){this.vineCount++;this.vineSlots.push(slot);}
  claimFlag(column:number){this.flag=(this.flag+1)&255;this.id=48;this.x=column-8;this.y=48;}
