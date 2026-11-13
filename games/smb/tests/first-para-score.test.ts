@@ -2,6 +2,7 @@
  * chain setup below are engineering inputs, not native state or gameplay proof.
  * Native first-hit timing spans 7/8 frames; nonzero-chain behavior is unmeasured.
  */
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -14,7 +15,7 @@ function setup(palette:string,chain=0) {
  const area=level.areas.find(a=>a.id==='main')!;
  area.enemies=area.enemies.filter(e=>e.kind==='paratroopa'&&e.x===288).map(e=>({...e,palette}));
  area.tiles=[]; area.freeTiles=[]; area.decorations=[]; area.patternOverrides=[]; area.cannons=[]; area.generators=[];
- const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[288,188],128);
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea('main',[288,188],128);
  Object.assign(sim.enemies[0],{active:true,enemySlot:0,y:192});
  (sim as unknown as ChainAccess).stompChain=chain;
  sim.player.vy=1;sim.player.grounded=false;
@@ -22,7 +23,11 @@ function setup(palette:string,chain=0) {
 }
 function hitNext(sim:Simulation,kind:'wingless'|'goomba') {
  const old=sim.enemies[0];
- const next:Enemy={...old,kind:kind==='goomba'?'goomba':old.kind,x:288,y:192,originX:288,originY:192,vx:0,vy:0,dead:0,active:true,shell:false,movingShell:false};
+ // A second native contact requires an eligible separated box test; deleting
+ // an airborne marker never clears Enemy_CollisionBits bit0.
+ sim.player.x=old.x+64;sim.player.y=100;sim.player.vx=0;sim.player.vy=0;sim.player.grounded=false;
+ sim.broClock=1;sim.step([],1);assert.equal((sim as any).collisionBits[old.enemySlot!]&1,0);
+ const next:Enemy={...old,kind:kind==='goomba'?'goomba':old.kind,nativeId:kind==='goomba'?6:old.nativeId,x:288,y:192,originX:288,originY:192,vx:0,vy:0,dead:0,active:true,shell:false,movingShell:false};
  sim.enemies=[next];delete next.unwingedAir;sim.player.x=288;sim.player.y=188;sim.player.vx=0;sim.player.vy=1;sim.player.grounded=false;
  sim.broClock=1;sim.step([],1);
  return next;

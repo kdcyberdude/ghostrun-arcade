@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -10,7 +11,7 @@ test('7-1 keeps the native stomp-born Koopa as one actor, with no screenshot-der
  const main=level.areas.find(a=>a.id==='main')!;
  assert.equal(main.enemies.some(e=>e.kind==='koopa'&&e.x===1009),false);
  const spec={kind:'koopa' as const,x:1009,y:178,spawnUnwinged:true};
- const sim=new Simulation([{...level,areas:[{...main,enemies:[spec]}]}]);sim.reset(true);sim.camera=900; // Keep the focused actor in the native active window.
+ const sim=isolatePlacedStream(new Simulation([{...level,areas:[{...main,enemies:[spec]}]}]));sim.reset(true);sim.camera=900; // Keep the focused actor in the native active window.
  const k=sim.enemies[0];k.active=true;
  let rows=0;
  while(k.unwingedAir&&rows<40){

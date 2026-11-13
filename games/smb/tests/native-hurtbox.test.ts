@@ -42,8 +42,10 @@ test('5-2 mood0 r1434: a rising Mario touches a Koopa at dy 23, one row lower he
  assert.equal(contact('koopa',24,-4),'play');
 });
 
-test('rising off a stomp is not a touch in the extended Koopa reach',()=>{
- assert.equal(contact('koopa',20,-4,sim=>{(sim as any).bouncing=true;}),'play');
+test('a retained native collision latch protects a rising stomp bounce, not the bounce flag alone',()=>{
+ const setup=(sim:Simulation,bits:number)=>{const s=sim as any;s.bouncing=true;s.enemies[0].active=true;s.enemies[0].enemySlot=0;s.collisionBits[0]=bits;};
+ assert.equal(contact('koopa',20,-4,sim=>setup(sim,1)),'play');
+ assert.equal(contact('koopa',20,-4,sim=>setup(sim,0)),'dying');
 });
 
 test('a Cheep below its native reach no longer hurts (old 16 px box reached dy 22)',()=>{
