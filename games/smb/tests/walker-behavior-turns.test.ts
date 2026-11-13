@@ -24,6 +24,7 @@ test('a Red Koopa walking left turns when the point under its centre leaves the 
 test('a Red Koopa walking right turns when the point under its centre passes the ledge end',()=>{
  // Platform end (exclusive) at x 336: the native 7-3 Red Koopa turned at x=end-8 (floor).
  const sim=fixture([{kind:'redKoopa',x:240,y:208,direction:1}],[...range(0,3),...range(8,20)]);
+ sim.camera=32; // The ledge end must remain within the native right erase bound.
  const {max}=extent(sim,0,400);
  assert.equal(max,328);assert.ok(sim.enemies[0].vx<0);
 });
