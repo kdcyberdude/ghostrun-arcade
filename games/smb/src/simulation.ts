@@ -804,8 +804,13 @@ export class Simulation {
   for(const s of this.area.springs??[])if(!this.springTimers.get(s)&&x>=s.x&&x<s.x+16&&y>=s.y-24&&y<s.y+8)return {x:s.x,y:s.y-24,width:16,height:32};
   return undefined;
  }
+ private eraseAxeMetatile(){
+  // DoFootCheck keeps the left metatile in A but leaves the right-foot buffer pointer for ErACM.
+  this.tiles.delete(`${Math.floor((Math.floor(this.player.x)+12)/16)},${Math.floor(this.player.y/16)}`);
+ }
  private axeFootContact(){
   const p=this.player,exit=this.area.exit;if(exit?.kind!=='axe'||exit.y===undefined||p.vy<0)return false;
+  if(this.tiles.get(`${Math.floor(exit.x/16)},${Math.floor(exit.y/16)}`)!==197)return false;
   return Math.floor(p.y)>=exit.y&&Math.floor(p.y)<exit.y+16&&[3,12].some(dx=>Math.floor(p.x)+dx>=exit.x-8&&Math.floor(p.x)+dx<exit.x+8);
  }
  private sideTileAt(x:number,y:number){
@@ -2031,6 +2036,7 @@ export class Simulation {
 
  }
  private beginCastle(){
+  this.eraseAxeMetatile();
   if((this.random.frame&7)===0)this.colorRotations--; // GameCoreRoutine skips the GameEngine tail on axe contact.
   this.paletteRemove=true;this.phase='castle';this.phaseFrame=0;this.flagBonus=0;
   this.bridge=[...this.tiles].filter(([,id])=>id===137).sort((a,b)=>Number(b[0].split(',')[0])-Number(a[0].split(',')[0])).map(([key])=>key);
@@ -2058,7 +2064,7 @@ export class Simulation {
   if(this.victoryErase){
    const exit=this.area.exit!,kind=this.victoryErase;this.victoryErase=undefined;
    if(kind==='bridge'){const key=this.bridge.shift();if(key){this.tiles.delete(key);const x=Number(key.split(',')[0])*16;this.freeTiles=this.freeTiles.filter(t=>t.id!==137||t.x<x||t.x>=x+16);}}
-   else{const key=kind==='axe'?`${Math.floor(exit.x/16)},${Math.floor((exit.y??0)/16)}`:`${Math.floor(exit.x/16)-1},9`;if(this.tiles.get(key)===(kind==='axe'?197:12))this.tiles.delete(key);}
+   else if(kind==='chain'){const key=`${Math.floor(exit.x/16)-1},9`;if(this.tiles.get(key)===12)this.tiles.delete(key);}
   }
   this.gameTimerStep(false);this.tickIntervalTimers();
   let poseGround=p.grounded,poseAbsolute=this.motor.absolute,poseWalk=false;
@@ -2077,7 +2083,7 @@ export class Simulation {
     else{this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';}
     this.motor.clearContacts();this.movePlayerX(p.x-oldX,this.height,false);this.walkOffStart(wasGrounded);
     const axe=this.axeFootContact();
-    if(axe){this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
+    if(axe){this.eraseAxeMetatile();this.motor.speed=24*256+(this.motor.speed&255);p.vx=this.motor.speed/4096;}
     return {playerX:Math.floor(p.x),axe};
    }});
   this.camera=result.camera;
