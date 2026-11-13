@@ -2,9 +2,10 @@
  * State verdicts come from native-state-replay.ts (same comparators, plain-Node bundle; equal to the
  * former in-browser readout on every frame of the cca2e44 audit). The browser only draws and compares pictures.
  * --levels 1-1[,..]: compare only native frames of those levels; replay stops after the last one,
- * the remaining native picture stream is still hashed. Nonselected rows stay unchecked. */
+ * the remaining native picture stream is still hashed. Nonselected rows stay unchecked.
+ * Native lag frames (native-lag-frames.mjs): the remake is not stepped on that input and the row is unchecked. */
 import fs from 'node:fs';import path from 'node:path';import {createHash} from 'node:crypto';import {parseArgs} from 'node:util';import {execFileSync} from 'node:child_process';import {createServer} from 'vite';import {chromium} from 'playwright';import {PNG} from 'pngjs';
-import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';
+import {decodeEntrance} from './native-entrance.mjs';import {bundleStateReplay,replayStateInWorker,levelAt} from './native-state-replay.js';import {nativeLagFrames} from './native-lag-frames.mjs';
 import {auditSourceHashes,verifyAuditSource,sourceManifestHash} from './native-monitor/source-provenance.mjs';
 import {policy,policyHash} from './native-monitor/visual-check.mjs';import {inventoryHash,counting,validateScope} from './native-monitor/combined-replay.mjs';
 const {values:a}=parseArgs({options:{monitor:{type:'string'},out:{type:'string'},ids:{type:'string'},levels:{type:'string'},jobs:{type:'string',default:'1'},batch:{type:'string',default:'16'},port:{type:'string',default:'54021'},'pilot-frames':{type:'string'}}});if(!a.monitor||!a.out)throw Error('--monitor and --out required');
@@ -36,7 +37,7 @@ async function audit(input:any,page:any){
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initialRAM differs');
  if(fs.statSync(path.join(pixelDir,'pixels.bin')).size!==pads.length*240*224||fs.statSync(path.join(pixelDir,'emph.bin')).size!==pads.length*224)throw Error('Native picture length');
  const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048))),chosen=(f:number)=>!scope||scope.levels.includes(labels[f]!);
- let end=pads.length;if(scope){end=0;for(let f=0;f<pads.length;f++)if(chosen(f))end=f+1;}
+ const lag=new Set<number>(nativeLagFrames(ram));let end=pads.length;if(scope){end=0;for(let f=0;f<pads.length;f++)if(chosen(f))end=f+1;}
  const limit=pilot===undefined?end:Math.min(pilot,end),entrance=original?decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json'))):undefined;
  // State runs in a child process while this process drives the pictures.
  const statePromise=replayStateInWorker(stateBundle.file,monitor,input.id,scope?.levels);statePromise.catch(()=>{});
@@ -48,7 +49,7 @@ async function audit(input:any,page:any){
   const {compareFrame}=await import(String('/tools/harness/native-monitor/visual-core.mjs')),mapping=new Map();palette.forEach((c:number,i:number)=>{if(!mapping.has(c))mapping.set(c,rgb[i]);});
   w.audit={gl,flip:new Uint8Array(240*224*4),compareFrame,rgb,palette,policy,mapping,native:new Uint8Array(240*224*4),work:{mismatch:new Uint8Array(240*224),queue:new Int32Array(240*224)},pictures:[]};
  },{entrance,original,rgb,palette,policy});
- const out:any={id:input.id,frames:input.frames,reseeded:false,initialStateVerified:original,spans:[],directlyComparedFrames:0,firstFailure:null,stateAudit:null,provenance:{ramSha256:meta.ramSha256,initialRamSha256:sha(initial),nativePixelsSha256:meta.pixelsSha256,nativeEmphasisSha256:meta.emphasisSha256,lag:1,start:input.start,paletteNormalization:'native-pixels.ts native palette-index equivalence',fullPictureStreamAuthenticated:false}};
+ const out:any={id:input.id,frames:input.frames,reseeded:false,nativeLagFrames:[...lag].filter(f=>f<limit),initialStateVerified:original,spans:[],directlyComparedFrames:0,firstFailure:null,stateAudit:null,provenance:{ramSha256:meta.ramSha256,initialRamSha256:sha(initial),nativePixelsSha256:meta.pixelsSha256,nativeEmphasisSha256:meta.emphasisSha256,lag:1,start:input.start,paletteNormalization:'native-pixels.ts native palette-index equivalence',fullPictureStreamAuthenticated:false}};
  const pixelFd=fs.openSync(path.join(pixelDir,'pixels.bin'),'r'),emphFd=fs.openSync(path.join(pixelDir,'emph.bin'),'r'),pixelsHash=createHash('sha256'),emphasisHash=createHash('sha256');
  const pictures:{status:string;picture?:any}[]=[],firstPictures=new Map<number,{pix:Buffer;emph:Buffer;i:number;remake?:Buffer}>();let candidate=-1;
  try{
@@ -56,8 +57,8 @@ async function audit(input:any,page:any){
    const count=Math.min(batch,limit-from),body=Buffer.alloc(count*240*224+count*224),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224);
    if(fs.readSync(pixelFd,pix,0,pix.length,from*240*224)!==pix.length||fs.readSync(emphFd,emph,0,emph.length,from*224)!==emph.length)throw Error('Native picture truncated');pixelsHash.update(pix);emphasisHash.update(emph);
    const key=String(++feedKey);feed.set(key,body);
-   const compare=Array.from({length:count},(_,i)=>chosen(from+i));
-   const rows=await page.evaluate(async({key,count,pads,names,compare}:any)=>{
+   const compare=Array.from({length:count},(_,i)=>chosen(from+i)&&!lag.has(from+i)),skip=Array.from({length:count},(_,i)=>lag.has(from+i));
+   const rows=await page.evaluate(async({key,count,pads,names,compare,skip}:any)=>{
     const w=window as any,a=w.audit,body=new Uint8Array(await (await fetch('/__native-feed/'+key)).arrayBuffer()),pix=body.subarray(0,count*240*224),emph=body.subarray(count*240*224),rows=[];a.pictures=[];
     for(let f=0;f<pads.length;f++){
      if(compare[f]){
@@ -65,9 +66,9 @@ async function audit(input:any,page:any){
       for(let y=0;y<224;y++)for(let x=0;x<240;x++){const k=y*240+x,index=pix[f*240*224+k],c=a.rgb[index|emph[f*224+y]<<6],j=k*4;if(!c)throw Error('Unknown emphasis');a.native[j]=c[0];a.native[j+1]=c[1];a.native[j+2]=c[2];a.native[j+3]=255;const packed=remake[j]<<16|remake[j+1]<<8|remake[j+2],mapped=a.palette[index]===packed?a.rgb[index]:a.mapping.get(packed);if(mapped){remake[j]=mapped[0];remake[j+1]=mapped[1];remake[j+2]=mapped[2];}}
       const picture=a.compareFrame(a.native,remake,240,224,a.policy,a.work);a.pictures.push(remake);rows.push({picture});
      }else{a.pictures.push(null);rows.push(null);}
-     w.mario.step(names.filter((_:any,b:number)=>pads[f]&(1<<b)),1);
+     if(!skip[f])w.mario.step(names.filter((_:any,b:number)=>pads[f]&(1<<b)),1);
     }return rows;
-   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare});
+   },{key,count,pads:Array.from(pads.subarray(from,from+count)),names,compare,skip});
    feed.delete(key);
    for(let i=0;i<count;i++){
     const f=from+i,row=rows[i];pictures[f]=row?{status:row.picture.status==='pass'?'match':'mismatch',picture:row.picture}:{status:'unchecked'};

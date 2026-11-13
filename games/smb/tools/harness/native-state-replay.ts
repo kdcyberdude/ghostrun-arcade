@@ -1,7 +1,8 @@
 /** Headless STATE-ONLY replay of the combined-audit inventory: no browser, no pictures.
  * Uses the same state comparators as combined-monitor-audit.ts (strictCompare for original
  * entrances, LiveWorld1StateAudit for power-on recordings), stepping one Node Simulation per
- * recording with every recorded pad, continuously, never reseeding after a divergence.
+ * recording with every recorded pad, continuously, never reseeding after a divergence. Native lag
+ * frames (native-lag-frames.mjs) are skipped: no remake update, state unchecked.
  * Every picture verdict is 'unchecked'; the receipt schema is distinct so it can never be
  * registered as a combined state-and-picture result.
  *
@@ -15,7 +16,7 @@
  */
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import {createHash} from 'node:crypto';import {parseArgs} from 'node:util';import {spawn,execFileSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
 import {Simulation} from '../../src/simulation.js';import {observedLevels} from '../../src/levels.js';import type {Button} from '../../src/types.js';
-import {decodeEntrance} from './native-entrance.mjs';import {strictCompare,type StrictFrameObservation} from './native-strict.js';
+import {decodeEntrance} from './native-entrance.mjs';import {nativeLagFrames} from './native-lag-frames.mjs';import {strictCompare,type StrictFrameObservation} from './native-strict.js';
 import {LiveWorld1StateAudit,compareLiveWorld1Start,captureLiveWorld1State} from './native-continuous-state.js';
 
 export const STATE_SCHEMA='smb-state-replay-v1';
@@ -33,7 +34,7 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
  const pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin')),initial=fs.readFileSync(path.join(dir,'initial.ram'));
  if(sha(pads)!==input.padsSha256||pads.length!==input.frames||ram.length!==pads.length*2048)throw Error('Native input/RAM authentication');
  if(sha(initial)!==(original?input.initialRamSha256:read(path.join(dir,'capture.json')).initialRamSha256))throw Error('Native initial RAM differs');
- const labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048)));
+ const lag=new Set<number>(nativeLagFrames(ram)),labels=Array.from({length:pads.length},(_,f)=>levelAt(ram.subarray(f*2048,(f+1)*2048)));
  const selected=(f:number)=>!levels||levels.includes(labels[f]!);
  let end=pads.length;if(levels){end=0;for(let f=0;f<pads.length;f++)if(selected(f))end=f+1;}
  // Diagnostics mirror combined-monitor-audit.ts: strict summary (original) or continuous coverage (power-on),
@@ -43,21 +44,23 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
  const continuous:any=original?undefined:{scope:'continuous World1-1 and source-owned boot/title',fullyComparedFrames:0,partiallyComparedFrames:0,uncheckedFrames:0,knownMismatchFrames:0,gaps:{}};
  if(original){
   const entrance=decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json')));
-  const audit=strictCompare(entrance,pads.subarray(0,end),ram.subarray(0,end*2048),level!,(row:StrictFrameObservation)=>note(row.frame,row.status,()=>row.fields));
+  const audit=strictCompare(entrance,pads.subarray(0,end),ram.subarray(0,end*2048),level!,(row:StrictFrameObservation)=>note(row.frame,row.status,()=>row.fields),lag);
   strict={first:audit.first,firstCoverageGap:audit.firstCoverageGap,fields:audit.fields};
  }else{
   const sim:any=new Simulation(observedLevels());sim.twoPlayer=false;sim.reset(false);sim.events.length=0;
   const audit=new LiveWorld1StateAudit();start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
   for(let f=0;f<end;f++){
-   sim.step(names.filter((_,b)=>pads[f]&(1<<b)),1);sim.events.length=0;
-   const live=audit.compare(ram.subarray(f*2048,(f+1)*2048),captureLiveWorld1State(sim));note(f,live.status,()=>live.differences.map(d=>d.field));
+   if(!lag.has(f)){sim.step(names.filter((_,b)=>pads[f]&(1<<b)),1);sim.events.length=0;}
+   const live=audit.compare(ram.subarray(f*2048,(f+1)*2048),captureLiveWorld1State(sim));
+   if(lag.has(f)){states[f]='unchecked';continue;} // the audit still reads the native row to keep its scene context
+   note(f,live.status,()=>live.differences.map(d=>d.field));
    if(!live.gaps.length)continuous.fullyComparedFrames++;else if(live.checked.length)continuous.partiallyComparedFrames++;else continuous.uncheckedFrames++;
    if(live.status==='mismatch')continuous.knownMismatchFrames++;for(const gap of live.gaps){const g=continuous.gaps[gap]??={first:f,count:0};g.count++;}
   }
  }
  const spans:Span[]=[];let checked=0;
  for(let f=0;f<pads.length;f++){const keep=f<end&&selected(f);if(keep)checked++;push(spans,f,labels[f],keep?states[f]:'unchecked');}
- return {id:input.id,frames:pads.length,reseeded:false,replayedFrames:end,stateCheckedFrames:checked,spans,start,strict,continuous,firstStateMismatch,
+ return {id:input.id,frames:pads.length,reseeded:false,nativeLagFrames:[...lag].filter(f=>f<end),replayedFrames:end,stateCheckedFrames:checked,spans,start,strict,continuous,firstStateMismatch,
   reference:{padsSha256:input.padsSha256,ramSha256:sha(ram),initialRamSha256:sha(initial)},seconds:(performance.now()-started)/1000};
 }
 
@@ -78,7 +81,7 @@ export function replayStateInWorker(bundle:string,monitor:string,id:string,level
 
 /** Hash of every runtime source/data file plus the comparators, so receipts name the build they measured. */
 export function stateSourceHashes(game:string){
- const files=['tools/harness/native-state-replay.ts','tools/harness/native-strict.ts','tools/harness/native-strict-entities.ts','tools/harness/native-continuous-state.ts','tools/harness/native-entrance.mjs'];
+ const files=['tools/harness/native-state-replay.ts','tools/harness/native-strict.ts','tools/harness/native-strict-entities.ts','tools/harness/native-continuous-state.ts','tools/harness/native-entrance.mjs','tools/harness/native-lag-frames.mjs'];
  for(const dir of ['src','data'])for(const f of fs.readdirSync(path.join(game,dir),{recursive:true}) as string[])if(/\.(ts|json|mjs)$/.test(f))files.push(path.join(dir,f));
  return Object.fromEntries(files.sort().filter(f=>fs.existsSync(path.join(game,f))).map(f=>[f,sha(fs.readFileSync(path.join(game,f)))]));
 }

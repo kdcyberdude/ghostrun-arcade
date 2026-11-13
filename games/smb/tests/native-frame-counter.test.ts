@@ -5,7 +5,7 @@ import {observedLevels} from '../src/levels.js';
 
 /** Legacy intro seeds before enemy priming. broClock retains the old queued-row
  * offset here; random.frame is RAM $09. Actual source-owned POWERON clocks are
- * covered by native-startup-runtime.test.ts and native-gameplay-continuation.test.ts. */
+ * covered by native-startup-runtime.test.ts. */
 test('legacy entry clock seeds are independent of the first enemy pass',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='1-1')!);
  const sim=new Simulation([level]);sim.reset(true);

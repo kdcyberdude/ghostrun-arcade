@@ -1,4 +1,3 @@
-import {nativeSourceDisplayPixels,nativeSourcePatternsFromRgba} from './native-source-display.js';
 import {nativeOamScanlines} from './native-oam.js';
 import {nativeOamPicture} from './native-oam-picture.js';
 import {nativeHammerPicturePhase} from './native-misc.js';
@@ -25,7 +24,6 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
- private sourcePatterns?:Uint8Array;private sourceDisplayTexture?:THREE.DataTexture;
  private oamRows:number[]|undefined;private oamContext:{base:number,x:number,y:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
@@ -48,7 +46,6 @@ export class GameRenderer {
   // Special sprites use the supplied assembly images; actor state is simulated independently.
   for(const record of (await fetch(A+'special/index.json').then(r=>r.json())).records)names.add('special/'+record.file);
   await Promise.all([...names].map(async name=>this.textures.set(name,await loadPixelTexture(THREE,A+name))));
-  {const image=this.textures.get('patterns-index.png')!.image,canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const context=canvas.getContext('2d')!;context.drawImage(image,0,0);this.sourcePatterns=nativeSourcePatternsFromRgba(context.getImageData(0,0,image.width,image.height).data,image.width);}
   for(const direction of ['left','right'])for(const name of ['star-dark','star-white','star-green'] as const){
    const source=this.textures.get(`player-mario-${direction}.png`)!;
    const canvas=document.createElement('canvas');canvas.width=source.image.width;canvas.height=source.image.height;
@@ -238,10 +235,6 @@ export class GameRenderer {
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
-  const physical=s.nativePhysicalDisplay;if(physical&&this.sourcePatterns){
-   const indices=nativeSourceDisplayPixels(physical,this.sourcePatterns);if(!this.sourceDisplayTexture){const texture=this.sourceDisplayTexture=new THREE.DataTexture(new Uint8Array(256*240*4),256,240,THREE.RGBAFormat);texture.magFilter=texture.minFilter=THREE.NearestFilter;texture.generateMipmaps=false;texture.flipY=true;texture.colorSpace=THREE.SRGBColorSpace;this.textures.set('#source-display',texture);}
-   const rgba=this.sourceDisplayTexture.image.data as Uint8Array;for(let i=0;i<indices.length;i++){const color=nesPalette.colors[indices[i]];rgba[i*4]=color[0];rgba[i*4+1]=color[1];rgba[i*4+2]=color[2];rgba[i*4+3]=255;}this.sourceDisplayTexture.needsUpdate=true;this.scene.clear();this.used.clear();this.quad('#source-display',[0,0,256,240],0,0,0,false,false,false);this.renderer.render(this.scene,this.camera);return;
-  }
   const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
   this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
