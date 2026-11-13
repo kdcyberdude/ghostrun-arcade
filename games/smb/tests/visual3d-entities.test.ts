@@ -149,3 +149,26 @@ test('swim feet use the independent native kick bit while body time is unchanged
  const entities=new Entities(animated,false);entities.sync(sim,0);const foot=actor(entities,'mario').getObjectByName('FootR')!,first=foot.quaternion.z;
  sim.random.frame=4;entities.sync(sim,0);assert.ok(foot.quaternion.z>first);assert.equal(sim.frame,0);
 });
+
+test('Piranha mouth follows the native frame-counter cell rather than actor age',()=>{
+ const {sim}=scene({kind:'piranha'}),animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['idle',new THREE.AnimationClip('idle',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);sim.random.frame=0;entities.sync(sim,0);assert.equal(actor(entities,'piranha').rotation.y,Math.PI/2);const model=actor(entities,'piranha').getObjectByName('piranha')!;assert.equal(model.position.x,0);
+ sim.random.frame=8;entities.sync(sim,0);assert.equal(model.position.x,0.5);
+ sim.powerChange={kind:'grow',from:0,to:1,remaining:10};sim.random.frame=0;entities.sync(sim,0);assert.equal(model.position.x,0.5);
+});
+test('Blooper extension uses its captured timer and native three-row artwork offset',()=>{
+ const {sim}=scene({kind:'blooper'}),animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false),e=sim.enemies[0];e.bloop={timer:1} as NonNullable<Enemy['bloop']>;entities.sync(sim,0);const root=actor(entities,'blooper'),model=root.getObjectByName('blooper')!;assert.equal(root.position.y,(239-208)/16);assert.equal(model.position.x,0.5);
+ e.bloop.timer=2;entities.sync(sim,0);assert.equal(root.position.y,(236-208)/16);assert.equal(model.position.x,0);
+ captureEnemyPicture(e);e.bloop.timer=20;entities.sync(sim,0);assert.equal(root.position.y,(236-208)/16);assert.equal(model.position.x,0);
+});
+test('Lakitu ducks eight source rows into the cloud only during the captured frenzy pose',()=>{
+ const {sim}=scene({kind:'lakitu',graphicsFrenzyTimer:15}),animated={instance(name:string){const root=new THREE.Group();root.name=name;const body=new THREE.Bone();body.name='Body';root.add(body);return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.VectorKeyframeTrack('Body.position',[0,1],[0,1,0,0,1,0])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const body=actor(entities,'lakitu').getObjectByName('Body')!;assert.equal(body.position.y,0.5);
+ entities.sync(sim,0);assert.equal(body.position.y,0.5);sim.enemies[0].graphicsFrenzyTimer=16;entities.sync(sim,0);assert.equal(body.position.y,1);
+});
+
+test('Piranha head uses native palette green instead of the modern red asset material',()=>{
+ const {sim}=scene({kind:'piranha'}),colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0xff0000});material.name='M_Head';root.add(new THREE.Mesh(new THREE.SphereGeometry(0.5),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'piranha').getObjectByName('piranha')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'00a800');
+});

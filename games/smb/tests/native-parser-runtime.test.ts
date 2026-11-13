@@ -114,17 +114,6 @@ test('6-3 spring landing, compression and grounded launch hold match native RAM'
  });
 });
 
-test('5-3 retained frenzy controller delays id40 until the native Koopa final movement and next slot pass',()=>{
- replay('5-3',620,(sim,frame)=>{
-  if(frame===466){assert.equal(sim.frenzyControllers.find((c:any)=>c.column===1312).slot,3);}
-  if(frame<547)return;
-  const platform=sim.area.platforms.find((p:any)=>p.x===1466)!;
-  if(frame<550)assert.equal(sim.platformSlots.has(platform),false,`row${frame} waits`);
-  if(frame===549){assert.equal(sim.slotSub[2],184,'erased Koopa completes its horizontal movement');assert.deepEqual(sim.slotVertical[2],{speed:3,force:61,fraction:221},'erasure clears state, preserving vertical bytes');}
-  if(frame===550){assert.equal(sim.platformSlots.get(platform),2);assert.equal(sim.platformMotion.collisionPosition(platform,sim.platformFrame).x,1504+184/256);}
-  if(frame>=617)assert.equal(Math.floor(sim.player.x),[1470,1472,1473,1475][frame-617],`row${frame} Mario carry`);
- });
-});
 
 test('the native frenzy Bullet stomp keeps pre-move x, draws the old picture, drops two pixels, and awards 200 without a chain step',()=>{
  let chain=0;
@@ -147,6 +136,18 @@ test('the frenzy Bullet corpse is erased on the first graphics pass below page1,
   const e=sim.enemies.find((e:any)=>e.frenzy&&e.enemySlot===3&&e.dead===100);
   assert.ok(e);assert.equal(e.slotFreed,true);assert.equal(e.y,282);
   assert.deepEqual(sim.slotVertical[3],{speed:3,force:56,fraction:212});assert.equal(sim.slotSub[3],128);
+ });
+});
+
+test('5-3 retained frenzy controller delays id40 until the native Koopa final movement and next slot pass',()=>{
+ replay('5-3',620,(sim,frame)=>{
+  if(frame===466){assert.equal(sim.frenzyControllers.find((c:any)=>c.column===1312).slot,3);}
+  if(frame<547)return;
+  const platform=sim.area.platforms.find((p:any)=>p.x===1466)!;
+  if(frame<550)assert.equal(sim.platformSlots.has(platform),false,`row${frame} waits`);
+  if(frame===549){assert.equal(sim.slotSub[2],184,'erased Koopa completes its horizontal movement');assert.deepEqual(sim.slotVertical[2],{speed:3,force:61,fraction:221},'erasure clears state, preserving vertical bytes');}
+  if(frame===550){assert.equal(sim.platformSlots.get(platform),2);assert.equal(sim.platformMotion.collisionPosition(platform,sim.platformFrame).x,1504+184/256);}
+  if(frame>=617)assert.equal(Math.floor(sim.player.x),[1470,1472,1473,1475][frame-617],`row${frame} Mario carry`);
  });
 });
 

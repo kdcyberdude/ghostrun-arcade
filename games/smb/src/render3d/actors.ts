@@ -5,7 +5,7 @@ import type {Kit} from './kit.js';
 const BLEND_FRAMES=5;
 export class Actor{
  readonly root=new THREE.Group();readonly model:THREE.Object3D;private mixer:THREE.AnimationMixer;private actions=new Map<string,THREE.AnimationAction>();
- private restRotations=new Map<string,THREE.Quaternion>();private rotationTracks=new Map<string,THREE.Interpolant>();private rotationOverrides=new Map<THREE.Object3D,THREE.Quaternion>();
+ private restRotations=new Map<string,THREE.Quaternion>();private rotationTracks=new Map<string,THREE.Interpolant>();private rotationOverrides=new Map<THREE.Object3D,THREE.Quaternion>();private positionOverrides=new Map<THREE.Object3D,THREE.Vector3>();
  private clip='';private prev='';private prevTime=0;private changedAt=-1;private time=0;private lastFrame=-1;readonly materials=new Map<string,THREE.MeshStandardMaterial[]>();
  private morphMeshes:THREE.Mesh[]=[];private chibi?:Chibi;private chibiValue=0;
  constructor(model:THREE.Object3D,clips:Map<string,THREE.AnimationClip>){
@@ -28,11 +28,14 @@ export class Actor{
   if(!sample){const track=this.actions.get(clip)?.getClip().tracks.find(t=>t.name===bone+'.quaternion');if(!track)return;sample=track.createInterpolant();this.rotationTracks.set(key,sample);}
   node.quaternion.fromArray(sample.evaluate(seconds));
  }
+ /** Offset an animated joint for a native pose absent from the asset's clips. */
+ poseYOffset(bone:string,y:number){const node=this.node(bone);if(!node)return;if(!this.positionOverrides.has(node))this.positionOverrides.set(node,node.position.clone());node.position.y+=y;}
  resetBlend(){this.clip='';this.prev='';this.lastFrame=-1;}
  /** Show `clip` at `seconds` (wrapped when loop). `frame` is the simulation frame, used only for the short cross-fade. */
  pose(clip:string,seconds:number,frame:number,loop=true){
   // The mixer skips unchanged samples, so restore its previous result before applying the next body pose.
   for(const [node,rotation] of this.rotationOverrides)node.quaternion.copy(rotation);this.rotationOverrides.clear();
+  for(const [node,position] of this.positionOverrides)node.position.copy(position);this.positionOverrides.clear();
   if(frame<this.lastFrame)this.resetBlend();this.lastFrame=frame;
   const name=this.actions.has(clip)?clip:this.actions.has('idle')?'idle':[...this.actions.keys()][0];if(name===undefined)return;
   if(name!==this.clip){this.prev=this.clip;this.prevTime=this.time;this.clip=name;this.changedAt=frame;}
