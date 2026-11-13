@@ -2776,7 +2776,11 @@ export class Simulation {
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
    if(e.squashed){
     if(e.dead>=100||e.slotFreed)continue;e.shellTimer??=16;e.walkerState??=4;
-    if(!this.nativeTimersStopped&&e.walkerState>=3&&e.shellTimer===14){this.eraseEnemy(e);continue;}e.dead=Math.min(89,e.dead+1);
+    if(!this.nativeTimersStopped&&e.walkerState>=3&&e.shellTimer===14){
+     this.eraseEnemy(e);e.slotFreed=true;
+     if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}
+     continue;
+    }e.dead=Math.min(89,e.dead+1);
    }
    // EnemyGfxHandler precedes EnemyToBGCollisionDet. ChkUnderEnemy reads
    // the bottom-middle (raw X+8/Y+$18), then consumes the temporary $23.

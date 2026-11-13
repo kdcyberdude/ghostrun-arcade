@@ -1,0 +1,430 @@
+{
+  "base": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "scope": "Complete World1-1 entrance-seeded diagnostic episodes through exit, NOT continuous POWER-ON/dashboard proof",
+  "runs": [
+    {
+      "before": {
+        "level": "1-1",
+        "frames": 2039,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": 842
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": 841,
+          "extra": null,
+          "kind": null,
+          "position": 841,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 2039,
+          "flagFrames": 644,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 2039,
+          "inputFrames": 2039,
+          "endReason": "end of trace",
+          "frames": 2039,
+          "alignedFrames": 2039,
+          "nativeEntityRows": 3652,
+          "comparedEntityRows": 3652,
+          "nativeBirthRows": 18,
+          "areaFrames": {
+            "main": 2039
+          },
+          "complete": true
+        },
+        "actualEntityMismatchCounts": [
+          {
+            "code": "missing",
+            "area": "main",
+            "slot": 3,
+            "kind": "goomba",
+            "first": 841,
+            "count": 84
+          },
+          {
+            "code": "position",
+            "area": "main",
+            "slot": 4,
+            "kind": "goomba",
+            "first": 841,
+            "count": 84
+          },
+          {
+            "code": "missing",
+            "area": "main",
+            "slot": 4,
+            "kind": "goomba",
+            "first": 925,
+            "count": 55
+          }
+        ]
+      },
+      "after": {
+        "level": "1-1",
+        "frames": 2039,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": null,
+          "kind": null,
+          "position": null,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 2039,
+          "flagFrames": 644,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 2039,
+          "inputFrames": 2039,
+          "endReason": "end of trace",
+          "frames": 2039,
+          "alignedFrames": 2039,
+          "nativeEntityRows": 3652,
+          "comparedEntityRows": 3652,
+          "nativeBirthRows": 18,
+          "areaFrames": {
+            "main": 2039
+          },
+          "complete": true
+        },
+        "actualEntityMismatchCounts": []
+      }
+    },
+    {
+      "before": {
+        "level": "1-1",
+        "frames": 2186,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": 875,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": 871,
+          "enemy": 821
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": 875,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": 871,
+          "missing": 820,
+          "extra": null,
+          "kind": null,
+          "position": 820,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 2186,
+          "flagFrames": 654,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 2186,
+          "inputFrames": 2186,
+          "endReason": "end of trace",
+          "frames": 2186,
+          "alignedFrames": 2186,
+          "nativeEntityRows": 3878,
+          "comparedEntityRows": 3878,
+          "nativeBirthRows": 18,
+          "areaFrames": {
+            "main": 2186
+          },
+          "complete": true
+        },
+        "actualEntityMismatchCounts": [
+          {
+            "code": "missing",
+            "area": "main",
+            "slot": 3,
+            "kind": "goomba",
+            "first": 820,
+            "count": 84
+          },
+          {
+            "code": "position",
+            "area": "main",
+            "slot": 4,
+            "kind": "goomba",
+            "first": 820,
+            "count": 110
+          },
+          {
+            "code": "missing",
+            "area": "main",
+            "slot": 4,
+            "kind": "goomba",
+            "first": 930,
+            "count": 29
+          }
+        ]
+      },
+      "after": {
+        "level": "1-1",
+        "frames": 2186,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": null,
+          "kind": null,
+          "position": null,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 2186,
+          "flagFrames": 654,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 2186,
+          "inputFrames": 2186,
+          "endReason": "end of trace",
+          "frames": 2186,
+          "alignedFrames": 2186,
+          "nativeEntityRows": 3878,
+          "comparedEntityRows": 3878,
+          "nativeBirthRows": 18,
+          "areaFrames": {
+            "main": 2186
+          },
+          "complete": true
+        },
+        "actualEntityMismatchCounts": []
+      }
+    }
+  ],
+  "original": {
+    "before": {
+      "frames": 2853,
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2853,
+        "flagFrames": 672,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2853,
+        "inputFrames": 2853,
+        "endReason": "end of trace",
+        "frames": 2853,
+        "alignedFrames": 2853,
+        "nativeEntityRows": 4777,
+        "comparedEntityRows": 4777,
+        "nativeBirthRows": 21,
+        "areaFrames": {
+          "main": 2853
+        },
+        "complete": true
+      }
+    },
+    "after": {
+      "frames": 2853,
+      "legacy": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 2853,
+        "flagFrames": 672,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 2853,
+        "inputFrames": 2853,
+        "endReason": "end of trace",
+        "frames": 2853,
+        "alignedFrames": 2853,
+        "nativeEntityRows": 4777,
+        "comparedEntityRows": 4777,
+        "nativeBirthRows": 21,
+        "areaFrames": {
+          "main": 2853
+        },
+        "complete": true
+      }
+    }
+  }
+}
