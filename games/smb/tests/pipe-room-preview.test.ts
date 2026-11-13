@@ -18,7 +18,7 @@ test('native coin-room loading is owned by screen tasks for every player size',(
  for(const [id,size] of [['1-1',0],['1-1',1],['2-1',0]] as const){
   const sim=atPipe(id,size);sim.step(['down'],75);
   assert.equal(sim.phase,'intro');assert.equal(sim.area.id,'bonus-coins');assert.equal(sim.pipePreviewArea,undefined);
-  assert.equal(sim.nativeScreen?.skipIntermediate,true);
+  assert.equal(sim.levelLoad?.skipIntermediate,true);
   for(let frame=0;frame<20&&String(sim.phase)==='intro';frame++)sim.step([],1);
   assert.equal(sim.phase,'play');assert.equal(previewId(sim),undefined);
  }
