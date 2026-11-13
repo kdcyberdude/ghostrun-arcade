@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -33,7 +34,7 @@ test('native lag evidence retains the parser-only row without adding a replay-sp
 function fixture(){
  const level=structuredClone(observedLevels().find(l=>l.id==='8-3')!);
  const area=level.areas.find(a=>a.id===level.main)!;area.enemies=area.enemies.filter(e=>e.kind==='hammerBro'&&e.x===1008);area.cannons=[];area.generators=[];area.firebars=[];
- const sim:any=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;sim.loadArea(area.id,[807,208],770);
+ const sim:any=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.player.invincible=100000;sim.loadArea(area.id,[807,208],770);
  return {sim,bro:sim.enemies[0]};
 }
 

@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -6,7 +7,7 @@ import {observedLevels} from '../src/levels.js';
 // Native rows with RAM 0x500 (collision map), 0x416 (y sub-pixel), 0x70a (fall class), 0x785 (contact timer). Over 8 model runs and the human route the foot and side
 // probes predict every contact and landing with no false positive; the falls below follow one law: position then speed, start speed 0, sub-pixel kept from the last landing.
 const start=(levelId:string,spawn:[number,number],camera:number)=>{
- const s=new Simulation([structuredClone(observedLevels().find(l=>l.id===levelId)!)]);s.reset(true);s.loadArea('main',spawn,camera);s.phase='play';s.phaseFrame=0;s.area.enemies=[];(s as any).enemies=[];
+ const s=isolatePlacedStream(new Simulation([structuredClone(observedLevels().find(l=>l.id===levelId)!)]));s.reset(true);s.loadArea('main',spawn,camera);s.phase='play';s.phaseFrame=0;s.area.enemies=[];(s as any).enemies=[];
  return {s,p:(s as any).player,m:(s as any).motor,sim:s as any};
 };
 

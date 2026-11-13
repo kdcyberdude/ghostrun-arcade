@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
@@ -9,7 +10,7 @@ test('observed3-1 upper vine brick replaces the misregistered overlapping fragme
  for(const [col,id] of [[129,81],[130,81],[131,86]])assert.equal(main.tiles.find(t=>t[0]===col&&t[1]===5)?.[2],id); // 86: native $56 brick with vine
  assert.ok(!main.freeTiles?.some(t=>t.y===80&&t.x>=2060&&t.x<2112));
  main.spawn=[2096,128];main.enemies=[];
- const sim=new Simulation([level]);sim.reset(true);sim.step(['a'],24);
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.step(['a'],24);
  assert.equal(sim.tiles.get('131,5'),196);assert.ok(sim.vines.find(v=>v.id==='3-1-sky-vine')!.height>0);
 });
 
@@ -18,7 +19,7 @@ for(const [id,room,cameraEnd,offset]of [['2-1','sky-coins',992,11],['3-1','3-1-v
   const level=structuredClone(observedLevels().find(l=>l.id===id)!),sky=level.areas.find(a=>a.id===room)!;
   // Declared riding fixture on the actual map, then only neutral controls.
   level.main=sky.id;sky.entryVine=undefined;sky.spawn=[256+offset,160];sky.camera=144+offset;
-  const sim=new Simulation([level]);sim.reset(true);let reachedRight=false,departed=false;
+  const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);let reachedRight=false,departed=false;
   for(let frame=0;frame<1800&&sim.area.id===sky.id;frame++){
    sim.step([],1);if(sim.area.id!==sky.id)break;
    if(sim.camera===cameraEnd&&sim.player.x===cameraEnd+240){reachedRight=true;assert.ok(sim.player.x-sim.camera<=240);}
@@ -31,7 +32,7 @@ for(const [id,room,cameraEnd,offset]of [['2-1','sky-coins',992,11],['3-1','3-1-v
 
 test('3-1 distinct sky room completes neutral automatic vine entry at the observed standing pose',()=>{
  const level=observedLevels().find(l=>l.id==='3-1')!;
- const sim=new Simulation([level]);sim.reset(true);sim.loadArea('3-1-vine-sky');
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea('3-1-vine-sky');
  // Room-load fixture checks the inferred shared entry behavior, not traversal.
  sim.step([],500);assert.equal(sim.area.id,'3-1-vine-sky');
  assert.equal(sim.player.x,75);assert.equal(sim.player.y,208);assert.equal(sim.lives,3);

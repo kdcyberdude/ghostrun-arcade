@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -7,7 +8,7 @@ import observedLevels from '../data/levels.json';
 // Component fixtures seed native slot bytes and LSFR state; full native row evidence is checked in native-hammer-bros.test.ts.
 function actual(){
  const level=structuredClone((observedLevels as unknown as Level[]).find(l=>l.id==='5-2')!);
- const sim=new Simulation([level]);sim.reset(true);sim.loadArea('area-2',[1140,208],1100);
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea('area-2',[1140,208],1100);
  const bro=sim.enemies.find(e=>e.kind==='hammerBro'&&e.originX===1296&&e.originY===160);
  assert.ok(bro);return {sim,bro};
 }
@@ -34,7 +35,7 @@ for(const [initialY,kind,targetY] of [[144,'weak',208],[144,'strong',144],[208,'
 function synthetic(){
  const tiles:Tile[]=[...Array.from({length:128},(_,x)=>[x,13,84] as Tile),...Array.from({length:4},(_,i)=>[30+i,9,192] as Tile)];
  const level:Level={id:'hammer-component-fixture',time:400,main:'main',evidence:'Synthetic component fixture; not campaign traversal',areas:[{id:'main',width:2048,palette:0,theme:'ground',tiles,enemies:[{kind:'hammerBro',x:500,y:208,direction:-1}],spawn:[340,208],camera:240,evidence:'Neutral ordinary steps after reset'}]};
- const sim=new Simulation([level]);sim.reset(true);return sim;
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);return sim;
 }
 test('native slot timers and LSFR make Hammer Bro choices deterministic through ordinary updates',()=>{
  const first=synthetic(),second=synthetic(),bro=first.enemies[0];const launches:{frame:number;kind:string}[]=[];

@@ -38,15 +38,15 @@ test('native Hammer Bro stomp and star defeat retain fractions and horizontal sp
  }
 });
 
-test('recorded native prefixes retain every contact/defeat row and expose existing source-slot gaps',async()=>{
+test('recorded native prefixes retain every actor and contact/defeat row without source-slot gaps',async()=>{
  const {default:eightThree}=await import('./fixtures/native-hammer-stomp-prefix.json'),{default:threeOne}=await import('./fixtures/native-hammer-three-one-prefix.json'),{default:zlib}=await import('node:zlib'),{createHash}=await import('node:crypto'),{decodeEntrance,initializeEntrance}=await import('../tools/harness/native-entrance.mjs'),{strictCompare}=await import('../tools/harness/native-strict.js');
  const {Simulation}=await import('../src/simulation.js'),{observedLevels}=await import('../src/levels.js'),{nativeEntities,simEntities,unmatchedEntity}=await import('../tools/harness/native-entities.js');
  const unpack=(s:string)=>new Uint8Array(zlib.gunzipSync(Buffer.from(s,'base64'))),buttons=['a','b','select','start','up','down','left','right'] as const;
- for(const [level,fixture,gaps]of [['8-3',eightThree,{missing:341}],['3-1',threeOne,{missing:799}]] as const){
+ for(const [level,fixture]of [['8-3',eightThree],['3-1',threeOne]] as const){
   const initial=unpack(fixture.initialRam),ram=unpack(fixture.ram),pads=unpack(fixture.pads);
   assert.equal(createHash('sha256').update(initial).digest('hex'),fixture.initialRamSha256);assert.equal(createHash('sha256').update(ram).digest('hex'),fixture.ramSha256);
   const audit=strictCompare(decodeEntrance(initial,fixture.receipt),pads,ram,level);assert.equal(audit.coverage.frames,fixture.frames);
-  assert.deepEqual(audit.fields,Object.assign({level:null,area:null,dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,missing:null,extra:null,kind:null,position:null,state:null,'firebar.id':null,'firebar.high':null,'firebar.low':null,'firebar.speed':null,'firebar.direction':null,'alias.owner':null,'vine.count':null,'vine.height':null,'vine.startY':null,'vine.slots':null},gaps)); // retained independent source-slot gaps, never dropped rows
+  assert.deepEqual(audit.fields,({level:null,area:null,dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,missing:null,extra:null,kind:null,position:null,state:null,'firebar.id':null,'firebar.high':null,'firebar.low':null,'firebar.speed':null,'firebar.direction':null,'alias.owner':null,'vine.count':null,'vine.height':null,'vine.startY':null,'vine.slots':null})); // Every native actor slot is now compared without gaps.
   const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,decodeEntrance(initial,fixture.receipt));sim.step([],0);sim.inputs=[];
   for(let f=0;f<pads.length;f++){sim.step(buttons.filter((_,bit)=>pads[f]&(1<<bit)),1);const r=ram.subarray(f*2048,(f+1)*2048);assert.equal(unmatchedEntity(nativeEntities(r,f?ram.subarray((f-1)*2048,f*2048):undefined),simEntities(sim)),undefined,`${level} legacy actor row${f}`);}
  }

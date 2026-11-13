@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -10,7 +11,7 @@ function fixture(x:number,y:number,omit=false){
  // Isolate the actual map's terrain; these placements are collision fixtures, not campaign play.
  main.spawn=[x,y];main.camera=1360;main.enemies=[];main.generators=[];
  if(omit)main.tiles=main.tiles.filter(([col,row])=>col!==94||row!==13);
- const sim=new Simulation([level]);sim.reset(true);return sim;
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);return sim;
 }
 
 test('3-1 recovered ground supports a fall at208 instead of the old16px dip',()=>{

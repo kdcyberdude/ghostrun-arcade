@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -9,7 +10,7 @@ function fixture(occupied:number){
  const group=area.enemies.filter(e=>e.kind==='goomba'&&e.spawnCamera===595);
  area.enemies=[...Array.from({length:occupied},(_,i)=>({kind:'piranha' as const,x:700+i*24,y:184,direction:-1 as const})),...group];
  area.cannons=[];area.generators=[];area.firebars=[];area.platforms=[];
- const sim:any=new Simulation([level]);sim.reset(true);sim.loadArea(area.id,[720,120],595);sim.phase='play';sim.player.invincible=100000;
+ const sim:any=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea(area.id,[720,120],595);sim.phase='play';sim.player.invincible=100000;
  for(let slot=0;slot<occupied;slot++)Object.assign(sim.enemies[slot],{active:true,enemySlot:slot});
  return sim;
 }
