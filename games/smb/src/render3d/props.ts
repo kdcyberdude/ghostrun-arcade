@@ -4,6 +4,8 @@ import type {Kit} from './kit.js';
 import type {Simulation} from '../simulation.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../platform-motion.js';
 import {nativeBubbleShown} from '../view-rules.js';
+import {nativeBlockSprites} from '../native-block-picture.js';
+import {procBlock} from './proc.js';
 import {RoundedBoxGeometry} from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 const std=(color:number,rough=0.5,metal=0,extra:Partial<THREE.MeshStandardMaterialParameters>={})=>new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,...extra});
 type Maker=()=>THREE.Object3D;
@@ -17,6 +19,15 @@ export class Props{
   flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  sync(s:Simulation){
   for(const l of this.pools.values())for(const o of l)o.visible=false;this.used.clear();
+  // DrawBlock writes four independent OAM pieces. Clipped GLB quarters preserve its byte wrapping and column hiding.
+  for(const b of s.blockGraphics??[])for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){
+   const col=((p.x-((Math.floor(b.x)-Math.floor(s.camera))&255))&255)/8,row=(((p.y-1)-(b.pictureY!&255))&255)/8,used=b.metatile===196,base=used?'block_used':'block_brick';
+   const suffix=s.area.theme==='underground'?'_ug':['water','castle','snow'].includes(s.area.theme)?'_'+s.area.theme:'',model=this.kit.has(base+suffix)?base+suffix:base;
+   const o=this.take((used?'blockUsed':'blockBrick')+'@'+model+'#'+b.slot+'.'+row+'.'+col,()=>{const g=new THREE.Group(),planes=[new THREE.Plane(new THREE.Vector3(1,0,0)),new THREE.Plane(new THREE.Vector3(-1,0,0)),new THREE.Plane(new THREE.Vector3(0,1,0)),new THREE.Plane(new THREE.Vector3(0,-1,0))];g.userData.clipPlanes=planes;
+    for(const part of this.kit.parts(model)??procBlock(used?'used':'brick')!){const material=part.material.clone();material.clippingPlanes=planes;material.clipShadows=true;material.polygonOffset=true;material.polygonOffsetFactor=material.polygonOffsetUnits=-1;const mesh=new THREE.Mesh(part.geometry,material);mesh.matrix.copy(part.matrix);mesh.matrixAutoUpdate=false;g.add(mesh);}return g;});
+   const x=Math.floor(s.camera)+p.x,planes=o.userData.clipPlanes as THREE.Plane[];o.position.set((x-col*8+8)/16,(232-p.y+row*8)/16,0);
+   planes[0].constant=-x/16;planes[1].constant=(x+8)/16;planes[2].constant=-(232-p.y)/16;planes[3].constant=(240-p.y)/16;
+  }
   if(s.area.theme==='water')for(const b of s.bubbles??[])if(nativeBubbleShown(b,s.player.y,s.camera)){const o=this.take('bubble',()=>new THREE.Mesh(new THREE.SphereGeometry(0.125,12,8),this.mats.bubble));
    const x=Math.floor(s.camera)+((Math.floor(b.x)-Math.floor(s.camera))&255);o.position.set((x+4)/16,(235-b.y)/16,-0.15);o.castShadow=o.receiveShadow=false;}
   for(const pl of s.area.platforms??[]){const pos=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,pos.y);

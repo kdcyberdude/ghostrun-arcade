@@ -79,10 +79,10 @@ export function nativeLiftState(y0:number,age:number,counter=0,fraction=0):Platf
  * it is odd. Every frame the platform moves by the secondary counter as an x speed (x.4 fixed point: whole pixels = speed >> 4, sub-pixel $401+x += speed << 4),
  * leftwards while primary bit 1 is clear. The sub-pixel starts at whatever the slot's previous object left there (`sub`); `counter` is FrameCounter on the
  * spawn frame. Returns the 8.8 x at `age` frames after the spawn (age 0: x0 + sub/256). */
-const horizontalTracks=new Map<string,number[]>();
+const horizontalTracks=new Map<string,number[]>(),horizontalCounters=new Map<string,number[]>();
 export function nativeHorizontalX(x0:number,age:number,counter=0,sub=0){
  const key=`${x0},${sub},${counter&3}`;let track=horizontalTracks.get(key);
- if(!track){track=[x0*256+sub];horizontalTracks.set(key,track);}
+ if(!track){track=[x0*256+sub];horizontalTracks.set(key,track);horizontalCounters.set(key,[0]);}
  const state=(track as number[]&{s?:{x:number;sub:number;primary:number;secondary:number}}).s??={x:x0,sub,primary:0,secondary:0};
  while(track.length<=age){
   const n=state;
@@ -91,9 +91,15 @@ export function nativeHorizontalX(x0:number,age:number,counter=0,sub=0){
    else if(n.secondary===14)n.primary=(n.primary+1)&255;else n.secondary++;
   }
   const speed=n.primary&2?n.secondary:(-n.secondary)&255,whole=(speed>>4)>=8?(speed>>4)-16:speed>>4,f=n.sub+((speed<<4)&255);
-  n.sub=f&255;n.x+=whole+(f>>8);track.push(n.x*256+n.sub);
+  n.sub=f&255;n.x+=whole+(f>>8);track.push(n.x*256+n.sub);horizontalCounters.get(key)!.push(n.primary);
  }
  return track[Math.max(0,age)]/256;
+}
+/** XMovingPlatform aliases Enemy_Y_Speed as its primary counter. CommonPlatCode
+ * clears speed/force on creation, while $0417 remains the previous occupant's fraction. */
+export function nativeHorizontalState(x0:number,y:number,age:number,counter=0,sub=0,fraction=0):PlatformVerticalState{
+ nativeHorizontalX(x0,age,counter,sub);
+ return {y,speed:horizontalCounters.get(`${x0},${sub},${counter&3}`)![Math.max(0,age)],force:0,fraction};
 }
 /** Collision-surface position of a native object that has existed for `age` frames (balance: `age` is the pair offset; lift and horizontal: `counter` is
  * FrameCounter at its spawn; horizontal: `sub` the sub-pixel its slot held). */
@@ -202,6 +208,7 @@ export class PlatformMotion {
  }
  verticalState(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o)return;
+  if(o.kind==='horizontal')return nativeHorizontalState(o.x,o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startSub.get(platform)??0,this.startFraction.get(platform)??0);
   if(o.kind==='wrap')return nativeWrapState(o.y,this.nativeAge(platform,o,frame),this.startFraction.get(platform)??0,o.direction==='up');
   if(o.kind==='lift')return nativeLiftState(o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startFraction.get(platform)??0);
   if(!o.pair)return;const p=this.pulleys.get(o.pair.join(','));return p?.driver===o?p.motor:undefined;

@@ -1,0 +1,666 @@
+{
+  "schema": "native-mood-downstream-comparison-v1",
+  "scope": "exact-rest motor latch source fix",
+  "beforeCommit": "7cc76d5",
+  "afterCommit": "12d83ac",
+  "epochs": 178,
+  "inputReports": [
+    {
+      "file": "/tmp/water-mood-baseline178.json",
+      "sha256": "5bac7019e17e06b85b08e5473154c90e33018baf953117827f5b788d99d38d20"
+    },
+    {
+      "file": "/tmp/water-mood-rest178.json",
+      "sha256": "cfed012cfeed5e7dc8837d3555ee4d3225406af3859347fb7d044be375eb643e"
+    }
+  ],
+  "earlierLaterFields": [
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "x",
+      "before": 1075,
+      "after": 873,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863
+      },
+      "nativeEvent": {
+        "source": 15038,
+        "engine": 8,
+        "native": 1234,
+        "sim": 1233
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "cam",
+      "before": 1074,
+      "after": 882,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873
+      },
+      "nativeEvent": {
+        "source": 15047,
+        "engine": 8,
+        "native": 1124,
+        "sim": 1123
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "actors",
+      "before": 1121,
+      "after": 943,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873,
+        "cam": 882
+      },
+      "nativeEvent": {
+        "source": 15108,
+        "engine": 8,
+        "native": [
+          [
+            0,
+            11,
+            1108,
+            120
+          ],
+          [
+            2,
+            10,
+            1219,
+            99
+          ],
+          [
+            3,
+            7,
+            1239,
+            83
+          ]
+        ],
+        "sim": [
+          [
+            0,
+            11,
+            1108,
+            120
+          ],
+          [
+            1,
+            7,
+            1063,
+            32
+          ],
+          [
+            2,
+            10,
+            1219,
+            99
+          ],
+          [
+            3,
+            7,
+            1239,
+            83
+          ]
+        ]
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "bubbles",
+      "before": 1123,
+      "after": 1091,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873,
+        "cam": 882,
+        "actors": 943
+      },
+      "nativeEvent": {
+        "source": 15256,
+        "engine": 8,
+        "native": [
+          32,
+          [
+            [
+              49,
+              248,
+              1,
+              8
+            ],
+            [
+              262,
+              248,
+              1,
+              149
+            ],
+            [
+              1262,
+              134,
+              1,
+              172
+            ]
+          ]
+        ],
+        "sim": [
+          32,
+          [
+            [
+              49,
+              248,
+              1,
+              8
+            ],
+            [
+              262,
+              248,
+              1,
+              149
+            ],
+            [
+              1260,
+              134,
+              1,
+              172
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "vertical",
+      "before": null,
+      "after": 1127,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873,
+        "cam": 882,
+        "actors": 943,
+        "bubbles": 1091
+      },
+      "nativeEvent": {
+        "source": 15292,
+        "engine": 8,
+        "native": [
+          1,
+          241,
+          196
+        ],
+        "sim": [
+          -2,
+          241,
+          196
+        ]
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "y",
+      "before": 1498,
+      "after": 1128,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873,
+        "cam": 882,
+        "actors": 943,
+        "bubbles": 1091,
+        "vertical": 1127
+      },
+      "nativeEvent": {
+        "source": 15293,
+        "engine": 8,
+        "native": 76,
+        "sim": 73
+      }
+    },
+    {
+      "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+      "epoch": 10,
+      "initialNativeFrame": 14164,
+      "field": "direction",
+      "before": 1199,
+      "after": 1187,
+      "precedingFields": {
+        "horizontal": 861,
+        "xfraction": 863,
+        "x": 873,
+        "cam": 882,
+        "actors": 943,
+        "bubbles": 1091,
+        "vertical": 1127,
+        "y": 1128
+      },
+      "nativeEvent": {
+        "source": 15352,
+        "engine": 8,
+        "native": 1,
+        "sim": 2
+      }
+    },
+    {
+      "sha256": "abbfeb26c2fe01cdd4726d470f61b53110c28d343f02e01bae5770a8afe25d64",
+      "epoch": 10,
+      "initialNativeFrame": 15650,
+      "field": "cam",
+      "before": 518,
+      "after": 516,
+      "precedingFields": {
+        "horizontal": 478,
+        "xfraction": 482,
+        "x": 492,
+        "bubbles": 499
+      },
+      "nativeEvent": {
+        "source": 16167,
+        "engine": 8,
+        "native": 401,
+        "sim": 402
+      }
+    },
+    {
+      "sha256": "720e40f3d36d348dca5e5eb13a318bd18a222d81295ef846d2cb754c88c8e09a",
+      "epoch": 10,
+      "initialNativeFrame": 19097,
+      "field": "direction",
+      "before": null,
+      "after": 1847,
+      "precedingFields": {
+        "actors": 134,
+        "x": 1470,
+        "horizontal": 1470,
+        "xfraction": 1470,
+        "cam": 1529,
+        "bubbles": 1547
+      },
+      "nativeEvent": {
+        "source": 20945,
+        "engine": 8,
+        "native": 1,
+        "sim": 2
+      }
+    },
+    {
+      "sha256": "839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507",
+      "epoch": 10,
+      "initialNativeFrame": 19306,
+      "field": "cam",
+      "before": 1598,
+      "after": 1105,
+      "precedingFields": {
+        "actors": 134,
+        "horizontal": 389,
+        "xfraction": 397,
+        "x": 398,
+        "bubbles": 930
+      },
+      "nativeEvent": {
+        "source": 20412,
+        "engine": 8,
+        "native": 1937,
+        "sim": 1938
+      }
+    },
+    {
+      "sha256": "839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507",
+      "epoch": 10,
+      "initialNativeFrame": 19306,
+      "field": "vertical",
+      "before": 5870,
+      "after": 1161,
+      "precedingFields": {
+        "actors": 134,
+        "horizontal": 389,
+        "xfraction": 397,
+        "x": 398,
+        "bubbles": 930,
+        "cam": 1105
+      },
+      "nativeEvent": {
+        "source": 20468,
+        "engine": 8,
+        "native": [
+          0,
+          38,
+          86
+        ],
+        "sim": [
+          0,
+          54,
+          124
+        ]
+      }
+    },
+    {
+      "sha256": "839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507",
+      "epoch": 10,
+      "initialNativeFrame": 19306,
+      "field": "y",
+      "before": 5876,
+      "after": 1164,
+      "precedingFields": {
+        "actors": 134,
+        "horizontal": 389,
+        "xfraction": 397,
+        "x": 398,
+        "bubbles": 930,
+        "cam": 1105,
+        "vertical": 1161
+      },
+      "nativeEvent": {
+        "source": 20471,
+        "engine": 8,
+        "native": 80,
+        "sim": 81
+      }
+    },
+    {
+      "sha256": "acdccc03638cc101d60a21a956a2a1c2edb3dd99e1bfcb05df7d12352ee28161",
+      "epoch": 9,
+      "initialNativeFrame": 15066,
+      "field": "rng",
+      "before": 2105,
+      "after": 845,
+      "precedingFields": {
+        "actors": 134,
+        "horizontal": 221,
+        "xfraction": 227,
+        "x": 239,
+        "cam": 247,
+        "bubbles": 313,
+        "vertical": 402,
+        "y": 426,
+        "direction": 577
+      },
+      "nativeEvent": {
+        "source": 15912,
+        "engine": 8,
+        "native": [
+          57,
+          137,
+          250,
+          233,
+          28,
+          206,
+          247
+        ],
+        "sim": [
+          28,
+          18,
+          42,
+          14,
+          90,
+          70,
+          242
+        ]
+      }
+    },
+    {
+      "sha256": "acdccc03638cc101d60a21a956a2a1c2edb3dd99e1bfcb05df7d12352ee28161",
+      "epoch": 9,
+      "initialNativeFrame": 15066,
+      "field": "fc",
+      "before": 2105,
+      "after": 845,
+      "precedingFields": {
+        "actors": 134,
+        "horizontal": 221,
+        "xfraction": 227,
+        "x": 239,
+        "cam": 247,
+        "bubbles": 313,
+        "vertical": 402,
+        "y": 426,
+        "direction": 577
+      },
+      "nativeEvent": {
+        "source": 15912,
+        "engine": 8,
+        "native": 240,
+        "sim": 0
+      }
+    },
+    {
+      "sha256": "371fe2fe065a2dc8787b9c2bc5bb50a9a6b4753c692a17f15e6e1c9642df98ff",
+      "epoch": 10,
+      "initialNativeFrame": 19931,
+      "field": "y",
+      "before": 805,
+      "after": 799,
+      "precedingFields": {
+        "x": 412,
+        "horizontal": 412,
+        "xfraction": 412,
+        "cam": 417,
+        "bubbles": 451,
+        "actors": 458
+      },
+      "nativeEvent": {
+        "source": 20731,
+        "engine": 8,
+        "native": 29,
+        "sim": 28
+      }
+    },
+    {
+      "sha256": "371fe2fe065a2dc8787b9c2bc5bb50a9a6b4753c692a17f15e6e1c9642df98ff",
+      "epoch": 10,
+      "initialNativeFrame": 19931,
+      "field": "vertical",
+      "before": 800,
+      "after": 799,
+      "precedingFields": {
+        "x": 412,
+        "horizontal": 412,
+        "xfraction": 412,
+        "cam": 417,
+        "bubbles": 451,
+        "actors": 458
+      },
+      "nativeEvent": {
+        "source": 20731,
+        "engine": 8,
+        "native": [
+          -1,
+          95,
+          69
+        ],
+        "sim": [
+          -1,
+          111,
+          164
+        ]
+      }
+    },
+    {
+      "sha256": "738f9c75d192fed39f191e88fecd7e1624ebe66c3b52feee8f70bddeffb01581",
+      "epoch": 9,
+      "initialNativeFrame": 14208,
+      "field": "rng",
+      "before": 2995,
+      "after": 2527,
+      "precedingFields": {
+        "y": 1943,
+        "vertical": 1943,
+        "horizontal": 1944,
+        "xfraction": 1944,
+        "x": 1967,
+        "bubbles": 1976,
+        "cam": 1984,
+        "actors": 2177
+      },
+      "nativeEvent": {
+        "source": 16736,
+        "engine": 8,
+        "native": [
+          77,
+          197,
+          94,
+          212,
+          105,
+          193,
+          18
+        ],
+        "sim": [
+          128,
+          65,
+          65,
+          195,
+          64,
+          198,
+          71
+        ]
+      }
+    },
+    {
+      "sha256": "738f9c75d192fed39f191e88fecd7e1624ebe66c3b52feee8f70bddeffb01581",
+      "epoch": 9,
+      "initialNativeFrame": 14208,
+      "field": "fc",
+      "before": 2995,
+      "after": 2527,
+      "precedingFields": {
+        "y": 1943,
+        "vertical": 1943,
+        "horizontal": 1944,
+        "xfraction": 1944,
+        "x": 1967,
+        "bubbles": 1976,
+        "cam": 1984,
+        "actors": 2177
+      },
+      "nativeEvent": {
+        "source": 16736,
+        "engine": 8,
+        "native": 248,
+        "sim": 0
+      }
+    },
+    {
+      "sha256": "27638f84c7763560a0115c684a7a02b1db30c0d4bd0573ea252d1da40a0db270",
+      "epoch": 8,
+      "initialNativeFrame": 13097,
+      "field": "y",
+      "before": 5519,
+      "after": 5055,
+      "precedingFields": {
+        "actors": 1350
+      },
+      "nativeEvent": {
+        "source": 18153,
+        "engine": 8,
+        "native": 176,
+        "sim": 172
+      }
+    },
+    {
+      "sha256": "27638f84c7763560a0115c684a7a02b1db30c0d4bd0573ea252d1da40a0db270",
+      "epoch": 8,
+      "initialNativeFrame": 13097,
+      "field": "rng",
+      "before": null,
+      "after": 5250,
+      "precedingFields": {
+        "actors": 1350,
+        "y": 5055,
+        "bubbles": 5070,
+        "x": 5248,
+        "cam": 5248
+      },
+      "nativeEvent": {
+        "source": 18348,
+        "engine": 8,
+        "native": [
+          38,
+          154,
+          215,
+          226,
+          77,
+          137,
+          18
+        ],
+        "sim": [
+          12,
+          8,
+          16,
+          0,
+          32,
+          32,
+          96
+        ]
+      }
+    },
+    {
+      "sha256": "27638f84c7763560a0115c684a7a02b1db30c0d4bd0573ea252d1da40a0db270",
+      "epoch": 8,
+      "initialNativeFrame": 13097,
+      "field": "fc",
+      "before": null,
+      "after": 5250,
+      "precedingFields": {
+        "actors": 1350,
+        "y": 5055,
+        "bubbles": 5070,
+        "x": 5248,
+        "cam": 5248
+      },
+      "nativeEvent": {
+        "source": 18348,
+        "engine": 8,
+        "native": 155,
+        "sim": 0
+      }
+    },
+    {
+      "sha256": "27638f84c7763560a0115c684a7a02b1db30c0d4bd0573ea252d1da40a0db270",
+      "epoch": 8,
+      "initialNativeFrame": 13097,
+      "field": "vertical",
+      "before": null,
+      "after": 5416,
+      "precedingFields": {
+        "actors": 1350,
+        "y": 5055,
+        "bubbles": 5070,
+        "x": 5248,
+        "cam": 5248,
+        "rng": 5250,
+        "fc": 5250
+      },
+      "nativeEvent": {
+        "source": 18514,
+        "engine": 8,
+        "native": [
+          0,
+          0,
+          8
+        ],
+        "sim": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}

@@ -25,6 +25,8 @@ export class FirebarSlots {
   for(const bar of this.bars)if(bar.x>=edge)this.born.delete(bar);
  }
  private free(s:number,slot:Slot){this.angles[s]=Math.floor(slot.units/32)*32;this.slots[s]=undefined;this.release?.(s,FirebarSlots.byteFromUnits(this.angles[s]));}
+ /** EraseEnemyObject clears occupancy without rewinding the last motor step. */
+ eraseAll(){for(let s=0;s<5;s++){const slot=this.slots[s];if(slot)this.free(s,slot);}}
  held(){return new Set(this.slots.flatMap((slot,s)=>slot?[s]:[]));}
  tracks(bar:Bar){return this.bars.includes(bar);}
  private enter(camera:number){

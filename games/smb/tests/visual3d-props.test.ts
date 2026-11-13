@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import * as THREE from 'three';
 import {Props} from '../src/render3d/props.js';
 import type {Kit} from '../src/render3d/kit.js';
 import type {Simulation} from '../src/simulation.js';
@@ -41,4 +42,15 @@ test('native bubbles use the visible CHR ring center and native Mario-page gate'
  assert.equal(props.group.children[1].visible,true); // Native sentinel Y is hidden by the viewport, not by its own page.
  s.area.theme='ground';props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
  s.area.theme='water';s.player.y=464;props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
+});
+
+test('native bouncing blocks clip four GLB quarters at OAM positions without sharing background materials',()=>{
+ const material=new THREE.MeshStandardMaterial(),kit={has:(name:string)=>name==='block_used_ug',parts:(name:string)=>[{geometry:new THREE.BoxGeometry(1,1,1),material:Object.assign(material,{name}),matrix:new THREE.Matrix4()}]} as unknown as Kit;
+ const props=new Props(kit),block={slot:0,key:'4,6',x:64,y:96,metatile:196,pictureY:100 as number|undefined,replace:false},s={area:{theme:'ground'},camera:0,blockGraphics:[block],vines:[],flagFireworks:[]} as unknown as Simulation;
+ props.sync(s);assert.equal(props.group.children.length,4);const first=props.group.children[0],mesh=first.children[0] as THREE.Mesh,own=mesh.material as THREE.MeshStandardMaterial;
+ assert.notEqual(own,material);assert.equal(own.polygonOffset,true);assert.equal(material.clippingPlanes,null);
+ assert.deepEqual(first.position.toArray(),[72/16,131/16,0]);assert.deepEqual(own.clippingPlanes!.map(p=>p.constant),[-4,4.5,-131/16,139/16]);
+ block.pictureY=99;props.sync(s);assert.equal(first.position.y,132/16);assert.equal(props.group.children.length,4);
+ s.area.theme='underground';props.sync(s);const shown=props.group.children.filter(o=>o.visible);assert.equal(shown.length,4);assert.ok(shown.every(o=>((o.children[0] as THREE.Mesh).material as THREE.Material).name==='block_used_ug'));
+ block.pictureY=undefined;props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
 });
