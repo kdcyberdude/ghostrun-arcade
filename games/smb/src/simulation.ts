@@ -46,7 +46,7 @@ import {hammerBroStep} from './hammer-bro';
 import {nativeLakituBox,nativeLakituContact} from './lakitu-contact';
 import {NativeSpecialSlot,type AreaControl} from './native-special-slot';
 import nativeAreaControls from '../data/native-area-controls.json';
-import {nativeCoinSlot,nativeMiscGravity,nativeMiscOffscreen,nativeHammerBox,nativePlayerBox,nativeHammerContact,nativeAboveCoinStart,type NativeBox} from './native-misc';
+import {nativeCoinSlot,nativeMiscGravity,nativeMiscOffscreen,nativeHammerBox,nativePlayerBox,nativeHammerContact,nativeAboveCoinStart,nativeCoinBlockStartY,type NativeBox} from './native-misc';
 import waterActorData from '../data/native-water-actors.json';
 import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
@@ -868,7 +868,7 @@ export class Simulation {
    const expiry=this.multiCoinExpiries.get(key)??multiCoinExpiry(this.frame);
    this.multiCoinExpiries.set(key,expiry);
    if(this.frame>=expiry)this.tiles.set(key,196);
-   this.coin();this.spawnNativeCoin(x*16+5,y*16-16);
+   this.coin();this.spawnNativeBlockCoin(x);
   }else if(powerupContent||id===192||id===193||id===95||id===96||id>=85&&id<=94){
    let item:Item['kind']='coin';
    if(id===193||id===85||id===90)item=p.size?'flower':'mushroom';
@@ -876,7 +876,7 @@ export class Simulation {
    if(id===87||id===92)item='star';
    if(powerupContent)item=powerupContent==='powerup'?(p.size?'flower':'mushroom'):powerupContent;
    if(piece)piece.id=196;else this.tiles.set(key,196);
-   if(item==='coin'){this.coin();this.spawnNativeCoin(x*16+5,y*16-16);}
+   if(item==='coin'){this.coin();this.spawnNativeBlockCoin(x);}
    else {this.specialSlot5.claimPowerup(x*16,y*16-8);this.items=this.items.filter(i=>i.nativePowerState===undefined);this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value,nativePowerState:1});this.emit('sfx_powerup_appears');}
   }else if((id===81||id===82||id===83)&&p.size){
    this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
@@ -1500,6 +1500,11 @@ export class Simulation {
   const x=(e.nativeBowser?.x??e.x)+2,y=(e.nativeBowser?e.nativeBowser.y+24:e.y)-34;
   this.miscPositions[slot]={x:Math.floor(x),y:Math.floor(y)};
   this.items.push({kind:'hammer',x,y,vx:0,vy:0,age:0,life:900,owner:e,nativeHammer:{slot,state:0x90,speed:0,...this.miscHammerBytes[slot]}});return true;
+ }
+ private spawnNativeBlockCoin(col:number){
+  const p=this.player,blockY=(Math.floor(p.y)-32+(p.size===0||p.duck?18:4))&240;
+  const busy8=this.items.some(i=>i.life>0&&(i.nativeHammer??i.nativeCoin)?.slot===8);
+  this.spawnNativeCoin(col*16+5,nativeCoinBlockStartY(blockY,busy8));
  }
  private spawnNativeAboveBlockCoin(col:number,row:number){
   const offset=nativeAreaControls.areas.find(a=>a.level===this.level.id&&a.area===this.area.id)?.source[0]?.offset??0,nativeCol=col-offset;
