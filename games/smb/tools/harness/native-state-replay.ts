@@ -39,8 +39,8 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
  let end=pads.length;if(levels){end=0;for(let f=0;f<pads.length;f++)if(selected(f))end=f+1;}
  // Diagnostics mirror combined-monitor-audit.ts: strict summary (original) or continuous coverage (power-on),
  // plus the fields of the first selected state mismatch (the only state fields a first joint failure can name).
- const states:string[]=new Array(end).fill('unchecked');let start:any,strict:any,firstStateMismatch:{frame:number;fields:string[]}|null=null;
- const note=(f:number,status:string,fields:()=>string[])=>{states[f]=status;if(status==='mismatch'&&!firstStateMismatch&&selected(f))firstStateMismatch={frame:f,fields:fields()};};
+ const states:string[]=new Array(end).fill('unchecked');let start:any,strict:any,firstStateMismatch:{frame:number;fields:string[];differences?:unknown[]}|null=null;
+ const note=(f:number,status:string,fields:()=>string[],differences?:()=>unknown[])=>{states[f]=status;if(status==='mismatch'&&!firstStateMismatch&&selected(f))firstStateMismatch={frame:f,fields:fields(),differences:differences?.().slice(0,12)};};
  const continuous:any=original?undefined:{scope:'continuous World1-1 and source-owned boot/title',fullyComparedFrames:0,partiallyComparedFrames:0,uncheckedFrames:0,knownMismatchFrames:0,gaps:{}};
  if(original){
   const entrance=decodeEntrance(initial,read(path.join(recovered,'original32/entrances',level!,'entrance.json')));
@@ -48,12 +48,13 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
   strict={first:audit.first,firstCoverageGap:audit.firstCoverageGap,fields:audit.fields};
  }else{
   const sim:any=new Simulation(observedLevels());sim.twoPlayer=false;sim.reset(false);sim.events.length=0;
-  const audit=new LiveWorld1StateAudit();start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
+  // The continuous readout covers boot/title and 1-1, plus 1-2 when that level is selected.
+  const audit=new LiveWorld1StateAudit(levels?.includes('1-2')?['1-1','1-2']:['1-1']);start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
   for(let f=0;f<end;f++){
    if(!lag.has(f)){sim.step(names.filter((_,b)=>pads[f]&(1<<b)),1);sim.events.length=0;}
    const live=audit.compare(ram.subarray(f*2048,(f+1)*2048),captureLiveWorld1State(sim));
    if(lag.has(f)){states[f]='unchecked';continue;} // the audit still reads the native row to keep its scene context
-   note(f,live.status,()=>live.differences.map(d=>d.field));
+   note(f,live.status,()=>live.differences.map(d=>d.field),()=>live.differences);
    if(!live.gaps.length)continuous.fullyComparedFrames++;else if(live.checked.length)continuous.partiallyComparedFrames++;else continuous.uncheckedFrames++;
    if(live.status==='mismatch')continuous.knownMismatchFrames++;for(const gap of live.gaps){const g=continuous.gaps[gap]??={first:f,count:0};g.count++;}
   }
@@ -94,7 +95,8 @@ if(import.meta.url===new URL(process.argv[1],'file:').href){
  const wanted=a.ids?new Set(a.ids.split(',')):undefined,selected=wanted?inventory.filter((r:any)=>wanted.has(r.id)):inventory;
  if(wanted&&selected.length!==wanted.size)throw Error('Unknown/duplicate ids');
  if(a.worker){ // One shard: JSON lines on stdout, one per recording.
-  for(const input of selected){try{process.stdout.write(JSON.stringify(replayState(input,levels))+'\n');}catch(e){process.stdout.write(JSON.stringify({id:input.id,error:String(e)})+'\n');}}
+  // Synchronous writes: process.exit() can drop pending pipe output (this lost 20 recordings once).
+  for(const input of selected){let line;try{line=JSON.stringify(replayState(input,levels));}catch(e){line=JSON.stringify({id:input.id,error:String(e)});}fs.writeSync(1,line+'\n');}
   process.exit(0);
  }
  const game=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),repo=path.resolve(game,'../..');
@@ -110,6 +112,7 @@ if(import.meta.url===new URL(process.argv[1],'file:').href){
   p.on('exit',code=>code===0?resolve():reject(Error('worker exit '+code)));p.on('error',reject);
  })));}finally{fs.rmSync(bundleDir,{recursive:true,force:true});}
  process.stderr.write('\n');
+ if(runs.length+errors.length!==selected.length)throw Error(`Lost recordings: ${selected.length-runs.length-errors.length} of ${selected.length} produced no result`);
  const order=new Map<string,number>(inventory.map((r:any,i:number)=>[r.id,i]));runs.sort((x,y)=>order.get(x.id)!-order.get(y.id)!);
  const seconds=(Date.now()-began)/1000,replayed=runs.reduce((n,r)=>n+r.replayedFrames,0);
  const report={schema:STATE_SCHEMA,measures:'state-only',picture:'not compared',unit:'input-frame',protocol:'continuous-from-recorded-start',
