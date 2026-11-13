@@ -1,0 +1,5 @@
+/** Retain native readiness/load-control bytes; no simulation state or comparison result is fitted. */
+import fs from 'node:fs';import path from 'node:path';import {parseArgs} from 'node:util';import {createHash} from 'node:crypto';
+const {values:a}=parseArgs({options:Object.fromEntries(['trace','from','to','out'].map(k=>[k,{type:'string'}]))});for(const k of ['trace','from','to','out'])if(!a[k])throw Error(`--${k} required`);
+const ram=fs.readFileSync(path.join(a.trace,'ram.bin')),rows=[];for(let frame=Number(a.from);frame<=Number(a.to);frame++){const r=ram.subarray(frame*2048,(frame+1)*2048);rows.push({frame,level:`${r[0x75f]+1}-${r[0x75c]+1}`,mode:r[0x770],task:r[0x772],engine:r[14],screen:r[0x73c],disable:r[0x774],counter:r[9],random:Array.from(r.subarray(0x7a7,0x7ae)),interval:r[0x77f]});}
+fs.writeFileSync(a.out,JSON.stringify({source:'Unmodified native RAM after each original PPU input; readiness means OperMode_Task3 and GameEngineSubroutine8. Every row in the declared window is retained.',ramSha256:createHash('sha256').update(ram).digest('hex'),rows})+'\n');console.log(`${rows.length} native load/readiness rows`);
