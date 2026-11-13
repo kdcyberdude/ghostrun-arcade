@@ -827,12 +827,13 @@ export class Simulation {
   const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
   const down=dy>=0||this.apexFootProbe(dy,nativeHead,gravity);
-  const edge=down?p.y:p.y-(nativeHead?this.nativeHeadProbe(h):h);
+  const waterFeet=this.area.theme==='water'?p.y-this.water.whirlMoved:p.y;
+  const edge=down?waterFeet:p.y-(nativeHead?this.nativeHeadProbe(h):h);
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    if(!tile&&pipeTop===undefined)continue;
-   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(p.y-tile.y>=SWIM_WALL_DEPTH||this.water.speed<0))continue;
+   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
    if(down){if(dy!==0)this.landingFraction=p.y-Math.floor(p.y);p.y=tile?.y??pipeTop!;p.vy=0;p.grounded=true;}
    else{if(!tile)continue;
@@ -887,7 +888,7 @@ export class Simulation {
   if(newNativeBlock){const old=this.blockGraphics.findIndex(b=>b.slot===nativeBlock.slot);if(old>=0)this.blockGraphics.splice(old,1);this.blockGraphics.push({slot:nativeBlock.slot,key,x:nativeBlock.x,y:y*16,metatile:this.brokenBrick?.key===key?0:(piece?.id??this.tiles.get(key)??0),pictureY:undefined,replace:nativeBlock.state===0x12});}
   // EnemyToBGCollisionDet only stuns a walker when BumpBlock wrote $23.
   // Solid tree/stone head contact does not create that native marker.
-  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
+  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='blooper'&&!(e.kind==='cheep'&&e.swim)&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
@@ -953,7 +954,8 @@ export class Simulation {
   w.motor.speed=Math.round(p.vx*4096);w.motor.moving=this.marioMotion as Direction;
   if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'),this.swimAbsolute,!noInput&&b.has('up'))/4096;
   if(dir||p.grounded)this.swimAbsolute=Math.abs(Math.floor(Math.round(p.vx*4096)/256)); // Player_XSpeedAbsolute: written by ImposeFriction (on the floor, or swimming with Left/Right), before any wall stop
-  if(dir)p.facing=dir;
+  // PlayerCtrlRoutine masks LR for grounded Down before movement selects facing.
+  if(dir&&!(p.grounded&&b.has('down')))p.facing=dir;
   // Whirlpool membership is tested where this frame's move lands (the other capture phase tests where it starts).
   const probe=Math.floor(w.whirlFirst?p.x:p.x+motionOf(Math.round(p.vx*4096)));
   const zone=whirlpoolAt(this.whirlpools,probe);
