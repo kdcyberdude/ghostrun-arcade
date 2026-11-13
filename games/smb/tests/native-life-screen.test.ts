@@ -14,6 +14,7 @@ for(const event of [
  const sim:any=new Simulation([observedLevels().find(l=>l.id===event.level)!]);sim.reset(true);
  sim.timeUpDeath=event.timeUp;sim.die();sim.loseLife=true;sim.step([],1);
  assert.equal(sim.lifeIntro.set,event.load,'load row comes from native screen-task sequencing');
+ sim.step([],2); // InitializeArea clears and loads the target after PlayerLoseLife's retained RAM row.
  assert.equal(Boolean(sim.entryFalling&&sim.area.entryFall?.native),event.falling);
  let control=event.control,firstReady=-1;
  for(let row=event.load;row<=event.ready+2;row++){
