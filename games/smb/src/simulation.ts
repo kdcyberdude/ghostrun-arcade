@@ -1901,7 +1901,9 @@ export class Simulation {
  /** KillAllEnemies / EraseEnemyObject clears slots0–4; movement bytes and slot5 remain. */
  private clearVictoryEnemyBank(){
   for(const [platform,slot]of this.platformSlots)if(slot<5){this.platformMotion.lost.add(platform as PlatformSpec);this.platformSlots.delete(platform);}
-  this.firebarSlots?.eraseAll();this.springTimers.clear();
+  this.firebarSlots?.eraseAll();
+  for(const spring of this.springTimers.keys())if(this.springSlots.get(spring)!==5)this.springTimers.delete(spring);
+  for(const [spring,slot]of this.springSlots)if(slot<5)this.springSlots.delete(spring);
   for(const controller of this.frenzyControllers)if(controller.slot!==undefined&&controller.slot<5){controller.slot=undefined;controller.lost=true;}
   for(const slot of this.specialSlot5.vineSlots)if(slot<5)this.erasedVineSlots.add(slot);
   this.specialSlot5.frenzyBuffer=0;this.flameFrenzy=false;this.mouthFlame=undefined;
