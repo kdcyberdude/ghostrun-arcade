@@ -1,3 +1,4 @@
+import {simEntities} from '../tools/harness/native-entities.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {nativeLakituBox,nativeLakituContact} from '../src/lakitu-contact.js';
@@ -42,10 +43,11 @@ test('Lakitu contact retains latch on skipped rows and clears it only on a teste
 test('both Lakitu controls retain native defeat motion until graphics erases their slot',()=>{
  for(const trajectory of cases.defeats){
   const offset=trajectory.box===8?16:24,first=trajectory.rows[0],sim:any=new Simulation([structuredClone(observedLevels().find(l=>l.id==='5-2')!)]);sim.reset(true);
-  const e=sim.makeEnemy({kind:'lakitu',x:160,y:first.y+offset});Object.assign(e,{active:true,enemySlot:2,dead:1,lak:{dir:0,speed:0,box:trajectory.box},pod:{y:first.y+offset,speed:first.speed>127?first.speed-256:first.speed,force:first.force,fraction:first.fraction,timer:0}});
+  const e=sim.makeEnemy({kind:'lakitu',x:160,y:first.y+offset});Object.assign(e,{active:true,enemySlot:2,dead:1,lak:{dir:0,speed:0,box:trajectory.box},pod:{y:first.y+offset,speed:first.speed>127?first.speed-256:first.speed,force:first.force,fraction:first.fraction,timer:0}});sim.enemies=[e];
   for(const row of trajectory.rows.slice(1)){
    sim.moveDefeatedRespawnLakitu(e);
    assert.equal(e.active,Boolean(row.flag),`${trajectory.action} row${row.frame}`);
+   assert.deepEqual(simEntities(sim),row.flag?[{kind:'lakitu',x:160,y:row.y&255}]:[],`legacy native defeat slot ${trajectory.box}/${trajectory.action}/${row.frame}`);
    if(row.flag)assert.deepEqual([e.y-offset,e.pod.speed&255,e.pod.force,e.pod.fraction],[row.y,row.speed,row.force,row.fraction],`${trajectory.action} row${row.frame}`);
   }
   assert.equal(e.slotFreed,true);assert.equal(e.slotLost,true);

@@ -55,7 +55,7 @@ import {lakituStep,lakituReappear,stopFrenzyParsed,SPINY_EGG} from './lakitu';
 import {flyingCheepLaunch,moveFlyingCheep} from './flying-cheep.js';
 import {newNativeBlooper,stepNativeBlooper} from './blooper-motion.js';
 import {nativeAutoWalkAreaLoad} from './area-load-clock.js';
-import {hammerBroStep} from './hammer-bro';
+import {hammerBroStep,nativeHammerBroContact,nativeHammerBroBox} from './hammer-bro';
 import {nativeLakituBox,nativeLakituContact} from './lakitu-contact';
 import {NativeSpecialSlot,type AreaControl} from './native-special-slot';
 import nativeAreaControls from '../data/native-area-controls.json';
@@ -1611,9 +1611,26 @@ export class Simulation {
   if(e.age===1)e.x+=this.slotSub[slot]/256;
   const camera=this.camera+this.lakituScroll,screenX=Math.floor(e.x)-camera;
   const step=hammerBroStep(n,{x:Math.floor(e.x),marioX:Math.floor(this.player.x),frame:this.random.frame,random1:this.random.bytes[slot+1],random2:this.random.bytes[slot+2],hard:this.secondaryHardMode,tickTimer:!this.nmiTimersHeld,
-   supported:Boolean(this.enemyCollisionAt(Math.floor(e.x)+8,n.y+24)),sideBlocked:this.enemySolid(Math.floor(e.x)+(e.nativeDir===1?16:0),n.y+20),onScreen:screenX>0&&screenX<=247,spawnHammer:()=>this.spawnNativeHammer(e)});
-  e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?1:-1;e.vx=step.speed/16;e.x+=e.vx*step.steps;e.y=n.y+24;e.vy=n.speed+n.force/256;
+   supported:Boolean(this.enemyCollisionAt(Math.floor(e.x)+8,n.y+24)),sideBlocked:this.enemySolid(Math.floor(e.x)+(e.nativeDir===1?16:0),n.y+20),onScreen:screenX>0&&screenX<=247,spawnHammer:()=>this.spawnNativeHammer(e),afterBackground:()=>{e.y=n.y+24;this.contactNativeHammerBro(e);return this.nativeTimersStopped;}});
+  if(this.nativeTimersStopped){e.y=n.y+24;e.vy=n.speed+n.force/256;return;}
+  if(!e.dead)e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?1:-1;if(!e.dead)e.vx=step.speed/16;e.x+=e.vx*step.steps;e.y=n.y+24;e.vy=n.speed+n.force/256;
   this.slotBroJump[slot]=n.jumpTimer;this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
+ }
+ private contactNativeHammerBro(e:Enemy){
+  if(this.player.dead||this.enemyContactOff||e.dead)return;
+  const p=this.player,n=e.hbro!,camera=this.camera+this.lakituScroll,collision={collision:Boolean(n.collision)},nativeY=n.y;
+  const action=nativeHammerBroContact(collision,{frame:this.random.frame,blocked:Math.floor(p.y)-32<0||Math.floor(p.y)-32>=208,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:nativeHammerBroBox(Math.floor(e.x),nativeY,camera),star:Boolean(p.star),injury:Boolean(p.invincible),playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer});
+  n.collision=collision.collision;if(action==='none')return;
+  if(action==='hurt'){this.hurt();return;}
+  e.dead=1;n.state=action==='stomp'?0x20:(n.state&0x10)|0x22;n.y-=2;
+  if(action==='stomp'){n.speed=0;n.force=0;e.vx=0;p.vy=-3+(p.vy-Math.floor(p.vy));p.grounded=false;this.emit('sfx_stomp');}
+  else{n.speed=-3;e.nativeDir=Math.floor(e.x)-Math.floor(p.x)<0?-1:1;e.vx=e.nativeDir;this.emit('sfx_kick');}
+  this.floateyScore(1000);this.enemyPopup(1000,e);
+ }
+ private moveDefeatedHammerBro(e:Enemy){
+  const n=e.hbro!;if(n.y>=256){n.state=0;n.frameTimer=0;n.interval=0;e.x+=e.vx;e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
+  if(!this.nmiTimersHeld&&n.frameTimer)n.frameTimer--;
+  const move={...n,timer:0};nativeImposeGravity(move,0x3d,3);Object.assign(n,{y:move.y,speed:move.speed,force:move.force,fraction:move.fraction});e.dead++;e.x+=e.vx;e.y=n.y+24;e.vy=n.speed+n.force/256;
  }
  private spawnNativeHammer(e:Enemy){
   const byte=this.random.bytes[1],slot=(byte&7)||(byte&8),guard=[4,4,4,5,5,5,6,6,6][slot];
@@ -2495,6 +2512,7 @@ export class Simulation {
      if(e.enemySlot!==undefined)Object.assign(this.slotVertical[e.enemySlot],e.defeat);
      if(erased){this.eraseEnemy(e);if(e.enemySlot!==undefined){e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}continue;
     }
+    if(e.kind==='hammerBro'&&e.hbro){this.moveDefeatedHammerBro(e);continue;}
     if(e.kind==='lakitu'&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
     if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
     e.dead++;
@@ -2644,8 +2662,9 @@ export class Simulation {
     if(nativeBowserHit(e.nativeBowser,p,this.random.frame)){if(p.star){e.dead=1;e.vy=-4;this.floateyScore(200);this.emit('sfx_kick');}else this.hurt();}
     continue;
    }
+   if(e.kind==='hammerBro')continue; // native contact already preceded ProcHammerBro
    if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
-   const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
+   const eh=e.kind==='bowser'?32:e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
    const shellContact=e.shell&&!p.star?this.nativeShellContact(priorX,priorY):undefined;
@@ -2674,9 +2693,9 @@ export class Simulation {
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
     if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
-    const award=e.kind==='bullet'?200:e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)
+    const award=e.kind==='bullet'?200:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award);
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
-    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='hammerBro'||e.kind==='bullet')this.enemyPopup(award,e);
+    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='bullet')this.enemyPopup(award,e);
     this.emit('sfx_stomp');
     if(['koopa','redKoopa','paratroopa','beetle'].includes(e.kind)){
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
