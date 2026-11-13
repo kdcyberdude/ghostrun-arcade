@@ -26,3 +26,10 @@ test('source machine exposes exact writes and retains incomplete instruction own
  assert.equal(Object.hasOwn(program,'proof'),false);assert.equal(Object.hasOwn(graphics,'proof'),false);
  assert.throws(()=>new NativeSourcePpu().read(7),/outside source-opacity timing coverage/);
 });
+test('sparse/no observer and source idle batching preserve every native sample',()=>{
+ for(const [index,c] of [...cases,cases[0]].entries()){const m=new NativeSourceMachine(),pads=Buffer.from(c.pads,'base64');let entries=0,returns=0,nmis=0;
+  if(index<cases.length){m.observerPcs=new Set([0x92b0,0x92c7]);m.onInstruction=event=>{assert.ok(event.nmiServiced||m.observerPcs!.has(event.pc));if(event.nmiServiced)nmis++;if(event.pc===0x92b0)entries++;if(event.pc===0x92c7)returns++;};}
+  for(let frame=0;frame<fixture.samples;frame++){m.step(pads[frame]);assert.equal(createHash('sha256').update(m.ram).digest('hex'),c.ramSha256[frame],`${c.capture} sparse RAM${frame}`);const expected=c.cpu.find(r=>r.row===frame);if(expected){const actual=m.snapshot();for(const key of ['pc','cycles','ppuFrame','ppuDot','sp','a','x','y'] as const)assert.equal(actual[key],expected[key]);}}
+  if(index<cases.length){assert.equal(entries,returns);assert.ok(entries>0&&nmis>0);}
+ }
+});

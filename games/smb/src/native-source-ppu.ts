@@ -31,6 +31,9 @@ export class NativeSourcePpu {
   else if(reg===7){const address=this.v&0x3fff;if(address<0x2000)throw Error('NROM CHR writes are unsupported');if(address<0x3f00){this.nametable[this.nt(address)]=value;this.log(5,0);}else {this.palette[this.pal(address)]=value;this.log(7,value,this.pal(address));}this.increment();}
   this.openBus=value;
  }
+ /** Physical dots to the next source PPU event; an idle CPU may not cross it
+  * before checking pending NMI. The omitted pre-render dot is handled by advance. */
+ dotsUntilEvent(){let next=FRAME-Number(Boolean(this.frame&1));for(const event of [VBLANK-12,VBLANK,CAPTURE-12,CAPTURE,this.scheduled])if(event>this.dot&&event<next)next=event;return next-this.dot;}
  advance(dots:number){
   while(dots>0){const end=FRAME-Number(Boolean(this.frame&1));let next=end;
    for(const event of [VBLANK-12,VBLANK,CAPTURE-12,CAPTURE])if(event>this.dot&&event<next)next=event;

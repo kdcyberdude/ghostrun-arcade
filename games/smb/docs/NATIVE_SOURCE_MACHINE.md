@@ -51,3 +51,15 @@ RAM still execute. Sprite opacity timing does not synthesize pixels. No Simulati
 or renderer consumer is changed by this helper commit, so it alone does not repair
 the high-level remake's partial-tail divergence. Runtime integration must consume
 owned source events and preserve the existing semantic/picture contracts.
+
+The opt-in `observerPcs` set restricts `step` callbacks to selected source PCs plus
+NMI entry. `stepInstruction` always returns its full instruction/access event.
+Without a requested instruction callback, `step` avoids trace allocations and can
+batch a source absolute self-JMP. Each batch ends at the first PPU event/sample
+boundary (one final JMP may straddle it), then rechecks pending NMI. It does not
+batch running source procedures, replace their costs, or consult captured cycles.
+The production parser observer needs only $92b0/$92c7 plus NMI entry. All native
+RAM and CPU split-sample assertions are repeated with that sparse mode and with
+no observer. Measured source-clock throughput on Node18 increased from84–86fps to
+179–186fps across the three946-sample prefixes (CPU/PPU only; no combined-renderer
+performance claim). Reproduce with `native-source-machine-benchmark.ts`.

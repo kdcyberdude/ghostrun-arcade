@@ -13,9 +13,12 @@ export class NativeSourceMachine {
  readonly cpu:NativeSourceCpu;
  readonly ppu:NativeSourcePpu;
  onInstruction?: (event:NativeSourceInstructionEvent,machine:NativeSourceMachine)=>void;
+ /** Opt-in sparse observation during step(); NMI entry is always observed.
+  * stepInstruction() still returns every instruction and all its accesses. */
+ observerPcs?:ReadonlySet<number>;
  private instructions:Map<number,NativeSourceInstruction>;private tables:Map<number,number>;
  private target=241*341+1;private pad=0;private strobe=0;private shift=0;private shiftCount=0;private dma=0;
- private reads:NativeSourceAccess[]=[];private writes:NativeSourceAccess[]=[];
+ private reads:NativeSourceAccess[]=[];private writes:NativeSourceAccess[]=[];private record=true;
  constructor(readonly program:NativeSourceProgram=source as unknown as NativeSourceProgram,opacityMasks?:ArrayLike<number>,patternRead?:(address:number)=>number){
   this.instructions=new Map(program.instructions.map(r=>[r[0],r]));this.tables=new Map(program.data);
   this.cpu={pc:program.reset,a:0,x:0,y:0,p:0x24,sp:0xfd,cycles:7};this.ppu=new NativeSourcePpu(opacityMasks??graphics.opacity,patternRead??(address=>{const value=graphics.title[address-graphics.titleAddress];if(value===undefined)throw Error(`Outside source title CHR readback ${address.toString(16)}`);return value;}));
@@ -33,10 +36,10 @@ export class NativeSourceMachine {
   else if(address===0x4016){if(this.strobe)value=64|(this.pad&1);else {value=64|(this.shiftCount<8?this.shift&1:1);if(this.shiftCount<8){this.shift>>=1;this.shiftCount++;}}}
   else if(address===0x4017)value=64;
   else {const table=this.tables.get(address);if(table===undefined)throw Error(`Unsupported source read ${address.toString(16)} at ${this.pc.toString(16)}`);value=table;}
-  this.reads.push({address,value});return value;
+  if(this.record)this.reads.push({address,value});return value;
  }
  private write(address:number,value:number){
-  value&=255;address&=65535;this.writes.push({address,value});
+  value&=255;address&=65535;if(this.record)this.writes.push({address,value});
   if(address<0x2000){this.ram[address&2047]=value;return;}
   if(address<0x4000){this.ppu.write(address&7,value);return;}
   if(address===0x4014){for(let i=0;i<256;i++)this.ppu.oam[(this.ppu.oamAddress+i)&255]=this.ram[((value<<8)+i)&2047];this.dma+=513;return;}
@@ -45,11 +48,12 @@ export class NativeSourceMachine {
   if(address>=0x4000&&address<=0x4017){if(address===0x4015&&(value&16))throw Error('DMC CPU timing is unsupported');return;}
   throw Error(`Unsupported source write ${address.toString(16)}`);
  }
- stepInstruction():NativeSourceInstructionEvent{
-  this.reads=[];this.writes=[];const s=this.cpu,start=s.cycles;let nmiServiced=false;
+ stepInstruction():NativeSourceInstructionEvent{return this.executeInstruction(true)!;}
+ private executeInstruction(record:boolean):NativeSourceInstructionEvent|undefined{
+  this.record=record;if(record){this.reads=[];this.writes=[];}const s=this.cpu,start=s.cycles;let nmiServiced=false;
   if(this.ppu.nmi){this.ppu.nmi=false;nmiServiced=true;this.push(s.pc>>8);this.push(s.pc);this.push((s.p&~16)|32);s.p|=4;s.pc=this.program.nmi;s.cycles+=7;}
   this.ppu.instructionStart=3*(s.cycles-start)+this.ppu.dot;
-  const cpuBefore={...s};
+  const cpuBefore=record?{...s}:undefined;
   const node=this.instructions.get(s.pc);if(!node)throw Error(`Outside source program ${s.pc.toString(16)}`);const [pc,op,mode,operand,size,cost,penalty]=node;s.pc=(pc+size)&65535;let address=operand,base=operand,cycles=cost;
   if(mode==='zpx')address=(operand+s.x)&255;else if(mode==='zpy')address=(operand+s.y)&255;
   else if(mode==='absx')address=(operand+s.x)&65535;else if(mode==='absy')address=(operand+s.y)&65535;
@@ -80,7 +84,21 @@ export class NativeSourceMachine {
    case 'NOP':break;default:throw Error(`Unsupported source operation ${op}`);
   }
   s.cycles+=cycles+this.dma;this.dma=0;this.ppu.advance((s.cycles-start)*3);
-  const event={pc,nextPc:s.pc,cycles:s.cycles-start,nmiServiced,reads:this.reads,writes:this.writes,cpuBefore};this.onInstruction?.(event,this);return event;
+  if(!record)return;
+  const event={pc,nextPc:s.pc,cycles:s.cycles-start,nmiServiced,reads:this.reads,writes:this.writes,cpuBefore:cpuBefore!};
+  if(nmiServiced||!this.observerPcs||this.observerPcs.has(pc))this.onInstruction?.(event,this);return event;
  }
- step(pad:number):void{this.pad=pad&255;while(this.ppuDot<this.target)this.stepInstruction();this.target+=341*262;}
+ step(pad:number):void{
+  this.pad=pad&255;
+  while(this.ppuDot<this.target){
+   const observed=Boolean(this.onInstruction&&(this.ppu.nmi||!this.observerPcs||this.observerPcs.has(this.pc)));
+   const node=this.instructions.get(this.pc);
+   // A source absolute self-JMP has no RAM/register effects. Batch only until
+   // the first PPU event (or sample), then reconsider NMI and observation.
+   if(!observed&&!this.ppu.nmi&&node?.[1]==='JMP'&&node[2]==='abs'&&node[3]===this.pc){
+    const dots=Math.min(this.target-this.ppuDot,this.ppu.dotsUntilEvent()),repeats=Math.ceil(dots/(node[5]*3)),cycles=repeats*node[5];this.cpu.cycles+=cycles;this.ppu.advance(cycles*3);
+   }else this.executeInstruction(observed);
+  }
+  this.target+=341*262;
+ }
 }
