@@ -18,7 +18,7 @@ for(const input of inputs){
   if(p[0x770]!==1||r[0x770]!==1||p[0x772]!==3||r[0x772]!==3||!p[0x14]||p[0x1b]!==46||p[0x23]<6)continue;
   const pickup=!r[0x14]&&[6,11].includes(r[0x115])&&r[0x131]===47;
   if(!pickup&&(!r[0x14]||r[0x1b]!==46||r[14]!==8))continue;
-  const player=Array.from(r.subarray(0x4ac,0x4b0)) as NativeBox,playerY=(r[0xb5]-1)*256+r[0xce],x=r[0x73]*256+r[0x8c],y=((r[0x14]?r[0xbb]:p[0xbb])-1)*256+r[0xd4],camera=r[0x71a]*256+r[0x71c],frame=r[9],predicted=nativePowerupContact(x,y,camera,frame,playerY,player),context={input:input.kind,id:input.id,row,level:`${r[0x75f]+1}-${r[0x75c]+1}`,kind:r[0x39],engine:r[14]};rows++;
+  const player=Array.from(r.subarray(0x4ac,0x4b0)) as NativeBox,playerY=(r[0xb5]-1)*256+r[0xce],x=r[0x73]*256+r[0x8c],y=(r[0xbb]-1)*256+r[0xd4],camera=r[0x71a]*256+r[0x71c],frame=r[9],predicted=nativePowerupContact(x,y,camera,frame,playerY,player),context={input:input.kind,id:input.id,row,level:`${r[0x75f]+1}-${r[0x75c]+1}`,kind:r[0x39],engine:r[14]};rows++;
   const event={x,y,camera,frame:frame&1,playerY,player,pickup},key=JSON.stringify(event);let e=events.get(key);if(!e){e={...event,count:0,examples:[]};events.set(key,e);}e.count++;if(e.examples.length<2)e.examples.push(context);
   if(predicted!==pickup)diagnostics.push({...context,...event,predicted,enemyBox:Array.from(r.subarray(0x4c4,0x4c8))});
   if(pickup){kinds[r[0x39]]=(kinds[r[0x39]]??0)+1;const tail=Array.from({length:6},(_,i)=>bytes.subarray((row+i)*2048,(row+i+1)*2048));pickups.push({...context,x,y,player,award:tail.map(t=>({score:digits(t),lives:t[0x75a],control:t[0x115],timer:t[0x131]}))});}

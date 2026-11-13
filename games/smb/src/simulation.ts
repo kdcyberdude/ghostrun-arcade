@@ -1676,12 +1676,16 @@ export class Simulation {
   const camera=this.camera+this.lakituScroll;this.miscOffscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),camera);n.box=nativeHammerBox(Math.floor(i.x),Math.floor(i.y),camera,n.slot<4?this.nativeBlocks[n.slot].x:this.miscPositions[n.slot-4].x);this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};
   if(this.miscOffscreen&0xfc)i.life=0;
  }
- // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll; it steps on its first remake row
- // (the native creation row is the row before). Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
+ // Native Lakitu (src/lakitu.ts): MoveLakitu on its pre-step integer x against this frame's Mario x, speed byte and scroll, after its initialization-only creation turn. Flee (EndFrenzy sets Lakitu's state): when the area parser queues the Stop_Frenzy object and the enemy pass has a free slot.
+ private pendingPlacedLakitu(){
+  const camera=Math.floor(this.camera+this.lakituScroll);
+  return this.enemies.some(e=>!e.active&&!e.slotLost&&e.nativeId===17&&e.nativeColumn!>=camera+255&&e.nativeColumn!<=((camera+303)&~15));
+ }
  private updateNativeLakitu(e:Enemy){
   let timer=this.spinyTimer;
-  if(timer===0&&this.spinyBuffer&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot(false,true);if(slot<5&&slot<(e.enemySlot??5))timer=SPINY_EGG.timer;}
+  if(timer===0&&this.spinyBuffer&&!this.pendingPlacedLakitu()&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot(false,true);if(slot<5&&slot<(e.enemySlot??5))timer=SPINY_EGG.timer;}
   e.graphicsFrenzyTimer=timer;if(e.graphics)e.graphics.graphicsFrenzyTimer=timer;
+  if(e.dead||this.nativeTimersStopped)return; // RunNormalEnemies tests TimerControl after PlayerEnemyCollision.
   const p=this.player,lak=e.lak??={dir:0,speed:0};
   if(this.nativeFrenzyTurn?.id===24&&this.nativeFrenzyTurn.slot<e.enemySlot!)lak.fleeing=true;
   lak.preX=Math.floor(e.x);
@@ -1734,7 +1738,7 @@ export class Simulation {
  /** LakituAndSpinyHandler in the first free slot (CheckFrenzyBuffer): a slot below Lakitu's runs before Lakitu steps (pre-step x, last row's buffer), a higher one after.
   * The handler is not reached on the row after the camera crosses a 32 px boundary (AreaParserTaskNum, as for list objects: 6-1 row 775 holds the egg one row). */
  private spinyFrenzyAfter(bufferBefore:boolean){
-  if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1)return;
+  if(this.spinyTimer>0||this.scrollCrossFrame===this.frame-1||this.pendingPlacedLakitu())return;
   const slot=this.freeNativeSlot(),lakitu=this.enemies.find(e=>e.kind==='lakitu'&&e.active&&!e.dead);if(slot>=5)return;
   const low=lakitu?.enemySlot!==undefined&&slot<lakitu.enemySlot;
   if(!(low?bufferBefore:this.spinyBuffer))return;
@@ -2291,16 +2295,19 @@ export class Simulation {
    }else if(e!.nativeGroup)this.passNativeGroups(column);
    else{
     const e=entry.enemy!;
+    // InitLakitu erases a duplicate before Inc2B; this record stays pending.
+    if(e.nativeId===17&&this.specialSlot5.frenzyBuffer)break;
     this.activateNativePlaced(e,cursor,column);
    }
    cursor++;
   }
  }
  private activateNativePlaced(e:Enemy,slot:number,column:number){
-    e.active=true;e.enemySlot=slot;e.graphicsVisible=false;e.graphicsFacing=-1;e.vx=e.nativeId===16?0:e.nativeId===14?-0.5:this.primaryHardMode?-0.75:-0.5;e.vy=0;
+    e.active=true;e.enemySlot=slot;e.graphicsVisible=false;e.graphicsFacing=-1;e.vx=e.nativeId===17?e.vx:e.nativeId===16?0:e.nativeId===14?-0.5:this.primaryHardMode?-0.75:-0.5;e.vy=0;
     e.x=column+(e.nativeId===15?0:this.slotSub[slot]/256);e.y=e.originY;
     const left=this.slotVertical[slot];
-    if(e.nativeId===14)e.pod={...nativeMoveState(e.y),...left};
+    if(e.nativeId===17){e.lak={dir:0,speed:0,box:3};this.lakituReappearCount=0;}
+    else if(e.nativeId===14)e.pod={...nativeMoveState(e.y),...left};
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
     else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0};
     else e.fall={speed:0,force:0,fraction:left.fraction};
@@ -2488,7 +2495,7 @@ export class Simulation {
      if(e.enemySlot!==undefined)Object.assign(this.slotVertical[e.enemySlot],e.defeat);
      if(erased){this.eraseEnemy(e);if(e.enemySlot!==undefined){e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}continue;
     }
-    if(e.kind==='lakitu'&&e.lak?.box===8&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
+    if(e.kind==='lakitu'&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
     if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
     e.dead++;
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
@@ -2532,6 +2539,7 @@ export class Simulation {
     }
    }else if(e.kind==='bullet'){if(!e.nativeShot||e.age>1)e.x+=Math.sign(e.vx)*BULLETS.speed;} // a native shot holds its spawn row
    else if(e.kind==='lakitu'){
+    if(!p.dead&&!this.enemyContactOff)this.contactNativeLakitu(e,priorX,priorY);
     this.updateNativeLakitu(e);
    }
    else if(e.kind==='bowser'&&(e.nativeBowser||!e.bowser)){this.advanceNativeBowser(e);}
@@ -2636,7 +2644,7 @@ export class Simulation {
     if(nativeBowserHit(e.nativeBowser,p,this.random.frame)){if(p.star){e.dead=1;e.vy=-4;this.floateyScore(200);this.emit('sfx_kick');}else this.hurt();}
     continue;
    }
-   if(e.kind==='lakitu'&&e.lak?.box===8){this.contactRespawnLakitu(e,priorX,priorY);continue;}
+   if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
    const eh=e.kind==='bowser'?32:e.kind==='hammerBro'||e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
@@ -2710,13 +2718,13 @@ export class Simulation {
   if(e.kind==='paratroopa'){e.kind=e.nativeId===15?'redKoopa':'koopa';e.nativeId=(e.nativeId??14)&1;}
  }
  private moveDefeatedRespawnLakitu(e:Enemy){
-  const n=e.pod!;if(n.y>=272){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
+  const n=e.pod!;if(n.y>=(e.lak?.box===8?272:280)){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}
   e.dead++;nativeImposeGravity(n,0x3d,3);e.y=n.y;e.vy=n.speed+n.force/256;
  }
- private contactRespawnLakitu(e:Enemy,priorX:number,priorY:number){
-  const p=this.player,lak=e.lak!,camera=this.camera+this.lakituScroll,n={collision:Boolean(lak.collision)};
-  const nativeY=Math.floor(priorY)-16,playerY=Math.floor(p.y)-32;
-  const action=nativeLakituContact(n,{frame:this.broClock,blocked:playerY<0||playerY>=208,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:nativeLakituBox(Math.floor(priorX),nativeY,8,camera),star:Boolean(p.star),injury:Boolean(p.invincible),playerY,enemyY:nativeY&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer});
+ private contactNativeLakitu(e:Enemy,priorX:number,priorY:number){
+  const p=this.player,lak=e.lak??={dir:0,speed:0},camera=this.camera+this.lakituScroll,n={collision:Boolean(lak.collision)};
+  const control=lak.box===8?8:3,nativeY=Math.floor(priorY)-(control===8?16:24),playerY=Math.floor(p.y)-32;
+  const action=nativeLakituContact(n,{frame:this.broClock,blocked:playerY<0||playerY>=208,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:nativeLakituBox(Math.floor(priorX),nativeY,control,camera),star:Boolean(p.star),injury:Boolean(p.invincible),playerY,enemyY:nativeY&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer});
   lak.collision=n.collision;if(action==='none')return;
   // PlayerEnemyCollision precedes MoveLakitu; injury freezes its move, a defeat moves only vertically.
   e.x=priorX;if(action==='hurt'){this.hurt();return;}

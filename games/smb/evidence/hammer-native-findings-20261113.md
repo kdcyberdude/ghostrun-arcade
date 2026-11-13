@@ -453,8 +453,8 @@ input vectors,4 mushroom collections,0 rule mismatches. ActualRAM SHAverified;
 fixture retains all decisions/counts, provenance, cached boxes and every
 collection's six-row score/life/floatey bytes. Its complete970-row clean2-1
 prefix now has all15 strict fieldsnull, including the collection and growth.
-Source extraction uses prior high byte for an erased object, because native
-EraseEnemyObject clears that high byte after the contact box was generated.
+Source extraction uses native Enemy_Y_HighPos+5 ($BB). The original probe
+read $BA (slot4); EraseEnemyObject preserves all position/high/fraction bytes.
 
 Newly exposed2-1 local970: DonePlayerTask sees TimerControlC4, clears it and
 setsengine8 within PlayerChangeSize, allowing enemy turns in the SAME engine

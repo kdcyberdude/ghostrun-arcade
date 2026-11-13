@@ -66,10 +66,10 @@ test('an egg holds its creation row, rises at -3 with 0x20/256 gravity (cap 3), 
  assert.equal(egg.motion,undefined);assert.equal(egg.y,208);assert.equal(Math.abs(egg.vx),SPINY_EGG.walk);
 });
 
-test('native Lakitu appearance x and Stop_Frenzy object column are applied to 4-1, 6-1 and 8-2',()=>{
+test('all native placed Lakitu records and Stop_Frenzy columns are applied to their source areas',()=>{
  for(const entry of lakituData.levels){
   const area=observedLevels().find(l=>l.id===entry.level)!.areas.find(a=>a.id===entry.area)!;
-  const lakitu=area.enemies.find(e=>e.kind==='lakitu')!;
+  const lakitu=area.enemies.find(e=>e.kind==='lakitu'&&e.nativeColumn===entry.x)!;
   assert.equal(lakitu.x,entry.x);assert.equal(lakitu.stopFrenzyX,entry.stopFrenzyX);
  }
 });
