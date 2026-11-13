@@ -16,22 +16,29 @@ export type StrictAudit={schema:'native-strict-audit-v1',status:'pass'|'diverged
  fields:Record<string,number|null>,identity:{bindings:AreaBinding[],diagnostics:string[],continuations:{level:string,from:number,bindings:AreaBinding[],diagnostics:string[]}[]},coverage:{completeInputSequence:boolean,unsteppedFrames:number,ramFrames:number,flagFrames:number,continuationFrames:number,victoryFrames:number,uncomparedSameLevelFrames:number,nativeMappedFrames:number,inputFrames:number,endReason:string,frames:number,alignedFrames:number,nativeEntityRows:number,comparedEntityRows:number,nativeBirthRows:number,areaFrames:Record<string,number>,complete:boolean},
  diagnostics:{code:string,area:string,first:number,count:number,detail:string,slot?:number,id?:number}[],mismatches:{code:string,area:string,slot?:number,kind:string,first:number,count:number}[],samples:({frame:number,area:string}&EntityMismatch)[],visits:StrictAreaVisit[]};
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((sum,v)=>sum*10+v,0);
-export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string):StrictAudit{
+export type StrictFrameObservation={frame:number;status:'match'|'mismatch'|'unchecked';fields:string[];gaps:string[]};
+export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string,observeFrame?:(row:StrictFrameObservation)=>void):StrictAudit{
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
  const nativeLevel=sim.level as Level,areaIdentity=nativeAreaLoads(nativeLevel,ram,(entrance as {area?:string}).area??nativeLevel.main),visits=areaIdentity.loads;
  const modelBindings=new Map<unknown,AreaBinding[]>();for(const model of sim.levels as Level[]){const bound=nativeAreaBindings(model).bindings;for(const area of model.areas)modelBindings.set(area,[...(modelBindings.get(area)??[]),...bound.filter(b=>b.area===area.id)]);}
  const fields:Record<string,number|null>={level:null,area:null,dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,missing:null,extra:null,kind:null,position:null,state:null,'firebar.id':null,'firebar.high':null,'firebar.low':null,'firebar.speed':null,'firebar.direction':null,'alias.owner':null,'vine.count':null,'vine.height':null,'vine.startY':null,'vine.slots':null};
  const coverage={completeInputSequence:false,unsteppedFrames:0,ramFrames:Math.floor(ram.length/2048),flagFrames:0,continuationFrames:0,victoryFrames:0,uncomparedSameLevelFrames:0,nativeMappedFrames:0,inputFrames:pads.length,endReason:'end of trace',frames:0,alignedFrames:0,nativeEntityRows:0,comparedEntityRows:0,nativeBirthRows:0,areaFrames:{} as Record<string,number>,complete:true};
  const diagnosticMap=new Map<string,StrictAudit['diagnostics'][number]>(),mismatchMap=new Map<string,StrictAudit['mismatches'][number]>(),samples:StrictAudit['samples']=[];let firstCoverageGap:number|null=null,index=-1;
- const gap=(f:number,area:string,g:CoverageGap)=>{coverage.complete=false;firstCoverageGap??=f;const key=`${g.code}:${area}:${g.id??''}:${g.slot??''}:${g.detail}`;
+ let rowFields=new Set<string>(),rowGaps=new Set<string>();
+ const gap=(f:number,area:string,g:CoverageGap)=>{rowGaps.add(g.code);coverage.complete=false;firstCoverageGap??=f;const key=`${g.code}:${area}:${g.id??''}:${g.slot??''}:${g.detail}`;
   const found=diagnosticMap.get(key);if(found)found.count++;else diagnosticMap.set(key,{...g,area,first:f,count:1});};
- const check=(key:string,native:unknown,remake:unknown,f:number)=>{fields[key]??=null;if(fields[key]!==null)return;const equal=Array.isArray(native)?Array.isArray(remake)&&native.length===remake.length&&native.every((v,i)=>v===remake[i]):native===remake;if(!equal)fields[key]=f;};
+ const check=(key:string,native:unknown,remake:unknown,f:number)=>{fields[key]??=null;
+  const equal=Array.isArray(native)?Array.isArray(remake)&&native.length===remake.length&&native.every((v,i)=>v===remake[i]):native===remake;
+  if(remake===undefined)rowGaps.add('unowned:'+key);else if(!equal)rowFields.add(key);
+  if(!equal&&fields[key]===null)fields[key]=f;
+ };
  const buttons:Button[]=['a','b','select','start','up','down','left','right'];
  const continuations:StrictAudit['identity']['continuations']=[];let regionId=level,regionVisits=visits,lastVisit:NativeAreaLoad|undefined;
  let prev:Uint8Array|undefined,walkOwned=false;
  if(ram.length!==pads.length*2048)gap(0,(entrance as {area?:string}).area??nativeLevel.main,{code:'input-ram-length-mismatch',detail:`${pads.length} input frames require ${pads.length*2048} RAM bytes; got ${ram.length} (${coverage.ramFrames} complete rows)`});
  if(!pads.length)gap(0,nativeLevel.main,{code:'empty-native-input',detail:'no retained input frames to compare'});
  for(let f=0;f<Math.min(pads.length,coverage.ramFrames);f++){
+  rowFields=new Set();rowGaps=new Set();try{
   const raw=ram.subarray(f*2048,(f+1)*2048),nativeId=`${raw[0x75f]+1}-${raw[0x75c]+1}`;
   if(raw[0x770]!==1&&raw[0x770]!==2&&raw[0x770]!==3){
    for(let tail=f;tail<Math.min(pads.length,coverage.ramFrames);tail++){
@@ -84,11 +91,13 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
   const differences=strictEntityDifferences(native,strictSimEntities(sim));
   for(const g of [...differences.gaps,...strictSimCoverage(sim)])gap(f,area,g);
   for(const mismatch of differences.mismatches){
+   rowFields.add(mismatch.code);
    if(fields[mismatch.code]===null)fields[mismatch.code]=f;
    const entity=mismatch.native??mismatch.sim!,key=`${mismatch.code}:${area}:${entity.bank}:${entity.slot}:${entity.kind}`,found=mismatchMap.get(key);
    if(found)found.count++;else mismatchMap.set(key,{code:mismatch.code,area,slot:entity.slot,kind:entity.kind,first:f,count:1});
    if(samples.length<100)samples.push({frame:f,area,...mismatch});
   }
+  }finally{observeFrame?.({frame:f,status:rowFields.size?'mismatch':rowGaps.size?'unchecked':'match',fields:[...rowFields],gaps:[...rowGaps]});}
  }
  coverage.unsteppedFrames=pads.length-coverage.frames;coverage.completeInputSequence=coverage.complete&&coverage.unsteppedFrames===0&&ram.length===pads.length*2048;
  const firsts=Object.values(fields).filter((v):v is number=>v!==null),first=firsts.length?Math.min(...firsts):null;

@@ -1,0 +1,367 @@
+{
+  "sourceSha256": "a21ad2323e8ca18abf86d87e7011829cf393a0c47895734f86966c08f36bb522",
+  "policyHash": "8e7ccda83910e847bfd25df001ea8c6542947e5893b71917c6431f0077f5738b",
+  "seed": 123,
+  "cases": [
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 228,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0.890625,
+      "largestBlob": 3,
+      "largeBlobs": 0
+    },
+    {
+      "status": "fail",
+      "pixels": 256,
+      "matchingPixels": 0,
+      "exactMatchingPixels": 0,
+      "matchingFraction": 0,
+      "largestBlob": 256,
+      "largeBlobs": 1
+    },
+    {
+      "status": "pass",
+      "pixels": 256,
+      "matchingPixels": 256,
+      "exactMatchingPixels": 256,
+      "matchingFraction": 1,
+      "largestBlob": 0,
+      "largeBlobs": 0
+    }
+  ]
+}
