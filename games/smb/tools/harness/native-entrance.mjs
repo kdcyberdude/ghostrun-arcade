@@ -25,7 +25,7 @@ export function initializeEntrance(sim,start){
  if(start.nativeAreaSnapshot&&!start.grounded&&start.vy>=0&&sim.area.theme!=='water'){sim.jumpArc=false;sim.walkingOff=true;sim.landJump='inactive';}
  /* the motor is the native bytes: speed $57/$0705, facing $33, Player_MovingDir $45, Player_XSpeedAbsolute $0700, RunningTimer $0783, RunningSpeed $0703 */
  sim.motor.reset(start.speed,start.facing,start.movingDir,start.speedAbsolute);sim.motor.runningTimer=start.runningTimer??0;sim.motor.runningSpeed=start.runningSpeed??0;
- if(start.movingDir)sim.movingDir=start.movingDir;
+ if(start.movingDir!==undefined){sim.movingDir=start.movingDir;sim.marioMotion=start.movingDir;}
  if(start.screenTimer!==undefined)sim.screenTimer=start.screenTimer;
  if(start.sideCollisionTimer!==undefined)sim.sideCollisionTimer=start.sideCollisionTimer;
  sim.camera=start.camera;if(start.scrollPosition!==undefined)sim.waterScrollX=start.scrollPosition;

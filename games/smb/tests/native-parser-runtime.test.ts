@@ -9,6 +9,7 @@ import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entranc
 import clockEvidence from '../data/native-parser-clock.json';
 import springEvents from './fixtures/native-spring-events.json';
 import springSlots from './fixtures/native-spring-slot-events.json';
+import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
@@ -170,5 +171,24 @@ test('6-3 Spring allocations include the native checkpoint rendering pass before
   const event=springSlots.births.find(e=>e.level==='6-3'&&e.frame===frame);
   if(event){const spring=sim.area.springs.find((s:SpringSpec)=>s.nativeColumn===event.after.x);assert.ok(spring);assert.equal(sim.springSlots.get(spring),event.slot);assert.equal(sim.parserColumnX,event.column[1]);}
   if(frame===2574||frame===2575){const bullet=sim.enemies.find((e:any)=>e.active&&e.frenzy&&e.enemySlot===1);assert.ok(bullet);assert.equal(bullet.x,frame===2574?1823:1821.5);assert.equal(bullet.y,192);assert.equal(bullet.graphicsVisible,frame===2575);assert.equal(sim.swimBag,64);}
+ });
+});
+
+test('a solid tree underside stops Mario without creating a native bump marker or killing the Koopa above',()=>{
+ replay('1-3',202,(sim,frame)=>{
+  if(frame<196)return;
+  const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0&&e.kind==='redKoopa');assert.ok(e,`row${frame} live Koopa`);
+  assert.equal(e.x,447-(frame-195)/2);assert.equal(e.y,80);assert.equal(sim.score,43400);
+  if(frame===196){assert.equal(Math.floor(sim.player.y)-32,76);assert.equal(sim.blockBounceTimer,0);assert.equal(sim.nativeBlockBounce,0);}
+ },'mood0-6a33-entry0006');
+});
+
+
+test('ordinary side-pipe movement keeps the native incoming fraction and running timer without a fitted first speed',()=>{
+ replay('1-2',1735,(sim,frame)=>{
+  if(frame<1728)return;
+  const event=sidePipeEvents.find(e=>e.level==='1-2'&&e.frame===frame)!;assert.ok(event);
+  assert.equal(sim.player.x,event.after.x,`row${frame} x`);assert.equal(Math.round(sim.player.vx*4096),event.after.motor.speed,`row${frame} speed`);
+  assert.equal(sim.motor.runningTimer,event.after.motor.runningTimer);assert.equal(sim.motor.absolute,event.after.motor.absolute);assert.equal(sim.pipeTimer,event.after.change);
  });
 });

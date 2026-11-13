@@ -2,7 +2,7 @@ import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
 import {nativeFrenzyControllers,retainNativeFrenzyController,type NativeFrenzyController} from './native-frenzy-controllers.js';
-import {nativeVerticalPipe} from './native-pipe.js';
+import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer} from './native-pipe.js';
 import {landNativeWalker} from './native-walker-motion.js';
 import {NativeWaterStream} from './native-water-stream.js';
 import nativeWaterStreams from '../data/native-water-streams.json';
@@ -231,7 +231,7 @@ export class Simulation {
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
- private screenTimer=0;private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathLoad?:{state:NativeLevelLoad;dispatch:boolean;area:string;spawn?:[number,number];camera?:number;player?:Player};private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private pipeWalkSpeed=0;private pipeWalkRun=false;private entryLanding=false;
+ private screenTimer=0;private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathLoad?:{state:NativeLevelLoad;dispatch:boolean;area:string;spawn?:[number,number];camera?:number;player?:Player};private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private playerXScroll=0;private pipeTimer=0;
@@ -479,8 +479,7 @@ export class Simulation {
      if(this.pipeTimer)this.updateVerticalPipeWorld(previousCamera,oldFeet,scroll);
     }
    }
-   else if(this.area.autoWalk&&this.destination?.direction==='right')this.autoWalkPipeStep();
-   else if(automatic&&this.destination?.direction==='right'&&this.area.pipes?.some(q=>q.direction==='right'&&q.to===this.destination!.area&&q.entryTriggerX!==undefined))this.sidePipeWalkStep();
+   else if(this.destination?.direction==='right')this.sidePipeStep();
    else if(!automatic||this.phaseFrame<=TRANSITIONS.pipeMotionFrames){
     if(this.destination?.direction==='right')this.player.x+=automatic?TRANSITIONS.pipeMotionSpeed:0.5;else this.player.y+=this.destination?.direction==='up'?-0.5:(automatic&&this.player.size===0?1:0.5);
    }
@@ -698,7 +697,7 @@ export class Simulation {
    // The automatic pipe walk at the start of 1-2/2-2/4-2/7-2 starts it at floor(x)+13>=pipe.x (native rows).
    const side=pipe.direction==='right'&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12;
    const up=pipe.direction==='up'&&b.has('up')&&Math.abs(p.x+8-pipe.x)<9&&Math.abs(p.y-this.height-pipe.y)<3;
-   if(down||side||up){this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeWalkRun=b.has('b')&&Math.max(Math.abs(p.vx),this.wallSpeed??0)*16>=TRANSITIONS.sidePipeWalk.runByte;this.pipeTimer=down?0x30:0;if(!down)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
+   if(down||side||up){this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeTimer=down?0x30:side?(this.camera+this.areaControls.origin*16<256?0xa0:0x34):0;if(up)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
   }
   this.updateMaze(oldX);this.nativeLoopCommand();
   const exit=this.area.exit;
@@ -844,12 +843,14 @@ export class Simulation {
   }
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
-  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196)this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
+  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
   // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
   const above=`${x},${y-1}`;if(!piece&&isHitBlock(id)&&id!==196&&this.tiles.get(above)===COIN_TILE){this.tiles.delete(above);this.parserVramBusy=true;this.paletteRemove=true;this.coin();this.spawnNativeAboveBlockCoin(x,y);}
+  let bumpedNativeBlock=false;
   if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6]){
+   bumpedNativeBlock=true;
    const slot=this.blockControl,n=this.nativeBlocks[slot],shatter=Boolean(p.size&&[81,82,83].includes(id));
    Object.assign(n,{x:Math.floor(p.x+8)&~15,y:y*16,state:shatter?0x12:0x11,speed:shatter?-6:-2,force:0});
    if(shatter)Object.assign(this.nativeBlocks[slot+2],{x:n.x,y:n.y+8,speed:-4,force:0});
@@ -882,7 +883,9 @@ export class Simulation {
    for(let i=0;i<4;i++)this.items.push({kind:'debris',x:x*16+(i%2)*8,y:y*16+Math.floor(i/2)*8,vx:(i%2?1:-1)*1.5,vy:i<2?-4:-2,age:0,life:60});
   }else this.emit('sfx_bump');
   if(newNativeBlock){const old=this.blockGraphics.findIndex(b=>b.slot===nativeBlock.slot);if(old>=0)this.blockGraphics.splice(old,1);this.blockGraphics.push({slot:nativeBlock.slot,key,x:nativeBlock.x,y:y*16,metatile:this.brokenBrick?.key===key?0:(piece?.id??this.tiles.get(key)??0),pictureY:undefined,replace:nativeBlock.state===0x12});}
-  for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
+  // EnemyToBGCollisionDet only stuns a walker when BumpBlock wrote $23.
+  // Solid tree/stone head contact does not create that native marker.
+  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
@@ -1071,20 +1074,17 @@ export class Simulation {
   }
   return 'climbing';
  }
- /** Native pipe-entry walk (rows 2294..2316 of 1-2): speed 2312 first, then -104 at speed byte >= 9 and +152 below it, until
-  * floor(x) reaches the pipe mouth; x then holds. */
- private autoWalkPipeStep(){
-  const walk=TRANSITIONS.autoWalkPipe,pipe=this.area.pipes?.find(q=>q.direction==='right'&&q.to===this.destination!.area),p=this.player;
-  if(this.phaseFrame===1)this.pipeWalkSpeed=walk.firstSpeed;else this.pipeWalkSpeed+=Math.floor(this.pipeWalkSpeed/256)>=walk.pullByte?-walk.pullDown:walk.pullUp;
-  if(pipe&&Math.floor(p.x)<pipe.x){p.x+=motionOf(this.pipeWalkSpeed);p.vx=this.pipeWalkSpeed/4096;}else p.vx=0;
- }
- /** Native entry walk of the ordinary side pipes (1-2, 2-2, 4-2, 7-2, 8-4: 12-13 px from the trigger column to the stop column trigger+13, then Mario stands for the
-  * rest of the 52 rows): a per-pipe first speed, then the walk rule of the level-start pipe walk; a running trigger spends steps 2..9 on the run rule. */
- private sidePipeWalkStep(){
-  const w=TRANSITIONS.sidePipeWalk,walk=TRANSITIONS.autoWalkPipe,pipe=this.area.pipes?.find(q=>q.direction==='right'&&q.to===this.destination!.area),p=this.player,step=this.phaseFrame;
-  if(step===1)this.pipeWalkSpeed=(w.firstSpeed as Record<string,number>)[`${this.level.id}/${this.area.id}`]??w.defaultFirstSpeed;
-  else{const fast=Math.floor(this.pipeWalkSpeed/256)>=walk.pullByte,run=this.pipeWalkRun&&step<=w.runUntilStep;this.pipeWalkSpeed+=run?(fast?-w.runDown:w.runUp):(fast?-walk.pullDown:walk.pullUp);}
-  if(pipe&&Math.floor(p.x)<pipe.entryTriggerX!+walk.triggerOffset){p.x+=motionOf(this.pipeWalkSpeed);p.vx=this.pipeWalkSpeed/4096;}else p.vx=0;
+ /** EnterSidePipe replaces only the native speed byte; its fraction and
+  * normal motor latches determine the first step on every approach. */
+ private sidePipeStep(){
+  const p=this.player,water=this.area.theme==='water';
+  if(water&&this.phaseFrame===1){
+   this.motor.reset(this.water.motor.speed,p.facing<0?-1:1,this.marioMotion as -1|0|1,this.swimAbsolute);
+  }
+  // GetPlayerAnimSpeed reads this.motor.absolute here, before friction.
+  p.x=nativeSidePipe(this.motor,p.x,p.grounded,water,Boolean(this.area.autoWalk));p.vx=this.motor.speed/4096;p.facing=this.motor.facing;this.marioMotion=this.motor.moving;
+  if(this.pipeTimer>0)this.pipeTimer=nativeSidePipeTimer(this.pipeTimer,p.x,this.camera+this.areaControls.origin*16,Boolean(this.area.autoWalk));
+  if(water){this.water.motor.speed=this.motor.speed;this.swimAbsolute=this.motor.absolute;}
  }
  private finishVineEntry(){this.entryVineActive=false;this.climbingVine=undefined;this.player.climbing=false;}
  /** NMI counts GameTimerCtrlTimer down even while engine3/7 suppresses
@@ -2153,6 +2153,7 @@ export class Simulation {
     else if(e.nativeId===15)e.redFlight=createNativeRedFlight(e.y,left.fraction);
     else if(e.nativeId===16)e.horizontalFlight={x:e.x,y:e.y,primary:0,secondary:0};
     else e.fall={speed:0,force:0,fraction:left.fraction};
+    if(e.nativeId===3)e.walkerState=1; // InitRedKoopa starts falling; only state0 avoids ledges.
     if(e.nativeId!==14){left.speed=0;left.force=0;this.slotYSpeed[cursor]=0;}
     if(e.redFlight)this.slotSub[cursor]=e.redFlight.originalY;
    }
@@ -2350,7 +2351,7 @@ export class Simulation {
      e.shellAge=e.movingShell?0:(e.shellAge??0)+1;
      e.shellTimer??=this.primaryHardMode?11:16;
     }
-    if(!eraseWalkerAfterMove&&e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
+    if(!eraseWalkerAfterMove&&e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&(e.walkerState??0)===0&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
     const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
     const normalWalker=NATIVE_FALLERS.includes(e.kind)&&(!e.shell||!e.movingShell)&&!e.motion;
     const dx=e.shell?(e.movingShell?Math.sign(e.vx)*shellRules.speedPixelsPerNativeFrame:0):e.vx;
