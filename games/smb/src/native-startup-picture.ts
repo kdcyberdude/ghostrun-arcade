@@ -13,6 +13,11 @@ export class NativeStartupPicture {
    if(address>=0x3f00&&address<0x4000&&((address-0x3f00)&15)===0)this.backdrop=color&63;
   }
   this.rendering=!n.initializing&&n.disable===0;
-  this.title=n.mode===0;this.player=n.engine!==0;
+  this.title=n.mode===0||this.title&&n.mode===1&&n.task===0&&n.disable===0;this.player=n.mode===0&&n.engine!==0;
  }
+}
+
+/** Start changes the logical mode before InitializeArea blanks the retained title nametable. */
+export function nativeStartupTitleShown(picture:{title:boolean},phase:string,screen?:{task:number;disable:number}){
+ return phase==='title'||picture.title&&screen?.task===0&&screen.disable===0;
 }

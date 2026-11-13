@@ -12,6 +12,7 @@ import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from 
 import {waterSurfaceSky,doorwayBottomTile,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
 import {nativeScreenPicture} from './native-screen-picture.js';
+import {nativeStartupTitleShown} from './native-startup-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites} from './native-block-picture.js';
 import {enemyPicture,nativeBulletPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeShellPhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
@@ -236,7 +237,7 @@ export class GameRenderer {
  render(s:Simulation){
   const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
-  this.scene.clear();this.used.clear();const startup=s.phase==='title'?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
+  this.scene.clear();this.used.clear();const titlePicture=nativeStartupTitleShown(s.nativeStartupPicture,s.phase,s.nativeScreen),startup=titlePicture?s.nativeStartupPicture:undefined;if(startup&&!startup.rendering){this.renderer.setClearColor('#'+nesPalette.colors[startup.backdrop].map(c=>c.toString(16).padStart(2,'0')).join(''));this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
   this.renderer.setClearColor(s.area.background??(dark?'#000000':'#6888fc'));
   const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined,black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
@@ -315,8 +316,8 @@ export class GameRenderer {
    this.worldClip=false;
   }
   const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
-  if(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s,s.area.palette,Boolean(screen&&s.nativeScreen!.engine<8));
-  if(s.phase==='title')this.title(s);
+  if(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing)this.hud(s,s.area.palette,Boolean(screen&&s.nativeScreen!.engine<8),titlePicture);
+  if(titlePicture)this.title(s);
   if(screen?screen.message==='time-up':s.timeUpScreen&&!introLoading)this.text('TIME UP',96,128);
   else if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading){
    this.text('WORLD '+s.level.id,88,80);if(!screen||screen.avatar)this.quad('player-'+(s.currentPlayer?'luigi':'mario')+'-right.png',[160,32,16,32],96,89,3);this.text('×  '+s.lives,120,112);
@@ -377,11 +378,11 @@ export class GameRenderer {
   this.quad(sheet,[cell%13*16,Math.floor(cell/13)*32,16,32],p.x-s.camera,p.y-31,z);
   if(throwing&&Math.abs(p.vx)>0.1)this.quad(sheet,[176,0,16,24],p.x-s.camera,p.y-31,z+0.1);
  }
- private hud(s:Simulation,paletteIndex=s.area.palette,hideTime=false){
+ private hud(s:Simulation,paletteIndex=s.area.palette,hideTime=false,titlePicture=false){
   this.textZ=1;
   this.text(s.currentPlayer?'LUIGI':'MARIO',24,16);this.text(s.hud.draw.score,24,24);
   // InitializeGame installs sprite zero before the first GameEngine row; intro still owns control.
-  if(s.phase==='intro'&&s.nativeScreen?.task!==3||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
+  if(!titlePicture&&s.phase==='intro'&&s.nativeScreen?.task!==3||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
   else{
    // Supplied OAM [24,255,0x23,88]: palette3, behind the HUD background.
    const palette=manifest.palette_observations[paletteIndex].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');

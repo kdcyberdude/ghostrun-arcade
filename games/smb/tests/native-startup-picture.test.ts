@@ -15,3 +15,17 @@ test('only universal palette writes change the blanked PPU backdrop',()=>{
  picture.step({...n,task:3,disable:0,queuedPalette:[]});assert.equal(picture.rendering,true);assert.equal(picture.player,false);
  picture.step({...n,task:3,disable:0,engine:7,queuedPalette:[]});assert.equal(picture.player,true);
 });
+
+import handoff from './fixtures/native-startup-handoff-picture.json';
+import {nativeStartupTitleShown} from '../src/native-startup-picture.js';
+test('all seven native Start prefixes retain title nametable ownership while clearing player OAM before InitializeArea blanks',()=>{
+ assert.equal(handoff.cases.length,7);
+ for(const c of handoff.cases){
+  const picture=new NativeStartupPicture();
+  for(const event of c.events){
+   picture.step(event.state);const shown=nativeStartupTitleShown(picture,event.state.mode===0?'title':'intro',event.state);
+   assert.equal(shown,event.nextTitleShown,`${c.name} source ${event.frame} next PPU title`);
+   assert.equal(shown&&picture.player,event.nextTitlePlayerShown,`${c.name} source ${event.frame} next PPU Mario`);
+  }
+ }
+});
