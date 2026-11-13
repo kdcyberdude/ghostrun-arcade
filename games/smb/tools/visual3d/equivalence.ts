@@ -18,29 +18,29 @@ const N=Number(arg('frames',traces||cases?'Infinity':'2600')),backend=arg('backe
 const SNAPSHOT='('+renderEquivalenceSnapshot.toString()+')';
 const FNV=`(t)=>{let h=2166136261;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16);}`;
 const snap=eval(SNAPSHOT) as (s:Simulation)=>string,fnv=eval(FNV) as (t:string)=>string;
-type Replay={id?:string;level:string;route:Button[][];entrance?:unknown};
+type Replay={id?:string;level:string;route:Button[][];entrance?:unknown;vram?:{bytes:number[];selector:number}};
 type Run={hashes:string[];events:string[];finalSnapshot?:string};
 const replays:Replay[]=[];
 if(cases){
  const keys:Button[]=['a','b','select','start','up','down','left','right'];
  for(const entry of JSON.parse(await readFile(cases,'utf8'))){
-  const pads=await readFile(path.join(entry.traceDirectory,'pads.bin')),entrance=decodeEntrance(new Uint8Array(await readFile(path.join(entry.traceDirectory,'initial.ram'))),JSON.parse(await readFile(path.join(entry.receiptDirectory,'entrance.json'),'utf8')));
-  replays.push({id:entry.id,level:entry.level,entrance,route:[...pads.subarray(0,N)].map(p=>keys.filter((_,i)=>p&(1<<i)))});
+  const pads=await readFile(path.join(entry.traceDirectory,'pads.bin')),ram=new Uint8Array(await readFile(path.join(entry.traceDirectory,'initial.ram'))),entrance=decodeEntrance(ram,JSON.parse(await readFile(path.join(entry.receiptDirectory,'entrance.json'),'utf8')));
+  replays.push({id:entry.id,level:entry.level,entrance,vram:{bytes:Array.from(ram.subarray(0x300,0x400)),selector:ram[0x773]},route:[...pads.subarray(0,N)].map(p=>keys.filter((_,i)=>p&(1<<i)))});
  }
 }else if(traces){
  const only=arg('levels','').split(',').filter(Boolean),keys:Button[]=['a','b','select','start','up','down','left','right'];
  for(const level of observedLevels()){
   if(only.length&&!only.includes(level.id))continue;
   const dir=path.join(traces,level.id),pads=await readFile(path.join(dir,'pads.bin'));
-  const entrance=decodeEntrance(new Uint8Array(await readFile(path.join(dir,'initial.ram'))),JSON.parse(await readFile(path.join(entrances,level.id,'entrance.json'),'utf8')));
-  replays.push({level:level.id,entrance,route:[...pads.subarray(0,N)].map(p=>keys.filter((_,i)=>p&(1<<i)))});
+  const ram=new Uint8Array(await readFile(path.join(dir,'initial.ram'))),entrance=decodeEntrance(ram,JSON.parse(await readFile(path.join(entrances,level.id,'entrance.json'),'utf8')));
+  replays.push({level:level.id,entrance,vram:{bytes:Array.from(ram.subarray(0x300,0x400)),selector:ram[0x773]},route:[...pads.subarray(0,N)].map(p=>keys.filter((_,i)=>p&(1<<i)))});
  }
 }else replays.push({level:'standard route',route:routeFrames().slice(0,N)});
 function headless(replay:Replay):Run{
  const sim:any=new Simulation(observedLevels()),out:Run={hashes:[],events:[]};const emit=sim.emit;
  sim.emit=function(id:string){out.events.push(`${sim.frame}:${id}`);return emit.call(this,id);};
  sim.reset(true);sim.events.length=0;
- if(replay.entrance){initializeEntrance(sim,replay.entrance);sim.step([],0);sim.inputs=[];}
+ if(replay.entrance){initializeEntrance(sim,replay.entrance);if(replay.vram)sim.vramBuffer1.seed(new Uint8Array(replay.vram.bytes),replay.vram.selector);sim.step([],0);sim.inputs=[];}
  for(const b of replay.route){sim.step(b,1,[]);sim.events.length=0;out.hashes.push(fnv(snap(sim)));}
  out.finalSnapshot=snap(sim);return out;
 }
@@ -57,7 +57,8 @@ async function browser(view:string){
    // Define the standard-route reset RNG explicitly, as the fresh headless constructor does.
    if(!replay.entrance)sim.random=new sim.random.constructor();
    w.mario.reset({playing:true});
-   if(replay.entrance){const {initializeEntrance}=await import('/tools/harness/native-entrance.mjs');initializeEntrance(sim,replay.entrance);sim.step([],0);sim.inputs=[];}
+   // Seed the entire recorded VRAM bank once, including unused bytes retained by reset.
+   if(replay.entrance){const {initializeEntrance}=await import('/tools/harness/native-entrance.mjs');initializeEntrance(sim,replay.entrance);if(replay.vram)sim.vramBuffer1.seed(new Uint8Array(replay.vram.bytes),replay.vram.selector);sim.step([],0);sim.inputs=[];}
   },[replay,SNAPSHOT,FNV] as const);
   let r;
   try{
