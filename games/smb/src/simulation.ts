@@ -625,7 +625,7 @@ export class Simulation {
   if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
-  if(swim){this.swimContact(this.swimDy,oldBottom);if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
+  if(swim){this.swimContact(this.swimDy,oldBottom);if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(this.swimPull>0&&!(this.water.horizontalState.collision&1))this.swimPull=0;p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
   if(p.grounded){if(!poseGrounded){if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==this.entryReadyAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
@@ -709,7 +709,7 @@ export class Simulation {
   }
   // RenderPlayerSub caches $0755 before ProcessWhirlpools. Injury's odd
   // FrameCounter rows return before that write, as in PlayerGfxHandler.
-  if(!p.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(p.x-(this.area.theme==='water'&&this.swimActive&&!this.wallBackOut?this.swimPull:0))-Math.floor(this.camera))&255;
+  if(!p.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(p.x-(this.area.theme==='water'&&this.swimActive?this.swimPull:0))-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;
   this.advanceNativeAreaParser(this.camera-previousCamera);
   if(this.player.dead)return;
@@ -796,16 +796,7 @@ export class Simulation {
  private movePlayerX(dx:number,h:number,snap=true){
   const p=this.player;
   if(this.footPushed||this.axeFootContact())return;
-  if(this.swimActive&&this.swimFootWall(dx))return;
-  if(this.swimActive){
-   // DoPlayerSideCheck tests left before right even when moving away; the
-   // collision bit still inhibits next row's ImposeFriction in that direction.
-   const feet=p.y-this.water.whirlMoved,lowY=(Math.floor(feet)-32)&255;
-   for(const side of [-1,1]){
-    const x=p.x+(side<0?2:13);
-    if((lowY>=32&&this.sideTileAt(x,feet-h+4))||(lowY>=8&&this.sideTileAt(x,feet-8))){this.water.blockSide(side);break;}
-   }
-  }
+  if(this.swimActive){this.swimSideWall(dx,h);return;}
   if(dx===0){
    for(const y of[p.y-h+4,p.y-8]){
     if(this.sideTileAt(p.x+13,y)){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
@@ -818,6 +809,21 @@ export class Simulation {
    if(this.swimActive)this.water.blockSide(Math.sign(dx));
    const fraction=p.x-Math.floor(p.x);if(snap)p.x=(dx>0?tile.x-13:tile.x+tile.width-2)+fraction;else p.x-=Math.sign(dx);this.wallSpeed=p.vx;p.vx=0;return;
   }
+  }
+ }
+ /** Native DoPlayerSideCheck/ImpedePlayerMove uses the ordinary-pass Y and
+  * left-before-right order, independent of the current movement direction. */
+ private swimSideWall(dx:number,h:number){
+  if(this.swimFootWall(dx))return;
+  const p=this.player,feet=p.y-this.water.whirlMoved,lowY=(Math.floor(feet)-32)&255;
+  for(const side of [-1,1]){
+   const x=p.x+(side<0?2:13);
+   if(!((lowY>=32&&this.sideTileAt(x,feet-h+4))||(lowY>=8&&this.sideTileAt(x,feet-8))))continue;
+   this.water.blockSide(side);
+   const speedByte=Math.floor(p.vx*16);
+   if(side<0?speedByte>0:speedByte<0)return;
+   p.x-=side;this.wallSpeed=p.vx;p.vx=0;if(dx===0)this.wallBackOut=true;
+   return;
   }
  }
  /** A swimmer that is not rising is also stopped by its feet, at the landing probes, once they are SWIM_WALL_DEPTH or more inside a tile (shallower it lands on top; rising it passes: 2-2 pillar branch probe, the block falls on the first row with speed >= 0). */
@@ -1056,7 +1062,7 @@ export class Simulation {
   * The left body points are BlockBuffer_X_Adder $02 (feet-8, and feet-24 for big Mario), as the right ones are $0D: 3-2 v2 row 369, small Mario at x 909.56 takes the coin at column 56 with x+2 = 911.
   * PlayerBGCollision probes head, left foot, right foot, then each side top to bottom, and a coin (HandleCoinMetatile) ends the routine: one coin per row
   * (2-2 v2 rows 1323/1324, two coins one row apart). */
- private collectTiles(){const p=this.player,big=this.height>16,px=p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0),py=p.y-(this.swimActive?this.water.whirlMoved:0),points=[[px+8,py-this.height-2],[px+3,py],[px+12,py],...big?[[px+2,py-24]]:[],[px+2,py-8],...big?[[px+13,py-24]]:[],[px+13,py-8]];for(const [x,y] of points){
+ private collectTiles(){const p=this.player,big=this.height>16,px=p.x-(this.swimActive?this.swimPull:0),py=p.y-(this.swimActive?this.water.whirlMoved:0),points=[[px+8,py-this.height-2],[px+3,py],[px+12,py],...big?[[px+2,py-24]]:[],[px+2,py-8],...big?[[px+13,py-24]]:[],[px+13,py-8]];for(const [x,y] of points){
   const col=Math.floor(x/16),row=Math.floor(y/16),key=`${col},${row}`,id=this.tiles.get(key);
   if(id===194||id===195){this.tiles.delete(key);this.parserVramBusy=true;this.paletteRemove=true;this.coin();return;}
  }}
@@ -1547,7 +1553,7 @@ export class Simulation {
  private updateNativeBlooper(e:Enemy){
   if(e.enemySlot===undefined)this.freeNativeSlot();
   const b=e.bloop??=newNativeBlooper(),p=this.player,mask=this.secondaryHardMode?3:63;
-  const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0)),playerY:(Math.floor(p.y-(this.swimActive?this.water.whirlMoved:0))-32)&255,playerDir:this.marioMotion<0?2:1});
+  const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x-(this.swimActive?this.swimPull:0)),playerY:(Math.floor(p.y-(this.swimActive?this.water.whirlMoved:0))-32)&255,playerDir:this.marioMotion<0?2:1});
   e.x=next.x+e.x-Math.floor(e.x);e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;
  }
  // Hammer Bro roster entries supply level object positions only. All decisions use native slot state (src/hammer-bro.ts).
@@ -2393,7 +2399,7 @@ export class Simulation {
    // RunNormalEnemies tests injury before its movement; TimerControl set by
    // the hit also holds this slot and every later slot in the native pass.
    if(nativeWaterActor&&!p.star){
-    const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
+    const x=p.x-this.swimPull,y=p.y-this.water.whirlMoved-32;
     if(!p.dead&&!this.enemyContactOff&&!(this.random.frame&1)&&y>=0&&y<0xd0&&nativeWaterEnemyHit({x,y,big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24}))this.hurt();
     if(p.dead||this.powerChange)continue;
    }
@@ -2522,7 +2528,7 @@ export class Simulation {
    if(p.dead||this.enemyContactOff)continue;
    if(nativeWaterActor){
     if(!p.star)continue;
-    const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
+    const x=p.x-this.swimPull,y=p.y-this.water.whirlMoved-32;
     if(this.random.frame&1||y<0||y>=0xd0)continue;
     if(nativeWaterEnemyHit({x,y,big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24})){
      if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);this.emit('sfx_kick');}else this.hurt();
@@ -2717,7 +2723,7 @@ export class Simulation {
  private updateBubbles(tickTimer=true,beforeWhirlpool=true){
   if(this.area.theme!=='water')return;
   const p=this.player,pre=beforeWhirlpool&&this.swimActive;
-  const player={x:p.x-(pre&&!this.wallBackOut?this.swimPull:0),y:(Math.floor(p.y-(pre?this.water.whirlMoved:0))-32)&255,facing:p.facing===1?1:2};
+  const player={x:p.x-(pre?this.swimPull:0),y:(Math.floor(p.y-(pre?this.water.whirlMoved:0))-32)&255,facing:p.facing===1?1:2};
   if(!this.bubblesInitialized){this.bubbleState.entrance(player);this.bubblesInitialized=true;tickTimer=false;}
   this.bubbleState.step(player,this.random.bytes,tickTimer);
  }
