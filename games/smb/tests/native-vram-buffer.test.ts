@@ -19,3 +19,11 @@ test('three continuous source prefixes reproduce raw0300 packet bytes, buffer se
  }
  assert.equal(compared,30);assert.ok(frames>4500);
 });
+
+import{decodeEntrance,initializeEntrance}from'../tools/harness/native-entrance.mjs';import{nativeAreaBindings}from'../src/native-area-catalog.js';
+test('an observed buffer2-held entrance keeps all raw duplicate queue bytes after parser/palette initialization',()=>{
+ const initial=new Uint8Array(zlib.gunzipSync(Buffer.from(fixture.initialQueue.ram,'base64')));assert.equal(createHash('sha256').update(initial).digest('hex'),fixture.initialQueue.ramSha256);
+ const s=new Simulation(observedLevels());s.reset(true);const areaBinding=nativeAreaBindings(s.level).bindings.find(b=>b.area===s.level.main)!;
+ initializeEntrance(s,decodeEntrance(initial,{schema:'native-mood-entry-v1',level:'1-1',areaBinding}));
+ assert.equal(s.vramBuffer1.addressControl,6);assert.deepEqual([...s.vramBuffer1.data.subarray(0,initial[0x300]+2)],fixture.initialQueue.bytes);
+});

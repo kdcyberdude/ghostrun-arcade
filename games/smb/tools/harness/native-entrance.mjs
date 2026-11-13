@@ -54,7 +54,7 @@ export function initializeEntrance(sim,start){
  sim.fetchGameTimer=start.fetchGameTimer??Boolean(sim.area.autoWalk&&start.time===0);sim.time=start.time;{
   /* native GameTimerCtrl ($0787) counts down to the next digit tick (24 frames); timerFrames counts up to 24 */
   if(start.timerControl!==undefined)sim.timerFrames=24-start.timerControl;}
- sim.score=start.score;sim.coins=start.coins;sim.lives=start.lives;sim.hud.seed(start.hud??hudDigits(start.score,start.coins,start.time),start.hudPending??{},start.hudObserved??false,start.hudBuffer1?new Uint8Array(start.hudBuffer1):undefined);if(start.warpZoneControl!==undefined)sim.warpZoneActive=Boolean(start.warpZoneControl);
+ sim.score=start.score;sim.coins=start.coins;sim.lives=start.lives;sim.hud.seed(start.hud??hudDigits(start.score,start.coins,start.time),start.hudPending??{},start.hudObserved??false);if(start.warpZoneControl!==undefined)sim.warpZoneActive=Boolean(start.warpZoneControl);
  /* cannon table RAM 0x46B/0x471/0x477 (page, x, y) and timers 0x47D: the level load already filled it and ran its first passes before the first retained row */
  if(start.cannons){const list=(sim.area.cannons??[]).filter(c=>c.native);let loaded=0;
   sim.cannonTable=start.cannons.map(c=>{if(!c.x&&!c.y)return undefined;const i=list.findIndex(k=>k.x===c.x&&k.y===c.y);if(i<0)throw Error(`Observed cannon ${c.x},${c.y} is not mapped`);loaded=Math.max(loaded,i+1);return {cannon:list[i],timer:c.timer};});
@@ -102,7 +102,7 @@ export function initializeEntrance(sim,start){
  if(start.intervalControl!==undefined){sim.intervalControl=start.intervalControl;sim.alignLifeClock(start.intervalControl);} /* IntervalTimerControl $077F: phase of the 21-frame interval timers (also the lives-screen clock) */
  if(start.primaryHardMode!==undefined)sim.primaryHardMode=start.primaryHardMode;
  if(start.secondaryHardMode!==undefined)sim.secondaryHardMode=start.secondaryHardMode;
- sim.random.bytes=[...start.random];sim.random.frame=start.counter;if(start.colorRotate!==undefined)sim.colorRotations=start.colorRotate;sim.broClock=start.counter;sim.paletteClock.reset(start.scroll32??(Math.floor(start.camera)&31),start.parserTask??0,sim.colorRotations);
+ sim.random.bytes=[...start.random];sim.random.frame=start.counter;if(start.colorRotate!==undefined)sim.colorRotations=start.colorRotate;sim.broClock=start.counter;sim.paletteClock.reset(start.scroll32??(Math.floor(start.camera)&31),start.parserTask??0,sim.colorRotations);if(start.hudBuffer1)sim.vramBuffer1.seed(new Uint8Array(start.hudBuffer1),6);
  /* PlayerAnimCtrl $070D, PlayerAnimTimer $0781, PlayerAnimTimerSet $070C: the walk/swim frame phase (src/player-anim.ts) */
  if(start.anim)sim.playerAnim.reset(start.anim.ctrl,start.anim.timer,start.anim.timerSet,false);
  sim.inputs=[new Set(),new Set()];sim.previous=new Set();sim.recordedRoute=false;
