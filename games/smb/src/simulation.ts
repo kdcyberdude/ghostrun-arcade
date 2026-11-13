@@ -1206,17 +1206,25 @@ export class Simulation {
  private frenzyDue?:GeneratorSpec;
  private passNativeFrenzy(){
   const generator=this.frenzyDue;this.frenzyDue=undefined;if(!generator)return;
-  const shots=this.enemies.filter(e=>e.frenzy&&(e.dead===0||e.dead<100&&e.y<=280));
-  let going:Enemy|undefined;
+  const shots=this.enemies.filter(e=>e.frenzy&&e.active&&!e.slotFreed&&e.dead<100);
+  let going=this.enemies.find(e=>e.frenzy&&e.goneFrame===this.frame);
   for(const e of shots)if(e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);going=e;}
   if(shots.some(e=>e!==going)||this.camera<generator.fromCamera!||this.camera>generator.toCamera!)return;
   this.freeNativeSlot();
   const used=new Set(this.enemies.filter(e=>e.active&&!e.dead).map(e=>e.enemySlot));for(const held of this.objectSlots(used))used.add(held);
   let slot=going?going.enemySlot!+1:0;while(used.has(slot))slot++;if(slot>=5)return;
   const pick=nativeFrenzyHeight(this.random.bytes[slot],this.swimBag);this.swimBag=pick.bag;
-  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1}); // made after this frame's enemy step
+  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1});this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0; // made after this frame's enemy step
  }
  // A native shot is removed when its next position is left of the screen (native: x - camera < about -73 on the current camera; the enemy step sees the previous camera, so 70 here) or right of camera + 329.
+ private eraseDefeatedBullet(e:Enemy){
+  this.eraseEnemy(e);e.goneFrame=this.frame;
+  if(e.enemySlot===undefined)return;const slot=e.enemySlot;
+  this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
+  if(e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}
+  e.slotFreed=true;this.slotReleaseFrame[slot]=this.frame;
+ }
+ // A live cannon shot's removal reads the next x against the prior scroll; defeated shots erase on their graphics pass.
  private nativeBulletGone(e:Enemy){
   const next=e.x+(!e.nativeShot||e.age>1?Math.sign(e.vx)*BULLETS.speed:0);
   return !e.frenzy&&next<this.camera-BULLETS.removeLeft||next>this.camera+BULLETS.removeRight||e.y>280;
@@ -1903,8 +1911,9 @@ export class Simulation {
  /** Native OffscreenBoundsCheck (after the enemy's own step, against this frame's scrolled ScreenLeft): an object whose 16-bit x is below ScreenLeft - 72, minus the
   * borrow left by the id compare (id < 13: one more), or ScreenLeft + 57 - 73 (= -16) for a Hammer Bro / Piranha Plant, is erased. Flying Cheeps and Bullet Bills have their own rules. */
  private nativeLeftBound(e:Enemy){
-  if(e.motion==='flying'||e.dead)return;
   const left=Math.floor(this.camera);
+  if(e.kind==='bullet'&&e.frenzy&&e.dead>0&&e.dead<100&&!e.slotFreed)return left-73;
+  if(e.motion==='flying'||e.dead)return;
   if(e.kind==='piranha'||e.kind==='hammerBro')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle','blooper'].includes(e.kind)||e.kind==='cheep'&&e.swim)return left-73;
   if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
@@ -1919,9 +1928,9 @@ export class Simulation {
    if(bound===undefined||Math.floor(e.x)>=bound&&!waterRight)continue;
    if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
    else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
-   this.eraseEnemy(e);if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
+   this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
    if(e.nativeSwim||e.bloop){this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.nativeSwim)this.slotYFrac[e.enemySlot]=e.nativeSwim.fraction;}
-   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny')this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((e.x-Math.floor(e.x))*256)&255);
+   if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny'||e.kind==='bullet')this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((e.x-Math.floor(e.x))*256)&255);
   }
  }
  /** Enemy_Y_Speed $A0+s, Enemy_Y_MoveForce $0434+s and the y fraction $0417+s are not cleared when an object is made: a new jumping Paratroopa starts from what the slot's
@@ -1935,7 +1944,7 @@ export class Simulation {
    else if(e.fall&&!e.dead)Object.assign(m,e.fall);
    else if(e.horizontalFlight)Object.assign(m,{speed:e.horizontalFlight.primary,force:0});
    else if(e.redFlight)Object.assign(m,{speed:e.redFlight.speed,force:e.redFlight.force,fraction:e.redFlight.fraction});
-   else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'||e.egg||e.kind==='lakitu'&&e.lak?.box===8))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
+   else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'||e.kind==='bullet'||e.egg||e.kind==='lakitu'&&e.lak?.box===8))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
    else if(!e.dead&&['goomba','koopa','redKoopa','beetle','hammerBro'].includes(e.kind)&&e.vy===0){m.speed=0;m.force=0;}
   }
  }
@@ -2086,12 +2095,12 @@ export class Simulation {
   const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
   const ordered=this.area.theme==='water'?[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5)):this.enemies;
   for(const e of ordered){
-   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??0; // the native touch test reads the enemy before its own move
+   const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
-   if(e.kind!=='bullet'&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
+   if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    captureEnemyPicture(e);
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
@@ -2103,6 +2112,7 @@ export class Simulation {
    if(e.dead){
     if(e.kind==='lakitu'&&e.lak?.box===8&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
     if(e.squashed){if(e.dead<90&&++e.dead>(e.squashFrames??goombaSquashRules.durationActiveNativeFrames))this.eraseEnemy(e);continue;}
+    if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
     e.dead++;
     if(e.greenShellLaunchFrame!==undefined){
      if(this.frame>e.greenShellLaunchFrame){e.x+=shellLaunchRules.velocityX;e.y+=e.vy;e.vy=Math.min(shellLaunchRules.maxFall,e.vy+shellLaunchRules.gravity);}
@@ -2266,15 +2276,16 @@ export class Simulation {
     // First Paratroopa contacts award 400; subsequent ordinary +100 is observed.
     // Nonzero-chain Paratroopa scoring remains an unmeasured fallback.
     if(['goomba','koopa','redKoopa','beetle'].includes(e.kind))this.nativeStompTimer=(this.nativeStompTimer+1)&255;
-    const award=e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)
+    if(e.kind==='bullet'&&e.frenzy)e.x=priorX;
+    const award=e.kind==='bullet'?200:e.kind==='hammerBro'?HAMMER_NATIVE.stompScore:e.kind==='paratroopa'&&this.stompChain===0?stompRules.firstParatroopa:this.stompAward();this.stompedThisStep=true;this.floateyScore(award); // a stomped Hammer Bro: +1000 in all 3 native stomps (3-1, 5-2, 7-1), not a chain step (chain behaviour unmeasured)
     // A Paratroopa stomp shows a popup in the reference; its Koopa offset and lifetime are inferred.
-    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='hammerBro')this.enemyPopup(award,e);
+    if(e.kind==='goomba'||e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='paratroopa'||e.kind==='hammerBro'||e.kind==='bullet')this.enemyPopup(award,e);
     this.emit('sfx_stomp');
     if(['koopa','redKoopa','paratroopa','beetle'].includes(e.kind)){
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
      else if(!e.shell){e.shell=true;e.movingShell=false;e.shellAge=0;e.shellChain=0;e.x=priorX;} // native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
      else{e.movingShell=!e.movingShell;e.shellAge=0;e.shellChain=0;}
-    }else{e.dead=1;e.vy=0;if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.squashFrames=this.intervalControl+22;this.rememberPlatformCorpseSlot(e);}} // native: a stomped Goomba keeps its x from before this frame's step and is erased when its EnemyIntervalTimer runs out, IntervalTimerControl + 22 frames after the stomp (18 of 18 v2 squashes)
+    }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.squashFrames=this.intervalControl+22;this.rememberPlatformCorpseSlot(e);}} // native: a stomped Goomba keeps its x from before this frame's step and is erased when its EnemyIntervalTimer runs out, IntervalTimerControl + 22 frames after the stomp (18 of 18 v2 squashes)
    }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.enemyPopup(kick,e);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
