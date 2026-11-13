@@ -4,11 +4,12 @@ import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
-import type {Button} from '../src/types.js';
+import type {Button,SpringSpec} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 import springEvents from './fixtures/native-spring-events.json';
+import springSlots from './fixtures/native-spring-slot-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
@@ -135,5 +136,14 @@ test('6-3 spring landing, compression and grounded launch hold match native RAM'
   const event=springEvents.find(e=>e.level==='6-3'&&e.frame===frame);
   if(event){assert.equal(Math.floor(sim.player.y)-32,event.yAfter,`row${frame} y`);assert.equal(Math.floor(sim.player.vy),event.speedAfter,`row${frame} speed`);assert.equal(sim.player.x,1846+240/256,`row${frame} pinned x`);assert.equal(sim.camera,[1751,1752,1753,1754,1755,1756,1757,1758,1760,1762,1764,1766,1769][frame-1944],`row${frame} camera`);}
   if(frame>=1957)assert.equal(Math.floor(sim.player.y)-32,[150,138,127][frame-1957],`row${frame} release`);
+ });
+});
+
+
+test('6-3 Spring allocations include the native checkpoint rendering pass before engine7 frenzy creation',()=>{
+ replay('6-3',2575,(sim,frame)=>{
+  const event=springSlots.births.find(e=>e.level==='6-3'&&e.frame===frame);
+  if(event){const spring=sim.area.springs.find((s:SpringSpec)=>s.nativeColumn===event.after.x);assert.ok(spring);assert.equal(sim.springSlots.get(spring),event.slot);assert.equal(sim.parserColumn,event.column[1]);}
+  if(frame===2574||frame===2575){const bullet=sim.enemies.find((e:any)=>e.active&&e.frenzy&&e.enemySlot===1);assert.ok(bullet);assert.equal(bullet.x,frame===2574?1823:1821.5);assert.equal(bullet.y,192);assert.equal(bullet.graphicsVisible,frame===2575);assert.equal(sim.swimBag,64);}
  });
 });
