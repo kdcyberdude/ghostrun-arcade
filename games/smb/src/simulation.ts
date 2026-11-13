@@ -2860,7 +2860,7 @@ export class Simulation {
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
    const eraseGreenAfterMove=greenBounceSpec(e)&&e.y>=280;
-   const eraseWalkerAfterMove=eraseGreenAfterMove||NATIVE_FALLERS.includes(e.kind)&&!e.motion&&(!e.shell&&e.y>280||e.movingShell&&e.y>=280);
+   const eraseWalkerAfterMove=eraseGreenAfterMove||NATIVE_FALLERS.includes(e.kind)&&!e.motion&&(!e.shell&&e.y>=280||e.movingShell&&e.y>=280);
    // EnemyGfxHandler clears ID14 to ID0 before the caller dispatches movement; its last pass is horizontal only.
    if(eraseGreenAfterMove){e.kind='koopa';e.nativeId=0;e.fall={speed:e.pod!.speed,force:e.pod!.force,fraction:e.pod!.fraction};delete e.pod;}
    if(eraseWalkerAfterMove){e.walkerState=0;e.shellFalling=false;} // EraseEnemyObject clears state before the caller moves horizontally, leaving all vertical bytes intact.
