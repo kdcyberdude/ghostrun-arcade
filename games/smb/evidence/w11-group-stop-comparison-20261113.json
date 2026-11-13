@@ -1,0 +1,554 @@
+{
+  "base": "4d39a1e",
+  "scope": "World1-1 only; native entrance-seeded diagnostic prefixes, not continuous dashboard proof",
+  "before": [
+    {
+      "sha256": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+      "frames": 364,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": 316,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 364,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 364,
+        "inputFrames": 364,
+        "endReason": "end of trace",
+        "frames": 364,
+        "alignedFrames": 364,
+        "nativeEntityRows": 379,
+        "comparedEntityRows": 379,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 364
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 316,
+        "engine": 11,
+        "counter": 214,
+        "timerControl": 255,
+        "random": [
+          212,
+          123,
+          211,
+          36,
+          130,
+          203,
+          206
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          816.5,
+          683.5,
+          840,
+          1280,
+          1280
+        ]
+      }
+    },
+    {
+      "sha256": "ccfcd83ed21e0cd41d215be9c61ec2b7a2a4727e18f0e6f602008db364c99dbf",
+      "frames": 330,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": 282,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 330,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 330,
+        "inputFrames": 330,
+        "endReason": "end of trace",
+        "frames": 330,
+        "alignedFrames": 330,
+        "nativeEntityRows": 329,
+        "comparedEntityRows": 329,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 330
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 282,
+        "engine": 11,
+        "counter": 180,
+        "timerControl": 255,
+        "random": [
+          11,
+          47,
+          57,
+          103,
+          21,
+          219,
+          240
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          683,
+          817,
+          841,
+          1280,
+          1280
+        ]
+      }
+    },
+    {
+      "sha256": "9779ab98593d32a4eb943b4a862a5e07f9d32274c78d06b34a539e13484201c5",
+      "frames": 328,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": 280,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 328,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 328,
+        "inputFrames": 328,
+        "endReason": "end of trace",
+        "frames": 328,
+        "alignedFrames": 328,
+        "nativeEntityRows": 361,
+        "comparedEntityRows": 361,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 328
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 280,
+        "engine": 11,
+        "counter": 178,
+        "timerControl": 255,
+        "random": [
+          44,
+          188,
+          229,
+          156,
+          87,
+          111,
+          193
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          817,
+          684,
+          841,
+          1280,
+          1280
+        ]
+      }
+    }
+  ],
+  "after": [
+    {
+      "sha256": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+      "frames": 364,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 364,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 364,
+        "inputFrames": 364,
+        "endReason": "end of trace",
+        "frames": 364,
+        "alignedFrames": 364,
+        "nativeEntityRows": 379,
+        "comparedEntityRows": 379,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 364
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 316,
+        "engine": 11,
+        "counter": 214,
+        "timerControl": 255,
+        "random": [
+          212,
+          123,
+          211,
+          36,
+          130,
+          203,
+          206
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          816.5,
+          683.5,
+          840,
+          1280,
+          1280
+        ]
+      }
+    },
+    {
+      "sha256": "ccfcd83ed21e0cd41d215be9c61ec2b7a2a4727e18f0e6f602008db364c99dbf",
+      "frames": 330,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 330,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 330,
+        "inputFrames": 330,
+        "endReason": "end of trace",
+        "frames": 330,
+        "alignedFrames": 330,
+        "nativeEntityRows": 329,
+        "comparedEntityRows": 329,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 330
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 282,
+        "engine": 11,
+        "counter": 180,
+        "timerControl": 255,
+        "random": [
+          11,
+          47,
+          57,
+          103,
+          21,
+          219,
+          240
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          683,
+          817,
+          841,
+          1280,
+          1280
+        ]
+      }
+    },
+    {
+      "sha256": "9779ab98593d32a4eb943b4a862a5e07f9d32274c78d06b34a539e13484201c5",
+      "frames": 328,
+      "sourceFrameOffset": 216,
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": true,
+        "unsteppedFrames": 0,
+        "ramFrames": 328,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 328,
+        "inputFrames": 328,
+        "endReason": "end of trace",
+        "frames": 328,
+        "alignedFrames": 328,
+        "nativeEntityRows": 361,
+        "comparedEntityRows": 361,
+        "nativeBirthRows": 4,
+        "areaFrames": {
+          "main": 328
+        },
+        "complete": true
+      },
+      "event": {
+        "frame": 280,
+        "engine": 11,
+        "counter": 178,
+        "timerControl": 255,
+        "random": [
+          44,
+          188,
+          229,
+          156,
+          87,
+          111,
+          193
+        ],
+        "flags": [
+          1,
+          1,
+          1,
+          0,
+          0
+        ],
+        "x": [
+          817,
+          684,
+          841,
+          1280,
+          1280
+        ]
+      }
+    }
+  ]
+}
