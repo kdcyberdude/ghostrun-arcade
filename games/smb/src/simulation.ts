@@ -1497,7 +1497,7 @@ export class Simulation {
  private fishCamera?:number;
  // A slot keeps the sub-pixel x ($0401+s) and y fraction ($0417+s) of its last occupant, and a new flying fish starts with them (32 v2 traces: 30 of 30 fish spawns in a used slot
  // start with the bytes the slot held after its previous occupant was removed). A fish removed on a row still makes that row's horizontal step, not its vertical one.
- private leaveFlyingCheepSlot(e:Enemy){const x=e.nativeSwim?e.x:e.x+e.vx;this.slotSub[e.enemySlot!]=Math.round((x-Math.floor(x))*256)&255;this.slotYFrac[e.enemySlot!]=e.nativeSwim?.fraction??e.pod?.fraction??0;}
+ private leaveFlyingCheepSlot(e:Enemy){const x=e.nativeSwim?e.x:e.x+e.vx,slot=e.enemySlot!;this.slotSub[slot]=Math.round((x-Math.floor(x))*256)&255;this.slotYFrac[slot]=e.nativeSwim?.fraction??e.pod?.fraction??0;if(e.nativeSwim){Object.assign(this.slotVertical[slot],{speed:0,force:e.nativeSwim.originY,fraction:e.nativeSwim.fraction});this.slotYSpeed[slot]=0;this.slotYFraction[slot]=e.nativeSwim.fraction;}if(e.nativeFlight&&e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}}
  private updateFishFrenzy(generator:GeneratorSpec){
   this.freeNativeSlot(); // an enemy takes its native slot on the frame it activates (not when the timer next reads the slots): a later fish then sees the real free slot
   const crossed=this.fishCameraCrossed();
@@ -1505,12 +1505,15 @@ export class Simulation {
   if(crossed)return; // the timer stays at 0 and is read on the next row
   const F=FLYING_FISH.frenzy,bytes=this.random.bytes,slot=this.freeNativeSlot(),wait=bytes[slot+1]&3;
   if(slot>=5)return; // all five native slots busy: the timer stays at 0 until one is free (7-3 rows 451, 244)
+  // InitFlyingCheepCheep calls SmallBBox/InitVStf before its max-slot test:
+  // A0/0434 clear even on a rejected attempt; the shared0417 fraction remains.
+  this.slotVertical[slot].speed=0;this.slotVertical[slot].force=0;this.slotYSpeed[slot]=0;
   this.fishTimer=this.nativeFrenzyTimer=F.waits[wait];
-  if(slot>=generator.maxFish!)return;
+  if(slot>=3+Number(this.secondaryHardMode))return;
   const speedByte=Math.floor(this.player.vx*16)&255,table=speedByte===0?0:speedByte<F.walkSpeedLimit?1:2,entry=table*4+(bytes[slot]&3),place=table===0&&wait?bytes[slot+2]&15:entry;
   const offset=F.offsets[place],speed=F.speeds[entry]*(table===0&&offset>0?-1:1);
   const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:Math.floor(this.player.x)+offset+this.slotSub[slot]/256,y:FLYING_FISH.launch.feetY,direction:Math.sign(speed),evidence:'Native leaping Cheep Cheep: random-register launch, 187-frame arc.'});
-  enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotYFrac[slot]};enemy.active=true;this.enemies.push(enemy);
+  enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotVertical[slot].fraction};enemy.active=true;this.enemies.push(enemy);
  }
  // Native swimming Cheep generator (2-2/7-2 water, free play; the recorded route replays its list): once the 32-frame timer is 0 the lowest free slot, if below 3, gets a fish at camera + 287.
  // It runs after this frame's scroll with this row's register (2-2 v2 row 1308: camera 929 -> 931, the fish at 1218 with the height of random byte 0 of that row).
@@ -2263,6 +2266,8 @@ export class Simulation {
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
    if(e.defeat)Object.assign(m,e.defeat);
    else if(e.hbro){Object.assign(m,{speed:e.hbro.speed,force:e.hbro.force,fraction:e.hbro.fraction});this.slotYSpeed[e.enemySlot]=e.hbro.speed&255;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=e.hbro.fraction;this.slotFrameTimers[e.enemySlot]=e.hbro.frameTimer;}
+   else if(e.nativeSwim&&!e.dead){Object.assign(m,{speed:0,force:e.nativeSwim.originY,fraction:e.nativeSwim.fraction});this.slotYSpeed[e.enemySlot]=0;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=m.fraction;}
+   else if(e.nativeFlight&&e.pod&&!e.dead){Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[e.enemySlot]=m.speed&255;this.slotYFraction[e.enemySlot]=this.slotYFrac[e.enemySlot]=m.fraction;}
    else if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
    else if(e.fall&&(!e.dead||e.squashed&&e.dead<90))Object.assign(m,e.fall);
    else if(e.horizontalFlight)Object.assign(m,{speed:e.horizontalFlight.primary,force:0});
