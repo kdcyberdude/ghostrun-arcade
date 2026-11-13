@@ -7,6 +7,7 @@ import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import airWindow from './fixtures/native-shell-stomp-window.json';
 import revivalWindow from './fixtures/native-shell-revival-window.json';
+import revivals from './fixtures/native-shell-revivals.json';
 
 function assertWindow(window:typeof airWindow|typeof revivalWindow){
  const unpack=(data:string)=>new Uint8Array(gunzipSync(Buffer.from(data,'base64'))),pads=unpack(window.pads);
@@ -25,3 +26,8 @@ function assertWindow(window:typeof airWindow|typeof revivalWindow){
 
 test('an airborne shell stomp holds state4, then falls in state2 with retained walking speed and lands in state3',()=>assertWindow(airWindow));
 test('native shell interval expiry chooses FrameCounter direction and holds position on the revival frame',()=>assertWindow(revivalWindow));
+
+test('all additional native corpus shell revivals retain position and fraction while selecting velocity from FrameCounter',()=>{
+ assert.equal(revivals.events.length,66);assert.deepEqual(revivals.failures,[]);
+ for(const e of revivals.events){assert.equal(e.timer,0);assert.equal(e.x1,e.x0);assert.equal(e.y1,e.y0);assert.equal(e.fraction1,e.fraction0);assert.equal(e.vx,(e.counter&1?-1:1)*(e.hard?0.75:0.5),`${e.file} row${e.frame}`);}
+});

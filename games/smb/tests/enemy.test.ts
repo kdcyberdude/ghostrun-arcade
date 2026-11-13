@@ -92,3 +92,10 @@ test('shell revival uses native FrameCounter parity and primary hard mode speed 
   assert.equal(e.shell,false);assert.equal(e.walkerState,0);assert.equal(e.x,170.5);assert.equal(e.vx,(parity?-1:1)*(hard?0.75:0.5));assert.equal(e.fall.fraction,37);
  }
 });
+
+test('background loss of support enters shell state2 before an expired timer can revive it',()=>{
+ const sim:any=fixture('test',[{kind:'koopa',x:170.5,y:160}]);sim.enemyContactOff=true;
+ const e=sim.enemies[0];Object.assign(e,{active:true,enemySlot:0,shell:true,walkerState:3,shellTimer:0,fall:{speed:0,force:0,fraction:37}});
+ sim.updateEnemies(sim.player.y);
+ assert.equal(e.shell,true);assert.equal(e.walkerState,2);assert.equal(e.x,170);assert.equal(e.y,160);assert.deepEqual(e.fall,{speed:0,force:61,fraction:37});
+});
