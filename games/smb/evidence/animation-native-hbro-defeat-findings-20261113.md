@@ -6,3 +6,5 @@ EnemyGfxHandler reads captured Enemy_State bit5 to set VerticalFlipFlag, then sw
 The fixture independently reads508 full native six-sprite defeated pictures, covering states32/34 and both directions. It retains four distinct cases with complete CHR, XY and attribute bytes. Native Hammer Bro floatey scores always use GetAltOffset, so these body sprites remain owned by the enemy graphics handler. Both directions have bit7 set on every sprite; left facing also has bit6.
 
 All1,905 tests and TypeScript pass. Regenerated excerpts and all256 first-field values match the211ec3b baseline. The fresh32-level sampled pixel gate reduces aligned104,976→104,551 (425 pixels), with improvements at3-1 frame930 and8-3 frame510, and no individual-frame increase in any all/HUD/field/aligned metric. HUD remains unchanged. Other picture gaps remain outside this unit.
+
+Rebased together with the Cannon consumer onto1e7ecf3, preserving the preload and canonical graphics/timer state. All23 focused batch tests pass; the integration owner will run full milestone validation once after combining compatible branches.
