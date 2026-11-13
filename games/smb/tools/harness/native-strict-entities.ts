@@ -1,9 +1,10 @@
 /** Opt-in audit readout. Unlike the legacy gate, this includes birth rows, extra remake actors, six enemy slots,
  * cannon Bullet Bills, and projectile items. Unsupported native objects are coverage gaps, never successful matches. */
+import {nativeVineControl,simVineControl,type NativeVineControl} from './native-strict-vines.js';
 import {nativePlatformObject} from '../../src/platform-motion.js';
 import type {NativeFirebarBytes} from '../../src/native-firebar.js';
 import {NATIVE_ENEMY_KIND} from './native-entities.js';
-export type StrictEntity={bank:'enemy'|'misc',slot:number|undefined,kind:string,x:number,y:number,source:string,state?:number,firebar?:NativeFirebarBytes,owner?:number};
+export type StrictEntity={bank:'enemy'|'misc',slot:number|undefined,kind:string,x:number,y:number,source:string,state?:number,firebar?:NativeFirebarBytes,owner?:number,vine?:NativeVineControl};
 export type CoverageGap={code:string,detail:string,slot?:number,id?:number};
 export type EntityReadout={entities:StrictEntity[],gaps:CoverageGap[],live:number,reserved:Set<string>};
 export type EntityMismatch={code:string,native?:StrictEntity,sim?:StrictEntity};
@@ -14,10 +15,10 @@ export function strictNativeEntities(r:Uint8Array,offset=0):EntityReadout{
   const flag=r[0x0f+slot],id=r[0x16+slot];if(!flag)continue;live++;reserved.add(`enemy:${slot}`);
   if(flag&128){const owner=flag&127;if(owner<6&&r[0xf+owner]&&!(r[0xf+owner]&128)&&r[0x16+owner]>=27&&r[0x16+owner]<=34){entities.push({bank:'enemy',slot,kind:'firebar-alias',x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:'firebar-alias',owner});continue;}if(owner<6&&r[0xf+owner]&&!(r[0xf+owner]&128)&&r[0x16+owner]===45){entities.push({bank:'enemy',slot,kind:'bowser-rear',x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:'bowser-rear'});continue;}gaps.push({code:'native-alias',detail:`slot ${slot} aliases owner ${flag&127}; composite part position is not compared`,slot,id});continue;}
   const firebar=id>=27&&id<=34?{id,high:r[0xa0+slot],low:r[0x58+slot],speed:r[0x388+slot],direction:r[0x34+slot]}:undefined;
-  const kind=firebar?'firebar':id===23?OBJECTS[23]:id===48?'flagpole-flag':id===49?'castle-flag':id===22?'firework':id===53?'retainer':id===52?'warp-zone-control':id===50?'spring':id===51?'bullet':id===21?'flame':id===46?['mushroom','flower','star','1up'][r[0x39]]:id>=36&&id<=44?OBJECTS[id]:NATIVE_ENEMY_KIND[id];
+  const kind=firebar?'firebar':id===47?'vine':id===23?OBJECTS[23]:id===48?'flagpole-flag':id===49?'castle-flag':id===22?'firework':id===53?'retainer':id===52?'warp-zone-control':id===50?'spring':id===51?'bullet':id===21?'flame':id===46?['mushroom','flower','star','1up'][r[0x39]]:id>=36&&id<=44?OBJECTS[id]:NATIVE_ENEMY_KIND[id];
   if(firebar&&id>31)gaps.push({code:'unverified-native-firebar-id',detail:`firebar id ${id}: handler bytes are read, but initializer/geometry coverage is unverified`,slot,id});
   if(!kind){gaps.push({code:'unsupported-native-object',detail:OBJECTS[id]??`native object id ${id}`,slot,id});continue;}
-  entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(id===48?0:r[0xb6+slot]-1)*256+r[0xcf+slot],...(firebar?{firebar}:{}),source:firebar?'firebar':id===50?'spring':id===52?'controller':id>=36&&id<=44?'platform':id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
+  entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(id===48?0:r[0xb6+slot]-1)*256+r[0xcf+slot],...(firebar?{firebar}:{}),...(id===47&&slot===5?{vine:nativeVineControl(r)}:{}),source:id===47?'vine':firebar?'firebar':id===50?'spring':id===52?'controller':id>=36&&id<=44?'platform':id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
  }
  // Misc slots are a separate bank: bit 7 selects held/flying hammers; low states 1..47 are jumping/spinning coins.
  for(let slot=0;slot<9;slot++){
@@ -55,7 +56,7 @@ export function strictSimEntities(sim:any):StrictEntity[]{
  for(const controller of sim.frenzyControllers??[])if(controller.id===52&&controller.slot!==undefined&&!controller.lost)entities.push({bank:'enemy',slot:controller.slot,kind:'warp-zone-control',x:Math.floor(controller.x??controller.column),y:controller.y,source:'controller',state:0});
  for(const c of sim.frenzyControllers??[])if(c.id===23&&c.slot!==undefined)entities.push({bank:'enemy',slot:c.slot,kind:OBJECTS[23],x:Math.floor(c.x??c.column),y:c.y,source:'controller',state:0});
 
- const pole=sim.specialSlot5;if(pole?.flag&&pole.id===23)entities.push({bank:'enemy',slot:5,kind:OBJECTS[23],x:Math.floor(pole.x),y:(pole.yHigh-1)*256+pole.y,source:'controller',state:0});if(pole?.flag&&pole.id===48)entities.push({bank:'enemy',slot:5,kind:'flagpole-flag',x:Math.floor(pole.x),y:Math.floor(sim.phase==='flag'?sim.flagTop:pole.y),source:'flagpole-flag'});
+ const pole=sim.specialSlot5;if(pole?.flag&&pole.id===47)entities.push({bank:'enemy',slot:5,kind:'vine',x:Math.floor(pole.x),y:(pole.yHigh-1)*256+pole.y,source:'vine',vine:simVineControl(pole)});if(pole?.flag&&pole.id===23)entities.push({bank:'enemy',slot:5,kind:OBJECTS[23],x:Math.floor(pole.x),y:(pole.yHigh-1)*256+pole.y,source:'controller',state:0});if(pole?.flag&&pole.id===48)entities.push({bank:'enemy',slot:5,kind:'flagpole-flag',x:Math.floor(pole.x),y:Math.floor(sim.phase==='flag'?sim.flagTop:pole.y),source:'flagpole-flag'});
  const flag=sim.nativeCastleFlag;if(flag)entities.push({bank:'enemy',slot:flag.slot,kind:'castle-flag',x:Math.floor(flag.x),y:flag.y,source:'castle-flag',state:flag.task>=2?flag.state:undefined});
  for(const f of sim.nativeFireworks??[])if(f.active)entities.push({bank:'enemy',slot:f.slot,kind:'firework',x:Math.floor(f.x),y:f.y,source:'firework',state:0});
  for(const item of sim.items){
@@ -81,6 +82,10 @@ export function strictEntityDifferences(native:EntityReadout,sim:StrictEntity[])
    if(!s.firebar)gaps.push({code:'unsupported-sim-firebar-phase',detail:'firebar raw A0/58/speed/direction readout unavailable',slot:s.slot});
    else if(n.firebar)for(const key of ['id','high','low','speed','direction'] as const)if(n.firebar[key]!==s.firebar[key])mismatches.push({code:`firebar.${key}`,native:n,sim:s});
   }
+  if(n.kind==='vine'&&s.kind==='vine'&&n.slot===5){
+   if(!s.vine)gaps.push({code:'unsupported-sim-vine-control',detail:'vine0398/0399/039A/039D state unavailable',slot:5});
+   else if(n.vine)for(const key of ['count','height','startY','slots'] as const)if(JSON.stringify(n.vine[key])!==JSON.stringify(s.vine[key]))mismatches.push({code:`vine.${key}`,native:n,sim:s});
+  }
   if(n.kind==='firebar-alias'&&s.kind==='firebar-alias'&&n.owner!==s.owner)mismatches.push({code:'alias.owner',native:n,sim:s});
  }
  for(const s of pool){
@@ -96,8 +101,12 @@ export function strictSimCoverage(sim:any):CoverageGap[]{
  const gaps:CoverageGap[]=[];
  for(const platform of sim.area.platforms??[])if(!platformKind(sim,platform)||!sim.platformSlots||!sim.platformMotion)gaps.push({code:'unsupported-sim-platform',detail:`platform at ${platform.x},${platform.y}: native object identity or slot/position adapter unavailable`});
  for(const bar of sim.area.firebars??[])if(typeof sim.firebarSlots?.nativeBytes!=='function'||typeof sim.firebarSlots.slotOf!=='function'||typeof sim.firebarSlots.aliasStates!=='function'||typeof sim.firebarSlots.tracks!=='function'||!sim.firebarSlots.tracks(bar))gaps.push({code:'unsupported-sim-object-family',detail:`firebar at ${bar.x},${bar.y}: slot/raw phase/alias registry unavailable`});
- for(const [kind,objects] of [['vine',sim.area.vines]] as const)
-  if(objects?.length)gaps.push({code:'unsupported-sim-object-family',detail:`${kind}: ${objects.length} declared area objects; activation/position adapter missing`});
+ const vine=sim.specialSlot5;
+ if(sim.area.vines?.length&&!simVineControl(vine))gaps.push({code:'unsupported-sim-object-family',detail:'vine: native activation/position registry unavailable'});
+ if(vine?.flag&&vine.id===47){
+  gaps.push({code:'unsupported-sim-vine-state',detail:'Setup_Vine retains Enemy_State; raw state is not modelled',slot:5,id:47});
+  for(const slot of vine.vineSlots??[])if(slot!==5&&!sim.erasedVineSlots?.has(slot))gaps.push({code:'unsupported-sim-vine-segment',detail:'secondary Setup_Vine raw Block_* anchor and retained slot state unavailable',slot,id:47});
+ }else if(sim.vines?.some((v:any)=>v.height>0||v.growing))gaps.push({code:'unsupported-sim-vine-activation',detail:'visible/growing model vine has no live native slot5 owner'});
  for(const spring of sim.area.springs??[])if(spring.nativeColumn===undefined||spring.nativeOffset===undefined||!sim.springSlots||typeof sim.springCompression!=='function')gaps.push({code:'unsupported-sim-object-family',detail:`spring at ${spring.x},${spring.y}: native parser identity or slot/compression adapter missing`});
  if(sim.area.exit?.kind==='flag'&&!sim.specialSlot5)gaps.push({code:'unsupported-sim-object-family',detail:'flagpole/castle flag slot registry missing'});
  if(sim.flagFireworks?.length&&!Array.isArray(sim.nativeFireworks))gaps.push({code:'unsupported-sim-object-family',detail:'fireworks normal-slot registry missing'});
