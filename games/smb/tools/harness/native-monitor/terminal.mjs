@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';import {parseArgs} from 'node:util';import {emitKeypressEvents,cursorTo,clearScreenDown} from 'node:readline';
-import {emptyResult,summarizeCombined,inventoryHash,sha} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {policyHash} from './visual-check.mjs';
+import {emptyResult,summarizeCombined,inventoryHash,sha,validateCombinedRegistration} from './combined-replay.mjs';import {renderCombined} from './combined-view.mjs';import {policyHash} from './visual-check.mjs';
 const dir=path.dirname(fileURLToPath(import.meta.url)),read=p=>JSON.parse(fs.readFileSync(p));
 const {values:args}=parseArgs({options:{monitor:{type:'string'},watch:{type:'boolean'},'add-combined':{type:'string'},'follow-live':{type:'string'},'await-v2':{type:'boolean'}}});
 const configFile=path.join(path.resolve(args.monitor??dir),'sources.json'),config=read(configFile),latest=config.snapshots.at(-1),mood=read(latest.mood);
@@ -17,10 +17,10 @@ if(args['await-v2']){
  fs.writeFileSync(path.join(archive,'manifest.json'),JSON.stringify({reason:'Legacy sticky evidence retained outside automatic fallback discovery; no v2 measurements created',moved},null,2)+'\n');
  config.combined=null;fs.writeFileSync(configFile,JSON.stringify(config,null,2)+'\n');console.log('Awaiting v2; legacy pointer archived and '+moved.length+' legacy fallback receipts preserved outside discovery.');process.exit(0);
 }
-if(args['follow-live']){const file=path.resolve(args['follow-live']),r=read(file);if(r.progress?.status!=='running')throw Error('Live follow requires a running v2 receipt');if(r.runs.some(x=>!x.provenance?.fullPictureStreamAuthenticated||!x.provenance?.sourceVerifiedAfterRun))throw Error('Unverified live recording');summarizeCombined(r,inventory,policyHash);config.combined=file;fs.writeFileSync(configFile,JSON.stringify(config,null,2)+'\n');console.log('Following verified completed-recording live results; completion history unchanged.');process.exit(0);}
-if(args['add-combined']){const file=path.resolve(args['add-combined']),r=read(file);if(r.progress?.status!=='complete'||r.runs.length!==inventory.length||r.errors?.length||r.runs.some(x=>!x.provenance?.fullPictureStreamAuthenticated||!x.provenance?.sourceVerifiedAfterRun))throw Error('Only completed ALL368 every-frame reports may be registered');summarizeCombined(r,inventory,policyHash);config.combined=file;fs.writeFileSync(configFile,JSON.stringify(config,null,2)+'\n');console.log('Combined report registered.');process.exit(0);}
-const lastCompletedFile=path.join(path.dirname(configFile),'last-completed-every-frame-audit.json');
-let lastCompleted=fs.existsSync(lastCompletedFile)?read(lastCompletedFile):null;
+if(args['follow-live']){const file=path.resolve(args['follow-live']),r=read(file);validateCombinedRegistration(r,inventory,policyHash,{live:true});config.combined=file;fs.writeFileSync(configFile,JSON.stringify(config,null,2)+'\n');console.log('Following verified completed-recording live results; completion history unchanged.');process.exit(0);}
+if(args['add-combined']){const file=path.resolve(args['add-combined']),r=read(file);validateCombinedRegistration(r,inventory,policyHash);config.combined=file;fs.writeFileSync(configFile,JSON.stringify(config,null,2)+'\n');console.log(r.scope?'Scoped combined report registered; other inventory frames remain unchecked.':'Combined report registered.');process.exit(0);}
+const historyFiles={full:path.join(path.dirname(configFile),'last-completed-every-frame-audit.json'),scoped:path.join(path.dirname(configFile),'last-completed-scoped-every-frame-audit.json')};
+const histories=Object.fromEntries(Object.entries(historyFiles).map(([key,file])=>[key,fs.existsSync(file)?read(file):null]));
 let running=true,world=0,wake,cache;
 function exit(){running=false;if(process.stdin.isTTY)process.stdin.setRawMode(false);process.stdin.pause();if(args.watch&&process.stdout.isTTY)process.stdout.write('\x1b[?1049l\x1b[?25h');wake?.();}
 process.on('SIGINT',exit);process.on('SIGTERM',exit);process.stdout.on('resize',()=>wake?.());
@@ -30,11 +30,12 @@ while(running){
   const c=read(configFile),file=c.combined;
   // Also watch the durable notes folder for this exact combined-report convention.
   const backups=fs.readdirSync(path.dirname(latest.mood)).filter(n=>/^combined-replay-[a-f0-9]+\.json$/.test(n)).map(n=>path.join(path.dirname(latest.mood),n));
-  const candidates=[...backups,...(file?[file]:[])].sort((a,b)=>fs.statSync(a).mtimeMs-fs.statSync(b).mtimeMs);
+  const candidates=file?[file]:backups.sort((a,b)=>fs.statSync(a).mtimeMs-fs.statSync(b).mtimeMs);
   let result=emptyResult(inventory),invalid='';
   for(const candidate of candidates){try{const stat=fs.statSync(candidate),key=`${candidate}/${stat.size}/${stat.mtimeMs}`;if(cache?.key===key)result=cache.result;else{result=summarizeCombined(read(candidate),inventory,policyHash);cache={key,result};}invalid='';}catch(e){invalid=e.message;}}
-  if(result.progress?.status==='complete'&&Number.isFinite(Date.parse(result.progress.finished))&&(!lastCompleted||Date.parse(result.progress.finished)>Date.parse(lastCompleted.finished))){
-   lastCompleted={runtime:result.runtime,finished:result.progress.finished,started:result.progress.started};
+  const historyKey=result.scope?'scoped':'full',lastCompletedFile=historyFiles[historyKey];let lastCompleted=histories[historyKey];
+  if(['complete','scoped-complete'].includes(result.progress?.status)&&Number.isFinite(Date.parse(result.progress.finished))&&(!lastCompleted||Date.parse(result.progress.finished)>Date.parse(lastCompleted.finished))){
+   lastCompleted={runtime:result.runtime,...(result.scope?{scope:result.scope}:{}),finished:result.progress.finished,started:result.progress.started};histories[historyKey]=lastCompleted;
    fs.writeFileSync(lastCompletedFile+'.partial',JSON.stringify(lastCompleted,null,2)+'\n');fs.renameSync(lastCompletedFile+'.partial',lastCompletedFile);
   }
   const text=renderCombined({moodCount:mood.runs.length,referenceCount:32,result,lastCompleted},{world,width:process.stdout.columns||100,color:Boolean(process.stdout.isTTY)});

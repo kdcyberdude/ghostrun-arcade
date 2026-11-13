@@ -19,3 +19,50 @@ After accepting the versioned correction, copy these consumer files into the exi
     node /ABS/EXISTING_SMB_PROGRESS/terminal.mjs --add-combined /ABS/PERSISTENT/FINAL_PIN/every-frame/combined-replay.json
 
 The versioned terminal can alternatively address the existing display configuration with`--monitor /ABS/EXISTING_SMB_PROGRESS`. `--follow-live /ABS/live-report.json`accepts only a running v2 receipt and checks all published runs are individually native/source-verified; it changes the config pointer without registering completion. Its completion-history file is separate from the legacy sticky-policy history. The policy tests and strict frame-observer tests cover later matching rows after failures, independent counters, unsupported rows, legacy rejection and visual algorithm equivalence. No gameplay change is part of this correction.
+
+## Fresh selected-level reports
+
+To audit only the native frames belonging to World1-1 and World1-2 on one new
+immutable build, retain the same 368-recording / 5,178,452-frame inventory:
+
+    node games/smb/tools/harness/native-monitor/run-audit.mjs --runtime /ABS/NEW_CHECKOUT --monitor /ABS/EXISTING_SMB_PROGRESS --out /ABS/NEW_PIN/w1-levels --levels 1-1,1-2 --shards 8
+
+The report declares `scope: {levels: ['1-1','1-2'], frameSelection:
+'all-target-level-frames'}`. Each run still has its full inventory `frames`;
+`selectedFrames` and `directlyComparedFrames` must equal the complete native
+selection, represented by canonical merged `selectedFrameSpans: [{from,to}]`.
+`replayedFrames` is the last selected interval's exclusive end (or 0 if none).
+Every earlier pad is consumed continuously from the declared recorded start;
+there is no jump to an entrance or post-failure reseed. Nonselected rows retain
+their actual native level labels and BOTH state/picture are explicitly
+`unchecked`, including inputs after the last selected frame. The complete
+native pixel/emphasis files must still be SHA-authenticated; hashing a suffix
+without replaying it does not count that suffix as compared. Each selected
+interval receipt is bound by `provenance.selectedFrameSpansSha256 =
+sha(JSON.stringify(selectedFrameSpans))` and checked against all target-level
+spans. Runtime/tool/native-stream provenance must describe the same build.
+
+All 368 inputs must be processed before final registration, including records
+with 0 selected frames. Final status is `scoped-complete`, NEVER full `complete`.
+The full unscoped guard still requires5,178,452 directly compared frames.
+Scoped direct totals equal only the sum of selected frames; all other inventory
+frames remain unchecked. No old-build pictures or earlier state-only result
+may be added to the new report. The same STATE/PICTURE/JOINT rules, picture
+policy hash and15/16-pixel blob threshold remain unchanged.
+
+The terminal shows a `SCOPE 1-1, 1-2` header, per-level STATE/PICTURE/JOINT counts,
+the unchecked remainder and `SCOPED COMPLETE` when finished. While running,
+unpublished input frames also remain unchecked. Scoped completion history is
+written separately to `last-completed-scoped-every-frame-audit.json`; the old
+full-build history and reports remain intact. A configured report pointer takes
+precedence over fallback discovery timestamps, so touching an older full report
+cannot displace the newly selected build.
+
+Install the new consumer modules (`combined-replay.mjs`, `combined-view.mjs`,
+`terminal.mjs`, plus the updated tests/docs) in the existing progress folder
+without changing its inventory or historical receipts. Restart the intended
+watch processes to load these modules; editing module files does not reload an
+already running Node process. Use the normal `--follow-live` and `--add-combined`
+commands with the NEW scoped receipt. Do not use `--await-v2` to clear an existing
+v2 report when refreshing a scope. No new measurements are claimed merely by
+installing the consumer; the new audit must supply authenticated observations.
