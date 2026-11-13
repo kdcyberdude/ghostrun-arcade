@@ -1,3 +1,4 @@
+import {nativeGoombaBlockStun} from './native-block-enemy.js';
 import {NativeGraphicsScratch} from './native-graphics-scratch.js';
 
 import {nativePlayerEnemyLatch,nativeNormalEnemyBox,nativeNormalContactStomps} from './native-player-enemy-latch.js';
@@ -278,6 +279,7 @@ export class Simulation {
  private waterCollisionPose?:{x:number;y:number};private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
  private swimFreshA=false;
+ private enemyBumpCells=new Map<string,number>();
  bump=new Map<string,number>(); readonly usedBlockRehits=new Set<string>(); private destination?:{area:string;sourceX?:number;level?:string;spawn:[number,number];camera?:number;direction:string;frames:number;smallPlayerRoomPreviewFrames?:number;smallPlayerRoomEntry?:{transitionFrames:number;spawnFeetY:number;initialVy:number;gravity:number};ordinaryEnemyFrontier?:number;returnCloudOffsetX?:number;riseFrames?:number}; private inputs:Set<Button>[]=[new Set(),new Set()]; private pauseCooldown=0;private airRunning=false;private mediumJump=false;private runJump=false;private headBumped=false;private brokenBrick?:{key:string;rows:number};private bouncing=false; private braking=PHYSICS.brake;private skidAccel=0; private jumpHeld=0;private jumpArc=false;private landJump:'inactive'|'held'|'released'='inactive'; private lastFire=-12;
  constructor(levels:Level[]){if(!levels.length)throw new Error('No observed level data');this.levels=levels;this.reset();}
  get level(){return this.levels[this.levelIndex];}
@@ -373,7 +375,7 @@ export class Simulation {
   this.swimPoseFrame=0;
   this.springTimers.clear();this.erasedVineSlots.clear();this.springRelease=false;this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
   this.flagNumber.y=this.flagNumber.fraction=0;this.flagTop=48;this.flagInside=false;this.flagBonus=0;
-  this.items=[];this.popups=[];this.bump.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
+  this.items=[];this.popups=[];this.bump.clear();this.enemyBumpCells.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
   if(!deferTerrain)for(let column=this.parserColumnX-384;column<this.parserColumnX;column+=16){this.createNativeCannons(column);this.createNativePipeObjects(column);}
   if(!deferTerrain)for(const spring of this.area.springs??[])if(spring.nativeColumn!==undefined&&spring.nativeColumn>=this.parserColumnX-384&&spring.nativeColumn<this.parserColumnX)this.createNativeSpring(spring);
   this.emit(this.areaMusic());
@@ -781,6 +783,8 @@ export class Simulation {
   return piece?{x:piece.x,y:piece.y,width:16,height:16,id:piece.id,piece}:undefined;
  }
  private enemyCollisionAt(x:number,y:number){
+  const col=Math.floor(x/16),row=Math.floor(y/16),marker=this.enemyBumpCells.get(`${col},${row}`);
+  if(marker!==undefined)return marker?{x:col*16,y:row*16,width:16,height:16,id:marker}:undefined;
   const spring=this.area.springs?.find(s=>x>=s.x&&x<s.x+16&&y>=s.y-24&&y<s.y+8);
   if(spring)return {x:spring.x,y:spring.y-24+Math.floor((y-spring.y+24)/16)*16,width:16,height:16,id:y<spring.y-8?0x67:0x68};
   return this.collisionAt(x,y);
@@ -959,7 +963,7 @@ export class Simulation {
   const above=`${x},${y-1}`;if(!piece&&isHitBlock(id)&&id!==196&&this.tiles.get(above)===COIN_TILE){this.tiles.delete(above);this.parserVramBusy=true;this.paletteRemove=true;this.coin();this.spawnNativeAboveBlockCoin(x,y);}
   let bumpedNativeBlock=false;
   if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6]){
-   bumpedNativeBlock=true;
+   bumpedNativeBlock=true;this.enemyBumpCells.set(key,0x23);
    const slot=this.blockControl,n=this.nativeBlocks[slot],shatter=Boolean(p.size&&[81,82,83].includes(id));
    Object.assign(n,{x:Math.floor(p.x+8)&~15,y:y*16,state:shatter?0x12:0x11,speed:shatter?-6:-2,force:0});
    if(shatter)Object.assign(this.nativeBlocks[slot+2],{x:n.x,y:n.y+8,speed:-4,force:0});
@@ -994,7 +998,7 @@ export class Simulation {
   if(newNativeBlock){const old=this.blockGraphics.findIndex(b=>b.slot===nativeBlock.slot);if(old>=0)this.blockGraphics.splice(old,1);this.blockGraphics.push({slot:nativeBlock.slot,key,x:nativeBlock.x,y:y*16,metatile:this.brokenBrick?.key===key?0:(piece?.id??this.tiles.get(key)??0),pictureY:undefined,replace:nativeBlock.state===0x12});}
   // EnemyToBGCollisionDet only stuns a walker when BumpBlock wrote $23.
   // Solid tree/stone head contact does not create that native marker.
-  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='blooper'&&!(e.kind==='cheep'&&e.swim)&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
+  if(bumpedNativeBlock)for(const e of this.enemies)if(e.active&&!e.dead&&e.kind!=='goomba'&&e.kind!=='blooper'&&!(e.kind==='cheep'&&e.swim)&&Math.abs(e.y-y*16)<3&&Math.abs(e.x-x*16)<18){e.dead=1;e.vy=-3;this.floateyScore(100);}
  }
  /** ProcessPlayerAction (src/player-anim.ts): the pose kind and frame from the native Player_State at the end of the frame (ground, jump,
   * walk-off fall), the speed byte, Left/Right (dropped by Down on the ground), Player_XSpeedAbsolute and the moving/facing directions. */
@@ -1730,7 +1734,7 @@ export class Simulation {
  }
  private advanceNativeBlockPictures(){
   let busy=this.paletteClock.pendingBuffer1||this.blockUpdateBusy;
-  for(const slot of [1,0]){const b=this.blockGraphics.find(b=>b.slot===slot);if(!b)continue;b.pictureY=undefined;if(b.replace&&!busy){this.blockBackgroundQueue.set(b.key,b.metatile||null);b.replace=false;busy=this.graphicsBuffer1=true;}}
+  for(const slot of [1,0]){const b=this.blockGraphics.find(b=>b.slot===slot);if(!b)continue;b.pictureY=undefined;if(b.replace&&!busy){this.blockBackgroundQueue.set(b.key,b.metatile||null);this.enemyBumpCells.delete(b.key);b.replace=false;busy=this.graphicsBuffer1=true;}}
   const bouncing=this.nativeBlocks.slice(0,2).map(n=>(n.state&15)===1);
   this.advanceNativeBlocks();
   for(const b of this.blockGraphics)if(bouncing[b.slot]){const n=this.nativeBlocks[b.slot];b.pictureY=n.y;if(!n.state)b.replace=true;}
@@ -2741,6 +2745,20 @@ export class Simulation {
    if(e.squashed){
     if(e.dead>=100||e.slotFreed)continue;e.shellTimer??=16;e.walkerState??=4;
     if(!this.nativeTimersStopped&&e.walkerState>=3&&e.shellTimer===14){this.eraseEnemy(e);continue;}e.dead=Math.min(89,e.dead+1);
+   }
+   // EnemyGfxHandler precedes EnemyToBGCollisionDet. ChkUnderEnemy reads
+   // the bottom-middle (raw X+8/Y+$18), then consumes the temporary $23.
+   if(!e.dead&&e.kind==='goomba'){
+    const rawY=(Math.floor(e.y)-24)&255,key=`${Math.floor((Math.floor(e.x)+8)/16)},${Math.floor(e.y/16)}`;
+    if(((rawY+0x3e)&255)>=0x44&&this.enemyBumpCells.get(key)===0x23){
+     this.enemyBumpCells.set(key,0);
+     const left=e.fall??(e.enemySlot===undefined?{speed:0,force:0,fraction:0}:this.slotVertical[e.enemySlot]);
+     const n={...left,state:e.walkerState??0,y:rawY,xSpeed:Math.round(e.vx*16)&255,direction:e.vx<0?2:1};
+     const points=nativeGoombaBlockStun(n,Math.floor(e.x),Math.floor(p.x));
+     e.y=((Math.floor(e.y)-24)&~255)+n.y+24;e.vx=((n.xSpeed<<24)>>24)/16;e.direction=n.direction===1?1:-1;
+     e.defeat={y:e.y,speed:n.speed,force:n.force,fraction:n.fraction,timer:0};e.dead=1;e.squashed=false;e.walkerState=n.state;e.vy=n.speed+n.force/256;
+     this.floateyScore(points);
+    }
    }
    if(e.dead&&!e.squashed){
     if(e.defeat){
