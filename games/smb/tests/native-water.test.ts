@@ -169,3 +169,13 @@ test('surface gravity reads only the native y byte even after an offscreen page 
  assert.equal(w.vertical(false,false,260,false,true).dy,3);
  assert.deepEqual([w.speed,w.force,w.frac],[1,0,25]);
 });
+
+test('neutral B braking reads the previous ImposeFriction absolute byte before its next decrement',()=>{
+ const w=new NativeWater();w.motor.reset(-2664,-1);w.motor.moving=-1;w.moving=-1;
+ // Native d2bb source24069: previous0700=11 despite speed-10.40625.
+ assert.equal(w.horizontal(0,true,false,true,11),-2512);
+ assert.equal(w.horizontal(0,true,false,true,10),0);
+ const wall=new NativeWater();wall.motor.reset(88,1);
+ assert.equal(wall.horizontal(0,false,false,true,24),88);
+ assert.equal(wall.horizontal(0,false,false,true,0),0);
+});

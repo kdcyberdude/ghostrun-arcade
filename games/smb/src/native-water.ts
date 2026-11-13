@@ -133,7 +133,7 @@ export class NativeWater{
   }
   // Holding B stops a coasting player below speed byte 11, in the water as on the ground. Down does the same only on the frame the direction is released
   // (2-2/7-2 free-play rows: 32 of 35 release frames with Down below byte 11 stop; 0 of 6 later Down frames with no direction do).
-  if(!direction){m.tickFreeze();return grounded?m.groundCoast(b):(b||released)&&m.speed!==0&&Math.abs(m.speed)<2816?m.speed=0:m.speed;}
+  if(!direction){m.tickFreeze();return grounded?m.groundCoast(b&&absolute<11):(b||released)&&absolute<11&&m.speed!==0&&Math.abs(m.speed)<2816?m.speed=0:m.speed;}
   const along=direction===this.moving,first=this.moving===0;this.moving=direction;
   // From exact rest the first step ever is doubled, later ones plain whatever the last direction was; a press against a
   // sub-byte positive speed takes the doubled step.
