@@ -355,7 +355,7 @@ export class GameRenderer {
  }
  private hud(s:Simulation,paletteIndex=s.area.palette,hideTime=false){
   this.textZ=1;
-  this.text(s.currentPlayer?'LUIGI':'MARIO',24,16);this.text(String(s.score).padStart(6,'0'),24,24);
+  this.text(s.currentPlayer?'LUIGI':'MARIO',24,16);this.text(s.hud.draw.score,24,24);
   if(s.phase==='intro'||s.phase==='gameover')this.quad('background-tiles-0f-27-17-1c.png',[112,16,8,8],88,24,1);
   else{
    // Supplied OAM [24,255,0x23,88]: palette3, behind the HUD background.
@@ -363,8 +363,8 @@ export class GameRenderer {
    this.spriteTile(255,88,25,palette,false,false,0.9);
    this.quad(this.hudCoinTextures[this.rotation(paletteIndex)],[0,0,8,8],88,24,1);
   }
-  this.text('×'+String(s.coins).padStart(2,'0'),96,24);
-  this.text('WORLD',144,16);this.text(s.level.id,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(String(Math.max(0,s.time)).padStart(3,'0'),208,24);
+  this.text('×'+s.hud.draw.coins,96,24);
+  this.text('WORLD',144,16);this.text(s.level.id,152,24);this.text('TIME',200,16);if(!hideTime&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden)this.text(s.hud.draw.time,208,24);
   this.textZ=5;
  }
  private title(s:Simulation){
