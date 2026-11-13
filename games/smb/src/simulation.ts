@@ -249,7 +249,7 @@ export class Simulation {
  /** Water pipe drop-in (2-2, 7-2): native PlayerEntrance runs until Mario's y reaches $30, and the game timer starts with control (2-2 v2: y49 on row 385, routine 8 and 401 -> 400 on row 386). */
  private waterEntryTimerHold=0;
  private waterEntryFall=false;private waterSurface={active:false,contacted:false};
- private fetchGameTimer=false;private screenTimer=0;private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathLoad?:{state:NativeLevelLoad;dispatch:boolean;area:string;spawn?:[number,number];camera?:number;player?:Player};private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private entryLanding=false;
+ private fetchGameTimer=false;private screenTimer=0;private introLength=TRANSITIONS.introFrames;private lifeIntro?:LifeIntro;private deathLoad?:{state:NativeLevelLoad;dispatch:boolean;held:boolean;area:string;spawn?:[number,number];camera?:number;player?:Player};private gameoverEnd=0;private lifeFrozen=0;private lifeRow=0;private entryLanding=false;
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private playerXScroll=0;private pipeTimer=0;
@@ -3066,7 +3066,7 @@ export class Simulation {
   let ticks=0;
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
- private startPlayAfterIntro(){if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){const fromDeath=Boolean(this.deathLoad);if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}if(!fromDeath)this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
  private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();}else if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy||e.nativeShot))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.updateNativeCannons();this.passNativeCannons();}
 
  private primeEntryPodoboos(){
@@ -3085,7 +3085,7 @@ export class Simulation {
   }
   const target=this.level.areas.find(a=>a.id===(this.checkpoint?(this.activatedCheckpointArea??this.level.main):(this.level.respawnArea??this.level.main)))!,checkpoint=this.checkpoint?target.checkpoint:undefined;
   // Native PlayerLoseLife/ContinueGame keeps the HUD timer digits ($07F8) through the lives screen; the area's time is loaded with the level on the engine-7 row (1-1 v2: 368 until 1147, 400 from 1149).
-  this.fetchGameTimer=true;this.player.size=0;this.deathLoad={state:{...nativeLevelLoad(),engine:0,disable:1,columns:255,timer:this.screenTimer,timeUp:this.timeUpDeath},dispatch:true,area:target.id,spawn:checkpoint?.spawn,camera:checkpoint?.camera};this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
+  this.fetchGameTimer=true;this.player.size=0;this.deathLoad={state:{...nativeLevelLoad(),engine:0,disable:1,columns:255,timer:this.screenTimer,timeUp:this.timeUpDeath},dispatch:true,held:this.nativeTimersStopped,area:target.id,spawn:checkpoint?.spawn,camera:checkpoint?.camera};this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.introFrames;this.lifeIntro=newLifeIntro(this.timeUpDeath,true);this.timeUpDeath=false;
  }
  private finishGameover(){
   if(!this.twoPlayer||this.slots[1-this.currentPlayer].lives<=0){this.restartToTitle();return;}
@@ -3094,7 +3094,9 @@ export class Simulation {
   this.player.size=0;this.loadArea(target.id,checkpoint?.spawn,checkpoint?.camera,false,true);this.phase='intro';this.phaseFrame=0;this.gameoverClosingFrame=-1;this.gameoverSkipDelay=0;this.introFromGameover=true;this.introLength=TRANSITIONS.introFrames;
  }
  private updateDeathLoad(){
-  const load=this.deathLoad!;if(load.dispatch){load.dispatch=false;return;}
+  const load=this.deathLoad!;
+  if(!(load.state.task===0&&load.state.screen===0)&&(!load.dispatch||!load.held))this.tickIntervalTimers();
+  if(load.dispatch){load.dispatch=false;return;}
   const n=load.state;if(n.task===3&&n.engine===7)return;
   if(!(n.task===0&&n.screen===0))this.gameTimerStep(false);
   const tick=((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase;
