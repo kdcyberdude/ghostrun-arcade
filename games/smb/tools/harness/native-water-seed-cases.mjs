@@ -13,6 +13,8 @@ if(a.moods)requests.push(['2-2','area-2',18032,'d2bbd82bb5182db3aaf5c777b720352e
 if(a.moods)requests.push(['2-2','area-2',24060,'d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132',200]);
 if(a.moods)requests.push(['2-2','area-2',19888,'9c64d0397bb9660b2e0729f8fd64ed0bfe0fa432b828dfd337cd7fa93a0d5d1f',2200]);
 if(a.moods)requests.push(['2-2','area-2',14237,'169e3e3b117d67c5cefbc75d62fcd751b57c8fc7f673733f524fc0a481f77ebb',500]);
+if(a.moods)requests.push(['2-2','area-2',13849,'a9aa051457bcc42654c58c64413674af0866dea081ef145bedcc3254efe690ef',1500]);
+if(a.moods)requests.push(['2-2','area-2',21184,'d6214d967b1d8be14367512a61736e436fc869ee9b39e1ff450e049afe24b863',2400]);
 for(const [level,area,row,source,count=200]of requests){
  const dir=source?path.join(a.moods,'captures',source):path.join(a.traces,level),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
  const expected=[];

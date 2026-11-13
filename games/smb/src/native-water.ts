@@ -118,9 +118,15 @@ export class NativeWater{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
   // X_Physics computes friction from the old facing/moving latches before
   // GetPlayerAnimSpeed can clear a low-speed reversal's two speed bytes.
+  // A same-motion press can still double friction after a neutral wall
+  // residue: facing was changed by an earlier opposite input, moving was not.
+  if(!grounded&&direction!==0&&direction===m.moving&&m.facing!==m.moving&&m.speed>0&&m.speed<256&&m.freeze===0){
+   m.facing=direction;m.friction=0;m.skid=false;m.turned=false;this.moving=direction;this.lastDirection=direction;
+   return m.speed+=direction*304;
+  }
   const reversal=direction!==0&&direction!==m.moving&&absolute<11;
   const reversalStep=152*(m.facing!==m.moving?2:1);
-  if(reversal&&!grounded&&!down&&m.facing===direction&&m.speed>0&&m.speed<256){
+  if(reversal&&!grounded&&m.facing===direction&&m.speed>0&&m.speed<256){
    m.tickFreeze();m.moving=m.facing;this.moving=direction;this.lastDirection=direction;
    return m.speed=direction*reversalStep;
   }
