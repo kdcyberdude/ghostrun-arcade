@@ -1,0 +1,287 @@
+{
+ "source": {
+  "sha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "method": "Native AreaStyleObject1 with header AreaStyle2 -> BulletBillCannon/SetupCannon; source scene bindings; Cannon_Y_Position=encoded row*16+32."
+ },
+ "cannons": [
+  {
+   "level": "5-1",
+   "area": "main",
+   "code": 42,
+   "label": "L_GroundArea11",
+   "offset": 24,
+   "column": 1776,
+   "y": 176
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "code": 42,
+   "label": "L_GroundArea11",
+   "offset": 44,
+   "column": 2544,
+   "y": 176
+  },
+  {
+   "level": "5-1",
+   "area": "main",
+   "code": 42,
+   "label": "L_GroundArea11",
+   "offset": 48,
+   "column": 2720,
+   "y": 176
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "code": 49,
+   "label": "L_GroundArea18",
+   "offset": 6,
+   "column": 272,
+   "y": 112
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "code": 49,
+   "label": "L_GroundArea18",
+   "offset": 56,
+   "column": 1712,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 4,
+   "column": 304,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 10,
+   "column": 448,
+   "y": 160
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 12,
+   "column": 448,
+   "y": 192
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 14,
+   "column": 576,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 18,
+   "column": 736,
+   "y": 160
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 20,
+   "column": 896,
+   "y": 160
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 22,
+   "column": 896,
+   "y": 192
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 26,
+   "column": 1024,
+   "y": 112
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 34,
+   "column": 1088,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 48,
+   "column": 1664,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 54,
+   "column": 1952,
+   "y": 176
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 64,
+   "column": 2336,
+   "y": 160
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 66,
+   "column": 2336,
+   "y": 192
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 48,
+   "column": 1360,
+   "y": 176
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 50,
+   "column": 1488,
+   "y": 160
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 52,
+   "column": 1488,
+   "y": 192
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 58,
+   "column": 1680,
+   "y": 176
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 62,
+   "column": 1840,
+   "y": 192
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 66,
+   "column": 1904,
+   "y": 128
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 72,
+   "column": 2000,
+   "y": 160
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 92,
+   "column": 2800,
+   "y": 176
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 98,
+   "column": 3056,
+   "y": 160
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 100,
+   "column": 3056,
+   "y": 192
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "code": 33,
+   "label": "L_GroundArea2",
+   "offset": 2,
+   "column": 288,
+   "y": 176
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "code": 33,
+   "label": "L_GroundArea2",
+   "offset": 8,
+   "column": 544,
+   "y": 160
+  },
+  {
+   "level": "8-3",
+   "area": "main",
+   "code": 33,
+   "label": "L_GroundArea2",
+   "offset": 40,
+   "column": 1376,
+   "y": 176
+  }
+ ]
+}

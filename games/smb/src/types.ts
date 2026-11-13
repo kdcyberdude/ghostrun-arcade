@@ -12,7 +12,7 @@ export interface CollisionRect {x:number;y:number;width:number;height:number;id:
 export interface TilePiece {x:number;y:number;id:number;palette:number;interactive?:boolean}
 export interface SpringSpec {nativeColumn?:number;nativeOffset?:number;x:number;y:number;palette?:string}
 export interface GeneratorSpec {kind:'flyingFish'|'bullet';from:number;to:number;interval:number;maxFish?:number;schedule?:[number,number][];period?:number;heights?:number[];fromCamera?:number;toCamera?:number}
-export interface CannonSpec {x:number;y:number;interval?:number;phase?:number;evidence?:string;native?:boolean;fire?:number[];loop?:number[]}
+export interface CannonSpec {nativeColumn?:number;nativeOffset?:number;x:number;y:number;interval?:number;phase?:number;evidence?:string;native?:boolean;fire?:number[];loop?:number[]}
 // Coordinates identify editable observed stream sections. Gate bands and the
 // representative seams are inferences, not exposed native engine parameters.
 export interface MazeSpec {loopAt:number;loopTo:number;evidence:string;unresolved?:string[];gates?:{from:number;to:number;minFeetY:number;maxFeetY:number}[]}

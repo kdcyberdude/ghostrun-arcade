@@ -1,4 +1,5 @@
 import {applyNativeWaterStreams} from './native-water-streams.mjs';
+import {applyNativeCannons} from './native-cannons.mjs';
 import {applyNativeSprings} from './native-springs.mjs';
 import {nativeEnemyStream} from './native-enemy-stream.mjs';
 import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
@@ -987,6 +988,7 @@ for(const c of geometryCorrections.edits){
  if(pipe.spawn[0]!==2120||pipe.camera!==2064)throw Error('4-2 coin room return changed');pipe.spawn[0]=2104;pipe.camera=2048;}
 // Browser builds must never read a partially written multi-megabyte map.
 applyNativeWalkerGroups(levels,JSON.parse(fs.readFileSync('data/native-walker-groups.json')));
+applyNativeCannons(levels,JSON.parse(fs.readFileSync('data/native-cannon-layout.json')).cannons);
 applyNativeSprings(levels,JSON.parse(fs.readFileSync('data/native-spring-layout.json')).springs);
 const output=path.join(path.dirname(outputPath),`.levels-${process.pid}.json`);
 fs.writeFileSync(output,JSON.stringify(levels,null,2)+'\n');
