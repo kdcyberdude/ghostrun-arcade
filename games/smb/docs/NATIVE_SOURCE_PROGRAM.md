@@ -50,3 +50,19 @@ The source machine reproduces every instruction count, cycle/register result,
 complete RAM result and partial sample without intermediate state correction.
 These isolated procedure tests complement reset-owned continuous execution;
 the snapshots are test inputs, not runtime state or synchronization rules.
+
+The live partial-tail integration runs the source timing machine from cold reset,
+with actual controller bytes. It uses source NMI service and parser entry/return
+events to split a pending parser pass: scroll accumulates during the gameplay
+pass, while task decrement completes later without another controller, clock,
+physics or HUD/VRAM drain. Mario/camera arithmetic is unchanged. Entrance-seeded
+replays retain their existing ownership; no CPU/PPU phase is invented from RAM.
+
+For the one-frame presentation convention, a pending tail can forecast its next
+physical frame using an isolated source-state fork. Any future controller-port
+read rejects that projection. The renderer draws the resulting owned PPU frontier
+using the existing indexed-pattern asset. Repeated draws and batched controller
+steps require no render-history cache and never advance/correct the real model.
+The three focused prefixes now have zero state failures; the large overrun frame
+is pixel-exact, including the scrolled HUD. Subsequent fresh-NMI frames939/940
+still differ1/13 pixels each and are explicitly deferred under the human boundary.

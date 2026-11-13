@@ -1,0 +1,107 @@
+{
+  "schema": "native-gameplay-continuation-pixels-v1",
+  "baseCommit": "5e43814bdaf4e121badda4e0d6bf0294392061be",
+  "sourceHashes": {
+    "src/simulation.ts": "4fe086fa05e875380e3c6990557e95c8a8e24eeee6fb866c345f294892dfb052",
+    "src/renderer.ts": "77e6e83910bdc6682568c8b2769cf1e1ce01ce6239f3503c894a6ed2244f8695",
+    "src/native-gameplay-timing.ts": "e69b6265d9cb664df16d283a446e61ffa0d3b145093daffb1e6ac267e3d8e988",
+    "src/native-source-machine.ts": "68150eefd6a0ebbf9cbd147eee0b0a1647502a38cd38fceececfacea7a63986a",
+    "src/native-source-ppu.ts": "931801b1624609b76c745a0b995c490ce843f2dfce4c9096e7f13725521e69bf",
+    "src/native-source-display.ts": "885dc3085c1dfb7c8470266b89563abd67edd902fa410dcbed108564b2cbd512",
+    "src/native-source-sprite-zero.ts": "7403dfcfd9c203ba2961e5491716823a8e7630a75af3caff2d5ada309f08e8fa",
+    "data/native-source-program.json": "656f72b4f733814d71affc9a9e730fbdaa130ebc9391154e70dfbae46a61b23b",
+    "data/native-source-ppu-graphics.json": "be8aa4024137c9bb1e08fef0ad7ad39221d2a23cd8ff51813b4923d2d2f5e64c"
+  },
+  "method": "Actual Chrome/WebGL2D renderer; model reset(false) once then actual POWERON pads, no native initialization. Every946frame prefix compared before its input (existing one-frame display convention), including all rows after failures. Native colors mapped by existing native-pixels palette; no exclusions/masks/tolerances. Physical partial-tail forecast forks only owned source state and refuses any future controller read.",
+  "captureDriverSha256": "e225a199be8f99e924d4fd3a2c57096f156e736c32cbc17cb37bcb55ac986db7",
+  "cases": [
+    {
+      "id": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+      "nativeCaptureReceiptSha256": "2ad769922e506c2d341280ef1302064d3e63e3a3f9ef983012323929726037b5",
+      "nativePixelPrefixSha256": "97fbde90ca36e2811a423810b7ae2f2bdf447c132b5774ee67262c017ab23b16",
+      "nativePixelReceiptSha256": "9806728eef50c8f55b6cbb8bc3d0ad40e0407950662e2bd7ac09f9dc7a86b444",
+      "frames": 946,
+      "actualComparedPixels": 50856960,
+      "mismatchPixels": 14,
+      "mismatchHudPixels": 0,
+      "mismatchFieldPixels": 14,
+      "nonzero": [
+        {
+          "frame": 939,
+          "differingPixels": 1,
+          "hudPixels": 0,
+          "fieldPixels": 1
+        },
+        {
+          "frame": 940,
+          "differingPixels": 13,
+          "hudPixels": 0,
+          "fieldPixels": 13
+        }
+      ],
+      "rowsSha256": "ddf93de8cc96503ac7ea9198d492e2df5cb28b9f778c29428358edd0f0786ebe"
+    },
+    {
+      "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+      "nativeCaptureReceiptSha256": "263691ad9ff5b6e1d2e4085a2cfd383eca4790dadead6888d20a8de0494e3093",
+      "nativePixelPrefixSha256": "56b4ec030716848060b698f6fa6c32450de6bdf7e48bf9dbfacad80bd015163b",
+      "nativePixelReceiptSha256": "279c98e34fe0770a87df14644b290105d7e7e12d78399059510f3eb898a7f125",
+      "frames": 946,
+      "actualComparedPixels": 50856960,
+      "mismatchPixels": 14,
+      "mismatchHudPixels": 0,
+      "mismatchFieldPixels": 14,
+      "nonzero": [
+        {
+          "frame": 939,
+          "differingPixels": 1,
+          "hudPixels": 0,
+          "fieldPixels": 1
+        },
+        {
+          "frame": 940,
+          "differingPixels": 13,
+          "hudPixels": 0,
+          "fieldPixels": 13
+        }
+      ],
+      "rowsSha256": "ddf93de8cc96503ac7ea9198d492e2df5cb28b9f778c29428358edd0f0786ebe"
+    },
+    {
+      "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
+      "nativeCaptureReceiptSha256": "a2a8fad8739ef449578528fac5ff01a15e46ec5fcef05a6746be17292bbe7a34",
+      "nativePixelPrefixSha256": "56b4ec030716848060b698f6fa6c32450de6bdf7e48bf9dbfacad80bd015163b",
+      "nativePixelReceiptSha256": "44dee6f82cfa315f58bc800d437df762ff5106b0e8f3d7adcb64b9f87852613c",
+      "frames": 946,
+      "actualComparedPixels": 50856960,
+      "mismatchPixels": 14,
+      "mismatchHudPixels": 0,
+      "mismatchFieldPixels": 14,
+      "nonzero": [
+        {
+          "frame": 939,
+          "differingPixels": 1,
+          "hudPixels": 0,
+          "fieldPixels": 1
+        },
+        {
+          "frame": 940,
+          "differingPixels": 13,
+          "hudPixels": 0,
+          "fieldPixels": 13
+        }
+      ],
+      "rowsSha256": "ddf93de8cc96503ac7ea9198d492e2df5cb28b9f778c29428358edd0f0786ebe"
+    }
+  ],
+  "batchedFirstDraw": {
+    "id": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+    "nativeFrame": 938,
+    "actualComparedPixels": 53760,
+    "mismatchPixels": 0,
+    "method": "No rendering for first938controllersteps; first observe() then compares native938. No render-driven picture history.",
+    "driverSha256": "2524e136b512b9ed87c4e2f750293efcdefca51029a1cad57d0a7495ff506ef6",
+    "rowsSha256": "060e95e6bbb6e31413a723e15662a58446f718b2e6df57dbf7dec3c3795966a5"
+  },
+  "deferred": "Fresh-NMI frames939/940 differ1/13pixels per recording. No new coin/block picture writer investigated or changed under current stop boundary."
+}

@@ -2,6 +2,7 @@ import {nativeEnemyInjuryTurn} from './native-enemy-injury-turn.js';
 import {nativeFootImpediment} from './native-player-bg.js';
 import {nativePlayerHoleLocks} from './native-player-hole.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
+import {NativeGameplayTiming} from './native-gameplay-timing.js';
 import {NativeColdStartup} from './native-cold-startup.js';
 import {NativeStartupPicture} from './native-startup-picture.js';
 import {nativeTitleControlsFromRam,stepNativeTitleControls,type NativeTitleControls} from './native-title-controls.js';
@@ -307,6 +308,9 @@ export class Simulation {
  readonly graphicsScratch=new NativeGraphicsScratch();
  nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
  nativeStartup?:NativeTitleControls;readonly nativeStartupPicture=new NativeStartupPicture();private coldStartup?:NativeColdStartup;
+ private nativeGameplayTiming?:NativeGameplayTiming;
+ private pendingAreaParser=false;
+ get nativePhysicalDisplay(){return this.pendingAreaParser?this.nativeGameplayTiming?.machine.predictNextDisplay():undefined;}
  get nativeColdRam():Readonly<Uint8Array>|undefined{return this.coldStartup&&!this.coldStartup.done?this.coldStartup.ram:undefined;}
  get nativeScreen(){return this.nativeStartup??this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
@@ -322,7 +326,7 @@ export class Simulation {
  get entryFallPose(){return this.entryFalling&&this.area.theme!=='water';}
  get entryTimerHidden(){return Boolean(this.area.entryFall&&this.entryTimerDelay!==0);}
  reset(playing=false){
-  this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
+  this.nativeStartup=undefined;this.coldStartup=undefined;this.nativeGameplayTiming=undefined;this.pendingAreaParser=false;this.nativeStartupPicture.reset();this.random=new NativeRandom();this.intervalControl=20;
   this.frame=0;this.lifeRow=0;this.lifeFrozen=0;this.lifeIntro=undefined;this.deathLoad=undefined;this.levelLoad=undefined;this.nativeGameOver=undefined;this.gameOverDispatch=false;this.levelIndex=0;this.lives=3;this.score=0;this.pendingScore=[];this.coins=0;this.currentPlayer=0;this.checkpoint=false;this.introFromGameover=false;
   this.activatedCheckpointArea=undefined;
   this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
@@ -330,7 +334,7 @@ export class Simulation {
   this.destination=undefined;this.pipeLoad=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
   this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();this.graphicsScratch.clear();
   if(this.player)this.player.size=0;this.loadArea(this.level.main);this.timerFrames=this.level.id==='1-1'?TRANSITIONS.freshReferenceResetTimerFrames:0;if(this.level.id==='1-1'){this.areaFrame=FLAG_COMPLETION.freshAreaFrame;this.broClock=HAMMER_NATIVE.freshClock;}this.fetchGameTimer=!playing;if(!playing){this.time=0;this.timerFrames=24;this.events=['command_silence'];}this.phase=playing?'play':'title';this.phaseFrame=0;this.titleFrame=0;this.hud.seed(hudDigits(this.score,this.coins));
-  if(!playing&&this.level.id==='1-1'){this.inputs=[];this.coldStartup=new NativeColdStartup();this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=true;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);}
+  if(!playing&&this.level.id==='1-1'){this.nativeGameplayTiming=new NativeGameplayTiming();this.inputs=[];this.coldStartup=new NativeColdStartup();this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=true;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);}
  }
  // Standalone snapshots have completed preload; InitializeArea defers its terrain callbacks to Screen8.
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false,lifeEntry=false,deferTerrain=lifeEntry){
@@ -462,6 +466,9 @@ export class Simulation {
   if(!Number.isInteger(frames)||frames<0||frames>18000)throw new Error('frames must be an integer in 0..18000');
   const held=[new Set(buttons),new Set(buttons2)];
   for(let i=0;i<frames;i++){
+   const timing=this.nativeGameplayTiming;if(timing){const names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(held[0].has(name))pad|=1<<bit;timing.step(pad);}
+   // A suspended parser finishes without another NMI, controller read or gameplay pass.
+   if(this.pendingAreaParser&&!timing?.nmi){if(timing?.parserCompleted){this.pendingAreaParser=false;this.advanceNativeAreaParser(0);}continue;}
    const player=this.phase==='title'||!this.twoPlayer?0:this.currentPlayer;
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
@@ -1318,7 +1325,7 @@ export class Simulation {
   if(ordinaryEnemyFrontier!==undefined)this.enemies=this.enemies.filter(e=>e.kind==='piranha'||e.originX>=ordinaryEnemyFrontier);
   if(this.area.entryFall?.native)this.primeNativeEntryObjects(true);
  }
- private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen;this.reset();this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
+ private restartToTitle(){const frame=this.frame,row=this.lifeRow,frozen=this.lifeFrozen,timing=this.nativeGameplayTiming;this.reset();this.nativeGameplayTiming=timing;this.frame=frame;this.lifeRow=row;this.lifeFrozen=frozen;}
  /* native: an A held through the load starts the first control row's jump (no release edge needed) */ private freshA=false;private controlGrace=0;
  private springPinX=0;private springPinY=0;private springPrevA=false;private springRelease=false;private springLaunchSpeed=0;
  springCompression(spring:SpringSpec){return this.springTimers.get(spring)?.compression??0;}
@@ -2461,6 +2468,7 @@ export class Simulation {
   if(slot===5){this.items=this.items.filter(i=>i.nativePowerState===undefined);this.specialSlot5.flag=1;this.specialSlot5.id=49;this.specialSlot5.x=this.parserColumnX;this.specialSlot5.y=144;this.specialSlot5.yHigh=1;}
  }
  private advanceNativeAreaParser(scroll:number){
+  if(this.nativeGameplayTiming?.parserPending){this.parserClock.scroll=(this.parserClock.scroll+scroll)&255;this.pendingAreaParser=true;return;}
   const task=this.parserClock.advance(scroll,this.parserVramBusy);let warpHandled=false;
   if(task===7||task===3){this.createNativeCannons(this.parserColumnX);warpHandled=this.createNativePipeObjects(this.parserColumnX);this.advanceCastleFlagParser();this.advanceSpecialSlotParser(this.parserColumnX);for(const spring of this.area.springs??[])if(spring.nativeColumn===this.parserColumnX)this.createNativeSpring(spring);}
   this.areaControls.advance(task,warpHandled);
