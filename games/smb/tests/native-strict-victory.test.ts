@@ -5,9 +5,11 @@ import {strictNativeEntities,strictSimEntities,strictEntityDifferences} from '..
 const unpack=(s:string)=>new Uint8Array(zlib.gunzipSync(Buffer.from(s,'base64')));
 test('continuous strict audit includes every native victory row without erasing the earlier gameplay divergence',()=>{
  const initial=unpack(fixture.initial),pads=unpack(fixture.pads),ram=unpack(fixture.ram),start=decodeEntrance(initial,{level:fixture.level});
+ // Deliberately perturb the one-time entrance, so preservation remains tested after real runtime fixes.
+ start.score+=10;
  const legacy=compareRun(start,pads,f=>ram.subarray(f*2048,(f+1)*2048),fixture.level),prefix=strictCompare(start,pads.subarray(0,fixture.victoryFirst),ram.subarray(0,fixture.victoryFirst*2048),fixture.level),audit=strictCompare(start,pads,ram,fixture.level);
  assert.equal(audit.coverage.frames,fixture.frames);assert.equal(audit.coverage.victoryFrames,fixture.victoryFrames);assert.equal(audit.coverage.continuationFrames,fixture.frames-fixture.levelChange);assert.equal(audit.coverage.uncomparedSameLevelFrames,0);
- assert.ok(legacy.fields.cam!==null&&legacy.fields.cam<fixture.victoryFirst);for(const [field,first]of Object.entries(prefix.fields))if(first!==null)assert.equal(audit.fields[field],first,`earlier ${field} divergence remains visible`);assert.ok(audit.first!<fixture.victoryFirst);
+ assert.equal(legacy.fields.score,0);for(const [field,first]of Object.entries(prefix.fields))if(first!==null)assert.equal(audit.fields[field],first,`earlier ${field} divergence remains visible`);assert.ok(audit.first!<fixture.victoryFirst);
  assert.ok(Object.keys(audit.fields).some(k=>k.startsWith('victory.')));assert.ok(!audit.diagnostics.some(d=>d.code==='unsupported-native-mode'&&d.detail.includes('mode=2')));
  assert.equal(audit.coverage.complete,false,'unsupported actor families remain explicit');assert.notEqual(audit.status,'pass');
 });
