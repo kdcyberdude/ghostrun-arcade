@@ -11,7 +11,10 @@ import {buildBackdrop,type LightSpot} from './backdrop.js';
 import {photoBackdrop} from './nature.js';
 import {FLAG_COMPLETION} from '../simulation.js';
 import {makeFlag,waveFlag} from './flag.js';
-import {liftRopeColumns} from '../view-rules.js';
+import {liftRopeColumns,rotatedPalette} from '../view-rules.js';
+import graphics from '../../assets/graphics/graphics-manifest.json';
+import nesPalette from '../../assets/nes-rgb-palette.json';
+const nativePalettes=graphics.palette_observations.map(o=>o.palette);
 class Pool{
  private meshes:THREE.InstancedMesh[]=[];private n=0;private tmp=new THREE.Matrix4();
  constructor(private parts:Part[],private cap:number,group:THREE.Group,varied=false){
@@ -66,6 +69,7 @@ const VARIANT:Record<string,string>={underground:'_ug',castle:'_castle',water:'_
 export class World{
  readonly group=new THREE.Group();private pools=new Map<string,Pool>();private area?:object;private statics?:THREE.Group;
  readonly unmapped=new Set<number>();private m=new THREE.Matrix4();
+ private paletteMaterials:{palette:number;materials:THREE.MeshStandardMaterial[];coin:boolean}[]=[];
  private flag=makeFlag();private spots:LightSpot[]=[];private ropeArea?:object;private ropes:number[]=[];
  /** A few point lights re-aimed every frame at the torches / crystals nearest the camera (only visible in cave and castle areas). */
  private lamps=Array.from({length:6},()=>{const l=new THREE.PointLight(0xffffff,0,14,2);l.visible=false;return l;});
@@ -77,10 +81,11 @@ export class World{
   const base=name.replace(/^block_/,'').replace(/^castle_/,'');
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
- private pool(name:string,theme:string){
+ private pool(name:string,theme:string,palette=0){
   const v=VARIANT[theme]??'',want=v&&this.kit.has(name+v)?name+v:name,greyPipe=theme==='castle'&&name.startsWith('pipe_');
-  const key=name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want;let p=this.pools.get(key);
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want)+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
   if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(greyPipe)parts=parts.map(q=>({...q,material:castlePipe(q.material)}));
+   if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
  }
@@ -91,9 +96,9 @@ export class World{
    l.position.set(p.x,p.y,p.z);l.color.setHex(p.color);l.intensity=p.power*f;});
  }
  /** One map tile (grid or free piece) at (col,row); `key` is the bump cell ('' for none). */
- private tile(s:Simulation,id:number,col:number,row:number,key:string){
+ private tile(s:Simulation,id:number,col:number,row:number,key:string,palette=s.area.palette){
   const theme=s.area.theme,kind=kindIn(id,theme),age=key?s.bump.get(key):undefined,bump=age!==undefined&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
-  const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme).add(this.m.makeTranslation(x,y,dz));
+  const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette).add(this.m.makeTranslation(x,y,dz));
   switch(kind){
    case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
    case 'wall':put('block_wall',col+0.5,14.5-row);break;
@@ -114,7 +119,7 @@ export class World{
     // Upper-row tiles carry the 2-tall horizontal piece; rotated so the lip faces left (-X).
     if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
     break;
-   case 'coin':this.pool('coin_tile',theme).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
+   case 'coin':this.pool('coin_tile',theme,palette).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
    case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
@@ -144,11 +149,12 @@ export class World{
    const key=`${col},${row}`,id=s.tiles.get(key);if(id===undefined||covered.has(key))continue;
    this.tile(s,id,col,row,key);
   }
-  for(const p of pieces)if(p.y>=32)this.tile(s,p.id,p.x/16,p.y/16,'interactive' in p&&p.interactive?`${p.x/16},${p.y/16}`:'');
+  for(const p of pieces)if(p.y>=32)this.tile(s,p.id,p.x/16,p.y/16,'interactive' in p&&p.interactive?`${p.x/16},${p.y/16}`:'',p.palette??s.area.palette);
   // Castle lift ropes run the full column height (as in the 2D picture), not only where the map has rope tiles.
   if(this.ropeArea!==s.area){this.ropeArea=s.area;this.ropes=liftRopeColumns(s.area);}
   for(const col of this.ropes)if(col>=c0&&col<=c1)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.pool('rope_v',theme).add(this.m.makeTranslation(col+0.5,14.5-row,PIECES[64].dz??0));
   for(const p of this.pools.values())p.end();
+  for(const entry of this.paletteMaterials){const index=rotatedPalette(nativePalettes,entry.palette,s.colorDrawRotations),[r,g,b]=nesPalette.colors[nativePalettes[index][13]];for(const material of entry.materials){material.color.setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace);if(entry.coin)material.emissive.copy(material.color);}}
   this.light(camPx,s.frame);
   LIQUIDS.lava.emissiveIntensity=0.85+0.2*Math.sin(s.frame*0.07);if(LIQUIDS.lava.map){LIQUIDS.lava.map.offset.set(s.frame*0.0011,s.frame*0.0004);}LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
   const exit=s.area.exit;this.flag.visible=exit?.kind==='flag';

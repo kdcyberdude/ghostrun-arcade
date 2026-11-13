@@ -1,7 +1,7 @@
 // HUD and text screens: drawn at the original 256 x 240 layout positions into a 2D canvas (OFL pixel font), then composited over the finished 3D frame.
 import * as THREE from 'three';
 import fontUrl from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
-import {Simulation,TRANSITIONS,CASTLE_COMPLETION} from '../simulation.js';
+import {Simulation,TRANSITIONS,CASTLE_COMPLETION,FLAG_COMPLETION} from '../simulation.js';
 import {NES_W,NES_H} from './coords.js';
 import {trackedLoad} from './loading.js';
 export class Hud{
@@ -42,6 +42,8 @@ export class Hud{
   // Level text that scrolls with the world (WELCOME TO WARP ZONE! and the world numbers over the warp pipes), as the 2D picture draws it.
   const world=!['title','intro','gameover'].includes(s.phase)&&!s.pipeLoading&&!s.pipeClearing,cam=Math.floor(s.camera);
   if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
+  if(world&&s.phase==='flag'&&exit?.kind==='flag'&&s.flagBonus>0)lines.push(`P|${s.flagBonus}|${exit.x+FLAG_COMPLETION.scorePopupXOffset-cam}|${FLAG_COMPLETION.scorePopupYPlusFlagY-s.flagTop}`);
+  if(world)for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
   if(hudOn||s.phase==='flag')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);

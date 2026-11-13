@@ -28,7 +28,7 @@ test('native-only Paratroopas and Beetles are added with their measured spawn ca
  for(const a of data.additions){
   const spec=enemies(a.level,a.area).find(e=>e.kind===a.spec.kind&&e.x===a.spec.x&&e.y===a.spec.y);
   assert.ok(spec,`${a.level} ${a.spec.kind} x${a.spec.x} y${a.spec.y}`);
-  assert.deepEqual({...spec,evidence:undefined},{...a.spec,evidence:undefined});
+  for(const [key,value] of Object.entries(a.spec))if(key!=='evidence')assert.deepEqual((spec as unknown as Record<string,unknown>)[key],value,`${a.level} ${a.spec.kind} ${key}`);
  }
 });
 

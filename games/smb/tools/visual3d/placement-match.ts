@@ -36,7 +36,7 @@ export function pieceModels(map:Record<number,{model:string}>){return (cat:strin
 /** 3D object kind -> family shared with the sim kind (pool names are model names; stand-ins are prefixed e/item). */
 export function family(kind:string):string{
  const k=kind.replace(/^e(?=[a-z])/,'').replace(/^item/,'');
- const map:Record<string,string>={spinyEgg:'spiny',koopa_shell:'koopa',redKoopa:'koopa',paratroopa:'koopa',beetle_shell:'beetle',fire_flower:'flower',flower:'flower',one_up:'1up',bowser_flame:'flame',hammer_bro:'hammerBro',player1:'player',player2:'player',lift:'lift',cloud:'cloud'};
+ const map:Record<string,string>={toad:'retainer',princess:'retainer',spinyEgg:'spiny',koopa_shell:'koopa',redKoopa:'koopa',paratroopa:'koopa',beetle_shell:'beetle',fire_flower:'flower',flower:'flower',one_up:'1up',bowser_flame:'flame',hammer_bro:'hammerBro',player1:'player',player2:'player',lift:'lift',cloud:'cloud'};
  return map[k]??map[kind]??k;
 }
 /** Objects whose centre is on screen (both renderers draw edge objects partly; perspective widens 3D boxes near the edges). */

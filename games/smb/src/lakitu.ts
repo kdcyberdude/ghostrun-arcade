@@ -39,3 +39,17 @@ export function stopFrenzyParsed(objectX:number,crossCamera:number,rowsSinceCros
  const column=objectX-crossCamera-352;
  return column===0&&rowsSinceCross>=2||column===16&&rowsSinceCross>=5;
 }
+
+/** LakituAndSpinyHandler: an expired frenzy attempt without any Lakitu ID increments $06D1.
+ * On the seventh attempt, SetupLakitu resets that counter and uses the highest free ordinary slot.
+ * Timers have already been decremented by the native game clock. Flags and IDs are separate RAM banks. */
+export function lakituReappear(n:{timer:number;count:number},ids:ReadonlyArray<number>,flags:ReadonlyArray<number>){
+ if(n.timer||flags.every(Boolean))return undefined;
+ n.timer=0x80;
+ if(ids.includes(17))return undefined;
+ n.count=(n.count+1)&255;
+ if(n.count<7)return undefined;
+ let slot=4;while(slot>=0&&flags[slot])slot--;
+ if(slot<0)return undefined;
+ n.count=0;return slot;
+}

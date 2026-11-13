@@ -17,7 +17,7 @@ test('a vine-entry sky room selects cloud music and restores it after Star power
  const sky=area({id:'sky',vines:[{...stem,initialHeight:96}],entryVine:{vineId:stem.id,untilFeetY:80,evidence:'Synthetic sky entry'}});
  const sim=game([area(),sky]);sim.events=[];sim.loadArea('sky');
  assert.ok(sim.events.includes('music_cloud'));
- sim.events=[];sim.player.star=1;sim.step([],1);assert.ok(sim.events.includes('music_cloud'));
+ sim.events=[];sim.player.star=4;sim.intervalControl=1;sim.step([],1);assert.ok(sim.events.includes('music_cloud'));
  sim.events=[];sim.loadArea('main');assert.ok(sim.events.includes('music_ground'));
 });
 

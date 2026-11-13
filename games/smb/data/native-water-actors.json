@@ -19,17 +19,13 @@
   },
   "blooperRestY": 184,
   "swimCheepGenerator": {
-   "note": "Free play only (the recorded route replays its own list). 2-2/7-2 water: each frame, once the 32-frame timer is 0 and the lowest free enemy slot s is below 3, a Cheep appears at camera + 287 (then the timer restarts). Random byte s (RAM 0x7A7+s): id = highId when >= 170, else lowId; height = heights[q] where q = byte & 7, moved up (mod 8) past heights already used; all 8 used -> bag empties; it also empties on an area load. Free-play first lives: 129/135 heights, 186/187 ids (evidence/swimcheep-findings-20261111.md). Stop camera: between the last spawn and the first refused free slot (2-2 2661..2737, 7-2 2533..2595), midpoint taken. Bob (+-15 px) is unexplained by the register: generated fish do not bob.",
+   "note": "Native BulletBillCheepCheep (object 23) consumes EnemyFrenzyBuffer 23 set by ROM AreaFrenzy commands; EndFrenzy clears it. Lowest free slot below 3, FrenzyEnemyTimer 32, right extent+32 (camera+287). Random byte s >=170 selects SwimCC_IDData[1], inverted outside World 2. Enemy17YPosData plus CheckpointEnemyID adder 8 gives heights; BitMFilter skips used heights and resets at 255. Generated fish use the same native swimming motor as placed fish.",
    "heights": [72, 56, 152, 88, 40, 104, 168, 120],
    "feetOffset": 24,
    "idThreshold": 170,
    "slots": 3,
    "timer": 32,
-   "spawnAhead": 287,   "palettes": {"10": "0f-10-30-27", "11": "0f-16-30-27"},
-   "levels": {
-    "2-2": {"fromCamera": 931, "toCamera": 2700, "highId": 11, "lowId": 10},
-    "7-2": {"fromCamera": 931, "toCamera": 2564, "highId": 10, "lowId": 11}
-   }
+   "spawnAhead": 287,   "palettes": {"10": "0f-10-30-27", "11": "0f-16-30-27"}
   }
  },
  "areas": [

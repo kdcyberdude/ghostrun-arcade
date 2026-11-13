@@ -58,6 +58,8 @@ export class NativeWater{
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */
  get whirlMoved(){return this.beforeWhirl?.moved??0;}
+ /** PlayerBGCollision runs before the late whirlpool gravity pass. */
+ get contactSpeed(){return this.beforeWhirl?.speed??this.speed;}
  /** A landing or any support under the feet clears the vertical speed and force; the fraction is kept. */
  land(){this.contact(()=>{this.speed=0;this.force=0;});}
  /** A head bump turns the player around at speed 1 (the force is kept). Returns how many more pixels the whirlpool pass moves after it. */
@@ -112,20 +114,27 @@ export class NativeWater{
  lastDirection:Direction=0;
  /** Horizontal speed (1/4096 px) after this frame's input: floor frames use the floor cap and coast (B brakes below byte 11);
   * swimming frames keep their speed when no direction is held. */
- horizontal(direction:Direction,grounded:boolean,down=false,b=false):number{
+ horizontal(direction:Direction,grounded:boolean,down=false,b=false,absolute=0):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
   const released=this.lastDirection!==0&&direction===0&&down;this.lastDirection=direction;
-  if(grounded&&down)return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  if(grounded&&down){
+   // PlayerBGCollision restores the collision bits every row even when Down
+   // suppresses steering. The wall pause cannot survive this floor frame.
+   if(m.freeze>0)m.turned=false;m.tickFreeze();
+   return direction===0&&m.speed>0&&m.speed<256?m.speed=0:m.groundDown(direction,true);
+  }
   // Holding B stops a coasting player below speed byte 11, in the water as on the ground. Down does the same only on the frame the direction is released
   // (2-2/7-2 free-play rows: 32 of 35 release frames with Down below byte 11 stop; 0 of 6 later Down frames with no direction do).
   if(!direction){m.tickFreeze();return grounded?m.groundCoast(b):(b||released)&&m.speed!==0&&Math.abs(m.speed)<2816?m.speed=0:m.speed;}
   const along=direction===this.moving,first=this.moving===0;this.moving=direction;
   // From exact rest the first step ever is doubled, later ones plain whatever the last direction was; a press against a
   // sub-byte positive speed takes the doubled step.
-  if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;return m.speed=direction*(first?304:152);}
-  // A wall restart drops a stationary residue on reversal; it survives neutral frames (native7-2 wall branches).
+  if(m.speed===0){if(m.freeze>0){m.tickFreeze();return 0;}m.friction=0;m.skid=false;m.turned=false;m.facing=direction;m.moving=direction;return m.speed=direction*(first?304:152);}
+  // GetPlayerAnimSpeed clears both speed bytes on a skid only when the
+  // last ImposeFriction absolute byte is below $0b. Neutral swimming keeps
+  // that byte: a wall hit at speed 14 must retain its sub-byte residue.
   if(!along&&m.speed>0&&m.speed<256&&direction<0){
-   if(m.turned){m.tickFreeze();m.speed=0;return m.groundPress(direction,false);}
+   if(m.turned){m.tickFreeze();if(absolute<11)m.speed=0;return m.groundPress(direction,false);}
    return m.speed-=304;
   }
   return m.groundPress(direction as 1|-1,false);

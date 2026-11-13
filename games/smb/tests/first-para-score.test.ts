@@ -15,6 +15,7 @@ function setup(palette:string,chain=0) {
  area.enemies=area.enemies.filter(e=>e.kind==='paratroopa'&&e.x===288).map(e=>({...e,palette}));
  area.tiles=[]; area.freeTiles=[]; area.decorations=[]; area.patternOverrides=[]; area.cannons=[]; area.generators=[];
  const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[288,188],128);
+ Object.assign(sim.enemies[0],{active:true,enemySlot:0,y:192});
  (sim as unknown as ChainAccess).stompChain=chain;
  sim.player.vy=1;sim.player.grounded=false;
  return sim;

@@ -110,3 +110,102 @@ remake local296.5 versus native local232 on6735. Native enemy-slot/stream work
 owns that issue; evidence was sent to the walker worker. Its timer error6959
 now follows that earlier physical divergence. The all-level survey for this
 follow-up is `/tmp/contacts-parser-platform3-divergence.json` during the session.
+
+
+## Ordinary walker background phase (2026-11-13)
+
+Base: integration e9c874d. Native `EnemyToBGCollisionDet` checks its
+`(rawY+$3e)&255 >= $44` window, probes feet at x+8/rawY+24, and accepts
+landing only when rawY low nibble is8..12. State0 stays horizontal; state1
+runs native gravity61/256 with cap3. Landing snaps rawY to `(rawY&$f0)|8`,
+clears speed/force while retaining the slot fraction, and makes non-Goomba
+walkers face Mario. Spiny retains its FrameCounter-dependent direction rule.
+A landing returns immediately; otherwise the side probe reads x+0/16 and
+rawY+20 before movement. Native ID3 ledge avoidance remains distinct from
+unwinged red ID1. Explicit off-grid artwork keeps its existing support height.
+
+Reproducible fixture: `tools/harness/native-walker-landings.mjs`,113 native
+state1→0 events, plus replay regressions8-2 row790 and6-1 rows246/247.
+8-2 Koopa355→354.5 now matches its native pre-move wall reversal. The legacy
+8-2 firstenemy625 remains earlier because of respawn state (other worker).
+
+All32 comparison against e9c874d: only2-1 first fields change. Enemy517→791,
+death1522→null, timer1529→1745 improve. Earlier y1916→1601, x1916→1602,
+camera1916→1603, score2162→1800 all follow enemy791. Other levels and fields
+are unchanged. Excerpts regenerated; full field snapshots are
+`/tmp/contacts-walker-bg-baseline.json` and `/tmp/contacts-walker-bg-final.json`.
+
+## Final void frame screen clamp
+
+Mood0 SHA3d43b7b4… entry0007/1-3 row578 reaches native page6/rawY0.
+`ScrollHandler` still clamps screenX240 to239 and clears the integer horizontal
+speed byte before `PlayerHole` selects engine6. The previous early return
+at pitEndFeetY skipped this final clamp. Moving the existing clamp ahead of
+that return changes strict first578→579 (x578 is eliminated), with no change
+to any field of the32 v2 runs. Strict579+ is the separately owned death/intro
+RAM-retention gap: native engine0 retains the previous player/camera bytes
+until area initialization; the current intro model resets them immediately.
+
+
+## Source spring control, force and camera return
+
+`ChkForLandJumpSpring` writes control1/timer3/force-7 after TimerCore;
+`LandPlyr` snaps raw Mario Y's low nibble to0 without clearing position fraction.
+`JumpspringHandler` then moves Mario+2 (control1/2) or-2 (control3/4), sets
+spring artwork Y to fixedY+[8,16,8,0], and advances expired timers to4/control+1.
+An A edge at control2+ selects force-12. Control4 launches on the13th contact
+handler. That write changes only Y speed: Player_State is still ground0, so
+one more grounded movement row holds Y, then background changes it to falling2.
+The subsequent fall retains native $070A gravity, rather than always144/256.
+65 captured handler rows reproduce all control/timer/force/artwork/Mario-Y bytes.
+The old synthetic spring tests asserted inferred firstY144 and14-handler timing;
+they are replaced by the generated native byte fixtures.
+
+`MovePlayerHorizontally` returns nonzero spring control in A without moving X.
+`OnGroundStateSub` nevertheless writes A to $06FF Player_X_Scroll, so camera
+moves during compression even though Mario stays pinned. This is a source
+accumulator effect, not a platform carry or per-level camera correction.
+The runtime regression checks6-3 rows1944..1959, including exact camera values.
+
+Versus3894521,3-1 dead1278/time1287/score1407/camera1014/x1026/y1013 all become
+null; enemy924 is unchanged.6-3 dead2409/time2184/coins2620 become null,
+camera1945→1993,x1957→1992,y1944→2082. The remaining6-3 errors follow the
+missing spring slot reservation, owned by the walker worker.2-1 y1601→1602
+improves; score1800→1795 and camera1603→1602 move earlier but follow enemy791.
+No other level or field changes. Excerpts regenerated against the source rule.
+
+## 5-3 delayed platform birth: persistent frenzy controller and final walker step
+
+Base:8c3533e, merging integration4419a3a into this worktree while retaining
+cd4a427 spring logic. The native enemy stream contains hard-only id23 records
+at columns288/1312 (offsets0/14) in shared E_GroundArea7. `InitEnemyFrenzy`
+retains a flagged NoRunCode object if $078F is nonzero or a frenzy Bullet is
+already active; otherwise that slot becomes the new Bullet. A retained object
+never calls OffscreenBoundsCheck, so it keeps its slot until area reset.
+`native-controller-layout.mjs` derives these records from source bytes and
+existing native area bindings. SecondaryHardMode gates the hard-only bit.
+Entrance reconstruction consumes native EnemyDataOffset $0739 once and
+reconstructs any still-flagged controller slots, preventing duplicate records.
+
+Native5-3 row466 retains id23 at1312 in slot3; later frenzy Bullets use slot4.
+The remake omitted that reservation, allowing id40 at1504 to initialize547
+in slot4 instead of waiting for slot2. The falling red Koopa still occupies
+slot2 through548 (rawY2/page2). On549 EnemyGfxHandler clears its flag/id/state,
+but RunNormalEnemies returns through movement: state0 keeps vertical bytes
+speed3/force61/fraction221 and advances X fraction56→184. The next slot pass
+initializes id40 on550 with fraction184. The old e.y>=256 occupancy exception
+mixed feet with native rawY and released this slot early; actual erasure now
+controls release, with same-row reallocation blocked.
+
+CommonPlatCode clears platform speed/force but retains Y fraction. The id40
+primary-counter alias in $A0 is now written back every frame and checked on
+all retained native id40 epochs, alongside the existing vertical motors.
+Elapsed-age fixture epochs explicitly end on a native timer/engine/mode hold;
+continuation after a hold needs the resumed FrameCounter, and is not claimed
+by that fixture. Slot-state transitions total8492 measured native rows.
+
+All32 first-field comparison:5-3 X618→1506 and camera619→1506; every other
+field and level unchanged. The remaining5-3 physical error follows enemy1027.
+Regressions check native controller466, Koopa final residue549, platform birth
+550/slot2/fraction184, and Mario carry617..620. Controller slot records expose
+id/x/y for the strict entity adapter; they have no rendered body.
