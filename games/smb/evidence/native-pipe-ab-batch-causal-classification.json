@@ -1,0 +1,697 @@
+{
+  "schema": "native-pipe-ab-batch-causal-classification-v1",
+  "runtimeCommit": "547f218ed305ef5fb60972c2e6bdc01da4a1d6dd",
+  "initialRamSha256": "fd776646827bcaaa044b620c4a0931babcb6b59d5511318ef56aa7c00e3b56d7",
+  "padsSha256": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+  "ramSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+  "receipt": {
+    "level": "8-4",
+    "sourceActions": "/work/rec/v2/8-4/smb_v2_8-4.actions.json",
+    "actionsSha256": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "sourceFrameOffset": 4,
+    "warmupFrames": 4,
+    "initialRamSha256": "fd776646827bcaaa044b620c4a0931babcb6b59d5511318ef56aa7c00e3b56d7",
+    "beforeWarmupRamSha256": "07d8ec694d5245555d3d741d4a2f35da6170274171a0c9e005a515f60dd8aef9",
+    "modelMode": 0,
+    "nativeResult": {
+      "mode": 0,
+      "cleared": false,
+      "end": "game_over",
+      "decisions": 3933,
+      "deaths": 3,
+      "max_x_px": 2580,
+      "warmup_frames": 4,
+      "frames": 15736
+    },
+    "clock": "ppu_frame",
+    "initialStateMethod": "Existing CPU RlEnv restored original saved entrance, including its four neutral reset frames and logged warmup. Initial RAM matches start of retained native MP4; source prefix offset is declared. 1-1 starts after original boot and four reset-neutral frames. No policy inference.",
+    "sourceBranch": {
+      "schema": "native-entrance-controller-branch-v1",
+      "level": "8-4",
+      "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+      "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+      "backendSha256": "d821e7f88c70f2a13bba6377a930876231e299afb7acadc0c5287c718427ba59",
+      "baselinePadsSha256": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+      "originalActionsSha256": "18e619f40887f044f8efb27a2b790398ab5defb53f4a67fa9693fe978b805293",
+      "initialRamSha256": "fd776646827bcaaa044b620c4a0931babcb6b59d5511318ef56aa7c00e3b56d7",
+      "baselineFrames": 15732,
+      "baselineRamSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+      "commonPrefixFrames": 15732,
+      "commonPrefixRamSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+      "padsSha256": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+      "ramSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+      "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+    }
+  },
+  "role": "Archived-entrance measurement with complete original8-4 inputs in the first-map comparisons; no later state correction. Counterfactual disables only the AB override in this isolated process. No runtime/source/comparator-policy change.",
+  "ablation": {
+    "withAB": {
+      "legacy": {
+        "dead": 9849,
+        "time": 9867,
+        "score": 10282,
+        "coins": null,
+        "cam": null,
+        "x": 9567,
+        "y": 9715,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": 9849,
+        "time": 9867,
+        "score": 10282,
+        "coins": null,
+        "cam": 9517,
+        "x": 9567,
+        "y": 9715,
+        "missing": 9605,
+        "extra": 9567,
+        "kind": 9834,
+        "position": 9822,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "gameover.mode": 15729,
+        "gameover.task": 15729,
+        "gameover.engine": 15729,
+        "gameover.screen": 15729,
+        "gameover.disable": 15729,
+        "gameover.timer": 15729,
+        "gameover.master": 15729,
+        "gameover.timeUp": 15729,
+        "gameover.columns": 15729,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": 15729
+      }
+    },
+    "withoutAB": {
+      "legacy": {
+        "dead": 9213,
+        "time": 9219,
+        "score": 9110,
+        "coins": null,
+        "cam": null,
+        "x": 8987,
+        "y": 8980,
+        "enemy": null
+      },
+      "strict": {
+        "level": null,
+        "area": null,
+        "dead": 9213,
+        "time": 9219,
+        "score": 9110,
+        "coins": null,
+        "cam": 9017,
+        "x": 8987,
+        "y": 8980,
+        "missing": null,
+        "extra": 9087,
+        "kind": 9177,
+        "position": 9010,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "gameover.mode": 15729,
+        "gameover.task": 15729,
+        "gameover.engine": 15729,
+        "gameover.screen": 15729,
+        "gameover.disable": 15729,
+        "gameover.timer": 15729,
+        "gameover.master": 15729,
+        "gameover.timeUp": 15729,
+        "gameover.columns": 15729,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": 15729
+      }
+    },
+    "matchesIntegratedCandidate": true,
+    "recoversAcceptedBaseline": true
+  },
+  "witness": [
+    {
+      "frame": 8978,
+      "pad": 81,
+      "native": {
+        "engine": 7,
+        "camera": 1792,
+        "x": 1848,
+        "y": 145,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 18,
+        "column": 136,
+        "parser": 0,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 176
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 0,
+        "x": 56,
+        "y": 145,
+        "width": 832,
+        "cap": 576,
+        "column": 384,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": false,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 8979,
+      "pad": 81,
+      "native": {
+        "engine": 8,
+        "camera": 1792,
+        "x": 1848,
+        "y": 144,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 18,
+        "column": 136,
+        "parser": 0,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 176
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 0,
+        "x": 56,
+        "y": 144,
+        "width": 832,
+        "cap": 576,
+        "column": 384,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": false,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 8980,
+      "pad": 161,
+      "native": {
+        "engine": 8,
+        "camera": 1792,
+        "x": 1848,
+        "y": 140,
+        "ab": 128,
+        "previousAB": 128,
+        "cursor": 18,
+        "column": 136,
+        "parser": 0,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 176
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 0,
+        "x": 56,
+        "y": 140,
+        "width": 832,
+        "cap": 576,
+        "column": 384,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": false,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 8981,
+      "pad": 161,
+      "native": {
+        "engine": 8,
+        "camera": 1792,
+        "x": 1848,
+        "y": 136,
+        "ab": 128,
+        "previousAB": 128,
+        "cursor": 18,
+        "column": 136,
+        "parser": 0,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 176
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 0,
+        "x": 56.0625,
+        "y": 136.125,
+        "width": 832,
+        "cap": 576,
+        "column": 384,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": false,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9516,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 2368,
+        "x": 2482,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 34,
+        "column": 170,
+        "parser": 7,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 3392,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 690.5,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 928,
+        "parser": 7,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9517,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 2370,
+        "x": 2484,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 34,
+        "column": 170,
+        "parser": 6,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 3392,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 692,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 928,
+        "parser": 6,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9566,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 2443,
+        "x": 2557,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 34,
+        "column": 176,
+        "parser": 0,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 3392,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 765.5,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9567,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 1421,
+        "x": 1535,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 14,
+        "column": 112,
+        "parser": 0,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 896,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 767,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9603,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 1475,
+        "x": 1589,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 14,
+        "column": 114,
+        "parser": 5,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 2048,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 816,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9604,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 1476,
+        "x": 1590,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 14,
+        "column": 115,
+        "parser": 4,
+        "slot0": {
+          "flag": 0,
+          "id": 0,
+          "x": 2048,
+          "y": 136
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 816,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9605,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 1478,
+        "x": 1592,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 14,
+        "column": 115,
+        "parser": 3,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 176
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 816,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    },
+    {
+      "frame": 9606,
+      "pad": 128,
+      "native": {
+        "engine": 8,
+        "camera": 1479,
+        "x": 1593,
+        "y": 176,
+        "ab": 0,
+        "previousAB": 0,
+        "cursor": 14,
+        "column": 115,
+        "parser": 2,
+        "slot0": {
+          "flag": 1,
+          "id": 13,
+          "x": 1848,
+          "y": 175
+        }
+      },
+      "model": {
+        "phase": "play",
+        "area": "area-2",
+        "offset": -1792,
+        "camera": 576,
+        "x": 816,
+        "y": 176,
+        "width": 832,
+        "cap": 576,
+        "column": 960,
+        "parser": 0,
+        "piranha": [
+          {
+            "x": 56,
+            "originX": 56,
+            "slot": 0,
+            "freed": true,
+            "pipe": {
+              "column": 48,
+              "offset": 38
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "classification": "Only8-4 strict missing first9605: native Piranha13 slot0 rawX1848/Y176 after loopback9567. The corrected AB jump8980 exposes the existing normal-play camera cap9517 and missed loopback9567; the model never revisits source parser column115/scene48. This is specific evidence, not a generic later-field waiver.",
+  "baselineReportSha256": "fc71ba3cea4cd73baf9a31606ceefd9668fc47b02b1a7cedb3966f65fd58b894",
+  "candidateReportSha256": "094be9d56eea6222937c99916a2f711ca6affc2f16f17c3dfd8445e0114eb6d7"
+}
