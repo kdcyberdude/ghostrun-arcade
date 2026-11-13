@@ -59,7 +59,6 @@ import shellRules from '../data/shell-rules.json';
 import stompRules from '../data/stomp-rules.json';
 import {COIN_TILE,flagPoleTouched} from './award-rules.js';
 import {nativeHurtHeight,nativeHurtReachX} from './native-hurtbox.js';
-import goombaSquashRules from '../data/goomba-squash-rules.json';
 import popupRules from '../data/popup-rules.json';
 import hammerBroData from '../data/native-hammer-bros.json';
 import flagRules from '../data/flag-completion-rules.json';
@@ -2091,7 +2090,7 @@ export class Simulation {
  private nativeLeftBound(e:Enemy){
   const left=Math.floor(this.camera);
   if(e.kind==='bullet'&&e.frenzy&&e.dead>0&&e.dead<100&&!e.slotFreed)return left-73;
-  if(e.motion==='flying'||e.dead)return;
+  if(e.motion==='flying'||e.dead&&!e.squashed)return;
   if(e.kind==='piranha'||e.kind==='hammerBro')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle','blooper'].includes(e.kind)||e.kind==='cheep'&&e.swim)return left-73;
   if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
@@ -2120,7 +2119,7 @@ export class Simulation {
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
    if(e.defeat)Object.assign(m,e.defeat);
    else if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
-   else if(e.fall&&!e.dead)Object.assign(m,e.fall);
+   else if(e.fall&&(!e.dead||e.squashed&&e.dead<90))Object.assign(m,e.fall);
    else if(e.horizontalFlight)Object.assign(m,{speed:e.horizontalFlight.primary,force:0});
    else if(e.redFlight)Object.assign(m,{speed:e.redFlight.speed,force:e.redFlight.force,fraction:e.redFlight.fraction});
    else if(e.pod&&(e.kind==='podoboo'||e.kind==='paratroopa'||e.kind==='bullet'||e.egg||e.kind==='lakitu'&&e.lak?.box===8))Object.assign(m,{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});
@@ -2340,7 +2339,11 @@ export class Simulation {
    this.nativeShellContacts(e,stepFrom);
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
-   if(e.dead){
+   if(e.squashed){
+    if(e.dead>=100||e.slotFreed)continue;e.shellTimer??=16;e.walkerState??=4;
+    if(!this.nativeTimersStopped&&e.walkerState>=3&&e.shellTimer===14){this.eraseEnemy(e);continue;}e.dead=Math.min(89,e.dead+1);
+   }
+   if(e.dead&&!e.squashed){
     if(e.defeat){
      if(e.dead>=100||e.slotFreed)continue;
      const erased=e.y>=280; // EnemyGfxHandler clears page2 state before MoveNormalEnemy returns through its final horizontal move.
@@ -2349,7 +2352,6 @@ export class Simulation {
      if(erased){this.eraseEnemy(e);if(e.enemySlot!==undefined){e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}continue;
     }
     if(e.kind==='lakitu'&&e.lak?.box===8&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
-    if(e.squashed){if(e.dead<90&&++e.dead>(e.squashFrames??goombaSquashRules.durationActiveNativeFrames))this.eraseEnemy(e);continue;}
     if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
     e.dead++;
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
@@ -2454,20 +2456,20 @@ export class Simulation {
       // Explicit off-grid artwork rectangles retain their actual support height.
       if(ground&&(depth<5||ground.y%16!==0)){
        if(e.movingShell){if(e.shellFalling){const step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,true,p.x);e.y=ground.y%16?ground.y:step.y;n.speed=step.speed;n.force=step.force;e.shellFalling=false;landed=true;}}
-       else if(e.shell&&e.walkerState>=3)landed=true;
+       else if((e.shell||e.squashed)&&e.walkerState>=3)landed=true;
        if(!e.movingShell&&e.walkerState===2){landed=true;const step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,true,p.x);e.y=ground.y%16?ground.y:step.y;n.speed=step.speed;n.force=step.force;e.walkerState=3;e.shellTimer=16;}
        else if(!e.movingShell&&e.walkerState===1){
         landed=true;const step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',p.x);
         e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;n.speed=step.speed;n.force=step.force;e.walkerState=0;
         if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
        }
-      }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0)){if(e.movingShell)e.shellFalling=true;else e.walkerState=e.shell?2:1;}
+      }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0)){if(e.movingShell)e.shellFalling=true;else e.walkerState=e.shell||e.squashed?2:1;}
       if(!landed&&rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))e.vx=-e.vx;
      }
-     if(!this.nativeTimersStopped&&e.shell&&!e.movingShell&&e.walkerState>=3&&e.shellTimer===0){e.shell=false;e.walkerState=0;e.shellAge=0;e.shellChain=0;e.direction=(this.random.frame&1)?-1:1;e.vx=e.direction*(this.primaryHardMode?0.75:0.5);revivedShell=true;}
+     if(!this.nativeTimersStopped&&(e.shell||e.squashed)&&!e.movingShell&&e.walkerState>=3&&e.shellTimer===0){if(e.squashed){e.squashed=false;e.dead=0;}e.shell=false;e.walkerState=0;e.shellAge=0;e.shellChain=0;e.direction=(this.random.frame&1)?-1:1;e.vx=e.direction*(this.primaryHardMode?0.75:0.5);revivedShell=true;}
      stompY=e.y;stompFall={...n};
      if(!this.nativeTimersStopped&&(e.movingShell?e.shellFalling:e.walkerState===1||e.walkerState===2)){const m={y:Math.floor(e.y),speed:n.speed,force:n.force,fraction:n.fraction,timer:0};nativeImposeGravity(m,0x3d,3);Object.assign(n,{speed:m.speed,force:m.force,fraction:m.fraction});e.y=m.y;}
-     if(!this.nativeTimersStopped&&!revivedShell){if(e.movingShell)e.x+=e.vx-(e.shellFalling?Math.sign(e.vx)*1.5:0);else if(!e.shell||e.walkerState===2)e.x+=e.vx;}e.vy=n.speed+n.force/256;
+     if(!this.nativeTimersStopped&&!revivedShell){if(e.movingShell)e.x+=e.vx-(e.shellFalling?Math.sign(e.vx)*1.5:0);else if(!e.shell&&!e.squashed||e.walkerState===2)e.x+=e.vx;}e.vy=n.speed+n.force/256;
     }
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:0.25));e.y+=e.vy;}
     const floor=this.enemyCollisionAt(e.x+8,e.y);
@@ -2481,7 +2483,7 @@ export class Simulation {
     if(e.enemySlot!==undefined){const slot=e.enemySlot;this.slotReleaseFrame[slot]=this.frame;this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.fall)Object.assign(this.slotVertical[slot],e.fall);}
     continue;
    }
-   if(p.dead||this.powerChange||this.enemyContactOff)continue;
+   if(e.squashed||p.dead||this.powerChange||this.enemyContactOff)continue;
    if(nativeWaterActor){
     if(!p.star)continue;
     const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
@@ -2535,7 +2537,7 @@ export class Simulation {
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
      else if(!e.shell){e.shell=true;e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;} // HandleStompedShellE precedes MoveNormalEnemy; state4 holds its pre-movement vertical bytes. Native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
      else{e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;}
-    }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.squashFrames=this.intervalControl+22;}} // native: a stomped Goomba keeps its x from before this frame's step and is erased when its EnemyIntervalTimer runs out, IntervalTimerControl + 22 frames after the stomp (18 of 18 v2 squashes)
+    }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;}} // HandleStompedShellE writes state4 and interval16/11; MoveNormalEnemy owns subsequent falling, landing and timer14 erasure.
    }else if(e.shell&&shellContact)hurtBeforeMove();
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))hurtBeforeMove();
 
@@ -2549,12 +2551,12 @@ export class Simulation {
  }
  /** EnemiesCollision runs at the higher slot before PlayerEnemyCollision and movement. */
  private nativeShellContacts(e:Enemy,from:Map<Enemy,{x:number,y:number}>){
-  if(!(this.broClock&1)||this.area.theme==='water'||this.nativeTimersStopped||!e.active||e.dead||e.enemySlot===undefined)return;
+  if(!(this.broClock&1)||this.area.theme==='water'||this.nativeTimersStopped||!e.active||e.slotFreed||e.dead>=100||e.dead&&!e.squashed||e.enemySlot===undefined)return;
   const kinds=['koopa','redKoopa','beetle','goomba','paratroopa','spiny'];
   if(!kinds.includes(e.kind))return;
   const body=(actor:Enemy)=>{const pos=from.get(actor)!;return {slot:actor.enemySlot!,x:Math.floor(pos.x),y:Math.floor(pos.y)-24,tall:actor.kind!=='goomba'&&actor.kind!=='spiny',turns:false,reacts:true};};
   for(const other of [...this.enemies].sort((a,b)=>(b.enemySlot??5)-(a.enemySlot??5))){
-   if(other===e||!other.active||other.dead||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
+   if(other===e||!other.active||other.dead>=100||other.dead&&!other.squashed||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
    if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera)))continue;
    const both=e.movingShell&&other.movingShell,shell=e.movingShell?e:other,victim=e.movingShell?other:e;
    if(both){this.stunShellVictim(e);this.floateyScore(200);} // ShellOrBlockDefeat overwrites the earlier control6 with control2.
