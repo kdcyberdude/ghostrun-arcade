@@ -494,7 +494,7 @@ export class Simulation {
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath)this.emergeFrozenNativePowerups();
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
    }
@@ -3041,12 +3041,15 @@ export class Simulation {
   const p=this.player,camera=this.camera+this.lakituScroll;
   return this.phase==='play'&&!this.powerChange&&!this.enemyContactOff&&nativePowerupContact(Math.floor(i.x),Math.floor(i.y)-8,camera,this.random.frame,Math.floor(p.y)-32,this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera));
  }
+ // MiscObjectsCore follows PlayerDeath even while TimerControl holds enemy motion.
+ private updateNativeMisc(){
+  const misc=this.items.filter(i=>i.life>0&&(i.nativeHammer||i.nativeCoin)).sort((a,b)=>(b.nativeHammer??b.nativeCoin)!.slot-(a.nativeHammer??a.nativeCoin)!.slot);
+  for(const i of misc){i.age++;i.life--;if(i.nativeHammer)this.moveNativeHammer(i);else this.moveNativeCoin(i);}
+ }
  private updateItems(enemySlot?:number){
   const p=this.player;
   if(enemySlot===undefined)this.advanceNativeBlockPictures();
-  // Native MiscObjectsCore visits shared hammer/jumping-coin slots from 8 down to 0.
-  const misc=this.items.filter(i=>i.life>0&&(i.nativeHammer||i.nativeCoin)).sort((a,b)=>(b.nativeHammer??b.nativeCoin)!.slot-(a.nativeHammer??a.nativeCoin)!.slot);
-  if(enemySlot===undefined)for(const i of misc){i.age++;i.life--;if(i.nativeHammer)this.moveNativeHammer(i);else this.moveNativeCoin(i);}
+  if(enemySlot===undefined)this.updateNativeMisc();
   for(const i of this.items){
    const slot=i.nativeFlame?.slot??(i.nativePowerState!==undefined?5:undefined);
    if(enemySlot!==undefined?slot!==enemySlot:slot!==undefined&&this.nativeBankItemFrame===this.frame)continue;
