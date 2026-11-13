@@ -17,7 +17,8 @@ export type StrictAudit={schema:'native-strict-audit-v1',status:'pass'|'diverged
  diagnostics:{code:string,area:string,first:number,count:number,detail:string,slot?:number,id?:number}[],mismatches:{code:string,area:string,slot?:number,kind:string,first:number,count:number}[],samples:({frame:number,area:string}&EntityMismatch)[],visits:StrictAreaVisit[]};
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((sum,v)=>sum*10+v,0);
 export type StrictFrameObservation={frame:number;status:'match'|'mismatch'|'unchecked';fields:string[];gaps:string[]};
-export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string,observeFrame?:(row:StrictFrameObservation)=>void):StrictAudit{
+/** skipFrames: native lag frames (native-lag-frames.mjs); the remake is not stepped and the row is unchecked. */
+export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string,observeFrame?:(row:StrictFrameObservation)=>void,skipFrames?:ReadonlySet<number>):StrictAudit{
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
  const nativeLevel=sim.level as Level,areaIdentity=nativeAreaLoads(nativeLevel,ram,(entrance as {area?:string}).area??nativeLevel.main),visits=areaIdentity.loads;
  const modelBindings=new Map<unknown,AreaBinding[]>();for(const model of sim.levels as Level[]){const bound=nativeAreaBindings(model).bindings;for(const area of model.areas)modelBindings.set(area,[...(modelBindings.get(area)??[]),...bound.filter(b=>b.area===area.id)]);}
@@ -39,6 +40,7 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
  if(!pads.length)gap(0,nativeLevel.main,{code:'empty-native-input',detail:'no retained input frames to compare'});
  for(let f=0;f<Math.min(pads.length,coverage.ramFrames);f++){
   rowFields=new Set();rowGaps=new Set();try{
+  if(skipFrames?.has(f)){rowGaps.add('native-lag-frame');continue;}
   const raw=ram.subarray(f*2048,(f+1)*2048),nativeId=`${raw[0x75f]+1}-${raw[0x75c]+1}`;
   if(raw[0x770]!==1&&raw[0x770]!==2&&raw[0x770]!==3){
    for(let tail=f;tail<Math.min(pads.length,coverage.ramFrames);tail++){
