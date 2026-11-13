@@ -172,7 +172,7 @@ export class GameRenderer {
    return;
   }
   const redVerticalFacing=e.kind==='paratroopa'&&!e.dead&&palette==='0f-16-30-27'&&(e.paratroopaMotion??'vertical')==='vertical';
-  const koopaFacing=!e.dead&&e.vx!==0&&(palette==='0f-1a-30-27'&&(e.kind==='koopa'&&!e.shell||e.kind==='paratroopa'&&(e.paratroopaMotion??'bounce')==='bounce')||palette==='0f-16-30-27'&&e.kind==='redKoopa'&&!e.shell);
+  const walkerFacing=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa'].includes(e.kind);
   if(e.kind==='goomba'&&!e.dead){
    const tiles=tables.enemy_cells[cell].tiles;
    // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
@@ -181,7 +181,7 @@ export class GameRenderer {
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
-  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?(e.nativeDir??-1)<0:redVerticalFacing?true:koopaFacing||e.kind==='beetle'&&!e.dead&&!e.shell&&e.vx!==0&&palette==='0f-0f-36-17'||e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
+  }else this.enemyCell(cell,x,y+(e.kind==='blooper'?blooper.yOffset:0)+(cell===23?1:openingCannonShot?-1:0),palette,openingCannonShot||fiveThreeLeftShot?true:e.kind==='cheep'&&!e.dead?e.vx<0:e.kind==='hammerBro'&&!e.dead?(e.nativeDir??-1)<0:redVerticalFacing?true:walkerFacing?(e.graphicsFacing??e.vx)<0:e.kind==='spiny'&&!e.dead&&e.motion!=='falling'&&e.vx!==0&&palette==='0f-16-30-27'?e.vx<0:e.vx>0,e.dead>20,e.kind==='piranha'?-0.1:2);
  }
  private enemyCell(cell:number,x:number,y:number,palette:string,flipX=false,flipY=false,z=2){
   const data=tables.enemy_cells[cell];
