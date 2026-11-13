@@ -12,7 +12,7 @@ test('independent native1-2 replay clears the corpse before its slot is reused',
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];const buttons:Button[]=['a','b','select','start','up','down','left','right'];
  for(let f=0;f<=408;f++){sim.step(buttons.filter((_,i)=>run.pads[f]&(1<<i)),1);if(f===407)assert.equal((sim.enemies as Enemy[]).filter(e=>e.active&&e.dead<90&&e.enemySlot===0).length,0);if(f===408){const owners=(sim.enemies as Enemy[]).filter(e=>e.active&&e.dead<90&&e.enemySlot===0);assert.equal(owners.length,1);assert.equal(owners[0].kind,'goomba');assert.equal(owners[0].graphicsVisible,false);}}
 });
-test('walker defeat bounds do not replace Cannon, Hammer Bro or Blooper handlers',()=>{
+test('walker defeat bounds do not replace Cannon or Blooper handlers',()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);sim.camera=686;
- for(const [kind,id]of [['bullet',51],['hammerBro',5],['blooper',7]] as const){const e=sim.makeEnemy({kind,x:612,y:200,nativeId:id});Object.assign(e,{active:true,dead:1,defeat:{y:200,speed:3,force:0,fraction:0,timer:0}});assert.equal(sim.nativeLeftBound(e),undefined);}
+ for(const [kind,id]of [['bullet',51],['blooper',7]] as const){const e=sim.makeEnemy({kind,x:612,y:200,nativeId:id});Object.assign(e,{active:true,dead:1,defeat:{y:200,speed:3,force:0,fraction:0,timer:0}});assert.equal(sim.nativeLeftBound(e),undefined);}
 });

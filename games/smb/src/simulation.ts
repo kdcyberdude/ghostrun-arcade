@@ -2278,6 +2278,8 @@ export class Simulation {
   return used>=5;
  }
  private holdsNativeSlot(e:Enemy){
+  // Source-owned plants/Bros retain Enemy_Flag until their handler actually erases it.
+  if(e.kind==='piranha'&&e.nativePipe&&!e.dead||e.kind==='hammerBro'&&e.nativeId===5)return e.active&&!e.slotFreed&&e.dead<100;
   const reach=e.kind==='piranha'||e.kind==='hammerBro'?17:73;
   return e.active&&(e.kind==='piranha'?Math.floor(e.x)>=this.nativeLeftBound(e)!:e.x>=this.camera-reach)&&(e.squashed?e.dead<90:e.dead<100||e.x<this.camera-48&&e.x-(e.dead-100)/2>=this.camera-73); // A squashed Goomba holds its slot until its native interval-timer erasure.
  }
@@ -2287,6 +2289,7 @@ export class Simulation {
   const left=Math.floor(this.camera);
   if(e.kind==='bullet'&&e.frenzy&&e.dead>0&&e.dead<100&&!e.slotFreed)return left-73;
   if(e.motion==='flying')return;
+  if(e.kind==='hammerBro'&&e.nativeId===5)return (left&255)+57>255?left-271:left-16;
   if(e.dead&&!e.squashed){
    // MoveNormalEnemy's defeated branch still returns through OffscreenBoundsCheck.
    if(!e.defeat||!Simulation.SUBPIXEL_WALKERS.includes(e.kind))return;
