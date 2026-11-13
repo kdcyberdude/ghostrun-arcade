@@ -29,7 +29,10 @@ function fixture(){
  const cheep={kind:'cheep' as const,x:1219,y:112,direction:-1,palette:'0f-10-30-27',spawnCamera:935,swim:{}};
  const area:Area={id:'area-2',width:4096,palette:0,theme:'water',tiles,enemies:[cheep],spawn:[1050,120],evidence:'Synthetic water fixture'};
  const level:Level={id:'2-2',time:400,main:'area-2',areas:[area],evidence:'Mechanic regression fixture'};
- const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
+ const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;
+ // This synthetic fixture exercises the standalone generator fallback; native
+ // stream scenes have bidirectional recorded-input parser/actor regressions.
+ (sim as any).waterEnemyStream=undefined;return sim;
 }
 
 test('native swimming Cheep generator follows frenzy buffer, slots, timer, and right extent',()=>{

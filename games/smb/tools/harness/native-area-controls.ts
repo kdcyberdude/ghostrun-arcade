@@ -20,6 +20,18 @@ export function decodeAreaControls(rom:Uint8Array,pointer:number):NativeAreaComm
  }
  return out;
 }
+/** Decode every special row13 object after the two-byte area header. */
+export function decodeAreaControlObjects(rom:Uint8Array,pointer:number){
+ const objects:{column:number;command:number;offset:number}[]=[];let page=0;
+ for(let offset=2;offset<256;offset+=2){
+  const at=16+pointer-0x8000+offset,a=rom[at];if(a===0xfd)break;
+  const b=rom[at+1];if(b&0x80)page++;
+  if((a&15)!==13)continue;
+  if(!(b&0x40)){page=b&31;continue;}
+  objects.push({column:page*16+(a>>4),command:b&63,offset});
+ }
+ return {objects};
+}
 if(import.meta.url===`file://${process.argv[1]}`){
  const {values:a}=parseArgs({options:{rom:{type:'string'},traces:{type:'string'},out:{type:'string',default:'data/native-area-controls.json'}}});
  if(!a.rom||!a.traces)throw Error('--rom and --traces required');
@@ -36,6 +48,9 @@ if(import.meta.url===`file://${process.argv[1]}`){
   }
  }
  for(const area of areas)area.commands.sort((a,b)=>a.x-b.x);
- fs.writeFileSync(a.out!,JSON.stringify({romSha256:createHash('sha256').update(rom).digest('hex'),source:'Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.',areas},null,2)+'\n');
+ const previous=JSON.parse(fs.readFileSync('data/native-area-controls.json','utf8'));
+ const bindings={...previous.bindings,'2-2/area-2':{stream:'ae47',origin:0},'7-2/area-4':{stream:'ae47',origin:0}};
+ const streams=Object.fromEntries([...new Set<string>(Object.values(bindings).map((b:any)=>b.stream))].map(stream=>[stream,decodeAreaControlObjects(rom,parseInt(stream,16))]));
+ fs.writeFileSync(a.out!,JSON.stringify({romSha256:createHash('sha256').update(rom).digest('hex'),source:'Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.',areas,method:previous.method,streams,bindings},null,2)+'\n');
  console.log(`${areas.length} areas, ${areas.reduce((n,a)=>n+a.commands.length,0)} commands`);
 }

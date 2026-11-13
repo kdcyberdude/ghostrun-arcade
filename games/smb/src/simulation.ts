@@ -4,6 +4,8 @@ import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-sprin
 import {nativeFrenzyControllers,retainNativeFrenzyController,type NativeFrenzyController} from './native-frenzy-controllers.js';
 import {nativeVerticalPipe} from './native-pipe.js';
 import {landNativeWalker} from './native-walker-motion.js';
+import {NativeWaterStream} from './native-water-stream.js';
+import nativeWaterStreams from '../data/native-water-streams.json';
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
 import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
@@ -242,6 +244,7 @@ export class Simulation {
  readonly bubbleState=new NativeBubbles();
  get bubbles(){return this.bubbleState.slots;}
  private bubblesInitialized=false;private waterScrollX=0;
+ private waterEnemyStream?:NativeWaterStream;private waterSlotPositions=Array.from({length:6},()=>({x:0,y:0}));
  /** Native-exact swimming (src/native-water.ts): active in water areas once the legacy entry fall is over. */
  private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
@@ -320,8 +323,9 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id);this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
+  const waterSource=nativeWaterStreams.streams.find(s=>s.areas.some(a=>a.level===this.level.id&&a.area===area.id));this.waterEnemyStream=waterSource?new NativeWaterStream(waterSource.bytes):undefined;this.waterSlotPositions=Array.from({length:6},()=>({x:0,y:0}));
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
   for(const command of this.specialAreaCommands())if(command.x>=Math.floor(this.camera/256)*256&&command.x<Math.floor(this.camera/256)*256+384)this.applySpecialAreaCommand(command);
@@ -920,11 +924,13 @@ export class Simulation {
   else if(area.waterEntryFall&&spawnAtEntry&&p.y<80){this.swimLock=2;p.y=32;p.vy=0;w.force=48;w.frac=24;w.rise=24;w.fall=40;}
  }
  private get whirlpools(){return (whirlpoolData.zones as Record<string,WhirlpoolZone[]>)[`${this.level.id}/${this.area.id}`];}
- /** A Down+A stroke from the water floor keeps the horizontal speed from speed byte 11 up, whatever direction is held (2-2/7-2 r5 floor strokes:
-  * 11 of 11, e.g. 7-2 mood0 row 797 4168 -> 4168; the remake braked 152 on 9). Below byte 11 the floor Down stop still applies; at the native surface bound (y < 20) a stroke cannot rise and floor braking remains (tests/water-pillar-top). */
+ /** Down masks steering on the floor, then a fresh stroke switches to swimming:
+  * ImposeFriction skips the masked neutral input. GetPlayerAnimSpeed can still
+  * clear speed when its prior absolute byte is low and raw LR disagrees with moving. */
  private floorDownStrokeKeeps(held:boolean,heldBefore:boolean,noInput:boolean,b:Set<Button>):boolean{
   const p=this.player,w=this.water;
-  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&Math.abs(w.motor.speed)>=11*256;
+  const rawDirection=(b.has('right')?1:0)|(b.has('left')?2:0),moving=this.marioMotion<0?2:this.marioMotion>0?1:0;
+  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&(this.swimAbsolute>=11||rawDirection===moving);
  }
  /** One swimming frame: vertical pass, horizontal speed and whirlpool pull (the movement itself is applied by update()). */
  private swimStep(b:Set<Button>,pressedA:boolean,direction:number){
@@ -936,8 +942,8 @@ export class Simulation {
   // Below the map the controller no longer acts: the speed is kept and the fall goes on.
   const locked=this.swimLock===2,noInput=locked||p.y-32>=NO_INPUT_Y,held=!noInput&&b.has('a'),dir=(noInput?0:direction) as Direction;this.swimDirection=dir;
   const heldBefore=held&&!pressedA&&!this.swimFreshA;if(held&&!pressedA&&this.swimFreshA)this.emit('sfx_swim');if(!locked)this.swimFreshA=false;
-  w.motor.speed=Math.round(p.vx*4096);
-  if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'),this.swimAbsolute)/4096;
+  w.motor.speed=Math.round(p.vx*4096);w.motor.moving=this.marioMotion as Direction;
+  if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'),this.swimAbsolute,!noInput&&b.has('up'))/4096;
   if(dir||p.grounded)this.swimAbsolute=Math.abs(Math.floor(Math.round(p.vx*4096)/256)); // Player_XSpeedAbsolute: written by ImposeFriction (on the floor, or swimming with Left/Right), before any wall stop
   if(dir)p.facing=dir;
   // Whirlpool membership is tested where this frame's move lands (the other capture phase tests where it starts).
@@ -1377,9 +1383,37 @@ export class Simulation {
  }
  // Native swimming Cheep generator (2-2/7-2 water, free play; the recorded route replays its list): once the 32-frame timer is 0 the lowest free slot, if below 3, gets a fish at camera + 287.
  // It runs after this frame's scroll with this row's register (2-2 v2 row 1308: camera 929 -> 931, the fish at 1218 with the height of random byte 0 of that row).
+ private passNativeWaterStream(){
+  const stream=this.waterEnemyStream!;
+  if(this.swimTimer>0)this.swimTimer--;
+  for(const e of this.enemies)if(e.active&&!e.dead&&!e.slotFreed&&(e.bloop||e.nativeSwim)&&e.enemySlot!==undefined)this.waterSlotPositions[e.enemySlot]={x:e.x,y:e.y-24};
+  if(this.parserClock.blocked)return;
+  for(let slot=0;slot<6;slot++){
+   if(slot<5?this.groupSlotsBefore[slot]:this.specialSlot5.flag&&this.nativeFrenzyTurn?.slot!==5)continue;
+   const turn=this.nativeFrenzyTurn?.slot===slot?this.nativeFrenzyTurn:undefined;
+   if(turn){if(slot<5&&turn.id===23)this.initNativeWaterFrenzy(slot,true);continue;}
+   const event=stream.next(this.camera,this.secondaryHardMode,slot);
+   const position=this.waterSlotPositions[slot];if(event.x!==undefined)position.x=event.x+(slot<5?this.slotSub[slot]/256:0);if(event.y!==undefined)position.y=event.y;
+   if(slot===5){this.specialSlot5.x=position.x;this.specialSlot5.y=position.y;if(event.kind==='frenzy'&&this.specialSlot5.frenzyBuffer)this.specialSlot5.id=this.specialSlot5.frenzyBuffer;}
+   if(event.kind==='frenzy'){if(slot<5&&this.specialSlot5.frenzyBuffer===23)this.initNativeWaterFrenzy(slot,false);continue;}
+   if(event.kind==='skip'){const e=this.enemies.find(e=>!e.active&&e.nativeWaterOffset===event.offset);if(e)e.slotLost=true;continue;}
+   if(event.kind!=='spawn')continue;
+   if(event.id!==7)throw Error(`Unsupported native water stream actor ${event.id}`);
+   const e=this.enemies.find(e=>!e.active&&e.nativeWaterOffset===event.offset);if(!e)throw Error(`Missing native water source offset ${event.offset}`);
+   Object.assign(e,{active:true,slotLost:false,enemySlot:slot,x:event.x+this.slotSub[slot]/256,y:event.y+24,age:0,bloop:newNativeBlooper()});
+   this.waterSlotPositions[slot]={x:e.x,y:event.y};
+  }
+ }
+ private initNativeWaterFrenzy(slot:number,queued:boolean){
+  if(slot<3&&this.swimTimer===0){
+   const pick=nativeSwimCheepPick(this.random.bytes[slot],this.swimBag,this.level.id);this.swimBag=pick.bag;this.swimTimer=32;
+   const fish=this.makeEnemy({kind:'cheep',x:this.camera+287,y:pick.y+24,direction:-1,palette:pick.id===11?'0f-16-30-27':'0f-10-30-27',swim:{},evidence:'Native water frenzy at its source parser slot.'});
+   Object.assign(fish,{active:true,enemySlot:slot,nativeSwim:{y:pick.y,fraction:0,flag:this.random.bytes[slot]&16,originY:pick.y}});this.enemies.push(fish);this.waterSlotPositions[slot]={x:fish.x,y:pick.y};
+  }else if(queued){const p=this.waterSlotPositions[slot];this.frenzyControllers.push({id:23,offset:-1,column:Math.floor(p.x),x:p.x,y:p.y,hardOnly:false,slot});}
+ }
  private nativeSwimFrenzyArea(){return this.area.theme==='water'&&!this.recordedRoute&&(this.specialSlot5.frenzyBuffer===23||this.specialAreaCommands().some(c=>c.id===23));}
  private updateSwimGenerator(){
-  if(!this.nativeSwimFrenzyArea())return;
+  if(this.waterEnemyStream||!this.nativeSwimFrenzyArea())return;
   this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // the route's list is replaced
   if(this.swimTimer>0&&--this.swimTimer>0||this.specialSlot5.frenzyBuffer!==23)return;
   if(this.scrollCrossFrame===this.frame-1)return; // the enemy parser does not load a frenzy object on task 7
@@ -2028,7 +2062,7 @@ export class Simulation {
    if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
    else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
    this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
-   if(e.nativeSwim||e.bloop){this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.nativeSwim)this.slotYFrac[e.enemySlot]=e.nativeSwim.fraction;}
+   if(e.nativeSwim||e.bloop){this.waterSlotPositions[e.enemySlot]={x:e.x,y:e.y-24};this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.nativeSwim)this.slotYFrac[e.enemySlot]=e.nativeSwim.fraction;}
    if(Simulation.SUBPIXEL_WALKERS.includes(e.kind)||e.kind==='spiny'||e.kind==='bullet')this.slotSub[e.enemySlot]=e.redFlight?.originalY??(Math.round((e.x-Math.floor(e.x))*256)&255);
   }
  }
@@ -2173,6 +2207,7 @@ export class Simulation {
  }
  /** Ordinary water objects are initialized in the enemy-slot pass after ScrollHandler, before the swimming frenzy sees free slots. Their first movement is next row. */
  private birthNativeWaterEnemies(){
+  if(this.waterEnemyStream){this.passNativeWaterStream();return;}
   for(const e of this.enemies){
    if(e.active||!(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim)||!this.nativeLoadsThisFrame(e)||e.spawnFrame!==undefined&&this.areaFrame<e.spawnFrame)continue;
    if(this.nativeSlotDenied(e))continue;
@@ -2208,6 +2243,7 @@ export class Simulation {
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
+   if(!e.active&&e.nativeWaterOffset!==undefined)continue;
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
    if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    this.captureEnemyGraphics(e);
@@ -2544,7 +2580,7 @@ export class Simulation {
   if(this.area.theme!=='water')return;
   // Entrance_GameTimerSetup already enters GameEngine on its setup row;
   // PlayerEnemyCollision is disabled until engine 8 resumes control.
-  this.enemyContactOff=true;this.updateEnemies(this.player.y);this.updateSwimGenerator();this.enemyContactOff=false;
+  this.enemyContactOff=true;this.updateEnemies(this.player.y);if(this.waterEnemyStream)this.passNativeWaterStream();else this.updateSwimGenerator();this.enemyContactOff=false;
  }
  private updateBubbles(tickTimer=true,beforeWhirlpool=true){
   if(this.area.theme!=='water')return;

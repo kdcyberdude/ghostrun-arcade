@@ -40879,12 +40879,27 @@
             "y": 208,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 50,
             "stroke": {
-              "first": 6,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 12527): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 11,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 11; raw hard-mode/order cursor."
+          },
+          {
+            "kind": "blooper",
+            "x": 400,
+            "y": 144,
+            "direction": -1,
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
+            },
+            "nativeWaterOffset": 13,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 13; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -40892,73 +40907,97 @@
             "y": 176,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 435,
             "stroke": {
-              "first": 1,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 12788): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 15,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 15; raw hard-mode/order cursor."
+          },
+          {
+            "kind": "blooper",
+            "x": 832,
+            "y": 144,
+            "direction": -1,
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
+            },
+            "nativeWaterOffset": 17,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 17; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 880,
             "y": 192,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 581,
             "stroke": {
-              "first": 8,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 12885): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 19,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 19; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1219,
-            "y": 112,
+            "kind": "blooper",
+            "x": 1232,
+            "y": 128,
             "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 935,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13120): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1267,
-            "y": 192,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 989,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 13152): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 21,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 21; raw hard-mode/order cursor."
+          },
+          {
+            "kind": "blooper",
+            "x": 1136,
+            "y": 160,
+            "direction": -1,
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
+            },
+            "nativeWaterOffset": 23,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 23; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 1328,
             "y": 160,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1031,
             "stroke": {
-              "first": 6,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 13191): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 25,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 25; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1370,
-            "y": 64,
+            "kind": "blooper",
+            "x": 1440,
+            "y": 208,
             "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1085,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 13229): x, height and camera; cheep speed by palette, bob measured"
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
+            },
+            "nativeWaterOffset": 27,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 27; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -40966,225 +41005,69 @@
             "y": 80,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1203,
             "stroke": {
-              "first": 1,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 13308): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 29,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 29; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1528,
-            "y": 128,
+            "kind": "blooper",
+            "x": 1680,
+            "y": 208,
             "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1242,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13334): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1576,
-            "y": 80,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1290,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13366): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 31,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 31; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1643,
-            "y": 96,
+            "kind": "blooper",
+            "x": 2400,
+            "y": 160,
             "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1358,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13411): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1838,
-            "y": 144,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1553,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13541): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1886,
-            "y": 176,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1601,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13573): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 35,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 35; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1954,
-            "y": 96,
+            "kind": "blooper",
+            "x": 2768,
+            "y": 208,
             "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1668,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13618): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2149,
-            "y": 144,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1863,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13748): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2197,
-            "y": 176,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1911,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13780): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 37,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 37; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 2264,
-            "y": 112,
+            "kind": "blooper",
+            "x": 2864,
+            "y": 208,
             "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1983,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13825): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2457,
-            "y": 80,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2172,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13967): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2505,
-            "y": 64,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2220,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 13999): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2571,
-            "y": 128,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2286,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 14043): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2658,
-            "y": 192,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2371,
-            "swim": {},
-            "spawnFrame": 2176,
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 14605): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2658,
-            "y": 192,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 2371,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
-            },
-            "spawnFrame": 2400,
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 14829): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2658,
-            "y": 112,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2371,
-            "swim": {},
-            "spawnFrame": 2708,
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 15137): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2783,
-            "y": 64,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2494,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
-            },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 15304): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2835,
-            "y": 128,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2547,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 15345): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2949,
-            "y": 144,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2661,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 15421): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 39,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 39; raw hard-mode/order cursor."
           }
         ],
         "pipes": [
@@ -163008,25 +162891,27 @@
             "y": 208,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 49,
             "stroke": {
-              "first": 6,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58396): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 11,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 11; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 400,
             "y": 144,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 99,
             "stroke": {
-              "first": 8,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58434): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 13,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 13; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163034,12 +162919,13 @@
             "y": 176,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 434,
             "stroke": {
-              "first": 1,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58657): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 15,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 15; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163047,25 +162933,27 @@
             "y": 144,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 530,
             "stroke": {
-              "first": 1,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58721): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 17,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 17; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 880,
             "y": 192,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 579,
             "stroke": {
-              "first": 8,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58754): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 19,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 19; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163073,37 +162961,27 @@
             "y": 128,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 930,
             "stroke": {
-              "first": 7,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 58987): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 21,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 21; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 1219,
-            "y": 112,
+            "kind": "blooper",
+            "x": 1136,
+            "y": 160,
             "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 934,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 58989): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1266,
-            "y": 80,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 985,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59021): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 23,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 23; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163111,63 +162989,41 @@
             "y": 160,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1023,
             "stroke": {
-              "first": 7,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 59059): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 25,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 25; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 1440,
             "y": 208,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1136,
             "stroke": {
-              "first": 4,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 59134): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 27,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 27; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 1504,
             "y": 80,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1199,
             "stroke": {
-              "first": 2,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 59176): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1563,
-            "y": 144,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1274,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59226): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1611,
-            "y": 128,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1322,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
-            },
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59258): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 29,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 29; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163175,140 +163031,27 @@
             "y": 208,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 1374,
             "stroke": {
-              "first": 5,
+              "first": 0,
               "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 59293): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1836,
-            "y": 96,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1547,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59408): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1884,
-            "y": 176,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1595,
-            "swim": {
-              "bob": {
-                "dir": 1,
-                "first": 8
-              }
-            },
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59440): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 1932,
-            "y": 192,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1643,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59472): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2109,
-            "y": 64,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1820,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59590): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2157,
-            "y": 64,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 1868,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
-            },
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59622): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2243,
-            "y": 192,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 1953,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59679): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 31,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 31; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
             "x": 2400,
             "y": 160,
-            "direction": 1,
+            "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 2097,
             "stroke": {
-              "first": 4,
-              "firstDir": 1
+              "first": 0,
+              "firstDir": -1
             },
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 59774): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2417,
-            "y": 176,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2130,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59807): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2466,
-            "y": 112,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2180,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
-            },
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 59840): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2552,
-            "y": 80,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 2265,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 59897): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2728,
-            "y": 128,
-            "direction": -1,
-            "palette": "0f-10-30-27",
-            "spawnCamera": 2455,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 10, row 60015): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 35,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 35; raw hard-mode/order cursor."
           },
           {
             "kind": "blooper",
@@ -163316,39 +163059,27 @@
             "y": 208,
             "direction": -1,
             "palette": "0f-0f-30-10",
-            "spawnCamera": 2472,
             "stroke": {
-              "first": 2,
+              "first": 0,
               "firstDir": -1
             },
-            "spawnFrame": 1733,
-            "evidence": "native first appearance (read-only enemy slot, id 7, row 60032): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 37,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 37; raw hard-mode/order cursor."
           },
           {
-            "kind": "cheep",
-            "x": 2776,
-            "y": 144,
+            "kind": "blooper",
+            "x": 2864,
+            "y": 208,
             "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 2487,
-            "swim": {
-              "bob": {
-                "dir": -1,
-                "first": 1
-              }
+            "palette": "0f-0f-30-10",
+            "stroke": {
+              "first": 0,
+              "firstDir": -1
             },
-            "spawnFrame": 1748,
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 60047): x, height and camera; cheep speed by palette, bob measured"
-          },
-          {
-            "kind": "cheep",
-            "x": 2821,
-            "y": 96,
-            "direction": -1,
-            "palette": "0f-16-30-27",
-            "spawnCamera": 2533,
-            "swim": {},
-            "evidence": "native first appearance (read-only enemy slot, id 11, row 60086): x, height and camera; cheep speed by palette, bob measured"
+            "nativeWaterOffset": 39,
+            "nativeSlot": "wait",
+            "evidence": "Native E_WaterArea2 CPU $a171 stream offset 39; raw hard-mode/order cursor."
           }
         ],
         "pipes": [

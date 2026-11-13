@@ -52,8 +52,8 @@ test('a live Blooper accelerates immediately on frame-counter zero',()=>{
  assert.deepEqual(next,{x:351,y:183});
 });
 
-test('the compiled measured water areas carry a stroke start for every Blooper',()=>{
+test('remaining measured optional water areas carry Blooper motion specifications',()=>{
  const bloopers=water.areas.flatMap(a=>a.enemies.filter(e=>e.kind==='blooper'));
- assert.equal(bloopers.length,5+12+3);
+ assert.equal(bloopers.length,3);
  assert.ok(bloopers.every(b=>(b as {stroke?:{first:number}}).stroke!==undefined));
 });

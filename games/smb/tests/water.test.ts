@@ -57,7 +57,7 @@ test('repeated surface strokes cannot pass above the 7-2 style overhead wall',()
 test('repeated swimming strokes cannot cross above the actual 7-2 overhead wall',()=>{
  // Image-derived wall column; isolated nearby spawn with enemies removed.
  const sim=new Simulation(observedLevels());sim.reset(true);sim.levelIndex=sim.levels.findIndex(level=>level.id==='7-2');
- sim.loadArea('area-4',[1184,96],1072);sim.enemies=[];
+ sim.loadArea('area-4',[1184,96],1072);sim.enemies=[];(sim as any).waterEnemyStream=undefined;
  for(let frame=0;frame<240;frame++){
   sim.step(frame%24<20?['right','a','b']:['right','b'],1);
   assert.ok(!(sim.player.x>=1248&&sim.player.y<=32),`crossed above wall at ${sim.player.x},${sim.player.y}`);
