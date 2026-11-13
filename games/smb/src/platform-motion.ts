@@ -210,6 +210,14 @@ export class PlatformMotion {
   this.waiting.delete(platform);this.nativeStart.set(platform,frame);this.startCounter.set(platform,[frame,counter]);
   this.clock.create(platform,state);this.clockFrames.set(platform,{born:frame,last:frame,counter});
  }
+ /** ExecGameLoopback restarts EnemyData; KillAllEnemies erases the current
+  * owner, while records at/after ScreenRight can initialize again later. */
+ loopBack(platform:PlatformSpec,edge:number){
+  const object=nativePlatformObject(platform,this.context);if(!object)return;
+  this.clock.erase(platform);this.clockFrames.delete(platform);this.nativeStart.delete(platform);this.startCounter.delete(platform);this.startSub.delete(platform);this.startFraction.delete(platform);this.waiting.delete(platform);
+  if(object.pair)this.pulleys.delete(object.pair.join(','));
+  if(object.x>=edge)this.lost.delete(platform);else this.lost.add(platform);
+ }
  private seedClock(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o||!['horizontal','lift','wrap'].includes(o.kind))return;
   const id=o.nativeId??(o.kind==='horizontal'?40:o.kind==='lift'?37:undefined);if(id===undefined)return;

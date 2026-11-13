@@ -1794,9 +1794,9 @@ export class Simulation {
   this.area={...this.area,pipes:redraw(this.area.pipes,source.pipes),springs:redraw(this.area.springs,source.springs),decorations:redraw(this.area.decorations,source.decorations)};
   // KillAllEnemies, and the enemy data restarts from its first object: objects left of the screen's right edge are skipped, the rest load again as they come in range.
   const edge=this.camera+256;
-  this.enemies=this.enemies.filter(e=>!e.active&&!e.dead&&e.originX>=edge);
-  this.flameFrenzy=false;this.items=this.items.filter(i=>!i.nativeFlame); // KillAllEnemies clears $06CB and every flame slot
-  this.firebarSlots?.loopBack(edge); // firebars are enemy objects: killed, and loaded again from the enemy data
+  this.firebarSlots?.loopBack(edge); // preserve the source pre-loop angle before erasing bank ownership
+  this.clearVictoryEnemyBank(); // the same KillAllEnemies erases every owner in slots0–4
+  for(const platform of this.area.platforms??[])this.platformMotion.loopBack(platform,edge);
   for(const spec of this.area.enemies)if(spec.x>=edge&&!this.enemies.some(e=>e.originX===spec.x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy(spec));
  }
  private updateMaze(oldX:number){
