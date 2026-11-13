@@ -22,5 +22,5 @@ test('wrong warp controller position, slot, state or lifetime cannot pass strict
  assert.equal(strictEntityDifferences(strictNativeEntities(new Uint8Array(2048)),[actor]).mismatches[0].code,'extra');
  assert.deepEqual(strictSimEntities({...sim,frenzyControllers:[{id:52,column:2592,y:112}]}),[],'unborn source record is not a live slot');
  assert.deepEqual(strictSimEntities({...sim,frenzyControllers:[{...sim.frenzyControllers[0],lost:true}]}),[],'released controller no longer occupies its slot');
- r[22+2]=23;assert.ok(strictNativeEntities(r).gaps.some(g=>g.code==='unsupported-native-object'),'other controller IDs remain explicit unsupported');
+ r[22+2]=24;assert.ok(strictNativeEntities(r).gaps.some(g=>g.code==='unsupported-native-object'),'unsupported controller IDs remain explicit unsupported');
 });

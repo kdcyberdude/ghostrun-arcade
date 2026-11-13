@@ -6,7 +6,7 @@ import {Simulation} from '../src/simulation.js';
 // Isolated support regression: source images establish rider-relative position
 // and unchanged motion for one episode, not the unqualified activation/motor.
 test('the 5-3 second platform carries a stationary rider without changing its path',()=>{
- const make=()=>{const level=structuredClone(observedLevels().find(item=>item.id==='5-3')!);const sim=new Simulation([level]);sim.reset(true);sim.enemies=[];sim.camera=1300;sim.area.cameraEnd=1300;return sim;};
+ const make=()=>{const level=structuredClone(observedLevels().find(item=>item.id==='5-3')!);const sim=new Simulation([level]);sim.reset(true);(sim as any).placedStream=undefined;(sim as any).platformMotion.waiting.clear();sim.enemies=[];sim.camera=1300;sim.area.cameraEnd=1300;return sim;};
  const riding=make(),unloaded=make();
  const platform=riding.area.platforms!.find(item=>item.x===1466&&item.y===145&&item.width===32)!;
  const other=unloaded.area.platforms!.find(item=>item.x===1466&&item.y===145&&item.width===32)!;

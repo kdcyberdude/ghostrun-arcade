@@ -9,6 +9,8 @@ const fixture=JSON.parse(fs.readFileSync(new URL('./fixtures/native-five-three-c
 for(const c of fixture.samples)test(`5-3 ${c.name}: corpse slot lasts from native${c.stomp} through the allocation pass on${c.release}`,()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='5-3')!);
  const sim:any=new Simulation([level]);sim.reset(true);
+ // This isolated compatibility allocator fixture replaces the native actor bank.
+ (sim as any).placedStream=undefined;
  const platform=sim.area.platforms.find((p:any)=>p.x===1466&&p.y===145);sim.area.platforms=[platform];sim.area.generators=[];sim.camera=1202;
  // Translate each observed clock case into this isolated platform column; the corpse must remain in the viewport.
  const corpse={...sim.makeEnemy({kind:'goomba',x:1248,y:96}),active:true,dead:1,squashed:true};

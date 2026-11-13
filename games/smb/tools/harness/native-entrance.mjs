@@ -79,6 +79,7 @@ export function initializeEntrance(sim,start){
  }
  if(start.slots)sim.slotVertical=start.slots.map(o=>({speed:o.speed,force:o.force,fraction:o.fraction})); /* Enemy_Y_Speed / MoveForce / y fraction left in each slot */
  if(start.playerXScroll!==undefined)sim.playerXScroll=start.playerXScroll;if(start.platformScroll!==undefined)sim.platformScroll=start.platformScroll;
+ if(sim.placedStream&&start.enemyDataOffset!==undefined)Object.assign(sim.placedStream,{offset:start.enemyDataOffset,page:start.enemyDataPage??0,selected:start.enemyDataSelected??false});
  if(sim.walkerStream&&start.enemyDataOffset!==undefined)Object.assign(sim.walkerStream,{offset:start.enemyDataOffset,page:start.enemyDataPage??0,selected:start.enemyDataSelected??false});
  if(start.enemyDataOffset!==undefined){seedNativeFrenzyControllers(sim.frenzyControllers,start.enemyDataOffset,start.slots??[]);if(sim.frenzyControllers.length)sim.spinyTimer=start.flameTimer??0;}
  if(start.frenzyBag!==undefined)sim.swimBag=start.frenzyBag; /* BitMFilter $06DD: heights already used by the Cheep / Bullet Bill frenzy */
