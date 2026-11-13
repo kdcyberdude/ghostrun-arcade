@@ -320,7 +320,7 @@ export class Simulation {
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
   // Firebars share the five native enemy slots and inherit each slot's vertical speed byte as their initial angle.
   this.firebarSlots=area.firebars?.length?new FirebarSlots(area.firebars,undefined,nativeFirebarProfiles(this.level,id)):undefined;
-  if(this.firebarSlots){this.firebarSlots.busy=slot=>{const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte)=>{this.slotYSpeed[slot]=byte;};}
+  if(this.firebarSlots){this.firebarSlots.canInitialize=()=>!this.parserClock.blocked;this.firebarSlots.busy=slot=>{const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte)=>{this.slotYSpeed[slot]=byte;};}
   this.firebarMotors.clear();
   for(const bar of area.firebars??[])if(bar.motor&&bar.length===6)this.firebarMotors.set(bar,{state:createFirebarMotor(bar.motor),geometry:{x:bar.x,y:bar.y,length:6}});
   // Activation consumes a hidden1up across ordinary deaths; its used block reloads blank.
@@ -2497,6 +2497,7 @@ export class Simulation {
  private currentNativeBankSlot=-1;private nativeBankItemFrame=-1;
  private visitNativeBankSlot(slot:number,oldBottom:number){
   this.currentNativeBankSlot=slot;
+  const alias=this.firebarSlots?.visitAlias(slot);if(alias){if(alias==='cleared')this.slotReleaseFrame[slot]=this.frame;return;}
   const camera=this.camera+this.lakituScroll;
   const bar=this.area.firebars?.find(b=>this.firebarSlots?.slotOf(b)===slot);
   if(bar){
