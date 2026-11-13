@@ -29,7 +29,7 @@ export class Hud{
   const lines:string[]=[];
   const hudOn=showHud&&(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing);
   const timeOn=!(screen&&s.nativeScreen!.engine<8)&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;
-  if(hudOn)lines.push(`H|${player}|${String(s.score).padStart(6,'0')}|${String(s.coins).padStart(2,'0')}|${s.level.id}|${timeOn?String(Math.max(0,s.time)).padStart(3,'0'):''}`);
+  if(hudOn)lines.push(`H|${player}|${s.hud.draw.score}|${s.hud.draw.coins}|${s.level.id}|${timeOn?s.hud.draw.time:''}`);
   if(s.phase==='title')lines.push(`T|${s.twoPlayer?1:0}`);
   if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading)lines.push(`I|${s.level.id}|${s.lives}`);
   if(screen?.message==='time-up')lines.push('U');

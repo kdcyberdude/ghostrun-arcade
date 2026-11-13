@@ -197,3 +197,15 @@ test('only reviving Koopa shells expand their native alternate lower rim',()=>{
   sim.enemies[0].shellTimer=4;sim.enemies[0].movingShell=true;entities.sync(sim,0);assert.equal(root.scale.y,1);
  }
 });
+test('native hammer pictures retain their own draw timer on the first hurt row',()=>{
+ const {sim}=scene();sim.frame=100;sim.random.frame=12;sim.phase='dying';sim.phaseFrame=0;
+ sim.items=[false,true].map((stopped,index)=>({kind:'hammer',x:100+index*20,y:100,age:0,vx:0,vy:0,life:100,nativeHammer:{slot:6-index,state:0x81,speed:0,force:0,fraction:0,drawFrame:100,drawTimersStopped:stopped}}));
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit,entities=new Entities(animated,false);
+ entities.sync(sim,0);const hammers=entities.group.children.filter(o=>o.getObjectByName('hammer'));
+ assert.ok(Math.abs(hammers[0].getObjectByName('hammer')!.rotation.z-3*Math.PI/2)<1e-6);assert.equal(hammers[1].getObjectByName('hammer')!.rotation.z,0);
+ sim.frame++;entities.sync(sim,0);for(const root of hammers)assert.equal(root.getObjectByName('hammer')!.rotation.z,0);
+});
+test('Hammer Bro defeat uses native state32 immediately and retains moving direction',()=>{
+ const {sim,entities}=scene({kind:'hammerBro',dead:1,age:0,vx:1,nativeDir:-1,hbro:{state:0x20} as Enemy['hbro']});entities.sync(sim,0);
+ const root=actor(entities,'hammer_bro');assert.equal(root.rotation.z,Math.PI);assert.equal(root.rotation.y,Math.PI+0.5);
+});
