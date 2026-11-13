@@ -1,3 +1,4 @@
+import {nativeEnemyBytes} from '../src/native-enemy-catalog.js';
 import native from './fixtures/native-enemy-init-cursor.json';
 import {test} from 'node:test';import assert from 'node:assert/strict';import {NativeEnemyStream,type NativeEnemyInit} from '../src/native-enemy-stream.js';
 const context={camera:178,hard:false,primaryHard:false,slot:1,frenzy:0,vine:0,queue:0};
@@ -29,7 +30,7 @@ test('queued frenzy initializes a flagged slot without touching the placed curso
 test('native accepted/rejected initializers retain exact cursor and page-control ownership across free slots',()=>{
  let checked=0;
  for(const row of native.rows){
-  const bytes=native.streams.find(s=>s.pointer===row.pointer)!.bytes,stream=new NativeEnemyStream(bytes,row.before[0],row.before[1],Boolean(row.before[2]));
+  const bytes=nativeEnemyBytes(row.pointer)!,stream=new NativeEnemyStream(bytes,row.before[0],row.before[1],Boolean(row.before[2]));
   const n={camera:row.camera,hard:row.hard,primaryHard:row.primaryHard,slot:0,frenzy:row.frenzy,vine:row.vine,queue:row.queue};let lakitu=0;
   if(row.task!==7)for(let slot=0;slot<6;slot++){
    if(row.flags[slot])continue;n.slot=slot;
