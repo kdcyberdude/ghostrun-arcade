@@ -115,3 +115,11 @@ Native PlayerCtrlRoutine clears Left_Right_Buttons/Up_Down_Buttons when Down and
 Capturec91d9e96b7833bef2216b2e57ff5c61570e365a2e18d1fbd5ff93422c8812970 source25699..25702 holds Down+Right+B while grounded at Y176; facing/moving stayleft. The bubble spawned25701 is at MarioX2913, not right-facing2922. The facing update now respects the source ground Down mask, including the frame a floor stroke begins. A1,900-frame native checkpoint regression captures this bubble X and following state. This also corrects Mario's visual facing.
 
 Full178 comparison improves5 bubble field firsts with no earlier per-field changes; completely matching checked-RAM epochs remain78 because other errors follow. Full32 legacy/strict first-field tables remain identical. Twenty portable snapshots cover17,100 native frames.
+
+## Foot collision samples before late whirlpool gravity
+
+Native PlayerBGCollision runs in PlayerCtrlRoutine before GameEngine's trailing ProcessWhirlpools. The remake moved Mario by combined ordinary+whirlpool displacement before its foot probe, unlike its already corrected enemy/bubble reads. Capture8d3816 epoch10 source26410 startsY92: ordinary gravity endsY95 (foot127), so no landing on tile128; the late whirlpool pass then moves toY98. The remake probed final foot130 and landed early atY96, clearing speed/force and taking the floor horizontal cap on the next row. Native lands on26411 instead and preserves fraction1.
+
+Water foot lookup/depth now uses the cached ordinary-pass feet, and its rising check uses the ordinary-pass speed. The final physical Y is retained when no contact occurs. On actual landing, the existing contact helper replays late gravity from the aligned floor. A1,000-frame native checkpoint regression crosses this event.
+
+Full178 comparison improves311 field firsts, increases matching checked-RAM epochs78→91, and has no earlier epoch-first error. Five later-field shifts follow retained/improved earlier errors:3a9d epoch10 direction becomes1820 after earliest817→1820; aaf815 epoch10 actors1231→1219, bubbles2019→1194, Y2144→1136 and cursor2199→1193 after retained783. Full32 legacy/strict every-field firsts remain identical. Twenty-one portable snapshots cover18,100 native frames.

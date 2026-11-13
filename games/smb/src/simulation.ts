@@ -807,12 +807,13 @@ export class Simulation {
   const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
   const down=dy>=0||this.apexFootProbe(dy,nativeHead,gravity);
-  const edge=down?p.y:p.y-(nativeHead?this.nativeHeadProbe(h):h);
+  const waterFeet=this.area.theme==='water'?p.y-this.water.whirlMoved:p.y;
+  const edge=down?waterFeet:p.y-(nativeHead?this.nativeHeadProbe(h):h);
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    if(!tile&&pipeTop===undefined)continue;
-   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(p.y-tile.y>=SWIM_WALL_DEPTH||this.water.speed<0))continue;
+   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
    if(down){if(dy!==0)this.landingFraction=p.y-Math.floor(p.y);p.y=tile?.y??pipeTop!;p.vy=0;p.grounded=true;}
    else{if(!tile)continue;
