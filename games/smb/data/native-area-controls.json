@@ -621,6 +621,7 @@
     }
   ],
   "method": "ProcessAreaData/DecodeAreaData row13; Area pointers/origins from native block-buffer geometry bindings, with castle axe alignment from entrance RAM. No frame/camera fits.",
+  "bindingSource": "ROM world routes, portal destinations and EntrancePage via native-area-catalog; no per-visit coordinate fit. Stream offsets are relative to the loaded area-data pointer after its two-byte header.",
   "streams": {
     "a690": {
       "objects": [
@@ -1104,27 +1105,87 @@
         }
       ]
     },
-    "ae47": {
+    "ad7b": {
       "objects": [
         {
-          "column": 80,
-          "command": 9,
-          "offset": 34
-        },
-        {
-          "column": 96,
-          "command": 9,
-          "offset": 42
-        },
-        {
-          "column": 192,
-          "command": 10,
-          "offset": 116
-        },
-        {
-          "column": 199,
+          "column": 20,
           "command": 7,
-          "offset": 118
+          "offset": 16
+        },
+        {
+          "column": 52,
+          "command": 7,
+          "offset": 36
+        },
+        {
+          "column": 84,
+          "command": 7,
+          "offset": 88
+        },
+        {
+          "column": 116,
+          "command": 7,
+          "offset": 110
+        },
+        {
+          "column": 148,
+          "command": 7,
+          "offset": 136
+        }
+      ]
+    },
+    "a87c": {
+      "objects": [
+        {
+          "column": 84,
+          "command": 7,
+          "offset": 16
+        }
+      ]
+    },
+    "abd9": {
+      "objects": [
+        {
+          "column": 100,
+          "command": 7,
+          "offset": 38
+        }
+      ]
+    },
+    "a9d0": {
+      "objects": [
+        {
+          "column": 70,
+          "command": 5,
+          "offset": 44
+        }
+      ]
+    },
+    "ae08": {
+      "objects": [
+        {
+          "column": 32,
+          "command": 9,
+          "offset": 20
+        },
+        {
+          "column": 71,
+          "command": 10,
+          "offset": 56
+        },
+        {
+          "column": 71,
+          "command": 7,
+          "offset": 58
+        }
+      ]
+    },
+    "aec2": {
+      "objects": [
+        {
+          "column": 78,
+          "command": 7,
+          "offset": 22
         }
       ]
     }
@@ -1290,12 +1351,96 @@
       "stream": "a3fc",
       "origin": 256
     },
-    "2-2/area-2": {
-      "stream": "ae47",
+    "1-1/bonus-coins": {
+      "stream": "ad7b",
       "origin": 0
     },
-    "7-2/area-4": {
-      "stream": "ae47",
+    "1-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 32
+    },
+    "2-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 0
+    },
+    "2-1/sky-coins": {
+      "stream": "a87c",
+      "origin": 0
+    },
+    "2-2/area-3": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "3-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 64
+    },
+    "3-1/3-1-vine-sky": {
+      "stream": "abd9",
+      "origin": 0
+    },
+    "4-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 96
+    },
+    "4-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "4-2/vine-warp-zone": {
+      "stream": "a9d0",
+      "origin": 0
+    },
+    "5-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "5-2/optional-water": {
+      "stream": "ae08",
+      "origin": 0
+    },
+    "5-2/5-2-vine-sky": {
+      "stream": "a87c",
+      "origin": 0
+    },
+    "6-2/optional-water": {
+      "stream": "ae08",
+      "origin": 0
+    },
+    "6-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "6-2/bonus-coins-late": {
+      "stream": "ad7b",
+      "origin": 96
+    },
+    "6-2/6-2-vine-sky": {
+      "stream": "abd9",
+      "origin": 0
+    },
+    "7-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 0
+    },
+    "7-2/area-5": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "8-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 32
+    },
+    "8-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "8-4/area-3": {
+      "stream": "a3fc",
+      "origin": 192
+    },
+    "8-4/area-4": {
+      "stream": "aec2",
       "origin": 0
     }
   }

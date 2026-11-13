@@ -6,6 +6,7 @@ import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {parseArgs} from 'node:util';
 import {observedLevels} from '../../src/levels.js';
+import {nativeAreaBindings} from '../../src/native-area-catalog.js';
 import {reconstruct,matchVisits} from './native-level-map.js';
 export type NativeAreaCommand={x:number;id:number};
 export function decodeAreaControls(rom:Uint8Array,pointer:number):NativeAreaCommand[]{
@@ -49,8 +50,8 @@ if(import.meta.url===`file://${process.argv[1]}`){
  }
  for(const area of areas)area.commands.sort((a,b)=>a.x-b.x);
  const previous=JSON.parse(fs.readFileSync('data/native-area-controls.json','utf8'));
- const bindings={...previous.bindings,'2-2/area-2':{stream:'ae47',origin:0},'7-2/area-4':{stream:'ae47',origin:0}};
- const streams=Object.fromEntries([...new Set<string>(Object.values(bindings).map((b:any)=>b.stream))].map(stream=>[stream,decodeAreaControlObjects(rom,parseInt(stream,16))]));
- fs.writeFileSync(a.out!,JSON.stringify({romSha256:createHash('sha256').update(rom).digest('hex'),source:'Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.',areas,method:previous.method,streams,bindings},null,2)+'\n');
+ const bindings={...previous.bindings,...Object.fromEntries(observedLevels().flatMap(level=>nativeAreaBindings(level).bindings.map(binding=>[`${level.id}/${binding.area}`,{stream:binding.data.toString(16),origin:-binding.offset/16}])))};
+ const streams=Object.fromEntries([...new Set<string>(Object.values(bindings).map((b:any)=>b.stream))].map(stream=>[stream,{objects:decodeAreaControlObjects(rom,parseInt(stream,16)-2).objects.map(object=>({...object,offset:object.offset-2}))}]));
+ fs.writeFileSync(a.out!,JSON.stringify({romSha256:createHash('sha256').update(rom).digest('hex'),source:'Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.',areas,method:previous.method,bindingSource:'ROM world routes, portal destinations and EntrancePage via native-area-catalog; no per-visit coordinate fit. Stream offsets are relative to the loaded area-data pointer after its two-byte header.',streams,bindings},null,2)+'\n');
  console.log(`${areas.length} areas, ${areas.reduce((n,a)=>n+a.commands.length,0)} commands`);
 }

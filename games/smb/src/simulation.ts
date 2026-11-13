@@ -2298,7 +2298,7 @@ export class Simulation {
  private groupSlotsBefore=[false,false,false,false,false];
  private renderInitialSpringColumns(){
   if(this.springLoadColumns===0)return;
-  for(let column=0;column<2;column++){this.createNativeCannons(this.parserColumnX);this.createNativePipeObjects(this.parserColumnX);if(this.walkerStream)this.birthParserPiranhas(this.parserColumnX);for(const spring of this.area.springs??[])if(spring.nativeColumn===this.parserColumnX)this.createNativeSpring(spring);this.parserColumnX=(this.parserColumnX+16)&65535;}
+  for(let column=0;column<2;column++){const warpHandled=this.createNativePipeObjects(this.parserColumnX);this.areaControls.advance(7,warpHandled);this.advanceSpecialSlotParser(this.parserColumnX);this.createNativeCannons(this.parserColumnX);if(this.walkerStream)this.birthParserPiranhas(this.parserColumnX);for(const spring of this.area.springs??[])if(spring.nativeColumn===this.parserColumnX)this.createNativeSpring(spring);this.parserColumnX=(this.parserColumnX+16)&65535;}
   this.springLoadColumns--;
  }
  private createNativeSpring(spring:SpringSpec){

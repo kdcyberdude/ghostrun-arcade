@@ -1,0 +1,636 @@
+{
+  "source": "Historical strict results copied unchanged from the immutable 3d1d534 audit; native bytes remain in the existing portable prefix fixtures. This tests report grouping, independent of subsequent runtime repairs.",
+  "runtimeCommit": "3d1d534b9c4263048fe7c8a645ff802a634385d5",
+  "auditToolSha256": "00346269323974f2c747854734b3b304191f5a4fbd245b4fa1b8aebd79ea4dbf",
+  "cases": [
+    {
+      "level": "1-2",
+      "area": "area-3",
+      "entry": 5,
+      "sourcePadSha256": "6a33d61976d55df7946dcb13031d891ebdefc5d5d3971f94a994c16ae28470fd",
+      "captureRamSha256": "6438959dc53d62b635c3e0c317e5852dbcdbce3a615389f2d5d65024e3d13bc0",
+      "sourceAuditSha256": "95418050483a94d7ffc9feece9c0d5231cdcefff3f63275ceab11aa9c286cf13",
+      "provenance": [
+        {
+          "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it000556/smb_mood3.pads.bin",
+          "summary": {
+            "game": "smb",
+            "ret": 4.9826667219167575,
+            "decisions": 1500,
+            "end": "running",
+            "deaths": 0,
+            "level": 0,
+            "events": 3,
+            "mood": 3,
+            "parts": {
+              "progress": 2.5727,
+              "level": 2,
+              "death": -0.1,
+              "damage": 0,
+              "score": 0.51,
+              "win": 0,
+              "stall": 0
+            }
+          }
+        }
+      ],
+      "initialFrame": 3941,
+      "sourceFrameOffset": 3942,
+      "endFrame": 3965,
+      "initialRamSha256": "61475fe7eee1ced9895557c8f5a162d257897b8bc0147dd3ae0672d1faa9cc75",
+      "padsSha256": "fbcbdac8898840b7bd543a7d00e33d81f2d4d5d9e7cf26c119c19a3ea4169310",
+      "ramSha256": "cdb774b24b3896dfded16a10afb5eae9d8f1225808745c2c227b28fc4552dd8a",
+      "strict": {
+        "schema": "native-strict-audit-v1",
+        "status": "diverged",
+        "first": 7,
+        "firstCoverageGap": null,
+        "fields": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": 7,
+          "extra": null,
+          "kind": null,
+          "position": null,
+          "state": null,
+          "prefix.frameCounter": null,
+          "prefix.random": null,
+          "prefix.interval": null,
+          "prefix.load.task": null,
+          "prefix.load.engine": null,
+          "prefix.load.screen": null,
+          "prefix.load.disable": null,
+          "prefix.load.timer": null,
+          "prefix.load.columns": null
+        },
+        "identity": {
+          "bindings": [
+            {
+              "area": "main",
+              "code": 41,
+              "data": 43060,
+              "entryPage": 0,
+              "offset": 0,
+              "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+            },
+            {
+              "area": "area-2",
+              "code": 64,
+              "data": 44087,
+              "entryPage": 0,
+              "offset": 0,
+              "source": "ROM automatic-entry header and next world-route area"
+            },
+            {
+              "area": "area-3",
+              "code": 37,
+              "data": 42640,
+              "entryPage": 11,
+              "offset": -2816,
+              "source": "ROM ParseRow0e a0d8+39; static area-2 entrance 2656"
+            },
+            {
+              "area": "bonus-coins",
+              "code": 66,
+              "data": 44411,
+              "entryPage": 2,
+              "offset": -512,
+              "source": "ROM ParseRow0e a0d8+6; static area-2 entrance 1664"
+            }
+          ],
+          "diagnostics": [],
+          "continuations": []
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 23,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 23,
+          "inputFrames": 23,
+          "endReason": "end of trace",
+          "frames": 23,
+          "alignedFrames": 23,
+          "nativeEntityRows": 22,
+          "comparedEntityRows": 22,
+          "nativeBirthRows": 2,
+          "areaFrames": {
+            "area-3": 23
+          },
+          "complete": true
+        },
+        "diagnostics": [],
+        "mismatches": [
+          {
+            "code": "missing",
+            "area": "area-3",
+            "slot": 0,
+            "kind": "piranha",
+            "first": 7,
+            "count": 16
+          },
+          {
+            "code": "missing",
+            "area": "area-3",
+            "slot": 5,
+            "kind": "flagpole-flag",
+            "first": 17,
+            "count": 6
+          }
+        ],
+        "samples": [
+          {
+            "frame": 7,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 8,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 9,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 10,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 11,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 12,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 13,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 14,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 15,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 16,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 17,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 17,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 18,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 18,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 19,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 19,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 20,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 20,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 21,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 21,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 22,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 0,
+              "kind": "piranha",
+              "x": 56,
+              "y": 176,
+              "source": "enemy",
+              "state": 0
+            }
+          },
+          {
+            "frame": 22,
+            "area": "area-3",
+            "code": "missing",
+            "native": {
+              "bank": "enemy",
+              "slot": 5,
+              "kind": "flagpole-flag",
+              "x": 344,
+              "y": 48,
+              "source": "enemy",
+              "state": 0
+            }
+          }
+        ],
+        "visits": [
+          {
+            "frame": 0,
+            "ptr": 42640,
+            "candidates": [
+              {
+                "area": "area-3",
+                "code": 37,
+                "data": 42640,
+                "entryPage": 11,
+                "offset": -2816,
+                "source": "ROM ParseRow0e a0d8+39; static area-2 entrance 2656"
+              }
+            ],
+            "context": {
+              "areaPointer": 37,
+              "entrancePage": 11,
+              "startPage": 11,
+              "modeTask": 1,
+              "physicalCode": 37
+            },
+            "method": "ROM loaded-area pointer and InitializeArea start page",
+            "area": "area-3",
+            "offset": -2816
+          }
+        ]
+      },
+      "traceDirectory": "/tmp/smb-mood-audit-3d1d534/captures/6a33d61976d55df7946dcb13031d891ebdefc5d5d3971f94a994c16ae28470fd/entries/0005/control-prefix/traces/1-2",
+      "receiptDirectory": "/tmp/smb-mood-audit-3d1d534/captures/6a33d61976d55df7946dcb13031d891ebdefc5d5d3971f94a994c16ae28470fd/entries/0005/control-prefix/receipts/1-2"
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "entry": 7,
+      "sourcePadSha256": "a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6",
+      "captureRamSha256": "50ce180d761b65c97dea10b1e05450bfdcc394c394ab0ba5843a60b58e5de6bf",
+      "sourceAuditSha256": "3eb562b1616d648914202bffbbb219f41008f3a4b457bd277011ed1ea8fec3c9",
+      "provenance": [
+        {
+          "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it000697/smb_mood1.pads.bin",
+          "summary": {
+            "game": "smb",
+            "ret": 6.8620452880859375,
+            "decisions": 3051,
+            "end": "game_over",
+            "deaths": 3,
+            "level": 3,
+            "events": 7,
+            "mood": 1,
+            "parts": {
+              "progress": 3.562,
+              "level": 3,
+              "death": -0.3,
+              "damage": 0,
+              "score": 0.6,
+              "win": 0,
+              "stall": 0
+            },
+            "video": "runs/rl/smb-20261110c-moods/videos/it000697_smb_mood1.mp4"
+          }
+        }
+      ],
+      "initialFrame": 7114,
+      "sourceFrameOffset": 7115,
+      "endFrame": 7277,
+      "initialRamSha256": "0fe82a1ea1cd4adf91b6cf00813abc8556438205e665cc3bf777dcba67e7d848",
+      "padsSha256": "ec650c7ada31e0a13fb0cda2a68b1f72848a0c942a61023aca4d4d22bbfbc9e7",
+      "ramSha256": "09f61b1bfa4c2217efdf91ea0a1ef3c43ffbcd671bd33efee9a0f7d549c470cc",
+      "strict": {
+        "schema": "native-strict-audit-v1",
+        "status": "incomplete",
+        "first": null,
+        "firstCoverageGap": 0,
+        "fields": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": null,
+          "kind": null,
+          "position": null,
+          "state": null,
+          "prefix.frameCounter": null,
+          "prefix.random": null,
+          "prefix.interval": null,
+          "prefix.load.task": null,
+          "prefix.load.engine": null,
+          "prefix.load.screen": null,
+          "prefix.load.disable": null,
+          "prefix.load.timer": null,
+          "prefix.load.columns": null
+        },
+        "identity": {
+          "bindings": [
+            {
+              "area": "main",
+              "code": 96,
+              "data": 41393,
+              "entryPage": 0,
+              "offset": 0,
+              "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+            }
+          ],
+          "diagnostics": [],
+          "continuations": []
+        },
+        "coverage": {
+          "completeInputSequence": false,
+          "unsteppedFrames": 0,
+          "ramFrames": 162,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 162,
+          "inputFrames": 162,
+          "endReason": "end of trace",
+          "frames": 162,
+          "alignedFrames": 162,
+          "nativeEntityRows": 0,
+          "comparedEntityRows": 0,
+          "nativeBirthRows": 0,
+          "areaFrames": {
+            "main": 162
+          },
+          "complete": false
+        },
+        "diagnostics": [
+          {
+            "code": "unsupported-sim-object-family",
+            "detail": "firebar: 7 declared area objects; activation/position adapter missing",
+            "area": "main",
+            "first": 0,
+            "count": 162
+          }
+        ],
+        "mismatches": [],
+        "samples": [],
+        "visits": [
+          {
+            "frame": 0,
+            "ptr": 41393,
+            "candidates": [
+              {
+                "area": "main",
+                "code": 96,
+                "data": 41393,
+                "entryPage": 0,
+                "offset": 0,
+                "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+              }
+            ],
+            "context": {
+              "areaPointer": 96,
+              "entrancePage": 0,
+              "startPage": 0,
+              "modeTask": 1,
+              "physicalCode": 96
+            },
+            "method": "ROM loaded-area pointer and InitializeArea start page",
+            "area": "main",
+            "offset": 0
+          }
+        ]
+      },
+      "traceDirectory": "/tmp/smb-mood-audit-3d1d534/captures/a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6/entries/0007/control-prefix/traces/1-4",
+      "receiptDirectory": "/tmp/smb-mood-audit-3d1d534/captures/a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6/entries/0007/control-prefix/receipts/1-4"
+    }
+  ]
+}

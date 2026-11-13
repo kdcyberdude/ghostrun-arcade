@@ -1,0 +1,59 @@
+{
+ "schema": "native-load-pole-proof-v1",
+ "runtimeSourceCommit": "8adb32ea02d269effcdeb7e609fa70a05f5e01f9",
+ "auditToolSha256": "d4f322f1c6316ee93536d85f81980d56f984e49f0a70f2da395b468d117662c3",
+ "reportsSha256": {
+  "smb-ordinary-load-final32.json": "ffdbcd19d6d9e9b66eac3ad5c42ff4623908b0f66494dbe0684451868253e8a5",
+  "smb-load-pole-controls-after32.json": "ffdbcd19d6d9e9b66eac3ad5c42ff4623908b0f66494dbe0684451868253e8a5",
+  "smb-load-prefix-final-proof.json": "2c5b6d57dab3749fe0fdd1d39b1701edb94551fc9bedee5ddde251ed2f8a1045",
+  "smb-load-pole-controls-after336.json": "2c7ddff833d0ac70f1697932d7465df8b427b697ed6a90225e588a710c98a19a"
+ },
+ "sourceSha256": {
+  "src/simulation.ts": "4e43d25b9109ddb1df3ac7497023f1072f93dd6931c27f088b85e0dbec5f1f64",
+  "data/native-area-controls.json": "95d491aab4bc7f321afce2d5758c61bd088e286ed61f86891205ea01216cbb63",
+  "tools/harness/native-area-controls.ts": "5c3da37e84128af3034ad65a496c14b784311aa72eed17d14554112df82d438e",
+  "tools/harness/native-strict.ts": "9a310171953cbfb8aad1e739d408d1cf1f4e4a519e874060b8e3f0ab1b222f8e",
+  "tests/native-load-pole.test.ts": "c377e10a944fc8360aa87043ad0103dce47bf586212db1463f16a4645015f591",
+  "tests/fixtures/native-load-pole-cases.json": "f5afa64bd54d320699b7fc6890b21ff06c21bad518881169ad994ccbe870676c"
+ },
+ "original32": {
+  "legacyFirstsChanged": 0,
+  "existingStrictFirstsEarlier": []
+ },
+ "nativePrefixes": {
+  "runs": 336,
+  "prefixes": 2681,
+  "steppedFrames": 330562,
+  "coordinateComparedFrames": 330562,
+  "prefixControlFailures": [],
+  "missingPolePrefixesBefore": 265,
+  "missingPoleRowsBefore": 1590,
+  "missingPolePrefixesAfter": 0,
+  "missingPoleRowsAfter": 0,
+  "statusCounts": {
+   "pass": 1850,
+   "diverged": 354,
+   "incomplete": 477
+  }
+ },
+ "staticBindings": {
+  "added": 23,
+  "allExistingBindingsPreserved": true,
+  "allExistingStreamObjectsPreserved": true,
+  "allExistingAreaCommandsPreserved": true,
+  "source": "ROM world/portal/EntrancePage catalog; no per-visit fitting"
+ },
+ "validation": {
+  "fullTests": 1895,
+  "typescript": "pass",
+  "portablePoleRows": 69,
+  "portablePoleCases": 3,
+  "prefixControlRows": 330562,
+  "original32Excerpts": "unchanged"
+ },
+ "limits": [
+  "Other prefix Piranha actor gaps and unsupported families remain explicit.",
+  "Pole birth RAM is now correct; this unit does not claim native pixel parity.",
+  "Shared initial column integration must preserve native warp-command ordering and skip duplicate command5 toggles."
+ ]
+}
