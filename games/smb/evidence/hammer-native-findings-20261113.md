@@ -427,3 +427,46 @@ arguments so its bounded replay is reproducible, not a runtime frame condition.
 Gates:1635/1635 npmtestsPASS,tscPASS,allv2 excerpts regenerated unchanged,
 full32 everyfield before/after identical,gitdiffcheckPASS. Broader CPU/NMI
 predictive work-cycle scheduling is still open; this fix adds no fitted hold.
+
+## Native powerup collection boxes and floatey award
+
+Clean2-1 SHA304c4e4adb88320f7a842b1a29580a03f83ecd36e8ac3bd04f8675dbf6427077,
+entry0008, local911/global12431 had an extra mushroom with no earlier fields.
+Native FC60 cached playerbox[100,180,110,192] intersects powerupbox3
+[109,171,121,183]; generic remake player width6 misses it. PowerUp setup
+selects BoundBoxCtrlData3 [2,9,14,21]. PlayerEnemyCollision runs evenFrameCounter,
+checks player vertical page/Y<$D0, enemy masked offscreen bits, engine8, and
+SprObjectCollisionCore inclusive byte boxes. The runtime now uses that source
+bbox3 and the existing cached player box made before PlayerBGCollision,
+with source engine/power-change guards. Ordinary descriptor-only item tests
+retain their supplied legacy collision behavior.
+
+HandlePowerUpCollision calls SetupFloateyNumber6, not immediate score addition.
+Its same-turn FloateyNumbersRoutine leavesTimer47; oldTimer43 awards1000 on
+collection+5. The native powerup score path now uses existing floateyScore.
+Native star scores follow the same source branch, but no star/flower/1up
+pickups occur in these368captures; their collection timing is not claimed
+experimentally covered. Existing1up award timing remains a separate open item.
+
+The full368 source-contact scan:9277 eligible native decisions,8968 distinct
+input vectors,4 mushroom collections,0 rule mismatches. ActualRAM SHAverified;
+fixture retains all decisions/counts, provenance, cached boxes and every
+collection's six-row score/life/floatey bytes. Its complete970-row clean2-1
+prefix now has all15 strict fieldsnull, including the collection and growth.
+Source extraction uses prior high byte for an erased object, because native
+EraseEnemyObject clears that high byte after the contact box was generated.
+
+Newly exposed2-1 local970: DonePlayerTask sees TimerControlC4, clears it and
+setsengine8 within PlayerChangeSize, allowing enemy turns in the SAME engine
+pass while Mario is still stationary. CurrentpowerChange completion returns
+before world movement, so native Para slot4 x2637 vsmodel2638. This is a
+separate engine resume-order gap; no fitted freeze duration or row skip added.
+Predictive CPU/NMI work-cycle scheduling remains open as previously documented.
+Contact/award gates:1638/1638 npmtestsPASS,tscPASS,regeneratedv2 excerpts
+unchanged,all32 everyfield before/after identical,gitdiffcheckPASS. Allfour
+observed pickup epochs have no earlier field (diagnostic deltas in
+native-powerup-contact-clusters.json): 1-2/0a766fa score/missing294→3135/3147,
+position295→355;2-1/304c4e4 score916→4493,extra911→1004,position912→970,
+x/y912→976/971;2-1/371fe2f score554→3835;2-1/a389925 score1304→1610.
+The newly exposed355/970 enemy motion is the same native transformation
+completion-row ordering issue. No shell, pipe, water, cutscene or tile edits.
