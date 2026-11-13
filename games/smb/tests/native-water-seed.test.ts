@@ -19,7 +19,9 @@ for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row
  const names:Button[]=['a','b','select','start','up','down','left','right'];
  for(let i=0;i<c.pads.length;i++){
   sim.step(names.filter((_,bit)=>c.pads[i]&(1<<bit)),1);
-  const vertical=sim.phase==='dying'?sim.deathMove:sim.water;
+  if(c.engines)assert.equal(Number(['dying','gameover'].includes(sim.phase)),Number([6,11].includes(c.engines[i])),`native engine death state at source row ${c.row+i+1}`);
+  // PlayerLoseLife (engine6) keeps the final swimmer motor; only engine11 uses the death arc.
+  const vertical=sim.phase==='dying'&&c.engines?.[i]!==6?sim.deathMove:sim.water;
   const got=[Math.floor(sim.player.x),(Math.floor(sim.player.y)-32)&255,Math.floor(sim.camera),vertical.speed&255,vertical.force,vertical.fraction??vertical.frac,Math.round(sim.player.vx*4096),sim.bubbleState.timer,sim.bubbles.map((b:any)=>[b.x,b.y,b.page,b.fraction]),sim.enemies.filter((e:any)=>e.active&&!e.dead&&!e.slotFreed&&(e.bloop||e.nativeSwim)).map((e:any)=>[e.enemySlot,e.kind==='blooper'?7:e.palette==='0f-16-30-27'?11:10,Math.floor(e.x),Math.floor(e.y)-24]).sort((a:number[],b:number[])=>a[0]-b[0]),[sim.waterEnemyStream?.offset,sim.waterEnemyStream?.page,Number(sim.waterEnemyStream?.selected)],[...sim.frenzyControllers.filter((c:any)=>c.slot!==undefined).map((c:any)=>[c.slot,Math.floor(c.x),c.y]),...(sim.specialSlot5.flag&&sim.specialSlot5.id===23?[[5,Math.floor(sim.specialSlot5.x),sim.specialSlot5.y]]:[])].sort((a:number[],b:number[])=>a[0]-b[0])];
   assert.deepEqual(got,c.expected[i],`source row ${c.row+i+1}`);
   assert.equal(sim.bump.size,0,`water head contact must not animate a block, source row ${c.row+i+1}`);

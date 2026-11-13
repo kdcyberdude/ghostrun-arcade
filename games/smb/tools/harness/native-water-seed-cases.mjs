@@ -19,7 +19,7 @@ if(a.moods)requests.push(['2-2','area-2',24519,'0a766fa4fee6a522569ef5c7fb56a7d7
 if(a.moods)requests.push(['2-2','area-2',12955,'720e40f3d36d348dca5e5eb13a318bd18a222d81295ef846d2cb754c88c8e09a',700],['2-2','area-2',21078,'4403137e51c7d90ddea79c4b106e5646509cc5d9bb6ba83d7f8e01fad1fa1c9d',700]);
 if(a.moods)requests.push(['2-2','area-2',15371,'01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46',900]);
 if(a.moods)requests.push(['2-2','area-2',23994,'c91d9e96b7833bef2216b2e57ff5c61570e365a2e18d1fbd5ff93422c8812970',1900]);
-if(a.moods)requests.push(['2-2','area-2',25502,'8d3816f56f083556e2fca5efe24bac7f7e0ae0b0cb279c544d66183e864147b9',1000]);
+if(a.moods)requests.push(['2-2','area-2',25502,'8d3816f56f083556e2fca5efe24bac7f7e0ae0b0cb279c544d66183e864147b9',1463]);
 if(a.moods)requests.push(['2-2','area-2',18020,'5b3c2ae44e9fb30ffa749ec973baf125d2f17085917e2b399a8c37c1c1ba8d93',40]);
 if(a.moods)requests.push(['2-2','area-2',17390,'839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507',200]);
 if(a.moods)requests.push(['2-2','area-2',13138,'963e7dd452ab0c5bb388233bbaf23099e10eec20adf2ad364ed57788144725ec',1000]);
@@ -35,6 +35,6 @@ for(const [level,area,row,source,count=200]of requests){
   const r=ram.subarray(f*2048,(f+1)*2048);
   expected.push([r[0x6d]*256+r[0x86],r[0xce],r[0x71a]*256+r[0x71c],r[0x9f],r[0x433],r[0x416],(r[0x57]<128?r[0x57]:r[0x57]-256)*256+r[0x705],r[0x792],[0,1,2].map(s=>[r[0x83+s]*256+r[0x9c+s],r[0xe4+s],r[0xcb+s],r[0x42c+s]]),[0,1,2,3,4].filter(s=>r[15+s]&&[7,10,11].includes(r[22+s])).map(s=>[s,r[22+s],r[0x6e+s]*256+r[0x87+s],r[0xcf+s]]),[r[0x739],r[0x73a],r[0x73b]],[0,1,2,3,4,5].filter(s=>r[15+s]&&r[22+s]===23).map(s=>[s,r[0x6e+s]*256+r[0x87+s],r[0xcf+s]])]);
  }
- cases.push({level,area,row,...(source?{source}:{}),initial:zlib.gzipSync(ram.subarray(row*2048,(row+1)*2048)).toString('base64'),pads:Array.from(pads.subarray(row+1,row+count+1)),expected});
+ cases.push({level,area,row,...(source?{source}:{}),initial:zlib.gzipSync(ram.subarray(row*2048,(row+1)*2048)).toString('base64'),...(source?.startsWith('8d3816f5')?{engines:Array.from({length:count},(_,i)=>ram[(row+i+1)*2048+14])}:{}),pads:Array.from(pads.subarray(row+1,row+count+1)),expected});
 }
 fs.writeFileSync(a.out,JSON.stringify(cases)+'\n');console.log(cases.map(c=>`${c.level} row${c.row}: ${c.pads.length}`));
