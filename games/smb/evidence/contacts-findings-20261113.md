@@ -299,3 +299,7 @@ fitted destination load durations remain separate work. The existing engine3
 world pass is already source-driven. Animation ownership stays with the anim
 worker: sidePipeStep has an explicit pre-friction absolute-speed hook for
 GetPlayerAnimSpeed and subsequent single pose update.
+
+## Native entrance setup prerequisite (2026-11-13)
+
+`Entrance_GameTimerSetup` selects raw X from AltEntranceControl, raw Y from header bits3..5 (or the alternate-entry override), state0 and VerticalForceDown40. `nativeEntranceSetup` and `nativeEntranceAction` preserve those source tables and dispatch. The full 3d43 mood capture supplies60 native preload/fall/ready transitions, including the1-1 bonus room: source703 starts engine7/X24/rawY32/state0;704 changes to falling without vertical motion;705 starts gravity40;719 reaches rawY48;720 selects engine8 without moving;721 moves toY50. There are no room offsets in this rule. The existing compiled bonus spawn64.5 and custom age13 timer/physics remain a known fit; castle will replace them atomically with its source InitializeArea boundary. This commit adds the prerequisite helper/evidence only and changes no runtime replay fields. Canonical b3336f1 merged beforehand; all1680 tests and TypeScript pass.
