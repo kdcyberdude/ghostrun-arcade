@@ -1,0 +1,176 @@
+{
+  "schema": "native-shell-separated-return-hit-v1",
+  "runtimeBaseline": "4d39a1e",
+  "source": "SMBDIS PlayerEnemyCollision/HandlePECollisions: eligible separated BoundingBoxCollision clears Enemy_CollisionBits d0; subsequent accepted contact executes injury/stomp again. kickOverlap is only a remake transient for the kick call.",
+  "cause": "777d6a4 introduced a separate-contact early return before the former shellContact=false cleanup. This left kickOverlap after collisionBits had cleared and suppressed an authentic later moving-shell hit.",
+  "fix": "Retire kickOverlap on eligible separated normal-enemy contact. Odd/offscreen/held/other-engine calls preserve existing behavior.",
+  "naturalCase": {
+    "level": "6-2",
+    "run": "water-down-strokes",
+    "frame": 1176,
+    "nativeEngine": 11,
+    "enemy": {
+      "slot": 2,
+      "id": 2,
+      "movingShell": true
+    },
+    "remakeBefore": {
+      "phase": "play",
+      "kickOverlap": true,
+      "collisionBit0": 0
+    },
+    "remakeAfter": {
+      "phase": "dying",
+      "collisionBit0": 1
+    },
+    "scope": "Archived-entrance full-input native controller branch, not POWER-ON dashboard proof."
+  },
+  "sourceProvenance": {
+    "nativeBranch": {
+      "schema": "native-entrance-controller-branch-v1",
+      "level": "6-2",
+      "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+      "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+      "backendSha256": "21e5e07a7b93d26e4ed8a8c11ac4fa98782b91ad5a89ed00397b837ab84178e8",
+      "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+      "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+      "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+      "baselineFrames": 4696,
+      "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+      "commonPrefixFrames": 461,
+      "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+      "padsSha256": "b842a9f8540b012166372e43c534cf4a220fb16e5c5f996531802977f9b51e0b",
+      "ramSha256": "617a80947ef164c872d08af029f89381875abc12d9ff91b06d0c4f96a2672522",
+      "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+    },
+    "actionsSha256": "b842a9f8540b012166372e43c534cf4a220fb16e5c5f996531802977f9b51e0b",
+    "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+    "sourceFrameOffset": 4,
+    "method": "pad bytes replayed one per PPU frame on the NeSLE CPU build from the saved level entrance (ghostrun-lab native_ram_trace.py)"
+  },
+  "focusedValidation": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "command": "npx tsx --test tests/native-shell-separation.test.ts tests/native-player-enemy-latch.test.ts tests/shell.test.ts"
+  },
+  "waterExcerpts": [
+    {
+      "file": "5-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 2990
+      }
+    },
+    {
+      "file": "5-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 2752
+      }
+    },
+    {
+      "file": "5-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 3199
+      }
+    },
+    {
+      "file": "6-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "6-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "6-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    }
+  ]
+}

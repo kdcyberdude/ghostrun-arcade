@@ -2898,7 +2898,8 @@ export class Simulation {
     const camera=this.camera+this.lakituScroll,box=nativeNormalEnemyBox(Math.floor(priorX),Math.floor(priorY)-24,camera,this.nativeAreaOffset),slot=e.enemySlot,n={bits:slot===undefined?0:this.collisionBits[slot]};
     const action=nativePlayerEnemyLatch(n,{frame:this.broClock,engine:this.phase==='play'&&!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!(this.entryFalling&&this.area.entryFall?.native&&this.entryReadyAge<0)?8:0,playerY:Math.floor(p.y)-32,state:e.dead?32:e.walkerState??0,offscreen:box===undefined,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:box,star:Boolean(p.star)});
     if(slot!==undefined)this.collisionBits[slot]=n.bits;
-    if(action==='skip'||action==='held'||action==='separate')continue;
+    if(action==='separate'){delete e.kickOverlap;continue;}
+    if(action==='skip'||action==='held')continue;
     normalContact=true;normalStomp=nativeNormalContactStomps(e.nativeId??(e.kind==='paratroopa'?14:0),Math.floor(p.y)-32,Math.floor(priorY)-24,Math.floor(p.vy),this.nativeStompTimer);
    }
    if(normalContact&&this.area.theme==='water'&&!p.star){hurtBeforeMove();continue;} // HandlePECollisions branches to injury before any land stomp/kick logic.
