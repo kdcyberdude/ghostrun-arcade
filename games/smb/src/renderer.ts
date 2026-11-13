@@ -7,6 +7,7 @@ import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
+import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites} from './native-block-picture.js';
 import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
@@ -268,10 +269,9 @@ export class GameRenderer {
    for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));
    const pole=s.area.exit;
    if(pole?.kind==='flag'){
-    this.special('flagpole_flag',pole.x-16-s.camera,s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,1);
+    const flagPalette=this.palettes[s.area.palette].slice(20,24).map(n=>n.toString(16).padStart(2,'0')).join('-');
+    for(const p of nativeFlagSprites(s.specialSlot5,s.phase==='flag'?{y:s.flagNumber.y,score:s.flagBonus}:undefined,s.camera))this.spriteTile(p.tile,p.x,p.y,flagPalette,false,false,1);
     if(s.phase==='flag'){
-     const pairs=tables.tables.find(t=>t.symbol==='FlagpoleScoreNumTiles')!.bytes,index=[5000,2000,800,400,100].indexOf(s.flagBonus);
-     if(index>=0)for(let col=0;col<2;col++)this.spriteTile(pairs[index*2+col],pole.x+FLAG_COMPLETION.scorePopupXOffset+col*8-s.camera,FLAG_COMPLETION.scorePopupYPlusFlagY-s.flagTop,'0f-1a-30-27');
      const flag=s.castleFlag;
      if(flag){
       this.worldClip=false;this.special('castle_star_flag',flag.x-s.camera,flag.y,1.5);this.worldClip=true;
