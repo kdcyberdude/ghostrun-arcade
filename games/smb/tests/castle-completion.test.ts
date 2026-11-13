@@ -24,7 +24,7 @@ test('rescue text follows the final camera and the second line begins at128frame
  view.enemyCell=(...a)=>calls.push(['actor',...a]);view.text=(...a)=>calls.push(['text',...a]);view.castleRescue(sim);
  assert.ok(calls.some(c=>c[1]==='THANK YOU MARIO!'&&c[2]===63&&c[3]===80));assert.equal(calls.filter(c=>c[0]==='text').length,1);
  calls.length=0;sim.phaseFrame=128;view.castleRescue(sim);assert.ok(calls.some(c=>c[1]==='ANOTHER CASTLE!'&&c[2]===39));
- const final=fixture('8-4',912);final.phase='ending';final.phaseFrame=0;final.camera=767;calls.length=0;view.castleRescue(final);assert.equal(calls.filter(c=>c[0]==='text').length,0);assert.ok(calls.some(c=>c[0]==='actor'&&c[1]===26&&c[2]===145&&c[4]==='0f-16-30-27'));
+ const final=fixture('8-4',912);final.phase='ending';final.phaseFrame=0;final.camera=767;Object.defineProperty(final,'castleRetainer',{value:{x:912,y:184,slot:0,graphicsVisible:true}});calls.length=0;view.castleRescue(final);assert.equal(calls.filter(c=>c[0]==='text').length,0);assert.ok(calls.some(c=>c[0]==='actor'&&c[1]===26&&c[2]===145&&c[4]==='0f-16-30-27'));
 });
 
 test('all eight compiled rescue floors support Mario at the208px native height, including the corrected8-4 extent',()=>{

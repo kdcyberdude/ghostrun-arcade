@@ -2,8 +2,11 @@
  * Native pictures come from ghostrun-lab scripts/recording/native_ram_trace.py --pixels N (branch native-ram-trace): beside each
  * level's ram.bin, pixels.bin (240x224 NES palette indices, NES x 8..248 y 8..232, every Nth frame), emph.bin and pixels.json.
  *   npx tsx tools/harness/native-pixels.ts --traces DIR --entrances media/recordings/threejs-2d --out DIR [--levels 1-1,4-3]
- *     [--frames 0-600] [--png all|none|120,300] [--lag L] [--json out.json] [--port 53949]
- * Frames compared: every stored native frame before the level's first state divergence (native-divergence.ts) and before the
+ *     [--frames 0-600] [--png all|none|120,300] [--lag L] [--victory] [--json out.json] [--port 53949]
+ * --victory compares continuous same-level mode1/2 pictures through castle completion, ignoring the first state-divergence cutoff.
+ * Unresolved or non-overlapping rows have aligned=null; percentages use actual compared overlap pixels, or null/n/a when no comparison exists.
+ * Excluded modes/levels/frames are reported; limited or sampled coverage cannot be a whole-input pass. --all-frames retains full-input behavior.
+ * Frames compared by default: every stored native frame before the level's first state divergence (native-divergence.ts) and before the
  * native run leaves the level. The remake replays the same pad bytes in headless Chromium (swiftshader, as record-game-audio.mjs),
  * its 256x240 canvas is cropped to the same window and compared, per pixel, as NES palette colours (fceux_palette.RGB[index], rgb below).
  * The native picture of frame f shows the state of RAM row f-1 (scroll and OAM are latched at that NMI), so by default (--lag 1)
@@ -40,7 +43,7 @@ const remakeRgb=[0x7c7c7c,0x0000fc,0x0000bc,0x4428bc,0x940084,0xa80020,0xa81000,
  0xfcfcfc,0xa4e4fc,0xb8b8f8,0xd8b8f8,0xf8b8f8,0xf8a4c0,0xf0d0b0,0xfce0a8,0xf8d878,0xd8f878,0xb8f8b8,0xb8f8d8,0x00fcfc,0xf8d8f8,0x000000,0x000000];
 const toNative=new Map<number,number>();remakeRgb.forEach((c,i)=>{if(!toNative.has(c))toNative.set(c,rgb[i]);});
 
-const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},'all-frames':{type:'boolean'},json:{type:'string'},port:{type:'string',default:'53949'}}});
+const {values:a}=parseArgs({options:{traces:{type:'string'},entrances:{type:'string'},out:{type:'string'},levels:{type:'string'},frames:{type:'string'},png:{type:'string',default:'none'},lag:{type:'string',default:'1'},'all-frames':{type:'boolean'},victory:{type:'boolean'},json:{type:'string'},port:{type:'string',default:'53949'}}});
 if(!a.traces||!a.entrances||!a.out)throw Error('--traces, --entrances and --out are required');
 const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
 const [lo,hi]=a.frames?a.frames.split('-').map(Number):[0,Infinity];
@@ -64,9 +67,9 @@ try{
   const dir=path.join(a.traces,level),receiptPath=path.join(a.entrances,level,'entrance.json'),meta=JSON.parse(fs.readFileSync(path.join(dir,'pixels.json'),'utf8'));
   const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),ramRow=(f:number)=>f<0?initial:new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048);
   const pixelFd=fs.openSync(path.join(dir,'pixels.bin'),'r'),emphFd=fs.openSync(path.join(dir,'emph.bin'),'r'),pixels=Buffer.alloc(W*H),emph=Buffer.alloc(H),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
-  let end=pads.length;for(let f=0;f<pads.length;f++){const n=nativeRow(new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048));if(!a['all-frames']&&(n.mode!==1||n.level!==level)){end=f;break;}}
-  const first=divergence(dir,receiptPath,level).first;if(first!==null&&!a['all-frames'])end=Math.min(end,first);
-  const frames:number[]=[];for(let k=0;k<meta.frames;k++){const f=k*meta.step;if(f<end&&f>=lo&&f<=hi&&(a['all-frames']||f>=lag))frames.push(f);}
+  let end=pads.length;for(let f=0;f<pads.length;f++){const n=nativeRow(a.victory?ramRow(f-1):ramRow(f));if(!a['all-frames']&&((a.victory?![1,2].includes(n.mode):n.mode!==1)||n.level!==level)){end=f;break;}}
+  const first=divergence(dir,receiptPath,level).first;if(first!==null&&!a['all-frames']&&!a.victory)end=Math.min(end,first);
+  const frames:number[]=[];for(let k=0;k<meta.frames;k++){const f=k*meta.step;if(f<end&&f>=lo&&f<=hi&&(a['all-frames']||a.victory||f>=lag))frames.push(f);}
   const entrance=decodeEntrance(initial,JSON.parse(fs.readFileSync(receiptPath,'utf8'))),model=observedLevels().find(l=>l.id===level)!,areaLoads=nativeAreaLoads(model,ram,entrance.area??model.main).loads;
   const page=await browser.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${a.port}/`);await page.waitForFunction(()=>(window as any).mario?.ready,null,{timeout:90000});
@@ -77,7 +80,7 @@ try{
    const crop=document.createElement('canvas');crop.width=240;crop.height=224;w.pixelCrop=crop.getContext('2d',{willReadFrequently:true});
   },entrance);
   fs.mkdirSync(path.join(a.out,level),{recursive:true});
-  const rows:{frame:number,all:number,hud:number,field:number,sprite:number,shift:number,aligned:number,nativeScroll:number,camera:number,area:string,alignmentKnown:boolean,overlapPixels:number}[]=[],offPalette=new Map<number,number>();let next=0;
+  const rows:{frame:number,all:number,hud:number,field:number,sprite:number,shift:number,aligned:number|null,nativeScroll:number,camera:number,area:string,alignmentKnown:boolean,overlapPixels:number}[]=[],offPalette=new Map<number,number>();let next=0;
   for(const f of frames){
    const k=f/meta.step;if(fs.readSync(pixelFd,pixels,0,W*H,k*W*H)!==W*H||fs.readSync(emphFd,emph,0,H,k*H)!==H)throw Error('Incomplete native pixel frame');
    const b64:string=await page.evaluate(({pads,names,x0,y0})=>{
@@ -98,14 +101,16 @@ try{
    for(let y=0;y<H;y++)for(let x=0;x<W;x++){const i=y*W+x;
     if(differs[i]){all++;if(y<HUD)hud++;else if(sprite[i])inSprite++;}
     const sx=x+shift;if(y>=HUD&&sx>=0&&sx<W){overlapPixels++;if(seen[y*W+sx]!==rgb[pixels[i]])aligned++;}}
-   rows.push({frame:f,all,hud,field:all-hud,sprite:inSprite,shift,aligned,nativeScroll,camera,area,alignmentKnown,overlapPixels});
+   rows.push({frame:f,all,hud,field:all-hud,sprite:inSprite,shift,aligned:alignmentKnown&&overlapPixels>0?aligned:null,nativeScroll,camera,area,alignmentKnown,overlapPixels});
    if(pngFrames==='all'||pngFrames.has(f))writePng(path.join(a.out,level,`${String(f).padStart(5,'0')}.png`),native,remake,differs);
   }
   await page.close();fs.closeSync(pixelFd);fs.closeSync(emphFd);
-  const mean=(k:'all'|'hud'|'field'|'sprite'|'aligned',n:number)=>rows.length?rows.reduce((s,r)=>s+r[k],0)/rows.length/n*100:0;
-  const r={level,first,end,status:rows.some(r=>r.aligned)?'diverged':!rows.length||!a['all-frames']||Boolean(a.frames)||meta.step!==1||rows.length!==pads.length||rows.some(r=>!r.alignmentKnown||r.overlapPixels===0)?'incomplete':'pass',source:JSON.parse(fs.readFileSync(receiptPath,'utf8')),coverage:{completeInputSequence:Boolean(a['all-frames'])&&!a.frames&&meta.step===1&&rows.length===pads.length&&rows.every(r=>r.alignmentKnown&&r.overlapPixels>0),inputFrames:pads.length,availableNativeFrames:meta.frames,allFrames:Boolean(a['all-frames']),comparedFrames:rows.length,alignedFrames:rows.filter(r=>r.alignmentKnown&&r.overlapPixels>0).length,unresolvedAlignmentFrames:rows.filter(r=>!r.alignmentKnown).length,noOverlapFrames:rows.filter(r=>r.overlapPixels===0).length},compared:rows.length,pctAll:mean('all',W*H),pctHud:mean('hud',W*HUD),pctField:mean('field',W*(H-HUD)),pctSprite:mean('sprite',W*(H-HUD)),pctAligned:mean('aligned',W*(H-HUD)),offPalette:Object.fromEntries([...offPalette].map(([c,n])=>[c.toString(16).padStart(6,'0'),n])),errors,rows};report.push(r);
-  const alignedPixels=rows.reduce((sum,row)=>sum+row.aligned,0),nonzeroFrames=rows.filter(row=>row.aligned!==0).length;
-  console.log(`${level.padEnd(4)} ${r.status} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${r.pctAligned.toFixed(2).padStart(6)}%)  aligned pixels ${alignedPixels}; nonzero frames ${nonzeroFrames}/${rows.length}${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
+  const mean=(k:'all'|'hud'|'field'|'sprite',n:number)=>rows.length?rows.reduce((s,r)=>s+r[k],0)/rows.length/n*100:0;
+  const alignedRows=rows.filter(r=>r.aligned!==null),alignedPixels=alignedRows.reduce((sum,r)=>sum+r.aligned!,0),comparedAlignedPixels=alignedRows.reduce((sum,r)=>sum+r.overlapPixels,0),expectedAlignedPixels=rows.length*W*(H-HUD);
+  const selected=new Set(frames),excluded={mode1:0,mode2:0,otherMode:0,differentLevel:0};for(let f=0;f<pads.length;f++)if(!selected.has(f)){const n=nativeRow(ramRow(f-1));if(n.level!==level)excluded.differentLevel++;else if(n.mode===1)excluded.mode1++;else if(n.mode===2)excluded.mode2++;else excluded.otherMode++;}
+  const r={level,first,end,status:alignedPixels>0?'diverged':!rows.length||!(a['all-frames']||a.victory)||Boolean(a.frames)||meta.step!==1||rows.length!==pads.length||rows.some(r=>!r.alignmentKnown||r.overlapPixels===0)?'incomplete':'pass',source:JSON.parse(fs.readFileSync(receiptPath,'utf8')),coverage:{completeInputSequence:Boolean(a['all-frames']||a.victory)&&!a.frames&&meta.step===1&&rows.length===pads.length&&rows.every(r=>r.alignmentKnown&&r.overlapPixels>0),inputFrames:pads.length,availableNativeFrames:meta.frames,allFrames:Boolean(a['all-frames']),victory:Boolean(a.victory),excludedFrames:pads.length-rows.length,excluded,comparedFrames:rows.length,alignedFrames:rows.filter(r=>r.alignmentKnown&&r.overlapPixels>0).length,unresolvedAlignmentFrames:rows.filter(r=>!r.alignmentKnown).length,noOverlapFrames:rows.filter(r=>r.overlapPixels===0).length,partialOverlapFrames:rows.filter(r=>r.overlapPixels>0&&r.overlapPixels<W*(H-HUD)).length,comparedAlignedPixels,expectedAlignedPixels,overlapFraction:expectedAlignedPixels?comparedAlignedPixels/expectedAlignedPixels:0},compared:rows.length,pctAll:mean('all',W*H),pctHud:mean('hud',W*HUD),pctField:mean('field',W*(H-HUD)),pctSprite:mean('sprite',W*(H-HUD)),pctAligned:comparedAlignedPixels?alignedPixels/comparedAlignedPixels*100:null,offPalette:Object.fromEntries([...offPalette].map(([c,n])=>[c.toString(16).padStart(6,'0'),n])),errors,rows};report.push(r);
+  const nonzeroFrames=alignedRows.filter(row=>row.aligned!>0).length,alignedPercent=r.pctAligned===null?'n/a':r.pctAligned.toFixed(2)+'%';
+  console.log(`${level.padEnd(4)} ${r.status} end ${String(end).padStart(5)} frames ${String(rows.length).padStart(3)}  diff ${r.pctAll.toFixed(2).padStart(6)}%  hud ${r.pctHud.toFixed(2).padStart(6)}%  field ${r.pctField.toFixed(2).padStart(6)}% (in native sprites ${r.pctSprite.toFixed(2).padStart(6)}%, scroll-aligned ${alignedPercent})  aligned pixels ${comparedAlignedPixels?alignedPixels:'n/a'}; compared ${comparedAlignedPixels}/${expectedAlignedPixels}; nonzero frames ${nonzeroFrames}/${alignedRows.length}${offPalette.size?`  off-palette px ${[...offPalette.values()].reduce((s,n)=>s+n,0)}`:''}${errors.length?'  page errors: '+errors.join('; '):''}`);
  }
 }finally{await browser.close();await server.close();}
 if(a.json)fs.writeFileSync(a.json,JSON.stringify(report)+'\n');

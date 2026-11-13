@@ -150,7 +150,7 @@ Native overrun evidence remains explicit: 5-2 row2178 captures task8/scroll2, Fr
 
 ### Strict control-mode boundary coverage
 
-The legacy comparison boundary remains unchanged. In strict output, a same-level transition away from native gameplay mode1 (including castle victory mode2, game-over mode3, or title mode0) now records `unsupported-native-mode`, an explicit incomplete coverage flag, a contextual end reason, and `coverage.uncomparedSameLevelFrames`. Those remaining same-level input rows are not a zero-divergence result. A genuine native level-number change remains the natural scope boundary. Live castle-mode2 state/movement comparison requires the separate native victory adapter; mapping every retained mode1 frame does not establish coverage of the full input sequence.
+The legacy comparison boundary remains unchanged. In strict output, a same-level transition into unsupported native control modes (game-over mode3 or title mode0) now records `unsupported-native-mode`, an explicit incomplete coverage flag, a contextual end reason, and `coverage.uncomparedSameLevelFrames`. Those remaining same-level input rows are not a zero-divergence result. A genuine native level-number change remains the natural scope boundary. Native mode2 now continues through the strict victory adapter described below; mapping retained gameplay frames alone still does not establish full input/picture coverage.
 
 ### Star: shared NMI interval timer
 
@@ -190,3 +190,35 @@ Star timer/counter would be one draw early at each transition. Renderer callers
 must test whether the snapshot is defined, including when `player.star===0`.
 The automatic intro pipe still uses its existing aggregate native load clock;
 adding another interval step there would count the same pipe NMIs twice.
+
+### Strict victory and following world-load continuation
+
+Strict replay no longer stops at native mode2 or resets the remake at victory.
+It preserves every earlier gameplay first divergence, steps every victory row,
+and continues the following input rows across the logical level-number change.
+ROM area bindings resolve subsequent scenes; the brief transition that still
+retains the preceding physical area is explicitly incomplete and uses that
+area's declared coordinate origin. Unsupported native modes0/3 still have an
+explicit end reason and remaining-frame count. Legacy comparisons are unchanged.
+
+`native-victory-readout.ts` shares source-owned control comparisons with the
+existing castle audit. Task, counters, timers, frame counter, random register,
+and alive Bowser bytes remain visible even when earlier gameplay has already
+diverged. Destination `$34` is owned after Setup, and walk `$35` only after
+the first actual task2 call; neither alias is compared prematurely. Bowser body
+bytes stop being owned when its live native flag/id disappear. PlayerRdy may
+release the world-load object on the final ready row, so that row compares the
+ready engine/task contract instead of claiming a missing load object.
+
+A valid Bowser rear alias now compares its own enemy slot and position.
+DuplicateEnemyObj copies the page; BowserGfxHandler offsets coordinate bytes
+without carrying between pages. Other composite aliases remain explicit gaps.
+The portable fixture retains all2,840 original1-4 PPU rows: earlier gameplay,
+695 victory rows and167 following world-load rows. The earlier gameplay
+divergence remains in the full report. Across all32 v2 inputs, this expands
+strict stepping from139,402 to142,848 rows (2,780 victory and666 following
+world-load rows), with every one of the256 legacy field firsts unchanged.
+This is added measurement coverage, not a claim that those new rows match: in
+5-4 an earlier gameplay failure leaves no remake victory owner, which remains
+an explicit mismatch/gap while replay continues. Platforms, retainers, firebars
+and other families without adapters still prevent a complete-coverage pass.

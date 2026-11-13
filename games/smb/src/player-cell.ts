@@ -9,7 +9,7 @@ import {growCell,shrinkBig,throwPoseShown} from './view-rules.js';
  * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
 export function playerVisible(s:Simulation){
  if(s.nativeScreen&&!nativeScreenPicture(s.nativeScreen,s.area.theme==='water').player)return false;
- return s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
+ return s.spritePictureOwner!=='empty'&&s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
 }
 
 /** PlayerGfxHandler's extra swimming-foot tile, separate from PlayerGfxOffset. Small swim frame3 keeps tile$48 instead. */

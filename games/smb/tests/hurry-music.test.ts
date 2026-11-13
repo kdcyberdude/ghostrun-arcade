@@ -19,6 +19,6 @@ test('Star collection and expiry retain the current hurry tempo',()=>{
 test('area transitions preserve time and select the destination hurry track',()=>{
  const sim=game();sim.timerFrames=11;
  (sim as any).enterArea('under',[40,208],0);
- assert.equal(sim.time,100);assert.equal(sim.timerFrames,11);
+ assert.equal(sim.time,100);assert.equal(sim.timerFrames,24,'InitializeArea clears the frame timer to pending0 while retaining digits');
  assert.deepEqual(sim.events.filter(event=>event.startsWith('music_')),['music_underground_hurry']);
 });

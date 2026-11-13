@@ -91,7 +91,7 @@ test('hammer holds each native rotation phase for four frames',()=>{
 });
 test('the final castle shows the Princess and earlier castles show Toad',()=>{
  for(const [level,model] of [['8-4','princess'],['7-4','toad']]){
-  const {sim,entities}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id===level);sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';entities.sync(sim,0);
+  const {sim,entities}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id===level);sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';Object.defineProperty(sim,'castleRetainer',{value:{x:300,y:184,slot:0,graphicsVisible:true}});entities.sync(sim,0);
   const root=actor(entities,model);assert.ok(root?.visible);assert.equal(root.position.x,308/16);assert.equal(root.position.y,31/16);
  }
 });
@@ -118,7 +118,7 @@ test('native misc actors use OAM byte coordinates plus the one-row sprite offset
  const root=actor(entities,'hammer');assert.equal(root.position.x,(100+246+8)/16);assert.equal(root.position.y,(232-101)/16);
 });
 test('Toad uses the native red vest rather than the modern blue asset palette',()=>{
- const {sim}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id==='7-4');sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';
+ const {sim}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id==='7-4');sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';Object.defineProperty(sim,'castleRetainer',{value:{x:300,y:184,slot:0,graphicsVisible:true}});
  const colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0x2050c8});material.name='M_Vest';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
  const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'toad').getObjectByName('toad')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'d8241c');
 });
@@ -171,4 +171,19 @@ test('Lakitu ducks eight source rows into the cloud only during the captured fre
 test('Piranha head uses native palette green instead of the modern red asset material',()=>{
  const {sim}=scene({kind:'piranha'}),colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0xff0000});material.name='M_Head';root.add(new THREE.Mesh(new THREE.SphereGeometry(0.5),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
  const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'piranha').getObjectByName('piranha')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'00a800');
+});
+
+test('castle sprite ownership blanks the axe row then draws only Mario and Bowser',()=>{
+ const {sim,entities}=scene({kind:'goomba'}),walker=sim.enemies[0];sim.enemies.push({...walker,kind:'bowser',x:150} as Enemy);sim.items=[{kind:'coin',x:80,y:160,vx:0,vy:0,age:0,life:100}];
+ entities.sync(sim,0);assert.equal(actor(entities,'goomba').visible,true);
+ sim.phase='castle';(sim as unknown as {beginNativeVictory():void}).beginNativeVictory();entities.sync(sim,0);
+ for(const name of ['mario','goomba','bowser'])assert.equal(actor(entities,name).visible,false);
+ (sim as unknown as {castlePictures:{step(task:number,camera:number,blocked:boolean,free:boolean):void}}).castlePictures.step(0,sim.camera,false,true);entities.sync(sim,0);
+ assert.equal(actor(entities,'mario').visible,true);assert.equal(actor(entities,'bowser').visible,true);assert.equal(actor(entities,'goomba').visible,false);assert.equal(sim.items.length,1);assert.equal(walker.active,true);assert.equal(walker.x,100);
+ assert.ok(entities.group.children.filter(o=>o.type==='Mesh').every(o=>!o.visible));
+});
+
+test('Bowser flames use the center of the native24-by8 picture rather than a powerup foot anchor',()=>{
+ const {sim,entities}=scene();sim.items=[{kind:'flame',x:100,y:80,vx:-1,vy:0,age:0,life:100}];entities.sync(sim,0);
+ assert.deepEqual(actor(entities,'bowser_flame').position.toArray(),[112/16,156/16,0]);
 });

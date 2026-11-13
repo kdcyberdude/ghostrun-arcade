@@ -66,3 +66,11 @@ test('nativeCoin misc objects are compared explicitly by slot, position and stat
  sim.items[0].x++;assert.equal(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches[0].code,'position');
  assert.equal(strictSimEntities({enemies:[],items:[{kind:'coin',x:0,y:0,life:1}]}).length,1);
 });
+
+test('strict retainer readout includes its active birth row before the first graphics pass',()=>{
+ const r=ramEnemy(53);r[0x6e]=9;r[0x87]=144;
+ const sim={enemies:[],items:[],castleRetainer:{slot:0,x:2448,y:184,graphicsVisible:false}};
+ const native=strictNativeEntities(r),actors=strictSimEntities(sim),result=strictEntityDifferences(native,actors);
+ assert.equal(native.entities[0].kind,'retainer');assert.equal(actors.length,1);assert.deepEqual(result,{mismatches:[],gaps:[]});
+ sim.castleRetainer.x++;assert.equal(strictEntityDifferences(native,strictSimEntities(sim)).mismatches[0].code,'position');
+});
