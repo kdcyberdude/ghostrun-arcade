@@ -228,7 +228,7 @@ export class Simulation {
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
- private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;
+ private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;private mouthFlame?:Enemy;
  private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private deathMove?:NativeMoveState;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
  private bridge:string[]=[];private springTimers=new Map<SpringSpec,NativeSpring>();private mazeStates:MazeState[]=[];private mazeSource!:Area;
  vines:Vine[]=[];private climbingVine?:Vine;private vineProgress=new Map<string,number>();private vineDetached=false;private entryVineActive=false;private autoVineActive=false;private entryVineStage:'grow'|'climb'|'right'|'fall'='climb';
@@ -314,7 +314,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id);this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id);this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   this.piranhaColumns=new PiranhaColumns(this.camera);
   this.bindNativeHammerBros();
@@ -1880,12 +1880,20 @@ export class Simulation {
   e.x=m.x-(m.direction&1?16:0);e.y=m.y+32;e.nativeDir=m.direction&1?1:-1;e.vx=m.direction&1?1:-1;e.vy=m.move.speed+m.move.force/256;
   // Keep the existing public motor pose fields synchronized; live motion comes from the native bytes above.
   e.bowser={originX:e.originX,anchor:m.x,speed:m.speed,side:m.direction&1?1:-1,legs:0,rightLimit:m.range,frames:e.age,airborne:m.timer===0,pauseIndex:0,nextHop:e.age+m.timer,nextFlame:e.age+m.fireTimer};
-  if(action.flame){
-   const flameSlot=this.freeNativeSlot();
-   if(flameSlot<5&&this.flameTimer<=1){const target=this.random.bytes[flameSlot]&3,y=m.y+8;this.slotYFraction[flameSlot]=target;
-    this.items.push({kind:'flame',x:(m.x&~255)|((m.x-14)&255),y,vx:this.secondaryHardMode?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot:flameSlot,target,born:this.frame,force:[144,128,112,144][target]<y?-1:1}});this.emit('sfx_bowser_flame');}
-  }
+  // BowserControl clears the shared request at its own slot, then may queue
+  // $15. Only free slots visited after this slot can consume it this frame.
+  this.mouthFlame=undefined;
+  if(action.flame){this.mouthFlame=e;this.passNativeMouthFlame(slot+1,5);}
   if(action.hammer&&e.bowserHammers!==false)this.spawnNativeHammer(e);
+ }
+ /** CheckFrenzyBuffer / SpawnFromMouth: a pending request is consumed in slot order. */
+ private passNativeMouthFlame(from:number,to:number){
+  const e=this.mouthFlame,m=e?.nativeBowser;if(!e||!m||!e.active||e.dead){this.mouthFlame=undefined;return;}
+  if(this.flameTimer>1||this.enemyLoadBlocked)return;
+  const used=this.busyNativeSlots();let slot=from;while(slot<to&&used.has(slot))slot++;if(slot>=to)return;
+  const target=this.random.bytes[slot]&3,y=m.y+8;this.slotSub[slot]=0;this.slotYFraction[slot]=target;
+  this.items.push({kind:'flame',x:(m.x&~255)|((m.x-14)&255),y,vx:this.secondaryHardMode?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot,target,born:this.frame,force:[144,128,112,144][target]<y?-1:1}});
+  this.mouthFlame=undefined;this.emit('sfx_bowser_flame');
  }
  // Archived explicitly seeded calibration motors retain their supplied event phases; live spawns use advanceNativeBowser.
  private advanceBowser(e:Enemy){
@@ -2118,6 +2126,7 @@ export class Simulation {
  }
  private updateEnemies(oldBottom:number){
   this.broClock++;
+  if(this.mouthFlame)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
   this.releaseNativeSlots();
   if(this.nativeSwimFrenzyArea())this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // discard legacy generated roster before it can claim checkpoint slots
   this.syncSpecialPowerup();this.nativeFrenzyTurn=undefined;if(this.nativeStompTimer)this.nativeStompTimer--;
