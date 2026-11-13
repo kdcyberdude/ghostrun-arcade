@@ -525,7 +525,7 @@ export class Simulation {
    return;
   }
   if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
-  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();const wasGrounded=this.player.grounded;this.updateFlag();if(this.phase==='flag')this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));this.restoreStarMusic();return;}
+  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));}this.restoreStarMusic();return;}
   if(this.powerChange){this.emergeFrozenNativePowerups();this.updateBubbles(false,false);this.lifeFrozen++;if(--this.powerChange.remaining===0){this.player.size=this.powerChange.to;this.powerChange=undefined;}return;}
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
   this.parserVramBusy=false;
@@ -680,7 +680,7 @@ export class Simulation {
   this.eraseOffscreenEnemies();this.releaseNativeSprings();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
-  this.gateNativePlatforms(previousCamera);
+  this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
@@ -1197,7 +1197,7 @@ export class Simulation {
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
-  this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);
+  this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
   this.piranhaColumns?.step(this.camera);this.birthParserPiranhas();this.firebarSlots?.cameraEntry(previousCamera,this.camera);
   if(!this.player.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(scroll);
@@ -1817,6 +1817,14 @@ export class Simulation {
   const [x,y]=FLAG_COMPLETION.fireworkOffsetsFromCastleFlag[index];
   return [{index,x:this.flagCastleGeometry.x+x,y,phase:Math.floor(age/FLAG_COMPLETION.fireworkPhaseFrames)}];
  }
+ /** GameEngine still runs RunLargePlatform after PlayerEndLevel/FlagpoleSlide.
+  * Its collision/motor/OffscreenBoundsCheck pass does not stop at the pole. */
+ private updateFlagPlatforms(oldFeet:number,previousCamera:number){
+  const scroll=this.camera-previousCamera;this.platformFrame++;
+  this.platformEjection=0;this.updatePlatforms(oldFeet,scroll);
+  this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
+  this.gateNativePlatforms(previousCamera);this.busyNativeSlots();
+ }
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
   if(this.flagAwardFrame<0){
@@ -2069,7 +2077,7 @@ export class Simulation {
    const o=nativePlatformObject(platform,context);
    if(o?.kind!=='horizontal'&&o?.kind!=='wrap')continue;
    const threshold=nativePlatformSpawnCamera(o),motion=this.platformMotion,crossed=previousCamera<threshold&&this.camera>=threshold;
-   if(!crossed&&!motion.waiting.has(platform))continue;
+   if(motion.lost.has(platform)||!crossed&&!motion.waiting.has(platform)&&(this.platformSlots.has(platform)||this.camera<threshold))continue;
    // ProcessEnemyData skips the row whose AreaParserTaskNum is7, even if
    // a platform's threshold was reached and its native slot is available.
    if(this.parserClock.blocked){motion.waiting.add(platform);continue;}
