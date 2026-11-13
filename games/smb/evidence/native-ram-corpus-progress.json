@@ -1,6 +1,6 @@
 {
   "schema": "smb-ram-corpus-fix-progress-v1",
-  "generatedAt": "2026-11-13T22:30:51.433Z",
+  "generatedAt": "2026-11-13T22:32:04.137Z",
   "status": "incomplete",
   "baselineCommit": "795ec985f1cc72d10263860a272366a7e2c33e5c",
   "runtimeSources": {
@@ -823,7 +823,8 @@
     ],
     "integratedMainFixes": [
       "4fd76e8 right-edge clamp during offscreen fall",
-      "9fd229b foot-depth push after head bump"
+      "9fd229b foot-depth push after head bump",
+      "e47852e frozen walker landing, consolidated"
     ],
     "ui": {
       "frozenLanding": {
@@ -854,6 +855,6 @@
       "two-d-integrated.json",
       "two-d-failing-originals.json"
     ],
-    "merge": "Pending integration; main has concurrent overlapping uncommitted freeze logic."
+    "merge": "Validated for main; overlapping e47852e freeze landing consolidated with the tested sprite ordering. No task branch created."
   }
 }
