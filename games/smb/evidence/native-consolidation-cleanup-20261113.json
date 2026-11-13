@@ -1,0 +1,61 @@
+{
+  "base": "f1e29716a63ec164069cd83c2c70c65e9e48c967",
+  "integratedRuntime": "5c0a8766ac2e900ef3ac0b52ab80075828bbdf58",
+  "scope": "Consolidate deferred 3D presentation and existing scoped reporting/state-audit tools; no new 2D mechanics investigation.",
+  "commits": [
+    "93b627f",
+    "f709a5d",
+    "f33b20f",
+    "4aa919d",
+    "9866f73",
+    "c01a16f",
+    "5c0a876"
+  ],
+  "preservedMainImprovements": [
+    "ultra/high/low quality modes and FXAA",
+    "dynamic platform picture width",
+    "all existing gameplay logic; simulation change is read-only spriteObjectSlot accessor"
+  ],
+  "deletedBranches": [
+    "codex/smb-scoped-report",
+    "codex/smb-w12-state-audit",
+    "fix/smb-3d"
+  ],
+  "bundle": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/cleanup-20261113/selected-consolidated.bundle",
+  "remainingCleanup": "18 historical mechanic branches retained. Automatic review rejected broad deletion because their unique content remains unverified. Original checkout and active managed worktrees untouched.",
+  "validation": {
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "focusedTests": {
+      "passed": 69,
+      "failed": 0
+    },
+    "monitorTests": {
+      "passed": 17,
+      "failed": 0
+    },
+    "spritePriority": "PASS on RTX5090 low and SwiftShader low/high",
+    "authoredModelDepth": "PASS:90 native-resolution cases in six themes at OAM0/4/252; all per-part pixel differences zero",
+    "fullTests": {
+      "passed": 2204,
+      "failed": 0
+    },
+    "replayEquivalence": {
+      "verdict": "REPLAY EQUIVALENCE PASS",
+      "levels": 32,
+      "framesPerLevel": 60,
+      "frames": 1920,
+      "backend": "RTX5090",
+      "receipt": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-5c0a876/equivalence-gpu-seeded.json",
+      "scope": "Native-entrance replay prefixes; not all recorded frames or image parity"
+    }
+  },
+  "unchangedClaims": "No fresh combined progress score, full mood picture audit, or all-frame 32-level visual parity claimed. Existing strict8-4 residual preserved.",
+  "auditSetupRepair": "Initial smoke: both browser renderers matched each other; headless differed only in508 unused VRAM-buffer bytes (HUD and palette aliases). Each native replay now seeds all256 initial bank bytes and its source selector once, identically, from initial.ram. Snapshots/checks unchanged; no per-frame source injection.",
+  "logs": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-5c0a876",
+  "hashes": {
+    "games/smb/tools/visual3d/equivalence.ts": "402d0175f184d93de9f28b903b2732612a5294bc8a0a635eef538755fdcc197a",
+    "games/smb/src/render3d/sprite-pass.ts": "dae48e3bb8dde5cc4b415b5d8c2997089e5589d8454b59ee3fff2eb928f72e0f",
+    "games/smb/src/simulation.ts": "c57c6dd00c6dff8aa09e5146555ee28d0beec3027884f34e2d171e588211112b"
+  }
+}
