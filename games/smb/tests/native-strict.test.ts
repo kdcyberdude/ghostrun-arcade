@@ -11,7 +11,7 @@ test('strict readout includes the birth row excluded by the legacy comparison',(
 });
 test('strict readout covers cannon Bullet Bills and preserves vertical pages and native area offsets',()=>{
  const r=ramEnemy(51);r[0xb6]=2;
- assert.equal(nativeEntities(r).length,0);
+ assert.deepEqual(nativeEntities(r),[{kind:'bullet',x:552,y:184}]);
  assert.deepEqual(strictNativeEntities(r,-256).entities,[{bank:'enemy',slot:0,kind:'bullet',x:296,y:440,source:'enemy',state:0}]);
 });
 test('strict matching rejects extra and duplicate remake enemies',()=>{
