@@ -1327,7 +1327,6 @@ export class Simulation {
    this.cannonTable[this.cannonOffset]={cannon,timer:this.cannonTable[this.cannonOffset]?.timer??0};this.cannonOffset=(this.cannonOffset+1)%6;this.cannonsLoaded++;
   }
  }
- private cannonStartTable?:object;
  private updateNativeCannons(){
   const cannons=(this.area.cannons??[]).filter(c=>c.native);if(!cannons.length||this.recordedRoute)return;
   this.cannonPassDue=true;
@@ -1344,7 +1343,6 @@ export class Simulation {
   for(const e of this.enemies)if(this.nativeLoadsThisFrame(e)){let slot=0;while(used.has(slot))slot++;used.add(slot);}
   const mask=this.secondaryHardMode?7:15,b=this.random.bytes;
   for(const e of this.enemies)if(e.bbCheck&&e.active&&!e.dead)this.nativeBulletBillCheck(e); // objects made on an earlier frame (each at its slot's turn; its slot stays in `used`)
-  if(this.cannonStartTable!==this.cannonTable){this.cannonStartTable=this.cannonTable;this.nativeCannonPass(used,mask,[0,1,2,3].map(k=>(b[k]<<1|b[k+1]>>7)&255));}
   this.nativeCannonPass(used,mask,b);
  }
  private nativeCannonPass(used:Set<number|undefined>,mask:number,bytes:number[]){
@@ -2334,7 +2332,7 @@ export class Simulation {
    if(e.enemySlot!==undefined){this.slotFrameTimers[e.enemySlot]=e.pir.timer;Object.assign(this.slotVertical[e.enemySlot],{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});}
   }
  }
- private primeNativeEntryObjects(visitTerrain=false){if(visitTerrain)this.primeNativePiranhas();const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();if(this.placedStream)return;for(const generator of this.area.generators??[])if(generator.kind==='bullet'&&generator.heights){this.frenzyDue=generator;this.passNativeFrenzy();}}
+ private primeNativeEntryObjects(visitTerrain=false){if(visitTerrain)this.primeNativePiranhas();const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();if(!this.placedStream)for(const generator of this.area.generators??[])if(generator.kind==='bullet'&&generator.heights){this.frenzyDue=generator;this.passNativeFrenzy();}if(visitTerrain){this.updateNativeCannons();this.passNativeCannons();}}
 
  private passNativeObjects(){
   if(this.parserClock.blocked)return;
@@ -3014,7 +3012,7 @@ export class Simulation {
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
  private startPlayAfterIntro(){if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}
- private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();return;}if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();}
+ private primeNativeReadyEnemies(){if(this.placedStream){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);this.passNativeObjects();}else if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativePipe||e.nativeId!==undefined||e.frenzy||e.nativeShot))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.updateNativeCannons();this.passNativeCannons();}
 
  private primeEntryPodoboos(){
   // InitializeGame already loads the in-range Podoboo on engine7. On the first engine8 row it takes its first MoveJ gravity step.

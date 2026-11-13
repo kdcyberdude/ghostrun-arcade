@@ -92,8 +92,9 @@ test('slots pick from 2 down to 0, and the cannon object holds its slot on the n
 });
 // 7-1 mood2/mood5 row 6, the first native row (engine 7, register 23 bf f8 87 ..): slot 1 picks entry 0 (cannon 304, loaded during the load screen) and attempts; the remake's first frame is
 // row 7 (11 df fc 43 bb 3c 4a, no pick), where native shows timer 14, then 14, 13 (row 9).
-test('the first native row of a level already runs a cannon pass on the register one frame back (7-1 row 6)',()=>{
+test('the actual engine7 entry row runs a cannon pass before the first ready-row register (7-1 row6)',()=>{
  const sim=fixture({cannons:[{x:304,y:176,native:true}]},[40,208]),s=sim as any;sim.level.id='7-1';sim.secondaryHardMode=true;sim.camera=0;
+ sim.random.bytes=[0x23,0xbf,0xf8,0x87];s.primeNativeEntryObjects(true);assert.equal(s.cannonTable[0].timer,14);
  sim.random.bytes=[0x11,0xdf,0xfc,0x43,0xbb,0x3c,0x4a];pass(s);assert.equal(s.cannonTable[0].timer,14);
  sim.random.bytes=[0x88,0xef,0xfe,0x21,0xdd,0x9e,0x25];pass(s);assert.equal(s.cannonTable[0].timer,14,'row 8: no pick');
  sim.random.bytes=[0xc4,0x77,0xff,0x10,0xee,0xcf,0x12];pass(s);assert.equal(s.cannonTable[0].timer,13,'row 9: slot 2 counts');
