@@ -36,7 +36,7 @@ export function compareRun(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:n
  initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
  const fields:Record<string,number|null>={dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,enemy:null};const at:{field:string,native:number,sim:number}[]=[];
  /* Native x is level-absolute: a bonus/pipe room can continue at a later page, so each later area visit is aligned on its first compared frame. */
- let area=sim.area.id,xOffset:number|undefined=0;
+ let area=sim.area.id,xOffset:number|undefined=-((entrance as {areaOffset?:number}).areaOffset??0);
  for(let f=0;f<pads.length;f++){
   sim.step(nesButtons.filter((_,b)=>pads[f]&(1<<b)),1);
   const raw=frameRam(f),n=nativeRow(raw);
