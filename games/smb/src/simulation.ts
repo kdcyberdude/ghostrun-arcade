@@ -3082,7 +3082,7 @@ export class Simulation {
   const body=(actor:Enemy)=>{const pos=from.get(actor)!;return {slot:actor.enemySlot!,x:Math.floor(pos.x),y:Math.floor(pos.y)-24,tall:actor.kind!=='goomba'&&actor.kind!=='spiny',turns:false,reacts:true};};
   for(const other of [...this.enemies].sort((a,b)=>(b.enemySlot??5)-(a.enemySlot??5))){
    if(other===e||!other.active||other.dead>=100||other.dead&&!other.squashed||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
-   if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera)))continue;
+   if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera+this.lakituScroll)))continue;
    const both=e.movingShell&&other.movingShell,shell=e.movingShell?e:other,victim=e.movingShell?other:e;
    if(both){this.stunShellVictim(e);this.floateyScore(200);} // ShellOrBlockDefeat overwrites the earlier control6 with control2.
    this.stunShellVictim(victim);this.floateyScore(([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)],victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
