@@ -181,7 +181,10 @@
       "baselineFps": 36.787447614407526,
       "optimizedFps": 70.35702247115398,
       "speedup": 1.9125279690129735
-    }
+    },
+    "fairTimingClaimValid": false,
+    "supersededBy": "games/smb/evidence/native-pixels-throughput-recheck.json",
+    "timingCaveat": "Original timing started after one row although the candidate had prefetched eight. Seven already-captured rows were counted in steadyFrames. Keep these as historical recorded outputs, not a fair performance claim; the fresh receipt uses the same eight-row warmup in both versions."
   },
   "postRestart": {
     "nativeBenchmarkRerun": false,

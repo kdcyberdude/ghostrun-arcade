@@ -1,0 +1,441 @@
+{
+  "schema": "native-pixels-throughput-recheck-v1",
+  "status": "FRESH_EXACT_MEASUREMENT_PASS",
+  "runtime": "4aa045a4229d86257de11ae95f6781fc8e9802e1",
+  "runtimeSourceUnchangedFromBaseline": true,
+  "baselineToolSha256": "262642cf2172eee2b566049f8da42e938e9590a5cb71a55b5682118507454bb5",
+  "candidateToolSha256": "7546dae0b6d06cb412ba3c7da7a304563ebca05a9b40144e161d0ecc76fd75d8",
+  "benchmarkHelperSha256": "6a2cb300e19f45c69135fa09601b1334c04249c3e055104eb4d5456bf13873c4",
+  "captureIdentity": [
+    {
+      "level": "1-1",
+      "metadata": {
+        "schema": "native-entrance-pixels-v1",
+        "step": 1,
+        "width": 240,
+        "height": 224,
+        "frames": 3020,
+        "lag": 1,
+        "padSha256": "181a7ff018c693599e03b1a91cbe78238e80c5f7fd02c96ccfb5f40fa4517916",
+        "ramSha256": "c23dafaa7222862a82883a8e45f6f6c49b3c39fe799b377aac789c967ca9ee1b",
+        "pixelsSha256": "c0352cae2f86b69a318e9a0881fec0c57d9190275ebcc8eb15e4cbce3983fedd",
+        "emphasisSha256": "d7ea67ac7f0ec3820793cb3483e5287200b5ae2f060c22d9257c0d84f9ca5545",
+        "initialPixelsSha256": "dae337bbe5d60aee5b9331fa17e02f9ce84c3c3f96940b5464f7e49c9d090dac",
+        "initialEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+        "format": "Lossless NES palette indices, native x8..247/y8..231 and per-row emphasis.",
+        "method": "Complete archived entrance PPU seed and subsequent controller-only frames; every original baseline RAM row and common prefix reproduced, rendering preserves CPU RAM on every sample."
+      },
+      "actualHashesMatchMetadata": true,
+      "initialRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8"
+    },
+    {
+      "level": "5-4",
+      "metadata": {
+        "schema": "native-entrance-pixels-v1",
+        "step": 1,
+        "width": 240,
+        "height": 224,
+        "frames": 2672,
+        "lag": 1,
+        "padSha256": "94e743d1ed0be11d3de5108e2df29fdb3316b247867772450b7129cf8804a356",
+        "ramSha256": "da787c1a1afcdf22b72f2643072a6ab94b03b39ce7a5c3d0b935a5bc92fad5f8",
+        "pixelsSha256": "6dad6ba15fd0cdce79b31fa961c5315557175eb021d20e68caca86a0092c2a37",
+        "emphasisSha256": "46945cee38ea41f291535f19faa87134e5045dd3b6a6007cd6f562b1ff14b1d0",
+        "initialPixelsSha256": "0a80866ccf7778855b86aa831c41b48432f90b5a55f7d35c5c44ab88b248e283",
+        "initialEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+        "format": "Lossless NES palette indices, native x8..247/y8..231 and per-row emphasis.",
+        "method": "Complete archived entrance PPU seed and subsequent controller-only frames; every original baseline RAM row and common prefix reproduced, rendering preserves CPU RAM on every sample."
+      },
+      "actualHashesMatchMetadata": true,
+      "initialRamSha256": "32e01bfd5d9dd80146c3215020f29fb110e721fd3b2e888f4ff4edb3d39d7093"
+    }
+  ],
+  "measurementScope": {
+    "method": "assert.deepEqual of the full old/new report arrays plus PNG-byte SHA256 maps; no report rows dropped",
+    "timing": "Identical eight-row warmup excluded from elapsed timing in BOTH versions; steadyFrames is rows minus8. Candidate explicitly uses readback-batch8. Warmup rows remain compared and hashed.",
+    "lag1ComparedRows": 256,
+    "lag0ComparedRows": 40,
+    "limitedWindows": true,
+    "wholeLevelOrCorpusFidelityClaim": false
+  },
+  "lag1": {
+    "runtime": "4aa045a4229d86257de11ae95f6781fc8e9802e1",
+    "timing": {
+      "warmupRows": 8,
+      "readbackBatch": 8,
+      "allRowsCompared": true
+    },
+    "baselineToolSha256": "262642cf2172eee2b566049f8da42e938e9590a5cb71a55b5682118507454bb5",
+    "candidateToolSha256": "7546dae0b6d06cb412ba3c7da7a304563ebca05a9b40144e161d0ecc76fd75d8",
+    "results": [
+      {
+        "window": "1-1:1428-1437",
+        "level": "1-1",
+        "from": 1428,
+        "to": 1437,
+        "lag": 1,
+        "repeat": 0,
+        "equalReportHash": "3b19a18d0a407b7e074caae7ef14ebb45b344257a53878c3fb4d350d0453e8b5",
+        "pngHashes": {
+          "1-1/01432.png": "43bdb844c99ea0d054a5426abf1ab350abab91762c835e3562adc38b15f0ac37"
+        },
+        "rows": 10,
+        "nonzeroFrames": 10,
+        "shiftedFrames": 0,
+        "scrolledFrames": 9,
+        "nativeModes": {
+          "1": 10
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 3020,
+          "availableNativeFrames": 3020,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 3010,
+          "excluded": {
+            "mode1": 2844,
+            "mode2": 0,
+            "otherMode": 0,
+            "differentLevel": 166
+          },
+          "comparedFrames": 10,
+          "alignedFrames": 10,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 0,
+          "comparedAlignedPixels": 480000,
+          "expectedAlignedPixels": 480000,
+          "overlapFraction": 1
+        },
+        "baseline": {
+          "steadyFps": 41.6969586385161,
+          "steadySeconds": 0.047965128999901935,
+          "steadyFrames": 2,
+          "wallSeconds": 5.4748979739998465
+        },
+        "candidate": {
+          "steadyFps": 46.500186698247504,
+          "steadySeconds": 0.043010580000001936,
+          "steadyFrames": 2,
+          "wallSeconds": 5.0723068119999954
+        }
+      },
+      {
+        "window": "1-1:1400-1463",
+        "level": "1-1",
+        "from": 1400,
+        "to": 1463,
+        "lag": 1,
+        "repeat": 0,
+        "equalReportHash": "d0af2b3800fdb22e0d67419f582c3e95c218450bfa6667a2954dee282e408970",
+        "pngHashes": {
+          "1-1/01431.png": "106d3f714d0f957ca093e3a0102d725005a58b1e37cce419218bc0c9789e8f30"
+        },
+        "rows": 64,
+        "nonzeroFrames": 10,
+        "shiftedFrames": 0,
+        "scrolledFrames": 63,
+        "nativeModes": {
+          "1": 64
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 3020,
+          "availableNativeFrames": 3020,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 2956,
+          "excluded": {
+            "mode1": 2790,
+            "mode2": 0,
+            "otherMode": 0,
+            "differentLevel": 166
+          },
+          "comparedFrames": 64,
+          "alignedFrames": 64,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 0,
+          "comparedAlignedPixels": 3072000,
+          "expectedAlignedPixels": 3072000,
+          "overlapFraction": 1
+        },
+        "baseline": {
+          "steadyFps": 58.38812803701011,
+          "steadySeconds": 0.959099082000088,
+          "steadyFrames": 56,
+          "wallSeconds": 5.914771420000121
+        },
+        "candidate": {
+          "steadyFps": 107.82692400823633,
+          "steadySeconds": 0.5193508069999516,
+          "steadyFrames": 56,
+          "wallSeconds": 5.489336799999932
+        }
+      },
+      {
+        "window": "5-4:1750-1849",
+        "level": "5-4",
+        "from": 1750,
+        "to": 1849,
+        "lag": 1,
+        "repeat": 0,
+        "equalReportHash": "d14a7e4987eb8af1ef8bf1d520e0519abcdbacb104c8db4507025e7d5d6b367b",
+        "pngHashes": {
+          "5-4/01799.png": "d2b265f021ca1118cab6da31d68ab3fa803665222b2a67f79cbb05dc922e48ba"
+        },
+        "rows": 100,
+        "nonzeroFrames": 0,
+        "shiftedFrames": 0,
+        "scrolledFrames": 0,
+        "nativeModes": {
+          "1": 53,
+          "2": 47
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 2672,
+          "availableNativeFrames": 2672,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 2572,
+          "excluded": {
+            "mode1": 1750,
+            "mode2": 657,
+            "otherMode": 0,
+            "differentLevel": 165
+          },
+          "comparedFrames": 100,
+          "alignedFrames": 100,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 0,
+          "comparedAlignedPixels": 4800000,
+          "expectedAlignedPixels": 4800000,
+          "overlapFraction": 1
+        },
+        "baseline": {
+          "steadyFps": 60.56315276932431,
+          "steadySeconds": 1.5190754740000703,
+          "steadyFrames": 92,
+          "wallSeconds": 8.071068550999975
+        },
+        "candidate": {
+          "steadyFps": 115.57332851133489,
+          "steadySeconds": 0.796031413000077,
+          "steadyFrames": 92,
+          "wallSeconds": 7.223747687000083
+        }
+      },
+      {
+        "window": "5-4:2590-2671",
+        "level": "5-4",
+        "from": 2590,
+        "to": 2671,
+        "lag": 1,
+        "repeat": 0,
+        "equalReportHash": "0d7beaf62dc5390c5f86c3999c799ea6dcbb662b5da4776db74aed5874ef5b2c",
+        "pngHashes": {
+          "5-4/02630.png": "5e6d09bb8431ad0b1b5338ba56a27f3e5eae330f55c189e1e0eb790e2db81bd3"
+        },
+        "rows": 82,
+        "nonzeroFrames": 0,
+        "shiftedFrames": 0,
+        "scrolledFrames": 0,
+        "nativeModes": {
+          "1": 82
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 2672,
+          "availableNativeFrames": 2672,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 2590,
+          "excluded": {
+            "mode1": 1803,
+            "mode2": 704,
+            "otherMode": 0,
+            "differentLevel": 83
+          },
+          "comparedFrames": 82,
+          "alignedFrames": 82,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 0,
+          "comparedAlignedPixels": 3936000,
+          "expectedAlignedPixels": 3936000,
+          "overlapFraction": 1
+        },
+        "baseline": {
+          "steadyFps": 69.7060138410306,
+          "steadySeconds": 1.0616013730000704,
+          "steadyFrames": 74,
+          "wallSeconds": 9.076153233000078
+        },
+        "candidate": {
+          "steadyFps": 144.60068826728224,
+          "steadySeconds": 0.5117541339998134,
+          "steadyFrames": 74,
+          "wallSeconds": 8.659998015999793
+        }
+      }
+    ],
+    "summary": {
+      "status": "EXACT_MEASUREMENT_PASS",
+      "baseline": {
+        "frames": 224,
+        "seconds": 3.5877410580001303,
+        "fps": 62.43482915259819
+      },
+      "candidate": {
+        "frames": 224,
+        "seconds": 1.8701469339998438,
+        "fps": 119.77668488374438
+      },
+      "speedup": 1.9184273667346128
+    }
+  },
+  "lag0": {
+    "runtime": "4aa045a4229d86257de11ae95f6781fc8e9802e1",
+    "timing": {
+      "warmupRows": 8,
+      "readbackBatch": 8,
+      "allRowsCompared": true
+    },
+    "baselineToolSha256": "262642cf2172eee2b566049f8da42e938e9590a5cb71a55b5682118507454bb5",
+    "candidateToolSha256": "7546dae0b6d06cb412ba3c7da7a304563ebca05a9b40144e161d0ecc76fd75d8",
+    "results": [
+      {
+        "window": "1-1:1424-1443",
+        "level": "1-1",
+        "from": 1424,
+        "to": 1443,
+        "lag": 0,
+        "repeat": 0,
+        "equalReportHash": "0b34cebd83e3419be7e9d0394535af0c726d2ac779a7253edeb61b26c63ab1b2",
+        "pngHashes": {
+          "1-1/01433.png": "563d7fc46fe0bc4b49781b72f3b2241c6fa5fd07ff5a6ecb4f309d989d591d45"
+        },
+        "rows": 20,
+        "nonzeroFrames": 20,
+        "shiftedFrames": 20,
+        "scrolledFrames": 19,
+        "nativeModes": {
+          "1": 20
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 3020,
+          "availableNativeFrames": 3020,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 3000,
+          "excluded": {
+            "mode1": 2834,
+            "mode2": 0,
+            "otherMode": 0,
+            "differentLevel": 166
+          },
+          "comparedFrames": 20,
+          "alignedFrames": 20,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 20,
+          "comparedAlignedPixels": 950800,
+          "expectedAlignedPixels": 960000,
+          "overlapFraction": 0.9904166666666666
+        },
+        "baseline": {
+          "steadyFps": 50.24328110733433,
+          "steadySeconds": 0.23883790499996393,
+          "steadyFrames": 12,
+          "wallSeconds": 5.355301917000208
+        },
+        "candidate": {
+          "steadyFps": 62.866812132039804,
+          "steadySeconds": 0.1908797280001454,
+          "steadyFrames": 12,
+          "wallSeconds": 5.203967083000112
+        }
+      },
+      {
+        "window": "5-4:1794-1813",
+        "level": "5-4",
+        "from": 1794,
+        "to": 1813,
+        "lag": 0,
+        "repeat": 0,
+        "equalReportHash": "3231847cde8c01b38d997eefee56640ff31716f2faa59e8f165b1ba461429cde",
+        "pngHashes": {
+          "5-4/01803.png": "5732af48e91906091d0ce0a50aaabb085a0bb6cdb2d22f08f291c65cc53f33e0"
+        },
+        "rows": 20,
+        "nonzeroFrames": 10,
+        "shiftedFrames": 0,
+        "scrolledFrames": 0,
+        "nativeModes": {
+          "1": 9,
+          "2": 11
+        },
+        "errors": [],
+        "coverage": {
+          "completeInputSequence": false,
+          "inputFrames": 2672,
+          "availableNativeFrames": 2672,
+          "allFrames": true,
+          "victory": false,
+          "excludedFrames": 2652,
+          "excluded": {
+            "mode1": 1794,
+            "mode2": 693,
+            "otherMode": 0,
+            "differentLevel": 165
+          },
+          "comparedFrames": 20,
+          "alignedFrames": 20,
+          "unresolvedAlignmentFrames": 0,
+          "noOverlapFrames": 0,
+          "partialOverlapFrames": 0,
+          "comparedAlignedPixels": 960000,
+          "expectedAlignedPixels": 960000,
+          "overlapFraction": 1
+        },
+        "baseline": {
+          "steadyFps": 50.04349885174957,
+          "steadySeconds": 0.23979138700012118,
+          "steadyFrames": 12,
+          "wallSeconds": 7.208774993999861
+        },
+        "candidate": {
+          "steadyFps": 59.169868052305006,
+          "steadySeconds": 0.20280592800024896,
+          "steadyFrames": 12,
+          "wallSeconds": 6.947041311000008
+        }
+      }
+    ],
+    "summary": {
+      "status": "EXACT_MEASUREMENT_PASS",
+      "baseline": {
+        "frames": 24,
+        "seconds": 0.4786292920000851,
+        "fps": 50.14319098546884
+      },
+      "candidate": {
+        "frames": 24,
+        "seconds": 0.3936856560003944,
+        "fps": 60.96234301199929
+      },
+      "speedup": 1.215765128104148
+    }
+  },
+  "persistentRawReports": "/home/kd/.codex/worktrees/smb-native-pixels-recovered/recovery/measurements/pixel-bench-recheck",
+  "supersedes": "games/smb/evidence/native-pixels-throughput-recovered.json throughput timing: one warmup row incorrectly included seven prefetched candidate rows in its timed-frame denominator."
+}
