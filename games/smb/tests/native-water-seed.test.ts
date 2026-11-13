@@ -14,7 +14,7 @@ for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row
  sim.camera=r[0x71a]*256+r[0x71c];sim.random.bytes=Array.from(r.subarray(0x7a7,0x7ae));sim.random.frame=r[9];sim.broClock=r[9];sim.intervalControl=r[0x77f];sim.alignLifeClock(r[0x77f]);
  sim.time=r[0x7f8]*100+r[0x7f9]*10+r[0x7fa];sim.timerFrames=r[0x787]===0?23:(24-r[0x787])%24;sim.score=Array.from(r.subarray(0x7dd,0x7e3)).reduce((a,b)=>a*10+b,0)*10;sim.coins=r[0x75e];sim.lives=r[0x75a]+1;
  sim.player.size=r[0x756];sim.player.facing=r[0x33]===2?-1:1;sim.secondaryHardMode=Boolean(r[0x6cc]);sim.colorRotations=r[0x6d4];sim.playerAnim.reset(r[0x70d],r[0x781],r[0x70c],false);
- Object.assign(sim.specialSlot5,{frenzyQueue:r[0x6cd],frenzyBuffer:r[0x6cb]});sim.parserClock.task=r[0x71f];sim.parserClock.scroll=r[0x73d];
+ Object.assign(sim.specialSlot5,{frenzyQueue:r[0x6cd],frenzyBuffer:r[0x6cb]});sim.parserClock.task=r[0x71f];sim.parserClock.scroll=r[0x73d];sim.areaControls.seedNative(r[0x725]*16+r[0x726],Boolean(r[0x723]));
  const state=JSON.parse(JSON.stringify(decodeNativeWater(r)));initializeNativeWater(sim,state);sim.step([],0);sim.inputs=[];
  const names:Button[]=['a','b','select','start','up','down','left','right'];
  for(let i=0;i<c.pads.length;i++){

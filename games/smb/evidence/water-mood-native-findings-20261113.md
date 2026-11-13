@@ -59,3 +59,9 @@ Checkpoint initialization is a separate canonical runtime issue, reported to the
 The area-control generator now preserves the existing special-command .areas and control .streams/.bindings, and regenerates each bound source stream directly from ROM. Full39-area regeneration is byte-for-byte structurally identical to committed metadata, including every prior castle binding and special command. Runtime simulation is unchanged in this slice; parent integration supplies the canonical generic helper wiring.
 
 The complete22 earlier downstream rest-latch field changes, each with its preceding retained firsts and native event, are preserved in `water-mood-rest-downstream.json`.
+
+## Natural checkpoint parser-column initialization
+
+The canonical control constructor now takes the initial ScreenLeft position. It translates that position to native coordinates using the source binding origin, derives InitializeArea's start page, adds the24-column screen preload, then converts the resulting column back to local coordinates. loadArea passes its initial camera. A scene origin is added and subtracted exactly once;8-4's source-origin256 room still starts at local column24.
+
+Natural loadArea regressions use unmodified native7-2 RAM snapshots: fresh row352 starts at24, checkpoint rows3112/3113 start at104 from screen-left1280. No snapshot column override is used for those load assertions. Full32 legacy/strict every-field firsts are identical to the fair canonical39d merged baseline. All178 water epochs are byte-identical under the proper canonical snapshot initializer (60 completely matching checked-RAM epochs); explicit snapshot column seeding correctly overrides natural load defaults. The portable profile test now also seeds raw parser column/lock and extends9c64 to2,200 following frames, through native22048 lock/22049 camera hold; all6,100 portable frames pass.
