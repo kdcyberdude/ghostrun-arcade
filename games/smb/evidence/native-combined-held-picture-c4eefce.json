@@ -1,0 +1,425 @@
+{
+  "schema": "native-combined-held-picture-proof-v1",
+  "runtimeCommit": "c4eefce44deb88cc07afacf079b0a5c683d5e367",
+  "runtimeTrees": {
+    "src": "9b289a333ce372e4a3e9a2e96b6d9225ca38d544",
+    "data": "d46d1d81a9141cfc7b8280760d3133e42ae4bb74",
+    "assets": "abd75ee75a061c52d6b8ff1fd4ec93795a2d67bf"
+  },
+  "recordedAtUTC": "2026-11-13T14:36:15.432299+00:00",
+  "browser": "Google Chrome 145.0.7632.45",
+  "node": "v18.19.1",
+  "rendering": "Headless Chrome, SwiftShader (--use-angle=swiftshader --enable-unsafe-swiftshader), unmodified 2D production renderer",
+  "tool": {
+    "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/probe.cjs",
+    "sha256": "cf19f78fd3a052fe60485a969e1d64e02a411e7efb0172b3ee6e871ecd0a3a1e",
+    "gameDirectory": "/home/kd/.codex/worktrees/smb-contact-compat/ghostrun-arcade/games/smb",
+    "paletteProtocol": "native-pixels.ts NES/reference RGB and fixed remake palette mapping; no tolerance",
+    "nativePixelHarnessSha256": "20b40a7f48c173f74aead11500501551769ca2bcbfa3bd4bf6c2fab0326696bc"
+  },
+  "protocol": {
+    "reset": "window.mario.reset({playing:false}) once per capture; source POWER-ON",
+    "inputs": "Every source pad0..f-1 applied once before picturef; no native RAM/pose/HUD injection, entrance seed, seek, skip or later state correction",
+    "pixelReference": "native pixels.bin framef; descriptive native RAM snapshotf-1",
+    "viewport": "entire captured240x224 atNESx8/y8; HUDfirst24rows,fieldremaining200; no scroll fitting or excluded pixels",
+    "scope": "8 selected causal frames only; every earlier input replayed but earlier pictures not audited; NOT continuous whole-run parity or state/picture joint proof"
+  },
+  "cases": [
+    {
+      "sha256": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+      "sourceFrames": 11424,
+      "source": {
+        "schema": "native-poweron-capture-v1",
+        "padSha256": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+        "frames": 11424,
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "3bf26c158fd657b98e3af2c9225e3330b963280f4defc42c0dbb5d03c0ddabfd",
+        "binarySha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+        "powerOn": "HostMachine cold reset; CPU RAM FF; PPU dot0; first target vblank241:1; no hidden frames",
+        "padBits": [
+          "A",
+          "B",
+          "Select",
+          "Start",
+          "Up",
+          "Down",
+          "Left",
+          "Right"
+        ],
+        "provenance": [
+          {
+            "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it002485/smb_mood7.pads.bin",
+            "summary": {
+              "game": "smb",
+              "ret": 0.6233294606208801,
+              "decisions": 2801,
+              "end": "stall",
+              "deaths": 1,
+              "level": 1,
+              "events": 3,
+              "mood": 7,
+              "parts": {
+                "progress": 1.3503,
+                "level": 1,
+                "death": -0.1,
+                "damage": 0,
+                "score": 0.3,
+                "win": 0,
+                "stall": -1.927
+              },
+              "video": "runs/rl/smb-20261110c-moods/videos/it002485_smb_mood7.mp4"
+            }
+          }
+        ]
+      },
+      "pixelCapture": {
+        "schema": "native-poweron-pixels-v1",
+        "step": 1,
+        "width": 240,
+        "height": 224,
+        "frames": 11424,
+        "padSha256": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+        "ramSha256": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+        "pixelsSha256": "30985a7980317e7c62694f057393da843c1f26c67c9ed5fb4bec445a9478d30f",
+        "emphasisSha256": "026e028edb16f5001b85415a8fffdd95ad0ebbc92ba5e97134d3b277bd7fee97",
+        "format": "lossless NES palette indices and per-row emphasis, one binary frame per source pad"
+      },
+      "verifiedFileSha256": {
+        "pads": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+        "ram": "b86a433888d16a9dff9f519c5f18064f8d46d6633fa9d18f308d26938818ca3f",
+        "initial": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "pixels": "30985a7980317e7c62694f057393da843c1f26c67c9ed5fb4bec445a9478d30f",
+        "emphasis": "026e028edb16f5001b85415a8fffdd95ad0ebbc92ba5e97134d3b277bd7fee97"
+      },
+      "rowsPath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/rows.json",
+      "rowsSha256": "09ebc9fdf5798dfc766bb6654d29bff34c0a4b8ce86dc511e26c97caa18030b6",
+      "port": 54431,
+      "frames": [
+        {
+          "frame": 527,
+          "padsApplied": 527,
+          "lastAppliedPad": 526,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "fbe448eff63ddda139b81547967823871372bc59497e0c7927cbecd578376e89",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/527.png",
+          "comparisonImageSha256": "845414ef8bfcd27e94fa4767b8357d8cb79063108c4544ccd4a0f53e372fa78f",
+          "nativeCounter": 208,
+          "modelCounter": 208,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 528,
+          "padsApplied": 528,
+          "lastAppliedPad": 527,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "991bf2c40b237f7b4f36cc4cb9e41efce07ebe3d1a8bebcb0eab0b40e693a17c",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/528.png",
+          "comparisonImageSha256": "03f6bc7047c549aa7fe9b95aa79629528db771195c5d4b0ae56852047e25a02e",
+          "nativeCounter": 209,
+          "modelCounter": 209,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 600,
+          "padsApplied": 600,
+          "lastAppliedPad": 599,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "891413052fa1983a394c67d1fc7c9978d8dfb26763c296b4065534b356378fa0",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/600.png",
+          "comparisonImageSha256": "a300be1358af939eefc9994e21a8e72c37868c5a0ed2849e204e51820d36426e",
+          "nativeCounter": 25,
+          "modelCounter": 25,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 733,
+          "padsApplied": 733,
+          "lastAppliedPad": 732,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "4b5f8d4c8cbbb1aa1175e405dda3ac921e71586dceb2a4e7c2e77a45a5bd49b5",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/733.png",
+          "comparisonImageSha256": "dd90d58d148705822854c97dec3b88565040ec2f0a041d4f3f4740a8ad951a81",
+          "nativeCounter": 158,
+          "modelCounter": 158,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 734,
+          "padsApplied": 734,
+          "lastAppliedPad": 733,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "4b5f8d4c8cbbb1aa1175e405dda3ac921e71586dceb2a4e7c2e77a45a5bd49b5",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/ae9583/734.png",
+          "comparisonImageSha256": "dd90d58d148705822854c97dec3b88565040ec2f0a041d4f3f4740a8ad951a81",
+          "nativeCounter": 159,
+          "modelCounter": 159,
+          "nativeEngine": 6,
+          "modelPhase": "dying"
+        }
+      ]
+    },
+    {
+      "sha256": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+      "sourceFrames": 18316,
+      "source": {
+        "schema": "native-poweron-capture-v1",
+        "padSha256": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+        "frames": 18316,
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "3bf26c158fd657b98e3af2c9225e3330b963280f4defc42c0dbb5d03c0ddabfd",
+        "binarySha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "ramSha256": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+        "powerOn": "HostMachine cold reset; CPU RAM FF; PPU dot0; first target vblank241:1; no hidden frames",
+        "padBits": [
+          "A",
+          "B",
+          "Select",
+          "Start",
+          "Up",
+          "Down",
+          "Left",
+          "Right"
+        ],
+        "provenance": [
+          {
+            "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it002208/smb_mood4.pads.bin",
+            "summary": {
+              "game": "smb",
+              "ret": 7.336771488189697,
+              "decisions": 4524,
+              "end": "game_over",
+              "deaths": 3,
+              "level": 4,
+              "events": 8,
+              "mood": 4,
+              "parts": {
+                "progress": 4.6017,
+                "level": 4,
+                "death": -0.3,
+                "damage": 0,
+                "score": 0.78,
+                "win": 0,
+                "stall": -1.745
+              },
+              "video": "runs/rl/smb-20261110c-moods/videos/it002208_smb_mood4.mp4"
+            }
+          }
+        ]
+      },
+      "pixelCapture": {
+        "schema": "native-poweron-pixels-v1",
+        "step": 1,
+        "width": 240,
+        "height": 224,
+        "frames": 18316,
+        "padSha256": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+        "ramSha256": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+        "pixelsSha256": "5ffc8c371827c55e750234013db0f9e474f15d0b04040798dd1ffc4f79df4e67",
+        "emphasisSha256": "0089e6e80b7b0355d24d24ab677477ad68bb847bfe2ba7397dc067a6f54f428e",
+        "format": "lossless NES palette indices and per-row emphasis, one binary frame per source pad"
+      },
+      "verifiedFileSha256": {
+        "pads": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+        "ram": "23290ba18a3606e140b63bef96cd0a0ea49fd41760753bca30f44343746ce2f8",
+        "initial": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "pixels": "5ffc8c371827c55e750234013db0f9e474f15d0b04040798dd1ffc4f79df4e67",
+        "emphasis": "0089e6e80b7b0355d24d24ab677477ad68bb847bfe2ba7397dc067a6f54f428e"
+      },
+      "rowsPath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/638612/rows.json",
+      "rowsSha256": "35432c3fe0f32de92f15b457515a58a4f200575772c4f16bedf030fe82ba4d86",
+      "port": 54432,
+      "frames": [
+        {
+          "frame": 1071,
+          "padsApplied": 1071,
+          "lastAppliedPad": 1070,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "547ccd405f7a7f0636cee4e31edbf19a5994fadf00bcaab9c4aa520ce920a3e1",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/638612/1071.png",
+          "comparisonImageSha256": "814ff8e9c926cbf0c9db35df90dd6798aa1d8fd0c278ef112ace15454eddbdc5",
+          "nativeCounter": 240,
+          "modelCounter": 240,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 1077,
+          "padsApplied": 1077,
+          "lastAppliedPad": 1076,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "26bdf816f1635b3a2608435578148efe287e7de85294f9c4b7bc46bcc00ec03b",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/638612/1077.png",
+          "comparisonImageSha256": "e82d8544f184c7ae8848422838c5ffd62b66bc289f7e4287308217390924f6e3",
+          "nativeCounter": 246,
+          "modelCounter": 246,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        },
+        {
+          "frame": 1085,
+          "padsApplied": 1085,
+          "lastAppliedPad": 1084,
+          "wholePixelsCompared": 53760,
+          "hudPixelsCompared": 5760,
+          "fieldPixelsCompared": 48000,
+          "wholeDifferences": 0,
+          "hudDifferences": 0,
+          "fieldDifferences": 0,
+          "excludedPixels": 0,
+          "differenceBounds": [
+            240,
+            224,
+            -1,
+            -1
+          ],
+          "nativePixelsSha256": "f97a61cb34d2339a34e3ce37519323dc1c4e17c0d2538a1023c00bf2656a4e20",
+          "nativeEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+          "emphasisValues": [
+            0
+          ],
+          "comparisonImage": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/contacts-held-pictures-c4eefce/638612/1085.png",
+          "comparisonImageSha256": "981ec76cae80471cd51f8f78f18c45e28a66210e969c6a7d67dd2bc8c0555596",
+          "nativeCounter": 254,
+          "modelCounter": 254,
+          "nativeEngine": 11,
+          "modelPhase": "dying"
+        }
+      ]
+    }
+  ],
+  "total": {
+    "selectedFrames": 8,
+    "wholePixelsCompared": 430080,
+    "hudPixelsCompared": 46080,
+    "fieldPixelsCompared": 384000,
+    "wholeDifferences": 0,
+    "hudDifferences": 0,
+    "fieldDifferences": 0,
+    "excludedPixels": 0,
+    "errors": 0
+  },
+  "retainedLimitations": [
+    "Only 8 explicit frames were GPU-compared; all other pictures remain unchecked by this receipt.",
+    "This is not proof of parity for the whole input, corpus, or joint state and picture results.",
+    "The original 3020-frame replay was not rerun; the parent owns the broader combined gate."
+  ]
+}
