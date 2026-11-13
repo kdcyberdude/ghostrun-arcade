@@ -1,0 +1,356 @@
+{
+  "base": "4d39a1e",
+  "scope": "Already-merged F backlog; field firsts, not sticky divergence counts or continuous dashboard proof",
+  "fiveOne": {
+    "before": {
+      "level": "5-1",
+      "frames": 4392,
+      "legacy": {
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "coins": null,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "enemy": 3238
+      },
+      "strict": {
+        "level": 4226,
+        "area": 4228,
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "coins": null,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "missing": 3255,
+        "extra": 3247,
+        "kind": 3402,
+        "position": 2300,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "continuation.frameCounter": 4228,
+        "continuation.random": 4228,
+        "continuation.interval": 4226,
+        "continuation.load.ready": null
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 0,
+        "ramFrames": 4392,
+        "flagFrames": 578,
+        "continuationFrames": 166,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 4392,
+        "inputFrames": 4392,
+        "endReason": "end of trace",
+        "frames": 4392,
+        "alignedFrames": 4226,
+        "nativeEntityRows": 10991,
+        "comparedEntityRows": 10987,
+        "nativeBirthRows": 80,
+        "areaFrames": {
+          "main": 4228,
+          "area-2": 164
+        },
+        "complete": false
+      }
+    },
+    "after": {
+      "level": "5-1",
+      "frames": 4392,
+      "legacy": {
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "coins": null,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "enemy": 3238
+      },
+      "strict": {
+        "level": 4226,
+        "area": 4228,
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "coins": null,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "missing": 3255,
+        "extra": 3247,
+        "kind": 3402,
+        "position": 3238,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "continuation.frameCounter": 4228,
+        "continuation.random": 4228,
+        "continuation.interval": 4226,
+        "continuation.load.ready": null
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 0,
+        "ramFrames": 4392,
+        "flagFrames": 578,
+        "continuationFrames": 166,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 4392,
+        "inputFrames": 4392,
+        "endReason": "end of trace",
+        "frames": 4392,
+        "alignedFrames": 4226,
+        "nativeEntityRows": 10991,
+        "comparedEntityRows": 10987,
+        "nativeBirthRows": 80,
+        "areaFrames": {
+          "main": 4228,
+          "area-2": 164
+        },
+        "complete": false
+      }
+    }
+  },
+  "twoOneDiagnostic": {
+    "receipt": {
+      "schema": "native-mood-entry-v1",
+      "level": "2-1",
+      "initialRamSha256": "0897807f9e7565e9a4d6c1fbec58e2070f077f2f3c42f3e3258c9425accf5937",
+      "actionsSha256": "d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132",
+      "sourceFrameOffset": 14922,
+      "sourcePadSha256": "d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132",
+      "areaBinding": {
+        "area": "main",
+        "code": 40,
+        "data": 42959,
+        "entryPage": 0,
+        "offset": 0,
+        "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+      },
+      "provenance": [
+        {
+          "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it001593/smb_mood3.pads.bin",
+          "summary": {
+            "game": "smb",
+            "ret": 7.489443778991699,
+            "decisions": 7481,
+            "end": "game_over",
+            "deaths": 3,
+            "level": 5,
+            "events": 9,
+            "mood": 3,
+            "parts": {
+              "progress": 5.436,
+              "level": 5,
+              "death": -0.3,
+              "damage": 0,
+              "score": 0.94,
+              "win": 0,
+              "stall": -3.586
+            },
+            "video": "runs/rl/smb-20261110c-moods/videos/it001593_smb_mood3.mp4"
+          }
+        }
+      ],
+      "initializationRole": "gameplay",
+      "initialization": "first source engine7/8 row supported by snapshot initializer; no later convenient-pose search",
+      "notReconstructed": [
+        "full native machine state",
+        "hidden simulation state without an initializer"
+      ]
+    },
+    "before": {
+      "fields": {
+        "level": null,
+        "area": null,
+        "dead": 1384,
+        "time": 1391,
+        "score": 1343,
+        "coins": null,
+        "cam": 1385,
+        "x": 1385,
+        "y": 1339,
+        "missing": 1393,
+        "extra": 1344,
+        "kind": 1338,
+        "position": 1371,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "samples": [
+        {
+          "frame": 1338,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "paratroopa",
+            "x": 2449,
+            "y": 242,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 2448,
+            "y": 239,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1339,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "paratroopa",
+            "x": 2449,
+            "y": 245,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 2447,
+            "y": 239,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1340,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "paratroopa",
+            "x": 2450,
+            "y": 248,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 2447,
+            "y": 239,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1341,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "paratroopa",
+            "x": 2450,
+            "y": 252,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 2446,
+            "y": 239,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1342,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "paratroopa",
+            "x": 2451,
+            "y": 255,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 2446,
+            "y": 240,
+            "source": "enemy"
+          }
+        }
+      ]
+    },
+    "after": {
+      "fields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "samples": []
+    }
+  }
+}

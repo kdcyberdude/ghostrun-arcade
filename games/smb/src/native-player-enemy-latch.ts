@@ -4,7 +4,8 @@
 import {nativeBoxesOverlap,nativeMiscOffscreen,type NativeBox} from './native-misc.js';
 export function nativePlayerEnemyLatch(n:{bits:number},i:{frame:number;engine:number;playerY:number;state:number;offscreen:boolean;player:NativeBox;enemy:NativeBox|undefined;star:boolean}):'skip'|'separate'|'held'|'contact'|'star'{
  if(i.frame&1||i.engine!==8||i.playerY<0||i.playerY>=208||i.offscreen||i.state&32)return 'skip';
- if(!i.enemy||!nativeBoxesOverlap(i.player,i.enemy)){n.bits&=254;return 'separate';}
+ // PlayerCollisionCore keeps X=player and Y=enemy; wrapped intervals make operand order significant.
+ if(!i.enemy||!nativeBoxesOverlap(i.enemy,i.player)){n.bits&=254;return 'separate';}
  if(i.star)return 'star';
  if(n.bits&1)return 'held';n.bits|=1;return 'contact';
 }
