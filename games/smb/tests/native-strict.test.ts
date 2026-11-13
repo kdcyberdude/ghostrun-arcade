@@ -31,7 +31,7 @@ test('native flame and power-up item readouts use their enemy slot and actual co
  assert.deepEqual(entities[1],{bank:'enemy',slot:5,kind:'mushroom',x:40,y:24,source:'powerup',state:1});
 });
 test('unsupported native objects and aliases are explicit gaps, never a clean comparison',()=>{
- const r=ramEnemy(36);r[0xf+1]=0x80;r[0x16+1]=27;
+ const r=ramEnemy(35);r[0xf+1]=0x80;r[0x16+1]=27;
  const out=strictEntityDifferences(strictNativeEntities(r),[]);
  assert.deepEqual(out.gaps.map(g=>g.code),['unsupported-native-object','native-alias']);assert.equal(out.mismatches.length,0);
 });
