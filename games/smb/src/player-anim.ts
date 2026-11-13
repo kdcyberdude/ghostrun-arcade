@@ -15,6 +15,8 @@ export class PlayerAnim{
  tick(){if(this.timer>0)this.timer--;}
  /** GetPlayerAnimSpeed: the reload from Player_XSpeedAbsolute $0700 before this frame's friction (run 0x1c+, walk 0x0e+, slow). */
  setSpeed(absolute:number){this.timerSet=ANIM_TIMER_SET[absolute>=0x1c?0:absolute>=0x0e?1:2];}
+ /** PlayerPhysicsSub climbing: #8, halved for stationary/downward speed, retained for upward speed. */
+ setClimb(speed:number){this.timerSet=speed<0?8:4;}
  /** NonAnimatedActs. */
  still(){this.ctrl=0;return 0;}
  /** GetCurrentAnimOffset without the advance. */

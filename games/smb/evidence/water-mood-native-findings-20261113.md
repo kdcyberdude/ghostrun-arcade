@@ -91,3 +91,35 @@ Full178 comparison improves19 field firsts and increases matching checked-RAM ep
 Capture0a766fa4fee6a522569ef5c7fb56a7d73d3b4a863a742c0318bc1d21a833da17 checkpoint epoch9 source26385..26387 keeps wall residue32 through neutral/A-only input; cached absolute remains7 and moving remainsright.26388 Up-only clears both speed bytes. GetPlayerAnimSpeed checks SavedJoypadBits&$7f before masking LR; Up therefore triggers the low-speed stop when its LR0 disagrees with nonzero moving. The water helper previously received only LR/Down/B, so Up could not cause this source behavior.
 
 The helper now receives Up for both floor and airborne control and uses the same prior-absolute<11 gate. A2,200-frame native checkpoint fixture includes this transition and follows Mario, camera, water state, actors, bubbles and source parser/owners. Full178 comparison improves52 field firsts and increases matching checked-RAM epochs73→76, with no earlier epoch-first error. Four later fields shift earlier only in52116322 epoch9, after its retained independent first1: Y3459→666, RNG/counter3653→867 and vertical3821→1020. Full32 legacy/strict field-first tables remain identical. Sixteen portable snapshots cover12,900 frames.
+
+## Water enemies ignore block-bump background deaths
+
+Native EnemyToBGCollisionDet's CInvu branch compares enemy ID with7 and returns via ExEBGChk for Blooper7/swimming Cheep10/11, before ChkUnderEnemy/HandleEToBGCollision can process a bumped metatile. The remake's generic hitBlock proximity loop bypassed this source gate and killed nearby water enemies.
+
+Capture720e epoch9 source13440 keeps slot0 Blooper state0 at684,118 while the remake killed it;440313 epoch10 source21582 similarly retains slot2 grey Cheep1850,105. Mario/camera match at both first actor failures. Native scores remain70450 and80650 respectively through these bumps; the generic+100 award was also unsupported. The loop now excludes these native water actor kinds. Two700-frame checkpoint regressions preserve their actual source survival and subsequent movement.
+
+Full178 comparison improves6 field firsts without an earlier epoch-first error. One later vertical field in8f908 epoch10 becomes1855 after earliest1139→1700. Full32 legacy and strict first-field tables stay identical. Eighteen portable snapshots now cover14,300 native frames.
+
+## Preserve the post-contact pre-whirlpool sample
+
+Native bubbles and normal enemies sample Mario before GameEngine's trailing ProcessWhirlpools. NativeWater.contact already rewinds that trailing pass, applies ceiling/floor contact, and reapplies gravity, but discarded its updated pre-pass state afterward. On a contact that moves again in late gravity, updateBubbles therefore read final Mario Y instead of the earlier source Y.
+
+Capture01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46 epoch10 source16017 shows the resulting bubble0 spawn Y67 versus68, while Mario, bubble X, fraction, timer, enemies and RNG match. The helper now retains the newly recomputed sample and its actual moved pixels after contact. A900-frame native checkpoint fixture covers this case.
+
+Full178 comparison improves4 field firsts, raises matching checked-RAM epochs76→78, and has no earlier per-field changes. Full32 legacy/strict first-field tables remain identical. Nineteen portable snapshots cover15,200 native frames.
+
+## Grounded Down masks facing updates
+
+Native PlayerCtrlRoutine clears Left_Right_Buttons/Up_Down_Buttons when Down and LR are held in ground state before calling PlayerMovementSubs. Raw SavedJoypadBits still controls the separate low-speed animation reset, but the masked LR cannot turn PlayerFacingDir. swimStep incorrectly updated the rendered player's facing from raw LR even when its horizontal helper had correctly retained the old facing.
+
+Capturec91d9e96b7833bef2216b2e57ff5c61570e365a2e18d1fbd5ff93422c8812970 source25699..25702 holds Down+Right+B while grounded at Y176; facing/moving stayleft. The bubble spawned25701 is at MarioX2913, not right-facing2922. The facing update now respects the source ground Down mask, including the frame a floor stroke begins. A1,900-frame native checkpoint regression captures this bubble X and following state. This also corrects Mario's visual facing.
+
+Full178 comparison improves5 bubble field firsts with no earlier per-field changes; completely matching checked-RAM epochs remain78 because other errors follow. Full32 legacy/strict first-field tables remain identical. Twenty portable snapshots cover17,100 native frames.
+
+## Foot collision samples before late whirlpool gravity
+
+Native PlayerBGCollision runs in PlayerCtrlRoutine before GameEngine's trailing ProcessWhirlpools. The remake moved Mario by combined ordinary+whirlpool displacement before its foot probe, unlike its already corrected enemy/bubble reads. Capture8d3816 epoch10 source26410 startsY92: ordinary gravity endsY95 (foot127), so no landing on tile128; the late whirlpool pass then moves toY98. The remake probed final foot130 and landed early atY96, clearing speed/force and taking the floor horizontal cap on the next row. Native lands on26411 instead and preserves fraction1.
+
+Water foot lookup/depth now uses the cached ordinary-pass feet, and its rising check uses the ordinary-pass speed. The final physical Y is retained when no contact occurs. On actual landing, the existing contact helper replays late gravity from the aligned floor. A1,000-frame native checkpoint regression crosses this event.
+
+Full178 comparison improves311 field firsts, increases matching checked-RAM epochs78→91, and has no earlier epoch-first error. Five later-field shifts follow retained/improved earlier errors:3a9d epoch10 direction becomes1820 after earliest817→1820; aaf815 epoch10 actors1231→1219, bubbles2019→1194, Y2144→1136 and cursor2199→1193 after retained783. Full32 legacy/strict every-field firsts remain identical. Twenty-one portable snapshots cover18,100 native frames.

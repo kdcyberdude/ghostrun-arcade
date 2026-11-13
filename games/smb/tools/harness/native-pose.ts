@@ -24,7 +24,7 @@ export function comparePose(entrance:unknown,pads:ArrayLike<number>,frameRam:(f:
  for(let f=0;f<Math.min(end,pads.length);f++){
   sim.step(nesButtons.filter((_,b)=>pads[f]&(1<<b)),1);
   const raw=frameRam(f),n=nativeRow(raw);if(n.mode!==1||n.level!==level||sim.level.id!==level)break;
-  if(raw[0x772]!==3||!engines.includes(n.engine)||sim.phase!=='play'&&!(sim.phase==='pipe'&&engines.some(e=>e===2||e===3)))continue;
+  if(raw[0x772]!==3||!engines.includes(n.engine)||sim.phase!=='play'&&!(sim.phase==='pipe'&&engines.some(e=>e===2||e===3))&&!(sim.phase==='flag'&&engines.some(e=>e===4||e===5)))continue;
   const {cell,facing}=playerCell(sim),nc=raw[0x6d5]>>3,nf=raw[0x33]===2?-1:1;r.compared++;
   if(nc!==cell){r.cell++;r.first??=f;const k=`${nc}->${cell}`;r.pairs[k]=(r.pairs[k]??0)+1;}
   if(nf!==facing){r.facing++;r.firstFacing??=f;}
