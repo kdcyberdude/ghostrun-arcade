@@ -33,7 +33,8 @@ test('load checks use source-owned bytes; missing owner/fields remain explicit g
  for(const key of ['mode','task','engine','screen','disable','timer','columns']){assert.ok(result.checked.includes('load.'+key));assert.ok(!result.differences.some(d=>d.field==='load.'+key));}
  assert.ok(result.checked.includes('load.parserColumn'));assert.ok(result.checked.includes('load.scrollLocked'));assert.ok(result.checked.includes('time'));assert.ok(result.checked.includes('entities.slot-kind-position-cardinality'));
  assert.ok(!result.gaps.includes('world1-1-load-state-not-fully-covered'));
- const absent={...live,screen:undefined};assert.ok(new LiveWorld1StateAudit().compare(row,absent).gaps.includes('source-load-control-owner-unavailable'));
+ const startupOnly={...live,screen:undefined};assert.ok(startupOnly.startup);assert.ok(!new LiveWorld1StateAudit().compare(row,startupOnly).gaps.includes('source-load-control-owner-unavailable'));
+ const absent={...live,screen:undefined,startup:undefined};assert.ok(new LiveWorld1StateAudit().compare(row,absent).gaps.includes('source-load-control-owner-unavailable'));
  const partial={...live,screen:{...live.screen,timer:undefined}};assert.ok(new LiveWorld1StateAudit().compare(row,partial).gaps.includes('unowned:load.timer'));
  const wrong={...live,screen:{...live.screen,columns:9}};assert.ok(new LiveWorld1StateAudit().compare(row,wrong).differences.some(d=>d.field==='load.columns'));
 });
