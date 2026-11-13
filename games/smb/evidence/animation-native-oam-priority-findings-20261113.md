@@ -1,0 +1,12 @@
+Native OAM sprite priority
+==========================
+
+The fresh authenticated mood492e entry2 has exact strict fields through1,010 mapped frames, but pictures98..107 contained36 differing pixels where a squashed Goomba overlaps a walking Goomba. NES OAM selects the lower-address sprite first. Equal-depth transparent Three quads instead followed actor submission order, leaving the later actor on top.
+
+SpriteShuffler uses RAM06e0(amount index),06e1..06e3(amounts),06e4..06f2(sprite byte offsets). ROM defaults are preserved, including the carry add40 when an offset wraps. The model seeds these bytes from each native entrance, advances on active unpaused NMI rows, and resets for area setup. SecondaryGameSetup enables sprite0 at task3; loading/paused rows retain the source gate. The renderer maps each picture's native enemy-slot OAM address to a small depth ordering within the existing actor layer. It does not move physical actors or change their state.
+
+The pure transition fixture checks136,102 observed rows. It explicitly retains the native09 held-counter case5-2f2179 instead of treating it as another completed shuffle: OAM offsets/index remain unchanged. Runtime follows the modeled NMI clock; the pre-existing CPU-busy clock issue on that row is after5-2's existing first state divergence850. No per-level clock hold is introduced. A portable1,000-frame independent replay checks the complete offset clock without per-frame RAM reseeding.
+
+The genuine independent492e pictures98..107 now have zero differing whole-image/HUD/playfield pixels across all10 frames (before36 playfield pixels). The separate repeated8-pixel first-picture Mario background-priority omission remains owned by the source player-priority unit. Full1,777 tests and TypeScript pass; all32 first-field reports are unchanged. The fair all32 sampled pixel gate is retained separately.
+
+The first fair gate exposed source-priority dependencies: bubble slots use06ee..06f0 (bubble0's36 is permanently in front of ordinary enemy OAM), and native hammers use the nine Misc_SprDataOffset entries expanded by SetMiscOffset. These now use their own native OAM depths; the misc expansion is also checked against actual06f3..06fb bytes. Regating water2-2/7-2 and hammer3-1 against the same baseline removes every newly exposed pixel increase. The combined all32 sampled result is102,995→102,787 aligned pixels,726→719 nonzero frames, with no individual compared frame increase.

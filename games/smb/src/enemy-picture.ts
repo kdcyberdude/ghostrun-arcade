@@ -28,6 +28,8 @@ export function nativeHammerBroCell(state:number,frameCounter:number,timersStopp
 
 /** EnemyGfxHandler's two-cell cycle freezes on the first cell while timers stop. */
 export const nativeEnemyCyclePhase=(frameCounter:number,timersStopped=false)=>!timersStopped&&!(frameCounter&8)?1:0;
+/** CheckForBloober leaves shells still until EnemyIntervalTimer falls below five. */
+export const nativeShellPhase=(timer:number,frameCounter:number,timersStopped=false)=>timer<5?nativeEnemyCyclePhase(frameCounter,timersStopped):0;
 /** Blooper contraction replaces the empty top row; the extended cell also receives native's three-row Y adjustment. */
 export const nativeBlooperPicture=(timer:number,dead=false,timersStopped=false)=>({cell:timer===1||timer>=5||dead||timersStopped?10:11,yOffset:timer!==1&&timer<5?3:0});
 /** Lakitu hides his head in the cloud during the final sixteen frenzy-timer rows. */
