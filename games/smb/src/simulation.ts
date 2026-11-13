@@ -535,7 +535,7 @@ export class Simulation {
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotationPending=true; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.parserVramBusy=false;this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();}
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();this.landFrozenWalkers();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
     if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
@@ -2772,6 +2772,18 @@ export class Simulation {
     }else if(o.kind!=='balance')this.updatePlatforms(oldBottom,this.lakituScroll,[p]);
    }
    this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
+  }
+ }
+ // While Mario's death freezes motion, the enemy floor check still runs: a walker already falling into the floor
+ // lands without moving (1-2 rows 3198/5266/3638: a Goomba at y 186 drops to 184, state 0, one row into the death).
+ private landFrozenWalkers(){
+  for(const e of this.enemies){
+   if(!e.active||!NATIVE_FALLERS.includes(e.kind)||e.motion||e.walkerState!==1||e.shell||e.squashed||e.movingShell||!e.fall)continue;
+   const rawY=(Math.floor(e.y)-24)&255;if(((rawY+0x3e)&255)<0x44||e.kind==='spiny'&&rawY<0x25)continue;
+   const ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;if(!ground||!(depth<5||ground.y%16!==0))continue;
+   const n=e.fall,step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',this.player.x);
+   e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;n.speed=step.speed;n.force=step.force;e.walkerState=0;e.vy=n.speed+n.force/256;
+   if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
   }
  }
  private updateEnemies(oldBottom:number){
