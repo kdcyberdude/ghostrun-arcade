@@ -25,7 +25,7 @@ import nativeWaterStreams from '../data/native-water-streams.json';
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
 import {PlatformMotion,platformSupportsX,nativePlatformObject,nativePlatformHoldsSlot,platformMotionModel,nativeSmallPlatform,nativePlatformSpawnCamera} from './platform-motion.js';
-import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide} from './native-platform-contact.js';
+import {nativePlatformLanding,nativePlatformHeadBump,nativeBackgroundSkipped,nativePlatformSide,nativeLargePlatformWidth} from './native-platform-contact.js';
 import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
@@ -690,7 +690,8 @@ export class Simulation {
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
   if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
-  if(p.y>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
+  // PlayerHole runs before ProcessWhirlpools; its pending late step cannot select engine6 early.
+  if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
@@ -785,7 +786,7 @@ export class Simulation {
   if([x+3,x+12].some(foot=>this.isSolid(foot,y)||this.pipeTopAt(foot,y,y)!==undefined))return true;
   return (this.area.platforms??[]).some(platform=>{
    const position=this.platformMotion.collisionPosition(platform,this.platformFrame-1);
-   return Math.abs(y-position.y)<0.01&&platformSupportsX(x,position.x,platform.width);
+   return Math.abs(y-position.y)<0.01&&platformSupportsX(x,position.x,this.platformWidth(platform));
   });
  }
  // Native foot probes (x+3, x+12) land only when the feet are under 5 px into the cell; deeper, a non-rising Mario is pushed 1 px back along his motion and that row runs no side probe.
@@ -1048,14 +1049,9 @@ export class Simulation {
   // A head bump keeps the position the move reached (no clamp to the tile) and only turns the speed around. Inside a whirlpool zone the bump
   // falls between the ordinary pass and the trailing whirlpool pass, which is redone at speed 1 (2-2/7-2 free-play strokes under a ceiling
   // in a zone: the swimmer does not move on the bump row, 172 of 177; outside a zone it moves, 338 of 338).
-  if(p.grounded)w.land();else if(w.contactSpeed<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}else if(w.speed<0&&this.swimUnderLift()){p.y+=w.bump();}
+  if(p.grounded)w.land();else if(w.contactSpeed<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}
   if(this.wallSpeed!==undefined)p.vx=w.wall(Math.round(this.wallSpeed*4096),this.swimDirection===0||this.swimDirection*this.wallSpeed>0)/4096;
   p.vy=p.grounded?0:w.speed+w.force/256;
- }
- /** Rising into the underside of a lift is a head bump (5-2 room, id 39 lifts): native y before the whirlpool pass minus lift y within 2..4 for big Mario, -10..-8 for small, over the lift's support window. Every sample is inside a whirlpool zone. */
- private swimUnderLift(){
-  const p=this.player,top=p.size?2:-10;
-  return (this.area.platforms??[]).some(platform=>{const lift=this.platformMotion.collisionPosition(platform,this.platformFrame),d=p.y-32-this.water.whirlMoved-lift.y;return d>=top&&d<=top+2&&platformSupportsX(p.x,lift.x,platform.width);});
  }
  /** A swimmer's head probe sits two pixels higher than the fitted ground one: native bumps at feet-ceiling 13 or less for small Mario and 29 or
   * less for big Mario (5-2 water room, same ceiling: bump at native y 93 / 109 under a ceiling bottom of 112). */
@@ -2068,23 +2064,33 @@ export class Simulation {
   const p=this.player;
   for(const platform of platforms){
    const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
-   const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context),p.size>0);
+   // ProcLPlatCollisions reads the player box cached before BG collision and late whirlpool gravity.
+   const pose=this.area.theme==='water'?this.waterCollisionPose:undefined,width=this.platformWidth(platform),small=nativeSmallPlatform(platform,this.platformMotion.context);
+   const x=pose?.x??p.x,feet=pose?pose.y+32:p.y;
+   if(pose&&feet>=32&&feet<240&&this.water.contactSpeed<0){
+    for(const offset of small?[0,128]:[0]){
+     const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};if(small&&surface.y<32)continue;
+     if(nativePlatformHeadBump(Math.floor(feet),p.size>0&&!p.duck,x,surface,width,p.size>0)){p.y+=this.water.bump();p.vy=this.water.speed+this.water.force/256;break;}
+    }
+   }
+   const speed=pose?this.water.contactSpeed:p.vy;
+   const box=nativePlatformLanding(Math.floor(feet),speed,x,prior,width,small,p.size>0);
    if(box===undefined){
-    const small=nativeSmallPlatform(platform,this.platformMotion.context);
     for(const offset of small?[0,128]:[0]){
      const surface={x:prior.x,y:small?(Math.floor(prior.y)+offset)&255:prior.y};
      if(small&&surface.y<32)continue;
-     const side=nativePlatformSide(Math.floor(p.y),p.vy,p.size>0&&!p.duck,p.x,surface,platform.width,p.size>0);
+     const side=nativePlatformSide(Math.floor(feet),speed,p.size>0&&!p.duck,x,surface,width,p.size>0);
      if(!side)continue;
      const byte=Math.floor(p.vx*16),into=side>0?byte>=0:byte<1;
      this.motor.contact(side,into);
+     if(pose){this.water.blockSide(side);if(side>0&&this.swimPull>0){p.x-=this.swimPull;this.swimPull=0;}}
      if(into){this.wallSpeed=p.vx;p.vx=(Math.round(p.vx*4096)&255)/4096;p.x-=side;this.platformEjection-=side;this.wallBackOut=true;}
      break;
     }
     continue;
    }
    if(p.y!==oldBottom)this.landingFraction=p.y-Math.floor(p.y);
-   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;this.jumpArc=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';p.x+=Math.floor(now.x)-Math.floor(this.platformMotion.collisionPosition(platform,this.platformFrame-1).x);this.platformMotion.contact(platform,this.platformFrame);
+   p.y=box?(Math.floor(now.y)+box)&255:now.y;p.vy=0;p.grounded=true;this.bouncing=false;this.jumpArc=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';p.x+=Math.floor(now.x)-Math.floor(this.platformMotion.collisionPosition(platform,this.platformFrame-1).x);this.platformMotion.contact(platform,this.platformFrame);if(pose){this.water.land();p.vy=this.water.speed+this.water.force/256;}
    // native lifts carry the rider by their whole-pixel step and leave his sub-pixel alone (1-3 f573, 6-3 f268: a fractional carry put x 0.45 off on the landing row)
   }
  }
@@ -2107,9 +2113,10 @@ export class Simulation {
   const p=this.player,v=p.vy+gravity;if(v>=0)return;
   for(const platform of this.area.platforms??[]){
    const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll);
-   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,platform.width,p.size>0)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
+   if(nativePlatformHeadBump(Math.floor(p.y),p.size>0&&!p.duck,p.x,prior,this.platformWidth(platform),p.size>0)){p.vy=v-Math.floor(v)+1;this.headBumped=true;if(oldX<prior.x&&p.vx>0){this.wallSpeed=p.vx;p.vx=0;}return;}
   }
  }
+ platformWidth(platform:PlatformSpec){return nativeLargePlatformWidth(nativePlatformObject(platform,this.platformMotion.context)?.nativeId,this.area.theme==='castle',this.secondaryHardMode,platform.width);}
  platformPosition(platform:NonNullable<Area['platforms']>[number],frame=this.platformFrame){
   return this.platformMotion.artworkPosition(platform,frame);
  }

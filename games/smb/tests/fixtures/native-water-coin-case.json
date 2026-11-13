@@ -1,0 +1,35 @@
+{
+ "schema": "native-water-coin-case-v1",
+ "source": {
+  "capture": "14a577fe4331246a12294d1b4d91b6d6c88424e0c4d0de71047946b7a64adc53",
+  "frame": 15120,
+  "padsSha256": "14a577fe4331246a12294d1b4d91b6d6c88424e0c4d0de71047946b7a64adc53",
+  "ramSha256": "999e4ee23c7fae015db826c95f9d8f62f66aac87d3f92e084b8114a9ceb46544",
+  "pixels": {
+   "schema": "native-poweron-pixels-v1",
+   "step": 1,
+   "width": 240,
+   "height": 224,
+   "frames": 23248,
+   "padSha256": "14a577fe4331246a12294d1b4d91b6d6c88424e0c4d0de71047946b7a64adc53",
+   "ramSha256": "999e4ee23c7fae015db826c95f9d8f62f66aac87d3f92e084b8114a9ceb46544",
+   "pixelsSha256": "cea823bb36a2d2ab556c166f386f51acab0a4af0bd6d06ad4bfda93b88c413f8",
+   "emphasisSha256": "309ac78e9536d11b2dc4d58cf44f9fd9f6455daf476acb7827f45eb55dfc56a6",
+   "format": "lossless NES palette indices and per-row emphasis, one binary frame per source pad"
+  },
+  "pixelFrameSha256": "a5bfef27016e9656e197802aed7ed210c0e0adfd2665d0cac9d2f88cc69491c3",
+  "method": "Unmodified POWER-ON capture; PPU frame uses prior RAM scroll. Crop is lossless NES palette indices."
+ },
+ "ram": "H4sIAAAAAAAAA81VS2gTQRj+Z7PZzaskSEuKEC22iocK8YHUQ7E7UqxID4rQUBX2pC0UJH2gSVBj6eMglCb00IdohRSClBqaR3MoJVAF68lIDlaCBw/SmyIIK6zGfzdNbLtp6qvgB998M/8/+81MdrL/XkuI5cjsfb0hZYCUgRACCJPZbLcDqH0NtFHCMAzZFK4Cm037JMfxvNG49Xk9x0lf7W2i2LQlEet//x2FYTTrqSgRDbnCjUfrtyYkaeTsnPuxiF2zgUXDi9+uT+e029sN5P4bOEymuSnHZ8eHjy+DS8HA05v3Kmfa/NW5WldIBjfSM4uK9MSOgTt2HDyLLeBePAceqZdhJJm+Rr51yUI30itGhW5xXvB2xIXujpjgDcs0gJyIRGkgMk8nknEaSMboRKNM08jV5ihNN8/T1dY4TbfG6Cp6EuRVKatLSNkzS5Is9CFvS1HUBGocdQFVpmPIB1IUNYEaR11AlWkGmcV4Bn2uYDyD8Sx69CB96NODPj706UEfH84NIidxfhB9JnF+cKSXucyftrBWfo8VvDody0INilH3G+/XUfdoUjhUCgODA4P/4P5sHLjTcGS9G2oEaYdH8Dhl8ERBuz7V5Pdrk5cARG00ckoNfnGFG7a1XVPb6hIZkt9O/rNQwj2P4nmJUcGmXG/yzrO+a3e7xhIPFzPn310o3OxtN7NrOPCX487OsvbLy8vbpTp3QFnfX0GZtYtbKBH8019kp/PsHxououzpcmAvdPXj6x2lcLhaGlhni3hrNJx6s1YnyYfrR8enw5Fk6sWrFbxlVTAOJElIpMIEbKHQqKWF44eHcqTGjwPeio2BNDhPnCxet1ojsfAwXKiGBFZUOWjGxp2PELAQpXhtrFQEdJwSqNynDiuAqc7vtPiXOYRLaU73/JNvqqu9H+AGgNPG26xOm41TEs4ONa8ttryO1xfa4uI/Kyl+5hSZ+QFM9ezbAAgAAA==",
+ "ramSha256": "fc5932d9fd4c0ce38f3ffdfe8baeeac0aad1786573990804abba05f43efb64c3",
+ "picture": {
+  "camera": 1670,
+  "crop": {
+   "x": 1792,
+   "y": 80,
+   "width": 96,
+   "height": 48
+  },
+  "indices": "H4sIAAAAAAAAA+2WMQ6AIAxFjwBhgN2la+9/OquGaIEUBzoY/9s+SV9NxNaUnMhEWfDS1waufmY/P9HhZzd/4hM//9XB0w8AABZEg8MihPA+G8TYNyhFC2bZ9seBf9u0z84Tf2zGtJRL9S2Y5Zm/3TOL/d0eW+vv1+S3/CfpeUkd/PR1vzo7SvX3ZGcL7h5/7XyQu6PfbhUsmm/4gwMAgH+yAwqSqIUAEgAA"
+ }
+}

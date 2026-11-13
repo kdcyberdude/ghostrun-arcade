@@ -1,0 +1,91 @@
+{
+ "schema": "native-entrance-pixels-validation-v1",
+ "method": "Standalone wrapper around the supplied matching native CPU emulator; complete retained entrance restored without edits. Every original baseline RAM row and declared common prefix verified. Reading pixels additionally checks unchanged CPU RAM on every baseline/branch sample. Full changed branch RAM equals the earlier independent no-picture capture byte-for-byte.",
+ "dependencies": {
+  "labCommit": "21cb8d4e44f67f17e48b1617860c1bff9b702185",
+  "nesleCommit": "0b04d8b9b6a93eea6758b06519206d8f13f6db78",
+  "wrapperSourceSha256": "1b1cecff76928312c1e1b3ceff761290ed2fd15440f87c8283a6dc374a865647",
+  "backendSha256": "d821e7f88c70f2a13bba6377a930876231e299afb7acadc0c5287c718427ba59"
+ },
+ "capture": {
+  "schema": "native-entrance-controller-branch-v1",
+  "level": "5-2",
+  "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+  "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+  "backendSha256": "d821e7f88c70f2a13bba6377a930876231e299afb7acadc0c5287c718427ba59",
+  "baselinePadsSha256": "ee1f7d7c20df9e17a1497827dc5411856fa0b44b308229ab1679e2c9f30637f9",
+  "originalActionsSha256": "8af044b93902a74a3d2af8efebe7704cebdfa0c4040f60b466d251b1af9f44a8",
+  "initialRamSha256": "93274f0a8b556b6942d0d1ba30f1c5143c804e66c8f7fcb36d8ad975feddfb25",
+  "baselineFrames": 3552,
+  "baselineRamSha256": "d793a2cdee95c4df2218829e5e45c3561504e0ead23f23075739fb7c7ffa4732",
+  "commonPrefixFrames": 831,
+  "commonPrefixRamSha256": "18b5412505bfb838778f1789733d98fe12bfe6fac75d63ecc97c6637ba12c263",
+  "padsSha256": "2d8d39aacbd1f208e53e1771e8bfe9294350702591e7669f12a1feea0677abbc",
+  "ramSha256": "756d09deeb4aba951d9f7ba918b1d521e4b155a5f2d4387ee1711390343c5dc1",
+  "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+ },
+ "pixels": {
+  "schema": "native-entrance-pixels-v1",
+  "step": 1,
+  "width": 240,
+  "height": 224,
+  "frames": 3231,
+  "lag": 1,
+  "padSha256": "2d8d39aacbd1f208e53e1771e8bfe9294350702591e7669f12a1feea0677abbc",
+  "ramSha256": "756d09deeb4aba951d9f7ba918b1d521e4b155a5f2d4387ee1711390343c5dc1",
+  "pixelsSha256": "9ca34916dc295eee7359512e985fcf6f25cf138a26b48df4a30bd68564d364b7",
+  "emphasisSha256": "37ea832d3960a926d8cda290b370587b3740c867447eac11f00915ea88c561ed",
+  "initialPixelsSha256": "ae88b60edef11844a879a60dbe10e0e2a932c3eb70cbd0dafe4847298d71a495",
+  "initialEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+  "format": "Lossless NES palette indices, native x8..247/y8..231 and per-row emphasis.",
+  "method": "Complete archived entrance PPU seed and subsequent controller-only frames; every original baseline RAM row and common prefix reproduced, rendering preserves CPU RAM on every sample."
+ },
+ "pictureHarness": {
+  "frames": [
+   1130,
+   1135
+  ],
+  "compared": 6,
+  "pctHUD": 0,
+  "pctSprite": 0,
+  "pctAligned": 0.24861111111111112,
+  "alignedDifferences": 716,
+  "coverage": "Six optional-room samples only; genuine remaining legacy optional Blooper pixels, no whole-input picture pass claimed."
+ },
+ "additionalCapture": {
+  "capture": {
+   "schema": "native-entrance-controller-branch-v1",
+   "level": "6-2",
+   "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+   "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+   "backendSha256": "d821e7f88c70f2a13bba6377a930876231e299afb7acadc0c5287c718427ba59",
+   "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+   "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+   "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+   "baselineFrames": 4696,
+   "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+   "commonPrefixFrames": 461,
+   "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+   "padsSha256": "5fa0011a41b86d83f07120af80d20139a52a63d05feb0b1b160a2fadd54de779",
+   "ramSha256": "c82b8ed28c8d010648ec94db1b2355b92d643791bacc1a70ce1b4054b346e7fb",
+   "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+  },
+  "pixels": {
+   "schema": "native-entrance-pixels-v1",
+   "step": 1,
+   "width": 240,
+   "height": 224,
+   "frames": 5461,
+   "lag": 1,
+   "padSha256": "5fa0011a41b86d83f07120af80d20139a52a63d05feb0b1b160a2fadd54de779",
+   "ramSha256": "c82b8ed28c8d010648ec94db1b2355b92d643791bacc1a70ce1b4054b346e7fb",
+   "pixelsSha256": "5a57070b6bb863342be081a115a0f201e2e331149ab8e3a9f4188b05ff977a6f",
+   "emphasisSha256": "ce5f1833b9762ad1e357999adf8dd90264600cf80e731db995f4b120d71766c0",
+   "initialPixelsSha256": "c12ea95996fc5ee812b10b6b691d530a91df69163fb601cc66648ab91661b17d",
+   "initialEmphasisSha256": "6eb69e26de2a26eda48af77d4cec893aa0cf4748a64cbefcfe11a22c1e680ad9",
+   "format": "Lossless NES palette indices, native x8..247/y8..231 and per-row emphasis.",
+   "method": "Complete archived entrance PPU seed and subsequent controller-only frames; every original baseline RAM row and common prefix reproduced, rendering preserves CPU RAM on every sample."
+  },
+  "ramComparison": "Full5461 changed branch RAM byte-identical to the independent earlier controller-only capture, after reproducing all4696 original baseline rows and461 commonprefix rows."
+ }
+}

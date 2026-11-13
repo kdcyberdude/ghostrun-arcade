@@ -1,0 +1,21 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import zlib from 'node:zlib';
+import {createHash} from 'node:crypto';
+import {Simulation} from '../src/simulation.js';
+import {Props} from '../src/render3d/props.js';
+import type {Kit} from '../src/render3d/kit.js';
+import {Box3,Vector3} from 'three';
+import {observedLevels} from '../src/levels.js';
+import {nativePlatformObject} from '../src/platform-motion.js';
+import cases from './fixtures/native-platform-hard-width-cases.json';
+for(const c of cases)test(`native ${c.level} SPBBox width follows the RAM hard-mode flag`,()=>{
+ const r=zlib.gunzipSync(Buffer.from(c.initial,'base64'));assert.equal(createHash('sha256').update(r).digest('hex'),c.initialSha256);
+ const sim:any=new Simulation(observedLevels());sim.reset(true);sim.levelIndex=sim.levels.findIndex((l:any)=>l.id===c.level);sim.loadArea(c.area);sim.secondaryHardMode=Boolean(r[0x6cc]);
+ const platform=sim.area.platforms.find((p:any)=>p.x===c.spec[0]&&p.y===c.spec[1]);assert.ok(platform);
+ assert.equal(nativePlatformObject(platform,sim.platformMotion.context)?.nativeId,r[22+c.slot]);
+ assert.equal(sim.platformWidth(platform),c.width);
+ const props=new Props({has:()=>false} as unknown as Kit);props.sync(sim);
+ const position=sim.platformPicturePosition(platform),center=(position.x+c.width/2)/16,lift=props.group.children.find(o=>o.position.x===center);assert.ok(lift);
+ assert.equal(new Box3().setFromObject(lift).getSize(new Vector3()).x,c.width/16,'3D lift geometry follows the native width and center');
+});

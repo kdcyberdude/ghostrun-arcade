@@ -95,7 +95,9 @@ test('the 5-2 room lifts are id 39 wrapping lifts: 15 pixel steps then one idle 
 test('rising into a lift bumps the swimmer inside a whirlpool zone (5-2 room big Mario, sweep-c10 rows 335 -> 336: y 22 -> 23, S -1 -> 1, F 120 -> 0)',()=>{
  const sim=swimmer('5-2','optional-water',{x:399,sub:192,y:22,vx:3112,S:-1,F:120,D:244,T:28,fall:9},['right','b'],['right','b']);
  sim.player.size=1;
- sim.swimUnderLift=()=>true; // the lift position is the row's (y 18); its clock is covered by the wrap test above
+ const lift=sim.area.platforms[0];sim.platformSlots.set(lift,0);sim.platformMotion.lost.delete(lift);
+ // The source row declares the lift at y18; collision reads it before its own motion.
+ sim.platformMotion.initializeNative(lift,{id:39,x:364,y:18,a:0,b:0,c:0,d:240,e:0},sim.platformFrame,sim.random.frame);
  sim.step(['right','b'],1);
  assert.equal(y(sim),23);assert.equal(sim.water.speed,1);assert.equal(sim.water.force,0);
 });

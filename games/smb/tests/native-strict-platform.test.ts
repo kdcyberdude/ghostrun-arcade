@@ -40,10 +40,10 @@ test('platform slot, kind, position and lifetime mismatches remain audit failure
 });
 
 
-test('wrapping platforms without a source nativeId remain explicit identity gaps',()=>{
+test('wrapping geometry without a source object identity remains an explicit gap',()=>{
  const level=observedLevels().find(l=>l.id==='5-2')!,area=level.areas.find(a=>a.id==='optional-water')!,context={levelId:level.id,areaId:area.id};
- const platform=area.platforms!.find(p=>{const o=nativePlatformObject(p,context);return o?.kind==='wrap'&&o.nativeId===undefined;})!;
- assert.ok(platform);
- const sim={level,area,enemies:[],items:[],platformMotion:new PlatformMotion(context),platformFrame:0,platformSlots:new Map([[platform,0]])};
+ const platform={...area.platforms![0],x:area.platforms![0].x+1};
+ assert.equal(nativePlatformObject(platform,context),undefined);
+ const sim={level,area:{...area,platforms:[platform]},enemies:[],items:[],platformMotion:new PlatformMotion(context),platformFrame:0,platformSlots:new Map([[platform,0]])};
  assert.deepEqual(strictSimEntities(sim),[]);assert.ok(strictSimCoverage(sim).some(g=>g.code==='unsupported-sim-platform'));
 });
