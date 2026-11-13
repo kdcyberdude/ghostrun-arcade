@@ -7,6 +7,7 @@ import {observedLevels} from '../src/levels.js';
 import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
+import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
@@ -81,5 +82,30 @@ test('a lives-screen respawn creates the first actor on engine7 and moves it on 
   const e=sim.enemies.find((e:any)=>e.active&&e.nativeId===14&&e.enemySlot===0);
   assert.ok(e);assert.equal(e.x,frame===624?288:287.5);assert.equal(e.y,176);assert.equal(e.graphicsVisible,frame===625);
   if(frame===625){assert.equal(sim.broClock,166);assert.equal(e.pod.force,28);assert.equal(e.pod.fraction,0);}
+ });
+});
+
+
+test('the native frenzy Bullet stomp keeps pre-move x, draws the old picture, drops two pixels, and awards 200 without a chain step',()=>{
+ let chain=0;
+ replay('6-3',1928,(sim,frame)=>{
+  if(frame===1922)chain=sim.stompChain;
+  if(frame<1923)return;
+  const expected=bulletDefeats.find(e=>e.level==='6-3'&&e.frame===frame)!.after;
+  const e=sim.enemies.find((e:any)=>e.active&&e.kind==='bullet'&&e.enemySlot===3);
+  assert.ok(e);assert.equal(e.dead,1);assert.equal(e.x,expected.x);assert.equal(e.y,expected.y);
+  assert.deepEqual({speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction},{speed:expected.speed,force:expected.force,fraction:expected.fraction});
+  assert.equal(sim.stompChain,chain);
+  if(frame===1923){assert.equal(e.graphics.dead,0);assert.equal(e.graphics.y,144);assert.equal(e.graphics.x,1862.5);}
+  if(frame===1928)assert.equal(sim.score,238000);
+ });
+});
+
+test('the frenzy Bullet corpse is erased on the first graphics pass below page1, retaining its final slot bytes',()=>{
+ replay('6-3',1982,(sim,frame)=>{
+  if(frame!==1982)return;
+  const e=sim.enemies.find((e:any)=>e.frenzy&&e.enemySlot===3&&e.dead===100);
+  assert.ok(e);assert.equal(e.slotFreed,true);assert.equal(e.y,282);
+  assert.deepEqual(sim.slotVertical[3],{speed:3,force:56,fraction:212});assert.equal(sim.slotSub[3],128);
  });
 });
