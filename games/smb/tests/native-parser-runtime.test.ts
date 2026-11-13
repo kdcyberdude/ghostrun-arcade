@@ -11,6 +11,8 @@ import springEvents from './fixtures/native-spring-events.json';
 import springSlots from './fixtures/native-spring-slot-events.json';
 import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
+import flagPlatforms from './fixtures/native-flag-platform-events.json';
+import {strictSimEntities} from '../tools/harness/native-strict-entities.js';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.${runName}.json`,import.meta.url),'utf8'));
@@ -212,6 +214,20 @@ test('platform birth rows register the native slot before the next movement or r
    assert.equal(sim.platformSlots.get(platform),slot,`${level} row${row} native birth slot`);
    const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame);
    assert.deepEqual({x:Math.floor(position.x),y:Math.floor(position.y)},{x:rawX,y:rawY});
+  });
+ }
+});
+
+
+test('native flag engines keep platform slots moving and erase them on every source bank row',()=>{
+ const kinds:Record<number,string>={36:'balance-platform',37:'vertical-platform',38:'up-lift',39:'down-lift',40:'horizontal-platform',41:'falling-platform',42:'right-platform',43:'small-up-lift',44:'small-down-lift'};
+ for(const level of ['3-3','4-3']){
+  const rows=flagPlatforms.filter(e=>e.level===level),byFrame=new Map(rows.map(e=>[e.frame,e]));assert.ok(rows.some(e=>e.platforms.length));assert.ok(rows.some(e=>!e.platforms.length));
+  replay(level,rows.at(-1)!.frame,(sim,frame)=>{
+   const row=byFrame.get(frame);if(!row)return;
+   const actual=strictSimEntities(sim).filter(e=>e.source==='platform').map(e=>({slot:e.slot,kind:e.kind,x:e.x,y:e.y})).sort((a,b)=>a.slot!-b.slot!);
+   const expected=row.platforms.map(e=>({slot:e.slot,kind:kinds[e.id],x:e.x,y:e.y}));
+   assert.deepEqual(actual,expected,`${level} native flag row${frame}`);
   });
  }
 });

@@ -518,7 +518,7 @@ export class Simulation {
    return;
   }
   if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
-  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();const wasGrounded=this.player.grounded;this.updateFlag();if(this.phase==='flag')this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));this.restoreStarMusic();return;}
+  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));}this.restoreStarMusic();return;}
   if(this.powerChange){this.emergeFrozenNativePowerups();this.updateBubbles(false,false);this.lifeFrozen++;if(--this.powerChange.remaining===0){this.player.size=this.powerChange.to;this.powerChange=undefined;}return;}
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
   this.parserVramBusy=false;
@@ -1809,6 +1809,14 @@ export class Simulation {
   if(index>=this.flagFireworkCount||age===0||age>=FLAG_COMPLETION.fireworkLifeFrames)return [];
   const [x,y]=FLAG_COMPLETION.fireworkOffsetsFromCastleFlag[index];
   return [{index,x:this.flagCastleGeometry.x+x,y,phase:Math.floor(age/FLAG_COMPLETION.fireworkPhaseFrames)}];
+ }
+ /** GameEngine still runs RunLargePlatform after PlayerEndLevel/FlagpoleSlide.
+  * Its collision/motor/OffscreenBoundsCheck pass does not stop at the pole. */
+ private updateFlagPlatforms(oldFeet:number,previousCamera:number){
+  const scroll=this.camera-previousCamera;this.platformFrame++;
+  this.platformEjection=0;this.updatePlatforms(oldFeet,scroll);
+  this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
+  this.gateNativePlatforms(previousCamera);this.busyNativeSlots();
  }
  private updateFlag(){
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
