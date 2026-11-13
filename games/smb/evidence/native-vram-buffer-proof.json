@@ -1,0 +1,134 @@
+{
+  "schema": "native-vram-buffer-proof-v1",
+  "runtimePin": "82588f1a192c717e5347cbef2d90280442a00ef7",
+  "entranceSeedFollowup": "2fb80ac",
+  "sourceRule": {
+    "commandBytes": "Retain every 3-byte command header, payload and shared trailing terminator, including duplicate HUD writes.",
+    "cleanup": "Begin a normal source NMI iteration by clearing buffer1 only if previous VRAM_Buffer_AddrCtrl was not 6. Parser-tail iterations without a new NMI bypass this block.",
+    "rotation": "Source ColorRotation executes only when (FrameCounter & 7) == 0 and VRAM_Buffer1_Offset < 0x31.",
+    "writers": "Score6/coins2/time3 payloads; block metatile two horizontal2-payload commands (10bytes); palette7 and player-color7 packets from authenticated ROM tables."
+  },
+  "publicAPI": {
+    "object": "sim.vramBuffer1",
+    "data": "Uint8Array256, data[0] is native0300 offset; used commands are data[1..offset], terminating0 is data[offset+1].",
+    "addressControl": "0 or6 native queued-buffer selector",
+    "sourceSynchronization": "Copy only data.subarray(0, offset+2); buffer2 at0340 is separately owned by parser."
+  },
+  "nativeByteProof": {
+    "continuousPrefixes": 3,
+    "comparedSelectedRows": 30,
+    "expectedRawBytesSelectorAndRotation": "all exact",
+    "inputInjection": "none after cold reset",
+    "initialEntranceProof": "Authentic638612 source994 buffer2-held offset24 survives palette/parser initialization. This seeded test is diagnostic; continuous proof uses no observation seeds."
+  },
+  "pictures": {
+    "original1_1": {
+      "frames": 3020,
+      "excluded": 0,
+      "whole": 0,
+      "hud": 0,
+      "field": 0,
+      "aligned": 0,
+      "alignedPixelsCompared": 144960000,
+      "alignedPixelsExpected": 144960000,
+      "strictAndLegacyFields": "all null;4781/4781 entity rows;0 gaps"
+    },
+    "coldStartup": {
+      "frames": 1533,
+      "cases": 7,
+      "whole": 0,
+      "hud": 0,
+      "field": 0,
+      "summaryPath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-82588f1-ports54530/summary.json",
+      "summarySha256": "d918757ddb2e4e29325d03b2583081153cdaaf2a93cbc4bf719e6393e04a4661"
+    },
+    "targetedFlagPalette": {
+      "source": "8d2d79645ae64860eb729fd63ecc1985cecca84bde492150000f2beef3db3755",
+      "frames": [
+        1935,
+        1967,
+        2015
+      ],
+      "beforeEach": {
+        "whole": 24,
+        "hud": 24,
+        "field": 0
+      },
+      "afterEach": {
+        "whole": 0,
+        "hud": 0,
+        "field": 0
+      },
+      "coverage": "Selected GPU windows replayed continuously from cold reset; not a whole-run pixel proof."
+    }
+  },
+  "validation": {
+    "focusedTests": 20,
+    "focusedFailures": 0,
+    "entranceAndRawQueueTests": 3,
+    "entranceAndRawQueueFailures": 0,
+    "typescript": "pass"
+  },
+  "limits": [
+    "Raw queue coverage is source gameplay HUD, metatile and palette writers. Loading/menu text packet writers are separately owned by source startup/loader code; this unit does not claim complete raw0300 equality in every mode.",
+    "No all32/fullmood rerun performed: parent owns one combined integration gate.",
+    "GPU regressions were measured at82588f1;2fb80ac changes only observed buffer2-held entrance seeding and adds its focused byte proof. Original1-1 initial selector0 and cold startup do not execute this seed branch."
+  ],
+  "artifacts": [
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/queue-focused-tests.log",
+      "sha256": "b74cf9187a736b63d5802c9bc3643b6746919b2d1438c22c74f3a59188f44762"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/queue-final-tsc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/vram-seed-tests.log",
+      "sha256": "543aeb06a8d2913a4abd9e61bf09b850d146c4c911762ee507cfb0cce0c5164b"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/queue-seed-tsc.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-82588f1.json",
+      "sha256": "9161f81aed7c25e4508a5310d0228977b8b99611d0458be194585e1796504a36"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-82588f1.log",
+      "sha256": "4244156e5467eeba14a75595160d280ebba0864c06bad248f833b6823da257ed"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-fields-82588f1.json",
+      "sha256": "0fa53d4ebd34381fc628406a1fdc90f2bbd409a6315814829bd21925a77c3136"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-fields-82588f1.log",
+      "sha256": "a69503c33f745969dd447ab56db4f1b358f782065254be61c7f4a4be43f7513e"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/flag-cycle-after-queue/rows.json",
+      "sha256": "1347597c22201cfc495e1dab0e3c2c54942f894aa6c784a5bee592657e98842b"
+    }
+  ],
+  "sourceHashes": {
+    "src/native-vram-buffer.ts": "44185845f7278dfd6c990f965c16333f0c1357bd3ff2beca5a822776354131af",
+    "src/native-hud.ts": "4e4343b5c4d6c29f604043009a44455e0359e27854320c731774fa3ca1d929ac",
+    "src/native-palette.ts": "b303a71f2cb8d1bef6cc554df3d7a510dc1b19560c9d257cec4008eecded4f59",
+    "src/simulation.ts": "2caf5bd5d62e5a32aefcc75294c61a9a9d3219fcc4db2cf71748aff30f2735a2",
+    "tools/harness/native-entrance.mjs": "d2e9cdbbdde30d7dedb5d9ffa098a748112f101c742aa8ae6004c30520ca038f",
+    "tests/native-vram-buffer.test.ts": "d25c7269643d1c332238cc18b3e6836b701d03dcf221c89a3044094ee20279eb",
+    "tests/fixtures/native-vram-buffer.json": "0a884c57ce63a730417576533f98adc84eb5330a51f986142a0a6851d40506fa"
+  },
+  "commands": {
+    "cwd": "/home/kd/.codex/worktrees/smb-w1-picture-cca2e44/games/smb",
+    "focused": "npx tsx --test tests/native-vram-buffer.test.ts tests/native-hud-queue.test.ts tests/native-palette-queue.test.ts tests/native-block-pictures.test.ts tests/native-startup-picture.test.ts tests/native-startup-runtime.test.ts tests/native-held-picture.test.ts",
+    "seed": "npx tsx --test tests/native-vram-buffer.test.ts",
+    "typescript": "npx tsc --noEmit -p .",
+    "pictures": "npx tsx tools/harness/native-pixels.ts --traces /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/original32/traces --entrances /home/kd/Desktop/proj/ghostrun/media/recordings/threejs-2d --out /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-82588f1 --levels 1-1 --all-frames --png none --port 54538 --json /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-82588f1.json",
+    "fields": "npx tsx tools/harness/native-divergence.ts --traces /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/original32/traces --entrances /home/kd/Desktop/proj/ghostrun/media/recordings/threejs-2d --levels 1-1 --detail --json /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-fields-82588f1.json",
+    "boot": "SMB_GAME_DIR=/home/kd/.codex/worktrees/smb-w1-picture-cca2e44/games/smb SMB_PORT_BASE=54530 SMB_RUN_SUFFIX=-ports54530 /home/kd/anaconda3/bin/python /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/run-live.py",
+    "target": "SMB_GAME_DIR=/home/kd/.codex/worktrees/smb-w1-picture-cca2e44/games/smb node /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/probe.cjs 8d2d79645ae64860eb729fd63ecc1985cecca84bde492150000f2beef3db3755 1935,1967,2015 /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/flag-cycle-after-queue 54537"
+  }
+}
