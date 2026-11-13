@@ -91,3 +91,11 @@ Full178 comparison improves19 field firsts and increases matching checked-RAM ep
 Capture0a766fa4fee6a522569ef5c7fb56a7d73d3b4a863a742c0318bc1d21a833da17 checkpoint epoch9 source26385..26387 keeps wall residue32 through neutral/A-only input; cached absolute remains7 and moving remainsright.26388 Up-only clears both speed bytes. GetPlayerAnimSpeed checks SavedJoypadBits&$7f before masking LR; Up therefore triggers the low-speed stop when its LR0 disagrees with nonzero moving. The water helper previously received only LR/Down/B, so Up could not cause this source behavior.
 
 The helper now receives Up for both floor and airborne control and uses the same prior-absolute<11 gate. A2,200-frame native checkpoint fixture includes this transition and follows Mario, camera, water state, actors, bubbles and source parser/owners. Full178 comparison improves52 field firsts and increases matching checked-RAM epochs73→76, with no earlier epoch-first error. Four later fields shift earlier only in52116322 epoch9, after its retained independent first1: Y3459→666, RNG/counter3653→867 and vertical3821→1020. Full32 legacy/strict field-first tables remain identical. Sixteen portable snapshots cover12,900 frames.
+
+## Water enemies ignore block-bump background deaths
+
+Native EnemyToBGCollisionDet's CInvu branch compares enemy ID with7 and returns via ExEBGChk for Blooper7/swimming Cheep10/11, before ChkUnderEnemy/HandleEToBGCollision can process a bumped metatile. The remake's generic hitBlock proximity loop bypassed this source gate and killed nearby water enemies.
+
+Capture720e epoch9 source13440 keeps slot0 Blooper state0 at684,118 while the remake killed it;440313 epoch10 source21582 similarly retains slot2 grey Cheep1850,105. Mario/camera match at both first actor failures. Native scores remain70450 and80650 respectively through these bumps; the generic+100 award was also unsupported. The loop now excludes these native water actor kinds. Two700-frame checkpoint regressions preserve their actual source survival and subsequent movement.
+
+Full178 comparison improves6 field firsts without an earlier epoch-first error. One later vertical field in8f908 epoch10 becomes1855 after earliest1139→1700. Full32 legacy and strict first-field tables stay identical. Eighteen portable snapshots now cover14,300 native frames.
