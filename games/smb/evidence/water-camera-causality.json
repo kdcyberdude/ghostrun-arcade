@@ -1,0 +1,2066 @@
+{
+ "toolSha256": "e5f43ce6ac05d5dc37c0c071f8375325b4ea2aae2743d790a3659b74b586d58d",
+ "node": "v18.19.1",
+ "schema": "native-water-camera-causality-v1",
+ "level": "6-2",
+ "run": "water-down-strokes",
+ "source": {
+  "schema": "native-entrance-controller-branch-v1",
+  "level": "6-2",
+  "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+  "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+  "backendSha256": "21e5e07a7b93d26e4ed8a8c11ac4fa98782b91ad5a89ed00397b837ab84178e8",
+  "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+  "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+  "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+  "baselineFrames": 4696,
+  "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+  "commonPrefixFrames": 461,
+  "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+  "padsSha256": "b842a9f8540b012166372e43c534cf4a220fb16e5c5f996531802977f9b51e0b",
+  "ramSha256": "617a80947ef164c872d08af029f89381875abc12d9ff91b06d0c4f96a2672522",
+  "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+ },
+ "nativeInput": {
+  "frames": 5461,
+  "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+  "padsSha256": "b842a9f8540b012166372e43c534cf4a220fb16e5c5f996531802977f9b51e0b",
+  "ramSha256": "617a80947ef164c872d08af029f89381875abc12d9ff91b06d0c4f96a2672522"
+ },
+ "upstream": {
+  "field": "dead",
+  "frame": 2937,
+  "nativeEngine": 11,
+  "modelPhase": "play",
+  "mechanism": "Native slot0 Blooper overlaps the cached player box and sets Enemy_CollisionBits; both sources retain the fitted optional roster and miss that hit."
+ },
+ "classification": "downstream-of-retained-native-death",
+ "reason": "Native resumes main gameplay3335; candidate incorrectly survives until3425 and returns mainplay3582, baseline survives until3498 and returns3666. Legacy camera compares only model main-area play against native engine8. The earlier camera first is the earlier resumption of this comparison after the same upstream missed death, not an independent camera rule regression.",
+ "nativeRows": [
+  {
+   "frame": 2936,
+   "sha256": "c9ff56c16419dbfeeca4f9b217647d366b97811f2de55005c83076cfc2dcdb39",
+   "gzip": "H4sIAAAAAAAAA81VTWgTQRR+s5N00xhN6iVVbBN3a2Op1FShtogFXbBpuiVrTEm1h+YkBj0WLZ7ag4aKSHqyxYsVCq1CrRfxIhRy6UGlF8HD7tKLUhBpEYQ9tMS3m2x+NzWCgh988+a9mfn2ze6bWc8kISD6wT4NNgAH0QHABgJe1gvYs0B1lDDYMKURJ7GaSEhevzL++NHt95sPNyvCx+EJ1NSBKh0MeThfPwxV6mia5lhJLKSxyzpwl0x0rzOVqcrinyD736CFOleetvxo+bod2T4AN17dnW5ajE81Z/lR9y6IyJgXLTLmOwOi7yzEApdBDAxATJtgiDbGzCBn22UabpeFaJdCw12KEO1RabhHFaK+MaYD2Y3sQ17EuYPIK/24DjmLnEcuYGwZ+VrTv8sEEzOsTpkOa7IwEpFpKCILUlyhobgiSOMqDY2rgoRr+rQSXTMf5LyhY+rKdAh1rmoKWgWtilZFi/khu8t0cB2Ay+b2HnbDPUobmN98TEt8IC/4T+QErxCO/0Ke89/R/4ncI86/UT96CZmOGAI133WLxmursaR+JCyjcxCcqo467rzUzTrZ2alxNQBsGW2zxYiNEAZfsLQq4UGUpGDQ6iYpJk8a7XZoLBuL8NdOD3fHz3W0DnbOXFgO67Gh6yPWW6gTyWQ9ftIAdrhclDObMj8/p3QcrH3r53H7+JmM6eeekqOJov+nO6sPmQKsRis3xlXo7+cX3mwN3/UgleQQKQP7pJgFb6Gc0iXx0VCvLRhKTKaX1j5vtWm7J0+l554trb5dW9+wY5U5sdZJLyEHmxuBNc+/IUQY4VIW/HPoMC69gTbuqD9rnsZDDLgoCMUathstz+JKMSdCYMCu/xpLy5wANWxTq2E8wB4z3OKROW+1u28fj9x/824D4BZAkAWW87AsXi9+CN7M61SAIQ2YUa4tgC1mQm0Nuln8BRYh4QAACAAA"
+  },
+  {
+   "frame": 2937,
+   "sha256": "5d6ae578855edad5a8f304f8ba305077a3329dec0e71a8b7e3edd3157d7e3d9a",
+   "gzip": "H4sIAAAAAAAAA81VTUwTQRR+M9NuAatQL0UNtmxpoFGS7QEDHprqHkrphrbQVAgJcDI0esSfGA9ojIgxUU5CTEBMOKAJ4s2zvWrCxZPbwkXtxUBITPZQUt9uu21ptwUjB7/ke2/em5lv3+zOy8Kyl4DkBPNDMAGcICoALJ2ddosdcGSA6iyhaGjVoqqFhBT0K/PPn938vP10uyLdDi+zNXWgSgdTNt7hg1CljqIoDeuTKxkcWhrwlHRo/8Js0uggx4/cf4M21rT+qm2vbW/ix0545/r7Ow9sq9dmWnOuEVsWJGTsDHpkrH0JpPYlf8yzDJJn2R9TpilRxugccl6R2YAii0NKCn0KfRp9Gv0Y9SC9yD7kFWQQGS3uG6OLyBXkGvKDon6XaRrTPNIts6BbFqPdKRbsTonRnjQL9qTFqAN1kV5kn6NM14e6yHnkoq9cV2YhrG8Y6wthfcNYXwjrGx7MssBgVgzHZRaIy2J4fIsFxrfEMIDV1Gw/3Qz3GOPoIR/TEF/IW9dX4nalCO/6Tt64fmH8G7lPmo7j/qhXSA+kAKQLQ1tIe201tvwrJkGYqc423H6num2yu1uzdzKabTWYMRFC8QVHNiIv0EYEwXB/ThcmjWYzNB6YC7tHvZIQv+RxBC/O+dZCam5gNDZx6HHqIJE4SpzQgAM+n+V1cyAurCmfB+PY+Hl8nTiZ1OP8U/LUUYr/9mRHQ7IIo9nKg/EV+vXi4putEVsfzyZ4xKyGOiXmwF68kxulNBnp7zU9ef1xM9PlH5nquHt/5lFmV+kSev39ETNON8ECkE1CTrY2gkXvf02IUPFqDpwLGFCraqCDP+vM6d14ioKVgVhoBEyatYHLgjulvAiBgFn9NZb3CgGmedt5zTUDd071LaWWuWx0uls/rZ++jWNz3QAQOOD4Fo7D5nCCMAX5/RWghMOK8rYIS6kSZuJUt/oHEu1v9wAIAAA="
+  }
+ ],
+ "results": [
+  {
+   "label": "before",
+   "commit": "b4c934edb4d1b7dfb3135ddafd8352e90b57d9eb",
+   "sourceTree": "487c88da578c13cff7c6feac9ad999d161078663",
+   "firsts": {
+    "dead": 2937,
+    "time": 2953,
+    "score": 2721,
+    "coins": 2721,
+    "cam": 3666,
+    "x": 2712,
+    "y": 2658,
+    "enemy": 1543
+   },
+   "transitions": [
+    {
+     "frame": 2937,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 11,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 419
+     }
+    },
+    {
+     "frame": 3172,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 6,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3173,
+     "native": {
+      "mode": 1,
+      "task": 0,
+      "engine": 0,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3175,
+     "native": {
+      "mode": 1,
+      "task": 1,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3332,
+     "native": {
+      "mode": 1,
+      "task": 2,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3333,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3334,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 7,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3335,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3498,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 143
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "dying",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3499,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 144
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "intro",
+      "camera": 519
+     }
+    },
+    {
+     "frame": 3501,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 147
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "camera": 0
+     }
+    },
+    {
+     "frame": 3666,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 179
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "camera": 0
+     }
+    }
+   ],
+   "samples": [
+    {
+     "frame": 2936,
+     "pad": 160,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 0,
+      "pointer": 44552,
+      "x": 398,
+      "y": 16,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       35,
+       89,
+       47
+      ],
+      "enemy0Box": [
+       77,
+       49,
+       87,
+       55
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 496.8125,
+      "y": 56,
+      "camera": 419,
+      "time": 346,
+      "score": 216450,
+      "coins": 73,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 609.699999999992,
+        "y": 181.5470208622264
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 628.25,
+        "y": 49.35306738477689
+       }
+      ]
+     }
+    },
+    {
+     "frame": 2937,
+     "pad": 160,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 11,
+      "type": 0,
+      "pointer": 44552,
+      "x": 399,
+      "y": 17,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       37,
+       89,
+       49
+      ],
+      "enemy0Box": [
+       76,
+       48,
+       86,
+       54
+      ],
+      "enemy0Collision": 1,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 497,
+      "y": 59,
+      "camera": 419,
+      "time": 346,
+      "score": 216450,
+      "coins": 73,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 610.099999999992,
+        "y": 181.04756264798613
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 628,
+        "y": 49.16155022665161
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3172,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 6,
+      "type": 0,
+      "pointer": 44552,
+      "x": 399,
+      "y": 771,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       23,
+       89,
+       35
+      ],
+      "enemy0Box": [
+       76,
+       48,
+       86,
+       54
+      ],
+      "enemy0Collision": 1,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 617.25,
+      "y": 459,
+      "camera": 519,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 664.0999999999866,
+        "y": 187.97146389258836
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 569.25,
+        "y": 53.965753709533715
+       },
+       {
+        "kind": "blooper",
+        "slot": 4,
+        "x": 771.2999999999957,
+        "y": 144.01677327611688
+       },
+       {
+        "kind": "cheep",
+        "slot": 1,
+        "x": 763.5,
+        "y": 115.85408716664213
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3335,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 400,
+      "playerBox": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "enemy0Box": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        0,
+        0,
+        416,
+        224
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 616.4375,
+      "y": 870,
+      "camera": 519,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 692.7999999999829,
+        "y": 166.41114461891917
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 528.5,
+        "y": 95.45847387376038
+       },
+       {
+        "kind": "blooper",
+        "slot": 4,
+        "x": 816.499999999992,
+        "y": 182.99337489010063
+       },
+       {
+        "kind": "cheep",
+        "slot": 1,
+        "x": 682,
+        "y": 113.71639809479836
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3425,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 145,
+      "y": 176,
+      "camera": 43,
+      "time": 397,
+      "playerBox": [
+       105,
+       196,
+       115,
+       208
+      ],
+      "enemy0Box": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        120
+       ],
+       [
+        0,
+        0,
+        416,
+        224
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 617.0625,
+      "y": 1097,
+      "camera": 519,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 723.7999999999809,
+        "y": 186.9976396025012
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 506,
+        "y": 53.31955011517684
+       },
+       {
+        "kind": "blooper",
+        "slot": 4,
+        "x": 832.49999999999,
+        "y": 144.00023504278312
+       },
+       {
+        "kind": "cheep",
+        "slot": 1,
+        "x": 637,
+        "y": 114.97138347284374
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3498,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 255,
+      "y": 176,
+      "camera": 143,
+      "time": 394,
+      "playerBox": [
+       115,
+       196,
+       125,
+       208
+      ],
+      "enemy0Box": [
+       172,
+       145,
+       182,
+       151
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        132
+       ],
+       [
+        1,
+        13,
+        456,
+        128
+       ],
+       [
+        1,
+        0,
+        406,
+        184
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "dying",
+      "x": 616.625,
+      "y": 1280,
+      "camera": 519,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 734.4999999999792,
+        "y": 149.44350969034673
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 487.75,
+        "y": 62.11401195787053
+       },
+       {
+        "kind": "cheep",
+        "slot": 1,
+        "x": 600.5,
+        "y": 80.58147291559307
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3581,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 390,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        122
+       ],
+       [
+        1,
+        0,
+        364,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        72
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "x": 0,
+      "y": -256,
+      "camera": 0,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": []
+     }
+    },
+    {
+     "frame": 3582,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 390,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        123
+       ],
+       [
+        1,
+        0,
+        364,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        72
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "x": 0,
+      "y": -256,
+      "camera": 0,
+      "time": 340,
+      "score": 216650,
+      "coins": 74,
+      "enemies": []
+     }
+    },
+    {
+     "frame": 3665,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 387,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        144
+       ],
+       [
+        1,
+        0,
+        348,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        94
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 401,
+      "score": 216650,
+      "coins": 74,
+      "enemies": []
+     }
+    },
+    {
+     "frame": 3666,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 387,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        144
+       ],
+       [
+        1,
+        0,
+        349,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        95
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 400,
+      "score": 216650,
+      "coins": 74,
+      "enemies": []
+     }
+    }
+   ]
+  },
+  {
+   "label": "after",
+   "commit": "117ef69621c51c22bf129f0a42a8e58efa495969",
+   "sourceTree": "a6b88ec53184e98265097a4d012fcc1d40db0454",
+   "firsts": {
+    "dead": 2937,
+    "time": 2953,
+    "score": 2963,
+    "coins": 2963,
+    "cam": 3582,
+    "x": 3335,
+    "y": 3335,
+    "enemy": 3582
+   },
+   "transitions": [
+    {
+     "frame": 2937,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 11,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 323
+     }
+    },
+    {
+     "frame": 3172,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 6,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3173,
+     "native": {
+      "mode": 1,
+      "task": 0,
+      "engine": 0,
+      "pointer": 44552,
+      "camera": 323
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3175,
+     "native": {
+      "mode": 1,
+      "task": 1,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3332,
+     "native": {
+      "mode": 1,
+      "task": 2,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3333,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 0,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3334,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 7,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3335,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 0
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3425,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 43
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "dying",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3426,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 44
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "intro",
+      "camera": 379
+     }
+    },
+    {
+     "frame": 3428,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 46
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "camera": 0
+     }
+    },
+    {
+     "frame": 3582,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "pointer": 42380,
+      "camera": 179
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "camera": 0
+     }
+    }
+   ],
+   "samples": [
+    {
+     "frame": 2936,
+     "pad": 160,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 0,
+      "pointer": 44552,
+      "x": 398,
+      "y": 16,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       35,
+       89,
+       47
+      ],
+      "enemy0Box": [
+       77,
+       49,
+       87,
+       55
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 398.375,
+      "y": 16,
+      "camera": 323,
+      "time": 346,
+      "score": 216050,
+      "coins": 71,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 609.699999999992,
+        "y": 181.5470208622264
+       }
+      ]
+     }
+    },
+    {
+     "frame": 2937,
+     "pad": 160,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 11,
+      "type": 0,
+      "pointer": 44552,
+      "x": 399,
+      "y": 17,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       37,
+       89,
+       49
+      ],
+      "enemy0Box": [
+       76,
+       48,
+       86,
+       54
+      ],
+      "enemy0Collision": 1,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 399,
+      "y": 18,
+      "camera": 323,
+      "time": 346,
+      "score": 216050,
+      "coins": 71,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 610.099999999992,
+        "y": 181.04756264798613
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3172,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 6,
+      "type": 0,
+      "pointer": 44552,
+      "x": 399,
+      "y": 771,
+      "camera": 323,
+      "time": 346,
+      "playerBox": [
+       79,
+       23,
+       89,
+       35
+      ],
+      "enemy0Box": [
+       76,
+       48,
+       86,
+       54
+      ],
+      "enemy0Collision": 1,
+      "slots": [
+       [
+        1,
+        7,
+        396,
+        34
+       ],
+       [
+        1,
+        39,
+        364,
+        31
+       ],
+       [
+        1,
+        39,
+        460,
+        62
+       ],
+       [
+        1,
+        23,
+        480,
+        0
+       ],
+       [
+        1,
+        7,
+        394,
+        75
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 491.0625,
+      "y": 478,
+      "camera": 379,
+      "time": 340,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 664.0999999999866,
+        "y": 187.97146389258836
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 646.75,
+        "y": 85.87820705177059
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3335,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 400,
+      "playerBox": [
+       0,
+       0,
+       0,
+       0
+      ],
+      "enemy0Box": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        0,
+        0,
+        416,
+        224
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "play",
+      "x": 548.125,
+      "y": 897,
+      "camera": 379,
+      "time": 340,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "blooper",
+        "slot": 0,
+        "x": 692.7999999999829,
+        "y": 166.41114461891917
+       },
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 606,
+        "y": 79.47699272432106
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3425,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 145,
+      "y": 176,
+      "camera": 43,
+      "time": 397,
+      "playerBox": [
+       105,
+       196,
+       115,
+       208
+      ],
+      "enemy0Box": [
+       255,
+       255,
+       255,
+       255
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        120
+       ],
+       [
+        0,
+        0,
+        416,
+        224
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ],
+       [
+        0,
+        0,
+        416,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "optional-water",
+      "phase": "dying",
+      "x": 617.3125,
+      "y": 1283,
+      "camera": 379,
+      "time": 340,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "cheep",
+        "slot": 3,
+        "x": 583.5,
+        "y": 85.04756264798613
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3498,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 255,
+      "y": 176,
+      "camera": 143,
+      "time": 394,
+      "playerBox": [
+       115,
+       196,
+       125,
+       208
+      ],
+      "enemy0Box": [
+       172,
+       145,
+       182,
+       151
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        132
+       ],
+       [
+        1,
+        13,
+        456,
+        128
+       ],
+       [
+        1,
+        0,
+        406,
+        184
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "x": 0,
+      "y": -256,
+      "camera": 0,
+      "time": 340,
+      "score": 216250,
+      "coins": 72,
+      "enemies": []
+     }
+    },
+    {
+     "frame": 3581,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 390,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        122
+       ],
+       [
+        1,
+        0,
+        364,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        72
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "intro",
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 401,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "piranha",
+        "slot": 0,
+        "x": 312,
+        "y": 144
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3582,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 390,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        123
+       ],
+       [
+        1,
+        0,
+        364,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        72
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "x": 40,
+      "y": 176,
+      "camera": 0,
+      "time": 400,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "piranha",
+        "slot": 0,
+        "x": 312,
+        "y": 144
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3665,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 387,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        144
+       ],
+       [
+        1,
+        0,
+        348,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        94
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "x": 135.1875,
+      "y": 176,
+      "camera": 36,
+      "time": 397,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "piranha",
+        "slot": 0,
+        "x": 312,
+        "y": 120
+       }
+      ]
+     }
+    },
+    {
+     "frame": 3666,
+     "pad": 128,
+     "native": {
+      "mode": 1,
+      "task": 3,
+      "engine": 8,
+      "type": 1,
+      "pointer": 42380,
+      "x": 290,
+      "y": 176,
+      "camera": 179,
+      "time": 387,
+      "playerBox": [
+       114,
+       196,
+       124,
+       208
+      ],
+      "enemy0Box": [
+       136,
+       158,
+       146,
+       164
+      ],
+      "enemy0Collision": 0,
+      "slots": [
+       [
+        1,
+        13,
+        312,
+        144
+       ],
+       [
+        1,
+        13,
+        456,
+        144
+       ],
+       [
+        1,
+        0,
+        349,
+        184
+       ],
+       [
+        1,
+        13,
+        520,
+        95
+       ],
+       [
+        0,
+        0,
+        688,
+        0
+       ]
+      ]
+     },
+     "sim": {
+      "area": "main",
+      "phase": "play",
+      "x": 136.6875,
+      "y": 176,
+      "camera": 37,
+      "time": 397,
+      "score": 216250,
+      "coins": 72,
+      "enemies": [
+       {
+        "kind": "piranha",
+        "slot": 0,
+        "x": 312,
+        "y": 120
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
