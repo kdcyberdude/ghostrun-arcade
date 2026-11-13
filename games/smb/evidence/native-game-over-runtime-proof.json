@@ -1,0 +1,177 @@
+{
+  "schema": "native-game-over-runtime-proof-v1",
+  "sourceBaseCommit": "837c824",
+  "sourceSha256": {
+    "src/simulation.ts": "7c93656bd17efa6b6b43e4cad32f87000363b66847750028a421f09052e7ba6a",
+    "src/native-game-over.ts": "dd61565c714c7d7dc0a6c055dc7811d954384b4559a008527170f3a57dcbf711",
+    "tools/harness/native-entrance.mjs": "b67cb9b1b9e9fd245ebf8828e543a04ac0dea6e7a3d60feb433ff05f97d53605",
+    "tools/harness/native-strict.ts": "587104b08d45ab066f30ae86f12dfa5a1c75dfc684609d025b1b5c7cf13b7604",
+    "tests/native-game-over-runtime.test.ts": "011e0c3039f225e2a81f34243d251038fb59be329b9ba88481cfd8973ea53b60",
+    "tests/gameover-transition-candidate.test.ts": "058bd730a0606d6edfea0e9200aa0ab82883d3edd331c4bc5766fdcb83acd6bf",
+    "tests/fixtures/native-game-over-cases.json": "c416b8108c64e02871adfa2324afcf0ab5612a046600b9f94e12126e796473fd"
+  },
+  "validation": {
+    "focusedTests": 32,
+    "genuineNativeControllerRows": 1501,
+    "newOriginalMode3Frames": 22,
+    "fullSuite": "not run; integration batch owner",
+    "typescript": "not run; integration batch owner",
+    "fullCorpusAndPixels": "not run"
+  },
+  "originalMode3Tails": [
+    {
+      "level": "2-2",
+      "frames": 6600,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": null,
+        "gameover.engine": null,
+        "gameover.screen": null,
+        "gameover.disable": null,
+        "gameover.timer": null,
+        "gameover.master": null,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": null
+      },
+      "ownershipGaps": []
+    },
+    {
+      "level": "4-4",
+      "frames": 11636,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": null,
+        "gameover.engine": null,
+        "gameover.screen": null,
+        "gameover.disable": null,
+        "gameover.timer": null,
+        "gameover.master": null,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": null
+      },
+      "ownershipGaps": []
+    },
+    {
+      "level": "6-3",
+      "frames": 3080,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": null,
+        "gameover.engine": null,
+        "gameover.screen": null,
+        "gameover.disable": null,
+        "gameover.timer": null,
+        "gameover.master": null,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": null
+      },
+      "ownershipGaps": []
+    },
+    {
+      "level": "6-4",
+      "frames": 1644,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": null,
+        "gameover.engine": null,
+        "gameover.screen": null,
+        "gameover.disable": null,
+        "gameover.timer": null,
+        "gameover.master": null,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": null
+      },
+      "ownershipGaps": []
+    },
+    {
+      "level": "7-2",
+      "frames": 4568,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": null,
+        "gameover.engine": null,
+        "gameover.screen": null,
+        "gameover.disable": null,
+        "gameover.timer": null,
+        "gameover.master": null,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": null
+      },
+      "ownershipGaps": []
+    },
+    {
+      "level": "8-2",
+      "frames": 2760,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": 2756,
+        "gameover.task": 2756,
+        "gameover.engine": 2756,
+        "gameover.screen": 2756,
+        "gameover.disable": 2756,
+        "gameover.timer": 2756,
+        "gameover.master": 2756,
+        "gameover.timeUp": 2756,
+        "gameover.columns": 2756,
+        "gameover.frameCounter": 2756,
+        "gameover.random": null,
+        "gameover.interval": 2756
+      },
+      "ownershipGaps": [
+        {
+          "code": "native-gameover-not-owned",
+          "detail": "native mode3 has no remake game-over control state; replay continues without resetting gameplay",
+          "area": "main",
+          "first": 2756,
+          "count": 4
+        }
+      ]
+    },
+    {
+      "level": "8-3",
+      "frames": 4208,
+      "unsteppedFrames": 0,
+      "firstGameOverFields": {
+        "gameover.mode": null,
+        "gameover.task": 4205,
+        "gameover.engine": null,
+        "gameover.screen": 4205,
+        "gameover.disable": 4205,
+        "gameover.timer": 4205,
+        "gameover.master": 4205,
+        "gameover.timeUp": null,
+        "gameover.columns": null,
+        "gameover.frameCounter": null,
+        "gameover.random": null,
+        "gameover.interval": 4205
+      },
+      "ownershipGaps": []
+    }
+  ],
+  "limits": [
+    "Boot and title mode0 are explicitly unimplemented by the strict adapter; fixture title termination row remains unstepped there.",
+    "No game-over pixel or audio-synthesis equivalence claim.",
+    "Two-player source continuation is not covered by authentic native fixtures.",
+    "8-2/8-3 retain earlier gameplay/death divergence and expose mode3 mismatches."
+  ]
+}

@@ -15,8 +15,8 @@ const fall=(s:Simulation,done:()=>boolean)=>{for(let f=0;f<40&&!done()&&s.phase=
 
 test('two enemies stomped on one row pay 100 + 400 and leave the chain at 2 (native 8-4 rows 75586 +500, 75606 +400)',()=>{
  const s=fixture([{kind:'goomba',x:94,y:208,direction:-1},{kind:'goomba',x:110,y:208,direction:-1}]);
- drop(s,101,190);fall(s,()=>s.score>0);
- assert.equal(s.score,500);assert.equal((s as any).stompChain,2);assert.equal(s.phase,'play');assert.ok(s.enemies.every(e=>e.dead));
+ drop(s,101,190);fall(s,()=>s.awardedScore>0);
+ assert.equal(s.awardedScore,500);assert.equal((s as any).stompChain,2);assert.equal(s.phase,'play');assert.ok(s.enemies.every(e=>e.dead));
 });
 
 test('single stomps climb 100 200 400 500 800',()=>{
@@ -29,11 +29,11 @@ test('a shell kick pays two chain steps up and leaves the chain (native 400 at r
  assert.equal(s.shellKickAward(),400);s.stompChain=1;assert.equal(s.shellKickAward(),500);s.stompChain=2;assert.equal(s.shellKickAward(),800);assert.equal(s.stompChain,2);
 });
 
-for(const [name,dx,dir] of [['native 688 on 689: right',-1,1],['native 1985 on 1983: right',2,1],['native 388 on 385: left',3,-1],['native 686 on 676: left',10,-1]] as const)
+for(const [name,dx,dir] of [['Mario left of pre-move shell',-1,1],['same integer x',0.625,1],['Mario two pixels right',2,-1],['Mario three pixels right',3,-1],['Mario ten pixels right',10,-1]] as const)
  test(`falling on a resting shell kicks it without a bounce (${name})`,()=>{
   const s=fixture([{kind:'koopa',x:100,y:208,direction:-1}]),e=s.enemies[0];e.active=true;e.shell=true;e.movingShell=false;e.vx=-0.5;
   drop(s,100+dx,192);fall(s,()=>!!e.movingShell);
-  assert.equal(Math.sign(e.vx),dir);assert.ok(s.player.vy>=0,'Mario keeps falling');assert.equal(s.score,400);
+  assert.equal(Math.sign(e.vx),dir);assert.ok(s.player.vy>=0,'Mario keeps falling');assert.equal(s.awardedScore,400);
   for(let f=0;f<8;f++)s.step([],1);assert.equal(e.movingShell,true,'the overlap right after the kick must not stop the shell');assert.equal(s.phase,'play');
  });
 
@@ -58,7 +58,7 @@ test('a walker group created late appears further right, followers included (nat
 test('coins and blocks the screenshot maps lost are back where native collects them',()=>{
  const levels=observedLevels(),cell=(l:string,a:string,c:number,r:number)=>levels.find(x=>x.id===l)!.areas.find(x=>x.id===a)!.tiles.find(t=>t[0]===c&&t[1]===r)?.[2];
  assert.equal(cell('2-3','main',97,5),194,'route row 17479');assert.equal(cell('4-3','main',70,2),194,'route row 35037');assert.equal(cell('2-2','area-2',102,11),195,'route row 13517');
- assert.equal(cell('5-4','main',102,12),194,'route row 45320');assert.equal(cell('5-4','main',103,12),undefined,'native passes this cell without a pickup');
+ assert.equal(cell('5-4','main',102,12),194,'route row 45320');assert.equal(cell('5-4','main',103,12),194,'native block buffer: a coin (the route passes beside it)');
  assert.equal(cell('2-1','main',85,9),192,'route row 9480 pays a coin here');assert.equal(cell('1-2','area-2',10,9),193,'mood1 row 2963: no coin');assert.equal(cell('1-2','area-2',11,9),192);
  assert.ok(levels.find(x=>x.id==='5-2')!.areas.find(x=>x.id==='area-2')!.blockContents!.some(b=>b.col===31&&b.row===9&&(b.kind as string)==='coin'),'route row 40715');
 });

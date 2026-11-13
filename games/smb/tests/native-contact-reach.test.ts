@@ -25,6 +25,7 @@ function sideContact(kind:EnemySpec['kind'],marioX:number){
  const level:Level={id:'fixture',time:400,main:'main',evidence:'Synthetic side-contact fixture at native offsets',areas:[{id:'main',width:1024,palette:0,theme:'ground',spawn:[60,208],tiles,enemies:[{kind,x:109,y:208}],evidence:'Synthetic'}]};
  const sim=new Simulation([level]);sim.reset(true);
  sim.player.x=marioX;sim.player.y=208;sim.player.vy=0;sim.player.grounded=true;
+ (sim as any).broClock=1; // PlayerEnemyCollision runs on even frame-counter rows
  (sim as any).updateEnemies(sim.player.y);
  return sim.phase;
 }

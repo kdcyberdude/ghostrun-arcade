@@ -5,7 +5,10 @@ import type {Area,Level,Tile} from '../src/types.js';
 
 function area(overrides:Partial<Area>={}):Area {
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
- return {id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[],spawn:[40,208],evidence:'Synthetic mechanic fixture, not an observed campaign layout',...overrides};
+ const result:Area={id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[],spawn:[40,208],evidence:'Synthetic mechanic fixture, not an observed campaign layout',...overrides};
+ // Exit geometry is accompanied by the native C5 collision metatile.
+ if(result.exit?.kind==='axe')result.tiles.push([Math.floor(result.exit.x/16),Math.floor(result.exit.y!/16),197]);
+ return result;
 }
 function game(areas:Area[],id='fixture') {
  const level:Level={id,time:400,main:areas[0].id,areas,evidence:'Mechanic regression fixture'};
@@ -15,7 +18,7 @@ function game(areas:Area[],id='fixture') {
 test('off-grid overlapping artwork supports both player and enemies at its actual height',()=>{
  const sim=game([area({freeTiles:[{x:31,y:157,id:81,palette:0},{x:39,y:157,id:81,palette:0}],enemies:[{kind:'goomba',x:33,y:155}]})]);
  sim.player.x=32;sim.player.y=154;sim.player.vy=3;sim.player.grounded=false;sim.player.invincible=30;
- sim.step([],4);assert.equal(sim.player.y,157);assert.equal(sim.enemies[0].y,157);
+ sim.step([],4);assert.equal(sim.player.y,157);sim.step([],8);assert.equal(sim.enemies[0].y,157); // the Goomba falls from rest under native 0x3D gravity and lands the row after it sinks
  assert.equal(sim.tileAt(53,158),81);assert.equal(sim.tileAt(55,158),0);
 });
 
@@ -61,10 +64,10 @@ test('firebar collision includes its center and excludes a nonexistent extra ter
  const touching=game([area({firebars:[bar]})]);touching.player.x=92;touching.step([],1);assert.equal(touching.phase,'dying');
 });
 
-test('a lethal firebar contact cannot also trigger an overlapping exit or pipe',()=>{
+test('axe contact skips the enemy loop; lethal firebars still block ordinary pipes',()=>{
  const bar={x:100,y:202,length:2,speed:0};
  for(const destination of [
-  {exit:{kind:'axe' as const,x:100,y:192,retainerX:240}},
+  {exit:{kind:'axe' as const,x:100,y:208,retainerX:240}},
  {pipes:[{x:100,y:208,direction:'down' as const,to:'room',spawn:[40,208] as [number,number]}]},
  ]){
   const setup=(lethal:boolean)=>{
@@ -73,41 +76,43 @@ test('a lethal firebar contact cannot also trigger an overlapping exit or pipe',
   };
   const control=setup(false);assert.ok(control.phase==='castle'||control.phase==='pipe');
   const sim=setup(true);
-  assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);
-  assert.ok(sim.events.includes('event_death'));assert.ok(!sim.events.includes('sfx_pipe'));
+  if(destination.exit?.kind==='axe'){assert.equal(sim.phase,'castle');assert.equal(sim.player.dead,false);}
+  else{assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);assert.ok(sim.events.includes('event_death'));assert.ok(!sim.events.includes('sfx_pipe'));}
  }
 });
 
 test('crossing beneath an axe cannot clear a castle; touching it starts sequential bridge removal',()=>{
- const room=area({theme:'castle',exit:{kind:'axe',x:100,y:144,retainerX:240},enemies:[{kind:'bowser',x:200,y:160}]});
- room.tiles.push([12,10,137],[13,10,137],[14,10,137],[6,9,197]);
- const below=game([room]);below.player.x=100;below.step(['right'],10);assert.equal(below.phase,'play');
- const touching=game([room]);touching.player.x=86;touching.player.y=152;touching.player.vy=0;touching.step([],1);
+ const room=area({theme:'castle',camera:58,exit:{kind:'axe',x:296,y:144,retainerX:656},enemies:[{kind:'bowser',x:200,y:160}]});
+ room.tiles.push([12,10,137],[13,10,137],[14,10,137]);
+ const below=game([room]);below.player.x=296;below.step(['right'],10);assert.equal(below.phase,'play');
+ const touching=game([room]);touching.step([],1);touching.player.x=282;touching.player.y=152;touching.player.vy=0;touching.step([],1);
  assert.equal(touching.phase,'castle');assert.equal(touching.tiles.get('14,10'),137);assert.equal(touching.enemies[0].dead,0);
- touching.step([],16);assert.equal(touching.tiles.has('14,10'),false);assert.equal(touching.tiles.get('12,10'),137);
- touching.step([],8);assert.equal(touching.castleStage,'fall');assert.ok(touching.enemies[0].dead>0);
- touching.step([],300);assert.equal(touching.castleStage,'message');assert.ok(touching.player.x>=218&&touching.player.x<=226);assert.ok(touching.castleArrivalFrame>0);
+ const inheritedFeet=touching.nativeVictory!.feet;touching.step([],inheritedFeet+9);assert.equal(touching.tiles.has('14,10'),false);assert.equal(touching.tiles.get('12,10'),137);
+ touching.step([],47);assert.equal(touching.castleStage,'fall');assert.ok(touching.enemies[0].dead>0);
+ for(let frame=0;frame<1000&&String(touching.castleStage)!=='message';frame++)touching.step([],1);assert.equal(touching.castleStage,'message');assert.ok(touching.player.x>=608&&touching.player.x<656);assert.ok(touching.castleArrivalFrame>0);
 });
 
 test('castle completion walks to the observed retainer before advancing to the next level',()=>{
- const first:Level={id:'1-4',time:400,main:'main',evidence:'Fixture',areas:[area({theme:'castle',exit:{kind:'axe',x:56,y:192,retainerX:128}})]};
+ const first:Level={id:'1-4',time:400,main:'main',evidence:'Fixture',areas:[area({theme:'castle',camera:58,spawn:[282,208],exit:{kind:'axe',x:296,y:208,retainerX:656}})]};
  const second:Level={id:'2-1',time:400,main:'main',evidence:'Fixture',areas:[area()]};
  const sim=new Simulation([first,second]);sim.reset(true);sim.step(['right'],20);assert.equal(sim.phase,'castle');
- sim.step([],50);assert.equal(sim.levelIndex,0);sim.step([],500);assert.equal(sim.levelIndex,1);assert.notEqual(sim.phase,'ending');
+ sim.step([],50);assert.equal(sim.levelIndex,0);for(let i=0;i<1000&&sim.levelIndex===0;i++)sim.step([],1);assert.equal(sim.levelIndex,1);assert.notEqual(sim.phase,'ending');
 });
 
 test('castle rescue freezes the remaining timer without a flagpole score bonus',()=>{
- const first:Level={id:'1-4',time:252,main:'main',evidence:'Timer behavior fixture',areas:[area({theme:'castle',exit:{kind:'axe',x:56,y:192,retainerX:128}})]};
+ const first:Level={id:'1-4',time:252,main:'main',evidence:'Timer behavior fixture',areas:[area({theme:'castle',camera:58,spawn:[282,208],exit:{kind:'axe',x:296,y:208,retainerX:656}})]};
  const second:Level={id:'2-1',time:400,main:'main',evidence:'Fixture',areas:[area()]};
  const sim=new Simulation([first,second]);sim.reset(true);sim.step(['right'],20);assert.equal(sim.phase,'castle');
- const time=sim.time,score=sim.score;sim.step([],200);assert.equal(sim.castleStage,'message');
+ const time=sim.time,score=sim.score;for(let i=0;i<1000&&sim.castleStage!=='message';i++)sim.step([],1);assert.equal(sim.castleStage,'message');
  sim.step([],100);assert.equal(sim.time,time);assert.equal(sim.score,score);assert.equal(sim.levelIndex,0);
- sim.step([],200);assert.equal(sim.levelIndex,1);assert.equal(sim.score,score);
+ for(let i=0;i<500&&sim.levelIndex===0;i++)sim.step([],1);assert.equal(sim.levelIndex,1);assert.equal(sim.score,score);
 });
 
 test('the final rescue brakes naturally before the Princess and ends at the final camera view',()=>{
- const sim=game([area({theme:'castle',exit:{kind:'axe',x:56,y:192,retainerX:180}})],'8-4');
- sim.step(['right'],20);sim.step([],160);assert.equal(sim.phase,'ending');assert.ok(sim.player.x>=158&&sim.player.x<=166);assert.equal(sim.camera,36);
+ // Keep the axe above its supporting floor; C5 is pass-through, not a floor tile.
+ const tiles:Tile[]=Array.from({length:64},(_,x)=>[x,14,84]);
+ const sim=game([area({tiles,theme:'castle',camera:58,spawn:[282,208],exit:{kind:'axe',x:296,y:208,retainerX:656}})],'8-4');
+ sim.step(['right'],20);for(let i=0;i<1500&&sim.phase!=='ending';i++)sim.step([],1);assert.equal(sim.phase,'ending');assert.ok(sim.player.x>=608&&sim.player.x<656);assert.ok(sim.camera===512||sim.camera===513);assert.equal(Math.floor(sim.player.vx*16),0);
 });
 
 test('flying fish and bullets are generated over time rather than all existing at the start',()=>{

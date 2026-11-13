@@ -9,8 +9,12 @@ import {analyseArea} from './layout.js';
 import {buildStatics,disposeGroup} from './scenery.js';
 import {buildBackdrop,type LightSpot} from './backdrop.js';
 import {photoBackdrop} from './nature.js';
-import {FLAG_COMPLETION} from '../simulation.js';
+import {nativeFlagSprites} from '../native-flag-picture.js';
 import {makeFlag,waveFlag} from './flag.js';
+import {liftRopeColumns,rotatedPalette} from '../view-rules.js';
+import graphics from '../../assets/graphics/graphics-manifest.json';
+import nesPalette from '../../assets/nes-rgb-palette.json';
+const nativePalettes=graphics.palette_observations.map(o=>o.palette);
 class Pool{
  private meshes:THREE.InstancedMesh[]=[];private n=0;private tmp=new THREE.Matrix4();
  constructor(private parts:Part[],private cap:number,group:THREE.Group,varied=false){
@@ -56,7 +60,7 @@ function vary(material:THREE.Material){
  m.customProgramCacheKey=()=>'vary';m.needsUpdate=true;
 }
 export const TILE_MODELS=['block_ground','block_ground_top','block_brick','block_question','block_used','block_hard','block_wall','pipe_top','pipe_body','castle_brick','castle_crenel','castle_dark'];
-const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe','castle']);
+const SCENERY=new Set(['hill','bush','cloud','tree','empty','void']);const PHOTO_THEMES=new Set(['ground','snow','night']);const GRASS_THEMES=new Set(['ground','night','snow']);const SOLIDISH=new Set(['ground','wall','hard','brick','question','used','pipe','castle']);
 /** Castle pipes are grey in the original palette: same pipe model, its green albedo turned to light steel grey. */
 function castlePipe(m:THREE.Material){const c=m.clone() as THREE.MeshStandardMaterial;
  c.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n diffuseColor.rgb=vec3(dot(diffuseColor.rgb,vec3(0.299,0.587,0.114)))*vec3(3.4,3.45,3.6);');};
@@ -65,7 +69,8 @@ const VARIANT:Record<string,string>={underground:'_ug',castle:'_castle',water:'_
 export class World{
  readonly group=new THREE.Group();private pools=new Map<string,Pool>();private area?:object;private statics?:THREE.Group;
  readonly unmapped=new Set<number>();private m=new THREE.Matrix4();
- private flag=makeFlag();private spots:LightSpot[]=[];
+ private paletteMaterials:{palette:number;materials:THREE.MeshStandardMaterial[];coin:boolean}[]=[];
+ private flag=makeFlag();private spots:LightSpot[]=[];private ropeArea?:object;private ropes:number[]=[];
  /** A few point lights re-aimed every frame at the torches / crystals nearest the camera (only visible in cave and castle areas). */
  private lamps=Array.from({length:6},()=>{const l=new THREE.PointLight(0xffffff,0,14,2);l.visible=false;return l;});
  constructor(private kit:Kit){this.group.add(this.flag,...this.lamps);}
@@ -76,10 +81,11 @@ export class World{
   const base=name.replace(/^block_/,'').replace(/^castle_/,'');
   return procBlock(name.startsWith('castle_')?(name==='castle_dark'?'used':'castle'):base)??procBlock('hard')!;
  }
- private pool(name:string,theme:string){
+ private pool(name:string,theme:string,palette=0){
   const v=VARIANT[theme]??'',want=v&&this.kit.has(name+v)?name+v:name,greyPipe=theme==='castle'&&name.startsWith('pipe_');
-  const key=name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want;let p=this.pools.get(key);
+  const cycles=name==='block_question'||name==='coin_tile',key=(name.startsWith('liquid')?want+'@'+(theme==='castle'?'lava':'water'):greyPipe?want+'@castle':want)+(cycles?'@palette'+palette:'');let p=this.pools.get(key);
   if(!p){let parts=this.kit.parts(want)??this.fallback(name,theme);if(greyPipe)parts=parts.map(q=>({...q,material:castlePipe(q.material)}));
+   if(cycles){const materials:THREE.MeshStandardMaterial[]=[];parts=parts.map(part=>{if(name==='block_question'&&parts.length>1&&!part.material.name.startsWith('M_Question'))return part;const material=part.material.clone() as THREE.MeshStandardMaterial;materials.push(material);return {...part,material};});this.paletteMaterials.push({palette,materials,coin:name==='coin_tile'});}
    p=new Pool(parts,want.startsWith('pipe_body')?600:900,this.group,VARY.test(want));this.pools.set(key,p);}
   return p;
  }
@@ -88,6 +94,42 @@ export class World{
   this.lamps.forEach((l,i)=>{const p=near[i];l.visible=this.spots.length>0;if(!p){l.intensity=0;return;}
    const torch=p.color===0xff9a40,f=torch?0.82+0.1*Math.sin(frame*0.31+p.x*3.1)+0.08*Math.sin(frame*0.83+p.x):0.85+0.15*Math.sin(frame*0.05+p.x);
    l.position.set(p.x,p.y,p.z);l.color.setHex(p.color);l.intensity=p.power*f;});
+ }
+ /** One map tile (grid or free piece) at (col,row); `key` is the bump cell ('' for none). */
+ private tile(s:Simulation,id:number,col:number,row:number,key:string,palette=s.area.palette){
+  const theme=s.area.theme,kind=kindIn(id,theme),age=key?s.bump.get(key):undefined,bump=age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
+  const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette).add(this.m.makeTranslation(x,y,dz));
+  switch(kind){
+   case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
+   case 'wall':put('block_wall',col+0.5,14.5-row);break;
+   case 'brick':put('block_brick',col+0.5,14.5-row+bump);break;
+   case 'question':put('block_question',col+0.5,14.5-row+bump);break;
+   case 'used':put('block_used',col+0.5,14.5-row+bump);break;
+   case 'hard':put('block_hard',col+0.5,14.5-row);break;
+   // Tile 70 is the castle's dark doorway; over an underground wall (4-2) the 2D picture shows the open cave there, so nothing is drawn.
+   case 'castle':if(id===70&&theme==='underground')break;put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
+   case 'pipe':
+    // Per tile, so shafts without a cap (pipes reaching the ceiling) are drawn too.
+    if(isPipeTop(id))put('pipe_top',col+1,14.5-row);else if(isPipeBody(id))put('pipe_body',col+1,14.5-row);
+    // A right-column tile whose left column is not this pipe (a side pipe joins there, as at the 1-2 entry) still carries the
+    // vertical pipe down to the ground, so the two pipes meet instead of the shaft stopping above the joint.
+    else{const left=s.tiles.get(`${col-1},${row}`);if(id===21&&left!==20&&left!==21)put('pipe_body',col,14.5-row);else if((id===17||id===19)&&left!==16&&left!==18)put('pipe_top',col,14.5-row);}
+    break;
+   case 'sidePipe':
+    // Upper-row tiles carry the 2-tall horizontal piece; rotated so the lip faces left (-X).
+    if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
+    break;
+   case 'coin':this.pool('coin_tile',theme,palette).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
+   case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
+    // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
+    if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
+    break;}
+   // Tile 37 is also the pulley-lift rope: only a column topped by a flag ball is the flagpole (drawn by the flag prop).
+   case 'flagPole':{let ball=false;for(let r=0;r<15&&!ball;r++)ball=s.tiles.get(`${col},${r}`)===36;if(!ball)put('rope_v',col+0.5,14.5-row,-0.3);break;}
+   // Tile 104: the lower half of a brick (the base a jumpspring stands on in 3-1).
+   case 'other':if(id===104){this.pool('block_brick',theme).add(this.m.makeScale(1,0.5,1).setPosition(col+0.5,14.25-row,0));break;}this.unmapped.add(id);break;
+   default:break;
+  }
  }
  sync(s:Simulation,camPx:number){
   if(this.area!==s.area){
@@ -98,44 +140,25 @@ export class World{
   }
   const theme=s.area.theme;for(const p of this.pools.values())p.begin();
   const c0=Math.floor(camPx/16)-2,c1=c0+21;
+  // Off-grid pieces (castle stone in 4-4 / 8-4, seabed, trunks, mushroom stems, ...) are drawn over the grid like the 2D picture: a piece covers the
+  // grid tile of its cell. Interactive pieces bump with their cell.
+  const free=s.freeTiles.filter(p=>p.x>=(c0-1)*16&&p.x<(c1+1)*16&&!s.area.hiddenFreeTiles?.some(h=>h.x===p.x&&h.y===p.y&&h.id===p.id&&h.palette===p.palette));
+  const pieces=[...(s.area.decorations??[]).filter(d=>d.x>=(c0-1)*16&&d.x<(c1+1)*16&&!SCENERY.has(kindIn(d.id,theme))),...free];
+  const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+  const covered=new Set(pieces.filter(p=>p.x%16===0&&p.y%16===0).map(p=>`${p.x/16},${p.y/16}`));
   for(let col=c0;col<=c1;col++)for(let row=2;row<15;row++){
-   const id=s.tiles.get(`${col},${row}`);if(id===undefined)continue;
-   const kind=kindIn(id,theme),key=`${col},${row}`,age=s.bump.get(key),bump=age!==undefined&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
-   const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme).add(this.m.makeTranslation(x,y,dz));
-   switch(kind){
-    case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
-    case 'wall':put('block_wall',col+0.5,14.5-row);break;
-    case 'brick':put('block_brick',col+0.5,14.5-row+bump);break;
-    case 'question':put('block_question',col+0.5,14.5-row+bump);break;
-    case 'used':put('block_used',col+0.5,14.5-row+bump);break;
-    case 'hard':put('block_hard',col+0.5,14.5-row);break;
-    case 'castle':put(id===71?'castle_brick':id===69||id===73?'castle_crenel':'castle_dark',col+0.5,14.5-row);break;
-    case 'pipe':
-     // Per tile, so shafts without a cap (pipes reaching the ceiling) are drawn too.
-     if(isPipeTop(id))put('pipe_top',col+1,14.5-row);else if(isPipeBody(id))put('pipe_body',col+1,14.5-row);
-     // A right-column tile whose left column is not this pipe (a side pipe joins there, as at the 1-2 entry) still carries the
-     // vertical pipe down to the ground, so the two pipes meet instead of the shaft stopping above the joint.
-     else{const left=s.tiles.get(`${col-1},${row}`);if(id===21&&left!==20&&left!==21)put('pipe_body',col,14.5-row);else if((id===17||id===19)&&left!==16&&left!==18)put('pipe_top',col,14.5-row);}
-     break;
-    case 'sidePipe':
-     // Upper-row tiles carry the 2-tall horizontal piece; rotated so the lip faces left (-X).
-     if(id===28||id===29||id===30||id===107)this.pool(id===28||id===107?'pipe_top':'pipe_body',theme).add(this.m.makeRotationZ(Math.PI/2).setPosition(col+0.5,14-row,0));
-     break;
-    case 'coin':this.pool('coin_tile',theme).add(this.m.makeRotationY(s.frame*0.06).setPosition(col+0.5,14.5-row,0));break;
-    case 'piece':{const pc=PIECES[id];put(pc.model,col+0.5,14.5-row,pc.dz??0);
-     // Mushroom stems run from their top piece (79) to the ground; the observed tile data skips some stem rows (4-3), so fill empty rows below.
-     if(id===79)for(let r=row+1;r<15;r++){const below=s.tiles.get(`${col},${r}`);if(below===undefined)put('mush_stem',col+0.5,14.5-r,pc.dz??0);else if(below!==80)break;}
-     break;}
-    // Tile 37 is also the pulley-lift rope: only a column topped by a flag ball is the flagpole (drawn by the flag prop).
-    case 'flagPole':{let ball=false;for(let r=0;r<15&&!ball;r++)ball=s.tiles.get(`${col},${r}`)===36;if(!ball)put('rope_v',col+0.5,14.5-row,-0.3);break;}
-    case 'other':this.unmapped.add(id);break;
-    default:break;
-   }
+   const key=`${col},${row}`,id=pictureTiles.get(key);if(id===undefined||covered.has(key))continue;
+   this.tile(s,id,col,row,key);
   }
+  for(const p of pieces)if(p.y>=32)this.tile(s,p.id,p.x/16,p.y/16,'interactive' in p&&p.interactive?`${p.x/16},${p.y/16}`:'',p.palette??s.area.palette);
+  // Castle lift ropes run the full column height (as in the 2D picture), not only where the map has rope tiles.
+  if(this.ropeArea!==s.area){this.ropeArea=s.area;this.ropes=liftRopeColumns(s.area);}
+  for(const col of this.ropes)if(col>=c0&&col<=c1)for(let row=2;row<15;row++)if(!s.tiles.has(`${col},${row}`))this.pool('rope_v',theme).add(this.m.makeTranslation(col+0.5,14.5-row,PIECES[64].dz??0));
   for(const p of this.pools.values())p.end();
+  for(const entry of this.paletteMaterials){const index=rotatedPalette(nativePalettes,entry.palette,s.colorDrawRotations),[r,g,b]=nesPalette.colors[nativePalettes[index][13]];for(const material of entry.materials){material.color.setRGB(r/255,g/255,b/255,THREE.SRGBColorSpace);if(entry.coin)material.emissive.copy(material.color);}}
   this.light(camPx,s.frame);
   LIQUIDS.lava.emissiveIntensity=0.85+0.2*Math.sin(s.frame*0.07);if(LIQUIDS.lava.map){LIQUIDS.lava.map.offset.set(s.frame*0.0011,s.frame*0.0004);}LIQUIDS.water.opacity=0.62+0.05*Math.sin(s.frame*0.05);
-  const exit=s.area.exit;this.flag.visible=exit?.kind==='flag';
-  if(exit?.kind==='flag'){const top=s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY;this.flag.position.set((exit.x-8)/16,(232-top)/16,0.05);waveFlag(this.flag,s.frame);}
+  const flag=s.area.exit?.kind==='flag'?nativeFlagSprites(s.specialSlot5,undefined,camPx):[];this.flag.visible=flag.length>0;
+  if(flag.length){this.flag.position.set((camPx+flag[0].x+8)/16,(232-flag[0].y)/16,0.05);waveFlag(this.flag,s.random.frame);}
  }
 }

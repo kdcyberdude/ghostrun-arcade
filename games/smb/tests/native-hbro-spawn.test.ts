@@ -1,0 +1,17 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {gunzipSync} from 'node:zlib';import {createHash} from 'node:crypto';
+import {Simulation} from '../src/simulation.js';import {observedLevels} from '../src/levels.js';import type {Button,Enemy} from '../src/types.js';import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';import {compareRun} from '../tools/harness/native-divergence.js';import {strictCompare} from '../tools/harness/native-strict.js';import fixture from './fixtures/native-hbro-spawn.json';
+const hash=(b:Buffer)=>createHash('sha256').update(b).digest('hex'),keys:Button[]=['a','b','select','start','up','down','left','right'];
+for(const run of fixture.runs)test(`source Hammer Bro parser/init prefix ${run.name}`,()=>{
+ const initial=Buffer.from(run.initial,'base64'),ram=gunzipSync(Buffer.from(run.ramGzip,'base64'));assert.equal(hash(initial),run.initialRamSha256);assert.equal(hash(ram),run.replayRamSha256);const entrance=decodeEntrance(initial,run.receipt),legacy=compareRun(entrance,run.pads,f=>ram.subarray(f*2048,(f+1)*2048),run.level),strict=strictCompare(entrance,run.pads,ram,run.level);
+ assert.ok(Object.values(legacy.fields).every(v=>v===null),JSON.stringify(legacy.fields));assert.ok(Object.values(strict.fields).every(v=>v===null),JSON.stringify(strict.fields));
+ const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];let bros=0;
+ for(let f=0;f<run.pads.length;f++){sim.step(keys.filter((_,i)=>run.pads[f]&(1<<i)),1);const r=ram.subarray(f*2048,(f+1)*2048);assert.deepEqual([sim.placedStream.offset,sim.placedStream.page,Number(sim.placedStream.selected)],[r[0x739],r[0x73a],r[0x73b]],`cursor ${f}`);
+  for(let slot=0;slot<5;slot++){if(!r[0xf+slot]||(r[0xf+slot]&128)||r[0x16+slot]!==5||(r[0x1e+slot]&32))continue;const e=(sim.enemies as Enemy[]).find(e=>e.active&&e.kind==='hammerBro'&&e.enemySlot===slot);assert.ok(e,`native Bro ${f}/${slot}`);const n=e.hbro!;assert.deepEqual([n.state,n.jumpTimer,n.throwTimer,n.frameTimer,n.interval,n.speed&255,n.force,n.fraction],[r[0x1e+slot],r[0x3c+slot],r[0x3a2+slot],r[0x78a+slot],r[0x796+slot],r[0xa0+slot],r[0x434+slot],r[0x417+slot]],`Bro slot bytes ${f}/${slot}`);bros++;}
+ }assert.ok(bros>0,'prefix reaches native Hammer Bro births');
+});
+test('Hammer Bro factories use raw records without a screenshot roster and retain native slot residue',async()=>{
+ const {nativeMixedWalkerScene}=await import('../src/native-walker-scene.js'),scene=nativeMixedWalkerScene([{offset:7,id:5,x:1808,y:120,hard:false}],0,[])!;assert.equal(scene.length,1);assert.deepEqual([scene[0].kind,scene[0].x,scene[0].y,scene[0].nativeId,scene[0].nativeOffset],['hammerBro',1808,144,5,7]);
+ const sim:any=new Simulation(observedLevels());sim.reset(true);sim.placedHammerBros=true;sim.slotSub[2]=128;sim.slotBroJump[2]=107;sim.slotFrameTimers[2]=9;Object.assign(sim.slotVertical[2],{fraction:42,speed:-5,force:144});const e:Enemy=sim.makeEnemy(scene[0]);sim.activateNativePlaced(e,2,1808);
+ assert.deepEqual([e.x,e.y,e.vx,e.nativeDir,e.graphicsVisible],[1808.5,144,0,-1,false]);assert.deepEqual(e.hbro,{state:0,jumpTimer:107,throwTimer:0,frameTimer:9,interval:128,speed:0,force:0,fraction:42,y:120});assert.deepEqual(sim.slotVertical[2],{fraction:42,speed:0,force:0});
+ assert.equal(nativeMixedWalkerScene([{offset:0,id:5,x:1808,y:120,hard:false},{offset:2,id:7,x:1904,y:120,hard:false}],0,[]),undefined,'unsupported handlers cannot enter this profile');
+});

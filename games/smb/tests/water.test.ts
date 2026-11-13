@@ -57,7 +57,7 @@ test('repeated surface strokes cannot pass above the 7-2 style overhead wall',()
 test('repeated swimming strokes cannot cross above the actual 7-2 overhead wall',()=>{
  // Image-derived wall column; isolated nearby spawn with enemies removed.
  const sim=new Simulation(observedLevels());sim.reset(true);sim.levelIndex=sim.levels.findIndex(level=>level.id==='7-2');
- sim.loadArea('area-4',[1184,96],1072);sim.enemies=[];
+ sim.loadArea('area-4',[1184,96],1072);sim.enemies=[];(sim as any).waterEnemyStream=undefined;
  for(let frame=0;frame<240;frame++){
   sim.step(frame%24<20?['right','a','b']:['right','b'],1);
   assert.ok(!(sim.player.x>=1248&&sim.player.y<=32),`crossed above wall at ${sim.player.x},${sim.player.y}`);
@@ -82,11 +82,12 @@ test('water surface is harmless and castle lava falls through to an offscreen li
   if(theme==='castle')area.tiles=area.tiles.filter(([x,row])=>!(row>=13&&(x===2||x===3)));
   const sim=new Simulation([level]);sim.reset(true);sim.step([],1);assert.equal(sim.phase,'play');
   if(theme==='castle'){
-   let frames=0;while(sim.phase==='play'&&frames++<200)sim.step([],1);
-   assert.equal(sim.phase,'dying');assert.ok(sim.player.y>272);const feet=sim.player.y;
+   (sim as unknown as {runJump:boolean}).runJump=true;sim.player.vy=4;
+   let frames=0;while(sim.phase==='play'&&sim.player.y<=272&&frames++<200)sim.step([],1);
+   assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);assert.ok(sim.player.y>272);const feet=sim.player.y;
    // Native castle pits and lava: 245-249 or 259-260 rows by the last jump's fall force; no jump here, the 259-260 class (the older 247 was one sample).
-   sim.step([],257);assert.equal(sim.phase,'dying');assert.equal(sim.player.y,feet);assert.equal(sim.lives,3);
-   sim.step([],2);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2);
+   sim.step([],257);assert.equal(sim.phase,'play');assert.ok(sim.player.y>feet);assert.equal(sim.lives,3);
+   sim.step([],3);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
   }
  }
 });

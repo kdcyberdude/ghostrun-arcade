@@ -11,7 +11,7 @@ document.body.dataset.view=is3D?'3d':'2d';
 const sim=new Simulation(observedLevels());const view=is3D?new (await import('./render3d/index.js')).Renderer3D(canvas):new GameRenderer(canvas);const audio=new AudioEngine();
 const heldKeys=new Set<string>();const heldPointers=new Map<number,Button>();
 // Presses since the last game frame, so a tap shorter than one drawn frame still reaches the game.
-const tappedKeys=new Set<string>();const tappedPointers=new Set<Button>();let controlled=false;let muted=false;let loaded=false;
+const tappedKeys=new Set<string>();const tappedPointers=new Set<Button>();let controlled=false;let muted=false;let loaded=false;let menuStart:{players:number;release:boolean}|undefined;
 const shell=new GameShell({pause:setPaused,isPaused:()=>sim.paused,clear:clearInput,restart:()=>{sim.reset();soundEvents();draw();},focus:()=>canvas.focus()});
 const keyMaps=shell.maps;
 const heights:Record<string,number>={'4K':2160,'2K':1440,'1K':960,'0.5K':480};
@@ -86,7 +86,7 @@ function adapt(fps:number,slowWindows:number,now:number){
  if(fastWindows>=6&&next&&(blocked.get(key(next))??0)<now){probe={back:current,windows:4};apply(next);learn();return true;}
  return false;
 }
-function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();}
+function clearInput(){heldKeys.clear();heldPointers.clear();tappedKeys.clear();tappedPointers.clear();menuStart=undefined;}
 function setPaused(paused:boolean){sim.paused=paused;audio.setPaused(paused);if(loaded)draw();}
 function heldButtons(player:number){
  const keys=Array.from(new Set([...heldKeys,...tappedKeys]),key=>keyMaps[player][key]).filter((button):button is Button=>button!==undefined);
@@ -103,8 +103,13 @@ async function activate(){try{await audio.unlock();}catch{shell.notify('Sound co
 function start(){
  if(document.body.classList.contains('loading'))return;
  shell.requestFullscreen();shell.enterGame();
- if(sim.phase==='title'){sim.twoPlayer=document.querySelector<HTMLSelectElement>('#players')!.value==='2';sim.paused=false;}
- if(sim.phase==='title'||sim.phase==='play'||sim.phase==='flag'||sim.phase==='gameover'||sim.phase==='ending'){sim.step(['start']);sim.step([]);}
+ if(sim.phase==='title'&&sim.nativeStartup){
+  if(sim.nativeStartup.unsupported)sim.reset();
+  menuStart={players:document.querySelector<HTMLSelectElement>('#players')!.value==='2'?1:0,release:false};sim.paused=false;controlled=false;
+ }else{
+  if(sim.phase==='title'){sim.twoPlayer=document.querySelector<HTMLSelectElement>('#players')!.value==='2';sim.paused=false;}
+  if(sim.phase==='title'||sim.phase==='play'||sim.phase==='flag'||sim.phase==='gameover'||sim.phase==='ending'){sim.step(['start']);sim.step([]);}
+ }
  void activate();soundEvents();draw();
 }
 addEventListener('keydown',event=>{
@@ -148,10 +153,10 @@ const fpsBox=document.querySelector<HTMLElement>('#fps')!,fpsText=document.query
 let showFps=true;try{showFps=localStorage.getItem('smb-show-fps')!=='off';}catch{}
 fpsToggle.value=showFps?'on':'off';
 fpsToggle.addEventListener('change',()=>{showFps=fpsToggle.value==='on';try{localStorage.setItem('smb-show-fps',fpsToggle.value);}catch{}if(!showFps)fpsBox.hidden=true;});
-/** With frame skipping the game keeps full speed down to 30 drawn frames a second. */
-const gameSpeed=(fps:number)=>Math.round(Math.min(fps*2,NATIVE_HZ)/NATIVE_HZ*100);
+/** 3D can draw once for two simulation steps; 2D presents every step. */
+const gameSpeed=(fps:number)=>Math.round(Math.min(fps*(is3D?2:1),NATIVE_HZ)/NATIVE_HZ*100);
 function showRate(fps:number){
- if(!showFps)return;const slow=fps<30,lighter=slow?lighterSetting():undefined;
+ if(!showFps)return;const slow=fps<(is3D?30:50),lighter=slow?lighterSetting():undefined;
  const detail='setResolution' in view?` · ${current.res} ${current.tier}${autoRes||autoTier?' · auto':''}`:'';
  fpsText.textContent=slow?`${Math.round(fps)} FPS · ${gameSpeed(fps)}% speed`:`${Math.round(fps)} FPS${detail}`;fpsBox.classList.toggle('slow',slow);
  fpsLower.hidden=!lighter;if(lighter){fpsLower.textContent=lighter.label;fpsLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
@@ -170,20 +175,29 @@ function watchSpeed(now:number){
  if(!shell.playing||sim.paused||shell.blocking||controlled||document.hidden){perfStart=0;return;}
  if(!perfStart){perfStart=now;perfFrames=0;return;}
  perfFrames++;const span=now-perfStart;if(span<1000)return;
- const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<30?perfSlow+1:0;
+ const fps=perfFrames*1000/span;perfStart=now;perfFrames=0;perfSlow=fps<(is3D?30:50)?perfSlow+1:0;
  // The first two seconds after any change are skipped while shaders and buffers warm up.
  if(autoSettle>0)autoSettle--;else if(adapt(fps,perfSlow,now))perfSlow=0;
  showRate(fps);
  const lighter=perfSlow>=3?lighterSetting():undefined;
- if(!lighter||!perf.hidden||perfDismissed)return;
- perfText.innerHTML=`<b>The game is running at ${gameSpeed(fps)}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second; the game needs at least 30 to keep full speed. A lighter setting should help.`;
- perfLower.textContent=lighter.label;perfLower.hidden=false;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};
+ if(perfSlow<3||(is3D&&!lighter)||!perf.hidden||perfDismissed)return;
+ perfText.innerHTML=`<b>The game is running at ${gameSpeed(fps)}% speed.</b> Your device is drawing ${Math.round(fps)} frames a second; the game needs ${is3D?'at least 30':'60'} to keep full speed. ${lighter?'A lighter setting should help.':'Every frame is still played. Closing other tabs or apps may help.'}`;
+ perfLower.hidden=!lighter;if(lighter){perfLower.textContent=lighter.label;perfLower.onclick=()=>{lighter.apply();perf.hidden=true;perfSlow=0;canvas.focus();};}
  perf.hidden=false;
 }
 document.querySelector('#perf-dismiss')!.addEventListener('click',()=>{perf.hidden=true;perfDismissed=true;canvas.focus();});
 document.querySelector('#home-button')!.addEventListener('click',()=>{clearInput();sim.reset();soundEvents();draw();perf.hidden=true;fpsBox.hidden=true;shell.home();});
+// The lobby Play action waits for the native menu and uses its Select/Start inputs.
+function frameButtons():Button[]{
+ if(!menuStart)return heldButtons(0);
+ if(sim.phase!=='title'){menuStart=undefined;return heldButtons(0);}
+ const n=sim.nativeStartup;if(!n||n.mode!==0||n.task!==3||n.initializing)return [];
+ if(menuStart.release){menuStart.release=false;return [];}
+ if(n.players!==menuStart.players){menuStart.release=true;return ['select'];}
+ menuStart=undefined;return ['start'];
+}
 let last=performance.now(),accumulator=0;
-// Up to two game frames per drawn frame: full game speed down to 30 drawn frames a second; below that the whole game (timer included) slows in proportion rather than skipping more.
-const MAX_STEPS_PER_DRAW=2;
-function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;for(let steps=0;accumulator>=dt&&steps<MAX_STEPS_PER_DRAW;steps++){sim.step(heldButtons(0),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator-=dt;}accumulator=Math.min(accumulator,dt);soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
+// 2D presents every simulation step; 3D can use two steps per draw to keep full speed down to 30 drawn frames a second.
+const MAX_STEPS_PER_DRAW=is3D?2:1;
+function animate(now:number){watchSpeed(now);if(!controlled&&!shell.blocking){accumulator+=Math.min(250,now-last);const dt=1000/NATIVE_HZ;for(let steps=0;accumulator>=dt&&steps<MAX_STEPS_PER_DRAW;steps++){sim.step(frameButtons(),1,heldButtons(1));tappedKeys.clear();tappedPointers.clear();accumulator-=dt;}accumulator=Math.min(accumulator,dt);soundEvents();if(shell.playing)draw();}last=now;requestAnimationFrame(animate);}
 requestAnimationFrame(animate);

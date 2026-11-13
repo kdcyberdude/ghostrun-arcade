@@ -1,0 +1,199 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import * as THREE from 'three';
+import {Entities} from '../src/render3d/entities.js';
+import type {Kit} from '../src/render3d/kit.js';
+import {captureEnemyPicture} from '../src/enemy-picture.js';
+import {Simulation} from '../src/simulation.js';
+import {observedLevels} from '../src/levels.js';
+import type {Enemy} from '../src/types.js';
+const kit={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+function scene(enemy?:Partial<Enemy>){const sim=new Simulation(observedLevels());sim.reset(true);sim.enemies=[];if(enemy)sim.enemies.push({kind:'goomba',x:100,y:208,vx:0,vy:0,active:true,dead:0,age:30,...enemy} as Enemy);const entities=new Entities(kit,false);return {sim,entities};}
+const actor=(entities:Entities,name:string)=>entities.group.children.find(o=>o.getObjectByName(name))!;
+test('squashed Goombas stay on their feet after the squash timer passes 20',()=>{
+ const {sim,entities}=scene({squashed:true,dead:32});entities.sync(sim,0);
+ const root=actor(entities,'goomba');assert.equal(root.rotation.z,0);assert.equal(root.position.y,(239-208)/16);assert.equal(root.scale.y,0.28);
+});
+test('center-authored Podoboos use their sprite center and turn over while falling',()=>{
+ const {sim,entities}=scene({kind:'podoboo',podobooFalling:true});entities.sync(sim,0);
+ const root=actor(entities,'podoboo');assert.equal(root.position.y,(247-208)/16);assert.equal(root.rotation.z,Math.PI);
+});
+test('Bowser uses the center of his 32-pixel body',()=>{
+ const {sim,entities}=scene({kind:'bowser'});entities.sync(sim,0);assert.equal(actor(entities,'bowser').position.x,(100+16)/16);
+});
+test('hammers are centered in their sprite',()=>{
+ const {sim,entities}=scene();sim.items=[{kind:'hammer',x:100,y:100,age:0,vx:0,vy:0,life:100}];entities.sync(sim,0);
+ assert.equal(actor(entities,'hammer').position.y,(232-100)/16);
+});
+test('death presentation keeps Mario at the gameplay plane',()=>{
+ const {sim,entities}=scene();sim.player.dead=true;sim.phase='dying';sim.phaseFrame=45;entities.sync(sim,0);
+ const root=actor(entities,'mario');assert.equal(root.position.z,0);assert.equal(root.rotation.x,0);
+});
+test('repainting the same simulation frame does not advance enemy turns',()=>{
+ const {sim,entities}=scene({vx:-1});entities.sync(sim,0);sim.enemies[0].vx=1;sim.frame++;entities.sync(sim,0);
+ const yaw=actor(entities,'goomba').rotation.y;entities.sync(sim,0);assert.equal(actor(entities,'goomba').rotation.y,yaw);
+});
+test('falling Spiny uses an egg and switches to a walker on landing',()=>{
+ const {sim,entities}=scene({kind:'spiny',motion:'falling'});entities.sync(sim,0);
+ const egg=entities.group.getObjectByName('spinyEgg')!;assert.ok(egg?.visible);assert.equal(egg.position.y,(247-208)/16);
+ sim.enemies[0].motion=undefined;entities.sync(sim,0);assert.equal(egg.visible,false);assert.equal(actor(entities,'spiny').visible,true);
+});
+test('Bowser falls upright with the collapsing bridge',()=>{
+ const {sim,entities}=scene({kind:'bowser',dead:30});sim.castleBowserFalls=()=>true;entities.sync(sim,0);
+ assert.equal(actor(entities,'bowser').rotation.z,0);assert.equal(actor(entities,'bowser').position.y,(239-208)/16);
+});
+test('hammer spin follows the native four phases, four frames each',()=>{
+ const {sim}=scene();sim.items=[{kind:'hammer',x:100,y:100,age:4,vx:0,vy:0,life:100}];
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);assert.ok(Math.abs(actor(entities,'hammer').getObjectByName('hammer')!.rotation.z-Math.PI/2)<1e-6);
+});
+test('live enemies use the native picture coordinates and facing before movement',()=>{
+ const {sim,entities}=scene({graphicsX:99,graphicsY:207,graphicsFacing:-1,vx:1});entities.sync(sim,0);
+ const root=actor(entities,'goomba');assert.equal(root.position.x,107/16);assert.equal(root.position.y,32/16);assert.equal(root.rotation.y,Math.PI+0.5);
+ sim.enemies[0].dead=32;sim.enemies[0].squashed=true;sim.frame++;entities.sync(sim,0);assert.equal(root.position.x,108/16);assert.equal(root.position.y,31/16);
+});
+test('shell-launched Goombas flip at full size immediately instead of showing a squash',()=>{
+ const {sim,entities}=scene({dead:1,defeat:{y:208,speed:-3,force:61,fraction:0,timer:0}});entities.sync(sim,0);
+ const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.rotation.z,Math.PI);assert.equal(root.position.y,(239-208)/16+1);
+});
+test('Mario growth follows the native small/mid/big picture cells',()=>{
+ const {sim,entities}=scene();sim.player.size=0;
+ for(const [age,size] of [[1,0.6],[9,0.8],[29,1],[33,0.6],[46,1]]){
+  sim.powerChange={kind:'grow',from:0,to:1,remaining:59-age};sim.frame++;entities.sync(sim,0);assert.equal(actor(entities,'mario').scale.x,size);
+ }
+});
+test('big Mario uses the native small death picture',()=>{
+ const {sim,entities}=scene();sim.player.size=1;sim.player.dead=true;entities.sync(sim,0);assert.equal(actor(entities,'mario').scale.x,0.6);
+});
+test('star and fire-change palettes use the shared native phases',()=>{
+ const {sim}=scene();
+ const paletteKit={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial();material.name='M_Cloth_Primary';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(paletteKit,false),color=()=>{const model=actor(entities,'mario').getObjectByName('mario')!;return ((model.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial).color.getHexString();};
+ sim.player.star=35;sim.starDrawPalette=1;sim.frame=2;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+ sim.player.star=0;sim.frame=99;entities.sync(sim,0);assert.equal(color(),'2fae3a'); // Expiry draw retains its captured palette.
+ sim.starDrawPalette=0;entities.sync(sim,0);assert.equal(color(),'d8241c');
+ sim.starDrawPalette=undefined;
+ sim.player.star=0;sim.player.size=1;sim.powerChange={kind:'fire',from:1,to:2,remaining:61};sim.frame=4;entities.sync(sim,0);assert.equal(color(),'1a1a1a');
+ sim.powerChange.remaining=54;sim.frame=6;entities.sync(sim,0);assert.equal(color(),'2fae3a');
+});
+test('moving fire Mario shows the native throw state',()=>{
+ const {sim}=scene();sim.player.size=2;sim.player.vx=1.5;sim.player.grounded=true;Object.defineProperty(sim,'fireballThrowAge',{value:1});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map(['idle','throw'].map((clip,i)=>[clip,new THREE.AnimationClip(clip,1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[i,i])])]))};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);assert.equal(actor(entities,'mario').getObjectByName('mario')!.position.x,1);
+});
+test('flipped small enemies retain the native transparent row above their body',()=>{
+ const {sim,entities}=scene({kind:'bullet',dead:30});entities.sync(sim,0);assert.equal(actor(entities,'bullet').position.y,(239-208)/16+1.5);
+});
+test('hammer holds each native rotation phase for four frames',()=>{
+ const {sim}=scene();sim.items=[{kind:'hammer',x:100,y:100,age:3,vx:0,vy:0,life:100}];
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);assert.equal(actor(entities,'hammer').getObjectByName('hammer')!.rotation.z,0);
+});
+test('the final castle shows the Princess and earlier castles show Toad',()=>{
+ for(const [level,model] of [['8-4','princess'],['7-4','toad']]){
+  const {sim,entities}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id===level);sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';Object.defineProperty(sim,'castleRetainer',{value:{x:300,y:184,slot:0,graphicsVisible:true}});entities.sync(sim,0);
+  const root=actor(entities,model);assert.ok(root?.visible);assert.equal(root.position.x,308/16);assert.equal(root.position.y,31/16);
+ }
+});
+test('the pre-contact enemy picture survives a stomp until the next graphics pass',()=>{
+ const {sim,entities}=scene({});const enemy=sim.enemies[0];captureEnemyPicture(enemy);enemy.dead=1;enemy.squashed=true;enemy.x+=2;
+ entities.sync(sim,0);const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.position.x,108/16);
+ captureEnemyPicture(enemy);sim.frame++;entities.sync(sim,0);assert.equal(root.scale.y,0.28);assert.equal(root.position.x,110/16);
+});
+test('a native coin becomes score text instead of retaining coin geometry',()=>{
+ const {sim,entities}=scene();const coin={kind:'coin' as const,x:100,y:100,age:0,vx:0,vy:0,life:100,nativeCoin:{slot:8,state:1,speed:0,force:0,fraction:0}};sim.items=[coin];entities.sync(sim,0);
+ const mesh=entities.group.children.find(o=>(o as THREE.Mesh).isMesh)!;assert.equal(mesh.visible,true);coin.nativeCoin.state=2;entities.sync(sim,0);assert.equal(mesh.visible,false);
+});
+test('native hammers stay held at pose zero and flying poses use FrameCounter',()=>{
+ const {sim}=scene();const hammer={kind:'hammer' as const,x:100,y:100,age:12,vx:0,vy:0,life:100,nativeHammer:{slot:3,state:0x90,speed:0,force:0,fraction:0}};sim.items=[hammer];sim.random.frame=4;
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['spin',new THREE.AnimationClip('spin',0.4,[new THREE.NumberKeyframeTrack('.rotation[z]',[0,0.4],[0,Math.PI*2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'hammer').getObjectByName('hammer')!;assert.equal(model.rotation.z,0);
+ hammer.nativeHammer.state=0x81;entities.sync(sim,0);assert.ok(Math.abs(model.rotation.z-Math.PI/2)<1e-6);
+});
+test('Bowser faces his native direction when his physical horizontal velocity is zero',()=>{
+ const {sim,entities}=scene({kind:'bowser',vx:0,bowser:{side:-1} as Enemy['bowser']});entities.sync(sim,0);assert.equal(actor(entities,'bowser').rotation.y,Math.PI+0.5);
+});
+test('native misc actors use OAM byte coordinates plus the one-row sprite offset',()=>{
+ const {sim,entities}=scene();sim.camera=100;sim.items=[{kind:'hammer',x:90,y:100,age:0,vx:0,vy:0,life:100,nativeHammer:{slot:3,state:0x90,speed:0,force:0,fraction:0}}];entities.sync(sim,0);
+ const root=actor(entities,'hammer');assert.equal(root.position.x,(100+246+8)/16);assert.equal(root.position.y,(232-101)/16);
+});
+test('Toad uses the native red vest rather than the modern blue asset palette',()=>{
+ const {sim}=scene();sim.levelIndex=sim.levels.findIndex(l=>l.id==='7-4');sim.area.exit={kind:'axe',x:400,retainerX:300};sim.phase='play';Object.defineProperty(sim,'castleRetainer',{value:{x:300,y:184,slot:0,graphicsVisible:true}});
+ const colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0x2050c8});material.name='M_Vest';root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'toad').getObjectByName('toad')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'d8241c');
+});
+test('native Hammer Bro uses captured facing rather than the current Mario side',()=>{
+ const {sim,entities}=scene({kind:'hammerBro',nativeDir:1,vx:-1});entities.sync(sim,0);assert.equal(actor(entities,'hammer_bro').rotation.y,-0.5);
+});
+test('native Hammer Bro lowers its arm and hides the duplicate authored hammer',()=>{
+ const {sim}=scene({kind:'hammerBro',hbro:{state:0} as Enemy['hbro']});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const arm=new THREE.Bone();arm.name='ArmR';root.add(arm);for(const key of ['M_Handle','M_Skin']){const material=new THREE.MeshStandardMaterial();material.name=key;root.add(new THREE.Mesh(new THREE.BoxGeometry(1,1,1),material));}return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.QuaternionKeyframeTrack('ArmR.quaternion',[0,1],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'hammer_bro').getObjectByName('hammer_bro')!,arm=model.getObjectByName('ArmR')!;
+ assert.equal(arm.quaternion.z,0);assert.equal(((model.children[1] as THREE.Mesh).material as THREE.Material).visible,false);assert.equal(((model.children[2] as THREE.Mesh).material as THREE.Material).visible,true);
+ sim.enemies[0].hbro!.state=8;sim.frame++;entities.sync(sim,0);assert.ok(arm.quaternion.z>0);
+});
+test('native birth slots wait for their first graphics pass while legacy actors remain visible',()=>{
+ const {sim,entities}=scene({graphicsVisible:false});entities.sync(sim,0);assert.equal(entities.group.getObjectByName('goomba'),undefined);
+ sim.enemies[0].graphicsVisible=true;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
+ sim.enemies[0].graphicsVisible=undefined;entities.sync(sim,0);assert.ok(actor(entities,'goomba').visible);
+});
+test('native Bowser mouth and rear-foot bits select independent authored poses',()=>{
+ const {sim}=scene({kind:'bowser',nativeBowser:{controls:0x80} as Enemy['nativeBowser']});
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const jaw=new THREE.Bone();jaw.name='Jaw';root.add(jaw);return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])],['idle',new THREE.AnimationClip('idle',2,[new THREE.QuaternionKeyframeTrack('Jaw.quaternion',[0,0.5,2],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2,0,0,0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const model=actor(entities,'bowser').getObjectByName('bowser')!,jaw=model.getObjectByName('Jaw')!;assert.equal(model.position.x,0.25);assert.ok(Math.abs(jaw.quaternion.z-Math.SQRT1_2)<1e-6);
+ sim.enemies[0].nativeBowser!.controls=1;sim.frame++;entities.sync(sim,0);assert.equal(model.position.x,0.75);assert.equal(jaw.quaternion.z,0);
+});
+test('swim feet use the independent native kick bit while body time is unchanged',()=>{
+ const {sim}=scene();sim.area.theme='water';sim.player.size=1;sim.player.grounded=false;sim.playerAnim.fresh=false;sim.swimPoseFrame=0;sim.random.frame=0;
+ const animated={instance(name:string){const root=new THREE.Group();root.name=name;const foot=new THREE.Bone();foot.name='FootR';root.add(foot);return {root,clips:new Map([['swim',new THREE.AnimationClip('swim',0.8,[new THREE.QuaternionKeyframeTrack('FootR.quaternion',[0,0.8],[0,0,0,1,0,0,Math.SQRT1_2,Math.SQRT1_2])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const foot=actor(entities,'mario').getObjectByName('FootR')!,first=foot.quaternion.z;
+ sim.random.frame=4;entities.sync(sim,0);assert.ok(foot.quaternion.z>first);assert.equal(sim.frame,0);
+});
+
+test('Piranha mouth follows the native frame-counter cell rather than actor age',()=>{
+ const {sim}=scene({kind:'piranha'}),animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['idle',new THREE.AnimationClip('idle',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);sim.random.frame=0;entities.sync(sim,0);assert.equal(actor(entities,'piranha').rotation.y,Math.PI/2);const model=actor(entities,'piranha').getObjectByName('piranha')!;assert.equal(model.position.x,0);
+ sim.random.frame=8;entities.sync(sim,0);assert.equal(model.position.x,0.5);
+ sim.powerChange={kind:'grow',from:0,to:1,remaining:10};sim.random.frame=0;entities.sync(sim,0);assert.equal(model.position.x,0.5);
+});
+test('Blooper extension uses its captured timer and native three-row artwork offset',()=>{
+ const {sim}=scene({kind:'blooper'}),animated={instance(name:string){const root=new THREE.Group();root.name=name;return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.NumberKeyframeTrack('.position[x]',[0,1],[0,1])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false),e=sim.enemies[0];e.bloop={timer:1} as NonNullable<Enemy['bloop']>;entities.sync(sim,0);const root=actor(entities,'blooper'),model=root.getObjectByName('blooper')!;assert.equal(root.position.y,(239-208)/16);assert.equal(model.position.x,0.5);
+ e.bloop.timer=2;entities.sync(sim,0);assert.equal(root.position.y,(236-208)/16);assert.equal(model.position.x,0);
+ captureEnemyPicture(e);e.bloop.timer=20;entities.sync(sim,0);assert.equal(root.position.y,(236-208)/16);assert.equal(model.position.x,0);
+});
+test('Lakitu ducks eight source rows into the cloud only during the captured frenzy pose',()=>{
+ const {sim}=scene({kind:'lakitu',graphicsFrenzyTimer:15}),animated={instance(name:string){const root=new THREE.Group();root.name=name;const body=new THREE.Bone();body.name='Body';root.add(body);return {root,clips:new Map([['walk',new THREE.AnimationClip('walk',1,[new THREE.VectorKeyframeTrack('Body.position',[0,1],[0,1,0,0,1,0])])]])};}} as unknown as Kit;
+ const entities=new Entities(animated,false);entities.sync(sim,0);const body=actor(entities,'lakitu').getObjectByName('Body')!;assert.equal(body.position.y,0.5);
+ entities.sync(sim,0);assert.equal(body.position.y,0.5);sim.enemies[0].graphicsFrenzyTimer=16;entities.sync(sim,0);assert.equal(body.position.y,1);
+});
+
+test('Piranha head uses native palette green instead of the modern red asset material',()=>{
+ const {sim}=scene({kind:'piranha'}),colored={instance(name:string){const root=new THREE.Group();root.name=name;const material=new THREE.MeshStandardMaterial({color:0xff0000});material.name='M_Head';root.add(new THREE.Mesh(new THREE.SphereGeometry(0.5),material));return {root,clips:new Map<string,THREE.AnimationClip>()};}} as unknown as Kit;
+ const entities=new Entities(colored,false);entities.sync(sim,0);const material=(actor(entities,'piranha').getObjectByName('piranha')!.children[0] as THREE.Mesh).material as THREE.MeshStandardMaterial;assert.equal(material.color.getHexString(),'00a800');
+});
+
+test('castle sprite ownership blanks the axe row then draws only Mario and Bowser',()=>{
+ const {sim,entities}=scene({kind:'goomba'}),walker=sim.enemies[0];sim.enemies.push({...walker,kind:'bowser',x:150} as Enemy);sim.items=[{kind:'coin',x:80,y:160,vx:0,vy:0,age:0,life:100}];
+ entities.sync(sim,0);assert.equal(actor(entities,'goomba').visible,true);
+ sim.phase='castle';(sim as unknown as {beginNativeVictory():void}).beginNativeVictory();entities.sync(sim,0);
+ for(const name of ['mario','goomba','bowser'])assert.equal(actor(entities,name).visible,false);
+ (sim as unknown as {castlePictures:{step(task:number,camera:number,blocked:boolean,free:boolean):void}}).castlePictures.step(0,sim.camera,false,true);entities.sync(sim,0);
+ assert.equal(actor(entities,'mario').visible,true);assert.equal(actor(entities,'bowser').visible,true);assert.equal(actor(entities,'goomba').visible,false);assert.equal(sim.items.length,1);assert.equal(walker.active,true);assert.equal(walker.x,100);
+ assert.ok(entities.group.children.filter(o=>o.type==='Mesh').every(o=>!o.visible));
+});
+
+test('Bowser flames use the center of the native24-by8 picture rather than a powerup foot anchor',()=>{
+ const {sim,entities}=scene();sim.items=[{kind:'flame',x:100,y:80,vx:-1,vy:0,age:0,life:100}];entities.sync(sim,0);
+ assert.deepEqual(actor(entities,'bowser_flame').position.toArray(),[112/16,156/16,0]);
+});
+
+test('only reviving Koopa shells expand their native alternate lower rim',()=>{
+ for(const kind of ['koopa','beetle'] as const){
+  const {sim,entities}=scene({kind,shell:true,shellTimer:4});sim.random.frame=0;entities.sync(sim,0);
+  const root=actor(entities,kind==='koopa'?'koopa_shell':'beetle_shell');assert.equal(root.scale.y,kind==='koopa'?15/14:1);assert.equal(root.position.y,(239-208-(kind==='koopa'?1:0))/16);
+  sim.random.frame=8;entities.sync(sim,0);assert.equal(root.scale.y,1);assert.equal(root.position.y,(239-208)/16);
+  sim.random.frame=0;sim.enemies[0].shellTimer=5;entities.sync(sim,0);assert.equal(root.scale.y,1);
+  sim.enemies[0].shellTimer=4;sim.enemies[0].movingShell=true;entities.sync(sim,0);assert.equal(root.scale.y,1);
+ }
+});

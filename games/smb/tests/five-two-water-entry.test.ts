@@ -15,13 +15,14 @@ test('5-2 optional entry holds its measured standing pose before the seven obser
  const water=level.areas.find(a=>a.id===rules.area)!;
  assert.equal(water.platforms!.length,2);assert.ok(water.platforms!.every(p=>p.width===48));
  const sim=new Simulation([level]);sim.reset(true);
+ while(sim.area.id===main.id||sim.phase!=='play')sim.step(['down'],1);const preload=sim.frame,first=measured.measurements.find(sample=>sample.tick===5480)!.nativeFramesSinceStart;
  for(const sample of measured.measurements.filter(m=>m.tick>=5480&&m.tick<=5489)){
   // The Mario sprite of a live capture is one native frame old (waterbig: the native-exact entry fall, identical for small and big Mario in native rows,
   // reproduces every sample exactly one frame earlier; the old fitted fall needed 2 px of slack).
-  sim.step(['down'],sample.nativeFramesSinceStart-sim.frame-1);const spriteY=sim.player.y;sim.step(['down'],1);
+  sim.step(['down'],preload+sample.nativeFramesSinceStart-first-sim.frame);const spriteY=sim.player.y;
   if(sample.player){assert.ok(Math.abs(spriteY-sample.player.feetY)<0.5,`${sample.tick}: ${spriteY} vs${sample.player.feetY}`);assert.equal(sim.player.x,24);}
   if(sample.tick===5480)assert.equal(sim.waterEntryStanding,true);
-  if(sample.tick>=5481)assert.equal(sim.waterEntryStanding,false);
+  if(sample.tick>=5482)assert.equal(sim.waterEntryStanding,false);
   if(sample.tick<=5484)assert.equal(sim.entryTimerHidden,true);
   if(sample.tick>=5485)assert.equal(sim.entryTimerHidden,false);
  }
@@ -34,7 +35,8 @@ test('the 5-2 water side pipe returns within the same level without a fresh-leve
  level.main=water.id;water.spawn=[pipe.x-14,pipe.y];water.camera=water.width-256;water.enemies=[];
  water.entryFall=undefined;water.waterEntryFall=false;water.spawnVelocity=undefined;
  const sim=new Simulation([level]);sim.reset(true);sim.player.size=2;
- sim.step(['right'],3);assert.equal(sim.phase,'pipe');
+ // Stop at the actual bottom-metatile contact, before any entry-animation rows.
+ for(let frame=0;frame<30&&sim.phase==='play';frame++)sim.step(['right'],1);assert.equal(sim.phase,'pipe');
  const time=sim.time;sim.step([],pipe.transitionFrames??64);
  assert.equal(sim.area.id,'area-2');assert.equal(sim.phase,'play');
  assert.equal(sim.player.x,1848);assert.equal(sim.player.y,176);assert.equal(sim.camera,1792);

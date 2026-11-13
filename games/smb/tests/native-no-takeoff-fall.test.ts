@@ -8,7 +8,7 @@ const NATIVE_Y=[80,80,80,80,80,80,80,80,80,81,82,83,84,85,87,88,90,92,94,96,98,1
 
 function castleStart(){
  const levels=observedLevels(),sim:any=new Simulation(levels);sim.reset(true);sim.levelIndex=levels.findIndex(l=>l.id==='1-4');sim.loadArea(sim.level.main);sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;sim.enemies.length=0;
- const p=sim.player;p.x=42.375;p.y=112;p.vy=0;p.vx=2128/4096;p.grounded=true;sim.motor.reset();sim.motor.speed=2128;sim.inputs=[new Set(['right','b']),new Set(['right','b'])];
+ const p=sim.player;p.x=42.375;p.y=112;p.vy=0;p.vx=2128/4096;p.grounded=true;sim.motor.reset(2128);sim.inputs=[new Set(['right','b']),new Set(['right','b'])];
  return sim;
 }
 

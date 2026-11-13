@@ -1,0 +1,56 @@
+{
+  "schema": "smb-main-consolidation-v1",
+  "parents": [
+    "316fc3c",
+    "cca2e44"
+  ],
+  "scope": "Consolidate completed integration preserving existing main 3D UI; native menu Select/Start queue fixes actual Play launch. New World1 fixes follow separately.",
+  "checks": {
+    "npmPassed": 2107,
+    "typescriptAndBuild": "PASS after UI edit",
+    "interface2d": "PASS",
+    "startPauseResume": "PASS",
+    "rafSteps": {
+      "2d": [
+        1,
+        1
+      ],
+      "3d": [
+        2,
+        2
+      ]
+    },
+    "launch3dLow": "PASS"
+  },
+  "limitations": [
+    "Full 3D Auto interface timed out under software rendering; not claimed passing.",
+    "Every-frame corpus audit remains pinned to cca2e44, not this merge.",
+    "World1-1 remaining fixes active; no complete parity claim."
+  ],
+  "logs": [
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-consolidation-npm.log",
+      "sha256": "cff7a6ba7e8663639a0723ff9ced6a6c5df20c749f51f72fd62356efff898a09"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-consolidation-ui-build.log",
+      "sha256": "7c1e7f4cdd5a816be000911c7405ea93a51879dcd1c1cba225c50c4953c6d845"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-interface-fixed-2d.log",
+      "sha256": "6084da59dca1848bffe58b6f45ca70f3628bf58272525c4e702b7ac3d0934288"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-start-button.log",
+      "sha256": "a3a35c95331b6d9d0d276f29aa7a2a6a2c7d72e32259d80a99156c24c5ad0ca2"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-cadence-fixed.log",
+      "sha256": "ce9031abc0d2d665f305a27c73f655a387d54abed7d842cf8660383cd6c93312"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/main-3d-launch-low.log",
+      "sha256": "7770433ffe2469256091cb606dd389c6d4f6517630264f690ed25982568a64cd"
+    }
+  ]
+}

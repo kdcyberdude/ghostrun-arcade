@@ -39,10 +39,10 @@ test('walkers specified inside a stair block appear above the step and walk away
   assert.ok(index>=0,`${level} ${kind} ${x} present`);
   const spec=area(level).enemies[index];assert.equal(spec.y,y);
   const sim=new Simulation(levels);sim.reset(true);sim.levelIndex=levels.findIndex(l=>l.id===level);
-  const camera=spec.spawnCamera??x-303;sim.loadArea('main',[camera+112,208],camera);sim.player.invincible=100000;
-  // Mario is held above the screen at a fixed x so that the camera stays put and a pit under his start cannot end the attempt.
+  const camera=Math.max(spec.spawnCamera??0,x-303);sim.loadArea('main',[camera+112,208],camera);sim.player.invincible=100000;
+  // (a list object on a 16 px column is made once camera >= x - 303, the native column rule.) Mario is held above the screen at a fixed x so that the camera stays put and a pit under his start cannot end the attempt.
   for(let i=0;i<120;i++){sim.player.x=camera+112;sim.player.y=40;sim.player.vy=0;sim.step([],1);}
-  const enemy=sim.enemies[index];
+  const enemy=sim.enemies.find(e=>e.kind===kind&&e.originX===x)!;
   assert.ok(enemy.active,`${level} ${kind} ${x} active`);
   assert.ok(Math.abs(enemy.x-x)>=20,`${level} ${kind} ${x} walked to ${enemy.x}`);
  }
@@ -59,8 +59,8 @@ test('support tiles under standing native walkers exist in the 4-2 and 1-2 secon
 });
 
 test('only the measured exceptions walk right when they appear',()=>{
- // 1-1 Goomba 640 and 7-1 Koopa 1009 were verified walking right natively; the 8-2 Koopas are calibrated separately. 3-1 Koopa 419 was a stomped Paratroopa (route row 21011, slot 1 id 14 -> 0 in place), so it is no spec any more.
+ // 1-1 Goomba 640 spawns left before turning at the pipe (v2 rows 216-218); 7-1 Koopa1009 is the existing stomped Paratroopa and has no separate spec; the 8-2 Koopas are calibrated separately. 3-1 Koopa 419 was a stomped Paratroopa (route row 21011, slot 1 id 14 -> 0 in place), so it is no spec any more.
  const right:string[]=[];
  for(const level of observedLevels())if(level.id!=='8-2')for(const a of level.areas)for(const e of a.enemies)if(walkers.includes(e.kind)&&e.direction===1)right.push(`${level.id} ${e.kind} ${e.x}`);
- assert.deepEqual(right.sort(),['1-1 goomba 640','7-1 koopa 1009']);
+ assert.deepEqual(right,[]);
 });

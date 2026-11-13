@@ -33,14 +33,14 @@ function fixture(generator:Partial<GeneratorSpec>={}){
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
  const area:Area={id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[],spawn:[500,208],evidence:'Synthetic flying fish fixture',generators:[{kind:'flyingFish',from:0,to:1024,interval:80,fromCamera:0,maxFish:3,...generator}]};
  const level:Level={id:'fixture',time:400,main:'main',areas:[area],evidence:'Mechanic regression fixture'};
- const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
+ const sim=new Simulation([level]);sim.reset(true);(sim as any).specialSlot5.frenzyBuffer=20;sim.player.invincible=100000;return sim;
 }
 // One frenzy step on a native launch row, with the lower slots taken by placeholder fish.
 function launch(sim:Simulation,row:typeof NATIVE_LAUNCHES[number]){
  const s=sim as any;
  for(let slot=0;slot<row.slot;slot++)sim.enemies.push({...s.makeEnemy({kind:'cheep',x:0,y:0}),active:true,enemySlot:slot});
- sim.random.bytes=bytesOf(row.random);sim.player.vx=(row.speed<128?row.speed:row.speed-256)/16;s.fishTimer=0;
- s.updateFishFrenzy(sim.area.generators![0]);
+ sim.random.bytes=bytesOf(row.random);sim.player.vx=(row.speed<128?row.speed:row.speed-256)/16;s.nativeFrenzyTimer=0;
+ s.updateFishFrenzy();
  return sim.enemies[row.slot];
 }
 
@@ -54,12 +54,12 @@ test('the random register steps like the native one',()=>{
 
 for(const row of NATIVE_LAUNCHES)test(`a flying fish launches as native on ${row.run}`,()=>{
  const sim=fixture(),fish=launch(sim,row);
- assert.equal(fish.x-sim.player.x,row.offset);assert.equal(fish.vx,row.vx);assert.equal(fish.y,272);assert.equal((sim as any).fishTimer,row.wait); // native y 248 + 24
+ assert.equal(fish.x-sim.player.x,row.offset);assert.equal(fish.vx,row.vx);assert.equal(fish.y,272);assert.equal((sim as any).nativeFrenzyTimer,row.wait); // native y 248 + 24
 });
 
 test('a launched fish follows the native arc and speed and is gone after 187 frames',()=>{
  const sim=fixture(),fish=launch(sim,NATIVE_LAUNCHES[8]),x0=fish.x;
- sim.step([],1);
+ // The initializer now runs after the bank pass: this is already the birth-row state.
  NATIVE_2_3_ROW_17025.forEach(([dx,y],index)=>{
   if(index)sim.step([],6);
   assert.ok(Math.abs(fish.x-x0-dx)<=1,`row +${index*6}: x ${fish.x-x0} vs ${dx}`);
@@ -71,15 +71,14 @@ test('a launched fish follows the native arc and speed and is gone after 187 fra
 test('a full frenzy launches nothing but still draws its next wait from the first free slot',()=>{
  // 2-3: three fish in flight, first free slot 3: no launch, wait from byte 4
  const sim=fixture(),before=launch(sim,{run:'blocked',slot:3,speed:40,random:'00000000030000',offset:0,vx:0,wait:0});
- assert.equal(before,undefined);assert.equal(sim.enemies.length,3);assert.equal((sim as any).fishTimer,72);
+ assert.equal(before,undefined);assert.equal(sim.enemies.length,3);assert.equal((sim as any).nativeFrenzyTimer,72);
 });
 
-test('the wait counts down to the next launch and the frenzy starts at its camera',()=>{
- const sim=fixture({fromCamera:1000}),s=sim as any;
- s.updateFishFrenzy(sim.area.generators![0]);assert.equal(sim.enemies.length,0);
- sim.area.generators![0].fromCamera=0;s.fishTimer=2;
- s.updateFishFrenzy(sim.area.generators![0]);assert.equal(sim.enemies.length,0);
- s.updateFishFrenzy(sim.area.generators![0]);assert.equal(sim.enemies.length,1);
+test('the native frenzy buffer and NMI timer own flying attempts rather than fitted camera bounds',()=>{
+ const sim=fixture({fromCamera:1000}),s=sim as any;s.specialSlot5.frenzyBuffer=0;
+ s.updateFishFrenzy();assert.equal(sim.enemies.length,0);
+ s.specialSlot5.frenzyBuffer=20;s.nativeFrenzyTimer=2;s.updateFishFrenzy();assert.equal(sim.enemies.length,0);assert.equal(s.nativeFrenzyTimer,2,'initializer reads078F without a second countdown');
+ s.nativeFrenzyTimer=0;s.updateFishFrenzy();assert.equal(sim.enemies.length,1,'source buffer admits a launch regardless of old scene camera threshold');
 });
 
 test('compiled bridge levels carry the native frenzy limits',()=>{
@@ -117,21 +116,16 @@ test('the frenzy starts at camera 64 in 2-3 and 7-3, and an active enemy takes i
  for(const level of ['2-3','7-3'])assert.equal(flyingFish.areas.find(a=>a.level===level)!.fromCamera,64);
  const sim=fixture(),s=sim as any;
  const koopa=sim.enemies[sim.enemies.push(s.makeEnemy({kind:'koopa',x:600,y:208}))-1];koopa.active=true;
- s.updateFishFrenzy(sim.area.generators![0]);
+ s.updateFishFrenzy();
  assert.equal(koopa.enemySlot,0);
  assert.equal(sim.enemies.filter(e=>e.kind==='cheep')[0].enemySlot,1);
 });
 
-// Native 0x71F/0x78F (evidence/leaper3-findings-20261111.md): the timer is not read on the row after the camera crosses a multiple of 32 px; a wait expiring there
-// launches one row late (15 of 15). Native level start: camera 61, 64 (crossing), first launch on the 2nd row after it (42 of 42 runs).
-test('the fish timer is skipped on the row the camera crosses a multiple of 32, so the first launch comes 2 rows after camera 64',()=>{
- const sim=fixture({fromCamera:64}),s=sim as any,gen=sim.area.generators![0];
- const row=(camera:number)=>{sim.camera=camera;s.updateFishFrenzy(gen);return sim.enemies.length;};
- assert.equal(row(61),0);assert.equal(row(64),0);assert.equal(row(66),1);
- const later=fixture(),t=later as any,g=later.area.generators![0];
- const step=(camera:number)=>{later.camera=camera;t.updateFishFrenzy(g);return later.enemies.length;};
- t.fishTimer=3;
- assert.equal(step(90),0);assert.equal(step(93),0);assert.equal(t.fishTimer,1);
- assert.equal(step(96),0);assert.equal(t.fishTimer,0); // expires on the crossing row: not read
- assert.equal(step(98),1);
+// ProcessEnemyData is held by AreaParserTask7; NMI owns078F even on that row.
+test('a zero frenzy timer waits for the native parser task and cannot refill an already visited slot',()=>{
+ const sim=fixture(),s=sim as any;s.nativeFrenzyTimer=3;
+ for(const task of [0,0,7]){s.nativeFrenzyTimer--;s.parserClock.task=task;s.updateFishFrenzy();assert.equal(sim.enemies.length,0);}
+ assert.equal(s.nativeFrenzyTimer,0);s.parserClock.task=6;s.updateFishFrenzy();assert.equal(sim.enemies.length,1);
+ const held=fixture(),h=held as any;h.groupSlotsBefore=[true,true,true,true,true];h.updateFishFrenzy();assert.equal(held.enemies.length,0);assert.equal(h.nativeFrenzyTimer,0);
+ h.groupSlotsBefore.fill(false);h.updateFishFrenzy();assert.equal(held.enemies.length,1);
 });

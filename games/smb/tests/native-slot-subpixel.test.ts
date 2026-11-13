@@ -35,7 +35,7 @@ test('route row 389: a walker the remake dropped is removed natively on the row 
 
 test('a stomped walker leaves its own frozen byte; a Piranha leaves the byte it inherited',()=>{
  const sim=fixture('1-1',[],700);
- const g={...sim.makeEnemy({kind:'goomba',x:900.5,y:208,direction:-1}),active:true,enemySlot:2,dead:22,squashed:true};
+ const g={...sim.makeEnemy({kind:'goomba',x:900.5,y:208,direction:-1}),active:true,enemySlot:2,dead:100,squashed:true};
  const p={...sim.makeEnemy({kind:'piranha',x:600,y:184,direction:-1}),active:true,enemySlot:3,dead:0};
  sim.enemies.push(g,p);sim.slotSub=[0,0,0,77,0];sim.releaseNativeSlots();
  assert.equal(sim.slotSub[2],128);assert.equal(p.slotFreed,true);assert.equal(sim.slotSub[3],77);
@@ -46,8 +46,10 @@ test('every area load clears the slot bytes (route: 1-2 row 1976 [128,128,0,0,12
  sim.loadArea(sim.area.id,[812,208],700);assert.deepEqual(sim.slotSub,[0,0,0,0,0]);
 });
 
-test('a group made on a still camera keeps the inherited byte for its followers (1-2 row 2500, 8-4 row 76099)',()=>{
- const sim=fixture('1-1',[{kind:'goomba',x:818,y:208,direction:-1,spawnCamera:563},{kind:'goomba',x:841,y:208,direction:-1,spawnCamera:563}],563);
- sim.slotCamera=563;sim.step([],1);
- assert.equal(specAt(sim,'goomba',841).x-specAt(sim,'goomba',818).x,23);
+// v2 traces: every group follower (76 of 76, the still-camera 8-1 row 1191 group included) is made at ScreenRight + 24 i with its slot's byte and has
+// already stepped once on its creation row, because it sits in a later slot than the one being processed (HandleGroupEnemies).
+test('a group made on a still camera: followers still step on their creation row (8-1 row 1191: 2368.5 and 2391.5 at camera 2113)',()=>{
+ const sim=fixture('8-1',[{kind:'goomba',x:2368,y:208,direction:-1,spawnCamera:2113},{kind:'goomba',x:2392,y:208,direction:-1,spawnCamera:2113}],2113);
+ sim.slotSub=[128,0,0,0,0];sim.slotCamera=2113;sim.step([],1);
+ assert.equal(specAt(sim,'goomba',2368).x,2368);assert.equal(specAt(sim,'goomba',2392).x,2391); // native row 1192: 2368.0 and 2391.0
 });

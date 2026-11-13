@@ -1,0 +1,681 @@
+{
+  "schema": "native-world11-bonus-pipe-contact-v1",
+  "baseline": "4d39a1e (shared catalog002743d differs only cannon release)",
+  "role": "Entrance-seeded diagnostic clips, not continuous POWER-ON/dashboard/pixel proof. Complete clip input after one initial snapshot; no later state correction.",
+  "sourceRules": [
+    "DoFootCheck treats nonzero pipe metatiles1C..20 as terrain: land when the foot depth is below5, otherwise ImpedePlayerMove. Excluding them lost both landing and one-pixel foot pushes.",
+    "SideCheckLoop skips1C/6B only at the upper body probe. The lower probe can impede on1C.",
+    "CheckSideMTiles starts a side pipe from1F/6C only for Player_State0 and PlayerFacingDir1; use existing native horizontal motor facing, not the mirrored p.facing input direction.",
+    "Actual source contact replaces fitted geometric entryTriggerX only where the pipe has native metatiles."
+  ],
+  "catalogSha256": "20b05e3b40ff3ed4cf49a44e2c98950e7cbc1000aa4ad4300ba2e61c51acccab",
+  "counts": {
+    "clips": 36,
+    "frames": 29354,
+    "beforePass": 1,
+    "afterPass": 36,
+    "focusedTestsPassed": 27
+  },
+  "clips": [
+    {
+      "sha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "entry": 1,
+      "sourceFrameOffset": 721,
+      "frames": 331,
+      "initialRamSha256": "9ca9a273a43b2af61c1274992ca0b8e6a6eb0bd0cab548c7728f18b6ec64cac0",
+      "padsSha256": "1e4d98227e5f3a1b6127c1c06e1e2518f30ce95f7305fc6ebef9152275ea45e7",
+      "ramSha256": "062c05d18f797c5bb7b0bc6b75760456316804338203128c725a67d33db26219",
+      "before": {
+        "time": 191,
+        "x": 160
+      },
+      "after": {}
+    },
+    {
+      "sha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+      "entry": 1,
+      "sourceFrameOffset": 713,
+      "frames": 328,
+      "initialRamSha256": "772d2ca084bed605d06e065c6d641b865adcde53bd21f6cc02f1d442f0d7c4d8",
+      "padsSha256": "5a665f67938ec27f4913c1efd6d5d2d7a86476e8115517a0e04a0b67af0ddbc2",
+      "ramSha256": "afd327502a92da977e081373fa2f53f3bb7a42fcfa6eca496026a276ddd59093",
+      "before": {
+        "area": 321,
+        "x": 161,
+        "y": 160
+      },
+      "after": {}
+    },
+    {
+      "sha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+      "entry": 1,
+      "sourceFrameOffset": 695,
+      "frames": 305,
+      "initialRamSha256": "7f63ae945ce09fffba2e57f7587dd36f11be2b7cc9d204fce019d86473fbd5fe",
+      "padsSha256": "c20f862c3fd3e8e35bb495974ce967443a9b287966c6692b8ff5934e8a5b099b",
+      "ramSha256": "e20f8c8c19e1b53f3a4c34af9401d5d3674c2267c834bf610df9759ea3007f85",
+      "before": {
+        "area": 301,
+        "x": 139,
+        "y": 140
+      },
+      "after": {}
+    },
+    {
+      "sha256": "b3d17941b577c5f9f442035b3b95c9e0b6957aece2971500fb01f6fc1d6c0005",
+      "entry": 1,
+      "sourceFrameOffset": 734,
+      "frames": 396,
+      "initialRamSha256": "69584c7696510f2263a6a087077da634c9dabb9d37ca425241e9730360f7465b",
+      "padsSha256": "8226821b68023127dc216a8087b2cd79234fac4275996f860fe4f19d246a1dd9",
+      "ramSha256": "1a4ffa2e080f3be2b59ff03b0d43b17fd1a3d34005bcc8d3d2719a7c9ae06c83",
+      "before": {
+        "area": 394,
+        "x": 233,
+        "y": 233
+      },
+      "after": {}
+    },
+    {
+      "sha256": "7fb25238b8260914196fdf4fd8cb11a858d2e2946b5837132178173b7ec45c09",
+      "entry": 1,
+      "sourceFrameOffset": 693,
+      "frames": 303,
+      "initialRamSha256": "96130d82c269f5434a8bb4766fbe863c4c3de8a7234310587bacee103e78f109",
+      "padsSha256": "54e5f839d9666d74e4400c76d6ac81e108bddf03b9c04c8b4ec693710f2a9150",
+      "ramSha256": "f5d85b54acfb6aaf5ba00df5e9f1a1df856a601d09897b8b46de45446da89725",
+      "before": {
+        "time": 143,
+        "x": 135
+      },
+      "after": {}
+    },
+    {
+      "sha256": "04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3",
+      "entry": 2,
+      "sourceFrameOffset": 1436,
+      "frames": 299,
+      "initialRamSha256": "bf331148fdae8fac9cc5c10d1ea365c3b8420f0c82554ee8613146374da7ab3e",
+      "padsSha256": "b6ca49a641dcc7b2f54532329f7f867a508c5cab34ba044417337475c1866346",
+      "ramSha256": "5014d7145871110708046a0335228191d8d086db1ebdd5c0399a5ddbad0fdf78",
+      "before": {
+        "time": 143,
+        "x": 131
+      },
+      "after": {}
+    },
+    {
+      "sha256": "bb4c29fd7664193e84aa1b28ebe098d850bd527321f161aace3bff174c2b0d5b",
+      "entry": 1,
+      "sourceFrameOffset": 880,
+      "frames": 302,
+      "initialRamSha256": "7e13e4b2cce46afdd97b450d0401fa4d33dcba1ec30e26ed899573a1555a24a5",
+      "padsSha256": "220ed2cebe4b8de0e1abcbcdad9c880707466959ceeae93a0f1f2955b1af8d19",
+      "ramSha256": "824d8b4f0f3da22b194784484283bac49e5bfaf113ccbc2ac396a56749a81ee2",
+      "before": {
+        "time": 143,
+        "x": 133
+      },
+      "after": {}
+    },
+    {
+      "sha256": "5e5d049bafdfb390b332c3595fc2470eaaa2420287d73c772acaccf594f377a7",
+      "entry": 1,
+      "sourceFrameOffset": 709,
+      "frames": 307,
+      "initialRamSha256": "f54ee1403035ab9d7bc75e7c117d2c96b00bcd25c3d4fcfd0d096ad186c42226",
+      "padsSha256": "80adcb4e3958bd95544b09fd97776c90815e437c760b16183fd77d99162bb760",
+      "ramSha256": "e949561b5ba8a12132717b18740f47584d058d3eeeade8e4a239719d44c79453",
+      "before": {
+        "time": 167,
+        "x": 134
+      },
+      "after": {}
+    },
+    {
+      "sha256": "536bc848fe22400826d4d5a8f513e7590756694044c309cc3755146bb9b58f9c",
+      "entry": 1,
+      "sourceFrameOffset": 685,
+      "frames": 298,
+      "initialRamSha256": "fca92b5744b94b1fc0c94dfe7b5ff17002781f8f69e0170402859e41bbcd5ad1",
+      "padsSha256": "ad0d6b20db08ba4d0d022b8f2207f50ffee4b0c73052c3b6aea0172a367863c4",
+      "ramSha256": "90a1d18af2f11adea2e2ebab1fe9a844911decfaa6d213bb4cee63b207ec7b5c",
+      "before": {
+        "time": 143,
+        "x": 129
+      },
+      "after": {}
+    },
+    {
+      "sha256": "79f6b06f06111a9bd88c946d0325ed650efd0474be635d8aa1451a9a4a8c8051",
+      "entry": 1,
+      "sourceFrameOffset": 685,
+      "frames": 298,
+      "initialRamSha256": "796bffbbf0a44768112fbaefd69ae4a43c9eaa67fcbbfddb029230e7f3143117",
+      "padsSha256": "cefc84807da9493daa742c4880a40271650dc1066bbfe9b393af446ddcc1c276",
+      "ramSha256": "9741e0360a3735f1a3f1a04881db931f3ec38aed24971a68bed190b7b838a1fb",
+      "before": {
+        "time": 143,
+        "x": 129
+      },
+      "after": {}
+    },
+    {
+      "sha256": "1095e9ffd91e551bd5624a270ad8b2e1fde4e5e75ccc7c1fcefca31f228ff99a",
+      "entry": 1,
+      "sourceFrameOffset": 684,
+      "frames": 305,
+      "initialRamSha256": "cb32f8f8c506dad6f64db9245f76d93a435777e086ed3fced9be79a3233c24c3",
+      "padsSha256": "1f601d1b24adba53c5403df98045d65b841605516c0c17a7f4cd0af776a24b43",
+      "ramSha256": "142254a8bb02124ac84daaeccd97f72440e367492f8a86a2180c08a97fa588b0",
+      "before": {
+        "time": 143,
+        "x": 131,
+        "y": 200
+      },
+      "after": {}
+    },
+    {
+      "sha256": "6a33d61976d55df7946dcb13031d891ebdefc5d5d3971f94a994c16ae28470fd",
+      "entry": 1,
+      "sourceFrameOffset": 732,
+      "frames": 299,
+      "initialRamSha256": "6e3990c0925c150a543732346f8840a00744d49227adb23c9f6f4604595ef4ae",
+      "padsSha256": "19950045ff6477d57c51eb9fb98980229aeec6f0462c6421b0242ab6f9aa2493",
+      "ramSha256": "51f4844d902e3daf17e5f02246c4f60bd91510c228a2048f39e2c6c425fba635",
+      "before": {
+        "time": 143,
+        "x": 131
+      },
+      "after": {}
+    },
+    {
+      "sha256": "510b13373e46948d92debe32eb1f13fb89741e478edc5817fb3a2757c568ea00",
+      "entry": 1,
+      "sourceFrameOffset": 685,
+      "frames": 298,
+      "initialRamSha256": "796bffbbf0a44768112fbaefd69ae4a43c9eaa67fcbbfddb029230e7f3143117",
+      "padsSha256": "223770366b7d124eeff7e367026a3997a5cfd160a4eb02706eac380a02a93365",
+      "ramSha256": "1d0bd60bb14e37bf75a0bd8252a533705c88ce482342112f857ec638ea8921e6",
+      "before": {
+        "time": 143,
+        "x": 129
+      },
+      "after": {}
+    },
+    {
+      "sha256": "9d8b24052e85785f7aff890b3137ac3fb8723fe216352e3e420c93092b532d05",
+      "entry": 1,
+      "sourceFrameOffset": 686,
+      "frames": 313,
+      "initialRamSha256": "96e7bffee44e3c216bcab0f0e459158049ed7fa52376886a71028d5399b4e436",
+      "padsSha256": "f01eb2e3f8a1e947a14d524849f888aa8725276e71b817260bf7264caa8949d4",
+      "ramSha256": "c863f06453e1477b2eb9bdd6d1eed1458c36e139b52587f602066f3f95f509ef",
+      "before": {
+        "time": 167,
+        "x": 132,
+        "y": 134
+      },
+      "after": {}
+    },
+    {
+      "sha256": "d7e582f13911457bf8ac8f27116341be1d96c67ca8214ef7f82f233a76f2c5d2",
+      "entry": 1,
+      "sourceFrameOffset": 694,
+      "frames": 310,
+      "initialRamSha256": "306d44bbe8e0ef1233a193848ab0262a3d52fc1a961964b2710588c482586ce8",
+      "padsSha256": "fc2604d8ef6d9396bd89a2523824138b79a3c86cbfa6c55b8c17681308682058",
+      "ramSha256": "7e21ccf2a2e142645031dedb0ed87b4952570076d136bc6d6e272ca8112b9cdc",
+      "before": {
+        "time": 167,
+        "x": 132,
+        "y": 135
+      },
+      "after": {}
+    },
+    {
+      "sha256": "a7184a00f35a4d74c8e42e0f37056df40c92076443b8e6894ec4f2752fa15dab",
+      "entry": 1,
+      "sourceFrameOffset": 686,
+      "frames": 298,
+      "initialRamSha256": "96e7bffee44e3c216bcab0f0e459158049ed7fa52376886a71028d5399b4e436",
+      "padsSha256": "4d897f0ee48e59edf3a4d5918c429895bd0cec1761b243245b8bdad2d8e508e4",
+      "ramSha256": "5b85fb356e2f24af20809d48d1d9b4e5898150df26aa2dc0c6d51864cf14e382",
+      "before": {
+        "time": 143,
+        "x": 129
+      },
+      "after": {}
+    },
+    {
+      "sha256": "02013a1a41257c8658df24d922dac1551f33455e68d89b9aa4fc12dcd97e7252",
+      "entry": 1,
+      "sourceFrameOffset": 687,
+      "frames": 321,
+      "initialRamSha256": "d196a6c902c94b62de778bfa3fed3e1d9d377612b68616260b19efd71b742061",
+      "padsSha256": "1c843059234028d9ab99c3fe8ee1f5cb3effc5ed66b0f1d800be849adb253a88",
+      "ramSha256": "4de129b2eb8a440659ab566fc35f2ae9888867d3351ba3f61a351deefd30a9e0",
+      "before": {
+        "area": 314,
+        "x": 152,
+        "y": 153
+      },
+      "after": {}
+    },
+    {
+      "sha256": "a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6",
+      "entry": 1,
+      "sourceFrameOffset": 694,
+      "frames": 332,
+      "initialRamSha256": "3aba99ca744cdae1e14814b1c9d40dd7af9ac70665d10685ea41f96aaf75b5cf",
+      "padsSha256": "f9deb8d5475f51b8418acec5a979fcf02c7f599a79d5dc8ccc36277da9c0ccbf",
+      "ramSha256": "2ab56988948bc9968f2f747bbc4477fda410ecaa0c28bf54c642b16d664fa2e9",
+      "before": {
+        "area": 329,
+        "time": 167,
+        "x": 168
+      },
+      "after": {}
+    },
+    {
+      "sha256": "32183fd459d9c1b8a3e0f3644ec495ff68d9277584f5da2fd47c89ff2fd9882e",
+      "entry": 1,
+      "sourceFrameOffset": 687,
+      "frames": 300,
+      "initialRamSha256": "a6c47bcd1d3c9b943bf53fee5b7c9d65bf2f722584c3e8c207c555e538b84b04",
+      "padsSha256": "0d5d20af05fd9ef2a4ab976045bbcf29ba1040657dd64da3148916d896ed3cd7",
+      "ramSha256": "a29f4e07ffb8e530b92793556b8515cd38bcf9bbb7f8537503f770bf3b48d333",
+      "before": {
+        "area": 296,
+        "x": 134,
+        "y": 135
+      },
+      "after": {}
+    },
+    {
+      "sha256": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
+      "entry": 1,
+      "sourceFrameOffset": 738,
+      "frames": 324,
+      "initialRamSha256": "dee3fdb83a851b9982e1904e23ffce76e13ad8214d6acb5e9e90393f10434319",
+      "padsSha256": "5f3317550b134945c5c729546382fa3880a030a301d01e94bdb1fb0a7a6a6b71",
+      "ramSha256": "b68aaf0e5f1221d4c14d12be173e78dd876a01a6bf9c1721162e4a9901b3ec18",
+      "before": {
+        "area": 318,
+        "x": 156,
+        "y": 157
+      },
+      "after": {}
+    },
+    {
+      "sha256": "0d12a2e4ff35f7c3a2a6596c00224d46bb28168962b987b169ce365270f5bbad",
+      "entry": 1,
+      "sourceFrameOffset": 685,
+      "frames": 340,
+      "initialRamSha256": "1ae34d00f2bd06060412ddfdd5cd40343da4e0cd487d9985df761435a8138665",
+      "padsSha256": "eb570504060ebbae586620d4f0b0d879b4d90902332eb0e2fe87cd263e59ce13",
+      "ramSha256": "f88bfe98bd78a9294ed6cf3f6d4a3df05a880245f426e3e7da5cfac6f3dfbdb2",
+      "before": {
+        "time": 191,
+        "x": 172,
+        "y": 183
+      },
+      "after": {}
+    },
+    {
+      "sha256": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
+      "entry": 1,
+      "sourceFrameOffset": 692,
+      "frames": 399,
+      "initialRamSha256": "f84e04c1c4d0960f03c672938fc6e82836ed3771c7fc1353f0850b392d543265",
+      "padsSha256": "444e3fc0b358d81e76f8651b4db2f1b5ed61878bb9d8599278433ee6719b089c",
+      "ramSha256": "bb916e26aca42c7b52c409a21e04c9dd013d8f2dd3a2082ca8dc116d9eccfcd7",
+      "before": {
+        "area": 396,
+        "x": 235,
+        "y": 235
+      },
+      "after": {}
+    },
+    {
+      "sha256": "0422e4787de66182fbbadfd0f27870ca4d57c7f0444f152d6035ab4f5a441d27",
+      "entry": 1,
+      "sourceFrameOffset": 702,
+      "frames": 326,
+      "initialRamSha256": "83b1cf195a015c4b0f7b5c8aca8c7385f3ee0c68d551edf21ab7ecaccf8f4f48",
+      "padsSha256": "45d0e3f6dbad0bca68230819a4fc1f032ecf525eafcc8afd2aa32b8f452f78dd",
+      "ramSha256": "af72447f403d8da1c86545a3ffb6cb0e6d39530a01af1ef3621f071a42d42f1a",
+      "before": {
+        "area": 318,
+        "x": 158,
+        "y": 157
+      },
+      "after": {}
+    },
+    {
+      "sha256": "d7f05e85ab453dad0daf55264d9f506fb4984af6d555c68f57dab753f3850ac6",
+      "entry": 1,
+      "sourceFrameOffset": 697,
+      "frames": 328,
+      "initialRamSha256": "af68774cd3d817c2eac456c6043cb45623d7bde37f110926098f59b95383db0e",
+      "padsSha256": "64af29548bde03452e8e57543722338558b290a5da642031c712a20ec1f4ad88",
+      "ramSha256": "85e5fdc831325a2526721baff676a55fb0e392a975b54fe004c9d25f87783b3a",
+      "before": {
+        "area": 324,
+        "x": 164,
+        "y": 163
+      },
+      "after": {}
+    },
+    {
+      "sha256": "1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+      "entry": 1,
+      "sourceFrameOffset": 690,
+      "frames": 303,
+      "initialRamSha256": "aa242c9154037342ff7da16366c0578e4e550ffc0cca84f623406cee7e2abd95",
+      "padsSha256": "97d859820243fdca8c7013687580ff93f14c27f8c03494cefe5818fc3f69bc62",
+      "ramSha256": "daaa6808faf2175c5371acb532fea715553ba5d7f9ec6272519fb4f6fe13ba29",
+      "before": {
+        "area": 298,
+        "x": 136,
+        "y": 137
+      },
+      "after": {}
+    },
+    {
+      "sha256": "deba8c7ffc4684900a39a5be7f7c987ed34b08752854786e37b1710779236f08",
+      "entry": 1,
+      "sourceFrameOffset": 688,
+      "frames": 300,
+      "initialRamSha256": "d560833ea1f1dffeddf914dec5d4f6c0b0b3c5a90cc27b486cef5393f320e9d8",
+      "padsSha256": "9afeb352d67504aff02c3ff6c7f5634e8eeb662ccca7c69a13621d46d1f2dfc9",
+      "ramSha256": "e22fe410bea7a98de2635fbe5e661207f7fc922f970c5425f4ef67b4f24135b8",
+      "before": {
+        "area": 297,
+        "x": 136,
+        "y": 136
+      },
+      "after": {}
+    },
+    {
+      "sha256": "3fd16c5653776df45e69b7c4147ce6ac9ac1a1b44d876da2902bf5f9fc22e2e1",
+      "entry": 1,
+      "sourceFrameOffset": 688,
+      "frames": 326,
+      "initialRamSha256": "d560833ea1f1dffeddf914dec5d4f6c0b0b3c5a90cc27b486cef5393f320e9d8",
+      "padsSha256": "3a9ebce863e0f6b568783793b7391bf079cf2c2daf7ba10c2307484fa7e7f924",
+      "ramSha256": "97fad843213668ddf23061a26f0667193cc2c454b637a07dc13b5f027d60223d",
+      "before": {
+        "area": 324,
+        "x": 163
+      },
+      "after": {}
+    },
+    {
+      "sha256": "d3f8877dac1cd714c49281544480a078d4f6ea127c6f0df82e3e94cbb0df6240",
+      "entry": 1,
+      "sourceFrameOffset": 736,
+      "frames": 306,
+      "initialRamSha256": "c5ce5afe78098a9b298259c18d9e5b8192668942fe680e3db40695014512a8fa",
+      "padsSha256": "b859161697cb3b4d09e7f199d1b22a61dc2986dd1157c8caa9c2b522b628f7d9",
+      "ramSha256": "4aaa35ede60550d9f126a677dc7e6eb722ae8b871ed67a367aaf6deee2e9aa14",
+      "before": {
+        "area": 296,
+        "time": 143,
+        "x": 136,
+        "y": 135
+      },
+      "after": {}
+    },
+    {
+      "sha256": "d01e28a1718f025ddf45d01b1997d7cb60fe13c4e78e698d76ecd19731655bfc",
+      "entry": 1,
+      "sourceFrameOffset": 688,
+      "frames": 306,
+      "initialRamSha256": "d560833ea1f1dffeddf914dec5d4f6c0b0b3c5a90cc27b486cef5393f320e9d8",
+      "padsSha256": "95a6280a210ed72f98fe5c78a36fcec29061fb043efaf76d330159df1f735074",
+      "ramSha256": "de768f5f93d2ae7095caa9b56d3d69a26dbe81701723d7d8e5379131480de6e7",
+      "before": {
+        "area": 296,
+        "time": 143,
+        "x": 136,
+        "y": 135
+      },
+      "after": {}
+    },
+    {
+      "sha256": "64e9b0ab94a3ec9795f8c29b137bc2881f57141cf3ee4586d63a0df3b4672773",
+      "entry": 1,
+      "sourceFrameOffset": 700,
+      "frames": 312,
+      "initialRamSha256": "fffd61e655609d06a136884fb77ea1dd3eea21b388bdc7d25d154cac39cecd1f",
+      "padsSha256": "29f57a67b86addbde1309510702ea3ae069806a9b4616e3f93fcd3a39fd509d9",
+      "ramSha256": "64bfb096728c2a05a3e0e6785db24b14b21a219b8e09c9c1e526a10fc446eec5",
+      "before": {
+        "area": 309,
+        "x": 148
+      },
+      "after": {}
+    },
+    {
+      "sha256": "eeaf54081c9af2dae91509c441d4ace2ef41da381c021e0482de42ca5f0fb52e",
+      "entry": 1,
+      "sourceFrameOffset": 764,
+      "frames": 302,
+      "initialRamSha256": "ede0b6ccd875b886323be55986c3d52ec8635aaaad20c01a5d9228789c143aff",
+      "padsSha256": "af0d4055e8324223d033f31e12645e8e64b6089493a5849eac236e3b5c264d6d",
+      "ramSha256": "f6bd8686783065f0ce729845e4820b19dce317bc14b87a3d531075f956d95ef8",
+      "before": {
+        "area": 298,
+        "x": 135,
+        "y": 137
+      },
+      "after": {}
+    },
+    {
+      "sha256": "80be9eda1858d5a125ac534b34305dc528b5e705f2f39d36d751224fbe025270",
+      "entry": 1,
+      "sourceFrameOffset": 692,
+      "frames": 331,
+      "initialRamSha256": "13e49db1301cf8d86988c178991d92ba126d11fdd750ce15da7abd2f1b72d7b3",
+      "padsSha256": "4ea0c68bd538abe43ad6ea51f6774039b3c2bc055d27aca980772f47d5fc9d84",
+      "ramSha256": "872b2f380bfd7c928c8f45a2e441e0e37d3fc7e1ed0f3fa5670099eefa6e1dda",
+      "before": {
+        "area": 328,
+        "time": 167,
+        "x": 167
+      },
+      "after": {}
+    },
+    {
+      "sha256": "b1ba5550c9862af4e8052161bd8abbc597bd16f6e90357bda2d70936807316ec",
+      "entry": 1,
+      "sourceFrameOffset": 688,
+      "frames": 7108,
+      "initialRamSha256": "f004d37bb124d931ed9bcbd906b49b7eb71ab94ea81a39e52901b5e7a9a17977",
+      "padsSha256": "def4e3bbfd2298f101565e88fb13b4959d390505694cd863765f64eab0b8b37d",
+      "ramSha256": "2c969213498ae734bb65981953a95f7f029e13b1456975d43f97f0c56c62c2fd",
+      "before": {},
+      "after": {}
+    },
+    {
+      "sha256": "cce087a2f09576edbe4d745d71a88387e9fae65972d48f5c1fc395a97a2b314a",
+      "entry": 1,
+      "sourceFrameOffset": 759,
+      "frames": 4448,
+      "initialRamSha256": "4b3f6b699f59c02893baa5abb160f1d1c5000eb9f8768200af99bd6d6cfe583d",
+      "padsSha256": "a5f09304c8d1e4e6698ba9e22d62b86136c2fa512c075d2fe2df3cee9afdfb37",
+      "ramSha256": "20fb24d81dfb74a349d850d370fc2764f8936a1769ef7ad6bb230ab4f4666b5a",
+      "before": {
+        "area": 4334,
+        "time": 4175,
+        "x": 4175,
+        "y": 4173
+      },
+      "after": {}
+    },
+    {
+      "sha256": "71c72ba2e86de28a47ff51f71c7196ccfbc8d97fd86237ab9f97a20257683ca6",
+      "entry": 1,
+      "sourceFrameOffset": 688,
+      "frames": 545,
+      "initialRamSha256": "2a9aeb5aa2b6f0b927230df7cb52bcfd13759fdeda919c014b5f6582d9bf196a",
+      "padsSha256": "69e33c4c84268e0764a197884a529670bc64535753d6cb824909572b4b455c93",
+      "ramSha256": "826e73bde60fc070854bfc11101cc47fb1037a0aea02ad9cc6c4a2937bbbfae8",
+      "before": {
+        "time": 383,
+        "x": 374,
+        "y": 400
+      },
+      "after": {}
+    },
+    {
+      "sha256": "1081d58b6400d4816814a132c1ed81c38857e5dc115dccb7c41b3a27c64822ad",
+      "entry": 1,
+      "sourceFrameOffset": 685,
+      "frames": 7107,
+      "initialRamSha256": "a4c2f24d30a455e83243bb094adc473a68eb975a18c6d2a33ed0dc40fdc54c99",
+      "padsSha256": "3f721297f7d1a3391d4208f82afb657625c43e8b63061f83d77f6e597ea1099b",
+      "ramSha256": "0f39a8b69f540e8c09c1eab63cdabc499bda5d25121899bffa543d4e35bc3333",
+      "before": {
+        "x": 7015
+      },
+      "after": {}
+    }
+  ],
+  "carriedMainBonusReturn": {
+    "inputSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+    "sourceFrameOffset": 216,
+    "frames": 1957,
+    "initializations": 1,
+    "strictMarioHudCameraAreaFields": "all null",
+    "remainingStrict": {
+      "extra": 860,
+      "position": 862,
+      "missing": 1102
+    },
+    "remainingLegacy": {
+      "enemy": 956
+    },
+    "limitation": "Entrance-seeded main clip carried through both actual pipe loads without area reseeding; known actor allocation gaps remain, not combined proof."
+  },
+  "waterExcerpts": [
+    {
+      "file": "5-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 2990
+      }
+    },
+    {
+      "file": "5-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 2752
+      }
+    },
+    {
+      "file": "5-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 3199
+      }
+    },
+    {
+      "file": "6-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "6-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "6-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-down-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-reverse.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    },
+    {
+      "file": "7-2.water-right-strokes.json",
+      "fields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      }
+    }
+  ]
+}

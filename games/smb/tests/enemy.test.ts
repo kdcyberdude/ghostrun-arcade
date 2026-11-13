@@ -33,7 +33,7 @@ test('a live cannon shot damages the player through ordinary collision updates',
 
 test('late-castle Bowser throws ballistic hammers but early Bowser does not',()=>{
  const late=fixture('6-4',[{kind:'bowser',x:220,y:208}]);
- late.step([],60);assert.equal(late.items.filter(i=>i.kind==='hammer').length,2);
+ late.step([],60);assert.ok(late.items.some(i=>i.nativeHammer),'native BowserControl requests a misc-slot hammer while its jump timer is0');
  const hammer=late.items.find(i=>i.kind==='hammer')!,vy=hammer.vy,y=hammer.y;
  late.step([],8);assert.ok(hammer.vy>vy);assert.ok(hammer.y<y);
  late.step([],20);assert.ok(hammer.vy>0,'gravity must turn the hammer downward');
@@ -57,7 +57,7 @@ test('flame collision covers the supplied 24px assembly rather than only its fir
 });
 
 test('each spawned Bowser flame emits its supplied sound cue once',()=>{
- const sim=fixture('1-4',[{kind:'bowser',x:220,y:208}]);sim.events=[];
+ const sim=fixture('1-4',[{kind:'bowser',x:112,y:160}]);sim.events=[]; // native anchor low byte$70 avoids artificial page wrap
  // Native fire (free 5-4 probe): the first flame comes 255 frames after Bowser appears, while he faces left (the old age%150 guess was not measured).
  sim.step([],254);assert.ok(!sim.events.includes('sfx_bowser_flame'));
  sim.step([],1);assert.equal(sim.items.filter(item=>item.kind==='flame').length,1);
@@ -67,19 +67,35 @@ test('each spawned Bowser flame emits its supplied sound cue once',()=>{
 
 test('red winged Koopas fly vertically while green winged Koopas bounce from the floor',()=>{
  const sim=fixture('test',[{kind:'paratroopa',x:170,y:80,palette:'0f-16-30-27'},{kind:'paratroopa',x:230,y:208,palette:'0f-1a-30-27'}]);
- sim.step([],10);assert.equal(sim.enemies[1].vy,GREEN_PARATROOPA_PHYSICS.bounce); // a Paratroopa at rest on the floor sinks and first bounces at age 10 (native-measured)
- sim.step([],35);assert.equal(sim.enemies[0].x,170);assert.ok(sim.enemies[0].y>80);assert.ok(sim.enemies[1].y<208);
+ sim.step([],11);assert.equal(sim.enemies[1].vy,GREEN_PARATROOPA_PHYSICS.bounce+GREEN_PARATROOPA_PHYSICS.gravity); // a Paratroopa at rest on the floor sinks and first bounces at age 11 (native 8-1 rows 1267-1278)
+ sim.step([],34);assert.equal(sim.enemies[0].x,170);assert.ok(sim.enemies[0].y>80);assert.ok(sim.enemies[1].y<208);
 });
 
 test('an idle shell revives, while a kicked shell continues moving',()=>{
  const sim=fixture('test',[{kind:'redKoopa',x:170,y:208},{kind:'beetle',x:230,y:208}]);
- const idle=sim.enemies[0],moving=sim.enemies[1];idle.shell=true;moving.shell=true;moving.movingShell=true;moving.vx=3;
- sim.step([],319);assert.equal(idle.shell,true);assert.equal(moving.shell,true);
- sim.step([],1);assert.equal(idle.shell,false);assert.equal(idle.kind,'redKoopa');assert.ok(idle.vx<0);assert.equal(moving.shell,true);
+ const idle=sim.enemies[0],moving=sim.enemies[1];idle.shell=true;idle.walkerState=4;idle.shellTimer=16;moving.shell=true;moving.movingShell=true;moving.vx=3;
+ sim.step([],335);assert.equal(idle.shell,true);assert.equal(moving.shell,true);
+ sim.step([],1);assert.equal(idle.shell,false);assert.equal(idle.kind,'redKoopa');assert.equal(idle.vx,(sim.random.frame&1)?-0.5:0.5);assert.equal(moving.shell,true);
 });
 
 test('ground enemies turn on contact with each other',()=>{
  const sim=fixture('test',[{kind:'goomba',x:170,y:208,direction:1},{kind:'koopa',x:186,y:208,direction:-1}]);
- sim.step([],2);assert.ok(sim.enemies[0].vx<0);assert.ok(sim.enemies[1].vx>0);
+ sim.step([],8);assert.ok(sim.enemies[0].vx<0);assert.ok(sim.enemies[1].vx>0);
  const directions=sim.enemies.map(e=>Math.sign(e.vx));sim.step([],2);assert.deepEqual(sim.enemies.map(e=>Math.sign(e.vx)),directions);
+});
+
+test('shell revival uses native FrameCounter parity and primary hard mode speed without moving on the revival pass',()=>{
+ for(const hard of [false,true])for(const parity of [0,1]){
+  const sim:any=fixture('test',[{kind:'koopa',x:170.5,y:208}]);sim.primaryHardMode=hard;sim.random.frame=parity;sim.enemyContactOff=true;
+  const e=sim.enemies[0];Object.assign(e,{active:true,enemySlot:0,shell:true,walkerState:4,shellTimer:0,fall:{speed:0,force:0,fraction:37}});
+  sim.updateEnemies(sim.player.y);
+  assert.equal(e.shell,false);assert.equal(e.walkerState,0);assert.equal(e.x,170.5);assert.equal(e.vx,(parity?-1:1)*(hard?0.75:0.5));assert.equal(e.fall.fraction,37);
+ }
+});
+
+test('background loss of support enters shell state2 before an expired timer can revive it',()=>{
+ const sim:any=fixture('test',[{kind:'koopa',x:170.5,y:160}]);sim.enemyContactOff=true;
+ const e=sim.enemies[0];Object.assign(e,{active:true,enemySlot:0,shell:true,walkerState:3,shellTimer:0,fall:{speed:0,force:0,fraction:37}});
+ sim.updateEnemies(sim.player.y);
+ assert.equal(e.shell,true);assert.equal(e.walkerState,2);assert.equal(e.x,170);assert.equal(e.y,160);assert.deepEqual(e.fall,{speed:0,force:61,fraction:37});
 });

@@ -1,0 +1,90 @@
+{
+  "schema": "native-startup-live-state-proof-v1",
+  "sourceBaseCommit": "3edf543",
+  "sourceSha256": {
+    "src/simulation.ts": "628391489a04ec2b2b573341906ca86062f419ab8f0fe394b74b507805a35324",
+    "src/native-title-controls.ts": "75553f36e4690e571a24b720226d787ea06655bda624c8cc597e384290da7d02",
+    "src/native-cold-startup.ts": "510dd84767d046067db37b8aee5ee1474a2e2c4566ea3fa2842dd782f3a45566",
+    "data/native-cold-program.json": "0317abed4e7bcaf56226b48295eb32f1b608caff0097e54d61b5a761a40a14e9",
+    "tests/native-startup-runtime.test.ts": "b299da02a420c1c24d7067404503e1f9cee67007201f3923cfa3563fb5bd8ef2",
+    "tests/fixtures/native-startup-controls.json": "595ba0e310a5e5e796991f0013294d6f34d48f28dc8cf718a368144af3e2ca1b"
+  },
+  "initialization": "Simulation.reset(false), empty source pad transport, generated FF cold RAM/CPU/PPU only; no observed-RAM or mid-run seeds",
+  "cases": [
+    {
+      "name": "start40",
+      "frames": 197,
+      "firstPlayerRdy": 194,
+      "fullInputPadSha256": "2a239cad71c8e521a8f7743bfa8ba5c46227d417f18c23e6b0f93a7d3c125d1a",
+      "segmentPadsSha256": "27f501e11d5d870f6fde5dc7c3ea025f2229efe9068a2f4319c48890bd74f87c",
+      "segmentRamSha256": "ac0135fdecb8101abcc41e9146a38e3ae0001fff991d57aa39e4b9d48d88c3f5",
+      "status": "state-pass"
+    },
+    {
+      "name": "start80",
+      "frames": 239,
+      "firstPlayerRdy": 236,
+      "fullInputPadSha256": "d0ff22884b6128afe0d793dceff04ea55976b97c5e539aeaacd2e01e2f815fe3",
+      "segmentPadsSha256": "3df40cc6ca1faae22b11d7d84e117433768bb35986c980c24441ddf36eea2bae",
+      "segmentRamSha256": "44daf2724863ea285a1096b673c8faf9a525523ed011bc8b8f6810565b575612",
+      "status": "state-pass"
+    },
+    {
+      "name": "select40-start80",
+      "frames": 239,
+      "firstPlayerRdy": 236,
+      "fullInputPadSha256": "fad71faec0c8c02318df1f92edc6fc232c9640a9de1774e2c435f97404419415",
+      "segmentPadsSha256": "c833fe732c2f4f134f1ee055bed93618a88895afa33b8b7eb7f1bf2e8729b6d6",
+      "segmentRamSha256": "7b2e57ffd96ea834e389c3cc26684a18b77a58642e01c74735ac35cbc0de2727",
+      "status": "state-pass"
+    },
+    {
+      "name": "a-start50",
+      "frames": 218,
+      "firstPlayerRdy": 215,
+      "fullInputPadSha256": "849b490c4301c7ba92e26e1cfa47b793f0681679e53735bf5feb26b63e0d13a3",
+      "segmentPadsSha256": "4d85698462ccf31d6d2c63a63c8d396f5b8b399072c6a87cfe9db161c66a1098",
+      "segmentRamSha256": "a7b406abdcc8d704d3587710bdec3042e6fed092bcd3996cc3c90fed65f50960",
+      "status": "state-pass"
+    },
+    {
+      "name": "b-start40-start80",
+      "frames": 239,
+      "firstPlayerRdy": 236,
+      "fullInputPadSha256": "b565ee9e5f16797bb18876a241e1b75e32d59268ca598ce7aee777981f2a013b",
+      "segmentPadsSha256": "a8cf8f8c4524dcc6b87d61dda03163794e8ba50cb7173491a7c9e90bf8f91fa9",
+      "segmentRamSha256": "d77e0f56f5b7823fe18c8a49b675fc6ebe96f3a0c10d0efa9a92967a7447be31",
+      "status": "state-pass"
+    },
+    {
+      "name": "held-start0",
+      "frames": 120,
+      "firstPlayerRdy": null,
+      "fullInputPadSha256": "3ede7b3833e0b33f83162c1ce5b16b883ba9dbc9c5053fc156de26b8eb9465e7",
+      "segmentPadsSha256": "f2c18ec1b0de868fdf836aafede1abda9a27b1a420fce5677d2567145c615186",
+      "segmentRamSha256": "7fccf69c08302f6e09946b44cd3875d1e7aa6b530841ca29f33a2c81920089a6",
+      "status": "state-pass"
+    },
+    {
+      "name": "held-start0-release-start120",
+      "frames": 281,
+      "firstPlayerRdy": 278,
+      "fullInputPadSha256": "9709bedfb25cb835b8585bf6a18b9f75146d8dabac3d1a9f50ff8c5a712e5d0e",
+      "segmentPadsSha256": "5ce3fe9a2a6a6db9dd5381c019caa53b531819b03da26b5f04aa9f0eecfbf953",
+      "segmentRamSha256": "00948a27c87825e6a691e00dc97713c133f6152c6b60158053cac65412ac8900",
+      "status": "state-pass"
+    }
+  ],
+  "validation": {
+    "sourceRows": 1533,
+    "focusedTests": 43,
+    "targetedTypeScriptDiagnostics": 0,
+    "pixels": "pending separate atomic renderer consumer proof",
+    "fullSuiteAndAudits": "not duplicated; integration batch owner"
+  },
+  "limits": [
+    "Only World1-1 cold/title/first-ready prefixes are covered by the live fixture.",
+    "Demo playback, title initializer reentry and later pause diagnostic are not claimed verified.",
+    "State proof alone is not pixel or whole-recording proof."
+  ]
+}

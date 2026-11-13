@@ -1,0 +1,25 @@
+{
+ "schema": "native-game-over-pure-proof-v1",
+ "runtimeWired": false,
+ "sourceBaseCommit": "fe40ee0",
+ "cases": 6,
+ "controllerRows": 1501,
+ "diagnostics": [],
+ "validation": {
+  "focusedTests": 3,
+  "typescript": "pass",
+  "fullRuntimeAudit": "not run; unused component, live wiring frozen for backlog clearance"
+ },
+ "sourceSha256": {
+  "src/native-game-over.ts": "dd61565c714c7d7dc0a6c055dc7811d954384b4559a008527170f3a57dcbf711",
+  "tools/harness/native-game-over-cases.ts": "0537f8003c344f7d5b8f10bcbedd048a31fd668d7dd375fe0c13af378413afd0",
+  "tests/native-game-over.test.ts": "bae17c209911445f6db58af3fdf59c6b42dfaccf27a2d601ef71060f2b4df294",
+  "tests/fixtures/native-game-over-cases.json": "c416b8108c64e02871adfa2324afcf0ab5612a046600b9f94e12126e796473fd"
+ },
+ "captureCache": "/tmp/smb-game-over-native",
+ "limits": [
+  "No Simulation imports or behavior changes.",
+  "NMI interval turns supplied by the owning clock.",
+  "Game-over pictures, audio streams, title-mode and two-player player-info swapping remain outside this primitive."
+ ]
+}

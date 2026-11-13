@@ -1,0 +1,79 @@
+{
+  "schema": "smb-preaudit-consolidation-validation-v1",
+  "status": "PREAUDIT_VALIDATION_PASS",
+  "validatedCodeCommit": "8629b80d9d108557b8c5d5c539c62b60e7687a0e",
+  "branch": "fix/smb-entry-timing",
+  "baseline": "003f8f9",
+  "goalComplete": false,
+  "executionPolicy": "Only existing backlog completed and consolidated; no new investigations. Stop after pending every-frame audit checkpoint.",
+  "native": {
+    "gate": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/final-consolidation-a55ccea/gate.json",
+    "candidate": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/final-consolidation-a55ccea/candidate.json",
+    "candidateSha256": "fc71ba3cea4cd73baf9a31606ceefd9668fc47b02b1a7cedb3966f65fd58b894",
+    "comparison": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/final-consolidation-a55ccea/comparison.json",
+    "unclassifiedEarlierFields": 0,
+    "legacyClear": 26,
+    "strictPass": 25,
+    "waterPayloadsUnchanged": true
+  },
+  "npm": {
+    "log": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/final-consolidation-repaired-npm.log",
+    "sha256": "ab642303be172d9bb40e5b5d57358240e4fd211d7010271960419ce144794dbd",
+    "passed": 2107,
+    "failed": 0
+  },
+  "typescript": {
+    "log": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/final-consolidation-repaired-tsc.log",
+    "exit": 0
+  },
+  "original1_1": {
+    "scope": "All3020 original native-entrance input frames; not full mood-corpus proof",
+    "report": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/pixels-1-1-a55ccea.json",
+    "sha256": "9161f81aed7c25e4508a5310d0228977b8b99611d0458be194585e1796504a36",
+    "allWholeHudFieldAlignedZero": true,
+    "coverage": {
+      "completeInputSequence": true,
+      "inputFrames": 3020,
+      "availableNativeFrames": 3020,
+      "allFrames": true,
+      "victory": false,
+      "excludedFrames": 0,
+      "excluded": {
+        "mode1": 0,
+        "mode2": 0,
+        "otherMode": 0,
+        "differentLevel": 0
+      },
+      "comparedFrames": 3020,
+      "alignedFrames": 3020,
+      "unresolvedAlignmentFrames": 0,
+      "noOverlapFrames": 0,
+      "partialOverlapFrames": 0,
+      "comparedAlignedPixels": 144960000,
+      "expectedAlignedPixels": 144960000,
+      "overlapFraction": 1
+    }
+  },
+  "startup": {
+    "proof": "games/smb/evidence/native-startup-live-pictures.json",
+    "sha256": "a24cb3cee689a5057deb5ea4a96dc162afaf0f53f3d5a03dd607036e6aef6d21",
+    "runtimeSourcesVerifiedIdenticalToProof": true,
+    "cases": 7,
+    "frames": 1533,
+    "allWholeHudFieldZero": true,
+    "continuous": true,
+    "reseeded": false
+  },
+  "pendingAudit": {
+    "status": "NOT_STARTED",
+    "recordings": 368,
+    "frames": 5178452,
+    "rule": "Every frame observed independently after failures; separate state,picture,joint; unsupported state unchecked",
+    "workers": 8
+  },
+  "deferred": [
+    "Newly exposed independent gameplay discrepancies, including unstarted pause and missing-Goomba clusters, mainX/mainY and camera cap",
+    "Unsupported title demo/initializer reentry state coverage",
+    "All new3D work"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "batchABase": "117ef69621c51c22bf129f0a42a8e58efa495969",
+  "pictureCandidateBeforeMerge": "a8424d58d518755ffa233edc1b11adbf76b60e27",
+  "mergeCommit": "19e65dbed77a2e7b69a05923190d3cbbdcaab347",
+  "focusedCommand": "npx tsx --test tests/native-cannon-coverage.test.ts tests/native-bullets.test.ts tests/native-bullet-pictures.test.ts tests/native-hbro-defeat-pictures.test.ts tests/native-hammer-bro-pictures.test.ts tests/native-hud-queue.test.ts tests/native-misc-pictures.test.ts",
+  "result": {
+    "tests": 23,
+    "pass": 22,
+    "fail": 1
+  },
+  "inheritedFailure": {
+    "test": "native loopback keeps the palette/HUD parser clock on the same GameEngine row",
+    "level": "4-4",
+    "frame": 2660,
+    "expected": {
+      "task": 0,
+      "scroll": 21
+    },
+    "actual": {
+      "task": 0,
+      "scroll": 5
+    },
+    "pristineBatchAReproduces": true,
+    "baselineLog": "/tmp/anim-picture-A-baseline-hud.log",
+    "candidateLog": "/tmp/anim-picture-batch-A-focused.log"
+  },
+  "scope": "Clean merge; Cannon/HBro consumer changes preserved, no simulation/HUD/timer/3D changes relative to frozen Batch A. No fullsuite or pixel audit repeated.",
+  "status": "Awaiting Batch A inherited failure repair before declaring combined candidate safe."
+}

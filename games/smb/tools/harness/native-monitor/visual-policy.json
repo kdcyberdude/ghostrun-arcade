@@ -1,0 +1,8 @@
+{
+  "schema": "smb-2d-visual-policy-v2",
+  "colorTolerance": 24,
+  "maximumBlobPixels": 15,
+  "connectivity": 8,
+  "spatialTolerancePixels": 0,
+  "note": "Blob-only acceptance. A frame fails if any8-connected color-tolerant difference component exceeds15native-resolution pixels. Overall matching percentage is diagnostic only, never a pass/fail threshold."
+}

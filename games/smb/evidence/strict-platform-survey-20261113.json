@@ -1,0 +1,920 @@
+{
+  "source": "Original32 v2 traces; native-divergence --strict --detail, contacts4aecedc/29280c2 plus platform adapter. Runtime field matrices unchanged. New platform mismatches remain failures. Full receipts: /tmp/contacts-platform-strict-{before,after}.json.",
+  "comparedEntityRowsBefore": 158945,
+  "comparedEntityRowsAfter": 178339,
+  "levels": [
+    {
+      "level": "1-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 786,
+      "strictFirstAfter": 786,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 3213,
+      "coverageGaps": 4
+    },
+    {
+      "level": "1-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 325,
+      "strictFirstAfter": 325,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 4180,
+      "coverageGaps": 12
+    },
+    {
+      "level": "1-3",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 1584,
+      "coverageGaps": 3
+    },
+    {
+      "level": "1-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 1746,
+      "strictFirstAfter": 1746,
+      "platformFirst": 1875,
+      "platformMismatches": [
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 1875,
+          "count": 2
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 1978,
+          "count": 125
+        }
+      ],
+      "comparedEntityRows": 823,
+      "coverageGaps": 11
+    },
+    {
+      "level": "2-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 5576,
+      "coverageGaps": 9
+    },
+    {
+      "level": "2-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 328,
+      "strictFirstAfter": 328,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 8420,
+      "coverageGaps": 4
+    },
+    {
+      "level": "2-3",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 1198,
+      "strictFirstAfter": 1198,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 2568,
+      "coverageGaps": 6
+    },
+    {
+      "level": "2-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 133,
+      "strictFirstAfter": 133,
+      "platformFirst": 670,
+      "platformMismatches": [
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 2,
+          "kind": "small-up-lift",
+          "first": 670,
+          "count": 223
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 3,
+          "kind": "small-down-lift",
+          "first": 670,
+          "count": 223
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 3,
+          "kind": "horizontal-platform",
+          "first": 3621,
+          "count": 1
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 3,
+          "kind": "horizontal-platform",
+          "first": 3784,
+          "count": 128
+        }
+      ],
+      "comparedEntityRows": 5196,
+      "coverageGaps": 11
+    },
+    {
+      "level": "3-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 924
+      },
+      "strictFirstBefore": 799,
+      "strictFirstAfter": 799,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 5185,
+      "coverageGaps": 8
+    },
+    {
+      "level": "3-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 4465,
+      "coverageGaps": 3
+    },
+    {
+      "level": "3-3",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 286
+      },
+      "strictFirstBefore": 286,
+      "strictFirstAfter": 286,
+      "platformFirst": 563,
+      "platformMismatches": [
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 2,
+          "kind": "balance-platform",
+          "first": 563,
+          "count": 1
+        },
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 1,
+          "kind": "horizontal-platform",
+          "first": 601,
+          "count": 1
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 1,
+          "kind": "horizontal-platform",
+          "first": 605,
+          "count": 89
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 4,
+          "kind": "horizontal-platform",
+          "first": 659,
+          "count": 3
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 4,
+          "kind": "balance-platform",
+          "first": 875,
+          "count": 1
+        },
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 0,
+          "kind": "balance-platform",
+          "first": 1164,
+          "count": 435
+        }
+      ],
+      "comparedEntityRows": 2957,
+      "coverageGaps": 4
+    },
+    {
+      "level": "3-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": 3434
+      },
+      "strictFirstBefore": 100,
+      "strictFirstAfter": 100,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 6373,
+      "coverageGaps": 12
+    },
+    {
+      "level": "4-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 121,
+      "strictFirstAfter": 121,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 3530,
+      "coverageGaps": 4
+    },
+    {
+      "level": "4-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 327,
+      "strictFirstAfter": 327,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 5888,
+      "coverageGaps": 13
+    },
+    {
+      "level": "4-3",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": 302,
+      "platformFirst": 302,
+      "platformMismatches": [
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 4,
+          "kind": "balance-platform",
+          "first": 302,
+          "count": 1
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 0,
+          "kind": "balance-platform",
+          "first": 511,
+          "count": 1
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 0,
+          "kind": "vertical-platform",
+          "first": 1086,
+          "count": 129
+        },
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 0,
+          "kind": "vertical-platform",
+          "first": 1215,
+          "count": 417
+        }
+      ],
+      "comparedEntityRows": 3063,
+      "coverageGaps": 3
+    },
+    {
+      "level": "4-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 1395,
+      "coverageGaps": 5
+    },
+    {
+      "level": "5-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": 2269,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": 2265,
+        "enemy": 792
+      },
+      "strictFirstBefore": 792,
+      "strictFirstAfter": 792,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 9673,
+      "coverageGaps": 4
+    },
+    {
+      "level": "5-2",
+      "legacyFields": {
+        "dead": 2136,
+        "time": 2147,
+        "score": 1327,
+        "coins": null,
+        "cam": 1427,
+        "x": 1427,
+        "y": 1323,
+        "enemy": 850
+      },
+      "strictFirstBefore": 481,
+      "strictFirstAfter": 481,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 6281,
+      "coverageGaps": 8
+    },
+    {
+      "level": "5-3",
+      "legacyFields": {
+        "dead": 1125,
+        "time": 1146,
+        "score": 1203,
+        "coins": 1203,
+        "cam": 1506,
+        "x": 1506,
+        "y": 1506,
+        "enemy": 1027
+      },
+      "strictFirstBefore": 633,
+      "strictFirstAfter": 633,
+      "platformFirst": 633,
+      "platformMismatches": [
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 1,
+          "kind": "horizontal-platform",
+          "first": 633,
+          "count": 236
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 633,
+          "count": 236
+        },
+        {
+          "code": "kind",
+          "area": "main",
+          "slot": 0,
+          "kind": "horizontal-platform",
+          "first": 1127,
+          "count": 308
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 1183,
+          "count": 188
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 0,
+          "kind": "horizontal-platform",
+          "first": 1465,
+          "count": 40
+        }
+      ],
+      "comparedEntityRows": 4079,
+      "coverageGaps": 7
+    },
+    {
+      "level": "5-4",
+      "legacyFields": {
+        "dead": 937,
+        "time": 938,
+        "score": 1331,
+        "coins": 1331,
+        "cam": 1307,
+        "x": 1307,
+        "y": 1307,
+        "enemy": 681
+      },
+      "strictFirstBefore": 54,
+      "strictFirstAfter": 54,
+      "platformFirst": 1054,
+      "platformMismatches": [
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 3,
+          "kind": "small-up-lift",
+          "first": 1054,
+          "count": 249
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 4,
+          "kind": "small-down-lift",
+          "first": 1073,
+          "count": 249
+        },
+        {
+          "code": "kind",
+          "area": "main",
+          "slot": 1,
+          "kind": "horizontal-platform",
+          "first": 1627,
+          "count": 309
+        }
+      ],
+      "comparedEntityRows": 4269,
+      "coverageGaps": 22
+    },
+    {
+      "level": "6-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 134,
+      "strictFirstAfter": 134,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 2623,
+      "coverageGaps": 5
+    },
+    {
+      "level": "6-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 16594,
+      "coverageGaps": 4
+    },
+    {
+      "level": "6-3",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": 239,
+      "platformFirst": 239,
+      "platformMismatches": [
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 3,
+          "kind": "horizontal-platform",
+          "first": 239,
+          "count": 2
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 3,
+          "kind": "balance-platform",
+          "first": 462,
+          "count": 2
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 1153,
+          "count": 4
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 0,
+          "kind": "horizontal-platform",
+          "first": 1232,
+          "count": 4
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 0,
+          "kind": "horizontal-platform",
+          "first": 1236,
+          "count": 155
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 0,
+          "kind": "falling-platform",
+          "first": 2069,
+          "count": 2
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 3,
+          "kind": "falling-platform",
+          "first": 2158,
+          "count": 2
+        },
+        {
+          "code": "position",
+          "area": "main",
+          "slot": 2,
+          "kind": "horizontal-platform",
+          "first": 2709,
+          "count": 309
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 1,
+          "kind": "balance-platform",
+          "first": 2741,
+          "count": 1
+        }
+      ],
+      "comparedEntityRows": 7948,
+      "coverageGaps": 5
+    },
+    {
+      "level": "6-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 106,
+      "strictFirstAfter": 106,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 1870,
+      "coverageGaps": 5
+    },
+    {
+      "level": "7-1",
+      "legacyFields": {
+        "dead": 1012,
+        "time": 1022,
+        "score": 448,
+        "coins": null,
+        "cam": 668,
+        "x": 668,
+        "y": 444,
+        "enemy": 443
+      },
+      "strictFirstBefore": 231,
+      "strictFirstAfter": 231,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 10312,
+      "coverageGaps": 9
+    },
+    {
+      "level": "7-2",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 328,
+      "strictFirstAfter": 328,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 11842,
+      "coverageGaps": 5
+    },
+    {
+      "level": "7-3",
+      "legacyFields": {
+        "dead": 1914,
+        "time": 1936,
+        "score": 1920,
+        "coins": 1920,
+        "cam": 2298,
+        "x": 2298,
+        "y": 2298,
+        "enemy": 423
+      },
+      "strictFirstBefore": 423,
+      "strictFirstAfter": 423,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 6405,
+      "coverageGaps": 4
+    },
+    {
+      "level": "7-4",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": 54,
+      "strictFirstAfter": 54,
+      "platformFirst": 524,
+      "platformMismatches": [
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 0,
+          "kind": "falling-platform",
+          "first": 524,
+          "count": 4514
+        },
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 1,
+          "kind": "falling-platform",
+          "first": 524,
+          "count": 5799
+        }
+      ],
+      "comparedEntityRows": 1554,
+      "coverageGaps": 1
+    },
+    {
+      "level": "8-1",
+      "legacyFields": {
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "enemy": null
+      },
+      "strictFirstBefore": null,
+      "strictFirstAfter": null,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 7750,
+      "coverageGaps": 5
+    },
+    {
+      "level": "8-2",
+      "legacyFields": {
+        "dead": 1999,
+        "time": 2367,
+        "score": 1998,
+        "coins": null,
+        "cam": 2406,
+        "x": 2373,
+        "y": 1994,
+        "enemy": 1408
+      },
+      "strictFirstBefore": 61,
+      "strictFirstAfter": 61,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 7535,
+      "coverageGaps": 4
+    },
+    {
+      "level": "8-3",
+      "legacyFields": {
+        "dead": 976,
+        "time": 976,
+        "score": 1733,
+        "coins": null,
+        "cam": 1545,
+        "x": 1545,
+        "y": 1644,
+        "enemy": 415
+      },
+      "strictFirstBefore": 264,
+      "strictFirstAfter": 264,
+      "platformFirst": null,
+      "platformMismatches": [],
+      "comparedEntityRows": 9584,
+      "coverageGaps": 2
+    },
+    {
+      "level": "8-4",
+      "legacyFields": {
+        "dead": 6871,
+        "time": 6887,
+        "score": 6740,
+        "coins": null,
+        "cam": 7350,
+        "x": 6749,
+        "y": 6736,
+        "enemy": 7334
+      },
+      "strictFirstBefore": 675,
+      "strictFirstAfter": 674,
+      "platformFirst": 674,
+      "platformMismatches": [
+        {
+          "code": "extra",
+          "area": "main",
+          "slot": 4,
+          "kind": "horizontal-platform",
+          "first": 674,
+          "count": 1
+        },
+        {
+          "code": "missing",
+          "area": "main",
+          "slot": 1,
+          "kind": "horizontal-platform",
+          "first": 8518,
+          "count": 215
+        }
+      ],
+      "comparedEntityRows": 5604,
+      "coverageGaps": 12
+    }
+  ]
+}

@@ -259,24 +259,24 @@
     "fireworksEndInterval": 21,
     "scoreThresholds": [
       {
-        "feetBelow": 80,
+        "feetBelow": 66,
         "score": 5000,
-        "status": "unmeasured retained candidate"
+        "status": "native: y < 34 on the pole-touch row (v2 4-1 route y31, 6-2/7-1 y17); y 60 pays 2000 (6-1 v2 row 1376)"
       },
       {
         "feetBelow": 112,
         "score": 2000,
-        "status": "unmeasured candidate"
+        "status": "native: y < 80 on the pole-touch row (4-2 route y75 pays 2000, 4-3 route y96 800)"
       },
       {
-        "feetBelow": 144,
+        "feetBelow": 136,
         "score": 800,
-        "status": "inferred between observed contact feet123(800) and159(400)"
+        "status": "native: y < 104 on the pole-touch row (3-3 route y103 pays 800; 4-1 v2 row 1572 y110 pays 400)"
       },
       {
         "feetBelow": 176,
         "score": 400,
-        "status": "inferred between observed contact feet159(400) and179(100)"
+        "status": "native: y < 144 on the pole-touch row (1-1 v2 y142 pays 400; 5-2 route y144 and 2-1 v2 y152 pay 100)"
       }
     ],
     "lowestScore": 100,

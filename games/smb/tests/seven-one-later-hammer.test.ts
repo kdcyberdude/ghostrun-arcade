@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -8,6 +9,6 @@ test('World 7-1 later encounter has observed upper and ground Hammer Bros',()=>{
  const area=level.areas.find(a=>a.id==='main')!;
  const bros=area.enemies.filter(e=>e.kind==='hammerBro'&&e.x>=2100&&e.x<=2250);
  assert.deepEqual(bros.map(e=>e.y).sort((a,b)=>a-b),[144,208]);
- const sim=new Simulation([level]);sim.reset(true);sim.loadArea('main',[2200,144],2040);sim.step([],1);
+ const sim=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea('main',[2200,144],2040);(sim as any).broClock=1;sim.random.frame=1;sim.step([],1);
  assert.equal(sim.phase,'dying');
 });

@@ -17,7 +17,7 @@ test('5-2 water return leaves Mario alive on the observed pipe while its plant i
  assert.equal(plant.originY,200);assert.equal(plant.y,200);
 });
 
-test('5-2 water return reloads without the two absent Hammer Brothers and retains later actors',()=>{
+test('5-2 water return skips native Hammer Bro records already behind ScreenRight and retains later actors',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='5-2')!);
  level.main='optional-water';
  const water=level.areas.find(a=>a.id===level.main)!;
@@ -25,11 +25,11 @@ test('5-2 water return reloads without the two absent Hammer Brothers and retain
  const sim=new Simulation([level]);sim.reset(true);
  for(let i=0;i<120&&sim.area.id==='optional-water';i++)sim.step(['right'],1);
  assert.equal(sim.area.id,'area-2');sim.step([],1);
- assert.ok(sim.enemies.every(e=>e.kind!=='hammerBro'||![1904,2000].includes(e.originX)));
+ for(const x of [1920,1984])assert.equal(sim.enemies.some(e=>e.kind==='hammerBro'&&e.originX===x),false);
  assert.ok(sim.enemies.some(e=>e.kind==='piranha'&&e.originX===1848));
  for(const x of [2176,2192])assert.ok(sim.enemies.some(e=>e.kind==='beetle'&&e.originX===x));
  const normal=new Simulation([structuredClone(observedLevels().find(l=>l.id==='5-2')!)]);normal.reset(true);
- for(const x of [1904,2000])assert.ok(normal.enemies.some(e=>e.kind==='hammerBro'&&e.originX===x));
+ for(const x of [1920,1984])assert.ok(normal.enemies.some(e=>e.kind==='hammerBro'&&e.originX===x));
 });
 
 test('5-2 water return shifts only the observed non-solid cloud artwork',()=>{

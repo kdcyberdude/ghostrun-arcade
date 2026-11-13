@@ -17,7 +17,7 @@ test('a vine-entry sky room selects cloud music and restores it after Star power
  const sky=area({id:'sky',vines:[{...stem,initialHeight:96}],entryVine:{vineId:stem.id,untilFeetY:80,evidence:'Synthetic sky entry'}});
  const sim=game([area(),sky]);sim.events=[];sim.loadArea('sky');
  assert.ok(sim.events.includes('music_cloud'));
- sim.events=[];sim.player.star=1;sim.step([],1);assert.ok(sim.events.includes('music_cloud'));
+ sim.events=[];sim.player.star=4;sim.intervalControl=1;sim.step([],1);assert.ok(sim.events.includes('music_cloud'));
  sim.events=[];sim.loadArea('main');assert.ok(sim.events.includes('music_ground'));
 });
 
@@ -56,7 +56,7 @@ test('falling through a declared sky-room boundary returns without losing a life
  const sky=area({id:'sky',tiles:[],spawn:[40,224],fallExit:{belowY:256,to:'main',spawn:[400,80],camera:320,evidence:'Synthetic fall return'}});
  const main=area();const sim=game([sky,main]);sim.step([],20);
  assert.equal(sim.area.id,'main');assert.equal(sim.camera,320);assert.equal(sim.player.x,400);assert.equal(sim.lives,3);assert.equal(sim.phase,'play');assert.ok(sim.time>=399);
- const noReturn=game([area({tiles:[],spawn:[40,224]})]);noReturn.step([],30);assert.equal(noReturn.phase,'dying');
+ const noReturn=game([area({tiles:[],spawn:[40,224]})]);noReturn.step([],30);assert.equal(noReturn.phase,'play');assert.equal(noReturn.player.dead,false);assert.ok(noReturn.player.y>272);noReturn.step([],300);assert.equal(noReturn.phase,'intro');
 });
 
 test('a grown vine and its used brick survive a geometric room return',()=>{
@@ -76,9 +76,9 @@ test('an explicit sky entrance climbs to its geometric release height before acc
 test('crossing the main-vine automatic-climb bound continues under neutral or down until the exit boundary',()=>{
  const vine={...stem,topY:-24,initialHeight:168,autoClimbFeetY:64,transitionFeetY:0,to:'sky',spawn:[64,240] as [number,number]};
  const sim=game([area({spawn:[73,70],vines:[vine]}),area({id:'sky',spawn:[64,240]})]);
- sim.step(['up'],12);assert.equal(sim.area.id,'main');assert.ok(sim.player.y<64);const y=sim.player.y,time=sim.time,timerFrames=sim.timerFrames;
+ sim.step(['up'],12);assert.equal(sim.area.id,'main');assert.ok(sim.player.y<64);const y=sim.player.y,time=sim.time;
  sim.step(['down','right','a'],20);assert.ok(sim.player.y<y-15);assert.equal(sim.player.climbing,true);assert.equal(sim.area.id,'main');
- assert.equal(sim.time,time);assert.equal(sim.timerFrames,timerFrames);
+ assert.equal(sim.time,time);assert.equal(sim.timerFrames,24,'NMI reaches pending0 while the vine engine suppresses RunGameTimer');
  sim.step([],60);assert.equal(sim.area.id,'sky');assert.equal(sim.lives,3);
 });
 
@@ -94,11 +94,11 @@ test('a zero-height sky vine grows before emergence, then climbs, passes right a
   sawFall ||= sim.vineEntryStage==='fall'&&sim.player.y>184&&sim.player.y<208;
  }
  assert.ok(sawRightSide);assert.ok(sawFall);assert.equal(sim.vineEntryStage,undefined);assert.equal(sim.player.x,75);assert.equal(sim.player.y,208);assert.equal(sim.player.grounded,true);assert.equal(sim.lives,3);
- assert.equal(sim.time,400);assert.equal(sim.timerFrames,0);sim.step([],1);assert.equal(sim.timerFrames,1);
+ assert.equal(sim.time,399,'PlayerRdy consumes the pending timer on the release row');assert.equal(sim.timerFrames,0);sim.step([],1);assert.equal(sim.timerFrames,1);
 });
 
 test('the automatic sky landing requires actual cloud-floor collision',()=>{
  const sim=game([area({tiles:[],spawn:[56,240],vines:[{id:'entry',x:64,baseY:256,topY:144,initialHeight:112,evidence:'Synthetic missing-floor regression'}],entryVine:{vineId:'entry',untilFeetY:184,exitRightX:75,exitGroundFeetY:208,evidence:'No floor is supplied'}})]);
- for(let frame=0;frame<140&&sim.phase==='play';frame++)sim.step([],1);
+ for(let frame=0;frame<440&&sim.phase==='play';frame++)sim.step([],1);
  assert.equal(sim.phase,'dying');assert.ok(sim.player.y>272);assert.equal(sim.player.grounded,false);
 });

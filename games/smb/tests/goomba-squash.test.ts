@@ -11,18 +11,20 @@ function fixture(falling=true,enemyX=48){
 function stomp(){
  const sim=fixture(),enemy=sim.enemies[0];let tries=0;
  while(!enemy.dead&&sim.phase==='play'&&tries++<80)sim.step(['left'],1);
- assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);assert.equal(enemy.dead,1);assert.equal(sim.score,100);
+ assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);assert.equal(enemy.dead,1);assert.equal(sim.awardedScore,100);
  return {sim,enemy};
 }
-test('a real stomp stays flat and fixed through39 updates and is removed on update40',()=>{
- const {sim,enemy}=stomp(),position=[enemy.x,enemy.y],birth=sim.frame;
- for(let elapsed=1;elapsed<40;elapsed++){
+// Native: a stomped Goomba keeps its pre-step x and is erased IntervalTimerControl ($077F, read on the stomp row) + 22 rows later (18 of 18 squashes of the 32 v2 traces).
+test('a real stomp stays flat and fixed and is removed IntervalTimerControl + 22 updates later',()=>{
+ const {sim,enemy}=stomp(),position=[enemy.x,enemy.y],birth=sim.frame,n=(sim as any).intervalControl+22;
+ assert.ok(n>=22&&n<=42);
+ for(let elapsed=1;elapsed<n;elapsed++){
   sim.step(['left'],1);assert.equal(sim.phase,'play');assert.equal(enemy.squashed,true);
   assert.ok(enemy.dead<90,`flat actor must remain visible at age${elapsed}`);
   assert.deepEqual([enemy.x,enemy.y],position);assert.equal(enemy.vy,0);
  }
- assert.equal(sim.frame-birth,39);assert.equal(enemy.dead,40);
- sim.step(['left'],1);assert.equal(sim.frame-birth,40);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
+ assert.equal(sim.frame-birth,n-1);assert.equal(enemy.dead,n);
+ sim.step(['left'],1);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
  sim.step([],20);assert.equal(enemy.dead,100);assert.deepEqual([enemy.x,enemy.y],position);
 });
 test('ordinary pause leaves squash age unchanged and resume continues the same interval',()=>{
@@ -31,7 +33,8 @@ test('ordinary pause leaves squash age unchanged and resume continues the same i
  sim.step(['start'],1);assert.equal(sim.paused,false);assert.equal(enemy.dead,age+1);
 });
 test('star contact retains launched velocity and never enters stomp squash',()=>{
- const sim=fixture(false);sim.player.star=100;sim.step([],1);const enemy=sim.enemies[0];
+ const sim=fixture(false);sim.player.star=100;(sim as any).broClock=1;sim.step([],1); // even frame-counter row
+ const enemy=sim.enemies[0];
  assert.equal(enemy.dead,1);assert.equal(enemy.squashed,undefined);assert.equal(enemy.vy,-4);
  const y=enemy.y;sim.step([],1);assert.ok(enemy.y<y);assert.equal(enemy.squashed,undefined);
 });

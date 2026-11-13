@@ -133,7 +133,8 @@ test('swimming never decelerates without input, the floor cap is byte 16, and a 
  const wall=new NativeWater();wall.motor.speed=6168;wall.moving=1;
  assert.deepEqual(Array.from({length:3},()=>wall.horizontal(-1,false)),[6016,5712,5408]);
  assert.equal(wall.wall(5104,false),240);
- assert.deepEqual(Array.from({length:2},()=>wall.horizontal(-1,false)),[-64,-216]);
+ // ImposeFriction's pre-contact absolute byte survives this wall stop.
+ assert.deepEqual(Array.from({length:2},()=>wall.horizontal(-1,false,false,false,19)),[-64,-216]);
 });
 
 test('production: the World 2-2 entry fall and first stroke track the native rows exactly',()=>{
@@ -159,4 +160,30 @@ test('Down stops a swimmer below speed byte 11 on the frame the direction is rel
  const fast=new NativeWater();fast.horizontal(1,false);fast.motor.speed=6280;assert.equal(fast.horizontal(0,false,true),6280);
  // Without Down the coasting speed is kept.
  const coast=new NativeWater();coast.horizontal(1,false);coast.motor.speed=1672;assert.equal(coast.horizontal(0,false,false),1672);
+});
+
+test('surface gravity reads only the native y byte even after an offscreen page wrap (2-2 v2 frames 1400..1401)',()=>{
+ const w=new NativeWater();Object.assign(w,{speed:1,force:75,frac:109,rise:9,fall:9,timer:0,whirl:true});
+ assert.equal(w.vertical(false,false,257,false,true).dy,3);
+ assert.deepEqual([w.speed,w.force,w.frac],[1,115,27]);
+ assert.equal(w.vertical(false,false,260,false,true).dy,3);
+ assert.deepEqual([w.speed,w.force,w.frac],[1,0,25]);
+});
+
+test('neutral B braking reads the previous ImposeFriction absolute byte before its next decrement',()=>{
+ const w=new NativeWater();w.motor.reset(-2664,-1);w.motor.moving=-1;w.moving=-1;
+ // Native d2bb source24069: previous0700=11 despite speed-10.40625.
+ assert.equal(w.horizontal(0,true,false,true,11),-2512);
+ assert.equal(w.horizontal(0,true,false,true,10),0);
+ const wall=new NativeWater();wall.motor.reset(88,1);
+ assert.equal(wall.horizontal(0,false,false,true,24),88);
+ assert.equal(wall.horizontal(0,false,false,true,0),0);
+});
+
+test('Up without LR runs the native low-speed stop while neutral and A-only retain residue',()=>{
+ const w=new NativeWater();w.motor.reset(32,1);w.motor.moving=1;
+ assert.equal(w.horizontal(0,false,false,false,7),32);
+ assert.equal(w.horizontal(0,false,false,false,7,true),0);
+ const high=new NativeWater();high.motor.reset(32,1);high.motor.moving=1;
+ assert.equal(high.horizontal(0,false,false,false,15,true),32);
 });

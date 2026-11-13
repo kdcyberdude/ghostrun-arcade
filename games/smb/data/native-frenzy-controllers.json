@@ -1,0 +1,76 @@
+[
+ {
+  "level": "1-2",
+  "area": "area-2",
+  "label": "E_UndergroundArea1",
+  "pointer": 192,
+  "records": [
+   {
+    "id": 52,
+    "offset": 42,
+    "column": 2592,
+    "y": 112,
+    "hardOnly": false
+   }
+  ]
+ },
+ {
+  "level": "1-3",
+  "area": "main",
+  "label": "E_GroundArea7",
+  "pointer": 38,
+  "records": [
+   {
+    "id": 23,
+    "offset": 0,
+    "column": 288,
+    "y": 176,
+    "hardOnly": true
+   },
+   {
+    "id": 23,
+    "offset": 14,
+    "column": 1312,
+    "y": 176,
+    "hardOnly": true
+   }
+  ]
+ },
+ {
+  "level": "4-2",
+  "area": "area-3",
+  "label": "E_UndergroundArea2",
+  "pointer": 65,
+  "records": [
+   {
+    "id": 52,
+    "offset": 40,
+    "column": 2944,
+    "y": 112,
+    "hardOnly": false
+   }
+  ]
+ },
+ {
+  "level": "5-3",
+  "area": "main",
+  "label": "E_GroundArea7",
+  "pointer": 38,
+  "records": [
+   {
+    "id": 23,
+    "offset": 0,
+    "column": 288,
+    "y": 176,
+    "hardOnly": true
+   },
+   {
+    "id": 23,
+    "offset": 14,
+    "column": 1312,
+    "y": 176,
+    "hardOnly": true
+   }
+  ]
+ }
+]

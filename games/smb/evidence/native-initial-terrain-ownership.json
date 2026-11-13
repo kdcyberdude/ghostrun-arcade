@@ -1,0 +1,341 @@
+{
+ "schema": "native-initial-terrain-ownership-v1",
+ "base": "1f3a544",
+ "source": {
+  "asmSha256": "e5c17c42783f430029ab90aa37c73d51c2c320898e533b3ff196dad38c50ae42",
+  "procedures": [
+   "InitializeArea/InitializeMemory",
+   "ScreenRoutines",
+   "AreaParserTaskControl",
+   "AreaParserTaskHandler",
+   "FlagpoleObject",
+   "VerticalPipe"
+  ],
+  "ram": [
+   "OperModeTask0772",
+   "GameEngineSubroutine0E",
+   "ScreenRoutineTask073C",
+   "CurrentPageLoc0725",
+   "CurrentColumnPos0726",
+   "Enemy_Flag0F..14",
+   "Enemy_ID16..1B"
+  ]
+ },
+ "cases": [
+  {
+   "level": "1-2",
+   "window": [
+    1781,
+    1805
+   ],
+   "nativeInputHashes": {
+    "initialSha256": "368c57bb8041353c8c1ae634133a04cfb1adfbf28a2a1dc60991b3030558d0b5",
+    "fullPadsSha256": "5664dcdcab9dc8240854b2b97c2546dba3b83ccaee0f2670719b616b58593c1f",
+    "fullRamSha256": "56ab5053a758a084a902266837b9117329b30359b5a191dfcff8db84e909e112",
+    "padsSha256": "c1132dcbc3b276049a5aa8e534c086029ea87c38cb9b83aedf3372697f04beba",
+    "ramSha256": "760a5103572ac0b48b166e554fe7d8b4605dc3b4cdad19afc6b33f359a6b8bf7"
+   }
+  },
+  {
+   "level": "4-2",
+   "window": [
+    2726,
+    2750
+   ],
+   "nativeInputHashes": {
+    "initialSha256": "14d6d407c85859fc2176c2ff6db47368b2eb10ddae15e1d871d925db80e9e7d7",
+    "fullPadsSha256": "a36cd24a8b41a8549ad4ff1d32b14503b202dce2e37a6add29003d2855a6bb0a",
+    "fullRamSha256": "cb9b88687cff601acf5fadb2974a2ecfc7a02c35f55c1483a667d8e4f1e24734",
+    "padsSha256": "299d17899c3f5a3e73df69a3713f131a3f51f272e5fc9f12cd2d3d8b6153fb7c",
+    "ramSha256": "36a069bc874bec7e68becfe4af00abeab668046fd4e0030bb4bdd123f33a1494"
+   }
+  },
+  {
+   "level": "3-4",
+   "window": [
+    4607,
+    4771
+   ],
+   "nativeInputHashes": {
+    "initialSha256": "f7ae7faa9e019b8ed43540ebbdcdd61d6894710daa920024838eab1c72c27055",
+    "fullPadsSha256": "d1d69062ed2736fea8a64b2bb52a21ff8582078d169acc9887aec43b16a4b9e3",
+    "fullRamSha256": "ce5be1cd8ddf615eb07bf99de0ef529a1c7891c76431a27a13a157582bc7dd05",
+    "padsSha256": "d1d69062ed2736fea8a64b2bb52a21ff8582078d169acc9887aec43b16a4b9e3",
+    "ramSha256": "b7d0985299d24fda393e762709dc3bd0af016c2a1ba200c341e7ac70a5057279"
+   }
+  }
+ ],
+ "firstOwnership": [
+  {
+   "level": "1-2",
+   "actor": "flagpole5",
+   "before": 1781,
+   "after": 1799,
+   "native": 1799,
+   "nativeColumn": 198,
+   "rawFlagBeforeCallback": 0,
+   "rawFlagAfterCallback": 1,
+   "oldFlagAfterReplay": 2
+  },
+  {
+   "level": "4-2",
+   "actor": "flagpole5",
+   "before": 2726,
+   "after": 2744,
+   "native": 2744,
+   "nativeColumn": 198
+  },
+  {
+   "level": "3-4\u21924-1",
+   "actor": "Piranha344slot0",
+   "before": 4607,
+   "after": 4764,
+   "native": 4764,
+   "nativeColumn": 21
+  }
+ ],
+ "change": "Actual InitializeArea explicitly defers all initial terrain callbacks. The source starting column is established once; Screen8 consumes the existing24 columns exactly once. Standalone initial snapshots keep completed-preload mode. Pipe/plant/flag/cannon/spring ownership is delayed together; actor-before-parser order and scene origin arithmetic unchanged.",
+ "tests": {
+  "beforeNewRegressionTests": "all3fail at1781/2726/4607 on1f3a544",
+  "after": "34existingload/death/pipe/spring/plant tests plus10newownership/ID41snapshot/cannon tests PASS(exit0)",
+  "fullSuite": "not run; integration batch owns it",
+  "tsc": "not run; integration batch owns it"
+ },
+ "focusedReplays": [
+  {
+   "level": "1-2",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": 1781,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "diverged",
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 3060,
+    "flagFrames": 805,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3060,
+    "inputFrames": 3060,
+    "endReason": "end of trace",
+    "frames": 3060,
+    "alignedFrames": 3060,
+    "nativeEntityRows": 6371,
+    "comparedEntityRows": 6371,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "main": 490,
+     "area-2": 1456,
+     "area-3": 1114
+    },
+    "complete": true
+   }
+  },
+  {
+   "level": "4-2",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": 2673,
+    "x": 2672,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "diverged",
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 4636,
+    "flagFrames": 759,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4636,
+    "inputFrames": 4636,
+    "endReason": "end of trace",
+    "frames": 4636,
+    "alignedFrames": 4636,
+    "nativeEntityRows": 8650,
+    "comparedEntityRows": 8650,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "area-2": 327,
+     "area-3": 2399,
+     "area-4": 1747,
+     "main": 163
+    },
+    "complete": true
+   }
+  },
+  {
+   "level": "3-4",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "pass",
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 4772,
+    "flagFrames": 0,
+    "continuationFrames": 167,
+    "victoryFrames": 687,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4772,
+    "inputFrames": 4772,
+    "endReason": "end of trace",
+    "frames": 4772,
+    "alignedFrames": 4772,
+    "nativeEntityRows": 12311,
+    "comparedEntityRows": 12311,
+    "nativeBirthRows": 53,
+    "areaFrames": {
+     "main": 4772
+    },
+    "complete": true
+   }
+  }
+ ],
+ "limits": "1-2 retains pre-existing hidden-player strictX1781 coordinate conversion.4-2 retains upstream strictX2672/camera2673; no player or camera edit in this actor unit.3-4 continuous arrival now strictPASS."
+}

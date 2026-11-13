@@ -1,0 +1,2029 @@
+[
+ {
+  "level": "1-1",
+  "area": "main",
+  "pointer": 37,
+  "label": "E_GroundArea6",
+  "singles": [
+   {
+    "id": 6,
+    "offset": 3,
+    "kind": "goomba",
+    "x": 352,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 5,
+    "kind": "goomba",
+    "x": 640,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 11,
+    "kind": "goomba",
+    "x": 1280,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 13,
+    "kind": "goomba",
+    "x": 1312,
+    "y": 80
+   },
+   {
+    "id": 0,
+    "offset": 17,
+    "kind": "koopa",
+    "x": 1712,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 7,
+    "column": 864,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 15,
+    "column": 1600,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 19,
+    "column": 1872,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 21,
+    "column": 2032,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 23,
+    "column": 2096,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 27,
+    "column": 2832,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "1-2",
+  "area": "main",
+  "pointer": 41,
+  "label": "E_GroundArea10",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "1-2",
+  "area": "area-2",
+  "pointer": 192,
+  "label": "E_UndergroundArea1",
+  "singles": [
+   {
+    "id": 6,
+    "offset": 0,
+    "kind": "goomba",
+    "x": 256,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 2,
+    "kind": "goomba",
+    "x": 272,
+    "y": 192
+   },
+   {
+    "id": 6,
+    "offset": 4,
+    "kind": "goomba",
+    "x": 464,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 11,
+    "kind": "koopa",
+    "x": 944,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 13,
+    "kind": "goomba",
+    "x": 992,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 15,
+    "kind": "goomba",
+    "x": 1024,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 17,
+    "kind": "goomba",
+    "x": 1168,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 25,
+    "kind": "goomba",
+    "x": 1808,
+    "y": 208
+   },
+   {
+    "id": 3,
+    "offset": 33,
+    "kind": "redKoopa",
+    "x": 2336,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 9,
+    "column": 752,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 19,
+    "column": 1264,
+    "kind": "goomba",
+    "count": 2,
+    "y": 144
+   },
+   {
+    "offset": 23,
+    "column": 1632,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 27,
+    "column": 2208,
+    "kind": "goomba",
+    "count": 2,
+    "y": 144
+   }
+  ]
+ },
+ {
+  "level": "1-3",
+  "area": "main",
+  "pointer": 38,
+  "label": "E_GroundArea7",
+  "singles": [
+   {
+    "id": 3,
+    "offset": 2,
+    "kind": "redKoopa",
+    "x": 480,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 4,
+    "kind": "goomba",
+    "x": 704,
+    "y": 64
+   },
+   {
+    "id": 6,
+    "offset": 6,
+    "kind": "goomba",
+    "x": 736,
+    "y": 64
+   },
+   {
+    "id": 15,
+    "offset": 10,
+    "kind": "paratroopa",
+    "x": 1184,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 12,
+    "kind": "goomba",
+    "x": 1280,
+    "y": 80
+   },
+   {
+    "id": 3,
+    "offset": 20,
+    "kind": "redKoopa",
+    "x": 1760,
+    "y": 112
+   },
+   {
+    "id": 15,
+    "offset": 22,
+    "kind": "paratroopa",
+    "x": 1824,
+    "y": 96
+   },
+   {
+    "id": 3,
+    "offset": 26,
+    "kind": "redKoopa",
+    "x": 2128,
+    "y": 208
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "1-4",
+  "area": "main",
+  "pointer": 96,
+  "label": "E_CastleArea1",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "2-1",
+  "area": "main",
+  "pointer": 40,
+  "label": "E_GroundArea9",
+  "singles": [
+   {
+    "id": 6,
+    "offset": 0,
+    "kind": "goomba",
+    "x": 384,
+    "y": 112
+   },
+   {
+    "id": 0,
+    "offset": 2,
+    "kind": "koopa",
+    "x": 512,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 4,
+    "kind": "koopa",
+    "x": 528,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 8,
+    "kind": "koopa",
+    "x": 880,
+    "y": 144
+   },
+   {
+    "id": 0,
+    "offset": 15,
+    "kind": "koopa",
+    "x": 1056,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 21,
+    "kind": "goomba",
+    "x": 1648,
+    "y": 144
+   },
+   {
+    "id": 6,
+    "offset": 26,
+    "kind": "goomba",
+    "x": 1856,
+    "y": 176
+   },
+   {
+    "id": 6,
+    "offset": 28,
+    "kind": "goomba",
+    "x": 1920,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 30,
+    "kind": "koopa",
+    "x": 2192,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 32,
+    "kind": "paratroopa",
+    "x": 2416,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 36,
+    "kind": "paratroopa",
+    "x": 2704,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 38,
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 40,
+    "kind": "koopa",
+    "x": 2960,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 6,
+    "column": 720,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 10,
+    "column": 992,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 17,
+    "column": 1136,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 19,
+    "column": 1440,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 34,
+    "column": 2640,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "2-2",
+  "area": "main",
+  "pointer": 41,
+  "label": "E_GroundArea10",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "2-2",
+  "area": "area-2",
+  "pointer": 1,
+  "label": "E_WaterArea2",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "2-3",
+  "area": "main",
+  "pointer": 39,
+  "label": "E_GroundArea8",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 2,
+    "kind": "koopa",
+    "x": 624,
+    "y": 160
+   },
+   {
+    "id": 14,
+    "offset": 4,
+    "kind": "paratroopa",
+    "x": 832,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 6,
+    "kind": "redKoopa",
+    "x": 1264,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 8,
+    "kind": "redKoopa",
+    "x": 1520,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 12,
+    "kind": "redKoopa",
+    "x": 1904,
+    "y": 208
+   },
+   {
+    "id": 16,
+    "offset": 14,
+    "kind": "paratroopa",
+    "x": 2240,
+    "y": 128
+   },
+   {
+    "id": 16,
+    "offset": 18,
+    "kind": "paratroopa",
+    "x": 2496,
+    "y": 160
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "2-4",
+  "area": "main",
+  "pointer": 98,
+  "label": "E_CastleArea3",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "3-1",
+  "area": "main",
+  "pointer": 36,
+  "label": "E_GroundArea5",
+  "singles": [
+   {
+    "id": 14,
+    "offset": 0,
+    "kind": "paratroopa",
+    "x": 400,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 2,
+    "kind": "paratroopa",
+    "x": 448,
+    "y": 192
+   },
+   {
+    "id": 6,
+    "offset": 7,
+    "kind": "goomba",
+    "x": 592,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 11,
+    "kind": "koopa",
+    "x": 1040,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 17,
+    "kind": "koopa",
+    "x": 1616,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 26,
+    "kind": "goomba",
+    "x": 2224,
+    "y": 144
+   },
+   {
+    "id": 6,
+    "offset": 28,
+    "kind": "goomba",
+    "x": 2240,
+    "y": 128
+   },
+   {
+    "id": 0,
+    "offset": 30,
+    "kind": "koopa",
+    "x": 2384,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 32,
+    "kind": "koopa",
+    "x": 2432,
+    "y": 80
+   },
+   {
+    "id": 14,
+    "offset": 36,
+    "kind": "paratroopa",
+    "x": 2640,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 38,
+    "kind": "paratroopa",
+    "x": 2688,
+    "y": 192
+   },
+   {
+    "id": 0,
+    "offset": 40,
+    "kind": "koopa",
+    "x": 2720,
+    "y": 128
+   },
+   {
+    "id": 14,
+    "offset": 42,
+    "kind": "paratroopa",
+    "x": 2736,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 44,
+    "kind": "koopa",
+    "x": 3008,
+    "y": 112
+   },
+   {
+    "id": 0,
+    "offset": 46,
+    "kind": "koopa",
+    "x": 3056,
+    "y": 80
+   }
+  ],
+  "groups": [
+   {
+    "offset": 9,
+    "column": 896,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 13,
+    "column": 1360,
+    "kind": "goomba",
+    "count": 3,
+    "y": 144
+   },
+   {
+    "offset": 15,
+    "column": 1552,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 34,
+    "column": 2512,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "3-2",
+  "area": "main",
+  "pointer": 53,
+  "label": "E_GroundArea22",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 0,
+    "kind": "koopa",
+    "x": 272,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 10,
+    "kind": "koopa",
+    "x": 1056,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 14,
+    "kind": "koopa",
+    "x": 1248,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 16,
+    "kind": "paratroopa",
+    "x": 1472,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 18,
+    "kind": "koopa",
+    "x": 1776,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 22,
+    "kind": "koopa",
+    "x": 2144,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 30,
+    "kind": "koopa",
+    "x": 2800,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 2,
+    "column": 432,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 4,
+    "column": 576,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 6,
+    "column": 736,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 12,
+    "column": 1184,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 20,
+    "column": 1952,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 24,
+    "column": 2288,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 26,
+    "column": 2448,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 28,
+    "column": 2640,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 32,
+    "column": 2912,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 34,
+    "column": 3056,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "3-3",
+  "area": "main",
+  "pointer": 32,
+  "label": "E_GroundArea1",
+  "singles": [
+   {
+    "id": 6,
+    "offset": 0,
+    "kind": "goomba",
+    "x": 416,
+    "y": 112
+   },
+   {
+    "id": 3,
+    "offset": 6,
+    "kind": "redKoopa",
+    "x": 832,
+    "y": 112
+   },
+   {
+    "id": 3,
+    "offset": 8,
+    "kind": "redKoopa",
+    "x": 864,
+    "y": 176
+   },
+   {
+    "id": 3,
+    "offset": 12,
+    "kind": "redKoopa",
+    "x": 1168,
+    "y": 208
+   },
+   {
+    "id": 15,
+    "offset": 24,
+    "kind": "paratroopa",
+    "x": 1824,
+    "y": 96
+   },
+   {
+    "id": 3,
+    "offset": 26,
+    "kind": "redKoopa",
+    "x": 1984,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 28,
+    "kind": "redKoopa",
+    "x": 2016,
+    "y": 160
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "3-4",
+  "area": "main",
+  "pointer": 99,
+  "label": "E_CastleArea4",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "4-1",
+  "area": "main",
+  "pointer": 34,
+  "label": "E_GroundArea3",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "4-2",
+  "area": "area-2",
+  "pointer": 41,
+  "label": "E_GroundArea10",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "4-2",
+  "area": "area-3",
+  "pointer": 65,
+  "label": "E_UndergroundArea2",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 9,
+    "kind": "koopa",
+    "x": 1232,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 11,
+    "kind": "beetle",
+    "x": 1328,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 13,
+    "kind": "beetle",
+    "x": 1408,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 28,
+    "kind": "koopa",
+    "x": 2192,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 30,
+    "kind": "beetle",
+    "x": 2464,
+    "y": 160
+   },
+   {
+    "id": 2,
+    "offset": 38,
+    "kind": "beetle",
+    "x": 2864,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 5,
+    "column": 736,
+    "kind": "goomba",
+    "count": 3,
+    "y": 144
+   },
+   {
+    "offset": 18,
+    "column": 1648,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 36,
+    "column": 2736,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "4-3",
+  "area": "main",
+  "pointer": 44,
+  "label": "E_GroundArea13",
+  "singles": [
+   {
+    "id": 3,
+    "offset": 0,
+    "kind": "redKoopa",
+    "x": 448,
+    "y": 144
+   },
+   {
+    "id": 3,
+    "offset": 2,
+    "kind": "redKoopa",
+    "x": 464,
+    "y": 144
+   },
+   {
+    "id": 15,
+    "offset": 4,
+    "kind": "paratroopa",
+    "x": 576,
+    "y": 64
+   },
+   {
+    "id": 3,
+    "offset": 6,
+    "kind": "redKoopa",
+    "x": 624,
+    "y": 192
+   },
+   {
+    "id": 3,
+    "offset": 16,
+    "kind": "redKoopa",
+    "x": 1088,
+    "y": 208
+   },
+   {
+    "id": 3,
+    "offset": 18,
+    "kind": "redKoopa",
+    "x": 1248,
+    "y": 80
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "4-4",
+  "area": "main",
+  "pointer": 97,
+  "label": "E_CastleArea2",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "5-1",
+  "area": "main",
+  "pointer": 42,
+  "label": "E_GroundArea11",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 0,
+    "kind": "koopa",
+    "x": 256,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 8,
+    "kind": "paratroopa",
+    "x": 976,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 14,
+    "kind": "paratroopa",
+    "x": 1392,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 20,
+    "kind": "koopa",
+    "x": 2032,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 31,
+    "kind": "paratroopa",
+    "x": 2848,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 33,
+    "kind": "paratroopa",
+    "x": 2912,
+    "y": 144
+   }
+  ],
+  "groups": [
+   {
+    "offset": 2,
+    "column": 352,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 4,
+    "column": 528,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 6,
+    "column": 704,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 10,
+    "column": 1088,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 12,
+    "column": 1264,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 16,
+    "column": 1696,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 18,
+    "column": 1984,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 22,
+    "column": 2208,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 24,
+    "column": 2352,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "5-2",
+  "area": "area-2",
+  "pointer": 49,
+  "label": "E_GroundArea18",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 0,
+    "kind": "koopa",
+    "x": 368,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 5,
+    "kind": "paratroopa",
+    "x": 640,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 9,
+    "kind": "goomba",
+    "x": 1008,
+    "y": 176
+   },
+   {
+    "id": 6,
+    "offset": 11,
+    "kind": "goomba",
+    "x": 1040,
+    "y": 144
+   },
+   {
+    "id": 14,
+    "offset": 18,
+    "kind": "paratroopa",
+    "x": 1696,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 24,
+    "kind": "beetle",
+    "x": 2176,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 26,
+    "kind": "beetle",
+    "x": 2192,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 28,
+    "kind": "beetle",
+    "x": 2208,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 30,
+    "kind": "goomba",
+    "x": 2480,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 32,
+    "kind": "goomba",
+    "x": 2496,
+    "y": 208
+   },
+   {
+    "id": 3,
+    "offset": 34,
+    "kind": "redKoopa",
+    "x": 2512,
+    "y": 80
+   },
+   {
+    "id": 14,
+    "offset": 36,
+    "kind": "paratroopa",
+    "x": 2608,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 38,
+    "kind": "paratroopa",
+    "x": 2656,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 40,
+    "kind": "paratroopa",
+    "x": 2976,
+    "y": 144
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "5-3",
+  "area": "main",
+  "pointer": 38,
+  "label": "E_GroundArea7",
+  "singles": [
+   {
+    "id": 3,
+    "offset": 2,
+    "kind": "redKoopa",
+    "x": 480,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 4,
+    "kind": "goomba",
+    "x": 704,
+    "y": 64
+   },
+   {
+    "id": 6,
+    "offset": 6,
+    "kind": "goomba",
+    "x": 736,
+    "y": 64
+   },
+   {
+    "id": 15,
+    "offset": 10,
+    "kind": "paratroopa",
+    "x": 1184,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 12,
+    "kind": "goomba",
+    "x": 1280,
+    "y": 80
+   },
+   {
+    "id": 3,
+    "offset": 20,
+    "kind": "redKoopa",
+    "x": 1760,
+    "y": 112
+   },
+   {
+    "id": 15,
+    "offset": 22,
+    "kind": "paratroopa",
+    "x": 1824,
+    "y": 96
+   },
+   {
+    "id": 3,
+    "offset": 26,
+    "kind": "redKoopa",
+    "x": 2128,
+    "y": 208
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "5-4",
+  "area": "main",
+  "pointer": 98,
+  "label": "E_CastleArea3",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "6-1",
+  "area": "main",
+  "pointer": 46,
+  "label": "E_GroundArea15",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "6-2",
+  "area": "main",
+  "pointer": 35,
+  "label": "E_GroundArea4",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 3,
+    "kind": "koopa",
+    "x": 416,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 5,
+    "kind": "paratroopa",
+    "x": 688,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 7,
+    "kind": "beetle",
+    "x": 864,
+    "y": 208
+   },
+   {
+    "id": 6,
+    "offset": 12,
+    "kind": "goomba",
+    "x": 1072,
+    "y": 80
+   },
+   {
+    "id": 6,
+    "offset": 14,
+    "kind": "goomba",
+    "x": 1088,
+    "y": 80
+   },
+   {
+    "id": 2,
+    "offset": 19,
+    "kind": "beetle",
+    "x": 1472,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 26,
+    "kind": "beetle",
+    "x": 1920,
+    "y": 80
+   },
+   {
+    "id": 2,
+    "offset": 30,
+    "kind": "beetle",
+    "x": 2608,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 36,
+    "kind": "paratroopa",
+    "x": 3296,
+    "y": 80
+   }
+  ],
+  "groups": [
+   {
+    "offset": 32,
+    "column": 2752,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "6-3",
+  "area": "main",
+  "pointer": 45,
+  "label": "E_GroundArea14",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "6-4",
+  "area": "main",
+  "pointer": 96,
+  "label": "E_CastleArea1",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "7-1",
+  "area": "main",
+  "pointer": 51,
+  "label": "E_GroundArea20",
+  "singles": [
+   {
+    "id": 14,
+    "offset": 0,
+    "kind": "paratroopa",
+    "x": 416,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 5,
+    "kind": "paratroopa",
+    "x": 704,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 7,
+    "kind": "paratroopa",
+    "x": 848,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 9,
+    "kind": "paratroopa",
+    "x": 1040,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 17,
+    "kind": "koopa",
+    "x": 1824,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 25,
+    "kind": "beetle",
+    "x": 2704,
+    "y": 64
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "7-2",
+  "area": "area-2",
+  "pointer": 41,
+  "label": "E_GroundArea10",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "7-2",
+  "area": "area-4",
+  "pointer": 1,
+  "label": "E_WaterArea2",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "7-3",
+  "area": "main",
+  "pointer": 39,
+  "label": "E_GroundArea8",
+  "singles": [
+   {
+    "id": 0,
+    "offset": 2,
+    "kind": "koopa",
+    "x": 624,
+    "y": 160
+   },
+   {
+    "id": 14,
+    "offset": 4,
+    "kind": "paratroopa",
+    "x": 832,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 6,
+    "kind": "redKoopa",
+    "x": 1264,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 8,
+    "kind": "redKoopa",
+    "x": 1520,
+    "y": 160
+   },
+   {
+    "id": 3,
+    "offset": 12,
+    "kind": "redKoopa",
+    "x": 1904,
+    "y": 208
+   },
+   {
+    "id": 16,
+    "offset": 14,
+    "kind": "paratroopa",
+    "x": 2240,
+    "y": 128
+   },
+   {
+    "id": 16,
+    "offset": 18,
+    "kind": "paratroopa",
+    "x": 2496,
+    "y": 160
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "7-4",
+  "area": "main",
+  "pointer": 100,
+  "label": "E_CastleArea5",
+  "singles": [],
+  "groups": []
+ },
+ {
+  "level": "8-1",
+  "area": "main",
+  "pointer": 48,
+  "label": "E_GroundArea17",
+  "singles": [
+   {
+    "id": 2,
+    "offset": 0,
+    "kind": "beetle",
+    "x": 288,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 11,
+    "kind": "koopa",
+    "x": 976,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 15,
+    "kind": "beetle",
+    "x": 1296,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 19,
+    "kind": "koopa",
+    "x": 1904,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 27,
+    "kind": "paratroopa",
+    "x": 2576,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 29,
+    "kind": "paratroopa",
+    "x": 2752,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 31,
+    "kind": "paratroopa",
+    "x": 2832,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 39,
+    "kind": "beetle",
+    "x": 4064,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 47,
+    "kind": "beetle",
+    "x": 4528,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 51,
+    "kind": "koopa",
+    "x": 4880,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 53,
+    "kind": "koopa",
+    "x": 5312,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 2,
+    "column": 416,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 7,
+    "column": 528,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 9,
+    "column": 736,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 13,
+    "column": 1152,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 17,
+    "column": 1776,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 21,
+    "column": 2032,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 23,
+    "column": 2128,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 25,
+    "column": 2416,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 35,
+    "column": 3360,
+    "kind": "koopa",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 37,
+    "column": 3760,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 41,
+    "column": 4160,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 43,
+    "column": 4272,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   },
+   {
+    "offset": 45,
+    "column": 4400,
+    "kind": "goomba",
+    "count": 2,
+    "y": 208
+   },
+   {
+    "offset": 55,
+    "column": 5472,
+    "kind": "koopa",
+    "count": 3,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "8-2",
+  "area": "main",
+  "pointer": 50,
+  "label": "E_GroundArea19",
+  "singles": [
+   {
+    "id": 14,
+    "offset": 0,
+    "kind": "paratroopa",
+    "x": 288,
+    "y": 176
+   },
+   {
+    "id": 14,
+    "offset": 4,
+    "kind": "paratroopa",
+    "x": 384,
+    "y": 80
+   },
+   {
+    "id": 14,
+    "offset": 8,
+    "kind": "paratroopa",
+    "x": 912,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 10,
+    "kind": "paratroopa",
+    "x": 1056,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 12,
+    "kind": "paratroopa",
+    "x": 1104,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 14,
+    "kind": "paratroopa",
+    "x": 1472,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 16,
+    "kind": "paratroopa",
+    "x": 1520,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 18,
+    "kind": "beetle",
+    "x": 1776,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 20,
+    "kind": "beetle",
+    "x": 1936,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 22,
+    "kind": "beetle",
+    "x": 1968,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 27,
+    "kind": "paratroopa",
+    "x": 2224,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 31,
+    "kind": "paratroopa",
+    "x": 2720,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 33,
+    "kind": "paratroopa",
+    "x": 2752,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 35,
+    "kind": "paratroopa",
+    "x": 2800,
+    "y": 176
+   },
+   {
+    "id": 6,
+    "offset": 37,
+    "kind": "goomba",
+    "x": 2944,
+    "y": 160
+   },
+   {
+    "id": 6,
+    "offset": 39,
+    "kind": "goomba",
+    "x": 2976,
+    "y": 128
+   },
+   {
+    "id": 2,
+    "offset": 41,
+    "kind": "beetle",
+    "x": 3024,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 43,
+    "kind": "paratroopa",
+    "x": 3248,
+    "y": 128
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "8-3",
+  "area": "main",
+  "pointer": 33,
+  "label": "E_GroundArea2",
+  "singles": [
+   {
+    "id": 14,
+    "offset": 0,
+    "kind": "paratroopa",
+    "x": 480,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 8,
+    "kind": "paratroopa",
+    "x": 1488,
+    "y": 208
+   },
+   {
+    "id": 0,
+    "offset": 16,
+    "kind": "koopa",
+    "x": 2192,
+    "y": 208
+   }
+  ],
+  "groups": []
+ },
+ {
+  "level": "8-4",
+  "area": "main",
+  "pointer": 101,
+  "label": "E_CastleArea6",
+  "singles": [
+   {
+    "id": 2,
+    "offset": 14,
+    "kind": "beetle",
+    "x": 2048,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 16,
+    "kind": "beetle",
+    "x": 2080,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 21,
+    "kind": "paratroopa",
+    "x": 2224,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 23,
+    "kind": "paratroopa",
+    "x": 2256,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 25,
+    "kind": "paratroopa",
+    "x": 2480,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 27,
+    "kind": "paratroopa",
+    "x": 2512,
+    "y": 208
+   }
+  ],
+  "groups": [
+   {
+    "offset": 5,
+    "column": 944,
+    "kind": "goomba",
+    "count": 3,
+    "y": 208
+   }
+  ]
+ },
+ {
+  "level": "8-4",
+  "area": "area-2",
+  "pointer": 101,
+  "label": "E_CastleArea6",
+  "bytes": [
+   15,
+   3,
+   142,
+   101,
+   225,
+   187,
+   56,
+   109,
+   168,
+   62,
+   229,
+   231,
+   15,
+   8,
+   11,
+   2,
+   43,
+   2,
+   94,
+   101,
+   225,
+   187,
+   14,
+   219,
+   14,
+   187,
+   142,
+   219,
+   14,
+   254,
+   101,
+   236,
+   15,
+   13,
+   78,
+   101,
+   225,
+   15,
+   14,
+   78,
+   2,
+   224,
+   15,
+   16,
+   254,
+   229,
+   225,
+   27,
+   133,
+   123,
+   12,
+   91,
+   149,
+   120,
+   45,
+   144,
+   181,
+   255
+  ],
+  "singles": [
+   {
+    "id": 2,
+    "offset": 14,
+    "kind": "beetle",
+    "x": 256,
+    "y": 208
+   },
+   {
+    "id": 2,
+    "offset": 16,
+    "kind": "beetle",
+    "x": 288,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 21,
+    "kind": "paratroopa",
+    "x": 432,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 23,
+    "kind": "paratroopa",
+    "x": 464,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 25,
+    "kind": "paratroopa",
+    "x": 688,
+    "y": 208
+   },
+   {
+    "id": 14,
+    "offset": 27,
+    "kind": "paratroopa",
+    "x": 720,
+    "y": 208
+   }
+  ],
+  "groups": [],
+  "sceneOffset": -1792,
+  "source": "ROM ParseRow0e 9e1f+9; static main entrance 1312"
+ }
+]

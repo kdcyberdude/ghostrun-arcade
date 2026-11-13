@@ -1,0 +1,40 @@
+{
+ "source": "https://gist.github.com/WillSams/678a2d8a49d3f01e1d6e0362f83d1fbc; E_CastleArea1..5 enemy object $15 positions, decoded with page controls. These are level objects, not fitted spawn frames.",
+ "areas": [
+  {
+   "level": "1-4",
+   "area": "main",
+   "x": 1664
+  },
+  {
+   "level": "2-4",
+   "area": "main",
+   "x": 1568
+  },
+  {
+   "level": "3-4",
+   "area": "main",
+   "x": 1648
+  },
+  {
+   "level": "4-4",
+   "area": "main",
+   "x": 2112
+  },
+  {
+   "level": "5-4",
+   "area": "main",
+   "x": 1568
+  },
+  {
+   "level": "6-4",
+   "area": "main",
+   "x": 1664
+  },
+  {
+   "level": "7-4",
+   "area": "main",
+   "x": 2912
+  }
+ ]
+}

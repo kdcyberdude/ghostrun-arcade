@@ -1,0 +1,548 @@
+{
+  "schema": "world1-gameplay-diagnostic-catalog-v1",
+  "runtimeCommit": "002743dfae88405f9648d92cf675e4f7c513665f",
+  "auditToolSha256": "d541d8a276ecefc95222e27270a55f21ce11f67e66d7dbac565da1fc32a0277c",
+  "role": "Historical first-divergence DIAGNOSTIC locator only; entrance reseeds, NOT continuous POWER-ON proof or current readiness",
+  "selectedRuns": 336,
+  "completedRuns": 336,
+  "inventoryRuns": 336,
+  "coverage": {
+    "world11Frames": 1178867,
+    "diagnosticComparedFrames": 1092261,
+    "uncomparedWorld11Frames": 86606
+  },
+  "clusters": [
+    {
+      "key": "bonus-coins:mario-motion-collision:mario:x",
+      "rule": "mario-motion-collision",
+      "entity": "mario",
+      "area": "bonus-coins",
+      "episodes": 24,
+      "examples": [
+        {
+          "sha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+          "index": 1,
+          "sourceFrame": 881,
+          "localFrame": 160
+        },
+        {
+          "sha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+          "index": 1,
+          "sourceFrame": 834,
+          "localFrame": 139
+        },
+        {
+          "sha256": "7fb25238b8260914196fdf4fd8cb11a858d2e2946b5837132178173b7ec45c09",
+          "index": 1,
+          "sourceFrame": 828,
+          "localFrame": 135
+        },
+        {
+          "sha256": "04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3",
+          "index": 2,
+          "sourceFrame": 1567,
+          "localFrame": 131
+        },
+        {
+          "sha256": "bb4c29fd7664193e84aa1b28ebe098d850bd527321f161aace3bff174c2b0d5b",
+          "index": 1,
+          "sourceFrame": 1013,
+          "localFrame": 133
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c/0001/receipts",
+        "frames": 168,
+        "sourceFrameOffset": 721,
+        "endFrame": 889
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "main:controller-engine-5:mario:x",
+      "rule": "controller-engine-5",
+      "entity": "mario",
+      "area": "main",
+      "episodes": 21,
+      "examples": [
+        {
+          "sha256": "94a7900dfebba0a91bed1b67972f7b8c95274eb120e9293ec22a1e7d51a5a82b",
+          "index": 0,
+          "sourceFrame": 5579,
+          "localFrame": 5363
+        },
+        {
+          "sha256": "f03b618441e44ad4a0dc4a37e600b25766d77b4fddd3675d2059f6e3ac3b7781",
+          "index": 1,
+          "sourceFrame": 15526,
+          "localFrame": 5160
+        },
+        {
+          "sha256": "369ae366683f14ac13007e63a5cfb8537eeb6bec3e4c08cba07e126cf175088f",
+          "index": 0,
+          "sourceFrame": 4718,
+          "localFrame": 4502
+        },
+        {
+          "sha256": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
+          "index": 0,
+          "sourceFrame": 1745,
+          "localFrame": 1529
+        },
+        {
+          "sha256": "14a577fe4331246a12294d1b4d91b6d6c88424e0c4d0de71047946b7a64adc53",
+          "index": 0,
+          "sourceFrame": 2383,
+          "localFrame": 2167
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/94a7900dfebba0a91bed1b67972f7b8c95274eb120e9293ec22a1e7d51a5a82b/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/94a7900dfebba0a91bed1b67972f7b8c95274eb120e9293ec22a1e7d51a5a82b/0000/receipts",
+        "frames": 5371,
+        "sourceFrameOffset": 216,
+        "endFrame": 5587
+      },
+      "coordinationOwner": "root"
+    },
+    {
+      "key": "main:enemy-motion-state:coin:position",
+      "rule": "enemy-motion-state",
+      "entity": "coin",
+      "area": "main",
+      "episodes": 8,
+      "examples": [
+        {
+          "sha256": "8323cdd6fa410bf00491271d6e6ba0ee06a2ff856fab00e52e64121ea9e77726",
+          "index": 0,
+          "sourceFrame": 401,
+          "localFrame": 185
+        },
+        {
+          "sha256": "19f7a1ab63e7d8524ef54d6a37b9a1cc6cecba14c23e886d39ca3973552ce4f6",
+          "index": 0,
+          "sourceFrame": 1021,
+          "localFrame": 805
+        },
+        {
+          "sha256": "b44419b8090697e61ea61f60c992a7b64d8d521b4514968fd268610ebb74c728",
+          "index": 0,
+          "sourceFrame": 1043,
+          "localFrame": 827
+        },
+        {
+          "sha256": "193bb510ac28806a2113fae192ff5e0267f66a447a928efa57264452ac8fc841",
+          "index": 0,
+          "sourceFrame": 957,
+          "localFrame": 741
+        },
+        {
+          "sha256": "b1c295a473f29e1b7880b53599c56e9d8d7edb31cbb450a629a77c60e8e033e0",
+          "index": 0,
+          "sourceFrame": 1061,
+          "localFrame": 845
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/8323cdd6fa410bf00491271d6e6ba0ee06a2ff856fab00e52e64121ea9e77726/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/8323cdd6fa410bf00491271d6e6ba0ee06a2ff856fab00e52e64121ea9e77726/0000/receipts",
+        "frames": 193,
+        "sourceFrameOffset": 216,
+        "endFrame": 409
+      },
+      "coordinationOwner": "castle"
+    },
+    {
+      "key": "bonus-coins:mario-motion-collision:mario:y",
+      "rule": "mario-motion-collision",
+      "entity": "mario",
+      "area": "bonus-coins",
+      "episodes": 6,
+      "examples": [
+        {
+          "sha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+          "index": 1,
+          "sourceFrame": 873,
+          "localFrame": 160
+        },
+        {
+          "sha256": "0422e4787de66182fbbadfd0f27870ca4d57c7f0444f152d6035ab4f5a441d27",
+          "index": 1,
+          "sourceFrame": 859,
+          "localFrame": 157
+        },
+        {
+          "sha256": "d7f05e85ab453dad0daf55264d9f506fb4984af6d555c68f57dab753f3850ac6",
+          "index": 1,
+          "sourceFrame": 860,
+          "localFrame": 163
+        },
+        {
+          "sha256": "d3f8877dac1cd714c49281544480a078d4f6ea127c6f0df82e3e94cbb0df6240",
+          "index": 1,
+          "sourceFrame": 871,
+          "localFrame": 135
+        },
+        {
+          "sha256": "d01e28a1718f025ddf45d01b1997d7cb60fe13c4e78e698d76ecd19731655bfc",
+          "index": 1,
+          "sourceFrame": 823,
+          "localFrame": 135
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a/0001/receipts",
+        "frames": 168,
+        "sourceFrameOffset": 713,
+        "endFrame": 881
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "main:enemy-motion-state:goomba:position+enemy",
+      "rule": "enemy-motion-state",
+      "entity": "goomba",
+      "area": "main",
+      "episodes": 6,
+      "examples": [
+        {
+          "sha256": "8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308",
+          "index": 0,
+          "sourceFrame": 780,
+          "localFrame": 564
+        },
+        {
+          "sha256": "31529e188019f3f44d34c1fbcef0353d44abea981b1f1ebef0c46bc59a4e91e7",
+          "index": 0,
+          "sourceFrame": 772,
+          "localFrame": 556
+        },
+        {
+          "sha256": "d5df59072eca3d69fb24fe5bd7dfb0011647fdb62bcc37fb5c97bf7dfe6e44c8",
+          "index": 0,
+          "sourceFrame": 976,
+          "localFrame": 760
+        },
+        {
+          "sha256": "304e1d981ee0390267af7238bbcb3ca62afa25f4382468af4a215fa6d415fa0b",
+          "index": 0,
+          "sourceFrame": 732,
+          "localFrame": 516
+        },
+        {
+          "sha256": "0afbc8cc01b06833c3c947c443e8a36d00b00dd76b813646c22fa03ed57eb9b5",
+          "index": 0,
+          "sourceFrame": 800,
+          "localFrame": 584
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/8f90807f402cd4152783833ec21848e9485af3222a91e7ac4fa9b532b7105308/0000/receipts",
+        "frames": 572,
+        "sourceFrameOffset": 216,
+        "endFrame": 788
+      },
+      "coordinationOwner": "contacts"
+    },
+    {
+      "key": "main:enemy-motion-state:goomba:position",
+      "rule": "enemy-motion-state",
+      "entity": "goomba",
+      "area": "main",
+      "episodes": 5,
+      "examples": [
+        {
+          "sha256": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+          "index": 0,
+          "sourceFrame": 532,
+          "localFrame": 316
+        },
+        {
+          "sha256": "ccfcd83ed21e0cd41d215be9c61ec2b7a2a4727e18f0e6f602008db364c99dbf",
+          "index": 0,
+          "sourceFrame": 498,
+          "localFrame": 282
+        },
+        {
+          "sha256": "9779ab98593d32a4eb943b4a862a5e07f9d32274c78d06b34a539e13484201c5",
+          "index": 0,
+          "sourceFrame": 496,
+          "localFrame": 280
+        },
+        {
+          "sha256": "ae7ce9c7b8bada339e0809d944b7b23a39473aed4efff353002f917c7c5161d1",
+          "index": 0,
+          "sourceFrame": 496,
+          "localFrame": 280
+        },
+        {
+          "sha256": "2ef650bd271c6b35692f8f257fede77101b1cc656cc87a7f8c2cb851c3ae3f19",
+          "index": 0,
+          "sourceFrame": 496,
+          "localFrame": 280
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761/0000/receipts",
+        "frames": 324,
+        "sourceFrameOffset": 216,
+        "endFrame": 540
+      },
+      "coordinationOwner": "renderer3d"
+    },
+    {
+      "key": "bonus-coins:mario-motion-collision:mario:x+y",
+      "rule": "mario-motion-collision",
+      "entity": "mario",
+      "area": "bonus-coins",
+      "episodes": 3,
+      "examples": [
+        {
+          "sha256": "b3d17941b577c5f9f442035b3b95c9e0b6957aece2971500fb01f6fc1d6c0005",
+          "index": 1,
+          "sourceFrame": 967,
+          "localFrame": 233
+        },
+        {
+          "sha256": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
+          "index": 1,
+          "sourceFrame": 927,
+          "localFrame": 235
+        },
+        {
+          "sha256": "deba8c7ffc4684900a39a5be7f7c987ed34b08752854786e37b1710779236f08",
+          "index": 1,
+          "sourceFrame": 824,
+          "localFrame": 136
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/b3d17941b577c5f9f442035b3b95c9e0b6957aece2971500fb01f6fc1d6c0005/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/b3d17941b577c5f9f442035b3b95c9e0b6957aece2971500fb01f6fc1d6c0005/0001/receipts",
+        "frames": 241,
+        "sourceFrameOffset": 734,
+        "endFrame": 975
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "main:enemy-motion-state:koopa:cam+x+position+enemy",
+      "rule": "enemy-motion-state",
+      "entity": "koopa",
+      "area": "main",
+      "episodes": 3,
+      "examples": [
+        {
+          "sha256": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+          "index": 0,
+          "sourceFrame": 938,
+          "localFrame": 722
+        },
+        {
+          "sha256": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+          "index": 0,
+          "sourceFrame": 938,
+          "localFrame": 722
+        },
+        {
+          "sha256": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
+          "index": 0,
+          "sourceFrame": 938,
+          "localFrame": 722
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577/0000/receipts",
+        "frames": 730,
+        "sourceFrameOffset": 216,
+        "endFrame": 946
+      },
+      "coordinationOwner": "flag_end"
+    },
+    {
+      "key": "main:enemy-birth-lifetime-slot:goomba:missing+position",
+      "rule": "enemy-birth-lifetime-slot",
+      "entity": "goomba",
+      "area": "main",
+      "episodes": 2,
+      "examples": [
+        {
+          "sha256": "7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea",
+          "index": 0,
+          "sourceFrame": 1057,
+          "localFrame": 841
+        },
+        {
+          "sha256": "928561a37b83ed1e3b649c188d303cd44817bad46824706ae4ecd337f6ead0aa",
+          "index": 0,
+          "sourceFrame": 1036,
+          "localFrame": 820
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea/0000/receipts",
+        "frames": 849,
+        "sourceFrameOffset": 216,
+        "endFrame": 1065
+      },
+      "coordinationOwner": "renderer3d"
+    },
+    {
+      "key": "main:enemy-motion-state:coin:state",
+      "rule": "enemy-motion-state",
+      "entity": "coin",
+      "area": "main",
+      "episodes": 2,
+      "examples": [
+        {
+          "sha256": "cf5379779d9aea00de0ea4cdf8f555a8b7720b6873527b258e54e7f17f104486",
+          "index": 0,
+          "sourceFrame": 1025,
+          "localFrame": 809
+        },
+        {
+          "sha256": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+          "index": 0,
+          "sourceFrame": 1025,
+          "localFrame": 809
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/cf5379779d9aea00de0ea4cdf8f555a8b7720b6873527b258e54e7f17f104486/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/cf5379779d9aea00de0ea4cdf8f555a8b7720b6873527b258e54e7f17f104486/0000/receipts",
+        "frames": 817,
+        "sourceFrameOffset": 216,
+        "endFrame": 1033
+      },
+      "coordinationOwner": "castle"
+    },
+    {
+      "key": "main:enemy-motion-state:flagpole-flag:x+position",
+      "rule": "enemy-motion-state",
+      "entity": "flagpole-flag",
+      "area": "main",
+      "episodes": 2,
+      "examples": [
+        {
+          "sha256": "0e978b94c794ff869e3ccd6c2b56c7adac5394f8e22b9e750118a2904c238b67",
+          "index": 0,
+          "sourceFrame": 1906,
+          "localFrame": 1690
+        },
+        {
+          "sha256": "0d2e0e469984e4684e140a3fc2ef6aeb30166394ed80866d796dfddb4c7e86f1",
+          "index": 0,
+          "sourceFrame": 1958,
+          "localFrame": 1742
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/0e978b94c794ff869e3ccd6c2b56c7adac5394f8e22b9e750118a2904c238b67/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/0e978b94c794ff869e3ccd6c2b56c7adac5394f8e22b9e750118a2904c238b67/0000/receipts",
+        "frames": 1698,
+        "sourceFrameOffset": 216,
+        "endFrame": 1914
+      },
+      "coordinationOwner": "root"
+    },
+    {
+      "key": "bonus-coins:timer-clock:mario:time",
+      "rule": "timer-clock",
+      "entity": "mario",
+      "area": "bonus-coins",
+      "episodes": 1,
+      "examples": [
+        {
+          "sha256": "a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6",
+          "index": 1,
+          "sourceFrame": 861,
+          "localFrame": 167
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/a71370a6055f5f87dd52b358e3646961f93196c5dc25b6e7ea59a5ec055915e6/0001/receipts",
+        "frames": 175,
+        "sourceFrameOffset": 694,
+        "endFrame": 869
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "bonus-coins:timer-clock:mario:time+x",
+      "rule": "timer-clock",
+      "entity": "mario",
+      "area": "bonus-coins",
+      "episodes": 1,
+      "examples": [
+        {
+          "sha256": "80be9eda1858d5a125ac534b34305dc528b5e705f2f39d36d751224fbe025270",
+          "index": 1,
+          "sourceFrame": 859,
+          "localFrame": 167
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/80be9eda1858d5a125ac534b34305dc528b5e705f2f39d36d751224fbe025270/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/80be9eda1858d5a125ac534b34305dc528b5e705f2f39d36d751224fbe025270/0001/receipts",
+        "frames": 175,
+        "sourceFrameOffset": 692,
+        "endFrame": 867
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "main:mario-motion-collision:mario:x",
+      "rule": "mario-motion-collision",
+      "entity": "mario",
+      "area": "main",
+      "episodes": 1,
+      "examples": [
+        {
+          "sha256": "f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac",
+          "index": 1,
+          "sourceFrame": 1962,
+          "localFrame": 424
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac/0001/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac/0001/receipts",
+        "frames": 432,
+        "sourceFrameOffset": 1538,
+        "endFrame": 1970
+      },
+      "coordinationOwner": "water"
+    },
+    {
+      "key": "main:mario-motion-collision:mario:y",
+      "rule": "mario-motion-collision",
+      "entity": "mario",
+      "area": "main",
+      "episodes": 1,
+      "examples": [
+        {
+          "sha256": "9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e",
+          "index": 0,
+          "sourceFrame": 1555,
+          "localFrame": 1339
+        }
+      ],
+      "reproduce": {
+        "traces": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e/0000/traces",
+        "entrances": "/home/kd/.codex/worktrees/smb-world1-gameplay-evidence/002743d/examples/9a3d23e2e274519969fd45896b4762ebd2125a7de3932262e5e8eec939ed5a0e/0000/receipts",
+        "frames": 1347,
+        "sourceFrameOffset": 216,
+        "endFrame": 1563
+      },
+      "coordinationOwner": "water"
+    }
+  ],
+  "policyLimit": "Recorded comparison counts are stepped diagnostic frames, not actual per-frame match/mismatch totals after failure. The old comparator stops rechecking each field after its first mismatch. No state/picture/joint recovery classification is available; pictures unchecked. Future audits must compare every frame continuously after failures."
+}

@@ -90,17 +90,21 @@ test('the compiled4-2 vine connects to a growing room entrance and lands on its 
 
 test('ordinary game-over restart preserves monotonic bridge advancement while explicit reset returns to zero',()=>{
  const source=area({spawn:[40,208]});const sim=new Simulation([{id:'fixture',time:1,main:'main',areas:[source],evidence:'Synthetic timeout/restart fixture'}]);sim.reset(true);
- sim.step([],1400);assert.equal(sim.phase,'gameover');const before=sim.frame;sim.step(['start'],1);
- assert.equal(sim.phase,'gameover');assert.equal(sim.frame-before,1);sim.step([],4);assert.equal(sim.gameoverClosing,true);sim.step([],26);
- assert.equal(sim.phase,'title');assert.equal(sim.frame-before,31);assert.equal(sim.lives,3);
+ sim.step([],1400);assert.equal(sim.phase,'gameover');
+ for(let n=0;n<2000&&sim.nativeGameOver?.task!==2;n++)sim.step([],1);
+ assert.equal(sim.nativeGameOver?.task,2);const before=sim.frame;sim.step(['start'],1);
+ // Source RunGameOver terminates on held Start immediately; it preserves the exhausted lives byte.
+ assert.equal(sim.phase,'title');assert.equal(sim.frame-before,1);assert.equal(sim.lives,0);
+ assert.deepEqual([sim.nativeGameOver?.mode,sim.nativeGameOver?.task,sim.nativeGameOver?.timer],[0,0,0]);
  sim.step([],2);const title=sim.frame;sim.step(['start'],1);assert.equal(sim.phase,'intro');assert.equal(sim.frame,title);
  sim.step([],TRANSITIONS.introFrames);assert.equal(sim.phase,'play');assert.equal(sim.frame,title+TRANSITIONS.introFrames);
- sim.reset(true);assert.equal(sim.frame,0);
+ sim.reset(true);assert.equal(sim.frame,0);assert.equal(sim.lives,3);
 });
 
 test('ordinary ending restart also preserves the current controller clock',()=>{
- const source=area({spawn:[40,208],theme:'castle',exit:{kind:'axe',x:56,y:192,retainerX:128,stopX:112}});
+ const source=area({spawn:[40,208],theme:'castle',exit:{kind:'axe',x:56,y:208,retainerX:128,stopX:112}});
+ source.tiles.push([3,13,197]); // Native C5 under the declared axe, not geometry alone.
  const sim=new Simulation([{id:'8-4',time:1,main:'main',areas:[source],evidence:'Synthetic physical axe/ending/restart fixture'}]);sim.reset(true);
- sim.step(['right'],20);assert.equal(sim.phase,'castle');sim.step([],500);assert.equal(sim.phase,'ending');const frame=sim.frame;
+ sim.step(['right'],20);assert.equal(sim.phase,'castle');for(let i=0;i<2000&&sim.phase==='castle';i++)sim.step([],1);assert.equal(sim.phase,'ending');const frame=sim.frame;
  sim.step(['start'],1);assert.equal(sim.phase,'title');assert.equal(sim.frame,frame+1);
 });

@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
@@ -6,13 +7,13 @@ import {observedLevels} from '../src/levels.js';
 // Native rows with RAM 0x500 (collision map), 0x416 (y sub-pixel), 0x70a (fall class), 0x785 (contact timer). Over 8 model runs and the human route the foot and side
 // probes predict every contact and landing with no false positive; the falls below follow one law: position then speed, start speed 0, sub-pixel kept from the last landing.
 const start=(levelId:string,spawn:[number,number],camera:number)=>{
- const s=new Simulation([structuredClone(observedLevels().find(l=>l.id===levelId)!)]);s.reset(true);s.loadArea('main',spawn,camera);s.phase='play';s.phaseFrame=0;s.area.enemies=[];(s as any).enemies=[];
+ const s=isolatePlacedStream(new Simulation([structuredClone(observedLevels().find(l=>l.id===levelId)!)]));s.reset(true);s.loadArea('main',spawn,camera);s.phase='play';s.phaseFrame=0;s.area.enemies=[];(s as any).enemies=[];
  return {s,p:(s as any).player,m:(s as any).motor,sim:s as any};
 };
 
 test('feet 5 px or more into a cell push a falling Mario back instead of landing him (1-1 rows 1620-1624)',()=>{
  const {s,p,m,sim}=start('1-1',[3155+48/256,193+200/256],3043);sim.inputs=[new Set(['right','b']),new Set(['right','b'])];
- Object.assign(p,{vx:10464/4096,vy:4,grounded:false,facing:1});m.speed=10464;m.airRun=true;m.moving=1;m.facing=1;sim.runJump=true;sim.jumpArc=true;
+ Object.assign(p,{vx:10464/4096,vy:4,grounded:false,facing:1});m.speed=10464;m.absolute=40;m.moving=1;m.facing=1;sim.runJump=true;sim.jumpArc=true;
  const native=[[3156,197,196],[3155,201,196],[3154,205,196]];
  for(const [x,feet,speed] of native){
   s.step(['right','b'],1);
@@ -48,7 +49,7 @@ test('the left foot is x+3 whatever the motion (no native landing of 1,887 rests
 // and lands on the tree top at feet 80 that row; the remake ran the head probe and landed a row late. 35 such rows in 256 runs, the remake missed all of them.
 test('a run jump whose apex row still moves up 1 px lands on the floor top 3 px above its feet (free-play 1-3 rows 982-993)',()=>{
  const {s,p,m,sim}=start('1-3',[2236+112/256,112],2124);sim.inputs=[new Set(['a']),new Set()];
- Object.assign(p,{vx:10224/4096,vy:0,grounded:true,facing:1});m.speed=10224;m.moving=1;m.facing=1;
+ Object.assign(p,{vx:10224/4096,vy:0,grounded:true,facing:1});m.speed=10224;m.absolute=39;m.moving=1;m.facing=1;
  const native=[[2238,75],[2241,70],[2243,65],[2246,62],[2248,59],[2251,56],[2253,54],[2255,52],[2258,52],[2260,48],[2263,48]];
  const got=native.map(()=>{s.step(['a'],1);return [Math.floor(p.x),Math.floor(p.y)-32];});
  assert.deepEqual(got.map(r=>r[1]),native.map(r=>r[1]));

@@ -1,0 +1,62 @@
+{
+ "schema": "native-strict-spring-audit-v1",
+ "runtimeCommit": "6468725",
+ "adapterBaselineCommit": "65ad8b3",
+ "reportsSha256": {
+  "smb-strict-warp-after.json": "22a80954c775cfd252a24cf67a862498587cb2cd640a32241dfc88018d678a2c",
+  "smb-strict-spring-after.json": "1ad36717808d2c96c21b81179e9d8013ddc3a6b037cc762d42bd9b9e668f9535"
+ },
+ "legacyFirstsChanged": 0,
+ "strictFirstsChanged": [
+  [
+   "2-1",
+   "extra",
+   null,
+   2203
+  ]
+ ],
+ "springMismatches": [
+  {
+   "level": "2-1",
+   "springMismatches": [
+    {
+     "code": "extra",
+     "area": "main",
+     "slot": 1,
+     "kind": "spring",
+     "first": 2203,
+     "count": 586
+    }
+   ]
+  },
+  {
+   "level": "7-1",
+   "springMismatches": [
+    {
+     "code": "missing",
+     "area": "main",
+     "slot": 3,
+     "kind": "spring",
+     "first": 1025,
+     "count": 558
+    },
+    {
+     "code": "kind",
+     "area": "main",
+     "slot": 2,
+     "kind": "spring",
+     "first": 2580,
+     "count": 266
+    }
+   ]
+  }
+ ],
+ "validation": {
+  "tests": 1801,
+  "typescript": "pass",
+  "rawNativeRows": 3777,
+  "liveRows": 3766,
+  "erasureRows": 11
+ },
+ "limits": "Source-owned coordinate coverage only. New failures are uncovered actor fields, not runtime changes. Retained Enemy_State is not a spring control byte and is not invented."
+}

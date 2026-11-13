@@ -1,0 +1,165 @@
+[
+ {
+  "level": "1-4",
+  "frames": 1670,
+  "first": null,
+  "fields": {
+   "dead": null,
+   "time": null,
+   "score": null,
+   "coins": null,
+   "cam": null,
+   "x": null,
+   "y": null,
+   "enemy": null
+  },
+  "at": [],
+  "strict": {
+   "schema": "native-strict-audit-v1",
+   "status": "incomplete",
+   "first": null,
+   "firstCoverageGap": 0,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "identity": {
+    "bindings": [
+     {
+      "area": "main",
+      "code": 96,
+      "data": 41393,
+      "entryPage": 0,
+      "offset": 0,
+      "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+     }
+    ],
+    "diagnostics": [],
+    "continuations": []
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 1670,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1670,
+    "inputFrames": 1670,
+    "endReason": "end of trace",
+    "frames": 1670,
+    "alignedFrames": 1670,
+    "nativeEntityRows": 4190,
+    "comparedEntityRows": 3003,
+    "nativeBirthRows": 14,
+    "areaFrames": {
+     "main": 1670
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1670
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 132,
+     "count": 496
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 254,
+     "count": 343
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 369,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 504,
+     "count": 195
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 1; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 899,
+     "count": 1
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "bowser-rear occupies a native slot whose object readout is unsupported",
+     "slot": 2,
+     "area": "main",
+     "first": 899,
+     "count": 1
+    }
+   ],
+   "mismatches": [],
+   "samples": [],
+   "visits": [
+    {
+     "frame": 0,
+     "ptr": 41393,
+     "candidates": [
+      {
+       "area": "main",
+       "code": 96,
+       "data": 41393,
+       "entryPage": 0,
+       "offset": 0,
+       "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+      }
+     ],
+     "context": {
+      "areaPointer": 96,
+      "entrancePage": 0,
+      "startPage": 0,
+      "modeTask": 3,
+      "physicalCode": 96
+     },
+     "method": "ROM loaded-area pointer and InitializeArea start page",
+     "area": "main",
+     "offset": 0
+    }
+   ]
+  }
+ }
+]

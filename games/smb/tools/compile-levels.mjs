@@ -1,6 +1,17 @@
+import {applyNativeWaterStreams} from './native-water-streams.mjs';
+import {applyNativeCannons} from './native-cannons.mjs';
+import {applyNativeSprings} from './native-springs.mjs';
+import {applyNativeLakitus} from './native-lakitus.mjs';
+import {nativeEnemyStream} from './native-enemy-stream.mjs';
+import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
 import fs from'node:fs';import{PNG}from'pngjs';
-import{createHash}from'node:crypto';
+import{createHash}from'node:crypto';import path from'node:path';import{parseArgs}from'node:util';
+// --out previews a complete build without replacing the protected native-aligned production map.
+const{values:{out:outputPath}}=parseArgs({options:{out:{type:'string',default:'data/levels.json'}}});
+import{restoreCompilerEvidence}from'./restore-compiler-evidence.mjs';
+restoreCompilerEvidence();
 import{applyObservedOpeningPodoboo}from'./podoboo-three-four-inventory-adapter.mjs';
+const nativeSwimmerStreams=JSON.parse(fs.readFileSync('data/native-stream-swimmers.json'));
 const observations=JSON.parse(fs.readFileSync('data/observed-levels.json')),entities=JSON.parse(fs.readFileSync('data/entity-campaign.json')),first=JSON.parse(fs.readFileSync('data/gameplay-1-1.json'));
 const pipeRoomPreview=JSON.parse(fs.readFileSync('data/pipe-room-preview.json'));
 const pipeEntryCalibrations=JSON.parse(fs.readFileSync('data/pipe-entry-calibrations.json')).calibrations;
@@ -417,6 +428,10 @@ for(const level of observations.levels){
   const generatedFish=['2-3','7-3'].includes(level.id),generatedBills=['5-3','6-3'].includes(level.id);
   const generators=structuredClone(correctedEntity?.generators??[]);
   if(generatedFish&&enemies.some(e=>e.kind==='cheep')){const xs=enemies.filter(e=>e.kind==='cheep').map(e=>e.x);generators.push({kind:'flyingFish',from:Math.max(0,Math.min(...xs)-256),to:Math.max(...xs),interval:80});enemies=enemies.filter(e=>e.kind!=='cheep');}
+  for(const stream of nativeSwimmerStreams.streams)if(stream.areas.some(a=>a.level===level.id&&a.area===segment.id)){
+   const [world,course]=level.id.split('-').map(Number),hard=world>5||world===5&&course>=3;
+   for(const object of nativeEnemyStream(stream.bytes,hard).filter(o=>o.id===10||o.id===11))enemies.push({kind:'cheep',x:object.x,y:object.y+24,direction:-1,palette:object.id===10?'0f-10-30-27':'0f-16-30-27',swim:{},nativeSlot:'wait',evidence:nativeSwimmerStreams.source});
+  }
   if(generatedBills&&enemies.some(e=>e.kind==='bullet')){const xs=enemies.filter(e=>e.kind==='bullet').map(e=>e.x);generators.push({kind:'bullet',from:Math.max(0,Math.min(...xs)-256),to:Math.max(...xs),interval:150});enemies=enemies.filter(e=>e.kind!=='bullet');}
   enemies=enemies.filter(e=>e.kind!=='spiny'||!enemies.some(e=>e.kind==='lakitu'));
   const castle=castles.find(c=>c.id===level.id&&c.segment===segment.id);
@@ -440,7 +455,9 @@ for(const level of observations.levels){
   enemies=enemies.filter(e=>e.x>=0&&e.x<width);
   const mazeObservation=mazeObservations.find(m=>m.id===level.id&&m.area===segment.id);
   const mazes=[mazeObservation?.firstMaze?.runtimeCandidate,mazeObservation?.secondMaze?.runtimeCandidate].filter(Boolean);
-  const cannons=tiles.filter(t=>t[2]===100).map(([col,row])=>({x:col*16,y:row*16,evidence:'Cannon-top artwork observed; firing interval and activation range remain inferred.'}));
+  // A cannon top drawn as a grid-aligned decoration (5-2 area-2 x 272 y 112, in front of the staircase) is a cannon too: native cannon table RAM 0x46B/0x471/0x477 holds it from the level load.
+  const decorationCannons=(segment.decorations??[]).filter(t=>t.metatileId===100&&t.x%16===0&&t.y%16===0&&t.x<width&&!tiles.some(g=>g[2]===100&&g[0]*16===t.x&&g[1]*16===t.y)).map(t=>[t.x/16,t.y/16]);
+  const cannons=[...tiles.filter(t=>t[2]===100),...decorationCannons].map(([col,row])=>({x:col*16,y:row*16,evidence:'Cannon-top artwork observed; firing interval and activation range remain inferred.'})).sort((a,b)=>a.x-b.x||a.y-b.y);
   for(const correction of cannonCorrections.filter(c=>c.level===level.id&&c.area===segment.id)){
    const matches=cannons.filter(c=>c.x===correction.match.x&&c.y===correction.match.y);
    if(matches.length!==1)throw Error(`Expected one corrected cannon ${level.id}/${segment.id}/${JSON.stringify(correction.match)}`);
@@ -859,7 +876,12 @@ fiveFourArea.unresolved.push(fiveFourVisual.qualification);
   area.exit.x+=px;area.exit.retainerX+=px;area.exit.stopX+=px;area.width+=px;
  }
 }
-// Native pivot quad coordinates independently confirm the late6-4 firebar inventory.
+// Native enemy-data object $15 starts the offscreen Bowser flame frenzy.
+for(const entry of JSON.parse(fs.readFileSync('data/native-castle-flames.json')).areas){
+ const area=levels.find(l=>l.id===entry.level).areas.find(a=>a.id===entry.area);
+ area.flameFrenzyX=entry.x;
+}
+// Native pivot quad coordinates independently confirm the castle firebar inventory.
 for(const entry of JSON.parse(fs.readFileSync('data/native-firebar-geometry.json')).areas){
  const area=levels.find(l=>l.id===entry.level).areas.find(a=>a.id===entry.area);
  for(const correction of entry.corrections){
@@ -868,7 +890,7 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-firebar-geometry.json
   bar.x=correction.x;
  }
  area.firebars.push(...entry.additions.map(bar=>({...bar})));
- area.firebars.sort((a,b)=>a.x-b.x);
+ area.firebars.sort((a,b)=>a.x-b.x||a.y-b.y);
 }
 // Native-measured Paratroopa/Beetle spawns are applied last, after the guards that locate protected actors by their exact earlier data.
 for(const addition of nativeParatroopaBeetleSpawns.additions??[]){
@@ -900,12 +922,9 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-water-actors.json')).
  if(!area)throw Error(`Missing native water area ${entry.level}/${entry.area}`);
  area.enemies=[...area.enemies.filter(e=>!entry.replaceKinds.includes(e.kind)),...entry.enemies.map(e=>({...e}))];
 }
-// Native Lakitu appearance x and the Mario x where it starts to flee (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section).
-for(const entry of JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels){
- const lakitu=levels.find(l=>l.id===entry.level)?.areas.find(a=>a.id===entry.area)?.enemies.find(e=>e.kind==='lakitu');
- if(!lakitu)throw Error(`Missing Lakitu ${entry.level}/${entry.area}`);
- lakitu.x=entry.x;lakitu.fleeX=entry.fleeX;
-}
+applyNativeWaterStreams(levels,JSON.parse(fs.readFileSync('data/native-water-streams.json')));
+// Source placed Lakitu columns/rows/order, applied after ordinary walker metadata.
+const nativeLakituRecords=JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels;
 // Native Bullet Bill: the cannons that follow the native random-register rule, and the 5-3/6-3 generator heights and camera range (tools/derive-bullet-schedule.mjs).
 {
  const bullets=JSON.parse(fs.readFileSync('data/native-bullets.json'));
@@ -914,6 +933,8 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels
   if(!cannon)throw Error(`Missing cannon ${entry.level}/${entry.area}/${entry.x},${entry.y}`);
   cannon.native=true;cannon.fire=entry.fire;cannon.loop=entry.loop;
  }
+ // Every cannon follows the native table/random-register rule; recorded attempt times (fire/loop) only drive the route comparison.
+ for(const l of levels)for(const a of l.areas)for(const c of a.cannons??[])c.native=true;
  // The static Bullet Bill sightings of the screenshot inventory are shots of these cannons: the native trace has no such objects (no id 8 outside 5-3/6-3).
  for(const [level,area] of [...new Set(bullets.cannons.map(c=>`${c.level}/${c.area}`))].map(k=>k.split('/'))){
   const target=levels.find(l=>l.id===level).areas.find(a=>a.id===area);target.enemies=target.enemies.filter(e=>e.kind!=='bullet');
@@ -963,7 +984,11 @@ for(const c of geometryCorrections.edits){
 {const room=levels.find(l=>l.id==='4-2').areas.find(a=>a.id==='bonus-coins'),pipe=room.pipes.find(p=>p.to==='area-3');
  if(pipe.spawn[0]!==2120||pipe.camera!==2064)throw Error('4-2 coin room return changed');pipe.spawn[0]=2104;pipe.camera=2048;}
 // Browser builds must never read a partially written multi-megabyte map.
-const output=`data/.levels-${process.pid}.json`;
+applyNativeWalkerGroups(levels,JSON.parse(fs.readFileSync('data/native-walker-groups.json')));
+applyNativeCannons(levels,JSON.parse(fs.readFileSync('data/native-cannon-layout.json')).cannons);
+applyNativeSprings(levels,JSON.parse(fs.readFileSync('data/native-spring-layout.json')).springs);
+applyNativeLakitus(levels,nativeLakituRecords);
+const output=path.join(path.dirname(outputPath),`.levels-${process.pid}.json`);
 fs.writeFileSync(output,JSON.stringify(levels,null,2)+'\n');
-fs.renameSync(output,'data/levels.json');
+fs.renameSync(output,outputPath);
 console.log(JSON.stringify(levels.map(l=>({id:l.id,time:l.time,areas:l.areas.length,spawn:l.areas[0].spawn,enemies:l.areas.reduce((n,a)=>n+a.enemies.length,0),exit:l.areas.at(-1).exit?.kind})),null,2));

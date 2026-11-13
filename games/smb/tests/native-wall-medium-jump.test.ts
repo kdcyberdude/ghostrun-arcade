@@ -1,3 +1,4 @@
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -10,7 +11,7 @@ const keys=['up','down','left','right','a','b','start','select'] as const;
 const buttons=(pad:number)=>keys.filter((_,i)=>pad&(1<<i));
 for(const c of cases)test(`${c.level} medium wall-contact jump retains force96 (native ${c.sweep??'r8'} mood${c.mood} row${c.frame})`,()=>{
  const level=structuredClone(observedLevels().find(l=>l.id===c.level)!);
- const sim:any=new Simulation([level]);sim.reset(true);const a=c.rows[0];sim.loadArea(c.area,[a.x+a.subx/256,a.y+32],Math.max(0,a.x-112));
+ const sim:any=isolatePlacedStream(new Simulation([level]));sim.reset(true);const a=c.rows[0];sim.loadArea(c.area,[a.x+a.subx/256,a.y+32],Math.max(0,a.x-112));
  sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;sim.enemies=[];
  const p=sim.player;Object.assign(p,{vx:a.vx/4096,vy:0,grounded:true,facing:1});
  sim.motor.reset(a.vx,1);sim.motor.moving=1;sim.inputs=[new Set(buttons(c.rows[1].pad)),new Set(buttons(c.rows[2].pad))];

@@ -21,7 +21,7 @@ function room(size:0|1|2){
  const main=level.areas.find(a=>a.id===level.main)!,pipe=main.pipes!.find(p=>p.to==='optional-water')!;
  main.spawn=[pipe.x-8,pipe.y];main.enemies=[];level.areas.find(a=>a.id==='optional-water')!.enemies=[];
  const sim=new Simulation([level]);sim.reset(true);sim.player.size=size;
- for(let f=0;f<400&&sim.area.id===main.id;f++)sim.step(['down'],1);
+ for(let f=0;f<400&&(sim.area.id===main.id||sim.phase!=='play');f++)sim.step(['down'],1);
  assert.equal(sim.area.id,'optional-water');
  sim.step([],4);
  return sim;

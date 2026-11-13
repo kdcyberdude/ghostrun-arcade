@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
-import {PlatformMotion,nativePlatformObject,nativeWrapY,platformMotionModel,platformSupportsX} from '../src/platform-motion.js';
+import {PlatformMotion,nativePlatformObject,nativePlatformSpawnCamera,nativeWrapY,platformMotionModel,platformSupportsX} from '../src/platform-motion.js';
 import nativePlatformMotion from '../data/native-platform-motion.json';
 
 // Native excerpts [age in frames since the object appeared, y byte] of the recorded route's wrapping lifts (object ids 39 and 44 move down,
@@ -30,17 +30,18 @@ test('wrapping lifts follow the native y bytes of the recorded route (15/16 px p
 
 test('a wrapping lift starts at its own spawn camera and a restart re-arms it',()=>{
  const level='1-2',area='area-2',platform=specOf(level,area,[2236,112]),object=nativePlatformObject(platform,{levelId:level,areaId:area})!;
- const motion=new PlatformMotion({levelId:level,areaId:area});
- motion.advance(0,object.spawnCamera-3);
+ const motion=new PlatformMotion({levelId:level,areaId:area}),spawn=nativePlatformSpawnCamera(object);
+ motion.slotFraction(platform,104); // v2 slot2's actual fraction when the object is initialized
+ motion.advance(0,spawn-3);
  assert.equal(motion.collisionPosition(platform,0).y,112);
- for(let f=1;f<=40;f++)motion.advance(f,object.spawnCamera+f-1);
+ for(let f=1;f<=40;f++)motion.advance(f,spawn+f-1);
  // the clock started on frame 1 (the first frame whose scroll reached the spawn camera): age 36 at frame 37 is native y 146
  assert.equal(motion.collisionPosition(platform,37).y,146);
  assert.equal(motion.collisionPosition(platform,37).x,2236);
- motion.reset();motion.advance(0,object.spawnCamera);
+ motion.reset();motion.advance(0,spawn);
  assert.equal(motion.collisionPosition(platform,0).y,112);
- motion.advance(1,object.spawnCamera);
- assert.equal(motion.collisionPosition(platform,1).y,113);
+ motion.advance(1,spawn);
+ assert.equal(motion.collisionPosition(platform,1).y,112,'a freshly cleared fraction starts with an idle motion row');
 });
 
 test('every platform of the replaced lift areas has a native object, the 4-3 ghost specs are gone',()=>{
@@ -68,12 +69,15 @@ test('the 8-4 camera-lava platform is the native horizontal object (x 1120 at th
  assert.equal(motion.collisionPosition(platform,40).y,208);
 });
 
-test('a player stands on a platform from 13 px before its left edge to 2 px past its right edge (native walk-offs and landings)',()=>{
- // native: landings from dx -13/-14, last supported rows at dx width+1..+3, first unsupported rows at width+3..+5 (3-3, 4-2, 5-4, 6-3)
+test('platform support uses the native inclusive player and platform boxes',()=>{
+ // 4-3 v2 row713: x1501 on platform1456..1504 remains supported.
+ // Row714: x1504 has left edge1507, no support, and native enters falling.
  for(const width of [24,32,48]){
-  assert.ok(platformSupportsX(100-13,100,width),'dx -13 lands');
-  assert.ok(!platformSupportsX(100-14,100,width),'dx -14 does not');
-  assert.ok(platformSupportsX(100+width+1,100,width),'dx width+1 still stands');
-  assert.ok(!platformSupportsX(100+width+2,100,width),'dx width+2 has walked off');
+  assert.ok(platformSupportsX(100-13,100,width),'small right edge touches platform left');
+  assert.ok(!platformSupportsX(100-14,100,width),'small Mario is one pixel short');
+  assert.ok(platformSupportsX(100+width-3,100,width),'small left edge touches platform right');
+  assert.ok(!platformSupportsX(100+width-2,100,width),'small Mario has walked off');
+  assert.ok(platformSupportsX(100-14,100,width,true),'big Mario has a wider box');
+  assert.ok(platformSupportsX(100+width-2,100,width,true));
  }
 });

@@ -104,7 +104,8 @@ export function photoBackdrop(kit:Kit,theme:string,x0:number,x1:number):THREE.Gr
  const near=photoMaterial(snow?'snow_02':'leafy_grass',snow?[1.08,1.14,1.3]:LAWN);
  const far=terrainStrip(x0-150,x1+150,-57,-420,1.1,ground,6,6);far.receiveShadow=false;  // outside the shadow camera: would show its edge as a seam
  g.add(terrainStrip(x0,x1,-1,-60,1.1,near),far);
- const soil=new THREE.Mesh(new THREE.BoxGeometry(x1-x0,6.2,3.6),photoMaterial('excavated_soil_wall',0x8a7a6a));worldUV(soil.geometry,3,'xy');soil.position.set((x0+x1)/2,-2,-2.8);soil.receiveShadow=true;g.add(soil);
+ // Top kept 0.05 below the lawn (y 1.1): a coplanar top face z-fought the grass and flickered through every pit as the camera moved.
+ const soil=new THREE.Mesh(new THREE.BoxGeometry(x1-x0,6.15,3.6),photoMaterial('excavated_soil_wall',0x8a7a6a));worldUV(soil.geometry,3,'xy');soil.position.set((x0+x1)/2,-2.025,-2.8);soil.receiveShadow=true;g.add(soil);
  const FLOWERS=['veg_flower_gazania','veg_flower_ursinia','veg_flower_empodium','veg_periwinkle_plant','veg_shrub_sorrel_01'];
  const trees:TreeSpot[]=[],flowers:THREE.Matrix4[][]=FLOWERS.map(()=>[]),grass:THREE.Matrix4[][]=[[],[]],rocks:THREE.Matrix4[]=[],ferns:THREE.Matrix4[]=[];
  const at=(x:number,z:number)=>1.1+heightAt(x,z,6);

@@ -1,0 +1,10 @@
+/** Actual source Cannon erasure calls; replay native-cannon-capi.cpp using
+ * native-enemy-cursor-traces.py, then --calls DIR --traces DIR --entrances DIR --out JSON. */
+import fs from 'node:fs';import path from 'node:path';import zlib from 'node:zlib';import {createHash} from 'node:crypto';import {parseArgs} from 'node:util';
+const {values:a}=parseArgs({options:{calls:{type:'string'},traces:{type:'string'},entrances:{type:'string'},out:{type:'string'}}});if(!a.calls||!a.traces||!a.entrances||!a.out)throw Error('--calls --traces --entrances --out required');const hash=(b:Uint8Array)=>createHash('sha256').update(b).digest('hex'),pack=(b:Uint8Array)=>zlib.gzipSync(b,{level:9}).toString('base64'),events=[],receipts=[];let calls=0;
+for(const level of ['8-2','8-3','7-1','5-2']){const data=fs.readFileSync(path.join(a.calls,`${level}.jsonl.handlers.jsonl`)),rows=data.toString().trim().split('\n').map(line=>JSON.parse(line)),ram=fs.readFileSync(path.join(a.traces,level,'ram.bin'));calls+=rows.length;
+ for(const e of rows)if(e.before[0]&&!e.after[0]){if(e.eraseBefore.length!==12)throw Error('Missing native EraseEnemyObject entry');events.push({level,...e});}
+ receipts.push({level,frames:ram.length/2048,ramSha256:hash(ram),handlerCalls:rows.length,observerSha256:hash(data)});
+}
+const level='8-2',frames=1451,dir=path.join(a.traces,level),initial=fs.readFileSync(path.join(dir,'initial.ram')),pads=fs.readFileSync(path.join(dir,'pads.bin')).subarray(0,frames),ram=fs.readFileSync(path.join(dir,'ram.bin')).subarray(0,frames*2048),entrance=JSON.parse(fs.readFileSync(path.join(a.entrances,level,'entrance.json'),'utf8'));
+fs.writeFileSync(a.out,JSON.stringify({schema:'native-cannon-release-v1',byteFields:['flag','id','state','xPage','x','xFraction','xSpeed','ySpeed','yForce','yFraction','frameTimer','graphicsScratch'],calls,receipts,events,prefix:{level,frames,initialSha256:hash(initial),padsSha256:hash(pads),ramSha256:hash(ram),initial:pack(initial),pads:pack(pads),ram:pack(ram),entrance}})+'\n');console.log(JSON.stringify({calls,erases:events.length,verifiedRows:receipts.reduce((n,r)=>n+r.frames,0)}));

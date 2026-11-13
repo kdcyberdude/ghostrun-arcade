@@ -1,0 +1,54 @@
+{
+  "schema": "native-monitor-every-frame-pilot-v1",
+  "runtimeCommit": "3699db2e9d25e438e06d34bb03f3797e43b8b0f7",
+  "toolSha256": "2f670e960067f5f58f1d4f425230a5821c8245970717b87d5776458be13d0116",
+  "inventorySha256": "28cc953708c8f0bbd38f26342c134796c68a9fda09497442f56cb16cf5700106",
+  "visualPolicyHash": "8e7ccda83910e847bfd25df001ea8c6542947e5893b71917c6431f0077f5738b",
+  "cases": [
+    {
+      "id": "mood:00276e8d21b6dcca4b3cf65f720413a64579513d430239693beb9af6966bfeb7",
+      "actualFrames": 512,
+      "observedResultSha256": "8793929406918e9a4dccfe3d4e9eea74c77576f7ee8056b804d30f5f9918971b",
+      "batch1": {
+        "totalRunSeconds": 4.913181242000312,
+        "warmupFrames": 8,
+        "steadyFrames": 504,
+        "steadySeconds": 4.745952022999525
+      },
+      "batch8": {
+        "totalRunSeconds": 4.424597389999777,
+        "warmupFrames": 8,
+        "steadyFrames": 504,
+        "steadySeconds": 4.269773471001535
+      }
+    },
+    {
+      "id": "original:1-1",
+      "actualFrames": 512,
+      "observedResultSha256": "accaebd99bdad8dd67687b24ae2d0591649b51adeb019ccb7c2d7c6fdeb8c54e",
+      "batch1": {
+        "totalRunSeconds": 16.71541907699965,
+        "warmupFrames": 8,
+        "steadyFrames": 504,
+        "steadySeconds": 16.493720153000204
+      },
+      "batch8": {
+        "totalRunSeconds": 4.245274137999862,
+        "warmupFrames": 8,
+        "steadyFrames": 504,
+        "steadySeconds": 4.031793263999745
+      }
+    }
+  ],
+  "allObservedOutcomesEqual": true,
+  "scope": "1024 actual frames, two continuously started World1-1 recordings. Native full-RAM/pads authenticated; only512 nativepicture rows perrecording examined. No complete-cohort claim; pilots cannot be registered.",
+  "throughput": {
+    "warmupFramesPerRun": 8,
+    "steadyFrames": 1008,
+    "steadySeconds": 8.30156673500128,
+    "framesPerSecond": 121.42286295790942,
+    "projectedSingleWorkerHours": 11.846688950066373,
+    "idealEightWorkerHours": 1.4808361187582966,
+    "planningEstimateHours": "2–4, provisional; CPU/I/O contention and late control phases not benchmarked."
+  }
+}

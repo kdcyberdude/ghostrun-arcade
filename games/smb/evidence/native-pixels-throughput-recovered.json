@@ -1,0 +1,198 @@
+{
+  "schema": "native-pixels-throughput-recovered-v1",
+  "provenance": {
+    "kind": "recovered-from-retained-tool-outputs-in-conversation",
+    "originalReportsAvailable": false,
+    "nativeCapturesAvailableInOriginalLocation": false,
+    "cause": "Host restart removed old /tmp worktrees, captures and benchmark JSON. These are recorded pre-restart results, not a new measurement or reconstructed raw report.",
+    "originalRuntime": "4aa045a4229d86257de11ae95f6781fc8e9802e1",
+    "baselineToolSha256": "262642cf2172eee2b566049f8da42e938e9590a5cb71a55b5682118507454bb5",
+    "recoveredToolSha256": "7546dae0b6d06cb412ba3c7da7a304563ebca05a9b40144e161d0ecc76fd75d8",
+    "originalCandidateToolSha256": null,
+    "originalCandidateHashNote": "Not present in retained visible output; do not claim the recovered source is byte-identical to the lost source file."
+  },
+  "optimization": {
+    "readbackBatch": 8,
+    "batchBounds": [
+      1,
+      32
+    ],
+    "transport": "Every input pad still steps/draws independently; every selected frame is captured as raw RGBA. Bounded Blob/FileReader base64 returns camera/area with the capture.",
+    "node": "Reuse RGBA/seen/diff/sprite buffers; exact common-colour cache falls back to the original colour lookup; diagnostics are created only for requested PNGs.",
+    "unchanged": [
+      "source frame selection",
+      "all pixel rows",
+      "emphasis checks",
+      "lag pairing",
+      "palette equivalence",
+      "off-palette tallies",
+      "alignment and overlap",
+      "coverage/status",
+      "error arrays"
+    ],
+    "noMaskOrToleranceAdded": true
+  },
+  "comparison": {
+    "method": "assert.deepEqual(candidate.report,baseline.report), including every row, coverage, percentages, offPalette and errors; assert.deepEqual(candidate PNG SHA256 map,baseline map).",
+    "reportHashMethod": "SHA256(JSON.stringify(reportArray))",
+    "scope": "Focused retained-input windows only, not a full32 or336 audit. --all-frames with explicit windows remains incomplete coverage.",
+    "lag1UniqueRows": 246,
+    "lag1Repeats": 2,
+    "lag1RowComparisons": 492,
+    "lag0Rows": 40
+  },
+  "lag1Cases": [
+    {
+      "level": "1-1",
+      "frames": [
+        1400,
+        1463
+      ],
+      "rows": 64,
+      "nonzeroAlignedFrames": 10,
+      "equalReportSha256": "d0af2b3800fdb22e0d67419f582c3e95c218450bfa6667a2954dee282e408970",
+      "png": {
+        "frame": 1431,
+        "bytesEqual": true,
+        "sha256": null,
+        "note": "Equality assertion passed; the digest itself was not retained in visible output."
+      },
+      "round0Fps": {
+        "baseline": 54.183953329252674,
+        "optimized": 108.55703891939444
+      },
+      "round1Fps": {
+        "baseline": 12.268328977206755,
+        "optimized": 102.97562417250293
+      }
+    },
+    {
+      "level": "5-4",
+      "frames": [
+        1750,
+        1849
+      ],
+      "rows": 100,
+      "nonzeroAlignedFrames": 0,
+      "nativeModes": {
+        "1": 53,
+        "2": 47
+      },
+      "equalReportSha256": "d14a7e4987eb8af1ef8bf1d520e0519abcdbacb104c8db4507025e7d5d6b367b",
+      "png": {
+        "frame": 1799,
+        "bytesEqual": true,
+        "sha256": "d2b265f021ca1118cab6da31d68ab3fa803665222b2a67f79cbb05dc922e48ba"
+      },
+      "round0Fps": {
+        "baseline": 52.630755629918625,
+        "optimized": 115.88693568129037
+      },
+      "round1Fps": {
+        "baseline": 48.83334022895032,
+        "optimized": 106.62461076082039
+      }
+    },
+    {
+      "level": "5-4",
+      "frames": [
+        2590,
+        2671
+      ],
+      "rows": 82,
+      "nonzeroAlignedFrames": 0,
+      "nativeModes": {
+        "1": 82
+      },
+      "equalReportSha256": "0d7beaf62dc5390c5f86c3999c799ea6dcbb662b5da4776db74aed5874ef5b2c",
+      "png": {
+        "frame": 2630,
+        "bytesEqual": true,
+        "sha256": "5e6d09bb8431ad0b1b5338ba56a27f3e5eae330f55c189e1e0eb790e2db81bd3"
+      },
+      "round0Fps": {
+        "baseline": 56.837256028111575,
+        "optimized": 145.29366639114298
+      },
+      "round1Fps": {
+        "baseline": 56.392829801048265,
+        "optimized": 134.53347088436897
+      }
+    }
+  ],
+  "lag0Cases": [
+    {
+      "level": "1-1",
+      "frames": [
+        1424,
+        1443
+      ],
+      "rows": 20,
+      "nonzeroAlignedFrames": 20,
+      "equalReportSha256": "0b34cebd83e3419be7e9d0394535af0c726d2ac779a7253edeb61b26c63ab1b2",
+      "pngBytesEqual": true,
+      "pngSha256": null,
+      "baselineFps": 39.650232857884625,
+      "optimizedFps": 70.24415047761012
+    },
+    {
+      "level": "5-4",
+      "frames": [
+        1794,
+        1813
+      ],
+      "rows": 20,
+      "nonzeroAlignedFrames": 10,
+      "nativeModes": {
+        "1": 9,
+        "2": 11
+      },
+      "equalReportSha256": "3231847cde8c01b38d997eefee56640ff31716f2faa59e8f165b1ba461429cde",
+      "png": {
+        "frame": 1803,
+        "bytesEqual": true,
+        "sha256": "5732af48e91906091d0ce0a50aaabb085a0bb6cdb2d22f08f291c65cc53f33e0"
+      },
+      "baselineFps": 34.31021671246082,
+      "optimizedFps": 70.47025778580655
+    }
+  ],
+  "throughput": {
+    "timingScope": "Steady window after the first compared row, excluding initial seek/setup. The first row is still compared and hashed. Host concurrency affects timings.",
+    "preferredMatchedRound": {
+      "frames": 243,
+      "baselineSeconds": 4.468856862008572,
+      "optimizedSeconds": 1.9921126210093498,
+      "baselineFps": 54.37632206702214,
+      "optimizedFps": 121.9810554068366,
+      "speedup": 2.2432752118925494
+    },
+    "contendedSecondRound": {
+      "frames": 243,
+      "baselineSeconds": 8.598829961001872,
+      "optimizedSeconds": 2.1423670049980283,
+      "baselineFps": 28.259658709623725,
+      "optimizedFps": 113.42594402970822,
+      "speedup": 4.0137053739817965,
+      "note": "One baseline1-1 pass was an outlier; do not use this round alone as the performance claim."
+    },
+    "lag0": {
+      "frames": 38,
+      "baselineFps": 36.787447614407526,
+      "optimizedFps": 70.35702247115398,
+      "speedup": 1.9125279690129735
+    },
+    "fairTimingClaimValid": false,
+    "supersededBy": "games/smb/evidence/native-pixels-throughput-recheck.json",
+    "timingCaveat": "Original timing started after one row although the candidate had prefetched eight. Seven already-captured rows were counted in steadyFrames. Keep these as historical recorded outputs, not a fair performance claim; the fresh receipt uses the same eight-row warmup in both versions."
+  },
+  "postRestart": {
+    "nativeBenchmarkRerun": false,
+    "checks": [
+      "benchmark helper node --check",
+      "optimized harness esbuild bundle with browser URL import external",
+      "git diff --check"
+    ],
+    "nextCheck": "Rerun the benchmark against recaptured authenticated inputs before treating recovery as a new equivalence receipt."
+  }
+}

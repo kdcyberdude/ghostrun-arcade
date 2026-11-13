@@ -1,0 +1,50 @@
+# Water slot chronology with native life-load clocks
+
+This slice combines the safe water commits through7064c46 with integration3607c19. Its native RNG hold at InitializeArea exposes previously masked water slot and contact errors. The full7-2 equivalence regression remains enforced.
+
+Native evidence and rules:
+
+- Ordinary placed Bloopers and swimming fish wait for a free enemy slot while still beyond the visible right boundary. A full table at their first load attempt does not permanently discard them. Root cause: the old generic activation path set slotLost immediately for a Blooper with no available slot.
+- Place water objects after the current ScrollHandler and before the swimming frenzy sees the table. Their birth row initializes position/state and does not move them. Native7-2 first Blooper is active on482.
+- OffscreenBoundsCheck runs after an object's step against the current scrolled left edge. Bloopers and swimming fish have native id<13, so the bound is ScreenLeft-73. Preserve their x/y slot fractions for the next owner; a Blooper moves integer pixels while retaining the inherited x fraction.
+- An object erased during its own slot pass does not get re-created in that slot on the same pass. Reserve it through that row. Native7-2: old slot3 erased2362, Blooper1440 born2363; slot1 erased2424, Blooper1504 born2425. Slot2 erased2430, parser task7 inhibits the next load row2431, swimming fish appears2432. FrameCounter/random register/height bag then agree at these births.
+- HandlePECollisions branches straight to InjurePlayer in a water area. A swimming Cheep cannot receive the generic land stomp. Native BoundBoxCtrlData control9 is [3,14,13,20], a six-pixel-high enemy box, against Mario's small [3,20,13,32] or big [2,8,14,32] box (big crouching uses [2,20,14,32]). Coordinates precede the trailing whirlpool pass. All6058 visible even-frame rectangle pairs extracted from the32 traces match the helper exactly.
+- ForceInjury preserves the swimming motor's separate native y fraction. At7-2 frame2713 it is240 with speed force104. Using the generic float player's fraction0 made the second death arc end one row late at2950. Copy NativeWater.frac into native death motion; its recorded arc now matches every row2713..2950.
+
+Validation includes the unchanged full7-2 legacy equivalence test; recorded birth/erase/parser row checks; every recorded rectangle pair; the existing8913 swimming,8929 Blooper and6940 flying-fish transition checks; and all32-level legacy field regression gates. New source state does not read future frames or use per-level motion corrections.
+
+The previous camera-cross approximation for parser task7 remains shared engine debt: walkers2 is building the actual task/scroll clock, including VRAM-buffer inhibition. The source-driven specialSlot5.frenzyBuffer API is available from sky552c45b and should replace legacy swimming generator camera ranges next. Strict area identity still exposes logical transition ownership and unsupported families; this slice does not mark strict coverage complete.
+
+Final verification: all1446 tests and TypeScript pass. The32-level same-tool survey has zero earlier fields versus the combined-clock baseline;7-2 death/time/x return to null.2-3 remains all-null, and2-2 first remains4276.
+
+## Source AreaFrenzy activation replaces fitted camera windows
+
+The final 2-2 death/time discrepancy (6396/6415) follows a generator activation gap. Native source water area pointer44615 has AreaFrenzy command23 at column1280. Parsing that command at camera928 queues23; its first free native enemy slot consumes it and sets EnemyFrenzyBuffer23. During the third life Mario stalls at camera928 for hundreds of rows. Native fish are born at5540,5572,5604, all at X1215, slots0/1/2, native Y40/152/168. The fitted fromCamera931 kept the remake empty until5904, then generated three unrelated fish. Using the source buffer produces all three native births exactly and makes every legacy field of the entire2-2 replay exact, matching7-2.
+
+The same change removes fitted stop-camera values2700/2564 and the per-course high/low fish ID mapping. Source BulletBillCheepCheep uses random byte s >= `$aa` to index SwimCC_IDData `[10,11]`, increments that index when WorldNumber is not World2, then masks it to one bit. Source EndFrenzy command24 clears the buffer. The generator now accepts any water area with buffer23, so other water rooms and later recordings follow actual parser commands. Native slots below3, timer32, right extent+32, BitMFilter heights, RNG and slot residue behavior remain source rules. Full32-field survey changes only2-2 dead/time to null.
+
+## Injury stops movement within the native slot pass
+
+Native `RunNormalEnemies` calls `PlayerEnemyCollision` before `EnemyMovementSubs`, then skips movement whenever `TimerControl` is nonzero. The source loop visits slots0→5. At7-2 injury1118, slot0 hits Mario and all three Bloopers hold their previous coordinates. At2-2 injury2810, slot0 has already moved Y130→131, then slot1 hits Mario and holds Y128. At7-2 injury2713, slot0 fish moves before slot1 hits, and slot2 fish holds its previous coordinate. The water actor pass now visits native slots in order and performs injury before movement; injury sets the pause for its own and all following slots. Existing star-defeat handling is unchanged and remains a separate general enemy mechanic.
+
+This makes strict2-2 entity position, kind, extra, and state firsts all null; only area-load/lives-screen ownership and HUD setup remain outside water actor scope. Strict7-2 first normal-play entity position moves from injury1118 to a separate Blooper slot3 discrepancy2556; the one-row slot4 missing actor2281 and later checkpoint loader issues remain open. Recorded-input tests check the frozen coordinates through every observed death arc (excluding that independently divergent slot3 on the second7-2 life). Legacy all32 field firsts are unchanged and both water levels remain entirely null.
+
+## Blooper odd-slot steering reads a byte, not fractional velocity
+
+Native `PlayerCtrlRoutine` updates `Player_MovingDir` from `Player_X_Speed` only when that signed byte is nonzero, before background contact clears a wall-hit speed. On7-2 row2556, Mario changes from negative speed to byte0/force152. The native direction remains left; the remake had treated the positive force as rightward motion. Odd Blooper slots1/3 sample that native direction when their random mask clears. Slot3 therefore moved right instead of left on2556 and stayed two pixels ahead afterward. The input latch now uses the signed byte and the pre-wall produced speed when a wall has cleared it. Recorded-input regressions check both odd slots across the turn, and the previously excluded slot3 through the second death arc. Strict7-2 position first advances2556→3114, a separate checkpoint parser/roster issue. All32 legacy field firsts remain unchanged.
+
+## Water scroll reads the rendered pre-whirlpool position
+
+Native `ScrollHandler` reads cached `Player_Pos_ForScroll=$0755`, written by `RenderPlayerSub` from `Player_Rel_XPos` before the later `ProcessWhirlpools` pass. It compares that previous cached screen coordinate with80/112; it does not recompute a relative coordinate from the next row's final Mario X. On7-2 row2258, a leftward whirlpool pull moves Mario from pre-whirlpool screenX112 to final screenX111. On2259 native therefore scrolls the full2 pixels, while the old remake subtracted1 because it recomputed111. This held the parser one row behind and delayed slot4 Blooper1328 from2281 to2282.
+
+The water scroll path now retains the actual pre-whirlpool screen-position byte after each renderable row, seeds it from native entrance RAM, and respects `PlayerGfxHandler`'s odd-FrameCounter injury suppression of the write. Source thresholds80/112 are unchanged. Full water camera, X, Y and time checks now cover every live-play row of2-2 and7-2, including the previously omitted post2208 prefix. The slot4 birth matches2281. Strict position/kind/extra/state remain all null in2-2; all remaining7-2 normal-play entity differences start at the checkpoint entry3114. All32 legacy firsts remain unchanged.
+
+## Checkpoint source stream skip, setup-row enemy pass, and right erasure
+
+`PositionEnemyObj` discards placed columns left of `ScreenRight` (camera+255). On7-2 checkpoint entry, this skips Bloopers1328/1440/1504; the old remake spawned those visible-left-of-frontier entries. The legacy winning-route generated fish list also needs discarding before the first enemy pass, so its fish1266 cannot claim slot0. Actual placed water actors remain governed by their source bounds.
+
+`Entrance_GameTimerSetup` runs `GameEngine` on its setup row. Water entry now processes enemies on that row and the following PlayerEntrance row, with contact disabled until engine8. The checkpoint's queued23 therefore makes native fish slot0 at3112, X1567/Y152, RNG `[82,116,208,57,153,234,217]`, bag4 and timer32. Slot1 spawns3144 at nativeY56. These match the native trace exactly.
+
+Finally `OffscreenBoundsCheck` erases water actors on the right as well as the left. For IDs7/10/11 the left bound is camera-73. Its subtraction leaves carry1 once camera>=73; the following right-side ADC adds73 to ScreenRight rather than72. The right erasure limit is therefore camera+328 (camera<73 uses+327). Native7-2 Blooper slot3 reaches X2462 at camera2134 on4357 and is erased that row; the remake had retained it.
+
+A bidirectional recorded-input regression now compares every active native water slot's ID/X/Y on every engine7,8,11 row in2-2 and7-2, including checkpoint entry and all deaths. Strict position/kind/extra/state firsts are null in both. Remaining strict missing actors are exclusively global respawn-reset ownership windows:2-2 rows1778–1779 and3022–3023;7-2 rows1331–1332 and2950–2951 (slot3's native clear extends two additional rows). Area-load ownership328..351 and preloaded HUD setup likewise remain global lifecycle work. All32 legacy firsts stay unchanged.

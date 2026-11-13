@@ -6,13 +6,13 @@ import {observedLevels} from '../src/levels.js';
 // Native pit deaths (worlds-20261111, 3-4 among them) stay in engine 8 with no launch and end 259-260 rows after passing y 240 (245-249 after a walk or medium jump): the old 208-row launch was a screenshot-era guess.
 test('3-4 black pit falls unseen with no launch for the native 259-260 rows',()=>{
  const level=structuredClone(observedLevels().find(l=>l.id==='3-4')!);
- const sim=new Simulation([level]);sim.reset(true);sim.camera=242;sim.player.x=354;sim.player.y=200;sim.player.vy=4;sim.player.grounded=false;
+ const sim=new Simulation([level]);sim.reset(true);sim.camera=242;sim.player.x=354;sim.player.y=200;sim.player.vy=4;sim.player.grounded=false;(sim as unknown as {runJump:boolean}).runJump=true;
  sim.enemies=[];sim.items=[];sim.area.firebars=[];sim.area.platforms=[];
- let elapsed=0;while(sim.phase==='play'&&elapsed++<50)sim.step([],1);
- assert.equal(sim.phase,'dying');const y=sim.player.y;assert.ok(y>272);
- sim.step([],16);assert.equal(sim.player.y,y,'no launch');
- sim.step([],241);assert.equal(sim.phase,'dying');assert.equal(sim.lives,3);
- sim.step([],2);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2);
+ let elapsed=0;while(sim.phase==='play'&&sim.player.y<=272&&elapsed++<50)sim.step([],1);
+ assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);const y=sim.player.y;assert.ok(y>272);
+ sim.step([],16);assert.ok(sim.player.y>y,'the native fall continues with no launch');
+ sim.step([],241);assert.equal(sim.phase,'play');assert.equal(sim.lives,3);
+ sim.step([],3);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
 });
 
 test('landing after passing a lava tile clears the flag before a later black pit',()=>{
@@ -21,8 +21,8 @@ test('landing after passing a lava tile clears the flag before a later black pit
  const sim=new Simulation([level]);sim.reset(true);
  let elapsed=0;while(!sim.player.grounded&&elapsed++<30)sim.step([],1);
  assert.equal(sim.player.grounded,true);assert.equal(sim.player.y,224);
- elapsed=0;while(sim.phase==='play'&&elapsed++<200)sim.step(['right','b'],1);
- assert.equal(sim.phase,'dying');const y=sim.player.y;assert.ok(y>272);
- sim.step([],16);assert.equal(sim.player.y,y,'no launch');
- sim.step([],243);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2);
+ elapsed=0;while(sim.phase==='play'&&sim.player.y<=272&&elapsed++<200)sim.step(['right','b'],1);
+ assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);const y=sim.player.y;assert.ok(y>272);
+ sim.step([],16);assert.ok(sim.player.y>y,'the native fall continues with no launch');
+ sim.step([],244);assert.equal(sim.phase,'intro');assert.equal(sim.lives,2); // +1: the engine-6 row (PlayerLoseLife next row) is still a death row
 });

@@ -1,0 +1,320 @@
+{
+  "coverage": {
+    "id": 51,
+    "activeRows": 4703,
+    "birthRows": 251,
+    "legacyAdapterRows": 4452,
+    "reason": "2bcc9f1 maps ID51 cannon shots; counts precede legacy area/engine/first-divergence gates, and the existing first-birth skip remains. Strict already mapped ID51."
+  },
+  "rules": [
+    {
+      "type": "coverage",
+      "scope": "legacy",
+      "level": "5-1",
+      "field": "enemy",
+      "was": [
+        1686
+      ],
+      "floor": 1281,
+      "reason": "New ID51 coverage exposes native cannon shot1281; 2bcc9f1 coverage-only survey."
+    },
+    {
+      "type": "coverage",
+      "scope": "legacy",
+      "level": "5-2",
+      "field": "enemy",
+      "was": [
+        850,
+        852
+      ],
+      "floor": 645,
+      "reason": "New ID51 coverage exposes shot645; actual engine7/ready passes835eb2b move it to1339."
+    },
+    {
+      "type": "coverage",
+      "scope": "legacy",
+      "level": "7-1",
+      "field": "enemy",
+      "was": [
+        443
+      ],
+      "floor": 395,
+      "reason": "New ID51 coverage exposes cannon X fraction difference395; strict already exposed it."
+    },
+    {
+      "type": "coverage",
+      "scope": "legacy",
+      "level": "8-3",
+      "field": "enemy",
+      "was": [
+        914
+      ],
+      "floor": 711,
+      "reason": "New ID51 coverage exposes cannon shot711 after the619 Paratroopa motor error was fixed."
+    },
+    {
+      "type": "causal",
+      "scope": "legacy",
+      "level": "7-1",
+      "field": "cam",
+      "was": [
+        1577
+      ],
+      "floor": 1034,
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      },
+      "reason": "479770c/900a141 source Piranha slot/timer changes expose camera1034 after unchanged MarioY444."
+    },
+    {
+      "type": "causal",
+      "scope": "legacy",
+      "level": "7-1",
+      "field": "x",
+      "was": [
+        1528
+      ],
+      "floor": 1034,
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      },
+      "reason": "479770c/900a141 source slot/timer changes expose X1034 after unchanged MarioY444."
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "7-1",
+      "field": "state",
+      "was": [
+        1063
+      ],
+      "floor": 1051,
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 444
+      },
+      "reason": "479770c state1051 is downstream of unchanged MarioY444 and earlier enemy divergence."
+    },
+    {
+      "type": "causal",
+      "scope": "legacy",
+      "level": "8-2",
+      "field": "time",
+      "was": [
+        2367
+      ],
+      "floor": 2017,
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 1974
+      },
+      "reason": "900a141/479770c time2017 follows unchanged MarioY1974 and enemy1554."
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "8-2",
+      "field": "time",
+      "was": [
+        2366
+      ],
+      "floor": 2017,
+      "upstream": {
+        "scope": "legacy",
+        "field": "y",
+        "frame": 1974
+      },
+      "reason": "Strict time2017 follows unchanged MarioY1974; original strict baseline was2366."
+    },
+    {
+      "type": "causal",
+      "scope": "legacy",
+      "level": "6-2",
+      "run": "water-down-strokes",
+      "field": "cam",
+      "was": [
+        3666
+      ],
+      "now": 3582,
+      "floor": 3582,
+      "upstream": {
+        "scope": "legacy",
+        "field": "dead",
+        "frame": 2937
+      },
+      "reason": "Native hit2937 is still unfixed in both builds. Native respawn3335; corrected pre-hit movement changes model death3425 vs3498, so main-camera comparison resumes3582 vs3666. Run-specific water native proof; x/y improve to3335.",
+      "evidence": {
+        "path": "games/smb/evidence/water-camera-causality.json",
+        "sha256": "69d0aac618238d01e868577a05ae2d6870c5581ee4976c349c9692864a71d07b"
+      }
+    },
+    {
+      "type": "coverage",
+      "scope": "strict",
+      "level": "1-2",
+      "field": "continuation.load.ready",
+      "was": [
+        null
+      ],
+      "now": 3059,
+      "floor": 3059,
+      "baselineFingerprint": "3e95edf7e0e1ebc43cbb1453ca8404a6727a28044cd94236c685374195faee17",
+      "reason": "72da817 always checks readiness while a load object exists. Unchanged b4c934e runtime rerun on1-2 ONLY with current readout also reports3059; baseline at3059 owns load{task1,engine0,screen8,disable7}, while native task3/engine8 is ready. Historical pre-readout baseline fingerprint bound; this is newly exposed comparison, not a new runtime divergence.",
+      "evidence": {
+        "path": "games/smb/evidence/native-readiness-coverage-1-2.json",
+        "sha256": "7fc761c0935abe7063bdb6e52a6b78fa4ff6b3405020a1fcf262a1248c172f33"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "8-3",
+      "field": "state",
+      "was": [
+        3814
+      ],
+      "now": 3813,
+      "floor": 3813,
+      "upstream": {
+        "scope": "strict",
+        "field": "extra",
+        "frame": 264
+      },
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "missing",
+          "frame": 341
+        },
+        {
+          "scope": "legacy",
+          "field": "dead",
+          "frame": 3813
+        }
+      ],
+      "reason": "The source ProcHammerObj TimerControl guard correctly holds later misc slot4 after the same-row existing false model death3813. Removing only the guard restores old accidental state138 match; guard retains139. Earlier extra264, missing341 and death3813 are unchanged; position619→914 improves. Exact documented downstream case only.",
+      "evidence": {
+        "commit": "f447d19",
+        "path": "games/smb/evidence/native-hammer-hold-causal-8-3.json",
+        "sha256": "37ddbfc35c76dc3099816b3cdcf41a7c40f4526f32762f5fd17c8477b3796844"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "7-1",
+      "field": "continuation.load.ready",
+      "was": [
+        null
+      ],
+      "floor": 3651,
+      "now": 3651,
+      "baselineFingerprint": "d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41",
+      "upstream": {
+        "scope": "strict",
+        "field": "y",
+        "frame": 444
+      },
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "level",
+          "frame": 3651
+        },
+        {
+          "scope": "strict",
+          "field": "continuation.frameCounter",
+          "frame": 3651
+        }
+      ],
+      "reason": "Cannon-only A/B: both trajectories already have playerY444 and wrong nextlevel/counter3651. At native load3651, corrected path remainsplay (readytrue), priorpath gameover (accidentalreadyfalse). Source load runtime unchanged.",
+      "evidence": {
+        "path": "games/smb/evidence/native-cannon-batch-causal.json",
+        "sha256": "d319ef62ee0e0092b710f9f5f48d4c7a26a8d00818bbacf47b82c160046d743e"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "8-2",
+      "field": "kind",
+      "was": [
+        1476
+      ],
+      "floor": 1453,
+      "now": 1453,
+      "baselineFingerprint": "d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41",
+      "upstream": {
+        "scope": "strict",
+        "field": "missing",
+        "beforeFrame": 1382,
+        "frame": 1450
+      },
+      "alsoRequired": [
+        {
+          "scope": "strict",
+          "field": "extra",
+          "beforeFrame": 1380,
+          "frame": 1450
+        }
+      ],
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "position",
+          "frame": 1553
+        }
+      ],
+      "reason": "Both cannon-only A/B trajectories have wrong-slot Piranha1450 (native2,model4). Correct removal fixesextra1380 and yields nativeentry4timer0; subsequent wrong free slot2 fires1453, exposingkindearlier. Oldtimerhistory merelykeepsslot2empty until1476. Actual nativeerase1380 andboth1450witnesses preserved.",
+      "evidence": {
+        "path": "games/smb/evidence/native-cannon-batch-causal.json",
+        "sha256": "d319ef62ee0e0092b710f9f5f48d4c7a26a8d00818bbacf47b82c160046d743e"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "7-1",
+      "field": "state",
+      "was": [
+        1051
+      ],
+      "floor": 1035,
+      "now": 1035,
+      "baselineFingerprint": "b0b186951b5e4e4230cf57807a8e2c6e203cdf0c7f02d86286589195df37b961",
+      "upstream": {
+        "scope": "strict",
+        "field": "position",
+        "beforeFrame": 443,
+        "frame": 646
+      },
+      "alsoRequired": [
+        {
+          "scope": "legacy",
+          "field": "score",
+          "beforeFrame": 448,
+          "frame": 649
+        },
+        {
+          "scope": "legacy",
+          "field": "y",
+          "beforeFrame": 444,
+          "frame": 1018
+        }
+      ],
+      "reason": "Source PlayerEnemyCollision latch fixes false immunity: actor443→646, score448→649 and MarioY444→1018. Later Hammer misc state1051→1035 follows the retained actor646 and score649 mismatches. The focused latch-only native comparison records this exact downstream change; no runtime or coverage waiver.",
+      "evidence": {
+        "commit": "777d6a4",
+        "path": "games/smb/evidence/native-koopa-contact-survey.json",
+        "sha256": "35ae88a78c3e2c343fdcf36a5b6071187be779334cbf9f618aff5138d226f005"
+      }
+    }
+  ],
+  "purpose": "Historical batch non-regression classification only. These explicit coverage/causal cases do not change runtime rules, skip comparisons or establish complete game fidelity."
+}

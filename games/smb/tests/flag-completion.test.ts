@@ -6,11 +6,11 @@ import inputs from '../data/observed-winning-inputs.json';
 import type {Button,Level,Tile} from '../src/types.js';
 
 function flagFixture(frozenTime:number){
- const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69]);
+ const tiles:Tile[]=[];for(let x=0;x<40;x++)tiles.push([x,13,84]);for(let row=2;row<12;row++)tiles.push([6,row,37]);tiles.push([6,12,97],[9,8,69],[10,8,69],[11,8,69],[11,12,82]);
  // The ordinary jump approach consumes one timer unit before touching the pole.
  const level:Level={id:'1-1',time:frozenTime+1,main:'main',evidence:'Synthetic flag collision fixture; no campaign completion claim',areas:[{id:'main',width:640,palette:0,theme:'ground',tiles,enemies:[],spawn:[80,208],exit:{x:104,doorX:160,kind:'flag'},evidence:'Fixture'}]};
  const next:Level={...level,id:'1-2',time:400,areas:[{...level.areas[0],spawn:[40,208],exit:undefined}]};
- const sim=new Simulation([level,next]);sim.reset(true);return sim;
+ const sim=new Simulation([level,next]);sim.reset(true);sim.nativeCastleFlag={slot:0,x:160,y:144,task:0,state:0,interval:0,draw:false};return sim;
 }
 
 test('walking into the flag pedestal waits for a jump to reach the pole',()=>{
@@ -35,21 +35,21 @@ test('ordinary jump contact freezes the clock and produces0,1,3 or6 actual firew
   }
   assert.equal(grabbedTime,300+digit);assert.equal(seen.size,digit);assert.equal(blastCues,digit);assert.equal(clearCues,1);assert.equal(sim.levelIndex,1);
   assert.equal(sim.score,scoreBeforeTimer!+grabbedTime!*50+digit*500);
-  // Native rows (1-1 160, 1-2 141, 2-3 140, 3-1 151, 3-3 144, 4-2 155 ...): a no-firework level ends 140..160 rows after the timer reaches 0, on a 21-row area-clock phase (was a flat 160 from the 1-1 sample alone).
+  // Source task3 raises31 rows, then the slot timer6 expires on the shared21-row NMI divider.
   assert.ok(firstZero!==undefined);if(digit===0){const tail=sim.frame-firstZero;assert.ok(tail>=140&&tail<=160,`tail ${tail}`);}
  }
 });
 
-test('castle flag raises32pixels with background priority geometry after timer conversion',()=>{
+test('castle flag begins drawing on the source raise task and stops at rawY113',()=>{
  const sim=flagFixture(306);let firstZero:number|undefined;const sampled=new Map<number,{x:number;y:number}>();
  for(let frame=0;frame<900&&sim.levelIndex===0;frame++){
   sim.step(frame<40?['right','a','b']:[],1);
   if(sim.time===0&&sim.phase==='flag'){
    firstZero??=sim.frame;const elapsed=sim.frame-firstZero;
-   if([0,15,23,31,32,40].includes(elapsed)&&sim.castleFlag)sampled.set(elapsed,sim.castleFlag);
+   if([0,2,15,23,31,32,40].includes(elapsed)&&sim.castleFlag)sampled.set(elapsed,sim.castleFlag);
   }
  }
- assert.deepEqual(sampled.get(0),{x:160,y:146});assert.deepEqual(sampled.get(15),{x:160,y:131});
+ assert.equal(sampled.get(0),undefined);assert.deepEqual(sampled.get(2),{x:160,y:144});assert.deepEqual(sampled.get(15),{x:160,y:131});
  assert.deepEqual(sampled.get(23),{x:160,y:123});assert.deepEqual(sampled.get(31),{x:160,y:115});
  assert.deepEqual(sampled.get(32),{x:160,y:114});assert.deepEqual(sampled.get(40),{x:160,y:114});
 });

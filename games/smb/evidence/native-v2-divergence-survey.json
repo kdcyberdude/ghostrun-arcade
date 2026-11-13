@@ -1,0 +1,850 @@
+{
+ "schema": "native-v2-divergence-survey-v1",
+ "date": "2026-11-13",
+ "method": "tools/harness/native-divergence.ts: each level replays its v2 model pad bytes headlessly from the observed entrance (tools/harness/native-entrance.mjs), one pad per frame, and compares every frame with the native NES replay of the same bytes from the same saved entrance (NeSLE CPU build; per-frame RAM SHA-256 equals each nes-audio recording manifest ramSha256). Fields: death, HUD timer, score, coins, and Mario x/y while both are in normal play; each later area visit is x-aligned on its first compared frame. first = earliest frame of any field (frame index = pad index after the entrance).",
+ "before": "ghostrun-arcade 566080e (main)",
+ "after": "this commit: entrance timer subphase from GameTimerCtrl ($0787), pipe-intro clock kept, enemy load skipped the frame after a 32 px scroll crossing, stomped Koopa holds its position, floatey-number points paid five frames after the award",
+ "summary": {
+  "later": 30,
+  "earlier": 0
+ },
+ "knownNext": {
+  "4-3": "row 383: balance-lift ride speed (Mario 1 px high on the first pulley pair; the fitted pulley acceleration lags native by a frame)",
+  "2-2,7-2": "row 386: after the pipe drop-in the timer starts at area load; native starts it when control begins (engine 8)",
+  "1-4": "row 1: Mario steps right on the first held Right (39 -> 40) while the native stays at 39 for several frames"
+ },
+ "levels": [
+  {
+   "level": "1-1",
+   "frames": 3020,
+   "before": {
+    "first": 19,
+    "fields": {
+     "dead": 993,
+     "time": 19,
+     "score": 388,
+     "coins": null,
+     "x": 1159,
+     "y": 1188
+    }
+   },
+   "after": {
+    "first": 993,
+    "fields": {
+     "dead": 993,
+     "time": 993,
+     "score": 2243,
+     "coins": null,
+     "x": 1159,
+     "y": 1188
+    }
+   }
+  },
+  {
+   "level": "1-2",
+   "frames": 3060,
+   "before": {
+    "first": 366,
+    "fields": {
+     "dead": 390,
+     "time": 366,
+     "score": 456,
+     "coins": 456,
+     "x": 373,
+     "y": 917
+    }
+   },
+   "after": {
+    "first": 373,
+    "fields": {
+     "dead": 869,
+     "time": 870,
+     "score": 755,
+     "coins": 865,
+     "x": 373,
+     "y": 588
+    }
+   }
+  },
+  {
+   "level": "1-3",
+   "frames": 1736,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": null,
+     "time": 16,
+     "score": 274,
+     "coins": 812,
+     "x": 583,
+     "y": 851
+    }
+   },
+   "after": {
+    "first": 583,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": 812,
+     "coins": 812,
+     "x": 583,
+     "y": 851
+    }
+   }
+  },
+  {
+   "level": "1-4",
+   "frames": 2840,
+   "before": {
+    "first": 1,
+    "fields": {
+     "dead": 211,
+     "time": 14,
+     "score": null,
+     "coins": null,
+     "x": 1,
+     "y": 18
+    }
+   },
+   "after": {
+    "first": 1,
+    "fields": {
+     "dead": 211,
+     "time": 230,
+     "score": null,
+     "coins": null,
+     "x": 1,
+     "y": 18
+    }
+   }
+  },
+  {
+   "level": "2-1",
+   "frames": 2956,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 790,
+     "time": 17,
+     "score": 236,
+     "coins": 495,
+     "x": 172,
+     "y": 387
+    }
+   },
+   "after": {
+    "first": 172,
+    "fields": {
+     "dead": 790,
+     "time": 809,
+     "score": 391,
+     "coins": 495,
+     "x": 172,
+     "y": 387
+    }
+   }
+  },
+  {
+   "level": "2-2",
+   "frames": 6600,
+   "before": {
+    "first": 376,
+    "fields": {
+     "dead": 376,
+     "time": 386,
+     "score": 1323,
+     "coins": 1323,
+     "x": 924,
+     "y": 923
+    }
+   },
+   "after": {
+    "first": 386,
+    "fields": {
+     "dead": 1770,
+     "time": 386,
+     "score": 1323,
+     "coins": 1323,
+     "x": 1697,
+     "y": 1401
+    }
+   }
+  },
+  {
+   "level": "2-3",
+   "frames": 2408,
+   "before": {
+    "first": 14,
+    "fields": {
+     "dead": 1360,
+     "time": 14,
+     "score": 1602,
+     "coins": null,
+     "x": null,
+     "y": null
+    }
+   },
+   "after": {
+    "first": 1360,
+    "fields": {
+     "dead": 1360,
+     "time": 1382,
+     "score": 1602,
+     "coins": null,
+     "x": null,
+     "y": null
+    }
+   }
+  },
+  {
+   "level": "2-4",
+   "frames": 4644,
+   "before": {
+    "first": 14,
+    "fields": {
+     "dead": 665,
+     "time": 14,
+     "score": 1869,
+     "coins": 1869,
+     "x": 658,
+     "y": 635
+    }
+   },
+   "after": {
+    "first": 635,
+    "fields": {
+     "dead": 665,
+     "time": 924,
+     "score": 1869,
+     "coins": 1869,
+     "x": 658,
+     "y": 635
+    }
+   }
+  },
+  {
+   "level": "3-1",
+   "frames": 2616,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": 657,
+     "time": 15,
+     "score": 929,
+     "coins": null,
+     "x": 317,
+     "y": 348
+    }
+   },
+   "after": {
+    "first": 317,
+    "fields": {
+     "dead": 1153,
+     "time": 1167,
+     "score": 865,
+     "coins": null,
+     "x": 317,
+     "y": 348
+    }
+   }
+  },
+  {
+   "level": "3-2",
+   "frames": 2304,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 1219,
+     "time": 17,
+     "score": 213,
+     "coins": 369,
+     "x": 560,
+     "y": 459
+    }
+   },
+   "after": {
+    "first": 369,
+    "fields": {
+     "dead": 1219,
+     "time": 1241,
+     "score": 369,
+     "coins": 369,
+     "x": 560,
+     "y": 459
+    }
+   }
+  },
+  {
+   "level": "3-3",
+   "frames": 1776,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": null,
+     "time": 15,
+     "score": 341,
+     "coins": 395,
+     "x": 680,
+     "y": 589
+    }
+   },
+   "after": {
+    "first": 395,
+    "fields": {
+     "dead": null,
+     "time": 1047,
+     "score": 395,
+     "coins": 395,
+     "x": 680,
+     "y": 589
+    }
+   }
+  },
+  {
+   "level": "3-4",
+   "frames": 4772,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": 887,
+     "time": 15,
+     "score": 585,
+     "coins": 585,
+     "x": 172,
+     "y": 1312
+    }
+   },
+   "after": {
+    "first": 172,
+    "fields": {
+     "dead": 887,
+     "time": 1133,
+     "score": 585,
+     "coins": 585,
+     "x": 172,
+     "y": 1312
+    }
+   }
+  },
+  {
+   "level": "4-1",
+   "frames": 2388,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": null,
+     "time": 16,
+     "score": 675,
+     "coins": 675,
+     "x": null,
+     "y": null
+    }
+   },
+   "after": {
+    "first": 675,
+    "fields": {
+     "dead": null,
+     "time": 1733,
+     "score": 675,
+     "coins": 675,
+     "x": null,
+     "y": null
+    }
+   }
+  },
+  {
+   "level": "4-2",
+   "frames": 4636,
+   "before": {
+    "first": 368,
+    "fields": {
+     "dead": 889,
+     "time": 368,
+     "score": 1288,
+     "coins": 1288,
+     "x": 368,
+     "y": 368
+    }
+   },
+   "after": {
+    "first": 368,
+    "fields": {
+     "dead": 889,
+     "time": 392,
+     "score": 1288,
+     "coins": 1288,
+     "x": 368,
+     "y": 368
+    }
+   }
+  },
+  {
+   "level": "4-3",
+   "frames": 1800,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": 307,
+     "time": 15,
+     "score": 187,
+     "coins": 207,
+     "x": 224,
+     "y": 204
+    }
+   },
+   "after": {
+    "first": 383,
+    "fields": {
+     "dead": 774,
+     "time": 783,
+     "score": 501,
+     "coins": 501,
+     "x": 505,
+     "y": 383
+    }
+   }
+  },
+  {
+   "level": "4-4",
+   "frames": 11636,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": 5324,
+     "time": 15,
+     "score": null,
+     "coins": null,
+     "x": 43,
+     "y": 184
+    }
+   },
+   "after": {
+    "first": 43,
+    "fields": {
+     "dead": 5324,
+     "time": 5343,
+     "score": null,
+     "coins": null,
+     "x": 43,
+     "y": 184
+    }
+   }
+  },
+  {
+   "level": "5-1",
+   "frames": 4392,
+   "before": {
+    "first": 22,
+    "fields": {
+     "dead": 1127,
+     "time": 22,
+     "score": 132,
+     "coins": null,
+     "x": 322,
+     "y": 410
+    }
+   },
+   "after": {
+    "first": 322,
+    "fields": {
+     "dead": 1127,
+     "time": 1334,
+     "score": 947,
+     "coins": null,
+     "x": 322,
+     "y": 410
+    }
+   }
+  },
+  {
+   "level": "5-2",
+   "frames": 3552,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": 94,
+     "time": 16,
+     "score": 703,
+     "coins": 703,
+     "x": 482,
+     "y": 908
+    }
+   },
+   "after": {
+    "first": 94,
+    "fields": {
+     "dead": 94,
+     "time": 112,
+     "score": 703,
+     "coins": 703,
+     "x": 482,
+     "y": 908
+    }
+   }
+  },
+  {
+   "level": "5-3",
+   "frames": 2456,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 445,
+     "time": 17,
+     "score": 492,
+     "coins": 571,
+     "x": 1026,
+     "y": 1096
+    }
+   },
+   "after": {
+    "first": 445,
+    "fields": {
+     "dead": 445,
+     "time": 449,
+     "score": 492,
+     "coins": 571,
+     "x": 1026,
+     "y": 1096
+    }
+   }
+  },
+  {
+   "level": "5-4",
+   "frames": 2672,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 135,
+     "time": 17,
+     "score": 1331,
+     "coins": 1331,
+     "x": 787,
+     "y": 1390
+    }
+   },
+   "after": {
+    "first": 135,
+    "fields": {
+     "dead": 135,
+     "time": 137,
+     "score": 1331,
+     "coins": 1331,
+     "x": 787,
+     "y": 1390
+    }
+   }
+  },
+  {
+   "level": "6-1",
+   "frames": 2284,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": 715,
+     "time": 16,
+     "score": 448,
+     "coins": 448,
+     "x": 234,
+     "y": 1123
+    }
+   },
+   "after": {
+    "first": 234,
+    "fields": {
+     "dead": 715,
+     "time": 736,
+     "score": 448,
+     "coins": 448,
+     "x": 234,
+     "y": 1123
+    }
+   }
+  },
+  {
+   "level": "6-2",
+   "frames": 4696,
+   "before": {
+    "first": 14,
+    "fields": {
+     "dead": 366,
+     "time": 14,
+     "score": 206,
+     "coins": null,
+     "x": 734,
+     "y": 357
+    }
+   },
+   "after": {
+    "first": 357,
+    "fields": {
+     "dead": 366,
+     "time": 374,
+     "score": 361,
+     "coins": null,
+     "x": 734,
+     "y": 357
+    }
+   }
+  },
+  {
+   "level": "6-3",
+   "frames": 3080,
+   "before": {
+    "first": 14,
+    "fields": {
+     "dead": 518,
+     "time": 14,
+     "score": 314,
+     "coins": 314,
+     "x": 269,
+     "y": 401
+    }
+   },
+   "after": {
+    "first": 269,
+    "fields": {
+     "dead": 518,
+     "time": 777,
+     "score": 314,
+     "coins": 314,
+     "x": 269,
+     "y": 401
+    }
+   }
+  },
+  {
+   "level": "6-4",
+   "frames": 1644,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 262,
+     "time": 17,
+     "score": null,
+     "coins": null,
+     "x": 661,
+     "y": 674
+    }
+   },
+   "after": {
+    "first": 262,
+    "fields": {
+     "dead": 262,
+     "time": 491,
+     "score": null,
+     "coins": null,
+     "x": 661,
+     "y": 674
+    }
+   }
+  },
+  {
+   "level": "7-1",
+   "frames": 3816,
+   "before": {
+    "first": 14,
+    "fields": {
+     "dead": 168,
+     "time": 14,
+     "score": 364,
+     "coins": null,
+     "x": 556,
+     "y": 556
+    }
+   },
+   "after": {
+    "first": 168,
+    "fields": {
+     "dead": 168,
+     "time": 182,
+     "score": 364,
+     "coins": null,
+     "x": 556,
+     "y": 556
+    }
+   }
+  },
+  {
+   "level": "7-2",
+   "frames": 4568,
+   "before": {
+    "first": 376,
+    "fields": {
+     "dead": 376,
+     "time": 386,
+     "score": 537,
+     "coins": 537,
+     "x": 924,
+     "y": 923
+    }
+   },
+   "after": {
+    "first": 386,
+    "fields": {
+     "dead": 1118,
+     "time": 386,
+     "score": 4202,
+     "coins": 4202,
+     "x": 1522,
+     "y": 1522
+    }
+   }
+  },
+  {
+   "level": "7-3",
+   "frames": 3184,
+   "before": {
+    "first": 15,
+    "fields": {
+     "dead": 577,
+     "time": 15,
+     "score": 1240,
+     "coins": 1240,
+     "x": 1003,
+     "y": 1048
+    }
+   },
+   "after": {
+    "first": 577,
+    "fields": {
+     "dead": 577,
+     "time": 836,
+     "score": 1240,
+     "coins": 1240,
+     "x": 1003,
+     "y": 1048
+    }
+   }
+  },
+  {
+   "level": "7-4",
+   "frames": 24000,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": 9616,
+     "time": 16,
+     "score": null,
+     "coins": null,
+     "x": 523,
+     "y": 3602
+    }
+   },
+   "after": {
+    "first": 523,
+    "fields": {
+     "dead": 9823,
+     "time": 9823,
+     "score": null,
+     "coins": null,
+     "x": 523,
+     "y": 3602
+    }
+   }
+  },
+  {
+   "level": "8-1",
+   "frames": 3800,
+   "before": {
+    "first": 22,
+    "fields": {
+     "dead": 2793,
+     "time": 22,
+     "score": 532,
+     "coins": 852,
+     "x": 736,
+     "y": 780
+    }
+   },
+   "after": {
+    "first": 736,
+    "fields": {
+     "dead": 1899,
+     "time": 1918,
+     "score": 852,
+     "coins": 852,
+     "x": 736,
+     "y": 780
+    }
+   }
+  },
+  {
+   "level": "8-2",
+   "frames": 2760,
+   "before": {
+    "first": 17,
+    "fields": {
+     "dead": 168,
+     "time": 17,
+     "score": 784,
+     "coins": null,
+     "x": 130,
+     "y": 124
+    }
+   },
+   "after": {
+    "first": 124,
+    "fields": {
+     "dead": 168,
+     "time": 185,
+     "score": 784,
+     "coins": null,
+     "x": 130,
+     "y": 124
+    }
+   }
+  },
+  {
+   "level": "8-3",
+   "frames": 4208,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": 216,
+     "time": 16,
+     "score": 182,
+     "coins": null,
+     "x": 589,
+     "y": 589
+    }
+   },
+   "after": {
+    "first": 216,
+    "fields": {
+     "dead": 216,
+     "time": 232,
+     "score": 497,
+     "coins": null,
+     "x": 589,
+     "y": 589
+    }
+   }
+  },
+  {
+   "level": "8-4",
+   "frames": 15732,
+   "before": {
+    "first": 16,
+    "fields": {
+     "dead": 6566,
+     "time": 16,
+     "score": 6722,
+     "coins": null,
+     "x": 605,
+     "y": 1409
+    }
+   },
+   "after": {
+    "first": 605,
+    "fields": {
+     "dead": 6566,
+     "time": 1336,
+     "score": 6722,
+     "coins": null,
+     "x": 605,
+     "y": 1409
+    }
+   }
+  }
+ ]
+}

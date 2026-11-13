@@ -75,9 +75,9 @@ Walk-off edge (area `walkoff`, `evidence/walkoff-findings-20261111.md`): free-pl
 ## Bullet Bill, cannons and the 5-3/6-3 generator (area `bullets`; rules and recorded timers in `data/native-bullets.json` made by `tools/derive-bullet-schedule.mjs`, code `updateNativeCannon` / `updateNativeBulletGenerator` / `nativeBulletGone`, test `tests/native-bullets.test.ts`)
 Ids (by correlation with the trace): **8 = Bullet Bill of the 5-3/6-3 generator** (flies left at 1.5 px/frame, state 0; a stomped one is state 32 and falls), **51 = cannon object** (every cannon of the six most recently loaded columns spawns it for ONE row at the cannon x, native y = remake cannon y - 8, at
 pseudo-random intervals of 19..100 frames per cannon, no frame mask, uncorrelated with Mario; first attempt of a cannon on its load), **50 = jumping spring** (stationary, y 176/184/192 while pressed; not a bullet, so IDCOV id 50 is always 0).
-**Cannon**: the object stays and flies as a Bullet Bill (state 1 from the second row, 1.5 px/frame toward Mario, first row x = cannon x, y = cannon native y) only when the cannon is on screen (0 <= x - camera <= 255; flashes at 258+ and < 0) and Mario is 58+ px away (flashes up to 37 px; 48 used);
+**Cannon** (v2 traces, `tests/native-enemy-rules.test.ts`): an attempt always makes the object (id 51, state 0) at the cannon x, native y = table y - 8, in slot s. On the next frame's pass, at slot s's turn (s does not pick), BulletBillHandler erases it when it is off screen or d = x - Mario x is in -40..38 (PlayerEnemyDiff + carry + 0x28 < 0x50), else it flies toward Mario (252/252 objects, both rows' camera and Mario after the scroll). A shot erased at its slot's turn still blocks that slot's pick. The pass runs after the frame's scroll and after the enemy loop: an enemy loaded on that frame already holds its slot (8-3 row 121). The entrance (initial RAM) already holds the table with running timers (5-2 x 272 y 112, a decoration cannon top; 7-1 304, 8-3 288). 10,645 of 10,652 non-water table rows follow the timer rule (7 rows: a slot that becomes busy later in the frame).
 otherwise it is the one-row flash. Attempt times are hidden native state: they differ between branches of the same level (8-3 cannon 288: second attempt after 72 at 164 on the route, at 138 in the independent test branch), so the remake records them per cannon from the route (`fire`, frames since the visit start; the last gaps repeat after the end). Removal: next x < camera - 72 (left) or > camera + 328 (right).
-**Generator (5-3, 6-3)**: one bullet at a time, spawned at camera + 287 (5-3 first row 42652 at camera 0; 6-3 once the camera reaches 1317) 1-2 rows after the previous one is gone (lifetime 91 rows at run speed, 123 at the start; a stomped one waits until it has fallen off), height native y 40 88 120 104 168 72 56 152 120 (5-3) and 152 40 56 (6-3), pseudo-random so recorded; the zone ends between camera 1688-1916 (5-3) / 1774-2000 (6-3).
+**Generator (5-3, 6-3)** (BulletBillCheepCheep): one frenzy Bullet Bill at a time. It is erased at its slot's turn when its x before the move is 72+ px left of the frame's camera (17/17); the frenzy then runs at the next empty slot s on the same frame, at camera + 287 (after the scroll), height = Enemy17YPosData[q] + 8 with q = random byte s & 7 moved up past the bits of BitMFilter (RAM 0x6DD, shared with the swimming Cheeps; 18/18). The zone ends between camera 1688-1916 (5-3) / 1774-2000 (6-3).
 **Contact box**: a Bullet Bill is about 9 px tall at its feet (6 < h <= 10 from two native stomps and a native pass at its top edge); the generic 16 px box hurt/stomped Mario 2-4 rows early. A stomped bullet falls with state 32 (hop 2 px, then 0.5 -> 3.25 px/frame); the remake falls faster (open).
 ## Random register and the rules on it (area `enemymotion`; `src/native-random.ts`, tests `native-flying-fish`, `native-blooper`, `native-bullets`)
 **RAM 0x7A7-0x7AD = 56-bit shift register**: every frame all bits move right one place, new top bit = bit 1 of byte 0 xor bit 1 of byte 1 (53,956 of 54,000 model-play rows; the other 44 are the engine 0 task 0 -> 1 load row, where it holds). **RAM 0x09 = frame counter**. It does not depend on the player, so "hidden state" that reads it differs between runs only through timing and free slots. `data/native-random-anchors.json` gives `tools/campaign-compare.ts` its value per row (recorded route: discontinuities, levels in the default capture phase shifted one row; level-checkpoint model runs: first row). Below, byte n = RAM 0x7A7+n and s = enemy slot.
@@ -86,6 +86,8 @@ otherwise it is the one-row flash. Attempt times are hidden native state: they d
 **Swimming Cheep generator** (2-2/7-2 water, ids 10/11; `evidence/swimcheep-findings-20261111.md`, `updateSwimGenerator`): from camera ~931 (first fish x 1217-1219) each frame, once a 32-frame timer is 0 and the lowest free slot s is below 3, a fish appears at camera + ~287 (every one of 268 free-play spawns: gap >= 32 and the lowest free slot). Byte s: id = 11 in 2-2 / 10 in 7-2 when >= 170, else the other (186/187); height index q = byte & 7, moved up (mod 8) past heights used since the bag of eight last emptied (empties when full and on each life), heights [72,56,152,88,40,104,168,120] (the same table fits each half of the runs alone; 129/135 first-life spawns). The recorded route's register reads one row off (2-2 +1, 7-2 -1), where it fits 21/21. Bob (+-15 px) is not explained by a register bit (best 70% = base rate).
 **Cannons**: table of six at RAM 0x46B/0x471/0x477 (page, x, y) and 0x47D (timer), filled in load order (wraps) when x - camera is 351-354, cleared on a load. Each frame each free slot s of 0..2 reads r = byte s+1 & mask (15 in 5-x, 7 in 7-x/8-x); r < 6 picks an entry: timer > 0 counts down, else attempt and timer = 14 (9,836 of 9,838 rows).
 **Hammer Bro lead, not implemented**: RAM 0x3C+s restarts at 193-252 on a jump and 0x78A+s at 32 (or 55); the jump strength and throw skips were not tied to a byte in 39 events. The route comparison (`Simulation.recordedRoute`) still replays recorded fish and cannon attempts: a re-seeded replay cannot reproduce the hidden slot state.
+## Podoboo, jumping Paratroopa, contact frame (v2 traces, `tests/native-enemy-rules.test.ts`, `tests/native-podoboo.test.ts`)
+**MoveJ_EnemyVertically / ImposeGravity**: native y (page 0xB6+s), 8.8 speed (0xA0+s, 0x434+s) and fraction 0x417+s: y += speed + carry(fraction += force); force += 28 (carry into speed); speed 3+ with force 128+ becomes exactly 3. **Podoboo (id 12)**: made at y 514 at rest with EnemyIntervalTimer 0x796+s = 1; when that timer is 0 it restarts from 514 with speed -7, force = random byte s+1 | 0x80, timer = (force & 15) | 6. Interval timers count down when IntervalTimerControl 0x77F wraps 0 -> 20 (once per 21 frames). It loads when the camera reaches x - 303. Firebars hold enemy slots too (6-4: bars 0, 2, 4, Podoboos 1, 3). **Jumping Paratroopa (id 14)**: made at rest; collision before the move: with speed byte + 2 >= 3 and a block under its feet it snaps to (y & 0xF0) | 8 and gets speed -3, then moves (8-2 slot 3, 8-1 slot 3: every row). **PlayerEnemyCollision** returns at once on odd FrameCounter rows (8-2 row 168), and a stomp needs a speed byte of 1+ (8-2 row 225: byte 0 is an injury from a Lakitu).
 ## Measuring artefacts: integer native x (re-seed loses <= 1 px), one-frame spawn lag (activation runs before the camera update), NEAREST zero-offset bug (fixed 400abd2).
 ## Level-end sequences (area `levelend`; rules in `data/flag-completion-rules.json` / `data/castle-completion-rules.json`, test `tests/level-end-timeline.test.ts`; `TIMESEED=1` and `TRANSITIONS=2` in tools/campaign-compare.ts)
 **RAM 0x7f8-0x7fa = the three timer digits** (hundreds, tens, ones; by correlation: 345 at the 1-1 flag, ticks every 24 rows in play, 401 -> 400 17 rows after a load; `--ram 9,2040-2042` over the whole route gives the native timer per row). Trace stages: engine 4 = pole slide (62 rows), engine 5 = walk to the castle + countdown + tail, task 0 (1-2 rows) = level load, engine 0 task 1 = 160-162 row load screen, then 1-2 rows of task 2/3 and engine 7.
@@ -111,3 +113,120 @@ Native RAM0xa0+slot is the32-bin angle and0x58+slot its fraction (two exact1070-
 
 ## Piranha contact rectangles (visible-vertical, controlled native probes2026-11-11)
 By correlation of observed RAM across save/load branches,0x4ac..0x4af is Mario's rectangle [left,top,right,bottom];0x4b0+4*slot..0x4b3+4*slot is the enemy rectangle. A Piranha uses prior native y+14..y+20; small Mario uses raw native y+20..y+32, before the floor snap (5-1 observer128,rectangle149..161 implies pre-snap129). Inclusive edges give maximum dy18.3-1 native dy19/20 survives with zero hurt/star timers, while17/18 dies. Big Mario unmeasured. Evidence and the exposed5-1 plant-phase miss: `evidence/visible-vertical-piranha-findings-20261111.md`.
+
+### Flag cutscene and the special power-up slot ($041c)
+
+`PlayerEndLevel` sends an automatic Right press through the normal player motor and background collisions. Climbing retains x subpixels ($0400), y subpixels ($0416), last fall force ($070a), and RunningSpeed ($0703). The side switch adds 14 pixels, then 24 frames later the climbing exit adds four pixels before normal motion starts. `ScrollLock` clears after the movement pass once native Mario y reaches $ae, so scrolling starts on the following row. A castle side collision starts StarFlagTaskControl ($0746); tallying begins the next frame. `data/native-flag-walk.json` and `tests/native-flag-walk.test.ts` check all 19 recorded cutscenes row by row from engine 4 -> 5 through the first tally row, including subpixels, speed, camera, timer, and score. The camera regression tolerance is restored to two pixels.
+
+The flag's movement dummy is the sixth enemy slot's $041c, retained from PowerUpObject ($2e), not from a platform. `PowerUpObjHandler` raises an item 17 pixels on FrameCounter & 3 == 0, then moves mushrooms through MoveNormalEnemy / EnemyToBGCollisionDet. A falling mushroom uses 61/256 gravity with native cap 3 and retains its position fraction on landing. Erasure happens after scrolling, at x < camera - 72. In 3-3 v2, every row 332..508 of `data/native-powerup-slot.json` verifies reveal, motion, ledges, landings, and erasure at 507, leaving $041c = 158.
+
+`FlagpoleRoutine` starts at flag y 48 and adds 255 to $041c, then adds one plus carry to y. It awards points when y is already >= $aa before that row's movement. With fraction 0 this pays after 62 rows (1-1 2181 -> 2243); with fraction 158 it pays after 61 (3-3 1047 -> 1108). Fraction 1 still takes 62 rows. These are runtime byte rules, not per-level times. The current 3-3 replay touches the pole at 1046 (native 1047), downstream of its existing y divergence at 600 and x divergence at 680; correcting the flag exposes score at 1107 and tally time at 1195 one row early. Those downstream firsts are recorded explicitly while the upstream contact fix is pending.
+
+### Strict comparison coverage audit in detail output
+
+`native-divergence.ts --detail --json OUTPUT` automatically includes a separate full-input `strict` result; `--strict` also enables it without legacy numeric samples. The programmatic `compareRun` API, legacy `fields`, and excerpt ratchet remain unchanged. Strict replay continues across logical level-number changes, including ordinary flags, castle victory, following load/UI rows and later scenes; it keeps running after earlier remake divergence. `coverage.inputFrames`, `ramFrames`, `frames`, `unsteppedFrames`, `completeInputSequence`, and `endReason` expose exactly what was stepped. Empty input, missing/extra RAM rows, unresolved ownership and unsupported object/control families prevent a complete-input result. Preloaded/blank timer digits and transition poses are compared literally in strict output, so first=0 can identify a representation gap rather than a later gameplay event.
+
+Current native area identity comes from the ROM area-data address table and loaded pointer $e7/$e8, not the look-ahead destination AreaPointer ($0750). InitializeArea completes mode task 0 -> 1 after choosing ScreenLeft_PageLoc, so repeated loads of the same stream are distinguished by that native start page. Static scene bindings follow ROM world routes (including automatic-entry headers) and ParseRow0e portal destinations through the remake pipe/vine graph. Their origins are whole-page EntrancePage values; no Mario-position offset is learned. Unknown pointers, ambiguous scene bindings, and remake/native area ownership mismatches remain explicit gaps. Every aligned area's camera and Mario position is compared; y keeps its page byte.
+
+The actor audit covers six native enemy slots including the first active row, both Bullet Bill ids ($08/$33), Bowser-flame items with `nativeFlame.slot`, and power-up slot five. Misc hammers and nativeCoin jumping/spinning coins use a separate nine-slot bank ($2a state, $7a/$93 x, $c2/$db y), matched to `nativeHammer.slot` / `nativeCoin.slot`. Matching uses bank+slot and reports missing, extra, duplicate, wrong-kind, and wrong-position actors. Power-up/hammer state bytes are compared when the remake exposes them. Pole48, castle flag49 and fireworks22 compare their actual bank slots and source positions; state bytes compare only when the source handler owns them. Other native composite-slot aliases, firebars, platforms, vines, springs, player fireballs, unknown misc objects, and missing remake slot assignments are explicit unsupported coverage; declared remake families without adapters also prevent a false complete result. This is an audit, not a replacement zero-divergence gate: `status`, `coverage.complete`, `firstCoverageGap`, diagnostic counts, per-kind mismatch counts, and capped detailed samples must be read together.
+
+The old water `enemy=null` results do not establish water parity: the legacy comparison limits enemies/camera to the main area, whereas 2-2/7-2 water is a secondary area. Strict output exposes those rows independently. `tests/native-strict.test.ts` guards first-frame inclusion, extra actors, cannon Bullet Bills, coordinate pages/origins, item slots/states, ambiguous areas, and explicit unsupported coverage. `tests/native-area-identity.test.ts` checks loaded-vs-look-ahead pointers, same-pointer pipe loads, native checkpoint pages, and all static scene bindings.
+
+Audit baseline: the same frozen strict tool on commit a885064 and the audit-only branch produced identical full JSON for all 32 v2 recordings (139,402 retained native frames; 105,210 aligned; 259,633 live native object rows; 135,239 supported/aligned object comparisons). The remaining 34,192 frames have unresolved geometry or area ownership diagnostics. On this pre-integration baseline, strict first missing-enemy rows include 1-1 at 70 (legacy enemy first 217) and both water runs at 482 (legacy enemy null); water first position differences are 2-2 at 485 and 7-2 at 488. These are coverage findings, not newly introduced behavior regressions. Re-run on current integration after merging mechanics fixes.
+
+Source identity catalog: `data/native-area-catalog.json` contains only addresses, two-byte headers, world routes, and three-byte portal metadata extracted from the retained PRG0 ROM (SHA-256 f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de) by `tools/harness/native-area-catalog.mjs`. The ROM is never stored in the repo. GetAreaDataAddrs masks AreaPointer to type bits5/6 and index bits0..4, then stores stream address+2. Raw $0750 can already name the next room while $e7/$e8 still names the current one. In 8-4, physical castle code $65 is reused at entrance pages0,7,12,16; water code $02 is separate. A source binding uses those pages rather than choosing whichever observed Mario offset matches a visit. Portal bindings retain their ROM command address/offset and static scene entrance anchor in audit output.
+
+Source-identity audit baseline on f2edc9f: all 139,402 retained native frames of all 32 v2 runs resolve to a ROM area and static native page origin, with zero unresolved loads or scene-binding diagnostics. The initial geometry audit had 26,911 native-unresolved frames. Remake/native ownership alignment improves from 105,210 to 121,246 frames; the remaining 18,156 are explicit remake wrong-level/scene ownership, not dropped comparisons. Full JSON is identical when the same new tool runs against f2edc9f and the audit-only source-identity change, and all legacy divergence fields remain unchanged. Native misc states1..47 now read as coins and match `Item.nativeCoin` slots/positions/states; legacy coin particles without a slot are explicit unassigned extras rather than silently ignored.
+
+### Native parser clock ($071f/$073d)
+
+`src/native-parser-clock.ts` implements UpdScrollVar / AreaParserTaskHandler as a pure helper. The free enemy-loader guard reads `(AreaParserTaskNum & 7) == 7` before the end-of-frame advance. ScrollHandler's actual scroll adds to ScrollThirtyTwo as an 8-bit byte; an already-selected VRAM controller6 holds the task while keeping that scroll. Otherwise an active task decrements, or a zero task consumes 32 scroll pixels and starts jump-table index7. The native CMP #$20 / BMI sign test is retained, including its byte edge behavior. The returned index exposes the native core/render/column operation; callers own scheduling and VRAM writes.
+
+Only buffer2 activity blocks this gate. RemoveCoin_Axe writes two horizontal length2 blank-metatile commands at $0341 and sets $0773=6. Ordinary Destroy/Write/ReplaceBlockMetatile writes use buffer1 ($0301) and do not blanket-block it. Parser graphics/attribute tasks themselves also leave controller6, but their packet lengths are $9a/$01; the final controller byte alone is not a valid pre-parser-busy observation. `native-parser-clock-events.ts` classifies the independent packet shape and actual camera-low-byte scroll, retaining 133,409 completed GameEngine transitions (511 groups) from all32 v2 traces. All match the helper exactly.
+
+4-3 v2: row201 ends task0/scroll31; row202 collects a coin, sets buffer2/controller6, and holds task0/scroll32; row203 therefore loads the native red Koopa at x624 before starting parser task7/scroll1; row204 blocks free-slot loading and advances to task6. A camera-cross-only rule blocks the wrong row.
+
+Native overrun evidence remains explicit: 5-2 row2178 captures task8/scroll2, FrameCounter161, Mario x2034, camera1922; row2179 has task7 with the same counter and positions. AreaParserTaskHandler sets8 before its heavy core and decrements afterward, so this one GameEngine pass spans two PPU samples. Fixtures retain both partial samples (133,410 PPU rows total); the pure helper advances once per completed GameEngine pass. No level/frame exception is added. Exact PPU replay still needs a source-derived execution-budget/overrun model; the helper does not claim to resolve that remaining issue.
+
+### Strict control-mode boundary coverage
+
+The legacy comparison boundary remains unchanged. In strict output, a same-level transition into unsupported native control modes (game-over mode3 or title mode0) now records `unsupported-native-mode`, an explicit incomplete coverage flag, a contextual end reason, and `coverage.uncomparedSameLevelFrames`. Those remaining same-level input rows are not a zero-divergence result. A native level-number change no longer truncates strict input: later scene bindings are resolved from the same ROM catalog, and following load fields/actors remain visible. Native mode2 now continues through the strict victory adapter described below; mapping retained gameplay frames alone still does not establish full input/picture coverage.
+
+### Star: shared NMI interval timer
+
+`Player.star` is now native `$079F`, rather than a fitted duration in play frames.
+`HandlePowerUpCollision` initializes it to `$23`; NMI `DecTimers` decrements it
+when `$077F` underflows and reloads to20. Pause skips both the timer and `$09`
+(the pseudo-random shift still runs); a nonzero `$0747` freezes timers until its
+own decrement reaches zero. `nativeIntervalStep` exposes these source inputs.
+The runtime uses its existing shared interval/freeze lifecycle, also advancing
+that clock during pipe/flag/castle routines. Its existing growth/injury/death
+lifecycle remains responsible for the master-freeze boundary; this unit does
+not claim a complete reconstruction of `$0747` across those routines.
+Area initialization clears `$0780..$07A1`, including Star; retained entrance RAM
+can seed `$079F` without converting units. Native `GameEngine` restores area
+music at Star4/interval0 while the player is above vertical page2, before expiry.
+
+`tools/harness/native-star-capture.py` uses the lab's NeSLE host C API and a
+caller-supplied ROM, with no ROM bytes retained. It boots normal1-1, places an
+already emerged Star in native enemy slot5 over Mario, verifies the genuine
+native pickup, and captures an unmodified760-row neutral continuation. The
+independent boundary matrix restores that pickup snapshot1,008 times to test
+pause0/1, master control0/1/2/255, all21 interval phases, and six Star values.
+`data/native-star-clock.json` retains only RAM fields. All1,008 transitions and
+760 continuation transitions match the source helper; the actual runtime also
+matches every continuation row's Star/interval/counter/music. This pickup has
+interval10 and expires725rows later;725 is fixture evidence, never a runtime
+constant. Historic visual lifetime brackets in `powerup-rules.json` are unused.
+
+The capture also stores `$03C4` and the player OAM attribute selected through
+`$06E4`. `PlayerGfxHandler` consumes the stored bits before the late Star palette
+cycle. `Simulation.starDrawPalette` therefore exposes the prior palette bits
+(0..3), including own0 on the pickup row and the final Star palette on the
+expiry row; it becomes undefined once ordinary drawing resumes. `starPalette`
+is the persistent stored value for the next draw. Every one of the760 native
+continuation OAM rows matches; choosing a palette directly from the current
+Star timer/counter would be one draw early at each transition. Renderer callers
+must test whether the snapshot is defined, including when `player.star===0`.
+The automatic intro pipe still uses its existing aggregate native load clock;
+adding another interval step there would count the same pipe NMIs twice.
+
+### Strict victory and following world-load continuation
+
+Strict replay no longer stops at native mode2 or resets the remake at victory.
+It preserves every earlier gameplay first divergence, steps every victory row,
+and continues the following input rows across the logical level-number change.
+ROM area bindings resolve subsequent scenes; a transition still retaining the preceding physical area uses that area's
+declared coordinate origin. Its compiled source provenance must match the native
+ROM stream/origin; wrong or unresolved ownership is explicitly incomplete. Unsupported native modes0/3 still have an
+explicit end reason and remaining-frame count. Legacy comparisons are unchanged.
+
+`native-victory-readout.ts` shares source-owned control comparisons with the
+existing castle audit. Task, counters, timers, frame counter, random register,
+and alive Bowser bytes remain visible even when earlier gameplay has already
+diverged. Destination `$34` is owned after Setup, and walk `$35` only after
+the first actual task2 call; neither alias is compared prematurely. Bowser body
+bytes stop being owned when its live native flag/id disappear. PlayerRdy may
+release the world-load object on the final ready row, so that row compares the
+ready engine/task contract instead of claiming a missing load object.
+
+A valid Bowser rear alias now compares its own enemy slot and position.
+DuplicateEnemyObj copies the page; BowserGfxHandler offsets coordinate bytes
+without carrying between pages. Other composite aliases remain explicit gaps.
+The portable fixture retains all2,840 original1-4 PPU rows: earlier gameplay,
+695 victory rows and167 following world-load rows. The earlier gameplay
+divergence remains in the full report. Across all32 v2 inputs, this expands
+strict stepping from139,402 to142,848 rows (2,780 victory and666 following
+world-load rows), with every one of the256 legacy field firsts unchanged.
+This is added measurement coverage, not a claim that those new rows match: in
+5-4 an earlier gameplay failure leaves no remake victory owner, which remains
+an explicit mismatch/gap while replay continues. Platforms, retainers, firebars
+and other families without adapters still prevent a complete-coverage pass.
+
+### Ordinary flag and full-input detail continuation
+
+Strict comparison now steps every available input/RAM pair across logical level changes, not only after mode2 victory. The old natural-level boundary is removed; the retained tail is part of the input contract. A brief logical/physical scene transition keeps its preceding declared ROM origin. The remake's actual compiled area source (`mazeSource`) must bind to that same native stream/origin; mismatched or unknown ownership reports `post-level-scene-transition`. This native behavior is not itself a permanent unsupported exclusion. Source load-control objects are checked when owned; absent next-area UI/control ownership reports `native-load-control-not-owned`. The existing earlier field divergences are retained unchanged.
+
+Eleven complete ordinary-flag captures retain 30,604 PPU frames, including 1,834 following-level rows that the old level scope skipped. The source-backed regression checks every input is stepped, every preceding first divergence is retained, and the remaining load/UI/actor gaps cannot become a clean pass. Existing castle continuation fixtures remain unchanged. Unsupported modes0/3 still stop with explicit unstepped counts; they do not imply complete-input or picture parity.
+
+CLI `--detail` prints every strict field first plus input/RAM/stepped/unstepped/aligned counts, compared/native actor rows, gaps, complete-input status and end reason. It no longer allows legacy `enemy=null` or a level-scope null table to stand alone as the user-visible result. Actual CLI tests authenticate native entrance data and verify both the default strict detail contract and a deliberately truncated RAM/input pair. Programmatic `compareRun(..., detail=true)` still returns the original legacy API only.

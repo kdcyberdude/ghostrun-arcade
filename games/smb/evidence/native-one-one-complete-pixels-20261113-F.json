@@ -1,0 +1,38 @@
+{
+  "schema": "smb-complete-picture-evidence-v1",
+  "runtime": "4d39a1e3e855e736d1ce0138408c82904207da01",
+  "status": "EXACT_WHOLE_HUD_PLAYFIELD_PASS",
+  "scope": "Original1-1 recording only; entrance-initialized native-pixels replay. Does not verify power-on mood recordings.",
+  "report": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/pixels-1-1-4d39a1e.json",
+  "sha256": "9161f81aed7c25e4508a5310d0228977b8b99611d0458be194585e1796504a36",
+  "coverage": {
+    "completeInputSequence": true,
+    "inputFrames": 3020,
+    "availableNativeFrames": 3020,
+    "allFrames": true,
+    "victory": false,
+    "excludedFrames": 0,
+    "excluded": {
+      "mode1": 0,
+      "mode2": 0,
+      "otherMode": 0,
+      "differentLevel": 0
+    },
+    "comparedFrames": 3020,
+    "alignedFrames": 3020,
+    "unresolvedAlignmentFrames": 0,
+    "noOverlapFrames": 0,
+    "partialOverlapFrames": 0,
+    "comparedAlignedPixels": 144960000,
+    "expectedAlignedPixels": 144960000,
+    "overlapFraction": 1
+  },
+  "zeroFields": [
+    "all",
+    "hud",
+    "field",
+    "aligned"
+  ],
+  "errors": [],
+  "offPalette": {}
+}

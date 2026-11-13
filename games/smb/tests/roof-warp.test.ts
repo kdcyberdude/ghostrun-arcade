@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
+import parserStarts from './fixtures/native-roof-parser-starts.json';
 import {observedLevels} from '../src/levels.js';
 import observations from '../data/warp-1-2-observations.json';
 import fixtures from '../data/warp-1-2-fixture-inputs.json';
@@ -10,12 +11,12 @@ import type {Button} from '../src/types.js';
 // exit pipe 2656, first warp plant 2856, registration anchor 2672). Map coordinates of this file therefore moved -16 against the screenshot-era values
 // (spawn 2594/camera 2473 -> 2578/2457, camera stop and activation 2834 -> 2818, pipes 2864/2928/2992 -> 2848/2912/2976, side pipe 2672 -> 2656,
 // width 3090 -> 3074); screen positions are unchanged. data/warp-1-2-observations.json keeps the screenshot-frame cells: nativeCell() maps them.
-const nativeCell=([col,row,...rest]:number[])=>[row<=12?col-1:col,row,...rest]; // rows 0-12 follow the drift, the floor rows 13-14 stay
+const nativeCell=([col,row,...rest]:number[])=>[col-1,row,...rest]; // every row follows the drift, the floor too (native block buffer, evidence/native-level-map.json)
 function roofFixture(){
  const all=observedLevels(),source=structuredClone(all.find(l=>l.id==='1-2')!);
  source.main='area-2';const area=source.areas.find(a=>a.id===source.main)!;
  area.spawn=[2578,32];area.camera=2457;area.spawnVelocity=[0,0];area.entryFall=undefined;
- const sim=new Simulation([source,...all.filter(l=>l.id!==source.id)]);sim.reset(true);return sim;
+ const sim=new Simulation([source,...all.filter(l=>l.id!==source.id)]);sim.reset(true);const parser=parserStarts.samples.find(s=>s.level==='1-2')!;assert.equal(sim.camera,parser.camera);(sim as any).areaControls.seedNative(parser.column,parser.locked);Object.assign((sim as any).parserClock,{task:parser.task,scroll:parser.scroll});return sim;
 }
 
 test('the observed roof extension remains in the same1-2 area with real pipes and explicit unknown cells',()=>{
@@ -29,20 +30,20 @@ test('the observed roof extension remains in the same1-2 area with real pipes an
  assert.ok(area.pipes?.some(p=>p.x===2656&&p.to==='area-3'&&!p.requiresWarpActivation),'normal exit remains available');
 });
 
-test('ordinary roof movement activates the sign at the camera stop and removes only the three warp plants',()=>{
+test('ordinary roof movement activates the source warp column and clears live plants',()=>{
  const sim=roofFixture(),area=sim.area,warpX=area.warpZone!.removePiranhasAtX;
  const ordinaryPlants=sim.enemies.filter(e=>e.kind==='piranha'&&!warpX.includes(e.x));
- assert.equal(sim.warpZoneActive,false);let firstActiveFrame=0;
+ assert.equal(sim.warpZoneActive,false);let firstActiveFrame=0,lockedAt=0;
  for(let frame=1;frame<=300;frame++){
   const x=sim.player.x;sim.step(['right','b'],1);
   assert.equal(sim.area,area);assert.equal(sim.areaFrame,frame);assert.ok(Math.abs(sim.player.x-x)<=2.5);
   assert.ok(sim.camera<=2818);
   if(!sim.warpZoneActive)assert.ok(sim.camera<2818);
-  else if(!firstActiveFrame){firstActiveFrame=frame;assert.equal(sim.camera,2818);}
+  else if(!firstActiveFrame){firstActiveFrame=frame;lockedAt=sim.camera;assert.equal(sim.parserColumnX,area.nativePiranhaKills![0].column);assert.equal((sim as any).areaControls.locked,true);}
  }
- assert.ok(firstActiveFrame>0);assert.equal(sim.warpZoneActive,true);assert.equal(sim.camera,2818);
+ assert.ok(firstActiveFrame>0);assert.equal(sim.warpZoneActive,true);assert.equal(sim.camera,lockedAt);
  assert.equal(sim.player.y,208);assert.equal(sim.lives,3);assert.equal(sim.phase,'play');
- assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&warpX.includes(e.originX)),false);
+ assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&warpX.includes(e.originX)&&e.active&&!e.slotFreed&&e.dead<100),false);
  for(const plant of ordinaryPlants)assert.ok(sim.enemies.includes(plant),'unrelated plants are not removed by warp activation');
  sim.reset(true);assert.equal(sim.warpZoneActive,false);assert.equal(sim.enemies.filter(e=>e.kind==='piranha'&&warpX.includes(e.x)).length,3);
 });
@@ -64,8 +65,8 @@ test('down on a warp pipe before activation cannot change worlds',()=>{
 // so the earlier 15-frame right segment (tuned to the fitted 1..3 frame pause) no longer lands on the pipe.
 const nativeMotorAlignment:Record<string,[number,string[],number][]>={
  '2':[[2,['right'],5],[4,['right'],20]],
- '3':[[2,['right'],0],[5,['left','a','b'],35],[6,['right'],8]],
- '4':[[2,['right'],0],[5,['left','a','b'],35],[6,['right'],10],[8,['left','a','b'],45]],
+ '3':[[2,['right'],0],[4,['left'],32],[5,['left','a','b'],35],[6,['right'],8]],
+ '4':[[2,['right'],0],[4,['left'],32],[5,['left','a','b'],35],[6,['right'],10],[8,['left','a','b'],37],[9,['right'],15]],
 };
 // Re-aligned again after the native takeoff-reversal rule (a jump out of a run-speed reversal keeps the doubled step; the roof bounce starts with
 // one: right,b 300 then left,a,b 30) and the run-class walk-off rule changed the bounce trajectory. Route 2: first right segment 0..20 with the
@@ -73,6 +74,8 @@ const nativeMotorAlignment:Record<string,[number,string[],number][]>={
 // (the only passing first-segment value); route 4 keeps its own 41-frame pair (passes for 41..45 with right 5..36 after route 3's prefix).
 // Re-aligned once more after the air step rule (doubles while facing and motion disagree): route 3 airborne pair 27..42 with right 0..28 (chosen 35/8), route 4 41 with right 0..30.
 // Route 4 re-aligned after the small-player Down stop applies in every area (hdrift6): pair 45 with right 10 (passing 43..48 / 2..16).
+// Routes 3 and 4 re-aligned for the byte-exact native motor (src/native-player-motor.ts): the left walk off the pipe top before the first airborne pair is
+// 32 frames (24 left Mario still in the air there; passing 31..34), route 4's second pair 37 with right 15 (passing 0..25 at 37).
 // Scan: evidence/local/warp-realign/scan.ts. The assertions below are unchanged: only the composed input durations moved.
 for(const route of fixtures.routes)test(`ordinary controls traverse the compiled roof/chamber and enter warp${route.label} to${route.targetLevel}`,()=>{
  const sim=roofFixture();let sawPipe=false,sawIntro=false;

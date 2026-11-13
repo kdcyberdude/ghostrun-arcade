@@ -1,0 +1,6196 @@
+{
+  "schema": "native-cannon-batch-causal-v1",
+  "candidate": "a64d7b7",
+  "baselineFingerprint": "d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41",
+  "runtimeChanged": false,
+  "scope": "Two originalv2 levels only; cannon-only counterfactual; allothercandidatechangesheldfixed. Fullstrictinputcoveragecounts anddiagnosticsretained. Noall32/fullsuite/pixelaudit.",
+  "proof": {
+    "native8_2VerifiedRows": 2760,
+    "nativeBoundsCalls": 342,
+    "nativeBoundsErasures": 33,
+    "observerSha256": "190c7ace2d112189147ddd2e2f01b561822892202523da95779f539bc61b18a8",
+    "erase1380": [
+      {
+        "frame": 1380,
+        "endFrame": 1380,
+        "pc": 54906,
+        "slot": 0,
+        "x": 1492,
+        "sub": 128,
+        "camera": 1565,
+        "master": 0,
+        "state": 1,
+        "beforeFlag": 1,
+        "afterFlag": 0,
+        "afterX": 1492,
+        "cycles": 131
+      }
+    ]
+  },
+  "classification": {
+    "8-2": "Native slot0bullet erases1380 beforemotion. Bothcandidate andcannonrevertedmodel thenputPiranha2104slot4 at1450; nativeownsPiranha2104.5slot2. Thiswrong-slot/missingowner precedeskind1453inbothtrajectories. Correctedtimers selectzero entry4 at1453 andloadbulletintowronglyfree2; oldtimer13 delaysit andmerelyhideskinduntil1476. Thefactorygap1450remainsunfixed.",
+    "7-1": "Native logical7-2 beginsload3651 (task0/engine5); bothmodelsremain7-1 afterearlierplayerY444. Candidateisplaynotloading,oldcannonmodelisgameover; readyfalse accidentallymatchesnativeonlyintheoldmodel. Bothalreadyhavewronglevel/counter3651, soexactload.ready shiftfollowsknownupstreampath, notsource-loadregression."
+  },
+  "nativeRam": [
+    {
+      "id": "8-2",
+      "ramSha256": "55689587f5c530e2cf25c97883eefa6b37e3ebc101d3af8e6573ff1d20520149",
+      "initialRamSha256": "9337c5a602420f4cda365cc78f13b37ec87e3f7755050b2a721e8abeacfffe68",
+      "padsSha256": "3cf7b7c3b7ef08d09e5410a8ae8967bbd60056473b5b9a4455e4da567630f4ff",
+      "rows": {
+        "1379": "H4sIAAAAAAACA9WVT0gUYRTA35vZ2dmFbZVSXFoKQcE9eFjsEnTIdSLsIi0YekvJoiLCg0vrYWEMjx7m4MGDh013c9PKDSLWP9Soiy6kJNVBECJQSPNml88c2d7Mru06uyklRD2+b37v+9733nwf87156c03yE9UtggD9QD1NgREADgHwBEMvUAKJxE55Lj8GY+L2Rgzr7MKotUqkmIxGZSPStknhZTPJgO/twdADbiD79OlyFZ6Y8FEYlQPaDKIY21hL9HmksnrynehvAoOl+6ggRsVcCxJ/zNyZvs6te3UVmgLaidvjT/oKY22yK50VWuvBgHqoT4i9VB/HQT6fRAabIDAoAQh/TsyDXdZGHmm8RPUZ9gG8QvxK3GTOC4tsOfSO/aCGCdGfJNs2DdLfjuJKCJ7jDvqCDGGO6kniAlNSlJfVMekpDoqLaaeScnUU2mR4k5R3DmKO0Vx51jU94rd8b1mI8S7RMZ1s12uh+Lu0X4E9og4RBwmRoga+WnkZ46z7zfkm2b3fEna3zTtLyledFhKxIoSqEYrxwt/8IXfItR8oL5KfQ2ba7aI34i7KMDxJZ0/CEwANN3P3vTCS25ISQYWSy7LOsEJfmOEhckrgyzLBZMvu27DuuFaRPpoto/YVsS2kkn/Ym6CIFhF8erysuLtjIfVuCo70GJ3OIufF+12nucP2IIDDyP7txlmxKX5mfdLhv5/if9aTvX/clWHaXwzg+Yj5C+dwbQ7f/tvnKEj337UeVzZle3gbDr0dOlcNRDy73Nr43mLt7EtqMTUlY1qpnlqlYFwLJ5QU8tU8XgPrHsgghhXFKPGcD8rnFV0n05DtUID0aY/4DJcaqDrxhl5XSaiww1uCpF9Ub3ueLKOAmAAsrl2QUTuYJVCfT210rOZ+gZwQqcTXHmLbAWnW2icb1ntmgXoArDrkd2nsBygEryZDC0rKMnG38z0TxPsucJqNfToD9sqdtYACAAA",
+        "1380": "H4sIAAAAAAACA9WVX0hTYRTAz3f/bjH/MCwHtZAUHPQiPgm97Hoj7EUcGPmWooZFhA+NJjS4RmAPQpdeJHpwlEubmgsi1pTYmpBSoZBFEESg0CqCqAe/cnI79265691SSog6cPY733e+79zv7H7nHv6F2A3+KuCveQG8NgBCwBAGNWdapHCWEIYwjHnG46I2Sq3rBF4UBBENzuK4uqTufqOi8dbiYNfXAdZzxzE9T5ciRxkYC8RiETRUi0Mcbw8ZWbkU3HX0u7CnGraWvoCBzkrYkWj/jLi/nHCX7CKIpZcH4ienzveXh48rLq26bSADftTgFSRqcKge/EMSBIcbwT8sQ1B/jzRD1miIsDTDPkBN0jTyHfID8j1ySn5M78gL9C4yihyR4vSm9Aj3faNhQugt5ChyDHkbmZFnUZ/ScWQEOYmcQKbZaYybwrjTGDdFw9J9ekp6SEeRp5GU6aNrTD/GXcW4GsZdxbgaxl3FuFosIydR5xPjcjIRkefnJuXk3IQ8v7HvhjRDz0izeL4ZPN8sgIMrEyvLoIYIDMv/wRt+QqD2Oepr1GXSWvsR+RW5RnjYuWjmgT8J0Hw2e9NjhZfcLBzHbVRZL5SCzxiRgopRFP3Hulu5d64HVoythaIO4uwgGu1FnK+y5V/sSDzPC6LYsrio1vVGQ4loQnEQzuYoLZ4vsdtZlt3kC1y/OGq+0ankwjOd8H+J71je9P1yVZdl3J1F6zbyl3KwnM7X8Rs5dJn92+Xjyq3sgNLmLbPT8t2AN91n0tbUwF0OxRbTHm9bT03ggnIp/Zl66hq8TS3Y8RgPrHhghJCoqho9htnocILo3qdBjYoD0ab/wBE43IjXjTHqukIkDje4sUXlnuTVNzrrMQDxQ67WDomE2dyliL4e58r3/+yyDp0l4DItshVktzzSefBTHP9lDG23i3bY63RWAFRBXbZCKwpasvE1s3zTeHu+sQqGHf4BNbsNWAAIAAA=",
+        "1450": "H4sIAAAAAAACA9VVTWgTQRR+M5tkN/ZPSqAFrRQMWG/FU0GQ2vWgIkJAMTcj1upJ9tBgRQJRMPYgEqWU2kOJh1btD4bSpLHSuBUPKViIt6BFewjFo+S0lJX47TYmm01olYLol33zzXsz780MeW9GdUyxgVHBSV8JkBgA5ryJg4xuLWqtjHN8VotX05im2eeJoii5JJHIYRs4cedZz5v4d6IN24A58Yexo6r1WGmf9q1EUql4ahqdqH3lmUDMYN4ehteZraaDR2ln3B4y6Wob7QnFfwYdhcsdvd6nzuvC55H0k8evbt31TF4KtxcP+yM6BSGhR2BIaPQYBUdPUmiij4ITMoWM/1HT2Wttkq1oupyCqNoMeBqsywXIFvQC9C1tDjxr8hfwJvwW4fdWmwI/B78AvwTrsgYh+GnwQ3w5CUlDT0JPwz8J/zRs65A87Ouw52Ffhz2PuAnEXUbcBOIuI24CcZdTujwPWVJn5Hl1Wl7KzMnzmVl5CbYcZAP2HOwbsOdgR741OlqOtLWQl7k4yuDPcX/cWxeJxcQi7RlFqxIsEJ2/Wcr02iQ30VguHcevKlOomXxmKTFbxexnnURh/GxQFgbHKG+61kWcHqIN1BnJmW1XvWtDdDpdopjNZqPdSiymxtVwA29ormy4+rxMENyCUDU2NH5vamFFXfu0srlmzWz6z3Cx3PP56gy3mm1/WfeY7bVt5cIu+EtH6K9WfVf8vzGrdIaKdWD381QyoNWz4+mKldeAWfKZ+0/3OLLfunr9ynAs7lXfZz74AzeUofBwdAzDgpfyXTTCmBKNmm8ML79wLnE1UxQ6I1AkwWjoHJ06i2zj5i1xQGKNblpFCGuOt/ZJaINUqrXjIuPVrxQz5uPzHNouwNKKLdRumSTVnM6R+xh4JzwgGiRyc/i4Od9H1EndiiVHrOuYt5ntTnO6y13B5TJo8iexCNIZAAgAAA==",
+        "1452": "H4sIAAAAAAACA9VVYUhTURQ+973tvbecCmOgFAujQYP+jIgQ+pH5+mER4aBo/1LSSKQYrJFFgxlBQiFLIqIfMgL9oc5NaLgKYv6TaDCQRBBEwR/+cDIC4RKL9b3XnNvb0EKIOtu537nfvTv3HHbOvYetnSaJTT0zr4WIQgqDEJEg1AsAzayWapYJAr7ljJPzAufGfbIsK5IiE5kMC+0PI60f4jmiVcOCSTvuhxZRxXmsGKcxlOFkMpacgBE2njzZFdFQaEaa7OL3BsdJ2lseDOhws4kOJIV/RhzfbjjqDjHA55FPIy9i9wftY9dDzYXj3uE8BaDBV0BocPQUBUbPU3C8nQLjKgW1/5Hn2Xs+xuZ4Xo1DkzwGnAbOAOPAvLoIXQG/CH4F/CL4Fb557A7f7A7wLDAL3AJuAfNqDsqxP4f9PJlXo9BEKqZGU9NqYn5Gjc7H1QS4Begy+AXwy+AXwC/Dbz/8+uG3H3798NsPv374zEK34TcLv9uII4s4tsEtQVf5JHACGAVOqavyOaup8URTIzmZJIjmP/5/HS1P3zirpLu3ry8xm5ilA0uhfBLIEl25W6z0iiJvKVkNO4Zi2ukyH0iP3nPM0DGdZnRFCB+D+N7de03r+k9rSpyeY+yqsbKkj65a14ZsNkuynMlkwm5fJJKKp0J1Ql0DWWvny0TRIooVawNvH0/H5j6mv86tpcsrm/4zuVayPJ4ayzZ97CnN7frY+2tydR/5Syn0VE493d7f2FXMYZe9tX8+uxVgs++ZXWH3NRDK6pl5O1pNQ5FkZsPV5r3tHHgUerKR4y53a1tHJ7YJTlp30UvGfOGw/sYIpRdOktNfCqxlCBNF1Aa6TBcuodoE/ZY4ojBrPaWJdiLUDmW2dgVjgIq9dlZmQuUrxUiUtEPsRyu6tZ6ayzYpVdkNnjntdYfWcAUQWSxkIZvNpmht7/aV1Uj5OfptZrjTzJaSKUqSBmM/AcMeOf4ACAAA",
+        "1453": "H4sIAAAAAAACA9VVTWgTURCet5tktzZtaQg0qJVKAhb0UDwVPFi7PaiIGFDMzRarKKWyUhfbQyB66sFDDB6KHgyFemhIk7YW0tsWRGqxNiEghoBW6UHpD1UvW6nEb9c0TTahKgXRYed9M997M28fO7PPvTHB5kLZkPWDSqSKDEJEHFfDAXSzXMpZxnF4ihmPpuU0zbxOEATRJgpEFtNEx8Dj1un4OtGiacKib/ddf6OS/Vj+Pc2vEkokYolRGEHzzpHOsI6cK4CoU99qGw/TzjLQb8DlBtqV5P4ZafxyqbF6DwHmQs9D92O37zhHLgZcObcvtEkK1P8QCPUPHyVl+AT5R9tJGZXIr39HbeXgdW2l66a2ClwFrgHXgJvSMvSrFgOOAceBcQNfA98irhdxCuJ6EacgrhdxCmLWoRri1hGnwY5Cp+BH4U8hPor4KXBpaBZ8GnwWfBp8Fnl7kLcPeXuQtw95e5C3L7EpRaCTakyKqGPS5Oy4FJmNS5PgUtAM+BT4DPgU+Ixw3G6pO9RQRx5m43jrH3/f/e4XjNwpaAb6HvoJ+pmdc28wK+1ecsWOskx09ka+0kuKvKlg1W4ZomWry2SQXqPnWFnHLAZ0Me8qP701REtGaEWJ0z2MnRVm3hhjc6XfhmC12gQhmUwGW+RwWI2rgWquupbslc/LeL6K50vm+p/cnYjOTM+nZ97NF1c2/WdyoWB5vRWmHcbYXfCdxnjlp3P+F/KXjtBd6nq7fL+xKn+Gbfbqr8+zfVM4nDueLrd9G3BF9cz5TrZakh+b23zyYDjuUZ/NvvR1XpP7A4PBIdx4nIeWmukBY3IwaNwxXOGGswkLr3LUNMj0VtIHOkMdp1FtnNHX+0Rmr6MFoq0aVfVAR7uIUaF8rx0TGFd6SzHibfomzgOGW5On7eQqWiSWnU59tPeIqw3diNRVIhY46usFve1b5KIaKd7H+JuZ/mnWqoLJ22w6jPwAs/3H5AAIAAA="
+      }
+    },
+    {
+      "id": "7-1",
+      "ramSha256": "4695eef592ca9e0bd21c05aa40c2967402cce6cde75a3b70ad6ee37ae354a0b5",
+      "initialRamSha256": "7864b82cea1a86ca902e7c44ab7a22726ad7b9c1099b5c8c96506575b67b8b2b",
+      "padsSha256": "818842bfe8cc0268ecd911f487274b697efda5a9f851755ec6e5e12e28ce5544",
+      "rows": {
+        "3650": "H4sIAAAAAAACA81VT0gUYRR/3+zf2V1UUkiRYtSNvGm1oQcpcwisaNFwzVsuSHgIVAjKCNvCQ5DE0iU3onYP7qE1HenfkGibepBO0rFLfyDYPMkY8ZkL25tvdmfH2ZWMPPjgvd/3vj+/73vDe/Mymy2EiELAJgCKDQha1CMIjVBcSG4Qn8zNcBzhtu6hKYmSLVNrAG7ezbtcbgCnPutkwwdCWAiH6wEG9YWzNzS0WBhsoSdMjE8B5oI0PiTLUgIgrC/4+1QbStyPluMejoUppWtagkUi852wZkcDV8+rcObRqGHZss8D/yqZPSMHlEtVVWiUpfj3l/Ll6Wu3yyYuhiozdT1SWoigxmRE1FjyqBBJHhNiyz4hsnxciFGMIzFCGhK3SNOLEdLk+0VE3yY5R6fEd3RGfEMlxIu1T2l37UMaQOxC/CHKdFVMUoWTqdKWpOt3ZLq+kKTIQ5EHsYkiD1V54qfe07T4CnWOTiNOIc4gSuLcMPIOI+8Q8g6pvMZzSts88r5G3nmqICqIaXEWdZEmEJ8hPkecRCx83yy+b9Fx0mMtPby/FOxezkGcNsi6O5cPBOo+on5C/Ya6iqqQjrrfxAb/LxmwOXQn0gDQ+ZUNtST3s7FgKjO1vqyqZKcGwQGdrOYIEBN/aygUKrz1y8CYHcYXjPWYzK/+VO9H7dVn8hQpZiuLRGK1O3get0YFfK8kRZGQ2Eq4gnhzBc3zvIXX5x34FR4vxVeKZfaOPqTf2Q195ArslgSDJjdocoMmd3f8rr8IbvGaXnpoj/nZwC7sKB674SCLbvtC0XPb0mtIo572ZuvdqLySqm/t6fdevxkaTa3R+sbm1vYOrYOMA/QT0hgOY5XAE07vcC73Bs2AMIaOx47GDd3g78J001K22gWeKtjA27BrqpV+Wj1Y3qbaSO72gF1tXMRQIQS0flZ2kEEFO1qyTcnk5W2g5t7yZz+rdS9UE6uXNTwhV/wV5gPaz0yz+WZb8Eea+ANv+w8iAAgAAA==",
+        "3651": "H4sIAAAAAAACA81VTWgTQRR+s9lNskm0xQq2FGXbRqxeWrVSDyLaRfAHg5W0zc0GevAgJIKgeNBVPPRQZBHBVIqNh0YwtW4RNVCssa0g4qF4Uyio9BB7kq3KVAPx7WyySTcpVuyhD958897MvJm3vG8fBOPADX8QhAYAAgKqgbAboRUqCylMEqMFD8cRbtkejmY0Spa5vgF4Ra/o8XgB3JbXzaa3JFVS1WaAqLVw/LKJDocZcNkLmJQ+BZgJWux8KqUlAVRrIdBnjEryZrwG93AS25ZtOBBGpz2ztoN8fha5cNKAY3dvlCw7NvngXyW3bmSrfqauzjNPbs8JQ9KTH2MXr1WP9Ci1uaYQzUqDqPct3IO4F7ENcR8i5kGvkBZ6lbQjttOfRKa/yQk6Jr+k4/JzqiH2NA7T7sY7tAsxiPhVTtEFOU11LkX1jjRdvJ6ii1PpinESh1/RrPwU9QV9jDiGOI6oIdrjlp7TOyYx7jOMO0l1RB0xK0+gTtMk4kPER4ijiOXvm8D3TQP4+KodW6rA6edcxC0UzNXLWwJN71E/on5BXUDVyammX0SA/5ccCC7LGGwB6PzMpmaRB9hcstHM4BdvSN4VBRd0Ms4RILb4vYqilN/6KTLghNhUKR/TxdXvxv3GWctTDJFhY22FTHinSxRxa1zC92paHAMSYSNXlm+B0KIoOkTL78KvMDSTmK1U2av6kAF3N/SRc7BWEg7bzLDNDNvMtbGDfxHc4re9dPs6s/OJnV5VPs6Sgyy7lYli1bajt1hGXOjofn4203woFO2Pa/70zJt3od6z0UtKvxojrK/EWPdoVVVkCdzjrA7n8S7RHEgDOPU50eOFbggEsdzMkq33gK8OlvA27JoG048YB2t2GuOgGYFAl9Poi6SEIYWuVb2NmTVgkHTDCpQpytwu9fV85AHjuh/qCe9nDU8qkH+z/YD5MzPHYrMt+yON/AEKNH/uAAgAAA=="
+      }
+    }
+  ],
+  "counterfactual": [
+    {
+      "id": "8-2",
+      "cannonFix": true,
+      "fields": {
+        "level": null,
+        "area": null,
+        "dead": 2003,
+        "time": 2366,
+        "score": 2470,
+        "coins": null,
+        "cam": 2004,
+        "x": 2004,
+        "y": 2004,
+        "missing": 1450,
+        "extra": 1450,
+        "kind": 1453,
+        "position": 1553,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 4,
+        "ramFrames": 2760,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 4,
+        "nativeMappedFrames": 2756,
+        "inputFrames": 2760,
+        "endReason": "unsupported same-level native mode 3 at frame 2756",
+        "frames": 2756,
+        "alignedFrames": 2756,
+        "nativeEntityRows": 7753,
+        "comparedEntityRows": 7753,
+        "nativeBirthRows": 70,
+        "areaFrames": {
+          "main": 2756
+        },
+        "complete": false
+      },
+      "diagnostics": [
+        {
+          "code": "unsupported-native-mode",
+          "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+          "area": "main",
+          "first": 2756,
+          "count": 1
+        }
+      ],
+      "samples": [
+        {
+          "frame": 1450,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1450,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1451,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1451,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1452,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1452,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1453,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 1840,
+            "y": 184,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1453,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1454,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1454,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1455,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1455,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1456,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1456,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1457,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1457,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1458,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1458,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1459,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1459,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1460,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1460,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1461,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1461,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1462,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1462,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1463,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1463,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1464,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1464,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1465,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1465,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1466,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1466,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1467,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1467,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1468,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1468,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1469,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1469,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1470,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1470,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1471,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1471,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1472,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1472,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1473,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 152,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1473,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1474,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1474,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1475,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1475,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1476,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 163,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1476,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 163,
+            "source": "enemy"
+          }
+        }
+      ],
+      "peeks": [
+        {
+          "frame": 1379,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 152,
+            "camera": 1563,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                9
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              199,
+              72,
+              198,
+              87,
+              219,
+              116,
+              194
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 51,
+                "x": 1492.5,
+                "state": 1
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1556.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1758.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 152,
+            "camera": 1563,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                9
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              199,
+              72,
+              198,
+              87,
+              219,
+              116,
+              194
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1556.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1758.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "bullet",
+                "x": 1492.5,
+                "bbCheck": false,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1380,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 153,
+            "camera": 1565,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              227,
+              164,
+              99,
+              43,
+              237,
+              186,
+              97
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 1492.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1557,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1758,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 153,
+            "camera": 1565,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              227,
+              164,
+              99,
+              43,
+              237,
+              186,
+              97
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1557,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1758,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1381,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 154,
+            "camera": 1568,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                0
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              241,
+              210,
+              49,
+              149,
+              246,
+              221,
+              48
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1557.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1757.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 154,
+            "camera": 1568,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                0
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              241,
+              210,
+              49,
+              149,
+              246,
+              221,
+              48
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1557.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1757.5,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1449,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 222,
+            "camera": 1734,
+            "cannons": [
+              [
+                2000,
+                12
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              9,
+              177,
+              162,
+              193,
+              132,
+              7,
+              15
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1915.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1953.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 1680.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1723.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 222,
+            "camera": 1734,
+            "cannons": [
+              [
+                2000,
+                12
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              9,
+              177,
+              162,
+              193,
+              132,
+              7,
+              15
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1723.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1915.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1953.5,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1450,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 223,
+            "camera": 1737,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              4,
+              216,
+              209,
+              96,
+              194,
+              3,
+              135
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1915,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1953,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1723,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 223,
+            "camera": 1737,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              4,
+              216,
+              209,
+              96,
+              194,
+              3,
+              135
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1723,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1915,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1953,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1451,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 224,
+            "camera": 1739,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              2,
+              108,
+              104,
+              176,
+              97,
+              1,
+              195
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1914.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1952.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1722.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 224,
+            "camera": 1739,
+            "cannons": [
+              [
+                2000,
+                10
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              2,
+              108,
+              104,
+              176,
+              97,
+              1,
+              195
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1722.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1914.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1952.5,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1452,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 225,
+            "camera": 1741,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              129,
+              54,
+              52,
+              88,
+              48,
+              128,
+              225
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1914,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1952,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1722,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 225,
+            "camera": 1741,
+            "cannons": [
+              [
+                2000,
+                9
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              129,
+              54,
+              52,
+              88,
+              48,
+              128,
+              225
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1722,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1914,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1952,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1453,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 226,
+            "camera": 1743,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              192,
+              155,
+              26,
+              44,
+              24,
+              64,
+              112
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1913.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1951.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1721.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 226,
+            "camera": 1743,
+            "cannons": [
+              [
+                2000,
+                9
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                14
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              192,
+              155,
+              26,
+              44,
+              24,
+              64,
+              112
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1721.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1913.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1951.5,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              },
+              {
+                "slot": 2,
+                "kind": "bullet",
+                "x": 1840.5,
+                "bbCheck": true,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1476,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 249,
+            "camera": 1799,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              27,
+              109,
+              91,
+              129,
+              54,
+              52,
+              88
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1902,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1940,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 249,
+            "camera": 1799,
+            "cannons": [
+              [
+                2000,
+                7
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1488,
+                8
+              ],
+              [
+                1680,
+                10
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                9
+              ]
+            ],
+            "random": [
+              27,
+              109,
+              91,
+              129,
+              54,
+              52,
+              88
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1902,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1940,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "7-1",
+      "cannonFix": true,
+      "fields": {
+        "level": 3651,
+        "area": 3653,
+        "dead": 1152,
+        "time": 1166,
+        "score": 448,
+        "coins": null,
+        "cam": 1034,
+        "x": 1034,
+        "y": 444,
+        "missing": 499,
+        "extra": 552,
+        "kind": 557,
+        "position": 443,
+        "state": 1051,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "continuation.frameCounter": 3651,
+        "continuation.random": 3653,
+        "continuation.interval": 3651,
+        "continuation.load.ready": 3651
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 0,
+        "ramFrames": 3816,
+        "flagFrames": 679,
+        "continuationFrames": 165,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 3816,
+        "inputFrames": 3816,
+        "endReason": "end of trace",
+        "frames": 3816,
+        "alignedFrames": 3651,
+        "nativeEntityRows": 12707,
+        "comparedEntityRows": 12703,
+        "nativeBirthRows": 140,
+        "areaFrames": {
+          "main": 3653,
+          "area-2": 163
+        },
+        "complete": false
+      },
+      "diagnostics": [
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 3651,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/main, remake 7-1/main; data=ab80, loaded page=6, origin=0, load frame=2082, task=0, look-ahead destination=29",
+          "area": "main",
+          "first": 3651,
+          "count": 2
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 3652,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3653,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=1, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3653,
+          "count": 161
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3654,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3655,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3656,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3657,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3658,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3659,
+          "count": 139
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3798,
+          "count": 12
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3810,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3811,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3812,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3813,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3814,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=2, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3814,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=3, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3815,
+          "count": 1
+        }
+      ],
+      "samples": [],
+      "peeks": [
+        {
+          "frame": 3649,
+          "native": {
+            "level": "7-1",
+            "mode": 1,
+            "task": 3,
+            "engine": 5,
+            "counter": 31,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                3
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              116,
+              170,
+              67,
+              23,
+              145,
+              190,
+              157
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 51,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "7-1",
+            "area": "main",
+            "counter": 90,
+            "camera": 1555,
+            "cannons": [
+              [
+                1664,
+                0
+              ]
+            ],
+            "random": [
+              116,
+              170,
+              67,
+              23,
+              145,
+              190,
+              157
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1785,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "piranha",
+                "x": 1752,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "piranha",
+                "x": 1848,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3650,
+          "native": {
+            "level": "7-1",
+            "mode": 1,
+            "task": 3,
+            "engine": 5,
+            "counter": 32,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                2
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              186,
+              85,
+              33,
+              139,
+              200,
+              223,
+              78
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "7-1",
+            "area": "main",
+            "counter": 91,
+            "camera": 1555,
+            "cannons": [
+              [
+                1664,
+                0
+              ]
+            ],
+            "random": [
+              186,
+              85,
+              33,
+              139,
+              200,
+              223,
+              78
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1785.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "piranha",
+                "x": 1752,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "piranha",
+                "x": 1848,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3651,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 0,
+            "engine": 5,
+            "counter": 33,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                2
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              221,
+              42,
+              144,
+              197,
+              228,
+              111,
+              167
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "7-1",
+            "area": "main",
+            "counter": 92,
+            "camera": 1555,
+            "cannons": [
+              [
+                1664,
+                0
+              ]
+            ],
+            "random": [
+              221,
+              42,
+              144,
+              197,
+              228,
+              111,
+              167
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1786,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "piranha",
+                "x": 1752,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "piranha",
+                "x": 1848,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3652,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 0,
+            "engine": 5,
+            "counter": 34,
+            "camera": 0,
+            "cannons": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "7-1",
+            "area": "main",
+            "counter": 93,
+            "camera": 1555,
+            "cannons": [
+              [
+                1664,
+                0
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1786.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "piranha",
+                "x": 1752,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "piranha",
+                "x": 1848,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3653,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 1,
+            "engine": 0,
+            "counter": 0,
+            "camera": 0,
+            "cannons": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "7-1",
+            "area": "main",
+            "counter": 94,
+            "camera": 1555,
+            "cannons": [
+              [
+                1664,
+                0
+              ]
+            ],
+            "random": [
+              247,
+              74,
+              164,
+              49,
+              121,
+              27,
+              233
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1787,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "piranha",
+                "x": 1752,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "piranha",
+                "x": 1848,
+                "dead": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "8-2",
+      "cannonFix": false,
+      "fields": {
+        "level": null,
+        "area": null,
+        "dead": 2003,
+        "time": 2017,
+        "score": 1978,
+        "coins": null,
+        "cam": 1989,
+        "x": 1989,
+        "y": 1974,
+        "missing": 1382,
+        "extra": 1380,
+        "kind": 1476,
+        "position": 1553,
+        "state": null,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 4,
+        "ramFrames": 2760,
+        "flagFrames": 0,
+        "continuationFrames": 0,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 4,
+        "nativeMappedFrames": 2756,
+        "inputFrames": 2760,
+        "endReason": "unsupported same-level native mode 3 at frame 2756",
+        "frames": 2756,
+        "alignedFrames": 2756,
+        "nativeEntityRows": 7753,
+        "comparedEntityRows": 7753,
+        "nativeBirthRows": 70,
+        "areaFrames": {
+          "main": 2756
+        },
+        "complete": false
+      },
+      "diagnostics": [
+        {
+          "code": "unsupported-native-mode",
+          "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+          "area": "main",
+          "first": 2756,
+          "count": 1
+        }
+      ],
+      "samples": [
+        {
+          "frame": 1380,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 0,
+            "kind": "bullet",
+            "x": 1494,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1381,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 0,
+            "kind": "bullet",
+            "x": 1495,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1382,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 0,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 152,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1386,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 152,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1400,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 0,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 184,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1408,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 184,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1411,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "bullet",
+            "x": 1360,
+            "y": 168,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1412,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "bullet",
+            "x": 2000,
+            "y": 152,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1440,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 2000,
+            "y": 152,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1441,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 1840,
+            "y": 184,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1444,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 2000,
+            "y": 152,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1450,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1450,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1451,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1451,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 176,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1452,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1452,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1453,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1453,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 175,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1454,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1454,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1455,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1455,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 174,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1456,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1456,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1457,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1457,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 173,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1458,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1458,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1459,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1459,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 172,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1460,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1460,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1461,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1461,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 171,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1462,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1462,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1463,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1463,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 170,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1464,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1464,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1465,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1465,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 169,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1466,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1466,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1467,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1467,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 168,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1468,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1468,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1469,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1469,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 167,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1470,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1470,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1471,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1471,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 166,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1472,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1472,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1473,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1473,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 165,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1474,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1474,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1475,
+          "area": "main",
+          "code": "missing",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy",
+            "state": 0
+          }
+        },
+        {
+          "frame": 1475,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 164,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1476,
+          "area": "main",
+          "code": "kind",
+          "native": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 163,
+            "source": "enemy",
+            "state": 0
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 2,
+            "kind": "bullet",
+            "x": 1488,
+            "y": 152,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 1476,
+          "area": "main",
+          "code": "extra",
+          "sim": {
+            "bank": "enemy",
+            "slot": 4,
+            "kind": "piranha",
+            "x": 2104,
+            "y": 163,
+            "source": "enemy"
+          }
+        }
+      ],
+      "peeks": [
+        {
+          "frame": 1379,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 152,
+            "camera": 1563,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                9
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              199,
+              72,
+              198,
+              87,
+              219,
+              116,
+              194
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 51,
+                "x": 1492.5,
+                "state": 1
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1556.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1758.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 152,
+            "camera": 1563,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                9
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              199,
+              72,
+              198,
+              87,
+              219,
+              116,
+              194
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1556.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1758.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "bullet",
+                "x": 1492.5,
+                "bbCheck": false,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1380,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 153,
+            "camera": 1565,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              227,
+              164,
+              99,
+              43,
+              237,
+              186,
+              97
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 1492.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1557,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1758,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 153,
+            "camera": 1565,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                1
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              227,
+              164,
+              99,
+              43,
+              237,
+              186,
+              97
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1557,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1758,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "bullet",
+                "x": 1494,
+                "bbCheck": false,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1381,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 154,
+            "camera": 1568,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                0
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              241,
+              210,
+              49,
+              149,
+              246,
+              221,
+              48
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 1936,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 0,
+                "x": 1557.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1757.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 1936.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 154,
+            "camera": 1568,
+            "cannons": [
+              [
+                1360,
+                12
+              ],
+              [
+                1488,
+                0
+              ],
+              [
+                1488,
+                4
+              ],
+              [
+                1680,
+                8
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                14
+              ]
+            ],
+            "random": [
+              241,
+              210,
+              49,
+              149,
+              246,
+              221,
+              48
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 2,
+                "kind": "koopa",
+                "x": 1557.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1757.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "bullet",
+                "x": 1495.5,
+                "bbCheck": false,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1449,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 222,
+            "camera": 1734,
+            "cannons": [
+              [
+                2000,
+                12
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              9,
+              177,
+              162,
+              193,
+              132,
+              7,
+              15
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1915.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1953.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 1680.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1723.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 222,
+            "camera": 1734,
+            "cannons": [
+              [
+                2000,
+                14
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                13
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              9,
+              177,
+              162,
+              193,
+              132,
+              7,
+              15
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1723.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1915.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1953.5,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1450,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 223,
+            "camera": 1737,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              4,
+              216,
+              209,
+              96,
+              194,
+              3,
+              135
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1915,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1953,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1723,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 223,
+            "camera": 1737,
+            "cannons": [
+              [
+                2000,
+                13
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                13
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              4,
+              216,
+              209,
+              96,
+              194,
+              3,
+              135
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1723,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1915,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1953,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1451,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 224,
+            "camera": 1739,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              2,
+              108,
+              104,
+              176,
+              97,
+              1,
+              195
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1914.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1952.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1722.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 224,
+            "camera": 1739,
+            "cannons": [
+              [
+                2000,
+                12
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                13
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              2,
+              108,
+              104,
+              176,
+              97,
+              1,
+              195
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1722.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1914.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1952.5,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1452,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 225,
+            "camera": 1741,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              129,
+              54,
+              52,
+              88,
+              48,
+              128,
+              225
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1914,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1952,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1722,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 225,
+            "camera": 1741,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                13
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              129,
+              54,
+              52,
+              88,
+              48,
+              128,
+              225
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1722,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1914,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1952,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1453,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 226,
+            "camera": 1743,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              192,
+              155,
+              26,
+              44,
+              24,
+              64,
+              112
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1913.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1951.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 1,
+                "id": 2,
+                "x": 1721.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 226,
+            "camera": 1743,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                3
+              ],
+              [
+                1488,
+                13
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                12
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              192,
+              155,
+              26,
+              44,
+              24,
+              64,
+              112
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 3,
+                "kind": "beetle",
+                "x": 1721.5,
+                "dead": 0
+              },
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1913.5,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1951.5,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 1476,
+          "native": {
+            "level": "8-2",
+            "mode": 1,
+            "task": 3,
+            "engine": 8,
+            "counter": 249,
+            "camera": 1799,
+            "cannons": [
+              [
+                2000,
+                11
+              ],
+              [
+                1488,
+                2
+              ],
+              [
+                1488,
+                11
+              ],
+              [
+                1680,
+                14
+              ],
+              [
+                1840,
+                0
+              ],
+              [
+                1904,
+                12
+              ]
+            ],
+            "random": [
+              27,
+              109,
+              91,
+              129,
+              54,
+              52,
+              88
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 2,
+                "x": 1902,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 2,
+                "x": 1940,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 1,
+                "id": 13,
+                "x": 2104.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2224.5,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "play",
+            "level": "8-2",
+            "area": "main",
+            "counter": 249,
+            "camera": 1799,
+            "cannons": [
+              [
+                2000,
+                9
+              ],
+              [
+                1488,
+                14
+              ],
+              [
+                1488,
+                10
+              ],
+              [
+                1680,
+                10
+              ],
+              [
+                1840,
+                9
+              ],
+              [
+                1904,
+                9
+              ]
+            ],
+            "random": [
+              27,
+              109,
+              91,
+              129,
+              54,
+              52,
+              88
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "beetle",
+                "x": 1902,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "beetle",
+                "x": 1940,
+                "dead": 0
+              },
+              {
+                "slot": 4,
+                "kind": "piranha",
+                "x": 2104,
+                "dead": 0
+              },
+              {
+                "slot": 2,
+                "kind": "bullet",
+                "x": 1488.5,
+                "bbCheck": true,
+                "dead": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "7-1",
+      "cannonFix": false,
+      "fields": {
+        "level": 3651,
+        "area": 3653,
+        "dead": 1099,
+        "time": 1118,
+        "score": 448,
+        "coins": null,
+        "cam": 1034,
+        "x": 1034,
+        "y": 444,
+        "missing": 470,
+        "extra": 381,
+        "kind": 557,
+        "position": 395,
+        "state": 1051,
+        "firebar.id": null,
+        "firebar.high": null,
+        "firebar.low": null,
+        "firebar.speed": null,
+        "firebar.direction": null,
+        "alias.owner": null,
+        "vine.count": null,
+        "vine.height": null,
+        "vine.startY": null,
+        "vine.slots": null,
+        "continuation.frameCounter": 3651,
+        "continuation.random": 3653,
+        "continuation.interval": 3651,
+        "continuation.load.ready": null
+      },
+      "coverage": {
+        "completeInputSequence": false,
+        "unsteppedFrames": 0,
+        "ramFrames": 3816,
+        "flagFrames": 679,
+        "continuationFrames": 165,
+        "victoryFrames": 0,
+        "uncomparedSameLevelFrames": 0,
+        "nativeMappedFrames": 3816,
+        "inputFrames": 3816,
+        "endReason": "end of trace",
+        "frames": 3816,
+        "alignedFrames": 3651,
+        "nativeEntityRows": 12707,
+        "comparedEntityRows": 12703,
+        "nativeBirthRows": 140,
+        "areaFrames": {
+          "main": 3653,
+          "area-2": 163
+        },
+        "complete": false
+      },
+      "diagnostics": [
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 3651,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/main, remake 7-1/main; data=ab80, loaded page=6, origin=0, load frame=2082, task=0, look-ahead destination=29",
+          "area": "main",
+          "first": 3651,
+          "count": 2
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 3652,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3653,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=1, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3653,
+          "count": 161
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3654,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3655,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3656,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3657,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3658,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3659,
+          "count": 139
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3798,
+          "count": 12
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3810,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3811,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3812,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3813,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+          "area": "area-2",
+          "first": 3814,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=2, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3814,
+          "count": 1
+        },
+        {
+          "code": "area-ownership-mismatch",
+          "detail": "native 7-2/area-2, remake 7-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=3, look-ahead destination=29",
+          "area": "area-2",
+          "first": 3815,
+          "count": 1
+        }
+      ],
+      "samples": [],
+      "peeks": [
+        {
+          "frame": 3649,
+          "native": {
+            "level": "7-1",
+            "mode": 1,
+            "task": 3,
+            "engine": 5,
+            "counter": 31,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                3
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              116,
+              170,
+              67,
+              23,
+              145,
+              190,
+              157
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 1,
+                "id": 51,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "gameover",
+            "level": "7-1",
+            "area": "main",
+            "counter": 230,
+            "camera": 1923,
+            "cannons": [
+              [
+                1664,
+                2
+              ],
+              [
+                1952,
+                2
+              ]
+            ],
+            "random": [
+              116,
+              170,
+              67,
+              23,
+              145,
+              190,
+              157
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "hammerBro",
+                "x": 2146.75,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "hammerBro",
+                "x": 2181.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "piranha",
+                "x": 2056,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3650,
+          "native": {
+            "level": "7-1",
+            "mode": 1,
+            "task": 3,
+            "engine": 5,
+            "counter": 32,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                2
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              186,
+              85,
+              33,
+              139,
+              200,
+              223,
+              78
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "gameover",
+            "level": "7-1",
+            "area": "main",
+            "counter": 231,
+            "camera": 1923,
+            "cannons": [
+              [
+                1664,
+                2
+              ],
+              [
+                1952,
+                2
+              ]
+            ],
+            "random": [
+              186,
+              85,
+              33,
+              139,
+              200,
+              223,
+              78
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "hammerBro",
+                "x": 2146.75,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "hammerBro",
+                "x": 2181.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "piranha",
+                "x": 2056,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3651,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 0,
+            "engine": 5,
+            "counter": 33,
+            "camera": 2809,
+            "cannons": [
+              [
+                1664,
+                1
+              ],
+              [
+                1952,
+                5
+              ],
+              [
+                2336,
+                14
+              ],
+              [
+                2336,
+                2
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              221,
+              42,
+              144,
+              197,
+              228,
+              111,
+              167
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960.5,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336.5,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "gameover",
+            "level": "7-1",
+            "area": "main",
+            "counter": 232,
+            "camera": 1923,
+            "cannons": [
+              [
+                1664,
+                2
+              ],
+              [
+                1952,
+                2
+              ]
+            ],
+            "random": [
+              221,
+              42,
+              144,
+              197,
+              228,
+              111,
+              167
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "hammerBro",
+                "x": 2146.75,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "hammerBro",
+                "x": 2181.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "piranha",
+                "x": 2056,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3652,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 0,
+            "engine": 5,
+            "counter": 34,
+            "camera": 0,
+            "cannons": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 2336,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 1,
+                "id": 49,
+                "x": 2960,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 2336,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 2704,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "gameover",
+            "level": "7-1",
+            "area": "main",
+            "counter": 233,
+            "camera": 1923,
+            "cannons": [
+              [
+                1664,
+                2
+              ],
+              [
+                1952,
+                2
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "hammerBro",
+                "x": 2146.75,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "hammerBro",
+                "x": 2181.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "piranha",
+                "x": 2056,
+                "dead": 0
+              }
+            ]
+          }
+        },
+        {
+          "frame": 3653,
+          "native": {
+            "level": "7-2",
+            "mode": 1,
+            "task": 1,
+            "engine": 0,
+            "counter": 0,
+            "camera": 0,
+            "cannons": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            "random": [
+              238,
+              149,
+              72,
+              98,
+              242,
+              55,
+              211
+            ],
+            "slots": [
+              {
+                "slot": 0,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 1,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 2,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 3,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              },
+              {
+                "slot": 4,
+                "flag": 0,
+                "id": 0,
+                "x": 0,
+                "state": 0
+              }
+            ]
+          },
+          "sim": {
+            "phase": "gameover",
+            "level": "7-1",
+            "area": "main",
+            "counter": 234,
+            "camera": 1923,
+            "cannons": [
+              [
+                1664,
+                2
+              ],
+              [
+                1952,
+                2
+              ]
+            ],
+            "random": [
+              247,
+              74,
+              164,
+              49,
+              121,
+              27,
+              233
+            ],
+            "entryControlLocked": false,
+            "autoWalk": false,
+            "slots": [
+              {
+                "slot": 0,
+                "kind": "hammerBro",
+                "x": 2146.75,
+                "dead": 0
+              },
+              {
+                "slot": 1,
+                "kind": "hammerBro",
+                "x": 2181.5,
+                "dead": 0
+              },
+              {
+                "slot": 3,
+                "kind": "piranha",
+                "x": 2056,
+                "dead": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1447 @@
+{
+  "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "source": "Native ROM row-$0D commands: FlagpoleObject/AreaFrenzy; bound to remake areas by native block-buffer geometry (native-level-map.ts). Positions are level data, not replay camera/frame thresholds.",
+  "areas": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3168,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 44087,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-2",
+      "area": "area-3",
+      "commands": [
+        {
+          "x": 352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ]
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2256,
+          "id": 24
+        },
+        {
+          "x": 2432,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42959,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-2",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "commands": [
+        {
+          "x": 1280,
+          "id": 23
+        },
+        {
+          "x": 1536,
+          "id": 23
+        },
+        {
+          "x": 3072,
+          "id": 24
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 416,
+          "id": 20
+        },
+        {
+          "x": 2192,
+          "id": 20
+        },
+        {
+          "x": 3152,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42523,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3344,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44036,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2416,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42093,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41732,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3552,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42297,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 44250,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "area": "area-4",
+      "commands": [
+        {
+          "x": 352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42640,
+          "offset": -176
+        }
+      ]
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2352,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43153,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41490,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3184,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43069,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "commands": [
+        {
+          "x": 3200,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43668,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2256,
+          "id": 24
+        },
+        {
+          "x": 2432,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42741,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41617,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2944,
+          "id": 24
+        },
+        {
+          "x": 2976,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43357,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3456,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42380,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 1664,
+          "id": 23
+        },
+        {
+          "x": 2192,
+          "id": 24
+        },
+        {
+          "x": 2672,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43256,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "6-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41393,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 2864,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43904,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-2",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 43060,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-2",
+      "area": "area-4",
+      "commands": [
+        {
+          "x": 1280,
+          "id": 23
+        },
+        {
+          "x": 1536,
+          "id": 23
+        },
+        {
+          "x": 3072,
+          "id": 24
+        }
+      ],
+      "source": [
+        {
+          "pointer": 44615,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 416,
+          "id": 20
+        },
+        {
+          "x": 2192,
+          "id": 20
+        },
+        {
+          "x": 3152,
+          "id": 24
+        },
+        {
+          "x": 3600,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42826,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "7-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41841,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "commands": [
+        {
+          "x": 6016,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43521,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "commands": [
+        {
+          "x": 992,
+          "id": 24
+        },
+        {
+          "x": 3456,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 43783,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "commands": [
+        {
+          "x": 3424,
+          "id": 48
+        }
+      ],
+      "source": [
+        {
+          "pointer": 42192,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "main",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "commands": [],
+      "source": [
+        {
+          "pointer": 41980,
+          "offset": -112
+        }
+      ]
+    }
+  ],
+  "method": "ProcessAreaData/DecodeAreaData row13; Area pointers/origins from native block-buffer geometry bindings, with castle axe alignment from entrance RAM. No frame/camera fits.",
+  "bindingSource": "ROM world routes, portal destinations and EntrancePage via native-area-catalog; no per-visit coordinate fit. Stream offsets are relative to the loaded area-data pointer after its two-byte header.",
+  "streams": {
+    "a690": {
+      "objects": [
+        {
+          "column": 198,
+          "command": 1,
+          "offset": 94
+        }
+      ]
+    },
+    "a834": {
+      "objects": [
+        {
+          "column": 10,
+          "command": 0,
+          "offset": 2
+        },
+        {
+          "column": 19,
+          "command": 7,
+          "offset": 4
+        }
+      ]
+    },
+    "ac37": {
+      "objects": [
+        {
+          "column": 178,
+          "command": 7,
+          "offset": 146
+        },
+        {
+          "column": 198,
+          "command": 5,
+          "offset": 158
+        }
+      ]
+    },
+    "a6f5": {
+      "objects": [
+        {
+          "column": 141,
+          "command": 10,
+          "offset": 70
+        },
+        {
+          "column": 152,
+          "command": 1,
+          "offset": 76
+        }
+      ]
+    },
+    "a1b1": {
+      "objects": [
+        {
+          "column": 128,
+          "command": 4,
+          "offset": 80
+        },
+        {
+          "column": 140,
+          "command": 3,
+          "offset": 82
+        },
+        {
+          "column": 141,
+          "command": 2,
+          "offset": 88
+        },
+        {
+          "column": 149,
+          "command": 7,
+          "offset": 92
+        }
+      ]
+    },
+    "a7cf": {
+      "objects": [
+        {
+          "column": 200,
+          "command": 1,
+          "offset": 94
+        }
+      ]
+    },
+    "ae47": {
+      "objects": [
+        {
+          "column": 80,
+          "command": 9,
+          "offset": 34
+        },
+        {
+          "column": 96,
+          "command": 9,
+          "offset": 42
+        },
+        {
+          "column": 192,
+          "command": 10,
+          "offset": 116
+        },
+        {
+          "column": 199,
+          "command": 7,
+          "offset": 118
+        }
+      ]
+    },
+    "a74a": {
+      "objects": [
+        {
+          "column": 26,
+          "command": 8,
+          "offset": 14
+        },
+        {
+          "column": 137,
+          "command": 8,
+          "offset": 78
+        },
+        {
+          "column": 197,
+          "command": 10,
+          "offset": 118
+        },
+        {
+          "column": 225,
+          "command": 1,
+          "offset": 124
+        }
+      ]
+    },
+    "a291": {
+      "objects": [
+        {
+          "column": 128,
+          "command": 4,
+          "offset": 98
+        },
+        {
+          "column": 140,
+          "command": 3,
+          "offset": 100
+        },
+        {
+          "column": 141,
+          "command": 2,
+          "offset": 104
+        },
+        {
+          "column": 149,
+          "command": 7,
+          "offset": 110
+        }
+      ]
+    },
+    "a61b": {
+      "objects": [
+        {
+          "column": 200,
+          "command": 1,
+          "offset": 110
+        }
+      ]
+    },
+    "ac04": {
+      "objects": [
+        {
+          "column": 209,
+          "command": 1,
+          "offset": 44
+        }
+      ]
+    },
+    "a46d": {
+      "objects": [
+        {
+          "column": 151,
+          "command": 1,
+          "offset": 90
+        }
+      ]
+    },
+    "a304": {
+      "objects": [
+        {
+          "column": 128,
+          "command": 4,
+          "offset": 88
+        },
+        {
+          "column": 140,
+          "command": 3,
+          "offset": 94
+        },
+        {
+          "column": 141,
+          "command": 2,
+          "offset": 100
+        },
+        {
+          "column": 149,
+          "command": 7,
+          "offset": 104
+        }
+      ]
+    },
+    "a539": {
+      "objects": [
+        {
+          "column": 222,
+          "command": 10,
+          "offset": 74
+        },
+        {
+          "column": 225,
+          "command": 1,
+          "offset": 76
+        }
+      ]
+    },
+    "acda": {
+      "objects": [
+        {
+          "column": 196,
+          "command": 7,
+          "offset": 146
+        },
+        {
+          "column": 230,
+          "command": 5,
+          "offset": 156
+        }
+      ]
+    },
+    "a891": {
+      "objects": [
+        {
+          "column": 147,
+          "command": 1,
+          "offset": 94
+        }
+      ]
+    },
+    "a212": {
+      "objects": [
+        {
+          "column": 76,
+          "command": 11,
+          "offset": 50
+        },
+        {
+          "column": 140,
+          "command": 11,
+          "offset": 94
+        },
+        {
+          "column": 160,
+          "command": 4,
+          "offset": 110
+        },
+        {
+          "column": 172,
+          "command": 3,
+          "offset": 112
+        },
+        {
+          "column": 173,
+          "command": 2,
+          "offset": 118
+        },
+        {
+          "column": 181,
+          "command": 7,
+          "offset": 122
+        }
+      ]
+    },
+    "a83d": {
+      "objects": [
+        {
+          "column": 199,
+          "command": 1,
+          "offset": 56
+        }
+      ]
+    },
+    "aa94": {
+      "objects": [
+        {
+          "column": 200,
+          "command": 1,
+          "offset": 108
+        }
+      ]
+    },
+    "a95d": {
+      "objects": [
+        {
+          "column": 184,
+          "command": 10,
+          "offset": 106
+        },
+        {
+          "column": 186,
+          "command": 1,
+          "offset": 108
+        }
+      ]
+    },
+    "a58c": {
+      "objects": [
+        {
+          "column": 216,
+          "command": 1,
+          "offset": 136
+        }
+      ]
+    },
+    "a8f8": {
+      "objects": [
+        {
+          "column": 104,
+          "command": 9,
+          "offset": 58
+        },
+        {
+          "column": 137,
+          "command": 10,
+          "offset": 82
+        },
+        {
+          "column": 167,
+          "command": 1,
+          "offset": 92
+        }
+      ]
+    },
+    "ab80": {
+      "objects": [
+        {
+          "column": 179,
+          "command": 1,
+          "offset": 82
+        }
+      ]
+    },
+    "a371": {
+      "objects": [
+        {
+          "column": 55,
+          "command": 11,
+          "offset": 30
+        },
+        {
+          "column": 71,
+          "command": 11,
+          "offset": 34
+        },
+        {
+          "column": 91,
+          "command": 11,
+          "offset": 44
+        },
+        {
+          "column": 125,
+          "command": 11,
+          "offset": 78
+        },
+        {
+          "column": 141,
+          "command": 11,
+          "offset": 94
+        },
+        {
+          "column": 157,
+          "command": 11,
+          "offset": 98
+        },
+        {
+          "column": 192,
+          "command": 4,
+          "offset": 122
+        },
+        {
+          "column": 204,
+          "command": 3,
+          "offset": 124
+        },
+        {
+          "column": 205,
+          "command": 2,
+          "offset": 130
+        },
+        {
+          "column": 213,
+          "command": 7,
+          "offset": 134
+        }
+      ]
+    },
+    "aa01": {
+      "objects": [
+        {
+          "column": 376,
+          "command": 1,
+          "offset": 140
+        }
+      ]
+    },
+    "ab07": {
+      "objects": [
+        {
+          "column": 62,
+          "command": 10,
+          "offset": 38
+        },
+        {
+          "column": 216,
+          "command": 1,
+          "offset": 114
+        }
+      ]
+    },
+    "a4d0": {
+      "objects": [
+        {
+          "column": 214,
+          "command": 1,
+          "offset": 96
+        }
+      ]
+    },
+    "a3fc": {
+      "objects": [
+        {
+          "column": 52,
+          "command": 11,
+          "offset": 18
+        },
+        {
+          "column": 126,
+          "command": 11,
+          "offset": 42
+        },
+        {
+          "column": 221,
+          "command": 8,
+          "offset": 74
+        },
+        {
+          "column": 227,
+          "command": 11,
+          "offset": 78
+        },
+        {
+          "column": 234,
+          "command": 10,
+          "offset": 82
+        },
+        {
+          "column": 288,
+          "command": 4,
+          "offset": 96
+        },
+        {
+          "column": 300,
+          "command": 3,
+          "offset": 98
+        },
+        {
+          "column": 301,
+          "command": 2,
+          "offset": 104
+        },
+        {
+          "column": 309,
+          "command": 7,
+          "offset": 108
+        }
+      ]
+    },
+    "ad7b": {
+      "objects": [
+        {
+          "column": 20,
+          "command": 7,
+          "offset": 16
+        },
+        {
+          "column": 52,
+          "command": 7,
+          "offset": 36
+        },
+        {
+          "column": 84,
+          "command": 7,
+          "offset": 88
+        },
+        {
+          "column": 116,
+          "command": 7,
+          "offset": 110
+        },
+        {
+          "column": 148,
+          "command": 7,
+          "offset": 136
+        }
+      ]
+    },
+    "a87c": {
+      "objects": [
+        {
+          "column": 84,
+          "command": 7,
+          "offset": 16
+        }
+      ]
+    },
+    "abd9": {
+      "objects": [
+        {
+          "column": 100,
+          "command": 7,
+          "offset": 38
+        }
+      ]
+    },
+    "a9d0": {
+      "objects": [
+        {
+          "column": 70,
+          "command": 5,
+          "offset": 44
+        }
+      ]
+    },
+    "ae08": {
+      "objects": [
+        {
+          "column": 32,
+          "command": 9,
+          "offset": 20
+        },
+        {
+          "column": 71,
+          "command": 10,
+          "offset": 56
+        },
+        {
+          "column": 71,
+          "command": 7,
+          "offset": 58
+        }
+      ]
+    },
+    "aec2": {
+      "objects": [
+        {
+          "column": 78,
+          "command": 7,
+          "offset": 22
+        }
+      ]
+    }
+  },
+  "bindings": {
+    "1-1/main": {
+      "stream": "a690",
+      "origin": 0
+    },
+    "1-2/main": {
+      "stream": "a834",
+      "origin": 0
+    },
+    "1-2/area-2": {
+      "stream": "ac37",
+      "origin": 0
+    },
+    "1-2/area-3": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "1-3/main": {
+      "stream": "a6f5",
+      "origin": 0
+    },
+    "1-4/main": {
+      "stream": "a1b1",
+      "origin": 0
+    },
+    "2-1/main": {
+      "stream": "a7cf",
+      "origin": 0
+    },
+    "2-2/main": {
+      "stream": "a834",
+      "origin": 0
+    },
+    "2-2/area-2": {
+      "stream": "ae47",
+      "origin": 0
+    },
+    "2-3/main": {
+      "stream": "a74a",
+      "origin": 0
+    },
+    "2-4/main": {
+      "stream": "a291",
+      "origin": 0
+    },
+    "3-1/main": {
+      "stream": "a61b",
+      "origin": 0
+    },
+    "3-2/main": {
+      "stream": "ac04",
+      "origin": 0
+    },
+    "3-3/main": {
+      "stream": "a46d",
+      "origin": 0
+    },
+    "3-4/main": {
+      "stream": "a304",
+      "origin": 0
+    },
+    "4-1/main": {
+      "stream": "a539",
+      "origin": 0
+    },
+    "4-2/area-2": {
+      "stream": "a834",
+      "origin": 0
+    },
+    "4-2/area-3": {
+      "stream": "acda",
+      "origin": 0
+    },
+    "4-2/area-4": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "4-3/main": {
+      "stream": "a891",
+      "origin": 0
+    },
+    "4-4/main": {
+      "stream": "a212",
+      "origin": 0
+    },
+    "5-1/main": {
+      "stream": "a83d",
+      "origin": 0
+    },
+    "5-2/area-2": {
+      "stream": "aa94",
+      "origin": 0
+    },
+    "5-3/main": {
+      "stream": "a6f5",
+      "origin": 0
+    },
+    "5-4/main": {
+      "stream": "a291",
+      "origin": 0
+    },
+    "6-1/main": {
+      "stream": "a95d",
+      "origin": 0
+    },
+    "6-2/main": {
+      "stream": "a58c",
+      "origin": 0
+    },
+    "6-3/main": {
+      "stream": "a8f8",
+      "origin": 0
+    },
+    "6-4/main": {
+      "stream": "a1b1",
+      "origin": 0
+    },
+    "7-1/main": {
+      "stream": "ab80",
+      "origin": 0
+    },
+    "7-2/area-2": {
+      "stream": "a834",
+      "origin": 0
+    },
+    "7-2/area-4": {
+      "stream": "ae47",
+      "origin": 0
+    },
+    "7-3/main": {
+      "stream": "a74a",
+      "origin": 0
+    },
+    "7-4/main": {
+      "stream": "a371",
+      "origin": 0
+    },
+    "8-1/main": {
+      "stream": "aa01",
+      "origin": 0
+    },
+    "8-2/main": {
+      "stream": "ab07",
+      "origin": 0
+    },
+    "8-3/main": {
+      "stream": "a4d0",
+      "origin": 0
+    },
+    "8-4/main": {
+      "stream": "a3fc",
+      "origin": 0
+    },
+    "8-4/area-2": {
+      "stream": "a3fc",
+      "origin": 112
+    },
+    "8-4/area-5": {
+      "stream": "a3fc",
+      "origin": 256
+    },
+    "1-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 0
+    },
+    "1-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 32
+    },
+    "2-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 0
+    },
+    "2-1/sky-coins": {
+      "stream": "a87c",
+      "origin": 0
+    },
+    "2-2/area-3": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "3-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 64
+    },
+    "3-1/3-1-vine-sky": {
+      "stream": "abd9",
+      "origin": 0
+    },
+    "4-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 96
+    },
+    "4-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "4-2/vine-warp-zone": {
+      "stream": "a9d0",
+      "origin": 0
+    },
+    "5-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "5-2/optional-water": {
+      "stream": "ae08",
+      "origin": 0
+    },
+    "5-2/5-2-vine-sky": {
+      "stream": "a87c",
+      "origin": 0
+    },
+    "6-2/optional-water": {
+      "stream": "ae08",
+      "origin": 0
+    },
+    "6-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "6-2/bonus-coins-late": {
+      "stream": "ad7b",
+      "origin": 96
+    },
+    "6-2/6-2-vine-sky": {
+      "stream": "abd9",
+      "origin": 0
+    },
+    "7-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 0
+    },
+    "7-2/area-5": {
+      "stream": "a690",
+      "origin": 176
+    },
+    "8-1/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 32
+    },
+    "8-2/bonus-coins": {
+      "stream": "ad7b",
+      "origin": 128
+    },
+    "8-4/area-3": {
+      "stream": "a3fc",
+      "origin": 192
+    },
+    "8-4/area-4": {
+      "stream": "aec2",
+      "origin": 0
+    }
+  }
+}

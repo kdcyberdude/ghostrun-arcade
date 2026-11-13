@@ -11,7 +11,7 @@ const NATIVE_ROWS:[string,number,boolean,string][]=[
  ['goomba',18,true,'stomp rows at dy 18'],['goomba',19,false,'1-2/mood0.r106 lives'],
  ['spiny',17,true,'6-1/mood5.r1233 death'],['spiny',19,false,'alive row'],
  ['piranha',18,true,'controlled3-1 neutral.r2966 death; rectangle144..150 vs Mario132..144'],['piranha',19,false,'controlled3-1 original.r2968 lives; rectangle145..151 vs Mario132..144'],['piranha',24,false,'4-1 and 8-1 alive rows'],
- ['podoboo',16,true,'3-4/mood5.r182 death'],['podoboo',17,false,'alive row'],
+ ['podoboo',16,true,'3-4/mood5.r182 death'],['podoboo',18,true,'6-4 v2 row841 death; native bbox9 meets Mario bottom104'],['podoboo',19,false,'native bbox9 top is below Mario bottom at dy19'],
  ['cheep',12,true,'leaping Cheep death'],['cheep',13,false,'7-3/mood0.r487 lives'],['cheep',0,true,'2-3/mood5.r500 death'],['cheep',-1,false,'2-3/mood3.r1812 lives'],
  ['blooper',0,true,'2-2/mood5.r958 death'],['blooper',-1,false,'2-2/mood0.r1086 lives'],
  ['paratroopa',-1,true,'8-2/mood3.r220 death'],['paratroopa',-2,false,'alive row'],
@@ -32,6 +32,7 @@ function contact(kind:EnemySpec['kind'],dy:number,vy:number,setup?:(sim:Simulati
  const level:Level={id:'fixture',time:400,main:'main',evidence:'Synthetic hurt fixture at native offsets',areas:[{id:'main',width:1024,palette:0,theme:'ground',spawn:[100,208],tiles,enemies:[{kind,x:109,y:feet}],evidence:'Synthetic'}]};
  const sim=new Simulation([level]);sim.reset(true);
  sim.player.y=my+32;sim.player.vy=vy;sim.player.grounded=false;setup?.(sim);
+ (sim as any).broClock=1; // PlayerEnemyCollision runs on even frame-counter rows
  (sim as any).updateEnemies(sim.player.y);
  return sim.phase;
 }
@@ -41,8 +42,10 @@ test('5-2 mood0 r1434: a rising Mario touches a Koopa at dy 23, one row lower he
  assert.equal(contact('koopa',24,-4),'play');
 });
 
-test('rising off a stomp is not a touch in the extended Koopa reach',()=>{
- assert.equal(contact('koopa',20,-4,sim=>{(sim as any).bouncing=true;}),'play');
+test('a retained native collision latch protects a rising stomp bounce, not the bounce flag alone',()=>{
+ const setup=(sim:Simulation,bits:number)=>{const s=sim as any;s.bouncing=true;s.enemies[0].active=true;s.enemies[0].enemySlot=0;s.collisionBits[0]=bits;};
+ assert.equal(contact('koopa',20,-4,sim=>setup(sim,1)),'play');
+ assert.equal(contact('koopa',20,-4,sim=>setup(sim,0)),'dying');
 });
 
 test('a Cheep below its native reach no longer hurts (old 16 px box reached dy 22)',()=>{

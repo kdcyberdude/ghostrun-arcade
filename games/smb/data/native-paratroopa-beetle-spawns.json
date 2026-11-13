@@ -984,6 +984,23 @@
     "report": "evidence/paratroopa-beetle-findings-20261109.md",
     "nativeFrame": 73412
    }
+  },
+  {
+   "level": "4-3",
+   "area": "main",
+   "match": {
+    "kind": "paratroopa",
+    "x": 576,
+    "y": 80
+   },
+   "replace": {
+    "y": 64
+   },
+   "classification": "native red vertical Paratroopa object row: initial $CF and original-y $0401 are 40 (v2 frame 161)",
+   "provenance": {
+    "report": "evidence/walkers2-findings-20261113.md",
+    "nativeFrame": 161
+   }
   }
  ],
  "additions": [

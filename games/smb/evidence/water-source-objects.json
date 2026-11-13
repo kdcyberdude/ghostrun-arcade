@@ -1,0 +1,355 @@
+{
+ "schema": "native-water-source-object-fix-v1",
+ "base": "4aa045a",
+ "source": {
+  "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "enemyPointer": 41312,
+  "blooperRecords": [
+   [
+    0,
+    304,
+    184
+   ],
+   [
+    12,
+    560,
+    184
+   ],
+   [
+    14,
+    720,
+    184
+   ]
+  ],
+  "liftRecords": [
+   [
+    2,
+    352,
+    96
+   ],
+   [
+    4,
+    448,
+    192
+   ]
+  ],
+  "frenzyCommands": [
+   [
+    32,
+    9,
+    23
+   ],
+   [
+    71,
+    10,
+    24
+   ]
+  ],
+  "rules": "InitBloober/SetBBox/InitVStf; LargeLiftDown/PlatLiftDown/PosPlatform/SPBBox; ProcessEnemyData; AreaFrenzy FrenzyIDData20/23/24; cached PlayerEnemyCollision before movement/late whirlpool."
+ },
+ "regression": {
+  "frame": 2937,
+  "nativeEngine": 11,
+  "beforeModel": "play",
+  "afterModel": "dying",
+  "playerBox": [
+   79,
+   37,
+   89,
+   49
+  ],
+  "blooper0Box": [
+   76,
+   48,
+   86,
+   54
+  ],
+  "collisionByte0491": 1,
+  "NoRunPage": "Fresh queued slot3 retains rawYHigh0/YLow0, unwrapped\u2212256. Placed controllers default page1."
+ },
+ "checks": {
+  "focusedTests": 32,
+  "testStatus": "PASS exit0",
+  "fullSuite": "not run; integration batch owns it",
+  "tsc": "not run; integration batch owns it",
+  "main2-2And7-2": "all legacy and strict fields null, declared coverage/mode3 limits unchanged",
+  "soft5-2Right": "Mario/death/time/score/coin/camera null; retained main-area enemy1002 and strict741/795/1002 before optional entry"
+ },
+ "runs": [
+  {
+   "run": "water-right-strokes",
+   "nativeInput": {
+    "schema": "native-entrance-controller-branch-v1",
+    "level": "6-2",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+    "backendSha256": "21e5e07a7b93d26e4ed8a8c11ac4fa98782b91ad5a89ed00397b837ab84178e8",
+    "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+    "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+    "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+    "baselineFrames": 4696,
+    "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+    "commonPrefixFrames": 461,
+    "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+    "padsSha256": "5fa0011a41b86d83f07120af80d20139a52a63d05feb0b1b160a2fadd54de779",
+    "ramSha256": "c82b8ed28c8d010648ec94db1b2355b92d643791bacc1a70ce1b4054b346e7fb",
+    "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+   },
+   "waterRows": 811,
+   "activeBlooperLiftRows": 2518,
+   "births": [
+    [
+     2411,
+     0,
+     7
+    ],
+    [
+     2459,
+     1,
+     39
+    ],
+    [
+     2528,
+     2,
+     39
+    ],
+    [
+     2604,
+     4,
+     7
+    ]
+   ],
+   "before": {
+    "dead": 2895,
+    "time": 2905,
+    "score": 2914,
+    "coins": 2914,
+    "cam": 3582,
+    "x": 3293,
+    "y": 3293,
+    "enemy": 1543
+   },
+   "after": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null
+   },
+   "remainingCoverage": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4623
+    }
+   ]
+  },
+  {
+   "run": "water-reverse",
+   "nativeInput": {
+    "schema": "native-entrance-controller-branch-v1",
+    "level": "6-2",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+    "backendSha256": "21e5e07a7b93d26e4ed8a8c11ac4fa98782b91ad5a89ed00397b837ab84178e8",
+    "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+    "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+    "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+    "baselineFrames": 4696,
+    "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+    "commonPrefixFrames": 461,
+    "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+    "padsSha256": "b528e7ac046d13ae4fb6505329151b4ad13d7ff82a8b1d8e519b62bb2d4f1c73",
+    "ramSha256": "d6ce968c148a9de08cda1b674d495607aa1b0c9109bd392f30a2444764fe867c",
+    "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+   },
+   "waterRows": 922,
+   "activeBlooperLiftRows": 1308,
+   "births": [
+    [
+     2411,
+     0,
+     7
+    ],
+    [
+     2763,
+     1,
+     39
+    ]
+   ],
+   "before": {
+    "dead": 3003,
+    "time": 3025,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": 3401,
+    "y": 3401,
+    "enemy": 1543
+   },
+   "after": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null
+   },
+   "remainingCoverage": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4512
+    }
+   ]
+  },
+  {
+   "run": "water-down-strokes",
+   "nativeInput": {
+    "schema": "native-entrance-controller-branch-v1",
+    "level": "6-2",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "archiveFileSha256": "ea89bdcd695165794323eb7aea1b232748f6d6709b16974083b0657f7b2e900c",
+    "backendSha256": "21e5e07a7b93d26e4ed8a8c11ac4fa98782b91ad5a89ed00397b837ab84178e8",
+    "baselinePadsSha256": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+    "originalActionsSha256": "3aae103d79738cb252317499b8a06ba94c17dff21907deab64d4f9ea09f7480c",
+    "initialRamSha256": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+    "baselineFrames": 4696,
+    "baselineRamSha256": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e",
+    "commonPrefixFrames": 461,
+    "commonPrefixRamSha256": "7ad1558910f6a70af439e53278cc8a98d1d219b9166c0f08eca64be47ea6dcb1",
+    "padsSha256": "b842a9f8540b012166372e43c534cf4a220fb16e5c5f996531802977f9b51e0b",
+    "ramSha256": "617a80947ef164c872d08af029f89381875abc12d9ff91b06d0c4f96a2672522",
+    "method": "Complete original native v2 baseline and unchanged common RAM prefix verified byte-for-byte; restored full archived entrance, controller-only changed decisions, no RAM writes or mid-run corrections."
+   },
+   "waterRows": 853,
+   "activeBlooperLiftRows": 2686,
+   "births": [
+    [
+     2411,
+     0,
+     7
+    ],
+    [
+     2459,
+     1,
+     39
+    ],
+    [
+     2528,
+     2,
+     39
+    ],
+    [
+     2604,
+     4,
+     7
+    ]
+   ],
+   "before": {
+    "dead": 2937,
+    "time": 2953,
+    "score": 2963,
+    "coins": 2963,
+    "cam": 3582,
+    "x": 3335,
+    "y": 3335,
+    "enemy": 1543
+   },
+   "after": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null
+   },
+   "remainingCoverage": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4581
+    }
+   ]
+  }
+ ]
+}

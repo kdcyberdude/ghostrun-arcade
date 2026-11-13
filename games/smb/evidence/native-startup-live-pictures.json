@@ -1,0 +1,285 @@
+{
+  "pin": "a0add246d6fafa4d561f2bdb3ae7eeb51316b51f",
+  "comparedFrames": 1533,
+  "allFramesActuallyCompared": true,
+  "wholePixels": 0,
+  "hudPixels": 0,
+  "fieldPixels": 0,
+  "results": [
+    {
+      "name": "start40",
+      "comparedFrames": 197,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "2a239cad71c8e521a8f7743bfa8ba5c46227d417f18c23e6b0f93a7d3c125d1a",
+        "ramSha256": "74964aedc371902813e0ccebd873a6c04ddc87b8f247210af01f2de7e2fb88e3",
+        "pixelsSha256": "cceab60bf0f72ffabae3e94b74bee40d15156eba65df54ab3bba27a2d03fc825",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 40,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 194
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/start40",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/start40",
+        "197",
+        "54100"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/start40/rows.json"
+    },
+    {
+      "name": "start80",
+      "comparedFrames": 239,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "d0ff22884b6128afe0d793dceff04ea55976b97c5e539aeaacd2e01e2f815fe3",
+        "ramSha256": "d5ca75deee18ca9c404e40e9ca13ff857d463de004cbb8f9f05f38e1aa40da3c",
+        "pixelsSha256": "4014db8d40e83608898c297ae4063543abdc2d81851d93cef307dda74e0c32ae",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 60,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 236
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/start80",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/start80",
+        "239",
+        "54101"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/start80/rows.json"
+    },
+    {
+      "name": "select40-start80",
+      "comparedFrames": 239,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "fad71faec0c8c02318df1f92edc6fc232c9640a9de1774e2c435f97404419415",
+        "ramSha256": "42590d82ac245edc3c4d15435fc6a1f71b32edf80e37159bc125e5e7b3661e0e",
+        "pixelsSha256": "99d638ec31609be2b4b9ae88b3108dcd81b61aa7d74c85aa1c697ad9d4bcac7f",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 40,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 236
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/select40-start80",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/select40-start80",
+        "239",
+        "54102"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/select40-start80/rows.json"
+    },
+    {
+      "name": "a-start50",
+      "comparedFrames": 218,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "849b490c4301c7ba92e26e1cfa47b793f0681679e53735bf5feb26b63e0d13a3",
+        "ramSha256": "1048014d6c1557dc6606659b8b7dfce3c6b1cd4913afd709d582e28688e14b5f",
+        "pixelsSha256": "e42d797572c58d592621bb6daf7323f3cc2cf34b8840b4a169fc247a9551e20f",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 50,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 215
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/a-start50",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/a-start50",
+        "218",
+        "54103"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/a-start50/rows.json"
+    },
+    {
+      "name": "b-start40-start80",
+      "comparedFrames": 239,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "b565ee9e5f16797bb18876a241e1b75e32d59268ca598ce7aee777981f2a013b",
+        "ramSha256": "31c6c7eab233db5caa2d306c79613e18ea5c64b074cf4368d0010244d0471086",
+        "pixelsSha256": "4014db8d40e83608898c297ae4063543abdc2d81851d93cef307dda74e0c32ae",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 40,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 236
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/b-start40-start80",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/b-start40-start80",
+        "239",
+        "54104"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/b-start40-start80/rows.json"
+    },
+    {
+      "name": "held-start0",
+      "comparedFrames": 120,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "3ede7b3833e0b33f83162c1ce5b16b883ba9dbc9c5053fc156de26b8eb9465e7",
+        "ramSha256": "7ac7b5690e27bef20da9a3404df959e68ca7c8cb2f51c0533516a3f8f3c01817",
+        "pixelsSha256": "7e786631497f4c49b590e9dc89087a4105dbf1037cb88f5bfc221fc0cbbc090b",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 0,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": null
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/held-start0",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/held-start0",
+        "120",
+        "54105"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/held-start0/rows.json"
+    },
+    {
+      "name": "held-start0-release-start120",
+      "comparedFrames": 281,
+      "nonzeroFrames": 0,
+      "wholePixels": 0,
+      "hudPixels": 0,
+      "fieldPixels": 0,
+      "firstDifference": null,
+      "receipt": {
+        "schema": "native-startup-prefix-v1",
+        "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+        "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+        "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+        "padsSha256": "9709bedfb25cb835b8585bf6a18b9f75146d8dabac3d1a9f50ff8c5a712e5d0e",
+        "ramSha256": "7c98b44539c545a1e535b5f4237926132269d6b948a9491bd48ab3eb97c0d027",
+        "pixelsSha256": "e130c5adf091874bc0603a4494ce58d603c1a008cc1ad8e33363edd2a110a447",
+        "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+        "commonReferenceFrames": 0,
+        "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "firstPlayerRdy": 278
+      },
+      "command": [
+        "node",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs",
+        "/home/kd/.codex/worktrees/smb-native-startup-prefixes/held-start0-release-start120",
+        "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/held-start0-release-start120",
+        "281",
+        "54106"
+      ],
+      "allRowJson": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24/held-start0-release-start120/rows.json"
+    }
+  ],
+  "schema": "native-startup-live-pictures-v1",
+  "role": "bounded independent continuous POWER-ON 2D pixel comparison; no native observation injection; no later reseeding; no frame skipping after failure",
+  "scope": "Seven source prefixes through first PlayerRdy plus two rows; held-Start case120 rows. Full320-frame native captures remain authenticated but later frames beyond these1533 selected prefix rows are outside this proof.",
+  "paletteNormalization": "Exact existing native-pixels.ts NES palette-index RGB equivalence; no tolerance, row mask or fitted color/timing values",
+  "provenance": {
+    "pin": "a0add246d6fafa4d561f2bdb3ae7eeb51316b51f",
+    "role": "continuous reset(playing:false); draw before every source pad; no fixture injection or later reseeding; compare all frames even after a failure",
+    "sourceSha256": {
+      "src/simulation.ts": "e821e52b12e02676524d2b6b84f359cb8791deb2835faafebd496bc39893ba8a",
+      "src/renderer.ts": "cb424a08e955a7412f9e733310e4574335aa1eb422d5ecd602c41830c4a1e820",
+      "src/native-startup-picture.ts": "41d1e5f782b072bd8eb5ce198131475400b589da43b56d41ddc143673b27119d",
+      "src/native-cold-startup.ts": "510dd84767d046067db37b8aee5ee1474a2e2c4566ea3fa2842dd782f3a45566",
+      "src/native-title-controls.ts": "75553f36e4690e571a24b720226d787ea06655bda624c8cc597e384290da7d02"
+    },
+    "toolSha256": "732f03b8dbc648e28ad3f3835eb3d31f069e5f6f4ecc2f1489b554b5fb7c0e85"
+  },
+  "tools": {
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/capture.cjs": "732f03b8dbc648e28ad3f3835eb3d31f069e5f6f4ecc2f1489b554b5fb7c0e85",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/run-live.py": "a72d0c05b6b7806d969b43237d49e112d4f1816b7bcec4c416f587519351bcac"
+  },
+  "reproduce": {
+    "cwd": "/home/kd/.codex/worktrees/smb-boot-picture/games/smb",
+    "command": "/home/kd/anaconda3/bin/python /home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/run-live.py",
+    "captures": "/home/kd/.codex/worktrees/smb-native-startup-prefixes",
+    "persistentOutput": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-a0add24"
+  },
+  "artifacts": {
+    "a-start50/rows.json": "67161f61d0369461639686c43621ea71cd05962c711c1c2a1fd8b22f2a8ef744",
+    "a-start50.command.json": "0ce22db9a92785e0ae8020c0c3bd40dded8700667acbfeccbb3fdf60221170d8",
+    "b-start40-start80/rows.json": "ce5152c1b4cc861489ee31cfe5c511f783729ccce575de95b89893538ad8a319",
+    "b-start40-start80.command.json": "243c6d38dbaa4640003dea085affacfe2a672b7f23a4b4879366f5b712dd9635",
+    "held-start0/rows.json": "7e355e974e8722e943d943854f631eb3e642f063079ce01ed31a0febf8e82ca5",
+    "held-start0-release-start120/rows.json": "46f6a2f07792843807b79576c0d1d18ba6cfcafadc78972d42cec6420794b6e9",
+    "held-start0-release-start120.command.json": "9d75ed7f09a35315f808ab629fef71cb0f6f41304b6ad4ea754ba170ef690704",
+    "held-start0.command.json": "beda0d0802fb0c1d875f5dddf102215e6184bbaa3cc1184ea0c387944d00bd65",
+    "provenance.json": "7d2be5a200c1dd2e099dae6e8eddb70036f277b1abbe54e3ef4bae218cc015d8",
+    "select40-start80/rows.json": "ce5152c1b4cc861489ee31cfe5c511f783729ccce575de95b89893538ad8a319",
+    "select40-start80.command.json": "3d667e0895efa8d2c44539865ae62dfc42052558780db26dc25ddac297c1386e",
+    "start40/rows.json": "ed8af38e459898b3ec8d10cf85cdd3ea3e9b7a307ab96de513ee601c19d02269",
+    "start40.command.json": "a65e0d487a30e840f071e0ab4117af729452765e6dfe04b6a95f36103eebad85",
+    "start80/rows.json": "ce5152c1b4cc861489ee31cfe5c511f783729ccce575de95b89893538ad8a319",
+    "start80.command.json": "b870087987e13b2bb77ff575e0aff68d802525e734e2ed86905d77684012de6d",
+    "summary.json": "533a6e7c50f34daca46fa34beb34c1f529e0aa3c5ade899445884d27a9b5c21a"
+  }
+}

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 
 // Contact rectangles correlated against controlled native save/load approaches, not extracted game tables.
 const cases=JSON.parse(fs.readFileSync(new URL('./fixtures/native-piranha-contact.json',import.meta.url),'utf8'));
@@ -31,7 +32,7 @@ test('movePlayerY keeps the Piranha contact feet from before the floor snap',()=
 test('the exact 3-1 approach survives the retracting plant for the full native branch',()=>{
  const c=JSON.parse(fs.readFileSync(new URL('./fixtures/native-piranha-approach.json',import.meta.url),'utf8')),a=c.seed;
  const level=structuredClone(observedLevels().find(l=>l.id==='3-1')!);
- const sim:any=new Simulation([level]);sim.reset(true);sim.loadArea('main',[a.x+a.subx/256,a.y+32+a.suby/256],a.x-112);sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;
+ const sim:any=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.loadArea('main',[a.x+a.subx/256,a.y+32+a.suby/256],a.x-112);sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;
  const plant=sim.enemies.find((e:any)=>e.kind==='piranha'&&e.x===1656);sim.enemies=[plant];plant.active=true;plant.y=a.plantY;plant.phase=0;plant.age=2*(plant.y-(plant.originY-24));delete plant.slotBorn;
  const p=sim.player;Object.assign(p,{vx:a.vx/4096,vy:a.vy+a.vyFrac/256,grounded:false,facing:1});sim.motor.reset(a.vx,1);sim.motor.moving=1;sim.motor.airRun=false;sim.fallGravity=a.fallForce/256;sim.runJump=false;sim.mediumJump=false;sim.jumpArc=true;sim.landJump='held';
  const keys=['up','down','left','right','a','b','start','select'],buttons=(pad:number)=>keys.filter((_,j)=>pad&(1<<j));sim.inputs=[new Set(buttons(c.rows[0].pad)),new Set(buttons(c.rows[1].pad))];

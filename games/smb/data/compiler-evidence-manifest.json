@@ -1,0 +1,1566 @@
+{
+  "schema": "authenticated-compiler-evidence-v1",
+  "sourceRepository": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs",
+  "recovery": "Original sibling repository artifacts; pinned production/proposal hashes unchanged. Original report snapshots reconstructed only at independently attested top-level dates and verified against their original complete-file SHA256 values.",
+  "archive": {
+    "file": "data/compiler-evidence.tar.gz",
+    "sha256": "ca7f448a8f106a831f5afde10496f7e71126956a9c3c5b68999920d726217612",
+    "bytes": 2957049
+  },
+  "files": [
+    {
+      "path": "evidence/eight-one-gap-coins-plan.json",
+      "sha256": "f9977a4cdf3ce13c677ed386f06c5c12db6ebca69ee4e8a66d7e8da5bae3d6a5",
+      "bytes": 494,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-gap-coins-plan.json"
+    },
+    {
+      "path": "evidence/eight-one-gap-coins-proposal.json",
+      "sha256": "8f73be59406cc4d1a5c835f3fe01b217e0bcf9b915bdb2ef9cab7614732fd179",
+      "bytes": 745,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-gap-coins-proposal.json"
+    },
+    {
+      "path": "evidence/eight-one-gap-coins-source-audit.json",
+      "sha256": "efd68789f914d5da5e4e6401f9dc5fe8b2f676e1252c15a914e9944fadf74868",
+      "bytes": 5588,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-gap-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/eight-one-starting-castle-fragment-plan.json",
+      "sha256": "de1f30e1d86401fe320f42908ef9f6ff19bcdc81843495c15897dce0ce5e3951",
+      "bytes": 2043,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-starting-castle-fragment-plan.json"
+    },
+    {
+      "path": "evidence/eight-one-starting-castle-fragment-proposal.json",
+      "sha256": "86d9808b2fd71621abbd41f4d55884c7a85acc25e0d726295d9c4a9d10388090",
+      "bytes": 519,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-starting-castle-fragment-proposal.json"
+    },
+    {
+      "path": "evidence/eight-one-winged-duplicate-proposal.json",
+      "sha256": "013d46366a980fd74e7d249b001ac7f0c1608317675cfed2bb4535294f18a179",
+      "bytes": 6142,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-one-winged-duplicate-proposal.json"
+    },
+    {
+      "path": "evidence/eight-three-upper-bro-proposal.json",
+      "sha256": "b2908c8d09473ea5cc48abb0bd9e6c595f0897032522d747979476878056518e",
+      "bytes": 7897,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-three-upper-bro-proposal.json"
+    },
+    {
+      "path": "evidence/eight-two-koopa-track-proposal.json",
+      "sha256": "d62e6e4081b88d596071449149821d831f0d00d60efad7e34d2f4a891754a113",
+      "bytes": 6181,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/eight-two-koopa-track-proposal.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-chain-calibration.json",
+      "sha256": "6960952ee8a194783174caee7b2b4cc31ad893ec86468188b37af87fb080d22c",
+      "bytes": 352871,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-chain-calibration.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-chain-reserved.json",
+      "sha256": "e73b5f47ddbbf29a729906fb5bab52132df9b8e960d00f1f8cdcfc173ece5824",
+      "bytes": 370006,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-chain-reserved.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-fresh-calibration.json",
+      "sha256": "14fd0ba6d9a5a122353ba226d8c6d3c7838b941b90f95ee18b08f5723ac67e0b",
+      "bytes": 487244,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-fresh-calibration.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-fresh-reserved.json",
+      "sha256": "39bcd4be46dcdd6f06a5a25b9878b3fe726f2a39f431edcbaf71af487bbc4288",
+      "bytes": 244420,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-fresh-reserved.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-report-rerun-attestation.json",
+      "sha256": "d7ab440cb5842391606175244fe073f235128aed2df2fa5b428bb90dd5a9b62a",
+      "bytes": 4243,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-report-rerun-attestation.json"
+    },
+    {
+      "path": "evidence/firebar-5-4-shared-verification.json",
+      "sha256": "f56096e640d0b301b2bac7f71a6eaff684eb6f13596b7d057e310fe551b853d4",
+      "bytes": 85133,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-5-4-shared-verification.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal0-poses.json",
+      "sha256": "6466b1bf5990f75e6603e80453e381cbb10a21447e6c91499b5ac1e1a1789067",
+      "bytes": 115094,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal0-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal0-v3-chain.json",
+      "sha256": "f31cf3af2cf13660e32174ee9ff5d6e1a5047a28e06448eb37c28ef60f76e83f",
+      "bytes": 4128056,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal0-v3-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal0-v3-crossfit.json",
+      "sha256": "6157c50662ad1e35996bb4bb4f23f35e7a372bb2f0f70e7b7819a438291cc74f",
+      "bytes": 4180452,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal0-v3-crossfit.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal20-poses.json",
+      "sha256": "11669b9942ac934de0a2f4c03613cf85a52af9ed0c636c7799b9e16a83612b9a",
+      "bytes": 128730,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal20-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal20-v3-chain.json",
+      "sha256": "dba6c86d452e830ea93c79624d3a28cdbb74de38a845eb9d1c153484faba7c0c",
+      "bytes": 4818681,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal20-v3-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-cal20-v3-crossfit.json",
+      "sha256": "06df935044558d938d63bbd79473058e1affa5d18b1297044c8c33bb58bfe3da",
+      "bytes": 4846821,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-cal20-v3-crossfit.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-calibration-closure.json",
+      "sha256": "b97ec925fe6e251c25214ace515e51500bea1f2ebcba5557f84b2eedcaafb37a",
+      "bytes": 205414,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-calibration-closure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-calibration-direction.json",
+      "sha256": "4eb0d52614d664a01d85b34b10cd64921cd96259634052be60b7713780ccbebf",
+      "bytes": 1733,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-calibration-direction.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-calibration-measurements.json",
+      "sha256": "3dad9808b866d89f4b2c8fae9cb1453c49a45083164ad17c7f0cdaed0a1f0337",
+      "bytes": 1460700,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-calibration-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-calibration-registry.json",
+      "sha256": "0d7a9f464c80a909846bda75825ca0e871502570602df8ed3d1e48430d9cfc0b",
+      "bytes": 761244,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-calibration-registry.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-calibration-sources.json",
+      "sha256": "95c5fa024cb55fe86c88a3ed9ccc71a2c969dd94f9b25b240db86a1c7a74828b",
+      "bytes": 978,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-calibration-sources.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-phase-candidate.json",
+      "sha256": "bdf3ba131ac6a187bf9ec9fcfcc8eb375bfa4690bcf925a488b01e8ef61bf669",
+      "bytes": 2546,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-phase-candidate.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-plan.json",
+      "sha256": "70f958e7a57e36e4b7105ffeed6014b16a81e9b7e7a0b067bca91c0dd7f7ac36",
+      "bytes": 4303,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-proposal.json",
+      "sha256": "2e09d078af335c60480e5a85714fa9f74e0528f15ccf9a0d7012c3782254ca7c",
+      "bytes": 7346,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-proposal.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-closure.json",
+      "sha256": "c1f7156931110fbcdfe47e1c9b2b64375a7a6f3322a24fe5d1591319a13c74ce",
+      "bytes": 210300,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-closure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-direction.json",
+      "sha256": "471715620d71e2de617dcc14433dc2c3ef77f997ba2faaa0538b4a2c243a9317",
+      "bytes": 1231,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-direction.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-measure-plan.json",
+      "sha256": "0ad3b4ff2d849667c2c2abaf525eec1d0b1aea0aa0113546362ca142a28a3c88",
+      "bytes": 772,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-measure-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-measurements.json",
+      "sha256": "faf5a02e9c062a72a88f9efb6514ae3d178e3e659a8f86f6cb370e681fb3b676",
+      "bytes": 726490,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-plan.json",
+      "sha256": "feffd62ed73b512e14a65066da923cf500279f36c66a690ccd1417c03cd852df",
+      "bytes": 1453,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-poses.json",
+      "sha256": "3bd36aaca0420d258d903bbc0df97e2983caebfa83cf6b9132dbe1035d69a92b",
+      "bytes": 136260,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-registry.json",
+      "sha256": "0476d5db13c1feecf64edb1723e62ee02f8a88eabe7bbc3118653be21e1388fd",
+      "bytes": 387344,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-registry.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-sources.json",
+      "sha256": "340aebb2c10c26f803fff33558a8e4e0c24054dffeb318355b90b53d0d77fdfc",
+      "bytes": 595,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-sources.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-v3-chain.json",
+      "sha256": "608c4cd85263ab8a78698af0e2b02b00fc0cd273952d42cddf97c9df32c5e431",
+      "bytes": 5056066,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-v3-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-reserved30-v3-crossfit-cal0.json",
+      "sha256": "7722c1c1d0c6cad66a92aeccf1f254c1d7f7c6f0b4c3c268999c99a66846eae6",
+      "bytes": 5084206,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-reserved30-v3-crossfit-cal0.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-shared-config.json",
+      "sha256": "bc413e56331ba73005790d7bca53dc2eb4f6f3c039f786d4a3c2bf6c75510154",
+      "bytes": 1098,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-shared-config.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-1080-shared-verification.json",
+      "sha256": "d1f279b9102568648e3d37dcf1a829be8fcbca12dea1953ed9b74b9a91ab8d10",
+      "bytes": 95793,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-1080-shared-verification.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-888-proposal.json",
+      "sha256": "87f67afb378ddf9655451a79d696d446bcd7b6dbdd01d472027b9034bbb6f425",
+      "bytes": 8212,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-888-proposal.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-888-shared-config.json",
+      "sha256": "46b17656e5aaa9c7868d8e62c81652a8191be901688dfea2007a90e6363dfefa",
+      "bytes": 1314,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-888-shared-config.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-888-shared-verification.json",
+      "sha256": "367df7210a5e2fbf4df36d248a4ce37547d39e55c068dcd1c38c617936ef85f7",
+      "bytes": 127070,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-888-shared-verification.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal0-chain.json",
+      "sha256": "5b3fe7eb1d6364636bd33ea78ef019e17e9448415630310f7393a8e40299906a",
+      "bytes": 4237428,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal0-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal0-crossfit-cal20.json",
+      "sha256": "9587984a772410ae9d58d114ead7d8b5054969367ca082a11aaac5b42664cc53",
+      "bytes": 4288647,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal0-crossfit-cal20.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal0-poses.json",
+      "sha256": "8af1044b072d5222ad16feb13b762d514a108a6075bd9401ad89d13368283196",
+      "bytes": 111450,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal0-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal20-chain.json",
+      "sha256": "313dbc62840d0c3157ca4a032c12d375bf02a3ea50a949b11781faa3ffe2b8a6",
+      "bytes": 4732678,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal20-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal20-crossfit-cal0.json",
+      "sha256": "e3abd2c6c0acf46625351a55d6c2b3a3777b4345fc6999270327489b68d6922a",
+      "bytes": 4786667,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal20-crossfit-cal0.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-cal20-poses.json",
+      "sha256": "072662b80797e3e4b999dc64ece77e21e6ab2526fa5f3623b9972313528a8aba",
+      "bytes": 122533,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-cal20-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-calibration-closure.json",
+      "sha256": "3f77d0baecf3ba20867e1cb742ab9c74290ccdf07f8e2f39996f292578923f06",
+      "bytes": 195265,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-calibration-closure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-calibration-direction.json",
+      "sha256": "e59f227bd65e340570a3749d35a34d8086e734b456b72fd969a96632956f4a86",
+      "bytes": 1716,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-calibration-direction.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-calibration-measurements.json",
+      "sha256": "9e29c92a6c00d21f520b9304b7f3842d269326f9952e63403dd7be2b009556de",
+      "bytes": 1411584,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-calibration-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-calibration-registry.json",
+      "sha256": "822f8e826a5c8164952e09c805d64dbe850002cd9b699a6155262ed5c1dd3c6c",
+      "bytes": 754962,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-calibration-registry.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-calibration-sources.json",
+      "sha256": "8dd7ade5b788937de94d574882961aae3a19e3f1a0b489df77ca61a989ea617a",
+      "bytes": 871,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-calibration-sources.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-inventory-candidate.json",
+      "sha256": "7c1f6449ef5db85ca96d6c2ddedd8297d20146c83ecfbecd379b059e5b936a3d",
+      "bytes": 5765,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-inventory-candidate.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-inventory.json",
+      "sha256": "2395843e73b23ade55d661121d412802d473e9d64719c0ac243e2edebe1c675e",
+      "bytes": 1438473,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-inventory.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-phase-candidate-freeze.json",
+      "sha256": "45fc2b1f0d2da143ca66037e434e38d596c2feb9843962c27d5007a186f00673",
+      "bytes": 1191,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-phase-candidate-freeze.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-phase-candidate.json",
+      "sha256": "75870035ddec8602e258201ce118d74cdf19dc9529a013ba51c6d6db444455a6",
+      "bytes": 2739,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-phase-candidate.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-phase-plan.json",
+      "sha256": "4f9ac4fe2bc3bd75193818745e1389ab6248bd5c42f64c0f211ebf8e7d782a58",
+      "bytes": 2150,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-phase-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-plan.json",
+      "sha256": "5917ac9717f995d8d41be6d9d83a52a770937158098ced943a4b6a00f38ff103",
+      "bytes": 1734,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved13-failure.json",
+      "sha256": "f12e87730b9dbecaf01217e65e9d7f4f3962ae7b2854f028b7b8bab2044fbcaf",
+      "bytes": 1885,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved13-failure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-chain.json",
+      "sha256": "8d907303bd6c0a7f882448366f1b59eeef53db6b6446a788a423a93583a2c33e",
+      "bytes": 4876509,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-closure.json",
+      "sha256": "ae4cf9b65d983000455e09cf49564daefaf061dca6fc385b6d38974af52c3b1c",
+      "bytes": 199168,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-closure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-crossfit-cal0.json",
+      "sha256": "8a1989ea2a38577ba439e9c6cf2e5c2f1317205acb8f5708163d7ba693084fb3",
+      "bytes": 4942847,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-crossfit-cal0.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-measurements.json",
+      "sha256": "44e554fdd7f48a697272847d336538c8503b45dcecf6360d13eee9f14d650651",
+      "bytes": 695144,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-plan.json",
+      "sha256": "b28fcd85580fae2a7ad8b6df36a79653afe2618c3fc8497498028b60a20e4b7a",
+      "bytes": 2612,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-poses.json",
+      "sha256": "e1f4ae35da00b8072dc9c3ea7f2ccfbed007ad493208339d47c969a2baa5a253",
+      "bytes": 128980,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-registry.json",
+      "sha256": "d4ed966a7d60efe8ecb95425317035f60077a2b5161cae181da4e9d30e8a481e",
+      "bytes": 385701,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-registry.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved28-sources.json",
+      "sha256": "284f9a10382da8d6115401ffd25ce8152a1c8eadbfc1d585c59ff42b7a0a5bd1",
+      "bytes": 561,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved28-sources.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-chain.json",
+      "sha256": "2be8179eac09825fe6dc07e399bf74dc6aee7d547db247a06e23440bd957ae38",
+      "bytes": 4926218,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-chain.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-closure.json",
+      "sha256": "ed1cc4f7f29f95ba2605e567bdcae3897d3647184efe73c64174fc18f7847daa",
+      "bytes": 200140,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-closure.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-crossfit-cal0.json",
+      "sha256": "e0508ce004325fe78bc6c84e2e0981c069083b5716f9fc81972039f301dfba16",
+      "bytes": 4992997,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-crossfit-cal0.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-measurements.json",
+      "sha256": "b31f8b4e162784d95aeb742917cf28e0975c8ef67372e753f92fa7b08a67658d",
+      "bytes": 693818,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-plan.json",
+      "sha256": "7c9819c58bcfd60a7f9c48532b0184b9c45ab6c767b59de70845d2c9a9a4da3c",
+      "bytes": 2050,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-plan.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-poses.json",
+      "sha256": "9f045ddbf9e1312fbb2ab5d7f02725c3a7ec09bd06aa7b9108427271a47a172b",
+      "bytes": 130264,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-poses.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-registry.json",
+      "sha256": "360ae3c8940e82cfa21ae3eb545ff30abf92d38297ca761eb765383b589b159e",
+      "bytes": 385701,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-registry.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-reserved30-sources.json",
+      "sha256": "0a8e2ae29c1c78e719f4887f8fcf1811041850786742b040509a928dcd365ed0",
+      "bytes": 559,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-reserved30-sources.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-v3-direction.json",
+      "sha256": "59a1f6f9b8f1efacc2f09f6c76e8e360aa09edc608a1da5c1d36592d092f8cb3",
+      "bytes": 3458,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-v3-direction.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-v3-inventory.json",
+      "sha256": "70d84def7436cb8a031a669e40a10ed63530fe7e6fea42ff62b532d53dcf5dc5",
+      "bytes": 1315890,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-v3-inventory.json"
+    },
+    {
+      "path": "evidence/firebar-five-four-extra-v3-plan.json",
+      "sha256": "f3e1c9766872e9e8519262e14cc3f6ae42bf4f7e5585152b6499221fea055281",
+      "bytes": 1229,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-five-four-extra-v3-plan.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-calibration-base-qualified.json",
+      "sha256": "3fcc1503755d8b9922b0e52e8bb84c3879f4286ac324b5a9ccacf9da47348b32",
+      "bytes": 83066,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-calibration-base-qualified.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-calibration-direction.json",
+      "sha256": "31f077b1493bb0eb3e7c1f545b09132722977efe9034c78acd8401b97b7e7274",
+      "bytes": 1711,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-calibration-direction.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-calibration-measurements.json",
+      "sha256": "7a493894c07f98b37d422f6e7cc01cf4aed2edbdc7fb235beb306159db48a24b",
+      "bytes": 841836,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-calibration-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-calibration-registry.json",
+      "sha256": "8494c66cbff0fed0765098b327243e02c97b97ac568adc4fa65dc70b96044583",
+      "bytes": 1140880,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-calibration-registry.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-plan.json",
+      "sha256": "ca26ef92a91edc9123ab52bf78a036ace18bca17332ef37410e0bd65b45d7356",
+      "bytes": 2430,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-plan.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-proposal.json",
+      "sha256": "79dcaae2c13f44f46f44a9abf43c14372698b292d889d71e5c0b1bfd4c61f8cb",
+      "bytes": 6633,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-proposal.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-reserved-base-qualified.json",
+      "sha256": "dfb6b307277172ec4e3ce258dc08929246082a1fd1a9b71a5c0c1741a9f32a86",
+      "bytes": 42308,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-reserved-base-qualified.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-reserved-direction.json",
+      "sha256": "b68c57f16c176d60d47f5bba5ed03bc7bc5a80109c267942ea607d9a4d090a34",
+      "bytes": 1212,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-reserved-direction.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-reserved-forecast.json",
+      "sha256": "6fafef39af77a5334485f7d9adcb823ba436d1a415933c019a2b955bc96b24bb",
+      "bytes": 1354,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-reserved-forecast.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-reserved-measurements.json",
+      "sha256": "7e489c9d6c1bdb68d509e78d9c92825e35a4bd82a7c29374ab01c21ad41bc959",
+      "bytes": 453283,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-reserved-measurements.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-reserved-registry.json",
+      "sha256": "f7ab9fc6a3f4ed99137419e8a263082429187c5af8e97f50c260da1e7b4610a6",
+      "bytes": 685151,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-reserved-registry.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-shared-config.json",
+      "sha256": "cf8e3dfd426edaa9b3c1b2848785a179ae39b8dd351e64506e84fb8ad4683d96",
+      "bytes": 460,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-shared-config.json"
+    },
+    {
+      "path": "evidence/firebar-three-four-shared-verification.json",
+      "sha256": "2f74ad8df4755f89829ab10089e0eadbbda760671ee99d90fa99e9c443f9cca6",
+      "bytes": 109073,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/firebar-three-four-shared-verification.json"
+    },
+    {
+      "path": "evidence/five-one-elevated-piranha-proposal.json",
+      "sha256": "303be90ba3015ba49691cb025dcefdc6dc53bdd814a7a60a7556da8da91c3793",
+      "bytes": 11179,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-one-elevated-piranha-proposal.json"
+    },
+    {
+      "path": "evidence/five-one-pipe-contact-comparison.json",
+      "sha256": "ef7f82e3068d05a0f1a080155b70087af5c67475164c4090f92172924173416a",
+      "bytes": 40399,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-one-pipe-contact-comparison.json"
+    },
+    {
+      "path": "evidence/five-three-gap-coins-plan.json",
+      "sha256": "373f5b4b8d90ee5157fa693467cb2d8be37e8d66d620c31861619468d2895829",
+      "bytes": 362,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-gap-coins-plan.json"
+    },
+    {
+      "path": "evidence/five-three-gap-coins-proposal.json",
+      "sha256": "8618d92bf09ffcadd7226e3d86b321928e11afd013d0aacbc03af61b7253933d",
+      "bytes": 794,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-gap-coins-proposal.json"
+    },
+    {
+      "path": "evidence/five-three-gap-coins-source-audit.json",
+      "sha256": "4ff221e633f1e9d67e71f80383f33c1c7b3b0fd1655667bdb3bec7fc27df7f77",
+      "bytes": 8971,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-gap-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/five-three-upper-coin-plan.json",
+      "sha256": "b937361afe99d3b3b8a12e29681d5136750971632bca4e07489e63ca80a49991",
+      "bytes": 363,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-upper-coin-plan.json"
+    },
+    {
+      "path": "evidence/five-three-upper-coin-proposal.json",
+      "sha256": "b47c5e5f371c6f1633ece99bce1d957ee9e2ab3643a11f829cfe91c992759f1e",
+      "bytes": 827,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-upper-coin-proposal.json"
+    },
+    {
+      "path": "evidence/five-three-upper-coin-source-audit.json",
+      "sha256": "68f947ac63acd5a8be8fc2a0aff67e934009bf64c6ef240161f5b7673f3c96f0",
+      "bytes": 3975,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/five-three-upper-coin-source-audit.json"
+    },
+    {
+      "path": "evidence/four-four-lava-ledge-observation.json",
+      "sha256": "8abe1e6ba158d714b00086ca7c6539627c06e76d140730b756591c676c4699a7",
+      "bytes": 1663,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-four-lava-ledge-observation.json"
+    },
+    {
+      "path": "evidence/four-one-tall-plants-plan.json",
+      "sha256": "a00c3fe338afbfb72e2899cea7fbf185235b72d14d73812c6ded56433ea198b4",
+      "bytes": 1187,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-one-tall-plants-plan.json"
+    },
+    {
+      "path": "evidence/four-three-canopy-84-plan.json",
+      "sha256": "bfd8e07b6cde5afd3390a6e4e07042ae43c53704fc228dfbe344e4e1d0cee46a",
+      "bytes": 910,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-three-canopy-84-plan.json"
+    },
+    {
+      "path": "evidence/four-three-opening-cap-observation.json",
+      "sha256": "5f80ca52f7e37ab65e991a4650a1c5f4e7f255e78c1f366b62478890056f28ae",
+      "bytes": 1485,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-three-opening-cap-observation.json"
+    },
+    {
+      "path": "evidence/four-two-ledge-coins-plan.json",
+      "sha256": "c310546f135548ae61b294239cb581012549150a20e500c3724739cd8bcd0b83",
+      "bytes": 937,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-two-ledge-coins-plan.json"
+    },
+    {
+      "path": "evidence/four-two-ledge-coins-proposal.json",
+      "sha256": "d2f6d413197caa739c47814f856c6e8a4c436bea3f332fb0f434fad2ce42d467",
+      "bytes": 1088,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-two-ledge-coins-proposal.json"
+    },
+    {
+      "path": "evidence/four-two-ledge-coins-source-audit.json",
+      "sha256": "fe716e90dfa726e09eb4406f67c73e8b218b098a16fc04d668766f801e8e011d",
+      "bytes": 29344,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-two-ledge-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/four-two-tall-piranha-registration.json",
+      "sha256": "5fa71f8ee3e2d14b869a73edce2dce34394e9fddef904a8b63e6e6b8f9e97019",
+      "bytes": 1907,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/four-two-tall-piranha-registration.json"
+    },
+    {
+      "path": "evidence/later-world-five-three-candidate.json",
+      "sha256": "8eff0ab1be2f684994ceace9f96759cf01bae62b84b4e559b7b9b342283de86b",
+      "bytes": 13124,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/later-world-five-three-candidate.json"
+    },
+    {
+      "path": "evidence/local/firebar-5-4-integration-2026-11-06T03-39-14.656Z/before-shared-verification.json",
+      "sha256": "a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696",
+      "bytes": 85133,
+      "source": "Exact top-level date restored from hash-pinned original rerun attestation; all other bytes copied from recovered report."
+    },
+    {
+      "path": "evidence/local/firebar-5-4-report-recovery/original-0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f.json",
+      "sha256": "0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f",
+      "bytes": 85133,
+      "source": "Exact top-level date restored from hash-pinned original rerun attestation; all other bytes copied from recovered report."
+    },
+    {
+      "path": "evidence/local/firebar-5-4-report-recovery/rerun-a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696.json",
+      "sha256": "a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696",
+      "bytes": 85133,
+      "source": "Exact top-level date restored from hash-pinned original rerun attestation; all other bytes copied from recovered report."
+    },
+    {
+      "path": "evidence/local/firebar-5-4-report-recovery/rerun-f56096e640d0b301b2bac7f71a6eaff684eb6f13596b7d057e310fe551b853d4.json",
+      "sha256": "f56096e640d0b301b2bac7f71a6eaff684eb6f13596b7d057e310fe551b853d4",
+      "bytes": 85133,
+      "source": "Exact top-level date restored from hash-pinned original rerun attestation; all other bytes copied from recovered report."
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-42-04.620672Z/trace.jsonl",
+      "sha256": "07d879ad2c465d5a71f18fabbd9b9626e3f292d2ef08d38555fe96207296a548",
+      "bytes": 770121,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-42-04.620672Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-45-54.187340Z/trace.jsonl",
+      "sha256": "d4b614bf8922d43d447300448f14e1f94186c7ac57c159b409c6c425f50cb1f4",
+      "bytes": 756605,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-45-54.187340Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-55-36.158105Z/trace.jsonl",
+      "sha256": "fad8c67fa67d281c156fcbc5f6c52790b509860c50c1be413da87e7801d6ab25",
+      "bytes": 774885,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-55-36.158105Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-56-33.931834Z/trace.jsonl",
+      "sha256": "46a8e2baece7af0b8c39e599533532adab35e5ac5a62a7bdb2b88c7397ce5e48",
+      "bytes": 760689,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-56-33.931834Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-56-35.638448Z/trace.jsonl",
+      "sha256": "b4b70d706319aeb8592ef180b92b1580e6e2c8c482ea0e82fa296fd69ec74ceb",
+      "bytes": 775629,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T04-56-35.638448Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T05-03-42.603979Z/trace.jsonl",
+      "sha256": "6cd42ebdc8af303ba8a3450cc391f32fefea80f4bb534e2fbc9e3055370a3c08",
+      "bytes": 773629,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T05-03-42.603979Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/firebar-five-four-extra-fresh-2026-11-06T05-07-35.680276Z/trace.jsonl",
+      "sha256": "b451b0b2cd330c7b26b39546ea08361608008d08afeccec40c91e294e8e79fcb",
+      "bytes": 794109,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-five-four-extra-fresh-2026-11-06T05-07-35.680276Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-one-stationary-calibration-training-2026-11-06T06-21-23.987Z/trace.jsonl",
+      "sha256": "1393d0040b5e8e9d38dd0095e9c832e81a326ba5b65fd33a2cbf484cdb6e4dee",
+      "bytes": 909218,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-one-stationary-calibration-training-2026-11-06T06-21-23.987Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-one-support-v1-heldout-2026-11-06T06-25-34.634Z/trace.jsonl",
+      "sha256": "d7bc84b59bd82d715827dc4607b37d7291af580afd386ad42f4f63b5685f7ff8",
+      "bytes": 882439,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-one-support-v1-heldout-2026-11-06T06-25-34.634Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-one-support-v1-training-2026-11-06T06-25-36.208Z/trace.jsonl",
+      "sha256": "5c8f37a4511335f0780bfd5a3080eeef57e455d7328f4caf84ddb00af779dc10",
+      "bytes": 886004,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-one-support-v1-training-2026-11-06T06-25-36.208Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-two-continuation-v3-heldout-2026-11-06T08-26-02.121Z/trace.jsonl",
+      "sha256": "42ec692e9d737a116c8685aee31e2c9d8dcc2153c4ebd027719b54797dbcc6f9",
+      "bytes": 945405,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-two-continuation-v3-heldout-2026-11-06T08-26-02.121Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-two-continuation-v3-training-2026-11-06T08-25-59.475Z/trace.jsonl",
+      "sha256": "6c0c0c2a5bac8ffcd6048324fa78880f17aa58266bf562bef96f65a2d4d663e5",
+      "bytes": 949098,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-two-continuation-v3-training-2026-11-06T08-25-59.475Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-two-support-v1-heldout-2026-11-06T07-09-52.359Z/trace.jsonl",
+      "sha256": "ab8e41409414d3abd52a70d07432a0197d3e8cd03cca77f77a61e9de46419d09",
+      "bytes": 893893,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-two-support-v1-heldout-2026-11-06T07-09-52.359Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-six-two-support-v1-training-2026-11-06T07-09-50.895Z/trace.jsonl",
+      "sha256": "2e9449481e83f101cad958b2586fbd4cd6b040f6a68523e86d33588f7dbb4432",
+      "bytes": 897590,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-six-two-support-v1-training-2026-11-06T07-09-50.895Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-three-one-support-v4-heldout-2026-11-06T05-39-09.846Z/trace.jsonl",
+      "sha256": "fd5e08fc64cc6db5a3cdcf9fae0f78727407f21f5e72a815cd6b4ce87be18cf9",
+      "bytes": 397441,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-three-one-support-v4-heldout-2026-11-06T05-39-09.846Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/lower-next-three-one-support-v4-training-2026-11-06T05-39-11.379Z/trace.jsonl",
+      "sha256": "3f216a5da571ed2644620802cd52bf6de8e02b0d3c5053e709eae6435bd2a123",
+      "bytes": 399054,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-next-three-one-support-v4-training-2026-11-06T05-39-11.379Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/reference-campaign/trace.jsonl",
+      "sha256": "4fc024add7630a395b08366a00a36f0ead6f5d7810dfd15ee88157cfcbd243c0",
+      "bytes": 1430793,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/reference-campaign/trace.jsonl"
+    },
+    {
+      "path": "evidence/local/three-one-block-2026-11-06T06-04-25.675Z/trace.jsonl",
+      "sha256": "b2dca226d18d868ec75fd66e7b69fb15e56b88915bd4a802c0c2e50f476377a0",
+      "bytes": 913225,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/three-one-block-2026-11-06T06-04-25.675Z/trace.jsonl"
+    },
+    {
+      "path": "evidence/lower-next-six-one-closure.json",
+      "sha256": "2dde02ee6ef3687c0ce6b7efc22ab5f21783ec1f3d7e44cc22ad5dc5cda1a24d",
+      "bytes": 155119,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-closure.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-final-mask-calibration.json",
+      "sha256": "589cc0bb7f65eb6e0721af4ab861873d9c61446f653530928ae665f5634f331f",
+      "bytes": 9396,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-final-mask-calibration.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-heldout-crossfit.json",
+      "sha256": "3dbbb7ac2d2ba3b596a9e2aab06ce71f2d772adf6aed4591d894d76c1e75bb33",
+      "bytes": 1654172,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-heldout-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-heldout.json",
+      "sha256": "c9fb1de77ec56a2cbbbf43d57cb610c0aa1303229b8331d1bf34918e644f48c6",
+      "bytes": 1652577,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-heldout.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-prospective-freeze.json",
+      "sha256": "4940078c07c13e66d24a146eb1506381895b86f67afeae2f3a0ff451170567be",
+      "bytes": 2476,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-prospective-freeze.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-stationary-closure.json",
+      "sha256": "efaaef702c471e6b2ced801f936fa3d4c6d3cfa5568070b27c54d9aa1c0f994b",
+      "bytes": 34789,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-stationary-closure.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-training-crossfit.json",
+      "sha256": "cfccc21b4cb73a87e0518bf00ada93581dc4239be4e9a95b30f7ac4912aa38e3",
+      "bytes": 1655357,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-training-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-one-training.json",
+      "sha256": "f2b6c0dc4ab4dc119871f4572bc0083c519baeeb6a20968c16318a1f69e07b7a",
+      "bytes": 1652983,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-one-training.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-closure.json",
+      "sha256": "a1b4f862b20207265f9c3bf900ec7673368e44f4e7346165aaea57b363a45691",
+      "bytes": 168911,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-closure.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-closure.json",
+      "sha256": "47f7d8e62353f9c850a22f529f06768fdff7b4dabdd83c129f4d0841a54a581a",
+      "bytes": 178047,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-closure.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-freeze.json",
+      "sha256": "f6d4279eb4b3d0e132541849f252cdb571e64a010718cf0144d61e276b43b046",
+      "bytes": 1597,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-freeze.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-heldout-crossfit.json",
+      "sha256": "21ef4398a6569b12badf2288729195b66c21f70fb5a3b14dd64e5c6cb7d4e829",
+      "bytes": 1986156,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-heldout-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-heldout.json",
+      "sha256": "322f52b8c54f3b0ce8a63fe1c9a3dacb93b1d7ba650b13fb93eea1e69e12c011",
+      "bytes": 1947716,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-heldout.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-training-crossfit.json",
+      "sha256": "18b3fd0870c49e10d2898ccbf91660337db82e6335c42ead282aa611f0522e84",
+      "bytes": 1975065,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-training-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-continuation-v3-training.json",
+      "sha256": "2028d04d54f478a9c32ca14bf1941476157cd979e0104acb85fb0363619ab1f8",
+      "bytes": 1936593,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-continuation-v3-training.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-final-mask-calibration-v7.json",
+      "sha256": "e48bfcaa54c08501db77ece845f4222c7fc9dec57f3f016c73c0397db5f09e0f",
+      "bytes": 16331,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-final-mask-calibration-v7.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-heldout-crossfit.json",
+      "sha256": "052f0b26fa28efaf5ac7388a252aa62f519a7228bfc1419373a55114c8542032",
+      "bytes": 1964142,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-heldout-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-heldout.json",
+      "sha256": "29a1272e94d3f69e98010c3379c607638c69d165fa7b210d4e6bbd16db68904c",
+      "bytes": 1926910,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-heldout.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-prospective-freeze.json",
+      "sha256": "1c6acd43992b423d9efd43893bd25a283f97bbeb06e459eb6dbec786590b5e2e",
+      "bytes": 2338,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-prospective-freeze.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-training-crossfit.json",
+      "sha256": "af68fe6a298f5a497af2e9838431c77219c70b3ceb13c9ca536a701a8ba1544e",
+      "bytes": 1966899,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-training-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-six-two-training.json",
+      "sha256": "56e799b404d4c5fb0e72684bfbf9374289469d3e6d0cd09c364ff63972112736",
+      "bytes": 1929668,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-six-two-training.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-closure-reporter-fix.json",
+      "sha256": "7af1db9474563448d83bcaf826d758bf5a2bfa424bf834464d53d67530a04365",
+      "bytes": 1013,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-closure-reporter-fix.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-prospective-freeze-v4.json",
+      "sha256": "7b8c14f1a4a842eff1887a0bb279976ac0cceeebd8315dbb0c7cdd2bebf0002c",
+      "bytes": 2001,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-prospective-freeze-v4.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-v4-closure.json",
+      "sha256": "b7d9fd1191a3c812ecf66b09cb40564e892f6a3ecedc4009f65f6194b31a2aec",
+      "bytes": 130596,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-v4-closure.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-v4-heldout-crossfit.json",
+      "sha256": "92ebf2ee7b35e5b3d1accb8f2b0f6b6eef717890d3a46448fb101ab77a80b250",
+      "bytes": 2272344,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-v4-heldout-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-v4-heldout.json",
+      "sha256": "0c5cccd0b402f515766097a45e5c4ce851e32c08a716f041d27088650f2b1d3d",
+      "bytes": 2194456,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-v4-heldout.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-v4-training-crossfit.json",
+      "sha256": "50aeacedaa374190ffde64a260d4cc74341a62a4e250e19421100415b4c793cd",
+      "bytes": 2272439,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-v4-training-crossfit.json"
+    },
+    {
+      "path": "evidence/lower-next-three-one-v4-training.json",
+      "sha256": "42220acb8a4a49d419ec37ce71e93c6487fffe124de77b8fe9daa4cad5315043",
+      "bytes": 2194552,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-next-three-one-v4-training.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-browser.json",
+      "sha256": "e1fd616843a2641e3090d1232e133a5b52065802cd65eb90ee18872c1c331468",
+      "bytes": 15677,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-browser.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-candidate.json",
+      "sha256": "87ae0dab870e824fe85050ddcf3f957fc3e53cce627b36f45d990c8fee122621",
+      "bytes": 1774400,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-candidate.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-cell-proof.json",
+      "sha256": "d97633aaace984ac2f600f5ee8a424bb03abf4a429db23d8e49558aed7c78de3",
+      "bytes": 1027259,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-cell-proof.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-legacy249-identities.json",
+      "sha256": "0c85f28e61b5ea6b8028bcfbf66da38773b1781932e2e4c6e625e77b050f248b",
+      "bytes": 71346,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-legacy249-identities.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-proposal.json",
+      "sha256": "385f62d6cb99beed92a9e077469da9de72b31bacb85711c1eb81fc0b60e5f3b3",
+      "bytes": 11195,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-proposal.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-regression-audit.json",
+      "sha256": "054aead51fd3c368ea7f9d90f6ade1d84260678b5b724f0fc81b2c100fae01aa",
+      "bytes": 67504,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-regression-audit.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-regression-browser-after322.json",
+      "sha256": "46df5538914a5d48ffe707cc68a26b8dda92cfb89b43236560bfc24a9577264b",
+      "bytes": 285998,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-regression-browser-after322.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-regression-browser-before.json",
+      "sha256": "86112af094708ae9beb294b9f0574504a7fe982555248132e9ba1cbbb7d4ab2d",
+      "bytes": 286009,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-regression-browser-before.json"
+    },
+    {
+      "path": "evidence/lower-row-old-six-verification.json",
+      "sha256": "71da4197231e29978c920cd83f7158b8c7b9e7e1b07f0ef2f100720ba8f2e259",
+      "bytes": 10775,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/lower-row-old-six-verification.json"
+    },
+    {
+      "path": "evidence/one-three-gap-coins-plan.json",
+      "sha256": "0f072ff0709cb04ca0a30068164d4b748c30c46fe036b7131f9db240fefb2b66",
+      "bytes": 360,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-three-gap-coins-plan.json"
+    },
+    {
+      "path": "evidence/one-three-gap-coins-proposal.json",
+      "sha256": "401de407d472e8c62a08e697d1d386f0aaaa7dd3a0351cd81f4c55dfa38014a8",
+      "bytes": 702,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-three-gap-coins-proposal.json"
+    },
+    {
+      "path": "evidence/one-three-gap-coins-source-audit.json",
+      "sha256": "24ba7de648ef636e4f722601e25a3a572ced4fbb5192b9ad986f0808c01b0b2a",
+      "bytes": 4801,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-three-gap-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/one-two-four-coins-candidate-plan.json",
+      "sha256": "caabfba2da27eb7f85c556065ffd3565ded84c676d66c1156e646c1e15eb1f2c",
+      "bytes": 1271,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-four-coins-candidate-plan.json"
+    },
+    {
+      "path": "evidence/one-two-four-coins-proposal.json",
+      "sha256": "bd6f3ff82c86fe9edda386b3365163daafe99833e8e140a353003bac448e8d51",
+      "bytes": 874,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-four-coins-proposal.json"
+    },
+    {
+      "path": "evidence/one-two-four-coins-source-audit.json",
+      "sha256": "c214b7e902d97031c02baba00ef974da22bad356abdb22ae619185d3a441d616",
+      "bytes": 12963,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-four-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/one-two-upper-coins-candidate-plan.json",
+      "sha256": "3b00312176c20ae67ef6c33490ed0d1ace812f0a3f10b5c9861ac7f8ffcc7242",
+      "bytes": 1117,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-upper-coins-candidate-plan.json"
+    },
+    {
+      "path": "evidence/one-two-upper-coins-holdout-audit.json",
+      "sha256": "f058d3cbab217cc1a8f66d5dff73462646725552e95a6046e49de0b96e9800c7",
+      "bytes": 14143,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-upper-coins-holdout-audit.json"
+    },
+    {
+      "path": "evidence/one-two-upper-coins-proposal.json",
+      "sha256": "8f89e8a4a9aad1240a9a57b45cb4fa9708c85af529186b6d3bf462eb92c16d54",
+      "bytes": 796,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/one-two-upper-coins-proposal.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-calibration-inventory.json",
+      "sha256": "f35f521defce0dcae954f9a55a6aa7821a18fd44d6899b69aa61d87867403def",
+      "bytes": 258059,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-calibration-inventory.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-capture-plan.json",
+      "sha256": "3900520ffec25e509d6233ebc5530c2b0246172d87693258b79042ec7584c3c5",
+      "bytes": 280,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-capture-plan.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-plan.json",
+      "sha256": "97333ebe212fb5f0b96e6de93411505959ea006d7851ee59edc0cbf595b9ab93",
+      "bytes": 2091,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-plan.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-proposal.json",
+      "sha256": "f4b93e7603a6cbaa96c93696533926c18bea027f79a41617813d4dbca02e2393",
+      "bytes": 6812,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-proposal.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-reserved-inventory.json",
+      "sha256": "945a67b5ff784df5e1b3ff942b4445fa8fa10302622e3fc9056736a7699ad81c",
+      "bytes": 139673,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-reserved-inventory.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-reserved-registry-plan.json",
+      "sha256": "4e7ecd56526216f0836af0413786d9ea96ad4610249cf89e5528c16ebd027edb",
+      "bytes": 255,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-reserved-registry-plan.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-reserved-registry.json",
+      "sha256": "de1da3ce90d3bcd9d4c2478ffc97fc267c181c710f3765bb6d5c9ea3d94a9804",
+      "bytes": 622473,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-reserved-registry.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-reserved11-camera.json",
+      "sha256": "c0812242d6830f0d569fd9a3867ac45419a92e12468123af4a431a2cfc626493",
+      "bytes": 3418790,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-reserved11-camera.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-reserved11-crossfit.json",
+      "sha256": "d3dd5c24860d621d55e03e87470b37ddbe6a528ca43ba3e4074c80a7fc3d958e",
+      "bytes": 3420897,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-reserved11-crossfit.json"
+    },
+    {
+      "path": "evidence/podoboo-three-four-v2-result.json",
+      "sha256": "ae8b852302f80181efe960a41b6149a1c828018b37360e013f1749394f1504da",
+      "bytes": 21094,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/podoboo-three-four-v2-result.json"
+    },
+    {
+      "path": "evidence/seven-one-hammer-layout-proposal.json",
+      "sha256": "bc2611f3808ab3d69fa20ed736618add17d3e1f3e1f876ca287a62f0eb222e79",
+      "bytes": 5464,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-one-hammer-layout-proposal.json"
+    },
+    {
+      "path": "evidence/seven-one-later-hammer-proposal.json",
+      "sha256": "f8cfcba670e027217d5f419a37d1ec04cb8a06b55f542914207117f4922aafd9",
+      "bytes": 4396,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-one-later-hammer-proposal.json"
+    },
+    {
+      "path": "evidence/seven-three-bridge-coins-plan.json",
+      "sha256": "a141b9f75610a9550cbdfeb2a360cd3a8d796aa9cd73b10c958cd493d59d3f18",
+      "bytes": 379,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-three-bridge-coins-plan.json"
+    },
+    {
+      "path": "evidence/seven-three-bridge-coins-proposal.json",
+      "sha256": "d3d87e154739024308748dfe0950f752dd521222178a70a48195e9238f1bd286",
+      "bytes": 781,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-three-bridge-coins-proposal.json"
+    },
+    {
+      "path": "evidence/seven-three-bridge-coins-source-audit.json",
+      "sha256": "659790e9005d370d03a326b0d52b92ff76cb57c5e42100e1518220337749cfc4",
+      "bytes": 4869,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-three-bridge-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/seven-two-coin-inventory-proposal.json",
+      "sha256": "16f82c339137c61bd335dae4dbe9c5dec51852346704630f477c4e3e5584e139",
+      "bytes": 1211,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/seven-two-coin-inventory-proposal.json"
+    },
+    {
+      "path": "evidence/six-four-chain-proposal.json",
+      "sha256": "7e67660502dd8353bf7f01b41e500734596f2d1fb524b0b3a6df5ba59bd09e29",
+      "bytes": 9303,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-four-chain-proposal.json"
+    },
+    {
+      "path": "evidence/six-one-gap-coins-plan.json",
+      "sha256": "18350331a18177a4e5d6c4dd0eda84da7733f9f924b65b68f32dc983b6f62939",
+      "bytes": 522,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-gap-coins-plan.json"
+    },
+    {
+      "path": "evidence/six-one-gap-coins-proposal.json",
+      "sha256": "bf64ea2d454150fe393e5dce6a4905bc85da9deb4342637fe4b0b900b7b17cab",
+      "bytes": 830,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-gap-coins-proposal.json"
+    },
+    {
+      "path": "evidence/six-one-gap-coins-source-audit.json",
+      "sha256": "9bd4eac36cfa7dc1bd8af7236befe2180458b1c1ced90bb48615cf94bb56a201",
+      "bytes": 6511,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-gap-coins-source-audit.json"
+    },
+    {
+      "path": "evidence/six-one-stair-proposal.json",
+      "sha256": "e4dd2a4c3692b7e25a87dbf5699e171d173d223107ffc0d92692e174b453b682",
+      "bytes": 101558,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-stair-proposal.json"
+    },
+    {
+      "path": "evidence/six-one-third-coin-plan.json",
+      "sha256": "450dae2c98f2b47cfee8d2ae2a6a9b40edba0c2f6d8bbffc752cbcb2fa2d6295",
+      "bytes": 445,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-third-coin-plan.json"
+    },
+    {
+      "path": "evidence/six-one-third-coin-proposal.json",
+      "sha256": "6eac1614f448e230322e7f69e93dd6ab8814821d54666d9aaa1c123caac31a1e",
+      "bytes": 831,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-third-coin-proposal.json"
+    },
+    {
+      "path": "evidence/six-one-third-coin-source-audit.json",
+      "sha256": "39fb79b47387cff467ff3b97cc6f3017e7499f06a42fbb6b1c5a17c0c0c88c22",
+      "bytes": 2973,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/six-one-third-coin-source-audit.json"
+    },
+    {
+      "path": "evidence/three-one-block-calibration-controls.json",
+      "sha256": "9694d2a25c7ab89c5579ed10e3d62fd1e34b647df38c85f446e1252f574d45a4",
+      "bytes": 458997,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-one-block-calibration-controls.json"
+    },
+    {
+      "path": "evidence/three-one-block-confirmation-plan.json",
+      "sha256": "a46625eedef3480e7f4e3487d1dc3d1cfc0f4a7f4b69d8de1c5d9cd9f0f723b2",
+      "bytes": 4482,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-one-block-confirmation-plan.json"
+    },
+    {
+      "path": "evidence/three-one-block-heldout-plan.json",
+      "sha256": "d1716aaaadaac6ea19c3375a0f67bacb471a208b0b505e41e202249661f71ab7",
+      "bytes": 5530,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-one-block-heldout-plan.json"
+    },
+    {
+      "path": "evidence/three-one-block-initial-analysis.json",
+      "sha256": "4382ef22bc6d069c1061d31f049fb19a393e39b2e113d1e303faf1472f08b702",
+      "bytes": 154857,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-one-block-initial-analysis.json"
+    },
+    {
+      "path": "evidence/three-three-cap-edge-verification.json",
+      "sha256": "71d04e1a603c9cff3321bbbf9ec12b4b071bb8831e9e1df56668b4a708e4df0e",
+      "bytes": 4828,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-three-cap-edge-verification.json"
+    },
+    {
+      "path": "evidence/three-two-block-calibration-controls.json",
+      "sha256": "a2ecd5f84a233f6d4ea2d524a0e65074e7ca9c076416424ca38420c1d694f74c",
+      "bytes": 1002935,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-block-calibration-controls.json"
+    },
+    {
+      "path": "evidence/three-two-block-heldout-plan.json",
+      "sha256": "ff01c01afa4f605b54b3d173e7bdd6c836fb3a6786a706cfc6ff6dfc042ea67b",
+      "bytes": 3924,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-block-heldout-plan.json"
+    },
+    {
+      "path": "evidence/three-two-block-heldout-release-plan.json",
+      "sha256": "26ed446edb1594eb1420566d9ea3eac68b9ef19912cd3f6a5b57570964c47aad",
+      "bytes": 2573,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-block-heldout-release-plan.json"
+    },
+    {
+      "path": "evidence/three-two-question-commit-files.txt",
+      "sha256": "c7b4e3660361c953614bc41ca4d84b8b8a89328ead86ad22d830c509cf8462bb",
+      "bytes": 509,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-question-commit-files.txt"
+    },
+    {
+      "path": "evidence/three-two-question-controls.json",
+      "sha256": "bef80ecf614c6ec363b2eeca0a0c2241e2647bebf1ca0e28271098d59b45a50b",
+      "bytes": 2035197,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-question-controls.json"
+    },
+    {
+      "path": "evidence/three-two-question-findings.md",
+      "sha256": "c9c04e20a0910cf7eebfc87693dcfc4ee35cea68b2416903bcef6a2e597ce7ef",
+      "bytes": 4111,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-question-findings.md"
+    },
+    {
+      "path": "evidence/three-two-question-packet.json",
+      "sha256": "162aa21eb9ddc63deb8d391cfdd385d01ea27350492f4b41df539b0e9f4c6bd0",
+      "bytes": 3630,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-question-packet.json"
+    },
+    {
+      "path": "evidence/three-two-question-validation.json",
+      "sha256": "455651b42d7735b27bf9dfa73b3d4e6e4d805fbfaa20bff7ac069484845829cd",
+      "bytes": 2476,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-question-validation.json"
+    },
+    {
+      "path": "evidence/three-two-star-commit-files.txt",
+      "sha256": "57116bbcb58c57218317724e76cc8e247b01da34c1fa2f4cc8b4c502c3554f5a",
+      "bytes": 380,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-commit-files.txt"
+    },
+    {
+      "path": "evidence/three-two-star-controls.json",
+      "sha256": "daf06335339a2a9a77f1ce46e967019d5248497c71af4e01bce23fd88fb9362b",
+      "bytes": 1581727,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-controls.json"
+    },
+    {
+      "path": "evidence/three-two-star-findings.md",
+      "sha256": "2a107aeab91379c7f0f65f4f4f5dd2cba77c6a458b834b39d4b69c98ecfc6436",
+      "bytes": 4495,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-findings.md"
+    },
+    {
+      "path": "evidence/three-two-star-heldout-plan.json",
+      "sha256": "9607a3d91ceec56317f9d2a7518ef47021f3ba18b902b28437afb06bc5d44166",
+      "bytes": 5716,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-heldout-plan.json"
+    },
+    {
+      "path": "evidence/three-two-star-packet.json",
+      "sha256": "1e1562ef9662eec0eb2862b2031fe06c67b47153238a249862d992e49a002a50",
+      "bytes": 3221,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-packet.json"
+    },
+    {
+      "path": "evidence/three-two-star-palette-lock.json",
+      "sha256": "8c83f01f5744014965a8f2fc4a0566283baa48847c5e1a56cd07c520bd09db69",
+      "bytes": 1174,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-palette-lock.json"
+    },
+    {
+      "path": "evidence/three-two-star-validation.json",
+      "sha256": "80c8897ba8ea8abf32f0c97d107dd022e199d4b615e34b6eae243a074cbfb57a",
+      "bytes": 1207,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/three-two-star-validation.json"
+    },
+    {
+      "path": "evidence/two-four-firebar-bases-proposal.json",
+      "sha256": "36d67d67ab3e18fbf3bfde37784f08b3dbc91e1eb1e7c16cb9a93f8f7a838cdb",
+      "bytes": 31601,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/two-four-firebar-bases-proposal.json"
+    },
+    {
+      "path": "evidence/world-four-four-shelf-proposal.json",
+      "sha256": "c28093b254b66961cde24dc74457128754eefdb3557fb9fe64a8ac8f51dd783e",
+      "bytes": 8837,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/world-four-four-shelf-proposal.json"
+    },
+    {
+      "path": "evidence/world-three-four-question-proposal.json",
+      "sha256": "07e2de0a226962cdea6545b618eaa49eb06bea926f6074a13a3646413c8c1336",
+      "bytes": 5361,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/world-three-four-question-proposal.json"
+    },
+    {
+      "path": "evidence/world-three-left-support-proposal.json",
+      "sha256": "50777143d00d5ab80562b9e316937a17fd1e9d26b9ccaf4e7399329b0619949b",
+      "bytes": 5281,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/world-three-left-support-proposal.json"
+    },
+    {
+      "path": "evidence/world-three-one-fragment-proposal.json",
+      "sha256": "3b030ac5a9f799dff5bd352c4c495fb6d5c0f277937f037d37d1ff30b81b58e5",
+      "bytes": 6300,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/world-three-one-fragment-proposal.json"
+    },
+    {
+      "path": "evidence/world-three-question-proposal.json",
+      "sha256": "03fe94a5bc29aea715ea625e967a4fd7b57b793773ba85c9804cc5e213e90133",
+      "bytes": 5364,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/world-three-question-proposal.json"
+    },
+    {
+      "path": "tools/firebar-5-4-fresh-measure.py",
+      "sha256": "e1ef0a434a69cbb0789325a3b8a1c716bd4df50d439c676b93ee4d8541f43ecc",
+      "bytes": 4566,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-5-4-fresh-measure.py"
+    },
+    {
+      "path": "tools/firebar-5-4-shared-verify.ts",
+      "sha256": "5195798b8e62c9486d231d6e6c65d7bcfe6f04c90ee744a133fe54ff12a33e8b",
+      "bytes": 5970,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-5-4-shared-verify.ts"
+    },
+    {
+      "path": "tools/firebar-five-four-extra-direction.mjs",
+      "sha256": "3c6a9d048df44349a45178dbeee932e753af970ee91462aa90d4bbda39c2c686",
+      "bytes": 2222,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-five-four-extra-direction.mjs"
+    },
+    {
+      "path": "tools/firebar-five-four-extra-measure.py",
+      "sha256": "83c0fe7182e24970d29a367a66e0905ea9c1219404ba854bdeb686db42d39fe5",
+      "bytes": 5821,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-five-four-extra-measure.py"
+    },
+    {
+      "path": "tools/firebar-three-four-base-mask-proof.py",
+      "sha256": "7932a36bc55fefdb0825e51106f76f32d389a7442674b6780f931613c8ad8f41",
+      "bytes": 3040,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-three-four-base-mask-proof.py"
+    },
+    {
+      "path": "tools/firebar-three-four-camera.py",
+      "sha256": "7e07322bbc044873749aa6efff0d3daf3585e6975862b62312ab59f23753ec1f",
+      "bytes": 7950,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-three-four-camera.py"
+    },
+    {
+      "path": "tools/firebar-three-four-capture.py",
+      "sha256": "6a9512493d6122560ccdf99956fc4cd47a1204a2597d138a485381f20fef6ebe",
+      "bytes": 3477,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-three-four-capture.py"
+    },
+    {
+      "path": "tools/firebar-three-four-registry.mjs",
+      "sha256": "855053902e1f380164c2604fa5b680209b2d43307d7bc9d7438b9ba63e5b1b00",
+      "bytes": 2186,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-three-four-registry.mjs"
+    },
+    {
+      "path": "tools/firebar-three-four-shared-verify.ts",
+      "sha256": "dbc60c828c2a51253ea8c2fdb8b97fe4cb541bb3c8c8f895cde955a478511ee8",
+      "bytes": 4536,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/firebar-three-four-shared-verify.ts"
+    },
+    {
+      "path": "tools/lower-next-six-one-camera-v9.py",
+      "sha256": "e8ad20a9a1d2d85edc68930b070db69533559fe90c885834761f3e34e3325605",
+      "bytes": 12894,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-one-camera-v9.py"
+    },
+    {
+      "path": "tools/lower-next-six-one-close-camera.py",
+      "sha256": "887a259fd7af196a614219f028b6afc53b8dfc4c367abd38f393b5614951237d",
+      "bytes": 1994,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-one-close-camera.py"
+    },
+    {
+      "path": "tools/lower-next-six-one-final-mask-calibrate.py",
+      "sha256": "e7a8999de5928fa05a3bf88299948fcd2ba14c2670a2538d51e55a3ede87c6fd",
+      "bytes": 2518,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-one-final-mask-calibrate.py"
+    },
+    {
+      "path": "tools/lower-next-six-one-recover.py",
+      "sha256": "8cd48d5f1602d5dbab499117801ddd7c3fba0d837ab79d40c4d1f3b6202e35e1",
+      "bytes": 10853,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-one-recover.py"
+    },
+    {
+      "path": "tools/lower-next-six-one-verify.py",
+      "sha256": "79b663a20b9da337a4e2b2d1a136f6b04ea227d30adcc7d20c7d51fe355e3d49",
+      "bytes": 7153,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-one-verify.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-camera-v7.py",
+      "sha256": "a7852d302f35b293c6a7f5025d7377805e74df65caa29098b2be4498a01d0f6a",
+      "bytes": 16428,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-camera-v7.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-close-camera.py",
+      "sha256": "88775f7e4e7c901d5993bf6de6cce616c6bc25b9640c76f98a5eef4e7e5ebf3a",
+      "bytes": 1994,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-close-camera.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-continuation-v3-recover.py",
+      "sha256": "60ef5391e2f90b6137b43a7a095a72bd6496e27c0e5e1fc7df69f084ec0fcdf8",
+      "bytes": 11492,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-continuation-v3-recover.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-continuation-v3-verify.py",
+      "sha256": "ca52d2ce6da9cd9ed994406848355a6501825c0a71d95de6767f19ca29f13d20",
+      "bytes": 7441,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-continuation-v3-verify.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-mask-calibrate-v7.py",
+      "sha256": "53bc7e2a41b9394f17e6b6b5104920f2e8bcd44e0bf0fe9927e1430050fb7990",
+      "bytes": 3070,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-mask-calibrate-v7.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-recover.py",
+      "sha256": "6ee9b0d3c181adc9aeb5aab7a20846f73308afcf31b7be87e76a1f39d7c9253a",
+      "bytes": 11332,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-recover.py"
+    },
+    {
+      "path": "tools/lower-next-six-two-verify.py",
+      "sha256": "6271010880711dc133fb32a0a9415c106c57e521f32062bc2d21587056d02419",
+      "bytes": 7194,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-six-two-verify.py"
+    },
+    {
+      "path": "tools/lower-next-three-one-camera-v5.py",
+      "sha256": "d70e0231d2e58ba570ee6ff56528611487516c2d672a59ea529c06b25b8d109d",
+      "bytes": 9665,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-three-one-camera-v5.py"
+    },
+    {
+      "path": "tools/lower-next-three-one-closure-v5-reportfix.py",
+      "sha256": "07dcf7f3f5fe1746dc00ffec737e3972b7450f4c05740b1f280beeac1dcc34ed",
+      "bytes": 2081,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-three-one-closure-v5-reportfix.py"
+    },
+    {
+      "path": "tools/lower-next-three-one-recover.py",
+      "sha256": "62e028fc5489d767be606370412a834c70e3af577b8f732c37583ffb8adbd5d7",
+      "bytes": 10418,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-next-three-one-recover.py"
+    },
+    {
+      "path": "tools/lower-row-chain-castle.py",
+      "sha256": "22ac2d622853f12455affba5bb4c4b622e597ea01b799cee486c3e4221e9702e",
+      "bytes": 7683,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/lower-row-chain-castle.py"
+    },
+    {
+      "path": "tools/podoboo-three-four-inventory.py",
+      "sha256": "d216251e6b8cca9481d69ff7ad60e553a6c19e2153dea1853d439d81dcb283aa",
+      "bytes": 4766,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/podoboo-three-four-inventory.py"
+    },
+    {
+      "path": "tools/three-two-block-reference.mjs",
+      "sha256": "159c115cbaf7ab66e94d9f4d0ac4a68e26e771132e0249fff68a08f3993f393d",
+      "bytes": 3963,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/three-two-block-reference.mjs"
+    },
+    {
+      "path": "tools/three-two-question-analyze.mjs",
+      "sha256": "7a3affc8a9b413f3a84dbc54d1c7a57dd39d0db04b6ee6b47951cc8a55eafdc1",
+      "bytes": 7328,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/three-two-question-analyze.mjs"
+    },
+    {
+      "path": "tools/three-two-question-validate.mjs",
+      "sha256": "31cf4b108b70c2c02ac881f0b1435a74a19db5feb26d65df6f6759f3be6ab28e",
+      "bytes": 3156,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/three-two-question-validate.mjs"
+    },
+    {
+      "path": "tools/three-two-star-analyze.mjs",
+      "sha256": "2de03b857b84d5cd636881184c4b9cd7ea4b153c3b35aef22095f27fc5d508f2",
+      "bytes": 7961,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/three-two-star-analyze.mjs"
+    },
+    {
+      "path": "tools/three-two-star-validate.mjs",
+      "sha256": "bfcdd9199e5602115e580a3aa8e5f91bce8b4224a97aa4edb8aa700f4a47c542",
+      "bytes": 2981,
+      "source": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/tools/three-two-star-validate.mjs"
+    }
+  ]
+}

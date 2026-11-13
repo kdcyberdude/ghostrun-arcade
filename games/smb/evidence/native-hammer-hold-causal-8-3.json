@@ -1,0 +1,922 @@
+{
+  "schema": "native-hammer-hold-causal-v1",
+  "level": "8-3",
+  "baseline": "b4c934e",
+  "candidate": "4aa045a",
+  "sourceGuardCommit": "5f22feef91961ac411bcfdbb862cf40ac1bbc46a",
+  "classification": "downstream-native-freeze-after-existing-upstream-model-contact",
+  "gateConditions": {
+    "strict.extra": [
+      264,
+      264
+    ],
+    "strict.missing": [
+      341,
+      341
+    ],
+    "dead": [
+      3813,
+      3813
+    ],
+    "strict.state": [
+      3814,
+      3813
+    ]
+  },
+  "source": "ProcHammerObj begins LDA TimerControl / BNE RunHSubs before Misc_State decrement. RunHSubs still executes bounding/offscreen/graphics tail. Native misc slots execute descending8..0.",
+  "counterfactual": "Two identical simulations from candidate4aa045a, same entrance/pads. The second differs only by replacing the ProcHammerObj motion/contact guard with true; no adapter/filter/other motor changes. It accidentally matches native slot4 on3813 while continuing motion after its own erroneous slot5 contact.",
+  "limits": "This classifies a previously correct-state coincidence after an existing gameplay divergence. It neither fixes the higher-slot false contact nor claims full input equivalence. Do not generalize to other levels, rows or fields. No runtime exemption or fitted hold is introduced.",
+  "input": {
+    "ramSha256": "9f9ffe84f4b8601e79d79f6dd08522c4ba2aa3917413818b98d935df7a22d484",
+    "initialRamSha256": "f8de0f80108555f91dd9a4373d9cf92577926f58916a0faf35971ab6acb7cd98",
+    "padsSha256": "90dbf5a63a3e59c909ba1d9a20b8a48d7538666373035963408ef5d519f68a3f"
+  },
+  "nativeRam": {
+    "3812": "H4sIAAAAAAACA81VTWgTURCet5vNbn+kIbY0BCoJFYwKtVSQIJV2tdoiigkkNjcbsKiU2hYJBjGyEQ/5UWmqgoiIQrU9FJuDPz2I5CA0iNAeWhA8WKpg1f7R0yrVdd5Lsv31r730Y2e/mTdv3nuzzOyzFroMRtIXF6pAApAIAgAEYfcmJCIBtTIIQzgcp4o+9KgEqplCCEcWJlKUGwwWLWfMImDWBCCKolHEbYAHZogib2AzTnqCzyY66VSUmrPnrMcHrZDbi63MoWhEQ/0n3S9zzIyb6CbcdA70XqAKXcv8uMdUcczOHMPdl+45kCWLghGB71KJDf6IjgwdgnVC2zAomzuBz1z6a+h118uuRP/5cPHDRsWilftuzkMAJXQXGSXUXQWBbhlCffsh0HcAQirmoc7zgyhD6gTyJ+QvyJ/5oQuT9m/qpJ9cnkKe8pPYNPK0n5gV3mMN8x6MSaMM9yh8pD/MR0wKv8sS5ndVKHzLnjDfok7Zf2CcoI6SU+oIaVM/II8jx5FjyBfluBqSb6gR5ChyDDmO/JvzOEdJs3OEtNZ+IM2146S1IU6aG2KkdeCiHB0IyYlURI6monIiHZOj6bicACg0FG0rLYL6+hrUSlGj8s8os8XvbNVxr34BT58/fQ7rhgYWCQqzRmAQwNXkYpXeS4vcrM/Ty1k/u0H3tcN7cLOeI4v6GVxer1cYS6UgtWLX3usCBDOhAMlKRYFal+70ZfsLmlAqx6jVrjvfsrdjlUx4wgn0oDYalryfpL8ZY/7KfLMgBQV5eZD7T4giasHey0/OVHd4rr24NUIrej6iXV8e7zL7rPAYnl3pudq/07TbcqqibQ8cExvBLm2HjQa/fw22ZwlW2v8Nt9fNsNYs3G493rx5qau45G/2n3PxeAQ27yDrKByh/3nCr94oem0TZWGY8zU4DcMTjlpfe+R+cmvqVfqNr+l0e1CJdN7G4uPK4aMDXIQkOzvZHcPlLhswijPTGrFdxVUlAV/50FC9tw7LjoMCdJskUlgEM8DlTpPP7iK7RO+X7N6wT+Q4WNxzqPNGun7xFmZiWbNPYgbLoknSkaPLsns3d/DBjtN42x4GyJPwqs6ThDLa9ZV1zF+y/HMQiQch+9ZhXDgJZ2RJPvwFqXKbdAAIAAA=",
+    "3813": "H4sIAAAAAAACA81VXUgUURQ+Z2Z3Z0xD11bUqHDdIKMwyRAJK6cslzDahRV9yxUqkuwPlkzamJUQnY1lXUh6Eh9ykR42n8yHoH0xZSGUMJB6KCzI7IfaB5lE3M6ddcdf+tGXPubc7/zce+ae4dy5trlnGAu9CRlLoyJERSQAgNFYupUIRWBWEj7w+RSm6K4+C1RoCiKHSxMZCg2GvETK+E6A71kAgiCYBJE8PGiGIPAGbcbF2ltPpoNsKsnRKzfy60a2Q+pdWmaOJIEJ0hfY+5LbTIZRN6G7fKj/FlNYLnMkbC4+a9UC4w/v9DQQi3kyrfDMiTkF8FtcT9Ip2CQS/w12xs/REx/97I2Fnoe6Ht/0Wfrq5LyErb57Hjwk3h5iEm/4IHjCEngjx8ETOQFelepQ5/kRkrHyV9hYPoFNle+xsXIKm+x+bLQr2DR0W2of8kqBaIfUHu2UAqOK1D7qlwK0ZpjkhTpN/JF4hvgT/6L1i3W29Yt7oe2rdbbtq3tB+WadVb65F8wy78j38Q7VjxdVBa+GZf5uxMffJf8+8u8rlvlLZT7+Umo/lHeE8o5R3hHKO6a+wvPqBDar74mniP3ECvFtqVP1Sl1qB3EnsULsl7oAMgyZe3Izobr6GGm5pDH5a+ywxRBsL0leo8M2hbW2GZI4yRwaYfNIQK4AGYuGZxjA0VCjdXo/a3KzPk9vZ33vBj12Dd6CUztzCLj2FXJ0rS9ghJbkUoB3JbIMlQ49Nr14voAdqMp3WVkQvKYHJ7WxaJ1KeOTYBykoYMsGegfYb8a0ZW29i8D09LQ0SP0nBIG0lkdtgxcqrriUp6EJ1tE/OxKB1etrzK58iMCgHO6I7DEfyD9f3FwGZ4U6sIp74X+D270B27UCa+1/hrPWqWGjVTid+vrsbStDlpw/2b+vxeUyafNOVjOQh/3nkV//oOi9jfIyf7293FBib2gJ9kcnp3er80X7gw96+weGoqPjMWrKQvhQBJcRB4JB7Y7hUpcNmIT4jwQU3KOsoomGLWCvOFxFbcdBOoWzRMzIhjhwqd3EtLvIKrL7Jenh4IjAcbDizCHwJnYULbs0k8qzMDZD3rJJYs2ZVdU1/ywcv3+I1pwGSBNAoMGwg536kiotnrP6c6DIg3Fx1GFa2gln0ors+wX7z6/gAAgAAA=="
+  },
+  "rows": [
+    {
+      "row": 3811,
+      "native": {
+        "engine": 8,
+        "timerControl": 0,
+        "misc": [
+          {
+            "slot": 0,
+            "state": 129,
+            "collision": 0,
+            "x": 1856,
+            "y": 19
+          },
+          {
+            "slot": 1,
+            "state": 0,
+            "collision": 0,
+            "x": 1902,
+            "y": 174
+          },
+          {
+            "slot": 2,
+            "state": 129,
+            "collision": 0,
+            "x": 1908,
+            "y": 168
+          },
+          {
+            "slot": 3,
+            "state": 129,
+            "collision": 0,
+            "x": 1819,
+            "y": 15
+          },
+          {
+            "slot": 4,
+            "state": 140,
+            "collision": 0,
+            "x": 1878,
+            "y": 46
+          },
+          {
+            "slot": 5,
+            "state": 0,
+            "collision": 0,
+            "x": 967,
+            "y": 79
+          },
+          {
+            "slot": 6,
+            "state": 0,
+            "collision": 0,
+            "x": 1050,
+            "y": 33
+          },
+          {
+            "slot": 7,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          },
+          {
+            "slot": 8,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          }
+        ]
+      },
+      "models": [
+        {
+          "guard": true,
+          "phase": "play",
+          "stopped": false,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1819,
+              "y": 15
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1856,
+              "y": 19
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": false,
+              "x": 1906,
+              "y": 166
+            },
+            {
+              "slot": 4,
+              "state": 140,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        },
+        {
+          "guard": false,
+          "phase": "play",
+          "stopped": false,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1819,
+              "y": 15
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1856,
+              "y": 19
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": false,
+              "x": 1906,
+              "y": 166
+            },
+            {
+              "slot": 4,
+              "state": 140,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3812,
+      "native": {
+        "engine": 8,
+        "timerControl": 0,
+        "misc": [
+          {
+            "slot": 0,
+            "state": 129,
+            "collision": 0,
+            "x": 1855,
+            "y": 18
+          },
+          {
+            "slot": 1,
+            "state": 0,
+            "collision": 0,
+            "x": 1902,
+            "y": 174
+          },
+          {
+            "slot": 2,
+            "state": 129,
+            "collision": 0,
+            "x": 1907,
+            "y": 167
+          },
+          {
+            "slot": 3,
+            "state": 129,
+            "collision": 0,
+            "x": 1818,
+            "y": 16
+          },
+          {
+            "slot": 4,
+            "state": 139,
+            "collision": 0,
+            "x": 1878,
+            "y": 46
+          },
+          {
+            "slot": 5,
+            "state": 0,
+            "collision": 0,
+            "x": 967,
+            "y": 79
+          },
+          {
+            "slot": 6,
+            "state": 0,
+            "collision": 0,
+            "x": 1050,
+            "y": 33
+          },
+          {
+            "slot": 7,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          },
+          {
+            "slot": 8,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          }
+        ]
+      },
+      "models": [
+        {
+          "guard": true,
+          "phase": "play",
+          "stopped": false,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1818,
+              "y": 16
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1855,
+              "y": 18
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": false,
+              "x": 1905,
+              "y": 165
+            },
+            {
+              "slot": 4,
+              "state": 139,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        },
+        {
+          "guard": false,
+          "phase": "play",
+          "stopped": false,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1818,
+              "y": 16
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1855,
+              "y": 18
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": false,
+              "x": 1905,
+              "y": 165
+            },
+            {
+              "slot": 4,
+              "state": 139,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3813,
+      "native": {
+        "engine": 8,
+        "timerControl": 0,
+        "misc": [
+          {
+            "slot": 0,
+            "state": 129,
+            "collision": 0,
+            "x": 1854,
+            "y": 17
+          },
+          {
+            "slot": 1,
+            "state": 0,
+            "collision": 0,
+            "x": 1902,
+            "y": 174
+          },
+          {
+            "slot": 2,
+            "state": 129,
+            "collision": 0,
+            "x": 1906,
+            "y": 166
+          },
+          {
+            "slot": 3,
+            "state": 129,
+            "collision": 0,
+            "x": 1817,
+            "y": 17
+          },
+          {
+            "slot": 4,
+            "state": 138,
+            "collision": 0,
+            "x": 1879,
+            "y": 46
+          },
+          {
+            "slot": 5,
+            "state": 0,
+            "collision": 0,
+            "x": 967,
+            "y": 79
+          },
+          {
+            "slot": 6,
+            "state": 0,
+            "collision": 0,
+            "x": 1050,
+            "y": 33
+          },
+          {
+            "slot": 7,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          },
+          {
+            "slot": 8,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          }
+        ]
+      },
+      "models": [
+        {
+          "guard": true,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1818,
+              "y": 16
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1855,
+              "y": 18
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 139,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        },
+        {
+          "guard": false,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1817,
+              "y": 17
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1854,
+              "y": 17
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 138,
+              "collision": false,
+              "x": 1879,
+              "y": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3814,
+      "native": {
+        "engine": 8,
+        "timerControl": 0,
+        "misc": [
+          {
+            "slot": 0,
+            "state": 129,
+            "collision": 0,
+            "x": 1853,
+            "y": 17
+          },
+          {
+            "slot": 1,
+            "state": 0,
+            "collision": 0,
+            "x": 1902,
+            "y": 174
+          },
+          {
+            "slot": 2,
+            "state": 129,
+            "collision": 0,
+            "x": 1905,
+            "y": 165
+          },
+          {
+            "slot": 3,
+            "state": 129,
+            "collision": 0,
+            "x": 1816,
+            "y": 18
+          },
+          {
+            "slot": 4,
+            "state": 137,
+            "collision": 0,
+            "x": 1879,
+            "y": 46
+          },
+          {
+            "slot": 5,
+            "state": 0,
+            "collision": 0,
+            "x": 967,
+            "y": 79
+          },
+          {
+            "slot": 6,
+            "state": 0,
+            "collision": 0,
+            "x": 1050,
+            "y": 33
+          },
+          {
+            "slot": 7,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          },
+          {
+            "slot": 8,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          }
+        ]
+      },
+      "models": [
+        {
+          "guard": true,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1818,
+              "y": 16
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1855,
+              "y": 18
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 139,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        },
+        {
+          "guard": false,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1817,
+              "y": 17
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1854,
+              "y": 17
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 138,
+              "collision": false,
+              "x": 1879,
+              "y": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "row": 3815,
+      "native": {
+        "engine": 8,
+        "timerControl": 0,
+        "misc": [
+          {
+            "slot": 0,
+            "state": 129,
+            "collision": 0,
+            "x": 1852,
+            "y": 16
+          },
+          {
+            "slot": 1,
+            "state": 0,
+            "collision": 0,
+            "x": 1902,
+            "y": 174
+          },
+          {
+            "slot": 2,
+            "state": 129,
+            "collision": 0,
+            "x": 1904,
+            "y": 164
+          },
+          {
+            "slot": 3,
+            "state": 129,
+            "collision": 0,
+            "x": 1815,
+            "y": 19
+          },
+          {
+            "slot": 4,
+            "state": 136,
+            "collision": 0,
+            "x": 1879,
+            "y": 46
+          },
+          {
+            "slot": 5,
+            "state": 0,
+            "collision": 0,
+            "x": 967,
+            "y": 79
+          },
+          {
+            "slot": 6,
+            "state": 0,
+            "collision": 0,
+            "x": 1050,
+            "y": 33
+          },
+          {
+            "slot": 7,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          },
+          {
+            "slot": 8,
+            "state": 0,
+            "collision": 0,
+            "x": 0,
+            "y": -256
+          }
+        ]
+      },
+      "models": [
+        {
+          "guard": true,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1818,
+              "y": 16
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1855,
+              "y": 18
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 139,
+              "collision": false,
+              "x": 1878,
+              "y": 46
+            }
+          ]
+        },
+        {
+          "guard": false,
+          "phase": "dying",
+          "stopped": true,
+          "misc": [
+            {
+              "slot": 3,
+              "state": 129,
+              "collision": false,
+              "x": 1817,
+              "y": 17
+            },
+            {
+              "slot": 0,
+              "state": 129,
+              "collision": false,
+              "x": 1854,
+              "y": 17
+            },
+            {
+              "slot": 5,
+              "state": 129,
+              "collision": true,
+              "x": 1904,
+              "y": 164
+            },
+            {
+              "slot": 4,
+              "state": 138,
+              "collision": false,
+              "x": 1879,
+              "y": 46
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "turns": [
+    {
+      "model": 0,
+      "before": {
+        "slot": 5,
+        "state": 129,
+        "x": 1905,
+        "y": 165,
+        "phase": "play",
+        "stopped": false,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1904,
+        "y": 164,
+        "phase": "dying",
+        "stopped": true,
+        "collision": true
+      }
+    },
+    {
+      "model": 0,
+      "before": {
+        "slot": 4,
+        "state": 139,
+        "x": 1878,
+        "y": 46,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 139,
+        "x": 1878,
+        "y": 46,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    },
+    {
+      "model": 0,
+      "before": {
+        "slot": 3,
+        "state": 129,
+        "x": 1818,
+        "y": 16,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1818,
+        "y": 16,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    },
+    {
+      "model": 0,
+      "before": {
+        "slot": 0,
+        "state": 129,
+        "x": 1855,
+        "y": 18,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1855,
+        "y": 18,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    },
+    {
+      "model": 1,
+      "before": {
+        "slot": 5,
+        "state": 129,
+        "x": 1905,
+        "y": 165,
+        "phase": "play",
+        "stopped": false,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1904,
+        "y": 164,
+        "phase": "dying",
+        "stopped": true,
+        "collision": true
+      }
+    },
+    {
+      "model": 1,
+      "before": {
+        "slot": 4,
+        "state": 139,
+        "x": 1878,
+        "y": 46,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 138,
+        "x": 1879,
+        "y": 46,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    },
+    {
+      "model": 1,
+      "before": {
+        "slot": 3,
+        "state": 129,
+        "x": 1818,
+        "y": 16,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1817,
+        "y": 17,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    },
+    {
+      "model": 1,
+      "before": {
+        "slot": 0,
+        "state": 129,
+        "x": 1855,
+        "y": 18,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      },
+      "after": {
+        "state": 129,
+        "x": 1854,
+        "y": 17,
+        "phase": "dying",
+        "stopped": true,
+        "collision": false
+      }
+    }
+  ]
+}

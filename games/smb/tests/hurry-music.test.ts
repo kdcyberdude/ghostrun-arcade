@@ -13,12 +13,12 @@ function game(){
 test('Star collection and expiry retain the current hurry tempo',()=>{
  const sim=game();sim.items.push({kind:'star',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
  assert.ok(sim.events.includes('music_star_hurry'));sim.events=[];
- sim.player.star=1;sim.step([],1);assert.ok(sim.events.includes('music_ground_hurry'));
+ sim.player.star=4;sim.intervalControl=1;sim.step([],1);assert.ok(sim.events.includes('music_ground_hurry'));
 });
 
 test('area transitions preserve time and select the destination hurry track',()=>{
  const sim=game();sim.timerFrames=11;
  (sim as any).enterArea('under',[40,208],0);
- assert.equal(sim.time,100);assert.equal(sim.timerFrames,11);
+ assert.equal(sim.time,100);assert.equal(sim.timerFrames,24,'InitializeArea clears the frame timer to pending0 while retaining digits');
  assert.deepEqual(sim.events.filter(event=>event.startsWith('music_')),['music_underground_hurry']);
 });

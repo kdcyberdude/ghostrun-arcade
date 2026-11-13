@@ -28,7 +28,7 @@ test('2-1 bonus retains its unique supplied-palette map and observed connections
 test('ordinary down enters the compiled 2-1 room without a level intro or lost progress',()=>{
  const sim=pipeFixture();sim.time=365;sim.coins=13;sim.score=52800;
  let sawPipe=false;for(let frame=0;frame<151;frame++){
-  sim.step(['down'],1);sawPipe ||= sim.phase==='pipe';assert.notEqual(sim.phase,'intro');assert.equal(sim.level.id,'2-1');assert.equal(sim.lives,3);
+  sim.step(['down'],1);sawPipe ||= sim.phase==='pipe';if(sim.phase==='intro')assert.equal(sim.levelLoad?.skipIntermediate,true);assert.equal(sim.level.id,'2-1');assert.equal(sim.lives,3);
  }
  assert.ok(sawPipe);assert.equal(sim.area.id,'bonus-coins');assert.equal(sim.phase,'play');
  assert.deepEqual([sim.player.x,sim.player.y],[24,208]);assert.equal(sim.coins,13);assert.equal(sim.score,52800);assert.ok(sim.time<=365);
@@ -38,7 +38,7 @@ test('ordinary jump and walk traverse 2-1 bonus geometry and enter the same-leve
  const sim=pipeFixture();sim.step(['down'],211);const entryTime=sim.time;
  sim.step(['right','b'],20);sim.step(['right','a','b'],60);sim.step(['right'],100);
  assert.equal(sim.area.id,'bonus-coins');assert.equal(sim.phase,'pipe');assert.equal(sim.lives,3);
- let sawIntro=false;for(let frame=0;frame<90;frame++){sim.step([],1);sawIntro ||= String(sim.phase)==='intro';}
+ let sawIntro=false;for(let frame=0;frame<300&&(String(sim.area.id)!=='main'||String(sim.phase)!=='play'||sim.pipeRising);frame++){sim.step([],1);sawIntro ||= String(sim.phase)==='intro'&&!sim.levelLoad?.skipIntermediate;}
  assert.equal(sawIntro,false);assert.equal(sim.level.id,'2-1');assert.equal(sim.area.id,'main');assert.equal(sim.phase,'play');
  assert.deepEqual([sim.player.x,sim.player.y,sim.camera],[1848,176,1792]);assert.equal(sim.lives,3);
  assert.equal(sim.entryFallPose,false);assert.ok(sim.coins>0);assert.ok(sim.time<entryTime);

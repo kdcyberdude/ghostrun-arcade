@@ -1,0 +1,5098 @@
+{
+ "source": "Source ID49 runtime, native music/NMI queues and strict48/49/22 actor adapters. Level-scope comparison is not complete-input or pixel proof.",
+ "baseline": {
+  "runtimeCommit": "3ce6261",
+  "comparisonCheckoutCommit": "d0f76ae",
+  "simulationSha256": "c505342f385994dcaf00f368074c8465b285aba7a0ba9b5e0b232a226d003513"
+ },
+ "candidate": {
+  "simulationSha256": "b5543d8777a38a15fc36feb0581390f02e9d18c58ae03e3c74f86df09ed71b85",
+  "castleMetadataSha256": "0bb1b987a31bfebbc2b5126455bfdf67419e15419c33e3151e6675472f4fe318"
+ },
+ "identicalToolHashes": {
+  "tools/harness/native-entrance.mjs": "259ea245b0f0b268f9818fc3abe34aae9143ecc7a1bc7e5840ca3eae9c59c370",
+  "tools/harness/native-strict-entities.ts": "e66786bc6c790ca2c0a0d2bedec41ea67a9ad14e8f554c161fa8af2060235214",
+  "tools/harness/native-strict.ts": "4fe5c2010c9357049a9a5ff1ca160cdef65785d10aaeb819759773f26f27d3c0",
+  "tools/harness/native-divergence.ts": "d21bd248537c5620ed2ce9e879eee6a0fe7e1475ca7c4b025ecfe879463c3405"
+ },
+ "legacy": {
+  "fieldsCompared": 256,
+  "unchanged": true,
+  "levels": [
+   {
+    "level": "1-1",
+    "inputFrames": 3020,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-2",
+    "inputFrames": 3060,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-3",
+    "inputFrames": 1736,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-4",
+    "inputFrames": 2840,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-1",
+    "inputFrames": 2956,
+    "fields": {
+     "dead": null,
+     "time": 1745,
+     "score": 1795,
+     "coins": null,
+     "cam": 1602,
+     "x": 1602,
+     "y": 1602,
+     "enemy": 791
+    }
+   },
+   {
+    "level": "2-2",
+    "inputFrames": 6600,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-3",
+    "inputFrames": 2408,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-4",
+    "inputFrames": 4644,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "3-1",
+    "inputFrames": 2616,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 924
+    }
+   },
+   {
+    "level": "3-2",
+    "inputFrames": 2304,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "3-3",
+    "inputFrames": 1776,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 286
+    }
+   },
+   {
+    "level": "3-4",
+    "inputFrames": 4772,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 3434
+    }
+   },
+   {
+    "level": "4-1",
+    "inputFrames": 2388,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-2",
+    "inputFrames": 4636,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-3",
+    "inputFrames": 1800,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-4",
+    "inputFrames": 11636,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "5-1",
+    "inputFrames": 4392,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": 2269,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": 2265,
+     "enemy": 792
+    }
+   },
+   {
+    "level": "5-2",
+    "inputFrames": 3552,
+    "fields": {
+     "dead": 2136,
+     "time": 2147,
+     "score": 1327,
+     "coins": null,
+     "cam": 1427,
+     "x": 1427,
+     "y": 1323,
+     "enemy": 850
+    }
+   },
+   {
+    "level": "5-3",
+    "inputFrames": 2456,
+    "fields": {
+     "dead": 1125,
+     "time": 1146,
+     "score": 1203,
+     "coins": 1203,
+     "cam": 1506,
+     "x": 1506,
+     "y": 1506,
+     "enemy": 1027
+    }
+   },
+   {
+    "level": "5-4",
+    "inputFrames": 2672,
+    "fields": {
+     "dead": 937,
+     "time": 938,
+     "score": 1331,
+     "coins": 1331,
+     "cam": 1307,
+     "x": 1307,
+     "y": 1307,
+     "enemy": 681
+    }
+   },
+   {
+    "level": "6-1",
+    "inputFrames": 2284,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-2",
+    "inputFrames": 4696,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-3",
+    "inputFrames": 3080,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-4",
+    "inputFrames": 1644,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "7-1",
+    "inputFrames": 3816,
+    "fields": {
+     "dead": 1012,
+     "time": 1022,
+     "score": 448,
+     "coins": null,
+     "cam": 668,
+     "x": 668,
+     "y": 444,
+     "enemy": 443
+    }
+   },
+   {
+    "level": "7-2",
+    "inputFrames": 4568,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "7-3",
+    "inputFrames": 3184,
+    "fields": {
+     "dead": 1914,
+     "time": 1936,
+     "score": 1920,
+     "coins": 1920,
+     "cam": 2298,
+     "x": 2298,
+     "y": 2298,
+     "enemy": 423
+    }
+   },
+   {
+    "level": "7-4",
+    "inputFrames": 24000,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "8-1",
+    "inputFrames": 3800,
+    "fields": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "8-2",
+    "inputFrames": 2760,
+    "fields": {
+     "dead": 1999,
+     "time": 2367,
+     "score": 1998,
+     "coins": null,
+     "cam": 2406,
+     "x": 2373,
+     "y": 1994,
+     "enemy": 1408
+    }
+   },
+   {
+    "level": "8-3",
+    "inputFrames": 4208,
+    "fields": {
+     "dead": 976,
+     "time": 976,
+     "score": 1733,
+     "coins": null,
+     "cam": 1545,
+     "x": 1545,
+     "y": 1644,
+     "enemy": 415
+    }
+   },
+   {
+    "level": "8-4",
+    "inputFrames": 15732,
+    "fields": {
+     "dead": 6871,
+     "time": 6887,
+     "score": 6740,
+     "coins": null,
+     "cam": 7350,
+     "x": 6749,
+     "y": 6736,
+     "enemy": 7334
+    }
+   }
+  ]
+ },
+ "strictChanges": [
+  {
+   "level": "1-1",
+   "fields": {
+    "level": {
+     "before": 2848,
+     "after": null
+    },
+    "time": {
+     "before": 2848,
+     "after": null
+    },
+    "missing": {
+     "before": 2117,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "1-3",
+   "fields": {
+    "missing": {
+     "before": 963,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "2-1",
+   "fields": {
+    "level": {
+     "before": 2376,
+     "after": 2369
+    },
+    "state": {
+     "before": null,
+     "after": 2260
+    }
+   }
+  },
+  {
+   "level": "2-3",
+   "fields": {
+    "level": {
+     "before": 2229,
+     "after": null
+    },
+    "time": {
+     "before": 2229,
+     "after": null
+    },
+    "missing": {
+     "before": 1493,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "3-1",
+   "fields": {
+    "level": {
+     "before": 2439,
+     "after": null
+    },
+    "time": {
+     "before": 2439,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "3-2",
+   "fields": {
+    "missing": {
+     "before": 1525,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "3-3",
+   "fields": {
+    "level": {
+     "before": 1599,
+     "after": null
+    },
+    "time": {
+     "before": 1599,
+     "after": null
+    },
+    "missing": {
+     "before": 1000,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "4-1",
+   "fields": {
+    "level": {
+     "before": 2208,
+     "after": null
+    },
+    "area": {
+     "before": 2208,
+     "after": null
+    },
+    "time": {
+     "before": 2208,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "4-3",
+   "fields": {
+    "missing": {
+     "before": 1042,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "5-1",
+   "fields": {
+    "level": {
+     "before": 4219,
+     "after": null
+    },
+    "area": {
+     "before": 4219,
+     "after": null
+    },
+    "time": {
+     "before": 4219,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "6-2",
+   "fields": {
+    "missing": {
+     "before": 3929,
+     "after": null
+    }
+   }
+  },
+  {
+   "level": "8-1",
+   "fields": {
+    "missing": {
+     "before": 2924,
+     "after": null
+    }
+   }
+  }
+ ],
+ "strictCoverage": [
+  {
+   "level": "1-1",
+   "levelScopeStatus": "diverged",
+   "first": 786,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": 786,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2853,
+    "inputFrames": 3020,
+    "endReason": "native level changed to 1-2",
+    "frames": 2853,
+    "alignedFrames": 2853,
+    "nativeEntityRows": 4777,
+    "comparedEntityRows": 4777,
+    "nativeBirthRows": 21,
+    "areaFrames": {
+     "main": 2853
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "1-2",
+   "levelScopeStatus": "diverged",
+   "first": 0,
+   "fields": {
+    "level": null,
+    "area": 325,
+    "dead": null,
+    "time": 0,
+    "score": null,
+    "coins": null,
+    "cam": 1717,
+    "x": null,
+    "y": null,
+    "missing": 1716,
+    "extra": 1717,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2893,
+    "inputFrames": 3060,
+    "endReason": "native level changed to 1-3",
+    "frames": 2893,
+    "alignedFrames": 2845,
+    "nativeEntityRows": 6367,
+    "comparedEntityRows": 5586,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "main": 325,
+     "area-2": 1456,
+     "area-3": 1112
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-2, remake 1-2/main; data=ac37, loaded page=0, origin=0, load frame=325, task=1, look-ahead destination=c0",
+     "area": "area-2",
+     "first": 325,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-2, remake 1-2/main; data=ac37, loaded page=0, origin=0, load frame=325, task=2, look-ahead destination=c0",
+     "area": "area-2",
+     "first": 347,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-2, remake 1-2/main; data=ac37, loaded page=0, origin=0, load frame=325, task=3, look-ahead destination=c0",
+     "area": "area-2",
+     "first": 348,
+     "count": 1
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 4 declared area objects; activation/position adapter missing",
+     "area": "area-2",
+     "first": 349,
+     "count": 1432
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "down-lift",
+     "slot": 2,
+     "id": 39,
+     "area": "area-2",
+     "first": 1485,
+     "count": 156
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "down-lift",
+     "slot": 3,
+     "id": 39,
+     "area": "area-2",
+     "first": 1485,
+     "count": 156
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "up-lift",
+     "slot": 0,
+     "id": 38,
+     "area": "area-2",
+     "first": 1591,
+     "count": 190
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "up-lift",
+     "slot": 1,
+     "id": 38,
+     "area": "area-2",
+     "first": 1599,
+     "count": 182
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "native object id 52",
+     "slot": 2,
+     "id": 52,
+     "area": "area-2",
+     "first": 1642,
+     "count": 75
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "piranha occupies a native slot whose object readout is unsupported",
+     "slot": 2,
+     "area": "area-2",
+     "first": 1716,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-3, remake 1-2/area-2; data=a690, loaded page=11, origin=-2816, load frame=1781, task=1, look-ahead destination=25",
+     "area": "area-3",
+     "first": 1781,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-3, remake 1-2/area-2; data=a690, loaded page=11, origin=-2816, load frame=1781, task=2, look-ahead destination=25",
+     "area": "area-3",
+     "first": 1803,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-2/area-3, remake 1-2/area-2; data=a690, loaded page=11, origin=-2816, load frame=1781, task=3, look-ahead destination=25",
+     "area": "area-3",
+     "first": 1804,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "1-3",
+   "levelScopeStatus": "incomplete",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1570,
+    "inputFrames": 1736,
+    "endReason": "native level changed to 1-4",
+    "frames": 1570,
+    "alignedFrames": 1570,
+    "nativeEntityRows": 2841,
+    "comparedEntityRows": 2260,
+    "nativeBirthRows": 14,
+    "areaFrames": {
+     "main": 1570
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 4 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1570
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 0,
+     "id": 37,
+     "area": "main",
+     "first": 281,
+     "count": 179
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 2,
+     "id": 40,
+     "area": "main",
+     "first": 508,
+     "count": 139
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 3,
+     "id": 40,
+     "area": "main",
+     "first": 562,
+     "count": 136
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 0,
+     "id": 40,
+     "area": "main",
+     "first": 808,
+     "count": 127
+    }
+   ]
+  },
+  {
+   "level": "1-4",
+   "levelScopeStatus": "diverged",
+   "first": 1746,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": 2675,
+    "missing": 1854,
+    "extra": 1746,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "continuationFrames": 167,
+    "victoryFrames": 695,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2840,
+    "inputFrames": 2840,
+    "endReason": "end of trace",
+    "frames": 2840,
+    "alignedFrames": 2840,
+    "nativeEntityRows": 4281,
+    "comparedEntityRows": 595,
+    "nativeBirthRows": 19,
+    "areaFrames": {
+     "main": 2840
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2675
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 7 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2675
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 135,
+     "count": 1157
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 281,
+     "count": 841
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 399,
+     "count": 519
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 539,
+     "count": 455
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 1 aliases owner 0; composite part position is not compared",
+     "slot": 1,
+     "id": 21,
+     "area": "main",
+     "first": 1854,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 2,
+     "id": 40,
+     "area": "main",
+     "first": 1875,
+     "count": 228
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "retainer",
+     "slot": 0,
+     "id": 53,
+     "area": "main",
+     "first": 2190,
+     "count": 485
+    },
+    {
+     "code": "post-victory-scene-transition",
+     "detail": "logical next level still retains the preceding physical area; RAM coordinates use its declared ROM origin",
+     "area": "main",
+     "first": 2673,
+     "count": 2
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 2675,
+     "count": 165
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 2675,
+     "count": 165
+    }
+   ]
+  },
+  {
+   "level": "2-1",
+   "levelScopeStatus": "diverged",
+   "first": 790,
+   "fields": {
+    "level": 2369,
+    "area": null,
+    "dead": null,
+    "time": 1745,
+    "score": 1795,
+    "coins": null,
+    "cam": 1602,
+    "x": 1602,
+    "y": 1602,
+    "missing": 790,
+    "extra": 790,
+    "kind": 948,
+    "position": 929,
+    "state": 2260
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2789,
+    "inputFrames": 2956,
+    "endReason": "native level changed to 2-2",
+    "frames": 2789,
+    "alignedFrames": 2369,
+    "nativeEntityRows": 8320,
+    "comparedEntityRows": 6711,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "main": 2789
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2369
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2369
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 1,
+     "id": 50,
+     "area": "main",
+     "first": 1506,
+     "count": 697
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 2-1/main, remake 2-2/main; data=a7cf, loaded page=0, origin=0, load frame=0, task=3, look-ahead destination=42",
+     "area": "main",
+     "first": 2369,
+     "count": 420
+    }
+   ]
+  },
+  {
+   "level": "2-2",
+   "levelScopeStatus": "diverged",
+   "first": 0,
+   "fields": {
+    "level": null,
+    "area": 328,
+    "dead": null,
+    "time": 0,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 6597,
+    "inputFrames": 6600,
+    "endReason": "unsupported same-level native mode 3 at frame 6597",
+    "frames": 6597,
+    "alignedFrames": 6573,
+    "nativeEntityRows": 8420,
+    "comparedEntityRows": 8420,
+    "nativeBirthRows": 16,
+    "areaFrames": {
+     "main": 328,
+     "area-2": 6269
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 2-2/area-2, remake 2-2/main; data=ae47, loaded page=0, origin=0, load frame=328, task=1, look-ahead destination=1",
+     "area": "area-2",
+     "first": 328,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 2-2/area-2, remake 2-2/main; data=ae47, loaded page=0, origin=0, load frame=328, task=2, look-ahead destination=1",
+     "area": "area-2",
+     "first": 350,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 2-2/area-2, remake 2-2/main; data=ae47, loaded page=0, origin=0, load frame=328, task=3, look-ahead destination=1",
+     "area": "area-2",
+     "first": 351,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-2",
+     "first": 6597,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "2-3",
+   "levelScopeStatus": "diverged",
+   "first": 1198,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": 1198,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2240,
+    "inputFrames": 2408,
+    "endReason": "native level changed to 2-4",
+    "frames": 2240,
+    "alignedFrames": 2240,
+    "nativeEntityRows": 4346,
+    "comparedEntityRows": 4346,
+    "nativeBirthRows": 22,
+    "areaFrames": {
+     "main": 2240
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "2-4",
+   "levelScopeStatus": "diverged",
+   "first": 133,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": 4480,
+    "missing": 133,
+    "extra": 194,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "continuationFrames": 166,
+    "victoryFrames": 694,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4644,
+    "inputFrames": 4644,
+    "endReason": "end of trace",
+    "frames": 4644,
+    "alignedFrames": 4644,
+    "nativeEntityRows": 9380,
+    "comparedEntityRows": 3161,
+    "nativeBirthRows": 42,
+    "areaFrames": {
+     "main": 4644
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 3 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4480
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 6 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4480
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 257,
+     "count": 1059
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 296,
+     "count": 1348
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 336,
+     "count": 456
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "small-up-lift",
+     "slot": 2,
+     "id": 43,
+     "area": "main",
+     "first": 488,
+     "count": 882
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "small-down-lift",
+     "slot": 3,
+     "id": 44,
+     "area": "main",
+     "first": 508,
+     "count": 862
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 27,
+     "area": "main",
+     "first": 536,
+     "count": 839
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 0; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 3599,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 3,
+     "id": 40,
+     "area": "main",
+     "first": 3621,
+     "count": 291
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "retainer",
+     "slot": 0,
+     "id": 53,
+     "area": "main",
+     "first": 3999,
+     "count": 481
+    },
+    {
+     "code": "post-victory-scene-transition",
+     "detail": "logical next level still retains the preceding physical area; RAM coordinates use its declared ROM origin",
+     "area": "main",
+     "first": 4478,
+     "count": 2
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 4480,
+     "count": 164
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 4480,
+     "count": 164
+    }
+   ]
+  },
+  {
+   "level": "3-1",
+   "levelScopeStatus": "diverged",
+   "first": 799,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 799,
+    "extra": 974,
+    "kind": 1440,
+    "position": 924,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2451,
+    "inputFrames": 2616,
+    "endReason": "native level changed to 3-2",
+    "frames": 2451,
+    "alignedFrames": 2451,
+    "nativeEntityRows": 7018,
+    "comparedEntityRows": 6701,
+    "nativeBirthRows": 37,
+    "areaFrames": {
+     "main": 2451
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2451
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2451
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 0,
+     "id": 50,
+     "area": "main",
+     "first": 890,
+     "count": 317
+    }
+   ]
+  },
+  {
+   "level": "3-2",
+   "levelScopeStatus": "pass",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2138,
+    "inputFrames": 2304,
+    "endReason": "native level changed to 3-3",
+    "frames": 2138,
+    "alignedFrames": 2138,
+    "nativeEntityRows": 5741,
+    "comparedEntityRows": 5741,
+    "nativeBirthRows": 33,
+    "areaFrames": {
+     "main": 2138
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "3-3",
+   "levelScopeStatus": "diverged",
+   "first": 286,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": 286,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1611,
+    "inputFrames": 1776,
+    "endReason": "native level changed to 3-4",
+    "frames": 1611,
+    "alignedFrames": 1611,
+    "nativeEntityRows": 4226,
+    "comparedEntityRows": 2474,
+    "nativeBirthRows": 21,
+    "areaFrames": {
+     "main": 1611
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1611
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 1,
+     "id": 40,
+     "area": "main",
+     "first": 121,
+     "count": 277
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 2,
+     "id": 40,
+     "area": "main",
+     "first": 140,
+     "count": 141
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 2,
+     "id": 41,
+     "area": "main",
+     "first": 324,
+     "count": 211
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 0,
+     "id": 36,
+     "area": "main",
+     "first": 521,
+     "count": 411
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 2,
+     "id": 36,
+     "area": "main",
+     "first": 563,
+     "count": 156
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 3,
+     "id": 40,
+     "area": "main",
+     "first": 615,
+     "count": 267
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 4,
+     "id": 40,
+     "area": "main",
+     "first": 659,
+     "count": 135
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 4,
+     "id": 36,
+     "area": "main",
+     "first": 875,
+     "count": 154
+    }
+   ]
+  },
+  {
+   "level": "3-4",
+   "levelScopeStatus": "diverged",
+   "first": 100,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": 4607,
+    "missing": 100,
+    "extra": 237,
+    "kind": null,
+    "position": 1989,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "continuationFrames": 167,
+    "victoryFrames": 687,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4772,
+    "inputFrames": 4772,
+    "endReason": "end of trace",
+    "frames": 4772,
+    "alignedFrames": 4772,
+    "nativeEntityRows": 12311,
+    "comparedEntityRows": 6143,
+    "nativeBirthRows": 53,
+    "areaFrames": {
+     "main": 4772
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4607
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 9 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4607
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 41,
+     "count": 1379
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 87,
+     "count": 1203
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 119,
+     "count": 688
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 336,
+     "count": 510
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 27,
+     "area": "main",
+     "first": 336,
+     "count": 510
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 400,
+     "count": 522
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 503,
+     "count": 651
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 1; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 3798,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 3,
+     "id": 40,
+     "area": "main",
+     "first": 3817,
+     "count": 230
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "retainer",
+     "slot": 0,
+     "id": 53,
+     "area": "main",
+     "first": 4133,
+     "count": 474
+    },
+    {
+     "code": "post-victory-scene-transition",
+     "detail": "logical next level still retains the preceding physical area; RAM coordinates use its declared ROM origin",
+     "area": "main",
+     "first": 4605,
+     "count": 2
+    }
+   ]
+  },
+  {
+   "level": "4-1",
+   "levelScopeStatus": "diverged",
+   "first": 121,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 121,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2221,
+    "inputFrames": 2388,
+    "endReason": "native level changed to 4-2",
+    "frames": 2221,
+    "alignedFrames": 2221,
+    "nativeEntityRows": 4974,
+    "comparedEntityRows": 4974,
+    "nativeBirthRows": 18,
+    "areaFrames": {
+     "main": 2221
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "4-2",
+   "levelScopeStatus": "diverged",
+   "first": 0,
+   "fields": {
+    "level": null,
+    "area": 327,
+    "dead": null,
+    "time": 0,
+    "score": null,
+    "coins": null,
+    "cam": 2644,
+    "x": 2672,
+    "y": null,
+    "missing": 1465,
+    "extra": 1567,
+    "kind": 1581,
+    "position": 2462,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4471,
+    "inputFrames": 4636,
+    "endReason": "native level changed to 4-3",
+    "frames": 4471,
+    "alignedFrames": 4423,
+    "nativeEntityRows": 8646,
+    "comparedEntityRows": 7286,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "area-2": 327,
+     "area-3": 2399,
+     "area-4": 1745
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-3, remake 4-2/area-2; data=acda, loaded page=0, origin=0, load frame=327, task=1, look-ahead destination=41",
+     "area": "area-3",
+     "first": 327,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-3, remake 4-2/area-2; data=acda, loaded page=0, origin=0, load frame=327, task=2, look-ahead destination=41",
+     "area": "area-3",
+     "first": 349,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-3, remake 4-2/area-2; data=acda, loaded page=0, origin=0, load frame=327, task=3, look-ahead destination=41",
+     "area": "area-3",
+     "first": 350,
+     "count": 1
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 7 declared area objects; activation/position adapter missing",
+     "area": "area-3",
+     "first": 351,
+     "count": 2375
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "area-3",
+     "first": 351,
+     "count": 2375
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "down-lift",
+     "slot": 3,
+     "id": 39,
+     "area": "area-3",
+     "first": 1458,
+     "count": 404
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "koopa occupies a native slot whose object readout is unsupported",
+     "slot": 3,
+     "area": "area-3",
+     "first": 1581,
+     "count": 83
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "down-lift",
+     "slot": 4,
+     "id": 39,
+     "area": "area-3",
+     "first": 1951,
+     "count": 198
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "piranha occupies a native slot whose object readout is unsupported",
+     "slot": 3,
+     "area": "area-3",
+     "first": 1951,
+     "count": 172
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "up-lift",
+     "slot": 0,
+     "id": 38,
+     "area": "area-3",
+     "first": 2016,
+     "count": 233
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "up-lift",
+     "slot": 1,
+     "id": 38,
+     "area": "area-3",
+     "first": 2016,
+     "count": 233
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "koopa occupies a native slot whose object readout is unsupported",
+     "slot": 1,
+     "area": "area-3",
+     "first": 2150,
+     "count": 259
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "down-lift",
+     "slot": 1,
+     "id": 39,
+     "area": "area-3",
+     "first": 2340,
+     "count": 212
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "native object id 52",
+     "slot": 1,
+     "id": 52,
+     "area": "area-3",
+     "first": 2586,
+     "count": 58
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-4, remake 4-2/area-3; data=a690, loaded page=11, origin=-2816, load frame=2726, task=1, look-ahead destination=25",
+     "area": "area-4",
+     "first": 2726,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-4, remake 4-2/area-3; data=a690, loaded page=11, origin=-2816, load frame=2726, task=2, look-ahead destination=25",
+     "area": "area-4",
+     "first": 2748,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-2/area-4, remake 4-2/area-3; data=a690, loaded page=11, origin=-2816, load frame=2726, task=3, look-ahead destination=25",
+     "area": "area-4",
+     "first": 2749,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "4-3",
+   "levelScopeStatus": "incomplete",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1632,
+    "inputFrames": 1800,
+    "endReason": "native level changed to 4-4",
+    "frames": 1632,
+    "alignedFrames": 1632,
+    "nativeEntityRows": 4317,
+    "comparedEntityRows": 2364,
+    "nativeBirthRows": 19,
+    "areaFrames": {
+     "main": 1632
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1632
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 4,
+     "id": 36,
+     "area": "main",
+     "first": 302,
+     "count": 307
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 0,
+     "id": 36,
+     "area": "main",
+     "first": 352,
+     "count": 494
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 1,
+     "id": 37,
+     "area": "main",
+     "first": 370,
+     "count": 169
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 2,
+     "id": 37,
+     "area": "main",
+     "first": 395,
+     "count": 172
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 1,
+     "id": 36,
+     "area": "main",
+     "first": 584,
+     "count": 173
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 2,
+     "id": 36,
+     "area": "main",
+     "first": 605,
+     "count": 171
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 3,
+     "id": 36,
+     "area": "main",
+     "first": 636,
+     "count": 172
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 0,
+     "id": 37,
+     "area": "main",
+     "first": 920,
+     "count": 295
+    }
+   ]
+  },
+  {
+   "level": "4-4",
+   "levelScopeStatus": "incomplete",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 11633,
+    "inputFrames": 11636,
+    "endReason": "unsupported same-level native mode 3 at frame 11633",
+    "frames": 11633,
+    "alignedFrames": 11633,
+    "nativeEntityRows": 8939,
+    "comparedEntityRows": 1395,
+    "nativeBirthRows": 69,
+    "areaFrames": {
+     "main": 11633
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 5 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 11633
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 27,
+     "area": "main",
+     "first": 281,
+     "count": 3374
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 27,
+     "area": "main",
+     "first": 325,
+     "count": 456
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 712,
+     "count": 3714
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 11633,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "5-1",
+   "levelScopeStatus": "diverged",
+   "first": 792,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": 2269,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": 2265,
+    "missing": 1281,
+    "extra": 2073,
+    "kind": 2105,
+    "position": 792,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4226,
+    "inputFrames": 4392,
+    "endReason": "native level changed to 5-2",
+    "frames": 4226,
+    "alignedFrames": 4226,
+    "nativeEntityRows": 10987,
+    "comparedEntityRows": 10987,
+    "nativeBirthRows": 80,
+    "areaFrames": {
+     "main": 4226
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "5-2",
+   "levelScopeStatus": "diverged",
+   "first": 481,
+   "fields": {
+    "level": 2775,
+    "area": 2775,
+    "dead": 2136,
+    "time": 2147,
+    "score": 1327,
+    "coins": 2775,
+    "cam": 1427,
+    "x": 1427,
+    "y": 1323,
+    "missing": 481,
+    "extra": 483,
+    "kind": 1492,
+    "position": 654,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3384,
+    "inputFrames": 3552,
+    "endReason": "native level changed to 5-3",
+    "frames": 3384,
+    "alignedFrames": 2775,
+    "nativeEntityRows": 8249,
+    "comparedEntityRows": 6566,
+    "nativeBirthRows": 62,
+    "areaFrames": {
+     "area-2": 3384
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "area-2",
+     "first": 0,
+     "count": 2775
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "area-2",
+     "first": 0,
+     "count": 2775
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 0,
+     "id": 50,
+     "area": "area-2",
+     "first": 63,
+     "count": 460
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 1-1/main; data=aa94, loaded page=6, origin=0, load frame=1761, task=3, look-ahead destination=2b",
+     "area": "area-2",
+     "first": 2775,
+     "count": 609
+    }
+   ]
+  },
+  {
+   "level": "5-3",
+   "levelScopeStatus": "diverged",
+   "first": 633,
+   "fields": {
+    "level": 2245,
+    "area": null,
+    "dead": 1125,
+    "time": 1146,
+    "score": 1203,
+    "coins": 1203,
+    "cam": 1126,
+    "x": 1126,
+    "y": 1126,
+    "missing": 1026,
+    "extra": 1025,
+    "kind": 1026,
+    "position": 633,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2289,
+    "inputFrames": 2456,
+    "endReason": "native level changed to 5-4",
+    "frames": 2289,
+    "alignedFrames": 2245,
+    "nativeEntityRows": 5834,
+    "comparedEntityRows": 3948,
+    "nativeBirthRows": 31,
+    "areaFrames": {
+     "main": 2289
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 4 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2245
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 0,
+     "id": 37,
+     "area": "main",
+     "first": 281,
+     "count": 163
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "bullet-cheep-frenzy-control",
+     "slot": 3,
+     "id": 23,
+     "area": "main",
+     "first": 466,
+     "count": 403
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 1,
+     "id": 40,
+     "area": "main",
+     "first": 492,
+     "count": 377
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 2,
+     "id": 40,
+     "area": "main",
+     "first": 550,
+     "count": 507
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 0,
+     "id": 40,
+     "area": "main",
+     "first": 1127,
+     "count": 348
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "goomba occupies a native slot whose object readout is unsupported",
+     "slot": 0,
+     "area": "main",
+     "first": 1127,
+     "count": 308
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/main, remake 1-1/main; data=a6f5, loaded page=4, origin=0, load frame=869, task=3, look-ahead destination=26",
+     "area": "main",
+     "first": 2245,
+     "count": 44
+    }
+   ]
+  },
+  {
+   "level": "5-4",
+   "levelScopeStatus": "diverged",
+   "first": 54,
+   "fields": {
+    "level": 2319,
+    "area": null,
+    "dead": 937,
+    "time": 938,
+    "score": 1331,
+    "coins": 1331,
+    "cam": 938,
+    "x": 938,
+    "y": 953,
+    "missing": 54,
+    "extra": 730,
+    "kind": 1382,
+    "position": 135,
+    "state": null,
+    "victory.owned": 1802,
+    "victory.task": 1802,
+    "victory.frameCounter": 1802,
+    "victory.random": 1802,
+    "victory.interval": 1893,
+    "victory.primary": 1802,
+    "victory.secondary": 1802,
+    "victory.endTimer": 1802,
+    "victory.feet": 1802,
+    "victory.controls": 1802,
+    "victory.bridge": 1802,
+    "victory.scrollFraction": 1802,
+    "victory.bossOwned": 1802,
+    "victory.cell": 1892,
+    "victory.destination": 1937,
+    "victory.walk": 1938,
+    "continuation.frameCounter": 2506,
+    "continuation.random": 2506,
+    "continuation.interval": 2506,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "continuationFrames": 166,
+    "victoryFrames": 704,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2672,
+    "inputFrames": 2672,
+    "endReason": "end of trace",
+    "frames": 2672,
+    "alignedFrames": 2319,
+    "nativeEntityRows": 7512,
+    "comparedEntityRows": 3462,
+    "nativeBirthRows": 32,
+    "areaFrames": {
+     "main": 2672
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 3 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2319
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2319
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 31,
+     "area": "main",
+     "first": 82,
+     "count": 455
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 3 aliases owner 2; composite part position is not compared",
+     "slot": 3,
+     "id": 0,
+     "area": "main",
+     "first": 82,
+     "count": 455
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "podoboo occupies a native slot whose object readout is unsupported",
+     "slot": 3,
+     "area": "main",
+     "first": 127,
+     "count": 367
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 753,
+     "count": 429
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 825,
+     "count": 341
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 862,
+     "count": 396
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 862,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 900,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 940,
+     "count": 151
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "small-up-lift",
+     "slot": 3,
+     "id": 43,
+     "area": "main",
+     "first": 1054,
+     "count": 249
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "small-down-lift",
+     "slot": 4,
+     "id": 44,
+     "area": "main",
+     "first": 1073,
+     "count": 249
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 28,
+     "area": "main",
+     "first": 1280,
+     "count": 225
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "podoboo occupies a native slot whose object readout is unsupported",
+     "slot": 0,
+     "area": "main",
+     "first": 1307,
+     "count": 336
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 3 aliases owner 2; composite part position is not compared",
+     "slot": 3,
+     "id": 21,
+     "area": "main",
+     "first": 1591,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 1,
+     "id": 40,
+     "area": "main",
+     "first": 1627,
+     "count": 309
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "podoboo occupies a native slot whose object readout is unsupported",
+     "slot": 1,
+     "area": "main",
+     "first": 1627,
+     "count": 309
+    },
+    {
+     "code": "native-victory-not-owned",
+     "detail": "native mode2 has no remake victory control state; replay continues without resetting gameplay",
+     "area": "main",
+     "first": 1802,
+     "count": 704
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "retainer",
+     "slot": 0,
+     "id": 53,
+     "area": "main",
+     "first": 2022,
+     "count": 486
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=3, look-ahead destination=62",
+     "area": "main",
+     "first": 2319,
+     "count": 67
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=4, look-ahead destination=62",
+     "area": "main",
+     "first": 2386,
+     "count": 120
+    },
+    {
+     "code": "post-victory-scene-transition",
+     "detail": "logical next level still retains the preceding physical area; RAM coordinates use its declared ROM origin",
+     "area": "main",
+     "first": 2506,
+     "count": 2
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=0, look-ahead destination=2e",
+     "area": "main",
+     "first": 2506,
+     "count": 2
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=1, look-ahead destination=2e",
+     "area": "main",
+     "first": 2508,
+     "count": 162
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=2, look-ahead destination=2e",
+     "area": "main",
+     "first": 2670,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=3, look-ahead destination=2e",
+     "area": "main",
+     "first": 2671,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "6-1",
+   "levelScopeStatus": "diverged",
+   "first": 134,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 134,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2116,
+    "inputFrames": 2284,
+    "endReason": "native level changed to 6-2",
+    "frames": 2116,
+    "alignedFrames": 2116,
+    "nativeEntityRows": 4351,
+    "comparedEntityRows": 4351,
+    "nativeBirthRows": 17,
+    "areaFrames": {
+     "main": 2116
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "6-2",
+   "levelScopeStatus": "incomplete",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4529,
+    "inputFrames": 4696,
+    "endReason": "native level changed to 6-3",
+    "frames": 4529,
+    "alignedFrames": 4529,
+    "nativeEntityRows": 17892,
+    "comparedEntityRows": 17892,
+    "nativeBirthRows": 34,
+    "areaFrames": {
+     "main": 4529
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4529
+    }
+   ]
+  },
+  {
+   "level": "6-3",
+   "levelScopeStatus": "incomplete",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 2,
+    "nativeMappedFrames": 3078,
+    "inputFrames": 3080,
+    "endReason": "unsupported same-level native mode 3 at frame 3078",
+    "frames": 3078,
+    "alignedFrames": 3078,
+    "nativeEntityRows": 9196,
+    "comparedEntityRows": 982,
+    "nativeBirthRows": 38,
+    "areaFrames": {
+     "main": 3078
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 16 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 3078
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 2 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 3078
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 0,
+     "id": 37,
+     "area": "main",
+     "first": 111,
+     "count": 301
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 1,
+     "id": 50,
+     "area": "main",
+     "first": 155,
+     "count": 376
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 2,
+     "id": 40,
+     "area": "main",
+     "first": 208,
+     "count": 686
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 3,
+     "id": 40,
+     "area": "main",
+     "first": 239,
+     "count": 320
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 0,
+     "id": 40,
+     "area": "main",
+     "first": 288,
+     "count": 321
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "vertical-platform",
+     "slot": 4,
+     "id": 37,
+     "area": "main",
+     "first": 319,
+     "count": 372
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 1,
+     "id": 36,
+     "area": "main",
+     "first": 392,
+     "count": 925
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 2,
+     "id": 36,
+     "area": "main",
+     "first": 418,
+     "count": 1085
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 0,
+     "id": 36,
+     "area": "main",
+     "first": 443,
+     "count": 532
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 3,
+     "id": 36,
+     "area": "main",
+     "first": 462,
+     "count": 513
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 0,
+     "id": 50,
+     "area": "main",
+     "first": 1697,
+     "count": 872
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 1,
+     "id": 40,
+     "area": "main",
+     "first": 1852,
+     "count": 252
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "balance-platform",
+     "slot": 4,
+     "id": 36,
+     "area": "main",
+     "first": 1954,
+     "count": 760
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 0,
+     "id": 41,
+     "area": "main",
+     "first": 2069,
+     "count": 343
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 1,
+     "id": 41,
+     "area": "main",
+     "first": 2110,
+     "count": 302
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 3,
+     "id": 41,
+     "area": "main",
+     "first": 2158,
+     "count": 254
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 2 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 3078,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "6-4",
+   "levelScopeStatus": "diverged",
+   "first": 106,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 106,
+    "extra": null,
+    "kind": null,
+    "position": 841,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 4,
+    "nativeMappedFrames": 1640,
+    "inputFrames": 1644,
+    "endReason": "unsupported same-level native mode 3 at frame 1640",
+    "frames": 1640,
+    "alignedFrames": 1640,
+    "nativeEntityRows": 4672,
+    "comparedEntityRows": 1870,
+    "nativeBirthRows": 15,
+    "areaFrames": {
+     "main": 1640
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1640
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1640
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 82,
+     "count": 1067
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 125,
+     "count": 938
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 176,
+     "count": 797
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 1640,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-1",
+   "levelScopeStatus": "diverged",
+   "first": 231,
+   "fields": {
+    "level": 3026,
+    "area": null,
+    "dead": 1012,
+    "time": 1022,
+    "score": 448,
+    "coins": 3026,
+    "cam": 668,
+    "x": 668,
+    "y": 444,
+    "missing": 330,
+    "extra": 318,
+    "kind": 428,
+    "position": 231,
+    "state": 1063
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3651,
+    "inputFrames": 3816,
+    "endReason": "native level changed to 7-2",
+    "frames": 3651,
+    "alignedFrames": 3026,
+    "nativeEntityRows": 12703,
+    "comparedEntityRows": 10590,
+    "nativeBirthRows": 140,
+    "areaFrames": {
+     "main": 3651
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 3026
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 3,
+     "id": 50,
+     "area": "main",
+     "first": 1025,
+     "count": 558
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 2,
+     "id": 50,
+     "area": "main",
+     "first": 2580,
+     "count": 266
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "piranha occupies a native slot whose object readout is unsupported",
+     "slot": 2,
+     "area": "main",
+     "first": 2580,
+     "count": 266
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-1/main, remake 1-1/main; data=ab80, loaded page=6, origin=0, load frame=2082, task=3, look-ahead destination=42",
+     "area": "main",
+     "first": 3026,
+     "count": 625
+    }
+   ]
+  },
+  {
+   "level": "7-2",
+   "levelScopeStatus": "diverged",
+   "first": 0,
+   "fields": {
+    "level": null,
+    "area": 328,
+    "dead": null,
+    "time": 0,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 4565,
+    "inputFrames": 4568,
+    "endReason": "unsupported same-level native mode 3 at frame 4565",
+    "frames": 4565,
+    "alignedFrames": 4541,
+    "nativeEntityRows": 12405,
+    "comparedEntityRows": 11842,
+    "nativeBirthRows": 33,
+    "areaFrames": {
+     "area-2": 328,
+     "area-4": 4237
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-4, remake 7-2/area-2; data=ae47, loaded page=0, origin=0, load frame=328, task=1, look-ahead destination=1",
+     "area": "area-4",
+     "first": 328,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-4, remake 7-2/area-2; data=ae47, loaded page=0, origin=0, load frame=328, task=2, look-ahead destination=1",
+     "area": "area-4",
+     "first": 350,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-4, remake 7-2/area-2; data=ae47, loaded page=0, origin=0, load frame=328, task=3, look-ahead destination=1",
+     "area": "area-4",
+     "first": 351,
+     "count": 1
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "bullet-cheep-frenzy-control",
+     "slot": 5,
+     "id": 23,
+     "area": "area-4",
+     "first": 2389,
+     "count": 563
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-4",
+     "first": 4565,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-3",
+   "levelScopeStatus": "diverged",
+   "first": 423,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": 1914,
+    "time": 1936,
+    "score": 1920,
+    "coins": 1920,
+    "cam": 1915,
+    "x": 1915,
+    "y": 1915,
+    "missing": 765,
+    "extra": 650,
+    "kind": 578,
+    "position": 423,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3019,
+    "inputFrames": 3184,
+    "endReason": "native level changed to 7-4",
+    "frames": 3019,
+    "alignedFrames": 3019,
+    "nativeEntityRows": 7627,
+    "comparedEntityRows": 7627,
+    "nativeBirthRows": 39,
+    "areaFrames": {
+     "main": 3019
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "7-4",
+   "levelScopeStatus": "diverged",
+   "first": 54,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": 9616,
+    "x": 9616,
+    "y": null,
+    "missing": 54,
+    "extra": 212,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 24000,
+    "inputFrames": 24000,
+    "endReason": "end of trace",
+    "frames": 24000,
+    "alignedFrames": 24000,
+    "nativeEntityRows": 1554,
+    "comparedEntityRows": 479,
+    "nativeBirthRows": 9,
+    "areaFrames": {
+     "main": 24000
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 0,
+     "id": 41,
+     "area": "main",
+     "first": 0,
+     "count": 621
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 2 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 24000
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 24000
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "falling-platform",
+     "slot": 2,
+     "id": 41,
+     "area": "main",
+     "first": 74,
+     "count": 454
+    }
+   ]
+  },
+  {
+   "level": "8-1",
+   "levelScopeStatus": "pass",
+   "first": null,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3634,
+    "inputFrames": 3800,
+    "endReason": "native level changed to 8-2",
+    "frames": 3634,
+    "alignedFrames": 3634,
+    "nativeEntityRows": 9368,
+    "comparedEntityRows": 9368,
+    "nativeBirthRows": 57,
+    "areaFrames": {
+     "main": 3634
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "8-2",
+   "levelScopeStatus": "diverged",
+   "first": 61,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": 1999,
+    "time": 2366,
+    "score": 1998,
+    "coins": null,
+    "cam": 2000,
+    "x": 2000,
+    "y": 1994,
+    "missing": 61,
+    "extra": 1157,
+    "kind": 2465,
+    "position": 225,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 4,
+    "nativeMappedFrames": 2756,
+    "inputFrames": 2760,
+    "endReason": "unsupported same-level native mode 3 at frame 2756",
+    "frames": 2756,
+    "alignedFrames": 2756,
+    "nativeEntityRows": 7753,
+    "comparedEntityRows": 7535,
+    "nativeBirthRows": 70,
+    "areaFrames": {
+     "main": 2756
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "spring: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2756
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "spring",
+     "slot": 2,
+     "id": 50,
+     "area": "main",
+     "first": 845,
+     "count": 218
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 2756,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "8-3",
+   "levelScopeStatus": "diverged",
+   "first": 264,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": 976,
+    "time": 976,
+    "score": 1733,
+    "coins": null,
+    "cam": 977,
+    "x": 977,
+    "y": 977,
+    "missing": 341,
+    "extra": 264,
+    "kind": 546,
+    "position": 415,
+    "state": 963
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 4205,
+    "inputFrames": 4208,
+    "endReason": "unsupported same-level native mode 3 at frame 4205",
+    "frames": 4205,
+    "alignedFrames": 4205,
+    "nativeEntityRows": 9584,
+    "comparedEntityRows": 9584,
+    "nativeBirthRows": 131,
+    "areaFrames": {
+     "main": 4205
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 4205,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "8-4",
+   "levelScopeStatus": "diverged",
+   "first": 675,
+   "fields": {
+    "level": 8733,
+    "area": 6455,
+    "dead": 6871,
+    "time": 6887,
+    "score": 6740,
+    "coins": 8733,
+    "cam": 6454,
+    "x": 6749,
+    "y": 6736,
+    "missing": 6479,
+    "extra": 675,
+    "kind": 6480,
+    "position": 6480,
+    "state": null
+   },
+   "coverage": {
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 15729,
+    "inputFrames": 15732,
+    "endReason": "unsupported same-level native mode 3 at frame 15729",
+    "frames": 15729,
+    "alignedFrames": 8621,
+    "nativeEntityRows": 28658,
+    "comparedEntityRows": 5196,
+    "nativeBirthRows": 109,
+    "areaFrames": {
+     "main": 8145,
+     "area-2": 7584
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "platform: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 8019
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 4,
+     "id": 40,
+     "area": "main",
+     "first": 481,
+     "count": 193
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 8-4/main; data=a3fc, loaded page=7, origin=-1792, load frame=6455, task=1, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 6455,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 8-4/main; data=a3fc, loaded page=7, origin=-1792, load frame=6455, task=2, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 6477,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 8-4/main; data=a3fc, loaded page=7, origin=-1792, load frame=6455, task=3, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 6478,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 8-4/main; data=a3fc, loaded page=7, origin=-1792, load frame=6455, task=3, look-ahead destination=65",
+     "area": "area-2",
+     "first": 7081,
+     "count": 86
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 8-4/main; data=a3fc, loaded page=7, origin=-1792, load frame=6455, task=0, look-ahead destination=65",
+     "area": "area-2",
+     "first": 7167,
+     "count": 2
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "horizontal-platform",
+     "slot": 1,
+     "id": 40,
+     "area": "main",
+     "first": 8518,
+     "count": 232
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/main, remake 1-1/main; data=a3fc, loaded page=0, origin=0, load frame=7676, task=3, look-ahead destination=e5",
+     "area": "main",
+     "first": 8733,
+     "count": 124
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/main, remake 1-1/main; data=a3fc, loaded page=0, origin=0, load frame=7676, task=0, look-ahead destination=e5",
+     "area": "main",
+     "first": 8857,
+     "count": 2
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=1, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 8859,
+     "count": 22
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=2, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 8881,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=3, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 8882,
+     "count": 2351
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=3, look-ahead destination=65",
+     "area": "area-2",
+     "first": 8883,
+     "count": 4496
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-2",
+     "first": 15729,
+     "count": 1
+    }
+   ]
+  }
+ ],
+ "sourceFlagControl": [
+  {
+   "level": "1-1",
+   "rows": 736,
+   "firstBorn": 2117,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "1-2",
+   "rows": 858,
+   "firstBorn": 2035,
+   "fields": {
+    "level": 2893,
+    "owned": null,
+    "slot": null,
+    "task": 2892,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": 2787
+   },
+   "samples": [
+    {
+     "frame": 2787,
+     "field": "interval",
+     "native": 5,
+     "sim": 6
+    },
+    {
+     "frame": 2892,
+     "field": "task",
+     "native": 5,
+     "sim": 4
+    },
+    {
+     "frame": 2893,
+     "field": "level",
+     "native": "1-3",
+     "sim": "1-2"
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "1-3",
+   "rows": 607,
+   "firstBorn": 963,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "1-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "2-1",
+   "rows": 769,
+   "firstBorn": 2020,
+   "fields": {
+    "level": 2369,
+    "owned": 2369,
+    "slot": 2369,
+    "task": 2020,
+    "x": 2369,
+    "camera": 2020,
+    "playerX": 2020,
+    "playerY": 2020,
+    "y": 2227,
+    "frenzyTimer": 2606,
+    "music": 2201,
+    "music.counter": 2201,
+    "music.length": 2201,
+    "music.offset": 2201,
+    "state": 2260,
+    "fireworks": 2260,
+    "interval": 2670
+   },
+   "samples": [
+    {
+     "frame": 2020,
+     "field": "task",
+     "native": 0,
+     "sim": 2
+    },
+    {
+     "frame": 2020,
+     "field": "camera",
+     "native": 2944,
+     "sim": 3158
+    },
+    {
+     "frame": 2020,
+     "field": "playerX",
+     "native": 3024,
+     "sim": 3298
+    },
+    {
+     "frame": 2020,
+     "field": "playerY",
+     "native": 13,
+     "sim": 208
+    },
+    {
+     "frame": 2201,
+     "field": "music",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 2201,
+     "field": "music.counter",
+     "native": 8,
+     "sim": 0
+    },
+    {
+     "frame": 2201,
+     "field": "music.length",
+     "native": 8,
+     "sim": 36
+    },
+    {
+     "frame": 2201,
+     "field": "music.offset",
+     "native": 2,
+     "sim": 33
+    },
+    {
+     "frame": 2227,
+     "field": "y",
+     "native": 144,
+     "sim": 143
+    },
+    {
+     "frame": 2260,
+     "field": "state",
+     "native": 3,
+     "sim": 0
+    },
+    {
+     "frame": 2260,
+     "field": "fireworks",
+     "native": 3,
+     "sim": 255
+    },
+    {
+     "frame": 2369,
+     "field": "level",
+     "native": "2-1",
+     "sim": "2-2"
+    },
+    {
+     "frame": 2369,
+     "field": "owned",
+     "native": true,
+     "sim": false
+    },
+    {
+     "frame": 2369,
+     "field": "slot",
+     "native": 2
+    },
+    {
+     "frame": 2369,
+     "field": "x",
+     "native": 3296
+    },
+    {
+     "frame": 2606,
+     "field": "frenzyTimer",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 2670,
+     "field": "interval",
+     "native": 6
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "2-2",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "2-3",
+   "rows": 747,
+   "firstBorn": 1493,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "2-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "3-1",
+   "rows": 718,
+   "firstBorn": 1733,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": 1733,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [
+    {
+     "frame": 1733,
+     "field": "slot",
+     "native": 0,
+     "sim": 2
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "3-2",
+   "rows": 613,
+   "firstBorn": 1525,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "3-3",
+   "rows": 611,
+   "firstBorn": 1000,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "3-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "4-1",
+   "rows": 703,
+   "firstBorn": 1518,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "4-2",
+   "rows": 813,
+   "firstBorn": 3658,
+   "fields": {
+    "level": 4471,
+    "owned": null,
+    "slot": null,
+    "task": 4470,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": 4365
+   },
+   "samples": [
+    {
+     "frame": 4365,
+     "field": "interval",
+     "native": 5,
+     "sim": 6
+    },
+    {
+     "frame": 4470,
+     "field": "task",
+     "native": 5,
+     "sim": 4
+    },
+    {
+     "frame": 4471,
+     "field": "level",
+     "native": "4-3",
+     "sim": "4-2"
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "4-3",
+   "rows": 590,
+   "firstBorn": 1042,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "4-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "5-1",
+   "rows": 632,
+   "firstBorn": 3594,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "5-2",
+   "rows": 732,
+   "firstBorn": 2652,
+   "fields": {
+    "level": 2775,
+    "owned": 2652,
+    "slot": 2652,
+    "task": 2652,
+    "x": 2652,
+    "camera": 2652,
+    "playerX": 2652,
+    "playerY": 2652,
+    "y": 2652,
+    "frenzyTimer": null,
+    "music": 2810,
+    "music.counter": 2810,
+    "music.length": 2810,
+    "music.offset": 2810,
+    "state": 2869,
+    "fireworks": null,
+    "interval": 3270
+   },
+   "samples": [
+    {
+     "frame": 2652,
+     "field": "owned",
+     "native": true,
+     "sim": false
+    },
+    {
+     "frame": 2652,
+     "field": "slot",
+     "native": 1
+    },
+    {
+     "frame": 2652,
+     "field": "task",
+     "native": 0
+    },
+    {
+     "frame": 2652,
+     "field": "x",
+     "native": 3296
+    },
+    {
+     "frame": 2652,
+     "field": "camera",
+     "native": 2944,
+     "sim": 1862
+    },
+    {
+     "frame": 2652,
+     "field": "playerX",
+     "native": 3056,
+     "sim": 1974
+    },
+    {
+     "frame": 2652,
+     "field": "playerY",
+     "native": 80,
+     "sim": 802
+    },
+    {
+     "frame": 2652,
+     "field": "y",
+     "native": 144
+    },
+    {
+     "frame": 2775,
+     "field": "level",
+     "native": "5-2",
+     "sim": "1-1"
+    },
+    {
+     "frame": 2810,
+     "field": "music",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 2810,
+     "field": "music.counter",
+     "native": 8,
+     "sim": 0
+    },
+    {
+     "frame": 2810,
+     "field": "music.length",
+     "native": 8,
+     "sim": 0
+    },
+    {
+     "frame": 2810,
+     "field": "music.offset",
+     "native": 2,
+     "sim": 0
+    },
+    {
+     "frame": 2869,
+     "field": "state",
+     "native": 0
+    },
+    {
+     "frame": 3270,
+     "field": "interval",
+     "native": 6
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "5-3",
+   "rows": 620,
+   "firstBorn": 1669,
+   "fields": {
+    "level": 2245,
+    "owned": 1669,
+    "slot": 1669,
+    "task": 1669,
+    "x": 1669,
+    "camera": 1669,
+    "playerX": 1669,
+    "playerY": 1669,
+    "y": 1669,
+    "frenzyTimer": 1716,
+    "music": 1826,
+    "music.counter": 1826,
+    "music.length": 1826,
+    "music.offset": 1834,
+    "state": 1873,
+    "fireworks": 1873,
+    "interval": 2178
+   },
+   "samples": [
+    {
+     "frame": 1669,
+     "field": "owned",
+     "native": true,
+     "sim": false
+    },
+    {
+     "frame": 1669,
+     "field": "slot",
+     "native": 0
+    },
+    {
+     "frame": 1669,
+     "field": "task",
+     "native": 0
+    },
+    {
+     "frame": 1669,
+     "field": "x",
+     "native": 2544
+    },
+    {
+     "frame": 1669,
+     "field": "camera",
+     "native": 2186,
+     "sim": 1068
+    },
+    {
+     "frame": 1669,
+     "field": "playerX",
+     "native": 2299,
+     "sim": 1307
+    },
+    {
+     "frame": 1669,
+     "field": "playerY",
+     "native": 80,
+     "sim": 629
+    },
+    {
+     "frame": 1669,
+     "field": "y",
+     "native": 144
+    },
+    {
+     "frame": 1716,
+     "field": "frenzyTimer",
+     "native": 0,
+     "sim": 32
+    },
+    {
+     "frame": 1826,
+     "field": "music",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 1826,
+     "field": "music.counter",
+     "native": 8,
+     "sim": 2
+    },
+    {
+     "frame": 1826,
+     "field": "music.length",
+     "native": 8,
+     "sim": 9
+    },
+    {
+     "frame": 1834,
+     "field": "music.offset",
+     "native": 3,
+     "sim": 2
+    },
+    {
+     "frame": 1873,
+     "field": "state",
+     "native": 5
+    },
+    {
+     "frame": 1873,
+     "field": "fireworks",
+     "native": 1,
+     "sim": 255
+    },
+    {
+     "frame": 2178,
+     "field": "interval",
+     "native": 6
+    },
+    {
+     "frame": 2245,
+     "field": "level",
+     "native": "5-3",
+     "sim": "1-1"
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "5-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "6-1",
+   "rows": 780,
+   "firstBorn": 1336,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "6-2",
+   "rows": 600,
+   "firstBorn": 3929,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "6-3",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "6-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "7-1",
+   "rows": 730,
+   "firstBorn": 2921,
+   "fields": {
+    "level": 3026,
+    "owned": 2921,
+    "slot": 2921,
+    "task": 2921,
+    "x": 2921,
+    "camera": 2921,
+    "playerX": 2921,
+    "playerY": 2921,
+    "y": 2921,
+    "frenzyTimer": null,
+    "music": 3074,
+    "music.counter": 3074,
+    "music.length": 3074,
+    "music.offset": 3074,
+    "state": 3132,
+    "fireworks": null,
+    "interval": 3535
+   },
+   "samples": [
+    {
+     "frame": 2921,
+     "field": "owned",
+     "native": true,
+     "sim": false
+    },
+    {
+     "frame": 2921,
+     "field": "slot",
+     "native": 1
+    },
+    {
+     "frame": 2921,
+     "field": "task",
+     "native": 0
+    },
+    {
+     "frame": 2921,
+     "field": "x",
+     "native": 2960
+    },
+    {
+     "frame": 2921,
+     "field": "camera",
+     "native": 2601,
+     "sim": 1632
+    },
+    {
+     "frame": 2921,
+     "field": "playerX",
+     "native": 2729,
+     "sim": 1743
+    },
+    {
+     "frame": 2921,
+     "field": "playerY",
+     "native": 70,
+     "sim": 803
+    },
+    {
+     "frame": 2921,
+     "field": "y",
+     "native": 144
+    },
+    {
+     "frame": 3026,
+     "field": "level",
+     "native": "7-1",
+     "sim": "1-1"
+    },
+    {
+     "frame": 3074,
+     "field": "music",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 3074,
+     "field": "music.counter",
+     "native": 8,
+     "sim": 0
+    },
+    {
+     "frame": 3074,
+     "field": "music.length",
+     "native": 8,
+     "sim": 0
+    },
+    {
+     "frame": 3074,
+     "field": "music.offset",
+     "native": 2,
+     "sim": 0
+    },
+    {
+     "frame": 3132,
+     "field": "state",
+     "native": 0
+    },
+    {
+     "frame": 3535,
+     "field": "interval",
+     "native": 6
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "7-2",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "7-3",
+   "rows": 587,
+   "firstBorn": 2432,
+   "fields": {
+    "level": 3019,
+    "owned": 2432,
+    "slot": 2432,
+    "task": 2432,
+    "x": 2432,
+    "camera": 2432,
+    "playerX": 2432,
+    "playerY": 2432,
+    "y": 2432,
+    "frenzyTimer": 2432,
+    "music": 2583,
+    "music.counter": 2583,
+    "music.length": 2583,
+    "music.offset": 2583,
+    "state": 2630,
+    "fireworks": null,
+    "interval": 2902
+   },
+   "samples": [
+    {
+     "frame": 2432,
+     "field": "owned",
+     "native": true,
+     "sim": false
+    },
+    {
+     "frame": 2432,
+     "field": "slot",
+     "native": 0
+    },
+    {
+     "frame": 2432,
+     "field": "task",
+     "native": 0
+    },
+    {
+     "frame": 2432,
+     "field": "x",
+     "native": 3712
+    },
+    {
+     "frame": 2432,
+     "field": "camera",
+     "native": 3361,
+     "sim": 1848
+    },
+    {
+     "frame": 2432,
+     "field": "playerX",
+     "native": 3473,
+     "sim": 1985
+    },
+    {
+     "frame": 2432,
+     "field": "playerY",
+     "native": 80,
+     "sim": 375
+    },
+    {
+     "frame": 2432,
+     "field": "y",
+     "native": 144
+    },
+    {
+     "frame": 2432,
+     "field": "frenzyTimer",
+     "native": 0,
+     "sim": 19
+    },
+    {
+     "frame": 2583,
+     "field": "music",
+     "native": 32,
+     "sim": 0
+    },
+    {
+     "frame": 2583,
+     "field": "music.counter",
+     "native": 8,
+     "sim": 18
+    },
+    {
+     "frame": 2583,
+     "field": "music.length",
+     "native": 8,
+     "sim": 18
+    },
+    {
+     "frame": 2583,
+     "field": "music.offset",
+     "native": 2,
+     "sim": 4
+    },
+    {
+     "frame": 2630,
+     "field": "state",
+     "native": 0
+    },
+    {
+     "frame": 2902,
+     "field": "interval",
+     "native": 6
+    },
+    {
+     "frame": 3019,
+     "field": "level",
+     "native": "7-4",
+     "sim": "7-3"
+    }
+   ],
+   "status": "diverged"
+  },
+  {
+   "level": "7-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "8-1",
+   "rows": 710,
+   "firstBorn": 2924,
+   "fields": {
+    "level": null,
+    "owned": null,
+    "slot": null,
+    "task": null,
+    "x": null,
+    "camera": null,
+    "playerX": null,
+    "playerY": null,
+    "y": null,
+    "frenzyTimer": null,
+    "music": null,
+    "music.counter": null,
+    "music.length": null,
+    "music.offset": null,
+    "state": null,
+    "fireworks": null,
+    "interval": null
+   },
+   "samples": [],
+   "status": "pass"
+  },
+  {
+   "level": "8-2",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "8-3",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  },
+  {
+   "level": "8-4",
+   "rows": 0,
+   "firstBorn": null,
+   "fields": {},
+   "samples": [],
+   "status": "not-reached"
+  }
+ ],
+ "downstreamChanges": [
+  {
+   "level": "2-1",
+   "field": "level",
+   "before": 2376,
+   "after": 2369,
+   "priorDivergences": {
+    "enemy": 791,
+    "camera": 1602,
+    "x": 1602,
+    "y": 1602,
+    "time": 1745,
+    "score": 1795
+   },
+   "reason": "Native slot/task/firework rules operate on the already-diverged approach/time; no fitted delay."
+  }
+ ],
+ "nativePixelProbe": {
+  "nativeStep": 30,
+  "frames": [
+   2700,
+   2730,
+   2760,
+   2790,
+   2820,
+   2850
+  ],
+  "before": {
+   "level": "1-1",
+   "first": null,
+   "end": 2853,
+   "status": "diverged",
+   "source": {
+    "level": "1-1",
+    "sourceActions": "/work/rec/v2/1-1/smb_v2_1-1.actions.json",
+    "actionsSha256": "ed1d41caf6ddd82915b36d332ec0735e85f1ca095ac50df2d07ab6f1cdba61a6",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "sourceFrameOffset": 220,
+    "warmupFrames": 0,
+    "initialRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "beforeWarmupRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "modelMode": 2,
+    "nativeResult": {
+     "mode": 2,
+     "cleared": true,
+     "end": "level_clear",
+     "decisions": 755,
+     "deaths": null,
+     "max_x_px": 3156,
+     "warmup_frames": 0,
+     "frames": 3240
+    },
+    "clock": "ppu_frame",
+    "initialStateMethod": "Existing CPU RlEnv restored original saved entrance, including its four neutral reset frames and logged warmup. Initial RAM matches start of retained native MP4; source prefix offset is declared. 1-1 starts after original boot and four reset-neutral frames. No policy inference."
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "inputFrames": 3020,
+    "availableNativeFrames": 101,
+    "allFrames": false,
+    "comparedFrames": 6,
+    "alignedFrames": 5,
+    "unresolvedAlignmentFrames": 0,
+    "noOverlapFrames": 1
+   },
+   "compared": 6,
+   "pctAll": 15.721416170634923,
+   "pctHud": 16.63773148148148,
+   "pctField": 15.611458333333333,
+   "pctSprite": 0.3319444444444445,
+   "pctAligned": 0.1388888888888889,
+   "offPalette": {},
+   "errors": [],
+   "rows": [
+    {
+     "frame": 2700,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2730,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2760,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2790,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2820,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2850,
+     "all": 50311,
+     "hud": 5750,
+     "field": 44561,
+     "sprite": 651,
+     "shift": 3127,
+     "aligned": 0,
+     "nativeScroll": 3127,
+     "camera": 0,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 0
+    }
+   ]
+  },
+  "after": {
+   "level": "1-1",
+   "first": null,
+   "end": 2853,
+   "status": "diverged",
+   "source": {
+    "level": "1-1",
+    "sourceActions": "/work/rec/v2/1-1/smb_v2_1-1.actions.json",
+    "actionsSha256": "ed1d41caf6ddd82915b36d332ec0735e85f1ca095ac50df2d07ab6f1cdba61a6",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "sourceFrameOffset": 220,
+    "warmupFrames": 0,
+    "initialRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "beforeWarmupRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "modelMode": 2,
+    "nativeResult": {
+     "mode": 2,
+     "cleared": true,
+     "end": "level_clear",
+     "decisions": 755,
+     "deaths": null,
+     "max_x_px": 3156,
+     "warmup_frames": 0,
+     "frames": 3240
+    },
+    "clock": "ppu_frame",
+    "initialStateMethod": "Existing CPU RlEnv restored original saved entrance, including its four neutral reset frames and logged warmup. Initial RAM matches start of retained native MP4; source prefix offset is declared. 1-1 starts after original boot and four reset-neutral frames. No policy inference."
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "inputFrames": 3020,
+    "availableNativeFrames": 101,
+    "allFrames": false,
+    "comparedFrames": 6,
+    "alignedFrames": 6,
+    "unresolvedAlignmentFrames": 0,
+    "noOverlapFrames": 0
+   },
+   "compared": 6,
+   "pctAll": 0.1488095238095238,
+   "pctHud": 0,
+   "pctField": 0.16666666666666669,
+   "pctSprite": 0.12708333333333333,
+   "pctAligned": 0.16666666666666669,
+   "offPalette": {},
+   "errors": [],
+   "rows": [
+    {
+     "frame": 2700,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2730,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2760,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2790,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2820,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    },
+    {
+     "frame": 2850,
+     "all": 80,
+     "hud": 0,
+     "field": 80,
+     "sprite": 61,
+     "shift": 0,
+     "aligned": 80,
+     "nativeScroll": 3127,
+     "camera": 3127,
+     "area": "main",
+     "alignmentKnown": true,
+     "overlapPixels": 48000
+    }
+   ]
+  },
+  "scope": "Sparse6-frame evidence only. First5 common-overlap frames unchanged80pixels. Native2850 before50311errors/zerooverlap, after80errors/48000overlap. Residual is pole48/FNum."
+ },
+ "validation": {
+  "testsPassed": 1725,
+  "typescript": "pass",
+  "v2Excerpts": "regenerated without first-divergence changes",
+  "rendererEquivalence": {
+   "status": "infrastructure-timeout",
+   "stage": "page.reload after orig7-4",
+   "originalReplayLevelsCompleted": 28,
+   "nativeFull32Verdict": "not produced",
+   "evidenceArtifactRestored": true,
+   "followupOwner": "renderer3d/root expanded final32 immutable gate"
+  }
+ }
+}

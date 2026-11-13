@@ -19,7 +19,8 @@ try {
   await page.evaluate(() => window.mario.reset({playing: false}));
   assert.equal(await page.evaluate(() => window.marioDebug.simulation.phase), 'title');
   await start.click();
-  assert.equal(await page.evaluate(() => window.marioDebug.simulation.phase), 'intro', 'Start begins from the title');
+  await page.waitForFunction(() => window.marioDebug.simulation.phase === 'intro', undefined, {timeout:15000});
+  assert.equal(await page.evaluate(() => window.marioDebug.simulation.phase), 'intro', 'Start begins after the native title menu accepts it');
   await page.evaluate(() => window.mario.step([], 220));
   assert.equal(await page.evaluate(() => window.marioDebug.simulation.phase), 'play');
   await pause.click();

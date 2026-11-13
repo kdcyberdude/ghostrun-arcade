@@ -13,10 +13,11 @@ type Seed={x:number;sub:number;y:number;vx:number;S:number;F:number;D:number;T:n
 function swimmer(id:string,area:string,s:Seed,previous:Button[],now:Button[],parity=0){
  const level=structuredClone(observedLevels().find(l=>l.id===id)!);level.main=area;
  const water=level.areas.find(a=>a.id===area)!;water.enemies=[];water.waterEntryFall=false;water.entryFall=undefined;
- const sim=new Simulation([level]) as any;sim.reset(true);sim.step([],1);
+ const sim=new Simulation([level]) as any;sim.reset(true);sim.waterEnemyStream=undefined;sim.step([],1);
  if((sim.frame+parity)%2)sim.step([],1);
  sim.player.x=s.x+s.sub/256;sim.player.y=s.y+32;sim.player.vx=s.vx/4096;sim.player.grounded=false;sim.camera=Math.max(0,s.x-100);
  sim.seedSwim({speed:s.S,force:s.F,frac:s.D,rise:s.fall??10,fall:s.fall??10,timer:s.T});
+ const byte=Math.floor(s.vx/256);Object.assign(sim.water.horizontalState,{facing:sim.player.facing===1?1:2,moving:byte===0?0:byte>0?1:2,absolute:Math.abs(byte),collision:255,running:0});
  sim.previous=new Set(previous);sim.inputs=[new Set(now),new Set(now)];
  return sim;
 }
@@ -94,7 +95,9 @@ test('the 5-2 room lifts are id 39 wrapping lifts: 15 pixel steps then one idle 
 test('rising into a lift bumps the swimmer inside a whirlpool zone (5-2 room big Mario, sweep-c10 rows 335 -> 336: y 22 -> 23, S -1 -> 1, F 120 -> 0)',()=>{
  const sim=swimmer('5-2','optional-water',{x:399,sub:192,y:22,vx:3112,S:-1,F:120,D:244,T:28,fall:9},['right','b'],['right','b']);
  sim.player.size=1;
- sim.swimUnderLift=()=>true; // the lift position is the row's (y 18); its clock is covered by the wrap test above
+ const lift=sim.area.platforms[0];sim.platformSlots.set(lift,0);sim.platformMotion.lost.delete(lift);
+ // The source row declares the lift at y18; collision reads it before its own motion.
+ sim.platformMotion.initializeNative(lift,{id:39,x:364,y:18,a:0,b:0,c:0,d:240,e:0},sim.platformFrame,sim.random.frame);
  sim.step(['right','b'],1);
  assert.equal(y(sim),23);assert.equal(sim.water.speed,1);assert.equal(sim.water.force,0);
 });
@@ -104,4 +107,20 @@ test('a Down+A stroke from the water floor keeps speed byte 16 (7-2 r5 mood0 row
  sim.player.grounded=true;sim.player.vy=0;
  sim.step(['down','right','a'],1);
  assert.equal(speed(sim),4168);assert.ok(y(sim)<176);
+});
+
+test('a Down+A stroke from a supported water pillar preserves horizontal speed (2-2 v2 frame 2086)',()=>{
+ const sim=swimmer('2-2','area-2',{x:166,sub:176,y:128,vx:6184,S:0,F:0,D:0,T:0},['down','right'],['down','right','a']);
+ sim.player.grounded=true;sim.player.vy=0;
+ sim.step(['down','right','a'],1);
+ assert.equal(speed(sim),6184);assert.equal(y(sim),126);
+});
+
+test('whirlpool pull follows odd native FrameCounter rows even when the global frame has another parity',()=>{
+ for(const counter of [1,2]){
+  const sim=swimmer('7-2','area-4',{x:1050,sub:0,y:80,vx:0,S:0,F:0,D:0,T:0},[],[]);
+  sim.frame=100;sim.random.frame=counter-1;
+  sim.step([],1);
+  assert.equal(x(sim),1050+(counter&1),`native counter ${counter}`);
+ }
 });

@@ -66,7 +66,7 @@ export function procDeco(name:string,theme:string):Part[]|undefined{
  if(name==='rope_v'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);return [{geometry:g,material:ROPE,matrix:I()}];}
  if(name==='rope_h'){const g=new THREE.CylinderGeometry(0.045,0.045,1,8);g.rotateZ(Math.PI/2);return [{geometry:g,material:ROPE,matrix:I()}];}
  if(name==='pulley'){const g=new THREE.TorusGeometry(0.28,0.07,10,24);return [{geometry:g,material:std(0x8a8f98,0.3,0.9),matrix:I()}];}
- if(name==='chain'){const g=new THREE.TorusGeometry(0.12,0.035,8,16);g.scale(1,1.6,1);g.rotateZ(Math.PI/4);return [{geometry:g,material:std(0x9aa0a8,0.3,0.9),matrix:I()}];}
+ if(name==='chain'){const g=new THREE.TorusGeometry(0.12,0.035,8,16),material=std(0x9aa0a8,0.3,0.9);g.scale(1,1.6,1);return Array.from({length:5},(_,i)=>({geometry:g,material,matrix:new THREE.Matrix4().makeRotationZ(-Math.PI/4).setPosition((i-2)*0.1875,(i-2)*0.1875,0)}));}
  if(name==='deco_coral'){const g=new THREE.ConeGeometry(0.16,1,8);g.translate(0,0,0);const m=std(0x3ac06a,0.8);
   return [-0.25,0,0.25].map((x,i)=>({geometry:g,material:m,matrix:new THREE.Matrix4().makeRotationZ((i-1)*0.35).setPosition(x,0,0)}));}
  return undefined;

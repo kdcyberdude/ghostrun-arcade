@@ -26,7 +26,7 @@ test('ordinary head hits reveal the 6-2 hidden coin step and grow the observed v
  step.step(['a'],24);assert.equal(step.tileAt(1312,144),196);assert.equal(step.coins,1);
  step.step([],80);assert.equal(step.player.y,208);
  const vine=mainFixture([1296,160]);
- for(const col of [77,78,79,80,81])assert.equal(vine.tileAt(col*16,80),81);
+ for(const [col,id] of [[77,81],[78,81],[79,81],[80,81],[81,86]])assert.equal(vine.tileAt(col*16,80),id); // 86: native $56 brick with vine
  vine.step(['a'],24);assert.equal(vine.tileAt(1296,80),196);
  assert.ok(vine.vines.find(v=>v.id==='6-2-sky-vine')!.height>0);
 });
@@ -38,16 +38,16 @@ test('6-2 neutral automatic sky entry reaches the observed standing pose',()=>{
 });
 
 test('ordinary controls reveal and stand on the hidden step, attach to the grown vine and enter the sky',()=>{
- // The jump script is 28 left / 14 right frames (was 32 / 14, then 28 / 12; the neutral coast against the facing now doubles its friction): the native-speed motor changes per-frame travel; this pair
- // reaches the vine for every approach of 17..21 frames, preserving the intended robustness.
+ // The jump script is 28 left / 10 right frames and a 28-frame vine jump (was 32 / 14, then 28 / 12, then 28 / 14 with a 24-frame vine jump; re-aligned for the
+ // byte-exact native motor of src/native-player-motor.ts): the motor changes per-frame travel; this script reaches the vine for every approach of 15..23 frames.
  for(const approachFrames of[18,19,20]){
  const sim=mainFixture([1296,160]);
  sim.step(['a'],24);sim.step([],240);assert.equal(sim.tileAt(1296,80),196);
  sim.step(['right'],20);sim.step([],90);sim.step(['a'],24);sim.step([],80);
  assert.equal(sim.tileAt(1312,144),196);assert.equal(sim.coins,1);
- sim.step(['right'],approachFrames);sim.step([],40);sim.step(['left','a'],28);sim.step(['right'],14);sim.step([],60);
+ sim.step(['right'],approachFrames);sim.step([],40);sim.step(['left','a'],28);sim.step(['right'],10);sim.step([],60);
  assert.equal(sim.player.y,144);assert.equal(sim.player.grounded,true);
- sim.step(['left','a'],24);sim.step(['up'],240);sim.step([],500);
+ sim.step(['left','a'],28);sim.step(['up'],240);sim.step([],500);
  assert.equal(sim.area.id,'6-2-vine-sky');assert.deepEqual([sim.player.x,sim.player.y],[75,208]);assert.equal(sim.lives,3);
  }
 });

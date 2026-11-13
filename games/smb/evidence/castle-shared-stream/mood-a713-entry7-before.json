@@ -1,0 +1,244 @@
+[
+ {
+  "level": "1-4",
+  "frames": 1670,
+  "first": null,
+  "fields": {
+   "dead": null,
+   "time": null,
+   "score": null,
+   "coins": null,
+   "cam": null,
+   "x": null,
+   "y": null,
+   "enemy": null
+  },
+  "at": [],
+  "strict": {
+   "schema": "native-strict-audit-v1",
+   "status": "diverged",
+   "first": 745,
+   "firstCoverageGap": 0,
+   "fields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 899,
+    "extra": 745,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "identity": {
+    "bindings": [
+     {
+      "area": "main",
+      "code": 96,
+      "data": 41393,
+      "entryPage": 0,
+      "offset": 0,
+      "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+     }
+    ],
+    "diagnostics": [],
+    "continuations": []
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 1670,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1670,
+    "inputFrames": 1670,
+    "endReason": "end of trace",
+    "frames": 1670,
+    "alignedFrames": 1670,
+    "nativeEntityRows": 4190,
+    "comparedEntityRows": 3003,
+    "nativeBirthRows": 14,
+    "areaFrames": {
+     "main": 1670
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 7 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1670
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 132,
+     "count": 496
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 254,
+     "count": 343
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 369,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 504,
+     "count": 195
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 1; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 899,
+     "count": 1
+    }
+   ],
+   "mismatches": [
+    {
+     "code": "extra",
+     "area": "main",
+     "slot": 1,
+     "kind": "flame",
+     "first": 745,
+     "count": 1
+    },
+    {
+     "code": "missing",
+     "area": "main",
+     "slot": 1,
+     "kind": "bowser",
+     "first": 899,
+     "count": 1
+    },
+    {
+     "code": "extra",
+     "area": "main",
+     "slot": 0,
+     "kind": "flame",
+     "first": 1034,
+     "count": 1
+    },
+    {
+     "code": "extra",
+     "area": "main",
+     "slot": 4,
+     "kind": "flame",
+     "first": 1310,
+     "count": 1
+    }
+   ],
+   "samples": [
+    {
+     "frame": 745,
+     "area": "main",
+     "code": "extra",
+     "sim": {
+      "bank": "enemy",
+      "slot": 1,
+      "kind": "flame",
+      "x": 1523,
+      "y": 128,
+      "source": "flame"
+     }
+    },
+    {
+     "frame": 899,
+     "area": "main",
+     "code": "missing",
+     "native": {
+      "bank": "enemy",
+      "slot": 1,
+      "kind": "bowser",
+      "x": 2160,
+      "y": 128,
+      "source": "enemy",
+      "state": 0
+     }
+    },
+    {
+     "frame": 1034,
+     "area": "main",
+     "code": "extra",
+     "sim": {
+      "bank": "enemy",
+      "slot": 0,
+      "kind": "flame",
+      "x": 1923,
+      "y": 144,
+      "source": "flame"
+     }
+    },
+    {
+     "frame": 1310,
+     "area": "main",
+     "code": "extra",
+     "sim": {
+      "bank": "enemy",
+      "slot": 4,
+      "kind": "flame",
+      "x": 1923,
+      "y": 112,
+      "source": "flame"
+     }
+    }
+   ],
+   "visits": [
+    {
+     "frame": 0,
+     "ptr": 41393,
+     "candidates": [
+      {
+       "area": "main",
+       "code": 96,
+       "data": 41393,
+       "entryPage": 0,
+       "offset": 0,
+       "source": "ROM WorldAddrOffsets / AreaAddrOffsets"
+      }
+     ],
+     "context": {
+      "areaPointer": 96,
+      "entrancePage": 0,
+      "startPage": 0,
+      "modeTask": 3,
+      "physicalCode": 96
+     },
+     "method": "ROM loaded-area pointer and InitializeArea start page",
+     "area": "main",
+     "offset": 0
+    }
+   ]
+  }
+ }
+]

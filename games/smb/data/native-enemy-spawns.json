@@ -31,7 +31,8 @@
    },
    "replace": {
     "x": 640,
-    "spawnCamera": 337
+    "spawnCamera": 337,
+    "direction": -1
    },
    "classification": "native first appearance (read-only enemy slot): spawn x and camera",
    "provenance": {
@@ -2945,27 +2946,6 @@
     "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
     "nativeFrame": 56122,
     "trigger": 303
-   }
-  },
-  {
-   "level": "7-1",
-   "area": "main",
-   "match": {
-    "kind": "koopa",
-    "x": 1008,
-    "y": 208
-   },
-   "replace": {
-    "x": 1009,
-    "spawnCamera": 887,
-    "y": 178,
-    "spawnUnwinged": true
-   },
-   "classification": "native first appearance (read-only enemy slot): spawn x and camera; it is the just-stomped Paratroopa (slot 2 id 14 -> id 0 on row 56283 at y 154, feet 178, state byte 1 while it falls until row 56303): it appears falling and untouchable like an unwinged Koopa (evidence/stomp6-findings-20261111.md)",
-   "provenance": {
-    "report": "evidence/world11-enemy-spawn-derivation-20261109.md",
-    "nativeFrame": 56283,
-    "trigger": 122
    }
   },
   {

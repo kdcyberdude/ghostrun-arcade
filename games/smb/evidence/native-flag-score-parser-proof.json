@@ -1,0 +1,51 @@
+{
+  "schema": "native-flag-score-parser-proof-v1",
+  "sourceBaseCommit": "1f3a544",
+  "sourceSha256": {
+    "src/simulation.ts": "fc82ddc8c84b2a869b78d3e7324044f56d243acf5883c5ae810856be5fe49d3f",
+    "tools/harness/native-flag-score-cases.ts": "c8740c2c59ed3844faccfbf1a7338d7a2d2f2c2799e3c9b4547f6e44820833f2",
+    "tests/native-flag-score.test.ts": "1cee3ff4331c20cc5b5cca1436a2c7b57443863fa6421bf4189db6b3ee653bc1",
+    "tests/fixtures/native-flag-score-cases.json": "7ec0419935dc08a20802ed71e0790a5b79ac231360f1671b810f995b863ba154"
+  },
+  "cases": [
+    {
+      "sourcePadSha256": "2ee38c5d97faa86affbc6ad43a2a5ec9f341e9ea9e9270304196be4641f3c869",
+      "sourceFrameOffset": 216,
+      "frames": 2083,
+      "nativeFlagRows": 658,
+      "beforeScoreFirst": 1981,
+      "afterStrictStatus": "pass",
+      "afterScoreFirst": null,
+      "afterCoverageGaps": 0
+    },
+    {
+      "sourcePadSha256": "b8aefd9f11ec4ff40b823f54a89bd338cd7d6527aebb553fa7c11391f83e5889",
+      "sourceFrameOffset": 216,
+      "frames": 2083,
+      "nativeFlagRows": 709,
+      "beforeScoreFirst": 1932,
+      "afterStrictStatus": "pass",
+      "afterScoreFirst": null,
+      "afterCoverageGaps": 0
+    },
+    {
+      "sourcePadSha256": "61a4ffcbfac5381062aea5907619ae12984e8964c5914329582b45d1cb35d204",
+      "sourceFrameOffset": 216,
+      "frames": 2797,
+      "nativeFlagRows": 698,
+      "beforeScoreFirst": 2627,
+      "afterStrictStatus": "pass",
+      "afterScoreFirst": null,
+      "afterCoverageGaps": 0
+    }
+  ],
+  "validation": {
+    "focusedTests": 69,
+    "targetedTypeScriptDiagnostics": 0,
+    "fullSuiteCorpusPixels3D": "not run; integration batch owns full gates"
+  },
+  "limits": [
+    "Only three retained report representatives were replayed; do not claim all40 episodes or336 corpus verified.",
+    "RAM state replay proof does not establish pixel equivalence."
+  ]
+}

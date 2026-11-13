@@ -15,10 +15,10 @@ test('ordinary used-block re-hit keeps its collision and bump sound while markin
  const second=events.find(e=>e.events.includes('sfx_bump'));assert.ok(second);assert.equal(second.marker,true);assert.ok(second.vy>0);assert.equal(second.score,200);assert.equal(second.coins,1);assert.equal(s.usedBlockRehits.has('16,9'),false);
 });
 
-test('used-block re-hit retains the existing enemy-bump interaction',()=>{
+test('a solid used-block re-hit has no native bump marker and cannot stun the enemy above',()=>{
  const s=new Simulation(observedLevels());s.reset(true);
  // Unit fixture: place an existing active enemy over an already-used block.
  const enemy=s.enemies[0];assert.ok(enemy);enemy.x=16*16;enemy.y=9*16;enemy.active=true;enemy.dead=0;s.tiles.set('16,9',196);s.events.splice(0);
  Reflect.get(s,'hitBlock').call(s,16,9,196);
- assert.equal(s.bump.get('16,9'),0);assert.equal(s.usedBlockRehits.has('16,9'),true);assert.equal(enemy.dead,1);assert.equal(enemy.vy,-3);assert.equal(s.score,100);assert.ok(s.events.includes('sfx_bump'));
+ assert.equal(s.bump.get('16,9'),0);assert.equal(s.usedBlockRehits.has('16,9'),true);assert.equal(enemy.dead,0);assert.equal(enemy.vy,0);assert.equal(s.awardedScore,0);assert.ok(s.events.includes('sfx_bump'));
 });
