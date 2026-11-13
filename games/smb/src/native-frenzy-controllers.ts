@@ -1,7 +1,7 @@
 import layouts from '../data/native-frenzy-controllers.json';
 export type NativeFrenzyController={id:number;offset:number;column:number;y:number;hardOnly:boolean;x?:number;slot?:number;lost?:boolean};
-/** These flagged enemy-data records have NoRunCode, so they retain their slot
- * until area reset. If initialization can fire, the slot becomes a Bullet instead. */
+/** Flagged enemy-data controllers retain their native slot. ID23 can become
+ * a frenzy Bullet; ID52 runs WarpZoneObject until its ScrollLock/Y test passes. */
 export function nativeFrenzyControllers(level:string,area:string):NativeFrenzyController[]{
  return (layouts.find(l=>l.level===level&&l.area===area)?.records??[]).map(r=>({...r}));
 }
@@ -14,3 +14,6 @@ export function seedNativeFrenzyControllers(records:NativeFrenzyController[],off
   if(slot>=0){record.slot=slot;record.x=slots[slot].x;}else record.lost=true;
  }
 }
+
+/** WarpZoneObject clears ScrollLock and erases itself when the source Y bytes AND to0. */
+export const nativeWarpZoneRelease=(locked:boolean,y:number,page:number)=>locked&&(y&page)===0;

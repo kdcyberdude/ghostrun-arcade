@@ -2,7 +2,7 @@ import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer,nativeSavedScroll}
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
-import {nativeFrenzyControllers,retainNativeFrenzyController,type NativeFrenzyController} from './native-frenzy-controllers.js';
+import {nativeFrenzyControllers,retainNativeFrenzyController,nativeWarpZoneRelease,type NativeFrenzyController} from './native-frenzy-controllers.js';
 import {landNativeWalker} from './native-walker-motion.js';
 import {nativeFlameHit} from './native-flame-contact.js';
 import type {Area,Button,CannonSpec,Enemy,EnemySpec,FirebarSpec,GeneratorSpec,Item,Level,MazeSpec,NativeHammerBro,Phase,Player,PlatformSpec,ScorePopup,SpringSpec,TilePiece,Vine} from './types.js';
@@ -540,7 +540,7 @@ export class Simulation {
   if(!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!this.entryTimerHidden&&!waterEntryHidden&&this.player.y<288&&this.gameTimerStep(true))return;
   if(nativeEntry&&this.entryReadyAge>=0)this.entryTimerDelay=0;
   this.piranhaTouchFeetY=undefined;
-  const p=this.player;const oldBottom=p.y;const oldX=p.x;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
+  const p=this.player;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
   let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined;
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
@@ -653,7 +653,7 @@ export class Simulation {
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
   {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
-   if(!this.areaControls.locked&&oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
+   if(!scrollLocked&&oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
   if(cameraContact||this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
@@ -669,8 +669,8 @@ export class Simulation {
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
   if(oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
-  else if(oldBottom<288&&this.areaControls.locked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;if(this.area.theme==='water')this.water.motor.speed=Math.round(p.vx*4096);else this.motor.speed=Math.round(p.vx*4096);}}
-  else if(oldBottom<288&&!this.areaControls.locked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
+  else if(oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;if(this.area.theme==='water')this.water.motor.speed=Math.round(p.vx*4096);else this.motor.speed=Math.round(p.vx*4096);}}
+  else if(oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
    this.firebarSlots?.cameraEntry(previousCamera,this.camera);
@@ -1315,6 +1315,14 @@ export class Simulation {
  // A platform takes the lowest slot free when it is first seen holding one.
  private platformSlots=new Map<object,number>();
  private frenzyControllers:NativeFrenzyController[]=[];
+ /** WarpZoneObject runs in its enemy slot after this frame's ScrollHandler.
+  * Its Y test is the source bytewise AND, including the offscreen Y page. */
+ private updateNativeWarpZones(){
+  const raw=Math.floor(this.player.y)-32;
+  for(const c of this.frenzyControllers)if(c.id===52&&c.slot!==undefined&&nativeWarpZoneRelease(this.areaControls.locked,raw&255,((raw>>8)+1)&255)){
+   this.areaControls.locked=false;this.slotReleaseFrame[c.slot]=this.frame;c.slot=undefined;c.lost=true;
+  }
+ }
  // Platforms preserve their slot fractions: id40 inherits x sub-pixels; the
  // balance/drop motors keep Y fractions (3-3 slot2: drop125 → balance125).
  private platformSlotResidues(){
@@ -2092,6 +2100,7 @@ export class Simulation {
    if(cursor>=5)break;this.groupParserSlot=cursor;
    if(controller){
     if(controller.hardOnly&&!this.secondaryHardMode){controller.lost=true;continue;}
+    if(controller.id===52){controller.slot=cursor;controller.x=column+this.slotSub[cursor]/256;cursor++;continue;}
     this.specialSlot5.frenzyBuffer=23;
     if(retainNativeFrenzyController(this.spinyTimer,this.enemies.some(e=>e.active&&e.frenzy&&e.dead<100))){controller.slot=cursor;controller.x=column+this.slotSub[cursor]/256;}
     else{controller.lost=true;this.spawnFrenzyBullet(cursor);}
@@ -2204,7 +2213,7 @@ export class Simulation {
   if(this.specialSlot5.frenzyQueue&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot();this.nativeFrenzyTurn=this.specialSlot5.consumeFrenzy(slot<5?slot:this.specialSlot5.flag?6:5);}
   if(this.nativeFrenzyTurn?.slot===5){reservedClaim={flag:this.specialSlot5.flag,id:this.specialSlot5.id,buffer:this.specialSlot5.frenzyBuffer};Object.assign(this.specialSlot5,{flag:previousReserved.flag,id:previousReserved.id,frenzyBuffer:previousReserved.buffer});}
   const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,s)=>busy.has(s));
-  const firstFree=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=firstFree<0?5:firstFree;
+  const firstFree=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=firstFree<0?5:firstFree;this.updateNativeWarpZones();
   const p=this.player;
   const frenzy=this.spinyFrenzyBefore();
   {const speedByte=Math.floor(Math.round((this.wallSpeed??p.vx)*4096)/256);if(speedByte!==0)this.marioMotion=Math.sign(speedByte);} // Player_MovingDir changes on a nonzero speed byte, before background wall stops

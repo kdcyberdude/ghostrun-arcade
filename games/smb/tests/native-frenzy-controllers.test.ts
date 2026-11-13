@@ -19,3 +19,7 @@ test('entrance enemy-data offset consumes transformed controllers and reconstruc
  assert.equal(records[0].lost,true);assert.equal(records[0].slot,undefined);
  assert.equal(records[1].slot,3);assert.equal(records[1].x,1312.5);
 });
+
+test('native WarpZone stream records use the ordinary source offset and slot owner',()=>{
+ assert.deepEqual(nativeFrenzyControllers('1-2','area-2').map(c=>[c.id,c.offset,c.column,c.y]),[[52,42,2592,112]]);
+});
