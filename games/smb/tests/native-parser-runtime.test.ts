@@ -10,8 +10,8 @@ import clockEvidence from '../data/native-parser-clock.json';
 import springEvents from './fixtures/native-spring-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
-function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void){
- const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.v2.json`,import.meta.url),'utf8'));
+function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
+ const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.${runName}.json`,import.meta.url),'utf8'));
  const unpack=(s:string)=>new Uint8Array(gunzipSync(Buffer.from(s,'base64')));
  const initial=unpack(run.initialRam),pads=unpack(run.pads),buttons:Button[]=['a','b','select','start','up','down','left','right'];
  const sim:any=new Simulation(observedLevels());sim.reset(true);
@@ -147,4 +147,17 @@ test('the frenzy Bullet corpse is erased on the first graphics pass below page1,
   assert.ok(e);assert.equal(e.slotFreed,true);assert.equal(e.y,282);
   assert.deepEqual(sim.slotVertical[3],{speed:3,force:56,fraction:212});assert.equal(sim.slotSub[3],128);
  });
+});
+
+
+test('native engine3 retains X speed and saved scroll while Y and enemies continue through its area timer',()=>{
+ replay('1-1',461,(sim,frame)=>{
+  if(frame<413)return;
+  const tick=frame-413;
+  assert.equal(sim.phase,'pipe');assert.equal(sim.player.x,917);assert.equal(sim.player.vx,9432/4096);
+  assert.equal(Math.floor(sim.player.y)-32,112+tick,`row${frame} y`);
+  if(frame<=418)assert.equal(sim.camera,[805,808,810,812,814,816][tick],`row${frame} camera`);
+  assert.equal(sim.playerXScroll,3);assert.equal(sim.pipeTimer,48-tick);
+  if(frame===414){const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0);assert.ok(e);assert.equal(e.x,769.5,'enemy world continues during pipe entry');}
+ },'mood0-3d43-entry0000');
 });

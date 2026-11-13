@@ -209,3 +209,35 @@ field and level unchanged. The remaining5-3 physical error follows enemy1027.
 Regressions check native controller466, Koopa final residue549, platform birth
 550/slot2/fraction184, and Mario carry617..620. Controller slot records expose
 id/x/y for the strict entity adapter; they have no rendered body.
+
+## Vertical pipe engine3: saved scroll, raw Y, and continued GameEngine
+
+Base:d911a44 (canonical integration404ca21 merged with controller927bb36).
+`VerticalPipeEntry` adds1 to raw Player_Y_Position, calls ScrollHandler with
+retained $06FF Player_X_Scroll and $03A1 Platform_X_Scroll, then decrements
+$06DE ChangeAreaTimer. Neither X speed nor the position fractions are cleared.
+ScrollHandler consumes platform carry and uses cached $0755, $0785 and $0723;
+the ordinary camera arithmetic remains unchanged, with its saved byte now
+retained explicitly. RenderPlayerSub's cached position write applies on land
+as well as water, excluding the native injury blink rows and axe early exit.
+
+SourceGameCoreRoutine continues the entire GameEngine enemy/item/platform and
+parser pass during engine3. Only the final timer0 row clears OperMode_Task
+and skips GameEngine. This fixes actors freezing during pipe entry as well as
+camera inertia. Player collection/injury is suppressed outside normal control;
+world physics continues. The existing native interval timer is ticked once,
+not again by the reused generator pass. Bubbles/ColorRotation stop when the
+pipe timer selects the loader.
+
+The source helper matches144 captured engine3 state transitions (96v2 and48
+additional mood0 rows). MoodSHA3d43b7b4… entry0000 (native source=local+216)
+now matches camera, MarioY and actor positions through local461: X917 and
+speed9432/4096 stay fixed; saved scroll3 gives camera805→808→810→812,
+then stops below screenX80. Strict first414→462; all32 v2 legacy fields are
+unchanged. Persistent mood excerpt and runtime regression cover413..461.
+
+Remaining462 is the independent loader boundary: InitializeArea resets camera
+while retaining the old Mario/enemy RAM, then clears the rest on463. The
+source boundary table is /tmp/contacts-pipe-boundary.txt; castle worker owns
+that pipeline. The existing sidepipe engine2 fitted first-speed path remains
+open for a separate source EnterSidePipe/AutoControlPlayer unit.
