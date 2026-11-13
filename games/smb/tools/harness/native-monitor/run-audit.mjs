@@ -19,7 +19,7 @@ function publish(status='running'){
 }
 if(!a['aggregate-only']){
  publish();fs.copyFileSync(path.join(monitor,'sources.json'),path.join(out,'display-sources-before-live.json'));
- execFileSync(process.execPath,[path.join(runtime,'games/smb/tools/harness/native-monitor/terminal.mjs'),'--monitor',monitor,'--follow-live',liveFile],{stdio:'inherit'});
+ if(!scope)execFileSync(process.execPath,[path.join(runtime,'games/smb/tools/harness/native-monitor/terminal.mjs'),'--monitor',monitor,'--follow-live',liveFile],{stdio:'inherit'}); // a scoped audit never replaces the full receipt; register it with --add-current
  let heartbeatError;const heartbeat=setInterval(()=>{try{publish();}catch(error){heartbeatError=error;atomic(path.join(out,'heartbeat-error.json'),{error:String(error),at:new Date().toISOString()});}},5000);
  let results;try{results=await Promise.allSettled(chunks.map((ids,i)=>new Promise((resolve,reject)=>{const fd=fs.openSync(path.join(out,`shard-${i}.log`),'w'),p=spawn(path.join(runtime,'node_modules/.bin/tsx'),['games/smb/tools/harness/combined-monitor-audit.ts','--monitor',monitor,'--out',path.join(out,`shard-${i}.json`),'--ids',ids.join(','),...(scope?['--levels',scope.levels.join(',')]:[]),'--jobs','1','--batch','8','--port',String(Number(a['base-port'])+i)],{cwd:runtime,stdio:['ignore',fd,fd]});p.on('error',reject);p.on('exit',code=>{fs.closeSync(fd);code===0?resolve():reject(Error(`Shard${i} failed${code}`));});})));}finally{clearInterval(heartbeat);}
  if(heartbeatError)throw heartbeatError;if(results.some(r=>r.status==='rejected')){publish('incomplete');throw Error('One or more shards failed; verified completed recordings remain published.');}
