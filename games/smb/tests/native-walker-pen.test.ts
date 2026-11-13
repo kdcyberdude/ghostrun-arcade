@@ -12,7 +12,7 @@ const NATIVE_TURN_RIGHT=[478,478,479,479,480,479,479,478,478];
 function pen():Simulation{
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
  for(let y=11;y<=12;y++){tiles.push([27,y,84]);tiles.push([31,y,84]);} // wall faces at x 448 and x 496
- const area:Area={id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[{kind:'goomba',x:468,y:208,palette:'0f-0c-3c-1c',direction:-1,spawnCamera:0}],spawn:[100,208],evidence:'Synthetic pen fixture'};
+ const area:Area={id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[{kind:'goomba',x:468,y:208,palette:'0f-0c-3c-1c',direction:-1,spawnCamera:0}],camera:300,spawn:[340,208],evidence:'Synthetic pen fixture'};
  const level:Level={id:'fixture',time:400,main:'main',areas:[area],evidence:'Mechanic regression fixture'};
  const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
 }

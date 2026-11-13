@@ -239,7 +239,7 @@ export class Simulation {
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private playerXScroll=0;private pipeTimer=0;
- private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;private cannonOffset=0;
+ private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;private cannonOffset=0;private nativeAreaOffset=0;
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;private mouthFlame?:Enemy;
  private firebarMotors=new Map<FirebarSpec,{state:FirebarMotor;geometry:FirebarGeometry}>();private firebarDeathFrame=0;private deathMove?:NativeMoveState;private firebarMarioScreenX=0;private firebarSlots?:FirebarSlots;
@@ -296,6 +296,7 @@ export class Simulation {
   this.spinyTimer=0;this.spinyBuffer=false;this.lakituReappearCount=0;this.nativeStompTimer=0;this.specialSlot5=new NativeSpecialSlot();this.nativeFrenzyTurn=undefined;this.slotBroJump=[0,0,0,0,0];this.miscHammerBytes=Array.from({length:9},()=>({force:0,fraction:0,collision:false}));this.miscOffscreen=0;this.hammerPlayerBox=undefined;this.miscPositions=Array.from({length:9},()=>({x:0,y:0}));this.blockControl=0;this.nativeBlockBounce=0;this.nativeBlocks=Array.from({length:4},(_,slot)=>({slot,x:0,y:0,state:0,speed:0,force:0,fraction:0})); // InitializeArea clears the timers ($0780-$07A1) and the frenzy buffer (8-2 row 684 after a death: $078F 0, $06CB 0)
   const [world,course]=this.level.id.split('-').map(Number);this.secondaryHardMode=world>5||world===5&&course>=3;
   const source=this.level.areas.find(a=>a.id===id);if(!source)throw new Error(`Unmapped area ${this.level.id}/${id}`);
+  this.nativeAreaOffset=/^[1-8]-[1-4]$/.test(this.level.id)?nativeAreaBindings(this.level).bindings.find(b=>b.area===id)?.offset??0:0;
   this.stompChain=0;
   this.multiCoinExpiries.clear();
   // Stream inserts belong to this visit. Reset/death must reload the explicit
@@ -2101,8 +2102,8 @@ export class Simulation {
    if(!e.active)continue;const bound=this.nativeLeftBound(e);
    // OffscreenBoundsCheck's left subtraction leaves carry set after camera
    // reaches 73; the following ADC extends ScreenRight by 73 instead of 72.
-   const waterRight=(e.bloop||e.nativeSwim)&&Math.floor(e.x)>=Math.floor(this.camera)+(this.camera>=73?328:327);
-   if(bound===undefined||Math.floor(e.x)>=bound&&!waterRight)continue;
+   const right=bound!==undefined&&e.kind!=='piranha'&&!(e.egg&&e.motion==='falling')&&Math.floor(e.x)>=Math.floor(this.camera)+327+Number(bound-this.nativeAreaOffset>=0);
+   if(bound===undefined||Math.floor(e.x)>=bound&&!right)continue;
    if(e.enemySlot!==undefined&&!e.slotFreed){if(e.pir){this.slotYSpeed[e.enemySlot]=e.pir.flag;this.slotYFraction[e.enemySlot]=e.pir.up;}else if(e.redFlight){this.slotYSpeed[e.enemySlot]=e.redFlight.speed&255;this.slotYFraction[e.enemySlot]=e.redFlight.fraction;}
    else if(e.pod){this.slotYSpeed[e.enemySlot]=e.pod.speed&255;this.slotYFraction[e.enemySlot]=e.pod.fraction;}}
    this.eraseEnemy(e);if(e.kind==='bullet')e.goneFrame=this.frame;if(e.enemySlot===undefined||e.slotFreed)continue;e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;
