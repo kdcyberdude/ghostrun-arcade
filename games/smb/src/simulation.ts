@@ -1217,6 +1217,7 @@ export class Simulation {
  // Pipe exits rise without control (engine7) until the native spawn feet row.
  private beginPipeRise(frames:number){this.playerBackgroundPriority=true;this.pipeRise=frames;this.player.y+=frames;this.player.grounded=false;this.player.vx=0;this.player.vy=0;}
  private updatePipeRise(){
+  this.tickIntervalTimers(); // NMI interval bank runs before PlayerEntrance, including its early-return pipe rise.
   this.pipeRise--;this.player.y--;this.updateBubbles(true,false);this.enemyContactOff=true;this.updateEnemies(this.player.y);this.enemyContactOff=false;if(this.walkerStream)this.primeNativeEntryObjects(); // native engine 7 (pipe exit): enemies run, PlayerEnemyCollision does not (8-4 area 2: no touch from the hidden Piranha at the exit pipe)
   if(this.pipeRise===0)this.player.grounded=this.isSolid(this.player.x+8,this.player.y);
   this.consumeGameTimer(this.pipeRise===0&&this.player.y<288);
