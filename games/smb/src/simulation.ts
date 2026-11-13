@@ -554,7 +554,8 @@ export class Simulation {
    return;
   }
   if(this.phase==='castle'){this.updateCastle();this.restoreStarMusic();return;}
-  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));}this.restoreStarMusic();return;}
+  // GameEngine's UpdScrollVar tail also runs after engine4/5 actor visits.
+  if(this.phase==='flag'){this.gameTimerStep(false);this.tickIntervalTimers();this.parserVramBusy=false;const wasGrounded=this.player.grounded,oldFeet=this.player.y,previousCamera=this.camera,previousArea=this.area;this.updateFlag();if(this.phase==='flag'&&this.area===previousArea){this.updateFlagPlatforms(oldFeet,previousCamera);this.updateLocomotionPose(wasGrounded,this.motor.absolute,false,new Set<Button>(['right']));this.advanceNativeAreaParser(this.camera-previousCamera);}this.restoreStarMusic();return;}
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
