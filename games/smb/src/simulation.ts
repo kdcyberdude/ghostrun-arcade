@@ -565,7 +565,7 @@ export class Simulation {
   if(nativeEntry&&this.entryReadyAge>=0){this.entryTimerDelay=0;this.entryInputDelay=0;}
   this.piranhaTouchFeetY=undefined;
   const p=this.player,nativeStateZero=this.powerupStateZero;this.powerupStateZero=false;if(nativeStateZero)p.grounded=true;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
-  let nativeGroundOnly=false;let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined;
+  let nativeGroundOnly=false;let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined,waterScroll:number|undefined,waterBoundsShift=0,waterBoundsVx:number|undefined;
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.nativePlayerAB=(b.has('a')?128:0)|(b.has('b')?64:0);
@@ -615,7 +615,7 @@ export class Simulation {
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
   springScroll=this.springTimers.values().next().value?.control;
-  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
   if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
@@ -625,14 +625,14 @@ export class Simulation {
   if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
-  if(swim){this.swimContact(this.swimDy,oldBottom,this.swimHeight(height));if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
+  if(swim){this.swimContact(this.swimDy,oldBottom,this.swimHeight(height));if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
   if(p.grounded){if(!poseGrounded){if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==this.entryReadyAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
   else if(nativeGroundOnly){if(!p.grounded){this.walkingOff=true;this.jumpArc=false;this.jumpPose=false;this.bouncing=false;this.landJump='released';}}
   else if(this.walkOffFall()){}
   else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.nativeFallCap(p.vy+this.airGravity(b));
-  if(p.x<this.camera){
+  if(!water&&p.x<this.camera){
    // Steering away from the left edge keeps braking momentum and the x fraction (native4-4 rows2597..2599).
    if(useMotor&&direction>0&&p.vx<0)p.x=this.camera+p.x-Math.floor(p.x);
    else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
@@ -669,20 +669,21 @@ export class Simulation {
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
-  if(oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
   if(p.y>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
-  const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms-this.swimPull+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
+  const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX+waterBoundsShift>xBeforePlatforms-this.swimPull+1e-7||(waterBoundsVx??cameraAttemptVx)>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
   // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
   // attempted pixel move before wall ejection plus Platform_X_Scroll, the lift carry of the
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
+  if(waterScroll!==undefined)this.camera+=waterScroll;
+  else{const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
    if(!scrollLocked&&oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
@@ -697,9 +698,9 @@ export class Simulation {
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
-  if(oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
-  else if(oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;if(this.area.theme==='water')this.water.motor.speed=Math.round(p.vx*4096);else this.motor.speed=Math.round(p.vx*4096);}}
-  else if(oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  else if(this.area.theme!=='water'&&oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;this.motor.speed=Math.round(p.vx*4096);}}
+  else if(this.area.theme!=='water'&&oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
    this.firebarSlots?.cameraEntry(previousCamera,this.camera);
@@ -784,6 +785,13 @@ export class Simulation {
  private sideTileAt(x:number,y:number){
   const tile=this.collisionAt(x,y);if(tile)return tile;
   if(this.tileAt(x,y)===197)return {x:Math.floor(x/16)*16,y:Math.floor(y/16)*16,width:16,height:16,id:197};
+ }
+ /** ScrollHandler/ChkPOffscr runs before BG collision and late whirlpool pull. */
+ private waterScreenBounds(camera:number){
+  const p=this.player,left=Math.floor(camera),bits=nativeMiscOffscreen(Math.floor(p.x),0,left)&15;
+  const edge=bits&8?0:bits&2?1:undefined;if(edge===undefined)return;
+  p.x=left+(edge?239:0)+p.x-Math.floor(p.x);
+  if(this.water.steering!==(edge?2:1))p.vx=(Math.round(p.vx*4096)&255)/4096;
  }
  private movePlayerX(dx:number,h:number,snap=true){
   const p=this.player;
@@ -1667,7 +1675,7 @@ export class Simulation {
  /** ScrollAmount $0775 of this row, computed before the enemies run as the native ScrollHandler does (same rule as the camera commit in update()). */
  private nativeScrollPreview(oldX:number,attemptX:number){
   if(this.areaControls.locked)return 0;
-  const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=Math.floor(oldX)-this.camera;
+  const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-this.camera;
   let camera=this.camera;
   if(screenX>=80&&Math.max(0,this.sideCollisionTimer-1)===0&&scrollMove>0)camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;
   return Math.max(0,Math.min(camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256))-this.camera);

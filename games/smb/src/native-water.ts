@@ -38,11 +38,12 @@ export const whirlpoolPull=(zone:WhirlpoolZone|undefined,x:number,frame:number,f
 export interface WaterStep{dy:number;stroke:boolean}
 export class NativeWater{
  readonly motor=new NativeMotor();
+ steering=0;
  readonly horizontalState:WaterHorizontalState={speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false};
  /** Source horizontal pass; the caller supplies the native accepted stroke. */
  horizontalSource(buttons:number,grounded:boolean,stroke:boolean){
   const s=this.horizontalState;s.speed=this.motor.speed;s.grounded=grounded;
-  const next=nativeWaterHorizontal(s,buttons,stroke);Object.assign(s,next);
+  const next=nativeWaterHorizontal(s,buttons,stroke);Object.assign(s,next);this.steering=next.steering;
   this.motor.speed=next.speed;this.motor.facing=next.facing===1?1:-1;this.motor.moving=next.moving===1?1:next.moving===2?-1:0;
   return next;
  }
@@ -64,7 +65,7 @@ export class NativeWater{
  pullFromStart=false;
  constructor(){this.motor.cap=SWIM_CAP;}
  /** Fresh level state at the water entry spawn (native y 0, nothing applied yet). */
- reset(){Object.assign(this.horizontalState,{speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false});this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
+ reset(){this.steering=0;Object.assign(this.horizontalState,{speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false});this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
  /** The state before this frame's trailing whirlpool pass, which contact with a floor or ceiling must precede. */
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */

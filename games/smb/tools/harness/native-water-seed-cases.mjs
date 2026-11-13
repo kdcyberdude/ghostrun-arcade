@@ -8,7 +8,7 @@ const {values:a}=parseArgs({options:{traces:{type:'string'},moods:{type:'string'
 if(!a.traces)throw Error('--traces required');
 const cases=[];
 const requests=[['2-2','area-2',352],['2-2','area-2',353],['2-2','area-2',386],['7-2','area-4',352],['7-2','area-4',3112],['7-2','area-4',3113],['7-2','area-4',1488,undefined,1000]];
-if(a.moods)for(const row of [25320,26560])requests.push(['2-2','area-2',row,'d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132',300]);
+if(a.moods)for(const row of [25320,26560])requests.push(['2-2','area-2',row,'d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132',row===25320?1000:300]);
 if(a.moods)requests.push(['2-2','area-2',18032,'d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132',1100]);
 if(a.moods)requests.push(['2-2','area-2',24060,'d2bbd82bb5182db3aaf5c777b720352ef7b60d97f052d06100a3817277595132',200]);
 if(a.moods)requests.push(['2-2','area-2',19888,'9c64d0397bb9660b2e0729f8fd64ed0bfe0fa432b828dfd337cd7fa93a0d5d1f',2200]);
@@ -21,6 +21,7 @@ if(a.moods)requests.push(['2-2','area-2',15371,'01f49b100bcaeee2b85ce1076f734931
 if(a.moods)requests.push(['2-2','area-2',23994,'c91d9e96b7833bef2216b2e57ff5c61570e365a2e18d1fbd5ff93422c8812970',1900]);
 if(a.moods)requests.push(['2-2','area-2',25502,'8d3816f56f083556e2fca5efe24bac7f7e0ae0b0cb279c544d66183e864147b9',1000]);
 if(a.moods)requests.push(['2-2','area-2',18020,'5b3c2ae44e9fb30ffa749ec973baf125d2f17085917e2b399a8c37c1c1ba8d93',40]);
+if(a.moods)requests.push(['2-2','area-2',17390,'839557dd95ba75a6eb8aeb7d5a25b6bb361b922d3b89403522eefec4e1e54507',200]);
 for(const [level,area,row,source,count=200]of requests){
  const dir=source?path.join(a.moods,'captures',source):path.join(a.traces,level),ram=fs.readFileSync(path.join(dir,'ram.bin')),pads=fs.readFileSync(path.join(dir,'pads.bin'));
  const expected=[];
