@@ -2,6 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
 import catalog from '../data/native-area-catalog.json';
+import pixelOrigins from './fixtures/native-pixel-origin.json';
 import {nativeWorldStages,nativeAreaBindings,nativeAreaLoads,selectNativeAreaBinding} from '../tools/harness/native-area-identity.js';
 
 const level=(id:string)=>observedLevels().find(l=>l.id===id)!;
@@ -64,4 +65,24 @@ test('unknown loaded pointers and duplicate static scene bindings remain explici
  assert.equal(loads[0].area,undefined);assert.ok(loads[0].diagnostic?.includes('not in native ROM'));
  const l=level('1-1'),b=nativeAreaBindings(l).bindings[0];l.areas.push({...l.areas[0],id:'duplicate'});
  assert.equal(selectNativeAreaBinding(l,[b,{...b,area:'duplicate'}],b.data,0).length,2);
+});
+
+// These windows retain every row of the two original recordings' level transitions.
+test('pixel scene origins follow native physical loads across all 303 formerly stale continuation rows',()=>{
+ let affected=0;
+ for(const c of pixelOrigins.cases){
+  const ram=new Uint8Array(c.rows.length*2048);
+  c.rows.forEach((row,i)=>pixelOrigins.addresses.forEach((a,j)=>{ram[i*2048+a]=row[j+1];}));
+  const loads=nativeAreaLoads(level(c.level),ram,c.initialArea,observedLevels()).loads;
+  assert.deepEqual(loads.map(l=>[l.frame+c.fromFrame,l.ptr,l.offset]),[
+   [c.fromFrame,c.rows[0][5]+c.rows[0][6]*256,-2816],
+   [c.loadedFrame,c.rows[c.loadedFrame-c.fromFrame][5]+c.rows[c.loadedFrame-c.fromFrame][6]*256,0],
+  ]);
+  for(let i=0;i<c.rows.length;i++){
+   const frame=c.fromFrame+i,visit=loads.filter(v=>v.frame<=i).at(-1)!;
+   assert.equal(visit.offset,frame<c.loadedFrame?-2816:0,`${c.level} native RAM frame ${frame}`);
+   if(i<c.rows.length-1&&frame+1>=c.affectedFromPictureFrame)affected++;
+  }
+ }
+ assert.equal(affected,303);
 });

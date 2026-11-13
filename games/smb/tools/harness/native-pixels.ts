@@ -76,7 +76,7 @@ try{
   let end=pads.length;for(let f=0;f<pads.length;f++){const n=nativeRow(a.victory?ramRow(f-1):ramRow(f));if(!a['all-frames']&&((a.victory?![1,2].includes(n.mode):n.mode!==1)||n.level!==level)){end=f;break;}}
   const first=divergence(dir,receiptPath,level).first;if(first!==null&&!a['all-frames']&&!a.victory)end=Math.min(end,first);
   const frames:number[]=[];for(let k=0;k<meta.frames;k++){const f=k*meta.step;if(f<end&&f>=lo&&f<=hi&&(a['all-frames']||a.victory||f>=lag))frames.push(f);}
-  const entrance=decodeEntrance(initial,JSON.parse(fs.readFileSync(receiptPath,'utf8'))),model=observedLevels().find(l=>l.id===level)!,areaLoads=nativeAreaLoads(model,ram,entrance.area??model.main).loads;
+  const entrance=decodeEntrance(initial,JSON.parse(fs.readFileSync(receiptPath,'utf8'))),model=observedLevels().find(l=>l.id===level)!,areaLoads=nativeAreaLoads(model,ram,entrance.area??model.main,observedLevels()).loads;
   const page=await browser.newPage();const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`http://127.0.0.1:${a.port}/`);await page.waitForFunction(()=>(window as any).mario?.ready,null,{timeout:90000});
   await page.evaluate(async entrance=>{
