@@ -7,7 +7,7 @@ import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from 
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
 import {nativeBlockSprites} from './native-block-picture.js';
-import {enemyPicture,nativeHammerBroCell} from './enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -112,9 +112,9 @@ export class GameRenderer {
  private enemy(e:Enemy,s:Simulation){
   e=enemyPicture(e);
   const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
-  const blooperTimer=e.bloop?.timer??0;
+  const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped),blooperTimer=e.bloop?.timer??0;
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
-  const phase=nativeCycle?(!s.powerChange&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
+  const phase=nativeCycle?(!timersStopped&&(s.random.frame&8)===0?1:0):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -123,11 +123,11 @@ export class GameRenderer {
   if(e.kind==='beetle'){cell=e.shell?19+phase:phase;palette='0f-1a-30-27';}
   if(e.kind==='spiny'){cell=(e.motion==='falling'?8:6)+phase;palette='0f-16-30-27';}
   if(e.kind==='piranha'){cell=32+phase;palette='0f-1a-30-27';}
-  if(e.kind==='blooper'){cell=blooperTimer===1||blooperTimer>=5||e.dead||s.powerChange?10:11;palette='0f-00-30-10';}
+  if(e.kind==='blooper'){cell=blooperTimer===1||blooperTimer>=5||e.dead||timersStopped?10:11;palette='0f-00-30-10';}
   if(e.kind==='cheep'){cell=12+phase;palette='0f-16-30-27';}
   if(e.kind==='bullet'){cell=39;palette=openingCannonShot||fiveThreeLeftShot?'0f-0f-36-17':'0f-00-30-10';}
   if(e.kind==='lakitu'){cell=e.dead?24:(e.graphicsFrenzyTimer??0)<16?25:24;palette='0f-1a-30-27';}
-  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,Boolean(s.powerChange));palette='0f-1a-30-27';}
+  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,timersStopped);palette='0f-1a-30-27';}
   if(e.kind==='podoboo'){cell=34;palette='0f-16-30-27';}
   if(e.dead&&e.kind==='goomba'&&e.dead<20){cell=23;}
   if(e.kind==='bowser'){
@@ -173,7 +173,7 @@ export class GameRenderer {
    const tiles=tables.enemy_cells[cell].tiles;
    // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
    // The direction is captured before collision turns, as in native OAM.
-   const left=(e.graphicsFacing??e.vx)<0,flip=s.powerChange?left:left===Boolean(s.random.frame&8);
+   const left=(e.graphicsFacing??e.vx)<0,flip=timersStopped?left:left===Boolean(s.random.frame&8);
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }

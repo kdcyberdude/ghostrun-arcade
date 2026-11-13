@@ -25,3 +25,6 @@ export function nativeHammerBroCell(state:number,frameCounter:number,timersStopp
  const base=state&8?30:28;
  return base+(!timersStopped&&!(state&0xa0)&&(state===0||Boolean(state&8))&&!(frameCounter&8)?1:0);
 }
+
+/** Graphics read TimerControl at each enemy slot; on later frozen rows no handler updates the stamp. */
+export const enemyPictureTimersStopped=(e:Enemy,frame:number,stopped:boolean)=>e.graphicsFrame===frame?Boolean(e.graphicsTimersStopped):Boolean(stopped);
