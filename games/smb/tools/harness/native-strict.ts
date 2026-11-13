@@ -16,7 +16,7 @@ export type StrictAudit={schema:'native-strict-audit-v1',status:'pass'|'diverged
 const digits=(r:Uint8Array,a:number,n:number)=>Array.from(r.subarray(a,a+n)).reduce((sum,v)=>sum*10+v,0);
 export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8Array,level:string):StrictAudit{
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,entrance);sim.step([],0);sim.inputs=[];
- const nativeLevel=sim.level as Level,areaIdentity=nativeAreaLoads(nativeLevel,ram),visits=areaIdentity.loads;
+ const nativeLevel=sim.level as Level,areaIdentity=nativeAreaLoads(nativeLevel,ram,(entrance as {area?:string}).area??nativeLevel.main),visits=areaIdentity.loads;
  const fields:Record<string,number|null>={level:null,area:null,dead:null,time:null,score:null,coins:null,cam:null,x:null,y:null,missing:null,extra:null,kind:null,position:null,state:null};
  const coverage={uncomparedSameLevelFrames:0,nativeMappedFrames:0,inputFrames:pads.length,endReason:'end of trace',frames:0,alignedFrames:0,nativeEntityRows:0,comparedEntityRows:0,nativeBirthRows:0,areaFrames:{} as Record<string,number>,complete:true};
  const diagnosticMap=new Map<string,StrictAudit['diagnostics'][number]>(),mismatchMap=new Map<string,StrictAudit['mismatches'][number]>(),samples:StrictAudit['samples']=[];let firstCoverageGap:number|null=null,index=-1;

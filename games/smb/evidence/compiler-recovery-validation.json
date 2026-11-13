@@ -1,0 +1,664 @@
+{
+  "schema": "compiler-recovery-validation-v1",
+  "baseCommit": "d72cd8c",
+  "recoverySource": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs",
+  "originalReceiptSemanticSha256": "795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6",
+  "originalVerifierSummary": {
+    "histories": 7,
+    "coherentOrientations": 482,
+    "centers": 2461,
+    "wrongCoherent": 0,
+    "maxRawCenterErrorPixels": 8,
+    "adjacentDiagnosticMax": 0,
+    "mixedSnapshots": 29
+  },
+  "cleanArchiveRestore": {
+    "files": 259,
+    "compilePassed": true,
+    "firstPreviewSha256": "da775a5b39637f8c59cd58688e8035718586c9245a836fd528371cf90ae61bae",
+    "cleanPreviewSha256": "da775a5b39637f8c59cd58688e8035718586c9245a836fd528371cf90ae61bae"
+  },
+  "protectedProductionSha256": "427c9333f303145a9bba59445f1be98d02a0b429c7709af15aa8095ace171e69",
+  "previewPromoted": false,
+  "tileArrayDifferences": [
+    {
+      "level": "1-1",
+      "area": "main",
+      "productionTiles": 837,
+      "previewTiles": 835,
+      "changedEffectiveCells": 17
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "productionTiles": 872,
+      "previewTiles": 870,
+      "changedEffectiveCells": 12
+    },
+    {
+      "level": "1-2",
+      "area": "area-3",
+      "productionTiles": 179,
+      "previewTiles": 177,
+      "changedEffectiveCells": 5
+    },
+    {
+      "level": "1-3",
+      "area": "main",
+      "productionTiles": 715,
+      "previewTiles": 713,
+      "changedEffectiveCells": 5
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "productionTiles": 1075,
+      "previewTiles": 1028,
+      "changedEffectiveCells": 48
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "productionTiles": 870,
+      "previewTiles": 868,
+      "changedEffectiveCells": 24
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "productionTiles": 2490,
+      "previewTiles": 2343,
+      "changedEffectiveCells": 147
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "productionTiles": 784,
+      "previewTiles": 780,
+      "changedEffectiveCells": 7
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "productionTiles": 883,
+      "previewTiles": 671,
+      "changedEffectiveCells": 237
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "productionTiles": 805,
+      "previewTiles": 788,
+      "changedEffectiveCells": 31
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "productionTiles": 676,
+      "previewTiles": 671,
+      "changedEffectiveCells": 11
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "productionTiles": 651,
+      "previewTiles": 603,
+      "changedEffectiveCells": 51
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "productionTiles": 815,
+      "previewTiles": 629,
+      "changedEffectiveCells": 193
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "productionTiles": 787,
+      "previewTiles": 767,
+      "changedEffectiveCells": 30
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "productionTiles": 1203,
+      "previewTiles": 1005,
+      "changedEffectiveCells": 220
+    },
+    {
+      "level": "4-2",
+      "area": "area-4",
+      "productionTiles": 179,
+      "previewTiles": 177,
+      "changedEffectiveCells": 5
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "productionTiles": 554,
+      "previewTiles": 528,
+      "changedEffectiveCells": 30
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "productionTiles": 998,
+      "previewTiles": 877,
+      "changedEffectiveCells": 123
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "productionTiles": 642,
+      "previewTiles": 609,
+      "changedEffectiveCells": 40
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "productionTiles": 733,
+      "previewTiles": 684,
+      "changedEffectiveCells": 58
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "productionTiles": 705,
+      "previewTiles": 657,
+      "changedEffectiveCells": 51
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "productionTiles": 889,
+      "previewTiles": 867,
+      "changedEffectiveCells": 53
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "productionTiles": 747,
+      "previewTiles": 692,
+      "changedEffectiveCells": 64
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "productionTiles": 1012,
+      "previewTiles": 906,
+      "changedEffectiveCells": 161
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "productionTiles": 572,
+      "previewTiles": 571,
+      "changedEffectiveCells": 25
+    },
+    {
+      "level": "6-4",
+      "area": "main",
+      "productionTiles": 1076,
+      "previewTiles": 1075,
+      "changedEffectiveCells": 2
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "productionTiles": 834,
+      "previewTiles": 832,
+      "changedEffectiveCells": 14
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "productionTiles": 856,
+      "previewTiles": 854,
+      "changedEffectiveCells": 5
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "productionTiles": 1407,
+      "previewTiles": 1405,
+      "changedEffectiveCells": 29
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "productionTiles": 853,
+      "previewTiles": 853,
+      "changedEffectiveCells": 9
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "productionTiles": 1311,
+      "previewTiles": 1311,
+      "changedEffectiveCells": 6
+    },
+    {
+      "level": "8-4",
+      "area": "main",
+      "productionTiles": 415,
+      "previewTiles": 381,
+      "changedEffectiveCells": 42
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "productionTiles": 185,
+      "previewTiles": 167,
+      "changedEffectiveCells": 24
+    }
+  ],
+  "otherFieldDifferences": [
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "field": "entryFall"
+    },
+    {
+      "level": "1-2",
+      "area": "area-2",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "1-4",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "2-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "field": "freeTiles"
+    },
+    {
+      "level": "2-2",
+      "area": "area-2",
+      "field": "solidRects"
+    },
+    {
+      "level": "2-2",
+      "area": "area-3",
+      "field": "decorations"
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "2-3",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "2-4",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "3-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "3-2",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "3-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "3-4",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "field": "entryFall"
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "field": "freeTiles"
+    },
+    {
+      "level": "4-2",
+      "area": "area-3",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "4-2",
+      "area": "area-4",
+      "field": "decorations"
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "4-3",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "4-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "5-1",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "freeTiles"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "decorations"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "cannons"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "solidRects"
+    },
+    {
+      "level": "5-2",
+      "area": "area-2",
+      "field": "hiddenFreeTiles"
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "field": "hiddenFreeTiles"
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "5-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "5-4",
+      "area": "main",
+      "field": "solidRects"
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "field": "hiddenFreeTiles"
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "6-2",
+      "area": "main",
+      "field": "hiddenFreeTiles"
+    },
+    {
+      "level": "6-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "6-4",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "7-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "7-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "8-1",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-2",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "field": "decorations"
+    },
+    {
+      "level": "8-3",
+      "area": "main",
+      "field": "patternOverrides"
+    },
+    {
+      "level": "8-4",
+      "area": "main",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-4",
+      "area": "area-2",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-4",
+      "area": "area-3",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-4",
+      "area": "area-4",
+      "field": "freeTiles"
+    },
+    {
+      "level": "8-4",
+      "area": "area-5",
+      "field": "freeTiles"
+    }
+  ],
+  "limitation": "The restored compiler preserves historical evidence acceptance including explicit raw 2px failures. The isolated legacy compile output differs from native-aligned production; do not replace production without source/native verification. Receipt recovery is not native gameplay or pixel equivalence."
+}

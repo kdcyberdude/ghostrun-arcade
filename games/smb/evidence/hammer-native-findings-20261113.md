@@ -70,13 +70,16 @@ The apparent first-Bro clock offset at5-2 row761 actually follows a respawn:
 native clears $09 atrow312 (engine0, area task1), not a cloud return. Keep the
 animation/castle branches' respawn FrameCounter reset when integrating.
 
-The missing compiler receipt evidence/firebar-5-4-shared-verification.json and
-its generator tools/firebar-5-4-shared-verify.ts do not exist in any reachable
-git history or the searched project/tmp backups. Production pins its semantic
-hash795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6
-(excluding top-level date), and the proposal pins original raw hash
-0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f.
-The receipt cannot be reconstructed honestly from those hashes.
+The initial compiler audit found neither the missing receipt nor its generator
+in reachable git/current-project/tmp backups. That search omitted earlier
+sibling projects. The later compiler recovery found genuine copies in
+/home/kd/Desktop/proj/build_games_from_scratch_in_threejs and its mario-25d
+sibling. The recovered original verifier reproduces production semantic hash
+795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6 exactly.
+The hash-pinned rerun attestation also recovers the original complete report
+0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f by restoring
+only its independently attested date. Hashes alone were insufficient; actual
+original artifact bytes are now bundled. See docs/COMPILER_EVIDENCE_RECOVERY.md.
 
 ## Shared misc/projectile follow-up
 
@@ -241,3 +244,70 @@ counted down on enemy passes and incremented by ordinary Koopa/Goomba-class
 stomps (source HandleStompedShellE); it affects only the new respawn contact
 path. Normal actor contact/motors remain unchanged. All1263 tests and TypeScript
 pass; excerpts regenerated. CPU-overrun scheduling remains a separate open item.
+
+## Pipe actors behind the early8-3/5-2 enemy mismatches
+
+Read-only integration29b5de7 peeks identify Piranhas, not Hammer Bro motion:
+8-3 native row254 creates plant856 in slot2 on parser task3, but the old model
+only marks its slot held and exposes the actor on255.5-2 row776 creates plant888
+at nativey160; the screenshot-era spec calls160 its feet, so the old model
+initializes nativey136. At777 nativey159 compares with model135. Native source
+VerticalPipe supplies actor x=column*16+8,y=row*16+32; InitPiranhaPlant saves down=y,
+up=y-24, speed1, flag0. Its creation is after enemy movement and has no motor step.
+
+`native-pipes.ts` decodes vertical pipe records from the ROM, checks its SHA
+against source area pointer evidence, and applies existing source geometry
+normalizations. All140 retained native births match the ROM x/y exactly. The
+39 mapped areas contain106 source plants:90 existing specs agree, two5-2
+heights change,14 plants missing from screenshot rosters are included, and the
+old4-2 far-roof x3448 is replaced by native3432. Unmapped areas retain existing
+actors; this is not a claim that every unvisited compiled room has a ROM mapping.
+`observedLevels()` applies the source actor roster without modifying any tile.
+
+Exact records:5-2 pointer$AA94+$1C bytes78 7A ->x888/nativey160/feet184;
+$AA94+$58 bytesD9 71 ->x2776/nativey176/feet200.4-2 pointer$ACDA+$96 bytes68 7A
+->x3432/nativey160/feet184. Its source pipe left is3424, but the protected model
+map puts pipe-left metatile16 atcolumn215/x3440. This is another unvisited late
+geometry mismatch; no tile was edited. The obsolete roof test's plant3448
+assertion now uses source3432. Native ScrollLockObject_Warp calls KillEnemies
+for all live Piranhas; runtime erasure now follows that source rule instead of
+matching a screenshot-derived artwork x list. Warp activation/geometry timing
+itself is outside this unit and still has previously documented limitations.
+
+Parser births now make the hidden actor/slot visible immediately, preserving
+native initialization bytes and waiting until the next enemy pass to move it.
+Slots whose earlier enemy pass erased an object can be reused that same row.
+All140 births replay their native slot-flag allocation and initial plant state
+in component fixtures, including8-3's erased Bullet Bill slot. Full32 first-
+divergence fields vsf74dbe7 are all unchanged on this old branch (earlier foreign
+field divergences hide these later events). Target peeks nevertheless show the
+correct native Piranha y and birth row. All1267 tests and TypeScript pass;
+excerpts regenerated. Root must require the integration field ratchet after merge.
+
+
+## Compiler evidence recovery
+
+The restored original verifier and all compiler hash guards pass.259 missing
+inputs (228 evidence/31 tools) are preserved in a deterministic2.9MB archive
+with per-file/source checksums and a restore tool. Nine core files are ordinary
+files so the original firebar verifier can run directly. Its7 histories,
+482 coherent orientations and2461 centers reproduce the exact original semantic
+SHA, while all raw2px image cases remain explicitly failing with maximum8px.
+No validation predicate, threshold, proposal hash or source hash was relaxed.
+
+A clean archive extraction and an ordinary restored compile both produced
+SHA da775a5b39637f8c59cd58688e8035718586c9245a836fd528371cf90ae61bae.
+The compiler now supports --out for isolated preview builds; default atomic
+production output behavior remains. Protected data/levels.json was never
+changed. Preview output differs from the later native-aligned production map
+in1779 effective tile cells across33 areas and81 other area fields. The full
+list and immutable baseline hashes are in evidence/compiler-recovery-validation.json.
+This restores the historical validation pipeline, not native map equivalence;
+preview promotion remains prohibited until those source/native differences
+are resolved. The manifest contains no ROM, dependencies or scratch checkout.
+
+Recovery gates:1268 tests and TypeScript pass, excerpts regenerated, every
+field of all32 native surveys unchanged vsd72cd8c, protected production hash
+unchanged, and git diff --check passes. The regression extracts and hashes the
+entire archive in a fresh temporary directory, authenticates original report/
+attestation/before-report hashes and keeps all seven raw-image failures explicit.

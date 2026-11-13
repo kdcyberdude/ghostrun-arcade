@@ -1,0 +1,54 @@
+{
+  "schema": "firebar5-4-report-rerun-attestation-v1",
+  "attestedUtc": "2026-11-06T03:41:51.042Z",
+  "author": "/root/platform_measurement",
+  "cause": "I generated the proposal at2026-11-06T03:32:47.068063+00:00, then reran the unchanged verifier in the final check command at2026-11-06T03:35:16.077Z. The generator overwrote the top-level report date and made the proposal report hash stale. No source measurement, parameter, lookup, module or generator edit occurred between those successful runs.",
+  "originalWasRetainedBeforeOverwrite": false,
+  "originalExactBytesRecovered": true,
+  "recoveryMethod": "The original file birth time narrowed possible original ISO dates. Only the top-level date string was varied in memory; its reconstructed full bytes matched the original SHA256 already authenticated by the immutable proposal. No measurement or other field was edited. The known03:35 rerun was recovered the same way and also matched its independently recorded full SHA256.",
+  "original": {
+    "path": "evidence/local/firebar-5-4-report-recovery/original-0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f.json",
+    "sha256": "0c64d9a77ef046482a7b5bc1f4899e80cc854046f7e429d67167eba8fc64f75f",
+    "date": "2026-11-06T03:31:30.544Z"
+  },
+  "referencedRerun": {
+    "path": "evidence/local/firebar-5-4-report-recovery/rerun-a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696.json",
+    "sha256": "a5e4ea9338d0616fd57850caab2d2f29c4221ec03ef184ae7555080d05c10696",
+    "date": "2026-11-06T03:35:16.077Z"
+  },
+  "laterCurrentSnapshot": {
+    "path": "evidence/local/firebar-5-4-report-recovery/rerun-f56096e640d0b301b2bac7f71a6eaff684eb6f13596b7d057e310fe551b853d4.json",
+    "sha256": "f56096e640d0b301b2bac7f71a6eaff684eb6f13596b7d057e310fe551b853d4",
+    "date": "2026-11-06T03:39:14.954Z",
+    "note": "Report changed again during parent revalidation; this worker only read and copied it."
+  },
+  "comparison": {
+    "changedTopLevelFields": [
+      "date"
+    ],
+    "allOtherFieldsDeepEqual": true,
+    "exactByteReconstructionHashesVerified": true
+  },
+  "structuralDigests": {
+    "jsonStringifyAfterDeletingOnlyTopLevelDate": "795901128f0a999057bb2440e18f0480b09278c30e98eb35c6ab47d1fd25e4a6",
+    "recursivelySortedObjectKeysAfterDeletingOnlyTopLevelDate": "2b803bfda7700e030ea225fba20a8c5510875adaa6e597cc2cc71ef81ad1f428",
+    "algorithm": "SHA256 over UTF8 JSON.stringify of parsed data after deleting only top-level date; first digest keeps insertion order, second recursively sorts object keys and preserves array order."
+  },
+  "inputGuards": {
+    "data/firebar-5-4-integration-proposal.json": "6ab6454a136300bfea0a2e08df80dfe54125340c6a9ef3715304880e9a20cfb9",
+    "data/firebar-5-4-chain-candidate-v2.json": "2cf316464df46c4375608fde09f4c7e031868783fcc392124f625547103f7b5e",
+    "src/firebar-motion.ts": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82",
+    "data/firebar-motion-rules.json": "1431892330e9dc74af8d28c8a77d5d1ac2f0018c70fc2e00e5cd719881f83695",
+    "tools/firebar-5-4-shared-verify.ts": "5195798b8e62c9486d231d6e6c65d7bcfe6f04c90ee744a133fe54ff12a33e8b",
+    "evidence/firebar-5-4-chain-calibration.json": "6960952ee8a194783174caee7b2b4cc31ad893ec86468188b37af87fb080d22c",
+    "evidence/firebar-5-4-chain-reserved.json": "e73b5f47ddbbf29a729906fb5bab52132df9b8e960d00f1f8cdcfc173ece5824",
+    "evidence/firebar-5-4-fresh-calibration.json": "14fd0ba6d9a5a122353ba226d8c6d3c7838b941b90f95ee18b08f5723ac67e0b",
+    "evidence/firebar-5-4-fresh-reserved.json": "39bcd4be46dcdd6f06a5a25b9878b3fe726f2a39f431edcbaf71af487bbc4288",
+    "data/firebar-5-4-chain-candidate.json": "f60f8700817db8065a55bdbb683e982c59461ea5b61a782c3f34d326e592d409",
+    "data/firebar-5-4-fresh-measure-plan.json": "ed0c121205f5a9f2723712f36d648949b435877d03b40296bfcb3b61c75d4a28",
+    "tools/firebar-5-4-fresh-measure.py": "e1ef0a434a69cbb0789325a3b8a1c716bd4df50d439c676b93ee4d8541f43ecc",
+    "tools/lower-row-chain-castle.py": "22ac2d622853f12455affba5bb4c4b622e597ea01b799cee486c3e4221e9702e"
+  },
+  "immutableProposalOrInputMutations": false,
+  "rawImageAcceptance": "Unchanged: every original/raw case still fails2px; this artifact repairs provenance bookkeeping only."
+}

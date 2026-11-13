@@ -1,0 +1,3250 @@
+{
+  "schema": "shared-module5-4-missing-hazard-validation-v1",
+  "date": "2026-11-06T03:39:14.954Z",
+  "candidate": "data/firebar-5-4-chain-candidate-v2.json",
+  "candidateSHA256": "2cf316464df46c4375608fde09f4c7e031868783fcc392124f625547103f7b5e",
+  "moduleSHA256": "0da88de25f8bef9cd89d117f8633484e5b84d0ed3f4a3e3da2f04dfe75280d82",
+  "parameters": {
+    "direction": 1,
+    "initialUnits": 763
+  },
+  "geometry": {
+    "x": 696,
+    "y": 216,
+    "length": 6
+  },
+  "method": "Unmodified shared production motor advanced once per native frame after independently estimated source camera birth. One explicit local initial phase for all7 source histories. No source image selects camera, birth offset or pose. Absolute counter offsets are diagnostic intercepts and are never proposed as game scripts. Compare raw current-frame positions first; old/new adjacent-frame explanation is separate and never changes raw thresholds.",
+  "reports": [
+    {
+      "source": "evidence/firebar-5-4-chain-calibration.json",
+      "partition": {
+        "source": "data/lower-row-chain-early-footprints.json",
+        "role": "training",
+        "ticksInclusive": [
+          5972,
+          6034
+        ]
+      },
+      "activationNativeFromIndependentCameraEstimator": 44818,
+      "descriptiveCounterOffset": 934,
+      "coherentOrientations": 58,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 317,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45035,
+          "tick": 5995,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                188,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                697,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                189,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                699,
+                202
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                191,
+                198
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                708,
+                188
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                200,
+                184
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                711,
+                180
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                203,
+                176
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-row-edge-5-4-training/00053-tick-05995.png",
+          "imageSHA256": "e000af9e3e3133c67d873a35dafa38ed9974816f5029c7a9a2a12be67c4ca5e2"
+        },
+        {
+          "nativeFrame": 45201,
+          "tick": 6017,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                188,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                690,
+                213
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                182,
+                209
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                683,
+                208
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                175,
+                204
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                677,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                169,
+                200
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                668,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                160,
+                185
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-row-edge-5-4-training/00075-tick-06017.png",
+          "imageSHA256": "cce05f495214b0e5497cb4061babba6a2543bfbd882780c499fa6e837e18d6e0"
+        },
+        {
+          "nativeFrame": 45208,
+          "tick": 6018,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                188,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                183,
+                208
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                177,
+                202
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                170,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                166,
+                180
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-row-edge-5-4-training/00076-tick-06018.png",
+          "imageSHA256": "a45c03b97adb510af6cc7afcd357cd229227cf06f31e818db97b0a2b12fcc807"
+        },
+        {
+          "nativeFrame": 45246,
+          "tick": 6023,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                188,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                191,
+                206
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                194,
+                199
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                206,
+                187
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                718,
+                184
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                210,
+                180
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-row-edge-5-4-training/00081-tick-06023.png",
+          "imageSHA256": "4b2ec38b6fee218147b5df5f4461bcea750031671ddb3858912534c28049297b"
+        },
+        {
+          "nativeFrame": 45253,
+          "tick": 6024,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                188,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                700,
+                211
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                192,
+                207
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                705,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                197,
+                200
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                724,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                216,
+                185
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/lower-row-edge-5-4-training/00082-tick-06024.png",
+          "imageSHA256": "be6c733988fb31c5bd75788c9989803ebadc088e4f13596b17055b7e0c1a0ba6"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-chain-calibration.json",
+      "partition": {
+        "source": "data/lower-row-chain-remainder-footprints.json",
+        "role": "training",
+        "ticksInclusive": [
+          5974,
+          6038
+        ]
+      },
+      "activationNativeFromIndependentCameraEstimator": 44818,
+      "descriptiveCounterOffset": 934,
+      "coherentOrientations": 60,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 319,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45035,
+          "tick": 5995,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                697,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                168,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                699,
+                202
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                170,
+                198
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                708,
+                188
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                179,
+                184
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                711,
+                180
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                182,
+                176
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-training-2026-11-06T02-55-24.300Z/001057-5-4-chain-remainder-t5995.png",
+          "imageSHA256": "827bbb5ec0a670de3746c4257b4f654492b8a1b271b65a0d4f57544f6a0f80a3"
+        },
+        {
+          "nativeFrame": 45201,
+          "tick": 6017,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                690,
+                213
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                161,
+                209
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                683,
+                208
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                154,
+                204
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                677,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                148,
+                200
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                668,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                139,
+                185
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-training-2026-11-06T02-55-24.300Z/001079-5-4-chain-remainder-t6017.png",
+          "imageSHA256": "b629b0bc964502edbf0aeabd686ae5ca68b311f9c41b989406c92ba5acedf2af"
+        },
+        {
+          "nativeFrame": 45208,
+          "tick": 6018,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                162,
+                208
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                156,
+                202
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                149,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                145,
+                180
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-training-2026-11-06T02-55-24.300Z/001080-5-4-chain-remainder-t6018.png",
+          "imageSHA256": "57cff2420e596a889514fbfcba3c00c565e0806ce6c7f5ff494fa508f2a2160e"
+        },
+        {
+          "nativeFrame": 45246,
+          "tick": 6023,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                170,
+                206
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                173,
+                199
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                185,
+                187
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                718,
+                184
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                180
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-training-2026-11-06T02-55-24.300Z/001085-5-4-chain-remainder-t6023.png",
+          "imageSHA256": "33a948e758aa09d68dbdc2e2919008b4c9b483797511327f70a45a60ee1f3fea"
+        },
+        {
+          "nativeFrame": 45253,
+          "tick": 6024,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                700,
+                211
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                171,
+                207
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                705,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                176,
+                200
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                724,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                195,
+                185
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-training-2026-11-06T02-55-24.300Z/001086-5-4-chain-remainder-t6024.png",
+          "imageSHA256": "e5fa8b16d7d36c447a62775e56cb9a08bad46fae81743e670de1816788ba8f12"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-chain-reserved.json",
+      "partition": {
+        "source": "data/lower-row-chain-early-footprints.json",
+        "role": "heldout",
+        "ticksInclusive": [
+          5973,
+          6039
+        ],
+        "status": "Image flame geometry not opened/extracted by this agent before this declaration; cartography used these images independently for static proof."
+      },
+      "activationNativeFromIndependentCameraEstimator": 44818,
+      "descriptiveCounterOffset": 934,
+      "coherentOrientations": 62,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 330,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45035,
+          "tick": 5995,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                697,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                190,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                699,
+                202
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                192,
+                198
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                708,
+                188
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                201,
+                184
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                711,
+                180
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                204,
+                176
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-early-fresh-heldout-2026-11-06T02-39-19.207Z/001057-5-4-chain-early-three-brake-t5995.png",
+          "imageSHA256": "ae8ad5c5fa514b41605228261b344bf16f97aeabe584a49f6c1137a66616ba52"
+        },
+        {
+          "nativeFrame": 45201,
+          "tick": 6017,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                690,
+                213
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                183,
+                209
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                683,
+                208
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                176,
+                204
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                677,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                170,
+                200
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                668,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                161,
+                185
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-early-fresh-heldout-2026-11-06T02-39-19.207Z/001079-5-4-chain-early-three-brake-t6017.png",
+          "imageSHA256": "fc15b1b9dd042ca1fc526a480cc3f3fe8ea482607ead6783d76d40e8cea0d778"
+        },
+        {
+          "nativeFrame": 45208,
+          "tick": 6018,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                184,
+                208
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                178,
+                202
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                171,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                167,
+                180
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-early-fresh-heldout-2026-11-06T02-39-19.207Z/001080-5-4-chain-early-three-brake-t6018.png",
+          "imageSHA256": "23e8e3e97fd65f7f4591fd1e57319f689012ed4c428f7da45aadf221970ae3a2"
+        },
+        {
+          "nativeFrame": 45246,
+          "tick": 6023,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                192,
+                206
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                195,
+                199
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                207,
+                187
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                718,
+                184
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                211,
+                180
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-early-fresh-heldout-2026-11-06T02-39-19.207Z/001085-5-4-chain-early-three-brake-t6023.png",
+          "imageSHA256": "c02bba8cf4fafcd51ead13e1da495441d2d6ca2a4786d450e9577ac180d70932"
+        },
+        {
+          "nativeFrame": 45253,
+          "tick": 6024,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                189,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                700,
+                211
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                193,
+                207
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                705,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                198,
+                200
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                724,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                217,
+                185
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-early-fresh-heldout-2026-11-06T02-39-19.207Z/001086-5-4-chain-early-three-brake-t6024.png",
+          "imageSHA256": "3ab244d32d3769e1b332e4aefb2c08cbe5f56fd960809d28be38adcff06845eb"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-chain-reserved.json",
+      "partition": {
+        "source": "data/lower-row-chain-remainder-footprints.json",
+        "role": "heldout",
+        "ticksInclusive": [
+          5973,
+          6040
+        ],
+        "status": "Image flame geometry not opened/extracted by this agent before declaration."
+      },
+      "activationNativeFromIndependentCameraEstimator": 44818,
+      "descriptiveCounterOffset": 934,
+      "coherentOrientations": 63,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 336,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45035,
+          "tick": 5995,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                169,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                697,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                170,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                699,
+                202
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                172,
+                198
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                708,
+                188
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                181,
+                184
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                711,
+                180
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                184,
+                176
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-heldout-2026-11-06T02-55-25.892Z/001057-5-4-chain-remainder-t5995.png",
+          "imageSHA256": "5a1cbbadb560e0a5d6a53a9895a58b659913eaffccb8b95be6ef8906c280a7ff"
+        },
+        {
+          "nativeFrame": 45201,
+          "tick": 6017,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                169,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                690,
+                213
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                163,
+                209
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                683,
+                208
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                156,
+                204
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                677,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                150,
+                200
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                668,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                141,
+                185
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-heldout-2026-11-06T02-55-25.892Z/001079-5-4-chain-remainder-t6017.png",
+          "imageSHA256": "d1e2aed388259349f7a8bfca010c524e2eb9a9cb534ce3322f30dad30fdd1717"
+        },
+        {
+          "nativeFrame": 45208,
+          "tick": 6018,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                169,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                164,
+                208
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                158,
+                202
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                151,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                147,
+                180
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-heldout-2026-11-06T02-55-25.892Z/001080-5-4-chain-remainder-t6018.png",
+          "imageSHA256": "2026a44b4e516ce9ae95ff662e86dc9f17b2ce47865362f2ac5d55184765a149"
+        },
+        {
+          "nativeFrame": 45246,
+          "tick": 6023,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                169,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                172,
+                206
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                175,
+                199
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                187,
+                187
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                718,
+                184
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                191,
+                180
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-heldout-2026-11-06T02-55-25.892Z/001085-5-4-chain-remainder-t6023.png",
+          "imageSHA256": "149c3ca72e2a8b9214b22360d2f90cfbe603c063b390715de091e93109b3bd86"
+        },
+        {
+          "nativeFrame": 45253,
+          "tick": 6024,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                169,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                700,
+                211
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                173,
+                207
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                705,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                178,
+                200
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                724,
+                189
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                197,
+                185
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "evidence/local/lower-row-chain-remainder-fresh-heldout-2026-11-06T02-55-25.892Z/001086-5-4-chain-remainder-t6024.png",
+          "imageSHA256": "d52564df412d5bb46cdd822f09ea4650f0e6b76da7564bf86602c90bdaee1f20"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-fresh-calibration.json",
+      "partition": {
+        "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+        "role": "cal0",
+        "ticksInclusive": [
+          5936,
+          6086
+        ]
+      },
+      "activationNativeFromIndependentCameraEstimator": 44933,
+      "descriptiveCounterOffset": 359,
+      "coherentOrientations": 81,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 389,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45118,
+          "tick": 6006,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                216,
+                208
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                210,
+                202
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                203,
+                187
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                199,
+                180
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/01069-cal-5-4-chain-prewait0-idle-tick-06006.png",
+          "imageSHA256": "6e6b61c6ae3cf5b81971cff44c951e75d0fa100f2fb6e8f391e447f12515967a"
+        },
+        {
+          "nativeFrame": 45336,
+          "tick": 6035,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                693,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                218,
+                206
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                690,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                215,
+                199
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                692,
+                194
+              ],
+              "rawErrorPixels": 5,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                217,
+                190
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                690,
+                186
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                215,
+                182
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                689,
+                178
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                214,
+                174
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/01098-cal-5-4-chain-prewait0-idle-tick-06035.png",
+          "imageSHA256": "0936431ae6bd56db367dab61342f18c68dd8db664e70ea15558ccb5b36a551a3"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-fresh-calibration.json",
+      "partition": {
+        "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+        "role": "cal20",
+        "ticksInclusive": [
+          5936,
+          6086
+        ]
+      },
+      "activationNativeFromIndependentCameraEstimator": 45083,
+      "descriptiveCounterOffset": 633,
+      "coherentOrientations": 79,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 386,
+      "maxUnshiftedRawCenterErrorPixels": 8,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45268,
+          "tick": 6026,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                216,
+                208
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                210,
+                202
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                203,
+                187
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                199,
+                180
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/02218-cal-5-4-chain-prewait20-idle-tick-06026.png",
+          "imageSHA256": "1e6b2f9f0303b5637e05c827f9851b8883f64f850bf35881d1a164c1e4e3c6f2"
+        },
+        {
+          "nativeFrame": 45306,
+          "tick": 6031,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                224,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                227,
+                199
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                239,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                718,
+                184
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                243,
+                180
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/02223-cal-5-4-chain-prewait20-idle-tick-06031.png",
+          "imageSHA256": "da61a0a33b3e5169291b554311cc276e39ed8f8b02cf662c0774c3dbbcbcb16f"
+        },
+        {
+          "nativeFrame": 45479,
+          "tick": 6054,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                692,
+                211
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                217,
+                207
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                687,
+                204
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                212,
+                200
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                687,
+                195
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                212,
+                191
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                684,
+                188
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                209,
+                184
+              ],
+              "spritePhases": [
+                3
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                681,
+                180
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                206,
+                176
+              ],
+              "spritePhases": [
+                3
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/02246-cal-5-4-chain-prewait20-idle-tick-06054.png",
+          "imageSHA256": "61bf11426a196747bdf6069c1bb5f9dca02518aa177e61be0ce7f8fd6102dea6"
+        },
+        {
+          "nativeFrame": 45486,
+          "tick": 6055,
+          "rawCenterErrorPixels": 8,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                693,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                218,
+                206
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                690,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                215,
+                199
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                692,
+                194
+              ],
+              "rawErrorPixels": 5,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                217,
+                190
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                690,
+                186
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                215,
+                182
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                689,
+                178
+              ],
+              "rawErrorPixels": 8,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                214,
+                174
+              ],
+              "spritePhases": [
+                1
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/02247-cal-5-4-chain-prewait20-idle-tick-06055.png",
+          "imageSHA256": "5ca7ebec10e9857ac038a5d59a8e625f34497a0eefbb49d63fc448a369ecbdb6"
+        }
+      ]
+    },
+    {
+      "source": "evidence/firebar-5-4-fresh-reserved.json",
+      "partition": {
+        "source": "evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/source-registry.json",
+        "role": "reserved13",
+        "ticksInclusive": [
+          5936,
+          6079
+        ]
+      },
+      "activationNativeFromIndependentCameraEstimator": 45031,
+      "descriptiveCounterOffset": 893,
+      "coherentOrientations": 79,
+      "wrongCoherent": 0,
+      "completeSpriteCenters": 384,
+      "maxUnshiftedRawCenterErrorPixels": 7,
+      "raw2pxPassed": false,
+      "maxAdjacentNativeDiagnosticErrorPixels": 0,
+      "adjacentDiagnosticIsNotRawPass": true,
+      "mixed": [
+        {
+          "nativeFrame": 45050,
+          "tick": 5997,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 3,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                229,
+                213
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                699,
+                210
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                232,
+                206
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                702,
+                203
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                235,
+                199
+              ],
+              "spritePhases": [
+                0
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                714,
+                191
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                245,
+                187
+              ],
+              "spritePhases": [
+                0
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/03338-reserved-5-4-chain-prewait13-approach-tick-05997.png",
+          "imageSHA256": "72e56626f2125b98e75e717413f19a2cf64f96d0c6a2aa13ba25f080372626c1"
+        },
+        {
+          "nativeFrame": 45216,
+          "tick": 6019,
+          "rawCenterErrorPixels": 6,
+          "bestSinglePoseShapeResidualPixels": 2,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                691,
+                212
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                216,
+                208
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 2,
+              "actual": [
+                685,
+                206
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                210,
+                202
+              ],
+              "spritePhases": [
+                1
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                678,
+                191
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                203,
+                187
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                674,
+                184
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                199,
+                180
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/03360-reserved-5-4-chain-prewait13-idle-tick-06019.png",
+          "imageSHA256": "690c983ad1c345cdd5f50bacea41001389637cb280b934f6554a410479260a72"
+        },
+        {
+          "nativeFrame": 45651,
+          "tick": 6077,
+          "rawCenterErrorPixels": 7,
+          "bestSinglePoseShapeResidualPixels": 1,
+          "adjacentNativeErrorPixels": 0,
+          "pointResults": [
+            {
+              "n": 0,
+              "actual": [
+                696,
+                217
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0,
+                1
+              ],
+              "sourceTopLeft": [
+                221,
+                213
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 1,
+              "actual": [
+                696,
+                209
+              ],
+              "rawErrorPixels": 0,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                0
+              ],
+              "sourceTopLeft": [
+                221,
+                205
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 3,
+              "actual": [
+                700,
+                194
+              ],
+              "rawErrorPixels": 4,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                225,
+                190
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 4,
+              "actual": [
+                702,
+                186
+              ],
+              "rawErrorPixels": 6,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                227,
+                182
+              ],
+              "spritePhases": [
+                2
+              ]
+            },
+            {
+              "n": 5,
+              "actual": [
+                703,
+                178
+              ],
+              "rawErrorPixels": 7,
+              "adjacentNativeErrorPixels": 0,
+              "exactNativeEpochs": [
+                1
+              ],
+              "sourceTopLeft": [
+                228,
+                174
+              ],
+              "spritePhases": [
+                2
+              ]
+            }
+          ],
+          "image": "/home/kd/Desktop/proj/build_games_from_scratch_in_threejs/evidence/local/firebar-5-4-dense-fresh-2026-11-06T03-19-24Z/03418-reserved-5-4-chain-prewait13-idle-tick-06077.png",
+          "imageSHA256": "9078a79c15a7032c624a3b956f61f3d9b965b63f4e040f0ce1ae730220063ac9"
+        }
+      ]
+    }
+  ],
+  "tolerances": {
+    "centerPixels": 2,
+    "timingNativeFrames": 2,
+    "fullsceneRGB": 0.99
+  },
+  "scopeLimits": [
+    "Native latest-camera endpoints are independently observed, but first threshold crossing is estimated between7/8-native screenshots.763 is fitted local metadata under the current first-frame-increment convention, not a claim about native ROM initialization.",
+    "Raw current-state positions still fail2px on mixed-frame reference snapshots (8px); best pose shape3px and adjacent-native0px are distinct diagnostics.",
+    "Fullscene99%, flame animation epoch, collision radius and complete-level traversal remain unproved."
+  ]
+}

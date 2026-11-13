@@ -18,3 +18,12 @@ test('ground enemy-style death still uses its normal upward launch',()=>{
  const sim=new Simulation([level]);sim.reset(true);const y=sim.player.y;sim.die();sim.step([],16);
  assert.equal(sim.phase,'dying');assert.ok(sim.player.y<y);
 });
+
+test('the final page6 void frame clamps Mario to the screen edge before selecting lose-life',()=>{
+ // Mood0 1-3 entry0007 row578: rawY252→0/page6, screenX240→239.
+ const sim:any=new Simulation([structuredClone(observedLevels().find(l=>l.id==='1-3')!)]);sim.reset(true);
+ sim.camera=660;Object.assign(sim.player,{x:899.875,y:1308,vx:0.3,vy:4,grounded:false});sim.enemies=[];
+ sim.step(['right'],1);
+ assert.equal(sim.phase,'dying');assert.equal(Math.floor(sim.player.x),899);
+ assert.ok(sim.player.vx>=0&&sim.player.vx<1/16,'boundary clears only the integer speed byte');
+});

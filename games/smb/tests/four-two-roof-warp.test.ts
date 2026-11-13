@@ -28,16 +28,16 @@ test('4-2 far-end roof warp stays in the existing area and preserves its normal 
  assert.deepEqual(new Set(level.areas.find(a=>a.id==='vine-warp-zone')!.pipes!.map(p=>p.targetLevel)),new Set(['6-1','7-1','8-1']));
 });
 
-test('ordinary roof movement remains continuous and activates only the observed far-end sign and plant',()=>{
- const sim=roofFixture(),normalPlants=sim.enemies.filter(e=>e.kind==='piranha'&&e.originX!==3448);let activation=0;
- assert.equal(sim.warpZoneActive,false);assert.ok(sim.enemies.some(e=>e.kind==='piranha'&&e.originX===3448));
+test('ordinary roof movement preserves the source pipe plant until native warp-zone erasure',()=>{
+ const sim=roofFixture(),normalPlants=sim.enemies.filter(e=>e.kind==='piranha'&&e.originX!==3432);let activation=0;
+ assert.equal(sim.warpZoneActive,false);assert.ok(sim.enemies.some(e=>e.kind==='piranha'&&e.originX===3432));
  for(let frame=1;frame<=430;frame++){
   const x=sim.player.x;sim.step(['right','b'],1);
   assert.equal(sim.area.id,'area-3');assert.equal(sim.areaFrame,frame);assert.ok(Math.abs(sim.player.x-x)<=2.5);assert.ok(sim.camera<=3344);
   if(!sim.warpZoneActive)assert.ok(sim.camera<3344);else if(!activation){activation=frame;assert.equal(sim.camera,3344);}
  }
  assert.ok(activation);assert.equal(sim.player.y,208);assert.equal(sim.lives,3);
- assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&e.originX===3448),false);
+ assert.equal(sim.enemies.some(e=>e.kind==='piranha'&&e.originX===3432),false);
  for(const plant of normalPlants)assert.ok(sim.enemies.includes(plant));
 });
 
