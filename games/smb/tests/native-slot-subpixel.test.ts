@@ -35,7 +35,7 @@ test('route row 389: a walker the remake dropped is removed natively on the row 
 
 test('a stomped walker leaves its own frozen byte; a Piranha leaves the byte it inherited',()=>{
  const sim=fixture('1-1',[],700);
- const g={...sim.makeEnemy({kind:'goomba',x:900.5,y:208,direction:-1}),active:true,enemySlot:2,dead:22,squashed:true};
+ const g={...sim.makeEnemy({kind:'goomba',x:900.5,y:208,direction:-1}),active:true,enemySlot:2,dead:100,squashed:true};
  const p={...sim.makeEnemy({kind:'piranha',x:600,y:184,direction:-1}),active:true,enemySlot:3,dead:0};
  sim.enemies.push(g,p);sim.slotSub=[0,0,0,77,0];sim.releaseNativeSlots();
  assert.equal(sim.slotSub[2],128);assert.equal(p.slotFreed,true);assert.equal(sim.slotSub[3],77);
