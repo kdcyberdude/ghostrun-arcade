@@ -11,6 +11,7 @@ for(const w of windows.cases)test(`${w.level} native flag end-walk bytes, camera
  const pageOffset=Math.round((x-(sim.area.exit.x-15))/256)*256;
  Object.assign(sim.player,{x:x-pageOffset,y:y+32+w.seed.fraction/256,vx:speed/4096,vy:0,grounded:false,size:w.seed.size});
  sim.motor.reset(speed,1,1,w.seed.absolute);sim.motor.runningSpeed=w.seed.running;sim.fallGravity=w.seed.gravity/256;sim.landingFraction=w.seed.fraction/256;
+ sim.nativeCastleFlag={...w.seed.castleFlag,x:w.seed.castleFlag.x-pageOffset};sim.random.frame=w.seed.counter;sim.intervalControl=w.seed.intervalControl;sim.nativeFrenzyTimer=w.seed.frenzyTimer;sim.nativeFireworksCounter=w.seed.fireworks;sim.nativeEndLevelMusic={...w.seed.music};sim.nativeEndLevelMusicQueue=w.seed.musicQueue;
  sim.camera=camera-pageOffset;sim.time=time;sim.score=score;sim.phase='flag';sim.beginFlag();sim.phaseFrame=FLAG_COMPLETION.slideFrames;sim.flagAwardFrame=FLAG_COMPLETION.slideFrames;
  w.rows.forEach((expected,index)=>{
   sim.step([],1);
