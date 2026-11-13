@@ -276,6 +276,44 @@
         "path": "games/smb/evidence/native-cannon-batch-causal.json",
         "sha256": "d319ef62ee0e0092b710f9f5f48d4c7a26a8d00818bbacf47b82c160046d743e"
       }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "7-1",
+      "field": "state",
+      "was": [
+        1051
+      ],
+      "floor": 1035,
+      "now": 1035,
+      "baselineFingerprint": "b0b186951b5e4e4230cf57807a8e2c6e203cdf0c7f02d86286589195df37b961",
+      "upstream": {
+        "scope": "strict",
+        "field": "position",
+        "beforeFrame": 443,
+        "frame": 646
+      },
+      "alsoRequired": [
+        {
+          "scope": "legacy",
+          "field": "score",
+          "beforeFrame": 448,
+          "frame": 649
+        },
+        {
+          "scope": "legacy",
+          "field": "y",
+          "beforeFrame": 444,
+          "frame": 1018
+        }
+      ],
+      "reason": "Source PlayerEnemyCollision latch fixes false immunity: actor443→646, score448→649 and MarioY444→1018. Later Hammer misc state1051→1035 follows the retained actor646 and score649 mismatches. The focused latch-only native comparison records this exact downstream change; no runtime or coverage waiver.",
+      "evidence": {
+        "commit": "777d6a4",
+        "path": "games/smb/evidence/native-koopa-contact-survey.json",
+        "sha256": "35ae88a78c3e2c343fdcf36a5b6071187be779334cbf9f618aff5138d226f005"
+      }
     }
   ],
   "purpose": "Historical batch non-regression classification only. These explicit coverage/causal cases do not change runtime rules, skip comparisons or establish complete game fidelity."
