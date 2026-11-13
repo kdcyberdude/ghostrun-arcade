@@ -13,6 +13,7 @@ import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 import flagPlatforms from './fixtures/native-flag-platform-events.json';
 import victoryPlatforms from './fixtures/native-victory-platform-events.json';
+import platformFreeze from './fixtures/native-platform-slot-freeze.json';
 import {strictSimEntities} from '../tools/harness/native-strict-entities.js';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
@@ -243,4 +244,17 @@ test('axe HandleAxeMetatile skips platform collision and movement until victory 
    assert.deepEqual(actual,row.platforms.map(e=>({slot:e.slot,x:e.x,y:e.y})),`${level} native victory row${frame}`);
   });
  }
+});
+
+
+test('an earlier native flame slot freezes every later lift byte on the injury row and through the hold',()=>{
+ const rows=new Map(platformFreeze.rows.map(e=>[e.frame,e]));
+ replay(platformFreeze.level,platformFreeze.rows.at(-1)!.frame,(sim,frame)=>{
+  const row=rows.get(frame);if(!row)return;
+  for(const expected of row.platforms){
+   const platform=[...sim.platformSlots].find(([,slot])=>slot===expected.slot)?.[0];assert.ok(platform,`native row${frame} slot${expected.slot}`);
+   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame),n=sim.slotVertical[expected.slot];
+   assert.deepEqual({slot:expected.slot,id:expected.id,x:Math.floor(position.x),y:Math.floor(position.y),speed:n.speed&255,force:n.force,fraction:n.fraction},expected,`native row${frame} slot${expected.slot}`);
+  }
+ });
 });

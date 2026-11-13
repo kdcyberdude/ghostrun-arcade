@@ -536,7 +536,7 @@ export class Simulation {
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
   this.parserVramBusy=false;
-  this.platformFrame++;
+  this.platformFrame++;this.platformMotion.prepare(this.platformFrame,this.random.frame);
   if(this.area.autoWalk&&this.phaseFrame<=TRANSITIONS.autoWalkDelayFrames)return;
   if(this.pipeRise>0){this.updatePipeRise();return;}
   const entry=this.area.entryFall;
@@ -648,7 +648,7 @@ export class Simulation {
    this.tickIntervalTimers();this.playerAnim.tick();this.beginCastle();return;
   }
   const height=this.height;
-  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
+  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
   this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
@@ -660,11 +660,6 @@ export class Simulation {
   }else this.wallDisplayPose=undefined;
   for(const [key,age]of this.bump){if(age>=16){this.bump.delete(key);this.usedBlockRehits.delete(key);}else this.bump.set(key,age+1);}
   this.collectTiles();
-  // Advance existing motors before collision. New viewport entries are handled
-  // after the ordinary camera commits, so their first increment is not delayed.
-  if(this.phase==='play')this.firebarSlots?.step(this.camera);
-  const inactiveFirebars=[...this.firebarMotors].filter(([,motor])=>!motor.state.active);
-  if(this.phase==='play')for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
@@ -701,9 +696,9 @@ export class Simulation {
   else if(oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
-   this.firebarSlots?.cameraEntry(previousCamera,this.camera);
-   for(const [bar,motor]of inactiveFirebars)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
-   for(const bar of this.area.firebars??[])this.collideFirebar(bar); // after the scroll: native flames are placed against this frame's screen left
+   this.firebarSlots?.finishFrame(this.camera);
+   for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
+   for(const bar of this.area.firebars??[])if(!this.firebarSlots?.tracks(bar))this.collideFirebar(bar); // after the scroll: native flames are placed against this frame's screen left
   }
   // RenderPlayerSub caches $0755 before ProcessWhirlpools. Injury's odd
   // FrameCounter rows return before that write, as in PlayerGfxHandler.
@@ -1036,16 +1031,16 @@ export class Simulation {
  }
 
  /** Rendering and collision read the same motor state without advancing it. */
- firebarCenters(bar:FirebarSpec):{x:number;y:number}[]{
-  if(this.firebarSlots?.tracks(bar))return bar.x-4-this.camera>0&&bar.x-4-this.camera<256?this.firebarSlots.centers(bar):[];
+ firebarCenters(bar:FirebarSpec,camera=this.camera):{x:number;y:number}[]{
+  if(this.firebarSlots?.tracks(bar))return bar.x-4-camera>0&&bar.x-4-camera<256?this.firebarSlots.centers(bar):[];
   const motor=this.firebarMotors.get(bar);
   if(motor)return motor.state.active?firebarFlameCenters(motor.state,motor.geometry):[];
   const angle=(this.phase==='dying'?this.firebarDeathFrame:this.areaFrame)*bar.speed;
   return Array.from({length:bar.length},(_,n)=>({x:bar.x+Math.cos(angle)*n*8,y:bar.y+Math.sin(angle)*n*8}));
  }
- private collideFirebar(bar:FirebarSpec){
+ private collideFirebar(bar:FirebarSpec,camera=this.camera){
   const p=this.player;
-  for(const flame of this.firebarCenters(bar))if(nativeFirebarHit(flame,this.camera,this.firebarMarioScreenX,p.y,p.size>0&&!p.duck))this.hurt();
+  for(const flame of this.firebarCenters(bar,camera))if(nativeFirebarHit(flame,camera,this.firebarMarioScreenX,p.y,p.size>0&&!p.duck))this.hurt();
  }
  /** Native coin pickup points (accept/reject grid of Mario against coin tiles, small Mario, model runs + route): feet x+3/x+12 at the feet row (dy >= 0), body x+13 at feet-8 (dx -13 accepted, -14 not; dy <= 23), head x+8 at feet-14 (dy <= 29).
   * The left body points are BlockBuffer_X_Adder $02 (feet-8, and feet-24 for big Mario), as the right ones are $0D: 3-2 v2 row 369, small Mario at x 909.56 takes the coin at column 56 with x+2 = 911.
@@ -1131,19 +1126,19 @@ export class Simulation {
  private resumeWorldAfterTransform(){
   this.nmiTimersHeld=true;
   try{
-   const p=this.player;this.platformFrame++;this.parserVramBusy=false;this.lakituScroll=0;this.broClock=(this.random.frame-1)&255;
+   const p=this.player;this.platformFrame++;this.platformMotion.prepare(this.platformFrame,this.random.frame);this.parserVramBusy=false;this.lakituScroll=0;this.broClock=(this.random.frame-1)&255;
    // DonePlayerTask clears TimerControl before GameEngine visits the bank;
    // RunLargePlatform must still land/carry Mario on this completion turn.
-   const x=p.x;this.platformEjection=0;this.updatePlatforms(p.y);
+   const x=p.x;this.platformEjection=0;this.updatePlatforms(p.y,0,(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));
    this.platformScroll=Math.floor(p.x)-Math.floor(x)-this.platformEjection;
-   this.updateBubbles(false,false);this.updateGenerators();this.updateEnemies(p.y);this.updateItems();this.restoreStarMusic();
-   this.firebarSlots?.step(this.camera);
-   for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
+   this.updateBubbles(false,false);this.updateGenerators();this.updateEnemies(p.y);this.platformScroll=Math.floor(p.x)-Math.floor(x)-this.platformEjection;this.updateItems();this.restoreStarMusic();
+   this.firebarSlots?.finishFrame(this.camera);
+   for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
    this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
    this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
    this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(this.camera);
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
-   for(const bar of this.area.firebars??[])this.collideFirebar(bar);
+   for(const bar of this.area.firebars??[])if(!this.firebarSlots?.tracks(bar))this.collideFirebar(bar);
    this.gameTimerStep(p.y<288);
    this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(0);
   }finally{this.nmiTimersHeld=false;}
@@ -1224,18 +1219,19 @@ export class Simulation {
  /** GameCoreRoutine continues GameEngine after pipe engines2/3/7 until ChgAreaPipe
   * clears OperMode_Task on its final row. Enemies move; player injury does not run. */
  private updatePipeWorld(previousCamera:number,oldFeet:number,scroll:number){
-  this.parserVramBusy=false;this.platformFrame++;this.updateBubbles(true,false);
+  this.parserVramBusy=false;this.platformFrame++;this.platformMotion.prepare(this.platformFrame,this.random.frame);this.updateBubbles(true,false);
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.updateGenerators(false);this.lakituScroll=scroll;this.enemyContactOff=true;
-  const beforeX=this.player.x;this.platformEjection=0;this.updatePlatforms(oldFeet,scroll);
+  const beforeX=this.player.x;this.platformEjection=0;this.updatePlatforms(oldFeet,scroll,(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));
   this.platformScroll=Math.floor(this.player.x)-Math.floor(beforeX)-this.platformEjection;
   this.updateEnemies(oldFeet);this.updateItems();this.enemyContactOff=false;
-  this.firebarSlots?.step(this.camera);
-  for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
+  this.firebarSlots?.finishFrame(this.camera);
+   for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
-  this.piranhaColumns?.step(this.camera);this.birthParserPiranhas();this.firebarSlots?.cameraEntry(previousCamera,this.camera);
+  this.piranhaColumns?.step(this.camera);this.birthParserPiranhas();this.firebarSlots?.finishFrame(this.camera);
+   for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(!this.player.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(scroll);
  }
@@ -1427,7 +1423,7 @@ export class Simulation {
   for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else{platformSlots.delete(platform);if(platformSlots===this.platformSlots&&!this.platformMotion.waiting.has(platform as PlatformSpec))this.platformMotion.lost.add(platform as PlatformSpec);}
   for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
    if(this.parserClock.blocked)continue; // task7 blocks initialization as well as the creation clock
-   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);}held.add(slot);}
+   let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);this.platformMotion.create(platform,this.platformFrame);}held.add(slot);}
   }
   return held;
  }
@@ -1858,7 +1854,7 @@ export class Simulation {
  /** GameEngine still runs RunLargePlatform after PlayerEndLevel/FlagpoleSlide.
   * Its collision/motor/OffscreenBoundsCheck pass does not stop at the pole. */
  private updateFlagPlatforms(oldFeet:number,previousCamera:number){
-  const scroll=this.camera-previousCamera;this.platformFrame++;
+  const scroll=this.camera-previousCamera;this.platformFrame++;this.platformMotion.prepare(this.platformFrame,this.random.frame);
   this.platformEjection=0;this.updatePlatforms(oldFeet,scroll);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.gateNativePlatforms(previousCamera);this.busyNativeSlots();
@@ -1993,9 +1989,9 @@ export class Simulation {
   this.popups=this.popups.filter(p=>p.victim?.enemySlot===undefined||p.victim.enemySlot>=5);
   this.enemies=this.enemies.filter(e=>e.enemySlot===5);this.items=this.items.filter(i=>i.kind!=='flame'||i.nativeFlame?.slot===5);
  }
- private updatePlatforms(oldBottom:number,scroll=0){
+ private updatePlatforms(oldBottom:number,scroll=0,platforms=this.area.platforms??[]){
   const p=this.player;
-  for(const platform of this.area.platforms??[]){
+  for(const platform of platforms){
    const prior=this.platformContactPosition(platform,this.platformFrame-1,scroll),now=this.platformMotion.collisionPosition(platform,this.platformFrame);
    const box=nativePlatformLanding(Math.floor(p.y),p.vy,p.x,prior,platform.width,nativeSmallPlatform(platform,this.platformMotion.context),p.size>0);
    if(box===undefined){
@@ -2339,8 +2335,41 @@ export class Simulation {
  get nativeTimersStopped(){return Boolean(this.powerChange)||this.phase==='dying'&&!this.offscreenPitDeath&&!this.offscreenLavaDeath&&this.phaseFrame<255;}
  enemyPictureTimersStopped(e:Enemy){return enemyPictureTimersStopped(e,this.frame,this.nativeTimersStopped);}
  private captureEnemyGraphics(e:Enemy){e.graphicsFrame=this.frame;e.graphicsTimersStopped=this.nativeTimersStopped;captureEnemyPicture(e);}
+ /** NMI ran before the bank visit that set TimerControl. Frame timers still
+  * receive that one decrement, while this later object's movement is held. */
+ private tickHeldEnemyFrameTimers(e:Enemy){
+  if(this.nmiTimersHeld)return;
+  if(e.pir&&e.pir.timer>0)e.pir.timer--;
+  if(e.hbro&&e.hbro.frameTimer>0)e.hbro.frameTimer--;
+  if(e.nativeBowser){if(e.nativeBowser.timer>0)e.nativeBowser.timer--;if(e.nativeBowser.fireTimer>0)e.nativeBowser.fireTimer--;}
+ }
+ private currentNativeBankSlot=-1;private nativeBankItemFrame=-1;
+ private visitNativeBankSlot(slot:number,oldBottom:number){
+  this.currentNativeBankSlot=slot;
+  const camera=this.camera+this.lakituScroll;
+  const bar=this.area.firebars?.find(b=>this.firebarSlots?.slotOf(b)===slot);
+  if(bar){
+   this.firebarSlots!.turn(slot,camera,!this.nativeTimersStopped);
+   this.collideFirebar(bar,camera);
+  }
+  this.updateItems(slot);
+  for(const [platform,owner]of this.platformSlots){
+   if(owner!==slot)continue;
+   const p=platform as PlatformSpec,o=nativePlatformObject(p,this.platformMotion.context);if(!o)continue;
+   const run=!this.nativeTimersStopped;
+   if(run&&!this.player.climbing){
+    if(o.kind==='balance'&&o.side===-1){
+     const pair=this.area.platforms?.find(p=>{const other=nativePlatformObject(p,this.platformMotion.context);return other?.kind==='balance'&&other.side===1&&other.pair?.join(',')===o.pair?.join(',');});
+     this.updatePlatforms(oldBottom,this.lakituScroll,pair?[pair,p]:[p]);
+    }else if(o.kind!=='balance')this.updatePlatforms(oldBottom,this.lakituScroll,[p]);
+   }
+   this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);
+  }
+ }
  private updateEnemies(oldBottom:number){
-  this.broClock++;
+  this.broClock++;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
+  // Retained component motors are independent of the native bank readout.
+  for(const [bar,motor]of this.firebarMotors)if(motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(this.mouthFlame)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
   this.releaseNativeSlots();
   if(this.nativeSwimFrenzyArea())this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // discard legacy generated roster before it can claim checkpoint slots
@@ -2355,8 +2384,9 @@ export class Simulation {
   {const speedByte=Math.floor(Math.round((this.wallSpeed??p.vx)*4096)/256);if(speedByte!==0)this.marioMotion=Math.sign(speedByte);} // Player_MovingDir changes on a nonzero speed byte, before background wall stops
   this.stompedThisStep=false;
   const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
-  const ordered=this.area.theme==='water'?[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5)):this.enemies;
+  const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
   for(const e of ordered){
+   while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined;
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
@@ -2366,6 +2396,7 @@ export class Simulation {
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
    if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    this.captureEnemyGraphics(e);
+   if(e.active&&this.nativeTimersStopped){this.tickHeldEnemyFrameTimers(e);continue;}
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
    if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else if(Math.floor(e.x)<Math.floor(this.camera)+255)e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
@@ -2566,6 +2597,7 @@ export class Simulation {
    }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.enemyPopup(kick,e);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
+  while(nativeSlot<6)this.visitNativeBankSlot(nativeSlot++,oldBottom);this.currentNativeBankSlot=-1;
   this.nativeWalkerContacts(stepFrom);
   if(this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
@@ -2629,7 +2661,7 @@ export class Simulation {
   if(state<128){
    const next=nativePowerupEmergence(state,i.y-8,this.random.frame);i.y=next.y+8;i.nativePowerState=next.state;i.emerging=next.emerging;return;
   }
-  if(i.kind==='flower')return;
+  if(i.kind==='flower'||this.nativeTimersStopped)return;
   const n={...this.nativePowerSlot,y:i.y-8,timer:0};
   if(i.kind==='star'||(state&64))nativeImposeGravity(n,i.kind==='star'?28:61,3);
   i.x+=i.vx;
@@ -2646,14 +2678,17 @@ export class Simulation {
   const p=this.player,camera=this.camera+this.lakituScroll;
   return this.phase==='play'&&!this.powerChange&&!this.enemyContactOff&&nativePowerupContact(Math.floor(i.x),Math.floor(i.y)-8,camera,this.random.frame,Math.floor(p.y)-32,this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera));
  }
- private updateItems(){
+ private updateItems(enemySlot?:number){
   const p=this.player;
-  this.advanceNativeBlockPictures();
+  if(enemySlot===undefined)this.advanceNativeBlockPictures();
   // Native MiscObjectsCore visits shared hammer/jumping-coin slots from 8 down to 0.
   const misc=this.items.filter(i=>i.life>0&&(i.nativeHammer||i.nativeCoin)).sort((a,b)=>(b.nativeHammer??b.nativeCoin)!.slot-(a.nativeHammer??a.nativeCoin)!.slot);
-  for(const i of misc){i.age++;i.life--;if(i.nativeHammer)this.moveNativeHammer(i);else this.moveNativeCoin(i);}
+  if(enemySlot===undefined)for(const i of misc){i.age++;i.life--;if(i.nativeHammer)this.moveNativeHammer(i);else this.moveNativeCoin(i);}
   for(const i of this.items){
+   const slot=i.nativeFlame?.slot??(i.nativePowerState!==undefined?5:undefined);
+   if(enemySlot!==undefined?slot!==enemySlot:slot!==undefined&&this.nativeBankItemFrame===this.frame)continue;
    if(i.nativeHammer||i.nativeCoin||i.nativeFlame?.born===this.frame)continue;
+   if(i.nativeFlame&&this.nativeTimersStopped)continue;
    i.age++;i.life--;
    if(i.nativePowerState!==undefined){this.updateNativePowerup(i);if(i.nativePowerState<6)continue;}else{
    if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
@@ -2720,7 +2755,7 @@ export class Simulation {
   if(!this.bubblesInitialized){this.bubbleState.entrance(player);this.bubblesInitialized=true;tickTimer=false;}
   this.bubbleState.step(player,this.random.bytes,tickTimer);
  }
- private updateWorldInPitFall(){if(!this.offscreenPitDeath&&!this.offscreenLavaDeath)return;this.platformFrame++;this.updateGenerators();this.updateEnemies(this.player.y);this.updateItems();}
+ private updateWorldInPitFall(){if(!this.offscreenPitDeath&&!this.offscreenLavaDeath)return;this.platformFrame++;this.platformMotion.prepare(this.platformFrame,this.random.frame);this.updateGenerators();this.updateEnemies(this.player.y);this.updateItems();}
  private lifeClockFreeze(){const pit=this.offscreenLavaDeath||this.offscreenPitDeath;if(this.phase==='dying'&&!pit&&this.phaseFrame>=2||this.phase==='intro'&&this.lifeIntro?.fromDeath&&(this.phaseFrame===4||!pit&&this.phaseFrame<=2))this.lifeFrozen++;}
  // Native row after any full screen: the clock is 19 rows past its last tick, whatever the previous level did (reg 0x77f == 1 on 8 of 8 control rows read).
  private lifeClockAtControl(){this.lifeFrozen=this.lifeRow-1-LIFE_FLOW.controlPhase;}
