@@ -564,6 +564,8 @@ export class Simulation {
    if(this.landJump==='held'&&!b.has('a')&&p.vy<0)this.landJump='released';
    this.jumpHeld++;
   }
+  const nativeFeet=p.y+(swim?this.swimDy-this.water.whirlMoved:0);
+  if(water&&nativeFeet>=32&&nativeFeet<288)this.water.horizontalState.collision=255;
   const height=this.height;
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
@@ -737,13 +739,14 @@ export class Simulation {
   if(this.swimActive&&this.swimFootWall(dx))return;
   if(dx===0){
    for(const y of[p.y-h+4,p.y-8]){
-    if(this.sideTileAt(p.x+13,y)){p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
-    if(this.sideTileAt(p.x+2,y)){p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
+    if(this.sideTileAt(p.x+13,y)){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
+    if(this.sideTileAt(p.x+2,y)){if(this.swimActive)this.water.blockSide(-1);p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
    }
    return;
   }
   const edge=p.x+(dx>0?13:2);
   for(const y of[p.y-h+4,p.y-8]){const tile=this.sideTileAt(edge,y)??this.springSideAt(edge,y);if(tile){
+   if(this.swimActive)this.water.blockSide(Math.sign(dx));
    const fraction=p.x-Math.floor(p.x);if(snap)p.x=(dx>0?tile.x-13:tile.x+tile.width-2)+fraction;else p.x-=Math.sign(dx);this.wallSpeed=p.vx;p.vx=0;return;
   }
   }
@@ -754,7 +757,7 @@ export class Simulation {
   if(this.water.contactSpeed<0||lowY>=0xcf||(y&15)<SWIM_WALL_DEPTH||![3,12].some(x=>this.collisionAt(p.x+x,y)))return false;
   // DoFootCheck uses Player_MovingDir even when the speed byte is zero.
   const dir=Math.sign(dx)||this.marioMotion||-1;
-  p.x-=dir;this.wallSpeed=p.vx;p.vx=0;if(dx===0)this.wallBackOut=true;
+  this.water.blockSide(dir);p.x-=dir;this.wallSpeed=p.vx;p.vx=0;if(dx===0)this.wallBackOut=true;
   return true;
  }
  // Native head bump of a small Mario in the air (rows in tests/native-head-bump.test.ts): the head probe sits 14 px above the feet (the legacy snap bump probes 12) and only acts while the
@@ -910,14 +913,6 @@ export class Simulation {
   else if(area.waterEntryFall&&spawnAtEntry&&p.y<80){this.swimLock=2;p.y=32;p.vy=0;w.force=48;w.frac=24;w.rise=24;w.fall=40;}
  }
  private get whirlpools(){return (whirlpoolData.zones as Record<string,WhirlpoolZone[]>)[`${this.level.id}/${this.area.id}`];}
- /** Down masks steering on the floor, then a fresh stroke switches to swimming:
-  * ImposeFriction skips the masked neutral input. GetPlayerAnimSpeed can still
-  * clear speed when its prior absolute byte is low and raw LR disagrees with moving. */
- private floorDownStrokeKeeps(held:boolean,heldBefore:boolean,noInput:boolean,b:Set<Button>):boolean{
-  const p=this.player,w=this.water;
-  const rawDirection=(b.has('right')?1:0)|(b.has('left')?2:0),moving=this.marioMotion<0?2:this.marioMotion>0?1:0;
-  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&(this.swimAbsolute>=11||rawDirection===moving);
- }
  /** One swimming frame: vertical pass, horizontal speed and whirlpool pull (the movement itself is applied by update()). */
  private swimStep(b:Set<Button>,pressedA:boolean,direction:number){
   const p=this.player,w=this.water;
@@ -926,13 +921,13 @@ export class Simulation {
   if(this.swimLock===3){this.swimLock=2;this.swimDy=0;return;}
   // The entry fall is uncontrolled until the player reaches native y 49; one more frame passes before the first input counts.
   // Below the map the controller no longer acts: the speed is kept and the fall goes on.
-  const locked=this.swimLock===2,noInput=locked||p.y-32>=NO_INPUT_Y,held=!noInput&&b.has('a'),dir=(noInput?0:direction) as Direction;this.swimDirection=dir;
+  const locked=this.swimLock===2,noInput=locked||p.y<32||p.y-32>=NO_INPUT_Y,held=!noInput&&b.has('a'),dir=(noInput?0:direction) as Direction;this.swimDirection=dir;
   const heldBefore=held&&!pressedA&&!this.swimFreshA;if(held&&!pressedA&&this.swimFreshA)this.emit('sfx_swim');if(!locked)this.swimFreshA=false;
-  w.motor.speed=Math.round(p.vx*4096);w.motor.moving=this.marioMotion as Direction;
-  if(!this.floorDownStrokeKeeps(held,heldBefore,noInput,b))p.vx=w.horizontal(dir,p.grounded&&(!w.canStroke(held,heldBefore,p.grounded)||(!noInput&&b.has("down"))),!noInput&&b.has("down"),!noInput&&b.has('b'),this.swimAbsolute,!noInput&&b.has('up'))/4096;
-  if(dir||p.grounded)this.swimAbsolute=Math.abs(Math.floor(Math.round(p.vx*4096)/256)); // Player_XSpeedAbsolute: written by ImposeFriction (on the floor, or swimming with Left/Right), before any wall stop
-  // PlayerCtrlRoutine masks LR for grounded Down before movement selects facing.
-  if(dir&&!(p.grounded&&b.has('down')))p.facing=dir;
+  w.motor.speed=Math.round(p.vx*4096);
+  const bits=noInput?0:(b.has('a')?1:0)|(b.has('b')?2:0)|(b.has('select')?4:0)|(b.has('start')?8:0)|(b.has('up')?16:0)|(b.has('down')?32:0)|(b.has('left')?64:0)|(b.has('right')?128:0);
+  const horizontal=w.horizontalSource(bits,p.grounded,w.canStroke(held,heldBefore,p.grounded));
+  p.vx=horizontal.speed/4096;this.swimAbsolute=horizontal.absolute;p.facing=horizontal.facing===1?1:-1;
+  this.marioMotion=horizontal.moving===1?1:horizontal.moving===2?-1:0;
   // Whirlpool membership is tested where this frame's move lands (the other capture phase tests where it starts).
   const probe=Math.floor(w.whirlFirst?p.x:p.x+motionOf(Math.round(p.vx*4096)));
   const zone=whirlpoolAt(this.whirlpools,probe);

@@ -17,6 +17,7 @@ function swimmer(id:string,area:string,s:Seed,previous:Button[],now:Button[],par
  if((sim.frame+parity)%2)sim.step([],1);
  sim.player.x=s.x+s.sub/256;sim.player.y=s.y+32;sim.player.vx=s.vx/4096;sim.player.grounded=false;sim.camera=Math.max(0,s.x-100);
  sim.seedSwim({speed:s.S,force:s.F,frac:s.D,rise:s.fall??10,fall:s.fall??10,timer:s.T});
+ const byte=Math.floor(s.vx/256);Object.assign(sim.water.horizontalState,{facing:sim.player.facing===1?1:2,moving:byte===0?0:byte>0?1:2,absolute:Math.abs(byte),collision:255,running:0});
  sim.previous=new Set(previous);sim.inputs=[new Set(now),new Set(now)];
  return sim;
 }
