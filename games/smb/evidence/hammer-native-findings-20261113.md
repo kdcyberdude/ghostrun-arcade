@@ -453,8 +453,8 @@ input vectors,4 mushroom collections,0 rule mismatches. ActualRAM SHAverified;
 fixture retains all decisions/counts, provenance, cached boxes and every
 collection's six-row score/life/floatey bytes. Its complete970-row clean2-1
 prefix now has all15 strict fieldsnull, including the collection and growth.
-Source extraction uses prior high byte for an erased object, because native
-EraseEnemyObject clears that high byte after the contact box was generated.
+Source extraction uses native Enemy_Y_HighPos+5 ($BB). The original probe
+read $BA (slot4); EraseEnemyObject preserves all position/high/fraction bytes.
 
 Newly exposed2-1 local970: DonePlayerTask sees TimerControlC4, clears it and
 setsengine8 within PlayerChangeSize, allowing enemy turns in the SAME engine
@@ -470,3 +470,68 @@ position295→355;2-1/304c4e4 score916→4493,extra911→1004,position912→970,
 x/y912→976/971;2-1/371fe2f score554→3835;2-1/a389925 score1304→1610.
 The newly exposed355/970 enemy motion is the same native transformation
 completion-row ordering issue. No shell, pipe, water, cutscene or tile edits.
+
+## DonePlayerTask same-pass world resumption
+
+Native source GameCoreRoutine dispatches GameRoutines then GameEngine. At
+growth completion NMI changesTimerControlC5→C4 and still holds allNMI timers;
+PlayerChangeSize callsDonePlayerTask, clearsTimerControl and selectsengine8.
+The remaining world moves now, while Mario has finished this playerturn.
+Native2-1 global12490 keepsMarioY160, interval13 andPiranhaTimer37, butmoves
+Para slot4 X2638→2637. The previous earlyreturn omitted that whole worldturn.
+
+Added source FF→C4/C8/C0 task clock and same-pass world helper, with a scoped
+held-NMI marker to keep fused Piranha/HBro/Bowser and interval/game/frenzy
+counters from an incorrect extra decrement. Localcannon timers stillcount;
+broClock resumes from actualFrameCounter09. No per-level/recorded-row rule,
+no camera arithmetic/tile edits. Flagworker's forthcoming canonical078Fcommon
+NMIclock alreadyholds correctly; preserve it rather than familydecrements.
+
+All368 authenticated inputs:346 transformation/injury rows,6completions,
+0timer/interval/FrameCounter/engine mismatches. SixPiranha turns matchnative
+withtheirNMI timers held(37/49 positive cases). Full971-row clean2-1prefix
+nowmatchesall15 strictfields through resumedworldturn. No nativefirefinish
+recording exists; its C0 source branch remains explicitlyuncovered bycapture.
+Fullsource/order/reproduction/limits:docs/NATIVE_TRANSFORM_COMPLETION.md.
+
+Diagnostic pickup epochs:1-2 position355→3130,extra403→3148;2-1/304c4e4
+position970→1379,extra1004→4482;371fe2f position613→3759 butscore3835→3833
+andkind3830→3828 followunchangedx/y617/614; a389925 newdeath2588 follows
+unchangedmissing/extra742 andposition743. Otherfieldsunchangedorlater.
+The separate nativeSetPRout Player_State0/firstresumedvertical skip (2-1Y971)
+staysopen; predictiveCPU/NMI scheduler also remainsopen.
+Completionunit gates:1641/1641 testsPASS,tscPASS,allv2 excerptsregenerated
+unchanged,full32 everyfieldbefore/afteridentical,diffcheckPASS. Updatedlegacy
+powerupsfixture nowrequires58heldenemyturns then oneenemyturn on59 whileMario
+stillholds. NativePiranhaandPara assertions ignore released historical actors
+(slotFreed), selecting the actual live slotowner. No scratchfiles committed.
+
+## Source SetPRout Player_State0 and resumed controller latch
+
+Resolved prior2-1Y971 gap:UpToFiery passesY0 toSetPRout, keepingverticalbytes;
+OnGroundStateSub movesonlyX unlessInitJS changesstate0→1. BG thenselectsstate2,
+andthefollowingFallingSub usesVerticalForceDown evenwithAheld. SourceInjury/
+death useSetKRoutY1, notthisstate0. Added retainedstate0, horizontal-onlypass,
+sourcefalltransitionwithoutzeroingvelocity, andInitJS fractionresetonnewjump.
+BothnativeA/Bbits staylatchedthroughfreeze, so Apressedandheldduringfreeze
+isstillanewpresswhenactualcontrolresumes. No motorfile/camera/tile edits.
+
+All368 nativeinputs/5,178,452PPUs include4growthstarts. NewC++observer verifies
+all12,495 baselineRAM rows thenrestoresidenticalCPU/PPUsnapshotfor7 INPUT-ONLY
+branches(recorded,heldA,repressedAduringfreeze,releasedA,Bduringfreeze,left/
+right). NoRAMorROMmodification. Every975-rowbranch hasall15strictfieldsnull,
+exactfractionalx/y,exactA/B latch; newAedgeclearsfraction0 asnativeInitJSdoes.
+FourrecordedprefixeskeepfullRAM/pads/initial/receipts/hashes;3all15strictnull,
+a389pre-existingactor742/743/906retainedwhileallscalar/playerfieldsmatch.
+No nativefiretransformationrecording exists; sharedUpToFiery sourcecoversit.
+
+Clean304c4e4/2-1 entireepoch nowclears time/score/cam/x/y (allscalar/Mariofields
+null);position1379 unchanged. Newmissing4863 follows that earlierenemyposition.
+371fe2f cam/x617→3759 andy614→3772; a389y1364→1607;0a766fa fieldsunchanged.
+Nativeexperimentreproductionandlimits:docs/NATIVE_PLAYER_STATE.md. Predictive
+CPU/NMIwork-cycle scheduling andfullvisual/pixelchecksremainopen.
+State0 unit gates:1644/1644 testsPASS,tscPASS,allv2excerptsregeneratedunchanged,
+full32everyfieldbefore/afteridentical,diffcheckPASS. Finalfull4pickup-epoch
+comparison hasonlyimprovements except304newmissing4863 afterpre-existingenemy
+position1379. ControlledRAMobserverbinary/ROM/scratchfilesexcluded; ownbranch
+cleanapartfromdependency symlinks aftercommit.

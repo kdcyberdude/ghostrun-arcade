@@ -1,0 +1,895 @@
+{
+ "scope": "Current corrected-cannon integration: full5-1 replay remains diverged, independent one-time flag approach is exact. No product/runtime correction.",
+ "runtimeSimulationSha256": "d8955813d5ded017dff081b5db1481c66d1f6f2885189480a0a23436483d6207",
+ "originalCompleteCapture": "tests/fixtures/native-flag-runtime.json case5-1",
+ "earlierLegacyFields": {
+  "dead": 3626,
+  "time": 3629,
+  "score": 3243,
+  "coins": null,
+  "cam": 3247,
+  "x": 3247,
+  "y": 3239,
+  "enemy": 1686
+ },
+ "continuousFlagAudit": {
+  "level": "5-1",
+  "rows": 632,
+  "firstBorn": 3594,
+  "fields": {
+   "level": 4226,
+   "owned": 3594,
+   "slot": 3594,
+   "task": 3594,
+   "x": 3594,
+   "camera": 3594,
+   "playerX": 3594,
+   "playerY": 3594,
+   "y": 3594,
+   "frenzyTimer": null,
+   "music": 3751,
+   "music.counter": 3751,
+   "music.length": 3751,
+   "music.offset": 3759,
+   "state": 3808,
+   "fireworks": null,
+   "interval": 4101
+  },
+  "samples": [
+   {
+    "frame": 3594,
+    "field": "owned",
+    "native": true,
+    "sim": false
+   },
+   {
+    "frame": 3594,
+    "field": "slot",
+    "native": 2
+   },
+   {
+    "frame": 3594,
+    "field": "task",
+    "native": 0
+   },
+   {
+    "frame": 3594,
+    "field": "x",
+    "native": 3280
+   },
+   {
+    "frame": 3594,
+    "field": "camera",
+    "native": 2922,
+    "sim": 2491
+   },
+   {
+    "frame": 3594,
+    "field": "playerX",
+    "native": 3039,
+    "sim": 2594
+   },
+   {
+    "frame": 3594,
+    "field": "playerY",
+    "native": 80,
+    "sim": 208
+   },
+   {
+    "frame": 3594,
+    "field": "y",
+    "native": 144
+   },
+   {
+    "frame": 3751,
+    "field": "music",
+    "native": 32,
+    "sim": 0
+   },
+   {
+    "frame": 3751,
+    "field": "music.counter",
+    "native": 8,
+    "sim": 7
+   },
+   {
+    "frame": 3751,
+    "field": "music.length",
+    "native": 8,
+    "sim": 9
+   },
+   {
+    "frame": 3759,
+    "field": "music.offset",
+    "native": 3,
+    "sim": 2
+   },
+   {
+    "frame": 3808,
+    "field": "state",
+    "native": 0
+   },
+   {
+    "frame": 4101,
+    "field": "interval",
+    "native": 6
+   },
+   {
+    "frame": 4226,
+    "field": "level",
+    "native": "5-2",
+    "sim": "5-1"
+   }
+  ],
+  "status": "diverged"
+ },
+ "independentApproachAudit": {
+  "level": "5-1",
+  "rows": 632,
+  "firstBorn": 0,
+  "fields": {
+   "level": null,
+   "owned": null,
+   "slot": null,
+   "task": null,
+   "x": null,
+   "camera": null,
+   "playerX": null,
+   "playerY": null,
+   "y": null,
+   "frenzyTimer": null,
+   "music": null,
+   "music.counter": null,
+   "music.length": null,
+   "music.offset": null,
+   "state": null,
+   "fireworks": null,
+   "interval": null
+  },
+  "samples": [],
+  "status": "pass"
+ },
+ "snapshotAdapterOriginal32": {
+  "fields": 256,
+  "changed": [],
+  "runs": [
+   {
+    "level": "1-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-3",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "1-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-3",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "2-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "3-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 924
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 924
+    }
+   },
+   {
+    "level": "3-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "3-3",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "3-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 3434
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": 3434
+    }
+   },
+   {
+    "level": "4-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-3",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "4-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "5-1",
+    "before": {
+     "dead": 3626,
+     "time": 3629,
+     "score": 3243,
+     "coins": null,
+     "cam": 3247,
+     "x": 3247,
+     "y": 3239,
+     "enemy": 1686
+    },
+    "after": {
+     "dead": 3626,
+     "time": 3629,
+     "score": 3243,
+     "coins": null,
+     "cam": 3247,
+     "x": 3247,
+     "y": 3239,
+     "enemy": 1686
+    }
+   },
+   {
+    "level": "5-2",
+    "before": {
+     "dead": 2136,
+     "time": 2147,
+     "score": 1327,
+     "coins": null,
+     "cam": 1427,
+     "x": 1427,
+     "y": 1323,
+     "enemy": 850
+    },
+    "after": {
+     "dead": 2136,
+     "time": 2147,
+     "score": 1327,
+     "coins": null,
+     "cam": 1427,
+     "x": 1427,
+     "y": 1323,
+     "enemy": 850
+    }
+   },
+   {
+    "level": "5-3",
+    "before": {
+     "dead": 1125,
+     "time": 1146,
+     "score": 1203,
+     "coins": 1203,
+     "cam": 1506,
+     "x": 1506,
+     "y": 1506,
+     "enemy": 1027
+    },
+    "after": {
+     "dead": 1125,
+     "time": 1146,
+     "score": 1203,
+     "coins": 1203,
+     "cam": 1506,
+     "x": 1506,
+     "y": 1506,
+     "enemy": 1027
+    }
+   },
+   {
+    "level": "5-4",
+    "before": {
+     "dead": 937,
+     "time": 938,
+     "score": 1331,
+     "coins": 1331,
+     "cam": 1307,
+     "x": 1307,
+     "y": 1307,
+     "enemy": 681
+    },
+    "after": {
+     "dead": 937,
+     "time": 938,
+     "score": 1331,
+     "coins": 1331,
+     "cam": 1307,
+     "x": 1307,
+     "y": 1307,
+     "enemy": 681
+    }
+   },
+   {
+    "level": "6-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-3",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "6-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "7-1",
+    "before": {
+     "dead": 1012,
+     "time": 1022,
+     "score": 448,
+     "coins": null,
+     "cam": 668,
+     "x": 668,
+     "y": 444,
+     "enemy": 443
+    },
+    "after": {
+     "dead": 1012,
+     "time": 1022,
+     "score": 448,
+     "coins": null,
+     "cam": 668,
+     "x": 668,
+     "y": 444,
+     "enemy": 443
+    }
+   },
+   {
+    "level": "7-2",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "7-3",
+    "before": {
+     "dead": 1914,
+     "time": 1936,
+     "score": 1920,
+     "coins": 1920,
+     "cam": 2298,
+     "x": 2298,
+     "y": 2298,
+     "enemy": 423
+    },
+    "after": {
+     "dead": 1914,
+     "time": 1936,
+     "score": 1920,
+     "coins": 1920,
+     "cam": 2298,
+     "x": 2298,
+     "y": 2298,
+     "enemy": 423
+    }
+   },
+   {
+    "level": "7-4",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "8-1",
+    "before": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    },
+    "after": {
+     "dead": null,
+     "time": null,
+     "score": null,
+     "coins": null,
+     "cam": null,
+     "x": null,
+     "y": null,
+     "enemy": null
+    }
+   },
+   {
+    "level": "8-2",
+    "before": {
+     "dead": 2003,
+     "time": 2017,
+     "score": 2470,
+     "coins": null,
+     "cam": 2472,
+     "x": 2472,
+     "y": 2472,
+     "enemy": 1408
+    },
+    "after": {
+     "dead": 2003,
+     "time": 2017,
+     "score": 2470,
+     "coins": null,
+     "cam": 2472,
+     "x": 2472,
+     "y": 2472,
+     "enemy": 1408
+    }
+   },
+   {
+    "level": "8-3",
+    "before": {
+     "dead": 976,
+     "time": 976,
+     "score": 1733,
+     "coins": null,
+     "cam": 1545,
+     "x": 1545,
+     "y": 1644,
+     "enemy": 492
+    },
+    "after": {
+     "dead": 976,
+     "time": 976,
+     "score": 1733,
+     "coins": null,
+     "cam": 1545,
+     "x": 1545,
+     "y": 1644,
+     "enemy": 492
+    }
+   },
+   {
+    "level": "8-4",
+    "before": {
+     "dead": 6871,
+     "time": 6887,
+     "score": 6740,
+     "coins": null,
+     "cam": 7350,
+     "x": 6749,
+     "y": 6736,
+     "enemy": 7334
+    },
+    "after": {
+     "dead": 6871,
+     "time": 6887,
+     "score": 6740,
+     "coins": null,
+     "cam": 7350,
+     "x": 6749,
+     "y": 6736,
+     "enemy": 7334
+    }
+   }
+  ]
+ },
+ "approachFixtureSha256": "9d30d8141601e7daae9a31fece04afa490b82f293895c0775b553f135326a4a3"
+}

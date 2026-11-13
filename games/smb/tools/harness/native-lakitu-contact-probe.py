@@ -32,6 +32,7 @@ cases.append((8,0,0,-20,0,0,250,0,1))
 cases.append((8,0,0,-12,0,0,0,8,1))
 cases=[(*case,0) for case in cases]
 cases.append((8,0,0,-12,0,0,0,8,1,2))
+cases.append((3,0,0,-14,0,0,250,0,1,0))
 out=[];defeats=[]
 for box,size,dx,dy,speed,latch,star,injury,counter,stomp in cases:
  env.load_state_dict(saved)
@@ -43,11 +44,11 @@ for box,size,dx,dy,speed,latch,star,injury,counter,stomp in cases:
  assert l.ghostrun_frame(env.h,0)==0;l.ghostrun_read_ram(env.h,P(ram.ctypes.data))
  state=int(ram[0x1e+slot]);action='star' if state&32 and star else 'stomp' if state&32 else 'hurt' if ram[14]!=8 else 'none'
  out.append(dict(box=box,size=size,dx=dx,dy=dy,initialSpeed=speed,initialLatch=latch,initialStar=star,initialInjury=injury,stompTimer=int(ram[0x791]),frame=int(ram[9]),star=int(ram[0x79f]),injury=int(ram[0x79e]),playerY=int(ram[0xce]),enemyY=96,playerBox=[int(v) for v in ram[0x4ac:0x4b0]],enemyBox=[int(v) for v in ram[0x4b0+slot*4:0x4b4+slot*4]],after=dict(action=action,latch=int(ram[0x491+slot])&1,playerSpeed=int(ram[0x9f]),state=state,enemyY=int(ram[0xcf+slot]),enemySpeed=int(ram[0xa0+slot]),force=int(ram[0x434+slot]),fraction=int(ram[0x417+slot]),scoreKind=int(ram[0x110+slot]))))
- if box==8 and size==0 and dx==0 and dy==-20 and (star and latch or injury):
+ if size==0 and dx==0 and ((box==8 and dy==-20 and (star and latch or injury)) or (box==3 and dy==-14 and not latch and (star or speed==1))):
   trajectory=[]
   for f in range(110):
    if f:assert l.ghostrun_frame(env.h,0)==0;l.ghostrun_read_ram(env.h,P(ram.ctypes.data))
    trajectory.append(dict(frame=f,flag=int(ram[15+slot]),y=(int(ram[0xb6+slot])-1)*256+int(ram[0xcf+slot]),speed=int(ram[0xa0+slot]),force=int(ram[0x434+slot]),fraction=int(ram[0x417+slot])))
    if not ram[15+slot]:break
-  defeats.append(dict(action=action,rows=trajectory))
+  defeats.append(dict(box=box,action=action,rows=trajectory))
 print(json.dumps(dict(source='Controlled native Lakitu contact branches from retained5-2 entrance; Lakitu slot2 at160,96 with bbox3 or8, native player size/position/velocity, varied latch/star/injury/frame parity. All other ordinary actors NoRunCode35. No ROM writes.',rows=out,defeats=defeats),separators=(',',':')))

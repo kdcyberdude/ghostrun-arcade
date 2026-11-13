@@ -99,3 +99,5 @@ captured,4,458,061 rows stepped,4,137,615 had coordinate comparison,2,631/2,681
 entry epochs initialized, and no complete all-field/pixel proof was claimed.
 Those numbers precede the final falling/water/Piranha snapshot improvements and
 must not be substituted for a newer runtime/harness report.
+
+Reports group load-prefix field failures under `control-prefix`, including captures that end before gameplay. `coverageGaps` separately groups unsupported object families and other unverified controls by scope, level, area and diagnostic. These groups remain incomplete even when their compared fields match. Group examples retain source-frame offsets and trace/receipt paths for reproducing the same input.

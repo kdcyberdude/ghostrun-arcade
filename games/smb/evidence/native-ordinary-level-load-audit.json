@@ -1,0 +1,4318 @@
+{
+ "schema": "native-ordinary-level-load-audit-v1",
+ "runtimeBaselineCommit": "cecb0c6",
+ "isolatedMergedBaseCommit": "dc36cf1",
+ "beforeReportSha256": "75d04402f8b69140437175ffac99bf7d778a9b02300a793292742b871d4611a9",
+ "afterReportSha256": "ffdbcd19d6d9e9b66eac3ad5c42ff4623908b0f66494dbe0684451868253e8a5",
+ "sourceSha256": {
+  "src/simulation.ts": "485989e4b17d2888dd007161464f0ab2291ea7c15c30decacfb86b0f26fc51fc",
+  "src/native-event-music.ts": "814d1c1d80ca4c2d7bca2947fd59c926de3caa9dc4c8821c00afb8e858be27e6",
+  "tools/harness/native-victory-readout.ts": "fc237ec1d441b6ff32f87db1888b67271606d74ede67d3ca45b010cac6dc9c69",
+  "data/native-end-level-music.json": "f0209c5f235051e0c5858c99bd9b08603c889de47675a59e35a3af2c2a466a2e",
+  "tests/native-ordinary-level-load.test.ts": "27e199a3d6a56189d8a73f930ce1803c7b877cebaae3f8af373b662b0e0beb24",
+  "tests/native-entry-timeline.test.ts": "3cd8b1cb8b1bfafc2228167330104f9057f57a3a847bc3bedc68b7ba73e4a35a",
+  "tests/pipe-entry-walk.test.ts": "5e0ba6562246fb7e511e2682580e18fed2c742e9fc2e04ec280b4f8c95bc2023",
+  "tests/helpers/native-entry-sequence.ts": "c7c15ce5e2b7a3924096624e7aed9f2d5a55458f813a52ed0ec925735f661ed2",
+  "tests/fixtures/native-entry-sequences.json": "54019f2e3daf3e384b3571d8d16738ecd1f63ebb22e3b3fde9ea209108d9544f"
+ },
+ "legacyFirstsChanged": 0,
+ "existingStrictFirstsEarlier": [],
+ "existingStrictFirstsImproved": [
+  [
+   "1-1",
+   "cam",
+   2853,
+   null
+  ],
+  [
+   "1-1",
+   "x",
+   2853,
+   null
+  ],
+  [
+   "1-1",
+   "y",
+   2855,
+   null
+  ],
+  [
+   "1-1",
+   "missing",
+   2853,
+   null
+  ],
+  [
+   "1-1",
+   "continuation.frameCounter",
+   2855,
+   null
+  ],
+  [
+   "1-1",
+   "continuation.random",
+   2855,
+   null
+  ],
+  [
+   "1-1",
+   "continuation.interval",
+   2854,
+   null
+  ],
+  [
+   "1-2",
+   "y",
+   2905,
+   3058
+  ],
+  [
+   "1-2",
+   "continuation.load.ready",
+   3059,
+   null
+  ],
+  [
+   "1-3",
+   "time",
+   1734,
+   null
+  ],
+  [
+   "1-3",
+   "cam",
+   1570,
+   null
+  ],
+  [
+   "1-3",
+   "x",
+   1570,
+   null
+  ],
+  [
+   "1-3",
+   "y",
+   1570,
+   null
+  ],
+  [
+   "1-3",
+   "missing",
+   1570,
+   null
+  ],
+  [
+   "1-3",
+   "continuation.frameCounter",
+   1572,
+   null
+  ],
+  [
+   "1-3",
+   "continuation.random",
+   1572,
+   null
+  ],
+  [
+   "1-3",
+   "continuation.interval",
+   1571,
+   null
+  ],
+  [
+   "1-3",
+   "continuation.load.ready",
+   1735,
+   null
+  ],
+  [
+   "2-1",
+   "cam",
+   2789,
+   null
+  ],
+  [
+   "2-1",
+   "x",
+   2789,
+   null
+  ],
+  [
+   "2-1",
+   "y",
+   2791,
+   null
+  ],
+  [
+   "2-1",
+   "missing",
+   2789,
+   null
+  ],
+  [
+   "2-1",
+   "continuation.frameCounter",
+   2791,
+   null
+  ],
+  [
+   "2-1",
+   "continuation.random",
+   2791,
+   null
+  ],
+  [
+   "2-1",
+   "continuation.interval",
+   2790,
+   null
+  ],
+  [
+   "2-3",
+   "time",
+   2404,
+   null
+  ],
+  [
+   "2-3",
+   "cam",
+   2240,
+   null
+  ],
+  [
+   "2-3",
+   "x",
+   2240,
+   null
+  ],
+  [
+   "2-3",
+   "y",
+   2240,
+   null
+  ],
+  [
+   "2-3",
+   "missing",
+   2240,
+   2405
+  ],
+  [
+   "2-3",
+   "position",
+   2407,
+   null
+  ],
+  [
+   "2-3",
+   "continuation.frameCounter",
+   2242,
+   null
+  ],
+  [
+   "2-3",
+   "continuation.random",
+   2242,
+   null
+  ],
+  [
+   "2-3",
+   "continuation.interval",
+   2241,
+   null
+  ],
+  [
+   "2-3",
+   "continuation.load.ready",
+   2405,
+   null
+  ],
+  [
+   "3-1",
+   "time",
+   2615,
+   null
+  ],
+  [
+   "3-1",
+   "cam",
+   2451,
+   null
+  ],
+  [
+   "3-1",
+   "x",
+   2451,
+   null
+  ],
+  [
+   "3-1",
+   "y",
+   2453,
+   null
+  ],
+  [
+   "3-1",
+   "continuation.frameCounter",
+   2453,
+   null
+  ],
+  [
+   "3-1",
+   "continuation.random",
+   2453,
+   null
+  ],
+  [
+   "3-1",
+   "continuation.interval",
+   2452,
+   null
+  ],
+  [
+   "3-2",
+   "time",
+   2302,
+   null
+  ],
+  [
+   "3-2",
+   "cam",
+   2138,
+   null
+  ],
+  [
+   "3-2",
+   "x",
+   2138,
+   null
+  ],
+  [
+   "3-2",
+   "y",
+   2140,
+   null
+  ],
+  [
+   "3-2",
+   "missing",
+   2138,
+   null
+  ],
+  [
+   "3-2",
+   "continuation.frameCounter",
+   2140,
+   null
+  ],
+  [
+   "3-2",
+   "continuation.random",
+   2140,
+   null
+  ],
+  [
+   "3-2",
+   "continuation.interval",
+   2139,
+   null
+  ],
+  [
+   "3-2",
+   "continuation.load.ready",
+   2303,
+   null
+  ],
+  [
+   "3-3",
+   "time",
+   1775,
+   null
+  ],
+  [
+   "3-3",
+   "cam",
+   1611,
+   null
+  ],
+  [
+   "3-3",
+   "x",
+   1611,
+   null
+  ],
+  [
+   "3-3",
+   "y",
+   1611,
+   null
+  ],
+  [
+   "3-3",
+   "missing",
+   1611,
+   null
+  ],
+  [
+   "3-3",
+   "continuation.frameCounter",
+   1613,
+   null
+  ],
+  [
+   "3-3",
+   "continuation.random",
+   1613,
+   null
+  ],
+  [
+   "3-3",
+   "continuation.interval",
+   1612,
+   null
+  ],
+  [
+   "4-1",
+   "area",
+   2221,
+   null
+  ],
+  [
+   "4-1",
+   "x",
+   2223,
+   null
+  ],
+  [
+   "4-1",
+   "y",
+   2223,
+   null
+  ],
+  [
+   "4-1",
+   "continuation.frameCounter",
+   2223,
+   null
+  ],
+  [
+   "4-1",
+   "continuation.random",
+   2223,
+   null
+  ],
+  [
+   "4-1",
+   "continuation.interval",
+   2222,
+   null
+  ],
+  [
+   "4-2",
+   "y",
+   4482,
+   null
+  ],
+  [
+   "4-3",
+   "time",
+   1796,
+   null
+  ],
+  [
+   "4-3",
+   "cam",
+   1632,
+   null
+  ],
+  [
+   "4-3",
+   "x",
+   1632,
+   null
+  ],
+  [
+   "4-3",
+   "y",
+   1632,
+   null
+  ],
+  [
+   "4-3",
+   "missing",
+   1632,
+   null
+  ],
+  [
+   "4-3",
+   "continuation.frameCounter",
+   1634,
+   null
+  ],
+  [
+   "4-3",
+   "continuation.random",
+   1634,
+   null
+  ],
+  [
+   "4-3",
+   "continuation.interval",
+   1633,
+   null
+  ],
+  [
+   "4-3",
+   "continuation.load.ready",
+   1797,
+   null
+  ],
+  [
+   "6-1",
+   "time",
+   2280,
+   null
+  ],
+  [
+   "6-1",
+   "cam",
+   2116,
+   null
+  ],
+  [
+   "6-1",
+   "x",
+   2116,
+   null
+  ],
+  [
+   "6-1",
+   "y",
+   2118,
+   null
+  ],
+  [
+   "6-1",
+   "missing",
+   2116,
+   2273
+  ],
+  [
+   "6-1",
+   "continuation.frameCounter",
+   2118,
+   null
+  ],
+  [
+   "6-1",
+   "continuation.random",
+   2118,
+   null
+  ],
+  [
+   "6-1",
+   "continuation.interval",
+   2117,
+   null
+  ],
+  [
+   "6-1",
+   "continuation.load.ready",
+   2281,
+   null
+  ],
+  [
+   "6-2",
+   "time",
+   4693,
+   null
+  ],
+  [
+   "6-2",
+   "cam",
+   4529,
+   null
+  ],
+  [
+   "6-2",
+   "x",
+   4529,
+   null
+  ],
+  [
+   "6-2",
+   "y",
+   4531,
+   null
+  ],
+  [
+   "6-2",
+   "missing",
+   4529,
+   null
+  ],
+  [
+   "6-2",
+   "continuation.frameCounter",
+   4531,
+   null
+  ],
+  [
+   "6-2",
+   "continuation.random",
+   4531,
+   null
+  ],
+  [
+   "6-2",
+   "continuation.interval",
+   4530,
+   null
+  ],
+  [
+   "6-2",
+   "continuation.load.ready",
+   4694,
+   null
+  ],
+  [
+   "8-1",
+   "time",
+   3798,
+   null
+  ],
+  [
+   "8-1",
+   "cam",
+   3634,
+   null
+  ],
+  [
+   "8-1",
+   "x",
+   3634,
+   null
+  ],
+  [
+   "8-1",
+   "y",
+   3636,
+   null
+  ],
+  [
+   "8-1",
+   "missing",
+   3634,
+   null
+  ],
+  [
+   "8-1",
+   "extra",
+   3798,
+   null
+  ],
+  [
+   "8-1",
+   "position",
+   3799,
+   null
+  ],
+  [
+   "8-1",
+   "continuation.frameCounter",
+   3636,
+   null
+  ],
+  [
+   "8-1",
+   "continuation.random",
+   3636,
+   null
+  ],
+  [
+   "8-1",
+   "continuation.interval",
+   3635,
+   null
+  ],
+  [
+   "8-1",
+   "continuation.load.ready",
+   3799,
+   null
+  ]
+ ],
+ "newlyOwnedLoadFields": [
+  {
+   "level": "1-2",
+   "field": "continuation.load.task",
+   "first": 2905,
+   "earlierFields": {
+    "level": 2893,
+    "area": 2895,
+    "x": 1781,
+    "missing": 1789,
+    "extra": 1781,
+    "continuation.frameCounter": 2895,
+    "continuation.random": 2895,
+    "continuation.interval": 2893
+   }
+  },
+  {
+   "level": "1-2",
+   "field": "continuation.load.engine",
+   "first": 2905,
+   "earlierFields": {
+    "level": 2893,
+    "area": 2895,
+    "x": 1781,
+    "missing": 1789,
+    "extra": 1781,
+    "continuation.frameCounter": 2895,
+    "continuation.random": 2895,
+    "continuation.interval": 2893
+   }
+  },
+  {
+   "level": "1-2",
+   "field": "continuation.load.screen",
+   "first": 2905,
+   "earlierFields": {
+    "level": 2893,
+    "area": 2895,
+    "x": 1781,
+    "missing": 1789,
+    "extra": 1781,
+    "continuation.frameCounter": 2895,
+    "continuation.random": 2895,
+    "continuation.interval": 2893
+   }
+  },
+  {
+   "level": "1-2",
+   "field": "continuation.load.disable",
+   "first": 2905,
+   "earlierFields": {
+    "level": 2893,
+    "area": 2895,
+    "x": 1781,
+    "missing": 1789,
+    "extra": 1781,
+    "continuation.frameCounter": 2895,
+    "continuation.random": 2895,
+    "continuation.interval": 2893
+   }
+  },
+  {
+   "level": "4-2",
+   "field": "continuation.load.task",
+   "first": 4482,
+   "earlierFields": {
+    "level": 4471,
+    "area": 4473,
+    "cam": 2673,
+    "x": 2672,
+    "missing": 1465,
+    "extra": 2726,
+    "continuation.frameCounter": 4473,
+    "continuation.random": 4473,
+    "continuation.interval": 4471
+   }
+  },
+  {
+   "level": "4-2",
+   "field": "continuation.load.engine",
+   "first": 4482,
+   "earlierFields": {
+    "level": 4471,
+    "area": 4473,
+    "cam": 2673,
+    "x": 2672,
+    "missing": 1465,
+    "extra": 2726,
+    "continuation.frameCounter": 4473,
+    "continuation.random": 4473,
+    "continuation.interval": 4471
+   }
+  },
+  {
+   "level": "4-2",
+   "field": "continuation.load.screen",
+   "first": 4482,
+   "earlierFields": {
+    "level": 4471,
+    "area": 4473,
+    "cam": 2673,
+    "x": 2672,
+    "missing": 1465,
+    "extra": 2726,
+    "continuation.frameCounter": 4473,
+    "continuation.random": 4473,
+    "continuation.interval": 4471
+   }
+  },
+  {
+   "level": "4-2",
+   "field": "continuation.load.disable",
+   "first": 4482,
+   "earlierFields": {
+    "level": 4471,
+    "area": 4473,
+    "cam": 2673,
+    "x": 2672,
+    "missing": 1465,
+    "extra": 2726,
+    "continuation.frameCounter": 4473,
+    "continuation.random": 4473,
+    "continuation.interval": 4471
+   }
+  }
+ ],
+ "validation": {
+  "fullTests": 1891,
+  "focusedOrdinaryMusicTests": 10,
+  "sourceEntryTests": 23,
+  "typescript": "pass",
+  "sourceEntranceSequenceFrames": 1830,
+  "musicQueueRows": 832,
+  "original32Excerpts": "unchanged"
+ },
+ "strictFullInputPassLevels": [
+  "1-1",
+  "3-2",
+  "4-1",
+  "8-1"
+ ],
+ "levels": [
+  {
+   "level": "1-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "pass",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 3020,
+    "flagFrames": 672,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3020,
+    "inputFrames": 3020,
+    "endReason": "end of trace",
+    "frames": 3020,
+    "alignedFrames": 3020,
+    "nativeEntityRows": 4781,
+    "comparedEntityRows": 4781,
+    "nativeBirthRows": 21,
+    "areaFrames": {
+     "main": 3020
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "1-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 2893,
+    "area": 2895,
+    "dead": null,
+    "time": 3058,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": 1781,
+    "y": 3058,
+    "missing": 1789,
+    "extra": 1781,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": 2895,
+    "continuation.random": 2895,
+    "continuation.interval": 2893,
+    "continuation.load.ready": null,
+    "continuation.load.task": 2905,
+    "continuation.load.engine": 2905,
+    "continuation.load.screen": 2905,
+    "continuation.load.disable": 2905
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 3060,
+    "flagFrames": 805,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3060,
+    "inputFrames": 3060,
+    "endReason": "end of trace",
+    "frames": 3060,
+    "alignedFrames": 3046,
+    "nativeEntityRows": 6371,
+    "comparedEntityRows": 6367,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "main": 490,
+     "area-2": 1456,
+     "area-3": 1114
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "area-3",
+     "first": 2893,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-3/area-3, remake 1-2/area-3; data=a690, loaded page=11, origin=-2816, load frame=1781, task=0, look-ahead destination=26",
+     "area": "area-3",
+     "first": 2893,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "area-3",
+     "first": 2894,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2895,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-3/main, remake 1-2/area-3; data=a6f5, loaded page=0, origin=0, load frame=2895, task=1, look-ahead destination=26",
+     "area": "main",
+     "first": 2895,
+     "count": 10
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2896,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2897,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2898,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2899,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2900,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2901,
+     "count": 4
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 1-3/main, remake 1-3/area-3; data=a6f5, loaded page=0, origin=0, load frame=2895, task=1, look-ahead destination=26",
+     "area": "main",
+     "first": 2905,
+     "count": 2
+    }
+   ]
+  },
+  {
+   "level": "1-3",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 1736,
+    "flagFrames": 558,
+    "continuationFrames": 166,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1736,
+    "inputFrames": 1736,
+    "endReason": "end of trace",
+    "frames": 1736,
+    "alignedFrames": 1736,
+    "nativeEntityRows": 2845,
+    "comparedEntityRows": 2845,
+    "nativeBirthRows": 14,
+    "areaFrames": {
+     "main": 1736
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 7 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 1572,
+     "count": 164
+    }
+   ]
+  },
+  {
+   "level": "1-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 1854,
+    "extra": 1746,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2840,
+    "flagFrames": 0,
+    "continuationFrames": 167,
+    "victoryFrames": 695,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2840,
+    "inputFrames": 2840,
+    "endReason": "end of trace",
+    "frames": 2840,
+    "alignedFrames": 2840,
+    "nativeEntityRows": 4281,
+    "comparedEntityRows": 1308,
+    "nativeBirthRows": 19,
+    "areaFrames": {
+     "main": 2840
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 7 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2675
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 135,
+     "count": 1157
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 281,
+     "count": 841
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 399,
+     "count": 519
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 539,
+     "count": 455
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 1 aliases owner 0; composite part position is not compared",
+     "slot": 1,
+     "id": 21,
+     "area": "main",
+     "first": 1854,
+     "count": 1
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 2675,
+     "count": 165
+    }
+   ]
+  },
+  {
+   "level": "2-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2956,
+    "flagFrames": 689,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2956,
+    "inputFrames": 2956,
+    "endReason": "end of trace",
+    "frames": 2956,
+    "alignedFrames": 2956,
+    "nativeEntityRows": 8324,
+    "comparedEntityRows": 8324,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "main": 2956
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2791
+    }
+   ]
+  },
+  {
+   "level": "2-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 3,
+    "ramFrames": 6600,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 6597,
+    "inputFrames": 6600,
+    "endReason": "unsupported same-level native mode 3 at frame 6597",
+    "frames": 6597,
+    "alignedFrames": 6597,
+    "nativeEntityRows": 8420,
+    "comparedEntityRows": 8420,
+    "nativeBirthRows": 16,
+    "areaFrames": {
+     "main": 328,
+     "area-2": 6269
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-2",
+     "first": 6597,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "2-3",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 2405,
+    "extra": 1198,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2408,
+    "flagFrames": 700,
+    "continuationFrames": 168,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2408,
+    "inputFrames": 2408,
+    "endReason": "end of trace",
+    "frames": 2408,
+    "alignedFrames": 2408,
+    "nativeEntityRows": 4353,
+    "comparedEntityRows": 4353,
+    "nativeBirthRows": 23,
+    "areaFrames": {
+     "main": 2408
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 6 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 2242,
+     "count": 166
+    }
+   ]
+  },
+  {
+   "level": "2-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 133,
+    "extra": 194,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 4644,
+    "flagFrames": 0,
+    "continuationFrames": 166,
+    "victoryFrames": 694,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4644,
+    "inputFrames": 4644,
+    "endReason": "end of trace",
+    "frames": 4644,
+    "alignedFrames": 4644,
+    "nativeEntityRows": 9380,
+    "comparedEntityRows": 5677,
+    "nativeBirthRows": 42,
+    "areaFrames": {
+     "main": 4644
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 6 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4480
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 257,
+     "count": 1059
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 296,
+     "count": 1348
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 336,
+     "count": 456
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 27,
+     "area": "main",
+     "first": 536,
+     "count": 839
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 0; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 3599,
+     "count": 1
+    },
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 4480,
+     "count": 164
+    }
+   ]
+  },
+  {
+   "level": "3-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": 1147
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 799,
+    "extra": 1624,
+    "kind": 1578,
+    "position": 1147,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2616,
+    "flagFrames": 647,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2616,
+    "inputFrames": 2616,
+    "endReason": "end of trace",
+    "frames": 2616,
+    "alignedFrames": 2616,
+    "nativeEntityRows": 7022,
+    "comparedEntityRows": 7022,
+    "nativeBirthRows": 37,
+    "areaFrames": {
+     "main": 2616
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2453
+    }
+   ]
+  },
+  {
+   "level": "3-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "pass",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 2304,
+    "flagFrames": 542,
+    "continuationFrames": 166,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2304,
+    "inputFrames": 2304,
+    "endReason": "end of trace",
+    "frames": 2304,
+    "alignedFrames": 2304,
+    "nativeEntityRows": 5745,
+    "comparedEntityRows": 5745,
+    "nativeBirthRows": 33,
+    "areaFrames": {
+     "main": 2304
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "3-3",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 1776,
+    "flagFrames": 564,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1776,
+    "inputFrames": 1776,
+    "endReason": "end of trace",
+    "frames": 1776,
+    "alignedFrames": 1776,
+    "nativeEntityRows": 4230,
+    "comparedEntityRows": 4230,
+    "nativeBirthRows": 21,
+    "areaFrames": {
+     "main": 1776
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 9 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 1613,
+     "count": 163
+    }
+   ]
+  },
+  {
+   "level": "3-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": 3434
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 100,
+    "extra": 237,
+    "kind": null,
+    "position": 3438,
+    "state": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 4772,
+    "flagFrames": 0,
+    "continuationFrames": 167,
+    "victoryFrames": 687,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4772,
+    "inputFrames": 4772,
+    "endReason": "end of trace",
+    "frames": 4772,
+    "alignedFrames": 4772,
+    "nativeEntityRows": 12311,
+    "comparedEntityRows": 6847,
+    "nativeBirthRows": 53,
+    "areaFrames": {
+     "main": 4772
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 9 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4607
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 41,
+     "count": 1379
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 87,
+     "count": 1203
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 119,
+     "count": 688
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 336,
+     "count": 510
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 27,
+     "area": "main",
+     "first": 336,
+     "count": 510
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 400,
+     "count": 522
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 503,
+     "count": 651
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 2 aliases owner 1; composite part position is not compared",
+     "slot": 2,
+     "id": 21,
+     "area": "main",
+     "first": 3798,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "4-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "pass",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 2388,
+    "flagFrames": 649,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2388,
+    "inputFrames": 2388,
+    "endReason": "end of trace",
+    "frames": 2388,
+    "alignedFrames": 2388,
+    "nativeEntityRows": 4978,
+    "comparedEntityRows": 4978,
+    "nativeBirthRows": 18,
+    "areaFrames": {
+     "main": 2223,
+     "area-2": 165
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "4-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 4471,
+    "area": 4473,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": 2673,
+    "x": 2672,
+    "y": null,
+    "missing": 1465,
+    "extra": 2726,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": 4473,
+    "continuation.random": 4473,
+    "continuation.interval": 4471,
+    "continuation.load.ready": null,
+    "continuation.load.task": 4482,
+    "continuation.load.engine": 4482,
+    "continuation.load.screen": 4482,
+    "continuation.load.disable": 4482
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 4636,
+    "flagFrames": 759,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4636,
+    "inputFrames": 4636,
+    "endReason": "end of trace",
+    "frames": 4636,
+    "alignedFrames": 4623,
+    "nativeEntityRows": 8650,
+    "comparedEntityRows": 8646,
+    "nativeBirthRows": 36,
+    "areaFrames": {
+     "area-2": 327,
+     "area-3": 2399,
+     "area-4": 1747,
+     "main": 163
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "area-3",
+     "first": 327,
+     "count": 2399
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "area-4",
+     "first": 4471,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-3/area-4, remake 4-2/area-4; data=a690, loaded page=11, origin=-2816, load frame=2726, task=0, look-ahead destination=2c",
+     "area": "area-4",
+     "first": 4471,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "area-4",
+     "first": 4472,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4473,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-3/main, remake 4-2/area-4; data=a891, loaded page=0, origin=0, load frame=4473, task=1, look-ahead destination=2c",
+     "area": "main",
+     "first": 4473,
+     "count": 9
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4474,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4475,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4476,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4477,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4478,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 4479,
+     "count": 3
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 4-3/main, remake 4-3/area-4; data=a891, loaded page=0, origin=0, load frame=4473, task=1, look-ahead destination=2c",
+     "area": "main",
+     "first": 4482,
+     "count": 2
+    }
+   ]
+  },
+  {
+   "level": "4-3",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 1800,
+    "flagFrames": 552,
+    "continuationFrames": 168,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 1800,
+    "inputFrames": 1800,
+    "endReason": "end of trace",
+    "frames": 1800,
+    "alignedFrames": 1800,
+    "nativeEntityRows": 4321,
+    "comparedEntityRows": 4321,
+    "nativeBirthRows": 19,
+    "areaFrames": {
+     "main": 1800
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 5 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 1634,
+     "count": 166
+    }
+   ]
+  },
+  {
+   "level": "4-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 3,
+    "ramFrames": 11636,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 11633,
+    "inputFrames": 11636,
+    "endReason": "unsupported same-level native mode 3 at frame 11633",
+    "frames": 11633,
+    "alignedFrames": 11633,
+    "nativeEntityRows": 8939,
+    "comparedEntityRows": 1395,
+    "nativeBirthRows": 69,
+    "areaFrames": {
+     "main": 11633
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 5 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 11633
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 27,
+     "area": "main",
+     "first": 281,
+     "count": 3374
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 27,
+     "area": "main",
+     "first": 325,
+     "count": 456
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 712,
+     "count": 3714
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 11633,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "5-1",
+   "legacyFields": {
+    "dead": 3626,
+    "time": 3629,
+    "score": 3243,
+    "coins": null,
+    "cam": 3247,
+    "x": 3247,
+    "y": 3239,
+    "enemy": 1686
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 4226,
+    "area": 4228,
+    "dead": 3626,
+    "time": 3629,
+    "score": 3243,
+    "coins": 4269,
+    "cam": 3247,
+    "x": 3247,
+    "y": 3239,
+    "missing": 1281,
+    "extra": 2073,
+    "kind": 2105,
+    "position": 1686,
+    "state": null,
+    "continuation.frameCounter": 4228,
+    "continuation.random": 4228,
+    "continuation.interval": 4226,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 4392,
+    "flagFrames": 578,
+    "continuationFrames": 166,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4392,
+    "inputFrames": 4392,
+    "endReason": "end of trace",
+    "frames": 4392,
+    "alignedFrames": 4226,
+    "nativeEntityRows": 10991,
+    "comparedEntityRows": 10987,
+    "nativeBirthRows": 80,
+    "areaFrames": {
+     "main": 4228,
+     "area-2": 164
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 4226,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/main, remake 5-1/main; data=a83d, loaded page=6, origin=0, load frame=2514, task=0, look-ahead destination=31",
+     "area": "main",
+     "first": 4226,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 4227,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4228,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 5-1/main; data=aa94, loaded page=0, origin=0, load frame=4228, task=1, look-ahead destination=31",
+     "area": "area-2",
+     "first": 4228,
+     "count": 41
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4229,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4230,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4231,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4232,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4233,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4234,
+     "count": 139
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 1-1/main; data=aa94, loaded page=0, origin=0, load frame=4228, task=1, look-ahead destination=31",
+     "area": "area-2",
+     "first": 4269,
+     "count": 120
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4373,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4385,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4386,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4387,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4388,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 4389,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 1-1/main; data=aa94, loaded page=0, origin=0, load frame=4228, task=2, look-ahead destination=31",
+     "area": "area-2",
+     "first": 4389,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 1-1/main; data=aa94, loaded page=0, origin=0, load frame=4228, task=3, look-ahead destination=31",
+     "area": "area-2",
+     "first": 4390,
+     "count": 2
+    }
+   ]
+  },
+  {
+   "level": "5-2",
+   "legacyFields": {
+    "dead": 2609,
+    "time": 2195,
+    "score": 2381,
+    "coins": null,
+    "cam": 1389,
+    "x": 1389,
+    "y": 1328,
+    "enemy": 850
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 3237,
+    "area": 3237,
+    "dead": 2609,
+    "time": 2195,
+    "score": 2381,
+    "coins": 3237,
+    "cam": 1389,
+    "x": 1389,
+    "y": 1328,
+    "missing": 481,
+    "extra": 483,
+    "kind": 1493,
+    "position": 654,
+    "state": 2121,
+    "continuation.frameCounter": 3384,
+    "continuation.random": 3384,
+    "continuation.interval": 3384,
+    "continuation.load.ready": 3550
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 3552,
+    "flagFrames": 677,
+    "continuationFrames": 168,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3552,
+    "inputFrames": 3552,
+    "endReason": "end of trace",
+    "frames": 3552,
+    "alignedFrames": 3237,
+    "nativeEntityRows": 8256,
+    "comparedEntityRows": 7954,
+    "nativeBirthRows": 63,
+    "areaFrames": {
+     "area-2": 3386,
+     "main": 166
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "area-2",
+     "first": 0,
+     "count": 3237
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-2/area-2, remake 1-1/main; data=aa94, loaded page=6, origin=0, load frame=1761, task=3, look-ahead destination=2b",
+     "area": "area-2",
+     "first": 3237,
+     "count": 147
+    },
+    {
+     "code": "post-level-scene-transition",
+     "detail": "logical next level retains AreaData=aa94, origin=0; remake compiled scene does not own that native stream/origin",
+     "area": "area-2",
+     "first": 3384,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3384,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/area-2, remake 1-1/main; data=aa94, loaded page=6, origin=0, load frame=1761, task=0, look-ahead destination=26",
+     "area": "area-2",
+     "first": 3384,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3385,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3386,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/main, remake 1-1/main; data=a6f5, loaded page=0, origin=0, load frame=3386, task=1, look-ahead destination=26",
+     "area": "main",
+     "first": 3386,
+     "count": 161
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3387,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3388,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3389,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3390,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3391,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3392,
+     "count": 139
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3531,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3543,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3544,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3545,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3546,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3547,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/main, remake 1-1/main; data=a6f5, loaded page=0, origin=0, load frame=3386, task=2, look-ahead destination=26",
+     "area": "main",
+     "first": 3547,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/main, remake 1-1/main; data=a6f5, loaded page=0, origin=0, load frame=3386, task=3, look-ahead destination=26",
+     "area": "main",
+     "first": 3548,
+     "count": 4
+    }
+   ]
+  },
+  {
+   "level": "5-3",
+   "legacyFields": {
+    "dead": 1125,
+    "time": 1146,
+    "score": 1203,
+    "coins": 1203,
+    "cam": 1506,
+    "x": 1506,
+    "y": 1506,
+    "enemy": 1027
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 2245,
+    "area": null,
+    "dead": 1125,
+    "time": 1146,
+    "score": 1203,
+    "coins": 1203,
+    "cam": 1126,
+    "x": 1126,
+    "y": 1126,
+    "missing": 1026,
+    "extra": 1025,
+    "kind": 1026,
+    "position": 633,
+    "state": null,
+    "continuation.frameCounter": 2289,
+    "continuation.random": 2289,
+    "continuation.interval": 2289,
+    "continuation.load.ready": 2455
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2456,
+    "flagFrames": 565,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2456,
+    "inputFrames": 2456,
+    "endReason": "end of trace",
+    "frames": 2456,
+    "alignedFrames": 2245,
+    "nativeEntityRows": 5840,
+    "comparedEntityRows": 5343,
+    "nativeBirthRows": 32,
+    "areaFrames": {
+     "main": 2456
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-object",
+     "detail": "bullet-cheep-frenzy-control",
+     "slot": 3,
+     "id": 23,
+     "area": "main",
+     "first": 466,
+     "count": 403
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-3/main, remake 1-1/main; data=a6f5, loaded page=4, origin=0, load frame=869, task=3, look-ahead destination=26",
+     "area": "main",
+     "first": 2245,
+     "count": 44
+    },
+    {
+     "code": "post-level-scene-transition",
+     "detail": "logical next level retains AreaData=a6f5, origin=0; remake compiled scene does not own that native stream/origin",
+     "area": "main",
+     "first": 2289,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 2289,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a6f5, loaded page=4, origin=0, load frame=869, task=0, look-ahead destination=62",
+     "area": "main",
+     "first": 2289,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 2290,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2291,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=2291, task=1, look-ahead destination=62",
+     "area": "main",
+     "first": 2291,
+     "count": 161
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2292,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2293,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2294,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2295,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2296,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2297,
+     "count": 139
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2436,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2448,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2449,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2450,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2451,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2452,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=2291, task=2, look-ahead destination=62",
+     "area": "main",
+     "first": 2452,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=2291, task=3, look-ahead destination=62",
+     "area": "main",
+     "first": 2453,
+     "count": 3
+    }
+   ]
+  },
+  {
+   "level": "5-4",
+   "legacyFields": {
+    "dead": 937,
+    "time": 938,
+    "score": 1331,
+    "coins": 1331,
+    "cam": 1307,
+    "x": 1307,
+    "y": 1307,
+    "enemy": 681
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 2319,
+    "area": null,
+    "dead": 937,
+    "time": 938,
+    "score": 1331,
+    "coins": 1331,
+    "cam": 938,
+    "x": 938,
+    "y": 953,
+    "missing": 54,
+    "extra": 730,
+    "kind": 1382,
+    "position": 135,
+    "state": null,
+    "victory.owned": 1802,
+    "victory.task": 1802,
+    "victory.frameCounter": 1802,
+    "victory.random": 1802,
+    "victory.interval": 1893,
+    "victory.primary": 1802,
+    "victory.secondary": 1802,
+    "victory.endTimer": 1802,
+    "victory.feet": 1802,
+    "victory.controls": 1802,
+    "victory.bridge": 1802,
+    "victory.scrollFraction": 1802,
+    "victory.bossOwned": 1802,
+    "victory.cell": 1892,
+    "victory.destination": 1937,
+    "victory.walk": 1938,
+    "continuation.frameCounter": 2506,
+    "continuation.random": 2506,
+    "continuation.interval": 2506,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2672,
+    "flagFrames": 0,
+    "continuationFrames": 166,
+    "victoryFrames": 704,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2672,
+    "inputFrames": 2672,
+    "endReason": "end of trace",
+    "frames": 2672,
+    "alignedFrames": 2319,
+    "nativeEntityRows": 7512,
+    "comparedEntityRows": 4566,
+    "nativeBirthRows": 32,
+    "areaFrames": {
+     "main": 2672
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 2319
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 31,
+     "area": "main",
+     "first": 82,
+     "count": 455
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 3 aliases owner 2; composite part position is not compared",
+     "slot": 3,
+     "id": 0,
+     "area": "main",
+     "first": 82,
+     "count": 455
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "podoboo occupies a native slot whose object readout is unsupported",
+     "slot": 3,
+     "area": "main",
+     "first": 127,
+     "count": 367
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 27,
+     "area": "main",
+     "first": 753,
+     "count": 429
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 1,
+     "id": 29,
+     "area": "main",
+     "first": 825,
+     "count": 341
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 862,
+     "count": 396
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 3,
+     "id": 27,
+     "area": "main",
+     "first": 862,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 900,
+     "count": 152
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 940,
+     "count": 151
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 28,
+     "area": "main",
+     "first": 1280,
+     "count": 225
+    },
+    {
+     "code": "unsupported-slot-counterpart",
+     "detail": "podoboo occupies a native slot whose object readout is unsupported",
+     "slot": 0,
+     "area": "main",
+     "first": 1307,
+     "count": 39
+    },
+    {
+     "code": "native-alias",
+     "detail": "slot 3 aliases owner 2; composite part position is not compared",
+     "slot": 3,
+     "id": 21,
+     "area": "main",
+     "first": 1591,
+     "count": 1
+    },
+    {
+     "code": "native-victory-not-owned",
+     "detail": "native mode2 has no remake victory control state; replay continues without resetting gameplay",
+     "area": "main",
+     "first": 1802,
+     "count": 704
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=3, look-ahead destination=62",
+     "area": "main",
+     "first": 2319,
+     "count": 67
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 5-4/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=4, look-ahead destination=62",
+     "area": "main",
+     "first": 2386,
+     "count": 120
+    },
+    {
+     "code": "post-level-scene-transition",
+     "detail": "logical next level retains AreaData=a291, origin=0; remake compiled scene does not own that native stream/origin",
+     "area": "main",
+     "first": 2506,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=8; no source load-control object in remake",
+     "area": "main",
+     "first": 2506,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a291, loaded page=0, origin=0, load frame=358, task=0, look-ahead destination=2e",
+     "area": "main",
+     "first": 2506,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=8; no source load-control object in remake",
+     "area": "main",
+     "first": 2507,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2508,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=1, look-ahead destination=2e",
+     "area": "main",
+     "first": 2508,
+     "count": 162
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2509,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2510,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2511,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2512,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2513,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2514,
+     "count": 140
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2654,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2666,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2667,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2668,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2669,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 2670,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=2, look-ahead destination=2e",
+     "area": "main",
+     "first": 2670,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 6-1/main, remake 1-1/main; data=a95d, loaded page=0, origin=0, load frame=2508, task=3, look-ahead destination=2e",
+     "area": "main",
+     "first": 2671,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "6-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 2273,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 2284,
+    "flagFrames": 740,
+    "continuationFrames": 168,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 2284,
+    "inputFrames": 2284,
+    "endReason": "end of trace",
+    "frames": 2284,
+    "alignedFrames": 2284,
+    "nativeEntityRows": 4366,
+    "comparedEntityRows": 4366,
+    "nativeBirthRows": 18,
+    "areaFrames": {
+     "main": 2284
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 2118,
+     "count": 166
+    }
+   ]
+  },
+  {
+   "level": "6-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 4696,
+    "flagFrames": 541,
+    "continuationFrames": 167,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 4696,
+    "inputFrames": 4696,
+    "endReason": "end of trace",
+    "frames": 4696,
+    "alignedFrames": 4696,
+    "nativeEntityRows": 17896,
+    "comparedEntityRows": 17896,
+    "nativeBirthRows": 34,
+    "areaFrames": {
+     "main": 4696
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "vine: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 4531
+    }
+   ]
+  },
+  {
+   "level": "6-3",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 2,
+    "ramFrames": 3080,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 2,
+    "nativeMappedFrames": 3078,
+    "inputFrames": 3080,
+    "endReason": "unsupported same-level native mode 3 at frame 3078",
+    "frames": 3078,
+    "alignedFrames": 3078,
+    "nativeEntityRows": 9196,
+    "comparedEntityRows": 9196,
+    "nativeBirthRows": 38,
+    "areaFrames": {
+     "main": 3078
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 2 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 3078,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "6-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 106,
+    "extra": null,
+    "kind": null,
+    "position": 1408,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 4,
+    "ramFrames": 1644,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 4,
+    "nativeMappedFrames": 1640,
+    "inputFrames": 1644,
+    "endReason": "unsupported same-level native mode 3 at frame 1640",
+    "frames": 1640,
+    "alignedFrames": 1640,
+    "nativeEntityRows": 4672,
+    "comparedEntityRows": 1870,
+    "nativeBirthRows": 15,
+    "areaFrames": {
+     "main": 1640
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 11 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 1640
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 0,
+     "id": 29,
+     "area": "main",
+     "first": 82,
+     "count": 1067
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 2,
+     "id": 29,
+     "area": "main",
+     "first": 125,
+     "count": 938
+    },
+    {
+     "code": "unsupported-native-object",
+     "detail": "firebar",
+     "slot": 4,
+     "id": 29,
+     "area": "main",
+     "first": 176,
+     "count": 797
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 1640,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-1",
+   "legacyFields": {
+    "dead": 1033,
+    "time": 1046,
+    "score": 448,
+    "coins": null,
+    "cam": 1577,
+    "x": 1528,
+    "y": 444,
+    "enemy": 443
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 3023,
+    "area": 3653,
+    "dead": 1033,
+    "time": 1046,
+    "score": 448,
+    "coins": 3023,
+    "cam": 1034,
+    "x": 1034,
+    "y": 444,
+    "missing": 470,
+    "extra": 381,
+    "kind": 557,
+    "position": 395,
+    "state": 1063,
+    "continuation.frameCounter": 3651,
+    "continuation.random": 3653,
+    "continuation.interval": 3651,
+    "continuation.load.ready": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 3816,
+    "flagFrames": 679,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3816,
+    "inputFrames": 3816,
+    "endReason": "end of trace",
+    "frames": 3816,
+    "alignedFrames": 3023,
+    "nativeEntityRows": 12707,
+    "comparedEntityRows": 11407,
+    "nativeBirthRows": 140,
+    "areaFrames": {
+     "main": 3653,
+     "area-2": 163
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-1/main, remake 1-1/main; data=ab80, loaded page=6, origin=0, load frame=2082, task=3, look-ahead destination=42",
+     "area": "main",
+     "first": 3023,
+     "count": 628
+    },
+    {
+     "code": "post-level-scene-transition",
+     "detail": "logical next level retains AreaData=ab80, origin=0; remake compiled scene does not own that native stream/origin",
+     "area": "main",
+     "first": 3651,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3651,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/main, remake 1-1/main; data=ab80, loaded page=6, origin=0, load frame=2082, task=0, look-ahead destination=29",
+     "area": "main",
+     "first": 3651,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3652,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3653,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-2, remake 1-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=1, look-ahead destination=29",
+     "area": "area-2",
+     "first": 3653,
+     "count": 161
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3654,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3655,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3656,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3657,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3658,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3659,
+     "count": 139
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3798,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3810,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3811,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3812,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3813,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "area-2",
+     "first": 3814,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-2, remake 1-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=2, look-ahead destination=29",
+     "area": "area-2",
+     "first": 3814,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-2/area-2, remake 1-1/main; data=a834, loaded page=0, origin=0, load frame=3653, task=3, look-ahead destination=29",
+     "area": "area-2",
+     "first": 3815,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-2",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "incomplete",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 3,
+    "ramFrames": 4568,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 4565,
+    "inputFrames": 4568,
+    "endReason": "unsupported same-level native mode 3 at frame 4565",
+    "frames": 4565,
+    "alignedFrames": 4565,
+    "nativeEntityRows": 12405,
+    "comparedEntityRows": 11842,
+    "nativeBirthRows": 33,
+    "areaFrames": {
+     "area-2": 328,
+     "area-4": 4237
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-object",
+     "detail": "bullet-cheep-frenzy-control",
+     "slot": 5,
+     "id": 23,
+     "area": "area-4",
+     "first": 2389,
+     "count": 563
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-4",
+     "first": 4565,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-3",
+   "legacyFields": {
+    "dead": 1914,
+    "time": 1936,
+    "score": 1920,
+    "coins": 1920,
+    "cam": 2298,
+    "x": 2298,
+    "y": 2298,
+    "enemy": 423
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 3019,
+    "area": null,
+    "dead": 1914,
+    "time": 1936,
+    "score": 1920,
+    "coins": 1920,
+    "cam": 1915,
+    "x": 1915,
+    "y": 1915,
+    "missing": 765,
+    "extra": 650,
+    "kind": 578,
+    "position": 423,
+    "state": null,
+    "continuation.frameCounter": 3019,
+    "continuation.random": 3019,
+    "continuation.interval": 3019,
+    "continuation.load.ready": 3019
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 3184,
+    "flagFrames": 539,
+    "continuationFrames": 165,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3184,
+    "inputFrames": 3184,
+    "endReason": "end of trace",
+    "frames": 3184,
+    "alignedFrames": 3019,
+    "nativeEntityRows": 7631,
+    "comparedEntityRows": 7627,
+    "nativeBirthRows": 39,
+    "areaFrames": {
+     "main": 3184
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3019,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a74a, loaded page=0, origin=0, load frame=840, task=0, look-ahead destination=64",
+     "area": "main",
+     "first": 3019,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3020,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3021,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=1, look-ahead destination=64",
+     "area": "main",
+     "first": 3021,
+     "count": 161
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3022,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3023,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3024,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3025,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3026,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3027,
+     "count": 139
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3166,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3178,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3179,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3180,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3181,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3182,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=2, look-ahead destination=64",
+     "area": "main",
+     "first": 3182,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=3, look-ahead destination=64",
+     "area": "main",
+     "first": 3183,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "7-4",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": 54,
+    "extra": 212,
+    "kind": null,
+    "position": null,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 0,
+    "ramFrames": 24000,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 24000,
+    "inputFrames": 24000,
+    "endReason": "end of trace",
+    "frames": 24000,
+    "alignedFrames": 24000,
+    "nativeEntityRows": 1554,
+    "comparedEntityRows": 1554,
+    "nativeBirthRows": 9,
+    "areaFrames": {
+     "main": 24000
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-sim-object-family",
+     "detail": "firebar: 1 declared area objects; activation/position adapter missing",
+     "area": "main",
+     "first": 0,
+     "count": 24000
+    }
+   ]
+  },
+  {
+   "level": "8-1",
+   "legacyFields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "pass",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "coverage": {
+    "completeInputSequence": true,
+    "unsteppedFrames": 0,
+    "ramFrames": 3800,
+    "flagFrames": 650,
+    "continuationFrames": 166,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 0,
+    "nativeMappedFrames": 3800,
+    "inputFrames": 3800,
+    "endReason": "end of trace",
+    "frames": 3800,
+    "alignedFrames": 3800,
+    "nativeEntityRows": 9373,
+    "comparedEntityRows": 9373,
+    "nativeBirthRows": 58,
+    "areaFrames": {
+     "main": 3800
+    },
+    "complete": true
+   },
+   "diagnostics": []
+  },
+  {
+   "level": "8-2",
+   "legacyFields": {
+    "dead": 2003,
+    "time": 2367,
+    "score": 1978,
+    "coins": null,
+    "cam": 1989,
+    "x": 1989,
+    "y": 1974,
+    "enemy": 1554
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": 2003,
+    "time": 2366,
+    "score": 1978,
+    "coins": null,
+    "cam": 1989,
+    "x": 1989,
+    "y": 1974,
+    "missing": 1382,
+    "extra": 1380,
+    "kind": 1476,
+    "position": 1553,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 4,
+    "ramFrames": 2760,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 4,
+    "nativeMappedFrames": 2756,
+    "inputFrames": 2760,
+    "endReason": "unsupported same-level native mode 3 at frame 2756",
+    "frames": 2756,
+    "alignedFrames": 2756,
+    "nativeEntityRows": 7753,
+    "comparedEntityRows": 7753,
+    "nativeBirthRows": 70,
+    "areaFrames": {
+     "main": 2756
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 4 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 2756,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "8-3",
+   "legacyFields": {
+    "dead": 3813,
+    "time": 3830,
+    "score": 989,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": 619
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": 3813,
+    "time": 3830,
+    "score": 989,
+    "coins": null,
+    "cam": 3814,
+    "x": 3814,
+    "y": 3814,
+    "missing": 341,
+    "extra": 264,
+    "kind": 2109,
+    "position": 619,
+    "state": 3814
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 3,
+    "ramFrames": 4208,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 4205,
+    "inputFrames": 4208,
+    "endReason": "unsupported same-level native mode 3 at frame 4205",
+    "frames": 4205,
+    "alignedFrames": 4205,
+    "nativeEntityRows": 9584,
+    "comparedEntityRows": 9584,
+    "nativeBirthRows": 131,
+    "areaFrames": {
+     "main": 4205
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "main",
+     "first": 4205,
+     "count": 1
+    }
+   ]
+  },
+  {
+   "level": "8-4",
+   "legacyFields": {
+    "dead": 9213,
+    "time": 9219,
+    "score": 9110,
+    "coins": null,
+    "cam": null,
+    "x": 8987,
+    "y": 8980,
+    "enemy": 7321
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 9847,
+    "area": 9847,
+    "dead": 9213,
+    "time": 9219,
+    "score": 9110,
+    "coins": 9847,
+    "cam": 7168,
+    "x": 6455,
+    "y": 8980,
+    "missing": 7312,
+    "extra": 675,
+    "kind": 9177,
+    "position": 6959,
+    "state": null
+   },
+   "coverage": {
+    "completeInputSequence": false,
+    "unsteppedFrames": 3,
+    "ramFrames": 15732,
+    "flagFrames": 0,
+    "continuationFrames": 0,
+    "victoryFrames": 0,
+    "uncomparedSameLevelFrames": 3,
+    "nativeMappedFrames": 15729,
+    "inputFrames": 15732,
+    "endReason": "unsupported same-level native mode 3 at frame 15729",
+    "frames": 15729,
+    "alignedFrames": 9847,
+    "nativeEntityRows": 28658,
+    "comparedEntityRows": 9350,
+    "nativeBirthRows": 109,
+    "areaFrames": {
+     "main": 8145,
+     "area-2": 7584
+    },
+    "complete": false
+   },
+   "diagnostics": [
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=3, look-ahead destination=e5",
+     "area": "area-2",
+     "first": 9847,
+     "count": 1904
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 8-4/area-2, remake 1-1/main; data=a3fc, loaded page=7, origin=-1792, load frame=8859, task=3, look-ahead destination=65",
+     "area": "area-2",
+     "first": 9867,
+     "count": 3978
+    },
+    {
+     "code": "unsupported-native-mode",
+     "detail": "mode=3, task=0, engine=6; 3 remaining same-level frames are not compared",
+     "area": "area-2",
+     "first": 15729,
+     "count": 1
+    }
+   ]
+  }
+ ],
+ "limits": [
+  "Four full-input state/actor passes do not establish pixel or native audio synthesis parity.",
+  "Source load timing is not fitted to obsolete cold-reset165-row setups. Archived observations remain unchanged.",
+  "Earlier1-2/4-2 pipe/flag clock and actor gaps remain explicit; newly owned load fields follow those earlier divergences."
+ ]
+}

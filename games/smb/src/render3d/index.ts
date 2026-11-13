@@ -11,6 +11,7 @@ import {NES_W,NES_H} from './coords.js';
 import {loadImpostors} from './nature.js';
 import {IntroAvatar} from './avatar.js';
 import {TRANSITIONS} from '../simulation.js';
+import {nativeScreenPicture} from '../native-screen-picture.js';
 import {titleBootColor} from '../view-rules.js';
 const query=new URLSearchParams(location.search);
 /** Output heights offered in the page (16:15 game frame): 960p default, 1080p, 2K (1440p), 4K (2160p). `?res=` picks one at load, `?scale=` still works. */
@@ -38,15 +39,16 @@ export class Renderer3D{
   this.gl.info.reset();
   const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;
   if(boot){this.world.group.visible=this.entities.group.visible=this.props.group.visible=false;this.gl.setRenderTarget(null);this.gl.setClearColor(boot);this.gl.clear();return;}
-  const camPx=Math.floor(s.camera);const black=['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
+  const screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
+  const camPx=Math.floor(s.camera);const black=screen?!screen.world:['intro','gameover'].includes(s.phase)||s.pipeLoading||s.pipeClearing;
   this.atmosphere.setTheme(s.area.theme,s.area.id);
   this.world.group.visible=this.entities.group.visible=this.props.group.visible=!black;
   this.atmosphere.setBlackout(black);
   this.atmosphere.place(camPx);
   if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
-  this.atmosphere.render();
+  if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
   // Same visibility rule as the HUD's lives screen.
-  if(s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
+  if(screen?screen.avatar:s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));
   if(this.hud.draw(s,true)){this.gl.autoClear=false;this.gl.clearDepth();this.gl.render(this.hud.scene,this.hud.camera);this.gl.autoClear=true;}
  }
  /** What is still drawn by stand-ins (honest coverage reporting; read by tools/visual3d). */

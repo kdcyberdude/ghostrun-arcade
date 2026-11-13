@@ -21,6 +21,7 @@ for(const excerpt of excerpts)test(`swimming wall back-out keeps the native paus
  sim.seedSwim({speed:seed.S,force:seed.F,frac:seed.D,rise:seed.rise,fall:seed.fall,timer:seed.T});
  sim.water.moving=1;sim.water.lastDirection=1;
  sim.water.motor.facing=1;sim.water.motor.moving=1;
+ Object.assign(sim.water.horizontalState,{facing:1,moving:1,absolute:Math.abs(Math.floor(seed.vx/256)),collision:'contact' in seed?seed.contact:255,running:0});
  if('frame' in excerpt)sim.frame=excerpt.frame;
  if('whirl' in excerpt)sim.water.whirl=excerpt.whirl;
  sim.previous=new Set(buttons(seed.mask));

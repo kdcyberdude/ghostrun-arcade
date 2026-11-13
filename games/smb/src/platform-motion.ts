@@ -1,3 +1,4 @@
+import {NativePlatformClock,stepNativePlatform,type NativePlatformBytes} from './native-platform-clock.js';
 import type {PlatformSpec} from './types.js';
 import {nativeBalanceStep,nativeDropStep,nativeWrapState,type PlatformVerticalState} from './native-platform-motor.js';
 import waterEntryRules from '../data/water-entry-rules.json';
@@ -28,8 +29,10 @@ export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotion
 export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
  return nativeSmallPlatform(platform,context)?[firstArtworkY,((firstArtworkY-1+128)&255)+1].filter(y=>y>=33):[firstArtworkY];
 }
-/** Native id37 is parsed at object X−303, before its first motion frame. */
-export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.kind==='wrap'?object.x-315:object.spawnCamera;
+/** PositionEnemyObj reads a 16-pixel enemy-data column and compares it with
+ * (ScreenRight+48)&$f0. Initialization adds0/8/12 to X for ordinary/balance/
+ * wrapping platforms, so clearing the low nibble recovers that source column. */
+export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>(Math.floor(object.x)&~15)-303;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */
 function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:PlatformSpec,context:PlatformMotionContext):NativePlatformObject|undefined {
  if(context.levelId!=='8-4'||context.areaId!=='main'||platform.x<1024)return undefined;
@@ -195,48 +198,96 @@ export class PlatformMotion {
  lost=new Set<PlatformSpec>();
  /** Spawn point passed with all slots busy while the object was still off screen: made on the first frame a slot is free (`create`). */
  waiting=new Set<PlatformSpec>();
- create(platform:PlatformSpec,frame:number){this.waiting.delete(platform);this.nativeStart.set(platform,frame);}
- private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState}>();
+ private clock=new NativePlatformClock<PlatformSpec>();
+ private clockFrames=new Map<PlatformSpec,{born:number;last:number;counter:number}>();
+ private prepared={frame:0,counter:0};
+ prepare(frame:number,counter:number){this.prepared={frame,counter};}
+ create(platform:PlatformSpec,frame:number){
+  this.waiting.delete(platform);this.nativeStart.set(platform,frame);
+  this.startCounter.set(platform,[frame,this.prepared.counter]);this.seedClock(platform,frame);
+ }
+ initializeNative(platform:PlatformSpec,state:NativePlatformBytes,frame:number,counter:number){
+  this.waiting.delete(platform);this.nativeStart.set(platform,frame);this.startCounter.set(platform,[frame,counter]);
+  this.clock.create(platform,state);this.clockFrames.set(platform,{born:frame,last:frame,counter});
+ }
+ /** ExecGameLoopback restarts EnemyData; KillAllEnemies erases the current
+  * owner, while records at/after ScreenRight can initialize again later. */
+ loopBack(platform:PlatformSpec,edge:number){
+  const object=nativePlatformObject(platform,this.context);if(!object)return;
+  this.clock.erase(platform);this.clockFrames.delete(platform);this.nativeStart.delete(platform);this.startCounter.delete(platform);this.startSub.delete(platform);this.startFraction.delete(platform);this.waiting.delete(platform);
+  if(object.pair)this.pulleys.delete(object.pair.join(','));
+  if(object.x>=edge)this.lost.delete(platform);else this.lost.add(platform);
+ }
+ private seedClock(platform:PlatformSpec,frame:number){
+  const o=nativePlatformObject(platform,this.context);if(!o||!['horizontal','lift','wrap'].includes(o.kind))return;
+  const id=o.nativeId??(o.kind==='horizontal'?40:o.kind==='lift'?37:undefined);if(id===undefined)return;
+  const up=o.direction==='up',fraction=this.startFraction.get(platform)??0,sub=this.startSub.get(platform)??0;
+  this.clock.create(platform,{id,x:o.x,y:o.y,a:o.kind==='wrap'?(up?255:0):0,b:o.kind==='lift'?(o.y+(o.y<128?64:192))&255:0,c:o.kind==='lift'?(o.y<128?o.y:256-o.y):sub,d:o.kind==='wrap'?(up?16:240):0,e:fraction});
+  this.clockFrames.set(platform,{born:frame,last:frame,counter:this.prepared.counter});
+ }
+ private clockState(platform:PlatformSpec,frame:number):NativePlatformBytes|undefined{
+  const at=this.clockFrames.get(platform);if(!at)return;
+  if(frame===at.last-1)return this.clock.state(platform,true);
+  if(frame<at.last)return;
+  const n=this.clock.state(platform)!;
+  const counter=this.prepared.frame===frame?this.prepared.counter:(at.counter+frame-at.last)&255;
+  for(let f=at.last+1;f<=frame;f++)stepNativePlatform(n,(counter-(frame-f))&255);
+  return n;
+ }
+ turn(platform:PlatformSpec,frame:number,counter:number,run=true){
+  const object=nativePlatformObject(platform,this.context);
+  if(object?.pair){const pulley=this.pulleys.get(object.pair.join(','));if(pulley?.driver===object)this.turnPulley(pulley,frame,run);}
+  const at=this.clockFrames.get(platform);if(!at||at.last>=frame)return;
+  for(let f=at.last+1;f<=frame;f++)this.clock.turn(platform,(counter-(frame-f))&255,run);
+  at.last=frame;at.counter=counter;
+ }
+
+ private pulleys=new Map<string,{start:number;d:number[];load:Record<string,number>;driver:NativePlatformObject;motor:PlatformVerticalState;turned?:number}>();
  private startFraction=new Map<PlatformSpec,number>();
- slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform))this.startFraction.set(platform,fraction);}
+ slotFraction(platform:PlatformSpec,fraction:number){if(!this.startFraction.has(platform)){this.startFraction.set(platform,fraction);const at=this.clockFrames.get(platform);if(at&&at.last===at.born)this.seedClock(platform,at.born);}}
  /** $0401+s is x fraction for id40 and YPlatformTopYPos for id37.
   * The next slot occupant inherits the byte written on the final motion row. */
  slotXByte(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o)return;
+  const clock=this.clockState(platform,frame);if(clock&&(o.kind==='horizontal'||o.kind==='lift'))return clock.c;
   if(o.kind==='lift')return o.y<128?o.y:256-o.y;
   if(o.kind==='horizontal'){const x=this.collisionPosition(platform,frame).x;return Math.round((x-Math.floor(x))*256)&255;}
  }
  verticalState(platform:PlatformSpec,frame:number){
   const o=nativePlatformObject(platform,this.context);if(!o)return;
+  const clock=this.clockState(platform,frame);if(clock)return {y:clock.y,speed:(clock.a<<24)>>24,force:clock.d,fraction:clock.e};
   if(o.kind==='horizontal')return nativeHorizontalState(o.x,o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startSub.get(platform)??0,this.startFraction.get(platform)??0);
   if(o.kind==='wrap')return nativeWrapState(o.y,this.nativeAge(platform,o,frame),this.startFraction.get(platform)??0,o.direction==='up');
   if(o.kind==='lift')return nativeLiftState(o.y,this.nativeAge(platform,o,frame),this.nativeCounter(platform),this.startFraction.get(platform)??0);
   if(!o.pair)return;const p=this.pulleys.get(o.pair.join(','));return p?.driver===o?p.motor:undefined;
  }
  constructor(public context:PlatformMotionContext){}
- reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.startCounter.clear();this.startSub.clear();this.startFraction.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();}
+ reset(context=this.context){this.context=context;this.activated.clear();this.fiveThreeLiftStart=undefined;this.eightFourLavaStart=undefined;this.fiveThreeHorizontalStart=undefined;this.cameraLog=[];this.nativeStart.clear();this.startCounter.clear();this.startSub.clear();this.startFraction.clear();this.pulleys.clear();this.lost.clear();this.waiting.clear();this.clock=new NativePlatformClock<PlatformSpec>();this.clockFrames.clear();this.prepared={frame:0,counter:0};}
  // Frames since the native object was created: the first logged frame whose camera had reached its spawn camera.
- private nativeAge(platform:PlatformSpec,object:NativePlatformObject,frame:number){
-  let start=this.nativeStart.get(platform);
-  const last=this.cameraLog[this.cameraLog.length-1];
-  if(start===undefined&&!this.waiting.has(platform)&&last&&last[1]>=nativePlatformSpawnCamera(object)){start=this.cameraLog.find(([,camera])=>camera>=nativePlatformSpawnCamera(object))![0];this.nativeStart.set(platform,start);}
-  return start===undefined?0:Math.max(0,frame-start);
+ private nativeStartFrame(platform:PlatformSpec,object:NativePlatformObject){
+  const start=this.nativeStart.get(platform);if(start!==undefined)return start;
+  if(this.waiting.has(platform))return;
+  return this.cameraLog.find(([,camera])=>camera>=nativePlatformSpawnCamera(object))?.[0];
  }
- /** FrameCounter ($09) on the frame the native object was created (0 when not logged). */
+ private nativeAge(platform:PlatformSpec,object:NativePlatformObject,frame:number){
+  const start=this.nativeStartFrame(platform,object);return start===undefined?0:Math.max(0,frame-start);
+ }
+ /** FrameCounter is a source input, not an advancing getter or elapsed-time fit. */
  private nativeCounter(platform:PlatformSpec){
-  const start=this.nativeStart.get(platform);if(start===undefined)return 0;
+  const object=nativePlatformObject(platform,this.context);if(!object)return 0;
+  const start=this.nativeStartFrame(platform,object);if(start===undefined)return 0;
   const known=this.startCounter.get(platform);if(known&&known[0]===start)return known[1];
-  const at=this.cameraLog.find(([frame])=>frame>=start);if(!at)return 0;
-  const counter=(at[2]-(at[0]-start))&255;this.startCounter.set(platform,[start,counter]);return counter;
+  const at=this.cameraLog.find(([frame])=>frame>=start);return at?(at[2]-(at[0]-start))&255:0;
  }
  private startCounter=new Map<PlatformSpec,[number,number]>();
  /** Sub-pixel byte the native object found in its enemy slot when it was created (XMovingPlatform keeps it; the simulation reports it via `slotSub`). */
  private startSub=new Map<PlatformSpec,number>();
- slotSub(platform:PlatformSpec,sub:number){if(!this.startSub.has(platform))this.startSub.set(platform,sub);}
+ slotSub(platform:PlatformSpec,sub:number){if(!this.startSub.has(platform)){this.startSub.set(platform,sub);const at=this.clockFrames.get(platform);if(at&&at.last===at.born)this.seedClock(platform,at.born);}}
  // Fitted to two approaches and conditionally checked on a third; the exact
  // native activation frame is unknown and a one-frame shift can fail 2px.
  advance(frame:number,camera:number,counter=0){
-  this.cameraLog.push([frame,camera,counter]);
+  this.prepare(frame,counter);this.cameraLog.push([frame,camera,counter]);
+  for(const platform of this.clockFrames.keys())if(!this.lost.has(platform)&&!this.waiting.has(platform))this.turn(platform,frame,counter);
   this.advancePulleys(frame);
   if(this.context.levelId==='5-3'&&this.context.areaId==='main'&&this.fiveThreeHorizontalStart===undefined&&camera>=fiveThreeHorizontal.cameraThreshold)this.fiveThreeHorizontalStart=frame;
   if(this.context.levelId==='8-4'&&this.context.areaId==='main'&&this.eightFourLavaStart===undefined&&camera>=eightFourPlatformRules.cameraThreshold)this.eightFourLavaStart=frame;
@@ -245,15 +296,14 @@ export class PlatformMotion {
  // The second balance object owns ImposeGravity; its partner mirrors integer
  // movement. Drop platforms apply 127/256 gravity only while ridden. Both keep
  // the slot's fraction and integrate position before changing speed.
- private advancePulleys(frame:number){
-  for(const pulley of this.pulleys.values()){
-   const {driver,motor}=pulley;
-   const load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
-   if(driver.kind==='drop')nativeDropStep(motor,load!==0);
-   else nativeBalanceStep(motor,-load);
-   pulley.d.push((motor.y-driver.y)*driver.side!);
-  }
+ private turnPulley(pulley:{driver:NativePlatformObject;motor:PlatformVerticalState;load:Record<string,number>;d:number[];turned?:number},frame:number,run=true){
+  if(pulley.turned===frame)return;pulley.turned=frame;
+  const {driver,motor}=pulley,load=(pulley.load['1']===frame?1:0)-(pulley.load['-1']===frame?1:0);
+  if(run){if(driver.kind==='drop')nativeDropStep(motor,load!==0);else nativeBalanceStep(motor,-load);}
+  pulley.d.push((motor.y-driver.y)*driver.side!);
  }
+ private advancePulleys(frame:number){for(const pulley of this.pulleys.values())this.turnPulley(pulley,frame);}
+
  contact(platform:PlatformSpec,frame:number){
   const model=platformMotionModel(platform,this.context);
   if(model==='native-balance'||model==='native-drop'){
@@ -274,6 +324,7 @@ export class PlatformMotion {
  artworkPosition(platform:PlatformSpec,frame:number):PlatformPosition {
   if(this.lost.has(platform)||this.waiting.has(platform))return {x:-4096,y:4096};
   const model=platformMotionModel(platform,this.context);
+  const clock=this.clockState(platform,frame);if(clock)return {x:clock.x+(clock.id===40?clock.c/256:0),y:clock.y+1};
   if(model==='native-horizontal'||model==='native-lift'||model==='native-wrap'){
    const object=nativePlatformObject(platform,this.context)!,position=nativeObjectPosition(object,this.nativeAge(platform,object,frame),this.nativeCounter(platform),this.startSub.get(platform)??0,this.startFraction.get(platform)??0);
    return {x:position.x,y:position.y+1};

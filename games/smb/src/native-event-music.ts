@@ -9,14 +9,16 @@ export function seedNativeEndLevelMusic(r:Uint8Array):NativeEndLevelMusic{
 }
 /** Call once at SoundEngine's NMI turn, before gameplay queues new music.
  * Title/pause skip MusicHandler. A queue restarts the header in this same turn.
- * This helper owns event $20 only; other event lifetimes remain unimplemented. */
+ * This helper owns event $20 and the $80 silence terminator; other event lifetimes remain unimplemented. */
 export function tickNativeEndLevelMusic(s:NativeEndLevelMusic,input:{eventQueue?:number;areaQueue?:number;operMode?:number;pauseMode?:number;pauseQueue?:number}={}){
  if(input.operMode===0||input.pauseMode||input.pauseQueue===1)return;
  if(input.eventQueue){
+  // SilenceHdr loads counter1, then consumes its single $00 terminator.
+  if(input.eventQueue===128){s.eventMusicBuffer=0;s.counter=0;s.offset=1;return;}
   s.eventMusicBuffer=input.eventQueue;
   if(input.eventQueue!==32)return;
   s.offset=0;s.counter=1;
- }else if(input.areaQueue){s.eventMusicBuffer=0;return;}
+ }else if(input.areaQueue){s.eventMusicBuffer=0;if(input.areaQueue===128){s.counter=0;s.offset=1;}return;}
  if(s.eventMusicBuffer!==32)return;
  s.counter=(s.counter-1)&255;if(s.counter)return;
  let note=data.notes[s.offset++];s.offset&=255;

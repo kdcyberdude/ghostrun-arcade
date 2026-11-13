@@ -6,6 +6,8 @@ import {observedLevels} from '../src/levels.js';
 import native from '../evidence/entry-timeline-native-rows-20261109.json';
 import winningInputs from '../data/observed-winning-inputs.json';
 import type {Button} from '../src/types.js';
+import {nativeEntrySequence} from './helpers/native-entry-sequence.js';
+import {strictNativeEntities,strictEntityDifferences} from '../tools/harness/native-strict-entities.js';
 
 // Native rows (tools/fidelity-lab/native-trace.mjs, recorded winning route): row i is the state after i+1 frames. Timeline state (phase,
 // automatic walk, pipe entry, entry fall) pairs remake step f with native row f; input-driven state pairs it with row f-1 because the
@@ -14,67 +16,23 @@ const keys:Button[]=['up','down','left','right','a','b'];
 const frameInputs:Button[][]=[];
 for(const [mask,frames] of winningInputs.actions as number[][])for(let f=0;f<frames;f++)frameInputs.push(keys.filter((_,bit)=>mask&(1<<bit)));
 
-interface Snapshot{phase:string;area:string;x:number;y:number;vx:number;falling:boolean;timerHidden:boolean;time:number;enemyX:number|undefined}
-function run(levelId:string,previousLevelId:string,steps:number):Snapshot[]{
- const sim:any=new Simulation(observedLevels());sim.reset(true);
- const row=native.levels.find(l=>l.id===levelId)!;
- sim.levelIndex=observedLevels().findIndex(l=>l.id===previousLevelId);sim.nextLevel();
- const out:Snapshot[]=[];
- const snapshot=():Snapshot=>({phase:sim.phase,area:sim.area.id,x:sim.player.x,y:sim.player.y,vx:Math.round(sim.player.vx*4096),falling:sim.entryFalling,timerHidden:sim.entryTimerHidden,time:sim.time,enemyX:sim.enemies[0]?.x});
- out.push(snapshot());
- for(let t=1;t<=steps;t++){sim.step(frameInputs[row.appearRow-165+t]??[],1);out.push(snapshot());}
- return out;
-}
 const nativeAt=(level:typeof native.levels[number],field:'x'|'y'|'vx',row:number)=>level[field][row-level.fromRow];
-
-// 2-2 and 7-2 share the intro, walk and pipe timeline but enter a water room, whose fall is not part of this timeline model.
-const cases=[
- {id:'1-2',previous:'1-1',entryArea:'area-2',fall:true},{id:'4-2',previous:'4-1',entryArea:'area-3',fall:true},
- {id:'2-2',previous:'2-1',entryArea:'area-2',fall:false},{id:'7-2',previous:'7-1',entryArea:'area-4',fall:false},
-];
-for(const c of cases){
- const level=native.levels.find(l=>l.id===c.id)!;
- const first=level.appearRow-165,appear=level.appearRow,area=level.appearRow+360;
- const snaps=run(c.id,c.previous,area+70-first);
- const at=(row:number)=>snaps[row-first];
-
- test(`${c.id}: the level intro lasts 165 frames, then the automatic walk, pipe entry and room load follow native rows`,()=>{
-  assert.ok(Math.abs(appear-level.firstRow-165)<=1,"native intro length is 164..166 frames; the remake uses 165");
-  for(let row=first+1;row<appear;row++)assert.equal(at(row).phase,'intro',`row ${row}`);
-  assert.equal(at(appear).phase,'play');assert.equal(at(appear).x,40);assert.equal(at(appear).vx,0);
-  // The pipe trigger (floor(x)+13>=160) fires on native row 2293-equivalent: 153 frames after the player appears.
-  assert.equal(at(appear+152).phase,'play');assert.equal(at(appear+153).phase,'pipe');
-  assert.equal(at(area-1).phase,'intro');assert.equal(at(area).phase,'play');assert.equal(at(area).area,c.entryArea);assert.equal(at(area).falling,c.fall);
+// The old cold-reset/nextLevel setup assumed a165-row screen interval without
+// retaining the native077F phase. These tests instead seed actual v2 RAM once.
+// Archived slice-clock observations remain above and in the motor/camera tests.
+for(const level of ['1-2','2-2','4-2','7-2']){
+ const run=nativeEntrySequence(level);
+ test(`${level}: source area-load tasks replace a fixed intro duration`,()=>{
+  let loading=0;for(const {frame,r,actual:a}of run.rows)if(r[0x772]<3){loading++;assert.equal(a.phase,'intro',`frame${frame}`);assert.ok(a.screen);assert.deepEqual([a.screen.task,a.screen.engine,a.screen.screen,a.screen.disable,a.screen.timer,a.screen.columns],[r[0x772],r[14],r[0x73c],r[0x774],r[0x7a0],r[0x71e]],`frame${frame}`);}assert.ok(loading>20);
  });
-
- test(`${c.id}: the automatic walk is the walk motor capped at byte 12 and the pipe entry follows the 2312/-104/+152 pattern`,()=>{
-  for(let row=appear+1;row<=appear+176;row++){
-   // The remake's pipe trigger clears vx on the trigger row (native keeps the last walk speed one more row); it is not used afterwards.
-   if(row!==appear+153)assert.equal(at(row).vx,nativeAt(level,'vx',row),`row ${row}: speed`);
-   assert.equal(Math.floor(at(row).x),nativeAt(level,'x',row),`row ${row}: x`);
-  }
-  for(let row=appear+177;row<=appear+333;row++)assert.equal(Math.floor(at(row).x),160,`row ${row}: x holds at the pipe mouth`);
+ test(`${level}: every native automatic-walk and pipe-motor row retains source x/y/speed bytes`,()=>{
+  let movement=0;for(const {frame,r,actual:a}of run.rows){if(r[0x772]!==3||![7,8].includes(r[14]))continue;movement++;assert.equal(a.x,r[0x6d]*256+r[0x86],`frame${frame} x`);assert.equal(a.y,(r[0xb5]-1)*256+r[0xce],`frame${frame} y`);assert.equal(a.vx,((r[0x57]<<24)>>24)*256+r[0x705],`frame${frame} speed`);}assert.ok(movement>350);
  });
-
- if(c.fall)test(`${c.id}: the underground entry fall matches native y on every row and the control-start speeds exactly`,()=>{
-  for(let row=area;row<=area+51;row++){
-   const y=Math.floor(at(row).y)-32;
-   assert.equal(y,nativeAt(level,'y',row),`row ${row}: y`);
-  }
-  assert.equal(at(area+51).falling,false,'lands on the native row 51 after the load; the row after it still takes the air step (+152) and then the run step (+228)');
-  // Control starts at row +17; the first speed appears one row later (input-driven pairing: row f-1) and runs in the air at the walk step.
-  for(let row=area+18;row<=area+66;row++){
-   assert.equal(at(row+1).vx,nativeAt(level,'vx',row),`row ${row}: speed`);
-   assert.equal(Math.floor(at(row+1).x),nativeAt(level,'x',row),`row ${row}: x`);
-  }
+ test(`${level}: secondary-room entry fall and PlayerRdy follow native controls`,()=>{
+  let entry=0,controlled=0;for(const {frame,r,actual:a}of run.rows)if(a.area!==run.main&&r[0x772]===3&&[7,8].includes(r[14])){entry++;assert.equal(a.locked,r[14]===7,`frame${frame} control`);assert.equal(a.y,(r[0xb5]-1)*256+r[0xce],`frame${frame} y`);if(r[14]===8)controlled++;}assert.ok(entry>80);assert.equal(controlled,81);
  });
-
- if(c.fall)test(`${c.id}: TIME appears at control start and ticks every 24 frames; the first Goomba moves on each following native engine row`,()=>{
-  for(let row=area;row<area+17;row++)assert.equal(at(row).timerHidden,true,`row ${row}`);
-  for(let row=area+17;row<area+41;row++){assert.equal(at(row).timerHidden,false,`row ${row}`);assert.equal(at(row).time,400,`row ${row}`);}
-  assert.equal(at(area+41).time,399);assert.equal(at(area+64).time,399);assert.equal(at(area+65).time,398);
-  // 1-2 native first pass creates x256; subsequent passes step $F8/16 with the retained fraction.
-  if(c.id==='1-2')for(let step=0;step<=3;step++)assert.equal(at(area+step).enemyX,256-step/2);
+ test(`${level}: room HUD timer and first live enemies retain source rows`,()=>{
+  let checked=0;for(const {frame,r,actual:a}of run.rows)if(a.area!==run.main&&r[0x772]===3&&[7,8].includes(r[14])){checked++;assert.equal(a.time,r[0x7f8]*100+r[0x7f9]*10+r[0x7fa],`frame${frame} HUD`);assert.equal(a.gameTimer,r[0x787],`frame${frame} timer phase`);assert.deepEqual(strictEntityDifferences(strictNativeEntities(r),a.actors).mismatches,[],`frame${frame} enemies`);}assert.ok(checked>80);
  });
 }
 

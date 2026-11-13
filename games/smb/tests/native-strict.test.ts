@@ -31,7 +31,7 @@ test('native flame and power-up item readouts use their enemy slot and actual co
  assert.deepEqual(entities[1],{bank:'enemy',slot:5,kind:'mushroom',x:40,y:24,source:'powerup',state:1});
 });
 test('unsupported native objects and aliases are explicit gaps, never a clean comparison',()=>{
- const r=ramEnemy(36);r[0xf+1]=0x80;r[0x16+1]=27;
+ const r=ramEnemy(35);r[0xf+1]=0x80;r[0x16+1]=27;
  const out=strictEntityDifferences(strictNativeEntities(r),[]);
  assert.deepEqual(out.gaps.map(g=>g.code),['unsupported-native-object','native-alias']);assert.equal(out.mismatches.length,0);
 });
@@ -65,4 +65,12 @@ test('nativeCoin misc objects are compared explicitly by slot, position and stat
  assert.deepEqual(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches,[]);
  sim.items[0].x++;assert.equal(strictEntityDifferences(strictNativeEntities(r),strictSimEntities(sim)).mismatches[0].code,'position');
  assert.equal(strictSimEntities({enemies:[],items:[{kind:'coin',x:0,y:0,life:1}]}).length,1);
+});
+
+test('strict retainer readout includes its active birth row before the first graphics pass',()=>{
+ const r=ramEnemy(53);r[0x6e]=9;r[0x87]=144;
+ const sim={enemies:[],items:[],castleRetainer:{slot:0,x:2448,y:184,graphicsVisible:false}};
+ const native=strictNativeEntities(r),actors=strictSimEntities(sim),result=strictEntityDifferences(native,actors);
+ assert.equal(native.entities[0].kind,'retainer');assert.equal(actors.length,1);assert.deepEqual(result,{mismatches:[],gaps:[]});
+ sim.castleRetainer.x++;assert.equal(strictEntityDifferences(native,strictSimEntities(sim)).mismatches[0].code,'position');
 });

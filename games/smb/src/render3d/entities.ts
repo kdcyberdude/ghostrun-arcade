@@ -1,8 +1,9 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
-import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
+import {nativeFireballPhase} from '../native-fireball-picture.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
 import type {Enemy,EnemyKind,Item} from '../types.js';
@@ -46,8 +47,8 @@ export class Entities{
   if(s.frame<this.lastFrame){this.walkPhase=0;this.lastX=NaN;this.marioYaw=yawFor(s.player.facing);this.enemyYaw=new WeakMap();}
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
-  for(const e of s.enemies)if(e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
-  for(const i of s.items)if(itemShown(i))this.item(i,s);
+  for(const e of s.enemies)if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
+  if(s.spritePictureOwner==='engine')for(const i of s.items)if(itemShown(i))this.item(i,s);
   this.retainer(s);
   for(const p of this.pools.values())p.end();
   this.lastFrame=s.frame;
@@ -70,7 +71,7 @@ export class Entities{
   const cyclePx=(clip:string)=>(clip==='run'?33.6:16.8)*scale;
   let clip='idle',t=s.frame/60,loop=true;
   if(cell===22){clip='death';t=0;loop=false;}
-  else if([8,9,20,21].includes(cell)){clip=s.phase==='flag'?'slide':'climb';t=s.phase==='flag'?0:p.anim/24*a.duration('climb');}
+  else if([8,9,20,21].includes(cell)){clip=s.phase==='flag'?'slide':'climb';t=(cell===9||cell===21?0.5:0)*a.duration(clip);}
   else if(cell===10)clip='duck';
   else if([5,6,7,17,18,19].includes(cell))clip='swim';
   else if(cell===4||cell===16)clip=p.vy>0?'fall':'jump';
@@ -115,7 +116,11 @@ export class Entities{
   if(flipped&&h===1&&e.greenShellLaunchFrame===undefined&&!(e.defeat&&e.kind==='goomba'))a.root.position.y+=0.5;
   // Podoboo is authored around its glowing center; walkers are authored from the feet.
   if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
-  if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
+  if(shell){
+   // Koopa's alternate CHR adds one row to the lower rim (14→15px); Beetle's two cells have identical artwork.
+   const rim=e.kind==='beetle'?0:nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell));
+   a.root.scale.y=(14+rim)/14;a.root.position.y-=rim/16;
+   a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
   if(e.kind==='redKoopa'||e.kind==='koopa'||e.kind==='paratroopa')a.recolor('M_Shell',(e.palette??'').includes('16')||e.kind==='redKoopa'?'#d23a2a':'#2fae3a');
   if(e.kind==='piranha')a.recolor('M_Head',PIRANHA_GREEN); // Native Piranha palette is $0f/$1a/$30/$27.
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
@@ -123,7 +128,7 @@ export class Entities{
   const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,timersStopped):undefined;
   const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped):undefined;
   if(blooper)a.root.position.y-=blooper.yOffset/16;
-  const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,Boolean(s.powerChange)))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
+  const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,timersStopped))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
   const clip=e.kind==='piranha'?'idle':nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
   a.pose(clip,nativePhase===undefined?e.age/60:nativePhase*a.duration(clip),s.frame);
   if(e.kind==='lakitu'&&nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead))===25)a.poseYOffset('Body',-8/16);
@@ -134,10 +139,10 @@ export class Entities{
   }
  }
  private retainer(s:Simulation){
-  const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
+  const picture=s.castleRetainer;if(!picture?.graphicsVisible)return;
   const name=s.level.id==='8-4'?'princess':'toad',actor=this.pool(name).take();if(!actor)return;
   if(name==='toad')actor.recolor('M_Vest',PALETTE.mario[0]);
-  actor.root.position.set((exit.retainerX+8)/16,(240-209)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
+  actor.root.position.set((picture.x+8)/16,(215-picture.y)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
  }
  private item(i:Item,s:Simulation){
   const pictureX=i.nativeCoin||i.nativeHammer?Math.floor(s.camera)+(Math.floor(i.x-s.camera)&255):i.x;
@@ -152,7 +157,8 @@ export class Entities{
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
   a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
+  if(i.kind==='flame')a.root.position.set((pictureX+12)/16,(236-pictureY)/16,0);
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
-  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
+  a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.kind==='fireball'?nativeFireballPhase(s.random.frame)/4*a.duration('spin'):i.age/60,s.frame);
  }
 }

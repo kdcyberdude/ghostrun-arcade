@@ -2,9 +2,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {observedLevels} from '../src/levels.js';
 import {Simulation} from '../src/simulation.js';
-import native from '../evidence/entry-timeline-native-rows-20261109.json';
-import winningInputs from '../data/observed-winning-inputs.json';
 import type {Button,Level} from '../src/types.js';
+import {nativeEntrySequence} from './helpers/native-entry-sequence.js';
 
 // Structural side-pipe fixtures. Exact speed/fraction/motor bytes are checked
 // from native RAM in native-side-pipe-state.test.ts; an approach retains its
@@ -42,29 +41,11 @@ test('the five ordinary side pipes stop at the aligned pipe mouth while retainin
  }
 });
 
-// Water-room arrival (2-2 area-2, 7-2 area-4): native engine 7 holds Mario without control for 34 rows (y 0 for 7 rows, then the 1/1/2/3/4... fall to y 49),
-// engine 8 starts on row 34 and the first speed (304) one row later. The remake started this 3 rows early (state pre-advanced to the screenshot-registered row 3).
-const keys:Button[]=['up','down','left','right','a','b'];
-const frameInputs:Button[][]=[];
-for(const [mask,frames] of winningInputs.actions as number[][])for(let f=0;f<frames;f++)frameInputs.push(keys.filter((_,bit)=>mask&(1<<bit)));
-for(const c of [{id:'2-2',previous:'2-1'},{id:'7-2',previous:'7-1'},{id:'1-2',previous:'1-1'},{id:'4-2',previous:'4-1'}]){
- const level=native.levels.find(l=>l.id===c.id)!;
- const first=level.appearRow-165,area=level.appearRow+360;
- const sim:any=new Simulation(observedLevels());sim.reset(true);
- sim.levelIndex=observedLevels().findIndex(l=>l.id===c.previous);sim.nextLevel();
- const snaps:{y:number;x:number;vx:number;locked:boolean}[]=[];
- for(let t=1;t<=area+60-first;t++){sim.step(frameInputs[first+t]??[],1);snaps.push({y:Math.floor(sim.player.y)-32,x:Math.floor(sim.player.x),vx:Math.round(sim.player.vx*4096),locked:sim.entryControlLocked});}
- const at=(row:number)=>snaps[row-first-1];
- const nat=(f:'x'|'y'|'vx'|'engine',row:number)=>level[f][row-level.fromRow];
- const water=c.id==='2-2'||c.id==='7-2';
- if(water)test(`${c.id}: the water room fall follows the native rows (y, x and speed) from the room load, no input before row 34`,()=>{
-  for(let row=area;row<=area+50;row++){
-   assert.equal(at(row).y,nat('y',row),`row +${row-area}: y`);
-   assert.equal(at(row).x,nat('x',row),`row +${row-area}: x`);
-   assert.equal(at(row).vx,nat('vx',row),`row +${row-area}: speed`);
-  }
- });
- test(`${c.id}: entryControlLocked is native engine 7 (no control) from the room load until engine 8 starts`,()=>{
-  for(let row=area;row<=area+40;row++)assert.equal(at(row).locked,nat('engine',row)===7,`row +${row-area} native engine ${nat('engine',row)}`);
+// Native engine7/8 ownership is checked from authenticated PPU snapshots;
+// the source load-control interval is retained instead of assuming165 rows.
+for(const level of ['2-2','7-2','1-2','4-2']){
+ const run=nativeEntrySequence(level);
+ test(`${level}: entryControlLocked follows every secondary-room native engine row`,()=>{
+  let rows=0;for(const {frame,r,actual:a}of run.rows)if(a.area!==run.main&&r[0x772]===3&&[7,8].includes(r[14])){rows++;assert.equal(a.locked,r[14]===7,`frame${frame}`);assert.equal(a.x,r[0x6d]*256+r[0x86],`frame${frame} x`);assert.equal(a.y,(r[0xb5]-1)*256+r[0xce],`frame${frame} y`);}assert.ok(rows>80);
  });
 }

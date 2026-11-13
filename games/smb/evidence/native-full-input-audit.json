@@ -1,0 +1,513 @@
+{
+ "schema": "native-full-input-audit-v1",
+ "runtimeCommit": "82924bf",
+ "toolSourceSha256": {
+  "tools/harness/native-strict.ts": "6d77967b5f1127ca1785cb6eab7771760378e70764cd22ec387b91c028b57826",
+  "tools/harness/native-divergence.ts": "48e07765648b2174c2ec280e1c5e7d236ca572b5ad18aa96e80e21a27edda68b",
+  "tests/native-strict-flag-continuation.test.ts": "b44959e19158746d8be06111a9dbf0a98f766cf2ac992b1c7f511590c14a395b",
+  "tests/native-strict-boundary.test.ts": "54183b7ec78273768ffec5ba6fdbc3d856aa8839582d8a4b6998df8dfbc5b626",
+  "tests/native-detail-cli.test.ts": "572821ca6d7c373dbf3f4e54bf73390a84166beddbda1dba951b019583b6bd50"
+ },
+ "beforeReportSha256": "ff900e1bf9b63c98c50755279917a17c9684f7772c26056f671f1ee6645d6d14",
+ "afterReportSha256": "db2360433b96c0116df733986d716bdcee6c1790081e49ae6a883e3fac4e90c7",
+ "beforeScope": "Legacy API and strict level scope before ordinary level continuation",
+ "afterScope": "Detail automatically includes strict; all input/RAM pairs across level changes; unsupported modes explicit",
+ "legacyFirstsChanged": 0,
+ "inputFrames": 146036,
+ "steppedFrames": 146011,
+ "continuationFrames": 3829,
+ "unsteppedFrames": 25,
+ "validation": {
+  "fullTests": 1731,
+  "focusedTests": 14,
+  "typescript": "pass",
+  "lastFollowingRowCounterexample": "3-2 final native coin byte altered; strict first coins is final frame; all other firsts preserved"
+ },
+ "limits": [
+  "Comparison coverage only; no new runtime or pixel equivalence claim.",
+  "Modes0/3 remain explicit unsupported, never a complete-input pass.",
+  "Current runtime gaps remain visible; no strict PASS is claimed for any original level."
+ ],
+ "levels": [
+  {
+   "level": "1-1",
+   "inputFrames": 3020,
+   "steppedFrames": 3020,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 16,
+   "nativeSha256": {
+    "initial.ram": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "pads.bin": "181a7ff018c693599e03b1a91cbe78238e80c5f7fd02c96ccfb5f40fa4517916",
+    "ram.bin": "c23dafaa7222862a82883a8e45f6f6c49b3c39fe799b377aac789c967ca9ee1b"
+   }
+  },
+  {
+   "level": "1-2",
+   "inputFrames": 3060,
+   "steppedFrames": 3060,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 31,
+   "nativeSha256": {
+    "initial.ram": "368c57bb8041353c8c1ae634133a04cfb1adfbf28a2a1dc60991b3030558d0b5",
+    "pads.bin": "5664dcdcab9dc8240854b2b97c2546dba3b83ccaee0f2670719b616b58593c1f",
+    "ram.bin": "56ab5053a758a084a902266837b9117329b30359b5a191dfcff8db84e909e112"
+   }
+  },
+  {
+   "level": "1-3",
+   "inputFrames": 1736,
+   "steppedFrames": 1736,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 23,
+   "nativeSha256": {
+    "initial.ram": "92026829d841c8cf0af23309326bcba921d1fa96d90e0944acf9ca196a9c7c30",
+    "pads.bin": "c1b9f08d586abb47d6a543c9a4c1d1a06b35a3345e0413b8d3008e379bcbf594",
+    "ram.bin": "996207281332e7b28f1c203a22ffcb170aa1be22347062664fd6a5000e6562cf"
+   }
+  },
+  {
+   "level": "1-4",
+   "inputFrames": 2840,
+   "steppedFrames": 2840,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 11,
+   "nativeSha256": {
+    "initial.ram": "98be8751a8ab93880f3284ad70b904cbe90d2f4680b0737725ef098696183e0a",
+    "pads.bin": "ef53d22b36bc16a0949465fa09cfaa29ecf60c530e14e4b63703f27ce1c94b24",
+    "ram.bin": "45ea8e1a9d92bad85ccd47c02a2068e320f7e03bcc70aac22410a74bfd94e8bd"
+   }
+  },
+  {
+   "level": "2-1",
+   "inputFrames": 2956,
+   "steppedFrames": 2956,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 23,
+   "nativeSha256": {
+    "initial.ram": "9a6bfa0e95127a661bb97f235b588d402c03c34cbb656f3f65a170878d8e503f",
+    "pads.bin": "c3ec26d4b7b1752d72880a9dfb3a31434825ebbf34ee34f68d822f8abae9e191",
+    "ram.bin": "fc0806d85aa43ab262b480d574ff55fad45ffa9c31f0a9e86315079d9351d4ec"
+   }
+  },
+  {
+   "level": "2-2",
+   "inputFrames": 6600,
+   "steppedFrames": 6597,
+   "continuationFrames": 0,
+   "unsteppedFrames": 3,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 6597",
+   "coverageGaps": 4,
+   "nativeSha256": {
+    "initial.ram": "f7e0f2476eb9310745dcf8639f7322b818c98f6d9763ebf49133b3d9138be26a",
+    "pads.bin": "dc05c36825cc0cb25fdfcfe0ff029948f5be6a96a576cbe880d4c4c071123fce",
+    "ram.bin": "2f3f5d571d134a6fe21074f8d27a34a92afae0c24089991aeabad5b5b822cf2e"
+   }
+  },
+  {
+   "level": "2-3",
+   "inputFrames": 2408,
+   "steppedFrames": 2408,
+   "continuationFrames": 168,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 18,
+   "nativeSha256": {
+    "initial.ram": "eb8fe564137fcef42f97249a98f4a7d31b62b315d9838c1c59280fe9ffd83385",
+    "pads.bin": "a70dd7d0f5a3bebd33ddd44e5d303c6569b50a9b437872f54d0715a4bdfdfcb3",
+    "ram.bin": "564cd73bd551043ae2999fd9eda6d5c3f34f40730679a3a320b2e76627341fa5"
+   }
+  },
+  {
+   "level": "2-4",
+   "inputFrames": 4644,
+   "steppedFrames": 4644,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 13,
+   "nativeSha256": {
+    "initial.ram": "da3f407af098b39324d63a22104bb2a8d1f9dfe31cc644e221445d8e3b977bbf",
+    "pads.bin": "6935891f9c3ba337a75e59b1f53090852aad9a5e85e5350fabed8c977021b598",
+    "ram.bin": "b948c60ab3737463e13d38061f4090884f26cc4ec54b4c5d5d579264aba19c52"
+   }
+  },
+  {
+   "level": "3-1",
+   "inputFrames": 2616,
+   "steppedFrames": 2616,
+   "continuationFrames": 165,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 19,
+   "nativeSha256": {
+    "initial.ram": "f7a23572dbe45c5b40ab0487879528edf7fe1b08dd5467d114c51d9e3aa4cbbd",
+    "pads.bin": "041083c996cf83f67e8ba69b9a2babedce394599df18bc7991afc1926415fdeb",
+    "ram.bin": "f7c672c37bda8356964ab2b6b017fabfb8bf3c17e2c2d043d22b8090ad520a99"
+   }
+  },
+  {
+   "level": "3-2",
+   "inputFrames": 2304,
+   "steppedFrames": 2304,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 17,
+   "nativeSha256": {
+    "initial.ram": "8c8b02051a76bfd8f339ddab6e148c075eb3a2b893d0ff31000641c5a76217c5",
+    "pads.bin": "0c49b657daf92d81632df6ee23fa5100afe940a54086e1b125ad07a97251e0ae",
+    "ram.bin": "35c26ad64c504d53c454342380c2e080f100fdb3a2110fc0342bf6a87bae33ed"
+   }
+  },
+  {
+   "level": "3-3",
+   "inputFrames": 1776,
+   "steppedFrames": 1776,
+   "continuationFrames": 165,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 27,
+   "nativeSha256": {
+    "initial.ram": "5ae7f0503a269634bcbb53b1f0fcbeb9a73362bf684b7223d0bf59cf589a0571",
+    "pads.bin": "a3137eeec9c371cde73d2134316d6f98409ef6ac622e251d68ea647590f67cff",
+    "ram.bin": "d85e3c1f050e512fd644c30d10ea055eda0f859874556ecbc39993c52b55f443"
+   }
+  },
+  {
+   "level": "3-4",
+   "inputFrames": 4772,
+   "steppedFrames": 4772,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 12,
+   "nativeSha256": {
+    "initial.ram": "f7ae7faa9e019b8ed43540ebbdcdd61d6894710daa920024838eab1c72c27055",
+    "pads.bin": "d1d69062ed2736fea8a64b2bb52a21ff8582078d169acc9887aec43b16a4b9e3",
+    "ram.bin": "ce5be1cd8ddf615eb07bf99de0ef529a1c7891c76431a27a13a157582bc7dd05"
+   }
+  },
+  {
+   "level": "4-1",
+   "inputFrames": 2388,
+   "steppedFrames": 2388,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 17,
+   "nativeSha256": {
+    "initial.ram": "cedc4c7deb80717344a3a21446ee7bc19c1dc21fbf80737c6201fe6fb0d8a2f4",
+    "pads.bin": "7f85f2e054da1c872f3b09da20f467298dee8e708127d318739c5f34a3150018",
+    "ram.bin": "579c63cf0e6e3a4eadd8d42af3680a1fbb1d81bad9c13bd7a705dedca60fbf32"
+   }
+  },
+  {
+   "level": "4-2",
+   "inputFrames": 4636,
+   "steppedFrames": 4636,
+   "continuationFrames": 165,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 35,
+   "nativeSha256": {
+    "initial.ram": "14d6d407c85859fc2176c2ff6db47368b2eb10ddae15e1d871d925db80e9e7d7",
+    "pads.bin": "a36cd24a8b41a8549ad4ff1d32b14503b202dce2e37a6add29003d2855a6bb0a",
+    "ram.bin": "cb9b88687cff601acf5fadb2974a2ecfc7a02c35f55c1483a667d8e4f1e24734"
+   }
+  },
+  {
+   "level": "4-3",
+   "inputFrames": 1800,
+   "steppedFrames": 1800,
+   "continuationFrames": 168,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 26,
+   "nativeSha256": {
+    "initial.ram": "f6489dcbb602fba6ae2f43259699e4742b0f684aea4e8b88fa0125aeb79a183c",
+    "pads.bin": "a86816940ae077fdd2249263f7202c9ab1f617715b1fb6f62aec5b92989b6653",
+    "ram.bin": "d2ef8791452f98d63bc34d508a4a2bf3f99409fef86b978bfbd997bd78891814"
+   }
+  },
+  {
+   "level": "4-4",
+   "inputFrames": 11636,
+   "steppedFrames": 11633,
+   "continuationFrames": 0,
+   "unsteppedFrames": 3,
+   "strictStatus": "incomplete",
+   "endReason": "unsupported same-level native mode 3 at frame 11633",
+   "coverageGaps": 5,
+   "nativeSha256": {
+    "initial.ram": "e3d8aa4ec6f6d95fc8b7f4b95602a478db3f07730e199161f5838fe4bd22381f",
+    "pads.bin": "12ac2c424938931bbd64082d6be56264e5b3af29f16a407270b5a31f1f2b6f2b",
+    "ram.bin": "ab812a6e0e46fa7e06bcc0ca8d61a7b5a148d8a9cab96db8e7d58424fe8058f1"
+   }
+  },
+  {
+   "level": "5-1",
+   "inputFrames": 4392,
+   "steppedFrames": 4392,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 19,
+   "nativeSha256": {
+    "initial.ram": "73fecef053085dd261dfc4058e628457d21a22b734229a06e99b93ed830e1197",
+    "pads.bin": "1a9b487e276baccdc4ac3b98a6fc663cc7c7cce56a07891f1f888e1c7f59796e",
+    "ram.bin": "7d05553f898b2be4821d2afc4b4162d004c2d883e75a5273cfef641c0e7a5b0f"
+   }
+  },
+  {
+   "level": "5-2",
+   "inputFrames": 3552,
+   "steppedFrames": 3552,
+   "continuationFrames": 168,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 24,
+   "nativeSha256": {
+    "initial.ram": "93274f0a8b556b6942d0d1ba30f1c5143c804e66c8f7fcb36d8ad975feddfb25",
+    "pads.bin": "ee1f7d7c20df9e17a1497827dc5411856fa0b44b308229ab1679e2c9f30637f9",
+    "ram.bin": "d793a2cdee95c4df2218829e5e45c3561504e0ead23f23075739fb7c7ffa4732"
+   }
+  },
+  {
+   "level": "5-3",
+   "inputFrames": 2456,
+   "steppedFrames": 2456,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 28,
+   "nativeSha256": {
+    "initial.ram": "8c8fffc1d568b5f25b9e18be58206943d4505e2c47f50d04fa33e179e2da3e2c",
+    "pads.bin": "0bcba81386cfb5bf22d7d2827e32fc384f8a095e8bbb602f25fd061f03b468ad",
+    "ram.bin": "bc7979e5d5daec316f92470961a538d6eb6aae6521f8d5da032b586c363ea76e"
+   }
+  },
+  {
+   "level": "5-4",
+   "inputFrames": 2672,
+   "steppedFrames": 2672,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 42,
+   "nativeSha256": {
+    "initial.ram": "32e01bfd5d9dd80146c3215020f29fb110e721fd3b2e888f4ff4edb3d39d7093",
+    "pads.bin": "94e743d1ed0be11d3de5108e2df29fdb3316b247867772450b7129cf8804a356",
+    "ram.bin": "da787c1a1afcdf22b72f2643072a6ab94b03b39ce7a5c3d0b935a5bc92fad5f8"
+   }
+  },
+  {
+   "level": "6-1",
+   "inputFrames": 2284,
+   "steppedFrames": 2284,
+   "continuationFrames": 168,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 17,
+   "nativeSha256": {
+    "initial.ram": "b59b9ef3fb6b06b3a70b383587b320085d6008b45fac4344933745349aee25a8",
+    "pads.bin": "27f783a2d69364358184e376473d31f735682bf1bb4fd0cbd952a479521ec61f",
+    "ram.bin": "ad6341cfc58b253b3446d620c774d5decd3f6fc79ca9e59922fea2926ebb145d"
+   }
+  },
+  {
+   "level": "6-2",
+   "inputFrames": 4696,
+   "steppedFrames": 4696,
+   "continuationFrames": 167,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 19,
+   "nativeSha256": {
+    "initial.ram": "651e92b6b58a6ee21630b76c2704af8ada2ac0c4a59f3ce9beb21c5b6965afe3",
+    "pads.bin": "8cee23f53da744145e249d351d8d055ed408b1b3cf79c2ccf7ca4d10f37f591c",
+    "ram.bin": "ea0f476307ecb681925fbd452839a85f5a8f54a646d7010942ebbbfe85d0641e"
+   }
+  },
+  {
+   "level": "6-3",
+   "inputFrames": 3080,
+   "steppedFrames": 3078,
+   "continuationFrames": 0,
+   "unsteppedFrames": 2,
+   "strictStatus": "incomplete",
+   "endReason": "unsupported same-level native mode 3 at frame 3078",
+   "coverageGaps": 19,
+   "nativeSha256": {
+    "initial.ram": "ba25b082139038ca4d77ff0c61363e74f3efb0815143e11b6a8f2c96ed3d2e5d",
+    "pads.bin": "065734d1aa5c655862ebb7af3a3d82e56bd2045b652c7e88991a40607edf07be",
+    "ram.bin": "4cc89d030e3101ab01631f8bcc6e391ae23fa4e60b756f430493dc32c06e4d03"
+   }
+  },
+  {
+   "level": "6-4",
+   "inputFrames": 1644,
+   "steppedFrames": 1640,
+   "continuationFrames": 0,
+   "unsteppedFrames": 4,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 1640",
+   "coverageGaps": 6,
+   "nativeSha256": {
+    "initial.ram": "d30af4b8fef942d4285bc887bcf7dc5a5c6481c98e3dbe8eb14a028dc9d99fb0",
+    "pads.bin": "337fa9c84e150edf2d36992850aa2c74fd59d09a3c4833e8648ee7ba849152a4",
+    "ram.bin": "48cbfe5206efa8463eea327e1882bbe8b584222cc631c2cbd9b2da22c285d277"
+   }
+  },
+  {
+   "level": "7-1",
+   "inputFrames": 3816,
+   "steppedFrames": 3816,
+   "continuationFrames": 165,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 25,
+   "nativeSha256": {
+    "initial.ram": "7864b82cea1a86ca902e7c44ab7a22726ad7b9c1099b5c8c96506575b67b8b2b",
+    "pads.bin": "818842bfe8cc0268ecd911f487274b697efda5a9f851755ec6e5e12e28ce5544",
+    "ram.bin": "4695eef592ca9e0bd21c05aa40c2967402cce6cde75a3b70ad6ee37ae354a0b5"
+   }
+  },
+  {
+   "level": "7-2",
+   "inputFrames": 4568,
+   "steppedFrames": 4565,
+   "continuationFrames": 0,
+   "unsteppedFrames": 3,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 4565",
+   "coverageGaps": 5,
+   "nativeSha256": {
+    "initial.ram": "bfab30a2dd6828973a3d78058334bd0dd9b0a026e142d3a81d0088f47c8a46f0",
+    "pads.bin": "e8004b3cf3b1db02416feef12de96284f97285d787ca036428255f2bd7a067ac",
+    "ram.bin": "c1a8703d40ba20f3afa3a24cbd5b8a86f3c0fc1c0a6fb0e9f914e333633a119d"
+   }
+  },
+  {
+   "level": "7-3",
+   "inputFrames": 3184,
+   "steppedFrames": 3184,
+   "continuationFrames": 165,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 19,
+   "nativeSha256": {
+    "initial.ram": "219d45d83a1cf29afae4498e2c36a3ffc01c9970e3486736abc50fff9576a8bb",
+    "pads.bin": "4776c983920ac2a5f8b2033bb609d0a17529d8077f3833cac2bbbea3c6f3c7ce",
+    "ram.bin": "07d15e07dc4bbd3c93238d7790126527efac54cfeb4d4682c23ec30bdf387748"
+   }
+  },
+  {
+   "level": "7-4",
+   "inputFrames": 24000,
+   "steppedFrames": 24000,
+   "continuationFrames": 0,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 4,
+   "nativeSha256": {
+    "initial.ram": "efe093ed38522b4df866983b5b5f46b883e1d656d407184029174dfc74aab2b2",
+    "pads.bin": "35a927175c8341cf723b2f65dc543145a4784a658451be497deccef1d910b06a",
+    "ram.bin": "fa6a41c5d98184091168f34ce1cdac9c52ca7f3e9c69e20c74605ae9e525b4a4"
+   }
+  },
+  {
+   "level": "8-1",
+   "inputFrames": 3800,
+   "steppedFrames": 3800,
+   "continuationFrames": 166,
+   "unsteppedFrames": 0,
+   "strictStatus": "diverged",
+   "endReason": "end of trace",
+   "coverageGaps": 17,
+   "nativeSha256": {
+    "initial.ram": "4faf1e29c46463e0cc26f3e7f74f7ec382ab83a86405d72b6fa6b0075a9b26cc",
+    "pads.bin": "3572effb4dc2ba88df697ef02133f60b91e3019a81e1be051c1cbd43cbc554cc",
+    "ram.bin": "0a79a09f79b7ace066d413d72b02d05d69aa2de5b42048bbad1fa702661184a2"
+   }
+  },
+  {
+   "level": "8-2",
+   "inputFrames": 2760,
+   "steppedFrames": 2756,
+   "continuationFrames": 0,
+   "unsteppedFrames": 4,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 2756",
+   "coverageGaps": 3,
+   "nativeSha256": {
+    "initial.ram": "9337c5a602420f4cda365cc78f13b37ec87e3f7755050b2a721e8abeacfffe68",
+    "pads.bin": "3cf7b7c3b7ef08d09e5410a8ae8967bbd60056473b5b9a4455e4da567630f4ff",
+    "ram.bin": "55689587f5c530e2cf25c97883eefa6b37e3ebc101d3af8e6573ff1d20520149"
+   }
+  },
+  {
+   "level": "8-3",
+   "inputFrames": 4208,
+   "steppedFrames": 4205,
+   "continuationFrames": 0,
+   "unsteppedFrames": 3,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 4205",
+   "coverageGaps": 1,
+   "nativeSha256": {
+    "initial.ram": "f8de0f80108555f91dd9a4373d9cf92577926f58916a0faf35971ab6acb7cd98",
+    "pads.bin": "90dbf5a63a3e59c909ba1d9a20b8a48d7538666373035963408ef5d519f68a3f",
+    "ram.bin": "9f9ffe84f4b8601e79d79f6dd08522c4ba2aa3917413818b98d935df7a22d484"
+   }
+  },
+  {
+   "level": "8-4",
+   "inputFrames": 15732,
+   "steppedFrames": 15729,
+   "continuationFrames": 0,
+   "unsteppedFrames": 3,
+   "strictStatus": "diverged",
+   "endReason": "unsupported same-level native mode 3 at frame 15729",
+   "coverageGaps": 15,
+   "nativeSha256": {
+    "initial.ram": "fd776646827bcaaa044b620c4a0931babcb6b59d5511318ef56aa7c00e3b56d7",
+    "pads.bin": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+    "ram.bin": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f"
+   }
+  }
+ ]
+}

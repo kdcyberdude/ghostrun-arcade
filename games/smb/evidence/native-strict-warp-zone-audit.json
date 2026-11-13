@@ -1,0 +1,50 @@
+{
+ "schema": "native-strict-warp-zone-audit-v1",
+ "runtimeCommit": "6468725",
+ "reportsSha256": {
+  "smb-strict-warp-before.json": "538d9f81db015dfc4da8c661055105d45c7899c14e5b2857e0e243bc022f0d74",
+  "smb-strict-warp-after.json": "22a80954c775cfd252a24cf67a862498587cb2cd640a32241dfc88018d678a2c"
+ },
+ "legacyFirstsChanged": 0,
+ "strictFirstsChanged": [],
+ "id52DiagnosticsBeforeAfter": [
+  [
+   "1-2",
+   [
+    {
+     "code": "unsupported-native-object",
+     "detail": "native object id 52",
+     "slot": 2,
+     "id": 52,
+     "area": "area-2",
+     "first": 1642,
+     "count": 75
+    }
+   ],
+   []
+  ],
+  [
+   "4-2",
+   [
+    {
+     "code": "unsupported-native-object",
+     "detail": "native object id 52",
+     "slot": 1,
+     "id": 52,
+     "area": "area-3",
+     "first": 2586,
+     "count": 58
+    }
+   ],
+   []
+  ]
+ ],
+ "tests": 1798,
+ "typescript": "pass",
+ "fixture": {
+  "rawRows": 135,
+  "liveRows": 133,
+  "erasureRows": 2
+ },
+ "limits": "New object coverage only; no runtime or picture parity claim. Other unsupported controllers remain explicit."
+}

@@ -46,6 +46,19 @@
     100,
     0
   ],
+  "silence": {
+    "headerAddress": 63832,
+    "header": [
+      8,
+      28,
+      250,
+      0
+    ],
+    "dataAddress": 64028,
+    "notes": [
+      0
+    ]
+  },
   "lengths": [
     36,
     2,

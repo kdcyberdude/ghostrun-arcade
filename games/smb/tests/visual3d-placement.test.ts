@@ -36,3 +36,10 @@ test('enemy shell/walking state mismatch is reported even when position and fami
  const p={id:'enemy#0',kind:'koopa',x:70,y:150,w:16,h:16,state:'shell'};
  assert.equal(compareFrame({...frame,objects2d:[p],objects3d:[{...p,id:'koopa@0',state:'normal'}]}).issues[0]?.type,'object-state');
 });
+
+test('native actor identity prevents adjacent Cheeps swapping through padded-foot nearest matching',()=>{
+ const a=[{id:'enemy#10',sourceId:'enemy#10',kind:'cheep',x:147,y:33,w:16,h:16},{id:'enemy#11',sourceId:'enemy#11',kind:'cheep',x:143,y:32,w:16,h:16}],b=[{id:'cheep@0',sourceId:'enemy#10',kind:'cheep',x:141.615,y:32.196,w:22.599,h:14.807},{id:'cheep@1',sourceId:'enemy#11',kind:'cheep',x:137.546,y:31.042,w:22.553,h:14.873}];
+ assert.deepEqual(compareFrame({...frame,objects2d:a,objects3d:b}).issues,[]);
+ assert.equal(compareFrame({...frame,objects2d:a.map(({sourceId,...o})=>o),objects3d:b.map(({sourceId,...o})=>o)}).issues[0]?.type,'object-offset');
+ b[0].x-=10;const broken=compareFrame({...frame,objects2d:a,objects3d:b});assert.equal(broken.issues[0]?.type,'object-offset');assert.match(broken.issues[0]?.what??'',/enemy#10/);
+});

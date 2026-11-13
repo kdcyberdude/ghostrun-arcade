@@ -1,22 +1,169 @@
 {
-  "evidence": "Stop_Frenzy area objects (row $0D, type $4A), decoded from L_GroundArea3, L_GroundArea15 and L_GroundArea19 of the native ROM: 4-1 page $0D column $0E; 6-1 page $0B column $08; 8-2 page $03 column $0E. Positions are level data, not camera thresholds fitted to a replay. Source: https://github.com/MrWint/smb-dis/blob/master/smbdis.asm (AreaFrenzy, AreaParserTaskHandler, EndFrenzy). Motion/eggs: src/lakitu.ts.",
+  "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "evidence": "Native ProcessEnemyData/InitLakitu ROM id17 records, decoded page/row/offset from EnemyData pointers and bound through native block-buffer area geometry. EndFrenzy columns come from the independently decoded native area controls. Source coordinates and stream order, never measured spawn camera/frame thresholds.",
+  "streams": [
+    {
+      "pointer": 40603,
+      "bytes": [
+        46,
+        194,
+        102,
+        226,
+        17,
+        15,
+        7,
+        2,
+        17,
+        15,
+        12,
+        18,
+        17,
+        255
+      ]
+    },
+    {
+      "pointer": 40945,
+      "bytes": [
+        15,
+        2,
+        2,
+        17,
+        15,
+        7,
+        2,
+        17,
+        255
+      ]
+    },
+    {
+      "pointer": 41056,
+      "bytes": [
+        41,
+        142,
+        82,
+        17,
+        131,
+        14,
+        15,
+        3,
+        155,
+        14,
+        43,
+        142,
+        91,
+        14,
+        203,
+        142,
+        251,
+        14,
+        251,
+        130,
+        155,
+        130,
+        187,
+        2,
+        254,
+        66,
+        232,
+        187,
+        142,
+        15,
+        10,
+        171,
+        14,
+        203,
+        14,
+        249,
+        14,
+        136,
+        134,
+        166,
+        6,
+        219,
+        2,
+        182,
+        142,
+        255
+      ]
+    }
+  ],
   "levels": [
     {
       "level": "4-1",
       "area": "main",
       "x": 480,
+      "y": 40,
+      "pointer": 40603,
+      "offset": 3,
+      "bytes": [
+        226,
+        17
+      ],
+      "stopFrenzyX": 3552
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "x": 1792,
+      "y": 40,
+      "pointer": 40603,
+      "offset": 7,
+      "bytes": [
+        2,
+        17
+      ],
+      "stopFrenzyX": 3552
+    },
+    {
+      "level": "4-1",
+      "area": "main",
+      "x": 3088,
+      "y": 40,
+      "pointer": 40603,
+      "offset": 11,
+      "bytes": [
+        18,
+        17
+      ],
       "stopFrenzyX": 3552
     },
     {
       "level": "6-1",
       "area": "main",
       "x": 512,
+      "y": 40,
+      "pointer": 40945,
+      "offset": 2,
+      "bytes": [
+        2,
+        17
+      ],
+      "stopFrenzyX": 2944
+    },
+    {
+      "level": "6-1",
+      "area": "main",
+      "x": 1792,
+      "y": 40,
+      "pointer": 40945,
+      "offset": 6,
+      "bytes": [
+        2,
+        17
+      ],
       "stopFrenzyX": 2944
     },
     {
       "level": "8-2",
       "area": "main",
       "x": 336,
+      "y": 40,
+      "pointer": 41056,
+      "offset": 2,
+      "bytes": [
+        82,
+        17
+      ],
       "stopFrenzyX": 992
     }
   ]

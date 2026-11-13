@@ -8,6 +8,8 @@ import {nativePlatformObject,nativePlatformSpawnCamera} from '../src/platform-mo
 // crosses the x 1504 platform's spawn (1202); the platform waits off screen, is still blocked when it would be on screen, and never appears (rows 560-760).
 function run(busy:boolean){
  const level=structuredClone(observedLevels().find(item=>item.id==='5-3')!);const sim=new Simulation([level]);sim.reset(true);
+ // This isolated compatibility allocator fixture replaces the native actor bank.
+ (sim as any).placedStream=undefined;
  const walker=sim.enemies.find(e=>e.kind==='goomba')!;
  sim.enemies=busy?[1290,1300,1310,1320].map(x=>({...walker,x,originX:x,active:true,dead:0,squashed:false,vx:0})):[];
  sim.camera=1180;Object.assign(sim.player,{x:1180+112,y:100,vx:3,vy:0,grounded:false});

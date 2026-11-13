@@ -1,8 +1,10 @@
 // HUD and text screens: drawn at the original 256 x 240 layout positions into a 2D canvas (OFL pixel font), then composited over the finished 3D frame.
 import * as THREE from 'three';
 import fontUrl from '@fontsource/press-start-2p/files/press-start-2p-latin-400-normal.woff2?url';
-import {Simulation,TRANSITIONS,CASTLE_COMPLETION,FLAG_COMPLETION} from '../simulation.js';
+import {Simulation,TRANSITIONS,CASTLE_COMPLETION} from '../simulation.js';
 import {NES_W,NES_H} from './coords.js';
+import {nativeFlagSprites} from '../native-flag-picture.js';
+import {nativeScreenPicture} from '../native-screen-picture.js';
 import {trackedLoad} from './loading.js';
 export class Hud{
  private canvas=document.createElement('canvas');private ctx:CanvasRenderingContext2D;private texture:THREE.CanvasTexture;private material:THREE.MeshBasicMaterial;
@@ -22,15 +24,16 @@ export class Hud{
  private coin(x:number,y:number){const c=this.ctx,g=c.createLinearGradient(x,y,x+5,y+9);g.addColorStop(0,'#ffe27a');g.addColorStop(1,'#d98a00');c.fillStyle=g;c.beginPath();c.ellipse(x+2.5,y+4.5,2.6,4.4,0,0,7);c.fill();c.strokeStyle='#8a4a00';c.lineWidth=0.6;c.stroke();}
  /** Returns true when anything is drawn (so the caller can skip the overlay pass for an empty HUD). */
  draw(s:Simulation,showHud:boolean){
-  const player=s.currentPlayer?'LUIGI':'MARIO';
+  const player=s.currentPlayer?'LUIGI':'MARIO',screen=s.nativeScreen?nativeScreenPicture(s.nativeScreen,s.area.theme==='water'):undefined;
   const introLoading=s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame);
   const lines:string[]=[];
-  const hudOn=showHud&&!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing;
-  const timeOn=s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;
+  const hudOn=showHud&&(screen?screen.hud:!s.pipeLoading&&!s.pipeClearing&&!introLoading&&!s.gameoverClosing);
+  const timeOn=!(screen&&s.nativeScreen!.engine<8)&&s.phase!=='title'&&s.phase!=='intro'&&s.phase!=='gameover'&&!s.vineEntryStage&&!s.area.autoWalk&&!s.entryTimerHidden&&!s.pipePreviewArea;
   if(hudOn)lines.push(`H|${player}|${String(s.score).padStart(6,'0')}|${String(s.coins).padStart(2,'0')}|${s.level.id}|${timeOn?String(Math.max(0,s.time)).padStart(3,'0'):''}`);
   if(s.phase==='title')lines.push(`T|${s.twoPlayer?1:0}`);
-  if(s.phase==='intro'&&!introLoading)lines.push(`I|${s.level.id}|${s.lives}`);
-  if(s.phase==='gameover'&&!s.gameoverClosing)lines.push(`G|${s.twoPlayer?player:''}`);
+  if(screen?screen.message==='lives':s.phase==='intro'&&!introLoading)lines.push(`I|${s.level.id}|${s.lives}`);
+  if(screen?.message==='time-up')lines.push('U');
+  if(!screen&&s.phase==='gameover'&&!s.gameoverClosing)lines.push(`G|${s.twoPlayer?player:''}`);
   const exit=s.area.exit;let rescue='';
   if(exit?.kind==='axe'&&exit.retainerX!==undefined&&!['intro','gameover','title'].includes(s.phase)&&(s.castleStage==='message'||s.phase==='ending')){
    const elapsed=s.phase==='ending'?s.phaseFrame:s.phaseFrame-s.castleArrivalFrame;
@@ -40,17 +43,18 @@ export class Hud{
   }
   if(rescue)lines.push(rescue);
   // Level text that scrolls with the world (WELCOME TO WARP ZONE! and the world numbers over the warp pipes), as the 2D picture draws it.
-  const world=!['title','intro','gameover'].includes(s.phase)&&!s.pipeLoading&&!s.pipeClearing,cam=Math.floor(s.camera);
+  const world=screen?screen.world:!['title','intro','gameover'].includes(s.phase)&&!s.pipeLoading&&!s.pipeClearing,cam=Math.floor(s.camera);
   if(world)for(const o of [...s.area.overlays??[],...(s.warpZoneActive?s.area.warpZone?.overlays??[]:[])])if(o.x-cam>-200&&o.x-cam<256)lines.push(`O|${o.text}|${o.x-cam}|${o.y}`);
-  if(world&&s.phase==='flag'&&exit?.kind==='flag'&&s.flagBonus>0)lines.push(`P|${s.flagBonus}|${exit.x+FLAG_COMPLETION.scorePopupXOffset-cam}|${FLAG_COMPLETION.scorePopupYPlusFlagY-s.flagTop}`);
-  if(world)for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
-  if(hudOn||s.phase==='flag')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
+  if(world&&s.phase==='flag'&&exit?.kind==='flag'&&s.flagBonus>0){const score=nativeFlagSprites(s.specialSlot5,{y:s.flagNumber.y,score:s.flagBonus},cam)[3];if(score)lines.push(`P|${s.flagBonus}|${score.x}|${score.y}`);}
+  if(world&&s.spritePictureOwner==='engine')for(const item of s.items)if(item.kind==='coin'&&(item.nativeCoin?.state??0)>=2)lines.push(`P|200|${Math.floor(item.x-cam)&255}|${(Math.floor(item.y)&255)+1}`);
+  if((hudOn||s.phase==='flag')&&s.spritePictureOwner==='engine')for(const pu of s.popups)lines.push(`P|${pu.value}|${Math.round(pu.x)}|${Math.round(pu.y)}`);
   const key=lines.join('~');if(key===this.last)return key!=='';this.last=key;
   const c=this.ctx;c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,this.canvas.width,this.canvas.height);c.setTransform(this.scale,0,0,this.scale,0,0);
   for(const l of lines){const [t,...a]=l.split('|');
    if(t==='H'){this.text(a[0],24,16);this.text(a[1],24,24);this.coin(89,23);this.text('×'+a[2],96,24);this.text('WORLD',144,16);this.text(a[3],152,24);this.text('TIME',200,16);if(a[4])this.text(a[4],208,24);}
    if(t==='T'){this.centered('SUPER MARIO BROS.',64,'#ffd84a',10);this.centered('1 PLAYER GAME',144);this.centered('2 PLAYER GAME',160);this.text('▶',72,a[0]==='1'?160:144,'#ffd84a');this.centered('©1985 NINTENDO',120,'#ffffff');this.centered('TOP- 000000',184);}
    if(t==='I'){this.text('WORLD '+a[0],88,80);this.text('×  '+a[1],120,112);}
+   if(t==='U')this.centered('TIME UP',128);
    if(t==='G'){if(a[0])this.text(a[0],104,112);this.text('GAME OVER',88,128);}
    if(t==='O')this.text(a[0],Number(a[1]),Number(a[2]));
    if(t==='P')this.text(a[0]==='1up'?'1UP':a[0],Number(a[1]),Number(a[2]),'#ffffff',6);
