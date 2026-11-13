@@ -2080,7 +2080,7 @@ export class Simulation {
    const scroll=Math.floor(p.x)-Math.floor(oldX),screenX=Math.floor(oldX)-this.camera;
    this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
    if(!this.flagScrollLocked&&this.sideCollisionTimer===0&&screenX>=80&&scroll>0)this.camera+=screenX>=112||scroll<2?scroll:scroll-1;
-   this.camera=Math.min(this.camera,this.area.width-256);
+   // ScrollHandler has no compiled-area width bound; PlayerEndLevel releases ScrollLock.
    this.wallBackOut=false;this.motor.clearContacts();this.movePlayerX(motionOf(this.motor.speed),this.height,false);this.footPushed=false;
    if(this.wallSpeed!==undefined){this.motor.contact(1,true);p.vx=this.motor.speed/4096;this.flagInside=true;this.playerBackgroundPriority=true;}
    if(this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
