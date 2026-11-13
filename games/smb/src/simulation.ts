@@ -1256,7 +1256,7 @@ export class Simulation {
    if(entry.timer>0){entry.timer--;continue;}
    entry.timer=BULLETS.cannonRestart;
    const {x,y}=entry.cannon;
-   this.spawnNativeBullet(x,y+16,this.player.x<x?-1:1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,age:1,bbCheck:true});used.add(slot); // made after this frame's enemy step: its spawn row is done
+   this.spawnNativeBullet(x+this.slotSub[slot]/256,y+16,this.player.x<x?-1:1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,age:1,bbCheck:true,graphicsVisible:false});used.add(slot); // made after this frame's enemy step: its spawn row is done
   }
  }
  // BulletBillHandler, state 0 (the frame after the cannon made it): erased when off screen or Mario is close, else it starts flying away from him (and moves this frame).
