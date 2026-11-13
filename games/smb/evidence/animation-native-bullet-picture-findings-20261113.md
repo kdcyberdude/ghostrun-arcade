@@ -1,0 +1,10 @@
+Native Bullet Bill pictures
+===========================
+
+CheckForBulletBillCV decrements the saved graphicsY for cannon ID51 and sets sprite palette3, with background priority while EnemyFrameTimer ($078A+slot) is nonzero. ID8 uses RunNormalEnemies' earlier picture position. Both bullet variants bypass vertical-flip and symmetry postprocessing in DrawEnemyObject, including defeated states. MovingDir2 flips horizontally; MovingDir1 preserves the raw table direction. Palette3 comes from the area's native observed palette, replacing the previous opening-shot level conditions.
+
+The shared nativeBulletPicture helper exposes these position, priority and flip rules. The native OAM fixture checks4,479 fully visible pictures and retains eight cases, including both facing directions, timer active/expired, both handler variants and defeated states. It compares the four opaque body sprites. The two transparent CHRfc sprites in the top row still occupy native OAM slots; future scanline budgeting must reserve them even though this opaque consumer emits only the body. A frenzy stomp may reuse that transparent row for FloateyNumbersRoutine's number sprites.
+
+All1,905 tests and TypeScript pass. Regenerated excerpts and all256 first fields remain identical to211ec3b. The fair32-level sampled gate reduces aligned104,976→96,454, whole118,547→110,025 and field118,008→109,486; HUD539 remains unchanged.
+
+One individual frame increases by five pixels:5-2 frame690. Native evidence identifies an earlier, pre-existing cannon position divergence: ID51 slot2 is born at644 and accepted at645, while the remake creates that shot at654. At689 native x339 and remake x324.5 share camera306. Correct artwork at the wrong position happens to add five differing pixels. The legacy NATIVE_ENEMY_KIND mapping currently omits51, so its otherwise unchanged first-field table does not expose that earlier cannon divergence. The native birth and position evidence has been sent to the cannon physics owner; this is an explicit coverage/physics gap, not a per-level picture exception.
