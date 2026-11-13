@@ -19,6 +19,7 @@ export class Props{
   flag:std(0xf2f2ee,0.8,0,{side:THREE.DoubleSide}),star:std(0xff4a3a,0.5),spark:std(0xffffff,0.3,0,{emissive:0xffd070,emissiveIntensity:3}),toad:std(0xf0f0f0,0.6),toadSpot:std(0xd82a2a,0.6)};
  sync(s:Simulation){
   for(const l of this.pools.values())for(const o of l)o.visible=false;this.used.clear();
+  if(s.spritePictureOwner!=='empty'&&s.spritePictureOwner!=='victory'){
   // DrawBlock writes four independent OAM pieces. Clipped GLB quarters preserve its byte wrapping and column hiding.
   for(const b of s.blockGraphics??[])for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){
    const col=((p.x-((Math.floor(b.x)-Math.floor(s.camera))&255))&255)/8,row=(((p.y-1)-(b.pictureY!&255))&255)/8,used=b.metatile===196,base=used?'block_used':'block_brick';
@@ -48,10 +49,11 @@ export class Props{
    o.position.set((v.x+4)/16,(240-v.baseY)/16,0);o.scale.set(1,h,1);}
   const flag=s.castleFlag;if(flag){const o=this.take('castleFlag',()=>{const g=new THREE.Group();const c=new THREE.Mesh(new THREE.PlaneGeometry(0.9,0.7),this.mats.flag);g.add(c);const st=new THREE.Mesh(new THREE.SphereGeometry(0.15,12,8),this.mats.star);st.position.z=0.02;g.add(st);return g;});o.position.set((flag.x+8)/16,(232-flag.y)/16,-0.4);o.rotation.y=Math.sin(s.frame*0.1)*0.2;}
   for(const fw of s.flagFireworks){const o=this.take('spark',()=>new THREE.Mesh(new THREE.IcosahedronGeometry(0.5,2),this.mats.spark));o.position.set((fw.x+8)/16,(232-fw.y)/16,0.5);o.scale.setScalar(0.4+0.4*(fw.phase??0));}
-  const exit=s.area.exit;if(exit?.kind==='axe'&&exit.retainerX!==undefined&&!['intro','gameover','title'].includes(s.phase)&&!this.kit.has(s.level.id==='8-4'?'princess':'toad')){
+  }
+  const picture=s.castleRetainer;if(picture?.graphicsVisible&&!this.kit.has(s.level.id==='8-4'?'princess':'toad')){
    const o=this.take('retainer',()=>{const g=new THREE.Group();const b=new THREE.Mesh(new THREE.CapsuleGeometry(0.28,0.4,6,12),this.mats.toad);b.position.y=0.5;g.add(b);
     const cap=new THREE.Mesh(new THREE.SphereGeometry(0.5,20,14,0,Math.PI*2,0,Math.PI/2),this.mats.toad);cap.position.y=1.05;g.add(cap);
     for(const a of [-0.9,0,0.9]){const sp=new THREE.Mesh(new THREE.SphereGeometry(0.16,12,8),this.mats.toadSpot);sp.position.set(Math.sin(a)*0.42,1.25,Math.cos(a)*0.42);sp.scale.set(1,0.6,1);g.add(sp);}return g;});
-   o.position.set((exit.retainerX+8)/16,(240-209)/16,0);o.rotation.y=-0.5;}
+   o.position.set((picture.x+8)/16,(215-picture.y)/16,0);o.rotation.y=-0.5;}
  }
 }

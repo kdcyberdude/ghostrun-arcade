@@ -2,6 +2,7 @@ import {nativePowerupEmergence,nativePowerupContact} from './native-powerup.js';
 import {nativeAreaBindings,nativePhysicalAreas} from './native-area-catalog.js';
 import {initializeNativeGameTimer,runNativeGameTimer,tickNativeGameTimer} from './native-game-timer.js';
 import {nativeVerticalPipe,nativeSidePipe,nativeSidePipeTimer,nativeSavedScroll} from './native-pipe.js';
+import {NativeCastlePictures} from './native-castle-picture.js';
 import {NativePalette} from './native-palette.js';
 import {nativeIntervalStep,nativeStarMusic,nativeStarPalette,NATIVE_STAR_PICKUP} from './native-interval.js';
 import {nativeSpring,advanceNativeSpring,type NativeSpring} from './native-spring.js';
@@ -208,6 +209,7 @@ export class Simulation {
  private sideCollisionTimer=0;private platformScroll=0;private blockBounceTimer=0;private platformEjection=0;private slotReleaseFrame=[-1,-1,-1,-1,-1];
  private stompChain=0;
  /** Native AreaParserTaskNum / ScrollThirtyTwo and buffer2 VRAM writes. */
+ private castlePictures=new NativeCastlePictures('','');
  private areaControls=new NativeAreaControls('','');private parserClock=new NativeParserClock();private parserVramBusy=false;private parserLoaderWasBlocked=false;
  springSlots=new Map<SpringSpec,number>();private springLoadColumns=0;
  get parserColumnX(){return this.areaControls.column*16;}
@@ -328,7 +330,8 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  for(const object of this.areaControls.castleGraphics)if(object.column>=0&&object.column*16<area.width)this.blockBackground.set(`${object.column},${object.row}`,object.id);
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   const waterSource=nativeWaterStreams.streams.find(s=>s.areas.some(a=>a.level===this.level.id&&a.area===area.id));this.waterEnemyStream=waterSource?new NativeWaterStream(waterSource.bytes):undefined;this.waterSlotPositions=Array.from({length:6},()=>({x:0,y:0}));
   this.piranhaColumns=new PiranhaColumns(this.camera);
@@ -455,7 +458,7 @@ export class Simulation {
    return;
   }
   if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
-  if((this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
+  if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.updateWorldInPitFall();
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath)this.emergeFrozenNativePowerups();
@@ -1864,11 +1867,16 @@ export class Simulation {
   }
  }
  private beginCastle(){
+  if((this.random.frame&7)===0)this.colorRotations--; // GameCoreRoutine skips the GameEngine tail on axe contact.
   this.paletteRemove=true;this.phase='castle';this.phaseFrame=0;this.flagBonus=0;
   this.bridge=[...this.tiles].filter(([,id])=>id===137).sort((a,b)=>Number(b[0].split(',')[0])-Number(a[0].split(',')[0])).map(([key])=>key);
   this.castleStage='bridge';this.emit('command_silence');this.beginNativeVictory();
  }
+ get spritePictureOwner(){return this.castlePictures.owner;}
+ get castleRetainer(){return this.castlePictures.retainer;}
+ enemyPictureShown(e:Enemy){return this.spritePictureOwner==='engine'||this.spritePictureOwner==='victory'&&e===this.victoryBoss;}
  private beginNativeVictory(){
+  this.castlePictures.begin();
   const boss=this.enemies.find(e=>e.kind==='bowser'&&e.active),body=boss?.nativeBowser;
   this.victoryBoss=boss;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase='axe';
   const task={bridge:0,fall:0,walk:2,message:3}[this.castleStage];
@@ -1877,10 +1885,10 @@ export class Simulation {
    boss:body?{...body.move,y:body.y}:{y:Math.floor(boss?.y??256)-32,speed:0,force:0,fraction:0,timer:0}};
   if(task===0){this.motor.speed=24*256+(this.motor.speed&255);this.player.vx=this.motor.speed/4096;}
  }
- get castleText(){return this.nativeVictory?nativeVictoryText(this.nativeVictory,this.victoryMessages,this.currentPlayer):undefined;}
+ get castleText(){return this.nativeVictory?nativeVictoryText(this.nativeVictory,this.victoryPending<0?this.victoryMessages:[...this.victoryMessages,this.victoryPending],this.currentPlayer):undefined;}
  private updateCastle(){
   if(!this.nativeVictory)this.beginNativeVictory();
-  const n=this.nativeVictory!,p=this.player,oldTask=n.task;
+  const n=this.nativeVictory!,p=this.player,oldTask=n.task,previousCamera=this.camera;
   if(this.victoryPending>=0){this.victoryMessages.push(this.victoryPending);this.victoryPending=-1;}
   if(this.victoryErase){
    const exit=this.area.exit!,kind=this.victoryErase;this.victoryErase=undefined;
@@ -1908,13 +1916,16 @@ export class Simulation {
     return {playerX:Math.floor(p.x),axe};
    }});
   this.camera=result.camera;
+  // PlayerVictoryWalk calls UpdScrollVar before VictoryMode's slot0 enemy pass.
+  if(this.camera!==previousCamera)this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,false));
   this.updateLocomotionPose(poseGround,poseAbsolute,false,new Set<Button>(poseWalk?['right']:[]));
-  if(result.remove>=0)this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';
+  if(result.remove>=0){this.victoryErase=result.remove===0?'axe':result.remove===1?'chain':'bridge';const object=this.areaControls.castleGraphics.find(o=>o.erase===result.remove);if(object)this.blockBackground.set(`${object.column},${object.row}`,null);}
   if(this.victoryBoss){const e=this.victoryBoss;e.y=n.boss.y+32;e.vy=n.boss.speed+n.boss.force/256;delete e.graphics;
    if(e.nativeBowser){e.nativeBowser.y=n.boss.y;e.nativeBowser.move={...n.boss};e.nativeBowser.controls=n.controls;e.nativeBowser.feet=n.feet;}
    if(result.fall){e.dead=1;this.emit('sfx_bowser_falls');}
   }
   if(result.kill){n.bossState=0;this.clearVictoryEnemyBank();this.victoryBoss=undefined;this.emit('command_silence');}
+  this.castlePictures.step(n.task,this.camera,this.parserClock.blocked,!this.enemies.some(e=>e.active&&e.enemySlot===0));
   if(result.music)this.emit('event_castle_clear');
   if(result.message>=0){this.victoryPending=result.message;if(Number(this.level.id[0])===8&&result.message===3)this.emit('event_victory');}
   this.castleStage=n.task===0?(n.bossState&64?'fall':'bridge'):n.task<2?'fall':n.task===2?'walk':'message';

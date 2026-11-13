@@ -46,8 +46,8 @@ export class Entities{
   if(s.frame<this.lastFrame){this.walkPhase=0;this.lastX=NaN;this.marioYaw=yawFor(s.player.facing);this.enemyYaw=new WeakMap();}
   const advanced=s.frame!==this.lastFrame;
   this.player(s,advanced);
-  for(const e of s.enemies)if(e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
-  for(const i of s.items)if(itemShown(i))this.item(i,s);
+  for(const e of s.enemies)if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&enemyPicture(e).dead<90)this.enemy(e,s);
+  if(s.spritePictureOwner==='engine')for(const i of s.items)if(itemShown(i))this.item(i,s);
   this.retainer(s);
   for(const p of this.pools.values())p.end();
   this.lastFrame=s.frame;
@@ -134,10 +134,10 @@ export class Entities{
   }
  }
  private retainer(s:Simulation){
-  const exit=s.area.exit;if(exit?.kind!=='axe'||exit.retainerX===undefined||['intro','gameover','title'].includes(s.phase))return;
+  const picture=s.castleRetainer;if(!picture?.graphicsVisible)return;
   const name=s.level.id==='8-4'?'princess':'toad',actor=this.pool(name).take();if(!actor)return;
   if(name==='toad')actor.recolor('M_Vest',PALETTE.mario[0]);
-  actor.root.position.set((exit.retainerX+8)/16,(240-209)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
+  actor.root.position.set((picture.x+8)/16,(215-picture.y)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
  }
  private item(i:Item,s:Simulation){
   const pictureX=i.nativeCoin||i.nativeHammer?Math.floor(s.camera)+(Math.floor(i.x-s.camera)&255):i.x;
@@ -152,6 +152,7 @@ export class Entities{
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
   a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
+  if(i.kind==='flame')a.root.position.set((pictureX+12)/16,(236-pictureY)/16,0);
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}
   a.pose(i.kind==='star'||i.kind==='fireball'||i.kind==='hammer'?'spin':i.kind==='flower'?'sway':'idle',i.kind==='hammer'?(i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4)/4*a.duration('spin'):i.age/60,s.frame);
  }
