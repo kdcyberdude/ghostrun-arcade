@@ -1,0 +1,5 @@
+{
+ "schema":"native-water-streams-v1",
+ "source":"Native PRG0 E_WaterArea2 at CPU $a171. Raw bytes preserve rowE controls, page-select bits, hard-mode barriers and stream order; no sighting-derived placement or timing.",
+ "streams":[{"pointer":41329,"bytes":[15,1,46,37,43,46,37,75,78,37,203,107,7,151,71,233,135,71,199,122,7,214,199,120,7,56,135,171,71,227,7,155,135,15,9,104,71,219,199,59,199,255],"areas":[{"level":"2-2","area":"area-2"},{"level":"7-2","area":"area-4"}]}]
+}

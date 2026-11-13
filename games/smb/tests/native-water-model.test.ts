@@ -13,7 +13,7 @@ type Seed={x:number;sub:number;y:number;vx:number;S:number;F:number;D:number;T:n
 function swimmer(id:string,area:string,s:Seed,previous:Button[],now:Button[],parity=0){
  const level=structuredClone(observedLevels().find(l=>l.id===id)!);level.main=area;
  const water=level.areas.find(a=>a.id===area)!;water.enemies=[];water.waterEntryFall=false;water.entryFall=undefined;
- const sim=new Simulation([level]) as any;sim.reset(true);sim.step([],1);
+ const sim=new Simulation([level]) as any;sim.reset(true);sim.waterEnemyStream=undefined;sim.step([],1);
  if((sim.frame+parity)%2)sim.step([],1);
  sim.player.x=s.x+s.sub/256;sim.player.y=s.y+32;sim.player.vx=s.vx/4096;sim.player.grounded=false;sim.camera=Math.max(0,s.x-100);
  sim.seedSwim({speed:s.S,force:s.F,frac:s.D,rise:s.fall??10,fall:s.fall??10,timer:s.T});

@@ -4,10 +4,11 @@ import fs from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
-import type {Button} from '../src/types.js';
+import type {Button,SpringSpec} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
 import springEvents from './fixtures/native-spring-events.json';
+import springSlots from './fixtures/native-spring-slot-events.json';
 import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
@@ -162,6 +163,15 @@ test('native engine3 retains X speed and saved scroll while Y and enemies contin
   assert.equal(sim.playerXScroll,3);assert.equal(sim.pipeTimer,48-tick);
   if(frame===414){const e=sim.enemies.find((e:any)=>e.active&&!e.dead&&!e.slotFreed&&e.enemySlot===0);assert.ok(e);assert.equal(e.x,769.5,'enemy world continues during pipe entry');}
  },'mood0-3d43-entry0000');
+});
+
+
+test('6-3 Spring allocations include the native checkpoint rendering pass before engine7 frenzy creation',()=>{
+ replay('6-3',2575,(sim,frame)=>{
+  const event=springSlots.births.find(e=>e.level==='6-3'&&e.frame===frame);
+  if(event){const spring=sim.area.springs.find((s:SpringSpec)=>s.nativeColumn===event.after.x);assert.ok(spring);assert.equal(sim.springSlots.get(spring),event.slot);assert.equal(sim.parserColumnX,event.column[1]);}
+  if(frame===2574||frame===2575){const bullet=sim.enemies.find((e:any)=>e.active&&e.frenzy&&e.enemySlot===1);assert.ok(bullet);assert.equal(bullet.x,frame===2574?1823:1821.5);assert.equal(bullet.y,192);assert.equal(bullet.graphicsVisible,frame===2575);assert.equal(sim.swimBag,64);}
+ });
 });
 
 test('a solid tree underside stops Mario without creating a native bump marker or killing the Koopa above',()=>{

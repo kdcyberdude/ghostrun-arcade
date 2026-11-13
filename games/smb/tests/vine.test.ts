@@ -76,9 +76,9 @@ test('an explicit sky entrance climbs to its geometric release height before acc
 test('crossing the main-vine automatic-climb bound continues under neutral or down until the exit boundary',()=>{
  const vine={...stem,topY:-24,initialHeight:168,autoClimbFeetY:64,transitionFeetY:0,to:'sky',spawn:[64,240] as [number,number]};
  const sim=game([area({spawn:[73,70],vines:[vine]}),area({id:'sky',spawn:[64,240]})]);
- sim.step(['up'],12);assert.equal(sim.area.id,'main');assert.ok(sim.player.y<64);const y=sim.player.y,time=sim.time,timerFrames=sim.timerFrames;
+ sim.step(['up'],12);assert.equal(sim.area.id,'main');assert.ok(sim.player.y<64);const y=sim.player.y,time=sim.time;
  sim.step(['down','right','a'],20);assert.ok(sim.player.y<y-15);assert.equal(sim.player.climbing,true);assert.equal(sim.area.id,'main');
- assert.equal(sim.time,time);assert.equal(sim.timerFrames,timerFrames);
+ assert.equal(sim.time,time);assert.equal(sim.timerFrames,24,'NMI reaches pending0 while the vine engine suppresses RunGameTimer');
  sim.step([],60);assert.equal(sim.area.id,'sky');assert.equal(sim.lives,3);
 });
 
@@ -94,7 +94,7 @@ test('a zero-height sky vine grows before emergence, then climbs, passes right a
   sawFall ||= sim.vineEntryStage==='fall'&&sim.player.y>184&&sim.player.y<208;
  }
  assert.ok(sawRightSide);assert.ok(sawFall);assert.equal(sim.vineEntryStage,undefined);assert.equal(sim.player.x,75);assert.equal(sim.player.y,208);assert.equal(sim.player.grounded,true);assert.equal(sim.lives,3);
- assert.equal(sim.time,400);assert.equal(sim.timerFrames,0);sim.step([],1);assert.equal(sim.timerFrames,1);
+ assert.equal(sim.time,399,'PlayerRdy consumes the pending timer on the release row');assert.equal(sim.timerFrames,0);sim.step([],1);assert.equal(sim.timerFrames,1);
 });
 
 test('the automatic sky landing requires actual cloud-floor collision',()=>{

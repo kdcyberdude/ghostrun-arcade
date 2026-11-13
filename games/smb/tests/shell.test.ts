@@ -30,10 +30,11 @@ test('ordinary stomp creates an idle shell and side contact awards400 before it 
  const x=shell.x;sim.step(['right','b'],8);assert.equal(shell.x,x+24);assert.equal(sim.phase,'play');
 });
 
-test('a stationary shell wakes at the320-frame candidate while Mario waits safely beside it',()=>{
+test('a stationary shell wakes on native interval expiry while Mario waits safely beside it',()=>{
  const sim=fixture(),shell=stompAndMoveAside(sim);
- sim.step([],319-shell.shellAge!);assert.equal(shell.shell,true);assert.equal(shell.movingShell,false);
- sim.step([],1);assert.equal(shell.shell,false);assert.equal(shell.kind,'koopa');assert.equal(shell.vx,-0.5);
+ const remaining=shell.shellTimer!*21-20+sim.intervalControl,x=shell.x;
+ sim.step([],remaining-1);assert.equal(shell.shell,true);assert.equal(shell.movingShell,false);
+ sim.step([],1);assert.equal(shell.shell,false);assert.equal(shell.kind,'koopa');assert.equal(shell.vx,(sim.random.frame&1)?-0.5:0.5);assert.equal(shell.x,x);
 });
 
 // victims spaced so the five native slots never run out (with all slots busy a list object is never made)
