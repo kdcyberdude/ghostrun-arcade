@@ -1,0 +1,25 @@
+{
+ "schema": "native-flag-spring-erasure-audit-v1",
+ "runtimeBaselineCommit": "521a59f",
+ "legacyFirstsChanged": 0,
+ "strictFirstsChanged": [
+  [
+   "2-1",
+   "extra",
+   2203,
+   null
+  ]
+ ],
+ "reportsSha256": {
+  "smb-strict-spring-after.json": "1ad36717808d2c96c21b81179e9d8013ddc3a6b037cc762d42bd9b9e668f9535",
+  "smb-flag-spring-after.json": "02140252fc908bd2159cef5a0a4dfba2a1117166182fb1dab9ebb32e26d94a1c"
+ },
+ "validation": {
+  "tests": 1803,
+  "typescript": "pass",
+  "continuousSourceFrames": 2789,
+  "nativeErasureFrame": 2203,
+  "initialRamSha256": "9a6bfa0e95127a661bb97f235b588d402c03c34cbb656f3f65a170878d8e503f"
+ },
+ "limits": "Only spring lifetime during flag play; broader earlier gameplay divergences and independent7-1 spring ownership gaps remain visible."
+}

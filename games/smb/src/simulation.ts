@@ -1889,6 +1889,7 @@ export class Simulation {
   const flag=this.nativeCastleFlag;if(!flag)return;
   let frenzy=this.specialSlot5.frenzyBuffer;
   for(let slot=0;slot<6;slot++){
+   if([...this.springSlots.values()].includes(slot)){this.releaseNativeSprings(slot);continue;}
    const firework=this.nativeFireworks.find(f=>f.active&&f.slot===slot);
    if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.score+=score;this.emit('sfx_blast_fireworks');}continue;}
    if(slot===flag.slot){
@@ -2254,8 +2255,8 @@ export class Simulation {
   this.springSlots.set(spring,slot);
   if(slot===5){Object.assign(this.specialSlot5,{flag:(this.specialSlot5.flag+1)&255,id:50,x:spring.x,y:spring.y-24});this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));}
  }
- private releaseNativeSprings(){
-  for(const [spring,slot]of this.springSlots)if(spring.x<Math.floor(this.camera)-72){this.springSlots.delete(spring);if(slot<5)this.slotReleaseFrame[slot]=this.frame;else if(this.specialSlot5.id===50)this.specialSlot5.erase();}
+ private releaseNativeSprings(onlySlot?:number){
+  for(const [spring,slot]of this.springSlots)if((onlySlot===undefined||slot===onlySlot)&&spring.x<Math.floor(this.camera)-72){this.springSlots.delete(spring);if(slot<5)this.slotReleaseFrame[slot]=this.frame;else if(this.specialSlot5.id===50)this.specialSlot5.erase();}
  }
  private advanceCastleFlagParser(){
   const stream=castleFlags.areas.find(a=>a.level===this.level.id&&a.area===this.area.id);
