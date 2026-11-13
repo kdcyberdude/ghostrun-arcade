@@ -246,8 +246,8 @@ export class GameRenderer {
    for(const platform of s.area.platforms??[]){
     const context={levelId:s.level.id,areaId:s.area.id},pos=s.platformPicturePosition(platform);
     for(const y of nativePlatformArtworkYs(platform,context,pos.y)){
-     if(platformMotionModel(platform,context)==='contact-cloud')this.special(platform.width===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
-     else for(let i=0;i<platform.width;i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');
+     if(platformMotionModel(platform,context)==='contact-cloud')this.special(s.platformWidth(platform)===32?'large_platforms-3':'large_platforms-2',pos.x-s.camera,y);
+     else for(let i=0;i<s.platformWidth(platform);i+=8)this.spriteTile(91,pos.x+i-s.camera,y,'0f-16-30-27');
     }
    }
    // Reference vines remain visible in the HUD rows while growing offscreen.

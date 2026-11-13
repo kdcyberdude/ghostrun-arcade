@@ -1,0 +1,77 @@
+{
+  "schema": "water-platform-width-3d-v1",
+  "parentRef": "1ee23e6",
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 5090/PCIe/SSE2, OpenGL ES 3.2)",
+  "method": "Actual equivalence.ts replay on parent with width edits stashed, then full width candidate. Exact comparator retained; no rounding/tolerance. Evidence output redirected outside tracked replay-equivalence.json.",
+  "cases": [
+    {
+      "level": "5-2",
+      "candidateFrames": 3231,
+      "parentFrames": 1200,
+      "parentChecks": {
+        "origStatesVsHeadless": 1195,
+        "v25StatesVsHeadless": 1195,
+        "states3dVsOrig": -1,
+        "events3dVsOrig": -1,
+        "origEventsVsHeadless": -1,
+        "v25EventsVsHeadless": -1
+      },
+      "candidateChecks": {
+        "origStatesVsHeadless": 1195,
+        "v25StatesVsHeadless": 1195,
+        "states3dVsOrig": -1,
+        "events3dVsOrig": -1,
+        "origEventsVsHeadless": -1,
+        "v25EventsVsHeadless": -1
+      },
+      "firstMismatch": {
+        "parentFrame": 1195,
+        "candidateFrame": 1195,
+        "field": "enemies[0].y",
+        "kind": "legacy Blooper without native stroke/swim state",
+        "age": 100,
+        "expression": "originY + Math.sin(age / 40) * 24",
+        "parentNode": 190.36333145849494,
+        "parentChrome": 190.36333145849497,
+        "candidateNode": 190.36333145849494,
+        "candidateChrome": 190.36333145849497,
+        "camera": 8
+      }
+    },
+    {
+      "level": "6-2",
+      "candidateFrames": 5461,
+      "parentFrames": 2420,
+      "parentChecks": {
+        "origStatesVsHeadless": 2418,
+        "v25StatesVsHeadless": 2418,
+        "states3dVsOrig": -1,
+        "events3dVsOrig": -1,
+        "origEventsVsHeadless": -1,
+        "v25EventsVsHeadless": -1
+      },
+      "candidateChecks": {
+        "origStatesVsHeadless": 2418,
+        "v25StatesVsHeadless": 2418,
+        "states3dVsOrig": -1,
+        "events3dVsOrig": -1,
+        "origEventsVsHeadless": -1,
+        "v25EventsVsHeadless": -1
+      },
+      "firstMismatch": {
+        "parentFrame": 2418,
+        "candidateFrame": 2418,
+        "field": "enemies[0].y",
+        "kind": "legacy Blooper without native stroke/swim state",
+        "age": 100,
+        "expression": "originY + Math.sin(age / 40) * 24",
+        "parentNode": 190.36333145849494,
+        "parentChrome": 190.36333145849497,
+        "candidateNode": 190.36333145849494,
+        "candidateChrome": 190.36333145849497,
+        "camera": 8
+      }
+    }
+  ],
+  "limitation": "The new optional-water cases inherit a headless/browser Math.sin ULP mismatch before any platform birth. 2D and 3D browser states/events are identical for both entire candidate recordings. Native optional enemy stream port must remove the fitted legacy actor motor."
+}

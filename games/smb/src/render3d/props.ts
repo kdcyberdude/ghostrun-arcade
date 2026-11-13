@@ -33,7 +33,7 @@ export class Props{
   if(s.area.theme==='water')for(const b of s.bubbles??[])if(nativeBubbleShown(b,s.player.y,s.camera)){const o=this.take('bubble',()=>new THREE.Mesh(new THREE.SphereGeometry(0.125,12,8),this.mats.bubble));
    const x=Math.floor(s.camera)+((Math.floor(b.x)-Math.floor(s.camera))&255);o.position.set((x+4)/16,(235-b.y)/16,-0.15);o.castShadow=o.receiveShadow=false;}
   for(const pl of s.area.platforms??[]){const pos=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,pos.y);
-   for(const y of ys){const w=pl.width/16,cx=(pos.x+pl.width/2)/16,cy=(236-y)/16;
+   for(const y of ys){const width=s.platformWidth(pl),w=width/16,cx=(pos.x+width/2)/16,cy=(236-y)/16;
    if(platformMotionModel(pl,{levelId:s.level.id,areaId:s.area.id})==='contact-cloud'){
     const o=this.take('cloud'+w,()=>{const g=new THREE.Group();for(let i=0;i<Math.round(w*1.6);i++){const m=new THREE.Mesh(new THREE.SphereGeometry(0.42,20,14),this.mats.cloud);m.position.set((i/(Math.round(w*1.6)-1)-0.5)*(w-0.7),0,0);g.add(m);}return g;});o.position.set(cx,cy,0);
    }else{const o=this.take('lift'+w,()=>{const g=new THREE.Group();g.add(new THREE.Mesh(new RoundedBoxGeometry(w,0.42,1,3,0.08),this.mats.lift));

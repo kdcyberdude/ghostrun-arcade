@@ -13,6 +13,9 @@
  * Returns the box offset (0 or 128) or undefined for no landing. */
 import {platformSupportsX,type PlatformPosition} from './platform-motion.js';
 
+/** SPBBox and DrawLargePlatform read the castle/SecondaryHardMode flags. */
+export const nativeLargePlatformWidth=(id:number|undefined,castle:boolean,hard:boolean,fallback:number)=>id!==undefined&&id>=36&&id<=42?(castle||hard?32:48):fallback;
+
 export function nativePlatformLanding(feet:number,vy:number,x:number,prior:PlatformPosition,width:number,small:boolean,wide=false):number|undefined{
  if(vy<0)return undefined;
  const y=feet-32;if(y<0||y>=0xd0)return undefined;
