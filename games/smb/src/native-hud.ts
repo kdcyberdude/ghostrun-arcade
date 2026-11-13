@@ -1,3 +1,4 @@
+import {NativeVramBuffer1} from './native-vram-buffer.js';
 /** Number packets in VRAM_Buffer1 wait while control6 selects buffer2.
  * This is displayed PPU state, separate from the CPU score/coin/timer digits. */
 export interface NativeHudDigits {score:string;coins:string;time:string}
@@ -18,10 +19,16 @@ export function pendingHudFromRam(ram:Uint8Array,base:NativeHudDigits){
  }return pending;
 }
 export class NativeHud {
+ constructor(readonly buffer1=new NativeVramBuffer1()){}
  draw=hudDigits(0,0);private pending:Partial<NativeHudDigits>={};initialObserved=false;
- seed(draw:NativeHudDigits,pending:Partial<NativeHudDigits>={},observed=false){this.draw={...draw};this.pending={...pending};this.initialObserved=observed;}
- queue(values:Partial<NativeHudDigits>){Object.assign(this.pending,values);}
+ seed(draw:NativeHudDigits,pending:Partial<NativeHudDigits>={},observed=false,raw?:Uint8Array){this.draw={...draw};this.pending={...pending};this.initialObserved=observed;this.buffer1.clear();if(raw)this.buffer1.seed(raw,6);else for(const [key,value]of Object.entries(pending))this.write(key as keyof NativeHudDigits,value!);}
+ queue(values:Partial<NativeHudDigits>){for(const [key,value]of Object.entries(values))this.write(key as keyof NativeHudDigits,value!);Object.assign(this.pending,values);}
+ private write(key:keyof NativeHudDigits,value:string){
+  const score=key==='score',digits=score?String(Math.floor(Number(value)/10)).padStart(6,'0').slice(-6):value;
+  const payload=[...digits].map(c=>c===' '?36:Number(c));if(score&&payload[0]===0)payload[0]=36;
+  this.buffer1.append({address:score?0x2062:specs[key][0],control:payload.length,payload});
+ }
  clearTime(){this.draw.time='   ';delete this.pending.time;}
  header(score:number,coins:number){this.draw=hudDigits(score,coins);this.pending={};}
- step(buffer2:boolean){if(!buffer2){Object.assign(this.draw,this.pending);this.pending={};}}
+ step(buffer2:boolean){this.buffer1.select(buffer2);if(!buffer2){Object.assign(this.draw,this.pending);this.pending={};}}
 }

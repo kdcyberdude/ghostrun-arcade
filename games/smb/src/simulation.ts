@@ -14,6 +14,8 @@ import {nativeMixedWalkerScene,ordinaryWalker} from './native-walker-scene.js';
 import {NativeEnemyStream,type NativeEnemyInit} from './native-enemy-stream.js';
 import {nativeEnemyBytes,nativeEnemyRecords} from './native-enemy-catalog.js';
 import {NativeHud,hudDigits} from './native-hud.js';
+import {nativeColorRotationAllowed} from './native-vram-buffer.js';
+import nativeGraphicsTables from '../assets/graphics/tables.json';
 import {nativeTransformRows,nativeTransformStep} from './native-player-task.js';
 import {NativeSpriteShuffle} from './native-sprite-shuffle.js';
 import {nativePowerupEmergence,nativePowerupContact} from './native-powerup.js';
@@ -101,6 +103,7 @@ export const FLAG_COMPLETION=flagRules.runtimeCandidates;
 // 6-4 native: the rescue walk starts 14 rows later (146 vs 132) and ends 16 rows later, and the load is one clock step later: native 716 rows control end -> load vs about 690; cause not found, scoped constant.
 export const CASTLE_COMPLETION={secondMessageFrames:128}; // PrimaryMsgCounter2: 2*256/4 message updates
 const PIRANHA=enemyRules.piranha;
+const nativePalette3=nativeGraphicsTables.tables.find(t=>t.symbol==='Palette3Data')!.bytes,nativeColorCycle=nativeGraphicsTables.tables.find(t=>t.symbol==='ColorRotatePalette')!.bytes,nativePlayerColors=nativeGraphicsTables.tables.find(t=>t.symbol==='PlayerColors')!.bytes;
 const NATIVE_FALLERS=['goomba','koopa','redKoopa','beetle','spiny'];
 const SWIMMING_CHEEP_SPEEDS:Record<string,number>=swimmingCheepRules.horizontalSpeedByPalette;
 // Native leaping Cheep Cheep (object id 20): one 187-frame parabola; launch times, start offset and speed come from the native random register and Mario's speed (docs/NATIVE_ROLES.md).
@@ -217,7 +220,7 @@ export function downPipeLateralBlocks(wasGrounded:boolean,b:{has(k:'left'|'right
 export class Simulation {
  levels:Level[]; levelIndex=0; area!:Area; tiles=new Map<string,number>(); freeTiles:TilePiece[]=[]; frame=0; areaFrame=0; areaPlayFrame=0; camera=0;
  /** Display only: native ColorRotation runs (ColorRotateOffset $06D4) since the area was initialized; drives the ?-block/coin palette cycle in the renderer. */
- colorRotations=0;readonly paletteClock=new NativePalette();private paletteRemove=false;private graphicsBuffer1=false;private blockUpdateBusy=false;
+ colorRotations=0;private colorRotationPending=false;readonly paletteClock=new NativePalette();private paletteRemove=false;private graphicsBuffer1=false;private blockUpdateBusy=false;
  readonly blockBackground=new Map<string,number|null>();private blockBackgroundQueue=new Map<string,number|null>();
  readonly blockGraphics:{slot:number;key:string;x:number;y:number;metatile:number;pictureY:number|undefined;replace:boolean}[]=[];
  get colorDrawRotations(){return this.paletteClock.draw;}
@@ -299,7 +302,7 @@ export class Simulation {
  get verticalPipeGraphics(){return this.phase==='pipe'&&this.destination?.direction==='down';}
  get pipeHidden(){return this.phase==='pipe'&&Boolean(this.destination&&this.destination.frames>64&&this.phaseFrame>=(this.area.autoWalk?TRANSITIONS.autoWalkPipe.hiddenFrame:32));}
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
- hud=new NativeHud();
+ hud=new NativeHud(this.paletteClock.buffer1);
  spriteShuffle=new NativeSpriteShuffle();
  readonly graphicsScratch=new NativeGraphicsScratch();
  nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
@@ -407,7 +410,7 @@ export class Simulation {
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
  get awardedScore(){return this.pendingScore.reduce((n,s)=>n+(typeof s.value==='number'?s.value:0),this.score);}
  private floateyScore(value:number|'1up',delay=5){this.pendingScore.push({value,left:delay});}
- private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{this.score+=s.value;this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
+ private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{this.addScore(s.value);this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
   for(const popup of this.popups){popup.age++;if(popup.y>=16)popup.y--;}
   this.popups=this.popups.filter(popup=>popup.age<popup.life); // native raw Y stops at23; the SBC carry makes the visible artwork stop at15
@@ -462,7 +465,7 @@ export class Simulation {
    const player=this.phase==='title'||!this.twoPlayer?0:this.currentPlayer;
    this.inputs.push(new Set(held[player]));const effective=this.inputs.shift()!;
    for(const key of ['start','select'] as Button[]){if(held[0].has(key)||(this.phase==='title'&&held[1].has(key)))effective.add(key);else effective.delete(key);}
-   {const scoreBefore=this.score,coinsBefore=this.coins,starBefore=this.player.star,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.update(effective);if(this.score!==scoreBefore)this.hud.queue({score:hudDigits(this.score,this.coins).score});if(this.coins!==coinsBefore)this.hud.queue({coins:hudDigits(this.score,this.coins).coins});if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0);this.hud.step(buffer2);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);}this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
+   {this.paletteClock.buffer1.beginFrame();this.colorRotationPending=false;const starBefore=this.player.star,paletteBefore=this.starPalette,areaBefore=this.area,cameraBefore=this.camera,engineBefore=!['title','intro','gameover','ending','castle'].includes(this.phase),fresh=this.freshA,grace=this.phase==='play'&&this.controlGrace>0;if(grace){effective.delete('a');this.controlGrace--;}this.paletteRemove=false;this.graphicsBuffer1=false;this.blockUpdateBusy=false;this.loopScrollAdjustment=0;this.update(effective);this.flushColorRotation();if(this.nativeScreen?.task===1&&this.nativeScreen.screen>=1)this.hud.header(this.score,this.coins);this.snapshotPlayerPriority();this.nativeBackdrop=nativeScreenBackdrop(this.nativeBackdrop,this.nativeScreen?nativeScreenPicture(this.nativeScreen,this.area.theme==='water'):undefined,graphics.palette_observations[this.area.palette].palette[0]);if(!this.paused&&(areaBefore===this.area||this.loopScrollAdjustment!==0)){if(engineBefore){const buffer2=this.paletteClock.step(Math.max(0,Math.floor(this.camera)-Math.floor(cameraBefore)+this.loopScrollAdjustment),this.colorRotations,this.paletteRemove,this.graphicsBuffer1||(this.random.frame&7)===0);this.hud.step(buffer2);if(!buffer2){for(const [key,id]of this.blockBackgroundQueue)this.blockBackground.set(key,id);this.blockBackgroundQueue.clear();}}else{this.paletteClock.draw=this.colorRotations;this.hud.step(false);}this.starDrawPalette=starBefore||this.player.star?paletteBefore:undefined;this.starPalette=nativeStarPalette(this.player.star,this.random.frame);}if(this.paused)this.hud.step(false);if(fresh&&!grace)this.freshA=false;}this.previous=effective;
   }
  }
  /** Startup clocks are generated by the cold CPU / source title controller, never recording samples. */
@@ -474,7 +477,7 @@ export class Simulation {
   this.titleFrame++;this.lifeRow++;
   if(this.coldStartup&&!this.coldStartup.done){
    const names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
-   this.coldStartup.step(pad);this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=!this.coldStartup.done;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);return;
+   this.coldStartup.step(pad);this.vramBuffer1.seed(this.coldStartup.ram.subarray(0x300,0x400),this.coldStartup.ram[0x773]);this.nativeStartup=nativeTitleControlsFromRam(this.coldStartup.ram);this.nativeStartup.initializing=!this.coldStartup.done;this.syncStartupClocks(this.nativeStartup,true);this.nativeStartupPicture.step(this.nativeStartup);return;
   }
   if(this.nativeStartup?.unsupported)return;
   const n=this.nativeStartup!,names:Button[]=['a','b','select','start','up','down','left','right'];let pad=0;for(const [bit,name]of names.entries())if(b.has(name))pad|=1<<bit;
@@ -484,6 +487,7 @@ export class Simulation {
   if(effect.renderColumns)this.renderInitialSpringColumns();
   if(effect.primary){this.lives=3;this.player.size=0;this.spriteShuffle.reset();}
   if(effect.initPlayer){const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id)!;const setup=nativeEntranceSetup(nativePhysicalAreas[binding.code].header[0],0,0);this.player.x=setup.x+binding.offset;this.player.y=setup.y+32;this.player.vx=this.player.vy=0;this.player.grounded=true;this.player.facing=1;this.player.dead=false;this.motor.reset(0,1,0);this.seedPlayerPriority();this.primeNativeEntryObjects(true);}
+  for(const packet of n.queuedPalette)this.vramBuffer1.append({address:packet.address,control:packet.bytes.length,payload:packet.bytes});
   this.nativeStartupPicture.step(n);
   if(effect.startGame){
    this.levelLoad={task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns};this.phase='intro';this.phaseFrame=0;this.lifeIntro=undefined;this.alignLifeClock(n.interval);this.nativeStartup=undefined;this.coldStartup=undefined;
@@ -524,11 +528,11 @@ export class Simulation {
   this.lifeClockFreeze();
   if(this.levelLoad){this.updateLevelLoad();return;}
   if(this.phase==='intro'&&this.deathLoad)this.updateDeathLoad();
-  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotations++;if(this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenTail+(this.entryFalling&&this.area.entryFall?.native?1:0)+1)this.renderInitialSpringColumns();if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine){this.initializeGameTimer();this.seedPlayerPriority();this.primeNativeEntryObjects(true);}if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
+  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotationPending=true;if(this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenTail+(this.entryFalling&&this.area.entryFall?.native?1:0)+1)this.renderInitialSpringColumns();if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine){this.initializeGameTimer();this.seedPlayerPriority();this.primeNativeEntryObjects(true);}if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
   if(this.phase==='intro') {if(this.phaseFrame>=this.introLength-18)this.renderInitialSpringColumns();if(this.phaseFrame===this.introLength-1){this.initializeGameTimer();this.seedPlayerPriority();this.primeNativeEntryObjects(true);}if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){this.updateGameOver(b);return;}
   if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
-  if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
+  if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotationPending=true; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.parserVramBusy=false;this.updateWorldInPitFall();
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();}
@@ -997,7 +1001,7 @@ export class Simulation {
   }
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
-  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
+  const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.queueBlockMetatile(key,null);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
   if(id===96)this.activatedHidden1ups.add(`${this.currentPlayer}/${this.level.id}/${this.area.id}/${key}`);
   const p=this.player;
   // Native CheckTopOfBlock (BumpBlock and BrickShatter): a coin ($C2) right above a bumped block is taken with it, +200 and a coin at once (1-2 v2 row 865: col 59 C2 -> 0, brick 52 -> 23).
@@ -1033,7 +1037,7 @@ export class Simulation {
    if(item==='coin'){this.coin();this.spawnNativeBlockCoin(x);}
    else {this.specialSlot5.claimPowerup(x*16,y*16-8);this.items=this.items.filter(i=>i.nativePowerState===undefined);this.items.push({kind:item,x:x*16,y:y*16,vx:item==='flower'?0:1,vy:0,age:0,life:2000,emerging:POWERUPS.powerupEmergenceNativeFrames.value,nativePowerState:1});this.emit('sfx_powerup_appears');}
   }else if((id===81||id===82||id===83)&&p.size){
-   this.brokenBrick={key,rows:0};this.score+=50;this.emit('sfx_brick_shatter');
+   this.brokenBrick={key,rows:0};this.addScore(50);this.emit('sfx_brick_shatter');
    for(let i=0;i<4;i++)this.items.push({kind:'debris',x:x*16+(i%2)*8,y:y*16+Math.floor(i/2)*8,vx:(i%2?1:-1)*1.5,vy:i<2?-4:-2,age:0,life:60});
   }else this.emit('sfx_bump');
   if(newNativeBlock){const old=this.blockGraphics.findIndex(b=>b.slot===nativeBlock.slot);if(old>=0)this.blockGraphics.splice(old,1);this.blockGraphics.push({slot:nativeBlock.slot,key,x:nativeBlock.x,y:y*16,metatile:this.brokenBrick?.key===key?0:(piece?.id??this.tiles.get(key)??0),pictureY:undefined,replace:nativeBlock.state===0x12});}
@@ -1153,7 +1157,7 @@ export class Simulation {
   const col=Math.floor(x/16),row=Math.floor(y/16),key=`${col},${row}`,id=this.tiles.get(key);
   if(id===194||id===195){this.tiles.delete(key);this.parserVramBusy=true;this.paletteRemove=true;this.coin();return;}
  }}
- private coin(){this.blockUpdateBusy=this.graphicsBuffer1=true;this.coins++;this.score+=200;this.emit('sfx_coin');if(this.coins>=100){this.coins-=100;this.lives++;this.emit('sfx_1up');}}
+ private coin(){this.blockUpdateBusy=this.graphicsBuffer1=true;this.coins++;this.emit('sfx_coin');if(this.coins>=100){this.coins-=100;this.lives++;this.emit('sfx_1up');}this.hud.queue({coins:hudDigits(this.score,this.coins).coins});this.addScore(200);}
  private vineKey(id:string){return `${this.currentPlayer}/${this.level.id}/${this.area.id}/${id}`;}
  private growVines(){
   for(const vine of this.vines)if(vine.growing){vine.height=Math.min(vine.baseY-vine.topY,vine.height+VINE_PHYSICS.growth);vine.growing=vine.height<vine.baseY-vine.topY;this.vineProgress.set(this.vineKey(vine.id),vine.height);}
@@ -1262,7 +1266,22 @@ export class Simulation {
   * RunGameTimer. A pending zero is consumed on the same row engine8 resumes.
   * timerFrames is the elapsed form of that byte (24 means a pending zero). */
  private gameTimerState(){return {time:this.time,control:Math.max(0,24-this.timerFrames),fetch:this.fetchGameTimer};}
+ private addScore(value:number){if(value){this.score+=value;this.hud.queue({score:hudDigits(this.score,this.coins).score});}}
+ get vramBuffer1(){return this.paletteClock.buffer1;}
+ private flushColorRotation(){
+  if(!this.colorRotationPending||!nativeColorRotationAllowed(this.random.frame,this.vramBuffer1.offset))return;
+  const type=this.area.theme==='water'?0:this.area.theme==='underground'?2:this.area.theme==='castle'?3:1;
+  const palette=nativePalette3.slice(type*4,type*4+4);palette[1]=nativeColorCycle[this.colorRotations%6];
+  this.vramBuffer1.append({address:0x3f0c,control:4,payload:palette});this.colorRotations++;
+ }
+ private queueBlockMetatile(key:string,id:number|null){
+  const [column,row]=key.split(',').map(Number),raw=column+this.areaControls.origin,tiles=graphics.metatiles.find(t=>t.id===(id??0))!.tiles;
+  const address=0x2000+((raw>>4)&1)*0x400+row*64+(raw&15)*2;
+  this.vramBuffer1.append({address,control:2,payload:[tiles[0],tiles[2]]});this.vramBuffer1.append({address:address+32,control:2,payload:[tiles[1],tiles[3]]});
+ }
  private initializeGameTimer(){
+  const offset=this.player.size===2?8:this.currentPlayer*4,colors=nativePlayerColors.slice(offset,offset+4);colors[0]=this.nativeBackdrop;
+  this.vramBuffer1.append({address:0x3f10,control:4,payload:colors});
   if(!this.fetchGameTimer)return;
   const n=this.gameTimerState(),binding=/^[1-8]-[1-4]$/.test(this.level.id)?nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id):undefined;
   const initialized=binding?initializeNativeGameTimer(n,nativePhysicalAreas[binding.code].header[0]>>6):n.fetch;
@@ -1775,7 +1794,7 @@ export class Simulation {
  }
  private advanceNativeBlockPictures(){
   let busy=this.paletteClock.pendingBuffer1||this.blockUpdateBusy;
-  for(const slot of [1,0]){const b=this.blockGraphics.find(b=>b.slot===slot);if(!b)continue;b.pictureY=undefined;if(b.replace&&!busy){this.blockBackgroundQueue.set(b.key,b.metatile||null);this.enemyBumpCells.delete(b.key);b.replace=false;busy=this.graphicsBuffer1=true;}}
+  for(const slot of [1,0]){const b=this.blockGraphics.find(b=>b.slot===slot);if(!b)continue;b.pictureY=undefined;if(b.replace&&!busy){this.queueBlockMetatile(b.key,b.metatile||null);this.blockBackgroundQueue.set(b.key,b.metatile||null);this.enemyBumpCells.delete(b.key);b.replace=false;busy=this.graphicsBuffer1=true;}}
   const bouncing=this.nativeBlocks.slice(0,2).map(n=>(n.state&15)===1);
   this.advanceNativeBlocks();
   for(const b of this.blockGraphics)if(bouncing[b.slot]){const n=this.nativeBlocks[b.slot];b.pictureY=n.y;if(!n.state)b.replace=true;}
@@ -2032,10 +2051,10 @@ export class Simulation {
   for(let slot=0;slot<6;slot++){
    if([...this.springSlots.values()].includes(slot)){this.releaseNativeSprings(slot);continue;}
    const firework=this.nativeFireworks.find(f=>f.active&&f.slot===slot);
-   if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.score+=score;this.emit('sfx_blast_fireworks');}continue;}
+   if(firework){const score=runNativeFirework(firework);firework.draw=firework.active;if(score){this.addScore(score);this.emit('sfx_blast_fireworks');}continue;}
    if(slot===flag.slot){
     const out=runNativeStarFlag(flag,{time:this.time,fireworks:this.nativeFireworksCounter,music:this.nativeEndLevelMusic.eventMusicBuffer,endWalk:true,blocked:this.flagInside});
-    if(out.time!==this.time)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.time=out.time;this.score+=out.score;this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
+    if(out.time!==this.time)this.hud.queue({time:hudDigits(this.score,this.coins,out.time).time});this.time=out.time;this.addScore(out.score);this.nativeFireworksCounter=out.fireworks;flag.draw=out.draw;frenzy=out.frenzy;
     if(out.score&&(this.random.frame&4))this.emit('sfx_timer_tick');continue;
    }
    if(slot===5&&this.specialSlot5.flag)continue;
@@ -2062,7 +2081,7 @@ export class Simulation {
    // AutoControlPlayer still runs PlayerBGCollision after the climb, including a low grab on the pedestal.
    const feet=p.y,grounded=p.grounded;this.movePlayerY(0,this.height);
    if(!grounded&&p.grounded)this.landingFraction=feet-Math.floor(feet);
-   if(this.flagTop>=0xaa||Math.floor(p.y)>=0xa2+32){this.score+=this.flagBonus;this.flagAwardFrame=this.phaseFrame;}
+   if(this.flagTop>=0xaa||Math.floor(p.y)>=0xa2+32){this.addScore(this.flagBonus);this.flagAwardFrame=this.phaseFrame;}
    else this.advanceFlag();
    return;
   }
@@ -2102,7 +2121,7 @@ export class Simulation {
  }
  private beginCastle(){
   this.eraseAxeMetatile();
-  if((this.random.frame&7)===0)this.colorRotations--; // GameCoreRoutine skips the GameEngine tail on axe contact.
+  this.colorRotationPending=false; // GameCoreRoutine skips the GameEngine tail on axe contact.
   this.paletteRemove=true;this.phase='castle';this.phaseFrame=0;this.flagBonus=0;
   this.bridge=[...this.tiles].filter(([,id])=>id===137).sort((a,b)=>Number(b[0].split(',')[0])-Number(a[0].split(',')[0])).map(([key])=>key);
   this.castleStage='bridge';this.emit('command_silence');this.beginNativeVictory();
@@ -3191,8 +3210,8 @@ export class Simulation {
   const p=this.player;
     i.life=0;
     if(i.kind==='1up'){this.lives++;this.awardPopup('1up',i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_1up');}
-    else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.score+=POWERUPS.starCollectionScore.value;this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
-    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow'};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
+    else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.addScore(POWERUPS.starCollectionScore.value);this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
+    else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow'};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.addScore(1000);this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
  }
  private cancelWaterPass(){
   if(this.area.theme!=='water'||!this.swimActive)return;
@@ -3314,7 +3333,7 @@ export class Simulation {
   if(load.target.returnCloudOffsetX){const shift=load.target.returnCloudOffsetX,isCloud=(id:number)=>id>=128&&id<=133;if(this.area.decorations)this.area.decorations=this.area.decorations.map(d=>isCloud(d.id)?{...d,x:d.x+shift}:d);this.freeTiles=this.freeTiles.map(t=>isCloud(t.id)?{...t,x:t.x+shift}:t);}
   this.initializeGameTimer();this.timerFrames=24;this.screenTimer=this.levelLoad!.timer;this.phase='play';this.phaseFrame=0;this.broClock=this.random.frame-Number(this.area.theme==='water');this.playerAnim.fresh=true;
   this.primeNativeEntryObjects(true);this.updateBubbles(false,false);this.updateWaterEntryEnemies();
-  if((this.random.frame&7)===0)this.colorRotations++;
+  if((this.random.frame&7)===0)this.colorRotationPending=true;
   this.levelLoad=undefined;this.pipeLoad=undefined;this.emit(this.areaMusic());
  }
  private updateLevelLoad(){
@@ -3332,12 +3351,12 @@ export class Simulation {
   if(result.preload&&this.pipeLoad){const levelEntry=this.pipeLoad.target.direction==='level';this.finishNativePipeLoad();if(levelEntry&&!this.area.autoWalk&&!this.entryControlLocked)this.levelLoad=n;return;}
   if(result.preload){
    const [x,y]=this.area.spawn;this.player.x=x;this.player.y=y;this.player.grounded=this.isSolid(x+8,y);
-   this.initializeGameTimer();this.timerFrames=24;this.phase='intro';this.playerAnim.fresh=true;this.seedPlayerPriority();this.primeNativeEntryObjects(true);if((this.random.frame&7)===0)this.colorRotations++;
+   this.initializeGameTimer();this.timerFrames=24;this.phase='intro';this.playerAnim.fresh=true;this.seedPlayerPriority();this.primeNativeEntryObjects(true);if((this.random.frame&7)===0)this.colorRotationPending=true;
   }
   if(result.ready){
    this.screenTimer=n.timer;this.consumeGameTimer(true);this.phase='play';this.phaseFrame=0;this.broClock=this.random.frame-2;
    this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.levelLoad=undefined;
-   this.primeNativeReadyEnemies();if((this.random.frame&7)===0)this.colorRotations++;this.emit(this.areaMusic());
+   this.primeNativeReadyEnemies();if((this.random.frame&7)===0)this.colorRotationPending=true;this.emit(this.areaMusic());
   }
  }
  private nextLevel(victory=false){
