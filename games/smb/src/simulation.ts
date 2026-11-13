@@ -1,3 +1,4 @@
+import {NativeGraphicsScratch} from './native-graphics-scratch.js';
 import {nativeCannonOutside} from './native-cannon.js';
 import {runNativeGameOver,tickNativeGameOverMaster,type NativeGameOver} from './native-game-over.js';
 import {nativeMixedWalkerScene,ordinaryWalker} from './native-walker-scene.js';
@@ -290,6 +291,7 @@ export class Simulation {
  /** Native time-out: a TIME UP screen for the first 7 clock ticks of the 14, then the ordinary lives screen. */
  hud=new NativeHud();
  spriteShuffle=new NativeSpriteShuffle();
+ readonly graphicsScratch=new NativeGraphicsScratch();
  nativeBackdrop=0x22; // PPUpalette0: retained across CPU RAM initialization, advanced by source screen writes
  get nativeScreen(){return this.nativeGameOver??this.deathLoad?.state??this.levelLoad;}
  get timeUpScreen(){return this.phase==='intro'&&Boolean(this.lifeIntro?.timeUp)&&this.lifeIntro!.seen<LIFE_FLOW.ticksScreen;}
@@ -310,7 +312,7 @@ export class Simulation {
   this.nativeEndLevelMusic=emptyNativeEndLevelMusic();this.nativeEndLevelMusicQueue=0;this.nativeEndLevelMusicAreaQueue=0;
   this.slots=[0,1].map(()=>({level:0,lives:3,score:0,coins:0,size:0,checkpoint:false}));this.previous.clear();this.inputs=[new Set(),new Set()];this.events=[];this.paused=false;this.pauseCooldown=0;
   this.destination=undefined;this.pipeLoad=undefined;this.lastFire=-12;this.airRunning=false;this.runJump=false;this.mediumJump=false;this.bouncing=false;this.braking=PHYSICS.brake;this.skidAccel=0;this.motor.reset();this.jumpHeld=0;this.landJump='inactive';
-  this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();
+  this.vineProgress.clear();this.climbingVine=undefined;this.activatedHidden1ups.clear();this.graphicsScratch.clear();
   if(this.player)this.player.size=0;this.loadArea(this.level.main);this.timerFrames=this.level.id==='1-1'?TRANSITIONS.freshReferenceResetTimerFrames:0;if(this.level.id==='1-1'){this.areaFrame=FLAG_COMPLETION.freshAreaFrame;this.broClock=HAMMER_NATIVE.freshClock;}this.fetchGameTimer=!playing;if(!playing){this.time=0;this.timerFrames=24;this.events=['command_silence'];}this.phase=playing?'play':'title';this.phaseFrame=0;this.titleFrame=0;this.hud.seed(hudDigits(this.score,this.coins));
  }
  loadArea(id:string,spawn?:[number,number],camera?:number,preserveTimer=false,lifeEntry=false){
@@ -1352,6 +1354,7 @@ export class Simulation {
   // already-occupied slot cannot pick a cannon until a subsequent pass.
   for(const [e,x]of this.cannonStartX)if(e.active&&!e.dead&&nativeCannonOutside(x,this.camera,this.nativeAreaOffset)){e.x=x;this.eraseEnemy(e);e.goneFrame=this.frame;}
   for(const e of this.enemies)if(e.bbCheck&&e.active&&!e.dead)this.nativeBulletBillCheck(e); // objects made on an earlier frame (each at its slot's turn; its slot stays in `used`)
+  for(const e of this.enemies.filter(e=>e.nativeShot&&!e.frenzy&&e.active&&!e.slotFreed&&e.dead<100).sort((a,b)=>(b.enemySlot??0)-(a.enemySlot??0)))this.graphicsScratch.enemy(51,{frameTimer:e.cannonFrameTimer}); // surviving BulletBillHandler reaches EnemyGfxHandler; fresh births below do not.
   this.nativeCannonPass(used,mask,b);
  }
  private nativeCannonPass(used:Set<number|undefined>,mask:number,bytes:number[]){
@@ -2092,7 +2095,7 @@ export class Simulation {
    if(result.fall){e.dead=1;this.emit('sfx_bowser_falls');}
   }
   if(result.kill){n.bossState=0;this.clearVictoryEnemyBank();this.victoryBoss=undefined;this.emit('command_silence');}
-  this.castlePictures.step(n.task,this.camera,this.parserClock.blocked,!this.enemies.some(e=>e.active&&e.enemySlot===0));
+  this.castlePictures.step(n.task,this.camera,this.parserClock.blocked,!this.enemies.some(e=>e.active&&e.enemySlot===0));if(this.castleRetainer?.graphicsVisible)this.graphicsScratch.enemy(53);
   if(this.placedCastle&&this.placedStream&&n.task!==0&&!this.parserClock.blocked&&!this.busyNativeSlots().has(0)){
    const context={camera:this.camera-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot:0,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;
   }
@@ -2209,6 +2212,7 @@ export class Simulation {
   }
   const m=e.nativeBowser;m.fireCounter=this.flameTimerCounter;if(this.placedCastle)this.specialSlot5.frenzyBuffer=0;
   const action=stepNativeBowser(m,{frame:this.random.frame,byte:this.random.bytes[slot],playerX:Math.floor(this.player.x),world:Number(this.level.id[0]),hard:this.secondaryHardMode,tickTimers:!this.nmiTimersHeld});
+  this.graphicsScratch.enemy(45,{bowser:2}); // BowserGfxHandler runs front then rear before a later slot can initialize.
   this.flameTimerCounter=m.fireCounter;this.slotFrameTimers[slot]=m.timer;if(this.placedCastle){delete m.rearX;delete m.rearY;}
   e.x=m.x-(m.direction&1?16:0);e.y=m.y+32;e.nativeDir=m.direction&1?1:-1;e.vx=m.direction&1?1:-1;e.vy=m.move.speed+m.move.force/256;
   // Keep the existing public motor pose fields synchronized; live motion comes from the native bytes above.
@@ -2617,7 +2621,14 @@ export class Simulation {
  /** TimerControl stops sprite alternation as well as motion. Death initializes $FF; the NMI counts it down. */
  get nativeTimersStopped(){return Boolean(this.nativeGameOver&&this.nativeGameOver.master>1)||Boolean(this.powerChange)||this.phase==='dying'&&!this.offscreenPitDeath&&!this.offscreenLavaDeath&&this.phaseFrame<255;}
  enemyPictureTimersStopped(e:Enemy){return enemyPictureTimersStopped(e,this.frame,this.nativeTimersStopped);}
- private captureEnemyGraphics(e:Enemy){e.graphicsFrame=this.frame;e.graphicsTimersStopped=this.nativeTimersStopped;captureEnemyPicture(e);}
+ private captureEnemyGraphics(e:Enemy){
+  if(e.active&&!e.slotFreed&&e.dead<100&&!(e.kind==='bullet'&&e.nativeShot&&!e.frenzy)){
+   const id=e.nativeId??(e.nativePipe?13:e.nativeFlight?20:e.kind==='bullet'&&e.frenzy?8:e.nativeGroup?(e.kind==='goomba'?6:e.kind==='koopa'?0:undefined):undefined); // Native pipe/group initializers author these IDs.
+   if(id===undefined||e.kind==='bowser'||id===13&&!e.pir||e.nativeGroup&&e.age===0&&e.graphicsVisible)this.graphicsScratch.unknown();
+   else{const timer=e.pir?Math.max(0,e.pir.timer-Number(!this.nmiTimersHeld&&this.frameTimersAt!==this.frame)):undefined;this.graphicsScratch.enemy(id,{piranhaSpeed:e.pir?.speed,frameTimer:timer});} // Piranha movement helper applies this NMI decrement later; graphics already sees it.
+  }
+  e.graphicsFrame=this.frame;e.graphicsTimersStopped=this.nativeTimersStopped;captureEnemyPicture(e);
+ }
  /** NMI ran before the bank visit that set TimerControl. Frame timers still
   * receive that one decrement, while this later object's movement is held. */
  private tickHeldEnemyFrameTimers(e:Enemy){
@@ -2636,13 +2647,15 @@ export class Simulation {
    const context={camera:this.camera+this.lakituScroll-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;return;
   }
   const alias=this.firebarSlots?.visitAlias(slot);if(alias){if(alias==='cleared')this.slotReleaseFrame[slot]=this.frame;return;}
-  const camera=this.camera+this.lakituScroll;if(this.placedCastle&&this.castleRetainer?.slot===slot){this.castlePictures.drawNative(slot);return;}
+  const camera=this.camera+this.lakituScroll;if(this.placedCastle&&this.castleRetainer?.slot===slot){this.castlePictures.drawNative(slot);this.graphicsScratch.enemy(53);return;}
   const bar=this.area.firebars?.find(b=>this.firebarSlots?.slotOf(b)===slot);
   if(bar){
    this.firebarSlots!.turn(slot,camera,!this.nativeTimersStopped);
+   const bytes=this.firebarSlots!.nativeBytes(bar);if(bytes)this.graphicsScratch.firebar(bytes.high,nativeMiscOffscreen(bar.x-4,bar.y-4,camera));
    this.collideFirebar(bar,camera);
   }
   this.updateItems(slot);
+  for(const [spring,owner]of this.springSlots)if(owner===slot)this.graphicsScratch.enemy(50,{springControl:this.springCompression(spring)});
   for(const [platform,owner]of this.platformSlots){
    if(owner!==slot)continue;
    const p=platform as PlatformSpec,o=nativePlatformObject(p,this.platformMotion.context);if(!o)continue;
@@ -2688,7 +2701,7 @@ export class Simulation {
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
    if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    this.captureEnemyGraphics(e);
-   if(e.active&&this.nativeTimersStopped){this.tickHeldEnemyFrameTimers(e);continue;}
+   if(e.active&&this.nativeTimersStopped){this.tickHeldEnemyFrameTimers(e);if(e.kind==='bowser')this.graphicsScratch.enemy(45,{bowser:2});continue;}
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
    if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else if(Math.floor(e.x)<Math.floor(this.camera)+255)e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
@@ -3155,6 +3168,7 @@ export class Simulation {
   const result=stepNativeLevelLoad(n,tick);
   if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
+   this.graphicsScratch.clear();
    const time=this.time;this.loadArea(load.area,load.spawn,load.camera,false,true);this.time=time;load.player={...this.player};
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.player.grounded=false;
   }
@@ -3199,6 +3213,7 @@ export class Simulation {
   if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
   if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=-this.areaControls.origin*16;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
+   this.graphicsScratch.clear();
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load));this.time=time;if(!load){this.areaControls.column-=24;this.springSlots.clear();this.springLoadColumns=12;}
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.nativeEndLevelMusicAreaQueue=128;
   }
