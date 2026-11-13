@@ -26372,7 +26372,9 @@
           {
             "x": 3008,
             "y": 200,
-            "palette": "0f-16-30-27"
+            "palette": "0f-16-30-27",
+            "nativeColumn": 3008,
+            "nativeOffset": 88
           }
         ],
         "freeTiles": [
@@ -55921,7 +55923,9 @@
           {
             "x": 2016,
             "y": 200,
-            "palette": "0f-16-30-27"
+            "palette": "0f-16-30-27",
+            "nativeColumn": 2016,
+            "nativeOffset": 58
           }
         ],
         "freeTiles": [
@@ -107562,7 +107566,9 @@
         "springs": [
           {
             "x": 400,
-            "y": 200
+            "y": 200,
+            "nativeColumn": 400,
+            "nativeOffset": 10
           }
         ],
         "freeTiles": [
@@ -137993,11 +137999,15 @@
         "springs": [
           {
             "x": 608,
-            "y": 200
+            "y": 200,
+            "nativeColumn": 608,
+            "nativeOffset": 16
           },
           {
             "x": 1856,
-            "y": 200
+            "y": 200,
+            "nativeColumn": 1856,
+            "nativeOffset": 64
           }
         ],
         "freeTiles": [],
@@ -148552,7 +148562,9 @@
           {
             "x": 2416,
             "y": 200,
-            "palette": "0f-16-30-27"
+            "palette": "0f-16-30-27",
+            "nativeColumn": 2416,
+            "nativeOffset": 72
           }
         ],
         "freeTiles": [],
@@ -188816,7 +188828,9 @@
         "springs": [
           {
             "x": 704,
-            "y": 200
+            "y": 200,
+            "nativeColumn": 704,
+            "nativeOffset": 22
           }
         ],
         "freeTiles": [

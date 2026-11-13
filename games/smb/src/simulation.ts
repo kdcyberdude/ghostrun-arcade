@@ -44,7 +44,7 @@ import {newNativeBlooper,stepNativeBlooper} from './blooper-motion.js';
 import {nativeAutoWalkAreaLoad} from './area-load-clock.js';
 import {hammerBroStep} from './hammer-bro';
 import {nativeLakituBox,nativeLakituContact} from './lakitu-contact';
-import {NativeSpecialSlot,nativeControlColumn,type AreaControl} from './native-special-slot';
+import {NativeSpecialSlot,type AreaControl} from './native-special-slot';
 import nativeAreaControls from '../data/native-area-controls.json';
 import {nativeCoinSlot,nativeMiscGravity,nativeMiscOffscreen,nativeHammerBox,nativePlayerBox,nativeHammerContact,nativeAboveCoinStart,type NativeBox} from './native-misc';
 import waterActorData from '../data/native-water-actors.json';
@@ -205,6 +205,9 @@ export class Simulation {
  private stompChain=0;
  /** Native AreaParserTaskNum / ScrollThirtyTwo and buffer2 VRAM writes. */
  private areaControls=new NativeAreaControls('','');private parserClock=new NativeParserClock();private parserVramBusy=false;private parserLoaderWasBlocked=false;
+ springSlots=new Map<SpringSpec,number>();private springLoadColumns=0;
+ get parserColumnX(){return this.areaControls.column*16;}
+ set parserColumnX(x:number){this.areaControls.column=x/16;}
  // Camera crossings remain inputs to the separate loop/frenzy parser models.
  private scrollCrossFrame=-Infinity;private scrollCrossCamera=0;private loopPass=0;private loopCorrect=0;
  /** Native Player_MovingDir ($45): the sign of the speed byte ($57) whenever that byte is non-zero, else unchanged (115,065 of 115,071 native play rows).
@@ -323,7 +326,7 @@ export class Simulation {
    if(area.entryVine.waitUntilGrowthComplete&&this.climbingVine.height<this.climbingVine.baseY-this.climbingVine.topY){this.climbingVine.growing=true;this.entryVineStage='grow';}
    this.player.climbing=this.entryVineStage==='climb';
   }
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.scrollCrossFrame=-Infinity;this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
   const waterSource=nativeWaterStreams.streams.find(s=>s.areas.some(a=>a.level===this.level.id&&a.area===area.id));this.waterEnemyStream=waterSource?new NativeWaterStream(waterSource.bytes):undefined;this.waterSlotPositions=Array.from({length:6},()=>({x:0,y:0}));
   this.piranhaColumns=new PiranhaColumns(this.camera);
@@ -335,6 +338,7 @@ export class Simulation {
   this.springTimers.clear();this.erasedVineSlots.clear();this.springRelease=false;this.loopPass=0;this.loopCorrect=0;this.mazeStates=[...area.mazes??[],...area.maze?[area.maze]:[]].filter(spec=>!this.nativeLoopPage(spec.loopAt)).map(spec=>({spec,sourceFrom:spec.loopTo,sourceTo:spec.loopAt,gate:0,completed:false}));this.nativeVictory=undefined;this.victoryBoss=undefined;this.victoryMessages=[];this.victoryPending=-1;this.victoryErase=undefined;this.bridge=[];this.castleStage='bridge';this.castleArrivalFrame=0;
   this.flagTop=48;this.flagInside=false;this.flagBonus=0;this.flagWait=0;
   this.items=[];this.popups=[];this.bump.clear();this.blockBounceTimer=0;this.usedBlockRehits.clear();if(!preserveTimer){this.time=this.level.time;this.timerFrames=0;}
+  if(!lifeEntry)for(const spring of this.area.springs??[])if(spring.nativeColumn!==undefined&&spring.nativeColumn>=this.parserColumnX-384&&spring.nativeColumn<this.parserColumnX)this.createNativeSpring(spring);
   this.emit(this.areaMusic());
  }
  private emit(id:string){this.events.push(id);}
@@ -438,8 +442,8 @@ export class Simulation {
   this.lifeClockFreeze();
   if(this.levelLoad){this.updateLevelLoad();return;}
   if(this.phase==='intro'&&this.deathLoad)this.updateDeathLoad();
-  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotations++;if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine)this.primeNativeEntryObjects();if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
-  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();if(!this.entryFalling&&this.enemies.some(e=>e.active&&e.nativeId!==undefined)){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.emit(this.areaMusic());}return;}
+  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotations++;if(this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenTail+(this.entryFalling&&this.area.entryFall?.native?1:0)+1)this.renderInitialSpringColumns();if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine)this.primeNativeEntryObjects();if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
+  if(this.phase==='intro') {if(this.phaseFrame>=this.introLength-18)this.renderInitialSpringColumns();if(this.phaseFrame===this.introLength-1)this.primeNativeEntryObjects();if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.primeNativeReadyEnemies();this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){
    if(this.gameoverClosingFrame>=0){if(++this.gameoverClosingFrame>=(this.twoPlayer&&this.slots[1-this.currentPlayer].lives>0?6:26))this.finishGameover();}
    else if(this.gameoverSkipDelay>0){if(--this.gameoverSkipDelay===0)this.gameoverClosingFrame=0;}
@@ -658,8 +662,7 @@ export class Simulation {
   this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms)-this.platformEjection;
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
-  this.advanceSpecialSlotParser(nativeControlColumn(this.scrollCrossCamera,this.frame-this.scrollCrossFrame));
-  this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
+  this.eraseOffscreenEnemies();this.releaseNativeSprings();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);
@@ -679,7 +682,7 @@ export class Simulation {
   // FrameCounter rows return before that write, as in PlayerGfxHandler.
   if(!p.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(p.x-(this.area.theme==='water'&&this.swimActive&&!this.wallBackOut?this.swimPull:0))-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;
-  this.areaControls.advance(this.parserClock.advance(this.camera-previousCamera,this.parserVramBusy));
+  this.advanceNativeAreaParser(this.camera-previousCamera);
   if(this.player.dead)return;
   const warp=this.area.warpZone;
   if(warp&&!this.warpZoneActive&&this.camera>=warp.activateAtCamera){
@@ -1157,13 +1160,12 @@ export class Simulation {
   this.updateEnemies(oldFeet);this.updateItems();this.enemyContactOff=false;
   this.firebarSlots?.step(this.camera);
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
-  this.advanceSpecialSlotParser(nativeControlColumn(this.scrollCrossCamera,this.frame-this.scrollCrossFrame));
   this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
   this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);
   this.piranhaColumns?.step(this.camera);this.birthParserPiranhas();this.firebarSlots?.cameraEntry(previousCamera,this.camera);
   if(!this.player.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
-  this.parserLoaderWasBlocked=this.parserClock.blocked;this.areaControls.advance(this.parserClock.advance(scroll,this.parserVramBusy));
+  this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(scroll);
  }
  private updateGenerators(tickInterval=true){
   // The shot's 1.5px/frame travel is measured. Cannon cooldown and close-range
@@ -1278,12 +1280,12 @@ export class Simulation {
   if(shots.some(e=>e!==going)||this.camera<generator.fromCamera!||this.camera>generator.toCamera!)return;
   this.freeNativeSlot();
   const used=new Set(this.enemies.filter(e=>e.active&&!e.dead).map(e=>e.enemySlot));for(const held of this.objectSlots(used))used.add(held);
-  let slot=going?going.enemySlot!+1:0;while(used.has(slot))slot++;if(slot>=5)return;
+  let slot=going?going.enemySlot!+1:0;while(used.has(slot)||this.groupSlotsBefore[slot])slot++;if(slot>=5)return;
   this.spawnFrenzyBullet(slot);
  }
  private spawnFrenzyBullet(slot:number){
   const pick=nativeFrenzyHeight(this.random.bytes[slot],this.swimBag);this.swimBag=pick.bag;
-  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1});this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0; // made after this frame's enemy step
+  this.spawnNativeBullet(this.camera+BULLETS.generatorSpawnAhead,pick.y+BULLETS.generatorFeetOffset,-1);Object.assign(this.enemies[this.enemies.length-1],{enemySlot:slot,frenzy:true,age:1,graphicsVisible:false});this.slotSub[slot]=0;this.slotVertical[slot].fraction=0;this.slotYFrac[slot]=0;this.slotYFraction[slot]=0; // made after this frame's enemy step
   this.spinyTimer=32;
  }
  // A native shot is removed when its next position is left of the screen (native: x - camera < about -73 on the current camera; the enemy step sees the previous camera, so 70 here) or right of camera + 329.
@@ -1338,12 +1340,13 @@ export class Simulation {
  }
  private objectSlots(enemySlots:Set<number|undefined>,platformSlots=this.platformSlots){
   const held=new Set<number>([...(this.firebarSlots?.held()??[]),...this.specialSlot5.vineSlots.filter(s=>s<5&&!this.erasedVineSlots.has(s))]),context=this.platformMotion.context;
+  for(const slot of this.springSlots.values())if(slot<5)held.add(slot);
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
   for(const controller of this.frenzyControllers)if(controller.slot!==undefined)held.add(controller.slot);
   for(const e of this.enemies)if(e.active&&!e.dead&&e.nativeBowser?.rearSlot!==undefined)held.add(e.nativeBowser.rearSlot);
   for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else platformSlots.delete(platform);
   for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
-   if(this.scrollCrossFrame===this.frame-1)continue; // task7 blocks initialization as well as the creation clock
+   if(this.parserClock.blocked)continue; // task7 blocks initialization as well as the creation clock
    let slot=0;while(held.has(slot)||enemySlots.has(slot)||this.slotReleaseFrame[slot]===this.frame)slot++;if(slot<5){platformSlots.set(platform,slot);if(platformSlots===this.platformSlots){this.platformMotion.slotSub(platform,this.slotSub[slot]);this.platformMotion.slotFraction(platform,this.slotVertical[slot].fraction);}held.add(slot);}
   }
   return held;
@@ -1432,7 +1435,7 @@ export class Simulation {
   this.intervalControl=n.interval;this.player.star=n.star;
   if(!n.tick)return;
   if(this.screenTimer>0)this.screenTimer--;
-  for(const e of this.enemies){if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;if(e.hbro&&e.hbro.interval>0)e.hbro.interval--;}
+  for(const e of this.enemies){if(e.shellTimer)e.shellTimer--;if(e.pod&&e.pod.timer>0)e.pod.timer--;if(e.bloop&&e.bloop.timer>0)e.bloop.timer--;if(e.hbro&&e.hbro.interval>0)e.hbro.interval--;}
  }
  private restoreStarMusic(){if(nativeStarMusic(this.player.star,this.intervalControl,Math.floor((this.player.y-32)/256)+1))this.emit(this.areaMusic());}
  private updateNativePodoboo(e:Enemy){
@@ -2011,7 +2014,7 @@ export class Simulation {
    if(!crossed&&!motion.waiting.has(platform))continue;
    // ProcessEnemyData skips the row whose AreaParserTaskNum is7, even if
    // a platform's threshold was reached and its native slot is available.
-   if(this.scrollCrossFrame===this.frame-1){motion.waiting.add(platform);continue;}
+   if(this.parserClock.blocked){motion.waiting.add(platform);continue;}
    if(!this.nativeSlotsFull(platform)){if(motion.waiting.has(platform)){motion.create(platform,this.platformFrame);this.busyNativeSlots();}continue;}
    if(o.x-(o.kind==='wrap'?12:0)>=this.camera+256)motion.waiting.add(platform);else{motion.waiting.delete(platform);motion.lost.add(platform);} // like a lone list object: waits while off screen, else is never made
   }
@@ -2106,7 +2109,25 @@ export class Simulation {
  }
  private groupParserSlot=5;
  private groupSlotsBefore=[false,false,false,false,false];
- private primeNativeEntryObjects(){const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();}
+ private renderInitialSpringColumns(){
+  if(this.springLoadColumns===0)return;
+  for(let column=0;column<2;column++){for(const spring of this.area.springs??[])if(spring.nativeColumn===this.parserColumnX)this.createNativeSpring(spring);this.parserColumnX=(this.parserColumnX+16)&65535;}
+  this.springLoadColumns--;
+ }
+ private createNativeSpring(spring:SpringSpec){
+  if(this.springSlots.has(spring))return;const used=this.busyNativeSlots();let slot=0;while(slot<5&&used.has(slot))slot++;
+  this.springSlots.set(spring,slot);
+  if(slot===5){Object.assign(this.specialSlot5,{flag:(this.specialSlot5.flag+1)&255,id:50,x:spring.x,y:spring.y-24});this.items=this.items.filter(i=>!['mushroom','flower','star','1up'].includes(i.kind));}
+ }
+ private releaseNativeSprings(){
+  for(const [spring,slot]of this.springSlots)if(spring.x<Math.floor(this.camera)-72){this.springSlots.delete(spring);if(slot<5)this.slotReleaseFrame[slot]=this.frame;else if(this.specialSlot5.id===50)this.specialSlot5.erase();}
+ }
+ private advanceNativeAreaParser(scroll:number){
+  const task=this.parserClock.advance(scroll,this.parserVramBusy);
+  if(task===7||task===3){this.advanceSpecialSlotParser(this.parserColumnX);for(const spring of this.area.springs??[])if(spring.nativeColumn===this.parserColumnX)this.createNativeSpring(spring);}
+  this.areaControls.advance(task);
+ }
+ private primeNativeEntryObjects(){const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,slot)=>busy.has(slot));const slot=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=slot<0?5:slot;this.passNativeObjects();for(const generator of this.area.generators??[])if(generator.kind==='bullet'&&generator.heights){this.frenzyDue=generator;this.passNativeFrenzy();}}
  private passNativeObjects(){
   if(this.parserClock.blocked)return;
   const entries=[...this.enemies.filter(e=>!e.active&&!e.slotLost&&(e.nativeId!==undefined||e.nativeGroup?.index===0)).map(enemy=>({offset:enemy.nativeOffset??enemy.nativeGroup?.offset??0,column:enemy.nativeColumn??enemy.nativeGroup!.column,enemy,controller:undefined as NativeFrenzyController|undefined})),...this.frenzyControllers.filter(c=>c.slot===undefined&&!c.lost).map(controller=>({offset:controller.offset,column:controller.column,enemy:undefined,controller}))].sort((a,b)=>a.offset-b.offset);
@@ -2228,7 +2249,7 @@ export class Simulation {
   if(this.nativeSwimFrenzyArea())this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // discard legacy generated roster before it can claim checkpoint slots
   this.syncSpecialPowerup();this.nativeFrenzyTurn=undefined;if(this.nativeStompTimer)this.nativeStompTimer--;
   let reservedClaim:{flag:number;id:number;buffer:number}|undefined;const previousReserved={flag:this.specialSlot5.flag,id:this.specialSlot5.id,buffer:this.specialSlot5.frenzyBuffer};
-  if(this.specialSlot5.frenzyQueue&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot();this.nativeFrenzyTurn=this.specialSlot5.consumeFrenzy(slot<5?slot:this.specialSlot5.flag?6:5);}
+  if(this.specialSlot5.frenzyQueue&&!this.parserClock.blocked){const slot=this.freeNativeSlot();this.nativeFrenzyTurn=this.specialSlot5.consumeFrenzy(slot<5?slot:this.specialSlot5.flag?6:5);}
   if(this.nativeFrenzyTurn?.slot===5){reservedClaim={flag:this.specialSlot5.flag,id:this.specialSlot5.id,buffer:this.specialSlot5.frenzyBuffer};Object.assign(this.specialSlot5,{flag:previousReserved.flag,id:previousReserved.id,frenzyBuffer:previousReserved.buffer});}
   const busy=this.busyNativeSlots();this.groupSlotsBefore=Array.from({length:5},(_,s)=>busy.has(s));
   const firstFree=this.groupSlotsBefore.indexOf(false);this.groupParserSlot=firstFree<0?5:firstFree;
@@ -2240,6 +2261,7 @@ export class Simulation {
   const ordered=this.area.theme==='water'?[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5)):this.enemies;
   for(const e of ordered){
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
+   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined;
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
@@ -2326,11 +2348,11 @@ export class Simulation {
     }
     if(e.shell){
      e.shellAge=e.movingShell?0:(e.shellAge??0)+1;
-     if(e.shellAge>=shellRules.wakeNativeFrames){e.shell=false;e.shellAge=0;e.shellChain=0;e.vx=(e.direction??-1)*0.5;}
+     e.shellTimer??=this.primaryHardMode?11:16;
     }
     if(!eraseWalkerAfterMove&&e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&!e.shell&&this.redKoopaLedgeAhead(e))e.vx=-e.vx;
     const greenBounce=e.kind==='paratroopa'&&e.palette!=='0f-16-30-27';
-    const normalWalker=NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion;
+    const normalWalker=NATIVE_FALLERS.includes(e.kind)&&(!e.shell||!e.movingShell)&&!e.motion;
     const dx=e.shell?(e.movingShell?Math.sign(e.vx)*shellRules.speedPixelsPerNativeFrame:0):e.vx;
     if(!greenBounce&&!normalWalker){
      if(e.kind==='beetle'){
@@ -2364,20 +2386,24 @@ export class Simulation {
       const ground=this.collisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;let landed=false;
       // Explicit off-grid artwork rectangles retain their actual support height.
       if(ground&&(depth<5||ground.y%16!==0)){
-       if(e.walkerState===1){
+       if(e.shell&&e.walkerState>=3)landed=true;
+       if(e.walkerState===2){landed=true;const step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,true,p.x);e.y=ground.y%16?ground.y:step.y;n.speed=step.speed;n.force=step.force;e.walkerState=3;e.shellTimer=16;}
+       else if(e.walkerState===1){
         landed=true;const step={x:e.x,y:e.y,vx:e.vx,...n};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',p.x);
         e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;n.speed=step.speed;n.force=step.force;e.walkerState=0;
         if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
        }
-      }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0))e.walkerState=1;
+      }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0))e.walkerState=e.shell?2:1;
       if(!landed&&rawY>=0x20&&this.isSolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))e.vx=-e.vx;
      }
-     if(e.walkerState===1){const m={y:Math.floor(e.y),speed:n.speed,force:n.force,fraction:n.fraction,timer:0};nativeImposeGravity(m,0x3d,3);Object.assign(n,{speed:m.speed,force:m.force,fraction:m.fraction});e.y=m.y;}
-     e.x+=e.vx;e.vy=n.speed+n.force/256;
+     if(e.shell&&e.walkerState>=3&&e.shellTimer===0){e.shell=false;e.walkerState=0;e.shellAge=0;e.shellChain=0;e.direction=(this.random.frame&1)?-1:1;e.vx=e.direction*(this.primaryHardMode?0.75:0.5);revivedShell=true;}
+     stompY=e.y;stompFall={...n};
+     if(e.walkerState===1||e.walkerState===2){const m={y:Math.floor(e.y),speed:n.speed,force:n.force,fraction:n.fraction,timer:0};nativeImposeGravity(m,0x3d,3);Object.assign(n,{speed:m.speed,force:m.force,fraction:m.fraction});e.y=m.y;}
+     if(!revivedShell&&(!e.shell||e.walkerState===2))e.x+=e.vx;e.vy=n.speed+n.force/256;
     }
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:0.25));e.y+=e.vy;}
     const floor=this.collisionAt(e.x+8,e.y);
-    if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion)&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
+    if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&(!e.shell||!e.movingShell)&&!e.motion)&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }
    // EnemyGfxHandler may erase a page2 walker, but RunNormalEnemies still
@@ -2437,14 +2463,14 @@ export class Simulation {
     this.emit('sfx_stomp');
     if(['koopa','redKoopa','paratroopa','beetle'].includes(e.kind)){
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
-     else if(!e.shell){e.shell=true;e.movingShell=false;e.shellAge=0;e.shellChain=0;e.x=priorX;} // native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
+     else if(!e.shell){e.shell=true;e.movingShell=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;} // HandleStompedShellE precedes MoveNormalEnemy; state4 holds its pre-movement vertical bytes. Native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
      else{e.movingShell=!e.movingShell;e.shellAge=0;e.shellChain=0;}
     }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.squashFrames=this.intervalControl+22;this.rememberPlatformCorpseSlot(e);}} // native: a stomped Goomba keeps its x from before this frame's step and is erased when its EnemyIntervalTimer runs out, IntervalTimerControl + 22 frames after the stomp (18 of 18 v2 squashes)
    }else if(e.shell&&p.vy<0&&oldBottom<=e.y+1){continue;}else if(e.shell&&!e.movingShell){e.movingShell=true;e.shellAge=0;e.shellChain=0;e.vx=(p.x<e.x?1:-1)*shellRules.speedPixelsPerNativeFrame;const kick=this.shellKickAward();if(e.kind==='koopa')this.enemyPopup(kick,e);e.x+=Math.sign(e.vx)*4;this.floateyScore(kick);this.emit('sfx_kick');}
    else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))this.hurt(); // native reach of the measured kinds: integer |enemy x before its move - Mario x| (8-1 row 1356: 12, no touch); a Bullet Bill (5-2 row 94: 11) touches wider
   }
   this.nativeWalkerContacts(stepFrom);
-  if(this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&this.scrollCrossFrame!==this.frame-1){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
+  if(this.specialSlot5.vineCount===1&&this.specialSlot5.frenzyBuffer===0&&!this.parserClock.blocked){const slot=this.freeNativeSlot();if(slot<5){this.erasedVineSlots.delete(slot);this.specialSlot5.addVineSegment(slot);}}
   if(reservedClaim)Object.assign(this.specialSlot5,{flag:reservedClaim.flag,id:reservedClaim.id,frenzyBuffer:reservedClaim.buffer});
   this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);
   this.spinyFrenzyAfter(frenzy);
@@ -2610,7 +2636,8 @@ export class Simulation {
   let ticks=0;
   for(let p=LIFE_FLOW.gameoverSet+1;;p++)if(((this.lifeRow+p-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase&&++ticks>=LIFE_FLOW.gameoverTicks)return p+LIFE_FLOW.gameoverTail;
  }
- private startPlayAfterIntro(){if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;if(!this.entryFalling&&this.enemies.some(e=>e.active&&e.nativeId!==undefined)){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();this.emit(this.areaMusic());}
+ private startPlayAfterIntro(){if(this.deathLoad)this.screenTimer=this.deathLoad.state.timer;this.deathLoad=undefined;if(this.area.theme==='water'&&!this.player.grounded){this.playerAnim.fresh=false;this.playerAnim.setSpeed(0);}this.intervalControl=(LIFE_FLOW.clockTickPhase+20-LIFE_FLOW.controlPhase)%LIFE_FLOW.clockPeriod;if(this.lifeIntro!.fromDeath){this.time=this.level.time;this.timerFrames=0;}this.broClock=this.phaseFrame-(this.lifeIntro!.fromDeath?3:2)-2;this.random.frame=(this.broClock+2)&255;/* FrameCounter $09 itself (cleared on that load row) *//* native load row: 2 rows into a title intro, 3 into a death's; its frame counter runs through the lives screen, so the screen length decides the parity. A remake step shows the native row two earlier (input queue) */this.lifeIntro=undefined;this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.primeNativeReadyEnemies();this.emit(this.areaMusic());}
+ private primeNativeReadyEnemies(){if(!this.entryFalling&&this.enemies.some(e=>e.active&&(e.nativeId!==undefined||e.frenzy))){this.broClock=(this.random.frame-1)&255;this.updateEnemies(this.player.y);}else this.primeEntryPodoboos();}
  private primeEntryPodoboos(){
   // InitializeGame already loads the in-range Podoboo on engine7. On the first engine8 row it takes its first MoveJ gravity step.
   for(const e of this.enemies)if(e.kind==='podoboo'&&!e.active&&e.x>this.camera-32&&e.x<this.camera+304){
@@ -2648,22 +2675,22 @@ export class Simulation {
   if(result.preload&&load.player){Object.assign(this.player,load.player);this.time=this.level.time+1;this.timerFrames=23;}
  }
  private updateLevelLoad(){
-  const n=this.levelLoad!,hold=n.task===0&&n.screen===0;
+  const n=this.levelLoad!,render=n.task===1&&n.screen===8,hold=n.task===0&&n.screen===0;
   if(!hold)this.tickIntervalTimers();else this.lifeFrozen++;
-  const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);
+  const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
   if(result.camera)this.camera=0;
   if(result.clear){
-   const time=this.time;this.loadArea(this.level.main,undefined,undefined,true);this.time=time;
+   const time=this.time;this.loadArea(this.level.main,undefined,undefined,true);this.time=time;this.areaControls.column-=24;this.springSlots.clear();this.springLoadColumns=12;
    this.player.x=0;this.player.y=32;this.player.vx=0;this.player.vy=0;this.random.frame=0;
   }
   if(result.preload){
    const [x,y]=this.area.spawn;this.player.x=x;this.player.y=y;this.player.grounded=this.isSolid(x+8,y);
-   this.time=this.level.time+1;this.timerFrames=23;this.phase='play';this.playerAnim.fresh=true;
+   this.time=this.level.time+1;this.timerFrames=23;this.phase='play';this.playerAnim.fresh=true;this.primeNativeEntryObjects();
   }
   if(result.ready){
    this.screenTimer=n.timer;this.time--;this.timerFrames=0;this.phase='play';this.phaseFrame=0;this.broClock=this.random.frame-2;
    this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.levelLoad=undefined;
-   this.primeEntryPodoboos();this.emit(this.areaMusic());
+   this.primeNativeReadyEnemies();this.emit(this.areaMusic());
   }
  }
  private nextLevel(victory=false){
