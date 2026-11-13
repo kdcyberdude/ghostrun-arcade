@@ -995,12 +995,19 @@ export class Simulation {
    else{if(!tile)continue;
     // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
     // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
-    if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);break;}
+    if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);this.footDepthAfterBump(nativeHead);break;}
     if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&tile.id!==196&&(p.size===0||!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
     if(water){if(tile.id!==0x26&&tile.id>=[0x10,0x61,0x88,0xc4][tile.id>>6])this.emit('sfx_bump');}
     else if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
+    this.footDepthAfterBump(nativeHead);
    }break;
   }
+ }
+ // The foot check runs after the head check in the same frame: once a bump turns the speed downward, a foot
+ // already deep inside a wall pushes Mario like DoFootCheck (1-2 mood rows 3173-3174: small Mario's right foot in a wall column, +1 per row while moving left).
+ private footDepthAfterBump(nativeHead:boolean){
+  const p=this.player;if(!nativeHead||this.area.theme==='water'||p.vy<0)return;
+  for(const x of [p.x+3,p.x+12]){const tile=this.collisionAt(x,p.y);if(tile&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();return;}}
  }
  private hitBlock(x:number,y:number,id:number,piece?:TilePiece){
   const key=`${x},${y}`;if(this.bump.has(key))return;this.bump.set(key,0);if(!this.nativeBlockBounce&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.queueBlockMetatile(key,null);if(id!==196&&this.area.theme!=='water'&&id<[0x10,0x61,0x88,0xc4][id>>6])this.blockBounceTimer=16;if(id===196&&!piece)this.usedBlockRehits.add(key);
