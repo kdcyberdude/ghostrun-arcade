@@ -1,6 +1,7 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import zlib from 'node:zlib';import {createHash} from 'node:crypto';
 import {nativePowerupContact} from '../src/native-powerup.js';import type {NativeBox} from '../src/native-misc.js';
 import {Simulation} from '../src/simulation.js';import {decodeEntrance} from '../tools/harness/native-entrance.mjs';import {strictCompare} from '../tools/harness/native-strict.js';
+import {NativeHud} from '../src/native-hud.js';
 import fixture from './fixtures/native-powerup-contact.json';
 
 test('source even-frame bbox3 powerup collision matches every retained and mood eligible native row',()=>{
@@ -18,7 +19,7 @@ test('native mushroom FloateyNumber awards points on the timer43 pass, five rows
  const p=Simulation.prototype as any;
  for(const e of fixture.pickups){
   assert.equal(e.kind,0);assert.equal(e.award[0].control,6);assert.equal(e.award[0].timer,47);
-  const context:any={player:{size:0},pendingScore:[],score:e.award[0].score,awardPopup(){},emit(){},floateyScore:p.floateyScore};
+  const context:any={player:{size:0},pendingScore:[],score:e.award[0].score,coins:0,hud:new NativeHud(),addScore:p.addScore,awardPopup(){},emit(){},floateyScore:p.floateyScore};
   p.collectItem.call(context,{kind:'mushroom',nativePowerState:192,x:e.x,y:e.y+8});
   assert.equal(context.score,e.award[0].score);
   for(let i=1;i<6;i++){p.payFloateyScore.call(context);assert.equal(context.score,e.award[i].score,`${e.id} row${e.row+i}`);}
