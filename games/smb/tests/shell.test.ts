@@ -53,13 +53,14 @@ test('a shell reverses at a real solid wall and its return genuinely damages the
  assert.equal(reversed,true);assert.equal(sim.phase,'dying');assert.equal(sim.player.dead,true);
 });
 
-test('stopping a returning shell and kicking it again starts a new victim chain',()=>{
+// Captured RAM in native-shell-chain-rekick.test.ts shows ShellChainCounter survives both actions.
+test('stopping a returning shell and kicking it again preserves its victim chain',()=>{
  const sim=fixture(1,12,130),shell=kick(sim);let sawFirstVictim=false;
  sim.step(['right','a','b'],22);
  for(let frame=0;frame<130&&shell.movingShell&&sim.phase==='play';frame++){
   if(shell.shellChain===1)sawFirstVictim=true;sim.step(['right','b'],1);
  }
- assert.equal(sawFirstVictim,true);assert.equal(sim.phase,'play');assert.equal(shell.movingShell,false,'descending jump must stop the returning shell');assert.equal(sim.awardedScore,1100);assert.equal(shell.shellChain,0);
+ assert.equal(sawFirstVictim,true);assert.equal(sim.phase,'play');assert.equal(shell.movingShell,false,'descending jump must stop the returning shell');assert.equal(sim.awardedScore,1100);assert.equal(shell.shellChain,1);
  for(let frame=0;frame<45&&!shell.movingShell&&sim.phase==='play';frame++)sim.step(['left'],1);
- assert.equal(sim.phase,'play');assert.equal(shell.movingShell,true);assert.equal(shell.vx,-3);assert.equal(sim.awardedScore,1500,'the second side kick awards400');assert.equal(shell.shellChain,0);
+ assert.equal(sim.phase,'play');assert.equal(shell.movingShell,true);assert.equal(shell.vx,-3);assert.equal(sim.awardedScore,1500,'the second side kick awards400');assert.equal(shell.shellChain,1);
 });

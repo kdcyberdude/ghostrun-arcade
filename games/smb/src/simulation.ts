@@ -3029,7 +3029,7 @@ export class Simulation {
     if(!shellContact){if(slot!==undefined)this.collisionBits[slot]&=~1;delete e.kickOverlap;continue;}
     if(normalContact===undefined){if(slot!==undefined&&this.collisionBits[slot]&1)continue;if(slot!==undefined)this.collisionBits[slot]|=1;}
     if(!e.movingShell){
-     e.movingShell=true;e.shellAge=0;e.shellChain=0;e.kickOverlap=true;e.vx=(Math.floor(priorX)>=Math.floor(p.x)?1:-1)*shellRules.speedPixelsPerNativeFrame;e.x=priorX+e.vx;e.y=stompY;e.fall=stompFall;
+     e.movingShell=true;e.shellAge=0;e.kickOverlap=true;e.vx=(Math.floor(priorX)>=Math.floor(p.x)?1:-1)*shellRules.speedPixelsPerNativeFrame;e.x=priorX+e.vx;e.y=stompY;e.fall=stompFall;
      const award=this.shellKickAward();this.enemyPopup(award,e);this.floateyScore(award);this.emit('sfx_kick');continue;
     }
    }
@@ -3052,7 +3052,7 @@ export class Simulation {
     if(['koopa','redKoopa','paratroopa','beetle'].includes(e.kind)){
      if(e.kind==='paratroopa'){e.kind=e.palette==='0f-16-30-27'?'redKoopa':'koopa';e.nativeId=e.kind==='redKoopa'?1:0;const unwinged=nativeUnwingedStomp(priorX+(e.redFlight?.originalY??0)/256,priorY,priorFraction,p.x);delete e.redFlight;delete e.horizontalFlight;e.fall={speed:0,force:0,fraction:unwinged.fraction};e.vx=unwinged.vx;e.x=unwinged.x;e.y=unwinged.y;if(e.pod)Object.assign(e.pod,{y:unwinged.y,speed:0,force:0,fraction:unwinged.fraction});e.unwingedBounce=true;e.unwingedAir=this.frame;}
      else if(!e.shell){e.shell=true;e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;} // HandleStompedShellE precedes MoveNormalEnemy; state4 holds its pre-movement vertical bytes. Native: a stomped Koopa keeps its position from before this frame's step (all 31 Koopa/Beetle stomps of the 32 v2 model replays; 4-3 row 187: slot 0 stays 409.0)
-     else{e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;}
+     else{e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;}
     }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;}} // HandleStompedShellE writes state4 and interval16/11; MoveNormalEnemy owns subsequent falling, landing and timer14 erasure.
    }else if(e.shell&&shellContact)hurtBeforeMove();
    else if(normalContact||this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))hurtBeforeMove();
