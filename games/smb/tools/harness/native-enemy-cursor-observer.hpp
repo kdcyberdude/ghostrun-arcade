@@ -6,19 +6,25 @@
 #include <string>
 using namespace nesle::cuda;
 struct Init {int slot,id,flag,x,y;};
+struct FirebarAttempt {std::size_t frame;int slot,id,x,y,camera,master,speed,direction,high,low,sp,ret;};
 struct Attempt {std::size_t frame;int slot,offset,page,selected,camera,hard,primary,frenzy,vine,queue,sp,ret,pointer;std::vector<Init> init;};
 class NativeEnemyCursorObserver {
- BatchBuffers& b;std::ofstream out;int check,initPC;std::optional<Attempt> active;
+ BatchBuffers& b;std::ofstream out,firebars;int check,initPC,firebarPC;std::optional<Attempt> active;std::optional<FirebarAttempt> firebar;
 public:
  std::size_t frame=0,calls=0,initialized=0;
- NativeEnemyCursorObserver(BatchBuffers& buffers,const std::vector<std::uint8_t>& prg,const char* file):b(buffers),out(file){
+ NativeEnemyCursorObserver(BatchBuffers& buffers,const std::vector<std::uint8_t>& prg,const char* file):b(buffers),out(file),firebars(std::string(file)+".firebars.jsonl"){
   if(!out)throw std::runtime_error("Observer output unavailable");
  const auto find=[&](std::initializer_list<unsigned char> bytes){int found=-1;for(std::size_t i=0;i+bytes.size()<=prg.size();i++)if(std::equal(bytes.begin(),bytes.end(),prg.begin()+i)){if(found>=0)throw std::runtime_error("Nonunique source signature");found=static_cast<int>(i)+0x8000;}if(found<0)throw std::runtime_error("Missing source signature");return found;};
  check=find({0xad,0xcd,0x06,0xf0});const int checkpoint=find({0xb5,0x16,0xc9,0x15,0xb0,0x0d,0xa8,0xb5,0xcf,0x69,0x08});
+ firebarPC=find({0xad,0xd1,0x03,0x29,0x08})-3;
  initPC=checkpoint+6+static_cast<std::int8_t>(prg[checkpoint-0x8000+5]);
  }
  template<class Cpu> void observe(const Cpu& cpu){
   const auto* r=b.cpu.ram;
+  if(firebar&&cpu.pc==firebar->ret&&cpu.sp==((firebar->sp+2)&255)){
+   const auto& a=*firebar;firebars<<"{\"frame\":"<<a.frame<<",\"endFrame\":"<<frame<<",\"slot\":"<<a.slot<<",\"id\":"<<a.id<<",\"x\":"<<a.x<<",\"y\":"<<a.y<<",\"camera\":"<<a.camera<<",\"master\":"<<a.master<<",\"speed\":"<<a.speed<<",\"direction\":"<<a.direction<<",\"before\":["<<a.high<<','<<a.low<<"],\"after\":["<<int(r[0xa0+a.slot])<<','<<int(r[0x58+a.slot])<<"],\"offscreen\":"<<int(r[0x3d1])<<"}\n";firebar.reset();
+  }
+  if(cpu.pc==firebarPC){if(firebar)throw std::runtime_error("Nested firebar");const int slot=cpu.x,sp=cpu.sp,ret=(r[0x100+((sp+1)&255)]+r[0x100+((sp+2)&255)]*256+1)&65535;firebar=FirebarAttempt{frame,slot,int(r[0x16+slot]),r[0x6e + slot]*256+r[0x87+slot],(int(r[0xb6+slot])-1)*256+r[0xcf+slot],r[0x71a]*256+r[0x71c],int(r[0x747]),int(r[0x388+slot]),int(r[0x34+slot]),int(r[0xa0+slot]),int(r[0x58+slot]),sp,ret};}
   if(active&&cpu.pc==active->ret&&cpu.sp==((active->sp+2)&255)){
    const auto& a=*active;out<<"{\"frame\":"<<a.frame<<",\"endFrame\":"<<frame<<",\"pointer\":"<<a.pointer<<",\"slot\":"<<a.slot<<",\"camera\":"<<a.camera<<",\"hard\":"<<a.hard<<",\"primaryHard\":"<<a.primary<<",\"frenzy\":"<<a.frenzy<<",\"vine\":"<<a.vine<<",\"queue\":"<<a.queue<<",\"before\":["<<a.offset<<','<<a.page<<','<<a.selected<<"],\"after\":["<<int(r[0x739])<<','<<int(r[0x73a])<<','<<int(r[0x73b])<<"],\"flag\":"<<int(r[15+a.slot])<<",\"init\":[";
    bool comma=false;for(const auto& i:a.init){if(comma)out<<',';comma=true;out<<'['<<i.slot<<','<<i.id<<','<<i.flag<<','<<i.x<<','<<i.y<<']';}out<<"]}\n";calls++;active.reset();

@@ -30,6 +30,7 @@ import {PlayerAnim} from './player-anim.js';
 import {nativeFlagStep,nativeFlagNumberStep} from './native-flagpole.js';
 import {captureEnemyPicture,enemyPicture,enemyPictureTimersStopped} from './enemy-picture.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
+import {nativeFirebarProfiles} from './native-firebar.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {nativeBowserState,stepNativeBowser,nativeBowserHit} from './native-bowser.js';
 import {nativeFirebarHit} from './firebar-contact.js';
@@ -316,7 +317,7 @@ export class Simulation {
   this.platformMotion.reset({levelId:this.level.id,areaId:id});this.platformFrame=0;
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
   // Firebars share the five native enemy slots and inherit each slot's vertical speed byte as their initial angle.
-  this.firebarSlots=area.firebars?.length?new FirebarSlots(area.firebars):undefined;
+  this.firebarSlots=area.firebars?.length?new FirebarSlots(area.firebars,undefined,nativeFirebarProfiles(this.level,id)):undefined;
   if(this.firebarSlots){this.firebarSlots.busy=slot=>{const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte)=>{this.slotYSpeed[slot]=byte;};}
   this.firebarMotors.clear();
   for(const bar of area.firebars??[])if(bar.motor&&bar.length===6)this.firebarMotors.set(bar,{state:createFirebarMotor(bar.motor),geometry:{x:bar.x,y:bar.y,length:6}});
@@ -1062,7 +1063,7 @@ export class Simulation {
 
  /** Rendering and collision read the same motor state without advancing it. */
  firebarCenters(bar:FirebarSpec,camera=this.camera):{x:number;y:number}[]{
-  if(this.firebarSlots?.tracks(bar))return bar.x-4-camera>0&&bar.x-4-camera<256?this.firebarSlots.centers(bar):[];
+  if(this.firebarSlots?.tracks(bar))return nativeMiscOffscreen(bar.x-4,bar.y-4,camera)&8?[]:this.firebarSlots.centers(bar);
   const motor=this.firebarMotors.get(bar);
   if(motor)return motor.state.active?firebarFlameCenters(motor.state,motor.geometry):[];
   const angle=(this.phase==='dying'?this.firebarDeathFrame:this.areaFrame)*bar.speed;
