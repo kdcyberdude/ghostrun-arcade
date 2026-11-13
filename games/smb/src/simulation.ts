@@ -2448,7 +2448,7 @@ export class Simulation {
   const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id);if(!binding)return;
   const physical=nativePhysicalAreas[binding.code],type=this.area.theme==='water'?0:this.area.theme==='underground'?2:this.area.theme==='castle'?3:1;if(physical.type!==type)return;
   const bytes=nativeEnemyBytes(physical.enemy);if(!bytes)return;
-  const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]),castleSupported=new Set([12,21,27,28,29,30,31,40,43,44,45,53]);
+  const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]),castleSupported=new Set([12,21,27,28,29,30,31,40,41,43,44,45,53]);
   this.placedCastle=type===3&&records.length>0&&records.every(r=>castleSupported.has(r.id));
   const mixedWalkers=nativeMixedWalkerScene(records,binding.offset,this.area.enemies);
   if(!this.placedCastle&&!mixedWalkers&&(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id))))return;
@@ -2457,7 +2457,7 @@ export class Simulation {
    if(this.placedCastle&&(r.id===12||r.id===45||r.id===21||r.id===53||r.id>=27&&r.id<=31))continue;
    if(mixedWalkers&&(r.id<21||r.id>=0x37&&r.id<0x3f))continue;
    if(r.id===23||r.id===52){if(!this.frenzyControllers.some(c=>c.offset===r.offset))return;}
-   else if([37,38,39,40,43,44].includes(r.id)){
+   else if([37,38,39,40,41,43,44].includes(r.id)){
     const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset+([38,39,43,44].includes(r.id)?12:0)&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
    }else if(!this.enemies.some(e=>e.nativeOffset===r.offset&&e.nativeId===r.id))return;
   }
@@ -2510,7 +2510,7 @@ export class Simulation {
    if(init.flag&&slot<5){const c=this.frenzyControllers.find(c=>c.offset===init.offset);if(c){c.slot=slot;c.x=init.x!+this.placedOrigin+this.slotSub[slot]/256;}}
    return init.flag;
   }
-  if([37,38,39,40,43,44].includes(init.id)){
+  if([37,38,39,40,41,43,44].includes(init.id)){
    const platform=this.placedPlatforms.get(init.offset!)!,left=this.slotVertical[slot],y=init.y!;
    this.platformSlots.set(platform,slot);this.platformMotion.lost.delete(platform);
    this.platformMotion.initializeNative(platform,{id:init.id,x:init.x!+this.placedOrigin+([38,39,43,44].includes(init.id)?12:0),y,a:init.id===38||init.id===43?255:0,b:init.id===37?(y+(y<128?64:192))&255:init.id===40?0:this.castleSlotXSpeed[slot],c:init.id===37?(y<128?y:256-y):this.slotSub[slot],d:init.id===38||init.id===43?16:init.id===39||init.id===44?240:0,e:left.fraction},this.platformFrame,this.random.frame);

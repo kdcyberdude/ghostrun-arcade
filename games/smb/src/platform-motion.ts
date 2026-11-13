@@ -207,9 +207,14 @@ export class PlatformMotion {
   this.startCounter.set(platform,[frame,this.prepared.counter]);this.seedClock(platform,frame);
  }
  slotSpeedByte(platform:PlatformSpec,frame:number){return this.clockState(platform,frame)?.b;}
- initializedNative(platform:PlatformSpec){return this.clockFrames.has(platform);}
+ initializedNative(platform:PlatformSpec){return this.clockFrames.has(platform)||this.nativeStart.has(platform)&&nativePlatformObject(platform,this.context)?.kind==='drop';}
  initializeNative(platform:PlatformSpec,state:NativePlatformBytes,frame:number,counter:number){
   this.waiting.delete(platform);this.nativeStart.set(platform,frame);this.startCounter.set(platform,[frame,counter]);this.startSub.set(platform,state.c);this.startFraction.set(platform,state.e);
+  if(state.id===41){
+   const driver=nativePlatformObject(platform,this.context)!;
+   this.pulleys.set(driver.pair!.join(','),{start:frame,d:[state.y-driver.y],load:{},driver,motor:{y:state.y,speed:(state.a<<24)>>24,force:state.d,fraction:state.e}});
+   return;
+  }
   this.clock.create(platform,state);this.clockFrames.set(platform,{born:frame,last:frame,counter});
  }
  /** ExecGameLoopback restarts EnemyData; KillAllEnemies erases the current

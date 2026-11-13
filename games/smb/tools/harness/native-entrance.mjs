@@ -1,3 +1,4 @@
+import {nativePlatformObject} from '../../src/platform-motion.ts';
 import {decodeNativeGameOver} from '../../src/native-game-over.ts';
 import {hudDigits,hudFromNametable,pendingHudFromRam} from '../../src/native-hud.ts';
 import {decodeNativeLoad,initializeNativeLoad} from './native-load-seed.mjs';
@@ -62,6 +63,12 @@ export function initializeEntrance(sim,start){
  if(start.slots){sim.slotSub=start.slots.map(o=>Math.round((o.x-Math.floor(o.x))*256)&255);sim.slotYSpeed=start.slots.map(o=>o.speed&255);sim.slotYFraction=start.slots.map(o=>o.fraction);}
  if(start.nativeAreaSnapshot&&start.enemyDataOffset!==undefined)for(const e of sim.enemies){const offset=e.nativeOffset??e.nativeGroup?.offset;if(offset!==undefined&&offset<start.enemyDataOffset)e.slotLost=true;}
  for(const [s,o] of (start.slots??[]).entries()){
+  if(o.flag&&o.id===41&&sim.placedCastle){
+   const platform=sim.area.platforms?.find(p=>nativePlatformObject(p,sim.platformMotion.context)?.x===Math.floor(o.x));
+   if(!platform)throw Error(`Observed falling platform at ${o.x} is not mapped`);
+   sim.platformSlots.set(platform,s);sim.platformMotion.lost.delete(platform);
+   sim.platformMotion.initializeNative(platform,{id:41,x:Math.floor(o.x),y:o.y-256,a:o.speed&255,b:o.xSpeed&255,c:Math.round((o.x-Math.floor(o.x))*256),d:o.force,e:o.fraction},sim.platformFrame,sim.random.frame);
+  }
   if(!o.flag)continue;
   if(o.id===50){const spring=sim.area.springs?.find(p=>p.nativeColumn===Math.floor(o.x));if(!spring)throw Error(`Observed Spring at ${o.x} is not mapped`);sim.springSlots.set(spring,s);}
   if(o.id===8){sim.spawnNativeBullet(o.x,o.y-256+24,-1);Object.assign(sim.enemies[sim.enemies.length-1],{enemySlot:s,age:2,frenzy:true});}
