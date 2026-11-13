@@ -44,7 +44,7 @@ for(const c of cases){
   assert.equal(at(appear).phase,'play');assert.equal(at(appear).x,40);assert.equal(at(appear).vx,0);
   // The pipe trigger (floor(x)+13>=160) fires on native row 2293-equivalent: 153 frames after the player appears.
   assert.equal(at(appear+152).phase,'play');assert.equal(at(appear+153).phase,'pipe');
-  assert.equal(at(area-1).phase,'pipe');assert.equal(at(area).phase,'play');assert.equal(at(area).area,c.entryArea);assert.equal(at(area).falling,c.fall);
+  assert.equal(at(area-1).phase,'intro');assert.equal(at(area).phase,'play');assert.equal(at(area).area,c.entryArea);assert.equal(at(area).falling,c.fall);
  });
 
  test(`${c.id}: the automatic walk is the walk motor capped at byte 12 and the pipe entry follows the 2312/-104/+152 pattern`,()=>{

@@ -14,19 +14,13 @@ function atPipe(id:'1-1'|'2-1',size:0|1){
 
 const previewId=(sim:Simulation)=>sim.pipePreviewArea?.id;
 
-test('1-1 small player previews the real target room only during the observed loading interval',()=>{
- const sim=atPipe('1-1',0);sim.step(['down'],75);
- assert.equal(sim.phase,'pipe');assert.equal(sim.pipePreviewArea,undefined);
- sim.step(['down'],1);
- assert.equal(sim.area.id,'main');assert.equal(previewId(sim),'bonus-coins');
- sim.step(['down'],4);assert.equal(previewId(sim),'bonus-coins');
- sim.step(['down'],1);assert.equal(sim.pipePreviewArea,undefined);assert.equal(sim.area.id,'bonus-coins');
-});
-
-test('unmeasured size and other pipes do not receive the preview',()=>{
- for(const [id,size] of [['1-1',1],['2-1',0]] as const){
-  const sim=atPipe(id,size);sim.step(['down'],76);
-  assert.equal(sim.phase,'pipe');assert.equal(sim.pipePreviewArea,undefined);
+test('native coin-room loading is owned by screen tasks for every player size',()=>{
+ for(const [id,size] of [['1-1',0],['1-1',1],['2-1',0]] as const){
+  const sim=atPipe(id,size);sim.step(['down'],75);
+  assert.equal(sim.phase,'intro');assert.equal(sim.area.id,'bonus-coins');assert.equal(sim.pipePreviewArea,undefined);
+  assert.equal(sim.nativeScreen?.skipIntermediate,true);
+  for(let frame=0;frame<20&&String(sim.phase)==='intro';frame++)sim.step([],1);
+  assert.equal(sim.phase,'play');assert.equal(previewId(sim),undefined);
  }
 });
 

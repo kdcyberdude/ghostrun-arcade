@@ -17,3 +17,10 @@ test('native erase clears controller/firebar/vine occupancy while preserving slo
  assert.deepEqual(sim.specialSlot5.vineSlots,[5,2]);assert.equal(sim.specialSlot5.flag,1);assert.equal(sim.specialSlot5.id,46);assert.equal(sim.specialSlot5.frenzyBuffer,0);
  assert.deepEqual([...sim.objectSlots(new Set([5]))],[5]);assert.equal(sim.enemies[0].enemySlot,5);assert.deepEqual(sim.items.map((i:any)=>i.kind),['hammer','flame']);
 });
+
+
+test('native enemy-bank erase retains a slot5 Spring and clears ordinary Spring flags',()=>{
+ const sim:any=new Simulation([observedLevels().find(l=>l.id==='1-4')!]);sim.reset(true);const ordinary={x:100,y:200},reserved={x:200,y:200};
+ sim.springSlots=new Map([[ordinary,0],[reserved,5]]);sim.springTimers=new Map([[ordinary,{timer:3}],[reserved,{timer:4}]]);Object.assign(sim.specialSlot5,{flag:1,id:50,x:200,y:176});
+ sim.clearVictoryEnemyBank();assert.deepEqual([...sim.springSlots],[[reserved,5]]);assert.deepEqual([...sim.springTimers],[[reserved,{timer:4}]]);assert.equal(sim.specialSlot5.flag,1);assert.equal(sim.specialSlot5.id,50);
+});

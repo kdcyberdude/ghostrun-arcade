@@ -159,7 +159,7 @@ test('native engine3 retains X speed and saved scroll while Y and enemies contin
  replay('1-1',461,(sim,frame)=>{
   if(frame<413)return;
   const tick=frame-413;
-  assert.equal(sim.phase,'pipe');assert.equal(sim.player.x,917);assert.equal(sim.player.vx,9432/4096);
+  assert.equal(sim.phase,frame===461?'intro':'pipe');assert.equal(sim.player.x,917);assert.equal(sim.player.vx,9432/4096);
   assert.equal(Math.floor(sim.player.y)-32,112+tick,`row${frame} y`);
   if(frame<=418)assert.equal(sim.camera,[805,808,810,812,814,816][tick],`row${frame} camera`);
   assert.equal(sim.playerXScroll,3);assert.equal(sim.pipeTimer,48-tick);
