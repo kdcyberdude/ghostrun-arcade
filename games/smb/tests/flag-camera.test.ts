@@ -1,32 +1,19 @@
-import {test} from 'node:test';
-import assert from 'node:assert/strict';
-import {Simulation} from '../src/simulation.js';
-import {observedLevels} from '../src/levels.js';
-import observations from '../data/flag-camera-regressions.json';
-import type {Button} from '../src/types.js';
-
-const keys:Button[]=['up','down','left','right','a','b'];
-// The level end follows a free-running 21-row area clock (native rows, evidence in docs/NATIVE_ROLES.md 'Level-end sequences'), whose phase at the pole is run-specific hidden state:
-// the recorded route and four screenshot-era runs fit offset 0 (cal-standard only 0), 'reserved-three' fits only offsets 8..14 at the unchanged tolerance (scan: evidence/local/warp-realign/flagphase.ts).
-const clockPhaseOffset:Record<string,number>={'reserved-three':11};
-function replay(sim:Simulation,observed:typeof observations.cases[number]){
- sim.reset(true);(sim as unknown as {areaFrame:number}).areaFrame+=clockPhaseOffset[observed.name]??0;const checkpoints=new Map(observed.checkpoints.map(([frame,camera])=>[frame,camera]));let checked=0;
- for(const[mask,frames]of observed.actions){
-  const buttons=keys.filter((_,bit)=>mask&(1<<bit));
-  for(let frame=0;frame<frames;frame++){
-   sim.step(buttons,1);const camera=checkpoints.get(sim.frame);if(camera===undefined)continue;
-   assert.ok(Math.abs(sim.camera-camera)<=observations.tolerancePixels,`${observed.name} native${sim.frame}: camera${sim.camera}, reference${camera}`);checked++;
+import {test} from 'node:test';import assert from 'node:assert/strict';import zlib from 'node:zlib';
+import {Simulation} from '../src/simulation.js';import {observedLevels} from '../src/levels.js';import type {Button} from '../src/types.js';
+import captures from './fixtures/native-flag-runtime.json';import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
+const keys:Button[]=['a','b','select','start','up','down','left','right'],unpack=(s:string)=>new Uint8Array(zlib.gunzipSync(Buffer.from(s,'base64')));
+// Old screenshot-only reset cases lacked the initial077F byte and fitted a per-recording areaFrame offset.
+// Native RAM captures replace that end-phase assumption; genuine old observations remain in data unchanged.
+test('native pole camera is restored after restarting with independent source approaches',()=>{
+ const sim:any=new Simulation(observedLevels());let checked=0;
+ for(const level of ['1-1','2-3','1-3','1-1']){
+  const c=captures.cases.find(c=>c.level===level)!,initial=unpack(c.initial),pads=unpack(c.pads),ram=unpack(c.ram);
+  sim.reset(true);initializeEntrance(sim,decodeEntrance(initial,c.receipt));sim.inputs=[];
+  for(let f=0;f<pads.length;f++){
+   sim.step(keys.filter((_,bit)=>pads[f]&(1<<bit)),1);const r=ram.subarray(f*2048,(f+1)*2048);if(`${r[0x75f]+1}-${r[0x75c]+1}`!==level)break;
+   if(r[14]!==4&&r[14]!==5)continue;
+   assert.equal(Math.floor(sim.camera),r[0x71a]*256+r[0x71c],`${level} sourcePPU${f}`);checked++;
   }
  }
- assert.equal(checked,checkpoints.size);assert.equal(sim.level.id,'1-2');assert.equal(sim.lives,3);
-}
-
-for(const observed of observations.cases)test(`${observed.name} ordinary pole approach preserves the observed cutscene camera`,()=>{
- replay(new Simulation(observedLevels()),observed);
-});
-
-test('pole camera history is recaptured after restarting with a different approach',()=>{
- const sim=new Simulation(observedLevels());
- replay(sim,observations.cases.find(c=>c.name==='cal-six')!);
- replay(sim,observations.cases.find(c=>c.name==='cal-standard')!);
+ assert.ok(checked>2000);
 });

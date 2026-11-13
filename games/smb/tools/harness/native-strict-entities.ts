@@ -12,9 +12,9 @@ export function strictNativeEntities(r:Uint8Array,offset=0):EntityReadout{
  for(let slot=0;slot<6;slot++){
   const flag=r[0x0f+slot],id=r[0x16+slot];if(!flag)continue;live++;reserved.add(`enemy:${slot}`);
   if(flag&128){const owner=flag&127;if(id===45&&owner<6&&r[0xf+owner]&&!(r[0xf+owner]&128)&&r[0x16+owner]===45){entities.push({bank:'enemy',slot,kind:'bowser-rear',x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:'bowser-rear'});continue;}gaps.push({code:'native-alias',detail:`slot ${slot} aliases owner ${flag&127}; composite part position is not compared`,slot,id});continue;}
-  const kind=id===53?'retainer':id===51?'bullet':id===21?'flame':id===46?['mushroom','flower','star','1up'][r[0x39]]:id>=36&&id<=44?OBJECTS[id]:NATIVE_ENEMY_KIND[id];
+  const kind=id===48?'flagpole-flag':id===49?'castle-flag':id===22?'firework':id===53?'retainer':id===51?'bullet':id===21?'flame':id===46?['mushroom','flower','star','1up'][r[0x39]]:id>=36&&id<=44?OBJECTS[id]:NATIVE_ENEMY_KIND[id];
   if(!kind){gaps.push({code:'unsupported-native-object',detail:OBJECTS[id]??`native object id ${id}`,slot,id});continue;}
-  entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:id>=36&&id<=44?'platform':id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
+  entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(id===48?0:r[0xb6+slot]-1)*256+r[0xcf+slot],source:id>=36&&id<=44?'platform':id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
  }
  // Misc slots are a separate bank: bit 7 selects held/flying hammers; low states 1..47 are jumping/spinning coins.
  for(let slot=0;slot<9;slot++){
@@ -42,6 +42,9 @@ export function strictSimEntities(sim:any):StrictEntity[]{
   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame);
   entities.push({bank:'enemy',slot,kind,x:Math.floor(position.x),y:Math.floor(position.y),source:'platform'});
  }
+ const pole=sim.specialSlot5;if(pole?.flag&&pole.id===48)entities.push({bank:'enemy',slot:5,kind:'flagpole-flag',x:Math.floor(pole.x),y:Math.floor(sim.phase==='flag'?sim.flagTop:pole.y),source:'flagpole-flag'});
+ const flag=sim.nativeCastleFlag;if(flag)entities.push({bank:'enemy',slot:flag.slot,kind:'castle-flag',x:Math.floor(flag.x),y:flag.y,source:'castle-flag',state:flag.task>=2?flag.state:undefined});
+ for(const f of sim.nativeFireworks??[])if(f.active)entities.push({bank:'enemy',slot:f.slot,kind:'firework',x:Math.floor(f.x),y:f.y,source:'firework',state:0});
  for(const item of sim.items){
   if(item.life<=0)continue;
   if(item.kind==='flame')entities.push({bank:'enemy',slot:item.nativeFlame?.slot,kind:'flame',x:Math.floor(item.x),y:Math.floor(item.y),source:'flame'});
@@ -76,8 +79,8 @@ export function strictSimCoverage(sim:any):CoverageGap[]{
  for(const platform of sim.area.platforms??[])if(!platformKind(sim,platform)||!sim.platformSlots||!sim.platformMotion)gaps.push({code:'unsupported-sim-platform',detail:`platform at ${platform.x},${platform.y}: native object identity or slot/position adapter unavailable`});
  for(const [kind,objects] of [['firebar',sim.area.firebars],['spring',sim.area.springs],['vine',sim.area.vines]] as const)
   if(objects?.length)gaps.push({code:'unsupported-sim-object-family',detail:`${kind}: ${objects.length} declared area objects; activation/position adapter missing`});
- if(sim.area.exit?.kind==='flag')gaps.push({code:'unsupported-sim-object-family',detail:'flagpole/castle flags: activation and position adapters missing'});
- if(sim.flagFireworks?.length)gaps.push({code:'unsupported-sim-object-family',detail:'fireworks: enemy-slot position adapter missing'});
+ if(sim.area.exit?.kind==='flag'&&!sim.specialSlot5)gaps.push({code:'unsupported-sim-object-family',detail:'flagpole/castle flag slot registry missing'});
+ if(sim.flagFireworks?.length&&!Array.isArray(sim.nativeFireworks))gaps.push({code:'unsupported-sim-object-family',detail:'fireworks normal-slot registry missing'});
  if(sim.items.some((i:any)=>i.kind==='fireball'&&i.life>0))gaps.push({code:'unsupported-sim-fireball',detail:'player fireball position adapter missing'});
  return gaps;
 }
