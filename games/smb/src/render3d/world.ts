@@ -97,7 +97,7 @@ export class World{
  }
  /** One map tile (grid or free piece) at (col,row); `key` is the bump cell ('' for none). */
  private tile(s:Simulation,id:number,col:number,row:number,key:string,palette=s.area.palette){
-  const theme=s.area.theme,kind=kindIn(id,theme),age=key?s.bump.get(key):undefined,bump=age!==undefined&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
+  const theme=s.area.theme,kind=kindIn(id,theme),age=key?s.bump.get(key):undefined,bump=age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)?Math.sin(age/16*Math.PI)*0.25:0;
   const put=(name:string,x:number,y:number,dz=0)=>this.pool(name,theme,palette).add(this.m.makeTranslation(x,y,dz));
   switch(kind){
    case 'ground':{const above=kindOf(s.tiles.get(`${col},${row-1}`)??0);put(GRASS_THEMES.has(theme)&&!SOLIDISH.has(above)?'block_ground_top':'block_ground',col+0.5,14.5-row);break;}
@@ -144,9 +144,10 @@ export class World{
   // grid tile of its cell. Interactive pieces bump with their cell.
   const free=s.freeTiles.filter(p=>p.x>=(c0-1)*16&&p.x<(c1+1)*16&&!s.area.hiddenFreeTiles?.some(h=>h.x===p.x&&h.y===p.y&&h.id===p.id&&h.palette===p.palette));
   const pieces=[...(s.area.decorations??[]).filter(d=>d.x>=(c0-1)*16&&d.x<(c1+1)*16&&!SCENERY.has(kindIn(d.id,theme))),...free];
+  const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
   const covered=new Set(pieces.filter(p=>p.x%16===0&&p.y%16===0).map(p=>`${p.x/16},${p.y/16}`));
   for(let col=c0;col<=c1;col++)for(let row=2;row<15;row++){
-   const key=`${col},${row}`,id=s.tiles.get(key);if(id===undefined||covered.has(key))continue;
+   const key=`${col},${row}`,id=pictureTiles.get(key);if(id===undefined||covered.has(key))continue;
    this.tile(s,id,col,row,key);
   }
   for(const p of pieces)if(p.y>=32)this.tile(s,p.id,p.x/16,p.y/16,'interactive' in p&&p.interactive?`${p.x/16},${p.y/16}`:'',p.palette??s.area.palette);
