@@ -1,12 +1,14 @@
 /** Which cell of the player sheet (13 cells per row, 16x32) the 2D view draws for Mario, and its facing. The cell is the native
  * graphics-table offset / 8 (PlayerGfxOffset $06D5): big walk 0-2, skid 3, jump 4, swim 5-7, climb 8-9, crouch 10, throw 11,
  * small walk 12-14, skid 15, jump 16, swim 17-19, climb 20-21, death 22, small stand 23, big stand 25. */
+import {nativeScreenPicture} from './native-screen-picture.js';
 import {Simulation,POWERUPS} from './simulation.js';
 import {growCell,shrinkBig,throwPoseShown} from './view-rules.js';
 
 /** PlayerGfxHandler exits on odd FrameCounter rows while InjuryTimer is nonzero, including the shrink animation.
  * Native source: https://github.com/Xkeeper0/smb1/blob/master/src/prg.asm (PlayerGfxHandler). */
 export function playerVisible(s:Simulation){
+ if(s.nativeScreen&&!nativeScreenPicture(s.nativeScreen,s.area.theme==='water').player)return false;
  return s.vineEntryStage!=='grow'&&!s.entryFallHidden&&!s.flagInside&&!s.pipeHidden&&(!s.player.invincible||(s.random.frame&1)===0);
 }
 
