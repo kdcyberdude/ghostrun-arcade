@@ -116,6 +116,14 @@ export class NativeWater{
   * swimming frames keep their speed when no direction is held. */
  horizontal(direction:Direction,grounded:boolean,down=false,b=false,absolute=0):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;
+  // X_Physics computes friction from the old facing/moving latches before
+  // GetPlayerAnimSpeed can clear a low-speed reversal's two speed bytes.
+  const reversal=direction!==0&&direction!==m.moving&&absolute<11;
+  const reversalStep=152*(m.facing!==m.moving?2:1);
+  if(reversal&&!grounded&&!down&&m.facing===direction&&m.speed>0&&m.speed<256){
+   m.tickFreeze();m.moving=m.facing;this.moving=direction;this.lastDirection=direction;
+   return m.speed=direction*reversalStep;
+  }
   const released=this.lastDirection!==0&&direction===0&&down;this.lastDirection=direction;
   if(grounded&&down){
    // PlayerBGCollision restores the collision bits every row even when Down

@@ -133,7 +133,8 @@ test('swimming never decelerates without input, the floor cap is byte 16, and a 
  const wall=new NativeWater();wall.motor.speed=6168;wall.moving=1;
  assert.deepEqual(Array.from({length:3},()=>wall.horizontal(-1,false)),[6016,5712,5408]);
  assert.equal(wall.wall(5104,false),240);
- assert.deepEqual(Array.from({length:2},()=>wall.horizontal(-1,false)),[-64,-216]);
+ // ImposeFriction's pre-contact absolute byte survives this wall stop.
+ assert.deepEqual(Array.from({length:2},()=>wall.horizontal(-1,false,false,false,19)),[-64,-216]);
 });
 
 test('production: the World 2-2 entry fall and first stroke track the native rows exactly',()=>{
