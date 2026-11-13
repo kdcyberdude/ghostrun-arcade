@@ -42,7 +42,7 @@ test('recorded native prefixes retain every contact/defeat row and expose existi
  const {default:eightThree}=await import('./fixtures/native-hammer-stomp-prefix.json'),{default:threeOne}=await import('./fixtures/native-hammer-three-one-prefix.json'),{default:zlib}=await import('node:zlib'),{createHash}=await import('node:crypto'),{decodeEntrance,initializeEntrance}=await import('../tools/harness/native-entrance.mjs'),{strictCompare}=await import('../tools/harness/native-strict.js');
  const {Simulation}=await import('../src/simulation.js'),{observedLevels}=await import('../src/levels.js'),{nativeEntities,simEntities,unmatchedEntity}=await import('../tools/harness/native-entities.js');
  const unpack=(s:string)=>new Uint8Array(zlib.gunzipSync(Buffer.from(s,'base64'))),buttons=['a','b','select','start','up','down','left','right'] as const;
- for(const [level,fixture,gaps]of [['8-3',eightThree,{missing:341,extra:264}],['3-1',threeOne,{missing:799}]] as const){
+ for(const [level,fixture,gaps]of [['8-3',eightThree,{missing:341}],['3-1',threeOne,{missing:799}]] as const){
   const initial=unpack(fixture.initialRam),ram=unpack(fixture.ram),pads=unpack(fixture.pads);
   assert.equal(createHash('sha256').update(initial).digest('hex'),fixture.initialRamSha256);assert.equal(createHash('sha256').update(ram).digest('hex'),fixture.ramSha256);
   const audit=strictCompare(decodeEntrance(initial,fixture.receipt),pads,ram,level);assert.equal(audit.coverage.frames,fixture.frames);
