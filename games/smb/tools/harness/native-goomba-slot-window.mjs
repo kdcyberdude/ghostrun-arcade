@@ -12,7 +12,8 @@ const rows=[];
 for(let frame=Number(a.from);frame<=Number(a.to);frame++){
  const r=ram.subarray(frame*2048,(frame+1)*2048),actors=[];
  for(let slot=0;slot<5;slot++)if(r[15+slot]===1&&r[22+slot]===6)actors.push({slot,id:r[22+slot],state:r[30+slot],timer:r[1942+slot],vx:signed(r[88+slot])/16,x:r[110+slot]*256+r[135+slot]+r[1025+slot]/256,y:r[182+slot]*256+r[207+slot]-256+24,speed:signed(r[160+slot]),force:r[1076+slot],fraction:r[1047+slot]});
- rows.push({frame,actors});
+ const cannons=[0,1,2].filter(slot=>r[15+slot]===1&&r[22+slot]===51).map(slot=>({slot,x:r[110+slot]*256+r[135+slot]+r[1025+slot]/256,y:r[182+slot]*256+r[207+slot]-256+24}));
+ rows.push({frame,actors,cannons,slotSub:Array.from(r.subarray(0x401,0x406))});
 }
 fs.writeFileSync(a.out,JSON.stringify({level:a.level,receipt:JSON.parse(fs.readFileSync(path.join(a.entrances,a.level,'entrance.json'),'utf8')),initialRam:pack(fs.readFileSync(path.join(dir,'initial.ram'))),pads:pack(pads.subarray(0,Number(a.to)+1)),rows})+'\n');
 console.log(`${rows.length} Goomba slot replay rows retained`);

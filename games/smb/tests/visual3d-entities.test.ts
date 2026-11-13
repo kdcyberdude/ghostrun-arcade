@@ -53,7 +53,7 @@ test('live enemies use the native picture coordinates and facing before movement
  sim.enemies[0].dead=32;sim.enemies[0].squashed=true;sim.frame++;entities.sync(sim,0);assert.equal(root.position.x,108/16);assert.equal(root.position.y,31/16);
 });
 test('shell-launched Goombas flip at full size immediately instead of showing a squash',()=>{
- const {sim,entities}=scene({dead:1,greenShellLaunchFrame:0});entities.sync(sim,0);
+ const {sim,entities}=scene({dead:1,defeat:{y:208,speed:-3,force:61,fraction:0,timer:0}});entities.sync(sim,0);
  const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.rotation.z,Math.PI);assert.equal(root.position.y,(239-208)/16+1);
 });
 test('Mario growth follows the native small/mid/big picture cells',()=>{
@@ -186,4 +186,14 @@ test('castle sprite ownership blanks the axe row then draws only Mario and Bowse
 test('Bowser flames use the center of the native24-by8 picture rather than a powerup foot anchor',()=>{
  const {sim,entities}=scene();sim.items=[{kind:'flame',x:100,y:80,vx:-1,vy:0,age:0,life:100}];entities.sync(sim,0);
  assert.deepEqual(actor(entities,'bowser_flame').position.toArray(),[112/16,156/16,0]);
+});
+
+test('only reviving Koopa shells expand their native alternate lower rim',()=>{
+ for(const kind of ['koopa','beetle'] as const){
+  const {sim,entities}=scene({kind,shell:true,shellTimer:4});sim.random.frame=0;entities.sync(sim,0);
+  const root=actor(entities,kind==='koopa'?'koopa_shell':'beetle_shell');assert.equal(root.scale.y,kind==='koopa'?15/14:1);assert.equal(root.position.y,(239-208-(kind==='koopa'?1:0))/16);
+  sim.random.frame=8;entities.sync(sim,0);assert.equal(root.scale.y,1);assert.equal(root.position.y,(239-208)/16);
+  sim.random.frame=0;sim.enemies[0].shellTimer=5;entities.sync(sim,0);assert.equal(root.scale.y,1);
+  sim.enemies[0].shellTimer=4;sim.enemies[0].movingShell=true;entities.sync(sim,0);assert.equal(root.scale.y,1);
+ }
 });

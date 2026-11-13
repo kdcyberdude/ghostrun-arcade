@@ -1,4 +1,5 @@
 // Moving level objects that are not tiles: lifts, firebars, springs, vines, castle flag, fireworks, the castle retainer. All positions from the simulation.
+import {nativeFireballPhase} from '../native-fireball-picture.js';
 import * as THREE from 'three';
 import type {Kit} from './kit.js';
 import type {Simulation} from '../simulation.js';
@@ -39,7 +40,7 @@ export class Props{
      for(let x=-w/2+0.25;x<w/2;x+=0.5){const r=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.05,12),this.mats.liftEdge);r.rotation.x=Math.PI/2;r.position.set(x,0,0.51);g.add(r);}return g;});o.position.set(cx,cy,0);}
    }
   }
-  for(const bar of s.area.firebars??[])for(const {x,y} of s.firebarCenters(bar)){const o=this.take('fire',()=>new THREE.Mesh(new THREE.SphereGeometry(0.24,16,12),this.mats.fire));o.position.set(x/16,(240-y-(bar.visualOffsetY??0))/16,0.1);o.scale.setScalar(0.9+0.15*Math.sin(s.frame*0.4+x));}
+  for(const bar of s.area.firebars??[])for(const {x,y} of s.firebarCenters(bar)){const o=this.take('fire',()=>new THREE.Mesh(new THREE.SphereGeometry(0.24,16,12),this.mats.fire));o.position.set(x/16,(240-y-(bar.visualOffsetY??0))/16,0.1);o.scale.setScalar(1);o.rotation.z=nativeFireballPhase(s.random.frame)*Math.PI/2;}
   for(const sp of s.area.springs??[]){const c=s.springCompression(sp),h=(24-c*8)/16,o=this.take('spring',()=>{const g=new THREE.Group();
     const coil=new THREE.Mesh(new THREE.TorusGeometry(0.34,0.06,8,24),this.mats.spring);for(let i=0;i<4;i++){const k=coil.clone();k.rotation.x=Math.PI/2;k.position.y=0.2+i*0.3;k.name='coil';g.add(k);}
     const top=new THREE.Mesh(new THREE.CylinderGeometry(0.46,0.46,0.12,24),this.mats.springCap);top.name='top';top.position.y=1.44;g.add(top);const bot=top.clone();bot.position.y=0.06;g.add(bot);return g;});

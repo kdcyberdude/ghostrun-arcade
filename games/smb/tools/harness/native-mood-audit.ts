@@ -11,6 +11,7 @@ import {observedLevels} from '../../src/levels.js';
 import {decodeEntrance,initializeEntrance} from './native-entrance.mjs';
 import {compareRun} from './native-divergence.js';
 import {strictCompare} from './native-strict.js';
+import {auditNativeLoadPrefix} from './native-mood-load-prefix.js';
 import {nativeAreaBindings,selectNativeAreaBinding} from './native-area-identity.js';
 import {hash,type MoodRun} from './native-mood-corpus.js';
 export const ramLevel=(r:Uint8Array)=>`${r[0x75f]+1}-${r[0x75c]+1}`;
@@ -35,10 +36,10 @@ function nativeHudAt(dir:string,run:MoodRun,frame:number){
  if(data.padSha256!==run.sha256||data.ramSha256!==capture.ramSha256||data.romSha256!==capture.romSha256)throw Error('Initial PPU HUD provenance mismatch');
  const nativeHud=data.entries.find((row:any)=>row.frame===frame);return nativeHud?{nativeHud,nativeHudEvidence:{padSha256:run.sha256,ramSha256:data.ramSha256,romSha256:data.romSha256,backendSha256:data.backendSha256,clock:data.clock}}:{};
 }
-function writeEntry(dir:string,index:number,level:string,initialFrame:number,end:number,pads:Buffer,ram:Buffer,run:MoodRun,binding:unknown,raw=false){
- const start=initialFrame+1,base=path.join(dir,'entries',String(index).padStart(4,'0'),...(raw?['native-entry']:[])),trace=path.join(base,'traces',level),receipts=path.join(base,'receipts',level),initial=ram.subarray(initialFrame*2048,start*2048);
+function writeEntry(dir:string,index:number,level:string,initialFrame:number,end:number,pads:Buffer,ram:Buffer,run:MoodRun,binding:unknown,raw=false,role?:'control-prefix'){
+ const start=initialFrame+1,base=path.join(dir,'entries',String(index).padStart(4,'0'),...(role?[role]:raw?['native-entry']:[])),trace=path.join(base,'traces',level),receipts=path.join(base,'receipts',level),initial=ram.subarray(initialFrame*2048,start*2048);
  fs.mkdirSync(trace,{recursive:true});fs.mkdirSync(receipts,{recursive:true});fs.writeFileSync(path.join(trace,'initial.ram'),initial);fs.writeFileSync(path.join(trace,'pads.bin'),pads.subarray(start,end));fs.writeFileSync(path.join(trace,'ram.bin'),ram.subarray(start*2048,end*2048));
- fs.writeFileSync(path.join(receipts,'entrance.json'),JSON.stringify({schema:'native-mood-entry-v1',level,...nativeHudAt(dir,run,start),initialRamSha256:hash(initial),actionsSha256:run.sha256,sourceFrameOffset:start,sourcePadSha256:run.sha256,areaBinding:binding,provenance:run.provenance,initialization:raw?'first source engine7/8 row, regardless of initializer support':'first source engine7/8 row supported by snapshot initializer; no later convenient-pose search',notReconstructed:['full native machine state','hidden simulation state without an initializer']},null,2)+'\n');
+ fs.writeFileSync(path.join(receipts,'entrance.json'),JSON.stringify({schema:'native-mood-entry-v1',level,...nativeHudAt(dir,run,start),initialRamSha256:hash(initial),actionsSha256:run.sha256,sourceFrameOffset:start,sourcePadSha256:run.sha256,areaBinding:binding,provenance:run.provenance,initializationRole:role??(raw?'native-entry':'gameplay'),initialization:role==='control-prefix'?'native ScreenRoutines seed at InitializeArea; every following loader-only input is replayed before the first engine7/8 row':raw?'first source engine7/8 row, regardless of initializer support':'first source engine7/8 row supported by snapshot initializer; no later convenient-pose search',notReconstructed:['full native machine state','hidden simulation state without an initializer']},null,2)+'\n');
  const pixelDir=path.join(dir,'pixels');if(fs.existsSync(path.join(pixelDir,'pixels.json'))){const meta=JSON.parse(fs.readFileSync(path.join(pixelDir,'pixels.json'),'utf8'));if(meta.step!==1)throw Error('Mood entry clipping requires all-frame native pixels');copyRange(path.join(pixelDir,'pixels.bin'),path.join(trace,'pixels.bin'),start*240*224,(end-start)*240*224);copyRange(path.join(pixelDir,'emph.bin'),path.join(trace,'emph.bin'),start*224,(end-start)*224);fs.writeFileSync(path.join(trace,'pixels.json'),JSON.stringify({...meta,frames:end-start,sourceFrameOffset:start})+'\n');}
  return {traceDirectory:trace,receiptDirectory:receipts};
 }
@@ -53,6 +54,7 @@ export function auditMoodCapture(dir:string,run:MoodRun,writeTraces=false){
   const entry:any={index,loadFrame,endFrame,level:ramLevel(load),native:nativeContext(load),areaBindings:candidates,coverage:'incomplete',diagnostics:[]};
   const nativeEntryFrame=Array.from({length:endFrame-loadFrame},(_,n)=>loadFrame+n).find(f=>{const r=ram.subarray(f*2048,(f+1)*2048);return r[0x770]===1&&r[0x772]===3&&[7,8].includes(r[14]);});
   if(nativeEntryFrame!==undefined){entry.nativeEntryFrame=nativeEntryFrame;if(writeTraces)entry.nativeTrace=writeEntry(dir,index,entry.level,nativeEntryFrame,endFrame,pads,ram,run,candidates[0],true);}
+  try{entry.controlPrefix=auditNativeLoadPrefix(ram,pads,entry);if(entry.controlPrefix){comparedFrames+=entry.controlPrefix.strict.coverage.frames;if(writeTraces)Object.assign(entry.controlPrefix,writeEntry(dir,index,entry.level,loadFrame,entry.controlPrefix.endFrame,pads,ram,run,candidates[0],false,'control-prefix'));}}catch(error){entry.diagnostics.push({scope:'load-prefix',reason:String(error)});}
   let first=-1,entrance:ReturnType<typeof decodeEntrance>|undefined;
   if(!level)entry.diagnostics.push('unmapped native level');
   else if(candidates.length!==1)entry.diagnostics.push(`${candidates.length} static ROM area bindings`);
@@ -66,7 +68,7 @@ export function auditMoodCapture(dir:string,run:MoodRun,writeTraces=false){
     if(seenEngines.has(8))break; // Never search later movement for a conveniently matching pose.
    }
   }
-  if(first<0||!entrance){entry.diagnostics.push('no supported source entry; all epoch frames remain un-compared');entries.push(entry);continue;}
+  if(first<0||!entrance){entry.diagnostics.push(entry.controlPrefix?'no supported gameplay entry; source load prefix compared separately':'no supported source entry; all epoch frames remain un-compared');entries.push(entry);continue;}
   const start=first+1,initial=ram.subarray(first*2048,start*2048),segmentPads=pads.subarray(start,endFrame),segmentRam=ram.subarray(start*2048,endFrame*2048);
   const legacy=compareRun(entrance,segmentPads,f=>segmentRam.subarray(f*2048,(f+1)*2048),level!.id,true),strict=strictCompare(entrance,segmentPads,segmentRam,level!.id);
   entry.initialFrame=first;entry.sourceFrameOffset=start;entry.frames=segmentPads.length;entry.comparedFrames=strict.coverage.frames;entry.uncomparedPrefixFrames=start-loadFrame;entry.uncomparedTailFrames=segmentPads.length-strict.coverage.frames;

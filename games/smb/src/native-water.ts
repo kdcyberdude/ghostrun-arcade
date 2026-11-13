@@ -12,9 +12,10 @@
  *  3. One gravity pass: D += F; y += S + carry; F += gravity; S += carry; S capped at 4 (then F >= 128 clears F).
  *  4. Inside a whirlpool zone a second pass with gravity 16 and speed cap 1 runs (before or after the first pass depending
  *     on the capture phase) and every second frame x moves one pixel toward the zone centre.
- * Horizontal speed uses the ground motor (src/native-motor.ts) with cap byte 16 on the water floor and 24 while swimming;
- * swimming never decelerates without input. B has no effect. */
+ * Horizontal gameplay uses the source routines in native-water-horizontal.ts. NativeMotor remains the speed store
+ * and supports the retained partial-state research model below. */
 import {NativeMotor,type Direction} from './native-motor.js';
+import {nativeWaterHorizontal,type WaterHorizontalState} from './native-water-horizontal.js';
 
 export const FLOOR_CAP=16,SWIM_CAP=24;
 export const SURFACE_Y=20,SURFACE_GRAVITY=24,STROKE_TIMER=32,WHIRL_GRAVITY=16,FALL_CAP=4,WHIRL_CAP=1;
@@ -37,6 +38,17 @@ export const whirlpoolPull=(zone:WhirlpoolZone|undefined,x:number,frame:number,f
 export interface WaterStep{dy:number;stroke:boolean}
 export class NativeWater{
  readonly motor=new NativeMotor();
+ steering=0;
+ readonly horizontalState:WaterHorizontalState={speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false};
+ /** Source horizontal pass; the caller supplies the native accepted stroke. */
+ horizontalSource(buttons:number,grounded:boolean,stroke:boolean){
+  const s=this.horizontalState;s.speed=this.motor.speed;s.grounded=grounded;
+  const next=nativeWaterHorizontal(s,buttons,stroke);Object.assign(s,next);this.steering=next.steering;
+  this.motor.speed=next.speed;this.motor.facing=next.facing===1?1:-1;this.motor.moving=next.moving===1?1:next.moving===2?-1:0;
+  return next;
+ }
+ blockSide(direction:number){this.horizontalState.collision&=direction>0?254:253;}
+
  /** Vertical speed byte (signed). */
  speed=0;
  /** Vertical force, 0..255. */
@@ -53,13 +65,21 @@ export class NativeWater{
  pullFromStart=false;
  constructor(){this.motor.cap=SWIM_CAP;}
  /** Fresh level state at the water entry spawn (native y 0, nothing applied yet). */
- reset(){this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
+ reset(){this.steering=0;Object.assign(this.horizontalState,{speed:0,facing:1,moving:0,absolute:0,collision:255,running:0,grounded:false});this.speed=0;this.force=0;this.frac=0;this.rise=40;this.fall=40;this.timer=0;this.whirl=false;this.moving=0;this.lastDirection=0;this.motor.reset();this.motor.cap=SWIM_CAP;}
  /** The state before this frame's trailing whirlpool pass, which contact with a floor or ceiling must precede. */
  private beforeWhirl?:{speed:number;force:number;frac:number;moved:number};
  /** Pixels this frame's trailing whirlpool pass moved. */
  get whirlMoved(){return this.beforeWhirl?.moved??0;}
  /** PlayerBGCollision runs before the late whirlpool gravity pass. */
  get contactSpeed(){return this.beforeWhirl?.speed??this.speed;}
+ /** Injury sets TimerControl before ProcessWhirlpools: that routine clears
+  * Whirlpool_Flag but skips its pending pull/gravity pass. */
+ cancelLatePass(){
+  const before=this.beforeWhirl;this.beforeWhirl=undefined;this.whirl=false;
+  if(!before)return 0;
+  this.speed=before.speed;this.force=before.force;this.frac=before.frac;
+  return -before.moved;
+ }
  /** A landing or any support under the feet clears the vertical speed and force; the fraction is kept. */
  land(){this.contact(()=>{this.speed=0;this.force=0;});}
  /** A head bump turns the player around at speed 1 (the force is kept). Returns how many more pixels the whirlpool pass moves after it. */
@@ -114,7 +134,8 @@ export class NativeWater{
  moving:Direction=0;
  /** The direction pressed on the previous swimming frame (0 = none). */
  lastDirection:Direction=0;
- /** Horizontal speed (1/4096 px) after this frame's input: floor frames use the floor cap and coast (B brakes below byte 11);
+ /** Retained partial-state research model; gameplay uses horizontalSource.
+  * Horizontal speed (1/4096 px) after this frame's input: floor frames use the floor cap and coast (B brakes below byte 11);
   * swimming frames keep their speed when no direction is held. */
  horizontal(direction:Direction,grounded:boolean,down=false,b=false,absolute=0,up=false):number{
   const m=this.motor;m.cap=grounded?FLOOR_CAP:SWIM_CAP;

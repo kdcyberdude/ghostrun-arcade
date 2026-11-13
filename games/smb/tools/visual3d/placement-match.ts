@@ -3,7 +3,7 @@
 // projected rect of the 3D object of the same family, matched greedily by distance; compared by horizontal centre and bottom (feet), since 3D models are
 // not sprite-sized.
 import {kindIn} from '../../src/render3d/semantics.js';
-export interface Obj{id:string;kind:string;x:number;y:number;w:number;h:number;state?:string}
+export interface Obj{id:string;sourceId?:string;kind:string;x:number;y:number;w:number;h:number;state?:string}
 export interface Cell{col:number;row:number;id:number}
 export interface Issue{type:'tile-missing-3d'|'tile-extra-3d'|'tile-overlap-3d'|'object-missing-3d'|'object-extra-3d'|'object-offset'|'object-state';what:string;at:string;dx?:number;dy?:number}
 export interface FrameReport{issues:Issue[];counts:{tiles2d:number;tiles3d:number;objects2d:number;objects3d:number}}
@@ -57,9 +57,9 @@ export function compareFrame(f:{theme:string;camera:number;tiles2d:Cell[];tiles3
  for(const [k,cats] of want)for(const c of cats)if(!have.get(k)?.has(c))issues.push({type:'tile-missing-3d',what:c,at:k});
  for(const [k,cats] of have)for(const c of cats)if(!want.get(k)?.has(c)&&!(c==='piece:mush_stem'))issues.push({type:'tile-extra-3d',what:c,at:k});
  // Objects: greedy nearest pairs within the same family.
- const a=f.objects2d,b=f.objects3d,pairs:{i:number;j:number;d:number;dx:number;dy:number}[]=[];
- a.forEach((p,i)=>b.forEach((q,j)=>{if(family(p.kind)!==family(q.kind))return;const dx=(q.x+q.w/2)-(p.x+p.w/2),dy=(q.y+q.h)-(p.y+p.h),d=Math.hypot(dx,dy);if(d<=MATCH)pairs.push({i,j,d,dx,dy});}));
- pairs.sort((x,y)=>x.d-y.d);const ua=new Set<number>(),ub=new Set<number>();
+ const a=f.objects2d,b=f.objects3d,pairs:{i:number;j:number;d:number;dx:number;dy:number;identity:boolean}[]=[];
+ a.forEach((p,i)=>b.forEach((q,j)=>{if(family(p.kind)!==family(q.kind)||p.sourceId&&q.sourceId&&p.sourceId!==q.sourceId)return;const identity=Boolean(p.sourceId&&p.sourceId===q.sourceId),dx=(q.x+q.w/2)-(p.x+p.w/2),dy=(q.y+q.h)-(p.y+p.h),d=Math.hypot(dx,dy);if(identity||d<=MATCH)pairs.push({i,j,d,dx,dy,identity});}));
+ pairs.sort((x,y)=>Number(y.identity)-Number(x.identity)||x.d-y.d);const ua=new Set<number>(),ub=new Set<number>();
  for(const p of pairs){if(ua.has(p.i)||ub.has(p.j))continue;ua.add(p.i);ub.add(p.j);
   if(onScreen(a[p.i])&&a[p.i].state&&b[p.j].state&&a[p.i].state!==b[p.j].state)issues.push({type:'object-state',what:a[p.i].id,at:`${a[p.i].state}->${b[p.j].state}`});
   if(onScreen(a[p.i])&&(Math.abs(p.dx)>TOLERANCE||Math.abs(p.dy)>TOLERANCE))issues.push({type:'object-offset',what:`${a[p.i].id}(${a[p.i].kind})`,at:`${Math.round(a[p.i].x)},${Math.round(a[p.i].y)}`,dx:Math.round(p.dx),dy:Math.round(p.dy)});}

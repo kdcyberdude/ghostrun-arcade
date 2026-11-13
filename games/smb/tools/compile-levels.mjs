@@ -1,5 +1,7 @@
 import {applyNativeWaterStreams} from './native-water-streams.mjs';
+import {applyNativeCannons} from './native-cannons.mjs';
 import {applyNativeSprings} from './native-springs.mjs';
+import {applyNativeLakitus} from './native-lakitus.mjs';
 import {nativeEnemyStream} from './native-enemy-stream.mjs';
 import {applyNativeWalkerGroups} from './native-walker-groups.mjs';
 import fs from'node:fs';import{PNG}from'pngjs';
@@ -921,12 +923,8 @@ for(const entry of JSON.parse(fs.readFileSync('data/native-water-actors.json')).
  area.enemies=[...area.enemies.filter(e=>!entry.replaceKinds.includes(e.kind)),...entry.enemies.map(e=>({...e}))];
 }
 applyNativeWaterStreams(levels,JSON.parse(fs.readFileSync('data/native-water-streams.json')));
-// Native Lakitu appearance x and the Stop_Frenzy area object column (data/native-lakitu.json, docs/NATIVE_ROLES.md, Lakitu section).
-for(const entry of JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels){
- const lakitu=levels.find(l=>l.id===entry.level)?.areas.find(a=>a.id===entry.area)?.enemies.find(e=>e.kind==='lakitu');
- if(!lakitu)throw Error(`Missing Lakitu ${entry.level}/${entry.area}`);
- lakitu.x=entry.x;lakitu.stopFrenzyX=entry.stopFrenzyX;
-}
+// Source placed Lakitu columns/rows/order, applied after ordinary walker metadata.
+const nativeLakituRecords=JSON.parse(fs.readFileSync('data/native-lakitu.json')).levels;
 // Native Bullet Bill: the cannons that follow the native random-register rule, and the 5-3/6-3 generator heights and camera range (tools/derive-bullet-schedule.mjs).
 {
  const bullets=JSON.parse(fs.readFileSync('data/native-bullets.json'));
@@ -987,7 +985,9 @@ for(const c of geometryCorrections.edits){
  if(pipe.spawn[0]!==2120||pipe.camera!==2064)throw Error('4-2 coin room return changed');pipe.spawn[0]=2104;pipe.camera=2048;}
 // Browser builds must never read a partially written multi-megabyte map.
 applyNativeWalkerGroups(levels,JSON.parse(fs.readFileSync('data/native-walker-groups.json')));
+applyNativeCannons(levels,JSON.parse(fs.readFileSync('data/native-cannon-layout.json')).cannons);
 applyNativeSprings(levels,JSON.parse(fs.readFileSync('data/native-spring-layout.json')).springs);
+applyNativeLakitus(levels,nativeLakituRecords);
 const output=path.join(path.dirname(outputPath),`.levels-${process.pid}.json`);
 fs.writeFileSync(output,JSON.stringify(levels,null,2)+'\n');
 fs.renameSync(output,outputPath);

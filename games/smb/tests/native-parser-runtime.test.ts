@@ -11,6 +11,10 @@ import springEvents from './fixtures/native-spring-events.json';
 import springSlots from './fixtures/native-spring-slot-events.json';
 import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
+import flagPlatforms from './fixtures/native-flag-platform-events.json';
+import victoryPlatforms from './fixtures/native-victory-platform-events.json';
+import platformFreeze from './fixtures/native-platform-slot-freeze.json';
+import {strictSimEntities} from '../tools/harness/native-strict-entities.js';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
  const run=JSON.parse(fs.readFileSync(new URL(`../evidence/native-runs/${level}.${runName}.json`,import.meta.url),'utf8'));
@@ -200,5 +204,57 @@ test('native WarpZoneObject holds its slot and clears ScrollLock only after the 
   if(frame===1716){assert.equal(sim.areaControls.locked,true);assert.equal(sim.camera,2497);assert.equal(sim.enemies.find((e:any)=>e.active&&e.kind==='piranha'&&e.originX===2856).enemySlot,3);}
   if(frame===1717){assert.equal(sim.areaControls.locked,false);assert.equal(sim.camera,2497);assert.equal(sim.frenzyControllers.find((c:any)=>c.id===52).slot,undefined);}
   if(frame===1718)assert.equal(sim.camera,2500);
+ });
+});
+
+
+test('platform birth rows register the native slot before the next movement or renderer query',()=>{
+ for(const [level,frame,platformX,slot,rawX,rawY] of [['4-3',302,766,4,768,78],['6-3',239,736,3,768,112]] as const){
+  replay(level,frame,(sim,row)=>{
+   if(row!==frame)return;
+   const platform=sim.area.platforms.find((p:any)=>p.x===platformX)!;
+   assert.equal(sim.platformSlots.get(platform),slot,`${level} row${row} native birth slot`);
+   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame);
+   assert.deepEqual({x:Math.floor(position.x),y:Math.floor(position.y)},{x:rawX,y:rawY});
+  });
+ }
+});
+
+
+test('native flag engines keep platform slots moving and erase them on every source bank row',()=>{
+ const kinds:Record<number,string>={36:'balance-platform',37:'vertical-platform',38:'up-lift',39:'down-lift',40:'horizontal-platform',41:'falling-platform',42:'right-platform',43:'small-up-lift',44:'small-down-lift'};
+ for(const level of ['3-3','4-3']){
+  const rows=flagPlatforms.filter(e=>e.level===level),byFrame=new Map(rows.map(e=>[e.frame,e]));assert.ok(rows.some(e=>e.platforms.length));assert.ok(rows.some(e=>!e.platforms.length));
+  replay(level,rows.at(-1)!.frame,(sim,frame)=>{
+   const row=byFrame.get(frame);if(!row)return;
+   const actual=strictSimEntities(sim).filter(e=>e.source==='platform').map(e=>({slot:e.slot,kind:e.kind,x:e.x,y:e.y})).sort((a,b)=>a.slot!-b.slot!);
+   const expected=row.platforms.map(e=>({slot:e.slot,kind:kinds[e.id],x:e.x,y:e.y}));
+   assert.deepEqual(actual,expected,`${level} native flag row${frame}`);
+  });
+ }
+});
+
+
+test('axe HandleAxeMetatile skips platform collision and movement until victory clears the enemy bank',()=>{
+ for(const level of ['1-4','2-4']){
+  const rows=victoryPlatforms.filter(e=>e.level===level),byFrame=new Map(rows.map(e=>[e.frame,e]));assert.ok(rows[0].platforms.length);assert.ok(rows.some(e=>!e.platforms.length));
+  replay(level,rows.at(-1)!.frame,(sim,frame)=>{
+   const row=byFrame.get(frame);if(!row)return;
+   const actual=strictSimEntities(sim).filter(e=>e.source==='platform').map(e=>({slot:e.slot,x:e.x,y:e.y})).sort((a,b)=>a.slot!-b.slot!);
+   assert.deepEqual(actual,row.platforms.map(e=>({slot:e.slot,x:e.x,y:e.y})),`${level} native victory row${frame}`);
+  });
+ }
+});
+
+
+test('an earlier native flame slot freezes every later lift byte on the injury row and through the hold',()=>{
+ const rows=new Map(platformFreeze.rows.map(e=>[e.frame,e]));
+ replay(platformFreeze.level,platformFreeze.rows.at(-1)!.frame,(sim,frame)=>{
+  const row=rows.get(frame);if(!row)return;
+  for(const expected of row.platforms){
+   const platform=[...sim.platformSlots].find(([,slot])=>slot===expected.slot)?.[0];assert.ok(platform,`native row${frame} slot${expected.slot}`);
+   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame),n=sim.slotVertical[expected.slot];
+   assert.deepEqual({slot:expected.slot,id:expected.id,x:Math.floor(position.x),y:Math.floor(position.y),speed:n.speed&255,force:n.force,fraction:n.fraction},expected,`native row${frame} slot${expected.slot}`);
+  }
  });
 });

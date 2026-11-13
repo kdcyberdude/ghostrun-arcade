@@ -54,3 +54,9 @@ test('native bouncing blocks clip four GLB quarters at OAM positions without sha
  s.area.theme='underground';props.sync(s);const shown=props.group.children.filter(o=>o.visible);assert.equal(shown.length,4);assert.ok(shown.every(o=>((o.children[0] as THREE.Mesh).material as THREE.Material).name==='block_used_ug'));
  block.pictureY=undefined;props.sync(s);assert.ok(props.group.children.every(o=>!o.visible));
 });
+
+test('firebar picture phase follows native counter without synthetic radius pulses',()=>{
+ const props=new Props(emptyKit),s={area:{firebars:[{}]},random:{frame:0},frame:1,firebarCenters:()=>[{x:100,y:120}],vines:[],flagFireworks:[]} as unknown as Simulation;
+ props.sync(s);const fire=props.group.children[0];assert.equal(fire.rotation.z,0);assert.equal(fire.scale.x,1);
+ s.frame=100;s.random.frame=12;props.sync(s);assert.equal(fire.rotation.z,3*Math.PI/2);assert.equal(fire.scale.x,1);
+});

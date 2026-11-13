@@ -16,7 +16,9 @@ for(const level of fs.readdirSync(a.traces).filter(l=>/^\d-\d$/.test(l)).sort())
   const r=ram(f);if(r[14]!==5||ram(f-1)[14]!==4)continue;
   const rows=[];let end=f;
   do{end++;rows.push(row(ram(end)));}while(end+1<bytes.length/2048&&ram(end-1)[0x746]<2);
-  cases.push({level,first:f,seed:{row:row(r),fraction:r[0x416],absolute:r[0x700],running:r[0x703],gravity:r[0x70a],size:r[0x756]},rows});break;
+  const slot=[0,1,2,3,4,5].find(s=>r[0xf+s]===1&&r[0x16+s]===49);if(slot===undefined)throw Error(`Missing source castle flag ${level}`);
+  const castleFlag={slot,x:r[0x6e+slot]*256+r[0x87+slot],y:r[0xcf+slot],state:r[0x1e+slot],task:r[0x746],interval:r[0x796+slot],draw:false};
+  cases.push({level,first:f,seed:{castleFlag,counter:r[9],intervalControl:r[0x77f],frenzyTimer:r[0x78f],fireworks:r[0x6d7],music:{eventMusicBuffer:r[0x7b1],counter:r[0x7b4],length:r[0x7b3],offset:r[0xf7]},musicQueue:r[0xfc],row:row(r),fraction:r[0x416],absolute:r[0x700],running:r[0x703],gravity:r[0x70a],size:r[0x756]},rows});break;
  }
 }
 fs.writeFileSync(a.out,JSON.stringify({source:'Native v2 RAM: engine 4 -> 5 through first castle tally row; x includes $0400, speed $57/$0705, gravity $070a, y fraction $0416. Never runtime corrections.',cases})+'\n');

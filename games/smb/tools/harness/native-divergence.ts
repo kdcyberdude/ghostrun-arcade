@@ -3,8 +3,9 @@
  * ram.bin (2048 bytes of RAM after each pad), plus the entrance.json receipt of the matching recording.
  * Those traces come from ghostrun-lab scripts/recording/native_ram_trace.py (branch native-ram-trace).
  *   npx tsx tools/harness/native-divergence.ts --traces DIR --entrances media/recordings/threejs-2d [--levels 4-3,1-2] [--json out.json] [--detail 4-3]
- * --strict adds a separate audit of all areas, birth rows, six-slot actor cardinality, projectiles, and coverage gaps; legacy fields remain unchanged.
- * Fields compared every frame: death, HUD timer, score, coins, and (main area) camera, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
+ * --detail automatically includes strict full-input coverage; --strict also enables it without legacy numeric details.
+ * Strict adds a separate audit of all areas, birth rows, six-slot actor cardinality, projectiles, and coverage gaps; legacy fields remain unchanged.
+ * Legacy API fields compared every frame: death, HUD timer, score, coins, and (main area) camera, and (while both are in normal play) Mario's x and y pixel. Pipe intros show blank 000 digits natively and the entrance walk shows a 401 preload, so neither is timed. Read-only measurement tooling; never used by the browser game. */
 import fs from 'node:fs';
 import path from 'node:path';
 import {parseArgs} from 'node:util';
@@ -27,7 +28,8 @@ export function nativeRow(r:Uint8Array){
 export function divergence(dir:string,receiptPath:string,level:string,detail=false,strict=false):Divergence{
  const initial=new Uint8Array(fs.readFileSync(path.join(dir,'initial.ram'))),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));
  const receipt=JSON.parse(fs.readFileSync(receiptPath,'utf8'));
- const entrance=decodeEntrance(initial,receipt),legacy=compareRun(entrance,pads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);
+ // Strict diagnostics must survive malformed input rather than reading beyond the available native buffer.
+ const entrance=decodeEntrance(initial,receipt),legacyPads=strict?pads.subarray(0,Math.floor(ram.length/2048)):pads,legacy=compareRun(entrance,legacyPads,f=>new Uint8Array(ram.buffer,ram.byteOffset+f*2048,2048),level,detail);legacy.frames=pads.length;
  return strict?{...legacy,strict:strictCompare(entrance,pads,ram,level)}:legacy;
 }
 /** The comparison itself, over any source of per-frame native RAM (full traces, or the excerpts in evidence/native-runs). */
@@ -61,9 +63,9 @@ if(import.meta.url===`file://${process.argv[1]}`){
  const levels=a.levels?.split(',')??Array.from({length:32},(_,n)=>`${Math.floor(n/4)+1}-${n%4+1}`);
  const out:Divergence[]=[];
  for(const level of levels){
-  const r=divergence(path.join(a.traces,level),path.join(a.entrances,level,'entrance.json'),level,a.detail,a.strict);out.push(r);
+  const r=divergence(path.join(a.traces,level),path.join(a.entrances,level,'entrance.json'),level,a.detail,a.strict||a.detail);out.push(r);
   const line=[level.padEnd(4),String(r.first??'-').padStart(5),...Object.entries(r.fields).map(([k,v])=>`${k}=${v??'-'}`),r.at?JSON.stringify(r.at):''].join(' ');
-  console.log(line+(r.strict?` strict=${r.strict.status} first=${r.strict.first??'-'} coverage=${r.strict.coverage.alignedFrames}/${r.strict.coverage.frames} gaps=${r.strict.diagnostics.length}`:''));
+  console.log(line+(r.strict?` strict=${r.strict.status} first=${r.strict.first??'-'} strictFields=${JSON.stringify(r.strict.fields)} input=${r.strict.coverage.inputFrames} ram=${r.strict.coverage.ramFrames} stepped=${r.strict.coverage.frames} unstepped=${r.strict.coverage.unsteppedFrames} aligned=${r.strict.coverage.alignedFrames} entities=${r.strict.coverage.comparedEntityRows}/${r.strict.coverage.nativeEntityRows} gaps=${r.strict.diagnostics.length} completeInput=${r.strict.coverage.completeInputSequence} end=${JSON.stringify(r.strict.coverage.endReason)}`:''));
  }
  if(a.json)fs.writeFileSync(a.json,JSON.stringify(out,null,1)+'\n');
 }
