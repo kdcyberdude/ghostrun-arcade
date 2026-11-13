@@ -8,8 +8,9 @@ import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entranc
 import airWindow from './fixtures/native-shell-stomp-window.json';
 import revivalWindow from './fixtures/native-shell-revival-window.json';
 import revivals from './fixtures/native-shell-revivals.json';
+import springWindow from './fixtures/native-spring-enemy-bg-window.json';
 
-function assertWindow(window:typeof airWindow|typeof revivalWindow){
+function assertWindow(window:typeof airWindow|typeof revivalWindow|typeof springWindow){
  const unpack=(data:string)=>new Uint8Array(gunzipSync(Buffer.from(data,'base64'))),pads=unpack(window.pads);
  const sim:any=new Simulation(observedLevels());sim.reset(true);initializeEntrance(sim,decodeEntrance(unpack(window.initialRam),window.receipt));sim.step([],0);sim.inputs=[];
  const buttons:Button[]=['a','b','select','start','up','down','left','right'];
@@ -31,3 +32,5 @@ test('all additional native corpus shell revivals retain position and fraction w
  assert.equal(revivals.events.length,66);assert.deepEqual(revivals.failures,[]);
  for(const e of revivals.events){assert.equal(e.timer,0);assert.equal(e.x1,e.x0);assert.equal(e.y1,e.y0);assert.equal(e.fraction1,e.fraction0);assert.equal(e.vx,(e.counter&1?-1:1)*(e.hard?0.75:0.5),`${e.file} row${e.frame}`);}
 });
+
+test('a Koopa turns against native Spring BG metatile68 before moving horizontally',()=>assertWindow(springWindow));
