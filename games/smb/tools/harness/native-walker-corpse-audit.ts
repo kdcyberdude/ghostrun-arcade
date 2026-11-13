@@ -1,0 +1,9 @@
+/** Focused complete-epoch first-field comparison using authenticated recovered inputs, never reseeding during replay.
+ * npx tsx tools/harness/native-walker-corpse-audit.ts --captures DIR --out FILE
+ */
+import fs from 'node:fs';import path from 'node:path';import {parseArgs} from 'node:util';import {execFileSync} from 'node:child_process';
+import fixture from '../../tests/fixtures/native-walker-corpse.json';import {decodeEntrance} from './native-entrance.mjs';import {compareRun} from './native-divergence.js';import {strictCompare} from './native-strict.js';import {hash} from './native-mood-corpus.js';
+const {values:a}=parseArgs({options:{captures:{type:'string'},out:{type:'string'}}});if(!a.captures||!a.out)throw Error('--captures and --out required');
+const runtimeCommit=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),runtimeDiffSha256=hash(execFileSync('git',['diff','HEAD','--','src','data']));
+const rows=fixture.runs.map(run=>{const dir=path.join(a.captures!,run.sha256),pads=fs.readFileSync(path.join(dir,'pads.bin')),ram=fs.readFileSync(path.join(dir,'ram.bin'));if(hash(pads)!==run.sha256||hash(ram)!==run.sourceRamSha256)throw Error('Native capture integrity mismatch');const seed=Buffer.from(run.initial,'base64');if(!ram.subarray((run.sourceFrameOffset-1)*2048,run.sourceFrameOffset*2048).equals(seed))throw Error('Native seed differs');const p=pads.subarray(run.sourceFrameOffset,run.endFrame),r=ram.subarray(run.sourceFrameOffset*2048,run.endFrame*2048),entrance=decodeEntrance(seed,run.receipt),legacy=compareRun(entrance,p,f=>r.subarray(f*2048,(f+1)*2048),run.level),strict=strictCompare(entrance,p,r,run.level);return {sha256:run.sha256,entry:run.entry,frames:p.length,legacy:legacy.fields,strict:strict.fields,coverage:strict.coverage};});
+fs.writeFileSync(a.out,JSON.stringify({runtimeCommit,runtimeDiffSha256,rows},null,2)+'\n');for(const row of rows)console.log(JSON.stringify(row));

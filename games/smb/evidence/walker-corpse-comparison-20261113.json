@@ -1,0 +1,734 @@
+{
+  "baseline": {
+    "runtimeCommit": "2a596b770c4b7e2b9019ab4f218627527d0ff455",
+    "runtimeDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rows": [
+      {
+        "sha256": "54e749cc0fc3c5e733989f7062ab1da43479e582f8c7d42e067459dee3faad58",
+        "entry": 2,
+        "frames": 1454,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": 407,
+          "kind": 408,
+          "position": null,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1454,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1454,
+          "inputFrames": 1454,
+          "endReason": "end of trace",
+          "frames": 1454,
+          "alignedFrames": 1454,
+          "nativeEntityRows": 4174,
+          "comparedEntityRows": 4174,
+          "nativeBirthRows": 26,
+          "areaFrames": {
+            "area-2": 1454
+          },
+          "complete": true
+        }
+      },
+      {
+        "sha256": "24f632f61c8af92ab7028fb588041a758b3bf143d4ddcb6daec6916c89d7a667",
+        "entry": 2,
+        "frames": 1394,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": 450,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": 450,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": 494,
+          "kind": null,
+          "position": 445,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1394,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1394,
+          "inputFrames": 1394,
+          "endReason": "end of trace",
+          "frames": 1394,
+          "alignedFrames": 1394,
+          "nativeEntityRows": 4115,
+          "comparedEntityRows": 4115,
+          "nativeBirthRows": 28,
+          "areaFrames": {
+            "area-2": 1394
+          },
+          "complete": true
+        }
+      },
+      {
+        "sha256": "2b723cc8d7a5d872337aee3033a7fc98c4a1d2cafe7f0685a770f5b937440d11",
+        "entry": 2,
+        "frames": 1014,
+        "legacy": {
+          "dead": 722,
+          "time": 743,
+          "score": 375,
+          "coins": null,
+          "cam": null,
+          "x": 354,
+          "y": 357,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": 722,
+          "time": 743,
+          "score": 375,
+          "coins": null,
+          "cam": 376,
+          "x": 354,
+          "y": 357,
+          "missing": 427,
+          "extra": 426,
+          "kind": 450,
+          "position": 370,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1014,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1014,
+          "inputFrames": 1014,
+          "endReason": "end of trace",
+          "frames": 1014,
+          "alignedFrames": 1014,
+          "nativeEntityRows": 2828,
+          "comparedEntityRows": 2828,
+          "nativeBirthRows": 12,
+          "areaFrames": {
+            "area-2": 1014
+          },
+          "complete": true
+        }
+      }
+    ]
+  },
+  "candidate": {
+    "runtimeCommit": "8409bd3d2a127dc6f6ee2b67044b00f9819cc762",
+    "runtimeDiffSha256": "8207edb21ecfb53266b01e6f9d355260bbad4f85ecca31e0b1c052014ff18f81",
+    "rows": [
+      {
+        "sha256": "54e749cc0fc3c5e733989f7062ab1da43479e582f8c7d42e067459dee3faad58",
+        "entry": 2,
+        "frames": 1454,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": null,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": null,
+          "kind": null,
+          "position": null,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1454,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1454,
+          "inputFrames": 1454,
+          "endReason": "end of trace",
+          "frames": 1454,
+          "alignedFrames": 1454,
+          "nativeEntityRows": 4174,
+          "comparedEntityRows": 4174,
+          "nativeBirthRows": 26,
+          "areaFrames": {
+            "area-2": 1454
+          },
+          "complete": true
+        }
+      },
+      {
+        "sha256": "24f632f61c8af92ab7028fb588041a758b3bf143d4ddcb6daec6916c89d7a667",
+        "entry": 2,
+        "frames": 1394,
+        "legacy": {
+          "dead": null,
+          "time": null,
+          "score": 450,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": null,
+          "time": null,
+          "score": 450,
+          "coins": null,
+          "cam": null,
+          "x": null,
+          "y": null,
+          "missing": null,
+          "extra": 494,
+          "kind": null,
+          "position": 445,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1394,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1394,
+          "inputFrames": 1394,
+          "endReason": "end of trace",
+          "frames": 1394,
+          "alignedFrames": 1394,
+          "nativeEntityRows": 4115,
+          "comparedEntityRows": 4115,
+          "nativeBirthRows": 28,
+          "areaFrames": {
+            "area-2": 1394
+          },
+          "complete": true
+        }
+      },
+      {
+        "sha256": "2b723cc8d7a5d872337aee3033a7fc98c4a1d2cafe7f0685a770f5b937440d11",
+        "entry": 2,
+        "frames": 1014,
+        "legacy": {
+          "dead": 722,
+          "time": 743,
+          "score": 375,
+          "coins": null,
+          "cam": null,
+          "x": 354,
+          "y": 357,
+          "enemy": null
+        },
+        "strict": {
+          "level": null,
+          "area": null,
+          "dead": 722,
+          "time": 743,
+          "score": 375,
+          "coins": null,
+          "cam": 376,
+          "x": 354,
+          "y": 357,
+          "missing": 427,
+          "extra": 426,
+          "kind": 444,
+          "position": 370,
+          "state": null,
+          "firebar.id": null,
+          "firebar.high": null,
+          "firebar.low": null,
+          "firebar.speed": null,
+          "firebar.direction": null,
+          "alias.owner": null,
+          "vine.count": null,
+          "vine.height": null,
+          "vine.startY": null,
+          "vine.slots": null
+        },
+        "coverage": {
+          "completeInputSequence": true,
+          "unsteppedFrames": 0,
+          "ramFrames": 1014,
+          "flagFrames": 0,
+          "continuationFrames": 0,
+          "victoryFrames": 0,
+          "uncomparedSameLevelFrames": 0,
+          "nativeMappedFrames": 1014,
+          "inputFrames": 1014,
+          "endReason": "end of trace",
+          "frames": 1014,
+          "alignedFrames": 1014,
+          "nativeEntityRows": 2828,
+          "comparedEntityRows": 2828,
+          "nativeBirthRows": 12,
+          "areaFrames": {
+            "area-2": 1014
+          },
+          "complete": true
+        }
+      }
+    ]
+  },
+  "original12": [
+    {
+      "side": "before",
+      "rows": [
+        {
+          "level": "1-2",
+          "frames": 3060,
+          "legacy": {
+            "dead": null,
+            "time": null,
+            "score": null,
+            "coins": null,
+            "cam": null,
+            "x": null,
+            "y": null,
+            "enemy": null
+          },
+          "strict": {
+            "level": null,
+            "area": null,
+            "dead": null,
+            "time": null,
+            "score": null,
+            "coins": null,
+            "cam": null,
+            "x": 1781,
+            "y": null,
+            "missing": null,
+            "extra": 1781,
+            "kind": null,
+            "position": null,
+            "state": null,
+            "firebar.id": null,
+            "firebar.high": null,
+            "firebar.low": null,
+            "firebar.speed": null,
+            "firebar.direction": null,
+            "alias.owner": null,
+            "vine.count": null,
+            "vine.height": null,
+            "vine.startY": null,
+            "vine.slots": null,
+            "continuation.frameCounter": null,
+            "continuation.random": null,
+            "continuation.interval": null,
+            "continuation.load.ready": null,
+            "continuation.load.task": null,
+            "continuation.load.engine": null,
+            "continuation.load.screen": null,
+            "continuation.load.disable": null
+          },
+          "coverage": {
+            "completeInputSequence": true,
+            "unsteppedFrames": 0,
+            "ramFrames": 3060,
+            "flagFrames": 805,
+            "continuationFrames": 167,
+            "victoryFrames": 0,
+            "uncomparedSameLevelFrames": 0,
+            "nativeMappedFrames": 3060,
+            "inputFrames": 3060,
+            "endReason": "end of trace",
+            "frames": 3060,
+            "alignedFrames": 3060,
+            "nativeEntityRows": 6371,
+            "comparedEntityRows": 6371,
+            "nativeBirthRows": 36,
+            "areaFrames": {
+              "main": 490,
+              "area-2": 1456,
+              "area-3": 1114
+            },
+            "complete": true
+          }
+        }
+      ]
+    },
+    {
+      "side": "after",
+      "rows": [
+        {
+          "level": "1-2",
+          "frames": 3060,
+          "legacy": {
+            "dead": null,
+            "time": null,
+            "score": null,
+            "coins": null,
+            "cam": null,
+            "x": null,
+            "y": null,
+            "enemy": null
+          },
+          "strict": {
+            "level": null,
+            "area": null,
+            "dead": null,
+            "time": null,
+            "score": null,
+            "coins": null,
+            "cam": null,
+            "x": 1781,
+            "y": null,
+            "missing": null,
+            "extra": 1781,
+            "kind": null,
+            "position": null,
+            "state": null,
+            "firebar.id": null,
+            "firebar.high": null,
+            "firebar.low": null,
+            "firebar.speed": null,
+            "firebar.direction": null,
+            "alias.owner": null,
+            "vine.count": null,
+            "vine.height": null,
+            "vine.startY": null,
+            "vine.slots": null,
+            "continuation.frameCounter": null,
+            "continuation.random": null,
+            "continuation.interval": null,
+            "continuation.load.ready": null,
+            "continuation.load.task": null,
+            "continuation.load.engine": null,
+            "continuation.load.screen": null,
+            "continuation.load.disable": null
+          },
+          "coverage": {
+            "completeInputSequence": true,
+            "unsteppedFrames": 0,
+            "ramFrames": 3060,
+            "flagFrames": 805,
+            "continuationFrames": 167,
+            "victoryFrames": 0,
+            "uncomparedSameLevelFrames": 0,
+            "nativeMappedFrames": 3060,
+            "inputFrames": 3060,
+            "endReason": "end of trace",
+            "frames": 3060,
+            "alignedFrames": 3060,
+            "nativeEntityRows": 6371,
+            "comparedEntityRows": 6371,
+            "nativeBirthRows": 36,
+            "areaFrames": {
+              "main": 490,
+              "area-2": 1456,
+              "area-3": 1114
+            },
+            "complete": true
+          }
+        }
+      ]
+    }
+  ],
+  "downstreamException": [
+    {
+      "f": 440,
+      "simCam": 679,
+      "nativeCam": 664,
+      "sim": [
+        {
+          "kind": "koopa",
+          "x": 616.5,
+          "dead": 46
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 619.5
+      }
+    },
+    {
+      "f": 441,
+      "simCam": 682,
+      "nativeCam": 667,
+      "sim": [
+        {
+          "kind": "koopa",
+          "x": 615.5,
+          "dead": 47
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 618.5
+      }
+    },
+    {
+      "f": 442,
+      "simCam": 684,
+      "nativeCam": 669,
+      "sim": [
+        {
+          "kind": "koopa",
+          "x": 614.5,
+          "dead": 48
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 617.5
+      }
+    },
+    {
+      "f": 443,
+      "simCam": 687,
+      "nativeCam": 672,
+      "sim": [],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 616.5
+      }
+    },
+    {
+      "f": 444,
+      "simCam": 689,
+      "nativeCam": 674,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 992.5,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 615.5
+      }
+    },
+    {
+      "f": 445,
+      "simCam": 691,
+      "nativeCam": 676,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 992,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 614.5
+      }
+    },
+    {
+      "f": 446,
+      "simCam": 694,
+      "nativeCam": 679,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 991.5,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 613.5
+      }
+    },
+    {
+      "f": 447,
+      "simCam": 696,
+      "nativeCam": 681,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 991,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 612.5
+      }
+    },
+    {
+      "f": 448,
+      "simCam": 698,
+      "nativeCam": 684,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 990.5,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 0,
+        "state": 34,
+        "x": 611.5
+      }
+    },
+    {
+      "f": 449,
+      "simCam": 701,
+      "nativeCam": 686,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 990,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 0,
+        "id": 0,
+        "state": 0,
+        "x": 610.5
+      }
+    },
+    {
+      "f": 450,
+      "simCam": 703,
+      "nativeCam": 689,
+      "sim": [
+        {
+          "kind": "goomba",
+          "x": 989.5,
+          "dead": 0
+        }
+      ],
+      "native": {
+        "flag": 1,
+        "id": 6,
+        "state": 0,
+        "x": 992.5
+      }
+    }
+  ]
+}

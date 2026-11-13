@@ -2279,7 +2279,12 @@ export class Simulation {
  private nativeLeftBound(e:Enemy){
   const left=Math.floor(this.camera);
   if(e.kind==='bullet'&&e.frenzy&&e.dead>0&&e.dead<100&&!e.slotFreed)return left-73;
-  if(e.motion==='flying'||e.dead&&!e.squashed)return;
+  if(e.motion==='flying')return;
+  if(e.dead&&!e.squashed){
+   // MoveNormalEnemy's defeated branch still returns through OffscreenBoundsCheck.
+   if(!e.defeat||!Simulation.SUBPIXEL_WALKERS.includes(e.kind))return;
+   const id=e.nativeId??(e.kind==='paratroopa'?14:0);return left-(id<13?73:72);
+  }
   if(e.kind==='piranha'||e.kind==='hammerBro')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle','blooper'].includes(e.kind)||e.kind==='cheep'&&e.swim)return left-73;
   if(this.placedStream&&e.kind==='podoboo')return left-73;
