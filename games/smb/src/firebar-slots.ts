@@ -15,6 +15,8 @@ export class FirebarSlots {
  private aliases=new Map<number,{owner:number;x:number;y:number}>();
  constructor(private bars:Bar[],initialAngles=Array(5).fill(768),private profiles:NativeFirebarProfile[]=[]){this.angles=[...initialAngles];}
  managed=false;
+ /** InitializeMemory clears $0388+s while retaining the live flag and $A0/$58/$34 aliases. */
+ clearPartialMemory(){for(const slot of this.slots)if(slot)slot.bytes.speed=0;}
  initializeNative(bar:Bar,slot:number,bytes:NativeFirebarBytes){
   this.slots[slot]={bar,bytes:{...bytes},previous:{...bytes}};this.born.add(bar);
   if(bytes.id===31){let duplicate=0;while(this.slots[duplicate]||this.aliases.has(duplicate)||this.busy(duplicate))duplicate++;this.aliases.set(duplicate,{owner:slot,x:bar.x-8,y:bar.y-8});}

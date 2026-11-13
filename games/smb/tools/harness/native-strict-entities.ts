@@ -11,7 +11,7 @@ export function strictNativeEntities(r:Uint8Array,offset=0):EntityReadout{
  const entities:StrictEntity[]=[],gaps:CoverageGap[]=[],reserved=new Set<string>();let live=0;
  for(let slot=0;slot<6;slot++){
   const flag=r[0x0f+slot],id=r[0x16+slot];if(!flag)continue;live++;reserved.add(`enemy:${slot}`);
-  if(flag&128){const owner=flag&127;if(id===45&&owner<6&&r[0xf+owner]&&!(r[0xf+owner]&128)&&r[0x16+owner]===45){entities.push({bank:'enemy',slot,kind:'bowser-rear',x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:'bowser-rear'});continue;}gaps.push({code:'native-alias',detail:`slot ${slot} aliases owner ${flag&127}; composite part position is not compared`,slot,id});continue;}
+  if(flag&128){const owner=flag&127;if(owner<6&&r[0xf+owner]&&!(r[0xf+owner]&128)&&r[0x16+owner]===45){entities.push({bank:'enemy',slot,kind:'bowser-rear',x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(r[0xb6+slot]-1)*256+r[0xcf+slot],source:'bowser-rear'});continue;}gaps.push({code:'native-alias',detail:`slot ${slot} aliases owner ${flag&127}; composite part position is not compared`,slot,id});continue;}
   const kind=id===23?OBJECTS[23]:id===48?'flagpole-flag':id===49?'castle-flag':id===22?'firework':id===53?'retainer':id===52?'warp-zone-control':id===50?'spring':id===51?'bullet':id===21?'flame':id===46?['mushroom','flower','star','1up'][r[0x39]]:id>=36&&id<=44?OBJECTS[id]:NATIVE_ENEMY_KIND[id];
   if(!kind){gaps.push({code:'unsupported-native-object',detail:OBJECTS[id]??`native object id ${id}`,slot,id});continue;}
   entities.push({bank:'enemy',slot,kind,x:r[0x6e+slot]*256+r[0x87+slot]+offset,y:(id===48?0:r[0xb6+slot]-1)*256+r[0xcf+slot],source:id===50?'spring':id===52?'controller':id>=36&&id<=44?'platform':id===21?'flame':id===46?'powerup':'enemy',state:r[0x1e+slot]});
@@ -36,7 +36,7 @@ function platformKind(sim:any,platform:any){
 }
 export function strictSimEntities(sim:any):StrictEntity[]{
  const entities:StrictEntity[]=sim.enemies.filter((e:any)=>e.active&&e.dead<90).map((e:any)=>({bank:'enemy',slot:e.enemySlot,kind:e.kind,x:Math.floor(e.kind==='bowser'?(e.nativeBowser?.x??e.bowser?.anchor??e.x):e.x),y:Math.floor(e.y)-(e.kind==='bowser'?32:24),source:'enemy'}));
- for(const e of sim.enemies)if(e.active&&e.dead<90&&e.nativeBowser?.rearSlot!==undefined){const b=e.nativeBowser;entities.push({bank:'enemy',slot:b.rearSlot,kind:'bowser-rear',x:(Math.floor(b.x)&~255)|((Math.floor(b.x)+(b.direction&1?-16:16))&255),y:(Math.floor(b.y)+8)&255,source:'bowser-rear'});}
+ for(const e of sim.enemies)if(e.active&&e.dead<90&&e.nativeBowser?.rearSlot!==undefined){const b=e.nativeBowser;entities.push({bank:'enemy',slot:b.rearSlot,kind:'bowser-rear',x:b.rearX??((Math.floor(b.x)&~255)|((Math.floor(b.x)+(b.direction&1?-16:16))&255)),y:b.rearY??((Math.floor(b.y)+8)&255),source:'bowser-rear'});}
  for(const [platform,slot] of sim.platformSlots??[]){
   const kind=platformKind(sim,platform);if(!kind)continue;
   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame);

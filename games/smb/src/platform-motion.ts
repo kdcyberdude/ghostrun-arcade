@@ -184,7 +184,7 @@ export function platformMotionModel(platform:PlatformSpec,context:PlatformMotion
 /** Native OffscreenBoundsCheck erases platform ids >= 13 when their integer x is below ScreenLeft - 72, regardless of platform width (all v2 removal events). */
 export function nativePlatformHoldsSlot(motion:PlatformMotion,platform:PlatformSpec,context:PlatformMotionContext,camera:number,frame:number){
  const o=nativePlatformObject(platform,context);
- return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&camera>=nativePlatformSpawnCamera(o)&&Math.floor(motion.collisionPosition(platform,frame).x)>=camera-72;
+ return !!o&&!motion.lost.has(platform)&&!motion.waiting.has(platform)&&(motion.initializedNative(platform)||camera>=nativePlatformSpawnCamera(o))&&Math.floor(motion.collisionPosition(platform,frame).x)>=camera-72;
 }
 /** Querying positions never advances simulation. */
 export class PlatformMotion {
@@ -206,8 +206,10 @@ export class PlatformMotion {
   this.waiting.delete(platform);this.nativeStart.set(platform,frame);
   this.startCounter.set(platform,[frame,this.prepared.counter]);this.seedClock(platform,frame);
  }
+ slotSpeedByte(platform:PlatformSpec,frame:number){return this.clockState(platform,frame)?.b;}
+ initializedNative(platform:PlatformSpec){return this.clockFrames.has(platform);}
  initializeNative(platform:PlatformSpec,state:NativePlatformBytes,frame:number,counter:number){
-  this.waiting.delete(platform);this.nativeStart.set(platform,frame);this.startCounter.set(platform,[frame,counter]);
+  this.waiting.delete(platform);this.nativeStart.set(platform,frame);this.startCounter.set(platform,[frame,counter]);this.startSub.set(platform,state.c);this.startFraction.set(platform,state.e);
   this.clock.create(platform,state);this.clockFrames.set(platform,{born:frame,last:frame,counter});
  }
  /** ExecGameLoopback restarts EnemyData; KillAllEnemies erases the current
