@@ -29,5 +29,5 @@ export function nativeWaterHorizontal(s:WaterHorizontalState,buttons:number,stro
   absolute=Math.abs(Math.floor(speed/256));
  }
  const byte=Math.floor(speed/256);if(byte)moving=byte>0?1:2;
- return {speed,facing,moving,absolute,running,friction};
+ return {speed,facing,moving,absolute,running,friction,steering:lr};
 }

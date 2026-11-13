@@ -260,7 +260,7 @@ export class Simulation {
  private bubblesInitialized=false;private waterScrollX=0;
  private waterEnemyStream?:NativeWaterStream;private waterSlotPositions=Array.from({length:6},()=>({x:0,y:0}));
  /** Native-exact swimming (src/native-water.ts): active in water areas once the legacy entry fall is over. */
- private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
+ private waterCollisionPose?:{x:number;y:number};private water=new NativeWater();private swimActive=false;private swimDy=0;private swimPull=0;private swimLock=0;private swimAbsolute=0;private swimDirection:Direction=0;
  /** The first controlled swim frame of a room load or respawn counts a held A as a fresh press (native rows: the stroke lands on the first control row whatever was held before). */
  private swimFreshA=false;
  bump=new Map<string,number>(); readonly usedBlockRehits=new Set<string>(); private destination?:{area:string;sourceX?:number;level?:string;spawn:[number,number];camera?:number;direction:string;frames:number;smallPlayerRoomPreviewFrames?:number;smallPlayerRoomEntry?:{transitionFrames:number;spawnFeetY:number;initialVy:number;gravity:number};ordinaryEnemyFrontier?:number;returnCloudOffsetX?:number;riseFrames?:number}; private inputs:Set<Button>[]=[new Set(),new Set()]; private pauseCooldown=0;private airRunning=false;private mediumJump=false;private runJump=false;private headBumped=false;private brokenBrick?:{key:string;rows:number};private bouncing=false; private braking=PHYSICS.brake;private skidAccel=0; private jumpHeld=0;private jumpArc=false;private landJump:'inactive'|'held'|'released'='inactive'; private lastFire=-12;
@@ -576,8 +576,9 @@ export class Simulation {
   if(nativeEntry&&this.entryReadyAge>=0){this.entryTimerDelay=0;this.entryInputDelay=0;}
   this.piranhaTouchFeetY=undefined;
   const priorityReadyOnly=Boolean(nativeEntry&&this.entryFallAge===this.entryReadyAge)||this.swimLock===1;
-  const p=this.player,nativeStateZero=this.powerupStateZero;this.powerupStateZero=false;if(nativeStateZero)p.grounded=true;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
-  let nativeGroundOnly=false;let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined;
+  const p=this.player,nativeStateZero=this.powerupStateZero;this.powerupStateZero=false;if(nativeStateZero)p.grounded=true;const oldBottom=p.y;const oldX=p.x;const scrollLocked=this.areaControls.locked;this.hammerPlayerBox=undefined;this.waterCollisionPose=undefined;const poseGrounded=p.grounded,poseLocked=this.swimLock>0||this.area.theme==='water'&&p.y-32>=NO_INPUT_Y,poseAbsolute=this.area.theme==='water'?this.swimAbsolute:this.motor.absolute,poseEvents=this.events.length;
+  let nativeGroundOnly=false;let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined,springScroll:number|undefined,waterScroll:number|undefined,waterBoundsShift=0,waterBoundsVx:number|undefined;
+
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
   this.nativePlayerAB=(b.has('a')?128:0)|(b.has('b')?64:0);
@@ -627,7 +628,7 @@ export class Simulation {
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
   springScroll=this.springTimers.values().next().value?.control;
-  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
   if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
@@ -637,14 +638,14 @@ export class Simulation {
   if(useMotor&&this.wallSpeed!==undefined){this.motor.speed=Math.round(this.wallSpeed*4096);this.motor.contact((Math.sign(this.wallSpeed)||Math.sign(motion)||this.motor.moving||1) as 1|-1,true);p.vx=this.motor.speed/4096;}
   // Swimming uses its own motor: a zero-motion back-out row holds its wall pause too (native 7-2 rows832..835).
   if(swim&&this.wallBackOut)this.water.motor.freeze=Math.max(1,this.water.motor.freeze);
-  if(swim){this.swimContact(this.swimDy,oldBottom,this.swimHeight(height));if(!this.wallBackOut)p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
+  if(swim){this.swimContact(this.swimDy,oldBottom);if(p.y-this.water.whirlMoved>=288)this.areaControls.locked=true;if(this.swimPull>0&&!(this.water.horizontalState.collision&1))this.swimPull=0;p.x+=this.swimPull;}else if(water&&p.grounded&&!this.entryFalling)this.swimActive=true;
   if(p.grounded){if(!poseGrounded){if(Math.abs(p.vx)<=PHYSICS.walkMax)this.braking=PHYSICS.brake;}this.fallingThroughCastleLava=false;this.jumpArc=false;this.bouncing=false;this.runJump=false;this.mediumJump=false;this.landJump='inactive';this.waterEntryFall=false;this.entryLanding=Boolean(nativeEntry);this.entryFalling=false;this.waterSurface={active:false,contacted:false};}
   if(this.entryFalling&&nativeEntry){if(this.entryFallAge>=nativeEntry.gravityStartAge&&this.entryFallAge!==this.entryReadyAge){p.vy+=entry!.gravity;if(p.vy>=nativeEntry.resetAt)p.vy=nativeEntry.resetTo;}}
   else if(this.entryFalling){if(entry!.gravityBeforeControl||p.y>=entry!.controlFeetY)p.vy=Math.min(entry!.maxFall,p.vy+entry!.gravity);}
   else if(nativeGroundOnly){if(!p.grounded){this.walkingOff=true;this.jumpArc=false;this.jumpPose=false;this.bouncing=false;this.landJump='released';}}
   else if(this.walkOffFall()){}
   else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.nativeFallCap(p.vy+this.airGravity(b));
-  if(p.x<this.camera){
+  if(!water&&p.x<this.camera){
    // Steering away from the left edge keeps braking momentum and the x fraction (native4-4 rows2597..2599).
    if(useMotor&&direction>0&&p.vx<0)p.x=this.camera+p.x-Math.floor(p.x);
    else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
@@ -678,20 +679,21 @@ export class Simulation {
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
-  if(oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
   if(p.y>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
-  const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX>xBeforePlatforms-this.swimPull+1e-7||cameraAttemptVx>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
+  const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX+waterBoundsShift>xBeforePlatforms-this.swimPull+1e-7||(waterBoundsVx??cameraAttemptVx)>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
   // Native ScrollHandler (fitted on all 32 v2 traces: 113,240 of 113,311 play frames, the rest are castle-loop resets). Player_X_Scroll is the
   // attempted pixel move before wall ejection plus Platform_X_Scroll, the lift carry of the
   // previous frame (1-3 f574: own 3, carry -1 this frame, scroll 3; f575: own 2 + previous carry -1, scroll 1); screen position, and SideCollisionTimer ($0785, counted down once per frame)
   // are the previous frame's. No scroll below screen x 80; one pixel less than the move below 112 (a 1 px move stays 1).
   this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
-  {const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
+  if(waterScroll!==undefined)this.camera+=waterScroll;
+  else{const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-previousCamera;this.playerXScroll=scrollMove&255;
    if(!scrollLocked&&oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
@@ -706,9 +708,9 @@ export class Simulation {
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
-  if(oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
-  else if(oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;if(this.area.theme==='water')this.water.motor.speed=Math.round(p.vx*4096);else this.motor.speed=Math.round(p.vx*4096);}}
-  else if(oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  else if(this.area.theme!=='water'&&oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;this.motor.speed=Math.round(p.vx*4096);}}
+  else if(this.area.theme!=='water'&&oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
    this.firebarSlots?.finishFrame(this.camera);
@@ -717,7 +719,7 @@ export class Simulation {
   }
   // RenderPlayerSub caches $0755 before ProcessWhirlpools. Injury's odd
   // FrameCounter rows return before that write, as in PlayerGfxHandler.
-  if(!p.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(p.x-(this.area.theme==='water'&&this.swimActive&&!this.wallBackOut?this.swimPull:0))-Math.floor(this.camera))&255;
+  if(!p.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(p.x-(this.area.theme==='water'&&this.swimActive?this.swimPull:0))-Math.floor(this.camera))&255;
   this.parserLoaderWasBlocked=this.parserClock.blocked;
   this.advanceNativeAreaParser(this.camera-previousCamera);
   if(this.player.dead)return;
@@ -733,7 +735,7 @@ export class Simulation {
    const down=pipe.direction==='down'&&b.has('down')&&downPipeFooting(p)&&!downPipeLateralBlocks(poseGrounded,b)&&Math.abs(Math.floor(p.x)+8-pipe.x)<(pipe.entryHorizontalTolerance??(pipe.requiresWarpActivation?9:5))&&Math.abs(p.y-pipe.y)<3;
    // Native side pipes start when a grounded Mario moving right reaches entryTriggerX; the 8-4 water pipe starts with only Down held (momentum).
    // The automatic pipe walk at the start of 1-2/2-2/4-2/7-2 starts it at floor(x)+13>=pipe.x (native rows).
-   const side=pipe.direction==='right'&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12;
+   const side=pipe.direction==='right'&&p.facing===1&&(this.area.autoWalk?b.has('right')&&Math.floor(p.x)+TRANSITIONS.autoWalkPipe.triggerOffset>=pipe.x:pipe.entryTriggerX!==undefined?(b.has('right')||p.vx>0||(this.wallSpeed??0)>0)&&p.grounded&&(Math.floor(p.x)>=pipe.entryTriggerX||(this.wallSpeed??0)>0&&Math.floor(p.x)+1>=pipe.entryTriggerX)&&Math.floor(p.x)<pipe.entryTriggerX+32:b.has('right')&&Math.abs(p.x+14-pipe.x)<3)&&Math.abs(p.y-pipe.y)<12;
    const up=pipe.direction==='up'&&b.has('up')&&Math.abs(p.x+8-pipe.x)<9&&Math.abs(p.y-this.height-pipe.y)<3;
    if(down||side||up){this.playerBackgroundPriority=true;this.phase='pipe';this.phaseFrame=0;this.destination={area:pipe.to,sourceX:pipe.nativeSourceX??pipe.x,level:pipe.targetLevel,spawn:pipe.spawn,camera:pipe.camera,direction:pipe.direction,frames:(p.size===0?pipe.smallPlayerRoomEntry?.transitionFrames:undefined)??pipe.transitionFrames??64,smallPlayerRoomPreviewFrames:pipe.smallPlayerRoomPreviewFrames,smallPlayerRoomEntry:p.size===0?pipe.smallPlayerRoomEntry:undefined,ordinaryEnemyFrontier:pipe.ordinaryEnemyFrontier,returnCloudOffsetX:pipe.returnCloudOffsetX,riseFrames:pipe.riseFrames};this.pipeLoad=this.nativePipeTarget(this.destination);this.pipeTimer=down?0x30:side?(this.camera+this.areaControls.origin*16<256?0xa0:0x34):0;if(up)p.vx=0;p.vy=0;this.emit('sfx_pipe');return;}
   }
@@ -794,10 +796,17 @@ export class Simulation {
   const tile=this.collisionAt(x,y);if(tile)return tile;
   if(this.tileAt(x,y)===197)return {x:Math.floor(x/16)*16,y:Math.floor(y/16)*16,width:16,height:16,id:197};
  }
+ /** ScrollHandler/ChkPOffscr runs before BG collision and late whirlpool pull. */
+ private waterScreenBounds(camera:number){
+  const p=this.player,left=Math.floor(camera),bits=nativeMiscOffscreen(Math.floor(p.x),0,left)&15;
+  const edge=bits&8?0:bits&2?1:undefined;if(edge===undefined)return;
+  p.x=left+(edge?239:0)+p.x-Math.floor(p.x);
+  if(this.water.steering!==(edge?2:1))p.vx=(Math.round(p.vx*4096)&255)/4096;
+ }
  private movePlayerX(dx:number,h:number,snap=true){
   const p=this.player;
   if(this.footPushed||this.axeFootContact())return;
-  if(this.swimActive&&this.swimFootWall(dx))return;
+  if(this.swimActive){this.swimSideWall(dx,h);return;}
   if(dx===0){
    for(const y of[p.y-h+4,p.y-8]){
     if(this.sideTileAt(p.x+13,y)){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
@@ -810,6 +819,21 @@ export class Simulation {
    if(this.swimActive)this.water.blockSide(Math.sign(dx));
    const fraction=p.x-Math.floor(p.x);if(snap)p.x=(dx>0?tile.x-13:tile.x+tile.width-2)+fraction;else p.x-=Math.sign(dx);this.wallSpeed=p.vx;p.vx=0;return;
   }
+  }
+ }
+ /** Native DoPlayerSideCheck/ImpedePlayerMove uses the ordinary-pass Y and
+  * left-before-right order, independent of the current movement direction. */
+ private swimSideWall(dx:number,h:number){
+  if(this.swimFootWall(dx))return;
+  const p=this.player,feet=p.y-this.water.whirlMoved,lowY=(Math.floor(feet)-32)&255;
+  for(const side of [-1,1]){
+   const x=p.x+(side<0?2:13);
+   if(!((lowY>=32&&this.sideTileAt(x,feet-h+4))||(lowY>=8&&this.sideTileAt(x,feet-8))))continue;
+   this.water.blockSide(side);
+   const speedByte=Math.floor(p.vx*16);
+   if(side<0?speedByte>0:speedByte<0)return;
+   p.x-=side;this.wallSpeed=p.vx;p.vx=0;if(dx===0)this.wallBackOut=true;
+   return;
   }
  }
  /** A swimmer that is not rising is also stopped by its feet, at the landing probes, once they are SWIM_WALL_DEPTH or more inside a tile (shallower it lands on top; rising it passes: 2-2 pillar branch probe, the block falls on the first row with speed >= 0). */
@@ -870,22 +894,25 @@ export class Simulation {
  private movePlayerY(dy:number,h:number,nativeHead=false,gravity=0,cutoff=false){
   const p=this.player,oldY=p.y;p.y+=dy;this.piranhaTouchFeetY=p.y;
   if(cutoff&&nativeBackgroundSkipped(p.y))return;
-  const down=dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
-  const waterFeet=this.area.theme==='water'?p.y-this.water.whirlMoved:p.y;
-  const edge=down?waterFeet:p.y-(nativeHead?this.nativeHeadProbe(h):h);
+  const water=this.area.theme==='water',down=water?this.water.contactSpeed>=0:dy>0||(dy===0&&!nativeHead)||this.apexFootProbe(dy,nativeHead,gravity);
+  const waterFeet=water?p.y-this.water.whirlMoved:p.y;
+  const edge=down?waterFeet:(water?waterFeet:p.y)-(nativeHead?this.nativeHeadProbe(h):h);
+  // HeadChk uses PlayerBGUpperExtent and the returned probe low nibble, before the late whirlpool pass.
+  if(water&&!down&&(((Math.floor(waterFeet)-32)&255)<(p.size?32:16)||(Math.floor(edge)&15)<4))return;
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
    if(!tile&&pipeTop===undefined)continue;
-   if(tile&&this.area.theme==='water'&&dy>=0&&oldY>tile.y&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
+   if(tile&&this.area.theme==='water'&&down&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
    if(down){if(dy!==0)this.landingFraction=p.y-Math.floor(p.y);p.y=tile?.y??pipeTop!;p.vy=0;p.grounded=true;}
    else{if(!tile)continue;
     // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
     // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
     if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);break;}
-    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&(p.size===0||tile.id!==196&&!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
-    if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
+    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&(p.size===0||tile.id!==196&&!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
+    if(water){if(tile.id!==0x26&&tile.id>=[0x10,0x61,0x88,0xc4][tile.id>>6])this.emit('sfx_bump');}
+    else if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
    }break;
   }
  }
@@ -1004,24 +1031,16 @@ export class Simulation {
   if(locked&&p.y-32+step.dy>=49)this.swimLock=1;
  }
  /** Contact results of the swimming move: a landing clears the vertical speed, a head bump turns it around, a wall keeps the fraction. */
- private swimContact(dy:number,oldY:number,head:number){
+ private swimContact(dy:number,oldY:number){
   const p=this.player,w=this.water;
-  if(dy<0&&p.vy===0.5&&this.whirlpoolLiftedHead(oldY+dy,head)){p.y=oldY+dy;p.vy=w.speed;} // the bump came only from the trailing whirlpool pass: none in native
   // A rising frame that happens not to move (dy 0) is not a landing even with a tile top at the feet.
   if(dy===0&&w.speed<0)p.grounded=false;
   // A head bump keeps the position the move reached (no clamp to the tile) and only turns the speed around. Inside a whirlpool zone the bump
   // falls between the ordinary pass and the trailing whirlpool pass, which is redone at speed 1 (2-2/7-2 free-play strokes under a ceiling
   // in a zone: the swimmer does not move on the bump row, 172 of 177; outside a zone it moves, 338 of 338).
-  if(p.grounded)w.land();else if(dy<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}else if(w.speed<0&&this.swimUnderLift()){p.y+=w.bump();}
+  if(p.grounded)w.land();else if(w.contactSpeed<0&&p.vy===0.5){p.y=oldY+dy;p.y+=w.bump();}else if(w.speed<0&&this.swimUnderLift()){p.y+=w.bump();}
   if(this.wallSpeed!==undefined)p.vx=w.wall(Math.round(this.wallSpeed*4096),this.swimDirection===0||this.swimDirection*this.wallSpeed>0)/4096;
   p.vy=p.grounded?0:w.speed+w.force/256;
- }
- /** Native tests the ceiling between the ordinary pass and a trailing whirlpool pass (2-2/7-2 free-play rows in a zone: a swimmer arriving at
-  * feet - ceiling 13 through the whirlpool pixel goes on rising, the next frame bumps without moving; r4-2-2 mood0 rows 2596-2602). True when the
-  * head reached the tile only through that pass. */
- private whirlpoolLiftedHead(y:number,head:number){
-  const moved=this.water.whirlMoved;
-  return moved<0&&!this.collisionAt(this.player.x+8,y-moved-head,true);
  }
  /** Rising into the underside of a lift is a head bump (5-2 room, id 39 lifts): native y before the whirlpool pass minus lift y within 2..4 for big Mario, -10..-8 for small, over the lift's support window. Every sample is inside a whirlpool zone. */
  private swimUnderLift(){
@@ -1054,7 +1073,7 @@ export class Simulation {
   * The left body points are BlockBuffer_X_Adder $02 (feet-8, and feet-24 for big Mario), as the right ones are $0D: 3-2 v2 row 369, small Mario at x 909.56 takes the coin at column 56 with x+2 = 911.
   * PlayerBGCollision probes head, left foot, right foot, then each side top to bottom, and a coin (HandleCoinMetatile) ends the routine: one coin per row
   * (2-2 v2 rows 1323/1324, two coins one row apart). */
- private collectTiles(){const p=this.player,big=this.height>16,px=p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0),py=p.y-(this.swimActive?this.water.whirlMoved:0),points=[[px+8,py-this.height-2],[px+3,py],[px+12,py],...big?[[px+2,py-24]]:[],[px+2,py-8],...big?[[px+13,py-24]]:[],[px+13,py-8]];for(const [x,y] of points){
+ private collectTiles(){const p=this.player,big=this.height>16,px=p.x-(this.swimActive?this.swimPull:0),py=p.y-(this.swimActive?this.water.whirlMoved:0),points=[[px+8,py-this.height-2],[px+3,py],[px+12,py],...big?[[px+2,py-24]]:[],[px+2,py-8],...big?[[px+13,py-24]]:[],[px+13,py-8]];for(const [x,y] of points){
   const col=Math.floor(x/16),row=Math.floor(y/16),key=`${col},${row}`,id=this.tiles.get(key);
   if(id===194||id===195){this.tiles.delete(key);this.parserVramBusy=true;this.paletteRemove=true;this.coin();return;}
  }}
@@ -1566,7 +1585,7 @@ export class Simulation {
  private updateNativeBlooper(e:Enemy){
   if(e.enemySlot===undefined)this.freeNativeSlot();
   const b=e.bloop??=newNativeBlooper(),p=this.player,mask=this.secondaryHardMode?3:63;
-  const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x-(this.swimActive&&!this.wallBackOut?this.swimPull:0)),playerY:(Math.floor(p.y-(this.swimActive?this.water.whirlMoved:0))-32)&255,playerDir:this.marioMotion<0?2:1});
+  const next=stepNativeBlooper(b,Math.floor(e.x),Math.floor(e.y)-24,{slot:e.enemySlot!,frameCounter:this.random.frame,randomByte:this.random.bytes[e.enemySlot!+1],mask,playerX:Math.floor(p.x-(this.swimActive?this.swimPull:0)),playerY:(Math.floor(p.y-(this.swimActive?this.water.whirlMoved:0))-32)&255,playerDir:this.marioMotion<0?2:1});
   e.x=next.x+e.x-Math.floor(e.x);e.y=next.y+24;e.nativeDir=b.dir===1?1:-1;
  }
  // Hammer Bro roster entries supply level object positions only. All decisions use native slot state (src/hammer-bro.ts).
@@ -1697,7 +1716,7 @@ export class Simulation {
  /** ScrollAmount $0775 of this row, computed before the enemies run as the native ScrollHandler does (same rule as the camera commit in update()). */
  private nativeScrollPreview(oldX:number,attemptX:number){
   if(this.areaControls.locked)return 0;
-  const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=Math.floor(oldX)-this.camera;
+  const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-this.camera;
   let camera=this.camera;
   if(screenX>=80&&Math.max(0,this.sideCollisionTimer-1)===0&&scrollMove>0)camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;
   return Math.max(0,Math.min(camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256))-this.camera);
@@ -2475,8 +2494,8 @@ export class Simulation {
    // RunNormalEnemies tests injury before its movement; TimerControl set by
    // the hit also holds this slot and every later slot in the native pass.
    if(nativeWaterActor&&!p.star){
-    const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
-    if(!p.dead&&!this.enemyContactOff&&!(this.random.frame&1)&&y>=0&&y<0xd0&&nativeWaterEnemyHit({x,y,big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24}))this.hurt();
+    const x=p.x-this.swimPull,y=p.y-this.water.whirlMoved-32;
+    if(!p.dead&&!this.enemyContactOff&&!(this.random.frame&1)&&y>=0&&y<0xd0&&nativeWaterEnemyHit({...this.waterCollisionPose??{x,y},big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24}))this.hurt();
     if(p.dead||this.powerChange)continue;
    }
    if(e.motion==='flying'){
@@ -2596,9 +2615,9 @@ export class Simulation {
    if(p.dead||this.powerChange||this.enemyContactOff)continue;
    if(nativeWaterActor){
     if(!p.star)continue;
-    const x=p.x-(!this.wallBackOut?this.swimPull:0),y=p.y-this.water.whirlMoved-32;
+    const x=p.x-this.swimPull,y=p.y-this.water.whirlMoved-32;
     if(this.random.frame&1||y<0||y>=0xd0)continue;
-    if(nativeWaterEnemyHit({x,y,big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24})){
+    if(nativeWaterEnemyHit({...this.waterCollisionPose??{x,y},big:p.size>0,duck:p.duck},{x:priorX,y:priorY-24})){
      if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);this.emit('sfx_kick');}else this.hurt();
     }
     continue; // HandlePECollisions branches directly to InjurePlayer in a water area: no stomp.
@@ -2815,8 +2834,13 @@ export class Simulation {
     else if(i.kind==='star'){this.nativeEndLevelMusicAreaQueue=64;p.star=NATIVE_STAR_PICKUP;if(i.nativePowerState!==undefined)this.floateyScore(POWERUPS.starCollectionScore.value);else this.score+=POWERUPS.starCollectionScore.value;this.awardPopup(POWERUPS.starCollectionScore.value,i.x,i.y-popupRules.itemTopYOffset);this.emit(this.time<=100?'music_star_hurry':'music_star');}
     else{const size=i.kind==='flower'?2:Math.max(1,p.size) as 1|2;if(size!==p.size){this.powerChange={from:p.size,to:size,remaining:nativeTransformRows(i.kind==='flower'?'fire':'grow'),kind:i.kind==='flower'?'fire':'grow'};this.powerupStateZero=true;this.transformPreviousAB=this.nativePlayerAB;p.climbing=false;this.climbingVine=undefined;}if(i.nativePowerState!==undefined)this.floateyScore(1000);else this.score+=1000;this.awardPopup(1000,i.x,i.y-popupRules.itemTopYOffset);this.emit('sfx_powerup');}
  }
- hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
- die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
+ private cancelWaterPass(){
+  if(this.area.theme!=='water'||!this.swimActive)return;
+  this.player.x-=this.swimPull;this.swimPull=0;
+  this.player.y+=this.water.cancelLatePass();this.player.vy=this.water.speed+this.water.force/256;
+ }
+ hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
+ die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
  private updateWaterEntryEnemies(){
@@ -2828,7 +2852,7 @@ export class Simulation {
  private updateBubbles(tickTimer=true,beforeWhirlpool=true){
   if(this.area.theme!=='water')return;
   const p=this.player,pre=beforeWhirlpool&&this.swimActive;
-  const player={x:p.x-(pre&&!this.wallBackOut?this.swimPull:0),y:(Math.floor(p.y-(pre?this.water.whirlMoved:0))-32)&255,facing:p.facing===1?1:2};
+  const player={x:p.x-(pre?this.swimPull:0),y:(Math.floor(p.y-(pre?this.water.whirlMoved:0))-32)&255,facing:p.facing===1?1:2};
   if(!this.bubblesInitialized){this.bubbleState.entrance(player);this.bubblesInitialized=true;tickTimer=false;}
   this.bubbleState.step(player,this.random.bytes,tickTimer);
  }
