@@ -23,3 +23,18 @@ Source `ProcHammerObj` checks TimerControl before its state/held/release/gravity
 `native-hammer-hold-events.ts` authenticates all368 captures/5,178,452 rows against the prior corpus hashes. It finds2,732 held calls, thirteen distinct input/output cases (including a held0x8D state), and three lower-slot holds on an injury row. Every observed held position, speed, force, fraction and latch remains unchanged; native boxes are refreshed. There are no diagnostics, rewritten owners or erased held objects in this corpus. The fixture retains both actual full-RAM passes that raise TimerControl via a hammer:7-1 row1152 and8-3 row4001. Subroutine integration tests use those native before/after states and reproduce every hammer position/motion byte, collision latch and cached box in descending slot order. This is a primitive-boundary proof, not a claim that the earlier-diverged whole remake replay reaches those exact poses.
 
 Against619434c all256 legacy first-field results and all strict first fields are unchanged except8-3 state3814→3813, downstream of existing enemy/position619 and remake death3813. Native held-state behavior remains the same generic rule in every scene.1,901 tests, TypeScript and excerpt regeneration pass. The animation worker owns the separate per-slot drawing snapshot, so its already-drawn higher slot keeps the earlier animation phase while later held slots draw with TimerControl set.
+
+
+The combined4aa045a gate moves8-3 strict state3814→3813 compared with
+b4c934e. `evidence/native-hammer-hold-causal-8-3.json` preserves actual RAM,
+input hashes, per-slot before/after turns and a guard-only counterfactual. Both
+replays already diverge at strict extra264/missing341, and both falsely die3813.
+The remake slot5 hammer raises death on3813; its subsequent slot4 turn starts
+with TimerControl held and correctly retains state139/x1878. Native remains
+engine8/TimerControl0, so native slot4 advances139→138/x1878→1879. Removing
+only the guard accidentally matches that native state for one more row by moving
+after the remake's own contact. Source ProcHammerObj explicitly branches on
+TimerControl before decrementing state and still executes RunHSubs. Preserve
+that order and the HUD/graphics tail. This exact state-field shift is downstream
+only while the earlier strict extra264 and existing death3813 remain unchanged;
+it is not an exemption for other fields/levels or evidence of complete fidelity.
