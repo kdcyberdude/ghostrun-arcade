@@ -1,0 +1,65 @@
+{
+  "schema": "smb-local-consolidation-validation-v1",
+  "status": "COMBINED_GAMEPLAY_BATCH_PASS",
+  "runtimeCommit": "0346732",
+  "validatedFixtureRepairCommit": "311d34149b4b8f4bbeacc99635a0ffaba2aaf35d",
+  "baseline": "003f8f9",
+  "goalComplete": false,
+  "scope": "Existing gameplay backlog consolidated; startup wiring and actual-every-frame dashboard audit still in progress; no new investigations authorized.",
+  "native": {
+    "report": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-0346732/candidate.json",
+    "sha256": "fc71ba3cea4cd73baf9a31606ceefd9668fc47b02b1a7cedb3966f65fd58b894",
+    "comparison": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-0346732/comparison.json",
+    "comparisonSha256": "6a3fe93fb9c22971ac99a3789ae138a8fa32ee2b2c30bc28bb4c3dc31b7e459c",
+    "legacyClear": 26,
+    "strictPass": 25,
+    "unclassifiedEarlierFields": 0,
+    "nativePayloadsUnchanged": true
+  },
+  "npm": {
+    "log": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-repaired-npm.log",
+    "sha256": "68e82f7f5e48f479512f57b04a4a9562e6962d2648a5d08f8515ec71f6effe9f",
+    "pass": 2093,
+    "fail": 0
+  },
+  "typescript": {
+    "log": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/consolidation-0346732/tsc.log",
+    "exit": 0
+  },
+  "pictures": {
+    "scope": "Original1-1 only, native entrance initialized; not continuous POWERON mood proof",
+    "report": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/pixels-1-1-441efc0.json",
+    "sha256": "9161f81aed7c25e4508a5310d0228977b8b99611d0458be194585e1796504a36",
+    "runtime": "441efc0",
+    "checkoutAtStart": "691e436",
+    "runtimeSourcesIdenticalToCurrent": true,
+    "coverage": {
+      "completeInputSequence": true,
+      "inputFrames": 3020,
+      "availableNativeFrames": 3020,
+      "allFrames": true,
+      "victory": false,
+      "excludedFrames": 0,
+      "excluded": {
+        "mode1": 0,
+        "mode2": 0,
+        "otherMode": 0,
+        "differentLevel": 0
+      },
+      "comparedFrames": 3020,
+      "alignedFrames": 3020,
+      "unresolvedAlignmentFrames": 0,
+      "noOverlapFrames": 0,
+      "partialOverlapFrames": 0,
+      "comparedAlignedPixels": 144960000,
+      "expectedAlignedPixels": 144960000,
+      "overlapFraction": 1
+    },
+    "allRowsWholeHudFieldAlignedZero": true
+  },
+  "remaining": [
+    "Source-owned cold/startup runtime integration and seven variable-Start continuous picture proofs",
+    "Version2 actual every-frame audit, separate state/picture/joint counts and dashboard refresh",
+    "Known newly exposed independent failures remain deferred to human choice;3D deferred"
+  ]
+}
