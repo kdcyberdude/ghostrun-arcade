@@ -1145,6 +1145,7 @@ export class Simulation {
 
  /** Rendering and collision read the same motor state without advancing it. */
  firebarDuplicateSlot(bar:FirebarSpec){const owner=this.firebarSlots?.slotOf(bar);return this.firebarSlots?.aliasStates().find(a=>a.owner===owner)?.slot;}
+ spriteObjectSlot(object:object){return this.firebarSlots?.slotOf(object as FirebarSpec)??this.platformSlots.get(object)??this.springSlots.get(object as SpringSpec);}
  firebarCenters(bar:FirebarSpec,camera=this.camera):{x:number;y:number}[]{
   if(this.firebarSlots?.tracks(bar))return nativeMiscOffscreen(bar.x-4,bar.y-4,camera)&8?[]:this.firebarSlots.centers(bar);
   const motor=this.firebarMotors.get(bar);

@@ -1,6 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
+import {framePiranha} from './piranha-frame.js';
 import {enemyPicture,nativeHammerBroCell,nativeShellPhase,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {nativeFireballPhase} from '../native-fireball-picture.js';
@@ -31,10 +32,12 @@ export class Entities{
   this.group.add(this.debug);
   const inst=kit.instance('mario');if(inst){this.mario=new Actor(inst.root,inst.clips);this.group.add(this.mario.root);}
  }
+ private draw:{offset:number;background:boolean;clipRow?:number}={offset:255,background:false};
+ private mark<T extends THREE.Object3D>(root:T){root.userData.nativeSprite={...this.draw};return root;}
  private pool(name:string){let p=this.pools.get(name);if(!p){p=new ActorPool(this.kit,name,this.group);this.pools.set(name,p);}return p;}
  private take(key:string,make:()=>THREE.Mesh){
   let list=this.cache.get(key);if(!list)this.cache.set(key,list=[]);const i=this.used.get(key)??0;this.used.set(key,i+1);
-  let m=list[i];if(!m){m=make();m.castShadow=true;m.receiveShadow=true;this.group.add(m);list.push(m);}m.visible=true;this.standIns.add(key);return m;
+  let m=list[i];if(!m){m=make();m.castShadow=true;m.receiveShadow=true;this.group.add(m);list.push(m);}m.visible=true;this.standIns.add(key);return this.mark(m);
  }
  private box(x0:number,y0:number,x1:number,y1:number,color=0x00ff66){
   if(!this.debugBoxes)return;let l=this.hitboxes[this.hbUsed];
@@ -54,13 +57,14 @@ export class Entities{
   this.lastFrame=s.frame;
  }
  private player(s:Simulation,advanced:boolean){
+  this.draw={offset:s.spriteShuffle.offsets[0],background:s.playerDrawBackgroundPriority};
   const p=s.player,feet=(239-p.y)/16,x=(p.x+8)/16;
   const visible=playerVisible(s);
   const appearance=playerCell(s),change=s.powerChange;
   const size=appearance.cell===24?0.5:appearance.cell<12||appearance.cell===25?1:0;
   this.box(p.x/16,feet,p.x/16+1,feet+(p.size===0?1:2));
   if(!this.mario){if(visible){const h=size>0.5?2:1,m=this.take('player'+h,()=>new THREE.Mesh(new THREE.CapsuleGeometry(0.34,h-0.68,8,16),std(0xd02020)));m.position.set(x,feet+h/2,0);}return;}
-  const a=this.mario;a.root.visible=visible;if(!visible)return;
+  const a=this.mario;this.mark(a.root);a.root.visible=visible;if(!visible)return;
   // Small Mario: 0.6 of big Mario with half the Chibi morph (about 1.1 tiles tall). Full Chibi at 0.5 made the head dominate and the legs
   // too short to read a run (tools/visual3d/tune-small.ts lineups); the stride below scales with the legs, so the run cadence slows too.
   const scale=SMALL_SCALE+(1-SMALL_SCALE)*size;a.root.scale.setScalar(scale);a.morph('Chibi',(1-size)*SMALL_CHIBI);a.root.position.set(x,feet,0);
@@ -95,7 +99,7 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const physical=e;e=enemyPicture(e);const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
+  const physical=e;e=enemyPicture(e);this.draw={offset:s.spriteShuffle.offsets[(e.enemySlot??0)+1],background:e.kind==='piranha',clipRow:e.kind==='piranha'&&!e.dead?e.pir?.down:undefined};const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
   const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(physical.x/16,(239-physical.y)/16,physical.x/16+w,(239-physical.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
@@ -108,6 +112,7 @@ export class Entities{
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take(physical):undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
+  this.mark(a.root);
   const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined&&!e.defeat;
   const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):Boolean(e.defeat)||e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
@@ -131,6 +136,7 @@ export class Entities{
   const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,timersStopped))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
   const clip=e.kind==='piranha'?'idle':nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
   a.pose(clip,nativePhase===undefined?e.age/60:nativePhase*a.duration(clip),s.frame);
+  if(e.kind==='piranha'&&!e.dead)framePiranha(a.root,nativePhase!,Math.floor(pictureY)-23);
   if(e.kind==='lakitu'&&nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead))===25)a.poseYOffset('Body',-8/16);
   if(e.nativeBowser)a.poseRotation('Jaw','idle',(e.nativeBowser.controls&0x80)?a.duration('idle')/4:0);
   if(e.kind==='hammerBro'){
@@ -140,11 +146,14 @@ export class Entities{
  }
  private retainer(s:Simulation){
   const picture=s.castleRetainer;if(!picture?.graphicsVisible)return;
+  this.draw={offset:s.spriteShuffle.offsets[picture.slot+1],background:false};
   const name=s.level.id==='8-4'?'princess':'toad',actor=this.pool(name).take();if(!actor)return;
+  this.mark(actor.root);
   if(name==='toad')actor.recolor('M_Vest',PALETTE.mario[0]);
   actor.root.position.set((picture.x+8)/16,(215-picture.y)/16,0);actor.root.rotation.set(0,-Math.PI/2,0);actor.root.scale.setScalar(1);actor.pose('idle',s.frame/60,s.frame);
  }
  private item(i:Item,s:Simulation){
+  const misc=i.nativeHammer??i.nativeCoin;this.draw={offset:misc?s.spriteShuffle.miscOffset(misc.slot):s.spriteShuffle.offsets[i.nativeFlame?i.nativeFlame.slot+1:6],background:i.nativePowerState!==undefined&&i.nativePowerState<0x80};
   const pictureX=i.nativeCoin||i.nativeHammer?Math.floor(s.camera)+(Math.floor(i.x-s.camera)&255):i.x;
   const pictureY=i.nativeCoin||i.nativeHammer?(Math.floor(i.y)&255)+1:i.nativePowerState!==undefined?Math.floor(i.y)+1:i.y;
   const cx=(pictureX+8)/16,cy=(232-pictureY)/16;this.box(i.x/16,(240-i.y-16)/16,i.x/16+1,(240-i.y)/16,0xffaa00);
@@ -152,10 +161,10 @@ export class Entities{
   if(i.kind==='coin'&&(i.nativeCoin?.state??0)>=2)return; // native misc slot now draws its floatey 200, in Hud
   if(i.kind==='coin'){  // block coin: the same minted gold coin as the tile coins, spinning fast while it pops
    let m=this.coins[this.coinsUsed++];if(!m){m=new THREE.Mesh(coinGeometry(),GOLD);m.castShadow=true;this.group.add(m);this.coins.push(m);}
-   m.visible=true;m.position.set((pictureX+4)/16,(232-pictureY)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
+   this.mark(m);m.visible=true;m.position.set((pictureX+4)/16,(232-pictureY)/16,0);m.rotation.y=(i.nativeCoin?(s.random.frame>>1)&3:Math.floor(i.age/4)%4)*Math.PI/2;return;}
   const name=ITEM_MODEL[i.kind],a=name?this.pool(name).take():undefined;
   if(!a){const m=this.take('item'+i.kind,()=>new THREE.Mesh(new THREE.SphereGeometry(0.4,20,14),std(i.kind==='mushroom'?0xe03030:0xffffff)));m.position.set(cx,cy,0);return;}
-  a.root.position.set(cx,(240-pictureY-16)/16,0);
+  this.mark(a.root);a.root.position.set(cx,(240-pictureY-16)/16,0);
   if(i.kind==='hammer')a.root.position.y=cy;
   if(i.kind==='flame')a.root.position.set((pictureX+12)/16,(236-pictureY)/16,0);
   if(i.kind==='fireball'||i.kind==='star'){a.root.position.set((i.x+4)/16,(232-i.y)/16-0.5,0);}

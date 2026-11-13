@@ -1,6 +1,7 @@
 // Camera rig, themed sky/fog, sun + shadows, image-based light and the post chain.
 import * as THREE from 'three';
 import {EffectComposer} from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import {SpritePass,type SpriteDraw} from './sprite-pass.js';
 import {RenderPass} from 'three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from 'three/examples/jsm/postprocessing/OutputPass.js';
@@ -14,7 +15,8 @@ import {SKY_IDS} from './asset-policy.js';
 const PH=import.meta.env.BASE_URL+'assets3d/ph/hdri/';
 export const SKIES:Record<string,string>=SKY_IDS;
 interface Sky{env:THREE.Texture;bg:THREE.Texture;rotation:number;sunDir:THREE.Vector3;horizon:THREE.Color}
-import {NES_W,NES_H} from './coords.js';
+import {NES_W,NES_H,FOV,PITCH,ASPECT,DIST,TARGET_Y} from './coords.js';
+export {FOV,PITCH,ASPECT,DIST,TARGET_Y} from './coords.js';
 import {GOLD} from './proc.js';
 export type Quality='ultra'|'high'|'low';
 export interface Theme{skyTop:string;skyMid:string;skyBottom:string;fog:string;fogNear:number;fogFar:number;sun:number;sunI:number;hemiSky:number;hemiGround:number;hemiI:number;env:number;bloom:number}
@@ -26,10 +28,6 @@ export const THEMES:Record<string,Theme>={
  night:{skyTop:'#050a24',skyMid:'#0d1a4a',skyBottom:'#1f3a7a',fog:'#0d1a4a',fogNear:50,fogFar:220,sun:0xa8c4ff,sunI:1.4,hemiSky:0x4a64b0,hemiGround:0x1a1a30,hemiI:0.8,env:0.3,bloom:0.3},
  snow:{skyTop:'#6fa3d8',skyMid:'#b4d2ee',skyBottom:'#eef6ff',fog:'#dcebf7',fogNear:50,fogFar:220,sun:0xfff6e6,sunI:3.0,hemiSky:0xdcecff,hemiGround:0x9aa8b8,hemiI:1.1,env:0.6,bloom:0.2},
 };
-export const FOV=24,PITCH=4.5*Math.PI/180,ASPECT=NES_W/NES_H;
-/** Distance at which the 256-px-wide window spans exactly 16 world units at the gameplay plane. */
-export const DIST=8/(ASPECT*Math.tan(FOV*Math.PI/360));
-export const TARGET_Y=7.5;
 /** Final colour grade in display space: vibrance (lifts muted colours most), gentle S-curve contrast and a warm lift, for a colourful, sunlit look on top of physically based lighting. */
 const GRADE={uniforms:{tDiffuse:{value:null},vibrance:{value:0.6},contrast:{value:0.1},warmth:{value:0.02}},
  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
@@ -73,7 +71,7 @@ function cloudSky():THREE.Texture{
 export class Atmosphere{
  readonly scene=new THREE.Scene();readonly camera=new THREE.PerspectiveCamera(FOV,ASPECT,1,600);
  readonly sun=new THREE.DirectionalLight(0xffffff,3);readonly hemi=new THREE.HemisphereLight(0xffffff,0x444444,1);
- private composer!:EffectComposer;private bloomStrength=0.22;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private fxaa?:ShaderPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
+ private sprites?:SpritePass;private banks:THREE.Group[]=[];private composer!:EffectComposer;private bloomStrength=0.22;private bloom?:UnrealBloomPass;private theme='';private sky:THREE.Texture|null=null;private black=false;private fog:THREE.Fog|null=null;private skies=new Map<string,Sky>();private skyLoads=new Map<string,Promise<void>>();private gradient?:THREE.Texture;private sunDir=new THREE.Vector3(-0.45,0.75,0.5).normalize();private fallbackEnv!:THREE.Texture;private pmrem:THREE.PMREMGenerator;private gtao?:GTAOPass;private fxaa?:ShaderPass;private night?:THREE.Texture;private cloud?:THREE.Texture;
  constructor(readonly renderer:THREE.WebGLRenderer,width:number,height:number,private quality:Quality){
   renderer.setPixelRatio(1);renderer.setSize(width,height,false);
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.NeutralToneMapping;renderer.toneMappingExposure=1.05;  // Khronos PBR Neutral keeps hue and saturation (AgX greys out bright colours)
@@ -88,12 +86,15 @@ export class Atmosphere{
  setQuality(quality:Quality){if(quality===this.quality)return;this.quality=quality;const size=this.renderer.getSize(new THREE.Vector2());this.build(size.x,size.y);}
  private build(width:number,height:number){
   const ultra=this.quality==='ultra',glow=this.quality!=='low';
-  this.gtao?.dispose();this.bloom?.dispose();this.fxaa?.dispose();this.gtao=this.bloom=this.fxaa=undefined;this.composer?.dispose();
+  this.gtao?.dispose();this.bloom?.dispose();this.fxaa?.dispose();this.gtao=this.bloom=this.fxaa=undefined;this.sprites?.dispose();this.composer?.dispose();
   this.sun.shadow.mapSize.set(ultra?4096:2048,ultra?4096:2048);this.sun.shadow.map?.dispose();this.sun.shadow.map=null;
   const target=new THREE.WebGLRenderTarget(width,height,{type:THREE.HalfFloatType,samples:ultra?4:0});
   this.composer=new EffectComposer(this.renderer,target);this.composer.setPixelRatio(1);this.composer.setSize(width,height);
-  this.composer.addPass(new RenderPass(this.scene,this.camera));
-  if(ultra){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;this.composer.addPass(this.gtao);}
+  for(const rt of [this.composer.renderTarget1,this.composer.renderTarget2])rt.depthTexture=new THREE.DepthTexture(width,height,THREE.FloatType);
+  this.sprites=new SpritePass(this.scene,this.camera,this.banks);this.sprites.setSize(width,height);
+  const world=new RenderPass(this.scene,this.camera),renderWorld=world.render.bind(world);world.render=(...args)=>this.sprites!.worldOnly(()=>renderWorld(...args));this.composer.addPass(world);
+  if(ultra){this.gtao=new GTAOPass(this.scene,this.camera,width,height);this.gtao.updateGtaoMaterial({radius:0.6,distanceExponent:1.5,thickness:1,scale:1.2,samples:16});this.gtao.blendIntensity=0.85;const renderAO=this.gtao.render.bind(this.gtao);this.gtao.render=(...args)=>this.sprites!.worldOnly(()=>renderAO(...args),true);this.composer.addPass(this.gtao);}
+  this.composer.addPass(this.sprites);
   if(glow){this.bloom=new UnrealBloomPass(new THREE.Vector2(width/2,height/2),this.bloomStrength,0.6,0.92);this.composer.addPass(this.bloom);}
   this.composer.addPass(new OutputPass());
   this.composer.addPass(new ShaderPass(GRADE));
@@ -157,5 +158,6 @@ export class Atmosphere{
  }
  /** Changes the internal render resolution (all post passes follow the composer). */
  resize(width:number,height:number){this.renderer.setSize(width,height,false);this.composer.setSize(width,height);this.bloom?.resolution.set(width/2,height/2);this.fxaa?.material.uniforms.resolution.value.set(1/width,1/height);}
+ spritesFor(draws:SpriteDraw[],banks:THREE.Group[]){this.banks.splice(0,this.banks.length,...banks);this.sprites!.draws=draws;}
  render(){this.composer.render();}
 }

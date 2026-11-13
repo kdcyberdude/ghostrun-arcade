@@ -46,6 +46,8 @@ export class Renderer3D{
   this.atmosphere.setBlackout(black);
   this.atmosphere.place(camPx);
   if(!black){this.world.sync(s,camPx);this.entities.sync(s,camPx);this.props.sync(s);}
+  const sprites:import('./sprite-pass.js').SpriteDraw[]=[];for(const bank of [this.world.group,this.entities.group,this.props.group])for(const root of bank.children)if(root.visible)sprites.push({root,offset:root.userData.nativeSprite?.offset??255,background:root.userData.nativeSprite?.background??false,clipRow:root.userData.nativeSprite?.clipRow});
+  this.atmosphere.spritesFor(sprites.filter(d=>d.root.parent!==this.world.group||d.root.userData.nativeSprite),[this.world.group,this.entities.group,this.props.group]);
   if(screen&&black){this.gl.setRenderTarget(null);this.gl.setClearColor(s.nativeBackdrop===0x22?0x6888fc:0x000000);this.gl.clear();}else this.atmosphere.render();
   // Same visibility rule as the HUD's lives screen.
   if(screen?screen.avatar:s.phase==='intro'&&!(!s.introFromGameover&&s.introHiddenEarly||s.phaseFrame>=TRANSITIONS.introHiddenFromFrame))this.avatar?.render(this.gl,s.frame,Boolean(s.currentPlayer));

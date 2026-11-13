@@ -1,12 +1,13 @@
 // GPU alpha/depth visibility instrumentation only. Materials and renderer/scene state restore in finally.
 import * as THREE from 'three';
+import {SpritePass,type SpriteDraw} from '../../src/render3d/sprite-pass.js';
 const W=256,H=240,ATTACHMENTS=4,PER_PASS=ATTACHMENTS*3;
 const materialCache=new WeakMap<THREE.Material,Map<number,{material:THREE.MeshBasicMaterial;id:{value:number}}>>();
 function maskMaterial(source:any,id:number){
  let cache=materialCache.get(source);if(!cache)materialCache.set(source,cache=new Map());let entry=cache.get(id);
  if(!entry){
   const material=new THREE.MeshBasicMaterial({map:source.map,alphaMap:source.alphaMap,alphaTest:source.alphaTest,transparent:source.transparent,opacity:source.opacity,side:source.side,depthTest:source.depthTest,depthWrite:source.depthWrite,blending:source.blending,premultipliedAlpha:source.premultipliedAlpha,polygonOffset:source.polygonOffset,polygonOffsetFactor:source.polygonOffsetFactor,polygonOffsetUnits:source.polygonOffsetUnits,clippingPlanes:source.clippingPlanes,clipIntersection:source.clipIntersection,vertexColors:source.vertexColors,toneMapped:false,fog:false});
-  material.visible=source.visible;(material as any).glslVersion=THREE.GLSL3;
+  material.userData.nativeBackgroundMask=Array.from({length:ATTACHMENTS},(_,i)=>`mask${i}.rgb=vec3(0.0);`).join('');material.visible=source.visible;(material as any).glslVersion=THREE.GLSL3;
   const uniform={value:id};
   material.onBeforeCompile=shader=>{
    shader.uniforms.pickId=uniform;
@@ -26,9 +27,11 @@ export function sceneState(scene:THREE.Scene){
 }
 /** Each MRT RGB channel carries one object's alpha contribution through actual depth, alpha-test and transparent blending.
  * RGBA8 quantizes visibility to1/255. Unlike a single ID image, translucent foreground objects preserve objects behind them. */
-export function visiblePixels(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.Camera,labels:Map<THREE.Object3D,number>,count:number,overlays:{scene:THREE.Scene;camera:THREE.Camera}[]=[]){
+export function visiblePixels(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.Camera,labels:Map<THREE.Object3D,number>,count:number,overlays:{scene:THREE.Scene;camera:THREE.Camera}[]=[] ,isolated=false,composition?:{draws:SpriteDraw[];banks:THREE.Group[]},scale=1){
+ const W=256*scale,H=240*scale;
  const gl=renderer.getContext() as WebGL2RenderingContext;if(gl.getParameter(gl.MAX_DRAW_BUFFERS)<ATTACHMENTS)throw Error('visibility pass requires four draw buffers');
- const target=new THREE.WebGLRenderTarget(W,H,{count:ATTACHMENTS,depthBuffer:true,stencilBuffer:false,minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter});
+ const target=new THREE.WebGLRenderTarget(W,H,{count:ATTACHMENTS,depthBuffer:true,depthTexture:new THREE.DepthTexture(W,H,THREE.FloatType),stencilBuffer:false,minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter});
+ const spritePass=composition&&!isolated?new SpritePass(scene,camera,composition.banks):undefined;if(spritePass){spritePass.draws=composition!.draws;spritePass.setSize(W,H);}
  for(const texture of target.textures)texture.colorSpace=THREE.NoColorSpace;
  const saved={target:renderer.getRenderTarget(),viewport:renderer.getViewport(new THREE.Vector4()),scissor:renderer.getScissor(new THREE.Vector4()),scissorTest:renderer.getScissorTest(),clear:renderer.getClearColor(new THREE.Color()),alpha:renderer.getClearAlpha(),autoClear:renderer.autoClear,shadow:renderer.shadowMap.autoUpdate,shadowNeedsUpdate:renderer.shadowMap.needsUpdate,renderInfo:{...renderer.info.render},background:scene.background,override:scene.overrideMaterial,readBuffer:gl.getParameter(gl.READ_BUFFER)};
  const layers=[{scene,camera},...overlays],layerStates=layers.map(l=>({scene:l.scene,background:l.scene.background,override:l.scene.overrideMaterial}));
@@ -38,16 +41,16 @@ export function visiblePixels(renderer:THREE.WebGLRenderer,scene:THREE.Scene,cam
   for(const layer of layers){layer.scene.background=null;layer.scene.overrideMaterial=null;}renderer.autoClear=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=false;renderer.setRenderTarget(target);renderer.setViewport(0,0,W,H);renderer.setScissorTest(false);renderer.setClearColor(0,0);
   for(const o of hidden)o.visible=false;
   for(let base=0;base<count;base+=PER_PASS){
-   for(const {mesh,material}of meshes){const label=labels.get(mesh)??0,local=label-base,id=label&&local>=1&&local<=PER_PASS?local:0;mesh.material=Array.isArray(material)?material.map(m=>maskMaterial(m,id)):maskMaterial(material,id);}
-   renderer.autoClear=true;renderer.render(scene,camera);for(const overlay of overlays){renderer.autoClear=false;renderer.clearDepth();renderer.render(overlay.scene,overlay.camera);}
+   for(const {mesh,material}of meshes){const label=labels.get(mesh)??0,local=label-base,id=label&&local>=1&&local<=PER_PASS?local:0;mesh.material=Array.isArray(material)?material.map(m=>maskMaterial(m,id,isolated)):maskMaterial(material,id,isolated);}
+   renderer.autoClear=true;if(spritePass){spritePass.worldOnly(()=>renderer.render(scene,camera));spritePass.render(renderer,target,target);}else renderer.render(scene,camera);for(const overlay of overlays){renderer.autoClear=false;renderer.clearDepth();renderer.render(overlay.scene,overlay.camera);}
    for(let attachment=0;attachment<ATTACHMENTS;attachment++){
     gl.readBuffer(gl.COLOR_ATTACHMENT0+attachment);gl.readPixels(0,0,W,H,gl.RGBA,gl.UNSIGNED_BYTE,buffer);
-    for(let y=0;y<H-32;y++)for(let x=0;x<W;x++)for(let channel=0;channel<3;channel++){const id=base+attachment*3+channel+1;if(id>count)continue;const value=buffer[(y*W+x)*4+channel];if(value){pixels[id]++;contribution[id]+=value/255;}}
+    for(let y=0;y<H-32*scale;y++)for(let x=0;x<W;x++)for(let channel=0;channel<3;channel++){const id=base+attachment*3+channel+1;if(id>count)continue;const value=buffer[(y*W+x)*4+channel];if(value){pixels[id]++;contribution[id]+=value/255;}}
    }
   }
  }finally{
   for(const {mesh,material}of meshes)mesh.material=material;for(const o of hidden)o.visible=true;
-  for(const layer of layerStates){layer.scene.background=layer.background;layer.scene.overrideMaterial=layer.override;}renderer.autoClear=saved.autoClear;renderer.shadowMap.autoUpdate=saved.shadow;renderer.shadowMap.needsUpdate=saved.shadowNeedsUpdate;Object.assign(renderer.info.render,saved.renderInfo);renderer.setRenderTarget(saved.target);renderer.setViewport(saved.viewport);renderer.setScissor(saved.scissor);renderer.setScissorTest(saved.scissorTest);renderer.setClearColor(saved.clear,saved.alpha);gl.readBuffer(saved.readBuffer);target.dispose();
+  for(const layer of layerStates){layer.scene.background=layer.background;layer.scene.overrideMaterial=layer.override;}renderer.autoClear=saved.autoClear;renderer.shadowMap.autoUpdate=saved.shadow;renderer.shadowMap.needsUpdate=saved.shadowNeedsUpdate;Object.assign(renderer.info.render,saved.renderInfo);renderer.setRenderTarget(saved.target);renderer.setViewport(saved.viewport);renderer.setScissor(saved.scissor);renderer.setScissorTest(saved.scissorTest);renderer.setClearColor(saved.clear,saved.alpha);gl.readBuffer(saved.readBuffer);target.dispose();spritePass?.dispose();
  }
- return {pixels,contribution,unsupported,precision:'RGBA8 alpha contribution;1/255; playfield rows32..239',passes:Math.ceil(count/PER_PASS)};
+ return {pixels,contribution,unsupported,isolated,resolution:[W,H],precision:'RGBA8 alpha contribution;1/255; playfield rows32..239',passes:Math.ceil(count/PER_PASS)};
 }
