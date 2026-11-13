@@ -1,0 +1,323 @@
+{
+ "schema": "native-initial-player-origin-v1",
+ "base": "8458cb2",
+ "procedure": "InitializeArea -> InitializeMemory clears Player_PageLoc006D and Player_X_Position0086 to0. The model uses scene coordinates; conversion is nativeX+nativeAreaOffset.",
+ "change": "Only updateLevelLoad result.clear maps cleared playerX0 through the existing scene origin. No velocity, scroll, motor, geometry or parser changes.",
+ "nativeCases": [
+  {
+   "level": "1-2",
+   "window": [
+    1781,
+    1805
+   ],
+   "hashes": {
+    "initialSha256": "368c57bb8041353c8c1ae634133a04cfb1adfbf28a2a1dc60991b3030558d0b5",
+    "fullPadsSha256": "5664dcdcab9dc8240854b2b97c2546dba3b83ccaee0f2670719b616b58593c1f",
+    "fullRamSha256": "56ab5053a758a084a902266837b9117329b30359b5a191dfcff8db84e909e112",
+    "padsSha256": "c1132dcbc3b276049a5aa8e534c086029ea87c38cb9b83aedf3372697f04beba",
+    "ramSha256": "760a5103572ac0b48b166e554fe7d8b4605dc3b4cdad19afc6b33f359a6b8bf7"
+   }
+  },
+  {
+   "level": "4-2",
+   "window": [
+    2726,
+    2750
+   ],
+   "hashes": {
+    "initialSha256": "14d6d407c85859fc2176c2ff6db47368b2eb10ddae15e1d871d925db80e9e7d7",
+    "fullPadsSha256": "a36cd24a8b41a8549ad4ff1d32b14503b202dce2e37a6add29003d2855a6bb0a",
+    "fullRamSha256": "cb9b88687cff601acf5fadb2974a2ecfc7a02c35f55c1483a667d8e4f1e24734",
+    "padsSha256": "299d17899c3f5a3e73df69a3713f131a3f51f272e5fc9f12cd2d3d8b6153fb7c",
+    "ramSha256": "36a069bc874bec7e68becfe4af00abeab668046fd4e0030bb4bdd123f33a1494"
+   }
+  },
+  {
+   "level": "3-4",
+   "window": [
+    4607,
+    4771
+   ],
+   "hashes": {
+    "initialSha256": "f7ae7faa9e019b8ed43540ebbdcdd61d6894710daa920024838eab1c72c27055",
+    "fullPadsSha256": "d1d69062ed2736fea8a64b2bb52a21ff8582078d169acc9887aec43b16a4b9e3",
+    "fullRamSha256": "ce5be1cd8ddf615eb07bf99de0ef529a1c7891c76431a27a13a157582bc7dd05",
+    "padsSha256": "d1d69062ed2736fea8a64b2bb52a21ff8582078d169acc9887aec43b16a4b9e3",
+    "ramSha256": "b7d0985299d24fda393e762709dc3bd0af016c2a1ba200c341e7ac70a5057279"
+   }
+  },
+  {
+   "level": "8-4",
+   "window": [
+    6455,
+    6476
+   ],
+   "hashes": {
+    "initialSha256": "fd776646827bcaaa044b620c4a0931babcb6b59d5511318ef56aa7c00e3b56d7",
+    "fullPadsSha256": "95118a594fbf2d4798960705fd4c534f3dde12437c7ef8f519b50b1ebcb52769",
+    "fullRamSha256": "0d1bb0f3933ebfdfc6a89f4922ccb069ac8a52f7780f93fab152ec1d9a79549f",
+    "padsSha256": "745e38b7bcf206e352ff8494b1225626373d5781dd4dec4d5faea79018b69988",
+    "ramSha256": "5fac929058adb9ef56f309bfc9e1950bae7f77678890ba4ca29665e6b9201e10"
+   }
+  }
+ ],
+ "sourceZeros": [
+  {
+   "level": "1-2",
+   "frame": 1781,
+   "page": 0,
+   "lowX": 0,
+   "origin": -2816,
+   "modelBefore": 0,
+   "modelAfter": -2816
+  },
+  {
+   "level": "4-2",
+   "frame": 2726,
+   "page": 0,
+   "lowX": 0,
+   "origin": -2816,
+   "modelBefore": 0,
+   "modelAfter": -2816
+  },
+  {
+   "level": "8-4",
+   "frame": 6455,
+   "page": 0,
+   "lowX": 0,
+   "origin": -1792,
+   "modelBefore": 0,
+   "modelAfter": -1792
+  }
+ ],
+ "proof": {
+  "before": "three coldprefix testsfail at1781/2726/6455; zero-origin3-4continuation passes",
+  "after": "20focusedownership/prefix/load-ready/pipe/ID41testsPASS(exit0)",
+  "1-2": "STRICTPASS3060rows,gaps0",
+  "3-4": "STRICTPASS4772rows,gaps0",
+  "8-4": "strictX6455\u21928987; everyotherstrictandlegacyfieldidentical to8458cb2",
+  "4-2": "pre-existingstrictX2672/camera2673retained, prior toInitializeArea2726",
+  "fullSuite": "notrun;integrationbatchownsit",
+  "tsc": "notrun;integrationbatchownsit"
+ },
+ "focusedFields": [
+  {
+   "level": "1-2",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "pass"
+  },
+  {
+   "level": "4-2",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": 2673,
+    "x": 2672,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "diverged"
+  },
+  {
+   "level": "3-4",
+   "legacy": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "victory.owned": null,
+    "victory.task": null,
+    "victory.frameCounter": null,
+    "victory.random": null,
+    "victory.interval": null,
+    "victory.primary": null,
+    "victory.secondary": null,
+    "victory.endTimer": null,
+    "victory.feet": null,
+    "victory.controls": null,
+    "victory.bridge": null,
+    "victory.scrollFraction": null,
+    "victory.bossOwned": null,
+    "victory.bossState": null,
+    "victory.boss.x": null,
+    "victory.boss.y": null,
+    "victory.boss.speed": null,
+    "victory.boss.force": null,
+    "victory.boss.fraction": null,
+    "victory.cell": null,
+    "victory.destination": null,
+    "victory.walk": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "status": "pass"
+  },
+  {
+   "level": "8-4",
+   "legacy": {
+    "dead": 9213,
+    "time": 9219,
+    "score": 9110,
+    "coins": null,
+    "cam": null,
+    "x": 8987,
+    "y": 8980,
+    "enemy": null
+   },
+   "strict": {
+    "level": null,
+    "area": null,
+    "dead": 9213,
+    "time": 9219,
+    "score": 9110,
+    "coins": null,
+    "cam": 9017,
+    "x": 8987,
+    "y": 8980,
+    "missing": null,
+    "extra": 9087,
+    "kind": 9177,
+    "position": 6959,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "gameover.mode": 15729,
+    "gameover.task": 15729,
+    "gameover.engine": 15729,
+    "gameover.screen": 15729,
+    "gameover.disable": 15729,
+    "gameover.timer": 15729,
+    "gameover.master": 15729,
+    "gameover.timeUp": 15729,
+    "gameover.columns": 15729,
+    "gameover.frameCounter": null,
+    "gameover.random": null,
+    "gameover.interval": 15729
+   },
+   "status": "diverged"
+  }
+ ]
+}
