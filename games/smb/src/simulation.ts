@@ -36,7 +36,7 @@ import {motionOf} from './native-motor.js';
 import type {Direction} from './native-motor.js';
 import {PlayerMotor} from './native-player-motor.js';
 import {PlayerAnim} from './player-anim.js';
-import {nativeFlagStep,nativeFlagNumberStep} from './native-flagpole.js';
+import {nativeFlagStep,nativeFlagNumberStep,nativeFlagPoleSideContact} from './native-flagpole.js';
 import {captureEnemyPicture,enemyPicture,enemyPictureTimersStopped} from './enemy-picture.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
 import {nativeFirebarProfiles,nativeFirebarParameters} from './native-firebar.js';
@@ -75,7 +75,7 @@ import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
 import shellRules from '../data/shell-rules.json';
 import stompRules from '../data/stomp-rules.json';
-import {COIN_TILE,flagPoleTouched} from './award-rules.js';
+import {COIN_TILE} from './award-rules.js';
 import {nativeHurtHeight,nativeHurtReachX} from './native-hurtbox.js';
 import popupRules from '../data/popup-rules.json';
 import hammerBroData from '../data/native-hammer-bros.json';
@@ -762,7 +762,7 @@ export class Simulation {
   this.updateMaze(oldX);this.nativeLoopCommand();
   const exit=this.area.exit;
   // Native axe contact (tests/native-axe-contact.test.ts): a foot inside the cell while not rising; x+13 stands for the right foot, the left side is kept loose so a remake 1-3 px ahead still reaches it.
-  const touchingExit=exit&&(exit.kind==='axe'?this.axeFootContact():exit.kind==='flag'&&flagPoleTouched(p.x,exit.x)&&p.y<193);
+  const touchingExit=exit&&(exit.kind==='axe'?this.axeFootContact():exit.kind==='flag'&&nativeFlagPoleSideContact(p.x,p.y,(x,y)=>this.tileAt(x,y)));
   if(exit&&touchingExit){
    this.phase=exit.kind==='axe'?'castle':'flag';this.phaseFrame=0;if(exit.kind!=='axe')p.vx=0;
    this.flagBonus=exit.kind==='flag'?(FLAG_COMPLETION.scoreThresholds.find(t=>p.y<t.feetBelow)?.score??FLAG_COMPLETION.lowestScore):0;
@@ -2014,6 +2014,9 @@ export class Simulation {
   const p=this.player,exit=this.area.exit!,rules=FLAG_COMPLETION;
   if(this.flagAwardFrame<0){
    p.climbing=true;if(Math.floor(p.y)<0x9e+32){p.vy=1+255/256;p.y+=p.vy;}else p.vy=0;
+   // AutoControlPlayer still runs PlayerBGCollision after the climb, including a low grab on the pedestal.
+   const feet=p.y,grounded=p.grounded;this.movePlayerY(0,this.height);
+   if(!grounded&&p.grounded)this.landingFraction=feet-Math.floor(feet);
    if(this.flagTop>=0xaa||Math.floor(p.y)>=0xa2+32){this.score+=this.flagBonus;this.flagAwardFrame=this.phaseFrame;}
    else this.advanceFlag();
    return;
@@ -2026,7 +2029,9 @@ export class Simulation {
   {
    if(this.phaseFrame===walkFrom){
     // PlayerEndLevel offsets Mario four pixels from the pole before the next frame's automatic Right press.
-    p.x+=4;p.vx=0;p.vy=0;p.grounded=false;const runningSpeed=this.motor.runningSpeed;this.motor.reset(0,-1,1,this.motor.absolute);this.motor.runningSpeed=runningSpeed;this.jumpArc=false;this.bouncing=false;this.walkingOff=false;return;
+    p.x+=4;p.vx=0;p.vy=0;p.grounded=false;const runningSpeed=this.motor.runningSpeed;this.motor.reset(0,-1,1,this.motor.absolute);this.motor.runningSpeed=runningSpeed;this.jumpArc=false;this.bouncing=false;this.walkingOff=false;
+    // PlayerBGCollision restores grounded state while either foot still rests on the pole base.
+    this.movePlayerY(0,this.height);return;
    }
    const oldX=p.x,wasGrounded=p.grounded;
    if(wasGrounded)this.playerAnim.setSpeed(this.motor.absolute);
