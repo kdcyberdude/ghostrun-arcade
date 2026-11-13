@@ -718,6 +718,12 @@ export class Simulation {
   const piece=this.freeTiles.find(t=>solid(t.id)&&x>=t.x&&x<t.x+16&&y>=t.y&&y<t.y+16);
   return piece?{x:piece.x,y:piece.y,width:16,height:16,id:piece.id,piece}:undefined;
  }
+ private enemyCollisionAt(x:number,y:number){
+  const spring=this.area.springs?.find(s=>x>=s.x&&x<s.x+16&&y>=s.y-24&&y<s.y+8);
+  if(spring)return {x:spring.x,y:spring.y-24+Math.floor((y-spring.y+24)/16)*16,width:16,height:16,id:y<spring.y-8?0x67:0x68};
+  return this.collisionAt(x,y);
+ }
+ private enemySolid(x:number,y:number){return this.enemyCollisionAt(x,y)!==undefined;}
  private isSolid(x:number,y:number){return this.collisionAt(x,y)!==undefined;}
  private pipeTopAt(x:number,oldY:number,newY:number){
   const row=Math.floor(newY/16),top=row*16,id=this.tiles.get(`${Math.floor(x/16)},${row}`);
@@ -1486,7 +1492,7 @@ export class Simulation {
   if(e.age===1)e.x+=this.slotSub[slot]/256;
   const camera=this.camera+this.lakituScroll,screenX=Math.floor(e.x)-camera;
   const step=hammerBroStep(n,{x:Math.floor(e.x),marioX:Math.floor(this.player.x),frame:this.random.frame,random1:this.random.bytes[slot+1],random2:this.random.bytes[slot+2],hard:this.secondaryHardMode,
-   supported:Boolean(this.collisionAt(Math.floor(e.x)+8,n.y+24)),sideBlocked:this.isSolid(Math.floor(e.x)+(e.nativeDir===1?16:0),n.y+20),onScreen:screenX>0&&screenX<=247,spawnHammer:()=>this.spawnNativeHammer(e)});
+   supported:Boolean(this.enemyCollisionAt(Math.floor(e.x)+8,n.y+24)),sideBlocked:this.enemySolid(Math.floor(e.x)+(e.nativeDir===1?16:0),n.y+20),onScreen:screenX>0&&screenX<=247,spawnHammer:()=>this.spawnNativeHammer(e)});
   e.nativeDir=Math.floor(e.x)-Math.floor(this.player.x)<0?1:-1;e.vx=step.speed/16;e.x+=e.vx*step.steps;e.y=n.y+24;e.vy=n.speed+n.force/256;
   this.slotBroJump[slot]=n.jumpTimer;this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;
  }
@@ -1633,10 +1639,10 @@ export class Simulation {
   * v2 traces: 17 of 17 landings face Mario (none on a FrameCounter multiple of 8); the turn one row later at 4-1 row 733 and 6-1 row 247 is the ordinary wall turn. */
  private spinyLandingVx(x:number){return (this.random.frame&7)===0||Math.floor(this.player.x)-Math.floor(x)>=0?SPINY_EGG.walk:-SPINY_EGG.walk;}
  /** The walker side probe after the landing step (as the walker pass does after its own step: nativeWalkerWallTurn). */
- private spinyWallTurn(e:Enemy){if(this.isSolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
+ private spinyWallTurn(e:Enemy){if(this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
  /** A falling egg (state 5): the background test runs before the move; landed, it turns into a Spiny walking toward Mario and steps on that row. */
  private updateSpinyEgg(e:Enemy){
-  const n=e.pod!,floor=n.speed>=0?this.collisionAt(e.x+8,e.y):undefined;
+  const n=e.pod!,floor=n.speed>=0?this.enemyCollisionAt(e.x+8,e.y):undefined;
   if(floor){e.y=floor.y;e.vy=0;n.speed=0;n.force=0;e.motion=undefined;e.vx=this.spinyLandingVx(e.x);e.x+=e.vx;this.spinyWallTurn(e);return;}
   nativeImposeGravity(n,SPINY_EGG.down,SPINY_EGG.max);e.y=n.y;e.vy=n.speed+n.force/256;
  }
@@ -1957,7 +1963,7 @@ export class Simulation {
   for(const s of after){const e=bySlot.get(s)!;e.vx=-e.vx;}
  }
  // Area D: native Red Koopas (1-3, 4-3, 5-3, 7-3, both directions) turn when the point under the sprite centre (x+8) is no longer supported.
- private redKoopaLedgeAhead(e:Enemy){return !this.isSolid(e.x+8,e.y+3);}
+ private redKoopaLedgeAhead(e:Enemy){return !this.enemySolid(e.x+8,e.y+3);}
  // Green Paratroopa floor contact (GREEN_PARATROOPA_LANDING): too slow a fall does not register yet; a registered sink of 5 px or more
  // that has a solid floor beside it turns the Paratroopa around before it bounces.
  private advanceNativeBowser(e:Enemy){
@@ -2346,12 +2352,12 @@ export class Simulation {
     if(!greenBounce&&!normalWalker){
      if(e.kind==='beetle'){
       // Background collision precedes the move (8-1 Beetle rows 624-625).
-      if(this.isSolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;
+      if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;
       e.x+=dx===0?0:Math.sign(e.vx)*Math.abs(dx);
      }else{
       e.x+=dx;
-      if(nativeWalkerWallTurn(e.kind)){if(this.isSolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
-      else if(this.isSolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;e.vx=-e.vx;}
+      if(nativeWalkerWallTurn(e.kind)){if(this.enemySolid(Math.floor(e.x)+(dx>0?16:0),e.y-wallHeight(e)))e.vx=-e.vx;}
+      else if(this.enemySolid(e.x+(dx>0?15:1)+wallReach(e,dx),e.y-wallHeight(e))){e.x-=dx;e.vx=-e.vx;}
      }
     }
     if(greenBounce){
@@ -2361,7 +2367,7 @@ export class Simulation {
      // first motion row: the 8.8 speed is the stored vy plus one gravity step (vy holds the speed before this row's gravity; a spawned one is at rest unless a spawnVy was measured)
      const n=e.pod??=(()=>{const left=e.enemySlot!==undefined&&!e.unwingedAir&&e.age<=1?this.slotVertical[e.enemySlot]:undefined;if(left)return {...nativeMoveState(Math.floor(e.y)),...left};const v=Math.round((e.vy+GREEN_PARATROOPA_PHYSICS.gravity)*256);return {...nativeMoveState(Math.floor(e.y)),speed:v>>8,force:v&255,fraction:Math.round((e.y-Math.floor(e.y))*256)&255};})(); // a new one starts from the vertical bytes its slot was left with (slotVertical)
      const step={x:e.x,vx:e.vx,y:n.y,speed:n.speed,force:n.force,fraction:n.fraction};
-     advanceNativeGreenParatroopa(step,(x,y)=>Boolean(this.collisionAt(x,y)));
+     advanceNativeGreenParatroopa(step,(x,y)=>Boolean(this.enemyCollisionAt(x,y)));
      Object.assign(n,{y:step.y,speed:step.speed,force:step.force,fraction:step.fraction});
      e.x=step.x;e.vx=step.vx;e.y=n.y;e.vy=n.speed+n.force/256;
     }else if(e.egg&&e.motion==='falling')this.updateSpinyEgg(e);
@@ -2372,7 +2378,7 @@ export class Simulation {
      // EnemyToBGCollisionDet precedes MoveNormalEnemy. The feet probe is
      // rawY+24, but LandEnemyProperly tests rawY's low nibble, 8..12.
      if(((rawY+0x3e)&255)>=0x44&&(e.kind!=='spiny'||rawY>=0x25)){
-      const ground=this.collisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;let landed=false;
+      const ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;let landed=false;
       // Explicit off-grid artwork rectangles retain their actual support height.
       if(ground&&(depth<5||ground.y%16!==0)){
        if(e.shell&&e.walkerState>=3)landed=true;
@@ -2383,7 +2389,7 @@ export class Simulation {
         if(e.kind==='spiny')e.vx=this.spinyLandingVx(e.x);
        }
       }else if(!(e.kind==='redKoopa'&&(e.nativeId===undefined||e.nativeId===3)&&e.walkerState===0))e.walkerState=e.shell?2:1;
-      if(!landed&&rawY>=0x20&&this.isSolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))e.vx=-e.vx;
+      if(!landed&&rawY>=0x20&&this.enemySolid(Math.floor(e.x)+(e.vx>0?16:0),e.y-4))e.vx=-e.vx;
      }
      if(e.shell&&e.walkerState>=3&&e.shellTimer===0){e.shell=false;e.walkerState=0;e.shellAge=0;e.shellChain=0;e.direction=(this.random.frame&1)?-1:1;e.vx=e.direction*(this.primaryHardMode?0.75:0.5);revivedShell=true;}
      stompY=e.y;stompFall={...n};
@@ -2391,7 +2397,7 @@ export class Simulation {
      if(!revivedShell&&(!e.shell||e.walkerState===2))e.x+=e.vx;e.vy=n.speed+n.force/256;
     }
     else{e.vy=Math.min(greenBounce?GREEN_PARATROOPA_PHYSICS.maxFall:4,e.vy+(greenBounce?GREEN_PARATROOPA_PHYSICS.gravity:e.kind==='bowser'?BOWSER_HOP.gravity:0.25));e.y+=e.vy;}
-    const floor=this.collisionAt(e.x+8,e.y);
+    const floor=this.enemyCollisionAt(e.x+8,e.y);
     if(!greenBounce&&!(NATIVE_FALLERS.includes(e.kind)&&(!e.shell||!e.movingShell)&&!e.motion)&&!(e.egg&&e.motion==='falling')&&e.vy>=0&&floor){e.y=floor.y;e.vy=greenBounce?GREEN_PARATROOPA_PHYSICS.bounce:e.kind==='paratroopa'?-3:0;if(e.motion==='falling'){e.motion=undefined;if(e.kind==='spiny')e.vx=p.x<e.x?-0.5:0.5;}}
     if(e.kind==='bowser')this.bowserLanded(e,p);
    }
@@ -2403,7 +2409,7 @@ export class Simulation {
     continue;
    }
    if(e.shell&&e.movingShell)for(const other of this.enemies)if(other!==e&&other.active&&!other.dead&&Math.abs(e.x-other.x)<14&&Math.abs(e.y-other.y)<20){
-    const groundedGreenLaunch=e.kind==='koopa'&&e.vx>0&&(e.palette===undefined||e.palette==='0f-1a-30-27')&&other.kind==='goomba'&&(other.palette===undefined||other.palette==='0f-0f-36-17')&&other.vy===0&&this.isSolid(other.x+8,other.y+1);
+    const groundedGreenLaunch=e.kind==='koopa'&&e.vx>0&&(e.palette===undefined||e.palette==='0f-1a-30-27')&&other.kind==='goomba'&&(other.palette===undefined||other.palette==='0f-0f-36-17')&&other.vy===0&&this.enemySolid(other.x+8,other.y+1);
     other.dead=1;other.vy=groundedGreenLaunch?shellLaunchRules.initialVelocityY:-3;
     if(groundedGreenLaunch)other.greenShellLaunchFrame=this.frame;
     // Six consecutive victims are observed. Later awards provisionally retain
