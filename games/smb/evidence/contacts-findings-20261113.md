@@ -267,3 +267,35 @@ itself remains unchanged. A persistent additional decision excerpt and runtime
 All32 v2 fields remain unchanged versus74b1013. Full delayed $23 marker
 lifetime and type-specific shell/stun conversion remain separate unverified
 work; this unit removes effects from head contacts with no native marker.
+
+## Source side-pipe motion replaces per-pipe first speeds
+
+`EnterSidePipe` retains Player_X_MoveForce $0705 and replaces only the $57
+speed byte with8, or0 once integer X's low nibble is0. AutoControlPlayer then
+uses the ordinary player motor with Right/neutral input. Incoming absolute
+speed, facing/moving direction, RunningTimer and RunningSpeed determine the
+first and later friction steps. Engine7 selects right cap12; water ignores
+RunningTimer's run class and uses the source floor cap16. No changes are made
+to the already verified native-player-motor implementation.
+
+The helper matches828 captured engine2/IntroEntr7 rows on X, speed, absolute,
+facing/moving, running bytes and collision bits. It also matches every native
+ChangeAreaTimer transition: initial$A0 on native camera page0, otherwise$34;
+IntroEntr7's side check refreshes it while X remains unaligned, then the caller
+decrements it. Runtime exposes the same pipeTimer for the loader worker and
+uses source area origin to recover native camera page. The first-frame water
+sync uses its canonical speed, absolute and moving/facing state.
+
+All per-pipe firstSpeed values and runUntilStep approximations are removed,
+as is the uniform automatic first speed2312. The original synthetic test's
+speed vectors lacked their native incoming force/latch state and had required
+those fits; exact byte fixtures now cover that behavior, while structural
+runtime tests still require all five mouths to stop at aligned X. A closed
+v2 1-2 replay checks1728..1735 X, speed, running timer, absolute and area timer.
+All32 first-field values remain unchanged; full1628 tests and TypeScript pass.
+
+The side engine2/IntroEntr7 full world/camera pass and the replacement of
+fitted destination load durations remain separate work. The existing engine3
+world pass is already source-driven. Animation ownership stays with the anim
+worker: sidePipeStep has an explicit pre-friction absolute-speed hook for
+GetPlayerAnimSpeed and subsequent single pose update.

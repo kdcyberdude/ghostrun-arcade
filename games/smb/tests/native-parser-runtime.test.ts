@@ -8,6 +8,7 @@ import type {Button} from '../src/types.js';
 import {decodeEntrance,initializeEntrance} from '../tools/harness/native-entrance.mjs';
 import clockEvidence from '../data/native-parser-clock.json';
 import springEvents from './fixtures/native-spring-events.json';
+import sidePipeEvents from './fixtures/native-side-pipe-events.json';
 import bulletDefeats from './fixtures/native-bullet-defeat-events.json';
 
 function replay(level:string,through:number,inspect:(sim:any,frame:number)=>void,runName='v2'){
@@ -169,4 +170,14 @@ test('a solid tree underside stops Mario without creating a native bump marker o
   assert.equal(e.x,447-(frame-195)/2);assert.equal(e.y,80);assert.equal(sim.score,43400);
   if(frame===196){assert.equal(Math.floor(sim.player.y)-32,76);assert.equal(sim.blockBounceTimer,0);assert.equal(sim.nativeBlockBounce,0);}
  },'mood0-6a33-entry0006');
+});
+
+
+test('ordinary side-pipe movement keeps the native incoming fraction and running timer without a fitted first speed',()=>{
+ replay('1-2',1735,(sim,frame)=>{
+  if(frame<1728)return;
+  const event=sidePipeEvents.find(e=>e.level==='1-2'&&e.frame===frame)!;assert.ok(event);
+  assert.equal(sim.player.x,event.after.x,`row${frame} x`);assert.equal(Math.round(sim.player.vx*4096),event.after.motor.speed,`row${frame} speed`);
+  assert.equal(sim.motor.runningTimer,event.after.motor.runningTimer);assert.equal(sim.motor.absolute,event.after.motor.absolute);assert.equal(sim.pipeTimer,event.after.change);
+ });
 });
