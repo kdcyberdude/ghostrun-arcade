@@ -5,7 +5,10 @@ import type {Area,Level,Tile} from '../src/types.js';
 
 function area(overrides:Partial<Area>={}):Area {
  const tiles:Tile[]=[];for(let x=0;x<64;x++)tiles.push([x,13,84]);
- return {id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[],spawn:[40,208],evidence:'Synthetic mechanic fixture, not an observed campaign layout',...overrides};
+ const result:Area={id:'main',width:1024,palette:0,theme:'ground',tiles,enemies:[],spawn:[40,208],evidence:'Synthetic mechanic fixture, not an observed campaign layout',...overrides};
+ // Exit geometry is accompanied by the native C5 collision metatile.
+ if(result.exit?.kind==='axe')result.tiles.push([Math.floor(result.exit.x/16),Math.floor(result.exit.y!/16),197]);
+ return result;
 }
 function game(areas:Area[],id='fixture') {
  const level:Level={id,time:400,main:areas[0].id,areas,evidence:'Mechanic regression fixture'};
@@ -80,7 +83,7 @@ test('axe contact skips the enemy loop; lethal firebars still block ordinary pip
 
 test('crossing beneath an axe cannot clear a castle; touching it starts sequential bridge removal',()=>{
  const room=area({theme:'castle',camera:58,exit:{kind:'axe',x:296,y:144,retainerX:656},enemies:[{kind:'bowser',x:200,y:160}]});
- room.tiles.push([12,10,137],[13,10,137],[14,10,137],[6,9,197]);
+ room.tiles.push([12,10,137],[13,10,137],[14,10,137]);
  const below=game([room]);below.player.x=296;below.step(['right'],10);assert.equal(below.phase,'play');
  const touching=game([room]);touching.step([],1);touching.player.x=282;touching.player.y=152;touching.player.vy=0;touching.step([],1);
  assert.equal(touching.phase,'castle');assert.equal(touching.tiles.get('14,10'),137);assert.equal(touching.enemies[0].dead,0);
@@ -106,7 +109,9 @@ test('castle rescue freezes the remaining timer without a flagpole score bonus',
 });
 
 test('the final rescue brakes naturally before the Princess and ends at the final camera view',()=>{
- const sim=game([area({theme:'castle',camera:58,spawn:[282,208],exit:{kind:'axe',x:296,y:208,retainerX:656}})],'8-4');
+ // Keep the axe above its supporting floor; C5 is pass-through, not a floor tile.
+ const tiles:Tile[]=Array.from({length:64},(_,x)=>[x,14,84]);
+ const sim=game([area({tiles,theme:'castle',camera:58,spawn:[282,208],exit:{kind:'axe',x:296,y:208,retainerX:656}})],'8-4');
  sim.step(['right'],20);for(let i=0;i<1500&&sim.phase!=='ending';i++)sim.step([],1);assert.equal(sim.phase,'ending');assert.ok(sim.player.x>=608&&sim.player.x<656);assert.ok(sim.camera===512||sim.camera===513);assert.equal(Math.floor(sim.player.vx*16),0);
 });
 
