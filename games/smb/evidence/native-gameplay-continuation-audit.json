@@ -1,0 +1,87 @@
+{
+  "schema": "native-gameplay-continuation-audit-v1",
+  "runtimeCommit": "5e43814bdaf4e121badda4e0d6bf0294392061be",
+  "workingDiffSha256": "89d1ee1e858543dae7528166d7d10f08ccf23f10b77c32f65b959277eabff58c",
+  "toolSha256": "6a0b1b595ba0314bc39c79961bb84349e0530152b2a91df27e954ec78a4c4433",
+  "sourceHashes": {
+    "src/simulation.ts": "4fe086fa05e875380e3c6990557e95c8a8e24eeee6fb866c345f294892dfb052",
+    "src/native-gameplay-timing.ts": "e69b6265d9cb664df16d283a446e61ffa0d3b145093daffb1e6ac267e3d8e988",
+    "src/native-source-machine.ts": "68150eefd6a0ebbf9cbd147eee0b0a1647502a38cd38fceececfacea7a63986a",
+    "src/native-source-ppu.ts": "931801b1624609b76c745a0b995c490ce843f2dfce4c9096e7f13725521e69bf",
+    "src/native-source-sprite-zero.ts": "7403dfcfd9c203ba2961e5491716823a8e7630a75af3caff2d5ada309f08e8fa",
+    "data/native-source-program.json": "656f72b4f733814d71affc9a9e730fbdaa130ebc9391154e70dfbae46a61b23b",
+    "data/native-source-ppu-graphics.json": "be8aa4024137c9bb1e08fef0ad7ad39221d2a23cd8ff51813b4923d2d2f5e64c",
+    "tools/harness/native-continuous-state.ts": "71a00d675287a6847e9f77cc8dcb92bd1c85390377bbbdcf271115a1b155ee58"
+  },
+  "method": "Every actual native row compared after one real controller step from model cold reset. No later native state correction; source machine all-RAM checks are read-only. Unsupported/mismatch rows remain individually counted.",
+  "cases": [
+    {
+      "id": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+      "nativeRamSha256": "617fcc893095493be853f0d00896ed789275ca7e8dc02c6b2c0aa902ebe89399",
+      "nativeReceiptSha256": "2ad769922e506c2d341280ef1302064d3e63e3a3f9ef983012323929726037b5",
+      "frames": 8632,
+      "start": {
+        "status": "match",
+        "scope": "cold-recorded-start",
+        "checked": [
+          "cold.RAM"
+        ],
+        "gaps": [],
+        "differences": []
+      },
+      "counts": {
+        "match": 8632,
+        "mismatch": 0,
+        "unchecked": 0
+      },
+      "firsts": {},
+      "sourceRamMismatches": 0
+    },
+    {
+      "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+      "nativeRamSha256": "e9540f6bbaf66ea26f7ce1dbc0dc6e13092c0453bfdb85084483b0a4d0f87e60",
+      "nativeReceiptSha256": "263691ad9ff5b6e1d2e4085a2cfd383eca4790dadead6888d20a8de0494e3093",
+      "frames": 8632,
+      "start": {
+        "status": "match",
+        "scope": "cold-recorded-start",
+        "checked": [
+          "cold.RAM"
+        ],
+        "gaps": [],
+        "differences": []
+      },
+      "counts": {
+        "match": 8632,
+        "mismatch": 0,
+        "unchecked": 0
+      },
+      "firsts": {},
+      "sourceRamMismatches": 0
+    },
+    {
+      "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
+      "nativeRamSha256": "f95edf2bce89c5794b72ce60995d5efd19733b58eb429bf25453e43b2ea31abf",
+      "nativeReceiptSha256": "a2a8fad8739ef449578528fac5ff01a15e46ec5fcef05a6746be17292bbe7a34",
+      "frames": 8412,
+      "start": {
+        "status": "match",
+        "scope": "cold-recorded-start",
+        "checked": [
+          "cold.RAM"
+        ],
+        "gaps": [],
+        "differences": []
+      },
+      "counts": {
+        "match": 8412,
+        "mismatch": 0,
+        "unchecked": 0
+      },
+      "firsts": {},
+      "sourceRamMismatches": 0
+    }
+  ],
+  "implementationCommit": "ffe58efb35f5c31c7a41429d8f046f9610acf2e7",
+  "sourceHashesCheckedAgainstImplementationCommit": true
+}
