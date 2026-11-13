@@ -16,8 +16,8 @@ import {nativeBlockSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
-interface Rect{x:number;y:number;w:number;h:number}
-const union=(rs:Rect[]):Rect|undefined=>{if(!rs.length)return undefined;const x0=Math.min(...rs.map(r=>r.x)),y0=Math.min(...rs.map(r=>r.y)),x1=Math.max(...rs.map(r=>r.x+r.w)),y1=Math.max(...rs.map(r=>r.y+r.h));return {x:x0,y:y0,w:x1-x0,h:y1-y0};};
+interface Rect{x:number;y:number;w:number;h:number;draws?:number[]}
+const union=(rs:Rect[]):Rect|undefined=>{if(!rs.length)return undefined;const x0=Math.min(...rs.map(r=>r.x)),y0=Math.min(...rs.map(r=>r.y)),x1=Math.max(...rs.map(r=>r.x+r.w)),y1=Math.max(...rs.map(r=>r.y+r.h));return {x:x0,y:y0,w:x1-x0,h:y1-y0,draws:rs.flatMap(r=>r.draws??[])};};
 const hit=(a:Rect,b:Rect,pad=2)=>a.x<b.x+b.w+pad&&b.x<a.x+a.w+pad&&a.y<b.y+b.h+pad&&b.y<a.y+a.h+pad;
 
 let r2:Any;
@@ -33,11 +33,11 @@ export async function setup(){
 }
 /** Everything the 2D renderer draws this frame: tiles (cell + id) and sprite quads tagged with the object being drawn. */
 function draw2d(s:Simulation){
- const quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number}[]=[],draws:{tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc';
+ const quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]=[],draws:{id:number;tag:string;r:Rect;z:number;sprite:boolean;mesh:THREE.Object3D}[]=[],tiles:{id:number;x:number;y:number;z:number;tag:string}[]=[];let tag='misc',drawId=0;
  const q0=r2.quad,t0=r2.tile,p0=r2.player,e0=r2.enemy,i0=r2.item,c0=r2.castlePriorityTile,txt=r2.text,hud=r2.hud,cr=r2.castleRescue;
  r2.quad=function(name:string,rect:number[],x:number,y:number,z=0,fx=false,fy=false,sprite=true){
-  const q={tag,r:opaqueRect(name,rect,x,y,fx,fy)??{x:Math.floor(x),y:Math.floor(y),w:0,h:0},source:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z,chr:name.startsWith('sprite-tiles-')?rect[1]/8*16+rect[0]/8:undefined};if(sprite&&tag!=='skip'&&q.r.w&&q.r.h)quads.push(q);
-  const before=this.scene.children.length,result=q0.call(this,name,rect,x,y,z,fx,fy,sprite);if(this.scene.children.length>before)draws.push({tag,r:q.r,z,sprite,mesh:this.scene.children.at(-1)});return result;
+  const id=drawId++,q={tag,r:opaqueRect(name,rect,x,y,fx,fy)??{x:Math.floor(x),y:Math.floor(y),w:0,h:0},source:{x:Math.floor(x),y:Math.floor(y),w:rect[2],h:rect[3]},z,sourceName:name,chr:name.startsWith('sprite-tiles-')?rect[1]/8*16+rect[0]/8:undefined};q.r.draws=[id];if(sprite&&tag!=='skip'&&q.r.w&&q.r.h)quads.push(q);
+  const before=this.scene.children.length,result=q0.call(this,name,rect,x,y,z,fx,fy,sprite);if(this.scene.children.length>before)draws.push({id,tag,r:q.r,z,sprite,mesh:this.scene.children.at(-1)});return result;
  };
  r2.tile=function(id:number,x:number,y:number,palette:number,z=0){tiles.push({id,x,y,z,tag});return t0.call(this,id,x,y,palette,z);};
  r2.castlePriorityTile=function(id:number,x:number,y:number,p:number){tiles.push({id,x,y,z:0,tag});return c0.call(this,id,x,y,p);};
@@ -51,7 +51,7 @@ function draw2d(s:Simulation){
  return {quads,tiles,draws};
 }
 /** Sim objects with the rect the 2D renderer drew for each (union of its quads). */
-function objects2d(s:Simulation,quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number}[]):Obj[]{
+function objects2d(s:Simulation,quads:{tag:string;r:Rect;source?:Rect;z:number;chr?:number;sourceName?:string}[]):Obj[]{
  const cam=Math.floor(s.camera),out:Obj[]=[],misc=quads.filter(q=>q.tag==='misc'&&q.z!==2.5);  // z 2.5 = score popups (HUD text in 3D)
  const near=(r:Rect)=>union(misc.filter(q=>hit(q.r,r)).map(q=>q.r));
  const exact=(x:number,y:number)=>union(misc.filter(q=>(q.source??q.r).x===Math.floor(x)&&(q.source??q.r).y===Math.floor(y)).map(q=>q.r));
@@ -61,7 +61,8 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;source?:Rect;z:number;c
  (s.area.platforms??[]).forEach((pl,i)=>{const p=s.platformPicturePosition(pl),context={levelId:s.level.id,areaId:s.area.id},ys=nativePlatformArtworkYs(pl,context,p.y);
   ys.forEach((y,copy)=>{const cloud=platformMotionModel(pl,context)==='contact-cloud',r=cloud?near({x:p.x-cam,y,w:pl.width,h:8}):union(misc.filter(q=>(q.source??q.r).y===Math.floor(y)&&(q.source??q.r).w===8&&(q.source??q.r).h<=8&&(q.source??q.r).x>=Math.floor(p.x-cam)&&(q.source??q.r).x<Math.floor(p.x-cam)+pl.width).map(q=>q.r));if(r)out.push({id:`platform#${i}.${copy}`,kind:platformMotionModel(pl,context)==='contact-cloud'?'cloud':'lift',...r});});
  });
- (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach(({x,y},k)=>{const r=exact(x-4-cam,y-4+(bar.visualOffsetY??0));if(r)out.push({id:`fire#${i}.${k}`,kind:'fire',...r});}));
+ const fireDraws=misc.filter(q=>q.sourceName?.startsWith('special/sprite-fireball_or_firebar-'));let fireDraw=0;
+ (s.area.firebars??[]).forEach((bar,i)=>s.firebarCenters(bar).forEach((_,k)=>{const r=fireDraws[fireDraw++]?.r;if(r)out.push({id:`fire#${i}.${k}`,sourceId:`fire#${i}.${k}`,kind:'fire',...r});}));
  (s.area.springs??[]).forEach((sp,i)=>{const r=near({x:sp.x-cam,y:sp.y-23,w:16,h:24});if(r)out.push({id:'spring#'+i,kind:'spring',...r});});
  if(s.area.exit?.kind==='flag'){const pieces=nativeFlagSprites(s.specialSlot5,undefined,cam),r=union(pieces.flatMap(p=>misc.filter(q=>q.chr===p.tile&&(q.source??q.r).x===p.x&&(q.source??q.r).y===p.y).map(q=>q.r)));if(r)out.push({id:'flag',kind:'flag',...r});}
  if(s.phase==='flag'){
@@ -69,7 +70,8 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;source?:Rect;z:number;c
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
  (s.blockGraphics??[]).forEach(b=>nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera).forEach((p,i)=>{const q=quads.find(q=>q.tag==='misc'&&q.chr===p.tile&&(q.source??q.r).x===p.x&&(q.source??q.r).y===p.y);if(q)out.push({id:'block#'+b.slot+'.'+i,kind:b.metatile===196?'blockUsed':'blockBrick',...q.r});}));
- if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const r=exact((Math.floor(b.x)-cam)&255,b.y+1);if(r)out.push({id:'bubble#'+i,kind:'bubble',...r});}});
+ const bubbleDraws=misc.filter(q=>q.chr===0x74);let bubbleDraw=0;
+ if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const r=bubbleDraws[bubbleDraw++]?.r;if(r)out.push({id:'bubble#'+i,sourceId:'bubble#'+i,kind:'bubble',...r});}});
  for(const [i,vine]of s.vines.entries()){const r=union(misc.filter(q=>(q.chr===224||q.chr===225)&&q.r.x>=vine.x-cam&&q.r.x<vine.x-cam+16&&q.r.y>=vine.baseY-vine.height&&q.r.y<vine.baseY).map(q=>q.r));if(r)out.push({id:'vine#'+i,kind:'vine',...r});}
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
@@ -94,7 +96,8 @@ function objects3d(r3:Any,s:Simulation):(Obj&{root:THREE.Object3D})[]{
  for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>{const index=s.enemies.indexOf(pool.owners.get(a));add(name,a.root,i,index>=0?'enemy#'+index:undefined);});
  for(const [key,list] of e.cache as Map<string,THREE.Mesh[]>)list.forEach((m,i)=>add(key,m,i));
  (e.coins as THREE.Mesh[]).forEach((m,i)=>add('coin',m,i));
- for(const [key,list] of r3.props.pools as Map<string,THREE.Object3D[]>)list.forEach((o,i)=>add(key.startsWith('blockUsed@')?'blockUsed':key.startsWith('blockBrick@')?'blockBrick':key.replace(/[\d.]+$/,''),o,i));
+ const bubbleIds=s.bubbles.map((bubble,i)=>({bubble,i})).filter(({bubble})=>nativeBubbleShown(bubble,s.player.y,s.camera)).map(({i})=>'bubble#'+i),fireIds=(s.area.firebars??[]).flatMap((bar,i)=>s.firebarCenters(bar).map((_,j)=>`fire#${i}.${j}`));
+ for(const [key,list] of r3.props.pools as Map<string,THREE.Object3D[]>)list.forEach((o,i)=>add(key.startsWith('blockUsed@')?'blockUsed':key.startsWith('blockBrick@')?'blockBrick':key.replace(/[\d.]+$/,''),o,i,key==='bubble'?bubbleIds[i]:key==='fire'?fireIds[i]:undefined));
  if(r3.world.flag.visible&&r3.world.group.visible)add('flag',r3.world.flag,0);
  return out;
 }
@@ -129,15 +132,15 @@ export function visibilityAudit(){
  const labels2=new Map<THREE.Object3D,number>(),roots=new Map<THREE.Object3D,number>(),used=new Set<THREE.Object3D>(),pairs:any[]=want.map((o,index)=>({...o,label:index+1}));
  for(const o of pairs){const direct=have.find(h=>!used.has(h.root)&&o.sourceId&&h.sourceId===o.sourceId),found=direct??have.filter(h=>!used.has(h.root)&&family(h.kind)===family(o.kind)&&!(o.sourceId&&h.sourceId&&o.sourceId!==h.sourceId)).sort((a,b)=>Math.hypot(a.x+a.w/2-o.x-o.w/2,a.y+a.h/2-o.y-o.h/2)-Math.hypot(b.x+b.w/2-o.x-o.w/2,b.y+b.h/2-o.y-o.h/2))[0];if(found&&(direct||Math.hypot(found.x+found.w/2-o.x-o.w/2,found.y+found.h/2-o.y-o.h/2)<40)){roots.set(found.root,o.label);used.add(found.root);o.matched=true;o.rect3d={x:found.x,y:found.y,w:found.w,h:found.h};o.pose3d={nativeSprite:found.root.userData.nativeSprite,position:found.root.position.toArray(),rotation:found.root.rotation.toArray(),scale:found.root.scale.toArray()};}}
  for(const h of have)if(!used.has(h.root)){const label=pairs.length+1;pairs.push({id:'unmatched3d:'+h.id,kind:h.kind,label,matched:false,only3d:true});roots.set(h.root,label);}
- for(const d of draws){let wanted=pairs.find(o=>o.id===d.tag);if(!wanted&&d.tag==='misc'&&d.sprite&&d.z!==2.5)wanted=pairs.filter(o=>!o.only3d&&!/^(player|enemy#|item#|retainer)/.test(o.id)&&hit(o,d.r,0)).sort((a,b)=>a.w*a.h-b.w*b.h)[0];if(wanted)labels2.set(d.mesh,wanted.label);}
+ for(const d of draws){let wanted=pairs.find(o=>o.id===d.tag);if(!wanted&&d.tag==='misc'&&d.sprite&&d.z!==2.5)wanted=pairs.find(o=>!o.only3d&&o.draws?.includes(d.id));if(wanted)labels2.set(d.mesh,wanted.label);}
  const labels3=new Map<THREE.Object3D,number>();r3.atmosphere.scene.traverse((o:THREE.Object3D)=>{for(let root:THREE.Object3D|null=o;root;root=root.parent){const label=roots.get(root);if(label!==undefined){labels3.set(o,label);break;}}});
  const p2=visiblePixels(r2.renderer,r2.scene,r2.camera,labels2,pairs.length),overlays=r3.hud.last?[{scene:r3.hud.scene,camera:r3.hud.camera}]:[],p3=visiblePixels(r3.gl,r3.atmosphere.scene,r3.atmosphere.camera,labels3,pairs.length,overlays,false,{draws:r3.atmosphere.sprites.draws,banks:[r3.world.group,r3.entities.group,r3.props.group]});
  const isolated2=visiblePixels(r2.renderer,r2.scene,r2.camera,labels2,pairs.length,[],true),isolated3=visiblePixels(r3.gl,r3.atmosphere.scene,r3.atmosphere.camera,labels3,pairs.length,[],true);
  restoreBounds();
  const after={simulation:hash(renderEquivalenceSnapshot(s)),scene:hash(sceneState(r3.atmosphere.scene)),hud:hash(sceneState(r3.hud.scene))};
- const objects=pairs.map(o=>({id:o.id,kind:o.kind,matched:Boolean(o.matched),rect2d:o.only3d?undefined:{x:o.x,y:o.y,w:o.w,h:o.h},rect3d:o.rect3d,pose3d:o.pose3d,pixels2d:p2.pixels[o.label],pixels3d:p3.pixels[o.label],contribution2d:p2.contribution[o.label],contribution3d:p3.contribution[o.label]}));
- const candidates=objects.filter(o=>(o.pixels2d>0)!==(o.pixels3d>0)).map(o=>({...o,reason:o.pixels2d>0?'visible2d-invisible3d':'invisible2d-visible3d'}));
- return {before,after,instrumentationUnchanged:JSON.stringify(before)===JSON.stringify(after),objects,candidates,unsupported:{orig:p2.unsupported,v3d:p3.unsupported},precision:p3.precision,passes:{orig:p2.passes,v3d:p3.passes},scope:'Actual world/HUD depth-alpha contribution; selected frames unless the driver explicitly uses every1. Geometry shape, lighting, z-fighting and temporal flicker require separate checks.'};
+ const objects=pairs.map(o=>({id:o.id,kind:o.kind,matched:Boolean(o.matched),rect2d:o.only3d?undefined:{x:o.x,y:o.y,w:o.w,h:o.h},rect3d:o.rect3d,pose3d:o.pose3d,pixels2d:p2.pixels[o.label],pixels3d:p3.pixels[o.label],isolatedPixels2d:isolated2.pixels[o.label],isolatedPixels3d:isolated3.pixels[o.label],occludedFraction2d:isolated2.pixels[o.label]?1-p2.pixels[o.label]/isolated2.pixels[o.label]:null,occludedFraction3d:isolated3.pixels[o.label]?1-p3.pixels[o.label]/isolated3.pixels[o.label]:null,contribution2d:p2.contribution[o.label],contribution3d:p3.contribution[o.label]}));
+ const candidates=objects.filter(o=>(o.pixels2d>0)!==(o.pixels3d>0)||o.occludedFraction2d!==null&&o.occludedFraction3d!==null&&o.occludedFraction3d>o.occludedFraction2d+0.01).map(o=>({...o,reason:!o.pixels3d?'visible2d-invisible3d':!o.pixels2d?'invisible2d-visible3d':'more-occluded-3d'}));
+ return {before,after,instrumentationUnchanged:JSON.stringify(before)===JSON.stringify(after),objects,candidates,unsupported:{orig:p2.unsupported,v3d:p3.unsupported},precision:p3.precision,passes:{orig:p2.passes+isolated2.passes,v3d:p3.passes+isolated3.passes},scope:'Actual world/HUD depth-alpha contribution; selected frames unless the driver explicitly uses every1. Geometry shape, lighting, z-fighting and temporal flicker require separate checks.'};
  }finally{restoreBounds();}
 }
 (window as Any).placement={setup,audit,visibilityAudit};

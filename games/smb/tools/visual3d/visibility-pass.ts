@@ -3,8 +3,8 @@ import * as THREE from 'three';
 import {SpritePass,type SpriteDraw} from '../../src/render3d/sprite-pass.js';
 const W=256,H=240,ATTACHMENTS=4,PER_PASS=ATTACHMENTS*3;
 const materialCache=new WeakMap<THREE.Material,Map<number,{material:THREE.MeshBasicMaterial;id:{value:number}}>>();
-function maskMaterial(source:any,id:number){
- let cache=materialCache.get(source);if(!cache)materialCache.set(source,cache=new Map());let entry=cache.get(id);
+function maskMaterial(source:any,id:number,isolated=false){
+ let cache=materialCache.get(source);if(!cache)materialCache.set(source,cache=new Map());const key=id+(isolated?32:0);let entry=cache.get(key);
  if(!entry){
   const material=new THREE.MeshBasicMaterial({map:source.map,alphaMap:source.alphaMap,alphaTest:source.alphaTest,transparent:source.transparent,opacity:source.opacity,side:source.side,depthTest:source.depthTest,depthWrite:source.depthWrite,blending:source.blending,premultipliedAlpha:source.premultipliedAlpha,polygonOffset:source.polygonOffset,polygonOffsetFactor:source.polygonOffsetFactor,polygonOffsetUnits:source.polygonOffsetUnits,clippingPlanes:source.clippingPlanes,clipIntersection:source.clipIntersection,vertexColors:source.vertexColors,toneMapped:false,fog:false});
   material.userData.nativeBackgroundMask=Array.from({length:ATTACHMENTS},(_,i)=>`mask${i}.rgb=vec3(0.0);`).join('');material.visible=source.visible;(material as any).glslVersion=THREE.GLSL3;
@@ -12,13 +12,14 @@ function maskMaterial(source:any,id:number){
   material.onBeforeCompile=shader=>{
    shader.uniforms.pickId=uniform;
    const outputs=Array.from({length:ATTACHMENTS},(_,i)=>`layout(location=${i}) out highp vec4 mask${i};`).join('\n');
-   const values=Array.from({length:ATTACHMENTS},(_,i)=>`mask${i}=vec4(vec3(${[0,1,2].map(c=>`abs(pickId-${i*3+c+1}.0)<0.25?1.0:0.0`).join(',')})${source.premultipliedAlpha?'*diffuseColor.a':''},diffuseColor.a);`).join('\n');
+   const values=Array.from({length:ATTACHMENTS},(_,i)=>`mask${i}=vec4(vec3(${[0,1,2].map(c=>`abs(pickId-${i*3+c+1}.0)<0.25?1.0:0.0`).join(',')})${isolated||source.premultipliedAlpha?'*diffuseColor.a':''},diffuseColor.a);`).join('\n');
    shader.fragmentShader=`${outputs}\n#define gl_FragColor mask0\nuniform float pickId;\n`+shader.fragmentShader.replace('#include <dithering_fragment>',`#include <dithering_fragment>\n${values}`);
   };
-  material.customProgramCacheKey=()=>`visibility-mrt-${ATTACHMENTS}`;
-  entry={material,id:uniform};cache.set(id,entry);
+  material.customProgramCacheKey=()=>`visibility-mrt-${ATTACHMENTS}-${isolated?'union':'visible'}`;
+  entry={material,id:uniform};cache.set(key,entry);
  }
- for(const key of ['map','alphaMap','alphaTest','transparent','opacity','visible','side','depthTest','depthWrite','blending','premultipliedAlpha','polygonOffset','polygonOffsetFactor','polygonOffsetUnits','clippingPlanes','clipIntersection','vertexColors','wireframe','colorWrite','depthFunc','alphaHash','blendSrc','blendDst','blendSrcAlpha','blendDstAlpha','blendEquation','blendEquationAlpha'])if((entry.material as any)[key]!==source[key]){(entry.material as any)[key]=source[key];if(key!=='opacity'&&key!=='visible')entry.material.needsUpdate=true;}
+ for(const key of ['map','alphaMap','alphaTest','transparent','opacity','visible','side','depthTest','depthWrite','blending','premultipliedAlpha','polygonOffset','polygonOffsetFactor','polygonOffsetUnits','clippingPlanes','clipIntersection','vertexColors','wireframe','colorWrite','depthFunc','alphaHash','blendSrc','blendDst','blendSrcAlpha','blendDstAlpha','blendEquation','blendEquationAlpha'])if(!(isolated&&['visible','transparent','depthTest','depthWrite','blending','blendSrc','blendDst','blendSrcAlpha','blendDstAlpha','blendEquation','blendEquationAlpha'].includes(key))&&(entry.material as any)[key]!==source[key]){(entry.material as any)[key]=source[key];if(key!=='opacity'&&key!=='visible')entry.material.needsUpdate=true;}
+ if(isolated){entry.material.visible=source.visible&&id>0;entry.material.transparent=true;entry.material.depthTest=entry.material.depthWrite=false;entry.material.blending=THREE.CustomBlending;entry.material.blendEquation=entry.material.blendEquationAlpha=THREE.MaxEquation;entry.material.blendSrc=entry.material.blendDst=THREE.OneFactor;entry.material.blendSrcAlpha=entry.material.blendDstAlpha=THREE.OneFactor;}
  return entry.material;
 }
 export function sceneState(scene:THREE.Scene){

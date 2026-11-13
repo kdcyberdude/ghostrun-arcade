@@ -8,6 +8,8 @@ export function check(renderer:THREE.WebGLRenderer){
  const half=run('two half-visible layers');if(!half.pixels[1]||!half.pixels[2]||Math.abs(half.contribution[1]/half.pixels[1]-0.5)>0.01)throw Error(JSON.stringify(results));
  labels.delete(b);const glass=run('unlabelled glass');if(!glass.pixels[1]||glass.pixels[2])throw Error(JSON.stringify(results));
  b.material.transparent=false;b.material.opacity=1;b.material.depthWrite=true;b.material.needsUpdate=true;const opaque=run('opaque occluder');if(opaque.pixels[1])throw Error(JSON.stringify(results));
+ const isolated=visiblePixels(renderer,scene,camera,labels,2,[],true);if(!isolated.pixels[1]||isolated.pixels[2])throw Error('isolated reference incorrectly occluded');results.push({name:'isolated reference behind opaque wall',pixels:isolated.pixels});
+ b.scale.x=0.5;b.position.x=0.25;const partial=run('half opaque occluder');if(Math.abs(partial.pixels[1]/isolated.pixels[1]-0.5)>0.01)throw Error('partial occlusion ratio');
  scene.remove(b);const texture=new THREE.DataTexture(new Uint8Array([255,255,255,255,255,255,255,0]),2,1);texture.needsUpdate=true;a.material.map=texture;a.material.alphaTest=0.5;a.material.needsUpdate=true;const cutout=run('alpha test');if(cutout.pixels[1]<7000||cutout.pixels[1]>8500)throw Error(JSON.stringify(results));
  a.material.map=null;a.material.alphaTest=0;a.material.needsUpdate=true;scene.remove(a);const shared=new THREE.MeshBasicMaterial();labels.clear();
  for(let i=0;i<13;i++){const mesh=new THREE.Mesh(new THREE.PlaneGeometry(0.1,0.3),shared);mesh.position.x=-0.9+i*0.15;scene.add(mesh);labels.set(mesh,i+1);}
