@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {GameRenderer} from '../src/renderer.js';import data from './fixtures/native-bullet-pictures.json';
+test('native Bullet pictures use handler position, direction and frame-timer background priority and palette3',()=>{
+ const renderer=Object.create(GameRenderer.prototype) as any;renderer.enemyOamZ=2;assert.ok(data.checked>4000);
+ for(const e of data.rows){const pieces:number[][]=[];renderer.spriteTile=(tile:number,x:number,y:number,_palette:string,flipX:boolean,flipY:boolean,z:number)=>pieces.push([tile,x,y,(flipX?64:0)|(flipY?128:0)|3|(z<0?32:0)]);renderer.enemy({kind:'bullet',nativeShot:true,frenzy:e.id===8,x:e.x,y:e.feetY,age:1,dead:e.state&32?1:0,vx:0,direction:e.direction===2?-1:1,cannonFrameTimer:e.timer},{area:{palette:0},camera:e.camera,frame:e.frame});const sorted=(rows:number[][])=>rows.sort((a,b)=>a[2]-b[2]||a[1]-b[1]);assert.deepEqual(sorted(pieces),sorted(e.sprites),`${e.level} native${e.frame} ID${e.id} state${e.state}`);}
+});

@@ -36,3 +36,6 @@ export const nativeBlooperPicture=(timer:number,dead=false,timersStopped=false)=
 export const nativeLakituCell=(frenzyTimer:number,dead=false)=>!dead&&frenzyTimer<16?25:24;
 /** Graphics read TimerControl at each enemy slot; on later frozen rows no handler updates the stamp. */
 export const enemyPictureTimersStopped=(e:Enemy,frame:number,stopped:boolean)=>e.graphicsFrame===frame?Boolean(e.graphicsTimersStopped):Boolean(stopped);
+
+/** ID51 CheckForBulletBillCV decrements savedY and uses palette3/priority from EnemyFrameTimer; both bullet handlers bypass vertical-flip postprocessing. */
+export const nativeBulletPicture=(cannon:boolean,timer:number,direction:number)=>({yOffset:cannon?-1:0,behindBackground:cannon&&timer>0,flipX:direction<0,flipY:false});

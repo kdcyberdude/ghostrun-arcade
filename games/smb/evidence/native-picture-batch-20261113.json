@@ -1,0 +1,58 @@
+{
+  "baseCommit": "1e7ecf3783dbc7fe1cdda71ec2e4ea385c168aac",
+  "contentCommits": [
+    "35c64e6",
+    "380de56"
+  ],
+  "scope": "Cannon and Hammer Bro 2D consumers only; canonical simulation, native HUD/OAM/timer and 3D source unchanged.",
+  "focusedTests": {
+    "count": 23,
+    "passed": 23,
+    "command": "npx tsx --test tests/native-cannon-coverage.test.ts tests/native-bullets.test.ts tests/native-bullet-pictures.test.ts tests/native-hbro-defeat-pictures.test.ts tests/native-hammer-bro-pictures.test.ts tests/native-hud-queue.test.ts tests/native-misc-pictures.test.ts"
+  },
+  "pixelPoint": {
+    "level": "5-2",
+    "frame": 690,
+    "before": {
+      "frame": 690,
+      "all": 524,
+      "hud": 0,
+      "field": 524,
+      "sprite": 284,
+      "shift": 0,
+      "aligned": 524,
+      "nativeScroll": 306,
+      "camera": 306,
+      "area": "area-2",
+      "alignmentKnown": true,
+      "overlapPixels": 48000
+    },
+    "after": {
+      "frame": 690,
+      "all": 304,
+      "hud": 0,
+      "field": 304,
+      "sprite": 64,
+      "shift": 0,
+      "aligned": 304,
+      "nativeScroll": 306,
+      "camera": 306,
+      "area": "area-2",
+      "alignmentKnown": true,
+      "overlapPixels": 48000
+    },
+    "nativeCannonBody": {
+      "nativeRect": [
+        33,
+        112,
+        16,
+        16
+      ],
+      "beforeDifferingPixels": 220,
+      "afterDifferingPixels": 0
+    },
+    "beforeReport": "/tmp/anim-picture-batch-690-before.json",
+    "afterReport": "/tmp/anim-picture-batch-690-after.json"
+  },
+  "coverage": "Focused tests and one specified pixel regression. Full project/milestone gate delegated to integration; no full32 or mood audit repeated."
+}
