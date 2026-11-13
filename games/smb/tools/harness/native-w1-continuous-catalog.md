@@ -15,3 +15,11 @@ Run only in an isolated checkout whose actual native helper/source versions matc
     npx tsx games/smb/tools/harness/native-w1-continuous-catalog.ts --live /ABS/FROZEN_PUBLISHED_REPORT.json --captures /ABS/recovered-native/moods/captures --out /ABS/NEW_PERSISTENT_CATALOG
 
 Use `--proof-only` to stop after three browser comparisons. `--proof-ids` selects exactly three published mood IDs. The exported `replayState(pads,ram,initial,through)` supports bounded source diagnostics in another worker's own tree; use that tree's runtime and label its results accordingly, not as frozen CCA browser proof. Do not edit the running audit checkout or live report.
+
+For a future changed checkpoint, use the explicitly different diagnostic mode:
+
+    npx tsx games/smb/tools/harness/native-w1-continuous-catalog.ts --diagnostic-build --runtime-ref FULL_CHECKED_OUT_PIN --captures /ABS/recovered-native/moods/captures --baseline /ABS/w1-continuous-catalog-cca/catalog.json --out /ABS/NEW_PIN_STATE_SURVEY
+
+This records the actual checked-out model commit and current native-helper/tool manifest, claims ZERO published browser proofs, and writes `provenance.json` with `mode=changed-build-node-diagnostics`. Native initial/RAM/pad hashes still must match. The strict same-build browser assertion path remains the default when `--live` is used without this flag; changed code cannot silently inherit the CCA proof. For a bounded check, add `--ids mood:SHA,mood:SHA`; its output explicitly records the selected count and full inventory count. The baseline comparison uses only those same selected IDs and lengths.
+
+`comparison.json` binds the baseline file SHA and both source manifests. It lists per-input first-state changes and every changed first field (`cleared`, `exposed`, `earlier`, `later`), with no causal waiver or pixel claim. The full336 survey should run once after the compatible batch is assembled, not after every individual fix. Keep CCA's frozen catalog and ongoing audit untouched.
