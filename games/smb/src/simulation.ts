@@ -56,7 +56,6 @@ import waterActorData from '../data/native-water-actors.json';
 import bulletData from '../data/native-bullets.json';
 import deathRules from '../data/death-rules.json';
 import shellRules from '../data/shell-rules.json';
-import shellLaunchRules from '../data/shell-goomba-launch-rules.json';
 import stompRules from '../data/stomp-rules.json';
 import {COIN_TILE,flagPoleTouched} from './award-rules.js';
 import {nativeHurtHeight,nativeHurtReachX} from './native-hurtbox.js';
@@ -68,7 +67,7 @@ import {stepNativeVictory,nativeVictoryText,type NativeVictory} from './native-v
 import {nativeLevelLoad,stepNativeLevelLoad,type NativeLevelLoad} from './native-level-load.js';
 import {NativeAreaControls} from './native-area-controls.js';
 import multiCoinRules from '../data/multi-coin-rules.json';
-import {nativeEnemiesCollision,nativeUnwingedStomp} from './enemy-collision.js';
+import {nativeEnemiesCollision,nativeUnwingedStomp,nativeEnemyBoxesTouch} from './enemy-collision.js';
 import {advanceNativeRedFlight,createNativeRedFlight} from './red-paratroopa.js';
 import {advanceNativeGreenParatroopa} from './native-paratroopa.js';
 const CONTROL_GRACE_ROWS=2; // native: an A held through the load jumps on the same row as an A first pressed on the first control row; the remake's 2-frame input queue makes that two grace rows (campaign-compare MODEL_LOCAL seeds its own constant); an empty queue (native RAM-trace replays: each pad on its native row) needs none
@@ -220,7 +219,7 @@ export class Simulation {
   * The run timer is refreshed only while it equals the pressed direction (0 of 6,436 B presses refresh it otherwise). */
  movingDir:-1|1=1;
  /** Floatey-number points: native FloateyNumbersRoutine adds them when FloateyNum_Timer, set to $30, reaches $2B, five frames after the award (4-3 v2: stomps at 187/203 pay at 192/208; coins and bricks pay at once). */
- private pendingScore:{value:number,left:number}[]=[];
+ private pendingScore:{value:number|'1up',left:number}[]=[];
  private stompedThisStep=false;
  private activatedHidden1ups=new Set<string>();
  private multiCoinExpiries=new Map<string,number>();
@@ -360,9 +359,9 @@ export class Simulation {
   enemy.dead=100;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
  }
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
- get awardedScore(){return this.pendingScore.reduce((n,s)=>n+s.value,this.score);}
- private floateyScore(value:number){this.pendingScore.push({value,left:5});}
- private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){this.score+=s.value;this.blockUpdateBusy=this.graphicsBuffer1=true;}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
+ get awardedScore(){return this.pendingScore.reduce((n,s)=>n+(typeof s.value==='number'?s.value:0),this.score);}
+ private floateyScore(value:number|'1up',delay=5){this.pendingScore.push({value,left:delay});}
+ private payFloateyScore(){for(const s of this.pendingScore)if(--s.left===0){if(s.value==='1up'){this.lives++;this.emit('sfx_1up');}else{this.score+=s.value;this.blockUpdateBusy=this.graphicsBuffer1=true;}}this.pendingScore=this.pendingScore.filter(s=>s.left>0);}
  private advancePopups(){
   for(const popup of this.popups){popup.age++;if(popup.y>=16)popup.y--;}
   this.popups=this.popups.filter(popup=>popup.age<popup.life); // native raw Y stops at23; the SBC carry makes the visible artwork stop at15
@@ -2114,7 +2113,8 @@ export class Simulation {
  private rememberSlotVertical(){
   for(const e of this.enemies){
    if(!e.active||e.enemySlot===undefined||e.slotFreed)continue;const m=this.slotVertical[e.enemySlot];
-   if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
+   if(e.defeat)Object.assign(m,e.defeat);
+   else if(e.pir)Object.assign(m,{speed:e.pir.flag,force:e.pir.down,fraction:e.pir.up});
    else if(e.fall&&!e.dead)Object.assign(m,e.fall);
    else if(e.horizontalFlight)Object.assign(m,{speed:e.horizontalFlight.primary,force:0});
    else if(e.redFlight)Object.assign(m,{speed:e.redFlight.speed,force:e.redFlight.force,fraction:e.redFlight.fraction});
@@ -2314,8 +2314,8 @@ export class Simulation {
   const frenzy=this.spinyFrenzyBefore();
   {const speedByte=Math.floor(Math.round((this.wallSpeed??p.vx)*4096)/256);if(speedByte!==0)this.marioMotion=Math.sign(speedByte);} // Player_MovingDir changes on a nonzero speed byte, before background wall stops
   this.stompedThisStep=false;
-  const stepFrom=new Map<Enemy,{x:number,y:number}>(); // each enemy before this frame's move (native EnemiesCollision boxes)
-  const ordered=this.area.theme==='water'?[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5)):this.enemies;
+  const stepFrom=new Map<Enemy,{x:number,y:number}>(this.enemies.filter(e=>e.active).map(e=>[e,{x:e.x,y:e.y}])); // each enemy before this frame's move (native EnemiesCollision boxes)
+  const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));
   for(const e of ordered){
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined;
@@ -2331,18 +2331,22 @@ export class Simulation {
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
    if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else if(Math.floor(e.x)<Math.floor(this.camera)+255)e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
    if(e.slotBorn!==undefined&&e.age===0)this.startBornPiranha(e);
-   stepFrom.set(e,{x:e.x,y:e.y});
+   if(!stepFrom.has(e))stepFrom.set(e,{x:e.x,y:e.y});
+   this.nativeShellContacts(e,stepFrom);
    e.age++;
    if(e.bbCheck)continue; // a fresh cannon object waits for the cannon pass (nativeBulletBillCheck)
    if(e.dead){
+    if(e.defeat){
+     if(e.dead>=100||e.slotFreed)continue;
+     const erased=e.y>=280; // EnemyGfxHandler clears page2 state before MoveNormalEnemy returns through its final horizontal move.
+     if(!this.nativeTimersStopped){if(!erased)nativeImposeGravity(e.defeat,0x3d,3);e.x+=e.vx;e.y=e.defeat.y;e.vy=e.defeat.speed+e.defeat.force/256;e.dead++;}
+     if(e.enemySlot!==undefined)Object.assign(this.slotVertical[e.enemySlot],e.defeat);
+     if(erased){this.eraseEnemy(e);if(e.enemySlot!==undefined){e.slotFreed=true;this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}continue;
+    }
     if(e.kind==='lakitu'&&e.lak?.box===8&&e.pod){this.moveDefeatedRespawnLakitu(e);continue;}
     if(e.squashed){if(e.dead<90&&++e.dead>(e.squashFrames??goombaSquashRules.durationActiveNativeFrames))this.eraseEnemy(e);continue;}
     if(e.kind==='bullet'&&e.pod){if(e.dead>=100||e.slotFreed)continue;if(e.frenzy&&e.y>=280){this.eraseDefeatedBullet(e);continue;}nativeImposeGravity(e.pod,e.frenzy?0x1c:0x3d,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;if(!e.frenzy&&e.y>=280)this.eraseDefeatedBullet(e);continue;}
     e.dead++;
-    if(e.greenShellLaunchFrame!==undefined){
-     if(this.frame>e.greenShellLaunchFrame){e.x+=shellLaunchRules.velocityX;e.y+=e.vy;e.vy=Math.min(shellLaunchRules.maxFall,e.vy+shellLaunchRules.gravity);}
-     continue;
-    }
     if(e.dead>20||e.vy!==0){e.y+=e.vy;e.vy+=0.25;}continue;
    }
    const eraseWalkerAfterMove=NATIVE_FALLERS.includes(e.kind)&&!e.shell&&!e.motion&&e.y>280;
@@ -2471,14 +2475,6 @@ export class Simulation {
     if(e.enemySlot!==undefined){const slot=e.enemySlot;this.slotReleaseFrame[slot]=this.frame;this.slotSub[slot]=Math.round((e.x-Math.floor(e.x))*256)&255;if(e.fall)Object.assign(this.slotVertical[slot],e.fall);}
     continue;
    }
-   if(e.shell&&e.movingShell)for(const other of this.enemies)if(other!==e&&other.active&&!other.dead&&Math.abs(e.x-other.x)<14&&Math.abs(e.y-other.y)<20){
-    const groundedGreenLaunch=e.kind==='koopa'&&e.vx>0&&(e.palette===undefined||e.palette==='0f-1a-30-27')&&other.kind==='goomba'&&(other.palette===undefined||other.palette==='0f-0f-36-17')&&other.vy===0&&this.enemySolid(other.x+8,other.y+1);
-    other.dead=1;other.vy=groundedGreenLaunch?shellLaunchRules.initialVelocityY:-3;
-    if(groundedGreenLaunch)other.greenShellLaunchFrame=this.frame;
-    // Six consecutive victims are observed. Later awards provisionally retain
-    // the final measured value; an extra life has not been established.
-    this.floateyScore(shellRules.victimScores[Math.min(e.shellChain??0,shellRules.victimScores.length-1)]);e.shellChain=(e.shellChain??0)+1;this.emit('sfx_kick');
-   }
    if(p.dead||this.powerChange||this.enemyContactOff)continue;
    if(nativeWaterActor){
     if(!p.star)continue;
@@ -2544,6 +2540,28 @@ export class Simulation {
   this.specialSlot5.stepVine(this.random.frame,this.camera+this.lakituScroll);
   this.spinyFrenzyAfter(frenzy);
   this.rememberSlotVertical();
+ }
+ /** EnemiesCollision runs at the higher slot before PlayerEnemyCollision and movement. */
+ private nativeShellContacts(e:Enemy,from:Map<Enemy,{x:number,y:number}>){
+  if(!(this.broClock&1)||this.area.theme==='water'||this.nativeTimersStopped||!e.active||e.dead||e.enemySlot===undefined)return;
+  const kinds=['koopa','redKoopa','beetle','goomba','paratroopa','spiny'];
+  if(!kinds.includes(e.kind))return;
+  const body=(actor:Enemy)=>{const pos=from.get(actor)!;return {slot:actor.enemySlot!,x:Math.floor(pos.x),y:Math.floor(pos.y)-24,tall:actor.kind!=='goomba'&&actor.kind!=='spiny',turns:false,reacts:true};};
+  for(const other of [...this.enemies].sort((a,b)=>(b.enemySlot??5)-(a.enemySlot??5))){
+   if(other===e||!other.active||other.dead||other.slotFreed||other.enemySlot===undefined||other.enemySlot>=e.enemySlot||!kinds.includes(other.kind)||!from.has(other))continue;
+   if(!e.movingShell&&!other.movingShell||!nativeEnemyBoxesTouch(body(e),body(other),Math.floor(this.camera)))continue;
+   if(e.movingShell&&other.movingShell){this.stunShellVictim(e);this.floateyScore(200);} // ShellOrBlockDefeat overwrites the earlier control6 with control2.
+   const shell=e.movingShell?e:other,victim=e.movingShell?other:e;
+   this.stunShellVictim(victim);this.floateyScore(([500,800,1000,2000,4000,5000,8000,'1up'] as const)[Math.min(shell.shellChain??0,7)],victim.enemySlot!<e.enemySlot?6:5);shell.shellChain=(shell.shellChain??0)+1;this.emit('sfx_kick');
+   if(e.dead)break;
+  }
+ }
+ private stunShellVictim(e:Enemy){
+  const left=e.fall??e.pod??e.redFlight??(e.enemySlot===undefined?{force:0,fraction:0}:this.slotVertical[e.enemySlot]);
+  const rawY=Math.floor(e.y)-24,stunY=(rawY&~255)|((rawY-2)&255); // DEC affects only Enemy_Y_Position, without borrowing from Enemy_Y_HighPos.
+  e.defeat={y:stunY+24,speed:-3,force:left.force,fraction:left.fraction,timer:0};e.y=e.defeat.y;e.dead=1;e.squashed=false;e.walkerState=2;e.vy=-3+left.force/256;
+  e.vx=Math.floor(e.x)>=Math.floor(this.player.x)?1:-1;e.direction=Math.sign(e.vx) as -1|1;
+  if(e.kind==='paratroopa'){e.kind=e.nativeId===15?'redKoopa':'koopa';e.nativeId=(e.nativeId??14)&1;}
  }
  private moveDefeatedRespawnLakitu(e:Enemy){
   const n=e.pod!;if(n.y>=272){e.dead=100;e.active=false;e.slotFreed=true;e.slotLost=true;return;}

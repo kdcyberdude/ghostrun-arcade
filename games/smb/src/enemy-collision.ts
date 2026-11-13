@@ -16,6 +16,11 @@ function box(b:CollisionBody,camera:number){
  return {l:Math.min(255,Math.max(0,rx+o.left)),r:Math.min(255,Math.max(0,rx+o.right)),t:b.y+o.top,b:b.y+o.bottom};
 }
 
+/** SprObjectCollisionCore uses inclusive, screen-clamped cached boxes. */
+export function nativeEnemyBoxesTouch(a:CollisionBody,b:CollisionBody,camera:number){
+ const aa=box(a,camera),bb=box(b,camera);return Boolean(aa&&bb&&aa.l<=bb.r&&bb.l<=aa.r&&aa.t<=bb.b&&bb.t<=aa.b);
+}
+
 /** One EnemiesCollision pass. bits[slot] is the native collision byte of each slot (updated in place); returns the slots turned before
  * their move (as the higher slot of a pair) and after it (as the lower slot), each listed once per turn. */
 export function nativeEnemiesCollision(bodies:CollisionBody[],camera:number,frameCounter:number,water:boolean,bits:number[]){

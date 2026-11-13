@@ -53,7 +53,7 @@ test('live enemies use the native picture coordinates and facing before movement
  sim.enemies[0].dead=32;sim.enemies[0].squashed=true;sim.frame++;entities.sync(sim,0);assert.equal(root.position.x,108/16);assert.equal(root.position.y,31/16);
 });
 test('shell-launched Goombas flip at full size immediately instead of showing a squash',()=>{
- const {sim,entities}=scene({dead:1,greenShellLaunchFrame:0});entities.sync(sim,0);
+ const {sim,entities}=scene({dead:1,defeat:{y:208,speed:-3,force:61,fraction:0,timer:0}});entities.sync(sim,0);
  const root=actor(entities,'goomba');assert.equal(root.scale.y,1);assert.equal(root.rotation.z,Math.PI);assert.equal(root.position.y,(239-208)/16+1);
 });
 test('Mario growth follows the native small/mid/big picture cells',()=>{

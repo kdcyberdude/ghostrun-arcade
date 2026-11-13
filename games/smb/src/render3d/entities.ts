@@ -107,12 +107,12 @@ export class Entities{
   const name=shell?(e.kind==='beetle'?'beetle_shell':'koopa_shell'):ENEMY_MODEL[e.kind];
   const a=name?this.pool(name).take(physical):undefined;
   if(!a){const m=this.take('e'+e.kind,()=>new THREE.Mesh(new THREE.CapsuleGeometry(w*0.4,Math.max(0.1,h-w*0.8),8,16),std(COLORS[e.kind])));m.position.set(cx,feet+h/2,0);m.scale.y=e.squashed?0.3:1;return;}
-  const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined;
-  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
+  const squashed=e.squashed||e.kind==='goomba'&&e.dead>0&&e.dead<20&&e.greenShellLaunchFrame===undefined&&!e.defeat;
+  const flipped=e.kind==='bowser'?e.dead>0&&!s.castleBowserFalls(physical):Boolean(e.defeat)||e.greenShellLaunchFrame!==undefined||e.dead>20&&!squashed,facing=e.kind==='bowser'?(e.bowser?.side??(e.vx<0?-1:1)):(!e.dead?e.graphicsFacing??e.vx:e.vx)<0?-1:1;
   a.root.position.set(cx,feet,0);a.root.scale.set(1,squashed?0.28:1,1);
   a.root.rotation.set(0,0,flipped?Math.PI:0);if(flipped)a.root.position.y+=h;
   // Flipping a native 24px enemy cell moves a 16px body above its transparent leading row.
-  if(flipped&&h===1&&e.greenShellLaunchFrame===undefined)a.root.position.y+=0.5;
+  if(flipped&&h===1&&e.greenShellLaunchFrame===undefined&&!(e.defeat&&e.kind==='goomba'))a.root.position.y+=0.5;
   // Podoboo is authored around its glowing center; walkers are authored from the feet.
   if(e.kind==='podoboo'){a.root.position.y=feet+0.5;a.root.rotation.z=e.podobooFalling?Math.PI:0;}
   if(shell){a.root.rotation.y=e.movingShell?e.age*0.5:0;a.recolor('M_Shell',e.kind==='redKoopa'?'#d23a2a':e.kind==='koopa'?'#2fae3a':'#1c1c2a');a.pose('idle',0,s.frame);return;}
