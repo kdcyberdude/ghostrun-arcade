@@ -40,7 +40,7 @@ for(const [name,levelId,from,to,spawn,buttons,direction] of [
 ] as [string,string,string,string,[number,number],Button[],string][]){
  test(`${name}: control returns exactly the native number of rows after the last control row`,()=>{
   const log=run(levelId,from,spawn,buttons,260);
-  const start=log.findIndex(r=>r.phase==='pipe'),change=log.findIndex(r=>r.area===to);
+  const start=log.findIndex(r=>r.phase==='pipe'),change=log.findIndex(r=>r.area===to&&r.phase==='play');
   assert.ok(start>=0&&change>start,'pipe animation then area change');
   // The area changes after the entering animation + load rows ...
   assert.equal(change-start,timeline.entryFrames[direction==='down'?'down':'right']+timeline.loadFrames);
