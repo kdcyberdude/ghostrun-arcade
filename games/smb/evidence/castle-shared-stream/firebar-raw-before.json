@@ -1,0 +1,286 @@
+[
+  {
+    "level": "1-4",
+    "compared": 2972,
+    "first": {
+      "firebar.speed": {
+        "frame": 765,
+        "native": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1348,
+          "y": 148,
+          "firebar": {
+            "id": 29,
+            "high": 26,
+            "low": 152,
+            "speed": 0,
+            "direction": 16
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1348,
+          "y": 148,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 29,
+            "high": 26,
+            "low": 152,
+            "speed": 40,
+            "direction": 16
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 4
+    }
+  },
+  {
+    "level": "2-4",
+    "compared": 3702,
+    "first": {
+      "firebar.speed": {
+        "frame": 892,
+        "native": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "firebar",
+          "x": 1316,
+          "y": 100,
+          "firebar": {
+            "id": 29,
+            "high": 17,
+            "low": 224,
+            "speed": 0,
+            "direction": 16
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "firebar",
+          "x": 1316,
+          "y": 100,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 29,
+            "high": 17,
+            "low": 224,
+            "speed": 40,
+            "direction": 16
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 2
+    }
+  },
+  {
+    "level": "3-4",
+    "compared": 5463,
+    "first": {
+      "firebar.speed": {
+        "frame": 2211,
+        "native": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1284,
+          "y": 84,
+          "firebar": {
+            "id": 27,
+            "high": 14,
+            "low": 0,
+            "speed": 0,
+            "direction": 0
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1284,
+          "y": 84,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 27,
+            "high": 14,
+            "low": 0,
+            "speed": 40,
+            "direction": 0
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 2
+    }
+  },
+  {
+    "level": "4-4",
+    "compared": 7544,
+    "first": {
+      "firebar.speed": {
+        "frame": 5562,
+        "native": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1844,
+          "y": 100,
+          "firebar": {
+            "id": 27,
+            "high": 4,
+            "low": 112,
+            "speed": 0,
+            "direction": 0
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 1844,
+          "y": 100,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 27,
+            "high": 4,
+            "low": 112,
+            "speed": 40,
+            "direction": 0
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 4
+    }
+  },
+  {
+    "level": "5-4",
+    "compared": 2756,
+    "first": {
+      "firebar.speed": {
+        "frame": 357,
+        "native": {
+          "bank": "enemy",
+          "slot": 2,
+          "kind": "firebar",
+          "x": 372,
+          "y": 116,
+          "firebar": {
+            "id": 31,
+            "high": 5,
+            "low": 80,
+            "speed": 0,
+            "direction": 0
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 2,
+          "kind": "firebar",
+          "x": 372,
+          "y": 116,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 31,
+            "high": 5,
+            "low": 80,
+            "speed": 40,
+            "direction": 0
+          }
+        }
+      },
+      "extra": {
+        "frame": 1279,
+        "sim": {
+          "bank": "enemy",
+          "slot": 2,
+          "kind": "firebar",
+          "x": 1652,
+          "y": 180,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 28,
+            "high": 9,
+            "low": 0,
+            "speed": 56,
+            "direction": 0
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 1,
+      "extra": 1
+    }
+  },
+  {
+    "level": "6-4",
+    "compared": 2802,
+    "first": {
+      "firebar.speed": {
+        "frame": 488,
+        "native": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 372,
+          "y": 100,
+          "firebar": {
+            "id": 29,
+            "high": 11,
+            "low": 136,
+            "speed": 0,
+            "direction": 16
+          },
+          "source": "firebar",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "firebar",
+          "x": 372,
+          "y": 100,
+          "source": "firebar",
+          "state": 0,
+          "firebar": {
+            "id": 29,
+            "high": 11,
+            "low": 136,
+            "speed": 40,
+            "direction": 16
+          }
+        }
+      }
+    },
+    "counts": {
+      "firebar.speed": 6
+    }
+  }
+]

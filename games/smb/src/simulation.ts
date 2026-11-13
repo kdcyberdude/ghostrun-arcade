@@ -33,7 +33,7 @@ import {PlayerAnim} from './player-anim.js';
 import {nativeFlagStep,nativeFlagNumberStep} from './native-flagpole.js';
 import {captureEnemyPicture,enemyPicture,enemyPictureTimersStopped} from './enemy-picture.js';
 import {advanceFirebarMotor,createFirebarMotor,firebarFlameCenters} from './firebar-motion.js';
-import {nativeFirebarProfiles} from './native-firebar.js';
+import {nativeFirebarProfiles,nativeFirebarParameters} from './native-firebar.js';
 import {FirebarSlots} from './firebar-slots.js';
 import {nativeBowserState,stepNativeBowser,nativeBowserHit} from './native-bowser.js';
 import {nativeFirebarHit} from './firebar-contact.js';
@@ -326,7 +326,7 @@ export class Simulation {
   const size=this.player?.size??0;this.area=area;this.tiles=new Map(area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.freeTiles=(area.freeTiles??[]).map(t=>({...t}));
   // Firebars share the five native enemy slots and inherit each slot's vertical speed byte as their initial angle.
   this.firebarSlots=area.firebars?.length?new FirebarSlots(area.firebars,undefined,nativeFirebarProfiles(this.level,id)):undefined;
-  if(this.firebarSlots){this.firebarSlots.canInitialize=()=>!this.parserClock.blocked;this.firebarSlots.busy=slot=>{const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte)=>{this.slotYSpeed[slot]=byte;};}
+  if(this.firebarSlots){this.firebarSlots.canInitialize=()=>!this.parserClock.blocked;this.firebarSlots.busy=slot=>{if(slot===5&&this.specialSlot5.flag)return true;const enemies=new Set(this.enemies.flatMap(e=>e.active&&e.enemySlot!==undefined&&!e.slotFreed?[e.enemySlot]:[]));return enemies.has(slot)||this.objectSlots(enemies).has(slot);}; /* lifts hold slots too (2-4 row 536: lifts 43/44 in slots 2, 3, bar in 4) */this.firebarSlots.slotByte=slot=>this.slotYSpeed[slot];this.firebarSlots.release=(slot,byte,low)=>{this.slotYSpeed[slot]=byte;if(this.placedCastle&&low!==undefined)this.castleSlotXSpeed[slot]=low;};}
   this.firebarMotors.clear();
   for(const bar of area.firebars??[])if(bar.motor&&bar.length===6)this.firebarMotors.set(bar,{state:createFirebarMotor(bar.motor),geometry:{x:bar.x,y:bar.y,length:6}});
   // Activation consumes a hidden1up across ordinary deaths; its used block reloads blank.
@@ -350,7 +350,7 @@ export class Simulation {
    this.player.climbing=this.entryVineStage==='climb';
   }
   if(!this.nativeScreen)this.nativeBackdrop=graphics.palette_observations[area.palette].palette[0];
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.castleSlotXSpeed.fill(0);this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.lakituScroll=0;this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   for(const object of this.areaControls.castleGraphics)if(object.column>=0&&object.column*16<area.width)this.blockBackground.set(`${object.column},${object.row}`,object.id);
 
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
@@ -642,8 +642,8 @@ export class Simulation {
   // MovePlayerHorizontally returns the nonzero spring control in A without
   // moving; OnGroundStateSub still stores A as Player_X_Scroll ($06ff).
   springScroll=this.springTimers.values().next().value?.control;
-  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
-  if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x));
+  const motion=springScroll?0:useMotor||swim?motionOf(Math.round(p.vx*4096)):Math.sign(p.vx)*Math.floor(Math.abs(p.vx)*32)/32;cameraAttemptX=p.x+(springScroll??motion);cameraAttemptVx=p.vx;cameraMotion=springScroll??motion;p.x+=motion;if(swim){this.playerXScroll=(Math.floor(p.x)-Math.floor(oldX)+this.platformScroll)&255;waterScroll=this.nativeScrollPreview(oldX,p.x,oldBottom);const beforeBounds=p.x;this.waterScreenBounds(this.camera+waterScroll);waterBoundsShift=p.x-beforeBounds;waterBoundsVx=p.vx;}p.grounded=false;this.headBumped=false;const hammerBoxX=p.x,verticalStep=nativeGroundOnly?0:swim?this.swimDy:nativeEntry&&this.entryFallAge===this.entryReadyAge?0:p.vy,hammerBoxFeet=p.y+verticalStep;if(swim)this.waterCollisionPose={x:hammerBoxX,y:hammerBoxFeet-this.water.whirlMoved-32};this.hammerPlayerBox=nativePlayerBox(hammerBoxX,hammerBoxFeet,p.size,p.duck,this.camera);this.movePlayerY(verticalStep,swim?this.swimHeight(height):height,!water&&(nativeGroundOnly?p.vy:p.vy+this.airGravity(b))<0,nativeGroundOnly?p.vy:this.airGravity(b),true);
+  if(!nativeGroundOnly&&!water&&!p.climbing&&p.vy<0&&!this.headBumped)this.platformHeadBump(p.x-motion,this.airGravity(b),this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom));
   // Native frames back out of a wall one pixel per frame (the contact frame included), not by snapping to the tile edge.
   this.wallBackOut=false;this.motor.clearContacts();if(!nativeBackgroundSkipped(p.y))this.movePlayerX(motion,height,!useMotor&&!swim);this.footPushed=false;
   // Native contacts resume after one masked row (Player_CollisionBits are restored every frame); a zero-motion back-out row masks its side again (movePlayerX).
@@ -672,15 +672,15 @@ export class Simulation {
   // GameCoreRoutine returns before GameEngine when HandleAxeMetatile switches to victory task0.
   if(!priorityReadyOnly&&!this.entryControlLocked&&!this.area.autoWalk&&!this.entryVineActive&&!this.autoVineActive&&nativePlayerPriorityCleared(8,(Math.floor(p.y)-32)&255))this.playerBackgroundPriority=false;
   if(this.axeFootContact()){
-   this.camera+=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
+   this.camera+=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);this.sideCollisionTimer=Math.max(0,this.sideCollisionTimer-1);
    if(Math.floor(p.x)>this.camera+239)p.x=this.camera+239+p.x-Math.floor(p.x);
    this.platformFrame--; // GameEngine did not run any platform motor on this row.
    this.tickIntervalTimers();this.playerAnim.tick();this.beginCastle();return;
   }
   const height=this.height;
-  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
+  let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
-  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x);this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
+  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   this.updateLocomotionPose(poseGrounded,poseAbsolute,jumped,poseLocked?new Set():b); // the uncontrolled water entry (engine 7) and the water bottom (PlayerCtrlRoutine DisJoyp, y >= $d0) replace the controller: 2-2 rows 352..386 and 1393.. keep swim frame 0 with A down
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';
@@ -1068,6 +1068,7 @@ export class Simulation {
  }
 
  /** Rendering and collision read the same motor state without advancing it. */
+ firebarDuplicateSlot(bar:FirebarSpec){const owner=this.firebarSlots?.slotOf(bar);return this.firebarSlots?.aliasStates().find(a=>a.owner===owner)?.slot;}
  firebarCenters(bar:FirebarSpec,camera=this.camera):{x:number;y:number}[]{
   if(this.firebarSlots?.tracks(bar))return nativeMiscOffscreen(bar.x-4,bar.y-4,camera)&8?[]:this.firebarSlots.centers(bar);
   const motor=this.firebarMotors.get(bar);
@@ -1377,6 +1378,7 @@ export class Simulation {
  // (a slot before it still saw the old one), places it at camera + 287 at the height of random byte s (nativeFrenzyHeight), so a removal and the next spawn share a frame (5-3 rows 119, 210).
  /** InitBowserFlame: object $15 enables the frenzy; free enemy slots read $078F, $0367 and their random byte. */
  private passNativeCastleFlames(){
+  if(this.placedCastle&&this.placedStream)return;
   if(!this.nmiTimersHeld&&this.flameTimer>0)this.flameTimer--;
   const x=this.area.flameFrenzyX;if(x===undefined)return;
   if(this.enemies.some(e=>e.active&&!e.dead&&e.kind==='bowser')){this.flameFrenzy=false;return;}
@@ -1470,7 +1472,7 @@ export class Simulation {
   for(const slot of this.springSlots.values())if(slot<5)held.add(slot);
   if(this.nativeCastleFlag)held.add(this.nativeCastleFlag.slot);for(const f of this.nativeFireworks)if(f.active)held.add(f.slot);
   for(const item of this.items)if(item.nativeFlame&&item.life>0)held.add(item.nativeFlame.slot);
-  for(const controller of this.frenzyControllers)if(controller.slot!==undefined)held.add(controller.slot);
+  for(const controller of this.frenzyControllers)if(controller.slot!==undefined)held.add(controller.slot);if(this.castleRetainer)held.add(this.castleRetainer.slot);
   for(const e of this.enemies)if(e.active&&!e.dead&&e.nativeBowser?.rearSlot!==undefined)held.add(e.nativeBowser.rearSlot);
   for(const [platform,slot] of platformSlots)if(nativePlatformHoldsSlot(this.platformMotion,platform as any,context,this.camera,this.platformFrame))held.add(slot);else{platformSlots.delete(platform);if(platformSlots===this.platformSlots&&!this.platformMotion.waiting.has(platform as PlatformSpec))this.platformMotion.lost.add(platform as PlatformSpec);}
   if(!this.placedStream)for(const platform of this.area.platforms??[])if(!platformSlots.has(platform)&&nativePlatformHoldsSlot(this.platformMotion,platform,context,this.camera,this.platformFrame)){
@@ -1759,8 +1761,8 @@ export class Simulation {
  /** Player_X_Speed $57 (the native motor's speed byte). */
  private marioSpeedByte(){return Math.floor(Math.round(this.player.vx*4096)/256)&255;}
  /** ScrollAmount $0775 of this row, computed before the enemies run as the native ScrollHandler does (same rule as the camera commit in update()). */
- private nativeScrollPreview(oldX:number,attemptX:number){
-  if(this.areaControls.locked)return 0;
+ private nativeScrollPreview(oldX:number,attemptX:number,oldFeet=this.player.y){
+  if(this.areaControls.locked||this.area.theme!=='water'&&oldFeet>=288)return 0;
   const scrollMove=Math.floor(attemptX)-Math.floor(oldX)+this.platformScroll,screenX=this.area.theme==='water'?this.waterScrollX:Math.floor(oldX)-this.camera;
   let camera=this.camera;
   if(screenX>=80&&Math.max(0,this.sideCollisionTimer-1)===0&&scrollMove>0)camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;
@@ -1836,6 +1838,7 @@ export class Simulation {
   this.clearVictoryEnemyBank(); // the same KillAllEnemies erases every owner in slots0–4
   for(const platform of this.area.platforms??[])this.platformMotion.loopBack(platform,edge);
   for(const spec of this.area.enemies)if(spec.x>=edge&&!this.enemies.some(e=>e.originX===spec.x&&e.originY===spec.y&&e.kind===spec.kind))this.enemies.push(this.makeEnemy(spec));
+  if(this.placedCastle){this.setupNativePlacedStream();this.resetNativeEnemyCursor();this.placedBankFrame=-1;this.primeNativeEntryObjects();}
  }
  private updateMaze(oldX:number){
   for(const state of this.mazeStates){
@@ -2004,6 +2007,7 @@ export class Simulation {
  }
  get spritePictureOwner(){return this.castlePictures.owner;}
  get castleRetainer(){return this.castlePictures.retainer;}
+ itemPictureShown(item:Item){return !item.nativeFlame||item.nativeFlame.born!==this.frame;}
  enemyPictureShown(e:Enemy){return this.spritePictureOwner==='engine'||this.spritePictureOwner==='victory'&&e===this.victoryBoss;}
  private beginNativeVictory(){
   this.castlePictures.begin();
@@ -2056,6 +2060,9 @@ export class Simulation {
   }
   if(result.kill){n.bossState=0;this.clearVictoryEnemyBank();this.victoryBoss=undefined;this.emit('command_silence');}
   this.castlePictures.step(n.task,this.camera,this.parserClock.blocked,!this.enemies.some(e=>e.active&&e.enemySlot===0));
+  if(this.placedCastle&&this.placedStream&&n.task!==0&&!this.parserClock.blocked&&!this.busyNativeSlots().has(0)){
+   const context={camera:this.camera-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot:0,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;
+  }
   if(result.music)this.emit('event_castle_clear');
   if(result.message>=0){this.victoryPending=result.message;if(Number(this.level.id[0])===8&&result.message===3)this.emit('event_victory');}
   this.castleStage=n.task===0?(n.bossState&64?'fall':'bridge'):n.task<2?'fall':n.task===2?'walk':'message';
@@ -2066,7 +2073,7 @@ export class Simulation {
  /** KillAllEnemies / EraseEnemyObject clears slots0–4; movement bytes and slot5 remain. */
  private clearVictoryEnemyBank(){
   for(const [platform,slot]of this.platformSlots)if(slot<5){this.platformMotion.lost.add(platform as PlatformSpec);this.platformSlots.delete(platform);}
-  this.firebarSlots?.eraseAll();
+  this.firebarSlots?.eraseAll();if(this.castleRetainer&&this.castleRetainer.slot<5)this.castlePictures.eraseNative();
   for(const spring of this.springTimers.keys())if(this.springSlots.get(spring)!==5)this.springTimers.delete(spring);
   for(const [spring,slot]of this.springSlots)if(slot<5)this.springSlots.delete(spring);
   for(const controller of this.frenzyControllers)if(controller.slot!==undefined&&controller.slot<5){controller.slot=undefined;controller.lost=true;}
@@ -2167,17 +2174,16 @@ export class Simulation {
    m.fireCounter=this.flameTimerCounter;m.move.speed=(this.slotYSpeed[slot]<<24)>>24;m.move.force=this.slotVertical[slot].force;
    m.rearSlot=this.freeNativeSlot();
   }
-  const m=e.nativeBowser;m.fireCounter=this.flameTimerCounter;
+  const m=e.nativeBowser;m.fireCounter=this.flameTimerCounter;if(this.placedCastle)this.specialSlot5.frenzyBuffer=0;
   const action=stepNativeBowser(m,{frame:this.random.frame,byte:this.random.bytes[slot],playerX:Math.floor(this.player.x),world:Number(this.level.id[0]),hard:this.secondaryHardMode,tickTimers:!this.nmiTimersHeld});
-  this.flameTimerCounter=m.fireCounter;this.slotFrameTimers[slot]=m.timer;
-
+  this.flameTimerCounter=m.fireCounter;this.slotFrameTimers[slot]=m.timer;if(this.placedCastle){delete m.rearX;delete m.rearY;}
   e.x=m.x-(m.direction&1?16:0);e.y=m.y+32;e.nativeDir=m.direction&1?1:-1;e.vx=m.direction&1?1:-1;e.vy=m.move.speed+m.move.force/256;
   // Keep the existing public motor pose fields synchronized; live motion comes from the native bytes above.
   e.bowser={originX:e.originX,anchor:m.x,speed:m.speed,side:m.direction&1?1:-1,legs:0,rightLimit:m.range,frames:e.age,airborne:m.timer===0,pauseIndex:0,nextHop:e.age+m.timer,nextFlame:e.age+m.fireTimer};
   // BowserControl clears the shared request at its own slot, then may queue
   // $15. Only free slots visited after this slot can consume it this frame.
   this.mouthFlame=undefined;
-  if(action.flame){this.mouthFlame=e;this.passNativeMouthFlame(slot+1,5);}
+  if(action.flame){this.mouthFlame=e;if(this.placedCastle)this.specialSlot5.frenzyBuffer=21;else this.passNativeMouthFlame(slot+1,5);}
   if(action.hammer&&e.bowserHammers!==false)this.spawnNativeHammer(e);
  }
  /** CheckFrenzyBuffer / SpawnFromMouth: a pending request is consumed in slot order. */
@@ -2242,6 +2248,7 @@ export class Simulation {
   if(e.motion==='flying'||e.dead&&!e.squashed)return;
   if(e.kind==='piranha'||e.kind==='hammerBro')return (left&255)+57>255?left-271:left-16; // adc #$38 carries out of the low byte without touching the page: then the bound is 271 px back (5-1 row 406: Piranha at 712 kept with camera 728)
   if(['goomba','koopa','redKoopa','beetle','blooper'].includes(e.kind)||e.kind==='cheep'&&e.swim)return left-73;
+  if(this.placedStream&&e.kind==='podoboo')return left-73;
   if(e.kind==='paratroopa')return left-72; // walkers and Piranhas only here: other kinds keep their own removal
   if(e.kind==='spiny'||e.kind==='lakitu')return left-72; // erased when x < ScreenLeft - 72 on the post-scroll camera (v2 traces 4-1/6-1/8-2: 26 of 26 left removals at x - camera -73..-75, none at -72)
  }
@@ -2395,25 +2402,33 @@ export class Simulation {
     if(e.redFlight)this.slotSub[slot]=e.redFlight.originalY;
  }
  private resetNativeEnemyCursor(){for(const stream of [this.placedStream,this.walkerStream,this.waterEnemyStream])if(stream)Object.assign(stream,{offset:0,page:0,selected:false});}
- private placedStream?:NativeEnemyStream;private placedOrigin=0;private placedPlatforms=new Map<number,PlatformSpec>();
+ private placedStream?:NativeEnemyStream;private placedOrigin=0;private placedPlatforms=new Map<number,PlatformSpec>();private placedBars=new Map<number,FirebarSpec>();private placedCastle=false;private placedBankFrame=-1;private castleSlotXSpeed=[0,0,0,0,0];
  private setupNativePlacedStream(){
-  this.placedStream=undefined;this.placedPlatforms.clear();
+  this.placedStream=undefined;this.placedPlatforms.clear();this.placedBars.clear();this.placedCastle=false;
   if(this.walkerStream||this.waterEnemyStream||!/^[1-8]-[1-4]$/.test(this.level.id))return;
   const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.area.id);if(!binding)return;
   const physical=nativePhysicalAreas[binding.code],type=this.area.theme==='water'?0:this.area.theme==='underground'?2:this.area.theme==='castle'?3:1;if(physical.type!==type)return;
   const bytes=nativeEnemyBytes(physical.enemy);if(!bytes)return;
-  const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]);
-  if(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id)))return;
+  const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]),castleSupported=new Set([12,21,27,28,29,30,31,40,43,44,45,53]);
+  this.placedCastle=type===3&&records.length>0&&records.every(r=>castleSupported.has(r.id));
+  if(!this.placedCastle&&(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id))))return;
+  if(this.placedCastle&&records.some(r=>r.id>=27&&r.id<=31)&&!this.firebarSlots){this.placedCastle=false;return;}
   for(const r of records){
+   if(this.placedCastle&&(r.id===12||r.id===45||r.id===21||r.id===53||r.id>=27&&r.id<=31))continue;
    if(r.id===23){if(!this.frenzyControllers.some(c=>c.offset===r.offset))return;}
-   else if(r.id===37||r.id===40){
-    const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
+   else if(r.id===37||r.id===40||r.id===43||r.id===44){
+    const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset+(r.id>=43?12:0)&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
    }else if(!this.enemies.some(e=>e.nativeOffset===r.offset&&e.nativeId===r.id))return;
   }
-  this.placedStream=new NativeEnemyStream(bytes);this.placedOrigin=binding.offset;
+  if(this.placedCastle)for(const r of records){
+   if(r.id===12||r.id===45){let e=this.enemies.find(e=>e.kind===(r.id===12?'podoboo':'bowser')&&e.originX===r.x+binding.offset);if(!e){e=this.makeEnemy({kind:r.id===12?'podoboo':'bowser',x:r.x+binding.offset,y:r.id===12?282:r.y+32});this.enemies.push(e);}e.nativeId=r.id;e.nativeOffset=r.offset;e.nativeColumn=r.x+binding.offset;}
+   if(r.id>=27&&r.id<=31){const x=r.x+binding.offset+8,y=r.y+8;let bar=this.area.firebars?.find(b=>b.x===x&&b.y===y);if(!bar){bar={x,y,length:r.id===31?12:6,speed:(nativeFirebarParameters(r.id).direction?-1:1)*nativeFirebarParameters(r.id).speed/256*Math.PI/16};(this.area.firebars??=[]).push(bar);}this.placedBars.set(r.offset,bar);}
+  }
+  this.placedStream=new NativeEnemyStream(bytes);this.placedOrigin=binding.offset;this.castlePictures.managed=this.placedCastle;if(this.placedCastle&&this.firebarSlots)this.firebarSlots.managed=true;
   for(const p of this.area.platforms??[])this.platformMotion.waiting.add(p);
  }
  private passNativePlacedStream(){
+  if(this.placedCastle&&this.placedBankFrame===this.frame)return;
   for(const e of this.enemies)if(e.frenzy&&e.kind==='bullet'&&e.active&&!e.slotFreed&&e.dead===0&&e.x+(e.age>1?BULLETS.speed:0)-this.camera<=-BULLETS.generatorRemoveLeft){this.eraseEnemy(e);e.slotFreed=true;e.goneFrame=this.frame;if(e.enemySlot!==undefined){this.slotReleaseFrame[e.enemySlot]=this.frame;this.slotSub[e.enemySlot]=Math.round((e.x-Math.floor(e.x))*256)&255;}}
   const stream=this.placedStream!,context={camera:this.camera-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot:0,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};
   for(let slot=0;slot<6;slot++){
@@ -2425,6 +2440,19 @@ export class Simulation {
  }
  private initializeNativePlacedObject(init:NativeEnemyInit){
   const slot=init.slot;
+  if(init.id>=27&&init.id<=31){const bar=this.placedBars.get(init.offset!)!;this.firebarSlots!.initializeNative(bar,slot,{id:init.id,high:this.slotYSpeed[slot],low:0,...nativeFirebarParameters(init.id)});this.castleSlotXSpeed[slot]=0;return 1;}
+  if(init.id===12){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:282,age:0,pod:nativePodobooState(this.slotYFraction[slot])});Object.assign(this.slotVertical[slot],{speed:0,force:0});this.slotYSpeed[slot]=0;return 1;}
+  if(init.id===45){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin,y:init.y!+32,age:0});const m=e.nativeBowser=nativeBowserState(init.x!+this.placedOrigin,init.y!,this.slotYFraction[slot]);m.move.speed=(this.slotYSpeed[slot]<<24)>>24;m.move.force=this.slotVertical[slot].force;m.fireCounter=this.flameTimerCounter;m.rearSlot=this.freeNativeSlot();m.rearX=m.x;m.rearY=m.y;return 1;}
+  if(init.id===53){this.castlePictures.initializeNative(slot,init.x!+this.placedOrigin,184);return 1;}
+  if(init.id===21){
+   this.specialSlot5.frenzyBuffer=21;this.flameFrenzy=true;
+   if(this.nativeFrenzyTimer!==0){if(init.flag&&slot<5)this.items.push({kind:'flame',x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:init.y!,vx:this.secondaryHardMode?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot,target:this.slotYFraction[slot],force:(this.slotVertical[slot].force<<24)>>24,born:this.frame}});return init.flag;}
+   const target=this.random.bytes[slot]&3,boss=this.enemies.find(e=>e.kind==='bowser'&&e.active&&e.nativeBowser)?.nativeBowser,camera=this.camera+this.lakituScroll;
+   let x=camera+287,y=[144,128,112,144][target],force=0;
+   if(boss){x=(boss.x&~255)|((boss.x-14)&255);y=(boss.y+8)&255;force=[144,128,112,144][target]<y?-1:1;this.specialSlot5.frenzyBuffer=0;}
+   else{this.flameTimer=this.nativeFrenzyTimer=[191,64,191,191,191,64,64,191][this.flameTimerCounter]+(this.secondaryHardMode?16:32);this.flameTimerCounter=(this.flameTimerCounter+1)&7;}
+   this.slotSub[slot]=0;this.slotYFraction[slot]=target;this.slotVertical[slot].fraction=target;this.slotVertical[slot].force=force&255;this.items.push({kind:'flame',x,y,vx:this.secondaryHardMode?-1.375:-1.25,vy:0,age:0,life:Infinity,nativeFlame:{slot,target,force,born:this.frame}});this.emit('sfx_bowser_flame');return 1;
+  }
   if(init.id===24){this.specialSlot5.frenzyBuffer=0;this.spinyBuffer=false;this.flameFrenzy=false;return 0;}
   if(init.id===23){
    this.specialSlot5.frenzyBuffer=23;
@@ -2433,10 +2461,10 @@ export class Simulation {
    if(init.flag&&slot<5){const c=this.frenzyControllers.find(c=>c.offset===init.offset);if(c){c.slot=slot;c.x=init.x!+this.placedOrigin+this.slotSub[slot]/256;}}
    return init.flag;
   }
-  if(init.id===37||init.id===40){
+  if(init.id===37||init.id===40||init.id===43||init.id===44){
    const platform=this.placedPlatforms.get(init.offset!)!,left=this.slotVertical[slot],y=init.y!;
    this.platformSlots.set(platform,slot);this.platformMotion.lost.delete(platform);
-   this.platformMotion.initializeNative(platform,{id:init.id,x:init.x!+this.placedOrigin,y,a:0,b:init.id===37?(y+(y<128?64:192))&255:0,c:init.id===37?(y<128?y:256-y):this.slotSub[slot],d:0,e:left.fraction},this.platformFrame,this.random.frame);
+   this.platformMotion.initializeNative(platform,{id:init.id,x:init.x!+this.placedOrigin+(init.id>=43?12:0),y,a:init.id===43?255:0,b:init.id===37?(y+(y<128?64:192))&255:init.id===40?0:this.castleSlotXSpeed[slot],c:init.id===37?(y<128?y:256-y):this.slotSub[slot],d:init.id===43?16:init.id===44?240:0,e:left.fraction},this.platformFrame,this.random.frame);
    left.speed=left.force=0;this.slotYSpeed[slot]=0;return 1;
   }
   const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;
@@ -2556,8 +2584,11 @@ export class Simulation {
  private currentNativeBankSlot=-1;private nativeBankItemFrame=-1;
  private visitNativeBankSlot(slot:number,oldBottom:number){
   this.currentNativeBankSlot=slot;
+  if(this.placedCastle&&this.placedStream&&!this.parserClock.blocked&&!this.busyNativeSlots().has(slot)&&!(slot===5&&this.specialSlot5.flag)&&this.slotReleaseFrame[slot]!==this.frame){
+   const context={camera:this.camera+this.lakituScroll-this.placedOrigin,hard:this.secondaryHardMode,primaryHard:this.primaryHardMode,slot,frenzy:this.specialSlot5.frenzyBuffer,vine:this.specialSlot5.vineCount,queue:this.specialSlot5.frenzyQueue};this.placedStream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;return;
+  }
   const alias=this.firebarSlots?.visitAlias(slot);if(alias){if(alias==='cleared')this.slotReleaseFrame[slot]=this.frame;return;}
-  const camera=this.camera+this.lakituScroll;
+  const camera=this.camera+this.lakituScroll;if(this.placedCastle&&this.castleRetainer?.slot===slot){this.castlePictures.drawNative(slot);return;}
   const bar=this.area.firebars?.find(b=>this.firebarSlots?.slotOf(b)===slot);
   if(bar){
    this.firebarSlots!.turn(slot,camera,!this.nativeTimersStopped);
@@ -2574,14 +2605,14 @@ export class Simulation {
      this.updatePlatforms(oldBottom,this.lakituScroll,pair?[pair,p]:[p]);
     }else if(o.kind!=='balance')this.updatePlatforms(oldBottom,this.lakituScroll,[p]);
    }
-   this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);
+   this.platformMotion.turn(p,this.platformFrame,this.random.frame,run);if(this.placedCastle){const b=this.platformMotion.slotSpeedByte(p,this.platformFrame);if(b!==undefined)this.castleSlotXSpeed[slot]=b;}
   }
  }
  private updateEnemies(oldBottom:number){
-  this.broClock++;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
+  this.broClock++;if(this.placedCastle&&this.placedStream)this.placedBankFrame=this.frame;this.nativeBankItemFrame=this.frame;this.firebarSlots?.beginFrame(this.camera);
   // Retained component motors are independent of the native bank readout.
   for(const [bar,motor]of this.firebarMotors)if(motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
-  if(this.mouthFlame)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
+  if(this.mouthFlame&&!this.placedCastle)this.passNativeMouthFlame(0,this.mouthFlame.enemySlot??0);
   this.releaseNativeSlots();
   if(this.nativeSwimFrenzyArea())this.enemies=this.enemies.filter(e=>e.active||!(e.kind==='cheep'&&e.swim)); // discard legacy generated roster before it can claim checkpoint slots
   this.syncSpecialPowerup();this.nativeFrenzyTurn=undefined;if(!this.nmiTimersHeld&&this.nativeStompTimer)this.nativeStompTimer--;
@@ -2598,9 +2629,10 @@ export class Simulation {
   const ordered=[...this.enemies].sort((a,b)=>(a.enemySlot??5)-(b.enemySlot??5));let nativeSlot=0;
   for(const e of ordered){
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
+   if(this.placedCastle&&e.slotBorn===this.frame)continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
-   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined;
-   const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+   let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;
+   const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
@@ -2661,7 +2693,7 @@ export class Simulation {
     const stage=PIRANHA.stages.find(s=>phase>=s.fromPhaseInclusive&&phase<s.toPhaseExclusive)!;
     e.y=e.originY-PIRANHA.hiddenFootOffsetFromPipeTop+stage.footOffsetAtStart+(phase-stage.fromPhaseInclusive)*stage.velocity;
    }else if(e.kind==='podoboo'){
-    if(e.launch)this.updateNativePodoboo(e);
+    if(e.launch||e.nativeId===12)this.updateNativePodoboo(e);
     else{const next=e.originY-Math.max(0,Math.sin(e.age/50))*100;
     e.podobooFalling=next>e.y;e.y=next;}
    }
@@ -2945,7 +2977,7 @@ export class Simulation {
    if(i.nativePowerState!==undefined){this.updateNativePowerup(i);if(i.nativePowerState<6)continue;}else{
    if(i.emerging&&i.emerging>0){i.y-=POWERUPS.powerupEmergenceNativeFrames.pixelsPerNativeFrame;i.emerging--;continue;}
    i.x+=i.vx;
-   if(i.nativeFlame){const target=[144,128,112,144][i.nativeFlame.target];if(i.y!==target)i.y+=i.nativeFlame.force;}
+   if(i.nativeFlame){const target=[144,128,112,144][i.nativeFlame.target];if(i.y!==target)i.y+=i.nativeFlame.force;if(this.placedCastle&&i.nativeFlame.slot<5)this.slotSub[i.nativeFlame.slot]=Math.round((i.x-Math.floor(i.x))*256)&255;}
    if(i.kind==='coin'||i.kind==='debris'||i.kind==='hammer'){i.vy+=i.kind==='coin'?0.3125:i.gravity??0.2;i.y+=i.vy;}
    else if(i.kind==='flame'){}
    else{
@@ -2967,7 +2999,7 @@ export class Simulation {
     this.collectItem(i);
    }
   }
-  this.items=this.items.filter(i=>i.life>0&&i.y<288&&i.x>=this.camera-(i.nativeFlame?73:i.nativePowerState===undefined?32:72)&&(i.nativePowerState===undefined||i.x<this.camera+328));
+  this.items=this.items.filter(i=>i.life>0&&i.y<288&&(i.nativeFlame&&this.placedCastle?Math.floor(i.x)>=Math.floor(this.camera+this.lakituScroll)-72:i.x>=this.camera-(i.nativeFlame?73:i.nativePowerState===undefined?32:72))&&(i.nativePowerState===undefined||i.x<this.camera+328));
   this.syncSpecialPowerup();
  }
  // Native fireball (rows evidence/local/power/f1.jsonl; RAM 0x24+s state, 0x8d+s x, 0xd5+s y, 0xa6+s speed): position then speed, 4 px/row at launch, gravity 80/256, cap 812/256, bounce at speed -3 with the ball on the floor; gone past the screen edges.
@@ -3066,7 +3098,7 @@ export class Simulation {
   if(!(n.task===0&&n.screen===0))this.gameTimerStep(false);
   const tick=((this.lifeRow-1-this.lifeFrozen)%LIFE_FLOW.clockPeriod+LIFE_FLOW.clockPeriod)%LIFE_FLOW.clockPeriod===LIFE_FLOW.clockTickPhase;
   const result=stepNativeLevelLoad(n,tick);
-  if(result.camera){this.camera=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
+  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    const time=this.time;this.loadArea(load.area,load.spawn,load.camera,false,true);this.time=time;load.player={...this.player};
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.player.grounded=false;
@@ -3110,7 +3142,7 @@ export class Simulation {
   if(!hold){this.gameTimerStep(false);this.tickIntervalTimers();}else this.lifeFrozen++;
   const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
   if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
-  if(result.camera){this.camera=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
+  if(result.camera){this.firebarSlots?.clearPartialMemory();this.camera=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load));this.time=time;if(!load){this.areaControls.column-=24;this.springSlots.clear();this.springLoadColumns=12;}
    this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.nativeEndLevelMusicAreaQueue=128;

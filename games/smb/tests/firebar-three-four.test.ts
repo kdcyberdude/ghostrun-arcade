@@ -12,7 +12,7 @@ test('3-4 includes the native paired firebars at both heights',()=>{
 
 test('3-4 first bar freezes before camera53 then advances its shared CCW motor once per native frame',()=>{
  for(const wait of[0,150,278]){
-  const data=level(),area=data.areas[0];area.spawn=[40,112];area.camera=52;area.enemies=[];
+  const data=level(),area=data.areas[0];data.id='fixture';area.spawn=[40,112];area.camera=52;area.enemies=[];
   const sim=new Simulation([data]);sim.reset(true);sim.step([],wait);
   assert.equal(sim.phase,'play');let bar=sim.area.firebars![0];assert.deepEqual(sim.firebarCenters(bar),[]);
   sim.loadArea('main',[164,160],52);sim.player.vx=1.5;sim.step([],1);bar=sim.area.firebars![0];

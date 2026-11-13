@@ -12,6 +12,8 @@ const source=levels.find(level=>level.id==='5-4')!;
 const actualBar=(sim:Simulation,x:number)=>sim.area.firebars!.find(bar=>bar.x===x&&bar.y===216)!;
 function game(target:number,camera:number,x:number,omit=false){
  const level=structuredClone(source),area=level.areas.find(area=>area.id==='main')!;
+ // Teleported component fixtures do not provide a native EnemyData entrance.
+ level.id='fixture';
  area.spawn=[x,208];area.camera=camera;
  if(omit)area.firebars=area.firebars!.filter(bar=>bar.x!==target||bar.y!==216);
  const sim=new Simulation([level]);sim.reset(true);return sim;

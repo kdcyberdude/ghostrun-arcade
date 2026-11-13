@@ -16,7 +16,8 @@ test('native flame contact uses inclusive box edges and rejects offscreen player
  assert.equal(nativeFlameHit(flame,{...p,y:20},0),false);
 });
 test('live offscreen pit movement cannot touch a normal enemy on a different native y page',()=>{
- const sim:any=new Simulation([observedLevels().find(l=>l.id==='3-4')!]);sim.reset(true);
+ const level=structuredClone(observedLevels().find(l=>l.id==='3-4')!);level.id='fixture';
+ const sim:any=new Simulation([level]);sim.reset(true);
  sim.enemies=[sim.makeEnemy({kind:'goomba',x:sim.player.x,y:423,evidence:'CheckPlayerVertical fixture'})];
  Object.assign(sim.enemies[0],{active:true,enemySlot:0});Object.assign(sim.player,{y:423,vy:0,size:0,grounded:false});
  sim.updateEnemies(423);assert.equal(sim.phase,'play');assert.equal(sim.player.dead,false);
