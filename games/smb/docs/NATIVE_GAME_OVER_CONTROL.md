@@ -1,0 +1,11 @@
+# Native game-over control primitive
+
+This is a pure, unused runtime component. Live GameOverMode wiring and strict mode3 continuation remain outstanding. The existing simulation and its control coverage are unchanged.
+
+The source controller follows SetupGameOver, shared ScreenRoutines and RunGameOver. Setup resets the screen task, queues event 2 and increments DisableScreenFlag. DisplayTimeUp uses the existing seven-interval screen timer. GameOverInter sets ScreenTimer $07a0 to $12 and moves to task 2. RunGameOver enables the screen and terminates immediately on held Start or timer 0. There is no fitted closing interval or Start delay. TransposePlayers continuation is returned as an effect; player-state swapping remains the caller's responsibility.
+
+TimerControl $0747 survives PlayerLoseLife when lives reach zero. It decrements before the NMI timer gate; the turn reaching 0 permits the other timers immediately. Source interval turns are supplied by the owning NMI clock. The implementation does not infer the remaining master byte from a level or recorded frame number.
+
+The generator extends three authentic full POWER-ON mood pad streams: unheld master, held master and time-up. It captures a neutral continuation, then derives a Start pulse from the observed first RunGameOver task and captures that branch too. Every original full RAM prefix and each pre-Start common RAM prefix is byte-identical. No native RAM or save-state writes are used. The six captures retain 1,501 controller transitions through natural expiry and Start-to-title boundaries, with zero differences in every owned state field and emitted queue. Fixture receipts retain ROM/backend/binary/input/RAM hashes. The pure helper's three focused tests and TypeScript pass; no new full audit was run after the backlog-clear steering.
+
+The raw extensions are cached at /tmp/smb-game-over-native. Portable compressed RAM/input windows and branch provenance are in native-game-over-cases.json. The generator reconstructs them from the original mood cache and authenticated native observer. Audio synthesis, title-mode control, two-player state swapping, game-over pictures and runtime continuation are not proved by this unused primitive.
