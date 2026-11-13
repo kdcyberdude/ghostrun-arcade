@@ -20,7 +20,7 @@ export function victoryChecks(r:Uint8Array,sim:any,walkOwned:boolean,drawOwned:b
  * Readiness is always checked: retaining the object after native PlayerRdy is also a mismatch. */
 export function victoryLoadChecks(r:Uint8Array,sim:any):VictoryCheck[]{
  const n=sim.levelLoad,out:VictoryCheck[]=[['frameCounter',r[9],sim.random.frame],['random',Array.from(r.subarray(0x7a7,0x7ae)),sim.random.bytes],['interval',r[0x77f],sim.intervalControl]];
- out.push(['load.ready',r[0x772]===3&&r[14]===8,!n&&sim.phase==='play'&&!sim.entryControlLocked&&!sim.area?.autoWalk]);
+ out.push(['load.ready',r[0x772]===3&&r[14]===8,!n&&sim.phase==='play'&&!sim.pipeRising&&!sim.entryControlLocked&&!sim.area?.autoWalk]);
  if(n)for(const [key,address]of [['task',0x772],['engine',14],['screen',0x73c],['disable',0x774]] as const)out.push([`load.${key}`,r[address],n[key]]);
  return out;
 }

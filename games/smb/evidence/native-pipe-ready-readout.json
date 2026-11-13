@@ -1,0 +1,35 @@
+{
+  "schema": "native-pipe-ready-readout-v1",
+  "runtimeSourceCommit": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "fixtureOriginCommit": "547f218ed305ef5fb60972c2e6bdc01da4a1d6dd",
+  "fixtureSha256": "249512cf1b12ecfccaed2f3a584710bd81256b2c70e778a66382bb1011c57530",
+  "readoutSources": {
+    "games/smb/tools/harness/native-continuous-state.ts": "9923561c3a01066fb828527f84089c6ad24a653973971a30c79352761b23a2cf",
+    "games/smb/tools/harness/native-victory-readout.ts": "2394bf029cd4f76e4f7c77131738a864b0e1242a90172799579d1d3f58bf040d"
+  },
+  "cases": [
+    {
+      "padSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "sourceWindowSha256": "62aa399c503fd5b947ffb0edd858a629a3b54eb21e54684f7afe8123033464ea",
+      "from": 1076,
+      "to": 1184,
+      "rows": 109,
+      "firstEngine7": 1076,
+      "engine7Rows": 96,
+      "ignoredHeldARows": 20
+    },
+    {
+      "padSha256": "1ec0a3e4d31d8875aaf5798a2f31b6e73a032777ab3e47d6fb3c2e984050bc05",
+      "sourceWindowSha256": "a48a2e72e14fe22533b29e44dc210f3f5f4d479fef6463763a099858a36504ac",
+      "from": 1017,
+      "to": 1125,
+      "rows": 109,
+      "firstEngine7": 1017,
+      "engine7Rows": 96,
+      "ignoredHeldARows": 36
+    }
+  ],
+  "rule": "Existing source-owned pipe-rise motor runs before normal controls. PlayerRdy must remain false until that motor relinquishes control, even when phase is play and entryControlLocked is false.",
+  "validation": "Continuous cold input replay, no native RAM injection, both readouts agree with actual native0E on every retained source row; engine7 has currentAB0 despite heldA. 15focused tests and focusedTypeScript pass.",
+  "scope": "Future corrected readout only; does not relabel the frozen CCA live audit/catalog. No runtime motor, controller, actor, timer, trajectory or policy changes."
+}
