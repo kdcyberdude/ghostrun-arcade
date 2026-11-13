@@ -103026,7 +103026,9 @@
               187,
               244,
               142
-            ]
+            ],
+            "nativeColumn": 1776,
+            "nativeOffset": 24
           },
           {
             "x": 2544,
@@ -103049,7 +103051,9 @@
               138,
               127,
               147
-            ]
+            ],
+            "nativeColumn": 2544,
+            "nativeOffset": 44
           },
           {
             "x": 2720,
@@ -103074,7 +103078,9 @@
               103,
               121,
               77
-            ]
+            ],
+            "nativeColumn": 2720,
+            "nativeOffset": 48
           }
         ],
         "solidRects": [],
@@ -109389,7 +109395,17 @@
             "x": 272,
             "y": 112,
             "evidence": "Cannon-top artwork observed; firing interval and activation range remain inferred.",
-            "native": true
+            "native": true,
+            "nativeColumn": 272,
+            "nativeOffset": 6
+          },
+          {
+            "x": 1712,
+            "y": 176,
+            "native": true,
+            "evidence": "Native ROM L_GroundArea18 BulletBillCannon record56.",
+            "nativeColumn": 1712,
+            "nativeOffset": 56
           }
         ],
         "solidRects": [],
@@ -148954,7 +148970,9 @@
               64,
               59,
               93
-            ]
+            ],
+            "nativeColumn": 304,
+            "nativeOffset": 4
           },
           {
             "x": 448,
@@ -148969,7 +148987,9 @@
             "loop": [
               35,
               74
-            ]
+            ],
+            "nativeColumn": 448,
+            "nativeOffset": 10
           },
           {
             "x": 448,
@@ -148986,7 +149006,9 @@
               60,
               84,
               126
-            ]
+            ],
+            "nativeColumn": 448,
+            "nativeOffset": 12
           },
           {
             "x": 576,
@@ -148999,7 +149021,9 @@
             ],
             "loop": [
               169
-            ]
+            ],
+            "nativeColumn": 576,
+            "nativeOffset": 14
           },
           {
             "x": 736,
@@ -149014,7 +149038,9 @@
             "loop": [
               135,
               309
-            ]
+            ],
+            "nativeColumn": 736,
+            "nativeOffset": 18
           },
           {
             "x": 896,
@@ -149029,7 +149055,9 @@
             "loop": [
               319,
               198
-            ]
+            ],
+            "nativeColumn": 896,
+            "nativeOffset": 20
           },
           {
             "x": 896,
@@ -149042,7 +149070,9 @@
             ],
             "loop": [
               148
-            ]
+            ],
+            "nativeColumn": 896,
+            "nativeOffset": 22
           },
           {
             "x": 1024,
@@ -149081,7 +149111,9 @@
               70,
               48,
               53
-            ]
+            ],
+            "nativeColumn": 1024,
+            "nativeOffset": 26
           },
           {
             "x": 1088,
@@ -149118,7 +149150,9 @@
               69,
               69,
               48
-            ]
+            ],
+            "nativeColumn": 1088,
+            "nativeOffset": 34
           },
           {
             "x": 1664,
@@ -149156,7 +149190,9 @@
               55,
               55,
               65
-            ]
+            ],
+            "nativeColumn": 1664,
+            "nativeOffset": 48
           },
           {
             "x": 1952,
@@ -149193,7 +149229,9 @@
               65,
               53,
               48
-            ]
+            ],
+            "nativeColumn": 1952,
+            "nativeOffset": 54
           },
           {
             "x": 2336,
@@ -149226,7 +149264,9 @@
               56,
               56,
               97
-            ]
+            ],
+            "nativeColumn": 2336,
+            "nativeOffset": 64
           },
           {
             "x": 2336,
@@ -149261,7 +149301,9 @@
               78,
               79,
               83
-            ]
+            ],
+            "nativeColumn": 2336,
+            "nativeOffset": 66
           }
         ],
         "solidRects": [],
@@ -189025,7 +189067,9 @@
             ],
             "loop": [
               104
-            ]
+            ],
+            "nativeColumn": 1360,
+            "nativeOffset": 48
           },
           {
             "x": 1488,
@@ -189046,7 +189090,9 @@
               38,
               37,
               91
-            ]
+            ],
+            "nativeColumn": 1488,
+            "nativeOffset": 50
           },
           {
             "x": 1488,
@@ -189067,7 +189113,9 @@
               36,
               52,
               108
-            ]
+            ],
+            "nativeColumn": 1488,
+            "nativeOffset": 52
           },
           {
             "x": 1680,
@@ -189086,7 +189134,9 @@
               113,
               50,
               89
-            ]
+            ],
+            "nativeColumn": 1680,
+            "nativeOffset": 58
           },
           {
             "x": 1840,
@@ -189135,7 +189185,9 @@
               62,
               75,
               73
-            ]
+            ],
+            "nativeColumn": 1840,
+            "nativeOffset": 62
           },
           {
             "x": 1904,
@@ -189186,7 +189238,9 @@
               44,
               67,
               54
-            ]
+            ],
+            "nativeColumn": 1904,
+            "nativeOffset": 66
           },
           {
             "x": 2000,
@@ -189235,7 +189289,9 @@
               55,
               54,
               79
-            ]
+            ],
+            "nativeColumn": 2000,
+            "nativeOffset": 72
           },
           {
             "x": 2800,
@@ -189280,7 +189336,9 @@
               75,
               62,
               67
-            ]
+            ],
+            "nativeColumn": 2800,
+            "nativeOffset": 92
           },
           {
             "x": 3056,
@@ -189325,7 +189383,9 @@
               62,
               51,
               58
-            ]
+            ],
+            "nativeColumn": 3056,
+            "nativeOffset": 98
           },
           {
             "x": 3056,
@@ -189373,7 +189433,9 @@
               67,
               54,
               74
-            ]
+            ],
+            "nativeColumn": 3056,
+            "nativeOffset": 100
           }
         ],
         "solidRects": [],
@@ -197584,7 +197646,9 @@
               63,
               110,
               77
-            ]
+            ],
+            "nativeColumn": 288,
+            "nativeOffset": 2
           },
           {
             "x": 544,
@@ -197630,7 +197694,9 @@
               59,
               102,
               55
-            ]
+            ],
+            "nativeColumn": 544,
+            "nativeOffset": 8
           },
           {
             "x": 1376,
@@ -197675,7 +197741,9 @@
               84,
               98,
               67
-            ]
+            ],
+            "nativeColumn": 1376,
+            "nativeOffset": 40
           }
         ],
         "solidRects": [
@@ -200896,14 +200964,6 @@
         ],
         "enemies": [
           {
-            "kind": "beetle",
-            "x": 256,
-            "y": 208,
-            "direction": -1,
-            "evidence": "screenshot sequence 2535 tick 10136; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred",
-            "palette": "0f-00-30-10"
-          },
-          {
             "kind": "piranha",
             "x": 168,
             "y": 184,
@@ -200912,27 +200972,11 @@
             "palette": "0f-1c-36-17"
           },
           {
-            "kind": "beetle",
-            "x": 224,
-            "y": 208,
-            "direction": 1,
-            "evidence": "screenshot sequence 2537 tick 10144; exact enemy-table-0f-00-30-10.png cell 1; camera registration inferred",
-            "palette": "0f-00-30-10"
-          },
-          {
             "kind": "piranha",
             "x": 328,
             "y": 200,
             "direction": -1,
             "evidence": "screenshot sequence 2540 tick 10156; exact enemy-table-0f-1c-36-17.png cell 32; camera registration inferred; hidden origin inferred24px below observed pipe top, rather than using a fully emerged sighting as the hidden position.",
-            "palette": "0f-1c-36-17"
-          },
-          {
-            "kind": "paratroopa",
-            "x": 464,
-            "y": 160,
-            "direction": -1,
-            "evidence": "screenshot sequence 2542 tick 10164; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
             "palette": "0f-1c-36-17"
           },
           {
@@ -200944,28 +200988,82 @@
             "palette": "0f-1c-36-17"
           },
           {
-            "kind": "paratroopa",
-            "x": 688,
-            "y": 160,
-            "direction": -1,
-            "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
-            "palette": "0f-1c-36-17"
-          },
-          {
-            "kind": "paratroopa",
-            "x": 720,
-            "y": 176,
-            "direction": -1,
-            "evidence": "screenshot sequence 2545 tick 10176; exact enemy-table-0f-1c-36-17.png cell 5; camera registration inferred",
-            "palette": "0f-1c-36-17"
-          },
-          {
             "kind": "piranha",
             "x": 56,
             "y": 200,
             "direction": -1,
             "palette": "0f-1c-36-17",
             "evidence": "native id 13 plant at x 56 y 176 present in the first row of the area (f76192), the pipe Mario leaves the area from is at 48-79 top 176"
+          },
+          {
+            "kind": "beetle",
+            "x": 256,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-00-30-10",
+            "evidence": "Native ROM E_CastleArea6 enemy record14; scene origin-1792.",
+            "nativeColumn": 256,
+            "nativeId": 2,
+            "nativeOffset": 14
+          },
+          {
+            "kind": "beetle",
+            "x": 288,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-00-30-10",
+            "evidence": "Native ROM E_CastleArea6 enemy record16; scene origin-1792.",
+            "nativeColumn": 288,
+            "nativeId": 2,
+            "nativeOffset": 16
+          },
+          {
+            "kind": "paratroopa",
+            "x": 432,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-1c-36-17",
+            "paratroopaMotion": "bounce",
+            "evidence": "Native ROM E_CastleArea6 enemy record21; scene origin-1792.",
+            "nativeColumn": 432,
+            "nativeId": 14,
+            "nativeOffset": 21
+          },
+          {
+            "kind": "paratroopa",
+            "x": 464,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-1c-36-17",
+            "paratroopaMotion": "bounce",
+            "evidence": "Native ROM E_CastleArea6 enemy record23; scene origin-1792.",
+            "nativeColumn": 464,
+            "nativeId": 14,
+            "nativeOffset": 23
+          },
+          {
+            "kind": "paratroopa",
+            "x": 688,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-1c-36-17",
+            "paratroopaMotion": "bounce",
+            "evidence": "Native ROM E_CastleArea6 enemy record25; scene origin-1792.",
+            "nativeColumn": 688,
+            "nativeId": 14,
+            "nativeOffset": 25
+          },
+          {
+            "kind": "paratroopa",
+            "x": 720,
+            "y": 208,
+            "direction": -1,
+            "palette": "0f-1c-36-17",
+            "paratroopaMotion": "bounce",
+            "evidence": "Native ROM E_CastleArea6 enemy record27; scene origin-1792.",
+            "nativeColumn": 720,
+            "nativeId": 14,
+            "nativeOffset": 27
           }
         ],
         "pipes": [
@@ -201044,7 +201142,70 @@
           "Repeated contradictory patches remain unresolved even when one appears more often.",
           "Scan-torn tiles are exact per-source row-shift reconstructions, not exact standard16px bitmap matches. Their collision remains inferred from the descriptor.",
           "Retain exactly8 original pre10200 candidates:2 beetles,3 plants,3 winged Koopas. Their images/coordinates align with the accepted room, but original spawn grids/trajectory parameters remain inferred."
-        ]
+        ],
+        "nativeWalkerStream": {
+          "bytes": [
+            15,
+            3,
+            142,
+            101,
+            225,
+            187,
+            56,
+            109,
+            168,
+            62,
+            229,
+            231,
+            15,
+            8,
+            11,
+            2,
+            43,
+            2,
+            94,
+            101,
+            225,
+            187,
+            14,
+            219,
+            14,
+            187,
+            142,
+            219,
+            14,
+            254,
+            101,
+            236,
+            15,
+            13,
+            78,
+            101,
+            225,
+            15,
+            14,
+            78,
+            2,
+            224,
+            15,
+            16,
+            254,
+            229,
+            225,
+            27,
+            133,
+            123,
+            12,
+            91,
+            149,
+            120,
+            45,
+            144,
+            181,
+            255
+          ],
+          "offset": -1792
+        }
       },
       {
         "id": "area-3",

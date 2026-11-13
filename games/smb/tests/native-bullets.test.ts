@@ -9,6 +9,7 @@ import type {Area,CannonSpec,GeneratorSpec,Level,Tile} from '../src/types.js';
 function fixture(extra:Partial<Area>,spawn:[number,number]=[40,208]){
  const tiles:Tile[]=[];for(let x=0;x<256;x++)tiles.push([x,13,84]);
  const area:Area={id:'main',width:4096,palette:0,theme:'ground',tiles,enemies:[],spawn,evidence:'Synthetic bullet fixture',...extra};
+ if(area.cannons)area.cannons=area.cannons.map(c=>({...c,nativeColumn:c.x}));
  const level:Level={id:'fixture',time:400,main:'main',areas:[area],evidence:'Mechanic regression fixture'};
  const sim=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;return sim;
 }
@@ -18,7 +19,7 @@ const PICK_ENTRY_0=[0,0,7,7,0,0,0];
 // One cannon pass that makes the object (state 0, the cannon x) in slot 0; the next frame's pass keeps or erases it (BulletBillHandler).
 function attemptSim(cannon:CannonSpec,camera:number,mario:number,spawn?:[number,number]){
  const sim=fixture({cannons:[cannon]},spawn),s=sim as any;
- sim.camera=camera;sim.player.x=mario;sim.random.bytes=[...PICK_ENTRY_0];
+ s.createNativeCannons(cannon.x);sim.camera=camera;sim.player.x=mario;sim.random.bytes=[...PICK_ENTRY_0];
  s.updateGenerators();s.passNativeCannons();
  return sim;
 }
@@ -54,8 +55,8 @@ test('a shot flies toward a Mario who is to the right of the cannon (7-1 row 560
 });
 
 // Native table rows (8-3 mood0 rows 8-49, 7-1 and 5-2 alike): RAM 0x47D+entry restarts at 14 on an attempt and counts down once per free slot 0..2 whose random byte picks the entry.
-function table(level:string,bytes:number[],busy:number[]=[]){
- const sim=fixture({cannons:[{x:300,y:176,native:true}]},[250,208]),s=sim as any;sim.level.id=level;sim.camera=100;
+function table(level:string,bytes:number[],busy:number[]=[],hard=level==='7-1'){
+ const sim=fixture({cannons:[{x:300,y:176,native:true}]},[250,208]),s=sim as any;sim.level.id=level;sim.secondaryHardMode=hard;sim.camera=100;s.createNativeCannons(300);
  for(const slot of busy)sim.enemies.push({...s.makeEnemy({kind:'goomba',x:0,y:0}),active:true,enemySlot:slot});
  s.updateNativeCannons();s.passNativeCannons();s.cannonTable[0].timer=5;sim.random.bytes=bytes;s.updateNativeCannons();s.passNativeCannons();return s.cannonTable[0].timer;
 }
@@ -63,25 +64,26 @@ test('a cannon timer counts once per free slot 0..2 whose random byte picks it',
  assert.equal(table('5-2',[9,0,9,9,0,0,0]),4);assert.equal(table('5-2',[9,0,0,9,0,0,0]),3);
  assert.equal(table('5-2',[9,0,9,9,0,0,0],[0]),5,'a busy slot does not count');
  assert.equal(table('5-2',[0,9,9,9,0,0,0]),5,'slot 3 and byte 0 are not read');
- assert.equal(table('5-2',[9,8,9,9,0,0,0]),5,'mask 15 outside the hard worlds');assert.equal(table('7-1',[9,8,9,9,0,0,0]),4,'mask 7 in worlds 7 and 8');
+ assert.equal(table('5-2',[9,8,9,9,0,0,0]),5,'mask 15 outside the hard worlds');assert.equal(table('7-1',[9,8,9,9,0,0,0]),4,'mask 7 with SecondaryHardMode');
+ assert.equal(table('7-1',[9,8,9,9,0,0,0],[],false),5,'the world number does not replace the native hard flag');assert.equal(table('5-2',[9,8,9,9,0,0,0],[],true),4,'the native hard flag applies in any world');
 });
-// Native RAM of r4 free play (evidence/hazards2-findings-20261111.md): a cannon on a 32-px boundary loads on the row whose camera reaches x - 352 (7-1 mood2 rows 102/154: camera 93 -> 96 for x 448,
-// 223 -> 226 for x 576) and is not picked on that row (picked by slot 2 on row 102, timer stays 0); the remake's step sees that row's camera on the next frame, before its pass. Between
-// boundaries (x = 16 mod 32) the load comes at x - camera <= 358 (5-1 mood4 row 946 x 1776 camera 1416 -> 1419; 8-2 mood0 rows 741/906/931). The old 356 (route rows, any column) loaded a row early.
-test('cannons take table entries in load order as their column loads (7-1 mood2 rows 102, 154)',()=>{
- const sim=fixture({cannons:[{x:304,y:176,native:true},{x:448,y:160,native:true},{x:448,y:192,native:true},{x:576,y:176,native:true}]}),s=sim as any;sim.level.id='7-1';
- sim.camera=95;s.updateNativeCannons();assert.equal(s.cannonTable.filter(Boolean).length,1,'x 304 (16 mod 32) is in at x - camera 209');
- sim.camera=96;s.updateNativeCannons();assert.deepEqual(s.cannonTable.map((e:any)=>[e.cannon.x,e.cannon.y]),[[304,176],[448,160],[448,192]]);
- sim.camera=223;s.updateNativeCannons();assert.equal(s.cannonTable.length,3);
- sim.camera=224;s.updateNativeCannons();assert.equal(s.cannonTable[3].cannon.x,576);
- const odd=fixture({cannons:[{x:1776,y:176,native:true}]}),o=odd as any;odd.level.id='5-1';
- odd.camera=1417;o.updateNativeCannons();assert.equal(o.cannonTable.length,0);odd.camera=1418;o.updateNativeCannons();assert.equal(o.cannonTable.length,1);
+test('AreaParserCore writes cannon tables on task7/3 at their ROM columns, independent of camera-distance estimates',()=>{
+ const sim=fixture({cannons:[{x:304,y:176,native:true},{x:448,y:160,native:true},{x:448,y:192,native:true},{x:576,y:176,native:true}]}),s=sim as any;
+ assert.deepEqual(s.cannonTable.map((e:any)=>[e.cannon.x,e.cannon.y]),[[304,176]],'the screen preload already parsed column304');
+ sim.camera=95;s.areaControls.column=448/16;s.parserClock.task=4;s.advanceNativeAreaParser(0);
+ assert.deepEqual(s.cannonTable.map((e:any)=>[e.cannon.x,e.cannon.y]),[[304,176],[448,160],[448,192]]);
+ s.areaControls.column=576/16;s.parserClock.task=8;s.advanceNativeAreaParser(0);assert.equal(s.cannonTable[3].cannon.x,576);
+});
+test('SetupCannon cycles the six-entry bank without clearing inherited timers',()=>{
+ const sim=fixture({cannons:Array.from({length:7},(_,i)=>({x:1008+16*i,y:176,native:true}))}),s=sim as any;
+ for(let i=0;i<6;i++)s.createNativeCannons(1008+16*i);s.cannonTable[0].timer=9;s.createNativeCannons(1104);
+ assert.equal(s.cannonOffset,1);assert.equal(s.cannonTable[0].cannon.x,1104);assert.equal(s.cannonTable[0].timer,9);
 });
 // 8-3 mood1 rows 48-50 (RAM 0x47D, slots 0x0F-0x13, register 0x7A7): timer 1; row 49 bytes 02 54 50 f8: slots 2 and 1 both pick entry 0, slot 2 counts it to 0 and slot 1 attempts (14; the
 // object sits in slot 1); row 50 bytes 81 2a 28 7c: slot 1 would pick entry 0 but holds that object, so the timer stays 14, and at its turn the object (x - camera 285, off screen) is erased.
 const pass=(s:any)=>{s.updateNativeCannons();s.passNativeCannons();};
 test('slots pick from 2 down to 0, and the cannon object holds its slot on the next frame (8-3 mood1 rows 48-50)',()=>{
- const sim=fixture({cannons:[{x:288,y:176,native:true}]},[86,208]),s=sim as any;sim.level.id='8-3';sim.camera=3;
+ const sim=fixture({cannons:[{x:288,y:176,native:true}]},[86,208]),s=sim as any;sim.level.id='8-3';sim.secondaryHardMode=true;sim.camera=3;
  sim.random.bytes=[0x04,0xa8,0xa1,0xf0,0xb3,0x52,0x34];pass(s);s.cannonTable[0].timer=1;sim.enemies=[]; // native rows 47-48: no slot held
  sim.random.bytes=[0x02,0x54,0x50,0xf8,0x59,0xa9,0x1a];pass(s);assert.equal(s.cannonTable[0].timer,14);
  const object=shots(sim)[0];assert.equal(object.enemySlot,1);assert.equal(object.x,288);assert.equal(object.dead,0);
@@ -91,7 +93,7 @@ test('slots pick from 2 down to 0, and the cannon object holds its slot on the n
 // 7-1 mood2/mood5 row 6, the first native row (engine 7, register 23 bf f8 87 ..): slot 1 picks entry 0 (cannon 304, loaded during the load screen) and attempts; the remake's first frame is
 // row 7 (11 df fc 43 bb 3c 4a, no pick), where native shows timer 14, then 14, 13 (row 9).
 test('the first native row of a level already runs a cannon pass on the register one frame back (7-1 row 6)',()=>{
- const sim=fixture({cannons:[{x:304,y:176,native:true}]},[40,208]),s=sim as any;sim.level.id='7-1';sim.camera=0;
+ const sim=fixture({cannons:[{x:304,y:176,native:true}]},[40,208]),s=sim as any;sim.level.id='7-1';sim.secondaryHardMode=true;sim.camera=0;
  sim.random.bytes=[0x11,0xdf,0xfc,0x43,0xbb,0x3c,0x4a];pass(s);assert.equal(s.cannonTable[0].timer,14);
  sim.random.bytes=[0x88,0xef,0xfe,0x21,0xdd,0x9e,0x25];pass(s);assert.equal(s.cannonTable[0].timer,14,'row 8: no pick');
  sim.random.bytes=[0xc4,0x77,0xff,0x10,0xee,0xcf,0x12];pass(s);assert.equal(s.cannonTable[0].timer,13,'row 9: slot 2 counts');
