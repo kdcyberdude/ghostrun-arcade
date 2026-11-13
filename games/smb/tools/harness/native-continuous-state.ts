@@ -2,7 +2,7 @@
  * World1-1 only; unsupported controls and missing source ownership stay unchecked. */
 import {nativeAreaBindings,type AreaBinding} from '../../src/native-area-catalog.js';
 import {strictNativeEntities,strictSimEntities,strictSimCoverage,strictEntityDifferences,type StrictEntity,type CoverageGap} from './native-strict-entities.js';
-export type LiveControl={mode?:number;task?:number;engine?:number;screen?:number;disable?:number;timer?:number;columns?:number;initializing?:boolean};
+export type LiveControl={mode?:number;task?:number;engine?:number;screen?:number;disable?:number;timer?:number;columns?:number;initializing?:boolean;unsupported?:string};
 export type LiveWorld1State={level:string;area:string;phase:string;main:string;areas:{id:string;width:number}[];bindings:AreaBinding[];bindingGaps:string[];startup?:LiveControl;screen?:LiveControl;coldRam?:number[];loadReady:boolean;parserColumnX?:number;scrollLocked?:boolean;frameCounter:number;interval:number;random:number[];dead:boolean;time:number;score:number;coins:number;cam:number;x:number;y:number;entities:StrictEntity[];entityGaps:CoverageGap[]};
 export type LiveStateCheck={status:'match'|'mismatch'|'unchecked';scope:string;checked:string[];gaps:string[];differences:{field:string;native:unknown;model:unknown}[]};
 /** The level/death load objects are source GameMode1 routines, not phase guesses. */
@@ -13,7 +13,7 @@ export function liveScreenControl(sim:any):LiveControl|undefined{
 /** Called inside page.evaluate, without native RAM, previous/future samples or a reset. */
 export function captureLiveWorld1State(sim:any,initial=false):LiveWorld1State{
  const binding=sim.level.id==='1-1'?nativeAreaBindings(sim.level):{bindings:[],diagnostics:[]};
- const control=(n:any):LiveControl|undefined=>n?{mode:n.mode,task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns,initializing:n.initializing}:undefined;
+ const control=(n:any):LiveControl|undefined=>n?{mode:n.mode,task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns,initializing:n.initializing,unsupported:n.unsupported}:undefined;
  return {coldRam:initial&&sim.nativeColdRam?Array.from(sim.nativeColdRam):undefined,level:sim.level.id,area:sim.area.id,phase:sim.phase,main:sim.level.main,areas:sim.level.areas.map((a:any)=>({id:a.id,width:a.width})),bindings:binding.bindings,bindingGaps:binding.diagnostics,startup:control(sim.nativeStartup),screen:control(liveScreenControl(sim)),loadReady:!sim.levelLoad&&sim.phase==='play'&&!sim.entryControlLocked&&!sim.area.autoWalk,parserColumnX:sim.parserColumnX,scrollLocked:sim.areaControls?.locked,frameCounter:sim.random.frame,interval:sim.intervalControl,random:[...sim.random.bytes],dead:['dying','gameover'].includes(sim.phase),time:sim.time,score:sim.score,coins:sim.coins,cam:Math.floor(sim.camera),x:Math.floor(sim.player.x),y:Math.floor(sim.player.y)-32,entities:strictSimEntities(sim),entityGaps:strictSimCoverage(sim)};
 }
 const controlAddresses={mode:0x770,task:0x772,engine:0xe,screen:0x73c,disable:0x774} as const;
@@ -27,6 +27,7 @@ function checks(scope:string){
 export function compareLiveWorld1Start(initial:Uint8Array,model:LiveWorld1State):LiveStateCheck{
  const {out,check,finish}=checks('cold-recorded-start');
  if(initial.length!==2048||!initial.every(v=>v===255)){out.gaps.push('unsupported-native-cold-start');return finish();}
+ if(model.startup?.unsupported){out.gaps.push(model.startup.unsupported);return finish();}
  if(model.coldRam){check('cold.RAM',Array.from(initial),model.coldRam);return finish();}
  if(!model.startup){out.gaps.push('source-startup-owner-unavailable');return finish();}
  check('initializing',true,model.startup.initializing);
@@ -39,6 +40,7 @@ export class LiveWorld1StateAudit{
  compare(raw:Uint8Array,model:LiveWorld1State):LiveStateCheck{
   const mode=raw[0x770],level=`${raw[0x75f]+1}-${raw[0x75c]+1}`,{out,check,finish}=checks(mode===0?'boot-title':'world1-1');
   if(raw.length!==2048){out.gaps.push('native-row-length');return finish();}
+  if(model.startup?.unsupported&&!model.screen){out.gaps.push(model.startup.unsupported);return finish();}
   if(mode===0||mode===255){
    const control=model.startup??model.screen;
    if(!control){out.gaps.push('source-startup-owner-unavailable');return finish();}

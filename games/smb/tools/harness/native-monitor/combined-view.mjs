@@ -33,7 +33,7 @@ export function renderCombined(s,{width=100,color=false,world=0,now=Date.now()}=
  lines.push(rule('STATUS'));
  const completed=s.lastCompleted??(d.progress?.status==='complete'?{finished:d.progress.finished}:null);
  lines.push(row(completed?`Last audit finished: ${localTime(completed.finished)} · ${ago(completed.finished,now)}`:'Last audit finished: never recorded'));
- if(d.progress?.status==='running')lines.push(row(`Audit running · started ${ago(d.progress.started,now)} · updated ${ago(d.progress.updated,now)}`));
+ if(d.progress?.status==='running'){lines.push(row(`Audit running · started ${ago(d.progress.started,now)} · updated ${ago(d.progress.updated,now)}`));lines.push(row(`${d.progress.active?.length??0} active recordings; their unpublished frames remain unchecked.`));}
  else if(d.progress?.status==='complete')lines.push(row('No newer audit reported. Awaiting the next calculation.'));
  else if(d.progress&&['failed','incomplete'].includes(d.progress.status))lines.push(row(`Latest audit ${d.progress.status} · updated ${ago(d.progress.updated,now)}`));
  if(d.progress)lines.push(row(`${d.progress.status==='running'?'CALCULATING':d.progress.status.toUpperCase()} · ${d.progress.done}/${d.progress.total} recordings · ${n(d.progress.directlyComparedFrames)} direct frame checks`));
