@@ -357,7 +357,7 @@ export class Simulation {
   const picture=enemyPicture(enemy);this.awardPopup(value,picture.x,picture.y-popupRules.enemyFeetYOffset,enemy);
  }
  private eraseEnemy(enemy:Enemy){
-  enemy.dead=100;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
+  enemy.dead=100;if(enemy.nativeShot)enemy.cannonFrameTimer=0;this.popups=this.popups.filter(p=>p.victim!==enemy); // EraseEnemyObject clears FloateyNum_Control, leaving its timer residue
  }
  /** Score with the floatey-number points still waiting to be paid (what has been awarded, independent of when the HUD shows it). */
  get awardedScore(){return this.pendingScore.reduce((n,s)=>n+(typeof s.value==='number'?s.value:0),this.score);}
@@ -1284,7 +1284,7 @@ export class Simulation {
   e.bbCheck=false;
   const d=Math.floor(e.x)-Math.floor(this.player.x);
   if(e.x<this.camera||e.x-this.camera>BULLETS.cannonScreenRight||d>=BULLETS.cannonEraseLeft&&d<=BULLETS.cannonEraseRight){this.eraseEnemy(e);e.goneFrame=this.frame;return;}
-  e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
+  e.cannonFrameTimer=10;e.vx=(d<0?1:-1)*Math.abs(e.vx);e.x+=Math.sign(e.vx)*BULLETS.speed;
  }
  // Route comparison only: the attempt times of the recorded route (frames since the visit start, then the last gaps repeat).
  private updateNativeCannon(cannon:CannonSpec){
@@ -1472,6 +1472,7 @@ export class Simulation {
  playerBackgroundPriority=false;playerDrawBackgroundPriority=false;starPalette=0;starDrawPalette:number|undefined; // stored $03C4 palette bits, and the prior bits used by this frame's player OAM
  intervalControl=20; // native $077F: counts 20..0 once per frame; at 0 the interval timers tick
  private tickIntervalTimers(){
+  if(!this.nativeTimersStopped)for(const e of this.enemies)if(e.nativeShot&&e.active&&e.dead<100&&e.cannonFrameTimer)e.cannonFrameTimer--; // EnemyFrameTimer counts every native timer pass, not every interval tick.
   const n=nativeIntervalStep(this.intervalControl,this.player.star);
   this.intervalControl=n.interval;this.player.star=n.star;
   if(!n.tick)return;
