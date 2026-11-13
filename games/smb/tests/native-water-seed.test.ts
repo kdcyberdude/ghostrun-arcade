@@ -21,5 +21,6 @@ for(const c of cases)test(`one-time native water snapshot ${c.level} row ${c.row
   sim.step(names.filter((_,bit)=>c.pads[i]&(1<<bit)),1);
   const got=[Math.floor(sim.player.x),(Math.floor(sim.player.y)-32)&255,Math.floor(sim.camera),sim.water.speed&255,sim.water.force,sim.water.frac,Math.round(sim.player.vx*4096),sim.bubbleState.timer,sim.bubbles.map((b:any)=>[b.x,b.y,b.page,b.fraction]),sim.enemies.filter((e:any)=>e.active&&!e.dead&&!e.slotFreed&&(e.bloop||e.nativeSwim)).map((e:any)=>[e.enemySlot,e.kind==='blooper'?7:e.palette==='0f-16-30-27'?11:10,Math.floor(e.x),Math.floor(e.y)-24]).sort((a:number[],b:number[])=>a[0]-b[0]),[sim.waterEnemyStream?.offset,sim.waterEnemyStream?.page,Number(sim.waterEnemyStream?.selected)],[...sim.frenzyControllers.filter((c:any)=>c.slot!==undefined).map((c:any)=>[c.slot,Math.floor(c.x),c.y]),...(sim.specialSlot5.flag&&sim.specialSlot5.id===23?[[5,Math.floor(sim.specialSlot5.x),sim.specialSlot5.y]]:[])].sort((a:number[],b:number[])=>a[0]-b[0])];
   assert.deepEqual(got,c.expected[i],`source row ${c.row+i+1}`);
+  assert.equal(sim.bump.size,0,`water head contact must not animate a block, source row ${c.row+i+1}`);
  }
 });
