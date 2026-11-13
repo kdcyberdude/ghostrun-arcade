@@ -28,8 +28,10 @@ export function nativeSmallPlatform(platform:PlatformSpec,context:PlatformMotion
 export function nativePlatformArtworkYs(platform:PlatformSpec,context:PlatformMotionContext,firstArtworkY:number){
  return nativeSmallPlatform(platform,context)?[firstArtworkY,((firstArtworkY-1+128)&255)+1].filter(y=>y>=33):[firstArtworkY];
 }
-/** Native id37 is parsed at object X−303, before its first motion frame. */
-export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>object.kind==='lift'?object.x-303:object.kind==='wrap'?object.x-315:object.spawnCamera;
+/** PositionEnemyObj reads a 16-pixel enemy-data column and compares it with
+ * (ScreenRight+48)&$f0. Initialization adds0/8/12 to X for ordinary/balance/
+ * wrapping platforms, so clearing the low nibble recovers that source column. */
+export const nativePlatformSpawnCamera=(object:NativePlatformObject)=>(Math.floor(object.x)&~15)-303;
 /** 8-4 main repeats columns 32-95 every 1024 px: a lap copy of the id 40 lift is the same native object one lap right (native 1120 -> 2144). */
 function eightFourLapObject(list:NativePlatformObject[]|undefined,platform:PlatformSpec,context:PlatformMotionContext):NativePlatformObject|undefined {
  if(context.levelId!=='8-4'||context.areaId!=='main'||platform.x<1024)return undefined;

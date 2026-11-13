@@ -202,3 +202,16 @@ test('native WarpZoneObject holds its slot and clears ScrollLock only after the 
   if(frame===1718)assert.equal(sim.camera,2500);
  });
 });
+
+
+test('platform birth rows register the native slot before the next movement or renderer query',()=>{
+ for(const [level,frame,platformX,slot,rawX,rawY] of [['4-3',302,766,4,768,78],['6-3',239,736,3,768,112]] as const){
+  replay(level,frame,(sim,row)=>{
+   if(row!==frame)return;
+   const platform=sim.area.platforms.find((p:any)=>p.x===platformX)!;
+   assert.equal(sim.platformSlots.get(platform),slot,`${level} row${row} native birth slot`);
+   const position=sim.platformMotion.collisionPosition(platform,sim.platformFrame);
+   assert.deepEqual({x:Math.floor(position.x),y:Math.floor(position.y)},{x:rawX,y:rawY});
+  });
+ }
+});
