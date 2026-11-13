@@ -1,0 +1,31 @@
+{
+  "schema": "native-w12-state-readout-proof-v1",
+  "engineCommit": "f1e29716a63ec164069cd83c2c70c65e9e48c967",
+  "engineUnchanged": "git diff --exit-code f1e29716a63ec164069cd83c2c70c65e9e48c967 -- games/smb/src games/smb/data games/smb/assets passed",
+  "readoutSha256": "f74f4fef942c6f686ef292f51be141a9b936120237e95db276ed7ba1f1498fd0",
+  "fixtureSha256": "ac6ea9b38c0d6cf6ebe015895ab9dd00f7322ff4847c99c181d0294a3d86cb49",
+  "nativePadSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+  "nativeRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+  "decodedSampleSha256": "712306ea7e4443012323df4dc7672d2206dc71c63ba45f21562a7e11de5f8993",
+  "liveSnapshotSamples": 28,
+  "coldPrefixInputsReproduced": 2178,
+  "scope": "Read-only optional World1-1/World1-2 per-frame state coverage. No game changes, native model injection or transition resets. No bulk replay or pixel comparison.",
+  "validation": {
+    "focusedTests": 19,
+    "failed": 0,
+    "fullProjectTypeScript": "PASS"
+  },
+  "behavior": {
+    "default": "Original World1-1 scope unchanged",
+    "optIn": "new LiveWorld1StateAudit(['1-1','1-2'])",
+    "physicalScenes": [
+      "retained World1-1 tail on logical1-2 transition",
+      "World1-2 auto-walk intro",
+      "World1-2 underground",
+      "World1-2 reused exit stream with ROM offset-2816"
+    ],
+    "coinRoom": "ROM mapping supported(offset-512), no live coverage claim from this focused fixture",
+    "unsupported": "Missing owners/scene identity, unmapped streams, unported native or model objects and controls remain explicit gaps",
+    "knownFixtureMismatch": "Source4000 enemy-position difference remains mismatch; not investigated or fixed"
+  }
+}
