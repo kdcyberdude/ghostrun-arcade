@@ -9,5 +9,5 @@ test('observed CPU parser attempts retain exact cursor and initializer dispatch 
   else assert.equal(row.init.length,0,label);
   checked+=row.count;
  }
- assert.equal(checked,data.checked);assert.equal(checked,207747);
+ assert.equal(checked,data.checked);assert.equal(checked,732402);
 });
