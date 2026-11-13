@@ -38,10 +38,10 @@ test('a lone list object waits off screen for a slot and is lost once on screen'
  sim.camera=440;sim.step([],1);assert.equal(e.slotLost,true);
 });
 
-test('a squashed Goomba frees its slot after the native minimum of 22 rows (3-1 plant at 1656, route row 21478)',()=>{
+test('an erased squashed Goomba frees its slot for the next Piranha column',()=>{
  const others=[1440,1460,1480,1500].map(x=>goomba(x,{spawnCamera:1250})),squashed=goomba(1327,{spawnCamera:1250}),plant:EnemySpec={kind:'piranha',x:1656,y:184,direction:-1};
  const sim=fixture('3-1',[...others,squashed,plant],1300);
- const s=specAt(sim,'goomba',1327);s.active=true;s.squashed=true;s.dead=30;sim.step([],1);
+ const s=specAt(sim,'goomba',1327);s.active=true;s.squashed=true;s.dead=100;sim.step([],1);
  assert.equal(specAt(sim,'piranha',1656).slotHeld,true);
 });
 
