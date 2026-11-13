@@ -41,3 +41,6 @@ export function nativeHammerContact(n:NativeMisc,player:NativeBox,frame:number,o
 export function nativeAboveCoinStart(bufferRow:number,bufferLow:number,blockPage:number){
  return {x:blockPage*256+((bufferLow<<4)&255)+5,y:(bufferRow+32+((bufferLow>>4)&1))&255};
 }
+
+/** CoinBlock's SBC $10 has no SEC. JumpEngine leaves carry0; FindEmptyMiscSlot's CPY sets carry1 only after busy slot8. */
+export function nativeCoinBlockStartY(blockY:number,slot8Busy:boolean){return (blockY-16-(slot8Busy?0:1))&255;}

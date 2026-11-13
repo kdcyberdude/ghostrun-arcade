@@ -209,3 +209,93 @@ field and level unchanged. The remaining5-3 physical error follows enemy1027.
 Regressions check native controller466, Koopa final residue549, platform birth
 550/slot2/fraction184, and Mario carry617..620. Controller slot records expose
 id/x/y for the strict entity adapter; they have no rendered body.
+
+## Vertical pipe engine3: saved scroll, raw Y, and continued GameEngine
+
+Base:d911a44 (canonical integration404ca21 merged with controller927bb36).
+`VerticalPipeEntry` adds1 to raw Player_Y_Position, calls ScrollHandler with
+retained $06FF Player_X_Scroll and $03A1 Platform_X_Scroll, then decrements
+$06DE ChangeAreaTimer. Neither X speed nor the position fractions are cleared.
+ScrollHandler consumes platform carry and uses cached $0755, $0785 and $0723;
+the ordinary camera arithmetic remains unchanged, with its saved byte now
+retained explicitly. RenderPlayerSub's cached position write applies on land
+as well as water, excluding the native injury blink rows and axe early exit.
+
+SourceGameCoreRoutine continues the entire GameEngine enemy/item/platform and
+parser pass during engine3. Only the final timer0 row clears OperMode_Task
+and skips GameEngine. This fixes actors freezing during pipe entry as well as
+camera inertia. Player collection/injury is suppressed outside normal control;
+world physics continues. The existing native interval timer is ticked once,
+not again by the reused generator pass. Bubbles/ColorRotation stop when the
+pipe timer selects the loader.
+
+The source helper matches144 captured engine3 state transitions (96v2 and48
+additional mood0 rows). MoodSHA3d43b7b4… entry0000 (native source=local+216)
+now matches camera, MarioY and actor positions through local461: X917 and
+speed9432/4096 stay fixed; saved scroll3 gives camera805→808→810→812,
+then stops below screenX80. Strict first414→462; all32 v2 legacy fields are
+unchanged. Persistent mood excerpt and runtime regression cover413..461.
+
+Remaining462 is the independent loader boundary: InitializeArea resets camera
+while retaining the old Mario/enemy RAM, then clears the rest on463. The
+source boundary table is /tmp/contacts-pipe-boundary.txt; castle worker owns
+that pipeline. The existing sidepipe engine2 fitted first-speed path remains
+open for a separate source EnterSidePipe/AutoControlPlayer unit.
+
+## Solid head contact does not create an enemy-stun marker
+
+NativeInitRedKoopa writes Enemy_State1; the placed ID3 initializer now retains
+that initial falling state, and only state0 uses red ledge avoidance. Unwinged
+ID1 stays distinct. A regression starts ID3 falling and verifies its first
+landing faces Mario before state0 ledge behavior. This alone leaves all32
+recorded firsts unchanged.
+
+The new mood1-3 case6a33d619… entry0006 exposed the actual local196 error:
+Mario hits a solid tree underside, receives native speed1, but the old generic
+hitBlock path also killed the Koopa above it and paid an extra100 on201.
+Native CheckForSolidMTiles uses thresholds[$10,$61,$88,$c4] by metatile high
+bits. Solid head contact skips PlayerHeadCollision, so it never creates the
+$23 marker consumed by EnemyToBGCollisionDet or starts BlockBounceTimer.
+Enemy-above-block effects now require actual native block-object creation,
+and only eligible block hits start the timer. The used-block regression is
+corrected: the collision/bump sound remains, but no enemy is stunned.
+
+Case6a33…/0006 enemy196 and score201 become null; all8 legacy fields are now
+null and strict first196→946 (end transition). The native tree head bounce
+itself remains unchanged. A persistent additional decision excerpt and runtime
+196..202 check cover the live Koopa, unchanged score, and zero native timers.
+All32 v2 fields remain unchanged versus74b1013. Full delayed $23 marker
+lifetime and type-specific shell/stun conversion remain separate unverified
+work; this unit removes effects from head contacts with no native marker.
+
+## Source side-pipe motion replaces per-pipe first speeds
+
+`EnterSidePipe` retains Player_X_MoveForce $0705 and replaces only the $57
+speed byte with8, or0 once integer X's low nibble is0. AutoControlPlayer then
+uses the ordinary player motor with Right/neutral input. Incoming absolute
+speed, facing/moving direction, RunningTimer and RunningSpeed determine the
+first and later friction steps. Engine7 selects right cap12; water ignores
+RunningTimer's run class and uses the source floor cap16. No changes are made
+to the already verified native-player-motor implementation.
+
+The helper matches828 captured engine2/IntroEntr7 rows on X, speed, absolute,
+facing/moving, running bytes and collision bits. It also matches every native
+ChangeAreaTimer transition: initial$A0 on native camera page0, otherwise$34;
+IntroEntr7's side check refreshes it while X remains unaligned, then the caller
+decrements it. Runtime exposes the same pipeTimer for the loader worker and
+uses source area origin to recover native camera page. The first-frame water
+sync uses its canonical speed, absolute and moving/facing state.
+
+All per-pipe firstSpeed values and runUntilStep approximations are removed,
+as is the uniform automatic first speed2312. The original synthetic test's
+speed vectors lacked their native incoming force/latch state and had required
+those fits; exact byte fixtures now cover that behavior, while structural
+runtime tests still require all five mouths to stop at aligned X. A closed
+v2 1-2 replay checks1728..1735 X, speed, running timer, absolute and area timer.
+All32 first-field values remain unchanged; full1628 tests and TypeScript pass.
+
+The side engine2/IntroEntr7 full world/camera pass and the replacement of
+fitted destination load durations remain separate work. The existing engine3
+world pass is already source-driven. Animation ownership stays with the anim
+worker: sidePipeStep has an explicit pre-friction absolute-speed hook for
+GetPlayerAnimSpeed and subsequent single pose update.

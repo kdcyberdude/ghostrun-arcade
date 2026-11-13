@@ -137,21 +137,8 @@
     "pipeBlackoutFinalFrames": 24,
     "autoWalkPipe": {
       "triggerOffset": 13,
-      "firstSpeed": 2312,
-      "pullByte": 9,
-      "pullDown": 104,
-      "pullUp": 152,
       "hiddenFrame": 23,
-      "evidence": "Native rows 2293..2316 of the recorded route (also 2-2, 4-2, 7-2): the walk trigger is floor(x)+13>=pipe x; the next row sets speed 2312, then each frame subtracts 104 at speed byte >=9 and adds 152 below it until floor(x) reaches the pipe x (160), then x holds."
-    },
-    "sidePipeWalk": {
-      "defaultFirstSpeed": 2312,
-      "firstSpeed": {"1-2/area-2": 2484, "2-2/area-2": 2328, "4-2/area-3": 2416, "7-2/area-4": 2336, "8-4/area-4": 2336},
-      "runByte": 9,
-      "runUntilStep": 9,
-      "runDown": 28,
-      "runUp": 228,
-      "evidence": "Native engine-2 rows of the five ordinary side pipes (1-2 3801-3854, 2-2 15622-15675, 4-2 33222-33275, 7-2 60363-60416, 8-4 78989-79042): Mario walks 12-13 px from the trigger column to the pipe's left edge (22-25 rows, 0.55-0.6 px/row) and then stands still for the rest of the 52 rows. The first speed after the trigger row is 2328..2484 (per pipe, listed here); each later row adds 152 below speed byte 9 and subtracts 104 at byte >= 9 (the level-start pipe walk rule). A trigger at a running speed (B held, speed byte >= 9 at the trigger: 1-2 byte 40, 4-2 byte 18) first spends steps 2..9 on the run rule (-28 at byte >= 9, +228 below), then switches to the walk rule at step 10; 2-2/7-2 (B held at byte 4) and 8-4 (Down only) use the walk rule from step 2. Mario stops when floor(x) reaches the pipe x."
+      "evidence": "EnterSidePipe retains $0705 while setting the speed byte to8, or0 at an aligned integer X. AutoControlPlayer uses native friction and engine7 right cap12;828 native byte transitions verify the motor. The observed trigger is floor(x)+13>=pipe x."
     },
     "undergroundEntry": {
       "spawn": [
@@ -183,7 +170,7 @@
   },
   "candidateEvidence": {
     "introFrames": "With production nextLevel at 1978, outside geometry 2141..2148 implies 163..170 frames; 168 is a candidate within observed bounds. After correcting the pole contact to the visible shaft, production intro begins1976. A169-frame candidate remains within the observed geometry2141..2148 interval and corrects the1-native-frame falling-entry lead.",
-    "autoWalk": "Steady x48→144 over native 2163→2291 gives 96/128=.75 exactly. Starting after 6 frames from candidate outside start 2146 keeps all 20 observed x positions within 1px. Initial scene/task delay not otherwise identified.",
+    "autoWalk": "Steady x48\u2192144 over native 2163\u21922291 gives 96/128=.75 exactly. Starting after 6 frames from candidate outside start 2146 keeps all 20 observed x positions within 1px. Initial scene/task delay not otherwise identified.",
     "pipeFrames": "First occlusion 2292..2298; underground geometry 2495..2501. Elapsed 197..209; 208 candidate. Last body pixels 2313, fully hidden 2320, old scene persists 2471, so substantial hidden load/wait follows physical entry.",
     "undergroundEntry": "At 2501 scene exists but no Mario. First actor by 2509 x40 feet66. Slow 1.5 drop until feet78 then gravity .1875 cap4.25 reproduces six measured integer feet points exactly when anchored at 2509,feet66. A threshold79/gravity .21875 alternative also fits; parameters are not unique. Spawn64.5 and 7-frame appearance delay remain candidates, not exact measured start state. Integration owner selected 7-frame appearance and 4-frame timer delay after geometric release; these need production replay validation. Production replay calibration: room loads at native2500; an8-frame hold gives first movement2509, correcting the earlier7-frame candidate which produced4px falling error. Timing still lies within the observed appearance interval. Opening Goomba tracks fit first movement2504 after a scene load2500; enemy updates begin after3 hidden scene frames, before Mario appears. This is an inferred scene activation delay checked against25 integer actor positions. Entry control delay1 instead of2 is a candidate consistent with the9 sampled positions and the independently measured1.22..1.41px horizontal underpass lag. Global two-frame controller delay and12px head probe are retained. Subframe release is not uniquely identified.",
     "timer": "Fresh reference reset starts already in 1-1 play: 400 at0,399 by7,398 by30,397 by52. The previous offset23 and candidate21 both fit those samples. Four fresh source control branches show TIME396 at frame97; offset21 also matches the idle frame217 and improves the 430-decision replay with no image regressions. Its exact native write frame, normal title-start timing and matched bonus-room timing remain unmeasured; see evidence/first-timer-offset-investigation-findings.md. New underground TIME blank through2516,400 first2524,399 first2546: delayed activation then 24-period."

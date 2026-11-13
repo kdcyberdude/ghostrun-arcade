@@ -32,3 +32,5 @@ export const nativeEnemyCyclePhase=(frameCounter:number,timersStopped=false)=>!t
 export const nativeBlooperPicture=(timer:number,dead=false,timersStopped=false)=>({cell:timer===1||timer>=5||dead||timersStopped?10:11,yOffset:timer!==1&&timer<5?3:0});
 /** Lakitu hides his head in the cloud during the final sixteen frenzy-timer rows. */
 export const nativeLakituCell=(frenzyTimer:number,dead=false)=>!dead&&frenzyTimer<16?25:24;
+/** Graphics read TimerControl at each enemy slot; on later frozen rows no handler updates the stamp. */
+export const enemyPictureTimersStopped=(e:Enemy,frame:number,stopped:boolean)=>e.graphicsFrame===frame?Boolean(e.graphicsTimersStopped):Boolean(stopped);

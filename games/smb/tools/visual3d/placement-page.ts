@@ -9,6 +9,7 @@ import {enemyPicture} from '../../src/enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from '../../src/platform-motion.js';
 import {compareFrame,pieceModels,type Obj,type Cell,type FrameReport} from './placement-match.js';
 import {titleBootColor,nativeBubbleShown} from '../../src/view-rules.js';
+import {nativeBlockSprites} from '../../src/native-block-picture.js';
 import {ENEMY_MODEL} from '../../src/render3d/entities.js';
 import {PIECES} from '../../src/render3d/semantics.js';
 type Any=any;  // eslint-disable-line @typescript-eslint/no-explicit-any
@@ -54,16 +55,18 @@ function objects2d(s:Simulation,quads:{tag:string;r:Rect;z:number;chr?:number}[]
   if(s.castleFlag){const f=s.castleFlag,r=exact(f.x-cam,f.y);if(r)out.push({id:'castleFlag',kind:'castleFlag',...r});}
   s.flagFireworks.forEach((f,i)=>{const r=exact(f.x-cam,f.y);if(r)out.push({id:'spark#'+i,kind:'spark',...r});});
  }
+ (s.blockGraphics??[]).forEach(b=>nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera).forEach((p,i)=>{const q=quads.find(q=>q.tag==='misc'&&q.chr===p.tile&&q.r.x===p.x&&q.r.y===p.y);if(q)out.push({id:'block#'+b.slot+'.'+i,kind:b.metatile===196?'blockUsed':'blockBrick',...q.r});}));
  if(s.area.theme==='water')(s.bubbles??[]).forEach((b,i)=>{if(nativeBubbleShown(b,s.player.y,s.camera)){const r=exact((Math.floor(b.x)-cam)&255,b.y+1);if(r)out.push({id:'bubble#'+i,kind:'bubble',...r});}});
  const rt=union(quads.filter(q=>q.tag==='retainer').map(q=>q.r));if(rt)out.push({id:'retainer',kind:'retainer',state:s.level.id==='8-4'?'princess':'toad',...rt});
  return out;
 }
 /** Visible 3D gameplay objects, each with its projected NES-pixel rect. */
 function objects3d(r3:Any):Obj[]{
- const cam:THREE.Camera=r3.atmosphere.camera,box=new THREE.Box3(),v=new THREE.Vector3(),out:Obj[]=[];
+ const cam:THREE.Camera=r3.atmosphere.camera,box=new THREE.Box3(),meshBox=new THREE.Box3(),v=new THREE.Vector3(),out:Obj[]=[];
  cam.updateMatrixWorld();r3.atmosphere.scene.updateMatrixWorld(true);
  const project=(o:THREE.Object3D):Rect|undefined=>{
-  box.makeEmpty();o.traverseVisible(c=>{const m=c as Any;if(!m.isMesh||(Array.isArray(m.material)?m.material:[m.material]).every((material:THREE.Material)=>!material.visible))return;if(m.isSkinnedMesh)m.boundingBox=null;box.expandByObject(m,false);});
+  box.makeEmpty();o.traverseVisible(c=>{const m=c as Any;if(!m.isMesh||(Array.isArray(m.material)?m.material:[m.material]).every((material:THREE.Material)=>!material.visible))return;if(m.isSkinnedMesh)m.boundingBox=null;meshBox.setFromObject(m,false);const material=Array.isArray(m.material)?m.material[0]:m.material;
+   for(const plane of material.clippingPlanes??[]){const n=plane.normal;if(n.x===1)meshBox.min.x=Math.max(meshBox.min.x,-plane.constant);else if(n.x===-1)meshBox.max.x=Math.min(meshBox.max.x,plane.constant);else if(n.y===1)meshBox.min.y=Math.max(meshBox.min.y,-plane.constant);else if(n.y===-1)meshBox.max.y=Math.min(meshBox.max.y,plane.constant);}if(!meshBox.isEmpty())box.union(meshBox);});
   if(box.isEmpty())return undefined;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(let i=0;i<8;i++){v.set(i&1?box.max.x:box.min.x,i&2?box.max.y:box.min.y,i&4?box.max.z:box.min.z).project(cam);const x=(v.x+1)/2*256,y=(1-v.y)/2*240;x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}
   return {x:x0,y:y0,w:x1-x0,h:y1-y0};
@@ -77,7 +80,7 @@ function objects3d(r3:Any):Obj[]{
  for(const [name,pool] of e.pools as Map<string,Any>)(pool.items as Any[]).forEach((a,i)=>add(name,a.root,i));
  for(const [key,list] of e.cache as Map<string,THREE.Mesh[]>)list.forEach((m,i)=>add(key,m,i));
  (e.coins as THREE.Mesh[]).forEach((m,i)=>add('coin',m,i));
- for(const [key,list] of r3.props.pools as Map<string,THREE.Object3D[]>)list.forEach((o,i)=>add(key.replace(/[\d.]+$/,''),o,i));
+ for(const [key,list] of r3.props.pools as Map<string,THREE.Object3D[]>)list.forEach((o,i)=>add(key.startsWith('blockUsed@')?'blockUsed':key.startsWith('blockBrick@')?'blockBrick':key.replace(/[\d.]+$/,''),o,i));
  if(r3.world.flag.visible&&r3.world.group.visible)add('flag',r3.world.flag,0);
  return out;
 }

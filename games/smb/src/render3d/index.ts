@@ -20,7 +20,7 @@ export class Renderer3D{
  constructor(private canvas:HTMLCanvasElement){
   const res=RESOLUTIONS[query.get('res')??''];this.scale=res?res/NES_H:Number(query.get('scale')??4);
   this.gl=new THREE.WebGLRenderer({canvas,antialias:false,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
-  this.gl.info.autoReset=false;
+  this.gl.info.autoReset=false;this.gl.localClippingEnabled=true;
   this.atmosphere=new Atmosphere(this.gl,NES_W*this.scale,NES_H*this.scale,query.get('quality')==='low'?'low':'high');
   this.hud=new Hud(this.scale);
   if(import.meta.env.DEV)(window as unknown as {render3d:Renderer3D}).render3d=this;

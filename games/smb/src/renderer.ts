@@ -1,3 +1,4 @@
+import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
 import {loadPixelTexture,pixelCamera,pixelQuad} from '../assets/three-assets.mjs';
 import manifest from '../assets/graphics/graphics-manifest.json';
@@ -6,7 +7,8 @@ import specialSprites from '../assets/graphics/special/index.json';
 import {Simulation,TRANSITIONS,POWERUPS,FLAG_COMPLETION,CASTLE_COMPLETION} from './simulation.js';
 import {waterSurfaceSky,doorwayBottomTile,titleBootColor,fireFlashVariant,starVariant,rotatedPalette,bumpShown,liftRopeColumns,itemShown,nativeBubbleShown} from './view-rules.js';
 import {playerCell,playerVisible} from './player-cell.js';
-import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell} from './enemy-picture.js';
+import {nativeBlockSprites} from './native-block-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -111,9 +113,10 @@ export class GameRenderer {
  private enemy(e:Enemy,s:Simulation){
   e=enemyPicture(e);
   const feet=!e.dead?e.graphicsY??e.y:e.y,x=Math.floor((!e.dead?e.graphicsX??e.x:e.x)-s.camera),y=Math.floor(feet)-23;
-  const blooper=nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),Boolean(s.powerChange));
+  const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
+  const blooper=nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped);
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
-  const phase=nativeCycle?nativeEnemyCyclePhase(s.random.frame,Boolean(s.powerChange)):Math.floor(e.age/8)%2;
+  const phase=nativeCycle?nativeEnemyCyclePhase(s.random.frame,timersStopped):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -126,7 +129,7 @@ export class GameRenderer {
   if(e.kind==='cheep'){cell=12+phase;palette='0f-16-30-27';}
   if(e.kind==='bullet'){cell=39;palette=openingCannonShot||fiveThreeLeftShot?'0f-0f-36-17':'0f-00-30-10';}
   if(e.kind==='lakitu'){cell=nativeLakituCell(e.graphicsFrenzyTimer??0,Boolean(e.dead));palette='0f-1a-30-27';}
-  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,Boolean(s.powerChange));palette='0f-1a-30-27';}
+  if(e.kind==='hammerBro'){cell=nativeHammerBroCell(e.dead?0x20:e.hbro?.state??0,s.random.frame,timersStopped);palette='0f-1a-30-27';}
   if(e.kind==='podoboo'){cell=34;palette='0f-16-30-27';}
   if(e.dead&&e.kind==='goomba'&&e.dead<20){cell=23;}
   if(e.kind==='bowser'){
@@ -172,7 +175,7 @@ export class GameRenderer {
    const tiles=tables.enemy_cells[cell].tiles;
    // GmbaAnim flips the moving direction when FrameCounter bit 3 is clear.
    // The direction is captured before collision turns, as in native OAM.
-   const left=(e.graphicsFacing??e.vx)<0,flip=s.powerChange?left:left===Boolean(s.random.frame&8);
+   const left=(e.graphicsFacing??e.vx)<0,flip=timersStopped?left:left===Boolean(s.random.frame&8);
    for(let row=1;row<3;row++)for(let col=0;col<2;col++){
     this.spriteTile(tiles[row*2+col],x+(flip?1-col:col)*8,y+row*8,palette,flip,false);
    }
@@ -196,7 +199,7 @@ export class GameRenderer {
     else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
    }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
   }
-  if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
+  if(i.kind==='fireball')this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x,i.y);
   if(i.kind==='hammer'){
    const phase=i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4;
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
@@ -215,10 +218,11 @@ export class GameRenderer {
   if(!black){
    this.waterSurfaceSky(s);
    this.worldClip=true;
-   for(const[key,id]of s.tiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
+   const pictureTiles=new Map(s.tiles);for(const [key,id]of s.blockBackground){if(id===null)pictureTiles.delete(key);else pictureTiles.set(key,id);}
+   for(const[key,id]of pictureTiles){const[col,row]=key.split(',').map(Number);const x=col*16-Math.floor(s.camera);if(x<-16||x>=256||row<2)continue;
     if(id===95||id===96)continue;let y=row*16;
     const below=doorwayBottomTile(id,s.tiles.has(`${col},${row+1}`));if(below!==undefined)this.tile(below,x,y+16,this.rotation(s.area.palette));
-    const age=s.bump.get(key);if(age!==undefined&&!s.usedBlockRehits.has(key)&&bumpShown(id))y-=Math.round(Math.sin(age/16*Math.PI)*4);
+    const age=s.bump.get(key);if(age!==undefined&&!s.blockGraphics.some(b=>b.key===key)&&!s.usedBlockRehits.has(key)&&bumpShown(id))y-=Math.round(Math.sin(age/16*Math.PI)*4);
     if(s.level.id==='8-4'&&s.area.id==='area-2'&&col===38&&row===9&&id===196){
      // The revealed foothold uses the observed gray castle palette.
      for(const [index,tile] of [87,88,89,90].entries())this.quad('background-tiles-0f-30-10-00.png',[(tile%16)*8,Math.floor(tile/16)*8,8,8],x+(index%2)*8,y+Math.floor(index/2)*8,0,false,false,false);
@@ -254,13 +258,14 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    for(const e of s.enemies){const picture=enemyPicture(e);if(e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}
+   for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
    if(s.area.theme==='water')for(const bubble of s.bubbles)if(nativeBubbleShown(bubble,s.player.y,s.camera))this.spriteTile(0x74,(Math.floor(bubble.x)-Math.floor(s.camera))&255,bubble.y+1,'0f-16-30-27');
    for(const popup of s.popups){
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
    }
-   for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x-4-s.camera,y-4+(bar.visualOffsetY??0));
+   for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));
    const pole=s.area.exit;
    if(pole?.kind==='flag'){
     this.special('flagpole_flag',pole.x-16-s.camera,s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,1);
