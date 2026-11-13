@@ -17,6 +17,10 @@ function contactFixture(block=false){const level:Level={id:'other-cause-fixture'
 test('Star and fired-fireball Goomba deaths keep their separate legacy motor',()=>{
  for(const cause of['star','fireball']){const s=contactFixture();if(cause==='star'){s.items.push({kind:'star',x:40,y:192,vx:0,vy:0,age:0,life:100});s.step([],1);}else s.player.size=2;const e=s.enemies[0];for(let i=0;i<80&&!e.dead&&s.phase==='play';i++)s.step(cause==='star'?['right','b']:['b'],1);assert.ok(e.dead);assert.equal(e.greenShellLaunchFrame,undefined);const x=e.x;s.step([],40);assert.equal(e.x,x);assert.ok(e.vy>3);}
 });
-test('a real block bump retains its separate Goomba defeat path',()=>{
- const s=contactFixture(true),e=s.enemies[0];for(let i=0;i<40&&!e.dead&&s.phase==='play';i++)s.step(['a'],1);assert.ok(e.dead);assert.equal(e.greenShellLaunchFrame,undefined);const x=e.x;s.step([],40);assert.equal(e.x,x);assert.ok(e.vy>3);
+test('a real block bump uses the native double-stun Goomba path',()=>{
+ const s=contactFixture(true),e=s.enemies[0];for(let i=0;i<40&&!e.dead&&s.phase==='play';i++)s.step(['a'],1);assert.ok(e.dead);assert.equal(e.greenShellLaunchFrame,undefined);
+ // HandleEToBGCollision($23) calls SetStun twice, then MoveDefeatedEnemy:
+ // raw Y120 ->116 ->113; X moves away from Mario, with retained fraction.
+ assert.deepEqual([e.walkerState,e.y,e.vx,e.defeat?.speed,e.defeat?.force,e.defeat?.fraction],[34,137,1,-3,61,0]);
+ const x=e.x;s.step([],40);assert.equal(e.x,x+40);assert.equal(e.defeat?.speed,3);assert.ok(e.defeat!.force<128);assert.equal(e.vy,3+e.defeat!.force/256);
 });
