@@ -830,6 +830,30 @@
           "offset": 108
         }
       ]
+    },
+    "ae47": {
+      "objects": [
+        {
+          "column": 80,
+          "command": 9,
+          "offset": 34
+        },
+        {
+          "column": 96,
+          "command": 9,
+          "offset": 42
+        },
+        {
+          "column": 192,
+          "command": 10,
+          "offset": 116
+        },
+        {
+          "column": 199,
+          "command": 7,
+          "offset": 118
+        }
+      ]
     }
   },
   "bindings": {
@@ -864,6 +888,14 @@
     "8-4/area-5": {
       "stream": "a3fc",
       "origin": 256
+    },
+    "2-2/area-2": {
+      "stream": "ae47",
+      "origin": 0
+    },
+    "7-2/area-4": {
+      "stream": "ae47",
+      "origin": 0
     }
   }
 }

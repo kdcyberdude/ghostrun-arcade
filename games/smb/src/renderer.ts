@@ -1,3 +1,4 @@
+import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
 import {loadPixelTexture,pixelCamera,pixelQuad} from '../assets/three-assets.mjs';
 import manifest from '../assets/graphics/graphics-manifest.json';
@@ -198,7 +199,7 @@ export class GameRenderer {
     else{const tile=0x60+((s.random.frame>>1)&3);this.spriteTile(tile,screenX,(y&255)+1,'0f-16-30-27');this.spriteTile(tile,screenX,((y+8)&255)+1,'0f-16-30-27',false,true);}
    }else this.special('jumping_coins-'+Math.floor(i.age/4)%4,x,i.y);
   }
-  if(i.kind==='fireball')this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x,i.y);
+  if(i.kind==='fireball')this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x,i.y);
   if(i.kind==='hammer'){
    const phase=i.nativeHammer?(i.nativeHammer.state===0x81&&!s.powerChange?(s.random.frame>>2)&3:0):Math.floor(i.age/4)%4;
    const descriptor=specialSprites.records.find(record=>record.file===`sprite-hammers-${phase}.png`)!.descriptor,palette=manifest.palette_observations[s.area.palette].palette.slice(28,32).map(n=>n.toString(16).padStart(2,'0')).join('-');
@@ -264,7 +265,7 @@ export class GameRenderer {
     const assembly=popupAssemblies.records.find(record=>record.value===popup.value);if(!assembly)continue;
     for(const piece of assembly.pieces)this.spriteTile(piece.tile,popup.x+piece.x,popup.y+piece.y,'0f-16-30-27',false,false,2.5);
    }
-   for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+Math.floor(s.frame/4)%4,x-4-s.camera,y-4+(bar.visualOffsetY??0));
+   for(const bar of s.area.firebars??[])for(const {x,y}of s.firebarCenters(bar))this.special('fireball_or_firebar-'+nativeFireballPhase(s.random.frame),x-4-s.camera,y-4+(bar.visualOffsetY??0));
    const pole=s.area.exit;
    if(pole?.kind==='flag'){
     this.special('flagpole_flag',pole.x-16-s.camera,s.phase==='flag'?s.flagTop:FLAG_COMPLETION.flagTopY,1);

@@ -50,13 +50,13 @@ test('the native area-parser task7 postpones a lift initialization by one row',(
  const sim:any=new Simulation([level]);sim.reset(true);sim.enemies=[];
  const p=sim.area.platforms.find((p:any)=>p.x===1980&&p.y===32)!;sim.area.platforms=[p];
  const o=nativePlatformObject(p,sim.platformMotion.context)!;
- sim.camera=nativePlatformSpawnCamera(o);sim.frame=100;sim.platformFrame=100;sim.scrollCrossFrame=99;
+ sim.camera=nativePlatformSpawnCamera(o);sim.frame=100;sim.platformFrame=100;sim.parserClock.task=7;
  sim.platformMotion.advance(100,sim.camera,40);sim.platformSlotResidues();
  assert.equal(sim.platformSlots.size,0,'a blocked parser cannot run a platform initializer');
  assert.equal(sim.slotYSpeed[0],0,'native slot speed is unchanged until initialization');
  sim.gateNativePlatforms(sim.camera-1);
  assert.equal(sim.platformMotion.waiting.has(p),true);assert.ok(sim.platformMotion.collisionPosition(p,100).y>1000);
- sim.frame=101;sim.platformFrame=101;sim.platformMotion.advance(101,sim.camera,41);sim.gateNativePlatforms(sim.camera);
+ sim.frame=101;sim.platformFrame=101;sim.parserClock.task=6;sim.platformMotion.advance(101,sim.camera,41);sim.gateNativePlatforms(sim.camera);
  assert.equal(sim.platformMotion.waiting.has(p),false);assert.equal(sim.platformMotion.collisionPosition(p,101).y,32);
 });
 
