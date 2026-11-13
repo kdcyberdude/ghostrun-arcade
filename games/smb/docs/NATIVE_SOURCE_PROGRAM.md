@@ -40,3 +40,13 @@ runtime equivalence**. The next boundary is the shared source machine: CPU/PPU
 phase, status/sprite-0 reads, source RAM, VRAM/OAM, sound writes, and resumable
 instruction execution must advance from initial reset without later native RAM
 corrections. Runtime integration and full World1-1 parity remain unverified.
+
+`native-gameplay-procedure.json` adds 209 actual GameCore/parser calls across
+8 World1-1 observation windows and 3,216 executed instruction PCs. The observer
+replays genuine POWERON inputs, verifying every native RAM row through each
+window, and captures CPU/RAM once at entry and at the actual outer RTS. Four
+calls cross a PPU sample; their intermediate CPU and all RAM bytes are retained.
+The source machine reproduces every instruction count, cycle/register result,
+complete RAM result and partial sample without intermediate state correction.
+These isolated procedure tests complement reset-owned continuous execution;
+the snapshots are test inputs, not runtime state or synchronization rules.
