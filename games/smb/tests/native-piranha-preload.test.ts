@@ -49,5 +49,6 @@ test('retained Piranha flags keep their frame timer and motor after the low-byte
  sim.camera=480;assert.equal(sim.holdsNativeSlot(plant),true);sim.releaseNativeSlots();assert.equal(plant.slotFreed,false);
  for(let frame=0;frame<5;frame++){sim.frame++;sim.tickIntervalTimers();sim.updateNativePiranha(plant);}
  assert.equal(plant.pir.timer,0);assert.equal(plant.pir.flag,1);
- sim.camera=513;assert.equal(sim.holdsNativeSlot(plant),false);
+ sim.camera=513;sim.releaseNativeSlots();assert.equal(sim.holdsNativeSlot(plant),true,'slot stays owned until its source offscreen handler');
+ sim.eraseOffscreenEnemies();assert.equal(plant.dead,100);assert.equal(plant.slotFreed,true);assert.equal(sim.holdsNativeSlot(plant),false);
 });
