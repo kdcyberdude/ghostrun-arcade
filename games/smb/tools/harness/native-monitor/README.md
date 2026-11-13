@@ -78,8 +78,10 @@ Where the time went (one browser shard, per frame): native picture base64 transf
 SwiftShader rendering is CPU-bound: beyond ~20 shards on 48 cores throughput stops improving. The GPU
 (`--use-angle=gl-egl`) renders identical pixels but read-back stalls made it slower (16.5 ms/frame).
 Node state replay under tsx ran at 210 frames/s; its keep-names transform wraps every closure in the
-source-machine hot loop. The esbuild bundle runs at ~1,700 frames/s per worker; the rest is the game's own
-6502 timing emulation.
+source-machine hot loop. The esbuild bundle ran at ~1,700 frames/s per worker while the remake still embedded a copy
+of the original program for lag timing (~90% of the remaining time); that copy is gone (commit
+ab3e2f2), and the World 1-1 state check now takes 8.5 s on 24 workers. Native lag frames (6 in the corpus)
+are skipped in both checks and counted unchecked; see TERMINAL.md.
 
 ## Verification
 
