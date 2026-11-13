@@ -60,3 +60,21 @@ test('CLI water integration retains exact context, payload checks and native ID5
   fs.writeFileSync(cannon,JSON.stringify({totals:{...policy.coverage,activeRows:4702}}));assert.equal(run().status,1);assert.ok(JSON.parse(fs.readFileSync(out)).failures.some(f=>f.code==='changed-cannon-input-coverage'));
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('cannon batch classifications require exact old/new frames, historical baseline and both earlier upstream frames',()=>{
+ const fingerprint='d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41';
+ const ready={baselineFingerprint:fingerprint,before:{strict:{y:444,level:3651,'continuation.frameCounter':3651}},after:{strict:{y:444,level:3651,'continuation.frameCounter':3651}}};
+ const checkReady=(was,now,context=ready)=>compareFields('7-1','strict',{'continuation.load.ready':was},{'continuation.load.ready':now},context);
+ assert.equal(checkReady(null,3651).failures.length,0);
+ for(const [was,now]of [[3652,3651],[null,3650],[null,3652]])assert.equal(checkReady(was,now).failures.length,1);
+ for(const field of ['y','level','continuation.frameCounter']){const c=structuredClone(ready);c.after.strict[field]++;assert.equal(checkReady(null,3651,c).failures.length,1);}
+ assert.equal(checkReady(null,3651,{...ready,baselineFingerprint:'other'}).failures.length,1);
+ const kind={baselineFingerprint:fingerprint,before:{strict:{missing:1382,extra:1380,position:1553}},after:{strict:{missing:1450,extra:1450,position:1553}}};
+ const checkKind=(was,now,context=kind,rules=policy.rules)=>compareFields('8-2','strict',{kind:was},{kind:now},context,rules);
+ assert.equal(checkKind(1476,1453).failures.length,0);
+ for(const [was,now]of [[1475,1453],[1477,1453],[1476,1452],[1476,1454]])assert.equal(checkKind(was,now).failures.length,1);
+ for(const side of ['before','after'])for(const field of ['missing','extra','position']){const c=structuredClone(kind);c[side].strict[field]++;assert.equal(checkKind(1476,1453,c).failures.length,1);}
+ assert.equal(checkKind(1476,1453,{...kind,baselineFingerprint:'other'}).failures.length,1);
+ const rule=policy.rules.find(r=>r.level==='8-2'&&r.field==='kind');
+ for(const side of ['beforeFrame','frame']){const r=structuredClone(rule),c=structuredClone(kind);r.upstream[side]=1453;c[side==='beforeFrame'?'before':'after'].strict.missing=1453;assert.equal(checkKind(1476,1453,c,[r]).failures.length,1,'each upstream frame must precede now');}
+});

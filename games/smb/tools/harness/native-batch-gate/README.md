@@ -42,3 +42,13 @@ node tools/harness/native-batch-gate/compare.mjs \
   --cannon-coverage /path/to/cannon-coverage.json \
   --out /path/to/comparison.json
 ```
+
+The cannon batch-C proof uses an exact historical baseline fingerprint and
+specific was/now pairs. An upstream object may name `beforeFrame` when its
+first divergence improves: the gate checks that old value and the current
+`frame`, and requires BOTH to precede the changed field. `alsoRequired` adds
+exact before/after field witnesses; `alsoUnchanged` keeps its existing unchanged
+witness contract. These are source-evidence classifications, not runtime rules
+or generic permission to move any later field earlier. The portable cannon
+artifact includes both wrong-slot Piranha1450 witnesses and the native bounds
+call that erased its preceding shot1380.

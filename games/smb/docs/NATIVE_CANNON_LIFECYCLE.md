@@ -43,3 +43,19 @@ normal lab/NeSLE headers, then native-enemy-cursor-traces.py --levels8-3,7-1,5-2
 (using the normal spaced CLI arguments) and native-cannon-events.ts.
 Focused checks: npx tsx --test tests/native-cannon-bounds.test.ts
 tests/native-enemy-rules.test.ts. NativeROM/emulator archives are never committed.
+
+Batch-C classification is in `evidence/native-cannon-batch-causal.json`.
+A cannon-only counterfactual on the combined candidate reproduces both fields
+while retaining every other batch fix.8-2's extra1380 is an actual native
+pre-motion erasure, proved by another read-only CPU call. Both trajectories
+still misassign Piranha1450 to4 instead of native2. Corrected timers fire into
+wrongly free2 at1453; old timers delay that kind mismatch until1476. The exact
+gate requires old/new missing1382→1450, extra1380→1450 and unchanged position1553;
+both upstream missing firsts must precede1453. Allocation remains unfixed.
+
+For7-1, native starts logical7-2 loading3651 (task0/engine5). The corrected
+replay still plays7-1; the old replay is already game-over7-1. Both have earlier
+playerY444 and wrong level/counter3651. Old readyfalse matches accidentally.
+The exact null→3651 gate requires those unchanged witnesses and the historical
+baseline fingerprint. Ten gate selftests reject alternate was/now, baseline
+and upstream contexts. No runtime edits or full gates accompany this evidence.

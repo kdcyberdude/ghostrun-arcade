@@ -198,11 +198,83 @@
           "frame": 3813
         }
       ],
-      "reason": "The source ProcHammerObj TimerControl guard correctly holds later misc slot4 after the same-row existing false model death3813. Removing only the guard restores old accidental state138 match; guard retains139. Earlier extra264, missing341 and death3813 are unchanged; position619\u2192914 improves. Exact documented downstream case only.",
+      "reason": "The source ProcHammerObj TimerControl guard correctly holds later misc slot4 after the same-row existing false model death3813. Removing only the guard restores old accidental state138 match; guard retains139. Earlier extra264, missing341 and death3813 are unchanged; position619→914 improves. Exact documented downstream case only.",
       "evidence": {
         "commit": "f447d19",
         "path": "games/smb/evidence/native-hammer-hold-causal-8-3.json",
         "sha256": "37ddbfc35c76dc3099816b3cdcf41a7c40f4526f32762f5fd17c8477b3796844"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "7-1",
+      "field": "continuation.load.ready",
+      "was": [
+        null
+      ],
+      "floor": 3651,
+      "now": 3651,
+      "baselineFingerprint": "d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41",
+      "upstream": {
+        "scope": "strict",
+        "field": "y",
+        "frame": 444
+      },
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "level",
+          "frame": 3651
+        },
+        {
+          "scope": "strict",
+          "field": "continuation.frameCounter",
+          "frame": 3651
+        }
+      ],
+      "reason": "Cannon-only A/B: both trajectories already have playerY444 and wrong nextlevel/counter3651. At native load3651, corrected path remainsplay (readytrue), priorpath gameover (accidentalreadyfalse). Source load runtime unchanged.",
+      "evidence": {
+        "path": "games/smb/evidence/native-cannon-batch-causal.json",
+        "sha256": "d319ef62ee0e0092b710f9f5f48d4c7a26a8d00818bbacf47b82c160046d743e"
+      }
+    },
+    {
+      "type": "causal",
+      "scope": "strict",
+      "level": "8-2",
+      "field": "kind",
+      "was": [
+        1476
+      ],
+      "floor": 1453,
+      "now": 1453,
+      "baselineFingerprint": "d819fd9103842c01d2b97ae233bbce35f528d37f9b4585dfaa9eaf81ab186e41",
+      "upstream": {
+        "scope": "strict",
+        "field": "missing",
+        "beforeFrame": 1382,
+        "frame": 1450
+      },
+      "alsoRequired": [
+        {
+          "scope": "strict",
+          "field": "extra",
+          "beforeFrame": 1380,
+          "frame": 1450
+        }
+      ],
+      "alsoUnchanged": [
+        {
+          "scope": "strict",
+          "field": "position",
+          "frame": 1553
+        }
+      ],
+      "reason": "Both cannon-only A/B trajectories have wrong-slot Piranha1450 (native2,model4). Correct removal fixesextra1380 and yields nativeentry4timer0; subsequent wrong free slot2 fires1453, exposingkindearlier. Oldtimerhistory merelykeepsslot2empty until1476. Actual nativeerase1380 andboth1450witnesses preserved.",
+      "evidence": {
+        "path": "games/smb/evidence/native-cannon-batch-causal.json",
+        "sha256": "d319ef62ee0e0092b710f9f5f48d4c7a26a8d00818bbacf47b82c160046d743e"
       }
     }
   ],

@@ -2,6 +2,7 @@ import fs from 'node:fs';import {createHash} from 'node:crypto';import {parseArg
 export const reportFingerprint=rows=>createHash('sha256').update(JSON.stringify(rows)).digest('hex');
 export const policy=JSON.parse(fs.readFileSync(new URL('./exceptions.json',import.meta.url)));
 const earlier=(now,was)=>now!==null&&(was===null||now<was);
+const conditionMatches=(context,c)=>context?.before?.[c.scope]?.[c.field]===(c.beforeFrame??c.frame)&&context?.after?.[c.scope]?.[c.field]===c.frame;
 export function compareFields(level,scope,before,after,context,policyRules=policy.rules){
  const changes=[],failures=[];
  for(const [field,was]of Object.entries(before)){
@@ -9,8 +10,8 @@ export function compareFields(level,scope,before,after,context,policyRules=polic
   const now=after[field];if(now===was)continue;
   const change={level,scope,field,was,now,classification:earlier(now,was)?'unclassified-regression':'improvement'};
   if(earlier(now,was)){
-   const rule=policyRules.find(r=>r.level===level&&r.scope===scope&&r.field===field&&r.was.includes(was)&&(r.baselineFingerprint===undefined||context?.baselineFingerprint===r.baselineFingerprint)&&now>=r.floor&&(r.now===undefined||now===r.now)&&(r.run===undefined||context?.run===r.run)&&(!r.upstream||(context?.before?.[r.upstream.scope]?.[r.upstream.field]===r.upstream.frame&&context?.after?.[r.upstream.scope]?.[r.upstream.field]===r.upstream.frame&&r.upstream.frame<now))&&(!r.alsoUnchanged||r.alsoUnchanged.every(c=>context?.before?.[c.scope]?.[c.field]===c.frame&&context?.after?.[c.scope]?.[c.field]===c.frame)));
-   if(rule)Object.assign(change,{classification:rule.type,reason:rule.reason,...(rule.upstream?{upstream:rule.upstream}:{}),...(rule.alsoUnchanged?{alsoUnchanged:rule.alsoUnchanged}:{}),...(rule.evidence?{evidence:rule.evidence}:{})});else failures.push(change);
+   const rule=policyRules.find(r=>r.level===level&&r.scope===scope&&r.field===field&&r.was.includes(was)&&(r.baselineFingerprint===undefined||context?.baselineFingerprint===r.baselineFingerprint)&&now>=r.floor&&(r.now===undefined||now===r.now)&&(r.run===undefined||context?.run===r.run)&&(!r.upstream||(conditionMatches(context,r.upstream)&&(r.upstream.beforeFrame??r.upstream.frame)<now&&r.upstream.frame<now))&&(!r.alsoUnchanged||r.alsoUnchanged.every(c=>context?.before?.[c.scope]?.[c.field]===c.frame&&context?.after?.[c.scope]?.[c.field]===c.frame))&&(!r.alsoRequired||r.alsoRequired.every(c=>conditionMatches(context,c))));
+   if(rule)Object.assign(change,{classification:rule.type,reason:rule.reason,...(rule.upstream?{upstream:rule.upstream}:{}),...(rule.alsoUnchanged?{alsoUnchanged:rule.alsoUnchanged}:{}),...(rule.alsoRequired?{alsoRequired:rule.alsoRequired}:{}),...(rule.evidence?{evidence:rule.evidence}:{})});else failures.push(change);
   }
   changes.push(change);
  }
