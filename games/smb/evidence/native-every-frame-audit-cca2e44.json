@@ -1,0 +1,84 @@
+{
+  "schema": "smb-completed-every-frame-audit-v2",
+  "runtimeCommit": "cca2e44cff28d07595b6def7e2efc5ed356fcd56",
+  "progress": {
+    "status": "complete",
+    "started": "2026-11-13T11:57:30.067Z",
+    "updated": "2026-11-13T14:54:12.706Z",
+    "finished": "2026-11-13T14:54:12.702Z",
+    "active": [],
+    "done": 368,
+    "total": 368,
+    "directlyComparedFrames": 5178452
+  },
+  "recordings": 368,
+  "verifiedNativeFrameChecks": 5178452,
+  "errors": [],
+  "world11": {
+    "matching": 1097969,
+    "notMatching": 64263,
+    "unchecked": 0,
+    "total": 1162232,
+    "state": {
+      "matching": 1107749,
+      "notMatching": 54483,
+      "unchecked": 0,
+      "total": 1162232
+    },
+    "picture": {
+      "matching": 1100503,
+      "notMatching": 61729,
+      "unchecked": 0,
+      "total": 1162232
+    }
+  },
+  "scope": "Older frozen cca2e44 build; not validation of newer main fixes. Every frame observed after failures, first divergence diagnostic only. Picture rule remains channel tolerance24 and blobs>15 fail; not raw exactness.",
+  "reports": [
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/plan.json",
+      "sha256": "5afc81879cedf53bd81c670906acb263fba213ff084c4cf63a22416a3f94e332"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/combined-replay.json",
+      "sha256": "7c85bbb1e26c7f2a4478c46e67f4fd00e5982c806a5fb827f7e0f4c1bf4396a5"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/summary.json",
+      "sha256": "5c497c7c52b8ba4ab306cc0a43bc042b63844f3f0d09a8eac8a0df48d399cc4c"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-0.json",
+      "sha256": "3d3110e8fd3b00cabc1bdd196f507ad3358e4c6068dcc2d8822ca3b57adb4c30"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-1.json",
+      "sha256": "4af4eb486f4fbe2c0045329c341fb7e07d75f18e5e5326e37e0cd418deaf900e"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-2.json",
+      "sha256": "0036738273e7ef485521eb71047aea7ddfb753304d7c4ecaa2ccfe338314a5e7"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-3.json",
+      "sha256": "1be24f71ed4e41bc47562cd8cb3a7ee532b8834fccd8068ad18909897a822f5e"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-4.json",
+      "sha256": "d17e1a16eb96430b1ce1aba8e718088c560e706f0ca8bbc0db604be2829257e0"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-5.json",
+      "sha256": "489963aebb5e3f24f028f4abddbe2d2fc4d6eeff745b4aeaebae7a45c2971802"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-6.json",
+      "sha256": "acb87d6c090b12969ee8c4fa508941256fa38668c74ec513a85c9656e919ddb4"
+    },
+    {
+      "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/dashboard/cca2e44-every-frame/shard-7.json",
+      "sha256": "66a61d79bcf2593b9f98f31829122f38a85ef289d6e509628845d24b659c0dee"
+    }
+  ],
+  "registeredDashboard": "/home/kd/.codex/visualizations/2026/11/13/01a1d3a0-7825-7543-a2bc-1ab17e779c3e/smb-progress/sources.json",
+  "newerMainBatch": "Pending final HUD and timing integration; source-labelled validation follows, no parity claim."
+}
