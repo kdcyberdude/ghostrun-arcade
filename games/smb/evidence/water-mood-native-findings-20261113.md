@@ -175,3 +175,9 @@ Native DoPlayerSideCheck and ImpedePlayerMove also use ordinary-pass Y, left-bef
 New1,900-frame8f90807f and2,300-frame57d397 checkpoints cross both directions and corner contacts. Full178 fixed-window comparison improves130 field firsts and matching checked-RAM epochs141→155, with no earlier epoch-first error. Three later-field shifts are downstream of retained acdccc epoch9 X403: cursor721→717 and RNG/FrameCounter2082→1077. Full32 legacy/strict every-field firsts remain identical. Twenty-nine portable snapshots cover26,940 native frames. Only three normal-play epoch-first errors remain in this corpus (all X); twenty other epoch-firsts occur in engine11 death.
 
 All1,795 tests and TypeScript checks pass for this slice.
+
+## Water head contact preserves position before the side probes
+
+Native NYSpd sets Player_Y_Speed1 and leaves Player_Y_Position unchanged. The generic ceiling response temporarily snapped water Mario below the tile before swimContact restored his position; the intervening side probes therefore saw the wrong Y and missed simultaneous head/side contact. Water now keeps its reached Y throughout that stage. Capturec6ee76c6 source16235 hits a ceiling and right side at Y71: native and remake already agree on the head speed/force, but the native side response backs X2745→2744 and keeps only force248. A2,300-frame checkpoint starting14100 covers it.
+
+Full178 comparison improves21 field firsts, raises matching checked-RAM epochs155→158, and has zero earlier or downstream shifts. Full32 legacy/strict every-field firsts remain identical. All1,796 tests and TypeScript checks pass;30 portable snapshots cover29,240 native frames. The only remaining normal-play epoch-first is3476 epoch8 source17006: remake side-pipe phase starts17005 while facing left, although native CheckSideMTiles requires facing right; reported to the pipe owner. Nineteen other epoch-firsts occur during engine11 death.
