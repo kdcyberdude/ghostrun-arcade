@@ -1,0 +1,14 @@
+Native screen pictures
+======================
+
+ScreenRoutines supplies ModeTask/engine/screen task/DisableScreenFlag. The renderer now consumes nativeScreenPicture instead of elapsed intro visibility thresholds when that source state exists. InitializeMemory retains the PPU universal color; InitScreen's palette3 clears it to black. GetAreaPalette writes water's universal22 at screen10; GetPlayerColors writes the area's universal color at screen11. Simulation.nativeBackdrop advances on every logical step, including bulk replay without renderer calls.
+
+The fixture retains actual following PPU pictures:1,558 uniform-color pictures and118 caption/avatar cases across32 levels. Native screen7 shows the intermediate Mario; screen8 retains the lives caption while ResetSprites removes him. After source task3 exposes the background, engine0 has no player and engine7 draws him. Native pixels are compared at the existing one-frame NMI lag with no masks or added shifts.
+
+At canonical4302c61, dense1-1 frames985..1151 have zero differing playfield pixels across167 pictures. Dense7-4 time-up/lives/blank frames9825..10000 have zero differing playfield/HUD pixels across176 pictures. Dense1-4 new-world screen frames2700..2839 also have zero differing playfield/HUD pixels across140 pictures. Water2-2 frames1780..1950 have170 exact playfield pictures and7 foot pixels on first-engine7 picture1948: native cell23 stands while the old phaseintro fallback draws swimcell17. That separate player-cell gap remains explicit.
+
+Generic pipe loading still uses the older pipeLoading/pipeClearing state until the lifecycle worker extends nativeScreen to it. Water's initial load327..352 therefore retains eight mismatched pictures per level; this consumer does not hide or alter those frames. The native legacy first-field reports are identical on all32 levels. Excerpts,1736 tests and TypeScript pass. The fair sampled all32 before/after pixel gate is recorded separately after completion.
+
+Fair all32 sampled pixel comparison against the same2d41459 baseline:253,976→160,662 differing aligned pixels,798→787 nonzero frames; no compared frame of any level increased. Reports are /tmp/anim-ui-fair-before.json and /tmp/anim-ui-fair-after.json. These are sampled diagnostic counts, not whole-run exactness claims; native-pixels explicitly marks incomplete coverage.
+
+Follow-up: PlayerAnim's fresh standing picture also applies during source engine7 inside the visible loading screen, before phaseplay. The shared playerCell guard now covers that source state. Four first-GameEngine pictures from independently captured full-prefix death loads assert actual PlayerGfxOffset/8 and PlayerFacingDir. Water2-2 frames1940..1955 now have zero differing playfield pixels in all16 pictures, including the formerly incorrect seven foot pixels.1736 tests and TypeScript pass; simulation state is untouched.

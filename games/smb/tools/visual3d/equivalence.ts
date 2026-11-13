@@ -1,5 +1,6 @@
 // Presentation must preserve every simulation snapshot and audio cue. By default replay the standard route prefix.
 // Native replay: --traces=DIR --entrances=DIR [--levels=1-1,1-2] replays every retained v2 decision for all 32 levels.
+// --cases=FILE accepts [{id,level,traceDirectory,receiptDirectory}], used for native mood entry batches. --out=FILE writes a separate receipt.
 // --frames=N limits each replay (default: 2600 for route mode, unlimited for native mode).
 import {Simulation} from '../../src/simulation.js';
 import {observedLevels} from '../../src/levels.js';
@@ -10,16 +11,22 @@ import path from 'node:path';
 import {decodeEntrance,initializeEntrance} from '../harness/native-entrance.mjs';
 import type {Button} from '../../src/types.js';
 const arg=(k:string,d:string)=>process.argv.find(a=>a.startsWith(`--${k}=`))?.slice(k.length+3)??d;
-const traces=arg('traces',''),entrances=arg('entrances','');
+const traces=arg('traces',''),entrances=arg('entrances',''),cases=arg('cases','');
 if(traces&&!entrances)throw Error('--entrances is required with --traces');
-const N=Number(arg('frames',traces?'Infinity':'2600')),backend=arg('backend',process.platform==='darwin'?'metal':'gpu');
+const N=Number(arg('frames',traces||cases?'Infinity':'2600')),backend=arg('backend',process.platform==='darwin'?'metal':'gpu');
 const SNAPSHOT=`(s)=>JSON.stringify({frame:s.frame,phase:s.phase,level:s.level.id,area:s.area.id,player:{...s.player},camera:s.camera,lives:s.lives,score:s.score,time:s.time,coins:s.coins,enemies:s.enemies.map(e=>({...e}))})`;
 const FNV=`(t)=>{let h=2166136261;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16);}`;
 const snap=eval(SNAPSHOT) as (s:Simulation)=>string,fnv=eval(FNV) as (t:string)=>string;
-type Replay={level:string;route:Button[][];entrance?:unknown};
+type Replay={id?:string;level:string;route:Button[][];entrance?:unknown};
 type Run={hashes:string[];events:string[];finalSnapshot?:string};
 const replays:Replay[]=[];
-if(traces){
+if(cases){
+ const keys:Button[]=['a','b','select','start','up','down','left','right'];
+ for(const entry of JSON.parse(await readFile(cases,'utf8'))){
+  const pads=await readFile(path.join(entry.traceDirectory,'pads.bin')),entrance=decodeEntrance(new Uint8Array(await readFile(path.join(entry.traceDirectory,'initial.ram'))),JSON.parse(await readFile(path.join(entry.receiptDirectory,'entrance.json'),'utf8')));
+  replays.push({id:entry.id,level:entry.level,entrance,route:[...pads.subarray(0,N)].map(p=>keys.filter((_,i)=>p&(1<<i)))});
+ }
+}else if(traces){
  const only=arg('levels','').split(',').filter(Boolean),keys:Button[]=['a','b','select','start','up','down','left','right'];
  for(const level of observedLevels()){
   if(only.length&&!only.includes(level.id))continue;
@@ -59,7 +66,7 @@ async function browser(view:string){
 }
 const bases=replays.map(headless),orig=await browser('orig'),v25=await browser('3d');
 const firstDiff=(a:string[],b:string[])=>{for(let i=0;i<Math.max(a.length,b.length);i++)if(a[i]!==b[i])return i;return -1;};
-const levels=replays.map((replay,i)=>({level:replay.level,frames:bases[i].hashes.length,checks:{
+const levels=replays.map((replay,i)=>({id:replay.id,level:replay.level,frames:bases[i].hashes.length,checks:{
  origStatesVsHeadless:firstDiff(bases[i].hashes,orig.runs[i].hashes),v25StatesVsHeadless:firstDiff(bases[i].hashes,v25.runs[i].hashes),
  states3dVsOrig:firstDiff(orig.runs[i].hashes,v25.runs[i].hashes),events3dVsOrig:firstDiff(orig.runs[i].events,v25.runs[i].events),
  origEventsVsHeadless:firstDiff(bases[i].events,orig.runs[i].events),v25EventsVsHeadless:firstDiff(bases[i].events,v25.runs[i].events)},
@@ -67,7 +74,7 @@ const levels=replays.map((replay,i)=>({level:replay.level,frames:bases[i].hashes
  headless:JSON.parse(headless({...replay,route:replay.route.slice(0,orig.runs[i].firstMismatch!.frame+1)}).finalSnapshot!),
  original:JSON.parse(orig.runs[i].firstMismatch!.snapshot)}}:{}),
  events:bases[i].events.length,finalHash:bases[i].hashes.at(-1),msPerFrameInclRender:{orig:+orig.runs[i].ms.toFixed(2),v25:+v25.runs[i].ms.toFixed(2)},coverage:v25.runs[i].coverage}));
-const report={date:new Date().toISOString(),route:traces?'native entrance decisions':'data/observed-winning-inputs.json from standard reset; requested prefix only',renderer:v25.renderer,levels,errors:{orig:orig.errors,v25:v25.errors}};
+const report={date:new Date().toISOString(),route:traces||cases?'native entrance decisions':'data/observed-winning-inputs.json from standard reset; requested prefix only',renderer:v25.renderer,levels,errors:{orig:orig.errors,v25:v25.errors}};
 const pass=levels.length>0&&levels.every(l=>Object.values(l.checks).every(v=>v===-1))&&!orig.errors.length&&!v25.errors.length;
-await mkdir('visual3d/evidence',{recursive:true});await writeFile('visual3d/evidence/replay-equivalence.json',JSON.stringify({...report,verdict:pass?'PASS':'FAIL'},null,1)+'\n');
+const output=arg('out','visual3d/evidence/replay-equivalence.json');await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify({...report,verdict:pass?'PASS':'FAIL'},null,1)+'\n');
 console.log(JSON.stringify(report,null,1));console.log(pass?'REPLAY EQUIVALENCE PASS':'REPLAY EQUIVALENCE FAIL');process.exit(pass?0:1);

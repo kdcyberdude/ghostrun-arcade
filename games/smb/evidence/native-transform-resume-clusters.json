@@ -1,0 +1,249 @@
+{
+  "method": "Controlled before/after source methods on the same canonical runtime. Diagnostic first-field report, not immutable integration receipt.",
+  "cases": [
+    {
+      "id": "0a766fa4fee6a522569ef5c7fb56a7d73d3b4a863a742c0318bc1d21a833da17",
+      "entry": "0002",
+      "level": "1-2",
+      "globalPickup": 3409,
+      "sourceFrameOffset": 3113,
+      "baseline": "b5bce23 (canonical1dada86 plus native coin/emergence/contact units)",
+      "before": {
+        "level": null,
+        "area": null,
+        "dead": 5604,
+        "time": 3154,
+        "score": 3135,
+        "coins": 3147,
+        "cam": 3132,
+        "x": 3132,
+        "y": 3131,
+        "missing": 3147,
+        "extra": 403,
+        "kind": null,
+        "position": 355,
+        "state": null
+      },
+      "after": {
+        "level": null,
+        "area": null,
+        "dead": 5604,
+        "time": 3154,
+        "score": 3135,
+        "coins": 3147,
+        "cam": 3133,
+        "x": 3133,
+        "y": 3131,
+        "missing": 3147,
+        "extra": 3148,
+        "kind": null,
+        "position": 3130,
+        "state": null
+      },
+      "firstNewSample": {
+        "frame": 3130,
+        "area": "area-2",
+        "code": "position",
+        "native": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "koopa",
+          "x": 636,
+          "y": 184,
+          "source": "enemy",
+          "state": 4
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "koopa",
+          "x": 635,
+          "y": 184,
+          "source": "enemy"
+        }
+      },
+      "frames": 9895
+    },
+    {
+      "id": "304c4e4adb88320f7a842b1a29580a03f83ecd36e8ac3bd04f8675dbf6427077",
+      "entry": "0008",
+      "level": "2-1",
+      "globalPickup": 12431,
+      "sourceFrameOffset": 11520,
+      "baseline": "b5bce23 (canonical1dada86 plus native coin/emergence/contact units)",
+      "before": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": 4498,
+        "score": 4493,
+        "coins": null,
+        "cam": 1481,
+        "x": 976,
+        "y": 971,
+        "missing": null,
+        "extra": 1004,
+        "kind": null,
+        "position": 970,
+        "state": null
+      },
+      "after": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": 4498,
+        "score": 4493,
+        "coins": null,
+        "cam": 1481,
+        "x": 976,
+        "y": 971,
+        "missing": null,
+        "extra": 4482,
+        "kind": null,
+        "position": 1379,
+        "state": null
+      },
+      "firstNewSample": {
+        "frame": 1379,
+        "area": "main",
+        "code": "position",
+        "native": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "koopa",
+          "x": 2991,
+          "y": 184,
+          "source": "enemy",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 1,
+          "kind": "koopa",
+          "x": 2992,
+          "y": 184,
+          "source": "enemy"
+        }
+      },
+      "frames": 5395
+    },
+    {
+      "id": "371fe2fe065a2dc8787b9c2bc5bb50a9a6b4753c692a17f15e6e1c9642df98ff",
+      "entry": "0008",
+      "level": "2-1",
+      "globalPickup": 15014,
+      "sourceFrameOffset": 14460,
+      "baseline": "b5bce23 (canonical1dada86 plus native coin/emergence/contact units)",
+      "before": {
+        "level": 4590,
+        "area": null,
+        "dead": 4163,
+        "time": 3929,
+        "score": 3835,
+        "coins": 3982,
+        "cam": 617,
+        "x": 617,
+        "y": 614,
+        "missing": 3868,
+        "extra": 882,
+        "kind": 3830,
+        "position": 613,
+        "state": null
+      },
+      "after": {
+        "level": 4590,
+        "area": null,
+        "dead": 4163,
+        "time": 3929,
+        "score": 3833,
+        "coins": 3982,
+        "cam": 617,
+        "x": 617,
+        "y": 614,
+        "missing": 3868,
+        "extra": 3932,
+        "kind": 3828,
+        "position": 3759,
+        "state": null
+      },
+      "firstNewSample": {
+        "frame": 3759,
+        "area": "main",
+        "code": "position",
+        "native": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "paratroopa",
+          "x": 2373,
+          "y": 142,
+          "source": "enemy",
+          "state": 0
+        },
+        "sim": {
+          "bank": "enemy",
+          "slot": 0,
+          "kind": "paratroopa",
+          "x": 2374,
+          "y": 142,
+          "source": "enemy"
+        }
+      },
+      "frames": 4946
+    },
+    {
+      "id": "a3899256dba8b037df2c75807d4df9d6e7d22e9abe7a2d2d0e2978664c63882b",
+      "entry": "0008",
+      "level": "2-1",
+      "globalPickup": 12066,
+      "sourceFrameOffset": 10762,
+      "baseline": "b5bce23 (canonical1dada86 plus native coin/emergence/contact units)",
+      "before": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": 1618,
+        "score": 1610,
+        "coins": null,
+        "cam": 1607,
+        "x": 1607,
+        "y": 1364,
+        "missing": 742,
+        "extra": 742,
+        "kind": 906,
+        "position": 743,
+        "state": null
+      },
+      "after": {
+        "level": null,
+        "area": null,
+        "dead": 2588,
+        "time": 1618,
+        "score": 1611,
+        "coins": null,
+        "cam": 1607,
+        "x": 1607,
+        "y": 1364,
+        "missing": 742,
+        "extra": 742,
+        "kind": 906,
+        "position": 743,
+        "state": null
+      },
+      "firstNewSample": {
+        "frame": 742,
+        "area": "main",
+        "code": "missing",
+        "native": {
+          "bank": "enemy",
+          "slot": 4,
+          "kind": "goomba",
+          "x": 1648,
+          "y": 120,
+          "source": "enemy",
+          "state": 0
+        }
+      },
+      "frames": 2657
+    }
+  ]
+}

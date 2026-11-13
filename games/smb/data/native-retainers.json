@@ -1,0 +1,78 @@
+{
+ "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+ "source": "ProcessEnemyData RetainerObject $35; positions from native enemy streams, scene origins from ROM world/portal bindings. InitRetainerObj fixes Y=$b8.",
+ "areas": [
+  {
+   "level": "1-4",
+   "area": "main",
+   "x": 2448,
+   "nativeX": 2448,
+   "pointer": 40304,
+   "offset": 36,
+   "origin": 0
+  },
+  {
+   "level": "2-4",
+   "area": "main",
+   "x": 2448,
+   "nativeX": 2448,
+   "pointer": 40368,
+   "offset": 44,
+   "origin": 0
+  },
+  {
+   "level": "3-4",
+   "area": "main",
+   "x": 2448,
+   "nativeX": 2448,
+   "pointer": 40415,
+   "offset": 40,
+   "origin": 0
+  },
+  {
+   "level": "4-4",
+   "area": "main",
+   "x": 2960,
+   "nativeX": 2960,
+   "pointer": 40343,
+   "offset": 22,
+   "origin": 0
+  },
+  {
+   "level": "5-4",
+   "area": "main",
+   "x": 2448,
+   "nativeX": 2448,
+   "pointer": 40368,
+   "offset": 44,
+   "origin": 0
+  },
+  {
+   "level": "6-4",
+   "area": "main",
+   "x": 2448,
+   "nativeX": 2448,
+   "pointer": 40304,
+   "offset": 36,
+   "origin": 0
+  },
+  {
+   "level": "7-4",
+   "area": "main",
+   "x": 3472,
+   "nativeX": 3472,
+   "pointer": 40458,
+   "offset": 18,
+   "origin": 0
+  },
+  {
+   "level": "8-4",
+   "area": "area-5",
+   "x": 912,
+   "nativeX": 5008,
+   "pointer": 40479,
+   "offset": 55,
+   "origin": -4096
+  }
+ ]
+}

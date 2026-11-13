@@ -1,4 +1,5 @@
 import {test} from 'node:test';
+import {assertNativeCornerCase} from './helpers/native-corner.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
@@ -24,10 +25,6 @@ test('captured 1-1 ledge releases, stomp and running descent match observed feet
  assert.equal(sim.lives,3);assert.equal(sim.phase,'play');
 });
 
-test('an independent earlier reversal catches the observed narrow1-2 corner',()=>{
- const sim=new Simulation(observedLevels());sim.reset(true);const keys:Button[]=['up','down','left','right','a','b'];
- for(const [mask,frames]of inputs.actions.slice(0,403))sim.step(keys.filter((_,bit)=>Boolean(mask&(1<<bit))),frames);
- sim.step(['right','b'],inputs.actions[403][1]);
- assert.ok(Math.abs(sim.player.x-894)<=2,`${sim.player.x}`);assert.ok(Math.abs(sim.player.y-160)<=2,`${sim.player.y}`);
- assert.equal(sim.phase,'play');assert.equal(sim.lives,3);
+test('an independent source-native reversal catches the narrow1-2 corner',()=>{
+ assertNativeCornerCase('earlier-reversal');
 });

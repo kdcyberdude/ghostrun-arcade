@@ -29,7 +29,7 @@ test('a shell kick pays two chain steps up and leaves the chain (native 400 at r
  assert.equal(s.shellKickAward(),400);s.stompChain=1;assert.equal(s.shellKickAward(),500);s.stompChain=2;assert.equal(s.shellKickAward(),800);assert.equal(s.stompChain,2);
 });
 
-for(const [name,dx,dir] of [['native 688 on 689: right',-1,1],['native 1985 on 1983: right',2,1],['native 388 on 385: left',3,-1],['native 686 on 676: left',10,-1]] as const)
+for(const [name,dx,dir] of [['Mario left of pre-move shell',-1,1],['same integer x',0.625,1],['Mario two pixels right',2,-1],['Mario three pixels right',3,-1],['Mario ten pixels right',10,-1]] as const)
  test(`falling on a resting shell kicks it without a bounce (${name})`,()=>{
   const s=fixture([{kind:'koopa',x:100,y:208,direction:-1}]),e=s.enemies[0];e.active=true;e.shell=true;e.movingShell=false;e.vx=-0.5;
   drop(s,100+dx,192);fall(s,()=>!!e.movingShell);

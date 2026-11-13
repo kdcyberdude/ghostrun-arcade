@@ -10,13 +10,15 @@ function game(){
  const sim=new Simulation([level]);sim.reset(true);return sim;
 }
 
-test('mushroom growth freezes player, enemies and timer for the measured 59 native frames',()=>{
+test('source growth holds Mario for59 turns and resumes enemies on the DonePlayerTask turn',()=>{
  const sim=game();sim.items.push({kind:'mushroom',x:40,y:192,vx:0,vy:0,age:32,life:1000});sim.step([],1);
  assert.equal(sim.powerChange?.kind,'grow');assert.equal(sim.awardedScore,1000);
  const x=sim.player.x,enemyX=sim.enemies[0].x,time=sim.time,timer=sim.timerFrames;
- sim.step(['right'],27);sim.step(['a'],32);
+ sim.step(['right'],27);sim.step(['a'],31);
+ assert.equal(sim.enemies[0].x,enemyX);assert.equal(sim.powerChange?.remaining,1);
+ sim.step(['a'],1);
  assert.equal(sim.powerChange,undefined);assert.equal(sim.player.size,1);assert.equal(sim.player.x,x);
- assert.equal(sim.enemies[0].x,enemyX);assert.equal(sim.time,time);assert.equal(sim.timerFrames,timer);
+ assert.equal(sim.enemies[0].x,enemyX-0.5);assert.equal(sim.time,time);assert.equal(sim.timerFrames,timer);
  sim.step(['right'],4);assert.ok(sim.player.x>x);assert.ok(sim.enemies[0].x<enemyX);
 });
 
