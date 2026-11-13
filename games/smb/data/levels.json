@@ -11923,7 +11923,7 @@
           [
             12,
             9,
-            82
+            93
           ],
           [
             12,
@@ -12162,7 +12162,13 @@
         "autoWalk": false,
         "mazes": [],
         "vines": [],
-        "blockContents": [],
+        "blockContents": [
+          {
+            "col": 12,
+            "row": 9,
+            "kind": "multiCoin"
+          }
+        ],
         "evidence": "Image observations: evidence/local/subarea-1-2-controlled/trace.jsonl ticks503..532; initial actors/motion remain inferred.",
         "unresolved": [
           "Exact native-frame pipe animation timing needs ticks:1 replay around entrance and return.",
