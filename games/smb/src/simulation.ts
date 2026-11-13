@@ -908,11 +908,13 @@ export class Simulation {
   else if(area.waterEntryFall&&spawnAtEntry&&p.y<80){this.swimLock=2;p.y=32;p.vy=0;w.force=48;w.frac=24;w.rise=24;w.fall=40;}
  }
  private get whirlpools(){return (whirlpoolData.zones as Record<string,WhirlpoolZone[]>)[`${this.level.id}/${this.area.id}`];}
- /** A Down+A stroke from the water floor keeps the horizontal speed from speed byte 11 up, whatever direction is held (2-2/7-2 r5 floor strokes:
-  * 11 of 11, e.g. 7-2 mood0 row 797 4168 -> 4168; the remake braked 152 on 9). Below byte 11 the floor Down stop still applies; at the native surface bound (y < 20) a stroke cannot rise and floor braking remains (tests/water-pillar-top). */
+ /** Down masks steering on the floor, then a fresh stroke switches to swimming:
+  * ImposeFriction skips the masked neutral input. GetPlayerAnimSpeed can still
+  * clear speed when its prior absolute byte is low and raw LR disagrees with moving. */
  private floorDownStrokeKeeps(held:boolean,heldBefore:boolean,noInput:boolean,b:Set<Button>):boolean{
   const p=this.player,w=this.water;
-  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&Math.abs(w.motor.speed)>=11*256;
+  const rawDirection=(b.has('right')?1:0)|(b.has('left')?2:0),moving=this.marioMotion<0?2:this.marioMotion>0?1:0;
+  return p.grounded&&((Math.floor(p.y)-32)&255)>=SURFACE_Y&&!noInput&&b.has("down")&&w.canStroke(held,heldBefore,p.grounded)&&(this.swimAbsolute>=11||rawDirection===moving);
  }
  /** One swimming frame: vertical pass, horizontal speed and whirlpool pull (the movement itself is applied by update()). */
  private swimStep(b:Set<Button>,pressedA:boolean,direction:number){
