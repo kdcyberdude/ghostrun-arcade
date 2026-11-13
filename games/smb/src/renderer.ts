@@ -1,3 +1,5 @@
+import {nativeOamScanlines} from './native-oam.js';
+import {nativeOamPicture} from './native-oam-picture.js';
 import {nativeHammerPicturePhase} from './native-misc.js';
 import {nativeFireballPhase} from './native-fireball-picture.js';
 import * as THREE from 'three';
@@ -20,6 +22,7 @@ import type {Area,Enemy,Item} from './types.js';
 const A=(import.meta.env?.BASE_URL??'/')+'assets/graphics/';
 export class GameRenderer {
  renderer:THREE.WebGLRenderer;scene=new THREE.Scene();camera=pixelCamera(THREE);textures=new Map<string,THREE.Texture>();
+ private oamRows:number[]|undefined;private oamContext:{base:number,x:number,y:number}|undefined;nativeOamCapability:{supported:boolean,reasons:string[]}={supported:false,reasons:['not-rendered']};
  private pools=new Map<string,THREE.Mesh[]>();private used=new Map<string,number>();private worldClip=false;private textZ=5;private enemyOamZ=2;
  private rects=new Map(manifest.metatiles.map(t=>[t.id,t.rect]));
  private originalArea?:Area;private originalTiles=new Map<string,number>();private ropeColumns:number[]=[];
@@ -74,6 +77,21 @@ export class GameRenderer {
   }
  }
  private quad(name:string,rect:number[],x:number,y:number,z=0,flipX=false,flipY=false,sprite=true){
+  const context=this.oamContext,rows=this.oamRows;
+  if(context&&rows&&sprite&&rect[2]%8===0&&rect[3]%8===0){
+   const width=rect[2]/8,height=rect[3]/8,px=Math.floor(x),py=Math.floor(y);
+   const mask=(col:number,row:number)=>rows[((context.base+(py+row*8-context.y)/8*8+(px+col*8-context.x)/8*4)&255)/4];
+   if(Array.from({length:width*height},(_,i)=>mask(i%width,Math.floor(i/width))).some(v=>v!==255)){
+    this.oamContext=undefined;
+    for(let row=0;row<height;row++)for(let col=0;col<width;col++){
+     const visible=mask(col,row),sx=rect[0]+(flipX?width-1-col:col)*8,sy=rect[1]+(flipY?height-1-row:row)*8;
+     for(let start=0;start<8;){if(!(visible&(1<<start))){start++;continue;}let end=start+1;while(end<8&&(visible&(1<<end)))end++;
+      this.quad(name,[sx,sy+(flipY?8-end:start),8,end-start],px+col*8,py+row*8+start,z,flipX,flipY,sprite);start=end;
+     }
+    }
+    this.oamContext=context;return;
+   }
+  }
   const clipTop=sprite?0:32;
   if(this.worldClip&&(y<clipTop||y+rect[3]>240)){
    const top=Math.max(0,clipTop-y),bottom=Math.max(0,y+rect[3]-240);if(top+bottom>=rect[3])return;
@@ -215,6 +233,7 @@ export class GameRenderer {
   if(i.kind==='debris')this.tile(81,x,i.y,s.area.palette,2);
  }
  render(s:Simulation){
+  const oam=nativeOamPicture(s);this.nativeOamCapability={supported:oam.supported,reasons:oam.reasons};this.oamRows=oam.supported?nativeOamScanlines(oam.oam).rows:undefined;this.oamContext=undefined;
   const rotated=new Map<number,number>();this.rotation=index=>{let r=rotated.get(index);if(r===undefined)rotated.set(index,r=rotatedPalette(this.palettes,index,s.colorDrawRotations));return r;};
   this.scene.clear();this.used.clear();const boot=s.phase==='title'?titleBootColor(s.titleFrame):undefined;if(boot){this.renderer.setClearColor(boot);this.renderer.render(this.scene,this.camera);return;}const preview=s.pipePreviewArea;if(preview){this.renderer.setClearColor(preview.background??'#000000');this.worldClip=true;for(const [col,row,id]of preview.tiles)if(row>=2)this.tile(id,col*16,row*16,preview.palette);this.worldClip=false;this.hud(s,preview.palette,true);this.renderer.render(this.scene,this.camera);return;}const dark=['underground','castle','night'].includes(s.area.theme);
   if(this.originalArea!==s.area){this.originalArea=s.area;this.originalTiles=new Map(s.area.tiles.map(([x,y,id])=>[`${x},${y}`,id]));this.ropeColumns=liftRopeColumns(s.area);}
@@ -266,7 +285,7 @@ export class GameRenderer {
    this.worldClip=true;
    for(const spring of s.area.springs??[]){const compression=s.springCompression(spring);this.enemyCell(40+compression,spring.x-s.camera,spring.y-23+compression*8,spring.palette??'0f-1a-30-27');}
    }
-   for(const e of s.enemies){const picture=enemyPicture(e);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90)this.enemy(e,s);}this.enemyOamZ=2;
+   for(const e of s.enemies){const picture=enemyPicture(e);this.enemyOamZ=picture.enemySlot===undefined?2:2+(255-s.spriteShuffle.offsets[picture.enemySlot+1])/4096;if(s.enemyPictureShown(e)&&e.active&&e.graphicsVisible!==false&&picture.x-s.camera>-40&&picture.x-s.camera<272&&picture.dead<90){this.oamContext=this.oamRows?{base:s.spriteShuffle.offsets[picture.enemySlot!+1],x:Math.floor((picture.graphicsX??picture.x)-s.camera),y:Math.floor(picture.graphicsY??picture.y)-23}:undefined;this.enemy(e,s);this.oamContext=undefined;}}this.enemyOamZ=2;
    if(ordinary){
    for(const b of s.blockGraphics)for(const p of nativeBlockSprites(b,!['water','underground','castle'].includes(s.area.theme),s.camera)){const palette=this.palettes[s.area.palette].slice(16+p.palette*4,20+p.palette*4).map(v=>v.toString(16).padStart(2,'0')).join('-');this.spriteTile(p.tile,p.x,p.y,palette,p.flipX,p.flipY);}
    for(const i of s.items)this.item(i,s);
@@ -291,7 +310,7 @@ export class GameRenderer {
     }
    }
    }
-   if(playerVisible(s))this.player(s);
+   if(playerVisible(s)){this.oamContext=this.oamRows?{base:4,x:Math.floor(s.player.x-s.camera),y:Math.floor(s.player.y)-31}:undefined;this.player(s);this.oamContext=undefined;}
    this.worldClip=false;
   }
   const introLoading=screen?!screen.hud:s.phase==='intro'&&(!s.introFromGameover&&s.introHiddenEarly||s.introHiddenLate);
