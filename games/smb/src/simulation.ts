@@ -2485,7 +2485,7 @@ export class Simulation {
    while(nativeSlot<=Math.min(5,e.enemySlot??5))this.visitNativeBankSlot(nativeSlot++,oldBottom);
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined;
-   const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+   const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
