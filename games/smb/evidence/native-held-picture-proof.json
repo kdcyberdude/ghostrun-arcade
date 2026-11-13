@@ -1,0 +1,310 @@
+{
+  "schema": "native-held-picture-proof-v1",
+  "base": "cca2e44",
+  "candidate": "eaa5426",
+  "protocol": "Focused continuous POWER-ON replays from controller frame0; no native observation injection or reseeding. Reference source pixels are lossless authenticated captures. Selected diagnostic frames are explicit, not whole-run claims.",
+  "focused": [
+    {
+      "beforePath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/death-long/rows.json",
+      "afterPath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/death-long-after/rows.json",
+      "rows": [
+        {
+          "frame": 527,
+          "beforeWhole": 0,
+          "afterWhole": 0,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 0,
+          "afterField": 0
+        },
+        {
+          "frame": 528,
+          "beforeWhole": 74,
+          "afterWhole": 18,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 74,
+          "afterField": 18
+        },
+        {
+          "frame": 600,
+          "beforeWhole": 74,
+          "afterWhole": 18,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 74,
+          "afterField": 18
+        },
+        {
+          "frame": 733,
+          "beforeWhole": 74,
+          "afterWhole": 18,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 74,
+          "afterField": 18
+        },
+        {
+          "frame": 734,
+          "beforeWhole": 74,
+          "afterWhole": 18,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 74,
+          "afterField": 18
+        }
+      ]
+    },
+    {
+      "beforePath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/death-cycle/rows.json",
+      "afterPath": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/death-cycle-after/rows.json",
+      "rows": [
+        {
+          "frame": 1071,
+          "beforeWhole": 84,
+          "afterWhole": 0,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 84,
+          "afterField": 0
+        },
+        {
+          "frame": 1077,
+          "beforeWhole": 48,
+          "afterWhole": 0,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 48,
+          "afterField": 0
+        },
+        {
+          "frame": 1085,
+          "beforeWhole": 48,
+          "afterWhole": 0,
+          "beforeHud": 0,
+          "afterHud": 0,
+          "beforeField": 48,
+          "afterField": 0
+        }
+      ]
+    }
+  ],
+  "unresolved": "ae9583 injuring-slot1 MovingDir/Xspeed incorrectly remainsright in CCA physics, leaving18foot pixels duringTimerControl. Contacts owns source fix da594d5; no orientation guess in render code.",
+  "original1-1": {
+    "compared": 3020,
+    "coverage": {
+      "completeInputSequence": true,
+      "inputFrames": 3020,
+      "availableNativeFrames": 3020,
+      "allFrames": true,
+      "victory": false,
+      "excludedFrames": 0,
+      "excluded": {
+        "mode1": 0,
+        "mode2": 0,
+        "otherMode": 0,
+        "differentLevel": 0
+      },
+      "comparedFrames": 3020,
+      "alignedFrames": 3020,
+      "unresolvedAlignmentFrames": 0,
+      "noOverlapFrames": 0,
+      "partialOverlapFrames": 0,
+      "comparedAlignedPixels": 144960000,
+      "expectedAlignedPixels": 144960000,
+      "overlapFraction": 1
+    },
+    "wholePixels": 0,
+    "hudPixels": 0,
+    "fieldPixels": 0,
+    "alignedPixels": 0
+  },
+  "boot1533": {
+    "pin": "eaa542633f2cb2dac843d96c761ab9ff6e07614f",
+    "comparedFrames": 1533,
+    "allFramesActuallyCompared": true,
+    "wholePixels": 0,
+    "hudPixels": 0,
+    "fieldPixels": 0,
+    "results": [
+      {
+        "name": "start40",
+        "comparedFrames": 197,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "2a239cad71c8e521a8f7743bfa8ba5c46227d417f18c23e6b0f93a7d3c125d1a",
+          "ramSha256": "74964aedc371902813e0ccebd873a6c04ddc87b8f247210af01f2de7e2fb88e3",
+          "pixelsSha256": "cceab60bf0f72ffabae3e94b74bee40d15156eba65df54ab3bba27a2d03fc825",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 40,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 194
+        }
+      },
+      {
+        "name": "start80",
+        "comparedFrames": 239,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "d0ff22884b6128afe0d793dceff04ea55976b97c5e539aeaacd2e01e2f815fe3",
+          "ramSha256": "d5ca75deee18ca9c404e40e9ca13ff857d463de004cbb8f9f05f38e1aa40da3c",
+          "pixelsSha256": "4014db8d40e83608898c297ae4063543abdc2d81851d93cef307dda74e0c32ae",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 60,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 236
+        }
+      },
+      {
+        "name": "select40-start80",
+        "comparedFrames": 239,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "fad71faec0c8c02318df1f92edc6fc232c9640a9de1774e2c435f97404419415",
+          "ramSha256": "42590d82ac245edc3c4d15435fc6a1f71b32edf80e37159bc125e5e7b3661e0e",
+          "pixelsSha256": "99d638ec31609be2b4b9ae88b3108dcd81b61aa7d74c85aa1c697ad9d4bcac7f",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 40,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 236
+        }
+      },
+      {
+        "name": "a-start50",
+        "comparedFrames": 218,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "849b490c4301c7ba92e26e1cfa47b793f0681679e53735bf5feb26b63e0d13a3",
+          "ramSha256": "1048014d6c1557dc6606659b8b7dfce3c6b1cd4913afd709d582e28688e14b5f",
+          "pixelsSha256": "e42d797572c58d592621bb6daf7323f3cc2cf34b8840b4a169fc247a9551e20f",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 50,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 215
+        }
+      },
+      {
+        "name": "b-start40-start80",
+        "comparedFrames": 239,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "b565ee9e5f16797bb18876a241e1b75e32d59268ca598ce7aee777981f2a013b",
+          "ramSha256": "31c6c7eab233db5caa2d306c79613e18ea5c64b074cf4368d0010244d0471086",
+          "pixelsSha256": "4014db8d40e83608898c297ae4063543abdc2d81851d93cef307dda74e0c32ae",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 40,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 236
+        }
+      },
+      {
+        "name": "held-start0",
+        "comparedFrames": 120,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "3ede7b3833e0b33f83162c1ce5b16b883ba9dbc9c5053fc156de26b8eb9465e7",
+          "ramSha256": "7ac7b5690e27bef20da9a3404df959e68ca7c8cb2f51c0533516a3f8f3c01817",
+          "pixelsSha256": "7e786631497f4c49b590e9dc89087a4105dbf1037cb88f5bfc221fc0cbbc090b",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 0,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": null
+        }
+      },
+      {
+        "name": "held-start0-release-start120",
+        "comparedFrames": 281,
+        "nonzeroFrames": 0,
+        "wholePixels": 0,
+        "hudPixels": 0,
+        "fieldPixels": 0,
+        "firstDifference": null,
+        "receipt": {
+          "schema": "native-startup-prefix-v1",
+          "method": "Cold CPU RAMFF, PPUdot0, firsttarget241:1, nohiddenframes/noRAMwrites; suppliedcontrollerphaseprefix",
+          "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+          "observerSha256": "df4352bbfe5b8bc321633e47323fb24ca2097b7b68a1665d2ef03ed2205d123c",
+          "ramObserverSha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+          "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+          "padsSha256": "9709bedfb25cb835b8585bf6a18b9f75146d8dabac3d1a9f50ff8c5a712e5d0e",
+          "ramSha256": "7c98b44539c545a1e535b5f4237926132269d6b948a9491bd48ab3eb97c0d027",
+          "pixelsSha256": "e130c5adf091874bc0603a4494ce58d603c1a008cc1ad8e33363edd2a110a447",
+          "emphasisSha256": "69d03b1809e87b2b41cf3a4e8af1771305bca1534249119f5a1a7cb2e90a1b9a",
+          "commonReferenceFrames": 0,
+          "referenceRamSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+          "firstPlayerRdy": 278
+        }
+      }
+    ]
+  },
+  "focusedTests": 6,
+  "typescript": "pass",
+  "artifacts": {
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/original-eaa5426.json": "9161f81aed7c25e4508a5310d0228977b8b99611d0458be194585e1796504a36",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/render-tests.log": "50346d5023be894a752dc412ce14eed80b395538bcb68cd8f1c11bb2fe6a4c1d",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/tsc.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-eaa5426-ports54220/summary.json": "7266b48eb811c8ceab576db32a33f1c9a7065cd5a0f4c86b5cbacb619e43254e",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/boot-picture-proof/live-eaa5426-ports54220/provenance.json": "028c82adfcd0adc3e425614c0cb6db1df13520f2a151dd1979db26bcc9e00570",
+    "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/picture-only-cca2e44/probe.cjs": "8db198078a2e9d77de89b199727d109b5381b6fc17653ea0f3a86a9175685855"
+  }
+}
