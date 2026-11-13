@@ -28,6 +28,16 @@ export class FirebarSlots {
  /** EraseEnemyObject clears occupancy without rewinding the last motor step. */
  eraseAll(){for(let s=0;s<5;s++){const slot=this.slots[s];if(slot)this.free(s,slot);}}
  held(){return new Set(this.slots.flatMap((slot,s)=>slot?[s]:[]));}
+ slotOf(bar:Bar){const slot=this.slots.findIndex(s=>s?.bar===bar);return slot<0?undefined:slot;}
+ beginFrame(camera?:number){this.stepped.clear();if(camera!==undefined)this.enter(camera);}
+ turn(s:number,camera:number,run=true){
+  const slot=this.slots[s];if(!slot)return;
+  slot.previousUnits=slot.units;
+  if(run&&slot.bar.x-4-camera>0&&slot.bar.x-4-camera<256)this.advance(slot);
+  return slot.bar;
+ }
+ finishFrame(camera:number){this.enter(camera);}
+
  tracks(bar:Bar){return this.bars.includes(bar);}
  private enter(camera:number){
   for(let s=0;s<5;s++){
