@@ -176,11 +176,11 @@ test('8-2 start: the first Paratroopa is the native object at x 288 (first row f
  assert.deepEqual(xs,[288,384]); // native id 14 before x 900: 288 (initial) and 384 (f69715)
 });
 
-test('8-4 area-2: the Buzzy Beetle pair is 32 px apart (native 209/241 after 30 rows of 0.5 px = spawn 224/256) and the second paratroopa is created at x 688',()=>{
+test('8-4 area-2: ROM scene projection includes both Beetles and all four jumping Paratroopas',()=>{
  const area=observedLevels().find(l=>l.id==='8-4')!.areas.find(a=>a.id==='area-2')!;
  const beetles=area.enemies.filter(e=>e.kind==='beetle').map(e=>e.x).sort((a,b)=>a-b);
- assert.deepEqual(beetles,[224,256]); // native first row f76192: id 2 at x 209 and 241
- assert.deepEqual(area.enemies.filter(e=>e.kind==='paratroopa').map(e=>e.x).sort((a,b)=>a-b),[464,688,720]); // native id 14 first sightings f76325/76406/76420: x 464/688/720
+ assert.deepEqual(beetles,[256,288]); // Native births6481 at2048/2080 minus authenticated scene origin1792.
+ assert.deepEqual(area.enemies.filter(e=>e.kind==='paratroopa').map(e=>e.x).sort((a,b)=>a-b),[432,464,688,720]); // ROM ID14 records21/23/25/27; pictured sightings omitted the first actor.
 });
 
 test('1-4 main: hidden blocks (metatile 95, native collision map) at cols 106/109/112 row 9 and 107/110/113 row 5; native head bump under col 109 at x 1736',()=>{
