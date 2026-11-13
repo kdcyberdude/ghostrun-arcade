@@ -1,13 +1,14 @@
 {
   "schema": "smb-ram-corpus-fix-progress-v1",
-  "generatedAt": "2026-11-13T19:38:57.772Z",
+  "generatedAt": "2026-11-13T21:45:42.371Z",
   "status": "incomplete",
   "baselineCommit": "795ec985f1cc72d10263860a272366a7e2c33e5c",
   "runtimeSources": {
-    "games/smb/src/simulation.ts": "ebca7c872f272b95659bd63e7a91c7f50f22d9186fdc6c3d5b599e2ae2ed5b02",
+    "games/smb/src/simulation.ts": "cdb8a5a758dff2c30e3fcdb6ed1439f57425cb81e51121c5f443ea8a793bf36b",
     "games/smb/src/native-player-enemy-latch.ts": "9685b9b8d4dcb74bde5040d81336d7e2257454bc424abfee42fd8526234d29f3",
     "games/smb/data/levels.json": "9aba89d77a2a589ff15291b54d905ff810c34fe989f824a40a4ccbc8342b1e9d",
-    "games/smb/data/native-geometry-corrections.json": "680503eb7ba7fcedc51e34f49b79e03023449ef7f028ecaa345b1037d15221c7"
+    "games/smb/data/native-geometry-corrections.json": "680503eb7ba7fcedc51e34f49b79e03023449ef7f028ecaa345b1037d15221c7",
+    "games/smb/tools/harness/native-strict.ts": "57e46aeec1232960339ab3f85195e472f0aa0a491e95941725a0a3b25a606829"
   },
   "recordings": 368,
   "inputFrames": 5178452,
@@ -49,61 +50,61 @@
     "Left screen boundary preserves fractional position/speed and the facing/steering exception.",
     "Exit castles in 2-2 and 7-2 use the native solid door cell at column29,row12."
   ],
-  "remainingEvaluationSegments": 176,
+  "remainingEvaluationSegments": 133,
   "remainingByLevel": [
     {
       "level": "1-2",
-      "segments": 26,
-      "recordings": 25,
+      "segments": 25,
+      "recordings": 24,
       "examples": [
         {
           "id": "536bc848fe22400826d4d5a8f513e7590756694044c309cc3755146bb9b58f9c",
           "entry": 4,
           "area": "area-2",
           "sourceFrame": 2968,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
           "entry": 4,
           "area": "area-2",
           "sourceFrame": 3198,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
           "entry": 4,
           "area": "area-2",
           "sourceFrame": 4061,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
     {
       "level": "1-3",
-      "segments": 26,
-      "recordings": 25,
+      "segments": 20,
+      "recordings": 20,
       "examples": [
         {
           "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
           "entry": 7,
           "area": "main",
           "sourceFrame": 6739,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "0d12a2e4ff35f7c3a2a6596c00224d46bb28168962b987b169ce365270f5bbad",
           "entry": 6,
           "area": "main",
           "sourceFrame": 8028,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "b47452ef2d5e4ecc55d0f90aa829fab00f30a1a1f07ae8a7d06059396dc1a5e4",
           "entry": 5,
           "area": "main",
           "sourceFrame": 6674,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -117,21 +118,21 @@
           "entry": 8,
           "area": "main",
           "sourceFrame": 13393,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "cc17bab5a6f1c9a13ba304166ca198ca15814e51593e37f4fd0258ab81eafa25",
           "entry": 7,
           "area": "main",
           "sourceFrame": 9819,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
           "entry": 7,
           "area": "main",
           "sourceFrame": 15445,
-          "evidence": "current-patch"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -145,77 +146,77 @@
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
           "entry": 0,
           "area": "main",
           "sourceFrame": 938,
-          "evidence": "baseline-795ec98"
-        }
-      ]
-    },
-    {
-      "level": "2-1",
-      "segments": 57,
-      "recordings": 54,
-      "examples": [
-        {
-          "id": "232eab823a220706a910038c398f6b0317da717ac4f9655f0b0cc65423cb79a9",
-          "entry": 8,
-          "area": "main",
-          "sourceFrame": 12224,
-          "evidence": "baseline-795ec98"
-        },
-        {
-          "id": "f44229215eda3c2aecdea8c277052e7dfb560cc7280700808aa6da80fa5f0e90",
-          "entry": 8,
-          "area": "main",
-          "sourceFrame": 14232,
-          "evidence": "baseline-795ec98"
-        },
-        {
-          "id": "a9aa051457bcc42654c58c64413674af0866dea081ef145bedcc3254efe690ef",
-          "entry": 7,
-          "area": "main",
-          "sourceFrame": 12540,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
     {
       "level": "2-3",
-      "segments": 28,
-      "recordings": 25,
+      "segments": 20,
+      "recordings": 19,
       "examples": [
         {
-          "id": "9c64d0397bb9660b2e0729f8fd64ed0bfe0fa432b828dfd337cd7fa93a0d5d1f",
-          "entry": 11,
-          "area": "main",
-          "sourceFrame": 23696,
-          "evidence": "baseline-795ec98"
-        },
-        {
-          "id": "5b3c2ae44e9fb30ffa749ec973baf125d2f17085917e2b399a8c37c1c1ba8d93",
+          "id": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
           "entry": 12,
           "area": "main",
-          "sourceFrame": 20121,
-          "evidence": "baseline-795ec98"
+          "sourceFrame": 19618,
+          "evidence": "current-worlds-patch"
         },
         {
-          "id": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
+          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
+          "entry": 12,
+          "area": "main",
+          "sourceFrame": 18724,
+          "evidence": "current-worlds-patch"
+        },
+        {
+          "id": "24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
           "entry": 11,
           "area": "main",
-          "sourceFrame": 18129,
-          "evidence": "baseline-795ec98"
+          "sourceFrame": 19510,
+          "evidence": "current-worlds-patch"
+        }
+      ]
+    },
+    {
+      "level": "2-1",
+      "segments": 31,
+      "recordings": 30,
+      "examples": [
+        {
+          "id": "bec0f52a3021c72e93d7a8126c6e481c1176604f09234921c77afa9b2dbfe18e",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 12056,
+          "evidence": "current-worlds-patch"
+        },
+        {
+          "id": "01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 11753,
+          "evidence": "current-worlds-patch"
+        },
+        {
+          "id": "ff38f6f5ab48d512a04712f738589111f0dbe3a455ce60939a56cf70fb2d2796",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 10572,
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -229,21 +230,21 @@
           "entry": 13,
           "area": "main",
           "sourceFrame": 20966,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea",
           "entry": 13,
           "area": "main",
           "sourceFrame": 21033,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
           "entry": 11,
           "area": "main",
           "sourceFrame": 18760,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -257,49 +258,21 @@
           "entry": 13,
           "area": "main",
           "sourceFrame": 22205,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "37d55efe9bb775412b652c282449be287349b34189c36042d075d8cd2d565f31",
           "entry": 14,
           "area": "main",
           "sourceFrame": 23696,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "67829346ddd387babf836864a51bfffc3455ec30391b3fc4f9bc39fb272f5c99",
           "entry": 14,
           "area": "main",
           "sourceFrame": 27935,
-          "evidence": "baseline-795ec98"
-        }
-      ]
-    },
-    {
-      "level": "4-4",
-      "segments": 3,
-      "recordings": 2,
-      "examples": [
-        {
-          "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
-          "entry": 22,
-          "area": "main",
-          "sourceFrame": 38783,
-          "evidence": "baseline-795ec98"
-        },
-        {
-          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
-          "entry": 22,
-          "area": "main",
-          "sourceFrame": 37250,
-          "evidence": "baseline-795ec98"
-        },
-        {
-          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
-          "entry": 23,
-          "area": "main",
-          "sourceFrame": 47521,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -313,14 +286,14 @@
           "entry": 17,
           "area": "main",
           "sourceFrame": 35085,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         },
         {
           "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
           "entry": 16,
           "area": "main",
           "sourceFrame": 28654,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
         }
       ]
     },
@@ -334,7 +307,21 @@
           "entry": 19,
           "area": "area-3",
           "sourceFrame": 32472,
-          "evidence": "baseline-795ec98"
+          "evidence": "current-worlds-patch"
+        }
+      ]
+    },
+    {
+      "level": "4-4",
+      "segments": 1,
+      "recordings": 1,
+      "examples": [
+        {
+          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
+          "entry": 23,
+          "area": "main",
+          "sourceFrame": 47521,
+          "evidence": "current-worlds-patch"
         }
       ]
     }
@@ -472,5 +459,26 @@
       }
     }
   ],
-  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated."
+  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated. Latest worlds batch replays all 176 previously queued evaluation segments and the seven previously failing originals; unchanged passing segments were not rerun.",
+  "latestBatch": {
+    "recheckedSegments": 176,
+    "recheckedRecordings": 120,
+    "clearedSegments": 43,
+    "clearedByLevel": {
+      "1-3": 6,
+      "1-2": 1,
+      "2-1": 26,
+      "2-3": 8,
+      "4-4": 2
+    },
+    "firstMismatchEarlier": 0,
+    "testsPassed": 89,
+    "fixes": [
+      "Flying Cheep injury stops its current motion step and preserves the pre-contact motor.",
+      "Coin sparkle X ignores pending scroll on the injury/death frame.",
+      "Death clears only the horizontal speed byte, retaining its fraction.",
+      "Strict camera comparison normalizes 16-bit native wrap without changing gameplay.",
+      "Zero-horizontal-motion side probes include springs, keeping the native back-out/contact pause."
+    ]
+  }
 }

@@ -85,7 +85,7 @@ export function strictCompare(entrance:unknown,pads:ArrayLike<number>,ram:Uint8A
   lastVisit=visit;coverage.nativeMappedFrames++;check('area',visit.area,sim.area.id,f);
   if(sim.level.id!==nativeId||sim.area.id!==visit.area){gap(f,area,{code:'area-ownership-mismatch',detail:`native ${nativeId}/${visit.area}, remake ${sim.level.id}/${sim.area.id}; data=${ptr.toString(16)}, loaded page=${visit.context.startPage}, origin=${visit.offset}, load frame=${visit.frame}, task=${raw[0x772]}, look-ahead destination=${raw[0x750].toString(16)}`});for(const g of native.gaps)gap(f,area,g);continue;}
   coverage.alignedFrames++;coverage.comparedEntityRows+=native.entities.length;
-  check('cam',raw[0x71a]*256+raw[0x71c]+visit.offset!,Math.floor(sim.camera),f);
+  check('cam',raw[0x71a]*256+raw[0x71c],(Math.floor(sim.camera)-visit.offset!)&65535,f);
   check('x',raw[0x6d]*256+raw[0x86]+visit.offset!,Math.floor(sim.player.x),f);
   check('y',(raw[0xb5]-1)*256+raw[0xce],Math.floor(sim.player.y)-32,f);
   const differences=strictEntityDifferences(native,strictSimEntities(sim));

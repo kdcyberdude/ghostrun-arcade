@@ -894,9 +894,9 @@ export class Simulation {
   if(this.swimActive){this.swimSideWall(dx,h);return;}
   if(dx===0){
    for(const [upper,y] of [[true,p.y-h+4],[false,p.y-8]] as const){
-    const right=this.sideTileAt(p.x+13,y,upper);if(right&&this.acceptSidePipe(right))return;
+    const right=this.sideTileAt(p.x+13,y,upper)??this.springSideAt(p.x+13,y);if(right&&this.acceptSidePipe(right))return;
     if(right){if(this.swimActive)this.water.blockSide(1);p.x--;this.wallBackOut=true;this.motor.contact(1,false);return;}
-    if(this.sideTileAt(p.x+2,y,upper)){if(this.swimActive)this.water.blockSide(-1);p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
+    if(this.sideTileAt(p.x+2,y,upper)??this.springSideAt(p.x+2,y)){if(this.swimActive)this.water.blockSide(-1);p.x++;this.wallBackOut=true;this.motor.contact(-1,false);return;}
    }
    return;
   }
@@ -1818,7 +1818,7 @@ export class Simulation {
  private moveNativeCoin(i:Item){
   const n=i.nativeCoin!;
   if(n.state===1){i.y=nativeMiscGravity(n,i.y,0x50,6);if(n.speed===5)n.state++;}
-  else{n.state++;i.x+=this.lakituScroll;if(n.state===0x30){n.state=0;i.life=0;this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};return;}}
+  else{n.state++;if(!this.nativeTimersStopped)i.x+=this.lakituScroll;if(n.state===0x30){n.state=0;i.life=0;this.miscPositions[n.slot]={x:Math.floor(i.x),y:Math.floor(i.y)};return;}}
   const offscreen=nativeMiscOffscreen(Math.floor(i.x),Math.floor(i.y),this.camera+this.lakituScroll);
   if(n.state>=2&&!(this.random.frame&1))i.y--;
   i.vy=n.speed+n.force/256;Object.assign(this.miscHammerBytes[n.slot],{force:n.force,fraction:n.fraction,collision:n.collision??false});
@@ -2813,7 +2813,7 @@ export class Simulation {
      const playerRelative=this.hammerPlayerBox?((this.hammerPlayerBox[0]-(p.size===0?3:2))&255):(Math.floor(p.x)-Math.floor(camera))&255;
      if(nativeEnemyInjuryTurn(n,{id,playerRelative,enemyRelative:(Math.floor(priorX)-Math.floor(camera))&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer,injuryTimer:p.invincible,water:this.area.theme==='water'})){e.vx=((n.speed<<24)>>24)/16;e.direction=n.direction===1?1:-1;}
     }
-    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.nativeFlight&&stompPod){e.x=priorX;e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}
@@ -3238,7 +3238,7 @@ export class Simulation {
   this.player.y+=this.water.cancelLatePass();this.player.vy=this.water.speed+this.water.force/256;
  }
  hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
- die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=0;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
+ die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=(Math.round(this.player.vx*4096)&255)/4096;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
  private updateWaterEntryEnemies(){
