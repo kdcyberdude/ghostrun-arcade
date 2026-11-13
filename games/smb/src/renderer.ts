@@ -10,7 +10,7 @@ import {playerCell,playerVisible} from './player-cell.js';
 import {nativeScreenPicture} from './native-screen-picture.js';
 import {nativeFlagSprites} from './native-flag-picture.js';
 import {nativeBlockSprites} from './native-block-picture.js';
-import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeShellPhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from './enemy-picture.js';
 import {platformMotionModel,nativePlatformArtworkYs} from './platform-motion.js';
 import powerupRules from '../data/powerup-rules.json';
 import popupAssemblies from '../data/popup-assemblies.json';
@@ -118,7 +118,7 @@ export class GameRenderer {
   const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const blooper=nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped);
   const nativeCycle=!e.dead&&!e.shell&&['koopa','redKoopa','beetle','paratroopa','spiny','piranha','cheep'].includes(e.kind);
-  const phase=nativeCycle?nativeEnemyCyclePhase(s.random.frame,timersStopped):Math.floor(e.age/8)%2;
+  const phase=e.shell?nativeShellPhase(e.shellTimer??0,s.random.frame,timersStopped||Boolean(e.dead)||Boolean(e.movingShell)):nativeCycle?nativeEnemyCyclePhase(s.random.frame,timersStopped):Math.floor(e.age/8)%2;
   const openingCannonShot=s.level.id==='8-3'&&e.kind==='bullet'&&e.originX===288&&e.vx<0&&!e.dead;
   const fiveThreeLeftShot=s.level.id==='5-3'&&s.area.id==='main'&&e.kind==='bullet'&&e.vx<0&&!e.dead&&e.palette===undefined;
   let cell=14,palette='0f-0f-36-17';
@@ -163,8 +163,8 @@ export class GameRenderer {
    const top=Math.floor(e.y)-6;
    this.spriteTile(239,x,top,palette,false,true);this.spriteTile(239,x+8,top,palette,true,true);return;
   }
-  if(e.shell&&(e.kind==='koopa'||e.kind==='redKoopa')){
-   const shell=tables.enemy_cells[17+phase],launched=e.dead>0;
+  if(e.shell&&(e.kind==='koopa'||e.kind==='redKoopa'||e.kind==='beetle'&&!e.dead)){
+   const shell=tables.enemy_cells[(e.kind==='beetle'?19:17)+phase],launched=e.dead>0;
    for(let row=0;row<2;row++)for(let col=0;col<2;col++){
     const sourceRow=launched?2-row:row+1;
     this.spriteTile(shell.tiles[sourceRow*2+col],x+col*8,y+10+row*8,palette,col===1,!launched);
