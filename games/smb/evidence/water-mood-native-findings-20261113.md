@@ -107,3 +107,11 @@ Native bubbles and normal enemies sample Mario before GameEngine's trailing Proc
 Capture01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46 epoch10 source16017 shows the resulting bubble0 spawn Y67 versus68, while Mario, bubble X, fraction, timer, enemies and RNG match. The helper now retains the newly recomputed sample and its actual moved pixels after contact. A900-frame native checkpoint fixture covers this case.
 
 Full178 comparison improves4 field firsts, raises matching checked-RAM epochs76→78, and has no earlier per-field changes. Full32 legacy/strict first-field tables remain identical. Nineteen portable snapshots cover15,200 native frames.
+
+## Grounded Down masks facing updates
+
+Native PlayerCtrlRoutine clears Left_Right_Buttons/Up_Down_Buttons when Down and LR are held in ground state before calling PlayerMovementSubs. Raw SavedJoypadBits still controls the separate low-speed animation reset, but the masked LR cannot turn PlayerFacingDir. swimStep incorrectly updated the rendered player's facing from raw LR even when its horizontal helper had correctly retained the old facing.
+
+Capturec91d9e96b7833bef2216b2e57ff5c61570e365a2e18d1fbd5ff93422c8812970 source25699..25702 holds Down+Right+B while grounded at Y176; facing/moving stayleft. The bubble spawned25701 is at MarioX2913, not right-facing2922. The facing update now respects the source ground Down mask, including the frame a floor stroke begins. A1,900-frame native checkpoint regression captures this bubble X and following state. This also corrects Mario's visual facing.
+
+Full178 comparison improves5 bubble field firsts with no earlier per-field changes; completely matching checked-RAM epochs remain78 because other errors follow. Full32 legacy/strict first-field tables remain identical. Twenty portable snapshots cover17,100 native frames.
