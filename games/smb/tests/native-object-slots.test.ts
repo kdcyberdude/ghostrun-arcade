@@ -2,13 +2,14 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
+import {isolatePlacedStream} from './helpers/isolated-placed-stream.js';
 import type {EnemySpec} from '../src/types.js';
 
 // Native objects live in five slots (docs/NATIVE_ROLES.md). Over the route and the 96 all-worlds model runs a group came up short 12 times, always with all five slots taken, and never with one free.
 function fixture(levelId:string,specs:EnemySpec[],camera:number){
  const level=structuredClone(observedLevels().find(l=>l.id===levelId)!),area=level.areas.find(a=>a.id===level.main)!;
  area.enemies=specs;area.cannons=[];area.generators=[];area.firebars=[];area.platforms=[];
- const sim:any=new Simulation([level]);sim.reset(true);sim.player.invincible=100000;sim.loadArea(area.id,[camera+112,208],camera);sim.phase='play';sim.phaseFrame=0;
+ const sim:any=isolatePlacedStream(new Simulation([level]));sim.reset(true);sim.player.invincible=100000;sim.loadArea(area.id,[camera+112,208],camera);sim.phase='play';sim.phaseFrame=0;
  return sim;
 }
 const goomba=(x:number,extra:Partial<EnemySpec>={}):EnemySpec=>({kind:'goomba',x,y:208,direction:-1,...extra});
