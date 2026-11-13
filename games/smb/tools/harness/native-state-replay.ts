@@ -49,7 +49,7 @@ export function replayState(input:{id:string;frames:number;padsSha256:string;ini
  }else{
   const sim:any=new Simulation(observedLevels());sim.twoPlayer=false;sim.reset(false);sim.events.length=0;
   // The continuous readout covers boot/title and 1-1, plus 1-2 when that level is selected.
-  const audit=new LiveWorld1StateAudit(levels?.includes('1-2')?['1-1','1-2']:['1-1']);start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
+  const audit=new LiveWorld1StateAudit(['1-1',...(levels??[]).filter(l=>l!=='1-1')]);start=compareLiveWorld1Start(initial,captureLiveWorld1State(sim,true));continuous.start=start;
   for(let f=0;f<end;f++){
    if(!lag.has(f)){sim.step(names.filter((_,b)=>pads[f]&(1<<b)),1);sim.events.length=0;}
    const live=audit.compare(ram.subarray(f*2048,(f+1)*2048),captureLiveWorld1State(sim));

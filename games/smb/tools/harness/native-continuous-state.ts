@@ -12,8 +12,8 @@ export function liveScreenControl(sim:any):LiveControl|undefined{
 }
 /** Called inside page.evaluate, without native RAM, previous/future samples or a reset. */
 export function captureLiveWorld1State(sim:any,initial=false):LiveWorld1State{
- const supported=['1-1','1-2'],binding=supported.includes(sim.level.id)?nativeAreaBindings(sim.level):{bindings:[],diagnostics:[]};
- const sceneLevel=sim.levels.find((l:any)=>supported.includes(l.id)&&l.areas.includes(sim.mazeSource)),physicalScene=sceneLevel?{level:sceneLevel.id,area:sim.mazeSource.id,bindings:nativeAreaBindings(sceneLevel).bindings.filter(b=>b.area===sim.mazeSource.id)}:undefined;
+ const binding=nativeAreaBindings(sim.level);
+ const sceneLevel=sim.levels.find((l:any)=>l.areas.includes(sim.mazeSource)),physicalScene=sceneLevel?{level:sceneLevel.id,area:sim.mazeSource.id,bindings:nativeAreaBindings(sceneLevel).bindings.filter(b=>b.area===sim.mazeSource.id)}:undefined;
  const control=(n:any):LiveControl|undefined=>n?{mode:n.mode,task:n.task,engine:n.engine,screen:n.screen,disable:n.disable,timer:n.timer,columns:n.columns,initializing:n.initializing,unsupported:n.unsupported}:undefined;
  return {coldRam:initial&&sim.nativeColdRam?Array.from(sim.nativeColdRam):undefined,level:sim.level.id,area:sim.area.id,phase:sim.phase,main:sim.level.main,physicalScene,areas:sim.level.areas.map((a:any)=>({id:a.id,width:a.width})),bindings:binding.bindings,bindingGaps:binding.diagnostics,startup:control(sim.nativeStartup),screen:control(liveScreenControl(sim)),loadReady:!sim.levelLoad&&sim.phase==='play'&&!sim.powerChange&&!sim.pipeRising&&!sim.entryControlLocked&&!sim.area.autoWalk,parserColumnX:sim.parserColumnX,scrollLocked:sim.areaControls?.locked,frameCounter:sim.random.frame,interval:sim.intervalControl,random:[...sim.random.bytes],dead:['dying','gameover'].includes(sim.phase),time:sim.time,score:sim.score,coins:sim.coins,cam:Math.floor(sim.camera),x:Math.floor(sim.player.x),y:Math.floor(sim.player.y)-32,entities:strictSimEntities(sim),entityGaps:strictSimCoverage(sim)};
 }
@@ -38,9 +38,10 @@ export function compareLiveWorld1Start(initial:Uint8Array,model:LiveWorld1State)
 /** Maintains only native scene-identity context, never model state or a fitted origin. */
 export class LiveWorld1StateAudit{
  private binding?:AreaBinding;private previousTask=-1;private previousPtr=-1;
- constructor(private readonly levels:readonly string[]=['1-1']){}
+ private readonly multi:boolean;
+ constructor(private readonly levels:readonly string[]=['1-1']){this.multi=levels.some(l=>l!=='1-1');}
  compare(raw:Uint8Array,model:LiveWorld1State):LiveStateCheck{
-  const mode=raw[0x770],level=`${raw[0x75f]+1}-${raw[0x75c]+1}`,{out,check,finish}=checks(mode===0?'boot-title':this.levels.includes('1-2')?'world'+level:'world1-1');
+  const mode=raw[0x770],level=`${raw[0x75f]+1}-${raw[0x75c]+1}`,{out,check,finish}=checks(mode===0?'boot-title':this.multi?'world'+level:'world1-1');
   if(raw.length!==2048){out.gaps.push('native-row-length');return finish();}
   if(model.startup?.unsupported&&!model.screen){out.gaps.push(model.startup.unsupported);return finish();}
   if(mode===0||mode===255){
@@ -49,8 +50,8 @@ export class LiveWorld1StateAudit{
    for(const [key,address]of Object.entries(controlAddresses))check('startup.'+key,raw[address],control[key as keyof LiveControl]);
    check('frameCounter',raw[9],model.frameCounter);check('interval',raw[0x77f],model.interval);check('random',Array.from(raw.subarray(0x7a7,0x7ae)),model.random);return finish();
   }
-  const selected=this.levels.includes(level),contextOnly=!selected&&this.levels.includes('1-2')&&level==='1-1';
-  if(!selected&&!contextOnly){out.gaps.push(this.levels.includes('1-2')?'outside-selected-levels:'+level:'outside-world1-1');return finish();}
+  const selected=this.levels.includes(level),contextOnly=!selected&&this.multi;
+  if(!selected&&!contextOnly){out.gaps.push('outside-world1-1');return finish();}
   if(selected)check('level',level,model.level);
   const ptr=raw[0xe7]+256*raw[0xe8],task=raw[0x772];
   if(!this.binding||ptr!==this.previousPtr||task===1&&this.previousTask===0){
@@ -79,7 +80,7 @@ export class LiveWorld1StateAudit{
   const digits=(a:number,n:number)=>Array.from(raw.subarray(a,a+n)).reduce((s,v)=>10*s+v,0);
   check('dead',raw[14]===6||raw[14]===11,model.dead);check('time',digits(0x7f8,3),model.time);check('score',digits(0x7dd,6)*10,model.score);check('coins',raw[0x75e],model.coins);
   if(model.area!==this.binding.area||model.level!==level){out.gaps.push('scene-ownership-mismatch');return finish();}
-  if(this.levels.includes('1-2')){
+  if(this.multi){
    if(!model.physicalScene){out.gaps.push('model-physical-scene-unavailable');return finish();}
    if(!model.physicalScene.bindings.some(b=>b.data===ptr&&b.offset===this.binding!.offset)){out.gaps.push('post-level-scene-ownership-mismatch');return finish();}
   }
