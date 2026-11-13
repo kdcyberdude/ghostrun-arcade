@@ -38,10 +38,10 @@ test('the entrance timer subphase comes from native GameTimerCtrl: $0787 = 16 ti
  assert.equal(times[14],300);assert.equal(times[15],299);assert.equal(times[23],299);
 });
 
-test('a pipe-intro entrance keeps the level clock: native shows blank 000 digits during the 1-2 auto-walk',()=>{
+test('a pipe-intro entrance retains native000 digits and the pending NMI timer counter',()=>{
  const sim:any=new Simulation(observedLevels());sim.reset(true);
  initializeEntrance(sim,{level:'1-2',engine:7,grounded:true,vy:0,fallForce:40,x:42.0625,y:208,speed:1672,facing:1,size:0,camera:0,time:0,score:15300,coins:11,lives:3,random:[216,87,231,72,134,23,27],counter:173,timerControl:0});
- assert.equal(sim.area.autoWalk!==undefined&&sim.area.autoWalk!==false,true);assert.equal(sim.time,400);assert.equal(sim.timerFrames,0);
+ assert.equal(sim.area.autoWalk!==undefined&&sim.area.autoWalk!==false,true);assert.equal(sim.time,0);assert.equal(sim.timerFrames,24);
 });
 
 test('an enemy spawn waits one frame after the scroll crosses a 32 px boundary (4-3 slot 1: native spawn row 116, first step row 117)',()=>{
