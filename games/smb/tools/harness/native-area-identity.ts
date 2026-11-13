@@ -51,7 +51,7 @@ export function selectNativeAreaBinding(level:Level,bindings:AreaBinding[],ptr:n
 }
 /** Native InitializeArea completes mode task 0 -> 1 and writes the starting ScreenLeft_PageLoc before the screen routines.
  * Repeated pipe entries into the same physical area are distinguished by this load epoch and page, not by an area-data-pointer change. */
-export function nativeAreaLoads(level:Level,ram:Uint8Array):{loads:NativeAreaLoad[],bindings:AreaBinding[],diagnostics:string[]}{
+export function nativeAreaLoads(level:Level,ram:Uint8Array,initialArea=level.main):{loads:NativeAreaLoad[],bindings:AreaBinding[],diagnostics:string[]}{
  const {bindings,diagnostics}=nativeAreaBindings(level),loads:NativeAreaLoad[]=[];let previousPtr=-1,previousTask=-1;
  const byData=new Map(Object.values(physical).map(a=>[a.data,a]));
  for(let frame=0;frame<ram.length/2048;frame++){
@@ -59,7 +59,7 @@ export function nativeAreaLoads(level:Level,ram:Uint8Array):{loads:NativeAreaLoa
   const ptr=r[0xe7]+r[0xe8]*256,task=r[0x772],initializing=frame===0||task===1&&previousTask===0||ptr!==previousPtr;
   previousTask=task;previousPtr=ptr;if(!initializing)continue;
   const native=byData.get(ptr),startPage=r[0x71a],context={areaPointer:r[0x750],entrancePage:r[0x751],startPage,modeTask:task,...(native?{physicalCode:native.code}:{})};
-  const selected=selectNativeAreaBinding(level,bindings,ptr,startPage,frame===0);
+  const selected=frame===0&&initialArea!==level.main?selectNativeAreaBinding(level,bindings,ptr,startPage).filter(b=>b.area===initialArea):selectNativeAreaBinding(level,bindings,ptr,startPage,frame===0);
   const chosen=selected.length===1?selected[0]:undefined;
   loads.push({frame,ptr,candidates:selected,context,method:'ROM loaded-area pointer and InitializeArea start page',...(chosen?{area:chosen.area,offset:chosen.offset}:{diagnostic:!native?'loaded pointer is not in native ROM area table':`${selected.length} static scene bindings for loaded code ${native.code.toString(16)} page ${startPage}`})});
  }
