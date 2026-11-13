@@ -99,3 +99,11 @@ Native EnemyToBGCollisionDet's CInvu branch compares enemy ID with7 and returns 
 Capture720e epoch9 source13440 keeps slot0 Blooper state0 at684,118 while the remake killed it;440313 epoch10 source21582 similarly retains slot2 grey Cheep1850,105. Mario/camera match at both first actor failures. Native scores remain70450 and80650 respectively through these bumps; the generic+100 award was also unsupported. The loop now excludes these native water actor kinds. Two700-frame checkpoint regressions preserve their actual source survival and subsequent movement.
 
 Full178 comparison improves6 field firsts without an earlier epoch-first error. One later vertical field in8f908 epoch10 becomes1855 after earliest1139→1700. Full32 legacy and strict first-field tables stay identical. Eighteen portable snapshots now cover14,300 native frames.
+
+## Preserve the post-contact pre-whirlpool sample
+
+Native bubbles and normal enemies sample Mario before GameEngine's trailing ProcessWhirlpools. NativeWater.contact already rewinds that trailing pass, applies ceiling/floor contact, and reapplies gravity, but discarded its updated pre-pass state afterward. On a contact that moves again in late gravity, updateBubbles therefore read final Mario Y instead of the earlier source Y.
+
+Capture01f49b100bcaeee2b85ce1076f73493186cae0e3b0d8fe179b43dc9553c70e46 epoch10 source16017 shows the resulting bubble0 spawn Y67 versus68, while Mario, bubble X, fraction, timer, enemies and RNG match. The helper now retains the newly recomputed sample and its actual moved pixels after contact. A900-frame native checkpoint fixture covers this case.
+
+Full178 comparison improves4 field firsts, raises matching checked-RAM epochs76→78, and has no earlier per-field changes. Full32 legacy/strict first-field tables remain identical. Nineteen portable snapshots cover15,200 native frames.

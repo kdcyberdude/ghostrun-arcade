@@ -68,7 +68,9 @@ export class NativeWater{
  private contact(apply:()=>void){
   const before=this.beforeWhirl;this.beforeWhirl=undefined;
   if(!before){apply();return 0;}
-  this.speed=before.speed;this.force=before.force;this.frac=before.frac;apply();return this.pass(WHIRL_GRAVITY,WHIRL_CAP)-before.moved;
+  this.speed=before.speed;this.force=before.force;this.frac=before.frac;apply();
+  const after={speed:this.speed,force:this.force,frac:this.frac,moved:0};after.moved=this.pass(WHIRL_GRAVITY,WHIRL_CAP);this.beforeWhirl=after;
+  return after.moved-before.moved;
  }
  /** One gravity pass; returns the whole pixels moved. */
  private pass(gravity:number,cap:number):number{
