@@ -14,8 +14,8 @@ test(`${fixture.level}: retained NMI interval bank survives death/PlayerEntrance
  }
  assert.ok(rising>0);assert.equal(following,fixture.level==='1-2'?167:165);
  const audit=strictCompare(decodeEntrance(initial,fixture.receipt),pads,ram,fixture.level);
- for(const field of ['level','area','time','y',...Object.keys(audit.fields).filter(k=>k.startsWith('continuation.'))])assert.equal(audit.fields[field],null,field);
+ for(const field of ['level','area','time','y',...(fixture.level==='1-2'?['cam']:[]),...Object.keys(audit.fields).filter(k=>k.startsWith('continuation.'))])assert.equal(audit.fields[field],null,field);
  assert.equal(audit.coverage.frames,pads.length);assert.equal(audit.coverage.unsteppedFrames,0);assert.equal(audit.coverage.alignedFrames,pads.length);if(fixture.level==='1-2')assert.deepEqual(audit.diagnostics,[]);else{assert.equal(audit.diagnostics.length,1);assert.equal(audit.diagnostics[0].code,'unsupported-sim-object-family');assert.ok(audit.diagnostics[0].detail.startsWith('vine:'));}
- // Earlier area-3 x/extra actor and the partial-memory camera coordinate mismatch remain exposed by strictCompare.
+ // Earlier area-3 x/extra actor and 4-2 position errors remain exposed by strictCompare.
 });
 }
