@@ -1,0 +1,54 @@
+{
+  "schema": "native-continuous-world1-state-fixture-v1",
+  "purpose": "Frozen native readout oracle; not evidence that the current model matches cold gameplay.",
+  "capture": {
+    "schema": "native-poweron-capture-v1",
+    "padSha256": "00276e8d21b6dcca4b3cf65f720413a64579513d430239693beb9af6966bfeb7",
+    "frames": 29344,
+    "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+    "backendSha256": "3bf26c158fd657b98e3af2c9225e3330b963280f4defc42c0dbb5d03c0ddabfd",
+    "binarySha256": "9e1a39b37bb705ec21a90025e3f02578058e4dbd8ba312eef5836123370947b9",
+    "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+    "ramSha256": "969318145c88431bddd320603525fa1cd837b4051b37de753bcbd1e53b577eb3",
+    "powerOn": "HostMachine cold reset; CPU RAM FF; PPU dot0; first target vblank241:1; no hidden frames",
+    "padBits": [
+      "A",
+      "B",
+      "Select",
+      "Start",
+      "Up",
+      "Down",
+      "Left",
+      "Right"
+    ],
+    "provenance": [
+      {
+        "pads": "/home/kd/Desktop/proj/ghostrun/ghostrun-lab/runs/rl/smb-20261110c-moods/eval/it002792/smb_mood1.pads.bin",
+        "summary": {
+          "game": "smb",
+          "ret": 20.565555572509766,
+          "decisions": 7281,
+          "end": "game_over",
+          "deaths": 3,
+          "level": 10,
+          "events": 14,
+          "mood": 1,
+          "parts": {
+            "progress": 10.0383,
+            "level": 10,
+            "death": -0.3,
+            "damage": 0,
+            "score": 1.66,
+            "win": 0,
+            "stall": -0.833
+          },
+          "video": "runs/rl/smb-20261110c-moods/videos/it002792_smb_mood1.mp4"
+        }
+      }
+    ]
+  },
+  "initialRam": "//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8=",
+  "initialRamSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+  "samplesSha256": "e2f4f33af0e58b1cbd63bdd905f8fac15ef7d4619310eb58fd4b969d2831a6aa",
+  "gzipBase64": "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"
+}
