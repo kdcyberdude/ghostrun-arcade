@@ -1,5 +1,6 @@
 import {nativeCannonOutside} from './native-cannon.js';
 import {runNativeGameOver,tickNativeGameOverMaster,type NativeGameOver} from './native-game-over.js';
+import {nativeMixedWalkerScene,ordinaryWalker} from './native-walker-scene.js';
 import {NativeEnemyStream,type NativeEnemyInit} from './native-enemy-stream.js';
 import {nativeEnemyBytes,nativeEnemyRecords} from './native-enemy-catalog.js';
 import {NativeHud,hudDigits} from './native-hud.js';
@@ -398,7 +399,7 @@ export class Simulation {
  /** Native enemy group (HandleGroupEnemies, data ids $37-$3E): two or three Goombas/Beetles/Koopas made on one frame at ScreenRight_X_Pos (camera + 255), +24, +48. A list
   * entry belongs to such a group when entries of its kind recorded within 3 px of camera sit 20-28 px apart from a leader near spawnCamera + 255 (76 of 76 group followers of the v2 traces). */
  private nativeGroupMembers(e:Enemy):Enemy[]|undefined{
-  if(e.nativeGroup)return this.enemies.filter(m=>m.nativeGroup?.column===e.nativeGroup!.column).sort((a,b)=>a.nativeGroup!.index-b.nativeGroup!.index);
+  if(e.nativeGroup)return this.enemies.filter(m=>m.nativeGroup?.column===e.nativeGroup!.column&&(e.nativeGroup!.offset===undefined||m.nativeGroup?.offset===e.nativeGroup!.offset)).sort((a,b)=>a.nativeGroup!.index-b.nativeGroup!.index);
   if(e.spawnCamera===undefined||!['goomba','koopa','redKoopa','beetle'].includes(e.kind))return;
   const near=this.enemies.filter(o=>o.kind===e.kind&&o.spawnCamera!==undefined&&Math.abs(o.spawnCamera-e.spawnCamera!)<=3).sort((p,q)=>p.originX-q.originX);
   let chain:Enemy[]=[];
@@ -2444,15 +2445,18 @@ export class Simulation {
   const bytes=nativeEnemyBytes(physical.enemy);if(!bytes)return;
   const records=nativeEnemyRecords(bytes),supported=new Set([3,6,15,23,37,40]),castleSupported=new Set([12,21,27,28,29,30,31,40,43,44,45,53]);
   this.placedCastle=type===3&&records.length>0&&records.every(r=>castleSupported.has(r.id));
-  if(!this.placedCastle&&(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id))))return;
+  const mixedWalkers=nativeMixedWalkerScene(records,binding.offset,this.area.enemies);
+  if(!this.placedCastle&&!mixedWalkers&&(!records.some(r=>r.id===23)||!records.every(r=>supported.has(r.id))))return;
   if(this.placedCastle&&records.some(r=>r.id>=27&&r.id<=31)&&!this.firebarSlots){this.placedCastle=false;return;}
   for(const r of records){
    if(this.placedCastle&&(r.id===12||r.id===45||r.id===21||r.id===53||r.id>=27&&r.id<=31))continue;
-   if(r.id===23){if(!this.frenzyControllers.some(c=>c.offset===r.offset))return;}
-   else if(r.id===37||r.id===40||r.id===43||r.id===44){
-    const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset+(r.id>=43?12:0)&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
+   if(mixedWalkers&&(r.id<21||r.id>=0x37&&r.id<0x3f))continue;
+   if(r.id===23||r.id===52){if(!this.frenzyControllers.some(c=>c.offset===r.offset))return;}
+   else if([37,38,39,40,43,44].includes(r.id)){
+    const p=this.area.platforms?.find(p=>{const o=nativePlatformObject(p,this.platformMotion.context);return o?.x===r.x+binding.offset+([38,39,43,44].includes(r.id)?12:0)&&o.y===r.y;});if(!p)return;this.placedPlatforms.set(r.offset,p);
    }else if(!this.enemies.some(e=>e.nativeOffset===r.offset&&e.nativeId===r.id))return;
   }
+  if(mixedWalkers)this.enemies=[...this.enemies.filter(e=>!ordinaryWalker(e.kind)),...mixedWalkers.map(spec=>this.makeEnemy(spec))];
   if(this.placedCastle)for(const r of records){
    if(r.id===12||r.id===45){let e=this.enemies.find(e=>e.kind===(r.id===12?'podoboo':'bowser')&&e.originX===r.x+binding.offset);if(!e){e=this.makeEnemy({kind:r.id===12?'podoboo':'bowser',x:r.x+binding.offset,y:r.id===12?282:r.y+32});this.enemies.push(e);}e.nativeId=r.id;e.nativeOffset=r.offset;e.nativeColumn=r.x+binding.offset;}
    if(r.id>=27&&r.id<=31){const x=r.x+binding.offset+8,y=r.y+8;let bar=this.area.firebars?.find(b=>b.x===x&&b.y===y);if(!bar){bar={x,y,length:r.id===31?12:6,speed:(nativeFirebarParameters(r.id).direction?-1:1)*nativeFirebarParameters(r.id).speed/256*Math.PI/16};(this.area.firebars??=[]).push(bar);}this.placedBars.set(r.offset,bar);}
@@ -2468,11 +2472,18 @@ export class Simulation {
    if(slot<5?this.groupSlotsBefore[slot]||this.busyNativeSlots().has(slot):this.specialSlot5.flag)continue;
    context.slot=slot;context.frenzy=this.specialSlot5.frenzyBuffer;context.queue=this.specialSlot5.frenzyQueue;
    const event=stream.attempt(context,init=>this.initializeNativePlacedObject(init));this.specialSlot5.frenzyQueue=context.queue;
-   if(event.kind==='skip')for(const e of this.enemies)if(e.nativeOffset===event.offset&&!e.active)e.slotLost=true;
+   if(event.kind==='skip')for(const e of this.enemies)if((e.nativeOffset===event.offset||e.nativeGroup?.offset===event.offset)&&!e.active)e.slotLost=true;
   }
  }
  private initializeNativePlacedObject(init:NativeEnemyInit){
   const slot=init.slot;
+  if(init.source==='group'){
+   const members=this.enemies.filter(e=>e.nativeGroup?.offset===init.offset),kind=init.id<0x3b?(this.primaryHardMode?'beetle':'goomba'):'koopa';
+   for(const member of members){member.kind=kind;member.nativeId=kind==='beetle'?2:kind==='goomba'?6:0;}
+   this.groupParserSlot=slot;if(members.length)this.passNativeGroups(members[0].nativeGroup!.column,init.offset);
+   return members.some(e=>e.active&&e.enemySlot===slot)?1:0;
+  }
+  if(init.id===52){const controller=this.frenzyControllers.find(c=>c.offset===init.offset)!;controller.slot=slot;controller.x=init.x!+this.placedOrigin;return 1;}
   if(init.id>=27&&init.id<=31){const bar=this.placedBars.get(init.offset!)!;this.firebarSlots!.initializeNative(bar,slot,{id:init.id,high:this.slotYSpeed[slot],low:0,...nativeFirebarParameters(init.id)});this.castleSlotXSpeed[slot]=0;return 1;}
   if(init.id===12){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin+this.slotSub[slot]/256,y:282,age:0,pod:nativePodobooState(this.slotYFraction[slot])});Object.assign(this.slotVertical[slot],{speed:0,force:0});this.slotYSpeed[slot]=0;return 1;}
   if(init.id===45){const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;Object.assign(e,{active:true,slotFreed:false,enemySlot:slot,slotBorn:this.frame,graphicsVisible:false,x:init.x!+this.placedOrigin,y:init.y!+32,age:0});const m=e.nativeBowser=nativeBowserState(init.x!+this.placedOrigin,init.y!,this.slotYFraction[slot]);m.move.speed=(this.slotYSpeed[slot]<<24)>>24;m.move.force=this.slotVertical[slot].force;m.fireCounter=this.flameTimerCounter;m.rearSlot=this.freeNativeSlot();m.rearX=m.x;m.rearY=m.y;return 1;}
@@ -2494,11 +2505,11 @@ export class Simulation {
    if(init.flag&&slot<5){const c=this.frenzyControllers.find(c=>c.offset===init.offset);if(c){c.slot=slot;c.x=init.x!+this.placedOrigin+this.slotSub[slot]/256;}}
    return init.flag;
   }
-  if(init.id===37||init.id===40||init.id===43||init.id===44){
+  if([37,38,39,40,43,44].includes(init.id)){
    const platform=this.placedPlatforms.get(init.offset!)!,left=this.slotVertical[slot],y=init.y!;
    this.platformSlots.set(platform,slot);this.platformMotion.lost.delete(platform);
-   this.platformMotion.initializeNative(platform,{id:init.id,x:init.x!+this.placedOrigin+(init.id>=43?12:0),y,a:init.id===43?255:0,b:init.id===37?(y+(y<128?64:192))&255:init.id===40?0:this.castleSlotXSpeed[slot],c:init.id===37?(y<128?y:256-y):this.slotSub[slot],d:init.id===43?16:init.id===44?240:0,e:left.fraction},this.platformFrame,this.random.frame);
-   left.speed=left.force=0;this.slotYSpeed[slot]=0;return 1;
+   this.platformMotion.initializeNative(platform,{id:init.id,x:init.x!+this.placedOrigin+([38,39,43,44].includes(init.id)?12:0),y,a:init.id===38||init.id===43?255:0,b:init.id===37?(y+(y<128?64:192))&255:init.id===40?0:this.castleSlotXSpeed[slot],c:init.id===37?(y<128?y:256-y):this.slotSub[slot],d:init.id===38||init.id===43?16:init.id===39||init.id===44?240:0,e:left.fraction},this.platformFrame,this.random.frame);
+   const wrap=init.id===38||init.id===39;left.speed=wrap&&init.id===38?-1:0;left.force=wrap?(left.speed?16:240):0;this.slotYSpeed[slot]=left.speed&255;return 1;
   }
   const e=this.enemies.find(e=>e.nativeOffset===init.offset&&!e.active)!;
   if(init.id!==e.nativeId){e.kind='beetle';e.nativeId=init.id;}
@@ -2518,11 +2529,11 @@ export class Simulation {
    else this.activateNativePlaced(enemy,slot,event.x+offset);
   }
  }
- private passNativeGroups(onlyColumn?:number){
+ private passNativeGroups(onlyColumn?:number,onlyOffset?:number){
   if(this.groupParserSlot>=5||this.parserClock.blocked)return;
   const reserved=new Set(this.groupSlotsBefore.flatMap((busy,s)=>busy&&s>=this.groupParserSlot?[s]:[])),seen=new Set<number>();
   for(const e of this.enemies){
-   const group=e.nativeGroup;if(!group||onlyColumn!==undefined&&group.column!==onlyColumn||e.active||e.slotLost||seen.has(group.column))continue;
+   const group=e.nativeGroup;if(!group||onlyColumn!==undefined&&group.column!==onlyColumn||onlyOffset!==undefined&&group.offset!==onlyOffset||e.active||e.slotLost||seen.has(group.column))continue;
    seen.add(group.column);
    const members=this.nativeGroupMembers(e)!;
    if(group.column<Math.floor(this.camera)+255){for(const m of members)if(!m.active)m.slotLost=true;continue;}

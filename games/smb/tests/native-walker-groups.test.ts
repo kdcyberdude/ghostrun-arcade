@@ -62,6 +62,7 @@ test('a parser slot query preserves the native fraction inherited by the first1-
  assert.ok(platform,'native1-2 lift at x2236');sim.area.platforms=[platform];sim.enemies=[];
  sim.camera=1922;sim.platformFrame=1485;sim.frame=1485;sim.platformMotion.advance(1485,1922,0);
  sim.slotSub[2]=128;sim.slotVertical[2].fraction=104;
+ sim.initializeNativePlacedObject({source:'placed',slot:2,id:39,flag:1,offset:29,x:2224,y:112});
  sim.objectSlots(new Set([0,1]));assert.equal(sim.platformSlots.get(platform),2);
  sim.platformSlotResidues();assert.equal(sim.slotVertical[2].fraction,104);
 });

@@ -1,0 +1,15 @@
+# Mixed walker parser and factory
+
+Base: c3f6431 (runtime 4aa045a); branch codex/smb-placed-walkers. No 3D work is included.
+
+The earliest independent missing-Goomba cluster is 1-2 area-2 at local frame 3 in the checkpoint-page 6 mood entries. Its physical ROM stream has single record 25, id 6, x 1808. The old screenshot enrichment lists that native single but creates only missing group members, so the live actor roster omits this single. The room also falls outside the existing authoritative placed-stream profiles. Adding an actor alone would create it three rows too early.
+
+ProcessEnemyData consumes one attempt per free slot, with native page controls recursing within that attempt. Starting from offset 9/page 2, slots 3/4 advance the native cursor to 13,17,21,27 on the first four rows; only the last attempt initializes id 6 in slot 4. The new source-derived profile enumerates all supported ordinary singles/groups and shares their cursor with large wrap lifts 38/39 and WarpZone 52. It reads the physical ROM records, PrimaryHardMode/SecondaryHardMode, ScreenRight, parser blocking and actual slot ownership. Group count/height/kind follow HandleGroupEnemies; primary hard mode changes Goomba groups to Beetles. No level/frame/recording-specific timing constants are used. Unsupported mixed families retain the prior explicit path.
+
+The profile is enabled for the fully supported physical streams bound to 1-2 area-2 and 4-2 area-3. Castle factories/aliases/NPC branches, shared cursor classes, water streams and terrain are preserved. Existing wrap-lift fraction regression now initializes the platform through its source factory before making the read-only slot query; its expected fraction 104 remains unchanged.
+
+Portable fixture: four authenticated entrances, 542 replay rows, every cursor row and full walker x/subpixel/y/slot/id. Input/initial-RAM/clip-RAM hashes and one-time entrance receipts are retained. Generate with `tools/harness/native-walker-parser-events.ts`. Focused cursor/group/platform-clock tests pass. Full npm/TypeScript/corpus gates are reserved for the parent batch.
+
+Representative whole-epoch comparisons against the 4aa audit: 5e5d... entry 5 and 1095... entries 5/6 change missing 3 and downstream score/time/coordinates to every legacy and strict first NULL. Three other independent examples have no earlier fields. Detailed results: `/tmp/smb-placed-walker-representatives.json`. Original v2 1-2 and 4-2 legacy/strict first-field tables are unchanged versus immutable 4aa: `/tmp/smb-walker-original-before.json` and `/tmp/smb-walker-original-after.json`. The whole 164-recording cluster has not been re-audited on this candidate.
+
+A separate independent extra-Koopa/kind-Goomba cause remains in 54e... entry 2: native defeated Koopa slot 0 is erased on 407 (x 612, camera 686), while the remake leaves an active corpse and later reuses its slot for Goomba 408. The cursor itself matches native through 500. That corpse/offscreen lifetime fix is assigned separately and is not part of this parser commit.
