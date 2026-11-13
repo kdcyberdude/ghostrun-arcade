@@ -1129,7 +1129,7 @@ export class Simulation {
   }
   for(const spring of this.area.springs??[]){
    let n=this.springTimers.get(spring);const born=!n;
-   const top=spring.y-24,aligned=p.x+14>spring.x&&p.x+2<spring.x+16;
+   const top=spring.y-24,aligned=Math.floor(p.x)+12>=spring.x&&Math.floor(p.x)+3<spring.x+16;
    if(!n&&aligned&&p.vy>=0&&oldBottom<=top+3&&p.y>=top){
     n=nativeSpring();this.springTimers.set(spring,n);this.springPinX=p.x;
     // LandPlyr clears raw Player_Y_Position's low nibble, retaining $0416.
