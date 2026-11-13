@@ -18,7 +18,7 @@ export function initializeEntrance(sim,start){
  sim.levelIndex=index;sim.checkpoint=false;sim.loadArea(start.area??sim.level.main);sim.phase='play';sim.phaseFrame=0;sim.destination=undefined;
  if(!start.nativeAreaSnapshot&&(Math.abs(sim.area.spawn[0]-start.x)>8||Math.abs(sim.area.spawn[1]-start.y)>(start.grounded?1:32)))throw Error('Observed pose does not match the mapped main-area entrance');
  if(start.engine===7&&!sim.area.autoWalk&&!start.nativeWater)throw Error('Unsupported observed entry routine');
- if(start.nativeAreaSnapshot&&start.engine===8){sim.entryFalling=false;sim.entryVineActive=false;sim.autoVineActive=false;sim.pipeRise=0;}
+ if(start.nativeAreaSnapshot&&start.engine===8){sim.entryTimerDelay=0;sim.entryInputDelay=0;sim.entryFalling=false;sim.entryVineActive=false;sim.autoVineActive=false;sim.pipeRise=0;}
  Object.assign(sim.player,{x:start.x,y:start.y,vx:start.speed/4096,vy:start.vy,grounded:start.grounded,facing:start.facing,size:start.size,star:start.star??0});
  sim.starPalette=start.starPalette??0;sim.starDrawPalette=start.star?start.starDrawPalette:undefined;
  if(!start.grounded){sim.fallGravity=start.fallForce/256;sim.lastJumpFallForce=start.fallForce/256;sim.jumpArc=true;sim.walkingOff=false;sim.bouncing=false;sim.runJump=start.fallForce===144;sim.mediumJump=start.fallForce===96;sim.landJump='held';sim.jumpPose=true;}

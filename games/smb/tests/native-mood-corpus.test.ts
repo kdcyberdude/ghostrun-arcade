@@ -49,3 +49,14 @@ test('checkpoint snapshot preserves native Piranhas and diagnoses any restored u
  assert.deepEqual(init.snapshotActors,declared?[]:[{code:'snapshot-native-actor-not-declared',kind:'piranha',slot:2,x:1848,downY:176}]);
  const actor=sim.enemies.find(e=>e.active&&e.enemySlot===2)!;assert.equal(actor.x,1848);assert.deepEqual(actor.pir,{y:176,speed:1,flag:0,up:152,down:176,timer:0});
 });
+
+test('control-ready native snapshots clear entry hiding without changing the native timer phase',()=>{
+ const e=data.entries.find(e=>e.index===4)!,sim=new Simulation(observedLevels()),r=unpack(e.initialRam);sim.reset(true);initializeEntrance(sim,decodeEntrance(r,{schema:'native-mood-entry-v1',level:e.level,areaBinding:e.binding}));
+ assert.equal(sim.entryTimerHidden,false);assert.equal((sim as any).entryInputDelay,0);assert.equal(sim.timerFrames,(24-r[0x787])%24);
+});
+import {compareRun} from '../tools/harness/native-divergence.js';
+test('legacy source-snapshot readout inverts the declared ROM origin instead of comparing compiled x with native x',()=>{
+ const e=data.entries.find(e=>e.index===6)!,initial=unpack(e.initialRam),pads=unpack(e.followingPads!),ram=unpack(e.followingRam!);
+ assert.equal(e.binding.offset,-2816);const start=decodeEntrance(initial,{schema:'native-mood-entry-v1',level:e.level,areaBinding:e.binding});
+ const result=compareRun(start,pads,f=>ram.subarray(f*2048,(f+1)*2048),e.level,true);assert.equal(result.fields.x,null);assert.equal(result.fields.y,null);
+});
