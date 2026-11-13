@@ -4,7 +4,7 @@
 export type WaterStreamEvent=({kind:'frenzy'}|{kind:'blocked'}|{kind:'skip';offset:number}|{kind:'spawn';offset:number;id:number;x:number;y:number})&{x?:number;y?:number};
 export class NativeWaterStream {
  constructor(readonly bytes:readonly number[],public offset=0,public page=0,public selected=false){}
- next(camera:number,hard:boolean,slot=0):WaterStreamEvent{
+ next(camera:number,hard:boolean,slot=0,accept?:(event:Extract<WaterStreamEvent,{kind:'spawn'}>)=>boolean):WaterStreamEvent{
   for(;;){
    const offset=this.offset,first=this.bytes[offset];
    if(first===255)return {kind:'frenzy'};
@@ -14,11 +14,12 @@ export class NativeWaterStream {
    if(row===15&&!this.selected){this.page=second&63;this.offset+=2;this.selected=true;continue;}
    const x=this.page*256+(first&240),right=Math.floor(camera)+255,extent=(right+48)&0xfff0;
    if(x>=right&&x>extent)return {kind:'frenzy',x};
-   this.offset+=row===14?3:2;this.selected=false;
-   if(row===14||x<right)return {kind:'skip',offset,x,...(x>=right?{y:row*16}:{})};
-   if((second&64)&&!hard)return {kind:'skip',offset,x,y:row*16};
-   const id=second&63;
-   return {kind:'spawn',offset,id,x,y:row*16+(id<21?8:0)};
+   const consume=()=>{this.offset+=row===14?3:2;this.selected=false;};
+   if(row===14||x<right){consume();return {kind:'skip',offset,x,...(x>=right?{y:row*16}:{})};}
+   if((second&64)&&!hard){consume();return {kind:'skip',offset,x,y:row*16};}
+   const id=second&63,event:Extract<WaterStreamEvent,{kind:'spawn'}>={kind:'spawn',offset,id,x,y:row*16+(id<21?8:0)};
+   if(!accept||accept(event))consume();
+   return event;
   }
  }
 }
