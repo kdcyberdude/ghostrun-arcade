@@ -1,7 +1,7 @@
 // Player, enemies and items. Positions come straight from the simulation (feet / hit box); animation never feeds back into it.
 // Pose selection mirrors the original renderer's sprite-cell choice (renderer.ts player()/enemy()), mapped onto 3D clips.
 import * as THREE from 'three';
-import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell} from '../enemy-picture.js';
+import {enemyPicture,nativeHammerBroCell,nativeEnemyCyclePhase,nativeBlooperPicture,nativeLakituCell,enemyPictureTimersStopped} from '../enemy-picture.js';
 import {Simulation,POWERUPS} from '../simulation.js';
 import {playerVisible,playerCell} from '../player-cell.js';
 import {itemShown,fireFlashVariant,starVariant} from '../view-rules.js';
@@ -94,7 +94,7 @@ export class Entities{
  }
  private yaw(e:Enemy,target:number,frame:number){const prev=this.enemyYaw.get(e);if(prev?.frame===frame)return prev.yaw;const y=turnToward(prev?.yaw??target,target);this.enemyYaw.set(e,{frame,yaw:y});return y;}
  private enemy(e:Enemy,s:Simulation){
-  const physical=e;e=enemyPicture(e);
+  const physical=e;e=enemyPicture(e);const timersStopped=enemyPictureTimersStopped(e,s.frame,s.nativeTimersStopped);
   const pictureX=!e.dead?e.graphicsX??e.x:e.x,pictureY=!e.dead?e.graphicsY??e.y:e.y;
   const [w,h]=DIMS[e.kind],cx=(pictureX+(e.kind==='bowser'?16:8))/16,feet=(239-pictureY)/16;this.box(physical.x/16,(239-physical.y)/16,physical.x/16+w,(239-physical.y)/16+h,0xff3030);
   if(e.kind==='spiny'&&e.motion==='falling'&&!e.dead){
@@ -120,8 +120,8 @@ export class Entities{
   if(e.kind==='piranha')a.recolor('M_Head',PIRANHA_GREEN); // Native Piranha palette is $0f/$1a/$30/$27.
   const wings=a.node('Wings');if(wings)wings.visible=e.kind==='paratroopa'&&!e.dead;
   a.root.rotation.y=e.kind==='piranha'?Math.PI/2:this.yaw(physical,yawFor(e.kind==='hammerBro'?(e.nativeDir??-1):facing),s.frame);
-  const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,Boolean(s.powerChange)):undefined;
-  const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),Boolean(s.powerChange)):undefined;
+  const broCell=e.kind==='hammerBro'&&e.hbro?nativeHammerBroCell(e.dead?0x20:e.hbro.state,s.random.frame,timersStopped):undefined;
+  const blooper=e.kind==='blooper'?nativeBlooperPicture(e.bloop?.timer??0,Boolean(e.dead),timersStopped):undefined;
   if(blooper)a.root.position.y-=blooper.yOffset/16;
   const nativePhase=e.kind==='piranha'?((e.dead?Math.floor(e.age/8)%2:nativeEnemyCyclePhase(s.random.frame,Boolean(s.powerChange)))?0:0.5):blooper?(blooper.cell===10?0.5:0):e.nativeBowser?((e.nativeBowser.controls&1)?0.75:0.25):broCell!==undefined?((broCell&1)?0.75:0.25):undefined;
   const clip=e.kind==='piranha'?'idle':nativePhase!==undefined?'walk':e.kind==='paratroopa'&&a.has('fly')?'fly':e.dead?'idle':'walk';
