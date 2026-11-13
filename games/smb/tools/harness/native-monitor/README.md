@@ -65,7 +65,21 @@ sibling `traces/1-1 … 8-4`) and `combined`, the full historical every-frame re
 
 ## Speed (48-core machine, 368 recordings, 5,178,452 frames)
 
-MEASUREMENTS
+| Check | Frames replayed | Wall time | Notes |
+|---|---|---|---|
+| Old full every-frame audit, state+picture (cca2e44) | 5,178,452 | 2 h 57 m (8 shards) | ~490 frames/s; ~14.5 ms/frame per shard |
+| State only, all levels (`native-state-replay.ts`) | 5,178,452 | 37 s (44 workers) | equals the old audit's state verdict on every frame |
+| State only, `--levels 1-1` | 1,182,392 | 10 s idle machine · 52 s at 20 workers beside an RL job | |
+| State+picture, `--levels 1-1`, 20 shards | 1,182,392 | 15 min idle (1,319 frames/s) · 18.4 min beside an RL job | equals the old audit's picture verdicts on all 552,853 compared 1-1 frames |
+
+Where the time went (one browser shard, per frame): native picture base64 transfer through CDP ~1.5 ms and
+`Uint8Array.from(atob)` decode 2.3 ms (both replaced by a binary HTTP feed); `drawImage`/`getImageData`
+2.1 ms (now `readPixels`, 1.6 ms); in-page state capture serialized every frame (now in Node).
+SwiftShader rendering is CPU-bound: beyond ~20 shards on 48 cores throughput stops improving. The GPU
+(`--use-angle=gl-egl`) renders identical pixels but read-back stalls made it slower (16.5 ms/frame).
+Node state replay under tsx ran at 210 frames/s; its keep-names transform wraps every closure in the
+source-machine hot loop. The esbuild bundle runs at ~1,700 frames/s per worker; the rest is the game's own
+6502 timing emulation.
 
 ## Verification
 
