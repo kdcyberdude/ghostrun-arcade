@@ -4,7 +4,7 @@ import {Simulation} from '../src/simulation.js';
 import {observedLevels} from '../src/levels.js';
 
 // Native head bumps of a small Mario (recorded route; y is the trace y byte, feet - 32). The native rule measured from the 46 castle ceiling bumps of the route: the head probe is 14 px above
-// the feet, the speed after the bump is 1 plus the fraction of the speed that hit (0 plus the fraction for a brick / question / used block), the jump class (run gravity 0.5625) is kept, there
+// the feet, the speed after the bump is 1 plus the fraction of the speed that hit (0 plus the fraction for a brick / question block; a used block remains solid), the jump class (run gravity 0.5625) is kept, there
 // is no snap to the ceiling, and a jump that only touches a ceiling at its apex (speed turning non-negative this frame) is not a bump. The legacy rule snapped, fell on gravity 0.4375 and ended
 // 5-16 px behind. Tolerance 1 px: the native fall cap lets the speed overshoot 4 for one row (not modelled, 1 px).
 // noEnemies: the fresh load spawns the 1-1 Goomba at x 343 in Mario's path; on the native route row 145 it is at x 315, behind Mario.

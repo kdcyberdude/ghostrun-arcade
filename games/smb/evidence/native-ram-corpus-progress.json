@@ -1,0 +1,476 @@
+{
+  "schema": "smb-ram-corpus-fix-progress-v1",
+  "generatedAt": "2026-11-13T19:38:57.772Z",
+  "status": "incomplete",
+  "baselineCommit": "795ec985f1cc72d10263860a272366a7e2c33e5c",
+  "runtimeSources": {
+    "games/smb/src/simulation.ts": "ebca7c872f272b95659bd63e7a91c7f50f22d9186fdc6c3d5b599e2ae2ed5b02",
+    "games/smb/src/native-player-enemy-latch.ts": "9685b9b8d4dcb74bde5040d81336d7e2257454bc424abfee42fd8526234d29f3",
+    "games/smb/data/levels.json": "9aba89d77a2a589ff15291b54d905ff810c34fe989f824a40a4ccbc8342b1e9d",
+    "games/smb/data/native-geometry-corrections.json": "680503eb7ba7fcedc51e34f49b79e03023449ef7f028ecaa345b1037d15221c7"
+  },
+  "recordings": 368,
+  "inputFrames": 5178452,
+  "evaluations": 336,
+  "originals": 32,
+  "baselineEvaluationCoverage": {
+    "status": "incomplete",
+    "nativeFramesCaptured": 5032416,
+    "stateSteppedFrames": 4967650,
+    "initializedControlPrefixes": 2681,
+    "controlPrefixFrames": 330562,
+    "controlPrefixCoordinateFrames": 330562,
+    "unsteppedFrames": 64766,
+    "coordinateComparedFrames": 4958152,
+    "noCoordinateComparisonFrames": 74264,
+    "supportedNativeEntityRows": 8523458,
+    "nativeEntryEpochs": 2681,
+    "initializedEntries": 2680,
+    "nativePixelFramesCaptured": 0,
+    "pixelFramesCompared": 0,
+    "fullyVerifiedAllFieldAndPixelFrames": 0,
+    "reason": "Independent native entry snapshots; hidden state/control modes/object families/pixels still have explicit gaps. Stepped frames do not mean every field or every object was compared."
+  },
+  "validation": {
+    "focusedTestsPassed": 66,
+    "typescript": "pass",
+    "compilerPreview": "corrected cells match",
+    "targetedRecordings": 124,
+    "targetedSegments": 154,
+    "segmentsNowWithoutStrictMismatch": 124,
+    "segmentsFirstMismatchLater": 3,
+    "segmentsFirstMismatchUnchanged": 27,
+    "segmentsFirstMismatchEarlier": 0,
+    "originalStrictPasses": 25
+  },
+  "fixes": [
+    "Used blocks give small Mario solid-ceiling speed 1 plus the post-gravity fraction.",
+    "Goomba contacts use their native inclusive box and contact latch, including multiple stomps on the same frame.",
+    "Left screen boundary preserves fractional position/speed and the facing/steering exception.",
+    "Exit castles in 2-2 and 7-2 use the native solid door cell at column29,row12."
+  ],
+  "remainingEvaluationSegments": 176,
+  "remainingByLevel": [
+    {
+      "level": "1-2",
+      "segments": 26,
+      "recordings": 25,
+      "examples": [
+        {
+          "id": "536bc848fe22400826d4d5a8f513e7590756694044c309cc3755146bb9b58f9c",
+          "entry": 4,
+          "area": "area-2",
+          "sourceFrame": 2968,
+          "evidence": "current-patch"
+        },
+        {
+          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
+          "entry": 4,
+          "area": "area-2",
+          "sourceFrame": 3198,
+          "evidence": "current-patch"
+        },
+        {
+          "id": "feb0bae1907f573909f0218b6b5a7bc9af9a8d1645130c77be2e291665224116",
+          "entry": 4,
+          "area": "area-2",
+          "sourceFrame": 4061,
+          "evidence": "current-patch"
+        }
+      ]
+    },
+    {
+      "level": "1-3",
+      "segments": 26,
+      "recordings": 25,
+      "examples": [
+        {
+          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 6739,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "0d12a2e4ff35f7c3a2a6596c00224d46bb28168962b987b169ce365270f5bbad",
+          "entry": 6,
+          "area": "main",
+          "sourceFrame": 8028,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "b47452ef2d5e4ecc55d0f90aa829fab00f30a1a1f07ae8a7d06059396dc1a5e4",
+          "entry": 5,
+          "area": "main",
+          "sourceFrame": 6674,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "1-4",
+      "segments": 4,
+      "recordings": 4,
+      "examples": [
+        {
+          "id": "375bcd78a6b621a72f743d3f1ce414c44aba42bf43197abffcb473a7aa513bde",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 13393,
+          "evidence": "current-patch"
+        },
+        {
+          "id": "cc17bab5a6f1c9a13ba304166ca198ca15814e51593e37f4fd0258ab81eafa25",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 9819,
+          "evidence": "current-patch"
+        },
+        {
+          "id": "638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 15445,
+          "evidence": "current-patch"
+        }
+      ]
+    },
+    {
+      "level": "1-1",
+      "segments": 3,
+      "recordings": 3,
+      "examples": [
+        {
+          "id": "91a8d597ac470f707894096e1cca45fa2e90ae0a0aeef0b5d11a0b9f94bab577",
+          "entry": 0,
+          "area": "main",
+          "sourceFrame": 938,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "a60f59c3a84153b6e724c67bf55fc4b94dfb22b785f73247cd1eee812159d966",
+          "entry": 0,
+          "area": "main",
+          "sourceFrame": 938,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "2bfc31326b5ab09964d788f22f4d53e803e00a0aa3b43824b5ec0f31b08f58b8",
+          "entry": 0,
+          "area": "main",
+          "sourceFrame": 938,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "2-1",
+      "segments": 57,
+      "recordings": 54,
+      "examples": [
+        {
+          "id": "232eab823a220706a910038c398f6b0317da717ac4f9655f0b0cc65423cb79a9",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 12224,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "f44229215eda3c2aecdea8c277052e7dfb560cc7280700808aa6da80fa5f0e90",
+          "entry": 8,
+          "area": "main",
+          "sourceFrame": 14232,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "a9aa051457bcc42654c58c64413674af0866dea081ef145bedcc3254efe690ef",
+          "entry": 7,
+          "area": "main",
+          "sourceFrame": 12540,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "2-3",
+      "segments": 28,
+      "recordings": 25,
+      "examples": [
+        {
+          "id": "9c64d0397bb9660b2e0729f8fd64ed0bfe0fa432b828dfd337cd7fa93a0d5d1f",
+          "entry": 11,
+          "area": "main",
+          "sourceFrame": 23696,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "5b3c2ae44e9fb30ffa749ec973baf125d2f17085917e2b399a8c37c1c1ba8d93",
+          "entry": 12,
+          "area": "main",
+          "sourceFrame": 20121,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "c6ee76c6759431d0feeca36dc96fe9948f1f6fb1ac673ed36b242f5042568de5",
+          "entry": 11,
+          "area": "main",
+          "sourceFrame": 18129,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "2-4",
+      "segments": 12,
+      "recordings": 11,
+      "examples": [
+        {
+          "id": "37cc44fac0e23a37bb2e17217a315ebe75b2a9ee78157292074b2bc245cfa567",
+          "entry": 13,
+          "area": "main",
+          "sourceFrame": 20966,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "7be1c24038b01de67e526b90742a8162ee751ae2a790c233f823e29b7a7ef4ea",
+          "entry": 13,
+          "area": "main",
+          "sourceFrame": 21033,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
+          "entry": 11,
+          "area": "main",
+          "sourceFrame": 18760,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "3-1",
+      "segments": 14,
+      "recordings": 11,
+      "examples": [
+        {
+          "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
+          "entry": 13,
+          "area": "main",
+          "sourceFrame": 22205,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "37d55efe9bb775412b652c282449be287349b34189c36042d075d8cd2d565f31",
+          "entry": 14,
+          "area": "main",
+          "sourceFrame": 23696,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "67829346ddd387babf836864a51bfffc3455ec30391b3fc4f9bc39fb272f5c99",
+          "entry": 14,
+          "area": "main",
+          "sourceFrame": 27935,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "4-4",
+      "segments": 3,
+      "recordings": 2,
+      "examples": [
+        {
+          "id": "308c986d49124f4bbb39de61a97321678a1dcae576bdf836bc22523bb174d60a",
+          "entry": 22,
+          "area": "main",
+          "sourceFrame": 38783,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
+          "entry": 22,
+          "area": "main",
+          "sourceFrame": 37250,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
+          "entry": 23,
+          "area": "main",
+          "sourceFrame": 47521,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "3-4",
+      "segments": 2,
+      "recordings": 2,
+      "examples": [
+        {
+          "id": "67829346ddd387babf836864a51bfffc3455ec30391b3fc4f9bc39fb272f5c99",
+          "entry": 17,
+          "area": "main",
+          "sourceFrame": 35085,
+          "evidence": "baseline-795ec98"
+        },
+        {
+          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
+          "entry": 16,
+          "area": "main",
+          "sourceFrame": 28654,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    },
+    {
+      "level": "4-2",
+      "segments": 1,
+      "recordings": 1,
+      "examples": [
+        {
+          "id": "df3651d627f4a1f4bd1a0900781615a3c18b01676c265a109996dd4e4fcb68bf",
+          "entry": 19,
+          "area": "area-3",
+          "sourceFrame": 32472,
+          "evidence": "baseline-795ec98"
+        }
+      ]
+    }
+  ],
+  "remainingOriginals": [
+    {
+      "level": "5-1",
+      "first": 3238,
+      "fields": {
+        "level": 4226,
+        "area": 4228,
+        "dead": 3626,
+        "time": 3629,
+        "score": 3243,
+        "cam": 3247,
+        "x": 3247,
+        "y": 3239,
+        "missing": 3255,
+        "extra": 3247,
+        "kind": 3402,
+        "position": 3238,
+        "continuation.frameCounter": 4228,
+        "continuation.random": 4228,
+        "continuation.interval": 4226
+      }
+    },
+    {
+      "level": "5-2",
+      "first": 1328,
+      "fields": {
+        "level": 3384,
+        "area": 3386,
+        "dead": 2609,
+        "time": 2195,
+        "score": 2381,
+        "cam": 1389,
+        "x": 1389,
+        "y": 1328,
+        "missing": 1338,
+        "extra": 1338,
+        "kind": 1493,
+        "position": 1349,
+        "continuation.frameCounter": 3384,
+        "continuation.random": 3384,
+        "continuation.interval": 3384,
+        "continuation.load.ready": 3550
+      }
+    },
+    {
+      "level": "7-1",
+      "first": 646,
+      "fields": {
+        "level": 3651,
+        "area": 3653,
+        "dead": 1152,
+        "time": 1166,
+        "score": 649,
+        "cam": 1034,
+        "x": 1034,
+        "y": 1018,
+        "missing": 646,
+        "extra": 692,
+        "kind": 1066,
+        "position": 646,
+        "state": 1035,
+        "continuation.frameCounter": 3651,
+        "continuation.random": 3653,
+        "continuation.interval": 3651
+      }
+    },
+    {
+      "level": "7-3",
+      "first": 692,
+      "fields": {
+        "level": 3019,
+        "dead": 1914,
+        "time": 1936,
+        "score": 1920,
+        "coins": 1920,
+        "cam": 1915,
+        "x": 1915,
+        "y": 1915,
+        "missing": 1306,
+        "extra": 1954,
+        "kind": 1920,
+        "position": 692,
+        "continuation.frameCounter": 3019,
+        "continuation.random": 3019,
+        "continuation.interval": 3019,
+        "continuation.load.ready": 3019
+      }
+    },
+    {
+      "level": "8-2",
+      "first": 2003,
+      "fields": {
+        "position": 2003
+      }
+    },
+    {
+      "level": "8-3",
+      "first": 987,
+      "fields": {
+        "score": 989,
+        "missing": 1034,
+        "extra": 1052,
+        "kind": 2109,
+        "position": 987
+      }
+    },
+    {
+      "level": "8-4",
+      "first": 9517,
+      "fields": {
+        "dead": 9849,
+        "time": 9867,
+        "score": 10282,
+        "cam": 9517,
+        "x": 9567,
+        "y": 9715,
+        "missing": 9605,
+        "extra": 9567,
+        "kind": 9834,
+        "position": 9822,
+        "gameover.mode": 15729,
+        "gameover.task": 15729,
+        "gameover.engine": 15729,
+        "gameover.screen": 15729,
+        "gameover.disable": 15729,
+        "gameover.timer": 15729,
+        "gameover.master": 15729,
+        "gameover.timeUp": 15729,
+        "gameover.columns": 15729,
+        "gameover.interval": 15729
+      }
+    }
+  ],
+  "scope": "All 336 evaluation and 32 original recordings were audited at baseline. Evaluation diagnostics initialize independently at supported native area-load epochs; they are not continuous power-on proof. The four-fix patch rechecks only 154 known failing segments from 124 evaluations plus the 32 originals. Other baseline verdicts are not fresh proof for this patch. Strict comparisons cover supported fields, not all 2048 RAM bytes. Images are not checked and the combined dashboard is not updated."
+}

@@ -10,13 +10,13 @@ export function nativePlayerEnemyLatch(n:{bits:number},i:{frame:number;engine:nu
  if(n.bits&1)return 'held';n.bits|=1;return 'contact';
 }
 
-/** GetEnemyBoundBox/BoundBoxCtrlData3; raw anchor before EnemyMovementSubs. */
-export function nativeNormalEnemyBox(x:number,y:number,camera:number,offset=0):NativeBox|undefined{
+/** GetEnemyBoundBox: Goomba uses x+3..13/y+14..20; normal tall enemies use x+2..14/y+9..21. Raw anchor precedes EnemyMovementSubs. */
+export function nativeNormalEnemyBox(x:number,y:number,camera:number,offset=0,small=false):NativeBox|undefined{
  const relative=x-camera;if(nativeMiscOffscreen(x,y,camera)&(relative>0?0x48:0x44))return;
- let left=(relative+2)&255,right=(relative+14)&255;
+ let left=(relative+(small?3:2))&255,right=(relative+(small?13:14))&255;
  if(((x-offset)&65535)>=((camera-offset+128)&65535)){if(right<128){if(left<128)left=255;right=255;}}
  else if(left>=160){if(right>=128)right=0;left=0;}
- return [left,(y+9)&255,right,(y+21)&255];
+ return [left,(y+(small?14:9))&255,right,(y+(small?20:21))&255];
 }
 
 /** ChkForPlayerInjury/ChkInj after the box/latch accepts a normal enemy. */

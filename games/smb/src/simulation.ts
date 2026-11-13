@@ -713,10 +713,12 @@ export class Simulation {
   else if(nativeGroundOnly){if(!p.grounded){this.walkingOff=true;this.jumpArc=false;this.jumpPose=false;this.bouncing=false;this.landJump='released';}}
   else if(this.walkOffFall()){}
   else if(this.area.theme!=='water'&&!p.grounded&&!this.headBumped)p.vy=this.nativeFallCap(p.vy+this.airGravity(b));
-  if(!water&&p.x<this.camera){
-   // Steering away from the left edge keeps braking momentum and the x fraction (native4-4 rows2597..2599).
-   if(useMotor&&direction>0&&p.vx<0)p.x=this.camera+p.x-Math.floor(p.x);
-   else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
+  if(!water&&(p.x<this.camera||useMotor&&direction<=0&&(p.vx<0||this.motor.facing===-1)&&Math.floor(p.x)===Math.floor(this.camera))){
+   // The screen edge retains position/speed fractions; steering away also keeps the negative speed byte (native4-4 rows2597..2599).
+   if(useMotor){
+    p.x=this.camera+p.x-Math.floor(p.x);
+    if(!(direction>0&&p.vx<0)){this.motor.speed=Math.round(p.vx*4096)&255;p.vx=this.motor.speed/4096;}
+   }else{p.x=this.camera;p.vx=Math.max(0,p.vx);}
   }
   p.anim+=Math.abs(p.vx);
   if(p.size===2&&!p.duck&&pressed('b')&&this.items.filter(i=>i.kind==='fireball').length<POWERUPS.fireballMaxActive.value){
@@ -1001,7 +1003,7 @@ export class Simulation {
     // Native BlockBounceTimer ($0784, 16 after a block hit, counted down every frame): while it runs a brick, ?-block or hidden block bumps like a
     // solid cell (speed 1 plus the fraction, no hit, no sound; PlayerBGCollision NYSpd; 7-1 v2 row 440: timer 7, speed 1 + 80/256).
     if(nativeHead&&this.blockBounceTimer>0&&isHitBlock(tile.id)&&tile.id!==196){this.bumpHead(dy,1,gravity);break;}
-    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&(p.size===0||tile.id!==196&&!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
+    if(nativeHead)this.bumpHead(dy,isHitBlock(tile.id)&&tile.id!==196&&(p.size===0||!(tile.id>=81&&tile.id<=83))?0:1,gravity);else{if(!water)p.y=tile.y+tile.height+h;p.vy=0.5;this.runJump=false;this.mediumJump=false;}
     if(water){if(tile.id!==0x26&&tile.id>=[0x10,0x61,0x88,0xc4][tile.id>>6])this.emit('sfx_bump');}
     else if('col' in tile){const wasBroken=this.brokenBrick;this.hitBlock(tile.col!,tile.row!,tile.id);if(nativeHead&&this.brokenBrick&&this.brokenBrick!==wasBroken)this.bumpHead(dy,-2,gravity);}else if('piece' in tile&&tile.piece.interactive&&(tile.id===192||tile.id===196))this.hitBlock(tile.piece.x/16,tile.piece.y/16,tile.id,tile.piece);else this.emit('sfx_bump');
    }break;
@@ -3020,8 +3022,8 @@ export class Simulation {
    const ew=e.kind==='bowser'?32:16;
    if(e.unwingedAir&&e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;
    let normalContact:true|undefined,normalStomp=false;
-   if(['koopa','redKoopa','beetle','paratroopa'].includes(e.kind)){
-    const camera=this.camera+this.lakituScroll,box=nativeNormalEnemyBox(Math.floor(priorX),Math.floor(priorY)-24,camera,this.nativeAreaOffset),slot=e.enemySlot,n={bits:slot===undefined?0:this.collisionBits[slot]};
+   if(['goomba','koopa','redKoopa','beetle','paratroopa'].includes(e.kind)){
+    const camera=this.camera+this.lakituScroll,box=nativeNormalEnemyBox(Math.floor(priorX),Math.floor(priorY)-24,camera,this.nativeAreaOffset,e.kind==='goomba'),slot=e.enemySlot,n={bits:slot===undefined?0:this.collisionBits[slot]};
     const action=nativePlayerEnemyLatch(n,{frame:this.broClock,engine:this.phase==='play'&&!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!(this.entryFalling&&this.area.entryFall?.native&&this.entryReadyAge<0)?8:0,playerY:Math.floor(p.y)-32,state:e.dead?32:e.walkerState??0,offscreen:box===undefined,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:box,star:Boolean(p.star)});
     if(slot!==undefined)this.collisionBits[slot]=n.bits;
     if(action==='separate'){delete e.kickOverlap;continue;}
