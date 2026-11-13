@@ -1,4 +1,6 @@
 import {NativeGraphicsScratch} from './native-graphics-scratch.js';
+
+import {nativePlayerEnemyLatch,nativeNormalEnemyBox,nativeNormalContactStomps} from './native-player-enemy-latch.js';
 import {nativeCannonOutside} from './native-cannon.js';
 import {runNativeGameOver,tickNativeGameOverMaster,type NativeGameOver} from './native-game-over.js';
 import {nativeMixedWalkerScene,ordinaryWalker} from './native-walker-scene.js';
@@ -439,7 +441,7 @@ export class Simulation {
   const p=this.player,camera=this.camera+this.lakituScroll,box=nativeLakituBox(Math.floor(x),Math.floor(y)-24,3,camera);
   return box!==undefined&&nativeBoxesOverlap(this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),box);
  }
- private makeEnemy(e:EnemySpec):Enemy{return {...e,nativeSlot:e.nativeSlot??(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim?'wait':undefined),autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(greenBounceSpec(e)?0:e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state 1, untouchable until it lands)
+ private makeEnemy(e:EnemySpec):Enemy{return {...e,nativeSlot:e.nativeSlot??(e.kind==='blooper'&&e.stroke||e.kind==='cheep'&&e.swim?'wait':undefined),autoPhase:e.kind==='piranha'&&e.phase===undefined?true:undefined,phase:e.phase??(e.kind==='piranha'?(Math.abs(this.player.x-e.x)<=PIRANHA.proximity.maximumInhibitedIntegerSeparation?PIRANHA.stages[1].fromPhaseInclusive:PIRANHA.initialPhase):undefined),vx:(e.direction??-1)*0.5,vy:greenSpawnVy(e),active:false,dead:0,shell:false,movingShell:false,age:0,y:e.y+(greenBounceSpec(e)?0:e.spawnYFraction??0),originX:e.x,originY:e.y,hp:5,unwingedAir:e.spawnUnwinged?-1:undefined};} // spawnUnwinged: a route Koopa that natively first appears as a just-stomped Paratroopa (state1, retaining its native falling motor)
  step(buttons:Button[],frames=1,buttons2:Button[]=[]){
   if(!Number.isInteger(frames)||frames<0||frames>18000)throw new Error('frames must be an integer in 0..18000');
   const held=[new Set(buttons),new Set(buttons2)];
@@ -2884,27 +2886,32 @@ export class Simulation {
    if(e.kind==='lakitu')continue; // its native contact already preceded MoveLakitu
    const eh=e.kind==='bowser'?32:e.kind==='piranha'?24:e.kind==='goomba'?10:e.kind==='bullet'?BULLETS.hitHeight:['koopa','redKoopa','paratroopa','beetle','spiny'].includes(e.kind)?8:16;
    const ew=e.kind==='bowser'?32:16;
-   if(e.unwingedAir){if(e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;else continue;} // just unwinged: native state byte 1 until it lands (3-1 21012-21029, 8-2 70096-70104); Mario falls past it
-   const shellContact=e.shell&&!p.star?this.nativeShellContact(priorX,priorY):undefined;
+   if(e.unwingedAir&&e.vy===0&&e.unwingedAir!==this.frame)delete e.unwingedAir;
+   let normalContact:true|undefined,normalStomp=false;
+   if(['koopa','redKoopa','beetle','paratroopa'].includes(e.kind)){
+    const camera=this.camera+this.lakituScroll,box=nativeNormalEnemyBox(Math.floor(priorX),Math.floor(priorY)-24,camera,this.nativeAreaOffset),slot=e.enemySlot,n={bits:slot===undefined?0:this.collisionBits[slot]};
+    const action=nativePlayerEnemyLatch(n,{frame:this.broClock,engine:this.phase==='play'&&!this.entryVineActive&&!this.autoVineActive&&!this.area.autoWalk&&!(this.entryFalling&&this.area.entryFall?.native&&this.entryReadyAge<0)?8:0,playerY:Math.floor(p.y)-32,state:e.dead?32:e.walkerState??0,offscreen:box===undefined,player:this.hammerPlayerBox??nativePlayerBox(p.x,p.y,p.size,p.duck,camera),enemy:box,star:Boolean(p.star)});
+    if(slot!==undefined)this.collisionBits[slot]=n.bits;
+    if(action==='skip'||action==='held'||action==='separate')continue;
+    normalContact=true;normalStomp=nativeNormalContactStomps(e.nativeId??(e.kind==='paratroopa'?14:0),Math.floor(p.y)-32,Math.floor(priorY)-24,Math.floor(p.vy),this.nativeStompTimer);
+   }
+   if(normalContact&&this.area.theme==='water'&&!p.star){hurtBeforeMove();continue;} // HandlePECollisions branches to injury before any land stomp/kick logic.
+   const shellContact=e.shell&&!p.star?(normalContact??this.nativeShellContact(priorX,priorY)):undefined;
    if(shellContact!==undefined){
     const slot=e.enemySlot;
     if(!shellContact){if(slot!==undefined)this.collisionBits[slot]&=~1;delete e.kickOverlap;continue;}
-    if(slot!==undefined&&this.collisionBits[slot]&1)continue;
-    if(slot!==undefined)this.collisionBits[slot]|=1;
+    if(normalContact===undefined){if(slot!==undefined&&this.collisionBits[slot]&1)continue;if(slot!==undefined)this.collisionBits[slot]|=1;}
     if(!e.movingShell){
      e.movingShell=true;e.shellAge=0;e.shellChain=0;e.kickOverlap=true;e.vx=(Math.floor(priorX)>=Math.floor(p.x)?1:-1)*shellRules.speedPixelsPerNativeFrame;e.x=priorX+e.vx;e.y=stompY;e.fall=stompFall;
      const award=this.shellKickAward();this.enemyPopup(award,e);this.floateyScore(award);this.emit('sfx_kick');continue;
     }
    }
-   const stompWindow=shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=this.nativeChkInjStomp(e,p,priorX,priorY)||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
+   const stompWindow=normalContact??shellContact??this.nativeStompWindow(e,p,priorX,priorY),chkInj=normalContact?normalStomp&&Math.floor(p.vy)<=0:this.nativeChkInjStomp(e,p,priorX,priorY)||Boolean(e.shell&&shellContact&&this.nativeStompTimer);
    if(!chkInj&&(stompWindow===false||stompWindow===undefined&&!overlap(p.x+3,p.y-this.height+2,10,this.height-3,e.x+2,e.y-eh,ew-4,eh))){if(e.unwingedBounce)delete e.unwingedBounce;delete e.kickOverlap;if((p.vy<=0||e.kind==='spiny')&&!this.bouncing&&!e.shell&&(Math.abs(e.x-p.x)<11||this.koopaSideReach(e.kind,priorX))&&this.nativeTouch(e,priorY,false))hurtBeforeMove();continue;} // above the stomp box a rising or standing Mario is still hurt
    if(e.kickOverlap)continue;
-   // The newly unwinged Koopa and Mario can still overlap while the stomp
-   // bounce separates them. Keep other enemies and later contacts dangerous.
-   if(e.unwingedBounce){if(p.vy<0&&oldBottom<=e.y+1)continue;delete e.unwingedBounce;}
    if(p.star){e.dead=1;e.vy=-4;this.floateyScore(100);if(e.kind==='goomba')this.enemyPopup(100,e);this.emit('sfx_kick');continue;}
    const stompable=!['piranha','spiny','podoboo','bowser','blooper'].includes(e.kind);
-   if(stompable&&((Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))||chkInj)){
+   if(stompable&&(normalContact?normalStomp:(Math.floor(p.vy)>0||this.stompedThisStep)&&(oldBottom<=e.y+1||stompWindow===true||this.risingParatroopaStomp(e,p))||chkInj)){
     if(chkInj&&!(Math.floor(p.vy)>0||this.stompedThisStep))p.vy=this.stompBounceVy(p.vy,e.kind); // SBnce only stores the speed byte; a rising Mario keeps his jump gravity.
     else{p.vy=this.stompBounceVy(p.vy,e.kind);this.bouncing=true;this.stompBounce();this.landJump='inactive';p.grounded=false;}
     // First Paratroopa contacts award 400; subsequent ordinary +100 is observed.
@@ -2921,7 +2928,7 @@ export class Simulation {
      else{e.movingShell=false;e.shellFalling=false;e.shellAge=0;e.shellChain=0;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;}
     }else{e.dead=1;e.vy=0;if(e.kind==='bullet'){e.x=e.frenzy?priorX:e.x;e.y=priorY-2;e.vx=0;e.pod={...nativeMoveState(e.y),fraction:priorFraction};if(e.frenzy)nativeImposeGravity(e.pod,0x1c,3);e.y=e.pod.y;e.vy=e.pod.speed+e.pod.force/256;}if(e.kind==='goomba'){e.squashed=true;e.x=priorX;e.y=stompY;e.fall=stompFall;e.walkerState=4;e.shellTimer=this.primaryHardMode?11:16;if(stompFall)e.vy=stompFall.speed+stompFall.force/256;}} // HandleStompedShellE writes state4 and interval16/11; MoveNormalEnemy owns subsequent falling, landing and timer14 erasure.
    }else if(e.shell&&shellContact)hurtBeforeMove();
-   else if(this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))hurtBeforeMove();
+   else if(normalContact||this.nativeTouch(e,priorY,true)&&(!REACH_MEASURED.includes(e.kind)||Math.abs(Math.floor(priorX)-Math.floor(p.x))<=nativeHurtReachX(e.kind)))hurtBeforeMove();
 
   }
   while(nativeSlot<6)this.visitNativeBankSlot(nativeSlot++,oldBottom);this.currentNativeBankSlot=-1;

@@ -14,9 +14,9 @@ test('7-1 keeps the native stomp-born Koopa as one actor, with no screenshot-der
  const k=sim.enemies[0];k.active=true;
  let rows=0;
  while(k.unwingedAir&&rows<40){
-  Object.assign(sim.player,{x:k.x,y:k.y-6,vx:0,vy:2,grounded:false});
+  Object.assign(sim.player,{x:k.x+100,y:100,vx:0,vy:2,grounded:false});
   const score=sim.score;sim.step([],1);rows++;
-  if(k.unwingedAir){assert.equal(sim.score,score);assert.ok(!sim.player.dead);assert.ok(!k.shell);}
+  if(k.unwingedAir){assert.equal(sim.score,score);assert.ok(!sim.player.dead);assert.ok(!k.shell);} // Mario is separated: this tests falling motion, not an airborne immunity.
  }
  assert.ok(rows>=8&&rows<=25,`air rows ${rows}`);
  assert.equal(k.y,208);
