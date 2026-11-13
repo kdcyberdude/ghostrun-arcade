@@ -59,6 +59,7 @@ export function initializeEntrance(sim,start){
   if(!o.flag)continue;
   if(o.id===50){const spring=sim.area.springs?.find(p=>p.nativeColumn===Math.floor(o.x));if(!spring)throw Error(`Observed Spring at ${o.x} is not mapped`);sim.springSlots.set(spring,s);}
   if(o.id===8){sim.spawnNativeBullet(o.x,o.y-256+24,-1);Object.assign(sim.enemies[sim.enemies.length-1],{enemySlot:s,age:2,frenzy:true});}
+  if(o.id===51){sim.spawnNativeBullet(o.x,o.y-256+24,o.xSpeed<0?-1:1);const e=sim.enemies[sim.enemies.length-1];Object.assign(e,{enemySlot:s,age:2,vx:o.xSpeed/16,bbCheck:o.state===0,cannonFrameTimer:o.frameTimer});if(o.state&32)Object.assign(e,{dead:1,pod:{y:o.y-256+24,speed:o.speed,force:o.force,fraction:o.fraction,timer:0}});}
   if(o.id===13){let e=sim.enemies.find(e=>e.kind==='piranha'&&!e.active&&e.originX===Math.floor(o.x)&&e.originY-24===o.force);if(!e&&start.nativeAreaSnapshot){const candidates=sim.enemies.filter(e=>e.kind==='piranha'&&!e.active&&e.originX===Math.floor(o.x));if(candidates.length===1)e=candidates[0];else if(candidates.length===0){e=sim.makeEnemy({kind:'piranha',x:Math.floor(o.x),y:o.force+24,evidence:'Native snapshot: fixed Piranha x and DownYPos from its active enemy slot'});sim.enemies.push(e);snapshotActors.push({code:'snapshot-native-actor-not-declared',kind:'piranha',slot:s,x:o.x,downY:o.force});}}
    if(!e)throw Error(`Observed Piranha at ${o.x} is not mapped`);
    /* PiranhaPlant_Y_Speed = $58, MoveFlag = $A0, UpYPos = $0417, DownYPos = $0434, EnemyFrameTimer $078A */

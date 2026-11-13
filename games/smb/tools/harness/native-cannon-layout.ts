@@ -1,7 +1,7 @@
 /** Source-only Bullet Bill Cannon (AreaStyleObject with AreaStyle2) declarations.
  * npx tsx tools/harness/native-cannon-layout.ts --source DISASSEMBLY [--apply] */
 import fs from 'node:fs';
-import {nativeEnemyBytes} from '../native-enemy-stream.mjs';
+import {nativeSourceBytes} from '../native-source-bytes.mjs';
 import {parseArgs} from 'node:util';
 import type {Level} from '../../src/types.js';
 import {nativeAreaBindings} from './native-area-identity.js';
@@ -13,7 +13,7 @@ const source=fs.readFileSync(a.source,'utf8'),levels=JSON.parse(fs.readFileSync(
 const labels=[...source.slice(source.indexOf('AreaDataAddrLow:'),source.indexOf('AreaDataAddrHigh:')).matchAll(/<([A-Za-z0-9_]+)/g)].map(m=>m[1]);
 const cannons:{level:string;area:string;code:number;label:string;offset:number;column:number;y:number}[]=[];
 for(const level of levels)for(const binding of nativeAreaBindings(level).bindings){
- const area=level.areas.find(a=>a.id===binding.area)!,label=labels[[0,3,25,28][binding.code>>5&3]+(binding.code&31)],bytes=nativeEnemyBytes(source,label);let page=0;
+ const area=level.areas.find(a=>a.id===binding.area)!,label=labels[[0,3,25,28][binding.code>>5&3]+(binding.code&31)],bytes=nativeSourceBytes(source,label);let page=0;
  for(let i=2;i<bytes.length&&bytes[i]!==0xfd;i+=2){
   const first=bytes[i],second=bytes[i+1],row=first&15;
   if(second&128)page++;
