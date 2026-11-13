@@ -11,7 +11,7 @@ test('continuous strict audit includes every native victory row without erasing 
  assert.equal(audit.coverage.frames,fixture.frames);assert.equal(audit.coverage.victoryFrames,fixture.victoryFrames);assert.equal(audit.coverage.continuationFrames,fixture.frames-fixture.levelChange);assert.equal(audit.coverage.uncomparedSameLevelFrames,0);
  assert.equal(legacy.fields.score,0);for(const [field,first]of Object.entries(prefix.fields))if(first!==null)assert.equal(audit.fields[field],first,`earlier ${field} divergence remains visible`);assert.ok(audit.first!<fixture.victoryFirst);
  assert.ok(Object.keys(audit.fields).some(k=>k.startsWith('victory.')));assert.ok(!audit.diagnostics.some(d=>d.code==='unsupported-native-mode'&&d.detail.includes('mode=2')));
- assert.equal(audit.coverage.complete,false,'unsupported actor families remain explicit');assert.notEqual(audit.status,'pass');
+ assert.equal(audit.coverage.complete,true,'every retained actor family now has an owned readout');assert.deepEqual(audit.diagnostics,[]);assert.notEqual(audit.status,'pass');
 });
 test('victory RAM aliases are compared only once the source routines own them',()=>{
  const r=Buffer.from(events.runtime[0].ram,'base64'),sim:any={phase:'castle',nativeVictory:{task:2,destination:12,walk:0},random:{frame:r[9],bytes:Array.from(r.subarray(0x7a7,0x7ae))},intervalControl:r[0x77f]};
