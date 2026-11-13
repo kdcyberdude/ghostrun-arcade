@@ -1,5 +1,5 @@
 import {decodeNativeWater,initializeNativeWater} from './native-water-seed.mjs';
-import {seedNativeFrenzyControllers} from '../../src/native-frenzy-controllers.js';
+import {seedNativeFrenzyControllers} from '../../src/native-frenzy-controllers.ts';
 /** One-time capture initialization from observed RAM, never a mid-run correction. Roles: research docs/NATIVE_ROLES.md and tools/harness/{power-cases,shot-pairs}. */
 export function decodeEntrance(ram,receipt,nativeArea=receipt.schema==='native-mood-entry-v1'?receipt.areaBinding:undefined){
  if(ram.length!==2048)throw Error('Expected 2048 observed RAM bytes');
