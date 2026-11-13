@@ -22,7 +22,7 @@ test('primary vine readout compares raw full-page anchor and controller bytes wi
   const n=new NativeSpecialSlot();Object.assign(n,{flag:r[0x14],id:47,x:primary.x,y:r[0xd4],yHigh:r[0xbb],vineCount:s.control.count,vineHeight:s.control.height,vineStartY:s.control.startY,vineSlots:s.control.slots});
   const sim=model(n),before=JSON.stringify(n),actors=strictSimEntities(sim),native=strictNativeEntities(r);native.entities=native.entities.filter(e=>e.kind==='vine'&&e.slot===5);
   assert.deepEqual(strictEntityDifferences(native,actors).mismatches,[]);assert.equal(JSON.stringify(n),before);
-  assert.deepEqual(simVineControl(n),s.control);assert.ok(strictSimCoverage(sim).some(g=>g.code==='unsupported-sim-vine-state'));
+  assert.deepEqual(simVineControl(n),s.control);assert.ok(!strictSimCoverage(sim).some(g=>g.code==='unsupported-sim-vine-state'));
   for(const key of ['count','height','startY','slots'] as const){const wrong=structuredClone(actors);if(key==='slots')wrong[0].vine!.slots=[4];else wrong[0].vine![key]++;assert.ok(strictEntityDifferences(native,wrong).mismatches.some(m=>m.code===`vine.${key}`));}
   const wrong=structuredClone(actors);wrong[0].y++;assert.ok(strictEntityDifferences(native,wrong).mismatches.some(m=>m.code==='position'));
  }
@@ -30,7 +30,7 @@ test('primary vine readout compares raw full-page anchor and controller bytes wi
 test('inactive declarations need no fictional actor; unsupported active secondary state stays explicit',()=>{
  const sim=model();assert.deepEqual(strictSimEntities(sim),[]);assert.deepEqual(strictSimCoverage(sim),[]);
  sim.specialSlot5.yHigh=1;sim.specialSlot5.claimVine(128,144);sim.specialSlot5.addVineSegment(0);
- assert.deepEqual(strictSimCoverage(sim).map(g=>g.code),['unsupported-sim-vine-state','unsupported-sim-vine-segment']);
+ assert.deepEqual(strictSimCoverage(sim).map(g=>g.code),['unsupported-sim-vine-segment']);
  const native=strictNativeEntities(new Uint8Array(Buffer.from(samples.find(s=>s.actors.length===2)!.ram,'base64')));
  assert.ok(strictEntityDifferences(native,strictSimEntities(sim)).mismatches.some(m=>m.code==='missing'&&m.native?.slot===0));
  sim.specialSlot5.claimPowerup(160,120);assert.equal(strictSimEntities(sim).some(e=>e.kind==='vine'),false,'slot5 replacement is not a vine');
