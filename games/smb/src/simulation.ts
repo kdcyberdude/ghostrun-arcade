@@ -746,7 +746,7 @@ export class Simulation {
   if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.clampBelowScreen(oldBottom,b);this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
-  if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
+  if(this.area.checkpoint&&this.camera>=this.area.checkpoint.camera){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;} // native halfway: the screen's page reached the halfway page (corpus deaths: 1-1 page 5, 1-3 page 4, 2-1 page 6; Mario's own page does not count)
   const previousCamera=this.camera,attemptX=cameraAttemptX??p.x;
   // ProcessWhirlpools runs after native ScrollHandler; its trailing x pull is not a side-wall stop.
   const cameraContact=springScroll===undefined&&(cameraMotion??p.x-oldX)>0&&(attemptX+waterBoundsShift>xBeforePlatforms-this.swimPull+1e-7||(waterBoundsVx??cameraAttemptVx)>0&&p.vx===0||this.wallSpeed!==undefined&&this.wallSpeed>0);
