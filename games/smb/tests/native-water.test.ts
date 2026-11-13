@@ -179,3 +179,11 @@ test('neutral B braking reads the previous ImposeFriction absolute byte before i
  assert.equal(wall.horizontal(0,false,false,true,24),88);
  assert.equal(wall.horizontal(0,false,false,true,0),0);
 });
+
+test('Up without LR runs the native low-speed stop while neutral and A-only retain residue',()=>{
+ const w=new NativeWater();w.motor.reset(32,1);w.motor.moving=1;
+ assert.equal(w.horizontal(0,false,false,false,7),32);
+ assert.equal(w.horizontal(0,false,false,false,7,true),0);
+ const high=new NativeWater();high.motor.reset(32,1);high.motor.moving=1;
+ assert.equal(high.horizontal(0,false,false,false,15,true),32);
+});
