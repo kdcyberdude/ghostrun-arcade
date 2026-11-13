@@ -257,7 +257,7 @@ export class Simulation {
  private entryFalling=false;private entryFallAge=0;private entryReadyAge=-1;/** Rows a queued pad trails its native read in the entry (default: queue length - 1); tools that seed the queue on native rows set 0. */entryInputLag?:number;private entryInputDelay=-1;private entryTimerDelay=-1;
  private slotCamera=0;private slotScroll=false;private slotSub=[0,0,0,0,0];slotYSpeed=[0,0,0,0,0];slotYFraction=[0,0,0,0,0];private slotYFrac=[0,0,0,0,0]; // native sub-pixel byte left in each enemy slot (docs/NATIVE_ROLES.md, Object slots): a new walker starts with it; every area load (level, pipe, respawn) clears it
  private playerXScroll=0;private pipeTimer=0;
- private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private fishTimer=0;private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;private cannonOffset=0;private nativeAreaOffset=0;private slotFrameTimers=[0,0,0,0,0];private frameTimersAt=-1;
+ private pipeRise=0;private enemyContactOff=false;broClock=0;random=new NativeRandom();secondaryHardMode=false;primaryHardMode=false;recordedRoute=false; /* set by the route comparison: its fish and cannons replay the recorded attempts, whose hidden slot state a re-seeded replay cannot reproduce */private swimTimer=0;private swimBag=0;private marioMotion=1;private cannonTable:{cannon:CannonSpec;timer:number}[]=[];private cannonsLoaded=0;private cannonOffset=0;private nativeAreaOffset=0;private slotFrameTimers=[0,0,0,0,0];private frameTimersAt=-1;
 
  private platformMotion=new PlatformMotion({levelId:'',areaId:''});private platformFrame=0;
  private flameFrenzy=false;private flameTimer=0;private flameTimerCounter=0;private mouthFlame?:Enemy;
@@ -354,7 +354,7 @@ export class Simulation {
    this.player.climbing=this.entryVineStage==='climb';
   }
   if(!this.nativeScreen)this.nativeBackdrop=graphics.palette_observations[area.palette].palette[0];
-  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.castleSlotXSpeed.fill(0);this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.lakituScroll=0;this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.fishTimer=0;this.fishCamera=undefined;this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
+  this.player.grounded=this.isSolid(x+8,y);this.camera=camera??area.camera??Math.max(0,x-112);this.areaFrame=0;this.colorRotations=0;this.playerXScroll=0;this.pipeTimer=0;this.paletteClock.reset(Math.floor(this.camera)&31);this.spriteShuffle.reset();this.blockGraphics.length=0;this.blockBackground.clear();this.blockBackgroundQueue.clear();this.nativePowerSlot={speed:0,force:0,fraction:0};this.nativeFrenzyTimer=0;this.nativeCastleFlag=undefined;this.nativeFireworks=[];this.nativeFireworksCounter=255;this.nativeFireworksBorn=0;this.scrollCrossFrame=-Infinity;this.castlePictures=new NativeCastlePictures(this.level.id,area.id);this.areaControls=new NativeAreaControls(this.level.id,area.id,this.camera);this.parserClock=new NativeParserClock();this.springLoadColumns=lifeEntry?12:0;if(lifeEntry)this.areaControls.column-=24;this.springSlots.clear();this.parserVramBusy=false;this.parserLoaderWasBlocked=false;this.movingDir=1;this.areaPlayFrame=0;this.slotSub=[0,0,0,0,0];this.castleSlotXSpeed.fill(0);this.slotYSpeed=[0,0,0,0,0];this.slotYFraction=[0,0,0,0,0];this.lakituScroll=0;this.flameFrenzy=false;this.flameTimer=0;this.flameTimerCounter=0;this.mouthFlame=undefined;this.collisionBits=[0,0,0,0,0];this.groupParserSlot=5;this.groupSlotsBefore=[false,false,false,false,false];this.slotYFrac=[0,0,0,0,0];this.slotVertical=[0,1,2,3,4].map(()=>({speed:0,force:0,fraction:0}));this.swimTimer=0;this.swimBag=0;this.cannonTable=[];this.cannonsLoaded=0;this.cannonOffset=0;this.slotFrameTimers=[0,0,0,0,0];this.frameTimersAt=-1;this.platformSlots.clear();this.frenzyControllers=nativeFrenzyControllers(this.level.id,area.id);seedNativePageControllers(this.frenzyControllers,this.camera,this.areaControls.origin*16);this.slotReleaseFrame.fill(-1);this.enemies=area.enemies.map(e=>this.makeEnemy(e));for(const e of this.enemies)if(e.kind==='bowser')e.x=e.originX=nativeBowserSpawnX(this.level.id,e.x);
   for(const object of this.areaControls.castleGraphics)if(object.column>=0&&object.column*16<area.width)this.blockBackground.set(`${object.column},${object.row}`,object.id);
 
   this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
@@ -716,7 +716,7 @@ export class Simulation {
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
   this.eraseOffscreenEnemies();this.releaseNativeSprings();this.birthNativeWaterEnemies();this.items=this.items.filter(i=>i.nativePowerState===undefined||i.x>=this.camera-72&&i.x<this.camera+328);
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
-  this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
+  this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();
   this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
@@ -1177,7 +1177,7 @@ export class Simulation {
    for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
    this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
    this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
-   this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(this.camera);
+   this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(this.camera);
    if(this.piranhaColumns){this.piranhaColumns.step(this.camera);this.birthParserPiranhas();}
    for(const bar of this.area.firebars??[])if(!this.firebarSlots?.tracks(bar))this.collideFirebar(bar);
    this.gameTimerStep(p.y<288);
@@ -1282,7 +1282,7 @@ export class Simulation {
    for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   this.eraseOffscreenEnemies();this.birthNativeWaterEnemies();
   this.platformMotion.advance(this.platformFrame,this.camera,this.random.frame);this.platformSlotResidues();
-  this.passNativeObjects();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
+  this.passNativeObjects();this.updateFishFrenzy();this.passNativeCannons();this.passNativeFrenzy();this.updateSwimGenerator();this.passNativeCastleFlames();this.gateNativePlatforms(previousCamera);this.busyNativeSlots(); // register newly eligible platforms on their native birth row
   this.piranhaColumns?.step(this.camera);this.birthParserPiranhas();this.firebarSlots?.finishFrame(this.camera);
    for(const [bar,motor]of this.firebarMotors)if(!motor.state.active&&!this.nativeTimersStopped)advanceFirebarMotor(motor.state,motor.geometry,bar.motor!,this.camera);
   if(!this.player.invincible||!(this.random.frame&1))this.waterScrollX=(Math.floor(this.player.x)-Math.floor(this.camera))&255;
@@ -1303,7 +1303,7 @@ export class Simulation {
   }
   for(const generator of this.area.generators??[]){
    if(this.recordedRoute&&generator.schedule){this.launchScheduledFish(generator);continue;}
-   if(generator.maxFish){this.updateFishFrenzy(generator);continue;}
+   if(generator.maxFish)continue; // native AreaFrenzy owns flying Cheep attempts in the post-scroll slot pass
    if(generator.heights){this.frenzyDue=generator;continue;} // runs after this frame's scroll (passNativeFrenzy)
    if(this.player.x<generator.from||this.player.x>generator.to||this.areaFrame%generator.interval!==0)continue;
    const sequence=Math.floor(this.areaFrame/generator.interval);
@@ -1504,29 +1504,28 @@ export class Simulation {
  }
  // Native flying fish (docs/NATIVE_ROLES.md): when the timer runs out the lowest free slot s picks the next wait from random byte s+1, and a fish is launched if s is below the area's limit.
  // Random byte s and Mario's speed byte pick its speed and start offset; a standing Mario gets a random offset (byte s+2) unless byte s+1 is 0 in its low bits, and the fish then flies toward him.
- /** Native (RAM 0x71F/0x78F, evidence/leaper3-findings-20261111.md): the fish timer is not read on the row after the camera crosses a multiple of 32 px moving right
-  * (15 of 15 expiries on that row launch one row late; rule replay on native RAM 510 of 556 launches vs 432 without it). Returns whether this row is that row. */
- private fishCameraCrossed(){const before=this.fishCamera;this.fishCamera=this.camera;return before!==undefined&&Math.floor(this.camera/32)>Math.floor(before/32);}
- private fishCamera?:number;
  // A slot keeps the sub-pixel x ($0401+s) and y fraction ($0417+s) of its last occupant, and a new flying fish starts with them (32 v2 traces: 30 of 30 fish spawns in a used slot
  // start with the bytes the slot held after its previous occupant was removed). A fish removed on a row still makes that row's horizontal step, not its vertical one.
  private leaveFlyingCheepSlot(e:Enemy){const x=e.nativeSwim?e.x:e.x+e.vx,slot=e.enemySlot!;this.slotSub[slot]=Math.round((x-Math.floor(x))*256)&255;this.slotYFrac[slot]=e.nativeSwim?.fraction??e.pod?.fraction??0;if(e.nativeSwim){Object.assign(this.slotVertical[slot],{speed:0,force:e.nativeSwim.originY,fraction:e.nativeSwim.fraction});this.slotYSpeed[slot]=0;this.slotYFraction[slot]=e.nativeSwim.fraction;}if(e.nativeFlight&&e.pod){Object.assign(this.slotVertical[slot],{speed:e.pod.speed,force:e.pod.force,fraction:e.pod.fraction});this.slotYSpeed[slot]=e.pod.speed&255;this.slotYFraction[slot]=e.pod.fraction;}}
- private updateFishFrenzy(generator:GeneratorSpec){
+ private updateFishFrenzy(){
+  if(this.recordedRoute||this.specialSlot5.frenzyBuffer!==20)return;
   this.freeNativeSlot(); // an enemy takes its native slot on the frame it activates (not when the timer next reads the slots): a later fish then sees the real free slot
-  const crossed=this.fishCameraCrossed();
-  if(this.camera<generator.fromCamera!||this.player.x>generator.to||(this.fishTimer>0&&(this.nmiTimersHeld||--this.fishTimer>0)))return;
-  if(crossed)return; // the timer stays at 0 and is read on the next row
-  const F=FLYING_FISH.frenzy,bytes=this.random.bytes,slot=this.freeNativeSlot(),wait=bytes[slot+1]&3;
+  // CheckFrenzyBuffer follows placed data; EndFrenzy clears the source buffer.
+  if(this.nativeFrenzyTimer>0||this.parserClock.blocked)return;
+  const F=FLYING_FISH.frenzy,bytes=this.random.bytes,used=this.busyNativeSlots();
+  // A slot already visited while occupied cannot be revisited after its erasure.
+  for(let s=0;s<5;s++)if(this.groupSlotsBefore[s])used.add(s);
+  let slot=0;while(used.has(slot))slot++;const wait=bytes[slot+1]&3;
   if(slot>=5)return; // all five native slots busy: the timer stays at 0 until one is free (7-3 rows 451, 244)
   // InitFlyingCheepCheep calls SmallBBox/InitVStf before its max-slot test:
   // A0/0434 clear even on a rejected attempt; the shared0417 fraction remains.
   this.slotVertical[slot].speed=0;this.slotVertical[slot].force=0;this.slotYSpeed[slot]=0;
-  this.fishTimer=this.nativeFrenzyTimer=F.waits[wait];
+  this.nativeFrenzyTimer=F.waits[wait];
   if(slot>=3+Number(this.secondaryHardMode))return;
   const speedByte=Math.floor(this.player.vx*16)&255,table=speedByte===0?0:speedByte<F.walkSpeedLimit?1:2,entry=table*4+(bytes[slot]&3),place=table===0&&wait?bytes[slot+2]&15:entry;
   const offset=F.offsets[place],speed=F.speeds[entry]*(table===0&&offset>0?-1:1);
   const enemy=this.makeEnemy({kind:'cheep',motion:'flying',x:Math.floor(this.player.x)+offset+this.slotSub[slot]/256,y:FLYING_FISH.launch.feetY,direction:Math.sign(speed),evidence:'Native leaping Cheep Cheep: random-register launch, 187-frame arc.'});
-  enemy.nativeFlight=true;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotVertical[slot].fraction};enemy.active=true;this.enemies.push(enemy);
+  enemy.nativeFlight=true;enemy.age=1;enemy.graphicsVisible=false;enemy.enemySlot=slot;enemy.vx=speed;enemy.vy=FLYING_FISH.launch.vy;enemy.pod={...flyingCheepLaunch(),fraction:this.slotVertical[slot].fraction};enemy.active=true;this.enemies.push(enemy);this.slotVertical[slot].speed=-5;this.slotYSpeed[slot]=251;
  }
  /** Physical water streams containing Blooper/large-lift objects share the same source cursor as WaterArea2. */
  private setupNativeWaterObjects(){

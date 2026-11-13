@@ -1,0 +1,311 @@
+{
+ "schema": "native-flying-frenzy-order-v1",
+ "base": "27c2d68",
+ "source": {
+  "asm": "SMBDIS.ASM",
+  "asmSha256": "e5c17c42783f430029ab90aa37c73d51c2c320898e533b3ff196dad38c50ae42",
+  "procedures": [
+   "AreaFrenzy",
+   "ProcessEnemyData",
+   "CheckFrenzyBuffer",
+   "InitFlyingCheepCheep",
+   "SmallBBox/InitVStf",
+   "EndFrenzy"
+  ],
+  "ram": [
+   "EnemyFrenzyBuffer06CB",
+   "FrenzyEnemyTimer078F",
+   "AreaParserTaskNum071F",
+   "EnemyDataOffset0739",
+   "FrameCounter09",
+   "PseudoRandomBitReg07A7..",
+   "EnemyFlag0F+s",
+   "EnemyID16+s",
+   "A0/0434/0417 slot motor"
+  ]
+ },
+ "causes": [
+  {
+   "level": "2-3",
+   "frame": 1198,
+   "nativeBuffer": 0,
+   "nativeTimer": 0,
+   "oldModelTimer": 96,
+   "oldExtra": [
+    0,
+    3127.125,
+    248
+   ],
+   "reason": "Fitted generator.to range remained active after EndFrenzy cleared the native buffer."
+  },
+  {
+   "level": "7-3",
+   "frame": 578,
+   "nativeSlot1": [
+    3,
+    1520,
+    136
+   ],
+   "nativeTimer": 0,
+   "oldModelTimer": 72,
+   "reason": "Pre-bank flying frenzy stole slot1 before placed data initialized the red Koopa."
+  }
+ ],
+ "rules": [
+  "Only EnemyFrenzyBuffer20 enables flying initialization; no scene camera/start/end thresholds.",
+  "078F is the single NMI-owned timer; initializer does not decrement it again.",
+  "Existing placed-data pass runs first, then flying fallback; a slot occupied at its native visit cannot refill that row.",
+  "Post-bank birth is held on its source row, moves on next row, and writes the actual FB speed alias immediately.",
+  "SmallBBox/native3-or4-slot maximum, RNG tables and authoritative0417 fraction remain unchanged."
+ ],
+ "captureHashes": {
+  "2-3": {
+   "ramSha256": "564cd73bd551043ae2999fd9eda6d5c3f34f40730679a3a320b2e76627341fa5",
+   "padsSha256": "a70dd7d0f5a3bebd33ddd44e5d303c6569b50a9b437872f54d0715a4bdfdfcb3"
+  },
+  "7-3": {
+   "ramSha256": "07d15e07dc4bbd3c93238d7790126527efac54cfeb4d4682c23ec30bdf387748",
+   "padsSha256": "4776c983920ac2a5f8b2033bb609d0a17529d8077f3833cac2bbbea3c6f3c7ce"
+  }
+ },
+ "focusedValidation": {
+  "tests": 30,
+  "terminalExit": 0,
+  "nativeBirthContexts": 38,
+  "observableRejectedInitializations": 1,
+  "flightRows": 6980,
+  "flightTransitions": 6942,
+  "fullSuite": "not run; integration batch owns it",
+  "tsc": "not run; integration batch owns it"
+ },
+ "replays": [
+  {
+   "level": "2-3",
+   "fields": {
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "enemy": null
+   },
+   "strictStatus": "pass",
+   "strictFields": {
+    "level": null,
+    "area": null,
+    "dead": null,
+    "time": null,
+    "score": null,
+    "coins": null,
+    "cam": null,
+    "x": null,
+    "y": null,
+    "missing": null,
+    "extra": null,
+    "kind": null,
+    "position": null,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": null,
+    "continuation.random": null,
+    "continuation.interval": null,
+    "continuation.load.ready": null,
+    "continuation.load.task": null,
+    "continuation.load.engine": null,
+    "continuation.load.screen": null,
+    "continuation.load.disable": null
+   },
+   "remainingCoverage": []
+  },
+  {
+   "level": "7-3",
+   "fields": {
+    "dead": 1914,
+    "time": 1936,
+    "score": 1920,
+    "coins": 1920,
+    "cam": 2298,
+    "x": 2298,
+    "y": 2298,
+    "enemy": 692
+   },
+   "strictStatus": "diverged",
+   "strictFields": {
+    "level": 3019,
+    "area": null,
+    "dead": 1914,
+    "time": 1936,
+    "score": 1920,
+    "coins": 1920,
+    "cam": 1915,
+    "x": 1915,
+    "y": 1915,
+    "missing": 1306,
+    "extra": 1954,
+    "kind": 1920,
+    "position": 692,
+    "state": null,
+    "firebar.id": null,
+    "firebar.high": null,
+    "firebar.low": null,
+    "firebar.speed": null,
+    "firebar.direction": null,
+    "alias.owner": null,
+    "vine.count": null,
+    "vine.height": null,
+    "vine.startY": null,
+    "vine.slots": null,
+    "continuation.frameCounter": 3019,
+    "continuation.random": 3019,
+    "continuation.interval": 3019,
+    "continuation.load.ready": 3019
+   },
+   "remainingCoverage": [
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3019,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a74a, loaded page=0, origin=0, load frame=840, task=0, look-ahead destination=64",
+     "area": "main",
+     "first": 3019,
+     "count": 2
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+     "area": "main",
+     "first": 3020,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=0, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3021,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=1, look-ahead destination=64",
+     "area": "main",
+     "first": 3021,
+     "count": 161
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=1, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3022,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=2, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3023,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=3, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3024,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=4, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3025,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=6, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3026,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=7, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3027,
+     "count": 139
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=8, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3166,
+     "count": 12
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=9, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3178,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=10, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3179,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=11, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3180,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=1, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3181,
+     "count": 1
+    },
+    {
+     "code": "native-load-control-not-owned",
+     "detail": "native next-area mode task=2, screen task=12, engine=0; no source load-control object in remake",
+     "area": "main",
+     "first": 3182,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=2, look-ahead destination=64",
+     "area": "main",
+     "first": 3182,
+     "count": 1
+    },
+    {
+     "code": "area-ownership-mismatch",
+     "detail": "native 7-4/main, remake 7-3/main; data=a371, loaded page=0, origin=0, load frame=3021, task=3, look-ahead destination=64",
+     "area": "main",
+     "first": 3183,
+     "count": 1
+    }
+   ]
+  }
+ ]
+}
