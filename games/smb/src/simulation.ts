@@ -742,9 +742,8 @@ export class Simulation {
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
-  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!b.has('left'))p.vx=(Math.round(p.vx*4096)&255)/4096;} // native edge clamp keeps the speed byte while Left is held (19 corpus cases)
   // PlayerHole runs before ProcessWhirlpools; its pending late step cannot select engine6 early.
-  if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
+  if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.clampBelowScreen(oldBottom,b);this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
   const lava=this.tileAt(p.x+8,p.y-1);if(this.area.theme==='castle'&&!p.grounded&&(lava===134||lava===135))this.fallingThroughCastleLava=true;else if(this.area.theme!=='water'&&this.area.theme!=='castle'&&(lava===134||lava===135))this.die();
   if(this.area.checkpoint&&p.x>=this.area.checkpoint.activationX){this.checkpoint=true;this.activatedCheckpointArea=this.area.id;}
@@ -772,7 +771,7 @@ export class Simulation {
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
-  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!b.has('left'))p.vx=(Math.round(p.vx*4096)&255)/4096;} // native edge clamp keeps the speed byte while Left is held (19 corpus cases)
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239)this.clampBelowScreen(oldBottom,b);
   else if(this.area.theme!=='water'&&oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;this.motor.speed=Math.round(p.vx*4096);}}
   else if(this.area.theme!=='water'&&oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
@@ -879,6 +878,12 @@ export class Simulation {
   const edge=bits&8?0:bits&2?1:undefined;if(edge===undefined)return;
   p.x=left+(edge?239:0)+p.x-Math.floor(p.x);
   if(this.water.steering!==(edge?2:1))p.vx=(Math.round(p.vx*4096)&255)/4096;
+ }
+ // Below the screen the right edge holds Mario at screen x 239 after the scroll (and on the life-loss row, which does not scroll);
+ // the speed byte is cut to its fraction unless Left is held (19 corpus cases keep it).
+ private clampBelowScreen(oldBottom:number,b:Set<Button>){
+  const p=this.player;if(this.area.theme==='water'||oldBottom<288||Math.floor(p.x)<=this.camera+239)return;
+  p.x=this.camera+239+p.x-Math.floor(p.x);if(!b.has('left'))p.vx=(Math.round(p.vx*4096)&255)/4096;
  }
  private movePlayerX(dx:number,h:number,snap=true){
   const p=this.player;
