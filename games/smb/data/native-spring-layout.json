@@ -1,0 +1,71 @@
+{
+ "source": {
+  "sha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+  "method": "Native AreaData small-object11 Jumpspring; source scene bindings; native y=encoded row*16+32, compiled feet+24."
+ },
+ "springs": [
+  {
+   "level": "2-1",
+   "area": "main",
+   "code": 40,
+   "label": "L_GroundArea9",
+   "offset": 88,
+   "column": 3008,
+   "y": 200
+  },
+  {
+   "level": "3-1",
+   "area": "main",
+   "code": 36,
+   "label": "L_GroundArea5",
+   "offset": 58,
+   "column": 2016,
+   "y": 200
+  },
+  {
+   "level": "5-2",
+   "area": "area-2",
+   "code": 49,
+   "label": "L_GroundArea18",
+   "offset": 10,
+   "column": 400,
+   "y": 200
+  },
+  {
+   "level": "6-3",
+   "area": "main",
+   "code": 45,
+   "label": "L_GroundArea14",
+   "offset": 16,
+   "column": 608,
+   "y": 200
+  },
+  {
+   "level": "6-3",
+   "area": "main",
+   "code": 45,
+   "label": "L_GroundArea14",
+   "offset": 64,
+   "column": 1856,
+   "y": 200
+  },
+  {
+   "level": "7-1",
+   "area": "main",
+   "code": 51,
+   "label": "L_GroundArea20",
+   "offset": 72,
+   "column": 2416,
+   "y": 200
+  },
+  {
+   "level": "8-2",
+   "area": "main",
+   "code": 50,
+   "label": "L_GroundArea19",
+   "offset": 22,
+   "column": 704,
+   "y": 200
+  }
+ ]
+}

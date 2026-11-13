@@ -1,0 +1,223 @@
+{
+  "schema": "native-coin-carry-cluster-preview-v1",
+  "method": "Diagnostic isolated process using the read-only integration runtime with generic CoinBlock origin arithmetic substituted; above-block SetupJumpCoin unchanged. This is a candidate replay comparison, not an immutable final integration receipt.",
+  "cases": [
+    {
+      "id": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "entry": "0002",
+      "level": "1-1",
+      "before": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": 78,
+        "state": null
+      },
+      "after": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null
+      },
+      "beforeSample": [
+        {
+          "frame": 78,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 2725,
+            "y": 122,
+            "source": "coin",
+            "state": 1
+          },
+          "sim": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 2725,
+            "y": 123,
+            "source": "coin",
+            "state": 1
+          }
+        },
+        {
+          "frame": 79,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 2725,
+            "y": 117,
+            "source": "coin",
+            "state": 1
+          },
+          "sim": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 2725,
+            "y": 118,
+            "source": "coin",
+            "state": 1
+          }
+        }
+      ],
+      "afterSample": []
+    },
+    {
+      "id": "17a2baf0c3af629dbebae016041ddf8c729d84bad74f9f337937ff17417b4e79",
+      "entry": "0007",
+      "level": "2-1",
+      "before": {
+        "level": null,
+        "area": null,
+        "dead": 690,
+        "time": 695,
+        "score": 827,
+        "coins": 827,
+        "cam": 691,
+        "x": 691,
+        "y": 692,
+        "missing": 811,
+        "extra": 644,
+        "kind": 896,
+        "position": 221,
+        "state": null
+      },
+      "after": {
+        "level": null,
+        "area": null,
+        "dead": 690,
+        "time": 695,
+        "score": 827,
+        "coins": 827,
+        "cam": 691,
+        "x": 691,
+        "y": 692,
+        "missing": 811,
+        "extra": 644,
+        "kind": 896,
+        "position": 524,
+        "state": null
+      },
+      "beforeSample": [
+        {
+          "frame": 221,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 453,
+            "y": 122,
+            "source": "coin",
+            "state": 1
+          },
+          "sim": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 453,
+            "y": 123,
+            "source": "coin",
+            "state": 1
+          }
+        },
+        {
+          "frame": 222,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 453,
+            "y": 117,
+            "source": "coin",
+            "state": 1
+          },
+          "sim": {
+            "bank": "misc",
+            "slot": 8,
+            "kind": "coin",
+            "x": 453,
+            "y": 118,
+            "source": "coin",
+            "state": 1
+          }
+        }
+      ],
+      "afterSample": [
+        {
+          "frame": 524,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 828,
+            "y": 170,
+            "source": "enemy",
+            "state": 4
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 828,
+            "y": 174,
+            "source": "enemy"
+          }
+        },
+        {
+          "frame": 525,
+          "area": "main",
+          "code": "position",
+          "native": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 827,
+            "y": 174,
+            "source": "enemy",
+            "state": 2
+          },
+          "sim": {
+            "bank": "enemy",
+            "slot": 1,
+            "kind": "koopa",
+            "x": 828,
+            "y": 177,
+            "source": "enemy"
+          }
+        }
+      ]
+    }
+  ]
+}
