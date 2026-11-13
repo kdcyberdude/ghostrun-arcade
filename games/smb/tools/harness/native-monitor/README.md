@@ -21,8 +21,7 @@ sibling `traces/1-1 … 8-4`) and `combined`, the full historical every-frame re
 * **Newer build results**: receipts registered with `--add-current`, listed per level and labelled
   * `STATE ONLY · pictures not compared`: from `native-state-replay.ts`;
   * `STATE+PICTURE`: a level-scoped `combined-monitor-audit.ts` audit (joint, state and picture counts);
-  * `CURRENT` when the receipt's build is the checkout's HEAD with clean `src/` and `data/`, otherwise
-    `OLDER BUILD <sha>`. Targeted receipts (a subset of recordings) say so.
+  * `CURRENT` when the measured `src/` and `data/` equal HEAD's (clean tree), otherwise `OLDER BUILD <sha>`. Targeted receipts (a subset of recordings) say so.
 * In the overview grid, a level with a CURRENT state+picture result shows that result, marked `*`;
   every other cell is the historical build.
 

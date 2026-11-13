@@ -37,11 +37,13 @@ if(args['plan-failures']){
  console.log(`Re-run them with --ids "$(node -p 'require(process.argv[1]).ids.join()' ${file})"`);process.exit(0);
 }
 const repo=path.resolve(dir,'../../../../..'),git=(...a)=>execFileSync('git',a,{cwd:repo,encoding:'utf8'}).trim();
-let currentCache=new Map();
+let currentCache=new Map();const sameGameCache=new Map();
+// CURRENT = measured game code (src/, data/) equals HEAD's; tool-only commits do not age a result.
+function sameGame(runtime,head){const k=runtime+'/'+head;if(!sameGameCache.has(k)){let same=runtime===head;if(!same)try{git('diff','--quiet',runtime,head,'--','games/smb/src','games/smb/data');same=true;}catch{}sameGameCache.set(k,same);}return sameGameCache.get(k);}
 function currentResults(){
  let head='',dirty=true;try{head=git('rev-parse','HEAD');dirty=git('status','--porcelain','--untracked-files=no','--','games/smb/src','games/smb/data')!=='';}catch{}
  const out=[];
- for(const file of config.current??[]){try{const stat=fs.statSync(file),k=`${file}/${stat.size}/${stat.mtimeMs}`;let summary=currentCache.get(k);if(!summary){summary=summarizeCurrent(read(file),inventory,policyHash);currentCache.set(k,summary);}out.push({...summary,file,current:summary.runtime===head&&!summary.dirty&&!dirty});}catch(e){out.push({file,error:e.message});}}
+ for(const file of config.current??[]){try{const stat=fs.statSync(file),k=`${file}/${stat.size}/${stat.mtimeMs}`;let summary=currentCache.get(k);if(!summary){summary=summarizeCurrent(read(file),inventory,policyHash);currentCache.set(k,summary);}out.push({...summary,file,current:!summary.dirty&&!dirty&&sameGame(summary.runtime,head)});}catch(e){out.push({file,error:e.message});}}
  return {head,dirty,results:out};
 }
 const historyFiles={full:path.join(path.dirname(configFile),'last-completed-every-frame-audit.json'),scoped:path.join(path.dirname(configFile),'last-completed-scoped-every-frame-audit.json')};
