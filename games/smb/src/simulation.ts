@@ -993,6 +993,8 @@ export class Simulation {
   for(const x of (down?[p.x+3,p.x+12]:[p.x+8])){
    const tile=this.collisionAt(x,edge,!down&&(this.area.theme==='water'||hiddenBlockBumps(p.y)));
    const pipeTop=down?this.pipeTopAt(x,oldY,edge):undefined;
+   // A foot deep in a resting springboard cell is pushed like a wall (2-1 mood rows 12473-12474: right foot 6 px into the top cell, x -1, speed 0).
+   if(down&&!tile&&pipeTop===undefined&&this.area.theme!=='water'){const spring=this.springSideAt(x,edge);if(spring&&Math.floor(p.y)-(spring.y+Math.floor((edge-spring.y)/16)*16)>=FOOT_LAND_DEPTH){this.footPush();break;}}
    if(!tile&&pipeTop===undefined)continue;
    if(tile&&this.area.theme==='water'&&down&&(waterFeet-tile.y>=SWIM_WALL_DEPTH||this.water.contactSpeed<0))continue;
    if(down&&tile&&this.area.theme!=='water'&&Math.floor(p.y)-tile.y>=FOOT_LAND_DEPTH){this.footPush();break;}
