@@ -1,5 +1,6 @@
 import {nativeEnemyInjuryTurn} from './native-enemy-injury-turn.js';
 import {nativeFootImpediment} from './native-player-bg.js';
+import {nativePlayerHoleLocks} from './native-player-hole.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
 import {NativeColdStartup} from './native-cold-startup.js';
 import {NativeStartupPicture} from './native-startup-picture.js';
@@ -529,13 +530,15 @@ export class Simulation {
   if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotations++; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
-   this.updateWorldInPitFall();
+   this.parserVramBusy=false;this.updateWorldInPitFall();
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
+    if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
    }
    this.updateBubbles(this.phaseFrame>=255,false); // injury sets TimerControl=$ff; the bubble timer holds while that byte counts down
-   if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:this.player.y>=LIFE_FLOW.deathArcEndFeetY)this.loseLife=true;return;
+   if(this.offscreenLavaDeath||this.offscreenPitDeath?this.phaseFrame>=this.offscreenDeathRows:this.player.y>=LIFE_FLOW.deathArcEndFeetY)this.loseLife=true;
+   this.parserLoaderWasBlocked=this.parserClock.blocked;this.advanceNativeAreaParser(0);return;
   }
   if(this.phase==='pipe'){
    // Initial automatic entry uses FetchNewGameTimerFlag: its level clock is
@@ -720,7 +723,7 @@ export class Simulation {
   const height=this.height;
   let springJumped=false;this.platformEjection=0;const xBeforePlatforms=p.x;if(!p.climbing){this.updatePlatforms(oldBottom,this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom),(this.area.platforms??[]).filter(p=>!nativePlatformObject(p,this.platformMotion.context)));springJumped=this.updateSprings(oldBottom,b.has('a'));if(!springJumped&&!nativeGroundOnly)this.walkOffStart(poseGrounded);}
   if(p.grounded)this.stompChain=0;
-  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
+  this.updateBubbles();this.updateGenerators();this.lakituScroll=this.nativeScrollPreview(oldX,cameraAttemptX??p.x,oldBottom);if(nativePlayerHoleLocks(Math.floor((p.y-(this.swimActive?this.water.whirlMoved:0)-32)/256)+1))this.areaControls.locked=true;this.hammerPlayerBox??=nativePlayerBox(p.x,p.y,p.size,p.duck,this.camera);if(this.hammerPlayerBox){this.hammerPlayerBox[0]=(this.hammerPlayerBox[0]-this.lakituScroll)&255;this.hammerPlayerBox[2]=(this.hammerPlayerBox[2]-this.lakituScroll)&255;}this.updateEnemies(oldBottom);this.updateItems();this.restoreStarMusic();
   let jumped=springJumped;for(let i=poseEvents;i<this.events.length;i++)if(this.events[i]==='sfx_jump_small'||this.events[i]==='sfx_jump_big')jumped=true;
   this.updateLocomotionPose(poseGrounded,poseAbsolute,jumped,poseLocked?new Set():b); // the uncontrolled water entry (engine 7) and the water bottom (PlayerCtrlRoutine DisJoyp, y >= $d0) replace the controller: 2-2 rows 352..386 and 1393.. keep swim frame 0 with A down
   const wallDisplay=poseGrounded&&p.grounded&&p.size===0&&this.area.theme==='ground'&&this.camera===0&&p.x===this.camera&&b.has('left')&&!b.has('right')&&this.locomotionPose.kind!=='jump';

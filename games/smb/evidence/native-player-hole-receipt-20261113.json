@@ -1,0 +1,636 @@
+{
+ "role": "Focused continuous World1-1 state proof; no model seeding, new bulk audit, pixel/dashboard completion claim",
+ "baseRuntime": "cca2e44",
+ "baselineCatalogRuntime": "cca2e44",
+ "cases": 46,
+ "targetAliasFieldsCleared": 46,
+ "noEarlierFields": true,
+ "allFirstsNull": 44,
+ "originalOneOne": {
+  "legacy": {
+   "dead": null,
+   "time": null,
+   "score": null,
+   "coins": null,
+   "cam": null,
+   "x": null,
+   "y": null,
+   "enemy": null
+  },
+  "strict": {
+   "level": null,
+   "area": null,
+   "dead": null,
+   "time": null,
+   "score": null,
+   "coins": null,
+   "cam": null,
+   "x": null,
+   "y": null,
+   "missing": null,
+   "extra": null,
+   "kind": null,
+   "position": null,
+   "state": null,
+   "firebar.id": null,
+   "firebar.high": null,
+   "firebar.low": null,
+   "firebar.speed": null,
+   "firebar.direction": null,
+   "alias.owner": null,
+   "vine.count": null,
+   "vine.height": null,
+   "vine.startY": null,
+   "vine.slots": null,
+   "continuation.frameCounter": null,
+   "continuation.random": null,
+   "continuation.interval": null,
+   "continuation.load.ready": null,
+   "continuation.load.task": null,
+   "continuation.load.engine": null,
+   "continuation.load.screen": null,
+   "continuation.load.disable": null
+  },
+  "status": "pass"
+ },
+ "browserProof": {
+  "role": "Focused continuous state-only browser/Node proof; no model reseeds, pixels or dashboard completion claim",
+  "runs": [
+   {
+    "id": "04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3",
+    "frames": 709,
+    "initialSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+    "inputSha256": "bab4bd689d153c98a88f74fec062eb9c8f67e17e8e5a830a6fa2dacec0bdd9b4",
+    "sourceRamSha256": "557a36f541e2b31c422d7f2b4d0004365cb33bf2296819b9457b18ac52578624",
+    "stateSpans": [
+     {
+      "from": 0,
+      "to": 709,
+      "state": "match"
+     }
+    ],
+    "exactNodeBrowserParity": true
+   },
+   {
+    "id": "e2a3c1655e886de076360959ea78b91755f17657bbae5e91ccafab39d9f3ed61",
+    "frames": 1619,
+    "initialSha256": "d0ff1b294b5288d1ae1421eadf5b2d38a8752b76d472ff30bed9028e25b1c5b8",
+    "inputSha256": "4ed7f09f6f94bc7644bd9bd913c7ed57eb23ad542108bac309a83cd67b496437",
+    "sourceRamSha256": "0a09f4f883251a1c42fbe306509e35868f4a298c900b017330ea65db90d275c6",
+    "stateSpans": [
+     {
+      "from": 0,
+      "to": 1619,
+      "state": "match"
+     }
+    ],
+    "exactNodeBrowserParity": true
+   }
+  ]
+ },
+ "firstMaps": [
+  {
+   "id": "mood:04a7c0c59a69ff99fe70e9feea29156c096005c9d26217d3d1d4c99dc56fe8c3",
+   "through": 2781,
+   "before": {
+    "load.scrollLocked": 706,
+    "load.ready": 1759,
+    "entities.extra": 1759,
+    "entities.position": 1761
+   },
+   "after": {
+    "load.ready": 1759,
+    "entities.extra": 1759,
+    "entities.position": 1761
+   },
+   "earlier": [],
+   "first": 1759,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:e2a3c1655e886de076360959ea78b91755f17657bbae5e91ccafab39d9f3ed61",
+   "through": 3220,
+   "before": {
+    "load.parserColumn": 1616,
+    "load.scrollLocked": 1616
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:abb9d08284e0b7d00b895807d354fdaa09ea488f06dad8540687f62e614cd3a1",
+   "through": 4059,
+   "before": {
+    "load.parserColumn": 1544,
+    "load.scrollLocked": 1544
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:bbcf4e23e00b5247dcfb75c942eea26d66927e9f85c4ea40501fb34637c5a22c",
+   "through": 2800,
+   "before": {
+    "load.scrollLocked": 708
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:8323cdd6fa410bf00491271d6e6ba0ee06a2ff856fab00e52e64121ea9e77726",
+   "through": 9004,
+   "before": {
+    "load.parserColumn": 608,
+    "load.scrollLocked": 608
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:b7fcc3e4f16176c1355faa0804ca429ceb76ee399030a9bc4274e7847cdad4be",
+   "through": 17040,
+   "before": {
+    "load.scrollLocked": 10059
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:f03b618441e44ad4a0dc4a37e600b25766d77b4fddd3675d2059f6e3ac3b7781",
+   "through": 15933,
+   "before": {
+    "load.scrollLocked": 10055
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:0e586c8d384d985d484cf224d3527cf31e8a448fccb526bf7cea903181069bc4",
+   "through": 17040,
+   "before": {
+    "load.scrollLocked": 10066
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:4abf85665ae1e218c868b0ebd9fb99513e46ce81dac26acf117c29bd0c4be7a4",
+   "through": 9108,
+   "before": {
+    "load.scrollLocked": 756
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:799a745a14e582364940a5b6be24cc3d97237cf63c0ff9660fe6da31dcfbd11a",
+   "through": 6580,
+   "before": {
+    "load.scrollLocked": 612
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:19f7a1ab63e7d8524ef54d6a37b9a1cc6cecba14c23e886d39ca3973552ce4f6",
+   "through": 2989,
+   "before": {
+    "load.parserColumn": 1228,
+    "load.scrollLocked": 1228
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:24a4c03d7f670c0e5f093a9fded023fc68a4a728eeb55705ef6cdf7ad87fd761",
+   "through": 3073,
+   "before": {
+    "load.scrollLocked": 740
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:37cc44fac0e23a37bb2e17217a315ebe75b2a9ee78157292074b2bc245cfa567",
+   "through": 3220,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:904408d87cba9788cefb78eb0c0336b10bbe50c6492b05f80f1ee2a79b7a1d8a",
+   "through": 3220,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:b44419b8090697e61ea61f60c992a7b64d8d521b4514968fd268610ebb74c728",
+   "through": 2863,
+   "before": {
+    "load.scrollLocked": 1250
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:268a434d7732b951c121c2fbc45a6868307f774c7aa2be178441ac781e67de81",
+   "through": 3306,
+   "before": {
+    "load.scrollLocked": 1579
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:193bb510ac28806a2113fae192ff5e0267f66a447a928efa57264452ac8fc841",
+   "through": 2947,
+   "before": {
+    "load.scrollLocked": 1164
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:b1c295a473f29e1b7880b53599c56e9d8d7edb31cbb450a629a77c60e8e033e0",
+   "through": 2968,
+   "before": {
+    "load.scrollLocked": 1268
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:abf3a46ff4bb1aa86aae53dd9af314fe89cdac767e9b8ac8d98dad115896ee75",
+   "through": 3723,
+   "before": {
+    "load.parserColumn": 1302,
+    "load.scrollLocked": 1302
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:cf5379779d9aea00de0ea4cdf8f555a8b7720b6873527b258e54e7f17f104486",
+   "through": 2926,
+   "before": {
+    "load.scrollLocked": 1232
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:638612163b1f0407da01d1a1bd9235a677cb210b716b2c2d46ba3a7c625ed402",
+   "through": 9581,
+   "before": {
+    "load.scrollLocked": 1232
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:d0e0506d079f9217e91dc817ae5a936bd35a4a025253c57d010b6b6072873d4f",
+   "through": 2886,
+   "before": {
+    "load.scrollLocked": 1093
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:abbfeb26c2fe01cdd4726d470f61b53110c28d343f02e01bae5770a8afe25d64",
+   "through": 3136,
+   "before": {
+    "load.parserColumn": 1266,
+    "load.scrollLocked": 1266
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:f25dd9e50ce8a2fd3b747ad5e358a0dd9c659381f045354003f48c7d6287baac",
+   "through": 4375,
+   "before": {
+    "load.scrollLocked": 1376,
+    "x": 1962,
+    "cam": 1981,
+    "entities.missing": 1999,
+    "y": 2043,
+    "entities.extra": 3244,
+    "entities.position": 3248,
+    "load.ready": 3761,
+    "time": 3769,
+    "score": 3823
+   },
+   "after": {
+    "x": 1962,
+    "cam": 1981,
+    "entities.missing": 1999,
+    "y": 2043,
+    "entities.extra": 3244,
+    "entities.position": 3248,
+    "load.ready": 3761,
+    "time": 3769,
+    "score": 3823
+   },
+   "earlier": [],
+   "first": 1962,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:6ef303ebf601bc77293af05c68738b6eebd85f3793c76d0f0cbb6d70e068bc27",
+   "through": 3199,
+   "before": {
+    "load.scrollLocked": 1242
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:bdf6ae5aabf57234ff47012e76af2a01d8d43249c66e57503e04d44512d42e0b",
+   "through": 3829,
+   "before": {
+    "load.parserColumn": 1292,
+    "load.scrollLocked": 1292
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+   "through": 3031,
+   "before": {
+    "load.parserColumn": 734,
+    "load.scrollLocked": 734
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:1f738e0653db87c06179e719c73256a890a7958ea0d6cd6c35fffcbfcbc59a85",
+   "through": 2842,
+   "before": {
+    "load.parserColumn": 1152,
+    "load.scrollLocked": 1152
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:c8a534279d3f1e28be502d57779acc6fc2dc803f56cdcafc9b52b5641a1b5f47",
+   "through": 3073,
+   "before": {
+    "load.scrollLocked": 1252
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:1420b2e3684bd058d5c49cc7cdceb86cbbc90b6c08688588cb8f1782aeaa71bb",
+   "through": 4272,
+   "before": {
+    "load.scrollLocked": 1090
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:9db8001a52404051acf7f480ebd45b778468678c70910dbd41bd749ab1aa21aa",
+   "through": 3495,
+   "before": {
+    "load.scrollLocked": 1619
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:9e8a07f5dcbde520b082750f8f0b5ccc7c76e761f69b25f02b6bd5b0d012b027",
+   "through": 3094,
+   "before": {
+    "load.scrollLocked": 1286
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:749e17ac3fd0a1c58d027750919a7a6d3a98b03dd91ff7a80b710b55b95ccce1",
+   "through": 4082,
+   "before": {
+    "load.scrollLocked": 780
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:8c1dcdb6b8c04bac7afa3be73074f26ee04504b39e4b691480906522b3adee4e",
+   "through": 3178,
+   "before": {
+    "load.parserColumn": 898,
+    "load.scrollLocked": 898
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:6a6cac6d72b4db67938297380ea148d426c89157e1965cd4ced68352e1c512dd",
+   "through": 2968,
+   "before": {
+    "load.scrollLocked": 1250
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:ccfcd83ed21e0cd41d215be9c61ec2b7a2a4727e18f0e6f602008db364c99dbf",
+   "through": 3471,
+   "before": {
+    "load.scrollLocked": 706
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:2f5c8c273e1d4fa8d0c2acb04ea7258a1856fe26c4d0bf51ab1d1fd73b3be6b5",
+   "through": 2842,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:49a6ab438067758607e0e8d50628d55ec9190d38f505d87c32c901c12d1aec87",
+   "through": 3157,
+   "before": {
+    "load.scrollLocked": 1214
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:2bc89dce952867d265ce72aaeab51447b304f7e4051889cebe5b4e59b8576c5a",
+   "through": 2865,
+   "before": {
+    "load.scrollLocked": 1069
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:773138d8680d9e79e0eb74bde3abe52cd4092d31fadf3bdfbb5c726433e11687",
+   "through": 3052,
+   "before": {
+    "load.scrollLocked": 718
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:9779ab98593d32a4eb943b4a862a5e07f9d32274c78d06b34a539e13484201c5",
+   "through": 2968,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:ae7ce9c7b8bada339e0809d944b7b23a39473aed4efff353002f917c7c5161d1",
+   "through": 2968,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:2ef650bd271c6b35692f8f257fede77101b1cc656cc87a7f8c2cb851c3ae3f19",
+   "through": 3094,
+   "before": {
+    "load.scrollLocked": 704
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:5b5df25b6c4374700634dd5e1b996a2866df9474d71178e08937621455da485d",
+   "through": 2968,
+   "before": {
+    "load.scrollLocked": 716
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:715e37653133af137acf0c840cc4a0d1d903c9cd1fa994da36138dda10ca965a",
+   "through": 3220,
+   "before": {
+    "load.scrollLocked": 1494
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  },
+  {
+   "id": "mood:ca7d8b6449fcb25721b20e12adb1c478db38cf9263dc694753660c2af47dd115",
+   "through": 3220,
+   "before": {
+    "load.parserColumn": 1426,
+    "load.scrollLocked": 1426
+   },
+   "after": {},
+   "earlier": [],
+   "first": null,
+   "aliasesCleared": true
+  }
+ ]
+}
