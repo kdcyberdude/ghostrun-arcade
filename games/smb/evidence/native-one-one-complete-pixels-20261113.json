@@ -1,0 +1,79 @@
+{
+  "schema": "native-complete-recording-pixel-proof-v1",
+  "runtime": "1f3a544",
+  "level": "1-1",
+  "status": "PLAYFIELD_PASS_HUD_DIVERGED",
+  "goalComplete": false,
+  "source": {
+    "level": "1-1",
+    "sourceActions": "/work/rec/v2/1-1/smb_v2_1-1.actions.json",
+    "actionsSha256": "ed1d41caf6ddd82915b36d332ec0735e85f1ca095ac50df2d07ab6f1cdba61a6",
+    "archiveSha256": "a9d47ded6449f006b0b1f21bdefe8baf72d37b5d39cbc1624f9c17dde9aaaace",
+    "sourceFrameOffset": 220,
+    "warmupFrames": 0,
+    "initialRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "beforeWarmupRamSha256": "d50b579d4bfbda9ba76cef2ed71dc7ab3dd9b24fbf119d1ddb264448bfde94d8",
+    "modelMode": 2,
+    "nativeResult": {
+      "mode": 2,
+      "cleared": true,
+      "end": "level_clear",
+      "decisions": 755,
+      "deaths": null,
+      "max_x_px": 3156,
+      "warmup_frames": 0,
+      "frames": 3240
+    },
+    "clock": "ppu_frame",
+    "initialStateMethod": "Existing CPU RlEnv restored original saved entrance, including its four neutral reset frames and logged warmup. Initial RAM matches start of retained native MP4; source prefix offset is declared. 1-1 starts after original boot and four reset-neutral frames. No policy inference."
+  },
+  "coverage": {
+    "completeInputSequence": true,
+    "inputFrames": 3020,
+    "availableNativeFrames": 3020,
+    "allFrames": true,
+    "victory": false,
+    "excludedFrames": 0,
+    "excluded": {
+      "mode1": 0,
+      "mode2": 0,
+      "otherMode": 0,
+      "differentLevel": 0
+    },
+    "comparedFrames": 3020,
+    "alignedFrames": 3020,
+    "unresolvedAlignmentFrames": 0,
+    "noOverlapFrames": 0,
+    "partialOverlapFrames": 0,
+    "comparedAlignedPixels": 144960000,
+    "expectedAlignedPixels": 144960000,
+    "overlapFraction": 1
+  },
+  "totals": {
+    "all": 111,
+    "hud": 111,
+    "field": 0,
+    "aligned": 0
+  },
+  "residualHudFrames": [
+    {
+      "frame": 1148,
+      "pixels": 37
+    },
+    {
+      "frame": 1149,
+      "pixels": 37
+    },
+    {
+      "frame": 3018,
+      "pixels": 37
+    }
+  ],
+  "sourceReport": {
+    "path": "/home/kd/Desktop/proj/ghostrun/notes/smb-native-handoff/recovered-native/measurements/pixel-1-1-1f3a544.json",
+    "sha256": "589a93bcb905afab537be53bbb286289fa1208d5a7acac3a8af895d18d060f6f"
+  },
+  "errors": [],
+  "offPalette": {},
+  "note": "All3020frames and all144960000alignedplayfieldpixels match. Wholeimage still has111HUD pixels on3transitionframes; rounded0.00% is not exactzero."
+}
