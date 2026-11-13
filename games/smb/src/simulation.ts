@@ -528,7 +528,7 @@ export class Simulation {
   this.lifeClockFreeze();
   if(this.levelLoad){this.updateLevelLoad();return;}
   if(this.phase==='intro'&&this.deathLoad)this.updateDeathLoad();
-  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotationPending=true;if(this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenTail+(this.entryFalling&&this.area.entryFall?.native?1:0)+1)this.renderInitialSpringColumns();if(this.lifeIntro.end>0&&this.phaseFrame===firstEngine){this.initializeGameTimer();this.seedPlayerPriority();this.primeNativeEntryObjects(true);}if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready)this.startPlayAfterIntro();return;}
+  if(this.phase==='intro'&&this.lifeIntro){const ready=this.lifeIntroDone(),firstEngine=this.lifeIntro.end-(this.entryFalling&&this.area.entryFall?.native?0:1);if(this.lifeIntro.end>0&&this.phaseFrame>=firstEngine&&(this.random.frame&7)===0)this.colorRotationPending=true;if(this.lifeIntro.end>0&&this.phaseFrame>=this.lifeIntro.end-LIFE_FLOW.screenTail+(this.entryFalling&&this.area.entryFall?.native?1:0)+1)this.renderInitialSpringColumns();const primeNow=this.lifeIntro.end>0&&this.phaseFrame===firstEngine;if(primeNow){this.initializeGameTimer();this.seedPlayerPriority();if(!ready)this.primeNativeEntryObjects(true);}if(this.lifeIntro.end&&this.phaseFrame>=this.lifeIntro.end-1){this.updateBubbles(this.bubblesInitialized,false);this.updateWaterEntryEnemies();}if(ready){this.startPlayAfterIntro();if(primeNow)this.primeNativeEntryObjects(true);}return;} // objects loaded on the first play row do not move on that row (native spawn rule), as on a first entry
   if(this.phase==='intro') {if(this.phaseFrame>=this.introLength-18)this.renderInitialSpringColumns();if(this.phaseFrame===this.introLength-1){this.initializeGameTimer();this.seedPlayerPriority();this.primeNativeEntryObjects(true);}if(this.phaseFrame>=this.introLength){this.phase='play';this.freshA=true;this.controlGrace=Math.min(CONTROL_GRACE_ROWS,this.inputs.length);this.phaseFrame=0;this.introFromGameover=false;this.lifeClockAtControl();this.primeNativeReadyEnemies();if(this.phase==='play')this.consumeGameTimer(!this.entryControlLocked&&!this.area.autoWalk);this.emit(this.areaMusic());}return;}
   if(this.phase==='gameover'){this.updateGameOver(b);return;}
   if(this.phase==='ending'){if(pressed('start')||pressed('b'))this.restartToTitle();return;}
@@ -3127,7 +3127,7 @@ export class Simulation {
  // Paratroopa (stomp8): Koopa rule on its pre-step y (it moves 2-3 px per row), once the 8-2 x1520 spawn camera fixed the hop phase.
  private nativeStompWindow(e:any,p:any,priorX:number,priorY:number):boolean|undefined{
   const koopaKind=['koopa','redKoopa','beetle','paratroopa'].includes(e.kind);
-  if(!koopaKind&&e.kind!=='goomba'||e.shell||p.vy<1)return undefined;
+  if(!koopaKind&&e.kind!=='goomba'||e.shell||p.vy<1&&!this.stompedThisStep)return undefined; // an earlier stomp this frame already set the bounce speed; the NES still stomps a second enemy (1-2 double Goomba stomps)
   if(this.broClock%2!==0)return false;
   const gap=priorY-p.y;if(gap<-8)return undefined;
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
