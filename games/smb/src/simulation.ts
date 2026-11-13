@@ -742,7 +742,7 @@ export class Simulation {
   if(!p.dead&&this.area.fallExit&&p.vy>=0&&p.y>this.area.fallExit.belowY){const exit=this.area.fallExit;this.enterArea(exit.to,exit.spawn,exit.camera);return;}
   // PlayerHole keeps engine 8 and ordinary movement through the offscreen fall. Only page 6 selects PlayerLoseLife (engine 6).
   // Native coordinates have page 1 on screen: remake feet 288 is page 2, and 1312 is page 6.
-  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!b.has('left'))p.vx=(Math.round(p.vx*4096)&255)/4096;} // native edge clamp keeps the speed byte while Left is held (19 corpus cases)
   // PlayerHole runs before ProcessWhirlpools; its pending late step cannot select engine6 early.
   if(p.y-(this.swimActive?this.water.whirlMoved:0)>=LIFE_FLOW.pitEndFeetY){this.die(this.fallingThroughCastleLava,!this.fallingThroughCastleLava);this.loseLife=true;return;}
   if(oldBottom>=288&&!this.pitMusic){this.pitMusic=true;this.emit('event_death');}
@@ -772,7 +772,7 @@ export class Simulation {
   for(const popup of this.popups)if(popup.age===0)popup.x+=previousCamera-this.camera;
   // The observed sky rider stops at screen240 as the cloud continues beyond
   // the viewport. The ordinary camera boundary also applies off platforms.
-  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);p.vx=(Math.round(p.vx*4096)&255)/4096;}
+  if(this.area.theme!=='water'&&oldBottom>=288&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!b.has('left'))p.vx=(Math.round(p.vx*4096)&255)/4096;} // native edge clamp keeps the speed byte while Left is held (19 corpus cases)
   else if(this.area.theme!=='water'&&oldBottom<288&&scrollLocked&&Math.floor(p.x)>this.camera+239){p.x=this.camera+239+p.x-Math.floor(p.x);if(!(b.has('left')&&!b.has('right'))){p.vx=(Math.round(p.vx*4096)&255)/4096;this.motor.speed=Math.round(p.vx*4096);}}
   else if(this.area.theme!=='water'&&oldBottom<288&&!scrollLocked&&p.x>this.camera+240){p.x=this.camera+240;p.vx=Math.min(0,p.vx);}
   if(this.phase==='play'){
