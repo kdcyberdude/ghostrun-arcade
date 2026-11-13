@@ -1,3 +1,4 @@
+import {nativeEnemyInjuryTurn} from './native-enemy-injury-turn.js';
 import {nativeFootImpediment} from './native-player-bg.js';
 import {nativeGoombaBlockStun} from './native-block-enemy.js';
 import {NativeColdStartup} from './native-cold-startup.js';
@@ -2762,7 +2763,14 @@ export class Simulation {
    if((this.placedCastle||this.placedHammerBros)&&e.slotBorn===this.frame)continue;
    const priorY=e.y,priorX=e.x,priorFraction=e.pod?.fraction??e.fall?.fraction??e.redFlight?.fraction??(e.kind==='bullet'&&e.enemySlot!==undefined?this.slotVertical[e.enemySlot]?.fraction??0:0); // the native touch test reads the enemy before its own move
    let revivedShell=false,stompY=priorY,stompFall=e.fall?{...e.fall}:undefined,stompPod=e.pod?{...e.pod}:undefined;
-   const hurtBeforeMove=()=>{if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
+   const hurtBeforeMove=()=>{
+    if(!p.invincible&&!p.star&&!this.powerChange&&this.phase==='play'){
+     const id=e.nativeId??({goomba:6,koopa:0,redKoopa:3,beetle:2,paratroopa:14,spiny:18} as Record<string,number>)[e.kind]??255,camera=this.camera+this.lakituScroll;
+     const n={speed:Math.round(e.vx*16)&255,direction:e.vx===0?(e.direction===1?1:2):e.vx>0?1:2};
+     const playerRelative=this.hammerPlayerBox?((this.hammerPlayerBox[0]-(p.size===0?3:2))&255):(Math.floor(p.x)-Math.floor(camera))&255;
+     if(nativeEnemyInjuryTurn(n,{id,playerRelative,enemyRelative:(Math.floor(priorX)-Math.floor(camera))&255,playerSpeed:Math.floor(p.vy),stompTimer:this.nativeStompTimer,injuryTimer:p.invincible,water:this.area.theme==='water'})){e.vx=((n.speed<<24)>>24)/16;e.direction=n.direction===1?1:-1;}
+    }
+    if(e.enemySlot!==undefined)this.collisionBits[e.enemySlot]|=1;this.hurt();if(this.nativeTimersStopped&&e.kind==='bullet'&&e.frenzy)e.x=priorX;if(this.nativeTimersStopped&&e.kind==='podoboo'&&stompPod){e.y=priorY;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&greenBounceSpec(e)&&stompPod){e.x=priorX;e.y=stompPod.y;e.pod=stompPod;e.vy=stompPod.speed+stompPod.force/256;}if(this.nativeTimersStopped&&NATIVE_FALLERS.includes(e.kind)&&!e.motion){e.x=priorX;e.y=stompY;if(stompFall){e.fall=stompFall;e.vy=stompFall.speed+stompFall.force/256;}}};
    if(e.active)e.graphicsVisible=true; // this slot reaches its native EnemyGfxHandler
    if(!e.active&&this.area.theme==='water'&&(e.stroke||e.swim)&&Math.floor(e.x)<Math.floor(this.camera)+255){e.slotLost=true;continue;} // native PositionEnemyObj discards columns left of ScreenRight
    if(!e.active&&e.nativeColumn!==undefined&&e.nativeColumn<Math.floor(this.camera)+255){e.slotLost=true;continue;}

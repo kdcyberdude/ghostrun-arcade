@@ -1,0 +1,409 @@
+{
+  "schema": "native-enemy-injury-turn-result-v1",
+  "runtimeBase": "c62a6c8",
+  "role": "Continuous POWER-ON World1-1 prefix. Independent STATE rows and raw enemy motor readouts; pictures/joint unchecked.",
+  "before": {
+    "role": "Continuous POWER-ON native input prefix through every World1-1 frame before the first next-world transition; no entrance seed/state correction. Pictures and joint rows unchecked.",
+    "sourceInputSha256": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+    "frames": 3031,
+    "world11Frames": 3029,
+    "initial": {
+      "status": "match",
+      "scope": "cold-recorded-start",
+      "checked": [
+        "cold.RAM"
+      ],
+      "gaps": [],
+      "differences": []
+    },
+    "counts": {
+      "match": 3030,
+      "mismatch": 1,
+      "unchecked": 0
+    },
+    "fields": {
+      "load.parserColumn": 1,
+      "load.scrollLocked": 1
+    },
+    "gaps": {},
+    "first": {
+      "frame": 734,
+      "status": "mismatch",
+      "scope": "world1-1",
+      "checked": [
+        "level",
+        "frameCounter",
+        "interval",
+        "random",
+        "load.ready",
+        "load.mode",
+        "load.task",
+        "load.engine",
+        "load.screen",
+        "load.disable",
+        "load.timer",
+        "load.columns",
+        "load.parserColumn",
+        "load.scrollLocked",
+        "area",
+        "dead",
+        "time",
+        "score",
+        "coins",
+        "cam",
+        "x",
+        "y",
+        "entities.slot-kind-position-cardinality"
+      ],
+      "gaps": [],
+      "differences": [
+        {
+          "field": "load.parserColumn",
+          "native": 960,
+          "model": 928
+        },
+        {
+          "field": "load.scrollLocked",
+          "native": true,
+          "model": false
+        }
+      ]
+    },
+    "hitFrame": 526,
+    "bodyCounts": {
+      "match": 0,
+      "mismatch": 210,
+      "unchecked": 0
+    },
+    "bodyFields": {
+      "speed": 210,
+      "direction": 210,
+      "x": 1
+    },
+    "bodyFirstMismatch": {
+      "frame": 526,
+      "native": {
+        "x": 698.5,
+        "speed": 248,
+        "direction": 2
+      },
+      "model": {
+        "x": 698.5,
+        "speed": 8,
+        "direction": 1
+      }
+    },
+    "turnRows": [
+      {
+        "frame": 524,
+        "native": {
+          "x": 698,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        },
+        "sim": {
+          "x": 698,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        }
+      },
+      {
+        "frame": 525,
+        "native": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        }
+      },
+      {
+        "frame": 526,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": true
+        }
+      },
+      {
+        "frame": 527,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": true
+        }
+      },
+      {
+        "frame": 528,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": true
+        }
+      },
+      {
+        "frame": 529,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": true
+        }
+      }
+    ]
+  },
+  "after": {
+    "role": "Continuous POWER-ON native input prefix through every World1-1 frame before the first next-world transition; no entrance seed/state correction. Pictures and joint rows unchecked.",
+    "sourceInputSha256": "ae9583fa55be72ee31bf2798fb0ea22b7d8096684827ce8723468d874c30f140",
+    "frames": 3031,
+    "world11Frames": 3029,
+    "initial": {
+      "status": "match",
+      "scope": "cold-recorded-start",
+      "checked": [
+        "cold.RAM"
+      ],
+      "gaps": [],
+      "differences": []
+    },
+    "counts": {
+      "match": 3030,
+      "mismatch": 1,
+      "unchecked": 0
+    },
+    "fields": {
+      "load.parserColumn": 1,
+      "load.scrollLocked": 1
+    },
+    "gaps": {},
+    "first": {
+      "frame": 734,
+      "status": "mismatch",
+      "scope": "world1-1",
+      "checked": [
+        "level",
+        "frameCounter",
+        "interval",
+        "random",
+        "load.ready",
+        "load.mode",
+        "load.task",
+        "load.engine",
+        "load.screen",
+        "load.disable",
+        "load.timer",
+        "load.columns",
+        "load.parserColumn",
+        "load.scrollLocked",
+        "area",
+        "dead",
+        "time",
+        "score",
+        "coins",
+        "cam",
+        "x",
+        "y",
+        "entities.slot-kind-position-cardinality"
+      ],
+      "gaps": [],
+      "differences": [
+        {
+          "field": "load.parserColumn",
+          "native": 960,
+          "model": 928
+        },
+        {
+          "field": "load.scrollLocked",
+          "native": true,
+          "model": false
+        }
+      ]
+    },
+    "hitFrame": 526,
+    "bodyCounts": {
+      "match": 209,
+      "mismatch": 1,
+      "unchecked": 0
+    },
+    "bodyFields": {
+      "x": 1
+    },
+    "bodyFirstMismatch": {
+      "frame": 735,
+      "native": {
+        "x": 698,
+        "speed": 248,
+        "direction": 2
+      },
+      "model": {
+        "x": 698.5,
+        "speed": 248,
+        "direction": 2
+      }
+    },
+    "turnRows": [
+      {
+        "frame": 524,
+        "native": {
+          "x": 698,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        },
+        "sim": {
+          "x": 698,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        }
+      },
+      {
+        "frame": 525,
+        "native": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 8,
+          "direction": 1,
+          "held": false
+        }
+      },
+      {
+        "frame": 526,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        }
+      },
+      {
+        "frame": 527,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        }
+      },
+      {
+        "frame": 528,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        }
+      },
+      {
+        "frame": 529,
+        "native": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        },
+        "sim": {
+          "x": 698.5,
+          "speed": 248,
+          "direction": 2,
+          "held": true
+        }
+      }
+    ]
+  },
+  "cpu": {
+    "actualPlayerEnemyCollisionCalls": 13440,
+    "ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      51
+    ],
+    "ROM": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+    "sourceProbeSha256": "60c407290a79641511ff41010069e60010858894a81b2da69cc344520f31eef4"
+  },
+  "focusedTests": {
+    "passed": 18,
+    "failed": 0
+  },
+  "unresolved": [
+    "STATE load.parserColumn and load.scrollLocked both mismatch at source734, unchanged.",
+    "Enemy X subpixel clears natively at source735 during load; model remains698.5 instead of698.0, unchanged.",
+    "Pictures and joint rows were not audited in this unit."
+  ]
+}
