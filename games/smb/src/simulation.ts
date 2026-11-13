@@ -498,6 +498,7 @@ export class Simulation {
   let cameraAttemptX:number|undefined,cameraAttemptVx=0,cameraMotion:number|undefined;
   if(this.blockBounceTimer>0)this.blockBounceTimer--;p.invincible=Math.max(0,p.invincible-1);if(p.star===1)this.emit(this.areaMusic());p.star=Math.max(0,p.star-1);p.duck=this.nextDuck(this.area.autoWalk?new Set<Button>(['right']):b);this.finishBrickBreak(); // the entrance walk (engine 7) replaces the controller before the crouch check (4-2 rows 4..: Down held, native shows walk frames)
   if(this.area.autoWalk)b=new Set<Button>(['right']);
+  this.wallSpeed=undefined;
   this.growVines();const vineMovement=this.moveOnVine(b,pressed('a'));if(vineMovement==='transition')return;
   if(!vineMovement){
   const direction=Number(b.has('right'))-Number(b.has('left'));
@@ -510,7 +511,6 @@ export class Simulation {
   // non-native entry falls keep the fitted float rules below. p.vx is always motor speed / 4096, so outside writes stay exact.
   const useMotor=!water&&(!this.entryFalling||Boolean(nativeEntry));
   const swim=water&&this.swimActive;
-  this.wallSpeed=undefined;
   if(useMotor)this.motor.speed=Math.round(p.vx*4096);
   const jumpClassByte=this.motor.absolute; // native InitJS reads Player_XSpeedAbsolute, last written by the previous frame's ImposeFriction (a wall stop leaves it)
   if(swim){this.swimStep(b,pressed('a'),direction);}else if(useMotor){
@@ -606,7 +606,7 @@ export class Simulation {
    if(!this.areaControls.locked&&oldBottom<288&&screenX>=80&&this.sideCollisionTimer===0&&scrollMove>0)this.camera+=screenX>=112||scrollMove<2?scrollMove:scrollMove-1;}
   // The side collision is found after the scroll: the contact frame itself still scrolls (native 1-1 f129: $0785 0 -> 16 with a 2 px scroll).
   // A back-out row is still a side collision natively (4-3 f244..245: $0785 16, 16, 15).
-  if(cameraContact||this.wallBackOut)this.sideCollisionTimer=16;
+  if(cameraContact||this.wallSpeed!==undefined||this.wallBackOut)this.sideCollisionTimer=16;
   this.platformScroll=Math.floor(p.x)-Math.floor(xBeforePlatforms)-this.platformEjection;
   this.camera=Math.max(previousCamera,Math.min(this.camera,this.area.cameraEnd??this.area.warpZone?.cameraEnd??Math.max(0,this.area.width-256)));
   if(Math.floor(this.camera/32)>Math.floor(previousCamera/32)){this.scrollCrossFrame=this.frame;this.scrollCrossCamera=Math.floor(this.camera/32)*32;}
