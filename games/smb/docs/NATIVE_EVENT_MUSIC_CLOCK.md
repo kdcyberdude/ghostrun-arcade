@@ -20,7 +20,7 @@ buffer is `$20`. An area queue cancels event music. SoundEngine's title-mode
 and pause-music branches skip MusicHandler, so the caller supplies those
 native gate states. The helper does not count calls during a skipped NMI.
 `seedNativeEndLevelMusic` restores the four lifetime bytes from entrance RAM.
-Other event queues retain their buffer value, but their lifetimes are outside
+Silence queue `$80` loads the authenticated zero terminator and clears the event buffer in the same NMI, with counter0/offset1 and the prior note-length buffer retained. The same silence area queue follows that header. Other event queues retain their buffer value, but their lifetimes are outside
 this helper's scope. A caller needing another event must implement its source
 stream rather than interpreting that retained value as a complete music model.
 

@@ -3020,7 +3020,7 @@ export class Simulation {
   return {target,alternate,header:nativePhysicalAreas[binding.code].header[0],page:chosen[0].page,offset:binding.offset};
  }
  private beginPipeAreaLoad(){
-  const load=this.pipeLoad!;if(this.area.autoWalk)this.fetchGameTimer=true;
+  const load=this.pipeLoad!;if(this.area.autoWalk){this.fetchGameTimer=true;this.nativeEndLevelMusicQueue=128;}
   this.levelLoad={...nativeLevelLoad(),engine:this.area.autoWalk?7:load.target.direction==='down'?3:2,disable:1,timer:this.screenTimer,columns:255,skipIntermediate:true};
   this.destination=undefined;this.phase='intro';this.phaseFrame=0;this.alignLifeClock(this.intervalControl);
  }
@@ -3042,15 +3042,16 @@ export class Simulation {
   this.levelLoad=undefined;this.pipeLoad=undefined;this.emit(this.areaMusic());
  }
  private updateLevelLoad(){
-  const n=this.levelLoad!,render=n.task===1&&n.screen===8,hold=n.task===0&&n.screen===0;
+  const n=this.levelLoad!,task=n.task,render=n.task===1&&n.screen===8,hold=n.task===0&&n.screen===0;
   if(!hold){this.gameTimerStep(false);this.tickIntervalTimers();}else this.lifeFrozen++;
   const result=stepNativeLevelLoad(n,!hold&&this.intervalControl===20);if(render)this.renderInitialSpringColumns();
+  if(task===2)this.nativeEndLevelMusicAreaQueue=this.area.entryVine?16:this.area.autoWalk&&this.pipeLoad?.alternate!==2?32:{water:2,ground:1,night:1,snow:1,underground:4,castle:8}[this.area.theme];
   if(result.camera){this.camera=0;this.player.x=Math.floor(this.player.x);this.player.y=Math.floor(this.player.y);this.player.vx=Math.floor(this.player.vx*16)/16;this.player.vy=Math.floor(this.player.vy);this.playerBackgroundPriority=this.playerDrawBackgroundPriority=false;this.resetNativeEnemyCursor();}
   if(result.clear){
    const time=this.time,load=this.pipeLoad;this.loadArea(load?.target.area??this.level.main,undefined,load?load.page*256+load.offset:undefined,true,Boolean(load));this.time=time;if(!load){this.areaControls.column-=24;this.springSlots.clear();this.springLoadColumns=12;}
-   this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;
+   this.timerFrames=24;this.player.x=0;this.player.y=-224;this.player.vx=0;this.player.vy=0;this.random.frame=0;this.nativeEndLevelMusic.offset=0;this.nativeEndLevelMusicAreaQueue=128;
   }
-  if(result.preload&&this.pipeLoad){this.finishNativePipeLoad();return;}
+  if(result.preload&&this.pipeLoad){const levelEntry=this.pipeLoad.target.direction==='level';this.finishNativePipeLoad();if(levelEntry&&!this.area.autoWalk&&!this.entryControlLocked)this.levelLoad=n;return;}
   if(result.preload){
    const [x,y]=this.area.spawn;this.player.x=x;this.player.y=y;this.player.grounded=this.isSolid(x+8,y);
    this.initializeGameTimer();this.timerFrames=24;this.phase='play';this.playerAnim.fresh=true;this.seedPlayerPriority();this.primeNativeEntryObjects();
@@ -3067,6 +3068,10 @@ export class Simulation {
    else {this.phase='castle';this.phaseFrame=180;}
    return;
   }
-  this.levelIndex++;this.fetchGameTimer=true;if(victory){this.checkpoint=false;this.activatedCheckpointArea=undefined;this.phase='intro';this.phaseFrame=0;this.levelLoad=nativeLevelLoad();this.alignLifeClock(this.intervalControl);return;}this.checkpoint=false;this.activatedCheckpointArea=undefined;this.loadArea(this.level.main,undefined,undefined,true);this.timerFrames=24;this.phase='intro';this.phaseFrame=0;this.introLength=TRANSITIONS.levelIntroFrames;
+  this.levelIndex++;this.fetchGameTimer=true;this.checkpoint=false;this.activatedCheckpointArea=undefined;this.phase='intro';this.phaseFrame=0;
+  // NextArea changes the logical destination before InitializeArea clears the retained physical scene.
+  this.levelLoad={...nativeLevelLoad(),engine:victory?8:5,...(!victory?{disable:1,columns:255}:{})};
+  if(!victory){this.nativeEndLevelMusicQueue=128;const binding=nativeAreaBindings(this.level).bindings.find(b=>b.area===this.level.main);if(binding)this.pipeLoad={target:{area:this.level.main,spawn:this.level.areas.find(a=>a.id===this.level.main)!.spawn,direction:'level',frames:0},alternate:0,header:nativePhysicalAreas[binding.code].header[0],page:0,offset:binding.offset};}
+  this.alignLifeClock(this.intervalControl);
  }
 }
