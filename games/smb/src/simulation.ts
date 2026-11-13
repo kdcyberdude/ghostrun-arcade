@@ -535,7 +535,7 @@ export class Simulation {
   if(this.phase!=='castle'&&(this.random.frame&7)===0&&!(this.phase==='pipe'&&['down','right'].includes(this.destination?.direction??'')&&this.pipeTimer<=1))this.colorRotationPending=true; // display only: native ColorRotation in the game engine, frames with FrameCounter&7==0
   if(this.phase==='dying'){
    this.parserVramBusy=false;this.updateWorldInPitFall();
-   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;this.emergeFrozenNativePowerups();this.updateNativeMisc();}
+   if(!this.offscreenLavaDeath&&!this.offscreenPitDeath){this.lakituScroll=0;for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateNativeMisc();}
    if(!this.offscreenLavaDeath&&!this.offscreenPitDeath&&this.phaseFrame>deathRules.freezeFrames){
     const move=this.deathMove!;nativeImposeGravity(move,40,4);this.player.y=move.y+move.fraction/256;this.player.vy=move.speed+move.force/256;
     if(nativePlayerHoleLocks(Math.floor((this.player.y-32)/256)+1))this.areaControls.locked=true;
@@ -603,7 +603,7 @@ export class Simulation {
   if(this.powerChange){
    this.lifeFrozen++;const next=nativeTransformStep(this.powerChange.kind,this.powerChange.remaining);this.powerChange.remaining=next.remaining;
    if(next.done){this.player.size=this.powerChange.to;this.powerChange=undefined;this.resumeWorldAfterTransform();}
-   else{this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
+   else{for(const e of this.enemies)this.settleFrozenWalker(e);this.emergeFrozenNativePowerups();this.updateBubbles(false,false);}
    return;
   }
   this.gameTimerStep(false); // NMI precedes player/actor routines, including automatic entrances.
@@ -2813,7 +2813,7 @@ export class Simulation {
    if(!e.active&&(e.nativeGroup||e.nativeId!==undefined))continue; // native group loading runs after this frame's scroll
    if((e.kind!=='bullet'||e.frenzy)&&e.kind!=='bowser'){e.graphicsFacing=e.kind==='bullet'?(e.direction??-1):e.kind==='paratroopa'&&e.nativeId===16?((e.horizontalFlight?.primary??0)&2?1:-1):Math.sign(e.vx);e.graphicsX=e.x;e.graphicsY=e.y;} // RunNormalEnemies draws before this slot's movement and enemy turns
    this.captureEnemyGraphics(e);
-   if(e.active&&this.nativeTimersStopped){this.tickHeldEnemyFrameTimers(e);if(e.kind==='bowser')this.graphicsScratch.enemy(45,{bowser:2});continue;}
+   if(e.active&&this.nativeTimersStopped){this.settleFrozenWalker(e);this.tickHeldEnemyFrameTimers(e);if(e.kind==='bowser')this.graphicsScratch.enemy(45,{bowser:2});continue;}
    if(!e.active&&this.nativeSlotDenied(e))continue;
    if(!e.active&&e.kind==='piranha'&&this.piranhaColumns){if(!e.slotHeld)continue;e.active=true;this.takeNativeSlot(e);this.startNativePiranha(e);}
    if(!e.active){if((e.spawnCamera!==undefined&&!this.nativeLoadRule(e)?this.spawnCameraReached(e):e.x<this.camera+304)&&e.x>this.camera-32&&!this.enemyLoadBlocked&&(e.spawnFrame===undefined||this.areaFrame>=e.spawnFrame)){if(this.nativeGroupIndex(e)!==undefined){for(const m of this.nativeGroupMembers(e)!)if(!m.active&&!m.slotLost)this.activateNativeGroupMember(m);if(!e.active)continue;}else{e.active=true;e.x+=this.spawnGroupShift(e);this.takeNativeSlot(e);if(e.enemySlot===undefined){e.active=false;if(e.kind==='podoboo')e.waitedForNativeSlot=true;else if(Math.floor(e.x)<Math.floor(this.camera)+255)e.slotLost=true;continue;}}}else continue;if(e.nativeBro)e.nativeLive=true;if((e.kind==='paratroopa'||e.kind==='beetle')&&!e.shell)e.vx=(p.x<e.x?-1:1)*Math.abs(e.vx||0.5);} // measured: native Paratroopas and Beetles (44/44 and 21/21) start walking toward Mario
@@ -3133,6 +3133,15 @@ export class Simulation {
   if(Math.abs(Math.floor(priorX)-Math.floor(p.x))>(koopaKind?11:10))return false;
   return gap<=(koopaKind?15:10);
  }
+ /** EnemyToBGCollisionDet still lands a falling walker while TimerControl holds movement. */
+ private settleFrozenWalker(e:Enemy){
+  if(!this.nativeTimersStopped||!e.active||e.slotFreed||e.dead||e.shell||e.motion||!NATIVE_FALLERS.includes(e.kind)||e.walkerState!==1||!e.fall)return;
+  const rawY=(Math.floor(e.y)-24)&255,ground=this.enemyCollisionAt(Math.floor(e.x)+8,e.y),depth=((rawY&15)-8)&255;
+  if(((rawY+0x3e)&255)<0x44||!ground||depth>=5&&ground.y%16===0)return;
+  if(e.graphicsFrame!==this.frame){e.graphicsX=e.x;e.graphicsY=e.y;e.graphicsFacing=Math.sign(e.vx);this.captureEnemyGraphics(e);}
+  const step={x:e.x,y:e.y,vx:e.vx,...e.fall};landNativeWalker(step,e.kind==='goomba'||e.kind==='spiny',this.player.x);
+  e.y=ground.y%16?ground.y:step.y;e.vx=step.vx;e.vy=0;e.walkerState=0;e.fall.speed=0;e.fall.force=0;
+ }
  /** GrowThePowerUp still runs while TimerControl stops ordinary enemy movement. */
  private emergeFrozenNativePowerups(){
   for(const i of this.items)if(i.life>0&&i.nativePowerState!==undefined&&i.nativePowerState<128)this.updateNativePowerup(i);
@@ -3230,7 +3239,7 @@ export class Simulation {
   this.player.y+=this.water.cancelLatePass();this.player.vy=this.water.speed+this.water.force/256;
  }
  hurt(){const p=this.player;if(p.invincible||p.star||this.powerChange||this.phase!=='play')return;this.cancelWaterPass();this.powerupStateZero=false;this.stompChain=0;if(p.size){this.powerChange={from:p.size,to:0,remaining:nativeTransformRows('shrink'),kind:'shrink'};p.invincible=POWERUPS.postShrinkInvulnerabilityNativeFrames.value;this.emit('sfx_pipe');}else this.die();}
- die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=(Math.round(this.player.vx*4096)&255)/4096;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
+ die(offscreenLava=false,offscreenPit=false){if(this.phase!=='play')return;if(!offscreenLava&&!offscreenPit)this.cancelWaterPass();this.powerupStateZero=false;this.loseLife=false;this.offscreenLavaDeath=offscreenLava;this.offscreenPitDeath=offscreenPit;this.offscreenDeathRows=this.offscreenFallRows();this.stompChain=0;this.firebarDeathFrame=this.areaFrame;this.deathMove={y:Math.floor(this.player.y),fraction:this.swimActive?this.water.frac:Math.floor((this.player.grounded?this.landingFraction:this.player.y-Math.floor(this.player.y))*256),speed:-4,force:this.player.grounded?0:Math.floor((this.player.vy-Math.floor(this.player.vy))*256),timer:0};this.phase='dying';this.phaseFrame=0;this.player.dead=true;if(!offscreenLava&&!offscreenPit)this.player.vx=(Math.round(this.player.vx*4096)&255)/4096;/* the launch replaces the speed byte only: a mid-air fraction stays (native rows reach -3 up to 6 rows sooner) */if(!offscreenLava&&!offscreenPit)this.player.vy=deathRules.launchVelocity+(this.player.grounded?0:this.player.vy-Math.floor(this.player.vy));if(!offscreenLava&&!offscreenPit){this.player.y=this.deathMove.y+this.deathMove.fraction/256;this.player.grounded=false;}if(!this.pitMusic||!offscreenLava&&!offscreenPit)this.emit('event_death');}
  // Native death/lives-screen flow (evidence/lifeflow-findings-20261111.md): the 21-row interval clock is frozen on n+2 rows per death (the second death row to the row after the engine change, and the first lives-screen row); the screen timer is set 6 rows into the screen, counts clock ticks and ends 19 rows after its last tick.
  /* Native pit/lava falls keep the whole level running (engine stays 8 until the fall ends): 118 of 119 non-inert slots moved during 260-row falls; arc deaths freeze them after the first row. */
  private updateWaterEntryEnemies(){
