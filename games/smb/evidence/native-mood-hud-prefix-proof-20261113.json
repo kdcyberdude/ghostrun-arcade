@@ -1,0 +1,244 @@
+{
+  "runtimeCommit": "c9be726d60fa6397270b1d4d9cdf9af89eb11f4d",
+  "description": "Conservative strict-state prefixes only. Initial PPU nametable seeded once; no subsequent corrections. Complete UI output retains the next-level tail errors.",
+  "prefixes": [
+    {
+      "sourcePadSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "sourceFrameOffset": 1173,
+      "entry": 2,
+      "comparedFrames": 1000,
+      "inputEpochFrames": 1002,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 48000000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": null,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null
+      },
+      "strictCoverageStatus": "incomplete",
+      "strictDiagnostics": [
+        {
+          "code": "unsupported-sim-object-family",
+          "detail": "flagpole/castle flags: activation and position adapters missing",
+          "area": "main",
+          "first": 0,
+          "count": 1000
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "flagpole-flag",
+          "slot": 5,
+          "id": 48,
+          "area": "main",
+          "first": 165,
+          "count": 835
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "castle-flag",
+          "slot": 0,
+          "id": 49,
+          "area": "main",
+          "first": 203,
+          "count": 797
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "firework",
+          "slot": 1,
+          "id": 22,
+          "area": "main",
+          "first": 826,
+          "count": 72
+        },
+        {
+          "code": "unsupported-sim-object-family",
+          "detail": "fireworks: enemy-slot position adapter missing",
+          "area": "main",
+          "first": 827,
+          "count": 69
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 13842,
+        "hud": 775,
+        "field": 13067,
+        "aligned": 13067
+      },
+      "nativeHudEvidence": {
+        "padSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+        "ramSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    },
+    {
+      "sourcePadSha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+      "sourceFrameOffset": 1162,
+      "entry": 2,
+      "comparedFrames": 969,
+      "inputEpochFrames": 971,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 46512000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": null,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null
+      },
+      "strictCoverageStatus": "incomplete",
+      "strictDiagnostics": [
+        {
+          "code": "unsupported-sim-object-family",
+          "detail": "flagpole/castle flags: activation and position adapters missing",
+          "area": "main",
+          "first": 0,
+          "count": 969
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "flagpole-flag",
+          "slot": 5,
+          "id": 48,
+          "area": "main",
+          "first": 165,
+          "count": 804
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "castle-flag",
+          "slot": 0,
+          "id": 49,
+          "area": "main",
+          "first": 236,
+          "count": 733
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 53760,
+        "hud": 5760,
+        "field": 48000,
+        "aligned": 0
+      },
+      "nativeHudEvidence": {
+        "padSha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+        "ramSha256": "06124aee284067e7f3ddf411a56b62318b8c644395f54aa4e1d0b8863d37432e",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    },
+    {
+      "sourcePadSha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+      "sourceFrameOffset": 1121,
+      "entry": 2,
+      "comparedFrames": 1010,
+      "inputEpochFrames": 1012,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 48480000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": null,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": null,
+        "x": null,
+        "y": null,
+        "missing": null,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null
+      },
+      "strictCoverageStatus": "incomplete",
+      "strictDiagnostics": [
+        {
+          "code": "unsupported-sim-object-family",
+          "detail": "flagpole/castle flags: activation and position adapters missing",
+          "area": "main",
+          "first": 0,
+          "count": 1010
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "flagpole-flag",
+          "slot": 5,
+          "id": 48,
+          "area": "main",
+          "first": 176,
+          "count": 834
+        },
+        {
+          "code": "unsupported-native-object",
+          "detail": "castle-flag",
+          "slot": 0,
+          "id": 49,
+          "area": "main",
+          "first": 280,
+          "count": 730
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 13907,
+        "hud": 776,
+        "field": 13131,
+        "aligned": 13131
+      },
+      "nativeHudEvidence": {
+        "padSha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+        "ramSha256": "606f8d4096221204f7891cfb1015e3783cde439dd4b8d8a01e90f51fba49597c",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    }
+  ]
+}

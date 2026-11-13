@@ -1,0 +1,243 @@
+{
+  "runtimeCommit": "211ec3b6576c98e0963222b20f0ebe837ad93a87",
+  "boundsSource": "Same authenticated source-level prefixes recorded at c9be726, fixed before this merge; full strict audit retains both following tail rows.",
+  "fairGate": {
+    "before": {
+      "all": 122956,
+      "hud": 4948,
+      "field": 118008,
+      "aligned": 104976
+    },
+    "after": {
+      "all": 118547,
+      "hud": 539,
+      "field": 118008,
+      "aligned": 104976
+    },
+    "increases": []
+  },
+  "prefixes": [
+    {
+      "sourcePadSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+      "sourceFrameOffset": 1173,
+      "entry": 2,
+      "comparedFrames": 1000,
+      "inputEpochFrames": 1002,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 48000000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": 1000,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": 1000,
+        "x": 1000,
+        "y": null,
+        "missing": 1000,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "continuation.frameCounter": null,
+        "continuation.random": null,
+        "continuation.interval": 1001,
+        "continuation.load.ready": null
+      },
+      "strictCoverageStatus": "diverged",
+      "strictDiagnostics": [
+        {
+          "code": "post-level-scene-transition",
+          "detail": "logical next level retains AreaData=a690, origin=0; remake compiled scene does not own that native stream/origin",
+          "area": "main",
+          "first": 1000,
+          "count": 2
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 1000,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 1001,
+          "count": 1
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 53760,
+        "hud": 5760,
+        "field": 48000,
+        "aligned": 0
+      },
+      "nativeHudEvidence": {
+        "padSha256": "3d43b7b4dcc24b99da9ddcfdbb7117c5f9896033eaa3b961617e87931691837c",
+        "ramSha256": "1ec7700f5c807679e5329ca40c060a2270a2b247649f56368ed38515726f244f",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    },
+    {
+      "sourcePadSha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+      "sourceFrameOffset": 1162,
+      "entry": 2,
+      "comparedFrames": 969,
+      "inputEpochFrames": 971,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 46512000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": 969,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": 969,
+        "x": 969,
+        "y": null,
+        "missing": 969,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "continuation.frameCounter": null,
+        "continuation.random": null,
+        "continuation.interval": 970,
+        "continuation.load.ready": null
+      },
+      "strictCoverageStatus": "diverged",
+      "strictDiagnostics": [
+        {
+          "code": "post-level-scene-transition",
+          "detail": "logical next level retains AreaData=a690, origin=0; remake compiled scene does not own that native stream/origin",
+          "area": "main",
+          "first": 969,
+          "count": 2
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 969,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 970,
+          "count": 1
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 53760,
+        "hud": 5760,
+        "field": 48000,
+        "aligned": 0
+      },
+      "nativeHudEvidence": {
+        "padSha256": "3c09f2584134903774c5daaae0130ae4a8cd412633dbe79f438067ab4b16614a",
+        "ramSha256": "06124aee284067e7f3ddf411a56b62318b8c644395f54aa4e1d0b8863d37432e",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    },
+    {
+      "sourcePadSha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+      "sourceFrameOffset": 1121,
+      "entry": 2,
+      "comparedFrames": 1010,
+      "inputEpochFrames": 1012,
+      "excludedTailFrames": 2,
+      "comparedAlignedPixels": 48480000,
+      "differingPixels": {
+        "all": 0,
+        "hud": 0,
+        "field": 0,
+        "aligned": 0
+      },
+      "strictFirst": 1010,
+      "strictFields": {
+        "level": null,
+        "area": null,
+        "dead": null,
+        "time": null,
+        "score": null,
+        "coins": null,
+        "cam": 1010,
+        "x": 1010,
+        "y": null,
+        "missing": 1010,
+        "extra": null,
+        "kind": null,
+        "position": null,
+        "state": null,
+        "continuation.frameCounter": null,
+        "continuation.random": null,
+        "continuation.interval": 1011,
+        "continuation.load.ready": null
+      },
+      "strictCoverageStatus": "diverged",
+      "strictDiagnostics": [
+        {
+          "code": "post-level-scene-transition",
+          "detail": "logical next level retains AreaData=a690, origin=0; remake compiled scene does not own that native stream/origin",
+          "area": "main",
+          "first": 1010,
+          "count": 2
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=12, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 1010,
+          "count": 1
+        },
+        {
+          "code": "native-load-control-not-owned",
+          "detail": "native next-area mode task=0, screen task=0, engine=5; no source load-control object in remake",
+          "area": "main",
+          "first": 1011,
+          "count": 1
+        }
+      ],
+      "initialHud": "observed PPU nametable",
+      "fullEpochDifferingPixels": {
+        "all": 53760,
+        "hud": 5760,
+        "field": 48000,
+        "aligned": 0
+      },
+      "nativeHudEvidence": {
+        "padSha256": "492e63d426015d732e7581b2ee75f826b2405e97fad9f9bf4e61b139171e7fda",
+        "ramSha256": "606f8d4096221204f7891cfb1015e3783cde439dd4b8d8a01e90f51fba49597c",
+        "romSha256": "f61548fdf1670cffefcc4f0b7bdcdd9eaba0c226e3b74f8666071496988248de",
+        "backendSha256": "488b51e45b58acdcc2fb1d9b1a43539393f32b512c89682eedafb9481ccb69b2",
+        "clock": "PPU nametable0 after the visible source frame; matches the entry picture0, independently of the earlier CPU initial.ram snapshot"
+      }
+    }
+  ]
+}

@@ -30,10 +30,16 @@ export function moodNativeTimeline(ram:Uint8Array){
 function copyRange(source:string,target:string,offset:number,length:number){
  const input=fs.openSync(source,'r'),output=fs.openSync(target,'w'),buffer=Buffer.alloc(1024*1024);try{for(let n=0;n<length;){const got=fs.readSync(input,buffer,0,Math.min(buffer.length,length-n),offset+n);if(!got)throw Error('Truncated native stream');fs.writeSync(output,buffer,0,got);n+=got;}}finally{fs.closeSync(input);fs.closeSync(output);}
 }
+function nativeHudAt(dir:string,run:MoodRun,frame:number){
+ const file=path.join(dir,'ppu-hud','readout.json');if(!fs.existsSync(file))return {};
+ const data=JSON.parse(fs.readFileSync(file,'utf8')),capture=JSON.parse(fs.readFileSync(path.join(dir,'capture.json'),'utf8'));
+ if(data.padSha256!==run.sha256||data.ramSha256!==capture.ramSha256||data.romSha256!==capture.romSha256)throw Error('Initial PPU HUD provenance mismatch');
+ const nativeHud=data.entries.find((row:any)=>row.frame===frame);return nativeHud?{nativeHud,nativeHudEvidence:{padSha256:run.sha256,ramSha256:data.ramSha256,romSha256:data.romSha256,backendSha256:data.backendSha256,clock:data.clock}}:{};
+}
 function writeEntry(dir:string,index:number,level:string,initialFrame:number,end:number,pads:Buffer,ram:Buffer,run:MoodRun,binding:unknown,raw=false,role?:'control-prefix'){
  const start=initialFrame+1,base=path.join(dir,'entries',String(index).padStart(4,'0'),...(role?[role]:raw?['native-entry']:[])),trace=path.join(base,'traces',level),receipts=path.join(base,'receipts',level),initial=ram.subarray(initialFrame*2048,start*2048);
  fs.mkdirSync(trace,{recursive:true});fs.mkdirSync(receipts,{recursive:true});fs.writeFileSync(path.join(trace,'initial.ram'),initial);fs.writeFileSync(path.join(trace,'pads.bin'),pads.subarray(start,end));fs.writeFileSync(path.join(trace,'ram.bin'),ram.subarray(start*2048,end*2048));
- fs.writeFileSync(path.join(receipts,'entrance.json'),JSON.stringify({schema:'native-mood-entry-v1',level,initialRamSha256:hash(initial),actionsSha256:run.sha256,sourceFrameOffset:start,sourcePadSha256:run.sha256,areaBinding:binding,provenance:run.provenance,initializationRole:role??(raw?'native-entry':'gameplay'),initialization:role==='control-prefix'?'native ScreenRoutines seed at InitializeArea; every following loader-only input is replayed before the first engine7/8 row':raw?'first source engine7/8 row, regardless of initializer support':'first source engine7/8 row supported by snapshot initializer; no later convenient-pose search',notReconstructed:['full native machine state','hidden simulation state without an initializer']},null,2)+'\n');
+ fs.writeFileSync(path.join(receipts,'entrance.json'),JSON.stringify({schema:'native-mood-entry-v1',level,...nativeHudAt(dir,run,start),initialRamSha256:hash(initial),actionsSha256:run.sha256,sourceFrameOffset:start,sourcePadSha256:run.sha256,areaBinding:binding,provenance:run.provenance,initializationRole:role??(raw?'native-entry':'gameplay'),initialization:role==='control-prefix'?'native ScreenRoutines seed at InitializeArea; every following loader-only input is replayed before the first engine7/8 row':raw?'first source engine7/8 row, regardless of initializer support':'first source engine7/8 row supported by snapshot initializer; no later convenient-pose search',notReconstructed:['full native machine state','hidden simulation state without an initializer']},null,2)+'\n');
  const pixelDir=path.join(dir,'pixels');if(fs.existsSync(path.join(pixelDir,'pixels.json'))){const meta=JSON.parse(fs.readFileSync(path.join(pixelDir,'pixels.json'),'utf8'));if(meta.step!==1)throw Error('Mood entry clipping requires all-frame native pixels');copyRange(path.join(pixelDir,'pixels.bin'),path.join(trace,'pixels.bin'),start*240*224,(end-start)*240*224);copyRange(path.join(pixelDir,'emph.bin'),path.join(trace,'emph.bin'),start*224,(end-start)*224);fs.writeFileSync(path.join(trace,'pixels.json'),JSON.stringify({...meta,frames:end-start,sourceFrameOffset:start})+'\n');}
  return {traceDirectory:trace,receiptDirectory:receipts};
 }
@@ -57,7 +63,7 @@ export function auditMoodCapture(dir:string,run:MoodRun,writeTraces=false){
    for(let f=loadFrame;f<endFrame;f++){
     const r=ram.subarray(f*2048,(f+1)*2048);if(r[0x770]!==1||r[0x772]!==3||![7,8].includes(r[14])||seenEngines.has(r[14]))continue;
     seenEngines.add(r[14]);
-    try{const e=decodeEntrance(r,{level:level.id},candidates[0]),sim=new Simulation(levels);sim.reset(true);entry.initialization=initializeEntrance(sim,e);first=f;entrance=e;break;}
+    try{const e=decodeEntrance(r,{level:level.id,...nativeHudAt(dir,run,f+1)},candidates[0]),sim=new Simulation(levels);sim.reset(true);entry.initialization=initializeEntrance(sim,e);first=f;entrance=e;break;}
     catch(error){entry.diagnostics.push({frame:f,engine:r[14],reason:String(error)});}
     if(seenEngines.has(8))break; // Never search later movement for a conveniently matching pose.
    }
@@ -83,8 +89,9 @@ if(import.meta.url===`file://${process.argv[1]}`){
  const auditToolSha256=hash(Buffer.concat(fs.readdirSync(new URL('.',import.meta.url)).filter(f=>/^native-.*\.(ts|mjs)$/.test(f)).sort().map(f=>fs.readFileSync(new URL(f,import.meta.url)))));
  for(const run of runs){const dir=path.join(a.cache,'captures',run.sha256);if(!fs.existsSync(path.join(dir,'capture.json')))continue;
   const saved=path.join(dir,'audit.json'),capture=JSON.parse(fs.readFileSync(path.join(dir,'capture.json'),'utf8')),pixelFile=path.join(dir,'pixels','pixels.json'),pixelSha=fs.existsSync(pixelFile)?JSON.parse(fs.readFileSync(pixelFile,'utf8')).pixelsSha256:undefined;
+  const hudFile=path.join(dir,'ppu-hud','readout.json'),hudSha=fs.existsSync(hudFile)?hash(fs.readFileSync(hudFile)):undefined;
   const cached=fs.existsSync(saved)?JSON.parse(fs.readFileSync(saved,'utf8')):undefined;
-  const result=cached&&cached.runtimeCommit===runtimeCommit&&cached.auditToolSha256===auditToolSha256&&cached.captureRamSha256===capture.ramSha256&&cached.pixelSha===pixelSha&&(!a['write-traces']||cached.tracesWritten)?cached:{...auditMoodCapture(dir,run,a['write-traces']),captureRamSha256:capture.ramSha256,pixelSha,tracesWritten:Boolean(a['write-traces'])};fs.writeFileSync(path.join(dir,'audit.json'),JSON.stringify({...result,runtimeCommit,auditToolSha256},null,2)+'\n');results.push({sha256:run.sha256,frames:run.frames,coverage:result.coverage,entries:result.entries.length,comparedEntries:result.entries.filter((e:any)=>e.legacy).length,nativeDeaths:result.native.deaths});
+  const result=cached&&cached.runtimeCommit===runtimeCommit&&cached.auditToolSha256===auditToolSha256&&cached.captureRamSha256===capture.ramSha256&&cached.pixelSha===pixelSha&&cached.hudSha===hudSha&&(!a['write-traces']||cached.tracesWritten)?cached:{...auditMoodCapture(dir,run,a['write-traces']),captureRamSha256:capture.ramSha256,pixelSha,hudSha,tracesWritten:Boolean(a['write-traces'])};fs.writeFileSync(path.join(dir,'audit.json'),JSON.stringify({...result,runtimeCommit,auditToolSha256},null,2)+'\n');results.push({sha256:run.sha256,frames:run.frames,coverage:result.coverage,entries:result.entries.length,comparedEntries:result.entries.filter((e:any)=>e.legacy).length,nativeDeaths:result.native.deaths});
 
   console.log(JSON.stringify(results[results.length-1]));
  }
