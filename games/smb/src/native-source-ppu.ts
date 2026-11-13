@@ -1,10 +1,15 @@
 import {sourceSpriteZeroHit,type SourcePpuHeader,type SourcePpuEvent} from './native-source-sprite-zero.js';
+import type {NativeSourceDisplayFrame} from './native-source-display.js';
 const FRAME=341*262,VBLANK=241*341+1,CAPTURE=261*341+1;
 /** Owned NROM bus and instruction-stamped PPU clock. No captured frame state. */
 export class NativeSourcePpu {
  readonly nametable=new Uint8Array(2048);readonly palette=new Uint8Array(32);readonly oam=new Uint8Array(256);
  frame=0;dot=0;ctrl=0;mask=0;status=0;openBus=0;nmi=false;v=0;t=0;x=0;w=0;oamAddress=0;readBuffer=0;
  instructionStart=0;instructionCycles=0;
+ private headerPalette=new Uint8Array(32);
+ private display:NativeSourceDisplayFrame={frame:-1,header:{v:0,t:0,x:0,ctrl:0,mask:0},palette:new Uint8Array(32),events:[],nametable:new Uint8Array(2048),oam:new Uint8Array(256)};
+ get displayFrontier(){return this.display;}
+ fork():NativeSourcePpu{return Object.assign(Object.create(Object.getPrototypeOf(this)),this,{nametable:this.nametable.slice(),palette:this.palette.slice(),oam:this.oam.slice(),header:{...this.header},headerPalette:this.headerPalette.slice(),events:this.events.map(e=>({...e}))});}
  private header:SourcePpuHeader={v:0,t:0,x:0,ctrl:0,mask:0};private events:SourcePpuEvent[]=[];private kook=0;
  private scheduled=0;private evaluated=-1;private predictedHit=false;
  constructor(private opacity?:ArrayLike<number>,private patternRead?:(address:number)=>number){if(opacity&&opacity.length!==4096)throw Error('Expected 512 CHR tile opacity masks');}
@@ -44,9 +49,9 @@ export class NativeSourcePpu {
     if(this.scheduled<=this.dot){if(this.predictedHit)this.status|=64;this.scheduled=0;}
    }
    if(next===VBLANK-12)this.status|=128;
-   else if(next===VBLANK){if(this.ctrl&128)this.nmi=true;}
+   else if(next===VBLANK){this.display={frame:this.frame,header:{...this.header},palette:this.headerPalette.slice(),events:this.events.map(e=>({...e})),nametable:this.nametable.slice(),oam:this.oam.slice()};if(this.ctrl&128)this.nmi=true;}
    else if(next===CAPTURE-12)this.status&=31;
-   else if(next===CAPTURE){this.status&=31;this.header={v:this.v,t:this.t,x:this.x,ctrl:this.ctrl,mask:this.mask};this.events=[];this.kook=this.frame&1;this.scheduled=this.oam[0]<239?(this.oam[0]+1)*341-31:0;this.evaluated=-1;this.predictedHit=false;}
+   else if(next===CAPTURE){this.status&=31;this.header={v:this.v,t:this.t,x:this.x,ctrl:this.ctrl,mask:this.mask};this.headerPalette=this.palette.slice();this.events=[];this.kook=this.frame&1;this.scheduled=this.oam[0]<239?(this.oam[0]+1)*341-31:0;this.evaluated=-1;this.predictedHit=false;}
    else if(next===end){this.frame++;this.dot=0;}
   }
  }

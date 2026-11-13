@@ -1,5 +1,6 @@
 import source from '../data/native-source-program.json';
 import graphics from '../data/native-source-ppu-graphics.json';
+const futureControllerRead=Symbol('future controller read');
 import {NativeSourcePpu} from './native-source-ppu.js';
 export type NativeSourceInstruction=[number,string,string,number,number,number,number];
 export interface NativeSourceProgram {reset:number;nmi:number;instructions:NativeSourceInstruction[];data:[number,number][]}
@@ -18,10 +19,15 @@ export class NativeSourceMachine {
  observerPcs?:ReadonlySet<number>;
  private instructions:Map<number,NativeSourceInstruction>;private tables:Map<number,number>;
  private target=241*341+1;private pad=0;private strobe=0;private shift=0;private shiftCount=0;private dma=0;
- private reads:NativeSourceAccess[]=[];private writes:NativeSourceAccess[]=[];private record=true;
+ private reads:NativeSourceAccess[]=[];private writes:NativeSourceAccess[]=[];private record=true;private rejectControllerReads=false;
  constructor(readonly program:NativeSourceProgram=source as unknown as NativeSourceProgram,opacityMasks?:ArrayLike<number>,patternRead?:(address:number)=>number){
   this.instructions=new Map(program.instructions.map(r=>[r[0],r]));this.tables=new Map(program.data);
   this.cpu={pc:program.reset,a:0,x:0,y:0,p:0x24,sp:0xfd,cycles:7};this.ppu=new NativeSourcePpu(opacityMasks??graphics.opacity,patternRead??(address=>{const value=graphics.title[address-graphics.titleAddress];if(value===undefined)throw Error(`Outside source title CHR readback ${address.toString(16)}`);return value;}));
+ }
+ /** Isolated view projection; neither CPU nor PPU ownership advances here. */
+ predictNextDisplay(){
+  const copy:NativeSourceMachine=Object.assign(Object.create(Object.getPrototypeOf(this)),this,{ram:this.ram.slice(),cpu:{...this.cpu},ppu:this.ppu.fork(),reads:[],writes:[],onInstruction:undefined,observerPcs:undefined,rejectControllerReads:true});
+  try{copy.advanceToSample();return copy.ppu.displayFrontier;}catch(error){if(error===futureControllerRead)return undefined;throw error;}
  }
  get cycles(){return this.cpu.cycles;}get pc(){return this.cpu.pc;}get ppuDot(){return this.ppu.absoluteDot;}
  snapshot(){return {...this.cpu,...this.ppu.snapshot()};}
@@ -30,7 +36,7 @@ export class NativeSourceMachine {
  private push(n:number){this.write(0x100+this.cpu.sp,n&255);this.cpu.sp=(this.cpu.sp-1)&255;}
  private pull(){this.cpu.sp=(this.cpu.sp+1)&255;return this.read(0x100+this.cpu.sp);}
  private read(address:number):number{
-  address&=65535;let value:number;
+  address&=65535;if(this.rejectControllerReads&&(address===0x4016||address===0x4017))throw futureControllerRead;let value:number;
   if(address<0x2000)value=this.ram[address&2047];
   else if(address<0x4000)value=this.ppu.read(address&7);
   else if(address===0x4016){if(this.strobe)value=64|(this.pad&1);else {value=64|(this.shiftCount<8?this.shift&1:1);if(this.shiftCount<8){this.shift>>=1;this.shiftCount++;}}}
@@ -88,8 +94,8 @@ export class NativeSourceMachine {
   const event={pc,nextPc:s.pc,cycles:s.cycles-start,nmiServiced,reads:this.reads,writes:this.writes,cpuBefore:cpuBefore!};
   if(nmiServiced||!this.observerPcs||this.observerPcs.has(pc))this.onInstruction?.(event,this);return event;
  }
- step(pad:number):void{
-  this.pad=pad&255;
+ step(pad:number):void{this.pad=pad&255;this.advanceToSample();}
+ private advanceToSample():void{
   while(this.ppuDot<this.target){
    const observed=Boolean(this.onInstruction&&(this.ppu.nmi||!this.observerPcs||this.observerPcs.has(this.pc)));
    const node=this.instructions.get(this.pc);

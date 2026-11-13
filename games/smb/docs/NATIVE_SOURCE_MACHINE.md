@@ -63,3 +63,29 @@ RAM and CPU split-sample assertions are repeated with that sparse mode and with
 no observer. Measured source-clock throughput on Node18 increased from84–86fps to
 179–186fps across the three946-sample prefixes (CPU/PPU only; no combined-renderer
 performance claim). Reproduce with `native-source-machine-benchmark.ts`.
+
+## Physical display frontier and bounded prediction
+
+The source PPU freezes `displayFrontier` at vblank: pre-render header/palette,
+instruction-stamped events, final nametables and OAM. These are owned simulation
+state, never a previous rendered image. `nativeSourceDisplay` resolves that frozen
+frame using the existing 2-bit pattern sheet, including transparent sprite slot
+reservations, the eight-sprite scanline limit, priority, scrolling and palettes.
+The three focused prefixes reproduce all 152,570,880 captured native pixels and
+all emphasis rows (crop x8..247, y8..231); unobserved border pixels are not counted.
+
+The renderer's draw-before-input convention needs the *next* physical frontier.
+`predictNextDisplay()` runs an isolated fork of owned source CPU/PPU/RAM to its
+next sample, with no pad argument. It rejects every controller-port read before
+consuming any value and returns `undefined` if future input would be needed. The
+current machine, callbacks, RAM, timing and display latch are untouched. This is
+sufficient for the already-running parser continuation: the native proof's next
+sample 938 requires no new controller feedback and its physical frame is predicted
+exactly. Fresh-NMI forecasts are refused. Tests retain older frozen frames across
+many steps before rendering and verify their immutability.
+
+The live consumer should request this bounded forecast only for its source-proven
+pending parser, otherwise use the existing renderer. It must not use the current
+frontier as a one-frame-ahead prediction, guess a next pad, skip a render, or cache
+the previous screen. Small subsequent fresh-NMI picture differences remain deferred;
+this helper does not claim to repair them or provide arbitrary future-frame foresight.
